@@ -1,6 +1,6 @@
 # Consistency Report — Ui Design
 
-> **Version:** 1.2.1  
+> **Version:** 1.3.0
 > **Updated:** 2026-04-21
 
 ---
@@ -10,6 +10,7 @@
 | Criterion | Status |
 |-----------|--------|
 | `00-overview.md` present | ✅ |
+| `97-acceptance-criteria.md` present | ✅ |
 | `99-consistency-report.md` present | ✅ |
 | Lowercase kebab-case naming | ✅ |
 | Unique numeric sequence prefixes | ✅ |
@@ -29,9 +30,11 @@
 | 03 | `03-design-system/` | ✅ Present |
 | 04 | `04-editor/` | ✅ Present |
 | 05 | `05-quality/` | ✅ Present |
+| 06 | `06-workflowy-ui/` | ✅ Present (added 2026-04-21 — 10 phase subfolders, 8 active + 2 deferred) |
+| 97 | `97-acceptance-criteria.md` | ✅ Present |
 | 99 | `99-consistency-report.md` | ✅ Present |
 
-**Total:** 5 subfolders + 2 root files
+**Total:** 6 subfolders + 3 root files
 
 ---
 
@@ -47,3 +50,4 @@ All internal links verified valid. ✅
 |------|---------|--------|
 | 2026-04-18 | 1.0.0 | Initial consistency report created |
 | 2026-04-18 | 1.2.0 | Restructure: split frontend monolith into 5 themed subfolders |
+| 2026-04-21 | 1.3.0 | **Fix S02:** Added `97-acceptance-criteria.md` row + `06-workflowy-ui/` subfolder. Date refreshed. |
