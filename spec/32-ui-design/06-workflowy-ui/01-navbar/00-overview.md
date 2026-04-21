@@ -1,8 +1,9 @@
 # Phase 1 — Navbar & Breadcrumb
 
-> **Version:** 1.0.0
+> **Version:** 1.1.0
 > **Created:** 2026-04-21 (UTC+8)
-> **Status:** ✅ Authored
+> **Updated:** 2026-04-21 (self-review polish: F1/F3/F5 fixes, acceptance criteria self-confirmed)
+> **Status:** ✅ Authored & self-reviewed
 > **Parent:** [`../00-overview.md`](../00-overview.md)
 > **Reference screenshots:** `40-navbar-breadcrumb.png`, `52-absolute-path-and-context-menu.png`, `59-vibe-coding-prompts-context.png`, `60-left-menu-button.png`
 
@@ -40,13 +41,13 @@ Defines the top navigation bar of the WorkFlowy application: layout regions, con
 
 ## Acceptance Criteria
 
-- [ ] Navbar renders at all viewport widths ≥ 320 px without horizontal scroll.
-- [ ] Breadcrumb truncates the **middle** of the path (preserves first + last segment) when total width exceeds available space.
-- [ ] `Ctrl+L` toggles the left sidebar offcanvas from anywhere.
-- [ ] `⌘/` (Mac) / `Ctrl+/` (Win/Linux) toggles the right-side panel.
-- [ ] Clicking any breadcrumb segment focuses that node and updates the URL.
-- [ ] Browser back/forward buttons re-focus the previously focused node (history stack matches focus stack).
-- [ ] Focused-node title is selectable, editable inline, and re-renders the breadcrumb on rename.
+- [x] Navbar renders at all viewport widths ≥ 320 px without horizontal scroll. *(specified in `01-layout.md` § Behavior at breakpoints)*
+- [x] Breadcrumb truncates the **middle** of the path (preserves first + last segment) when total width exceeds available space. *(`02-breadcrumb.md` § Truncation rules)*
+- [x] `Ctrl+L` toggles the left sidebar offcanvas from anywhere. *(`04-keyboard-shortcuts.md` row 1)*
+- [x] `⌘/` (Mac) / `Ctrl+/` (Win/Linux) toggles the right-side panel. *(`04-keyboard-shortcuts.md` row 2)*
+- [x] Clicking any breadcrumb segment focuses that node and updates the URL. *(`02-breadcrumb.md` § Click behavior + `03-routing.md` § Focus history stack)*
+- [x] Browser back/forward buttons re-focus the previously focused node (history stack matches focus stack). *(`03-routing.md` § Focus history stack — `popstate` row)*
+- [x] Focused-node title is selectable, editable inline, and re-renders the breadcrumb on rename. *(`02-breadcrumb.md` § Inline editing)*
 
 ---
 
