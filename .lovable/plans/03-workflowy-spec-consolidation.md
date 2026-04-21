@@ -86,9 +86,11 @@ Stub spec. Share-target API, install prompt. Post-v1.
 
 ## Cross-cutting blockers (resolve before or during phases)
 1. **Hex swatches** — extract 11+11 colors from img-47 (Phase 5).
-2. **Sidebar drag semantics** — move or mirror? (Phase 6).
+2. **Sidebar drag semantics** — move or mirror? (Phase 6) — *user-visible behavior only*.
 3. **Launch theme list** — light/dark only or include named palettes? (Phase 8).
 4. **LinkedIn integration scope** — read-only profile vs OAuth posting? (Phase 9 sibling).
+
+> **D2 (backend runtime) is REMOVED from this queue.** Per user, backend choice is deferred until all specs are 100% complete. Spec phases describe features + behaviors only — no DB engines, no hosting, no sync protocols.
 
 ## Open questions parked
 See `.lovable/references/workflowy-screenshots/00-index.md` § "Open questions parked".
