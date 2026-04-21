@@ -1,9 +1,56 @@
 # Phase 2 — Search Overlay & Filter Syntax
 
-> **Status:** ⏳ Ready to author
+> **Version:** 1.0.0
+> **Created:** 2026-04-21 (UTC+8)
+> **Status:** ✅ Authored
 > **Parent:** [`../00-overview.md`](../00-overview.md)
 > **Screenshots:** img-40, img-41, img-42, img-43, img-44, img-58
-> **Target files:** `01-overlay.md`, `02-filter-syntax.md`
+> **Plan reference:** [`.lovable/plans/03-workflowy-spec-consolidation.md`](../../../../.lovable/plans/03-workflowy-spec-consolidation.md) § Phase 2
+
+---
 
 ## Scope
-Full-screen overlay opened by clicking the search bar. 6 filter tabs (globe / @ / 📅 / 🕐 / 👥 / ⋯). Filter syntax: `date:`, `date-before:`, `date-after:`, `day-of-week:`, `changed:`, `created:`, `is:`, `has:`, `in:`, `text:`, `link:`, `highlight:`, `me`, `others`, `today`, `tomorrow`. Mirror inclusion toggle (img-58).
+
+Full-screen overlay opened by clicking the navbar search input (or via the global search shortcut, final binding deferred to Phase 8). Defines the visual container, 6 filter tabs (🌐 / @ / 📅 / 🕐 / 👥 / ⋯), the mirror-inclusion toggle (img-58), result row anatomy, and the complete query grammar.
+
+---
+
+## Files
+
+| # | File | Purpose |
+|---|------|---------|
+| 01 | [`01-overlay.md`](./01-overlay.md) | Visual layout, regions, states, keyboard/pointer interactions, mirror toggle, results region. |
+| 02 | [`02-filter-syntax.md`](./02-filter-syntax.md) | Complete grammar — every filter keyword, value formats, operators, parser behavior, examples. |
+
+---
+
+## Filter keyword inventory
+
+`date:` · `date-before:` · `date-after:` · `day-of-week:` · `changed:` · `created:` · `is:` · `has:` · `in:` · `text:` · `link:` · `highlight:` · `@user`
+
+Standalone shortcuts: `me` · `others` · `today` · `tomorrow`
+
+Negation: prefix any term with `-`. Combination: whitespace = AND. No `OR` operator at launch (single exception: multiple `in:` filters union scopes).
+
+---
+
+## Acceptance Criteria
+
+- [x] Overlay layout fully specified (panel dims, regions, scrim, internal regions). — [`01-overlay.md`](./01-overlay.md) § 3
+- [x] All 6 filter tabs documented with insertion behavior + visual states. — [`01-overlay.md`](./01-overlay.md) § 5
+- [x] Mirror inclusion toggle (img-58) specified including default + persistence. — [`01-overlay.md`](./01-overlay.md) § 6
+- [x] Result row anatomy + states + virtualization rule (250 cap) defined. — [`01-overlay.md`](./01-overlay.md) § 7
+- [x] All 12 filter keywords + 4 shortcuts documented with value grammars. — [`02-filter-syntax.md`](./02-filter-syntax.md) §§ 3–8
+- [x] Combination rules (AND default, negation, `in:` union exception) stated. — [`02-filter-syntax.md`](./02-filter-syntax.md) §§ 2, 6.3
+- [x] Parser error behavior specified (malformed / empty / unknown keywords). — [`02-filter-syntax.md`](./02-filter-syntax.md) § 10
+- [x] Mobile behavior flagged as forward-ref to Phase 10 (no commitment here). — [`01-overlay.md`](./01-overlay.md) § 11
+- [x] No backend/runtime references (full-text engine choice explicitly deferred). — [`02-filter-syntax.md`](./02-filter-syntax.md) § 12
+- [x] No spec file exceeds 400 lines.
+
+---
+
+## Cross-References
+
+- [`../00-overview.md`](../00-overview.md) — Workflowy UI parent.
+- [`../01-navbar/01-layout.md`](../01-navbar/01-layout.md) § Right cluster — search-input entry point.
+- Forward-refs: Phase 4 bullet anatomy, Phase 5 highlight colors, Phase 6 sidebar special nodes, Phase 8 global hotkey binding, Phase 10 mobile.
