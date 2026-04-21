@@ -1,5 +1,8 @@
 Prefers comprehensive documentation and tracking.
-Wants memory/suggestions/plans kept in single consolidated files, not per-item.
+Plan file: keep ONE consolidated file. `.lovable/plan.md` = Lovable-internal active roadmap; `/plan.md` = public handoff for other AIs. Both stay in sync.
+Suggestions: ONE FILE PER SUGGESTION under `.lovable/memory/suggestions/NN-slug.md` (per `.lovable/memory/suggestions/README.md`). The legacy `.lovable/suggestions.md` is now an index pointer only.
+Pending issues: one file per issue under `.lovable/pending-issues/NN-slug.md`; resolved ones move to `.lovable/solved-issues/`.
+Strictly-avoid: keep ONE consolidated `.lovable/strictly-avoid.md`.
 Uses Malaysia timezone (UTC+8).
 Expects readme.txt milestone markers with format: "let's start now {date} {time}".
 Wants reliability reports before implementation.
