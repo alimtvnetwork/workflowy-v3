@@ -14,6 +14,7 @@
 |---|------|-------|-------|
 | 1 | [`01-audit-2026-04-18.md`](./01-audit-2026-04-18.md) | Spec Audit — 2026-04-18 | 154 |
 | 2 | [`03-ai-readiness-audit-2026-04-19.md`](./03-ai-readiness-audit-2026-04-19.md) | Spec Tree AI-Development Readiness Audit | 98 |
+| 3 | [`04-required-files-gate.md`](./04-required-files-gate.md) | Spec-Hygiene Gate: Required Files | 64 |
 
 <!-- AUTO-TOC:END -->
 
