@@ -1,7 +1,7 @@
-# Consistency Report — 06-conventions
+# Consistency Report — 03-edge-cases
 
 > **Version:** 1.0.1  
-> **Updated:** 2026-04-18
+> **Updated:** 2026-04-21
 
 ---
 
@@ -23,10 +23,11 @@
 | # | File | Status |
 |---|------|--------|
 | 00 | `00-overview.md` | ✅ Present |
-| 01 | `01-axios-version-control.md` | ✅ Present |
+| 01 | `01-edge-cases.md` | ✅ Present |
+| 02 | `02-product-boundaries.md` | ✅ Present |
 | 99 | `99-consistency-report.md` | ✅ Present |
 
-**Total:** 3 files
+**Total:** 4 files
 
 ---
 

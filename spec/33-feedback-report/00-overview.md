@@ -80,7 +80,7 @@ Draft (high-level only) · Ambiguity: Medium (sub-specs pending)
 | User Management (roles) | [`../36-user-management/00-overview.md`](../36-user-management/00-overview.md) |
 | Database Conventions | [`../04-database-conventions/00-overview.md`](../04-database-conventions/00-overview.md) |
 | Split DB Architecture | [`../05-split-db-architecture/00-overview.md`](../05-split-db-architecture/00-overview.md) |
-| Roadmap | [`../31-app/05-roadmap/00-overview.md`](../31-app/05-roadmap/00-overview.md) |
+| Roadmap | [`../31-app/04-roadmap/00-overview.md`](../31-app/04-roadmap/00-overview.md) |
 
 ---
 

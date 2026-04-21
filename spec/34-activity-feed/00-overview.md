@@ -96,7 +96,7 @@ Draft (high-level only) · Ambiguity: Medium (sub-specs pending)
 | Editor Core | [`../31-app/01-features/00-overview.md`](../31-app/01-features/00-overview.md) |
 | Split DB | [`../05-split-db-architecture/00-overview.md`](../05-split-db-architecture/00-overview.md) |
 | Trash Logic (30d retention parity) | [`mem://features/trash-logic`](mem://features/trash-logic) |
-| Roadmap | [`../31-app/05-roadmap/00-overview.md`](../31-app/05-roadmap/00-overview.md) |
+| Roadmap | [`../31-app/04-roadmap/00-overview.md`](../31-app/04-roadmap/00-overview.md) |
 
 ---
 

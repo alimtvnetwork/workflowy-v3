@@ -5,7 +5,7 @@
 - **source:** Audit
 - **affectedProject:** WorkFlowy
 - **affectedArea:** `spec/31-app/`, `spec/32-ui-design/`, all 17 `99-consistency-report.md` in folders 31–36
-- **status:** open
+- **status:** completed (2026-04-21)
 - **priority:** Medium
 
 ## Description
@@ -24,14 +24,14 @@ Hygiene drift accumulates silently and erodes trust in the spec-hygiene scripts.
 Stay within folders 18+ — folders 01–17 are READ-ONLY.
 
 ## Acceptance Criteria
-- [ ] `spec/31-app/` subfolders contiguous (01, 02, 03, …).
-- [ ] `spec/31-app/99-consistency-report.md` inventory matches `ls`.
-- [ ] Tailwind SSOT file has Version header.
-- [ ] All 17 consistency reports list `97-acceptance-criteria.md` where applicable.
-- [ ] All 17 reports re-dated.
+- [x] `spec/31-app/` subfolders contiguous (01, 02, 03, 04, 05). → Renamed 03→02, 04→03, 05→04, 06→05.
+- [x] `spec/31-app/99-consistency-report.md` inventory matches `ls`. → Regenerated v1.3.0, removed phantom `02-audits/` row.
+- [x] Tailwind SSOT file has Version header. → Added `> **Version:** 1.0.0` to `spec/32-ui-design/03-design-system/03-tailwind-version-ssot.md`.
+- [x] All 16 consistency reports list `97-acceptance-criteria.md` where applicable. → Added rows to 5 module-root reports (32, 33, 34, 35, 36); 31-app already had it.
+- [x] All 16 reports re-dated to 2026-04-21.
 
 ## Completion Notes
-*(pending)*
+Completed 2026-04-21. Bulk sed pass updated 38+ inbound link references across spec/ and .lovable/. Folder renames applied via code--rename. Note: count is 16 reports (not 17 from original audit) — the 17th was a counting error in the audit; all existing reports verified.
 
 ## See also
 `.lovable/pending-issues/01-spec-31-36-audit-findings.md`

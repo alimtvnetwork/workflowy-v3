@@ -1,7 +1,7 @@
 # Consistency Report — User Management
 
-> **Version:** 1.0.0  
-> **Updated:** 2026-04-18
+> **Version:** 1.1.0
+> **Updated:** 2026-04-21
 
 ---
 
@@ -10,6 +10,7 @@
 | Criterion | Status |
 |-----------|--------|
 | `00-overview.md` present | ✅ |
+| `97-acceptance-criteria.md` present | ✅ |
 | `99-consistency-report.md` present | ✅ |
 | Lowercase kebab-case naming | ✅ |
 | Unique numeric sequence prefixes | ✅ |
@@ -23,9 +24,10 @@
 | # | File | Status |
 |---|------|--------|
 | 00 | `00-overview.md` | ✅ Present |
+| 97 | `97-acceptance-criteria.md` | ✅ Present |
 | 99 | `99-consistency-report.md` | ✅ Present |
 
-**Total:** 2 files
+**Total:** 3 files
 
 ---
 
@@ -40,3 +42,4 @@ All internal links verified valid. ✅
 | Date | Version | Action |
 |------|---------|--------|
 | 2026-04-18 | 1.0.0 | Initial consistency report created |
+| 2026-04-21 | 1.1.0 | **Fix S02:** Added `97-acceptance-criteria.md` row. Date refreshed. |

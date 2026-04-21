@@ -1147,20 +1147,20 @@
 | [`31-app/01-features/13-templates.md`](./31-app/01-features/13-templates.md) | Template Application Flow | 2.0.0 | — |
 | [`31-app/01-features/14-concurrency-and-sync.md`](./31-app/01-features/14-concurrency-and-sync.md) | Concurrency & Sync | 1.0.0 | — |
 | [`31-app/01-features/99-consistency-report.md`](./31-app/01-features/99-consistency-report.md) | Consistency Report — 01-features | 1.0.1 | — |
-| [`31-app/03-workflows/00-overview.md`](./31-app/03-workflows/00-overview.md) | Workflows | 1.0.0 | — |
-| [`31-app/03-workflows/01-keyboard-shortcuts.md`](./31-app/03-workflows/01-keyboard-shortcuts.md) | Keyboard Shortcuts — Complete Reference | 1.1.0 | — |
-| [`31-app/03-workflows/99-consistency-report.md`](./31-app/03-workflows/99-consistency-report.md) | Consistency Report — 03-workflows | 1.0.1 | — |
-| [`31-app/04-edge-cases/00-overview.md`](./31-app/04-edge-cases/00-overview.md) | Edge Cases | 1.0.0 | — |
-| [`31-app/04-edge-cases/01-edge-cases.md`](./31-app/04-edge-cases/01-edge-cases.md) | Edge Cases | 1.2.0 | — |
-| [`31-app/04-edge-cases/02-product-boundaries.md`](./31-app/04-edge-cases/02-product-boundaries.md) | Product Boundaries | 1.1.0 | — |
-| [`31-app/04-edge-cases/99-consistency-report.md`](./31-app/04-edge-cases/99-consistency-report.md) | Consistency Report — 04-edge-cases | 1.0.1 | — |
-| [`31-app/05-roadmap/00-overview.md`](./31-app/05-roadmap/00-overview.md) | Roadmap | 1.0.0 | — |
-| [`31-app/05-roadmap/01-implementation-phases.md`](./31-app/05-roadmap/01-implementation-phases.md) | Implementation Phases | 1.1.0 | — |
-| [`31-app/05-roadmap/02-resolved-decisions.md`](./31-app/05-roadmap/02-resolved-decisions.md) | Resolved Product Decisions | 1.1.0 | — |
-| [`31-app/05-roadmap/99-consistency-report.md`](./31-app/05-roadmap/99-consistency-report.md) | Consistency Report — 05-roadmap | 1.0.1 | — |
-| [`31-app/06-conventions/00-overview.md`](./31-app/06-conventions/00-overview.md) | Conventions | 1.0.0 | — |
-| [`31-app/06-conventions/01-axios-version-control.md`](./31-app/06-conventions/01-axios-version-control.md) | Axios Version Control Policy | 1.0.0 | — |
-| [`31-app/06-conventions/99-consistency-report.md`](./31-app/06-conventions/99-consistency-report.md) | Consistency Report — 06-conventions | 1.0.1 | — |
+| [`31-app/02-workflows/00-overview.md`](./31-app/02-workflows/00-overview.md) | Workflows | 1.0.0 | — |
+| [`31-app/02-workflows/01-keyboard-shortcuts.md`](./31-app/02-workflows/01-keyboard-shortcuts.md) | Keyboard Shortcuts — Complete Reference | 1.1.0 | — |
+| [`31-app/02-workflows/99-consistency-report.md`](./31-app/02-workflows/99-consistency-report.md) | Consistency Report — 02-workflows | 1.0.1 | — |
+| [`31-app/03-edge-cases/00-overview.md`](./31-app/03-edge-cases/00-overview.md) | Edge Cases | 1.0.0 | — |
+| [`31-app/03-edge-cases/01-edge-cases.md`](./31-app/03-edge-cases/01-edge-cases.md) | Edge Cases | 1.2.0 | — |
+| [`31-app/03-edge-cases/02-product-boundaries.md`](./31-app/03-edge-cases/02-product-boundaries.md) | Product Boundaries | 1.1.0 | — |
+| [`31-app/03-edge-cases/99-consistency-report.md`](./31-app/03-edge-cases/99-consistency-report.md) | Consistency Report — 03-edge-cases | 1.0.1 | — |
+| [`31-app/04-roadmap/00-overview.md`](./31-app/04-roadmap/00-overview.md) | Roadmap | 1.0.0 | — |
+| [`31-app/04-roadmap/01-implementation-phases.md`](./31-app/04-roadmap/01-implementation-phases.md) | Implementation Phases | 1.1.0 | — |
+| [`31-app/04-roadmap/02-resolved-decisions.md`](./31-app/04-roadmap/02-resolved-decisions.md) | Resolved Product Decisions | 1.1.0 | — |
+| [`31-app/04-roadmap/99-consistency-report.md`](./31-app/04-roadmap/99-consistency-report.md) | Consistency Report — 04-roadmap | 1.0.1 | — |
+| [`31-app/05-conventions/00-overview.md`](./31-app/05-conventions/00-overview.md) | Conventions | 1.0.0 | — |
+| [`31-app/05-conventions/01-axios-version-control.md`](./31-app/05-conventions/01-axios-version-control.md) | Axios Version Control Policy | 1.0.0 | — |
+| [`31-app/05-conventions/99-consistency-report.md`](./31-app/05-conventions/99-consistency-report.md) | Consistency Report — 05-conventions | 1.0.1 | — |
 | [`31-app/97-acceptance-criteria.md`](./31-app/97-acceptance-criteria.md) | App — Acceptance Criteria | 1.0.0 | Scaffold |
 | [`31-app/99-consistency-report.md`](./31-app/99-consistency-report.md) | Consistency Report — App | 1.2.1 | — |
 
