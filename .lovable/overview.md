@@ -1,6 +1,6 @@
 # Project Overview — WorkFlowy
 
-> **Updated:** 2026-04-18  
+> **Updated:** 2026-04-21
 > **Read priority:** FIRST (Phase 1 of `read memory` onboarding)
 
 ---
@@ -22,8 +22,10 @@ WorkFlowy is an outliner/knowledge-management web app modeled after the original
 |-----------|--------|
 | Onboarding sequence | `.lovable/prompts/01-read-memory-prompt.md` (or just say "read memory") |
 | Hard prohibitions | `.lovable/strictly-avoid.md` |
-| Active roadmap | `.lovable/plan.md` |
-| Pending suggestions | `.lovable/suggestions.md` |
+| Lovable-internal active roadmap | `.lovable/plan.md` |
+| Public handoff roadmap | `/plan.md` (repo root) |
+| AI readiness report | `.lovable/reports/01-ai-readiness-report.md` |
+| Pending suggestions (index) | `.lovable/suggestions.md` → per-file under `.lovable/memory/suggestions/` |
 | Institutional memory | `.lovable/memory/index.md` |
 | Coding rules | `spec/12-consolidated-guidelines/02-coding-guidelines.md` |
 | Error management | `spec/12-consolidated-guidelines/03-error-management.md` |
