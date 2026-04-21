@@ -69,17 +69,17 @@
 |----------|----------|
 | ≥ 768 px | All controls visible. Breadcrumb shows as much as fits. |
 | 480–767 px | All controls visible. Breadcrumb truncates aggressively (may show only `Home › … › Current`). |
-| < 480 px | `←` and `→` collapse into the left menu (≡). Share icon collapses into ⋮ menu. |
+| < 480 px | **Forward-reference only — final mobile behavior is deferred to Phase 10 (`../10-mobile/`).** Provisional intent: `←` and `→` collapse into the left menu (≡); Share icon collapses into the ⋮ menu. |
 
 ---
 
 ## States
 
-| State | Visual treatment |
-|-------|------------------|
-| Default | All icons at full opacity. |
-| Hover (icon button) | Background `bg-muted/60`, cursor `pointer`. |
-| Active/pressed | Background `bg-muted`, slight scale-down (0.95). |
+| State | Visual treatment (token-based) |
+|-------|--------------------------------|
+| Default | All icons at full opacity, color = `--foreground`. |
+| Hover (icon button) | Background = muted surface (60% opacity of `--muted`), cursor `pointer`. |
+| Active/pressed | Background = `--muted` (full opacity), slight scale-down (≈ 0.95). |
 | Disabled (back/forward) | Opacity 0.4, no hover effect, cursor `not-allowed`. |
 | Focused via keyboard | 2 px outline using `--ring` token. |
 
