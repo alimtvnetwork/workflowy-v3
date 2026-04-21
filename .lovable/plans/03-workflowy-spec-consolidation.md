@@ -1,6 +1,6 @@
 # Workflowy Spec Consolidation — 10-Phase Plan
 
-> **Created:** 2026-04-21 · **Updated:** 2026-04-21 · **Status:** Phase 0 complete; D1 resolved (Option C); Phase 1 awaiting user "go"
+> **Created:** 2026-04-21 · **Updated:** 2026-04-21 · **Status:** Phases 1–2 done; Phase 3 ready
 > **Scope rule:** Only edit folders `spec/18+`. Folders `01–17` are READ-ONLY.
 > **Reference assets:** `.lovable/references/workflowy-screenshots/` (28 screenshots: img-40 → img-67, indexed in `00-index.md`).
 > **D1 resolution (2026-04-21):** All 10 phases nest under `spec/32-ui-design/06-workflowy-ui/` as subfolders `01-navbar/` … `10-mobile/`. Phase number = subfolder number. Existing siblings `01-architecture/` … `05-quality/` are untouched.
@@ -24,7 +24,7 @@
 | # | Phase | Status | Output Folder |
 |---|-------|--------|---------------|
 | 1 | Navbar & Breadcrumb | ✅ Done (2026-04-21) | `spec/32-ui-design/06-workflowy-ui/01-navbar/` |
-| 2 | Search Overlay & Filter Syntax | ⏳ Ready | `spec/32-ui-design/06-workflowy-ui/02-search/` |
+| 2 | Search Overlay & Filter Syntax | ✅ Done (2026-04-21) | `spec/32-ui-design/06-workflowy-ui/02-search/` |
 | 3 | Right-Side Panel (Handbook + Hotkeys + What's New) | ⏳ Ready | `spec/32-ui-design/06-workflowy-ui/03-right-panel/` |
 | 4 | Bullet Anatomy & Context Menus | ⏳ Ready | `spec/32-ui-design/06-workflowy-ui/04-bullet/` |
 | 5 | Editor (Slash, Selection Toolbar, Item Types, Markdown) | ⏳ Ready | `spec/32-ui-design/06-workflowy-ui/05-editor/` |
