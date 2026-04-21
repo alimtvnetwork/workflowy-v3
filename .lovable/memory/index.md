@@ -1,72 +1,32 @@
-# Memory Index
+# Memory: index.md
+Updated: 2026-04-21
 
-> **Updated:** 2026-04-21
-> **Rule:** Every file under `.lovable/memory/` MUST be listed below.
+# Project Memory
 
----
+## Core
+Official name is 'WorkFlowy'. Prioritize user requirements & UI specs absolutely over AI suggestions.
+**SPEC-ONLY MODE ACTIVE** — only work on `spec/` and `.lovable/` files. No code implementation until user explicitly says "start implementation".
+Vite, React, TypeScript, SQLite. No Go, PHP, Postgres, or Supabase.
+Strict TS: zero 'any', max 3 params, no nested `if`s, 15-line logic limit, pure positive guard clauses.
+Every item is a unified Node interface (id, parentId, content, itemType). 250-item limit per view.
+Tailwind CSS v4 via @tailwindcss/vite in src/index.css @theme block.
 
-## Workflow
-
-| File | Purpose |
-|------|---------|
-| [`workflow/01-project-status.md`](./workflow/01-project-status.md) | Current project phase, what's done, what's pending, blockers |
-| [`workflow/02-coding-rules-summary.md`](./workflow/02-coding-rules-summary.md) | Quick-reference coding rules table (TypeScript-specific) |
-| [`workflow/03-reliability-risk-report.md`](./workflow/03-reliability-risk-report.md) | Earlier reliability risk assessment (superseded by `.lovable/reports/01-ai-readiness-report.md` 2026-04-21) |
-| [`workflow/04-frontend-failure-analysis.md`](./workflow/04-frontend-failure-analysis.md) | 26 frontend gaps and their fixes |
-
-## Docs
-
-| File | Purpose |
-|------|---------|
-| [`docs/specifications.md`](./docs/specifications.md) | Structure and style rules for the `spec/` directory |
-
-## Issues
-
-| File | Purpose |
-|------|---------|
-| [`issues/README.md`](./issues/README.md) | Index of issue-specific knowledge files |
-| [`issues/spec-hygiene.md`](./issues/spec-hygiene.md) | Open spec-structure issues (mirrors `spec/18-spec-issues/`) |
-
-> **Active issue tracking** lives in `.lovable/pending-issues/` (open) and `.lovable/solved-issues/` (resolved) — single file per issue.
-
-## Suggestions
-
-| File | Purpose |
-|------|---------|
-| [`suggestions/README.md`](./suggestions/README.md) | **Authoritative contract** for suggestions: per-file convention, frontmatter, status flow |
-| [`suggestions/01-workflowy-spec-consolidation.md`](./suggestions/01-workflowy-spec-consolidation.md) | S01 — Workflowy spec consolidation (active) |
-| [`suggestions/02-fix-spec-31-36-audit-findings.md`](./suggestions/02-fix-spec-31-36-audit-findings.md) | S02 — Fix 5 audit findings (open) |
-| [`suggestions/03-fix-49-broken-relative-links.md`](./suggestions/03-fix-49-broken-relative-links.md) | S03 — Broken links (open) |
-| [`suggestions/04-ci-gate-overview-and-consistency.md`](./suggestions/04-ci-gate-overview-and-consistency.md) | S04 — CI gate overview + consistency (open) |
-| [`suggestions/05-ci-gate-broken-relative-links.md`](./suggestions/05-ci-gate-broken-relative-links.md) | S05 — CI gate broken links (open) |
-| [`suggestions/06-move-parallel-spec-folders.md`](./suggestions/06-move-parallel-spec-folders.md) | S06 — Move parallel folders (open) |
-| [`suggestions/suggestions-tracker.md`](./suggestions/suggestions-tracker.md) | LEGACY tracker (historical reference; not authoritative since 2026-04-21) |
-| [`suggestions/completed/SC001-frontend-gap-analysis.md`](./suggestions/completed/SC001-frontend-gap-analysis.md) | Completed: frontend gap analysis suggestion |
-
-## Reports
-
-| File | Purpose |
-|------|---------|
-| [`../reports/01-ai-readiness-report.md`](../reports/01-ai-readiness-report.md) | 2026-04-21 handoff-readiness report (executive summary + appendix) |
-
----
-
-## User preferences (always-on)
-
-`.lovable/user-preferences` is loaded automatically by Lovable. Highlights:
-
-- Malaysia timezone (UTC+8) in all dated entries.
-- Numbered file naming `01-name.md`.
-- Bump at least minor version on every code change. Never touch `.release/`.
-- One consolidated file for **plan** and **strictly-avoid**; per-file convention for **suggestions** and **pending-issues**.
-- Never append filler ("Hope this helps!", "Let me know if…").
-- Always list remaining tasks at the end of each session.
-
----
-
-## Conventions
-
-- Subfolders use **kebab-case** without numeric prefixes.
-- Files use kebab-case and MAY have numeric prefixes for ordering.
-- The folder is `.lovable/memory/` (singular). `.lovable/memories/` is **prohibited**.
-- When you add a memory file, append a row to the matching section above.
+## Memories
+- [Spec-Only Mode](mem://constraints/spec-only-mode) — Active work mode: spec authoring only, no code until specs are 100% complete
+- [Coding Guidelines](mem://constraints/coding-guidelines) — Strict TypeScript, logic formatting, and SQLite naming rules
+- [Tech Stack](mem://architecture/tech-stack) — Core technologies, API format, strict Axios versioning
+- [Data Model](mem://architecture/data-model) — Unified Item interface, root rules, and node constraints
+- [Specifications](mem://docs/specifications) — Structure and style rules for the spec/ directory
+- [Theme & Design](mem://design/theme) — Breakpoints, error boundaries, and custom CSS tokens
+- [UI Components](mem://design/ui-components) — Specific details for Navbar, Sidebar, Interactions, and Panels
+- [WorkFlowy Model](mem://design/workflowy-model) — Core aesthetic and UX inspiration
+- [Editor Core](mem://features/editor-core) — Drag-and-drop, fractional sorting, rich text sync, undo/redo
+- [Core Mechanics](mem://features/core-mechanics) — 12 distinct item types and infinite nesting
+- [Mirroring](mem://features/mirroring) — Linked instances logic and sync behavior
+- [Board View](mem://features/board-view) — Kanban-style visualization and structural sync
+- [Multi-Select](mem://features/multi-select) — Bulk operations via Shift/Cmd click
+- [Templates](mem://features/templates) — Serialized snapshots for tree structures
+- [Search](mem://features/search-functionality) — Syntax (#tag, is:, type:) and performance targets
+- [Sharing Model](mem://features/sharing-model) — Public and invited-user sharing permissions
+- [Offline Resilience](mem://features/offline-resilience) — Background autosave and local queuing
+- [Trash Logic](mem://features/trash-logic) — 30-day retention policy
