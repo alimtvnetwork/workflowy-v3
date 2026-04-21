@@ -10,7 +10,7 @@
 
 | ID | File | Title | Priority | Status |
 |----|------|-------|----------|--------|
-| S01 | [`memory/suggestions/01-workflowy-spec-consolidation.md`](./memory/suggestions/01-workflowy-spec-consolidation.md) | Workflowy spec consolidation (10-phase) | High | inProgress |
+| S01 | [`memory/suggestions/01-workflowy-spec-consolidation.md`](./memory/suggestions/01-workflowy-spec-consolidation.md) | Workflowy spec consolidation (10-phase) | High | ✅ completed |
 | S02 | [`memory/suggestions/02-fix-spec-31-36-audit-findings.md`](./memory/suggestions/02-fix-spec-31-36-audit-findings.md) | Fix 5 audit findings in spec 31–36 | Medium | open |
 | S03 | [`memory/suggestions/03-fix-49-broken-relative-links.md`](./memory/suggestions/03-fix-49-broken-relative-links.md) | Fix 49 broken relative links | Low | open |
 | S04 | [`memory/suggestions/04-ci-gate-overview-and-consistency.md`](./memory/suggestions/04-ci-gate-overview-and-consistency.md) | CI gate: require overview + consistency report | Medium | open |
