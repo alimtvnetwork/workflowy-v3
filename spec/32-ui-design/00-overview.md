@@ -17,6 +17,7 @@
 | 3 | [`03-design-system/`](./03-design-system/00-overview.md) | Design System | subfolder |
 | 4 | [`04-editor/`](./04-editor/00-overview.md) | Editor | subfolder |
 | 5 | [`05-quality/`](./05-quality/00-overview.md) | Quality | subfolder |
+| 6 | [`06-workflowy-ui/`](./06-workflowy-ui/00-overview.md) | Workflowy UI Spec — Parent Overview | subfolder |
 
 <!-- AUTO-TOC:END -->
 

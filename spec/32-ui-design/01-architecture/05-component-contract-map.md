@@ -1,6 +1,6 @@
 # Component Contract Map
 
-> **Generated:** 2026-04-20
+> **Generated:** 2026-04-21
 > **Source:** every `## Component Contract` table in `spec/31-app/01-features/`
 > **Generator:** `scripts/spec-hygiene/07-extract-contract-map.mjs`
 > **DO NOT EDIT BY HAND** — re-run the generator after editing feature files.

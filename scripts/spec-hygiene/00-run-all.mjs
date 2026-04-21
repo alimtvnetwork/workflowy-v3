@@ -17,6 +17,7 @@ const checks = [
   "scripts/spec-hygiene/08-check-acceptance-coverage.mjs",
   "scripts/spec-hygiene/09-check-xrefs.mjs",
   "scripts/spec-hygiene/11-generate-auto-toc.mjs",
+  "scripts/spec-hygiene/12-check-required-files.mjs",
   "scripts/spec-hygiene/04-generate-index.mjs",
 ];
 
