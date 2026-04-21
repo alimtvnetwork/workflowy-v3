@@ -1,15 +1,66 @@
-# Phase 5 — Editor (Slash, Toolbar, Item Types, Colors, Code/Quote, Markdown)
+# Phase 5 — Editor
 
-> **Status:** ⏳ Ready to author
+> **Version:** 1.0.0
+> **Created:** 2026-04-21 (UTC+8)
+> **Status:** ✅ Authored
 > **Parent:** [`../00-overview.md`](../00-overview.md)
-> **Screenshots:** img-47, img-53, img-56, img-58, img-59
-> **Target files:** `01-slash-menu.md`, `02-selection-toolbar.md`, `03-item-types.md`, `04-color-palettes.md`, `05-code-quote-blocks.md`, `06-markdown-shortcuts.md`
+> **Phase:** 5 of 10 (active)
+> **Screenshots:** img-47, 53, 56, 58, 59, 64, 67
 
-## Scope
-- **Slash menu** (img-53) — locked order, extended to H1–H5.
-- **Selection toolbar** (img-47) — H1–H5, ¶, B/I/U/S, link, color picker.
-- **Color palettes** — 11 text + 11 highlight swatches (hex values TBD — **BLOCKER 1**).
-- **Item types:** Bullet, Board, To-do, H1–H5, Paragraph, Quote, Code Block, Divider, Shortcut, Numbered List.
-- **Code Block forward conversion:** multi-select N siblings → ONE node with N internal line breaks. Reverse splits per line.
-- **Markdown shortcuts:** `# `–`##### `, `> `, `[]`, `` ``` ``, `1. `, `---`.
-- **Templates:** `/Add from template` or `/template`.
+---
+
+## Purpose
+
+Specification for the editing surface — slash command menu, selection toolbar, item type system (12 types), color palette (11+11 swatches extracted from img-47), code/quote blocks, and markdown shortcuts.
+
+---
+
+## Files in this Phase
+
+| # | File | Purpose |
+|---|------|---------|
+| 1 | [`01-slash-menu.md`](./01-slash-menu.md) | Slash command menu — locked order from img-53, extended H1–H5 |
+| 2 | [`02-selection-toolbar.md`](./02-selection-toolbar.md) | Floating toolbar above text selection (img-47) |
+| 3 | [`03-item-types.md`](./03-item-types.md) | 12 item types, conversion rules |
+| 4 | [`04-color-palettes.md`](./04-color-palettes.md) | 11 text + 11 highlight swatches (B1 RESOLVED) |
+| 5 | [`05-code-quote-blocks.md`](./05-code-quote-blocks.md) | Code Block + Quote Block specs, sibling-merge rule |
+| 6 | [`06-markdown-shortcuts.md`](./06-markdown-shortcuts.md) | Inline markdown autocomplete (`# `, `> `, `[]`, etc.) |
+
+---
+
+## Locked Decisions
+
+- Slash menu order **locked from img-53**, extended H4–H5.
+- Headings: **H1–H5** (Workflowy ships H1–H3; we extend).
+- Item types: Bullet, To-do, Heading (H1–H5), Paragraph, Board, Quote, Code Block, Divider, Numbered List, Shortcut, Mirror, Template.
+- **Color swatches RESOLVED (Blocker B1):** 11 text colors + 11 highlight colors extracted from img-47 — see `04-color-palettes.md`.
+- Code Block forward conversion: **N selected siblings → ONE node with N internal line breaks**.
+- Templates: insertable via `/Add from template` or `/template`.
+
+---
+
+## Acceptance Criteria
+
+- [x] Slash menu opens on `/` keypress, ordered per img-53. → `01-slash-menu.md`
+- [x] Selection toolbar appears above selected text within 100ms. → `02-selection-toolbar.md`
+- [x] All 12 item types listed with conversion matrix. → `03-item-types.md`
+- [x] 11 text + 11 highlight hex values documented. → `04-color-palettes.md`
+- [x] Code Block sibling-merge rule specified. → `05-code-quote-blocks.md`
+- [x] Markdown shortcuts list complete (`#`, `>`, `[]`, `` ` ``, `1.`, `---`). → `06-markdown-shortcuts.md`
+- [x] H1–H5 visual hierarchy specified. → `03-item-types.md` § Headings
+
+---
+
+## Cross-References
+
+- Phase 4 [`04-bullet/02-three-dot-menu.md`](../04-bullet/02-three-dot-menu.md) — "Convert to" + "Color" submenus
+- Phase 1 [`01-navbar/02-breadcrumb.md`](../01-navbar/02-breadcrumb.md) — Focused-node H1 styling
+- Phase 8 [`08-app-shell/03-fonts.md`](../08-app-shell/03-fonts.md) — Geist Mono for Code Blocks
+
+---
+
+## Blockers Resolved
+
+| ID | Status | Resolution |
+|----|--------|------------|
+| B1 | ✅ RESOLVED | 11+11 hex values extracted from img-47 via image inspection (2026-04-21). See `04-color-palettes.md`. |
