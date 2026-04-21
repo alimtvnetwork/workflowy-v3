@@ -4,7 +4,7 @@
 - **createdAt:** 2026-04-21 (UTC+8)
 - **source:** Lovable
 - **affectedProject:** WorkFlowy
-- **affectedArea:** `spec/32-ui-design/` (phases 1–8 in subfolders 01-architecture … 08-app-shell)
+- **affectedArea:** `spec/32-ui-design/06-workflowy-ui/` (10 phases nested as subfolders `01-navbar/` … `10-mobile/`; D1 resolved 2026-04-21 via Option C)
 - **status:** inProgress
 - **priority:** High
 
@@ -35,8 +35,9 @@ Sequentially execute Phase 1 → Phase 8 (Phase 0 is complete: 28 screenshots sa
 4. LinkedIn integration scope (out of scope until Phase 9 deferred work begins).
 
 ## Acceptance Criteria
-- [ ] Phase 1 spec file `spec/32-ui-design/01-architecture/02-navbar.md` published.
-- [ ] Phases 2–8 spec files published in their target subfolders.
+- [x] **D1 resolved (2026-04-21):** parent folder `spec/32-ui-design/06-workflowy-ui/` scaffolded with 10 subfolder overviews.
+- [ ] Phase 1 spec files published under `spec/32-ui-design/06-workflowy-ui/01-navbar/`.
+- [ ] Phases 2–8 spec files published in their target subfolders under `06-workflowy-ui/`.
 - [ ] All 4 cross-cutting blockers resolved during their owning phase.
 - [ ] `.lovable/plans/03-workflowy-spec-consolidation.md` updated after each phase completion.
 - [ ] No spec file exceeds 400 lines (split into subfolder if it would).

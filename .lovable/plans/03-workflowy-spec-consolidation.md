@@ -1,8 +1,9 @@
 # Workflowy Spec Consolidation — 10-Phase Plan
 
-> **Created:** 2026-04-21 · **Status:** Phase 0 complete; Phase 1 awaiting user "go"
+> **Created:** 2026-04-21 · **Updated:** 2026-04-21 · **Status:** Phase 0 complete; D1 resolved (Option C); Phase 1 awaiting user "go"
 > **Scope rule:** Only edit folders `spec/18+`. Folders `01–17` are READ-ONLY.
 > **Reference assets:** `.lovable/references/workflowy-screenshots/` (28 screenshots: img-40 → img-67, indexed in `00-index.md`).
+> **D1 resolution (2026-04-21):** All 10 phases nest under `spec/32-ui-design/06-workflowy-ui/` as subfolders `01-navbar/` … `10-mobile/`. Phase number = subfolder number. Existing siblings `01-architecture/` … `05-quality/` are untouched.
 
 ## User decisions locked (2026-04-21)
 - Phases run **sequentially 1 → 8**. Phases 9–10 are stubs.
@@ -22,16 +23,16 @@
 
 | # | Phase | Status | Output Folder |
 |---|-------|--------|---------------|
-| 1 | Navbar & Breadcrumb | ⏳ Ready | `spec/32-ui-design/01-architecture/` |
-| 2 | Search Overlay & Filter Syntax | ⏳ Ready | `spec/32-ui-design/02-search/` |
-| 3 | Right-Side Panel (Handbook + Hotkeys + What's New) | ⏳ Ready | `spec/32-ui-design/03-right-panel/` |
-| 4 | Bullet Anatomy & Context Menus | ⏳ Ready | `spec/32-ui-design/04-bullet/` |
-| 5 | Editor (Slash, Selection Toolbar, Item Types, Markdown) | ⏳ Ready | `spec/32-ui-design/05-editor/` |
-| 6 | Left Sidebar (Offcanvas) + Special Nodes | ⏳ Ready | `spec/32-ui-design/06-sidebar/` |
-| 7 | Calendar / Today + Quick Add | ⏳ Ready | `spec/32-ui-design/07-calendar/` |
-| 8 | Themes, Fonts, Settings, App Menu | ⏳ Ready | `spec/32-ui-design/08-app-shell/` |
-| 9 | Email-to-Workflowy | 🚫 Deferred | `spec/32-ui-design/09-integrations/` |
-| 10 | Mobile / PWA | 🚫 Deferred | `spec/32-ui-design/10-mobile/` |
+| 1 | Navbar & Breadcrumb | ⏳ Ready | `spec/32-ui-design/06-workflowy-ui/01-navbar/` |
+| 2 | Search Overlay & Filter Syntax | ⏳ Ready | `spec/32-ui-design/06-workflowy-ui/02-search/` |
+| 3 | Right-Side Panel (Handbook + Hotkeys + What's New) | ⏳ Ready | `spec/32-ui-design/06-workflowy-ui/03-right-panel/` |
+| 4 | Bullet Anatomy & Context Menus | ⏳ Ready | `spec/32-ui-design/06-workflowy-ui/04-bullet/` |
+| 5 | Editor (Slash, Selection Toolbar, Item Types, Markdown) | ⏳ Ready | `spec/32-ui-design/06-workflowy-ui/05-editor/` |
+| 6 | Left Sidebar (Offcanvas) + Special Nodes | ⏳ Ready | `spec/32-ui-design/06-workflowy-ui/06-sidebar/` |
+| 7 | Calendar / Today + Quick Add | ⏳ Ready | `spec/32-ui-design/06-workflowy-ui/07-calendar/` |
+| 8 | Themes, Fonts, Settings, App Menu | ⏳ Ready | `spec/32-ui-design/06-workflowy-ui/08-app-shell/` |
+| 9 | Email-to-Workflowy | 🚫 Deferred | `spec/32-ui-design/06-workflowy-ui/09-integrations/` |
+| 10 | Mobile / PWA | 🚫 Deferred | `spec/32-ui-design/06-workflowy-ui/10-mobile/` |
 
 ---
 
