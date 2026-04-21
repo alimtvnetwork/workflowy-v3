@@ -16,7 +16,7 @@
 | Trash | `/trash` | Trash view. See Phase 6 special nodes. |
 | Settings | `/settings` | Settings page. See Phase 8. |
 
-> Node IDs are opaque ULIDs (e.g. `01HX3K9ZB7QR8VWMNPYTC4FE2D`) — see `mem://architecture/data-model`.
+> Node IDs are opaque ULIDs (e.g. `01HX3K9ZB7QR8VWMNPYTC4FE2D`). They are stable across renames and never re-used. (See data-model spec for ID generation rules.)
 
 ---
 
