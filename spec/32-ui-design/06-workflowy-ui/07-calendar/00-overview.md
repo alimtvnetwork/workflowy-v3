@@ -1,9 +1,64 @@
 # Phase 7 — Calendar / Today + Quick Add
 
-> **Status:** ⏳ Ready to author
+> **Version:** 1.0.0
+> **Created:** 2026-04-21 (UTC+8)
+> **Status:** ✅ Authored
 > **Parent:** [`../00-overview.md`](../00-overview.md)
-> **Screenshots:** img-55, img-57
-> **Target files:** `01-today-view.md`, `02-quick-add-modal.md`, `03-found-dates.md`
+> **Phase:** 7 of 10 (active)
+> **Screenshots:** img-55, 57
 
-## Scope
-Today view with Starred + Home + Calendar icons in sidebar. Drag node onto Calendar icon = move to Today. Calendar Picker shows Found Dates with markers (img-55). Quick Add modal opened by `⌘⇧N` from anywhere → appends to Inbox.
+---
+
+## Purpose
+
+Specification for time-based views and quick-capture flow: Today view (date-scoped node aggregation), Calendar picker (month grid with date markers from search), and the global Quick Add modal (`⌘⇧N`).
+
+---
+
+## Files in this Phase
+
+| # | File | Purpose |
+|---|------|---------|
+| 1 | [`01-today-view.md`](./01-today-view.md) | Today view layout, sources, sort order, starred items |
+| 2 | [`02-quick-add-modal.md`](./02-quick-add-modal.md) | `⌘⇧N` modal — appends to Inbox |
+| 3 | [`03-found-dates.md`](./03-found-dates.md) | Calendar picker, date markers from search results |
+
+---
+
+## Locked Decisions
+
+- **Today view** routes to `/today`; aggregates items where `date = today` OR `starred = true`.
+- **Quick Add hotkey:** `⌘⇧N` (global, works from any context).
+- Quick Add target: **always Inbox** (Phase 6 special node).
+- Calendar Picker shows month grid with **Found Date markers** from any search query that includes date filters.
+- Drag node onto Calendar sidebar icon = assign date (defaults to today).
+- No native PWA / mobile share-target (deferred to Phase 10).
+- Date format: ISO 8601 (`YYYY-MM-DD`) for storage; locale-formatted for display.
+
+---
+
+## Acceptance Criteria
+
+- [x] `/today` route renders all items with `date = today` OR `starred = true`. → `01-today-view.md`
+- [x] Today items sortable by manual order, time-of-day, or alpha. → `01-today-view.md`
+- [x] `⌘⇧N` opens Quick Add modal from any context. → `02-quick-add-modal.md`
+- [x] Quick Add modal closes on Esc, Enter (submit), or click-outside. → `02-quick-add-modal.md`
+- [x] Quick Add submits append a new node to Inbox. → `02-quick-add-modal.md`
+- [x] Calendar picker month grid renders 7×6 cells. → `03-found-dates.md`
+- [x] Found Date markers appear as dots beneath date numbers. → `03-found-dates.md`
+- [x] Click date in calendar opens date-filter search results. → `03-found-dates.md`
+
+---
+
+## Cross-References
+
+- Phase 6 [`06-sidebar/02-special-nodes.md`](../06-sidebar/02-special-nodes.md) — Today, Calendar, Inbox sidebar items
+- Phase 6 [`06-sidebar/03-drag-drop.md`](../06-sidebar/03-drag-drop.md) — Drop on Calendar icon
+- Phase 2 [`02-search/02-filter-syntax.md`](../02-search/02-filter-syntax.md) — `date:`, `today`, `tomorrow` filters
+- Phase 1 [`01-navbar/04-keyboard-shortcuts.md`](../01-navbar/04-keyboard-shortcuts.md) — `⌘⇧N` registered
+
+---
+
+## Blockers
+
+None for this phase. Quick Add scope explicitly limited to web modal (PWA share-target = Phase 10).

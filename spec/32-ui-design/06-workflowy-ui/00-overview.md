@@ -27,7 +27,7 @@ This parent folder nests **10 phases** as numbered subfolders. Phase number = su
 | 04 | [`04-bullet/`](./04-bullet/00-overview.md) | Bullet Anatomy & Context Menus | ✅ Done |
 | 05 | [`05-editor/`](./05-editor/00-overview.md) | Editor (Slash, Toolbar, Item Types, Colors, Code/Quote, Markdown) | ✅ Done |
 | 06 | [`06-sidebar/`](./06-sidebar/00-overview.md) | Left Sidebar Offcanvas + Special Nodes | ✅ Done |
-| 07 | [`07-calendar/`](./07-calendar/00-overview.md) | Calendar / Today + Quick Add | ⏳ Ready |
+| 07 | [`07-calendar/`](./07-calendar/00-overview.md) | Calendar / Today + Quick Add | ✅ Done |
 | 08 | [`08-app-shell/`](./08-app-shell/00-overview.md) | Themes, Fonts, Settings, App Menu | ⏳ Ready |
 | 09 | [`09-integrations/`](./09-integrations/00-overview.md) | Email-to-Workflowy | 🚫 Deferred |
 | 10 | [`10-mobile/`](./10-mobile/00-overview.md) | Mobile / PWA | 🚫 Deferred |
