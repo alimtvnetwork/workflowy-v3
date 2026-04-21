@@ -1,4 +1,4 @@
-# Consistency Report — 06-conventions
+# Consistency Report — 05-conventions
 
 > **Version:** 1.0.1  
 > **Updated:** 2026-04-18

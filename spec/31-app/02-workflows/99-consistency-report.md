@@ -1,4 +1,4 @@
-# Consistency Report — 03-workflows
+# Consistency Report — 02-workflows
 
 > **Version:** 1.0.1  
 > **Updated:** 2026-04-18
