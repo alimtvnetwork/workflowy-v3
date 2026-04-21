@@ -1,0 +1,9 @@
+export const APP_NAME = "WorkFlowy";
+export const DEBOUNCE_SAVE_MS = 1500;
+export const MAX_RETRY_ATTEMPTS = 3;
+export const INDENT_PER_LEVEL_PX = 24;
+export const BULLET_DOT_SIZE_PX = 6;
+export const BULLET_CLICK_TARGET_PX = 20;
+export const NAVBAR_HEIGHT_PX = 48;
+export const SIDEBAR_WIDTH_PX = 280;
+export const BOARD_COLUMN_WIDTH_PX = 280;

@@ -1,0 +1,11 @@
+Prefers comprehensive documentation and tracking.
+Wants memory/suggestions/plans kept in single consolidated files, not per-item.
+Uses Malaysia timezone (UTC+8).
+Expects readme.txt milestone markers with format: "let's start now {date} {time}".
+Wants reliability reports before implementation.
+Plans to hand off specs to other AI models — needs clear, self-contained docs.
+File naming: 01-name-of-file.md numbered prefix convention.
+Never touch .release folder. Code changes must bump at least minor version.
+Do NOT append the "If you have any question and confusion..." boilerplate block.
+Do NOT append the "Do you understand? Always add this part..." code block.
+Always list remaining tasks at the end of each completed work session. If all tasks are done, find remaining items from memory and suggest next actions.

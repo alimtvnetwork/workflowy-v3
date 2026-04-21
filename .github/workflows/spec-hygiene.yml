@@ -1,0 +1,56 @@
+name: Spec Hygiene
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'spec/**'
+      - 'scripts/spec-hygiene/**'
+      - '.github/workflows/spec-hygiene.yml'
+  pull_request:
+    paths:
+      - 'spec/**'
+      - 'scripts/spec-hygiene/**'
+      - '.github/workflows/spec-hygiene.yml'
+  workflow_dispatch:
+
+jobs:
+  hygiene:
+    name: Run spec hygiene checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run all spec-hygiene checks
+        run: node scripts/spec-hygiene/00-run-all.mjs
+
+      - name: Verify spec-index.md is up-to-date
+        run: |
+          if ! git diff --exit-code spec/spec-index.md; then
+            echo "::error::spec/spec-index.md is out of date. Run 'node scripts/spec-hygiene/04-generate-index.mjs' locally and commit the result."
+            exit 1
+          fi
+
+      - name: Verify component contract map is up-to-date
+        run: |
+          if ! git diff --exit-code spec/32-ui-design/01-architecture/05-component-contract-map.md; then
+            echo "::error::Component contract map is out of date. Run 'node scripts/spec-hygiene/07-extract-contract-map.mjs' locally and commit the result."
+            exit 1
+          fi
+
+      - name: Verify auto-TOC blocks in 00-overview.md files are up-to-date
+        run: |
+          if ! git diff --exit-code 'spec/**/00-overview.md'; then
+            echo "::error::One or more 00-overview.md files have stale auto-TOC blocks. Run 'node scripts/spec-hygiene/11-generate-auto-toc.mjs' locally and commit the result."
+            exit 1
+          fi

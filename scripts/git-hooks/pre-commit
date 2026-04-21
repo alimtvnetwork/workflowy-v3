@@ -1,0 +1,42 @@
+#!/usr/bin/env sh
+#
+# Spec Hygiene — Pre-commit Hook (L-2)
+#
+# Runs the spec-hygiene suite on staged spec/** changes before allowing the
+# commit. Skips entirely if no spec files are staged. Skip with:
+#
+#   git commit --no-verify
+#
+# Installed by:  node scripts/install-git-hooks.mjs
+# Auto-installed on:  npm install  (via the "prepare" script in package.json)
+
+set -e
+
+# Find staged spec/** or scripts/spec-hygiene/** changes
+STAGED=$(git diff --cached --name-only --diff-filter=ACMR | grep -E '^(spec/|scripts/spec-hygiene/)' || true)
+
+if [ -z "$STAGED" ]; then
+  exit 0
+fi
+
+echo "🧪 Spec hygiene pre-commit: running checks…"
+
+if ! node scripts/spec-hygiene/00-run-all.mjs; then
+  echo ""
+  echo "❌ Spec hygiene failed. Fix the issues above, or bypass with: git commit --no-verify"
+  exit 1
+fi
+
+# If the runner regenerated artefacts (spec-index.md, contract map, auto-TOC),
+# warn the user so they can stage and re-commit.
+DIRTY=$(git diff --name-only -- 'spec/spec-index.md' 'spec/32-ui-design/01-architecture/05-component-contract-map.md' 'spec/**/00-overview.md' || true)
+if [ -n "$DIRTY" ]; then
+  echo ""
+  echo "⚠️  The hygiene runner regenerated the following files:"
+  echo "$DIRTY" | sed 's/^/   - /'
+  echo ""
+  echo "   Stage them with:  git add -A && git commit --amend --no-edit"
+  exit 1
+fi
+
+echo "✅ Spec hygiene passed"

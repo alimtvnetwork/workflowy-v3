@@ -1,0 +1,177 @@
+# Board View Specification
+
+> **Version:** 2.0.0
+> **Updated:** 2026-04-19
+> **Parent:** [00-overview.md](./00-overview.md)
+> **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
+
+---
+
+## Overview
+
+Board view is a Kanban-style **presentation mode** of the current item's subtree. Direct children render as columns, grandchildren as cards. The underlying tree model is unchanged — toggling between List and Board never mutates structure, only rendering. Drag/drop on the board mutates the same `parent_id` + `sort_order` fields list view uses.
+
+## User Story
+
+As a user managing a workflow (tasks, releases, recruiting pipeline), I want to flip my outline into a draggable Kanban board without restructuring it, so that I can visualize and rebalance work columns and switch back to outline view at any time without losing data.
+
+---
+
+### 6.1 Definition
+Board view is a **Kanban-style visualization of the current item's subtree**. It is a **presentation mode only** — it does NOT change the underlying data structure. The tree model remains exactly the same.
+
+**Key principle**: Board view does not break the underlying tree model. It only changes how items are displayed.
+
+### 6.2 Structure Mapping
+
+| Tree Concept | Board Concept | Relationship |
+|-------------|---------------|-------------|
+| Current zoomed item | Board root | The item whose type is set to "board". |
+| Direct children of root | Columns | Each child renders as a vertical column. The column header is the child's content text. |
+| Grandchildren (children within each column) | Cards | Rendered as draggable cards inside their parent column. |
+
+Visual example:
+- Tree: `Project Launch > Todo > [Task A, Task B]` + `Project Launch > Doing > [Task D]` + `Project Launch > Done > [Task F]`
+- Board: Three columns (Todo, Doing, Done) with cards (A, B in Todo; D in Doing; F in Done).
+
+### 6.3 Column Behavior
+
+| Interaction | Behavior |
+|-------------|----------|
+| Reorder columns | Drag column header to a new position. This changes the sibling order of the root's direct children. |
+| Rename column | Click the column header text to edit it inline. This updates the child item's content. |
+| Add column | A "+ Add column" button at the far right creates a new child of the board root. |
+| Delete column | Column header has a small context menu with "Delete column". Warning shown if the column has cards. |
+| Collapse column | Click a toggle on the column header to collapse it to just the header (hides cards). |
+
+### 6.4 Card Behavior
+
+| Interaction | Behavior |
+|-------------|----------|
+| Click card | Zooms into that item (same as clicking a bullet dot in list view). |
+| Drag card within column | Reorders the card within the same column. Changes the sibling order within that parent. |
+| Drag card between columns | Moves the card to a different column. This changes the card's parent item to the new column. |
+| Card display | Shows: content text (truncated to 2 lines), completion checkbox (if the item is a to-do type), date badge, mirror badge, and comment count. |
+| Add card | A "+ Add card" button at the bottom of each column creates a new child of that column item. |
+| Card context menu | Right-click or ⋮ on a card opens the same item context menu as list view (§5). |
+
+### 6.5 Board View Eligibility
+
+| Condition | Board View Available? |
+|-----------|----------------------|
+| Item has at least 1 child | ✅ Yes |
+| Item has 0 children | ❌ No — show message: "Add child items to use Board view." |
+| User explicitly selects Board layout | ✅ Yes |
+| Item is a leaf node (no children at all) | ❌ No — disable the board toggle. |
+
+### 6.6 Board View Visual Design
+
+| Element | Description |
+|---------|-------------|
+| Column | Light muted background. Rounded corners. ~280px wide. Minimum height ~200px. Scrollable vertically when cards overflow. |
+| Column header | Slightly bolder text. Sticky at top of column while scrolling. Includes a small context menu trigger. |
+| Card | White/light background with subtle border. Rounded corners. Padding inside. Slight shadow. Hover: shadow deepens. |
+| Board container | Horizontal scroll when columns exceed viewport width. Spacing between columns. Padding around the board. |
+| Drop indicator | A thin blue line where the card will be inserted on drop. |
+
+### 6.7 Columns Are Customizable
+
+Columns are just regular items, so users can name them anything:
+- "Todo", "Doing", "Done"
+- "Backlog", "In Review", "Approved", "Blocked"
+- "Week 1", "Week 2", "Week 3"
+
+No special admin logic required — the tree model handles everything naturally.
+
+---
+
+## Inputs
+
+| Field | Type | Source | Required | Notes |
+|-------|------|--------|----------|-------|
+| `boardRootId` | `string` | Router (current zoomed item) | Yes | Drives query for columns |
+| `columns` | `Item[]` | SQLite — direct children of `boardRootId` | Yes | Order = `sort_order` |
+| `cardsByColumn` | `Record<string, Item[]>` | SQLite — children of each column item | Yes | Lazy-loaded per column on first render |
+| `viewMode` | `ViewMode` enum | Persisted on `boardRootId` | Yes | Must equal `Board` to render this view |
+| `dragState` | `DragState \| null` | DnD library | No | Tracks card or column drag |
+| `collapsedColumns` | `Set<string>` | `localStorage` per user | Yes | Per-column collapse persists across sessions |
+| `viewport` | `Breakpoint` enum | `matchMedia` | Yes | Drives column width / horizontal scroll |
+
+## Outputs
+
+| Output | Persisted? | Channel | Notes |
+|--------|-----------|---------|-------|
+| Column reorder | ✅ SQLite | `items.sort_order` of column row | Same field list view uses |
+| Column rename | ✅ SQLite | `items.content` of column row | Optimistic update |
+| New column | ✅ SQLite | `items` insert under `boardRootId` | Inherits Board parent |
+| Column delete | ✅ SQLite | `items.deleted_at` (soft) | 30-day retention; cards cascade |
+| Card move within column | ✅ SQLite | `items.sort_order` of card row | Fractional sort |
+| Card move across columns | ✅ SQLite | `items.parent_id` + `items.sort_order` | One transaction |
+| New card | ✅ SQLite | `items` insert under column row | Default `item_type = 'Bullet'` |
+| Card click → zoom | ❌ | Router push | Same as bullet-dot click in list view |
+| Column collapse toggle | ✅ `localStorage` | `ui.boardCollapsed[id]` | Per-user persisted |
+| `board:dropped` event | ❌ | Event bus | Drives telemetry + sync broadcast |
+
+## Edge Cases
+
+1. Board root has 0 children — show empty-state message "Add child items to use Board view."; toolbar still allows adding the first column.
+2. User deletes the only remaining column — auto-switch back to List view (per `04-edge-cases/01-edge-cases.md` row 13).
+3. Column has 0 cards — render the column with just the header and the "+ Add card" button (per row 14).
+4. Card is a mirror — render the mirror badge on the card; dragging the mirror moves the **mirror** (not the source); zoom click navigates to the source's deep link.
+5. Drag card onto its own descendant — block the drop with the same toast list view uses ("Cannot move item into its own children").
+6. Column item already has the `item_type = 'Board'` (a board-of-boards) — render its cards but flag with a small icon indicating nested board; clicking the column header zooms into the nested board.
+7. User toggles List ↔ Board on the same item rapidly — debounce the persisted `viewMode` write to 200 ms; UI flips immediately.
+8. Two tabs reorder different columns concurrently — both writes apply via fractional `sort_order`; LWW per M-4 if they collide on the same column.
+9. Column is collapsed and a new card arrives via real-time sync — the column header card-count increments; the column stays collapsed until user expands it.
+10. Card content exceeds 2 lines — truncate with ellipsis; full content visible on zoom or hover-tooltip after 500 ms.
+11. Free-tier user adds a 251st item via "+ Add card" — block per `04-edge-cases/01-edge-cases.md` row 4 (item-limit toast).
+12. Horizontal scroll past the rightmost column reveals the "+ Add column" button always anchored at the end.
+
+## Acceptance Tests
+
+| ID | Given | When | Then | testid |
+|----|-------|------|------|--------|
+| AT-BOARD-01 | Item has 3 children, each with 2 grandchildren | User toggles to Board view | 3 columns render with 2 cards each in `sort_order` | `board-container` |
+| AT-BOARD-02 | Item has 0 children | User toggles to Board view | Empty-state message + "+ Add column" button render; no columns | `board-empty` |
+| AT-BOARD-03 | Board has 3 columns | User drags column 3 to position 1 | Columns re-render in new order; `items.sort_order` of all 3 columns updates | `board-column-header` |
+| AT-BOARD-04 | Column header reads "Todo" | User clicks the header text | Header becomes inline-editable; on commit `items.content = "WIP"` persists | `board-column-name` |
+| AT-BOARD-05 | Board has 3 columns | User clicks "+ Add column" | New column appears at far right; new `items` row exists under `boardRootId` | `board-add-column` |
+| AT-BOARD-06 | Card C is in column A at position 1 | User drags it to column A position 3 | Card re-renders at position 3; `sort_order` updates; `parent_id` unchanged | `board-card` |
+| AT-BOARD-07 | Card C is in column A | User drags it onto column B | Card appears in column B; `parent_id = B.id`; `sort_order` reflects drop position | `board-card` |
+| AT-BOARD-08 | Card row | User clicks the card | Router navigates to `/items/{cardId}`; zoom occurs (same as bullet-dot click) | `board-card` |
+| AT-BOARD-09 | Card content is 5 lines long | Card renders | Visible content is 2 lines with ellipsis; tooltip with full content appears after 500 ms hover | `board-card-content` |
+| AT-BOARD-10 | Card is a mirror | Card renders | Mirror badge visible on the card; clicking zooms to the source item | `mirror-badge` |
+| AT-BOARD-11 | User drags card C onto its own descendant | Drop fires | Toast "Cannot move item into its own children"; tree state unchanged | `dnd-error-toast` |
+| AT-BOARD-12 | Column has 4 cards; user clicks the column collapse toggle | Toggle fires | Cards hide; header remains; `localStorage.ui.boardCollapsed[id] = true` | `board-column-collapse` |
+| AT-BOARD-13 | Board has 1 column with 1 card; user deletes the column | Confirm fires | Column + card removed; viewMode auto-switches to List (per edge-case 2) | `board-delete-column` |
+| AT-BOARD-14 | Free-tier user is at 250-item cap | User clicks "+ Add card" | Toast "Item limit reached…" with upgrade button; no row inserted | `quota-toast` |
+| AT-BOARD-15 | Columns exceed viewport width | Page renders | Board container is horizontally scrollable; "+ Add column" anchored at far right | `board-container` |
+
+## Component Contract
+
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| Board container | `src/components/board/BoardContainer.tsx` | `board-container`, `board-empty` | AT-BOARD-01..02, 15 |
+| Column | `src/components/board/BoardColumn.tsx` | `board-column` | AT-BOARD-03..05 |
+| Column header (editable) | `src/components/board/BoardColumnHeader.tsx` | `board-column-header`, `board-column-name` | AT-BOARD-03..04 |
+| Add-column button | `src/components/board/AddColumnButton.tsx` | `board-add-column` | AT-BOARD-05 |
+| Column collapse toggle | `src/components/board/ColumnCollapseToggle.tsx` | `board-column-collapse` | AT-BOARD-12 |
+| Column delete confirm | `src/components/board/ColumnDeleteDialog.tsx` | `board-delete-column` | AT-BOARD-13 |
+| Card | `src/components/board/BoardCard.tsx` | `board-card`, `board-card-content` | AT-BOARD-06..09 |
+| Mirror badge on card | `src/components/items/MirrorBadge.tsx` | `mirror-badge` | AT-BOARD-10 |
+| DnD error toast | `src/components/feedback/ErrorToast.tsx` | `dnd-error-toast` | AT-BOARD-11 |
+| Quota toast | `src/components/feedback/QuotaToast.tsx` | `quota-toast` | AT-BOARD-14 |
+| Drop indicator | `src/components/board/DropIndicator.tsx` | `board-drop-indicator` | AT-BOARD-06..07 |
+
+> **Note:** None of these components exist yet — paths are the planned implementation order. This table feeds the global component-contract map (M-3).
+
+---
+
+## Related
+
+- [01-information-model.md](./01-information-model.md) — board view is presentation only; data model unchanged
+- [03-layout-structure.md](./03-layout-structure.md) — NavBar layout-toggle that switches List ↔ Board
+- [04-page-content-area.md](./04-page-content-area.md) — list-view counterpart
+- [06-item-context-menu.md](./06-item-context-menu.md) — same context menu fires on cards
+- [09-mirrors.md](./09-mirrors.md) — mirror-card semantics
+- [04-edge-cases/01-edge-cases.md](../04-edge-cases/01-edge-cases.md) — board edge-case rows

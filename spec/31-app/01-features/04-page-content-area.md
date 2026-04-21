@@ -1,0 +1,198 @@
+# Page / Content Area
+
+> **Version:** 2.0.0
+> **Updated:** 2026-04-19
+> **Parent:** [00-overview.md](./00-overview.md)
+> **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
+
+---
+
+## Overview
+
+The Page is the scrollable content area below the NavBar where the user's outline lives. Every bullet item is one row composed of expand toggle, bullet dot, content, note, badges, and hover-revealed action buttons. This is where 95% of user interaction happens.
+
+## User Story
+
+As a user, I want every item row to expose its structure (parent/child, mirror, completion, type) at a glance and to give me one-click access to zoom, edit, comment, and the context menu, so that I can navigate and act on my outline without reaching for menus.
+
+---
+
+### 3.1 Bullet Item Structure
+
+Each bullet item is a horizontal row containing these elements, in order from left to right:
+
+| Element | Appearance | Behavior | Visual States |
+|---------|------------|----------|---------------|
+| Indent spacer | Invisible spacing | Creates visual nesting. Width increases with each depth level (~24px per level). | Transparent — purely structural. |
+| Expand/Collapse toggle | Small right-pointing triangle (▶) | Click toggles visibility of children. Only visible when the item has children. | Collapsed: ▶ pointing right. Expanded: ▼ pointing down. Rotation animates smoothly. No children: invisible/hidden. |
+| Bullet dot | Small filled circle (•) | **Click**: zooms into that item (it becomes the root of the view). **Drag**: initiates drag-and-drop reorder. | Default: gray. Hover: blue, slightly larger. Has children: filled circle. No children: outline circle. Completed items: muted color. |
+| Content area | Editable inline text | The main content of the item. Supports rich text formatting. No visible placeholder on empty items. | Normal text for active items. Completed items: strikethrough with muted color. Headings render at larger sizes and bolder weights. Quotes render with a left border accent and light background. Code blocks render in monospace with light background. |
+| Note indicator | Small sticky-note icon | Visible only when the item has a note. Click toggles the note editor open/closed. | Muted color. |
+| Mirror badge | Small diamond (◇) icon | Visible only when the item is a mirror instance. Hover shows tooltip: "This is a mirror. Changes here update the original and all other mirrors." | Highlighted color with a subtle pulse animation. |
+| Child count badge | Small pill-shaped label | Visible only when the item is collapsed AND has children. Shows text like "3 items" or "1 item". | Muted background and text. Small rounded pill shape. |
+| Hover actions | Comment button + Context menu trigger | Appear on the right side when the user hovers over the row. Contains: 💬 Comment button and ⋮ Context menu. | Fade in on hover. |
+| Comment button | 💬 speech bubble icon | Click opens or creates a comment thread on this item. Shows a small dot indicator if unresolved comments exist. | Muted color by default. |
+| Context menu trigger | ⋮ horizontal dots | Click opens the item context menu (see §5). | Muted by default. Full color on hover. |
+| Add button | + icon | Click creates a new sibling item below this one. | Visible on hover or when the item is the last in its level. Muted color. |
+
+### 3.2 Note Display
+
+When a note exists and is expanded:
+- Renders below the content area, aligned with the content (not the bullet dot).
+- Has a light background with a subtle left border accent.
+- Uses smaller, muted text.
+- Editable inline.
+- Toggle visibility via the note indicator icon or the ⇧↵ shortcut.
+
+### 3.3 Item Type Visual Differences
+
+| Item Type | Bullet Dot | Content Appearance | Special Rendering |
+|-----------|------------|-------------------|-------------------|
+| Bullet (default) | Filled circle (•) | Normal text (15px, regular weight) | — |
+| Heading 1 | Filled circle (•) | Large text (24px, bold) | — |
+| Heading 2 | Filled circle (•) | Medium-large text (20px, semibold) | — |
+| Heading 3 | Filled circle (•) | Slightly larger text (18px, semibold) | — |
+| Paragraph | No dot (invisible spacer) | Normal text, full width | No bullet dot shown. |
+| To-do | Checkbox (☐ or ☑) | Normal text. Checked items: strikethrough + muted. | Checkbox replaces the bullet dot. |
+| Numbered | Auto-incremented number (1., 2., etc.) | Normal text | Number based on sibling position, replaces bullet dot. |
+| Board | Filled circle (•) | Normal text | Children render as board/kanban columns instead of nested list. |
+| Dashboard | Filled circle (•) | Normal text | Children render as a dashboard/overview layout with metrics and visual summaries. |
+| Quote | Filled circle (•) | Italic text with left border accent and light background | Left border is the primary accent color. |
+| Code Block | Filled circle (•) | Monospace font with light background and padding | Rounded corners. No syntax highlighting. |
+| Divider | No dot | No editable content — renders as a horizontal line | Full-width thin line. |
+
+### 3.4 Text Formatting Toolbar
+
+MUST appear as a floating toolbar above selected text. Centered above the selection with a small arrow/caret pointing down.
+
+| Button | Label | Behavior | Active State |
+|--------|-------|----------|-------------|
+| H1 | "H1" | Converts the current item to Heading 1. | Highlighted background when item is H1. |
+| H2 | "H2" | Converts to Heading 2. | Same pattern. |
+| H3 | "H3" | Converts to Heading 3. | Same pattern. |
+| ¶ | "¶" | Converts to paragraph. | Same pattern. |
+| (divider) | Vertical line | Visual separator. | — |
+| Bold | "B" in bold | Wraps selected text in bold formatting. Shortcut: ⌘B. | Bold text + highlighted background when selection is bold. |
+| Underline | "U" underlined | Wraps in underline. Shortcut: ⌘U. | Underlined + highlighted. |
+| Italic | "I" in italic | Wraps in italic. Shortcut: ⌘I. | Italic + highlighted. |
+| Strikethrough | "S" with line-through | Wraps in strikethrough. Shortcut: ⌘⇧X. | Strikethrough + highlighted. |
+| Code | "</>" | Wraps in inline code formatting. | Monospace + highlighted. |
+| (divider) | Vertical line | Visual separator. | — |
+| Mention | "@" | Opens an inline mention/search popover. Type to search items, select to insert an internal link. | Highlighted when the popover is open. |
+| Color | "A ▾" with color bar | Opens a color picker dropdown (see §3.5). | The "A" text is colored with the current selection's color. |
+
+### 3.5 Color Picker Dropdown (A ▾)
+
+Grid layout (4 columns) of circular color swatches:
+
+| Color | Description |
+|-------|-------------|
+| Default | Removes any custom color (returns to normal text color). |
+| Red | Red text. |
+| Orange | Orange text. |
+| Yellow | Yellow/gold text. |
+| Green | Green text. |
+| Blue | Blue text. |
+| Purple | Purple text. |
+| Gray | Gray/muted text. |
+
+Each swatch: small circle. Currently selected color has a ring border. Hover: slightly larger scale.
+
+---
+
+## Inputs
+
+| Field | Type | Source | Required | Notes |
+|-------|------|--------|----------|-------|
+| `currentItemId` | `string \| null` | Router | Yes | `null` = root list |
+| `items` | `Item[]` | SQLite query (children of `currentItemId`) | Yes | Capped at 250 per view |
+| `expandedIds` | `Set<string>` | Local UI state (persisted) | Yes | Drives ▶/▼ toggle |
+| `selection` | `{ start: number; end: number; itemId: string } \| null` | DOM Selection API | No | Drives floating toolbar visibility |
+| `hoverItemId` | `string \| null` | Pointer state | No | Drives hover-action fade-in |
+| `dragState` | `DragState \| null` | DnD library | No | Drives drop-target highlights |
+| `viewMode` | `ViewMode` enum | NavBar toggle | Yes | `List` (this file) or `Board` (see `07-board-view.md`) |
+| `showCompleted` | `boolean` | Settings | Yes | Toggles strikethrough rows |
+
+## Outputs
+
+| Output | Persisted? | Channel | Notes |
+|--------|-----------|---------|-------|
+| Edited content | ✅ SQLite | `items.content` | Debounced autosave (per `mem://features/editor-core`) |
+| Item type change | ✅ SQLite | `items.item_type` | Toolbar buttons (H1/H2/H3/¶) |
+| Inline formatting | ✅ SQLite | `items.content` rich-text JSON | Bold/italic/underline/strike/code |
+| Color span | ✅ SQLite | `items.content` rich-text JSON | One of 8 colors |
+| Mention link | ✅ SQLite | `items.content` rich-text JSON + `mentions` table | Internal item link |
+| Reorder / move | ✅ SQLite | `items.parent_id` + `items.sort_order` | Fractional sort |
+| Toggle expanded | ✅ `localStorage` | `ui.expandedIds` | Per-user persisted |
+| Toggle complete | ✅ SQLite | `items.completed_at` | To-do checkbox |
+| `item:zoom` event | ❌ | Event bus | Bullet-dot click |
+
+## Edge Cases
+
+1. Empty content area for a brand-new item — show no placeholder text per spec; cursor blinks at left edge.
+2. Item has 1000+ children expanded — virtualize the descendant list; cap render to viewport + buffer (per `04-edge-cases/01-edge-cases.md` row 5).
+3. User clicks bullet dot while drag is in flight — drag wins; click is suppressed.
+4. User collapses a parent that contains the currently zoomed item in another tab — collapse persists locally; zoom in other tab unaffected (LWW per M-4).
+5. Selection spans two items — toolbar shows but type-conversion buttons (H1/H2/H3/¶) are disabled; only inline formatting buttons remain enabled.
+6. User applies bold then immediately undoes (⌘Z) — both the format and the selection are restored to pre-format state.
+7. To-do item is checked while child to-dos are unchecked — only the parent's `completed_at` is set; children are unaffected.
+8. Mirror badge clicked — opens the mirror peers popover (see `09-mirrors.md`); does not zoom.
+9. Comment button clicked on a mirror — comment is attached to the source item; all mirrors see the same dot indicator.
+10. User pastes 100+ lines into the content area — auto-split into individual sibling items per `04-edge-cases/01-edge-cases.md` row 7.
+11. Pasted URL — auto-detect and render as clickable link inside the content (no item conversion).
+12. Divider type item receives focus via keyboard — focus skips to the next editable item; dividers are non-editable.
+
+## Acceptance Tests
+
+| ID | Given | When | Then | testid |
+|----|-------|------|------|--------|
+| AT-PAGE-01 | An item with 3 children, currently collapsed | User clicks ▶ | Triangle rotates to ▼; children render below; `expandedIds` includes the item id | `expand-toggle` |
+| AT-PAGE-02 | An item with no children | Row renders | Expand toggle slot is invisible (no ▶/▼); bullet dot is outline style | `bullet-dot-empty` |
+| AT-PAGE-03 | Any item row | User clicks the bullet dot | Router navigates to `/items/{id}`; that item becomes the zoom root | `bullet-dot` |
+| AT-PAGE-04 | An item is a mirror instance | Row renders | ◇ mirror badge is visible with pulse animation; tooltip text matches spec §3.1 | `mirror-badge` |
+| AT-PAGE-05 | A collapsed item has 3 children | Row renders | Pill badge shows "3 items"; clicking it expands the item | `child-count-badge` |
+| AT-PAGE-06 | User hovers a row | After 0 ms | Comment button (💬) and context-menu trigger (⋮) fade in on the right | `hover-actions` |
+| AT-PAGE-07 | User selects text inside an item | Selection ≥ 1 char | Floating toolbar appears centered above the selection with caret arrow | `format-toolbar` |
+| AT-PAGE-08 | Selection is bold | Toolbar renders | Bold button shows highlighted/active state | `format-bold` |
+| AT-PAGE-09 | User clicks `H1` in toolbar | Conversion commits | Item row renders at 24px bold; `items.item_type = 'H1'` | `format-h1` |
+| AT-PAGE-10 | User clicks `A ▾` in toolbar | Picker opens | 8 swatches render in a 4-col grid; selected color shows ring border | `color-picker` |
+| AT-PAGE-11 | A to-do item is unchecked | User clicks the checkbox | Checkbox flips to ☑; row renders strikethrough + muted; `completed_at` is set | `todo-checkbox` |
+| AT-PAGE-12 | An item has a note | User clicks the note indicator | Note editor expands below content with light bg + left border accent | `note-editor` |
+| AT-PAGE-13 | User pastes 100 newline-separated lines | Paste commits | 100 sibling items are created (per `04-edge-cases` row 7); progress toast shows "Creating 100 items…" | `bulk-paste-progress` |
+| AT-PAGE-14 | User pastes a URL into content | Paste commits | URL renders as clickable `<a>` with primary color underline; no item conversion | `inline-link` |
+| AT-PAGE-15 | A divider-type item exists | User presses ↓ to navigate from the prior row | Focus skips the divider and lands on the next editable item | `divider-row` |
+
+## Component Contract
+
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| Item row container | `src/components/tree/ItemRow.tsx` | `item-row` | AT-PAGE-01..15 |
+| Expand/collapse toggle | `src/components/tree/ExpandToggle.tsx` | `expand-toggle` | AT-PAGE-01 |
+| Bullet dot (default) | `src/components/tree/BulletDot.tsx` | `bullet-dot`, `bullet-dot-empty` | AT-PAGE-02..03 |
+| Mirror badge | `src/components/items/MirrorBadge.tsx` | `mirror-badge` | AT-PAGE-04 |
+| Child count badge | `src/components/tree/ChildCountBadge.tsx` | `child-count-badge` | AT-PAGE-05 |
+| Hover actions group | `src/components/tree/HoverActions.tsx` | `hover-actions` | AT-PAGE-06 |
+| Comment button | `src/components/comments/CommentButton.tsx` | `comment-button` | AT-PAGE-06 |
+| Context-menu trigger | `src/components/tree/ContextMenuTrigger.tsx` | `context-menu-trigger` | AT-PAGE-06 |
+| Floating format toolbar | `src/components/editor/FormatToolbar.tsx` | `format-toolbar` | AT-PAGE-07..10 |
+| Bold/Italic/Underline buttons | `src/components/editor/FormatButtons.tsx` | `format-bold`, `format-italic`, `format-underline` | AT-PAGE-08 |
+| Type-conversion buttons | `src/components/editor/TypeButtons.tsx` | `format-h1`, `format-h2`, `format-h3`, `format-paragraph` | AT-PAGE-09 |
+| Color picker | `src/components/editor/ColorPicker.tsx` | `color-picker` | AT-PAGE-10 |
+| To-do checkbox | `src/components/items/TodoCheckbox.tsx` | `todo-checkbox` | AT-PAGE-11 |
+| Note editor | `src/components/items/NoteEditor.tsx` | `note-editor` | AT-PAGE-12 |
+| Bulk-paste progress | `src/components/feedback/BulkPasteProgress.tsx` | `bulk-paste-progress` | AT-PAGE-13 |
+| Inline link | `src/components/editor/InlineLink.tsx` | `inline-link` | AT-PAGE-14 |
+| Divider row | `src/components/items/DividerRow.tsx` | `divider-row` | AT-PAGE-15 |
+
+> **Note:** None of these components exist yet — paths are the planned implementation order. This table feeds the global component-contract map (M-3).
+
+---
+
+## Related
+
+- [01-information-model.md](./01-information-model.md) — what an Item is
+- [03-layout-structure.md](./03-layout-structure.md) — chrome around this Page
+- [05-interactions.md](./05-interactions.md) — keyboard shortcuts referenced above
+- [06-item-context-menu.md](./06-item-context-menu.md) — what ⋮ opens
+- [09-mirrors.md](./09-mirrors.md) — mirror badge semantics
+- [04-edge-cases/01-edge-cases.md](../04-edge-cases/01-edge-cases.md) — paste / nesting / network rows
