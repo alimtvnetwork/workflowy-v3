@@ -1,9 +1,64 @@
 # Phase 4 — Bullet Anatomy & Context Menus
 
-> **Status:** ⏳ Ready to author
+> **Version:** 1.0.0
+> **Created:** 2026-04-21 (UTC+8)
+> **Status:** ✅ Authored
 > **Parent:** [`../00-overview.md`](../00-overview.md)
-> **Screenshots:** img-46, img-48, img-49, img-50, img-51, img-52, img-63
-> **Target files:** `01-anatomy.md`, `02-three-dot-menu.md`, `03-focused-item-menu.md`, `04-comment-icon.md`
+> **Phase:** 4 of 10 (active)
+> **Screenshots:** img-46, 48, 49, 50, 51, 52, 63
 
-## Scope
-Bullet row = `[⋯ on hover left] [▸ if children] [● dot] [content]` + `[+ comment top-right on hover]`. Arrow rule: visible only on inline bullets WITH children; focused root has no arrow (uses breadcrumb). Per-bullet 3-dot menu (img-46), in-content 3-dot menu with locked order + timestamps (img-52), focused-item subset menu (img-48).
+---
+
+## Purpose
+
+Defines the visual anatomy of every node row (the universal "bullet"), the three context menus that operate on it (left-edge ⋯ menu, in-content ⋯ menu, focused-item ⋯ menu), and the comment icon affordance.
+
+---
+
+## Files in this Phase
+
+| # | File | Purpose |
+|---|------|---------|
+| 1 | [`01-anatomy.md`](./01-anatomy.md) | Row layout, bullet dot states, expand arrow, hover affordances |
+| 2 | [`02-three-dot-menu.md`](./02-three-dot-menu.md) | Per-row ⋯ menu — locked order from img-52 |
+| 3 | [`03-focused-item-menu.md`](./03-focused-item-menu.md) | Top-right ⋯ menu when a node is the zoomed focus |
+| 4 | [`04-comment-icon.md`](./04-comment-icon.md) | + comment affordance, comment thread surface |
+
+---
+
+## Locked Decisions
+
+- Bullet row layout (left → right): `[⋯ on hover] [▸ expand if children] [● dot] [content]` + `[+ comment top-right on hover]`.
+- **Expand arrow rule:** visible ONLY on inline bullets WITH children. Focused-root bullet has NO arrow.
+- In-content ⋯ menu order is **locked verbatim from img-52** — see `02-three-dot-menu.md`.
+- Comment icon appears top-right on hover; persistent if comments exist.
+- Dot is the **drag handle**, the **zoom target**, and the **selection target**.
+
+---
+
+## Acceptance Criteria
+
+- [x] Row renders all 5 anatomy slots correctly (⋯, ▸, ●, content, +). → `01-anatomy.md` § Row Layout
+- [x] Hover state reveals ⋯ and + within 50ms. → `01-anatomy.md` § Hover Affordances
+- [x] Expand arrow ▸/▾ rotates with collapse/expand state. → `01-anatomy.md` § Expand Arrow Rules
+- [x] Clicking dot zooms into node (Phase 1 routing). → `01-anatomy.md` § Bullet Dot States
+- [x] Right-click on row opens per-row ⋯ menu. → `02-three-dot-menu.md` § Trigger
+- [x] ⌘-click on dot toggles multi-select. → `01-anatomy.md` § Bullet Dot States
+- [x] Focused-item ⋯ menu shows different action set than per-row ⋯ menu. → `03-focused-item-menu.md` § Differences
+- [x] Comment icon opens thread panel (right-side overlay, distinct from Phase 3 panel). → `04-comment-icon.md` § Thread Panel
+- [x] Empty content row still shows dot + caret. → `01-anatomy.md` § Empty Row Behavior
+- [x] All targets meet 24×24 px minimum hit area. → `01-anatomy.md` § Click Targets
+
+---
+
+## Cross-References
+
+- Phase 1 [`01-navbar/03-routing.md`](../01-navbar/03-routing.md) — Zoom routing on dot click
+- Phase 5 [`05-editor/02-selection-toolbar.md`](../05-editor/02-selection-toolbar.md) — Selection toolbar
+- Phase 6 [`06-sidebar/03-drag-drop.md`](../06-sidebar/03-drag-drop.md) — Drag handle behavior
+
+---
+
+## Blockers
+
+None for this phase. All decisions locked from screenshots.
