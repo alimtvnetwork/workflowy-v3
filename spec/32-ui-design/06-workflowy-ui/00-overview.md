@@ -25,7 +25,7 @@ This parent folder nests **10 phases** as numbered subfolders. Phase number = su
 | 02 | [`02-search/`](./02-search/00-overview.md) | Search Overlay & Filter Syntax | ✅ Done |
 | 03 | [`03-right-panel/`](./03-right-panel/00-overview.md) | Right-Side Panel (Handbook + Hotkeys + What's New) | ✅ Done |
 | 04 | [`04-bullet/`](./04-bullet/00-overview.md) | Bullet Anatomy & Context Menus | ✅ Done |
-| 05 | [`05-editor/`](./05-editor/00-overview.md) | Editor (Slash, Toolbar, Item Types, Colors, Code/Quote, Markdown) | ⏳ Ready |
+| 05 | [`05-editor/`](./05-editor/00-overview.md) | Editor (Slash, Toolbar, Item Types, Colors, Code/Quote, Markdown) | ✅ Done |
 | 06 | [`06-sidebar/`](./06-sidebar/00-overview.md) | Left Sidebar Offcanvas + Special Nodes | ⏳ Ready |
 | 07 | [`07-calendar/`](./07-calendar/00-overview.md) | Calendar / Today + Quick Add | ⏳ Ready |
 | 08 | [`08-app-shell/`](./08-app-shell/00-overview.md) | Themes, Fonts, Settings, App Menu | ⏳ Ready |
@@ -53,7 +53,7 @@ This parent folder nests **10 phases** as numbered subfolders. Phase number = su
 
 | # | Blocker | Owning Phase |
 |---|---------|--------------|
-| 1 | 11+11 hex swatches from img-47 | Phase 5 |
+| 1 | 11+11 hex swatches from img-47 | Phase 5 | ✅ RESOLVED 2026-04-21 |
 | 2 | Sidebar drag semantics (move vs mirror) | Phase 6 |
 | 3 | Launch theme list (light/dark only or named palettes) | Phase 8 |
 | 4 | LinkedIn integration scope | Phase 9 (deferred) |
