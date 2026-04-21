@@ -1,12 +1,67 @@
-# Phase 8 — Themes, Fonts, Settings, App Menu
+# Phase 8 — App Shell (Themes, Fonts, Settings, App Menu)
 
-> **Status:** ⏳ Ready to author
+> **Version:** 1.0.0
+> **Created:** 2026-04-21 (UTC+8)
+> **Status:** ✅ Authored
 > **Parent:** [`../00-overview.md`](../00-overview.md)
-> **Screenshots:** img-45, img-55, img-58
-> **Target files:** `01-app-menu.md`, `02-themes.md`, `03-fonts.md`, `04-settings.md`
+> **Phase:** 8 of 10 (active — last active phase)
+> **Screenshots:** img-45, 55, 58
 
-## Scope
-- **App menu** (img-45 right ⋮): What's New, Learn, Get Apps, Pin, Share, Integrations, Handbook, Undo/Redo/Save, Expand/Collapse all, Print/Export/Download, Settings, Help, Report, Trash, Log out.
-- **Themes** (free for all per img-55) — light/dark + named palettes (launch list TBD — **BLOCKER 3**).
-- **Fonts** — Geist Mono added per img-55.
-- **Settings** — Fractal Conversations toggle hides Mentions/Drafts (img-58).
+---
+
+## Purpose
+
+Specification for the application chrome: app menu (⋮ in navbar), theme system, font choices, and global settings panel.
+
+---
+
+## Files in this Phase
+
+| # | File | Purpose |
+|---|------|---------|
+| 1 | [`01-app-menu.md`](./01-app-menu.md) | App ⋮ menu — locked order from img-45 |
+| 2 | [`02-themes.md`](./02-themes.md) | Theme system (B3 RESOLVED: Light + Dark only at launch) |
+| 3 | [`03-fonts.md`](./03-fonts.md) | Font stack: Inter (UI), Geist Mono (code) |
+| 4 | [`04-settings.md`](./04-settings.md) | Settings panel: Fractal Conversations toggle + others |
+
+---
+
+## Locked Decisions
+
+- App ⋮ menu order **locked from img-45**.
+- **B3 RESOLVED:** Theme list at launch = **Light + Dark only**. Named palettes (Solarized, Nord, etc.) deferred post-v1.
+- System theme detection: respects `prefers-color-scheme` by default.
+- **UI font:** Inter (existing).
+- **Mono font:** Geist Mono (added for Code Blocks per img-55).
+- **Fractal Conversations** setting: when OFF, hides Mentions + Drafts sidebar items (Phase 6).
+- All theme/font preferences stored locally (no backend dependency).
+
+---
+
+## Acceptance Criteria
+
+- [x] App ⋮ menu opens from navbar with locked order. → `01-app-menu.md`
+- [x] Theme switcher shows Light, Dark, System options only. → `02-themes.md`
+- [x] System theme follows `prefers-color-scheme` reactively. → `02-themes.md`
+- [x] Inter loaded for UI; Geist Mono loaded for Code Blocks. → `03-fonts.md`
+- [x] Settings panel accessible via app menu → Settings. → `04-settings.md`
+- [x] Fractal Conversations toggle hides Mentions + Drafts. → `04-settings.md`
+- [x] All preferences persist across reloads (local storage). → `04-settings.md`
+
+---
+
+## Cross-References
+
+- Phase 1 [`01-navbar/01-layout.md`](../01-navbar/01-layout.md) — ⋮ button location
+- Phase 5 [`05-editor/04-color-palettes.md`](../05-editor/04-color-palettes.md) — Theme adapts swatch rendering
+- Phase 5 [`05-editor/05-code-quote-blocks.md`](../05-editor/05-code-quote-blocks.md) — Geist Mono usage
+- Phase 6 [`06-sidebar/02-special-nodes.md`](../06-sidebar/02-special-nodes.md) — Mentions + Drafts visibility
+- Phase 3 [`03-right-panel/03-whats-new.md`](../03-right-panel/03-whats-new.md) — "What's New" badge on app menu
+
+---
+
+## Blockers Resolved
+
+| ID | Status | Resolution |
+|----|--------|------------|
+| B3 | ✅ RESOLVED | Light + Dark only at launch. Named themes post-v1. Decided 2026-04-21. |
