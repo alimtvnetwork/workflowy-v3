@@ -1,9 +1,66 @@
 # Phase 6 — Left Sidebar Offcanvas + Special Nodes
 
-> **Status:** ⏳ Ready to author
+> **Version:** 1.0.0
+> **Created:** 2026-04-21 (UTC+8)
+> **Status:** ✅ Authored
 > **Parent:** [`../00-overview.md`](../00-overview.md)
-> **Screenshots:** img-57, img-60, img-61, img-62
-> **Target files:** `01-offcanvas.md`, `02-special-nodes.md`, `03-drag-drop.md`
+> **Phase:** 6 of 10 (active)
+> **Screenshots:** img-57, 60, 61, 62
 
-## Scope
-shadcn `Sidebar` with `collapsible="offcanvas"`. Default items: Today, Home (starred tree), Inbox, Drafts, Mentions, Calendar, Trash, + New node. Drag-drop targets (move vs mirror semantics — **BLOCKER 2**). Hover tooltip card on ≡ button (img-61).
+---
+
+## Purpose
+
+Specification for the left navigation sidebar — its offcanvas behavior, the 8 default special nodes, and the drag-drop semantics for moving/mirroring nodes into sidebar destinations.
+
+---
+
+## Files in this Phase
+
+| # | File | Purpose |
+|---|------|---------|
+| 1 | [`01-offcanvas.md`](./01-offcanvas.md) | shadcn Sidebar (offcanvas), trigger, hover tooltip card |
+| 2 | [`02-special-nodes.md`](./02-special-nodes.md) | 8 default items: Today, Home, Inbox, Drafts, Mentions, Calendar, Trash, + New |
+| 3 | [`03-drag-drop.md`](./03-drag-drop.md) | Drag semantics (B2 RESOLVED: move + ⌥-mirror) |
+
+---
+
+## Locked Decisions
+
+- Component: shadcn `Sidebar` with `collapsible="offcanvas"`.
+- Trigger: ≡ icon in navbar (Phase 1) + hotkey `⌘L`.
+- Default items (top → bottom): **Today, Home, Inbox, Drafts, Mentions, Calendar, Trash, + New node**.
+- **B2 RESOLVED:** Drag = MOVE by default; hold **⌥ (Alt)** to MIRROR. See `03-drag-drop.md`.
+- Hover on ≡ shows tooltip card preview (img-61).
+- Sidebar is **single-column**, no nested tree (special nodes only, not full hierarchy).
+
+---
+
+## Acceptance Criteria
+
+- [x] Sidebar opens via ≡ button or `⌘L`. → `01-offcanvas.md`
+- [x] Sidebar closes on outside click, `Esc`, or `⌘L` toggle. → `01-offcanvas.md`
+- [x] Hover tooltip card on ≡ button shows when sidebar is closed. → `01-offcanvas.md`
+- [x] All 8 default special nodes render in correct order. → `02-special-nodes.md`
+- [x] Drag node onto sidebar item moves it; ⌥+drag mirrors it. → `03-drag-drop.md`
+- [x] Drop targets show visual highlight on hover during drag. → `03-drag-drop.md`
+- [x] Trash retention = 30 days. → `02-special-nodes.md` § Trash
+- [x] "Fractal Conversations" OFF (Phase 8) hides Mentions + Drafts. → `02-special-nodes.md`
+
+---
+
+## Cross-References
+
+- Phase 1 [`01-navbar/01-layout.md`](../01-navbar/01-layout.md) — ≡ icon location
+- Phase 1 [`01-navbar/04-keyboard-shortcuts.md`](../01-navbar/04-keyboard-shortcuts.md) — `⌘L` hotkey
+- Phase 7 [`07-calendar/01-today-view.md`](../07-calendar/01-today-view.md) — "Today" sidebar item routes here
+- Phase 7 [`07-calendar/02-quick-add-modal.md`](../07-calendar/02-quick-add-modal.md) — "+ New node" inserts to Inbox
+- Phase 8 [`08-app-shell/04-settings.md`](../08-app-shell/04-settings.md) — Fractal Conversations toggle
+
+---
+
+## Blockers Resolved
+
+| ID | Status | Resolution |
+|----|--------|------------|
+| B2 | ✅ RESOLVED | Drag = MOVE; hold ⌥ to MIRROR. Decided 2026-04-21. See `03-drag-drop.md`. |

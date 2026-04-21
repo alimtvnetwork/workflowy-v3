@@ -28,7 +28,7 @@
 | 3 | Right-Side Panel (Handbook + Hotkeys + What's New) | ✅ Done | `spec/32-ui-design/06-workflowy-ui/03-right-panel/` |
 | 4 | Bullet Anatomy & Context Menus | ✅ Done | `spec/32-ui-design/06-workflowy-ui/04-bullet/` |
 | 5 | Editor (Slash, Selection Toolbar, Item Types, Markdown) | ✅ Done | `spec/32-ui-design/06-workflowy-ui/05-editor/` |
-| 6 | Left Sidebar (Offcanvas) + Special Nodes | ⏳ Ready | `spec/32-ui-design/06-workflowy-ui/06-sidebar/` |
+| 6 | Left Sidebar (Offcanvas) + Special Nodes | ✅ Done | `spec/32-ui-design/06-workflowy-ui/06-sidebar/` |
 | 7 | Calendar / Today + Quick Add | ⏳ Ready | `spec/32-ui-design/06-workflowy-ui/07-calendar/` |
 | 8 | Themes, Fonts, Settings, App Menu | ⏳ Ready | `spec/32-ui-design/06-workflowy-ui/08-app-shell/` |
 | 9 | Email-to-Workflowy | 🚫 Deferred | `spec/32-ui-design/06-workflowy-ui/09-integrations/` |
