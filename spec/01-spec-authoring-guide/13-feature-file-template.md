@@ -70,7 +70,7 @@ Every "what if" the implementer must handle. Format as a numbered list — each 
 4. Item exceeds 250-per-view rendering limit — show "load more" sentinel.
 
 - One edge case per row.
-- Reference the global edge-case index (`spec/31-app/04-edge-cases/01-edge-cases.md`) when the same case applies cross-feature.
+- Reference the global edge-case index (`spec/31-app/03-edge-cases/01-edge-cases.md`) when the same case applies cross-feature.
 
 ### 4. `## Acceptance Tests`
 

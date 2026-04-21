@@ -63,7 +63,7 @@ Make `spec/**` so unambiguous that a fresh AI session, reading only the spec + `
 
 **M-4. Add concurrency / LWW spec (resolves audit A-18). ✅ COMPLETE (2026-04-19)**
 - ✅ M-4.1 New file `spec/31-app/01-features/14-concurrency-and-sync.md` (15 ATs, 12 component-contract rows). Field-level LWW + server-stamped UTC ms + tie-break by higher `userId` + 5 s Undo on "Restored remote change" banner. CRDT/OT explicitly deferred to Phase 3.
-- ✅ M-4.2 Added 7 new concurrency edge-case rows to `spec/31-app/04-edge-cases/01-edge-cases.md` (clock skew, offline replay, deleted-by-peer, NTP backward jump, split-state move, stale tab, identical-ms tie-break).
+- ✅ M-4.2 Added 7 new concurrency edge-case rows to `spec/31-app/03-edge-cases/01-edge-cases.md` (clock skew, offline replay, deleted-by-peer, NTP backward jump, split-state move, stale tab, identical-ms tie-break).
 
 ---
 

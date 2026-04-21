@@ -106,7 +106,7 @@ Draft (high-level only) · Ambiguity: Medium (sub-specs pending)
 | Sharing Model | [`mem://features/sharing-model`](mem://features/sharing-model) |
 | Feedback Report (admin reviewer) | [`../33-feedback-report/00-overview.md`](../33-feedback-report/00-overview.md) |
 | Activity Feed (admin auditor) | [`../34-activity-feed/00-overview.md`](../34-activity-feed/00-overview.md) |
-| Roadmap | [`../31-app/05-roadmap/00-overview.md`](../31-app/05-roadmap/00-overview.md) |
+| Roadmap | [`../31-app/04-roadmap/00-overview.md`](../31-app/04-roadmap/00-overview.md) |
 
 ---
 

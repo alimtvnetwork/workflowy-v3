@@ -95,7 +95,7 @@
 | `spec/18-spec-issues/` | 🟢 | None |
 | `spec/31-app/` | 🟡 | Numbering gap 01→03; consistency report lists non-existent `02-audits/` |
 | `spec/31-app/01-features/` | 🟢 | 14/14 features template-compliant; concurrency LWW spec'd |
-| `spec/31-app/04-edge-cases/` | 🟢 | 7 concurrency rows added |
+| `spec/31-app/03-edge-cases/` | 🟢 | 7 concurrency rows added |
 | `spec/32-ui-design/` | 🟡 | Workflowy phase-1–8 specs not yet authored; 4 cross-cutting blockers |
 | `spec/32-ui-design/03-design-system/03-tailwind-version-ssot.md` | 🟡 | Missing `Version:` header |
 | `spec/33-feedback-report/` | 🟢 | Self-contained |
