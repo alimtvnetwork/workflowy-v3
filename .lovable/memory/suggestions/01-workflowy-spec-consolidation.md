@@ -38,7 +38,7 @@ Sequentially execute Phase 1 → Phase 8 (Phase 0 is complete: 28 screenshots sa
 - [x] **D1 resolved (2026-04-21):** parent folder `spec/32-ui-design/06-workflowy-ui/` scaffolded with 10 subfolder overviews.
 - [x] **W1 done (2026-04-21):** Phase 1 spec authored — `00-overview.md` + `01-layout.md` + `02-breadcrumb.md` + `03-routing.md` + `04-keyboard-shortcuts.md` published under `06-workflowy-ui/01-navbar/`.
 - [x] **W2 done (2026-04-21):** Phase 2 spec authored — `00-overview.md` + `01-overlay.md` + `02-filter-syntax.md` published under `06-workflowy-ui/02-search/`.
-- [ ] Phases 3–8 spec files published in their target subfolders under `06-workflowy-ui/`.
+- [x] **W3 done (2026-04-21):** Phase 3 spec authored — `00-overview.md` + `01-handbook-content.md` + `02-hotkeys.md` + `03-whats-new.md` published under `06-workflowy-ui/03-right-panel/`.
 - [ ] All 4 cross-cutting blockers resolved during their owning phase.
 - [ ] `.lovable/plans/03-workflowy-spec-consolidation.md` updated after each phase completion.
 - [ ] No spec file exceeds 400 lines (split into subfolder if it would).
