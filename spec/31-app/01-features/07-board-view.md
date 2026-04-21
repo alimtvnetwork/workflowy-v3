@@ -115,7 +115,7 @@ No special admin logic required — the tree model handles everything naturally.
 ## Edge Cases
 
 1. Board root has 0 children — show empty-state message "Add child items to use Board view."; toolbar still allows adding the first column.
-2. User deletes the only remaining column — auto-switch back to List view (per `04-edge-cases/01-edge-cases.md` row 13).
+2. User deletes the only remaining column — auto-switch back to List view (per `03-edge-cases/01-edge-cases.md` row 13).
 3. Column has 0 cards — render the column with just the header and the "+ Add card" button (per row 14).
 4. Card is a mirror — render the mirror badge on the card; dragging the mirror moves the **mirror** (not the source); zoom click navigates to the source's deep link.
 5. Drag card onto its own descendant — block the drop with the same toast list view uses ("Cannot move item into its own children").
@@ -124,7 +124,7 @@ No special admin logic required — the tree model handles everything naturally.
 8. Two tabs reorder different columns concurrently — both writes apply via fractional `sort_order`; LWW per M-4 if they collide on the same column.
 9. Column is collapsed and a new card arrives via real-time sync — the column header card-count increments; the column stays collapsed until user expands it.
 10. Card content exceeds 2 lines — truncate with ellipsis; full content visible on zoom or hover-tooltip after 500 ms.
-11. Free-tier user adds a 251st item via "+ Add card" — block per `04-edge-cases/01-edge-cases.md` row 4 (item-limit toast).
+11. Free-tier user adds a 251st item via "+ Add card" — block per `03-edge-cases/01-edge-cases.md` row 4 (item-limit toast).
 12. Horizontal scroll past the rightmost column reveals the "+ Add column" button always anchored at the end.
 
 ## Acceptance Tests
@@ -174,4 +174,4 @@ No special admin logic required — the tree model handles everything naturally.
 - [04-page-content-area.md](./04-page-content-area.md) — list-view counterpart
 - [06-item-context-menu.md](./06-item-context-menu.md) — same context menu fires on cards
 - [09-mirrors.md](./09-mirrors.md) — mirror-card semantics
-- [04-edge-cases/01-edge-cases.md](../04-edge-cases/01-edge-cases.md) — board edge-case rows
+- [03-edge-cases/01-edge-cases.md](../03-edge-cases/01-edge-cases.md) — board edge-case rows

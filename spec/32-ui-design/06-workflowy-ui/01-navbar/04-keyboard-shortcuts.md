@@ -7,7 +7,7 @@
 
 ## Scope
 
-This file lists shortcuts whose **primary effect is on the navbar or focus navigation**. The full app-wide hotkey table lives in [`../03-right-panel/03-hotkeys.md`](../03-right-panel/03-hotkeys.md) (Phase 3).
+This file lists shortcuts whose **primary effect is on the navbar or focus navigation**. The full app-wide hotkey table lives in [`../03-right-panel/02-hotkeys.md`](../03-right-panel/02-hotkeys.md) (Phase 3).
 
 ---
 
@@ -48,4 +48,4 @@ This file lists shortcuts whose **primary effect is on the navbar or focus navig
 - Bullet-level shortcuts (Tab/Shift+Tab, Enter, ⌘↑/↓ to move) → Phase 4 (`../04-bullet/`) and Phase 5 (`../05-editor/`).
 - Quick Add `⌘⇧N` → Phase 7 (`../07-calendar/02-quick-add-modal.md`).
 - Slash menu and selection toolbar shortcuts → Phase 5.
-- Full ~30-entry hotkey reference → Phase 3 (`../03-right-panel/03-hotkeys.md`).
+- Full ~30-entry hotkey reference → Phase 3 (`../03-right-panel/02-hotkeys.md`).

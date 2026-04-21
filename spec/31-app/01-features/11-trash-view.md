@@ -110,5 +110,5 @@ As a user who occasionally deletes the wrong item, I want a 30-day grace period 
 - [03-layout-structure.md](./03-layout-structure.md) — Trash entry point in sidebar/settings
 - [06-item-context-menu.md](./06-item-context-menu.md) — Delete action that puts items here
 - [09-mirrors.md](./09-mirrors.md) — restoring a mirror requires the source still exists
-- [04-edge-cases/01-edge-cases.md](../04-edge-cases/01-edge-cases.md) — orphaned-parent restore cases
+- [03-edge-cases/01-edge-cases.md](../03-edge-cases/01-edge-cases.md) — orphaned-parent restore cases
 - `mem://features/trash-logic` — 30-day retention policy

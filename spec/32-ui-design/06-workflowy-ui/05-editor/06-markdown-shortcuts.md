@@ -48,7 +48,7 @@ These trigger on the **closing** character and convert wrapped text to formatted
 | `__text__` | **Bold** (alt) | |
 | `~~text~~` | ~~Strike~~ | |
 | `` `text` `` | `Inline code` | |
-| `[label](url)` | [label](url) link | |
+| `[label](url)` | `[label](url)` link | |
 | `==text==` | Highlight (default yellow) | Workflowy extension |
 
 ---

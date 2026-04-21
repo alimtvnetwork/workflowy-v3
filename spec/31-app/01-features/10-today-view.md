@@ -104,5 +104,5 @@ As a daily planner, I want a single screen that shows everything due today plus 
 - [03-layout-structure.md](./03-layout-structure.md) — 📅 Today button in navbar
 - [04-page-content-area.md](./04-page-content-area.md) — shared item-row rendering rules
 - [09-mirrors.md](./09-mirrors.md) — mirrored items in Today edit the source
-- [04-edge-cases/01-edge-cases.md](../04-edge-cases/01-edge-cases.md) — timezone + day-boundary cases
+- [03-edge-cases/01-edge-cases.md](../03-edge-cases/01-edge-cases.md) — timezone + day-boundary cases
 - `mem://features/offline-resilience` — cached render + queued updates

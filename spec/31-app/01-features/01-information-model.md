@@ -136,4 +136,4 @@ This table describes how every core data entity relates to others in the system.
 - [03-layout-structure.md](./03-layout-structure.md) — how the tree renders
 - [09-mirrors.md](./09-mirrors.md) — how mirrors reference source `id`
 - [11-trash-view.md](./11-trash-view.md) — soft-delete + restore flow
-- [04-edge-cases/01-edge-cases.md](../04-edge-cases/01-edge-cases.md) — global edge-case index
+- [03-edge-cases/01-edge-cases.md](../03-edge-cases/01-edge-cases.md) — global edge-case index

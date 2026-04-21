@@ -75,7 +75,7 @@ When pointer leaves:
 
 - Inherits font from app settings (default Inter, monospace if Code Block type).
 - Editable inline (contenteditable surface).
-- Supports inline formatting: **bold**, *italic*, ~~strike~~, `code`, [link](url), @mention, #tag.
+- Supports inline formatting: **bold**, *italic*, ~~strike~~, `code`, `[link](url)`, @mention, #tag.
 - Placeholder text "Untitled" shown when empty AND not focused.
 - Word-wrap at container width; no horizontal scroll.
 

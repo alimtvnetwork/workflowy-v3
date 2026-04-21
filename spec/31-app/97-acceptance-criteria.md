@@ -20,10 +20,10 @@ Criteria use the stable ID format `AT-${folder.toUpperCase().replace(/[^A-Z]/g, 
 | # | Subsection | Acceptance ID Range | Status |
 |---|-----------|---------------------|--------|
 | 1 | [`01-features/`](./01-features/00-overview.md) | AT-APP-01..05 | 📝 To populate |
-| 2 | [`03-workflows/`](./03-workflows/00-overview.md) | AT-APP-06..10 | 📝 To populate |
-| 3 | [`04-edge-cases/`](./04-edge-cases/00-overview.md) | AT-APP-11..15 | 📝 To populate |
-| 4 | [`05-roadmap/`](./05-roadmap/00-overview.md) | AT-APP-16..20 | 📝 To populate |
-| 5 | [`06-conventions/`](./06-conventions/00-overview.md) | AT-APP-21..25 | 📝 To populate |
+| 2 | [`02-workflows/`](./02-workflows/00-overview.md) | AT-APP-06..10 | 📝 To populate |
+| 3 | [`03-edge-cases/`](./03-edge-cases/00-overview.md) | AT-APP-11..15 | 📝 To populate |
+| 4 | [`04-roadmap/`](./04-roadmap/00-overview.md) | AT-APP-16..20 | 📝 To populate |
+| 5 | [`05-conventions/`](./05-conventions/00-overview.md) | AT-APP-21..25 | 📝 To populate |
 
 ---
 

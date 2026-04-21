@@ -109,7 +109,7 @@ As a power user, I want every common action — split a line, indent, move, comp
 4. ⇧Tab pressed on a root-level item — no-op (cannot outdent past root).
 5. ⌘↑ on the first sibling, or ⌘↓ on the last — no-op.
 6. ↑/↓ arrow lands on a divider-type item — skip to the next editable item (per `04-page-content-area.md` AT-PAGE-15).
-7. Drag attempts to drop an item onto its own descendant — block with toast "Cannot move item into its own children" (per edge-case row 1 in `04-edge-cases/01-edge-cases.md`).
+7. Drag attempts to drop an item onto its own descendant — block with toast "Cannot move item into its own children" (per edge-case row 1 in `03-edge-cases/01-edge-cases.md`).
 8. ⌘↵ on a parent with completed children — only the parent's `completed_at` toggles; children unaffected.
 9. Paste multi-line text into an empty item — first line replaces the empty content; remaining lines become new siblings below.
 10. Pasted formatted text contains unknown tags (e.g. `<table>`) — strip to plain text; preserve only Bold / Italic / Underline / Strikethrough / Code.
@@ -117,7 +117,7 @@ As a power user, I want every common action — split a line, indent, move, comp
 12. Search debounce timer elapses while user is still typing — cancel the in-flight request before firing the new one.
 13. Autosave fails 3 times in a row — surface persistent toast "Changes not saved. Check your connection." until next successful save.
 14. User closes the tab with `pendingMutations.length > 0` — fire `beforeunload` browser warning.
-15. Network drops mid-edit — every subsequent edit appends to the local queue; UI shows offline banner per `04-edge-cases/01-edge-cases.md` row 9.
+15. Network drops mid-edit — every subsequent edit appends to the local queue; UI shows offline banner per `03-edge-cases/01-edge-cases.md` row 9.
 
 ## Acceptance Tests
 
@@ -166,4 +166,4 @@ As a power user, I want every common action — split a line, indent, move, comp
 - [04-page-content-area.md](./04-page-content-area.md) — DOM surface the keys target
 - [03-layout-structure.md](./03-layout-structure.md) — Search button, Back/Forward chrome
 - [06-item-context-menu.md](./06-item-context-menu.md) — pointer alternative for the same actions
-- [04-edge-cases/01-edge-cases.md](../04-edge-cases/01-edge-cases.md) — drag/drop, paste, offline edge cases
+- [03-edge-cases/01-edge-cases.md](../03-edge-cases/01-edge-cases.md) — drag/drop, paste, offline edge cases

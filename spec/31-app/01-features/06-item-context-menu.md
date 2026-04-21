@@ -119,13 +119,13 @@ Displayed in very small, muted text.
 1. Item has no children — Board, Dashboard, Sort A-Z, Sort Z-A, Expand-all, Collapse-all are disabled with explanatory tooltips.
 2. Item is a mirror — Make Template and Archive are disabled (mirrors must be converted to canonical first); "Mirrored from" row appears in metadata.
 3. Item is the user's root — Delete and Move-To are disabled (per `01-information-model.md` §1.1).
-4. Free-tier user is at the 250-item quota cap — Duplicate is disabled with tooltip linking to upgrade (per `04-edge-cases/01-edge-cases.md` row 4).
+4. Free-tier user is at the 250-item quota cap — Duplicate is disabled with tooltip linking to upgrade (per `03-edge-cases/01-edge-cases.md` row 4).
 5. Move-To target is the item itself or one of its descendants — block with toast "Cannot move item into its own children".
 6. Mirror-To target is the same parent that already holds the source — allow but warn ("This mirror sits next to its source").
 7. Mirror-To target already contains a mirror of this source under that parent — block; toast "A mirror of this item already exists here".
 8. Upload file > 10 MB — block at picker with toast "File too large (max 10 MB)".
 9. Sort A-Z on children that include locked-position items (e.g. divider) — locked items keep their position; only sortable children reorder.
-10. Delete on an item with mirrors — show warning dialog per `04-edge-cases/01-edge-cases.md` row 2 ("This item has X mirrors. Deleting will break those references.").
+10. Delete on an item with mirrors — show warning dialog per `03-edge-cases/01-edge-cases.md` row 2 ("This item has X mirrors. Deleting will break those references.").
 11. Copy internal link in a context where `navigator.clipboard` is denied — fallback to selecting the URL in a toast input the user can copy manually.
 12. User opens menu, scrolls outline, presses Escape — menu closes; focus returns to the originating ⋮ trigger.
 13. Two ⋮ triggers clicked rapidly on different items — only one menu open at a time; the second click closes the first and opens the second.
@@ -184,4 +184,4 @@ Displayed in very small, muted text.
 - [09-mirrors.md](./09-mirrors.md) — full mirror semantics
 - [11-trash-view.md](./11-trash-view.md) — destination of Delete
 - [13-templates.md](./13-templates.md) — destination of Make Template
-- [04-edge-cases/01-edge-cases.md](../04-edge-cases/01-edge-cases.md) — global edge-case index
+- [03-edge-cases/01-edge-cases.md](../03-edge-cases/01-edge-cases.md) — global edge-case index
