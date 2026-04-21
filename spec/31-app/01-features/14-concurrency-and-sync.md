@@ -147,5 +147,5 @@ Clients receiving a conflict response MUST:
 - [08-share-dialog.md](./08-share-dialog.md) — concurrency rules apply across share grants
 - [09-mirrors.md](./09-mirrors.md) — mirror writes route to source; LWW evaluated once on source
 - [12-multi-select.md](./12-multi-select.md) — bulk operations are N independent field writes
-- [04-edge-cases/01-edge-cases.md](../04-edge-cases/01-edge-cases.md) — concurrent-edit + clock-skew edge cases
+- [03-edge-cases/01-edge-cases.md](../03-edge-cases/01-edge-cases.md) — concurrent-edit + clock-skew edge cases
 - `mem://features/offline-resilience` — offline queue + reconnect replay
