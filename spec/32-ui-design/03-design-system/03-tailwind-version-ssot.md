@@ -1,6 +1,7 @@
 # Tailwind CSS — Single Source of Truth
 
-> **Updated:** 2026-04-19
+> **Version:** 1.0.0
+> **Updated:** 2026-04-21
 > **Status:** Authoritative — overrides any conflicting reference elsewhere
 
 ## Decision
