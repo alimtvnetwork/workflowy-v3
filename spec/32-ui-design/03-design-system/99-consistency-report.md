@@ -1,7 +1,7 @@
 # Consistency Report — 03-design-system
 
 > **Version:** 1.0.1  
-> **Updated:** 2026-04-18
+> **Updated:** 2026-04-21
 
 ---
 
