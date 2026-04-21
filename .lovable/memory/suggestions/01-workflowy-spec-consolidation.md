@@ -5,7 +5,7 @@
 - **source:** Lovable
 - **affectedProject:** WorkFlowy
 - **affectedArea:** `spec/32-ui-design/06-workflowy-ui/` (10 phases nested as subfolders `01-navbar/` … `10-mobile/`; D1 resolved 2026-04-21 via Option C)
-- **status:** inProgress
+- **status:** completed (Phases 1–8 done; Phases 9–10 deferred per plan)
 - **priority:** High
 
 ## Description
@@ -43,9 +43,11 @@ Sequentially execute Phase 1 → Phase 8 (Phase 0 is complete: 28 screenshots sa
 - [x] **W5 done (2026-04-21):** Phase 5 spec authored — 7 files under `06-workflowy-ui/05-editor/`. Blocker B1 (11+11 swatches) RESOLVED via image inspection.
 - [x] **W6 done (2026-04-21):** Phase 6 spec authored — 4 files under `06-workflowy-ui/06-sidebar/`. Blocker B2 (drag semantics) RESOLVED as move + ⌥-mirror.
 - [x] **W7 done (2026-04-21):** Phase 7 spec authored — 4 files under `06-workflowy-ui/07-calendar/`.
-- [ ] All 4 cross-cutting blockers resolved during their owning phase.
-- [ ] `.lovable/plans/03-workflowy-spec-consolidation.md` updated after each phase completion.
-- [ ] No spec file exceeds 400 lines (split into subfolder if it would).
+- [x] **W8 done (2026-04-21):** Phase 8 spec authored — 5 files under `06-workflowy-ui/08-app-shell/`. Blocker B3 (theme list) RESOLVED as Light + Dark only.
+- [x] **All 8 active phases complete (2026-04-21).** Phases 9–10 remain deferred per original plan.
+- [x] **All 3 cross-cutting blockers resolved** (B1 swatches, B2 drag, B3 themes). B4 LinkedIn deferred to Phase 9.
+- [x] `.lovable/plans/03-workflowy-spec-consolidation.md` updated after each phase completion.
+- [x] No spec file exceeds 400 lines.
 
 ## Completion Notes
 *(pending — Phase 1 awaiting user "go")*
