@@ -23,7 +23,7 @@
 
 | # | Phase | Status | Output Folder |
 |---|-------|--------|---------------|
-| 1 | Navbar & Breadcrumb | ⏳ Ready | `spec/32-ui-design/06-workflowy-ui/01-navbar/` |
+| 1 | Navbar & Breadcrumb | ✅ Done (2026-04-21) | `spec/32-ui-design/06-workflowy-ui/01-navbar/` |
 | 2 | Search Overlay & Filter Syntax | ⏳ Ready | `spec/32-ui-design/06-workflowy-ui/02-search/` |
 | 3 | Right-Side Panel (Handbook + Hotkeys + What's New) | ⏳ Ready | `spec/32-ui-design/06-workflowy-ui/03-right-panel/` |
 | 4 | Bullet Anatomy & Context Menus | ⏳ Ready | `spec/32-ui-design/06-workflowy-ui/04-bullet/` |
