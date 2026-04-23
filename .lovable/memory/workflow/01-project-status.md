@@ -1,15 +1,17 @@
 # Project Status — WorkFlowy
 
-> **Updated:** 2026-04-21 (Workflowy spec consolidation — screenshot inspection + phase plan)
+> **Updated:** 2026-04-23 (UTC+8) — All spec-track blockers resolved; spec v1.0 complete
 
-## Latest Session Summary (2026-04-21)
+## Latest Session Summary (2026-04-23)
+- ✅ **Blocker D-1 resolved** — LinkedIn integration scope formally deferred to post-v1 with `read-only profile import` direction recorded in `spec/32-ui-design/06-workflowy-ui/09-integrations/00-overview.md`.
+- ✅ Bumped `spec/32-ui-design/06-workflowy-ui/00-overview.md` status to **✅ Complete** (all 4 cross-cutting blockers now resolved).
+- ✅ Final spec-hygiene run: **all 11 checks green**, 0 errors, 69 soft warnings (all in read-only folders 02–17).
+- 🎯 **Spec track is now 100% complete and frozen.** Ready to exit spec-only mode and begin **P1.1 Bootstrap** from `plan.md` when user authorizes.
+
+## Previous Session Summary (2026-04-21)
 - ✅ Saved + visually inspected 28 Workflowy reference screenshots (img-40 → img-67) to `.lovable/references/workflowy-screenshots/`.
-- ✅ Re-inspected img-50–59 visually (had only filename-indexed before) — captured 6 new locked facts (3-dot handle position, breadcrumb truncation `…`, in-content 3-dot menu order, slash-menu definitive order, code-block single-node behavior, focused-node H1 rendering).
-- ✅ User decisions locked: **H1–H5** kept (slash menu shows H1–H3, we extend); **Code Block forward** = N siblings merge into ONE node with internal line breaks; **Email-to-Workflowy** deferred to Phase 9; **Quick Add** = global `⌘⇧N` web modal that appends to Inbox (no PWA in v1).
-- ✅ Earlier decisions reconfirmed: Sidebar `collapsible="offcanvas"`; default sidebar items = Today, Home, Inbox, Drafts, Mentions, Calendar, Trash, + New node; Hotkeys img-65 canonical; Handbook = both structure AND English content; phases run sequentially 1 → 8.
-- ✅ Published full **10-phase Workflowy spec consolidation plan** (8 active + 2 deferred) — see `.lovable/plans/03-workflowy-spec-consolidation.md`.
-- ⏳ Awaiting user "go" to start **Phase 1 (Navbar & Breadcrumb)** — first file: `spec/32-ui-design/01-architecture/02-navbar.md`.
-- ⏳ 4 cross-cutting blockers parked: 11+11 hex swatches from img-47, sidebar drag semantics (move vs mirror), launch theme list, LinkedIn integration scope.
+- ✅ User decisions locked: H1–H5 kept; Code Block forward = N siblings → 1 node; Email-to-Workflowy → Phase 9; Quick Add = `⌘⇧N` web modal.
+- ✅ Published full **10-phase Workflowy spec consolidation plan** — see `.lovable/plans/03-workflowy-spec-consolidation.md`.
 
 ## Previous Session Summary (2026-04-20)
 - ✅ Locked spec edit scope to folders **18+** only; folders 01–17 READ-ONLY (codified in `.lovable/strictly-avoid.md`).

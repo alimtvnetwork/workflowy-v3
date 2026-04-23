@@ -6,7 +6,10 @@
 > **Target files:** `01-email-to-wf.md` (stub)
 
 ## Scope (stub)
-Per-node inbound email addresses with allow-list. LinkedIn integration scope (read-only profile vs OAuth posting — **BLOCKER 4**) lives here as a sibling concern. Implementation post-v1.
+Per-node inbound email addresses with allow-list. Implementation post-v1.
+
+## Blocker D-1 Resolution (2026-04-23, UTC+8)
+**LinkedIn integration scope** is **deferred to post-v1** alongside Phase 9. When revisited, the chosen direction is **read-only profile import** (no OAuth posting) to keep the runtime-agnostic constraint intact and avoid coupling to any specific backend. Re-open this blocker only when the backend runtime (mem://constraints/backend-runtime-deferred) is chosen.
 
 ---
 

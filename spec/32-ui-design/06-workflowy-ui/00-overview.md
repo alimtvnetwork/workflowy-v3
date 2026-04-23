@@ -2,7 +2,7 @@
 
 > **Version:** 1.0.0
 > **Created:** 2026-04-21 (UTC+8)
-> **Status:** Scaffolding (Phase 1 ready to author)
+> **Status:** ✅ Complete (all blockers resolved 2026-04-23)
 > **Parent:** [`../00-overview.md`](../00-overview.md)
 > **Source plan:** [`.lovable/plans/03-workflowy-spec-consolidation.md`](../../../.lovable/plans/03-workflowy-spec-consolidation.md)
 > **Reference assets:** `.lovable/references/workflowy-screenshots/` (28 screenshots img-40 → img-67)
@@ -78,7 +78,7 @@ This parent folder nests **10 phases** as numbered subfolders. Phase number = su
 | 1 | 11+11 hex swatches from img-47 | Phase 5 | ✅ RESOLVED 2026-04-21 |
 | 2 | Sidebar drag semantics (move vs mirror) | Phase 6 | ✅ RESOLVED 2026-04-21 (move + ⌥-mirror) |
 | 3 | Launch theme list (light/dark only or named palettes) | Phase 8 | ✅ RESOLVED 2026-04-21 (Light + Dark only) |
-| 4 | LinkedIn integration scope | Phase 9 (deferred) |
+| 4 | LinkedIn integration scope | Phase 9 | ✅ RESOLVED 2026-04-23 (deferred to post-v1; spec stays runtime-agnostic) |
 
 ---
 
