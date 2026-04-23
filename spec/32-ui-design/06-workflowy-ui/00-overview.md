@@ -17,7 +17,7 @@
 | # | File | Title | Lines |
 |---|------|-------|-------|
 | 1 | [`01-navbar/`](./01-navbar/00-overview.md) | Phase 1 — Navbar & Breadcrumb | subfolder |
-| 2 | [`02-search/`](./02-search/00-overview.md) | Phase 2 — Search Overlay & Filter Syntax | subfolder |
+| 2 | [`02-search/`](./02-search/00-overview.md) | Phase 2 — Search Popover (Command-Palette Surface) | subfolder |
 | 3 | [`03-right-panel/`](./03-right-panel/00-overview.md) | Phase 3 — Right-Side Panel (Handbook + Hotkeys + What's New) | subfolder |
 | 4 | [`04-bullet/`](./04-bullet/00-overview.md) | Phase 4 — Bullet Anatomy & Context Menus | subfolder |
 | 5 | [`05-editor/`](./05-editor/00-overview.md) | Phase 5 — Editor | subfolder |
@@ -44,7 +44,7 @@ This parent folder nests **10 phases** as numbered subfolders. Phase number = su
 | # | Subfolder | Phase | Status |
 |---|-----------|-------|--------|
 | 01 | [`01-navbar/`](./01-navbar/00-overview.md) | Navbar & Breadcrumb | ✅ Done |
-| 02 | [`02-search/`](./02-search/00-overview.md) | Search Overlay & Filter Syntax | ✅ Done |
+| 02 | [`02-search/`](./02-search/00-overview.md) | Search Popover (Command-Palette Surface) v2.0 | ✅ Done |
 | 03 | [`03-right-panel/`](./03-right-panel/00-overview.md) | Right-Side Panel (Handbook + Hotkeys + What's New) | ✅ Done |
 | 04 | [`04-bullet/`](./04-bullet/00-overview.md) | Bullet Anatomy & Context Menus | ✅ Done |
 | 05 | [`05-editor/`](./05-editor/00-overview.md) | Editor (Slash, Toolbar, Item Types, Colors, Code/Quote, Markdown) | ✅ Done |
