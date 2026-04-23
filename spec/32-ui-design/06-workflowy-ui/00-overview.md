@@ -51,7 +51,7 @@ This parent folder nests **10 phases** as numbered subfolders. Phase number = su
 | 06 | [`06-sidebar/`](./06-sidebar/00-overview.md) | Left Sidebar Offcanvas + Special Nodes | ✅ Done |
 | 07 | [`07-calendar/`](./07-calendar/00-overview.md) | Calendar / Today + Quick Add | ✅ Done |
 | 08 | [`08-app-shell/`](./08-app-shell/00-overview.md) | Themes, Fonts, Settings, App Menu | ✅ Done |
-| 09 | [`09-integrations/`](./09-integrations/00-overview.md) | Email-to-Workflowy | 🚫 Deferred |
+| 09 | [`09-integrations/`](./09-integrations/00-overview.md) | Email-to-Workflowy + LinkedIn Import | ✅ Spec Done (deferred impl) |
 | 10 | [`10-mobile/`](./10-mobile/00-overview.md) | Mobile / PWA | 🚫 Deferred |
 
 ---

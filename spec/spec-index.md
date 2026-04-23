@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-23  
-**Total Files:** 1146  
+**Total Files:** 1150  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -34,7 +34,7 @@
 - [17-generic-update](#17-generic-update) — 11 file(s)
 - [18-spec-issues](#18-spec-issues) — 6 file(s)
 - [31-app](#31-app) — 34 file(s)
-- [32-ui-design](#32-ui-design) — 95 file(s)
+- [32-ui-design](#32-ui-design) — 99 file(s)
 - [33-feedback-report](#33-feedback-report) — 3 file(s)
 - [34-activity-feed](#34-activity-feed) — 3 file(s)
 - [35-enforcement-rules](#35-enforcement-rules) — 3 file(s)
@@ -1259,7 +1259,11 @@
 | [`32-ui-design/06-workflowy-ui/08-app-shell/04-settings.md`](./32-ui-design/06-workflowy-ui/08-app-shell/04-settings.md) | Settings Panel | — | — |
 | [`32-ui-design/06-workflowy-ui/08-app-shell/97-acceptance-criteria.md`](./32-ui-design/06-workflowy-ui/08-app-shell/97-acceptance-criteria.md) | Phase 8 — App Shell Acceptance Criteria | 1.0.0 | — |
 | [`32-ui-design/06-workflowy-ui/08-app-shell/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/08-app-shell/99-consistency-report.md) | Consistency Report — App Shell (Phase 8) | 1.0.0 | — |
-| [`32-ui-design/06-workflowy-ui/09-integrations/00-overview.md`](./32-ui-design/06-workflowy-ui/09-integrations/00-overview.md) | Phase 9 — Email-to-Workflowy 🚫 DEFERRED | — | — |
+| [`32-ui-design/06-workflowy-ui/09-integrations/00-overview.md`](./32-ui-design/06-workflowy-ui/09-integrations/00-overview.md) | Phase 9 — Email-to-WorkFlowy & Integrations 🚫 DEFERRED | — | — |
+| [`32-ui-design/06-workflowy-ui/09-integrations/01-email-to-workflowy.md`](./32-ui-design/06-workflowy-ui/09-integrations/01-email-to-workflowy.md) | 01 — Email-to-WorkFlowy | 1.0.0 | — |
+| [`32-ui-design/06-workflowy-ui/09-integrations/02-linkedin-import.md`](./32-ui-design/06-workflowy-ui/09-integrations/02-linkedin-import.md) | 02 — LinkedIn Import (Read-Only) | 1.0.0 | — |
+| [`32-ui-design/06-workflowy-ui/09-integrations/03-allowlist-security.md`](./32-ui-design/06-workflowy-ui/09-integrations/03-allowlist-security.md) | 03 — Allow-List & Sender Security | 1.0.0 | — |
+| [`32-ui-design/06-workflowy-ui/09-integrations/97-acceptance-criteria.md`](./32-ui-design/06-workflowy-ui/09-integrations/97-acceptance-criteria.md) | 97 — Acceptance Criteria — Phase 9 Integrations | 1.0.0 | — |
 | [`32-ui-design/06-workflowy-ui/09-integrations/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/09-integrations/99-consistency-report.md) | Consistency Report — Integrations (Phase 9, Deferred) | 1.0.0 | Stub |
 | [`32-ui-design/06-workflowy-ui/10-mobile/00-overview.md`](./32-ui-design/06-workflowy-ui/10-mobile/00-overview.md) | Phase 10 — Mobile / PWA 🚫 DEFERRED | — | — |
 | [`32-ui-design/06-workflowy-ui/10-mobile/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/10-mobile/99-consistency-report.md) | Consistency Report — Mobile / PWA (Phase 10, Deferred) | 1.0.0 | Stub |
@@ -1316,4 +1320,4 @@
 
 ---
 
-*Auto-generated index — 1146 files across 25 top-level folders.*
+*Auto-generated index — 1150 files across 25 top-level folders.*
