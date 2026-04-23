@@ -1,6 +1,6 @@
 # Spec Issues — Acceptance Criteria
 
-> **Version:** 1.0.0
+> **Version:** 1.0.1
 > **Created:** 2026-04-23 (UTC+8)
 > **Status:** Scaffold — meta/tracking folder
 > **Parent:** [`00-overview.md`](./00-overview.md)
@@ -9,7 +9,7 @@
 
 ## Purpose
 
-This folder tracks audit findings, hygiene rules, and gate definitions. Acceptance criteria for each item live inline in its respective markdown file (e.g., `01-audit-2026-04-18.md`, `04-required-files-gate.md`).
+This folder tracks audit findings, hygiene rules, and gate definitions. Acceptance criteria for each item live inline in its respective markdown file.
 
 This file exists to satisfy the spec-hygiene coverage gate (`scripts/spec-hygiene/08-check-acceptance-coverage.mjs`).
 
@@ -20,9 +20,8 @@ This file exists to satisfy the spec-hygiene coverage gate (`scripts/spec-hygien
 | # | Topic File | Acceptance Source |
 |---|-----------|-------------------|
 | 1 | [`01-audit-2026-04-18.md`](./01-audit-2026-04-18.md) | Inline findings + closure status |
-| 2 | [`02-…`](./02-overview-and-consistency-gate.md) | Inline gate definition |
-| 3 | [`03-…`](./03-broken-links-gate.md) | Inline gate definition |
-| 4 | [`04-required-files-gate.md`](./04-required-files-gate.md) | Inline gate definition |
+| 2 | [`03-ai-readiness-audit-2026-04-19.md`](./03-ai-readiness-audit-2026-04-19.md) | Inline AI-readiness checklist |
+| 3 | [`04-required-files-gate.md`](./04-required-files-gate.md) | Inline gate definition |
 
 ---
 
