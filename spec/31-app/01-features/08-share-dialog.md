@@ -128,5 +128,5 @@ As an owner, I want to share an outline branch with specific people at the right
 - [03-layout-structure.md](./03-layout-structure.md) — NavBar Share button that opens this dialog
 - [06-item-context-menu.md](./06-item-context-menu.md) — context-menu Share entry point
 - [09-mirrors.md](./09-mirrors.md) — share grants follow the source, not the mirror
-- [04-edge-cases/01-edge-cases.md](../04-edge-cases/01-edge-cases.md) — sharing-cascade edge case
+- [03-edge-cases/01-edge-cases.md](../03-edge-cases/01-edge-cases.md) — sharing-cascade edge case
 - `mem://features/sharing-model` — public + invited-user permission rules

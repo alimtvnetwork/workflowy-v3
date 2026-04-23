@@ -183,5 +183,5 @@ For cleaner UX, use only **"Mirror To…"** in the context menu (one unified act
 - [06-item-context-menu.md](./06-item-context-menu.md) — "Mirror To…" entry point
 - [08-share-dialog.md](./08-share-dialog.md) — share grants attach to source, inherited by mirrors
 - [10-today-view.md](./10-today-view.md) — Today is the most common mirror target
-- [04-edge-cases/01-edge-cases.md](../04-edge-cases/01-edge-cases.md) — broken-mirror + cycle edge cases
+- [03-edge-cases/01-edge-cases.md](../03-edge-cases/01-edge-cases.md) — broken-mirror + cycle edge cases
 - `mem://features/mirroring` — linked-instance sync rules

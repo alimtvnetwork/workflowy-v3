@@ -130,7 +130,7 @@ Each swatch: small circle. Currently selected color has a ring border. Hover: sl
 ## Edge Cases
 
 1. Empty content area for a brand-new item — show no placeholder text per spec; cursor blinks at left edge.
-2. Item has 1000+ children expanded — virtualize the descendant list; cap render to viewport + buffer (per `04-edge-cases/01-edge-cases.md` row 5).
+2. Item has 1000+ children expanded — virtualize the descendant list; cap render to viewport + buffer (per `03-edge-cases/01-edge-cases.md` row 5).
 3. User clicks bullet dot while drag is in flight — drag wins; click is suppressed.
 4. User collapses a parent that contains the currently zoomed item in another tab — collapse persists locally; zoom in other tab unaffected (LWW per M-4).
 5. Selection spans two items — toolbar shows but type-conversion buttons (H1/H2/H3/¶) are disabled; only inline formatting buttons remain enabled.
@@ -138,7 +138,7 @@ Each swatch: small circle. Currently selected color has a ring border. Hover: sl
 7. To-do item is checked while child to-dos are unchecked — only the parent's `completed_at` is set; children are unaffected.
 8. Mirror badge clicked — opens the mirror peers popover (see `09-mirrors.md`); does not zoom.
 9. Comment button clicked on a mirror — comment is attached to the source item; all mirrors see the same dot indicator.
-10. User pastes 100+ lines into the content area — auto-split into individual sibling items per `04-edge-cases/01-edge-cases.md` row 7.
+10. User pastes 100+ lines into the content area — auto-split into individual sibling items per `03-edge-cases/01-edge-cases.md` row 7.
 11. Pasted URL — auto-detect and render as clickable link inside the content (no item conversion).
 12. Divider type item receives focus via keyboard — focus skips to the next editable item; dividers are non-editable.
 
@@ -195,4 +195,4 @@ Each swatch: small circle. Currently selected color has a ring border. Hover: sl
 - [05-interactions.md](./05-interactions.md) — keyboard shortcuts referenced above
 - [06-item-context-menu.md](./06-item-context-menu.md) — what ⋮ opens
 - [09-mirrors.md](./09-mirrors.md) — mirror badge semantics
-- [04-edge-cases/01-edge-cases.md](../04-edge-cases/01-edge-cases.md) — paste / nesting / network rows
+- [03-edge-cases/01-edge-cases.md](../03-edge-cases/01-edge-cases.md) — paste / nesting / network rows

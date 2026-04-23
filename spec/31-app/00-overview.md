@@ -34,10 +34,10 @@ Application-level specifications for the WorkFlowy app. The previous monolithic 
 |---|--------|-------------|
 | 01 | [01-features/](./01-features/00-overview.md) | Per-feature specs: information model, layout, content area, interactions, context menu, board, share, mirrors, today, trash, multi-select, templates |
 | 02 | _(Removed 2026-04-19 — empty placeholder; recreate when first audit lands)_ | — |
-| 03 | [03-workflows/](./03-workflows/00-overview.md) | Cross-feature flows (keyboard shortcuts, template application) |
-| 04 | [04-edge-cases/](./04-edge-cases/00-overview.md) | Edge case behaviors and out-of-scope product boundaries |
-| 05 | [05-roadmap/](./05-roadmap/00-overview.md) | Implementation phases and resolved product decisions |
-| 06 | [06-conventions/](./06-conventions/00-overview.md) | App-scoped tooling/code conventions (e.g., Axios pinning) |
+| 03 | [02-workflows/](./02-workflows/00-overview.md) | Cross-feature flows (keyboard shortcuts, template application) |
+| 04 | [03-edge-cases/](./03-edge-cases/00-overview.md) | Edge case behaviors and out-of-scope product boundaries |
+| 05 | [04-roadmap/](./04-roadmap/00-overview.md) | Implementation phases and resolved product decisions |
+| 06 | [05-conventions/](./05-conventions/00-overview.md) | App-scoped tooling/code conventions (e.g., Axios pinning) |
 
 ---
 
