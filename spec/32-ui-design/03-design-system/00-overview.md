@@ -14,7 +14,7 @@
 |---|------|-------|-------|
 | 1 | [`01-tokens-and-themes.md`](./01-tokens-and-themes.md) | Design System | 109 |
 | 2 | [`02-low-severity-clarifications.md`](./02-low-severity-clarifications.md) | Low-Severity Clarifications | 151 |
-| 3 | [`03-tailwind-version-ssot.md`](./03-tailwind-version-ssot.md) | Tailwind CSS — Single Source of Truth | 53 |
+| 3 | [`03-tailwind-version-ssot.md`](./03-tailwind-version-ssot.md) | Tailwind CSS — Single Source of Truth | 54 |
 
 <!-- AUTO-TOC:END -->
 

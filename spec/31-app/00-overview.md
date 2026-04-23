@@ -13,10 +13,10 @@
 | # | File | Title | Lines |
 |---|------|-------|-------|
 | 1 | [`01-features/`](./01-features/00-overview.md) | Features | subfolder |
-| 2 | [`03-workflows/`](./03-workflows/00-overview.md) | Workflows | subfolder |
-| 3 | [`04-edge-cases/`](./04-edge-cases/00-overview.md) | Edge Cases | subfolder |
-| 4 | [`05-roadmap/`](./05-roadmap/00-overview.md) | Roadmap | subfolder |
-| 5 | [`06-conventions/`](./06-conventions/00-overview.md) | Conventions | subfolder |
+| 2 | [`02-workflows/`](./02-workflows/00-overview.md) | Workflows | subfolder |
+| 3 | [`03-edge-cases/`](./03-edge-cases/00-overview.md) | Edge Cases | subfolder |
+| 4 | [`04-roadmap/`](./04-roadmap/00-overview.md) | Roadmap | subfolder |
+| 5 | [`05-conventions/`](./05-conventions/00-overview.md) | Conventions | subfolder |
 
 <!-- AUTO-TOC:END -->
 
