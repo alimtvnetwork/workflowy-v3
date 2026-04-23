@@ -12,10 +12,10 @@
 |----|------|-------|----------|--------|
 | S01 | [`memory/suggestions/01-workflowy-spec-consolidation.md`](./memory/suggestions/01-workflowy-spec-consolidation.md) | Workflowy spec consolidation (10-phase) | High | ✅ completed |
 | S02 | [`memory/suggestions/02-fix-spec-31-36-audit-findings.md`](./memory/suggestions/02-fix-spec-31-36-audit-findings.md) | Fix 5 audit findings in spec 31–36 | Medium | ✅ completed |
-| S03 | [`memory/suggestions/03-fix-49-broken-relative-links.md`](./memory/suggestions/03-fix-49-broken-relative-links.md) | Fix 49 broken relative links | Low | open |
+| S03 | [`memory/suggestions/03-fix-49-broken-relative-links.md`](./memory/suggestions/03-fix-49-broken-relative-links.md) | Fix 49 broken relative links | Low | ✅ completed |
 | S04 | [`memory/suggestions/04-ci-gate-overview-and-consistency.md`](./memory/suggestions/04-ci-gate-overview-and-consistency.md) | CI gate: require overview + consistency report | Medium | ✅ completed |
-| S05 | [`memory/suggestions/05-ci-gate-broken-relative-links.md`](./memory/suggestions/05-ci-gate-broken-relative-links.md) | CI gate: fail on broken relative links | Medium | open |
-| S06 | [`memory/suggestions/06-move-parallel-spec-folders.md`](./memory/suggestions/06-move-parallel-spec-folders.md) | Move parallel 22/23/24 into 31-app/ | Low | open |
+| S05 | [`memory/suggestions/05-ci-gate-broken-relative-links.md`](./memory/suggestions/05-ci-gate-broken-relative-links.md) | CI gate: fail on broken relative links | Medium | ✅ completed |
+| S06 | [`memory/suggestions/06-move-parallel-spec-folders.md`](./memory/suggestions/06-move-parallel-spec-folders.md) | Move parallel 22/23/24 into 31-app/ | Low | ✅ completed |
 
 ## Completed
 
