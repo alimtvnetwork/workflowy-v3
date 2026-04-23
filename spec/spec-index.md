@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-23  
-**Total Files:** 1150  
+**Total Files:** 1154  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -34,7 +34,7 @@
 - [17-generic-update](#17-generic-update) — 11 file(s)
 - [18-spec-issues](#18-spec-issues) — 6 file(s)
 - [31-app](#31-app) — 34 file(s)
-- [32-ui-design](#32-ui-design) — 99 file(s)
+- [32-ui-design](#32-ui-design) — 103 file(s)
 - [33-feedback-report](#33-feedback-report) — 3 file(s)
 - [34-activity-feed](#34-activity-feed) — 3 file(s)
 - [35-enforcement-rules](#35-enforcement-rules) — 3 file(s)
@@ -1266,6 +1266,10 @@
 | [`32-ui-design/06-workflowy-ui/09-integrations/97-acceptance-criteria.md`](./32-ui-design/06-workflowy-ui/09-integrations/97-acceptance-criteria.md) | 97 — Acceptance Criteria — Phase 9 Integrations | 1.0.0 | — |
 | [`32-ui-design/06-workflowy-ui/09-integrations/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/09-integrations/99-consistency-report.md) | Consistency Report — Integrations (Phase 9) | 1.1.0 | — |
 | [`32-ui-design/06-workflowy-ui/10-mobile/00-overview.md`](./32-ui-design/06-workflowy-ui/10-mobile/00-overview.md) | Phase 10 — Mobile / PWA 🚫 DEFERRED | — | — |
+| [`32-ui-design/06-workflowy-ui/10-mobile/01-pwa.md`](./32-ui-design/06-workflowy-ui/10-mobile/01-pwa.md) | 01 — PWA Installation & Manifest | 1.0.0 | — |
+| [`32-ui-design/06-workflowy-ui/10-mobile/02-share-target.md`](./32-ui-design/06-workflowy-ui/10-mobile/02-share-target.md) | 02 — Share Target API | 1.0.0 | — |
+| [`32-ui-design/06-workflowy-ui/10-mobile/03-mobile-gestures.md`](./32-ui-design/06-workflowy-ui/10-mobile/03-mobile-gestures.md) | 03 — Mobile Gestures | 1.0.0 | — |
+| [`32-ui-design/06-workflowy-ui/10-mobile/97-acceptance-criteria.md`](./32-ui-design/06-workflowy-ui/10-mobile/97-acceptance-criteria.md) | 97 — Acceptance Criteria — Phase 10 Mobile / PWA | 1.0.0 | — |
 | [`32-ui-design/06-workflowy-ui/10-mobile/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/10-mobile/99-consistency-report.md) | Consistency Report — Mobile / PWA (Phase 10, Deferred) | 1.0.0 | Stub |
 | [`32-ui-design/06-workflowy-ui/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/99-consistency-report.md) | Consistency Report — WorkFlowy UI | 1.0.0 | — |
 | [`32-ui-design/97-acceptance-criteria.md`](./32-ui-design/97-acceptance-criteria.md) | Ui Design — Acceptance Criteria | 1.0.0 | Scaffold |
@@ -1320,4 +1324,4 @@
 
 ---
 
-*Auto-generated index — 1150 files across 25 top-level folders.*
+*Auto-generated index — 1154 files across 25 top-level folders.*
