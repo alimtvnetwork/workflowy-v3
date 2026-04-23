@@ -67,7 +67,7 @@ Defines the top navigation bar of the WorkFlowy application: layout regions, con
 
 ---
 
-## Cross-References
+## Related
 
 - [`../00-overview.md`](../00-overview.md) — Workflowy UI parent
 - [`../03-right-panel/00-overview.md`](../03-right-panel/00-overview.md) — Right panel toggled by `⌘/`

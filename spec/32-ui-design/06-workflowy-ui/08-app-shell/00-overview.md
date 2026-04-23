@@ -66,7 +66,7 @@ Specification for the application chrome: app menu (⋮ in navbar), theme system
 
 ---
 
-## Cross-References
+## Related
 
 - Phase 1 [`01-navbar/01-layout.md`](../01-navbar/01-layout.md) — ⋮ button location
 - Phase 5 [`05-editor/04-color-palettes.md`](../05-editor/04-color-palettes.md) — Theme adapts swatch rendering

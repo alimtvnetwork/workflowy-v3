@@ -82,7 +82,7 @@ This parent folder nests **10 phases** as numbered subfolders. Phase number = su
 
 ---
 
-## Cross-References
+## Related
 
 - [`../00-overview.md`](../00-overview.md) — UI Design root
 - [`../01-architecture/00-overview.md`](../01-architecture/00-overview.md) — App architecture (separate track)

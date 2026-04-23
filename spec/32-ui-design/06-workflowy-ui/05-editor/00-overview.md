@@ -69,7 +69,7 @@ Specification for the editing surface — slash command menu, selection toolbar,
 
 ---
 
-## Cross-References
+## Related
 
 - Phase 4 [`04-bullet/02-three-dot-menu.md`](../04-bullet/02-three-dot-menu.md) — "Convert to" + "Color" submenus
 - Phase 1 [`01-navbar/02-breadcrumb.md`](../01-navbar/02-breadcrumb.md) — Focused-node H1 styling
