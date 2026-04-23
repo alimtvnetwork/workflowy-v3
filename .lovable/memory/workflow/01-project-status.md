@@ -14,10 +14,10 @@
 ## Previous Session Summary (2026-04-20)
 - ✅ Locked spec edit scope to folders **18+** only; folders 01–17 READ-ONLY (codified in `.lovable/strictly-avoid.md`).
 - ✅ Marked R3-1 (400-line cap split) **VOID**.
-- ✅ Audited consistency reports across spec/31–36: 0 broken cross-refs, all 17 required files present; **5 structural/metadata issues found** (tracked in `.lovable/pending-issues/01-spec-31-36-audit-findings.md`).
+- ✅ Audited consistency reports across spec/31–36: 0 broken cross-refs, all 17 required files present; **5 structural/metadata issues found and resolved 2026-04-23** (see `.lovable/solved-issues/01-spec-31-36-audit-findings.md`).
 - ✅ Created Write Memory protocol: `.lovable/prompts/02-write-memory-prompt.md` + index entry in `.lovable/prompt.md`.
 - ✅ Established `.lovable/pending-issues/` and `.lovable/solved-issues/` folders.
-- ⏳ User decision needed: Approach A (renumber spec/31-app/03→02) vs Approach B (create empty 02-audits/) — see pending issue 01.
+- ✅ Approach A executed (renumber spec/31-app/03→02 etc.) — confirmed 2026-04-23.
 
 
 

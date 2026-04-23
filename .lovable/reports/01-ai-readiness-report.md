@@ -47,7 +47,7 @@
 | 5 | **Cross-cutting blockers from Workflowy consolidation** parked: 11+11 hex swatches, sidebar drag semantics, theme list, LinkedIn scope | Design system | AI picks arbitrary values; visual drift from spec | 🟡 Moderate |
 | 6 | **Tier-2 design tokens** under-specified for animation timings + motion | UI polish | Inconsistent transitions across components | 🟡 Moderate |
 | 7 | **49 broken relative links** in `spec/*.md` (mostly read-only 01–17) | Navigation | AI follows dead links; loses context | 🟡 Moderate |
-| 8 | **5 audit findings open** in `.lovable/pending-issues/01-spec-31-36-audit-findings.md` (numbering gap, stale dates, missing AC rows, SSOT header) | Spec hygiene | Hygiene scripts warn; consistency reports drift | 🟡 Moderate |
+| 8 | ~~**5 audit findings open** in `.lovable/pending-issues/01-spec-31-36-audit-findings.md`~~ | Spec hygiene | ~~Hygiene scripts warn~~ | ✅ **Resolved 2026-04-23** — moved to `.lovable/solved-issues/` |
 | 9 | **No CI gate** on `00-overview.md` / `99-consistency-report.md` presence or broken links | Spec hygiene | Drift returns silently | 🟢 Minor |
 | 10 | **Fresh AI may not see preferences** — `user-preferences` is a flat file outside `mem://` index | Onboarding | AI ignores Malaysia TZ, version bump rule, no-filler rule | 🟢 Minor |
 
