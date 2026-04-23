@@ -34,4 +34,4 @@ Stay within folders 18+ — folders 01–17 are READ-ONLY.
 Completed 2026-04-21. Bulk sed pass updated 38+ inbound link references across spec/ and .lovable/. Folder renames applied via code--rename. Note: count is 16 reports (not 17 from original audit) — the 17th was a counting error in the audit; all existing reports verified.
 
 ## See also
-`.lovable/pending-issues/01-spec-31-36-audit-findings.md`
+`.lovable/solved-issues/01-spec-31-36-audit-findings.md` (resolved 2026-04-23 with full Solution + Iteration Count + Learning + What NOT to Repeat)
