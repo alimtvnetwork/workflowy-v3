@@ -65,7 +65,7 @@ Specification for time-based views and quick-capture flow: Today view (date-scop
 
 ---
 
-## Cross-References
+## Related
 
 - Phase 6 [`06-sidebar/02-special-nodes.md`](../06-sidebar/02-special-nodes.md) — Today, Calendar, Inbox sidebar items
 - Phase 6 [`06-sidebar/03-drag-drop.md`](../06-sidebar/03-drag-drop.md) — Drop on Calendar icon

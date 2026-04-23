@@ -64,7 +64,7 @@ Specification for the left navigation sidebar — its offcanvas behavior, the 8 
 
 ---
 
-## Cross-References
+## Related
 
 - Phase 1 [`01-navbar/01-layout.md`](../01-navbar/01-layout.md) — ≡ icon location
 - Phase 1 [`01-navbar/04-keyboard-shortcuts.md`](../01-navbar/04-keyboard-shortcuts.md) — `⌘L` hotkey

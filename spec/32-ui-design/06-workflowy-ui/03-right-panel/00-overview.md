@@ -26,3 +26,11 @@ Single panel, two tabs (Handbook | Hotkeys), language picker (English-only at la
 - **Handbook:** entry template = heading + shortcut + ⚡ + screenshot slot + paragraph + grey slash-command callout.
 - **Hotkeys:** ~30 entries from img-65 verbatim (Cmd on Mac / Ctrl elsewhere).
 - **What's New:** dated entries, 👍/👎 per entry, Pro upsell banner, opened from app menu.
+
+---
+
+## Related
+
+- [`../00-overview.md`](../00-overview.md) — Workflowy UI parent
+- [`../01-navbar/04-keyboard-shortcuts.md`](../01-navbar/04-keyboard-shortcuts.md) — `⌘/` panel toggle
+- [`../08-app-shell/01-app-menu.md`](../08-app-shell/01-app-menu.md) — App ⋮ menu opens What's New

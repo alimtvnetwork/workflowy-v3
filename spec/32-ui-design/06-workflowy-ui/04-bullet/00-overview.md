@@ -67,7 +67,7 @@ Defines the visual anatomy of every node row (the universal "bullet"), the three
 
 ---
 
-## Cross-References
+## Related
 
 - Phase 1 [`01-navbar/03-routing.md`](../01-navbar/03-routing.md) — Zoom routing on dot click
 - Phase 5 [`05-editor/02-selection-toolbar.md`](../05-editor/02-selection-toolbar.md) — Selection toolbar

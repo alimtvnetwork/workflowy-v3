@@ -63,7 +63,7 @@ Negation: prefix any term with `-`. Combination: whitespace = AND. No `OR` opera
 
 ---
 
-## Cross-References
+## Related
 
 - [`../00-overview.md`](../00-overview.md) — Workflowy UI parent.
 - [`../01-navbar/01-layout.md`](../01-navbar/01-layout.md) § Right cluster — search-input entry point.

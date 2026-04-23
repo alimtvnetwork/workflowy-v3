@@ -7,3 +7,10 @@
 
 ## Scope (stub)
 Per-node inbound email addresses with allow-list. LinkedIn integration scope (read-only profile vs OAuth posting — **BLOCKER 4**) lives here as a sibling concern. Implementation post-v1.
+
+---
+
+## Related
+
+- [`../00-overview.md`](../00-overview.md) — Workflowy UI parent
+- [`../06-sidebar/02-special-nodes.md`](../06-sidebar/02-special-nodes.md) — Inbox special node (email destination)
