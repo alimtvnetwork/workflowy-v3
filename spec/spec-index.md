@@ -1264,7 +1264,7 @@
 | [`32-ui-design/06-workflowy-ui/09-integrations/02-linkedin-import.md`](./32-ui-design/06-workflowy-ui/09-integrations/02-linkedin-import.md) | 02 — LinkedIn Import (Read-Only) | 1.0.0 | — |
 | [`32-ui-design/06-workflowy-ui/09-integrations/03-allowlist-security.md`](./32-ui-design/06-workflowy-ui/09-integrations/03-allowlist-security.md) | 03 — Allow-List & Sender Security | 1.0.0 | — |
 | [`32-ui-design/06-workflowy-ui/09-integrations/97-acceptance-criteria.md`](./32-ui-design/06-workflowy-ui/09-integrations/97-acceptance-criteria.md) | 97 — Acceptance Criteria — Phase 9 Integrations | 1.0.0 | — |
-| [`32-ui-design/06-workflowy-ui/09-integrations/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/09-integrations/99-consistency-report.md) | Consistency Report — Integrations (Phase 9, Deferred) | 1.0.0 | Stub |
+| [`32-ui-design/06-workflowy-ui/09-integrations/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/09-integrations/99-consistency-report.md) | Consistency Report — Integrations (Phase 9) | 1.1.0 | — |
 | [`32-ui-design/06-workflowy-ui/10-mobile/00-overview.md`](./32-ui-design/06-workflowy-ui/10-mobile/00-overview.md) | Phase 10 — Mobile / PWA 🚫 DEFERRED | — | — |
 | [`32-ui-design/06-workflowy-ui/10-mobile/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/10-mobile/99-consistency-report.md) | Consistency Report — Mobile / PWA (Phase 10, Deferred) | 1.0.0 | Stub |
 | [`32-ui-design/06-workflowy-ui/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/99-consistency-report.md) | Consistency Report — WorkFlowy UI | 1.0.0 | — |
