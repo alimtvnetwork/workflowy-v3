@@ -1270,7 +1270,7 @@
 | [`32-ui-design/06-workflowy-ui/10-mobile/02-share-target.md`](./32-ui-design/06-workflowy-ui/10-mobile/02-share-target.md) | 02 — Share Target API | 1.0.0 | — |
 | [`32-ui-design/06-workflowy-ui/10-mobile/03-mobile-gestures.md`](./32-ui-design/06-workflowy-ui/10-mobile/03-mobile-gestures.md) | 03 — Mobile Gestures | 1.0.0 | — |
 | [`32-ui-design/06-workflowy-ui/10-mobile/97-acceptance-criteria.md`](./32-ui-design/06-workflowy-ui/10-mobile/97-acceptance-criteria.md) | 97 — Acceptance Criteria — Phase 10 Mobile / PWA | 1.0.0 | — |
-| [`32-ui-design/06-workflowy-ui/10-mobile/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/10-mobile/99-consistency-report.md) | Consistency Report — Mobile / PWA (Phase 10, Deferred) | 1.0.0 | Stub |
+| [`32-ui-design/06-workflowy-ui/10-mobile/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/10-mobile/99-consistency-report.md) | Consistency Report — Mobile / PWA (Phase 10) | 1.1.0 | — |
 | [`32-ui-design/06-workflowy-ui/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/99-consistency-report.md) | Consistency Report — WorkFlowy UI | 1.0.0 | — |
 | [`32-ui-design/97-acceptance-criteria.md`](./32-ui-design/97-acceptance-criteria.md) | Ui Design — Acceptance Criteria | 1.0.0 | Scaffold |
 | [`32-ui-design/99-consistency-report.md`](./32-ui-design/99-consistency-report.md) | Consistency Report — Ui Design | 1.3.0 | — |

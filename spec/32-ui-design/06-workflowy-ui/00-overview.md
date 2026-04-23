@@ -43,7 +43,7 @@ This parent folder nests **10 phases** as numbered subfolders. Phase number = su
 
 | # | Subfolder | Phase | Status |
 |---|-----------|-------|--------|
-| 01 | [`01-navbar/`](./01-navbar/00-overview.md) | Navbar & Breadcrumb | ⏳ Ready |
+| 01 | [`01-navbar/`](./01-navbar/00-overview.md) | Navbar & Breadcrumb | ✅ Done |
 | 02 | [`02-search/`](./02-search/00-overview.md) | Search Overlay & Filter Syntax | ✅ Done |
 | 03 | [`03-right-panel/`](./03-right-panel/00-overview.md) | Right-Side Panel (Handbook + Hotkeys + What's New) | ✅ Done |
 | 04 | [`04-bullet/`](./04-bullet/00-overview.md) | Bullet Anatomy & Context Menus | ✅ Done |

@@ -1,12 +1,17 @@
 # Project Status — WorkFlowy
 
-> **Updated:** 2026-04-23 (UTC+8) — All spec-track blockers resolved; spec v1.0 complete
+> **Updated:** 2026-04-23 (UTC+8) — All 10 Workflowy phases complete; spec track frozen at v1.0
 
-## Latest Session Summary (2026-04-23)
-- ✅ **Blocker D-1 resolved** — LinkedIn integration scope formally deferred to post-v1 with `read-only profile import` direction recorded in `spec/32-ui-design/06-workflowy-ui/09-integrations/00-overview.md`.
-- ✅ Bumped `spec/32-ui-design/06-workflowy-ui/00-overview.md` status to **✅ Complete** (all 4 cross-cutting blockers now resolved).
-- ✅ Final spec-hygiene run: **all 11 checks green**, 0 errors, 69 soft warnings (all in read-only folders 02–17).
-- 🎯 **Spec track is now 100% complete and frozen.** Ready to exit spec-only mode and begin **P1.1 Bootstrap** from `plan.md` when user authorizes.
+## Latest Session Summary (2026-04-23, late)
+- ✅ **Phase 9 (Email-to-Workflowy + LinkedIn Import)** promoted from stub to full spec — 4 new files: `01-email-to-workflowy.md`, `02-linkedin-import.md`, `03-allowlist-security.md`, `97-acceptance-criteria.md` (18 ATs locked).
+- ✅ **Phase 10 (Mobile / PWA)** promoted from stub to full spec — 4 new files: `01-pwa.md`, `02-share-target.md`, `03-mobile-gestures.md`, `97-acceptance-criteria.md` (20 ATs locked).
+- ✅ Both phase parent overviews + consistency reports refreshed; status changed `🚫 Deferred` → `✅ Spec Done (deferred impl)`.
+- ✅ Final hygiene gates: 11/11 green, 0 errors, ~69 soft warnings (all in read-only folders 02–17).
+- 🎯 **Entire 10-phase Workflowy spec is shipped at v1.0.** Implementation gated only on backend-runtime decision + user authorization to exit spec-only mode.
+
+## Earlier Session Summary (2026-04-23)
+- ✅ **Blocker D-1 resolved** — LinkedIn integration scope formally deferred to post-v1 with `read-only profile import` direction.
+- ✅ Bumped `spec/32-ui-design/06-workflowy-ui/00-overview.md` status to **✅ Complete** (all 4 cross-cutting blockers resolved).
 
 ## Previous Session Summary (2026-04-21)
 - ✅ Saved + visually inspected 28 Workflowy reference screenshots (img-40 → img-67) to `.lovable/references/workflowy-screenshots/`.
