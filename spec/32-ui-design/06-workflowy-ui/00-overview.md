@@ -2,7 +2,7 @@
 
 > **Version:** 1.0.0
 > **Created:** 2026-04-21 (UTC+8)
-> **Status:** Scaffolding (Phase 1 ready to author)
+> **Status:** ✅ Complete (all blockers resolved 2026-04-23)
 > **Parent:** [`../00-overview.md`](../00-overview.md)
 > **Source plan:** [`.lovable/plans/03-workflowy-spec-consolidation.md`](../../../.lovable/plans/03-workflowy-spec-consolidation.md)
 > **Reference assets:** `.lovable/references/workflowy-screenshots/` (28 screenshots img-40 → img-67)
