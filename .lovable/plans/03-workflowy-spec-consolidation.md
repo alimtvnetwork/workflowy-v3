@@ -1,6 +1,6 @@
 # Workflowy Spec Consolidation — 10-Phase Plan
 
-> **Created:** 2026-04-21 · **Updated:** 2026-04-21 · **Status:** Phases 1–2 done; Phase 3 ready
+> **Created:** 2026-04-21 · **Updated:** 2026-04-23 · **Status:** ✅ All 10 phases complete
 > **Scope rule:** Only edit folders `spec/18+`. Folders `01–17` are READ-ONLY.
 > **Reference assets:** `.lovable/references/workflowy-screenshots/` (28 screenshots: img-40 → img-67, indexed in `00-index.md`).
 > **D1 resolution (2026-04-21):** All 10 phases nest under `spec/32-ui-design/06-workflowy-ui/` as subfolders `01-navbar/` … `10-mobile/`. Phase number = subfolder number. Existing siblings `01-architecture/` … `05-quality/` are untouched.
@@ -31,8 +31,8 @@
 | 6 | Left Sidebar (Offcanvas) + Special Nodes | ✅ Done | `spec/32-ui-design/06-workflowy-ui/06-sidebar/` |
 | 7 | Calendar / Today + Quick Add | ✅ Done | `spec/32-ui-design/06-workflowy-ui/07-calendar/` |
 | 8 | Themes, Fonts, Settings, App Menu | ✅ Done | `spec/32-ui-design/06-workflowy-ui/08-app-shell/` |
-| 9 | Email-to-Workflowy | 🚫 Deferred | `spec/32-ui-design/06-workflowy-ui/09-integrations/` |
-| 10 | Mobile / PWA | 🚫 Deferred | `spec/32-ui-design/06-workflowy-ui/10-mobile/` |
+| 9 | Email-to-Workflowy + LinkedIn Import | ✅ Done (2026-04-23) | `spec/32-ui-design/06-workflowy-ui/09-integrations/` |
+| 10 | Mobile / PWA | ✅ Done (2026-04-23) | `spec/32-ui-design/06-workflowy-ui/10-mobile/` |
 
 ---
 
