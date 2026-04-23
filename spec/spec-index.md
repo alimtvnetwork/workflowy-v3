@@ -1206,7 +1206,7 @@
 | [`32-ui-design/05-quality/03-loading-empty-error-states.md`](./32-ui-design/05-quality/03-loading-empty-error-states.md) | Loading, Empty, and Error States | 1.1.0 | — |
 | [`32-ui-design/05-quality/97-acceptance-criteria.md`](./32-ui-design/05-quality/97-acceptance-criteria.md) | Quality — Acceptance Criteria | 1.0.1 | Scaffold |
 | [`32-ui-design/05-quality/99-consistency-report.md`](./32-ui-design/05-quality/99-consistency-report.md) | Consistency Report — 05-quality | 1.0.1 | — |
-| [`32-ui-design/06-workflowy-ui/00-overview.md`](./32-ui-design/06-workflowy-ui/00-overview.md) | Workflowy UI Spec — Parent Overview | 1.0.0 | Scaffolding |
+| [`32-ui-design/06-workflowy-ui/00-overview.md`](./32-ui-design/06-workflowy-ui/00-overview.md) | Workflowy UI Spec — Parent Overview | 1.0.0 | — |
 | [`32-ui-design/06-workflowy-ui/01-navbar/00-overview.md`](./32-ui-design/06-workflowy-ui/01-navbar/00-overview.md) | Phase 1 — Navbar & Breadcrumb | 1.1.0 | — |
 | [`32-ui-design/06-workflowy-ui/01-navbar/01-layout.md`](./32-ui-design/06-workflowy-ui/01-navbar/01-layout.md) | 1. Navbar Layout | — | — |
 | [`32-ui-design/06-workflowy-ui/01-navbar/02-breadcrumb.md`](./32-ui-design/06-workflowy-ui/01-navbar/02-breadcrumb.md) | 2. Breadcrumb | — | — |
