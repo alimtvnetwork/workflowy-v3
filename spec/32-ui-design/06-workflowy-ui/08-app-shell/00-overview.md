@@ -66,9 +66,29 @@ Specification for the application chrome: app menu (⋮ in navbar), theme system
 
 ---
 
+## Global Hotkey Registration
+
+The app shell owns **registration and lifecycle** of all app-wide keyboard shortcuts. Individual phases own the *behavior* of their respective hotkeys; the app shell owns the *binding registry*. The registry is the single place that prevents duplicate bindings, handles platform mapping (`⌘` on macOS, `Ctrl` elsewhere), and gates when shortcuts are active (e.g., disabled when a modal is open).
+
+| Hotkey | Behavior owner | Spec ref |
+|--------|----------------|----------|
+| `⌘K` / `Ctrl+K` — open Search Popover | Phase 2 | [`../02-search/08-keyboard-shortcuts.md`](../02-search/08-keyboard-shortcuts.md) |
+| `⌘⇧N` — Quick Add | Phase 7 | [`../07-calendar/`](../07-calendar/00-overview.md) |
+| `⌘⇧Y` — cycle theme | Phase 8 | [`02-themes.md`](./02-themes.md) |
+| `⌘,` — open Settings | Phase 8 | [`04-settings.md`](./04-settings.md) |
+| `⌘/` — open Handbook | Phase 8 / Phase 3 | [`01-app-menu.md`](./01-app-menu.md) |
+| `⌘Z` / `⌘⇧Z` — undo/redo | Editor (Phase 5) | [`../05-editor/`](../05-editor/00-overview.md) |
+| `⌘P` — print | Phase 8 (browser passthrough) | [`01-app-menu.md`](./01-app-menu.md) |
+| `⌘S` — force-flush save | Phase 8 | [`01-app-menu.md`](./01-app-menu.md) |
+
+Implementation note (deferred per spec-only mode): the registry is a single subscription point at the app-shell mount level; conflicts are detected at registration time and logged as parse errors.
+
+---
+
 ## Related
 
 - Phase 1 [`01-navbar/01-layout.md`](../01-navbar/01-layout.md) — ⋮ button location
+- Phase 2 [`02-search/08-keyboard-shortcuts.md`](../02-search/08-keyboard-shortcuts.md) — `⌘K` behavior contract (registered here)
 - Phase 5 [`05-editor/04-color-palettes.md`](../05-editor/04-color-palettes.md) — Theme adapts swatch rendering
 - Phase 5 [`05-editor/05-code-quote-blocks.md`](../05-editor/05-code-quote-blocks.md) — Geist Mono usage
 - Phase 6 [`06-sidebar/02-special-nodes.md`](../06-sidebar/02-special-nodes.md) — Mentions + Drafts visibility
