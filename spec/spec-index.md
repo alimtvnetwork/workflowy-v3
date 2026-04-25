@@ -682,7 +682,7 @@
 | [`06-seedable-config-architecture/02-features/03-rag-validation-tests/08-config-load-save-tests.md`](./06-seedable-config-architecture/02-features/03-rag-validation-tests/08-config-load-save-tests.md) | 08 — Config Load/Save Tests (AB-9308, AB-9309, AB-9310) | — | — |
 | [`06-seedable-config-architecture/02-features/03-rag-validation-tests/09-helpers-and-benchmarks.md`](./06-seedable-config-architecture/02-features/03-rag-validation-tests/09-helpers-and-benchmarks.md) | 09 — Test Helpers & Benchmarks | — | — |
 | [`06-seedable-config-architecture/02-features/03-rag-validation-tests/10-test-data-files.md`](./06-seedable-config-architecture/02-features/03-rag-validation-tests/10-test-data-files.md) | 10 — Test Data Files | — | — |
-| [`06-seedable-config-architecture/02-features/03-rag-validation-tests/97-acceptance-criteria.md`](./06-seedable-config-architecture/02-features/03-rag-validation-tests/97-acceptance-criteria.md) | Rag Validation Tests — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`06-seedable-config-architecture/02-features/03-rag-validation-tests/97-acceptance-criteria.md`](./06-seedable-config-architecture/02-features/03-rag-validation-tests/97-acceptance-criteria.md) | RAG Validation Tests — Acceptance Criteria | 1.0.0 | Curated |
 | [`06-seedable-config-architecture/02-features/04-rag-test-coverage-matrix.md`](./06-seedable-config-architecture/02-features/04-rag-test-coverage-matrix.md) | RAG Validation Test Coverage Matrix | 3.1.0 | Active |
 | [`06-seedable-config-architecture/02-features/05-validation-data-seeding/00-overview.md`](./06-seedable-config-architecture/02-features/05-validation-data-seeding/00-overview.md) | Validation Data Seeding Pattern | 3.1.0 | Active |
 | [`06-seedable-config-architecture/02-features/05-validation-data-seeding/01-anti-pattern.md`](./06-seedable-config-architecture/02-features/05-validation-data-seeding/01-anti-pattern.md) | 1. Anti-Pattern: Hardcoded Arrays ❌ | — | — |
@@ -692,7 +692,7 @@
 | [`06-seedable-config-architecture/02-features/05-validation-data-seeding/05-validation-data-service.md`](./06-seedable-config-architecture/02-features/05-validation-data-seeding/05-validation-data-service.md) | 5. Step 4 + 5 — ValidationDataService and Validator Usage | — | — |
 | [`06-seedable-config-architecture/02-features/05-validation-data-seeding/06-categories-and-versioning.md`](./06-seedable-config-architecture/02-features/05-validation-data-seeding/06-categories-and-versioning.md) | 6. Categories Reference + Version Seeding Flow | — | — |
 | [`06-seedable-config-architecture/02-features/05-validation-data-seeding/07-api-and-checklist.md`](./06-seedable-config-architecture/02-features/05-validation-data-seeding/07-api-and-checklist.md) | 7. Runtime API + Per-Feature Checklist | — | — |
-| [`06-seedable-config-architecture/02-features/05-validation-data-seeding/97-acceptance-criteria.md`](./06-seedable-config-architecture/02-features/05-validation-data-seeding/97-acceptance-criteria.md) | Validation Data Seeding — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`06-seedable-config-architecture/02-features/05-validation-data-seeding/97-acceptance-criteria.md`](./06-seedable-config-architecture/02-features/05-validation-data-seeding/97-acceptance-criteria.md) | Validation Data Seeding — Acceptance Criteria | 1.0.0 | Curated |
 | [`06-seedable-config-architecture/02-features/99-consistency-report.md`](./06-seedable-config-architecture/02-features/99-consistency-report.md) | Consistency Report: Seedable Config Features | 3.1.0 | — |
 | [`06-seedable-config-architecture/97-changelog.md`](./06-seedable-config-architecture/97-changelog.md) | Seedable Config Architecture — Changelog | 3.1.0 | — |
 | [`06-seedable-config-architecture/98-acceptance-criteria.md`](./06-seedable-config-architecture/98-acceptance-criteria.md) | Seedable Config Architecture: Acceptance Criteria | 3.1.0 | Active |
@@ -746,7 +746,7 @@
 | [`08-docs-viewer-ui/02-features/07-visual-rendering-guide/11-welcome-and-landing.md`](./08-docs-viewer-ui/02-features/07-visual-rendering-guide/11-welcome-and-landing.md) | Welcome Screen & Landing Page | 3.2.0 | — |
 | [`08-docs-viewer-ui/02-features/07-visual-rendering-guide/12-sidebar-and-search.md`](./08-docs-viewer-ui/02-features/07-visual-rendering-guide/12-sidebar-and-search.md) | Sidebar Navigation & Search | 3.2.0 | — |
 | [`08-docs-viewer-ui/02-features/07-visual-rendering-guide/13-checklist-and-references.md`](./08-docs-viewer-ui/02-features/07-visual-rendering-guide/13-checklist-and-references.md) | Implementation Checklist & Cross-References | 3.2.0 | — |
-| [`08-docs-viewer-ui/02-features/07-visual-rendering-guide/97-acceptance-criteria.md`](./08-docs-viewer-ui/02-features/07-visual-rendering-guide/97-acceptance-criteria.md) | Visual Rendering Guide — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`08-docs-viewer-ui/02-features/07-visual-rendering-guide/97-acceptance-criteria.md`](./08-docs-viewer-ui/02-features/07-visual-rendering-guide/97-acceptance-criteria.md) | Visual Rendering Guide — Acceptance Criteria | 1.0.0 | Curated |
 | [`08-docs-viewer-ui/02-features/08-shortcuts-overlay.md`](./08-docs-viewer-ui/02-features/08-shortcuts-overlay.md) | Feature: Shortcuts Help Overlay | 3.1.0 | — |
 | [`08-docs-viewer-ui/02-features/97-acceptance-criteria.md`](./08-docs-viewer-ui/02-features/97-acceptance-criteria.md) | Features — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`08-docs-viewer-ui/02-features/99-consistency-report.md`](./08-docs-viewer-ui/02-features/99-consistency-report.md) | Consistency Report: Docs Viewer UI Features | 3.1.0 | — |
@@ -785,7 +785,7 @@
 | [`10-powershell-integration/02-script-reference/05-timing-and-exit-codes.md`](./10-powershell-integration/02-script-reference/05-timing-and-exit-codes.md) | 5. Timing Output & Exit Codes | — | — |
 | [`10-powershell-integration/02-script-reference/06-pnpm-store-commands.md`](./10-powershell-integration/02-script-reference/06-pnpm-store-commands.md) | 6. pnpm Store Commands | — | — |
 | [`10-powershell-integration/02-script-reference/07-wp-plugins-config.md`](./10-powershell-integration/02-script-reference/07-wp-plugins-config.md) | 7. wpPlugins Configuration | — | — |
-| [`10-powershell-integration/02-script-reference/97-acceptance-criteria.md`](./10-powershell-integration/02-script-reference/97-acceptance-criteria.md) | Script Reference — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`10-powershell-integration/02-script-reference/97-acceptance-criteria.md`](./10-powershell-integration/02-script-reference/97-acceptance-criteria.md) | Script Reference — Acceptance Criteria | 1.0.0 | Curated |
 | [`10-powershell-integration/03-integration-guide.md`](./10-powershell-integration/03-integration-guide.md) | PowerShell Integration Guide | — | Active |
 | [`10-powershell-integration/03a-cicd-and-handoff.md`](./10-powershell-integration/03a-cicd-and-handoff.md) | PowerShell Integration — CI/CD & AI Handoff | — | — |
 | [`10-powershell-integration/04-error-codes.md`](./10-powershell-integration/04-error-codes.md) | PowerShell Runner Error Codes | 1.1.0 | Active |
@@ -1174,7 +1174,7 @@
 | [`16-generic-cli/20-terminal-output-design/10-spacing-and-indentation.md`](./16-generic-cli/20-terminal-output-design/10-spacing-and-indentation.md) | Spacing and Indentation | — | — |
 | [`16-generic-cli/20-terminal-output-design/11-full-examples.md`](./16-generic-cli/20-terminal-output-design/11-full-examples.md) | Full Examples | — | — |
 | [`16-generic-cli/20-terminal-output-design/12-implementation-checklist.md`](./16-generic-cli/20-terminal-output-design/12-implementation-checklist.md) | Implementation Checklist | — | — |
-| [`16-generic-cli/20-terminal-output-design/97-acceptance-criteria.md`](./16-generic-cli/20-terminal-output-design/97-acceptance-criteria.md) | Terminal Output Design — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`16-generic-cli/20-terminal-output-design/97-acceptance-criteria.md`](./16-generic-cli/20-terminal-output-design/97-acceptance-criteria.md) | Terminal Output Design — Acceptance Criteria | 1.0.0 | Curated |
 | [`16-generic-cli/97-acceptance-criteria.md`](./16-generic-cli/97-acceptance-criteria.md) | Generic Cli — Acceptance Criteria | 1.0.0 | Scaffold |
 | [`16-generic-cli/99-consistency-report.md`](./16-generic-cli/99-consistency-report.md) | Consistency Report — Generic Cli | 1.0.0 | — |
 
