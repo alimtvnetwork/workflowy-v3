@@ -972,7 +972,7 @@
 | [`15-wp-plugin-how-to/08-wordpress-integration-patterns/08-external-http-requests.md`](./15-wp-plugin-how-to/08-wordpress-integration-patterns/08-external-http-requests.md) | 8.7 HTTP Requests to External APIs | — | — |
 | [`15-wp-plugin-how-to/08-wordpress-integration-patterns/09-plugin-php-integration.md`](./15-wp-plugin-how-to/08-wordpress-integration-patterns/09-plugin-php-integration.md) | 8.8 Integration into Plugin.php | — | — |
 | [`15-wp-plugin-how-to/08-wordpress-integration-patterns/10-enum-inventory.md`](./15-wp-plugin-how-to/08-wordpress-integration-patterns/10-enum-inventory.md) | 8.9 Complete Enum Inventory for a Full-Featured Plugin | — | — |
-| [`15-wp-plugin-how-to/08-wordpress-integration-patterns/97-acceptance-criteria.md`](./15-wp-plugin-how-to/08-wordpress-integration-patterns/97-acceptance-criteria.md) | Wordpress Integration Patterns — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`15-wp-plugin-how-to/08-wordpress-integration-patterns/97-acceptance-criteria.md`](./15-wp-plugin-how-to/08-wordpress-integration-patterns/97-acceptance-criteria.md) | WordPress Integration Patterns — Acceptance Criteria | 1.0.0 | Curated |
 | [`15-wp-plugin-how-to/09-testing-patterns/00-overview.md`](./15-wp-plugin-how-to/09-testing-patterns/00-overview.md) | Phase 9 — Testing Patterns | 2.0.0 | Production |
 | [`15-wp-plugin-how-to/09-testing-patterns/01-philosophy.md`](./15-wp-plugin-how-to/09-testing-patterns/01-philosophy.md) | 9.1 Testing Philosophy | — | — |
 | [`15-wp-plugin-how-to/09-testing-patterns/02-directory-structure.md`](./15-wp-plugin-how-to/09-testing-patterns/02-directory-structure.md) | 9.2 Test Directory Structure | — | — |
@@ -1040,7 +1040,7 @@
 | [`15-wp-plugin-how-to/13-admin-ui-patterns/09-stats-and-progress.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/09-stats-and-progress.md) | Stats Bar & Progress Panel | — | — |
 | [`15-wp-plugin-how-to/13-admin-ui-patterns/10-forms-tabs-pagination.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/10-forms-tabs-pagination.md) | Forms, Tabs & Pagination | — | — |
 | [`15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md) | Misc Components, Composition, Accessibility & Anti-Patterns | — | — |
-| [`15-wp-plugin-how-to/13-admin-ui-patterns/97-acceptance-criteria.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/97-acceptance-criteria.md) | Admin Ui Patterns — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`15-wp-plugin-how-to/13-admin-ui-patterns/97-acceptance-criteria.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/97-acceptance-criteria.md) | Admin UI Patterns — Acceptance Criteria | 1.0.0 | Curated |
 | [`15-wp-plugin-how-to/14-rest-api-conventions/00-overview.md`](./15-wp-plugin-how-to/14-rest-api-conventions/00-overview.md) | Phase 14 — REST API Conventions (Overview) | 2.0.0 | Active |
 | [`15-wp-plugin-how-to/14-rest-api-conventions/01-namespace.md`](./15-wp-plugin-how-to/14-rest-api-conventions/01-namespace.md) | 14.1 Namespace Convention | — | — |
 | [`15-wp-plugin-how-to/14-rest-api-conventions/02-route-naming.md`](./15-wp-plugin-how-to/14-rest-api-conventions/02-route-naming.md) | 14.2 Route Naming Conventions | — | — |
@@ -1088,7 +1088,7 @@
 | [`15-wp-plugin-how-to/16-error-handling-extraction/12-admin-errors-template.md`](./15-wp-plugin-how-to/16-error-handling-extraction/12-admin-errors-template.md) | 16.12 Admin Errors Page — Complete Template | — | — |
 | [`15-wp-plugin-how-to/16-error-handling-extraction/13-error-sessions-table.md`](./15-wp-plugin-how-to/16-error-handling-extraction/13-error-sessions-table.md) | 16.13 ErrorSessions Table — SQLite Migration | — | — |
 | [`15-wp-plugin-how-to/16-error-handling-extraction/14-checklist.md`](./15-wp-plugin-how-to/16-error-handling-extraction/14-checklist.md) | 16.14 Checklist | — | — |
-| [`15-wp-plugin-how-to/16-error-handling-extraction/97-acceptance-criteria.md`](./15-wp-plugin-how-to/16-error-handling-extraction/97-acceptance-criteria.md) | Error Handling Extraction — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`15-wp-plugin-how-to/16-error-handling-extraction/97-acceptance-criteria.md`](./15-wp-plugin-how-to/16-error-handling-extraction/97-acceptance-criteria.md) | Error Handling Extraction — Acceptance Criteria | 1.0.0 | Curated |
 | [`15-wp-plugin-how-to/17-data-file-patterns.md`](./15-wp-plugin-how-to/17-data-file-patterns.md) | Phase 17 — Data File Patterns | — | — |
 | [`15-wp-plugin-how-to/17a-data-file-validation-and-checklist.md`](./15-wp-plugin-how-to/17a-data-file-validation-and-checklist.md) | Data File Patterns — Adding Files, Validation & Checklist | — | — |
 | [`15-wp-plugin-how-to/18-frontend-javascript-patterns.md`](./15-wp-plugin-how-to/18-frontend-javascript-patterns.md) | Phase 18 — Frontend JavaScript Patterns | — | — |
@@ -1103,7 +1103,7 @@
 | [`15-wp-plugin-how-to/19-micro-orm-and-root-db/07-key-patterns-summary.md`](./15-wp-plugin-how-to/19-micro-orm-and-root-db/07-key-patterns-summary.md) | 19.8 Key Patterns Summary | — | — |
 | [`15-wp-plugin-how-to/19-micro-orm-and-root-db/08-typed-query.md`](./15-wp-plugin-how-to/19-micro-orm-and-root-db/08-typed-query.md) | 19.9 TypedQuery — Go-Style Typed Database Results | — | — |
 | [`15-wp-plugin-how-to/19-micro-orm-and-root-db/09-file-cache.md`](./15-wp-plugin-how-to/19-micro-orm-and-root-db/09-file-cache.md) | 19.10 FileCache — SQLite-Backed File Hash Cache | — | — |
-| [`15-wp-plugin-how-to/19-micro-orm-and-root-db/97-acceptance-criteria.md`](./15-wp-plugin-how-to/19-micro-orm-and-root-db/97-acceptance-criteria.md) | Micro Orm And Root Db — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`15-wp-plugin-how-to/19-micro-orm-and-root-db/97-acceptance-criteria.md`](./15-wp-plugin-how-to/19-micro-orm-and-root-db/97-acceptance-criteria.md) | Micro ORM And Root DB — Acceptance Criteria | 1.0.0 | Curated |
 | [`15-wp-plugin-how-to/20-end-to-end-walkthrough/00-overview.md`](./15-wp-plugin-how-to/20-end-to-end-walkthrough/00-overview.md) | Phase 20 — End-to-End Walkthrough: Building "Task Tracker" from Scratch | 2.0.0 | Production |
 | [`15-wp-plugin-how-to/20-end-to-end-walkthrough/01-what-were-building.md`](./15-wp-plugin-how-to/20-end-to-end-walkthrough/01-what-were-building.md) | 20.1 What We're Building | — | — |
 | [`15-wp-plugin-how-to/20-end-to-end-walkthrough/02-folder-structure.md`](./15-wp-plugin-how-to/20-end-to-end-walkthrough/02-folder-structure.md) | 20.2 Step 1 — Folder Structure | — | — |
@@ -1122,7 +1122,7 @@
 | [`15-wp-plugin-how-to/20-end-to-end-walkthrough/15-uninstall-cleanup.md`](./15-wp-plugin-how-to/20-end-to-end-walkthrough/15-uninstall-cleanup.md) | 20.15 Step 14 — Uninstall Cleanup | — | — |
 | [`15-wp-plugin-how-to/20-end-to-end-walkthrough/16-phase-coverage-matrix.md`](./15-wp-plugin-how-to/20-end-to-end-walkthrough/16-phase-coverage-matrix.md) | 20.16 Phase Coverage Matrix | — | — |
 | [`15-wp-plugin-how-to/20-end-to-end-walkthrough/17-final-checklist.md`](./15-wp-plugin-how-to/20-end-to-end-walkthrough/17-final-checklist.md) | 20.17 Final Checklist — "Is My Plugin Gold Standard?" | — | — |
-| [`15-wp-plugin-how-to/20-end-to-end-walkthrough/97-acceptance-criteria.md`](./15-wp-plugin-how-to/20-end-to-end-walkthrough/97-acceptance-criteria.md) | End To End Walkthrough — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`15-wp-plugin-how-to/20-end-to-end-walkthrough/97-acceptance-criteria.md`](./15-wp-plugin-how-to/20-end-to-end-walkthrough/97-acceptance-criteria.md) | End-To-End Walkthrough — Acceptance Criteria | 1.0.0 | Curated |
 | [`15-wp-plugin-how-to/21-ping-endpoint.md`](./15-wp-plugin-how-to/21-ping-endpoint.md) | Phase 21 — Ping Endpoint | 1.0.0 | — |
 | [`15-wp-plugin-how-to/22-quick-start.md`](./15-wp-plugin-how-to/22-quick-start.md) | Phase 00 — Quick Start Guide | — | — |
 | [`15-wp-plugin-how-to/97-acceptance-criteria.md`](./15-wp-plugin-how-to/97-acceptance-criteria.md) | Wp Plugin How To — Acceptance Criteria | 1.0.0 | Scaffold |
