@@ -83,6 +83,8 @@ The app shell owns **registration and lifecycle** of all app-wide keyboard short
 
 Implementation note (deferred per spec-only mode): the registry is a single subscription point at the app-shell mount level; conflicts are detected at registration time and logged as parse errors.
 
+> **User-facing reference:** the canonical hotkey table shown to end-users lives in Phase 3 [`../03-right-panel/02-hotkeys.md`](../03-right-panel/02-hotkeys.md). The registry above is the *implementation contract*; the Phase 3 table is the *user documentation*. Both must stay in sync.
+
 ---
 
 ## Related
