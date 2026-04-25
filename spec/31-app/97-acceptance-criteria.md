@@ -72,7 +72,7 @@ Testable acceptance criteria for the App domain. Each criterion is independently
 | ID | Criterion | Source |
 |----|-----------|--------|
 | `AT-APP-21` | Roles are stored in a **separate** `user_roles` table — never on the user/profile row. | `01-features/15-roles-and-permissions.md` |
-| `AT-APP-22` | Authorization checks call a `SECURITY DEFINER` function `has_role(_user_id, _role)`; RLS policies must not query roles directly. | `01-features/15-roles-and-permissions.md` |
+| `AT-APP-22` | Authorization checks call a single PHP helper `Auth::hasRole($userId, $role)` (server-side); SQLite queries scope rows by `OwnerId`/share grants in WHERE clauses. No Postgres-style RLS, no `SECURITY DEFINER` — those are not portable to SQLite under WordPress. | `01-features/15-roles-and-permissions.md` |
 | `AT-APP-23` | Client-side `localStorage`/`sessionStorage` is **never** trusted for admin checks. | `01-features/15-roles-and-permissions.md` |
 
 ### Mirrors & sharing (Phase 2 contracts already locked)
