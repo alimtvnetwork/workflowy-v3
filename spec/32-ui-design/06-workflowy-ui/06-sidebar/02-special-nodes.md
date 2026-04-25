@@ -39,7 +39,8 @@
 - **Drop target:** YES — see `03-drag-drop.md`.
 
 ### 4. Drafts
-- Holds nodes the user explicitly marks as drafts (UI: `⌘⇧S` to send to Drafts).
+- Holds nodes the user explicitly marks as drafts.
+- **How to mark as draft:** right-click node → "Send to Drafts" (no global hotkey — `⌘⇧S` is reserved for Phase 2 Saved Searches when the Search Popover is open).
 - Counter badge = total draft count.
 - Hidden when "Fractal Conversations" setting is OFF (Phase 8).
 
@@ -123,3 +124,13 @@ All 8 items can be drop targets EXCEPT "+ New node" (it's an action, not a desti
 | Drafts | "No drafts yet." |
 | Mentions | "No mentions. You're all caught up." |
 | Trash | "Trash is empty." |
+
+---
+
+## Cross-References
+
+- Phase 8 [`08-app-shell/04-settings.md`](../08-app-shell/04-settings.md) § Fractal Conversations Toggle Detail — owns the toggle that controls Drafts + Mentions visibility
+- Phase 7 [`07-calendar/02-quick-add-modal.md`](../07-calendar/02-quick-add-modal.md) — Inbox is the default Quick Add target
+- Phase 7 [`07-calendar/01-today-view.md`](../07-calendar/01-today-view.md) — Today special node routes here
+- `03-drag-drop.md` — Drop semantics for each special node (move vs ⌥-mirror)
+- `mem://features/trash-logic` — 30-day retention rule for Trash
