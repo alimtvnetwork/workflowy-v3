@@ -1290,7 +1290,7 @@
 | [`32-ui-design/06-workflowy-ui/01-navbar/02-breadcrumb.md`](./32-ui-design/06-workflowy-ui/01-navbar/02-breadcrumb.md) | 2. Breadcrumb | — | — |
 | [`32-ui-design/06-workflowy-ui/01-navbar/03-routing.md`](./32-ui-design/06-workflowy-ui/01-navbar/03-routing.md) | 3. Routing & Focus | — | — |
 | [`32-ui-design/06-workflowy-ui/01-navbar/04-keyboard-shortcuts.md`](./32-ui-design/06-workflowy-ui/01-navbar/04-keyboard-shortcuts.md) | 4. Keyboard Shortcuts (Navbar Scope) | — | — |
-| [`32-ui-design/06-workflowy-ui/01-navbar/97-acceptance-criteria.md`](./32-ui-design/06-workflowy-ui/01-navbar/97-acceptance-criteria.md) | Phase 1 — Navbar Acceptance Criteria | 1.0.0 | — |
+| [`32-ui-design/06-workflowy-ui/01-navbar/97-acceptance-criteria.md`](./32-ui-design/06-workflowy-ui/01-navbar/97-acceptance-criteria.md) | Phase 1 — Navbar Acceptance Criteria | 2.0.0 | Curated |
 | [`32-ui-design/06-workflowy-ui/01-navbar/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/01-navbar/99-consistency-report.md) | Consistency Report — Navbar (Phase 1) | 1.1.0 | — |
 | [`32-ui-design/06-workflowy-ui/02-search/_archive-v1/01-overlay.md`](./32-ui-design/06-workflowy-ui/02-search/_archive-v1/01-overlay.md) | Phase 2 — Search Overlay (Layout & Interaction) | 1.0.0 | — |
 | [`32-ui-design/06-workflowy-ui/02-search/_archive-v1/02-filter-syntax.md`](./32-ui-design/06-workflowy-ui/02-search/_archive-v1/02-filter-syntax.md) | Phase 2 — Filter Syntax (Query Grammar) | 1.0.0 | — |
@@ -1323,7 +1323,7 @@
 | [`32-ui-design/06-workflowy-ui/04-bullet/02-three-dot-menu.md`](./32-ui-design/06-workflowy-ui/04-bullet/02-three-dot-menu.md) | Per-Row Three-Dot Menu | — | — |
 | [`32-ui-design/06-workflowy-ui/04-bullet/03-focused-item-menu.md`](./32-ui-design/06-workflowy-ui/04-bullet/03-focused-item-menu.md) | Focused-Item Three-Dot Menu | — | — |
 | [`32-ui-design/06-workflowy-ui/04-bullet/04-comment-icon.md`](./32-ui-design/06-workflowy-ui/04-bullet/04-comment-icon.md) | Comment Icon & Thread Surface | — | — |
-| [`32-ui-design/06-workflowy-ui/04-bullet/97-acceptance-criteria.md`](./32-ui-design/06-workflowy-ui/04-bullet/97-acceptance-criteria.md) | Phase 4 — Bullet Anatomy Acceptance Criteria | 1.0.0 | — |
+| [`32-ui-design/06-workflowy-ui/04-bullet/97-acceptance-criteria.md`](./32-ui-design/06-workflowy-ui/04-bullet/97-acceptance-criteria.md) | Phase 4 — Bullet Anatomy Acceptance Criteria | 2.0.0 | Curated |
 | [`32-ui-design/06-workflowy-ui/04-bullet/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/04-bullet/99-consistency-report.md) | Consistency Report — Bullet (Phase 4) | 1.1.0 | — |
 | [`32-ui-design/06-workflowy-ui/05-editor/00-overview.md`](./32-ui-design/06-workflowy-ui/05-editor/00-overview.md) | Phase 5 — Editor | 1.0.0 | — |
 | [`32-ui-design/06-workflowy-ui/05-editor/01-slash-menu.md`](./32-ui-design/06-workflowy-ui/05-editor/01-slash-menu.md) | Slash Command Menu | — | — |
@@ -1332,13 +1332,13 @@
 | [`32-ui-design/06-workflowy-ui/05-editor/04-color-palettes.md`](./32-ui-design/06-workflowy-ui/05-editor/04-color-palettes.md) | Color Palettes (B1 RESOLVED) | — | — |
 | [`32-ui-design/06-workflowy-ui/05-editor/05-code-quote-blocks.md`](./32-ui-design/06-workflowy-ui/05-editor/05-code-quote-blocks.md) | Code & Quote Blocks | — | — |
 | [`32-ui-design/06-workflowy-ui/05-editor/06-markdown-shortcuts.md`](./32-ui-design/06-workflowy-ui/05-editor/06-markdown-shortcuts.md) | Markdown Shortcuts | — | — |
-| [`32-ui-design/06-workflowy-ui/05-editor/97-acceptance-criteria.md`](./32-ui-design/06-workflowy-ui/05-editor/97-acceptance-criteria.md) | Phase 5 — Editor Acceptance Criteria | 1.0.0 | — |
+| [`32-ui-design/06-workflowy-ui/05-editor/97-acceptance-criteria.md`](./32-ui-design/06-workflowy-ui/05-editor/97-acceptance-criteria.md) | Phase 5 — Editor Acceptance Criteria | 2.0.0 | Curated |
 | [`32-ui-design/06-workflowy-ui/05-editor/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/05-editor/99-consistency-report.md) | Consistency Report — Editor (Phase 5) | 1.1.0 | — |
 | [`32-ui-design/06-workflowy-ui/06-sidebar/00-overview.md`](./32-ui-design/06-workflowy-ui/06-sidebar/00-overview.md) | Phase 6 — Left Sidebar Offcanvas + Special Nodes | 1.0.0 | — |
 | [`32-ui-design/06-workflowy-ui/06-sidebar/01-offcanvas.md`](./32-ui-design/06-workflowy-ui/06-sidebar/01-offcanvas.md) | Sidebar Offcanvas Behavior | — | — |
 | [`32-ui-design/06-workflowy-ui/06-sidebar/02-special-nodes.md`](./32-ui-design/06-workflowy-ui/06-sidebar/02-special-nodes.md) | Special Nodes (Sidebar Items) | — | — |
 | [`32-ui-design/06-workflowy-ui/06-sidebar/03-drag-drop.md`](./32-ui-design/06-workflowy-ui/06-sidebar/03-drag-drop.md) | Drag-Drop Semantics (B2 RESOLVED) | — | — |
-| [`32-ui-design/06-workflowy-ui/06-sidebar/97-acceptance-criteria.md`](./32-ui-design/06-workflowy-ui/06-sidebar/97-acceptance-criteria.md) | Phase 6 — Left Sidebar Acceptance Criteria | 1.0.0 | — |
+| [`32-ui-design/06-workflowy-ui/06-sidebar/97-acceptance-criteria.md`](./32-ui-design/06-workflowy-ui/06-sidebar/97-acceptance-criteria.md) | Phase 6 — Left Sidebar Acceptance Criteria | 2.0.0 | Curated |
 | [`32-ui-design/06-workflowy-ui/06-sidebar/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/06-sidebar/99-consistency-report.md) | Consistency Report — Sidebar (Phase 6) | 1.1.0 | — |
 | [`32-ui-design/06-workflowy-ui/07-calendar/00-overview.md`](./32-ui-design/06-workflowy-ui/07-calendar/00-overview.md) | Phase 7 — Calendar / Today + Quick Add | 1.0.0 | — |
 | [`32-ui-design/06-workflowy-ui/07-calendar/01-today-view.md`](./32-ui-design/06-workflowy-ui/07-calendar/01-today-view.md) | Today View | — | — |
@@ -1351,7 +1351,7 @@
 | [`32-ui-design/06-workflowy-ui/08-app-shell/02-themes.md`](./32-ui-design/06-workflowy-ui/08-app-shell/02-themes.md) | Themes (B3 RESOLVED) | — | — |
 | [`32-ui-design/06-workflowy-ui/08-app-shell/03-fonts.md`](./32-ui-design/06-workflowy-ui/08-app-shell/03-fonts.md) | Fonts | — | — |
 | [`32-ui-design/06-workflowy-ui/08-app-shell/04-settings.md`](./32-ui-design/06-workflowy-ui/08-app-shell/04-settings.md) | Settings Panel | — | — |
-| [`32-ui-design/06-workflowy-ui/08-app-shell/97-acceptance-criteria.md`](./32-ui-design/06-workflowy-ui/08-app-shell/97-acceptance-criteria.md) | Phase 8 — App Shell Acceptance Criteria | 1.0.0 | — |
+| [`32-ui-design/06-workflowy-ui/08-app-shell/97-acceptance-criteria.md`](./32-ui-design/06-workflowy-ui/08-app-shell/97-acceptance-criteria.md) | Phase 8 — App Shell Acceptance Criteria | 2.0.0 | Curated |
 | [`32-ui-design/06-workflowy-ui/08-app-shell/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/08-app-shell/99-consistency-report.md) | Consistency Report — App Shell (Phase 8) | 1.1.0 | — |
 | [`32-ui-design/06-workflowy-ui/09-integrations/00-overview.md`](./32-ui-design/06-workflowy-ui/09-integrations/00-overview.md) | Phase 9 — Email-to-WorkFlowy & Integrations 🚫 DEFERRED | — | — |
 | [`32-ui-design/06-workflowy-ui/09-integrations/01-email-to-workflowy.md`](./32-ui-design/06-workflowy-ui/09-integrations/01-email-to-workflowy.md) | 01 — Email-to-WorkFlowy | 1.0.0 | — |
