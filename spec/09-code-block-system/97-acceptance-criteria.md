@@ -1,15 +1,16 @@
 # Code Block System — Acceptance Criteria
 
-> **Version:** 1.0.0
+> **Version:** 1.1.0
 > **Updated:** 2026-04-25 (UTC+8)
-> **Status:** Curated — 18 testable criteria
+> **Status:** Curated — 18 system criteria + 8 highlighter-pin criteria
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
 ---
 
 ## ID Range
 
-`AT-CODEBLOCKSYSTEM-01` … `AT-CODEBLOCKSYSTEM-18`
+- `AT-CODEBLOCKSYSTEM-01` … `AT-CODEBLOCKSYSTEM-18` — system behaviour
+- `AT-HLPIN-01` … `AT-HLPIN-08` — highlighter dependency pin (closes F-04)
 
 ---
 
@@ -78,7 +79,18 @@
 |----|-----------|--------|
 | AT-CODEBLOCKSYSTEM-18 | Line-pin / drag-select / keyboard-nav in the selection bar MUST be implemented as a single state machine (NOT three independent handlers); fragmented handlers are forbidden because they create unreachable states. | [`10-selection-bar.md`](./10-selection-bar.md) |
 
----
+### Highlighter dependency pin (file 11) — closes F-04
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| AT-HLPIN-01 | `highlight.js` MUST appear in `package.json` `dependencies`; absence fails review. | [`11-highlighter-dependency-pin.md`](./11-highlighter-dependency-pin.md) |
+| AT-HLPIN-02 | Version range MUST start with `^11.`; no other major is permitted without a spec PR. | [`11-highlighter-dependency-pin.md`](./11-highlighter-dependency-pin.md) |
+| AT-HLPIN-03 | Forbidden alternates (`shiki`, `prismjs`, `react-syntax-highlighter`, `@shikijs/core`) MUST be absent from dependencies; presence is a Code-Red bundle-bloat regression. | [`11-highlighter-dependency-pin.md`](./11-highlighter-dependency-pin.md) |
+| AT-HLPIN-04 | No vendor `highlight.js/styles/*.css` import is allowed; project HSL tokens are the sole theme source. | [`11-highlighter-dependency-pin.md`](./11-highlighter-dependency-pin.md), [`05-styling.md`](./05-styling.md) |
+| AT-HLPIN-05 | Code MUST import from `highlight.js/lib/core` (NOT the full bundle `highlight.js`); full-bundle imports inflate the build by ~5×. | [`11-highlighter-dependency-pin.md`](./11-highlighter-dependency-pin.md) |
+| AT-HLPIN-06 | Exactly 11 `hljs.registerLanguage(...)` calls MUST exist (matching the frozen language set); drift is a Code-Red consistency bug per AT-CODEBLOCKSYSTEM-13. | [`11-highlighter-dependency-pin.md`](./11-highlighter-dependency-pin.md) |
+| AT-HLPIN-07 | The release workflow MUST contain a "Verify highlighter bundle budget" step that fails when `dist/assets/highlighter-*.js` exceeds 100 KB minified. | [`11-highlighter-dependency-pin.md`](./11-highlighter-dependency-pin.md), [`../13-cicd-pipeline-workflows/18-wp-plugin-deploy/02-github-actions-workflow.md`](../13-cicd-pipeline-workflows/18-wp-plugin-deploy/02-github-actions-workflow.md) |
+| AT-HLPIN-08 | No CDN-hosted highlight.js may be loaded (`cdn.jsdelivr`, `unpkg`, `cdnjs`); breaks offline use and CSP. | [`11-highlighter-dependency-pin.md`](./11-highlighter-dependency-pin.md) |
 
 ## Verification
 

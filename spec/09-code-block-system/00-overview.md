@@ -22,6 +22,7 @@
 | 8 | [`08-checklist-blocks.md`](./08-checklist-blocks.md) | Checklist Blocks — Code Block System | 197 |
 | 9 | [`09-tree-structure-rendering.md`](./09-tree-structure-rendering.md) | 09 — Tree-Structure Rendering | 270 |
 | 10 | [`10-selection-bar.md`](./10-selection-bar.md) | Selection Bar & Line Interaction — Code Block System | 289 |
+| 11 | [`11-highlighter-dependency-pin.md`](./11-highlighter-dependency-pin.md) | 11 — Highlighter Dependency Pin | 211 |
 
 <!-- AUTO-TOC:END -->
 
