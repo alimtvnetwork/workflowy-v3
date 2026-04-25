@@ -1,7 +1,7 @@
 # Lovable Suggestions Tracker
 
 > **Convention:** All suggestions tracked in this single file. Update status when completed. Move completed entries to `completed/` folder.
-> **Updated:** 2026-04-25 (UTC+8) — A-06 + A-11 closed (AppLayout wired, MAX_ITEMS_PER_VIEW encoded)
+> **Updated:** 2026-04-25 (UTC+8) — A-04 closed (enum-sync hygiene check wired)
 
 ---
 
@@ -18,12 +18,9 @@
 - **Status:** open — **BLOCKS IMPLEMENTATION** of auth, data layer, and all persistence features
 - **User action required:** Yes — must choose backend strategy (memory hint: leaning WordPress)
 
-### A-04 — Enum-sync hygiene check (ItemType drift guard)
-- **Created:** 2026-04-25
-- **Source:** Audit (this round)
-- **Description:** `src/types/index.ts` `ItemType` literal union and `spec/20-enums-index.md` §3.5 are hand-maintained twins.
-- **Proposed Change:** Add `scripts/spec-hygiene/13-check-enums-in-sync.mjs`; wire into `00-run-all.mjs`.
-- **Status:** open — non-blocking, prevents silent drift
+### A-04 — Enum-sync hygiene check (ItemType drift guard) → ✅ closed
+- **Closed:** 2026-04-25 (UTC+8)
+- **Result:** Added `scripts/spec-hygiene/15-check-enums-in-sync.mjs` (extensible `ENUMS` table). Wired into `00-run-all.mjs`. Verified positive ✅ on 12-case `ItemType` and negative ❌ on a synthetic `phantom` case (exit 1). Adding new tracked enums = one row in the script's `ENUMS` array.
 
 ### A-05 — Tailwind token-sync hygiene check
 - **Created:** 2026-04-25
