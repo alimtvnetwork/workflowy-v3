@@ -1,7 +1,7 @@
 # Concurrency & Sync
 
-> **Version:** 1.0.0
-> **Updated:** 2026-04-19
+> **Version:** 1.1.0
+> **Updated:** 2026-04-25 (UTC+8) — transport pinned to WP-native SSE + poll fallback (per `00-overview.md` L9)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
