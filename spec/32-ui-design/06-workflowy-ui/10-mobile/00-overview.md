@@ -42,6 +42,6 @@ Installable PWA with service worker offline support, OS share-target integration
 ## Related
 
 - [`../00-overview.md`](../00-overview.md) — Workflowy UI parent
-- [`../02-search/01-overlay.md`](../02-search/01-overlay.md) § 11 — Mobile behavior forward-ref
+- [`../02-search/09-states-and-edge-cases.md`](../02-search/09-states-and-edge-cases.md) § Mobile — bottom-sheet popover behavior (Phase 2 v2.0.0; supersedes archived `01-overlay.md`)
 - [`../07-calendar/02-quick-add-modal.md`](../07-calendar/02-quick-add-modal.md) — Quick Add reused as share-target sink
 - [`../06-sidebar/00-overview.md`](../06-sidebar/00-overview.md) — Sidebar offcanvas behavior on mobile

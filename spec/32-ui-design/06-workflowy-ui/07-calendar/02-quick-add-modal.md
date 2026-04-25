@@ -153,4 +153,5 @@ Quick Add supports inline markdown shortcuts (`**bold**`, etc.) but NOT block-le
 
 - Phase 6 [`06-sidebar/02-special-nodes.md`](../06-sidebar/02-special-nodes.md) — Inbox target
 - Phase 5 [`05-editor/06-markdown-shortcuts.md`](../05-editor/06-markdown-shortcuts.md) — Inline shortcuts
-- Phase 1 [`01-navbar/04-keyboard-shortcuts.md`](../01-navbar/04-keyboard-shortcuts.md) — `⌘⇧N` registered
+- Phase 8 [`08-app-shell/00-overview.md`](../08-app-shell/00-overview.md) § Global Hotkey Registration — `⌘⇧N` registered here
+- Phase 3 [`03-right-panel/02-hotkeys.md`](../03-right-panel/02-hotkeys.md) — User-facing hotkey table entry for `⌘⇧N`
