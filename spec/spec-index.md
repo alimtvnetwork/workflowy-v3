@@ -198,7 +198,7 @@
 | [`02-coding-guidelines/02-typescript/10-log-level-enum.md`](./02-coding-guidelines/02-typescript/10-log-level-enum.md) | TypeScript LogLevel Enum — `src/lib/enums/log-level.ts` | — | — |
 | [`02-coding-guidelines/02-typescript/11-eslint-enforcement.md`](./02-coding-guidelines/02-typescript/11-eslint-enforcement.md) | TypeScript ESLint Enforcement — Rule Mapping | 3.1.0 | — |
 | [`02-coding-guidelines/02-typescript/12-discriminated-union-patterns.md`](./02-coding-guidelines/02-typescript/12-discriminated-union-patterns.md) | Discriminated Union & Action Type Patterns | 1.0.0 | — |
-| [`02-coding-guidelines/02-typescript/97-acceptance-criteria.md`](./02-coding-guidelines/02-typescript/97-acceptance-criteria.md) | TypeScript Standards — Acceptance Criteria | 3.1.0 | — |
+| [`02-coding-guidelines/02-typescript/97-acceptance-criteria.md`](./02-coding-guidelines/02-typescript/97-acceptance-criteria.md) | TypeScript Standards — Acceptance Criteria | 2.0.0 | Curated |
 | [`02-coding-guidelines/02-typescript/98-changelog.md`](./02-coding-guidelines/02-typescript/98-changelog.md) | TypeScript Standards — Changelog | 3.1.0 | — |
 | [`02-coding-guidelines/02-typescript/99-consistency-report.md`](./02-coding-guidelines/02-typescript/99-consistency-report.md) | Consistency Report: TypeScript Standards | 3.1.0 | — |
 | [`02-coding-guidelines/03-golang/00-overview.md`](./02-coding-guidelines/03-golang/00-overview.md) | Golang Standards | 3.1.0 | Active |
@@ -238,7 +238,7 @@
 | [`02-coding-guidelines/03-golang/06-string-slice-internals.md`](./02-coding-guidelines/03-golang/06-string-slice-internals.md) | Go String & Slice Internals | 3.1.0 | — |
 | [`02-coding-guidelines/03-golang/07-code-severity-taxonomy.md`](./02-coding-guidelines/03-golang/07-code-severity-taxonomy.md) | Code Severity Taxonomy | 3.1.0 | — |
 | [`02-coding-guidelines/03-golang/08-pathutil-fileutil-spec.md`](./02-coding-guidelines/03-golang/08-pathutil-fileutil-spec.md) | Go Utility Packages: `pathutil` and `fileutil` | 1.0.0 | — |
-| [`02-coding-guidelines/03-golang/97-acceptance-criteria.md`](./02-coding-guidelines/03-golang/97-acceptance-criteria.md) | Golang Standards — Acceptance Criteria | 3.1.0 | — |
+| [`02-coding-guidelines/03-golang/97-acceptance-criteria.md`](./02-coding-guidelines/03-golang/97-acceptance-criteria.md) | Golang Standards — Acceptance Criteria | 1.0.0 | Curated |
 | [`02-coding-guidelines/03-golang/98-changelog.md`](./02-coding-guidelines/03-golang/98-changelog.md) | Golang Standards — Changelog | 3.1.0 | — |
 | [`02-coding-guidelines/03-golang/99-consistency-report.md`](./02-coding-guidelines/03-golang/99-consistency-report.md) | Consistency Report: Golang Standards | 3.1.0 | — |
 | [`02-coding-guidelines/04-php/00-overview.md`](./02-coding-guidelines/04-php/00-overview.md) | PHP Standards | 3.1.0 | Active |
@@ -301,7 +301,7 @@
 | [`02-coding-guidelines/04-php/09-response-key-type-inventory/11-providers-and-misc.md`](./02-coding-guidelines/04-php/09-response-key-type-inventory/11-providers-and-misc.md) | 11. Provider/Plugin Info, Capability, Restore, OPcache, Plugin Archive & Status Payload | — | — |
 | [`02-coding-guidelines/04-php/09-response-key-type-inventory/97-acceptance-criteria.md`](./02-coding-guidelines/04-php/09-response-key-type-inventory/97-acceptance-criteria.md) | Response Key Type Inventory — Acceptance Criteria | 1.0.0 | Curated |
 | [`02-coding-guidelines/04-php/10-php-go-consistency-audit.md`](./02-coding-guidelines/04-php/10-php-go-consistency-audit.md) | PHP–Go Cross-Language Consistency Audit | 1.0.0 | All |
-| [`02-coding-guidelines/04-php/97-acceptance-criteria.md`](./02-coding-guidelines/04-php/97-acceptance-criteria.md) | PHP Standards — Acceptance Criteria | 3.1.0 | — |
+| [`02-coding-guidelines/04-php/97-acceptance-criteria.md`](./02-coding-guidelines/04-php/97-acceptance-criteria.md) | PHP Standards — Acceptance Criteria | 1.0.0 | Curated |
 | [`02-coding-guidelines/04-php/98-changelog.md`](./02-coding-guidelines/04-php/98-changelog.md) | PHP Standards — Changelog | 3.1.0 | — |
 | [`02-coding-guidelines/04-php/99-consistency-report.md`](./02-coding-guidelines/04-php/99-consistency-report.md) | Consistency Report: PHP Standards | 3.1.0 | — |
 | [`02-coding-guidelines/05-rust/00-overview.md`](./02-coding-guidelines/05-rust/00-overview.md) | Rust Coding Standards | 3.1.0 | Active |
@@ -312,7 +312,7 @@
 | [`02-coding-guidelines/05-rust/04-memory-safety.md`](./02-coding-guidelines/05-rust/04-memory-safety.md) | Rust Memory Safety | 3.1.0 | — |
 | [`02-coding-guidelines/05-rust/05-testing-standards.md`](./02-coding-guidelines/05-rust/05-testing-standards.md) | Rust Testing Standards | 3.1.0 | — |
 | [`02-coding-guidelines/05-rust/06-ffi-platform.md`](./02-coding-guidelines/05-rust/06-ffi-platform.md) | Rust FFI & Platform Abstraction | 3.1.0 | — |
-| [`02-coding-guidelines/05-rust/97-acceptance-criteria.md`](./02-coding-guidelines/05-rust/97-acceptance-criteria.md) | Rust Coding Standards — Acceptance Criteria | 3.1.0 | — |
+| [`02-coding-guidelines/05-rust/97-acceptance-criteria.md`](./02-coding-guidelines/05-rust/97-acceptance-criteria.md) | Rust Standards — Acceptance Criteria | 1.0.0 | Curated |
 | [`02-coding-guidelines/05-rust/98-changelog.md`](./02-coding-guidelines/05-rust/98-changelog.md) | Changelog: Rust Standards | 3.1.0 | — |
 | [`02-coding-guidelines/05-rust/99-consistency-report.md`](./02-coding-guidelines/05-rust/99-consistency-report.md) | Consistency Report — Rust Coding Standards | 3.1.0 | — |
 | [`02-coding-guidelines/06-ai-optimization/00-overview.md`](./02-coding-guidelines/06-ai-optimization/00-overview.md) | AI Optimization | 3.1.0 | — |
@@ -330,7 +330,7 @@
 | [`02-coding-guidelines/06-ai-optimization/03-common-ai-mistakes/97-acceptance-criteria.md`](./02-coding-guidelines/06-ai-optimization/03-common-ai-mistakes/97-acceptance-criteria.md) | Common AI Mistakes — Acceptance Criteria | 1.0.0 | Curated |
 | [`02-coding-guidelines/06-ai-optimization/04-condensed-master-guidelines.md`](./02-coding-guidelines/06-ai-optimization/04-condensed-master-guidelines.md) | Condensed Master Coding Guidelines — AI Context Reference | 3.1.0 | — |
 | [`02-coding-guidelines/06-ai-optimization/05-enum-naming-quick-reference.md`](./02-coding-guidelines/06-ai-optimization/05-enum-naming-quick-reference.md) | Enum Naming Quick Reference — All Languages | 3.1.0 | — |
-| [`02-coding-guidelines/06-ai-optimization/97-acceptance-criteria.md`](./02-coding-guidelines/06-ai-optimization/97-acceptance-criteria.md) | Acceptance Criteria: AI Optimization | 3.1.0 | — |
+| [`02-coding-guidelines/06-ai-optimization/97-acceptance-criteria.md`](./02-coding-guidelines/06-ai-optimization/97-acceptance-criteria.md) | AI Optimization — Acceptance Criteria | 1.0.0 | Curated |
 | [`02-coding-guidelines/06-ai-optimization/99-consistency-report.md`](./02-coding-guidelines/06-ai-optimization/99-consistency-report.md) | Consistency Report — AI Optimization | 3.1.0 | — |
 | [`02-coding-guidelines/07-csharp/00-overview.md`](./02-coding-guidelines/07-csharp/00-overview.md) | C# Coding Standards | 3.1.0 | Active |
 | [`02-coding-guidelines/07-csharp/01-naming-and-conventions.md`](./02-coding-guidelines/07-csharp/01-naming-and-conventions.md) | C# Naming and Conventions | 1.0.0 | — |
