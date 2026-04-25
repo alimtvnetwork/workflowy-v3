@@ -1,4 +1,11 @@
-/** All possible item types in the outliner. */
+/**
+ * All possible item types in the outliner.
+ *
+ * SSOT: `spec/20-enums-index.md` §3.5 + `spec/32-ui-design/02-state-and-data/03-data-types.md`.
+ * Lowercase per DB column convention. 12 distinct types.
+ *
+ * NOTE: `dashboard` is a VIEW, not an item type — do not add it here.
+ */
 export type ItemType =
   | "bullet"
   | "h1"
@@ -8,10 +15,10 @@ export type ItemType =
   | "todo"
   | "numbered"
   | "board"
-  | "dashboard"
   | "quote"
-  | "codeBlock"
-  | "divider";
+  | "code"
+  | "divider"
+  | "mirror";
 
 /** Core item as stored in the database. */
 export interface Item {
