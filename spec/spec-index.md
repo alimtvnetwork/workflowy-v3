@@ -1209,8 +1209,8 @@
 
 | File | Title | Version | Status |
 |------|-------|---------|--------|
-| [`31-app/00-overview.md`](./31-app/00-overview.md) | App | 1.3.0 | — |
-| [`31-app/01-features/00-overview.md`](./31-app/01-features/00-overview.md) | Features | 1.0.0 | — |
+| [`31-app/00-overview.md`](./31-app/00-overview.md) | App | 2.0.0 | — |
+| [`31-app/01-features/00-overview.md`](./31-app/01-features/00-overview.md) | Features | 2.0.0 | — |
 | [`31-app/01-features/01-information-model.md`](./31-app/01-features/01-information-model.md) | Information Model Foundations | 2.0.0 | — |
 | [`31-app/01-features/02-personas.md`](./31-app/01-features/02-personas.md) | Target User Personas | 2.0.0 | — |
 | [`31-app/01-features/03-layout-structure.md`](./31-app/01-features/03-layout-structure.md) | Layout Structure | 2.0.0 | — |
@@ -1242,14 +1242,14 @@
 | [`31-app/05-conventions/00-overview.md`](./31-app/05-conventions/00-overview.md) | Conventions | 1.0.0 | — |
 | [`31-app/05-conventions/01-axios-version-control.md`](./31-app/05-conventions/01-axios-version-control.md) | Axios Version Control Policy | 1.0.0 | — |
 | [`31-app/05-conventions/99-consistency-report.md`](./31-app/05-conventions/99-consistency-report.md) | Consistency Report — 05-conventions | 1.0.1 | — |
-| [`31-app/97-acceptance-criteria.md`](./31-app/97-acceptance-criteria.md) | App — Acceptance Criteria | 1.0.0 | Scaffold |
+| [`31-app/97-acceptance-criteria.md`](./31-app/97-acceptance-criteria.md) | App — Acceptance Criteria | 2.0.0 | — |
 | [`31-app/99-consistency-report.md`](./31-app/99-consistency-report.md) | Consistency Report — App | 1.3.0 | — |
 
 ## 32-ui-design
 
 | File | Title | Version | Status |
 |------|-------|---------|--------|
-| [`32-ui-design/00-overview.md`](./32-ui-design/00-overview.md) | UI Design | 1.2.0 | — |
+| [`32-ui-design/00-overview.md`](./32-ui-design/00-overview.md) | UI Design | 2.0.0 | — |
 | [`32-ui-design/01-architecture/00-overview.md`](./32-ui-design/01-architecture/00-overview.md) | Architecture | 1.0.0 | — |
 | [`32-ui-design/01-architecture/01-tech-stack.md`](./32-ui-design/01-architecture/01-tech-stack.md) | Tech Stack | 1.1.0 | — |
 | [`32-ui-design/01-architecture/02-routes.md`](./32-ui-design/01-architecture/02-routes.md) | Routes | 1.1.0 | — |
@@ -1367,7 +1367,7 @@
 | [`32-ui-design/06-workflowy-ui/10-mobile/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/10-mobile/99-consistency-report.md) | Consistency Report — Mobile / PWA (Phase 10) | 1.2.0 | — |
 | [`32-ui-design/06-workflowy-ui/97-acceptance-criteria.md`](./32-ui-design/06-workflowy-ui/97-acceptance-criteria.md) | WorkFlowy UI — Acceptance Criteria (Roll-up) | 1.0.0 | Curated |
 | [`32-ui-design/06-workflowy-ui/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/99-consistency-report.md) | Consistency Report — WorkFlowy UI | 1.1.0 | — |
-| [`32-ui-design/97-acceptance-criteria.md`](./32-ui-design/97-acceptance-criteria.md) | Ui Design — Acceptance Criteria | 1.0.0 | Scaffold |
+| [`32-ui-design/97-acceptance-criteria.md`](./32-ui-design/97-acceptance-criteria.md) | UI Design — Acceptance Criteria | 2.0.0 | — |
 | [`32-ui-design/99-consistency-report.md`](./32-ui-design/99-consistency-report.md) | Consistency Report — Ui Design | 1.3.0 | — |
 
 ## 33-feedback-report
