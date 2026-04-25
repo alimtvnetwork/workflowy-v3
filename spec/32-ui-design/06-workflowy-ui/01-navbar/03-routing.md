@@ -85,7 +85,7 @@ If the focused node is renamed, the URL does **not** change (IDs are stable). On
 
 ## Out of scope
 
-- Search overlay routing details → see [`../02-search/`](../02-search/00-overview.md).
+- Search Popover routing details (URL ↔ query sync) → see [`../02-search/`](../02-search/00-overview.md).
 - Today/Calendar routing → see [`../07-calendar/`](../07-calendar/00-overview.md).
 - Settings page routing → see [`../08-app-shell/`](../08-app-shell/00-overview.md).
 - Sharing routes (public links) → deferred to sharing model spec.
