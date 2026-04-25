@@ -42,7 +42,7 @@
 
 | Control | Icon | Tooltip | Shortcut | Action |
 |---------|------|---------|----------|--------|
-| Search | `🔍` (magnifier) | "Search" | `Ctrl+K` | Opens full-screen search overlay. See [`../02-search/`](../02-search/00-overview.md). |
+| Search | `🔍` (Lucide `Search`) | "Search (⌘K)" | `Ctrl+K` (alias `Ctrl+F`) | Opens the **Search Popover** anchored to the navbar (or as bottom sheet on mobile). See [`../02-search/`](../02-search/00-overview.md). |
 | Share | `↗` (up-right arrow) | "Share this node" | — | Opens share dialog for currently focused node. **Hidden at home root.** |
 | More | `⋮` (vertical ellipsis) | "More actions" | — | Opens app menu. See [`../08-app-shell/`](../08-app-shell/00-overview.md). |
 | Panel toggle | `⌘/` glyph | "Open Handbook & Hotkeys" | `Ctrl+/` (or `⌘/` on Mac) | Toggles right-side panel. See [`../03-right-panel/`](../03-right-panel/00-overview.md). |
