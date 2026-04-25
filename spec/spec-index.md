@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-25  
-**Total Files:** 1171  
+**Total Files:** 1240  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -16,21 +16,21 @@
 ## Table of Contents
 
 - [01-spec-authoring-guide](#01-spec-authoring-guide) — 21 file(s)
-- [02-coding-guidelines](#02-coding-guidelines) — 286 file(s)
-- [03-error-manage](#03-error-manage) — 167 file(s)
-- [04-database-conventions](#04-database-conventions) — 15 file(s)
-- [05-split-db-architecture](#05-split-db-architecture) — 41 file(s)
-- [06-seedable-config-architecture](#06-seedable-config-architecture) — 46 file(s)
+- [02-coding-guidelines](#02-coding-guidelines) — 307 file(s)
+- [03-error-manage](#03-error-manage) — 184 file(s)
+- [04-database-conventions](#04-database-conventions) — 16 file(s)
+- [05-split-db-architecture](#05-split-db-architecture) — 45 file(s)
+- [06-seedable-config-architecture](#06-seedable-config-architecture) — 50 file(s)
 - [07-design-system](#07-design-system) — 16 file(s)
-- [08-docs-viewer-ui](#08-docs-viewer-ui) — 27 file(s)
+- [08-docs-viewer-ui](#08-docs-viewer-ui) — 29 file(s)
 - [09-code-block-system](#09-code-block-system) — 13 file(s)
-- [10-powershell-integration](#10-powershell-integration) — 21 file(s)
+- [10-powershell-integration](#10-powershell-integration) — 22 file(s)
 - [11-research](#11-research) — 2 file(s)
 - [12-consolidated-guidelines](#12-consolidated-guidelines) — 26 file(s)
-- [13-cicd-pipeline-workflows](#13-cicd-pipeline-workflows) — 28 file(s)
-- [14-self-update-app-update](#14-self-update-app-update) — 31 file(s)
-- [15-wp-plugin-how-to](#15-wp-plugin-how-to) — 199 file(s)
-- [16-generic-cli](#16-generic-cli) — 39 file(s)
+- [13-cicd-pipeline-workflows](#13-cicd-pipeline-workflows) — 29 file(s)
+- [14-self-update-app-update](#14-self-update-app-update) — 32 file(s)
+- [15-wp-plugin-how-to](#15-wp-plugin-how-to) — 214 file(s)
+- [16-generic-cli](#16-generic-cli) — 41 file(s)
 - [17-generic-update](#17-generic-update) — 11 file(s)
 - [18-spec-issues](#18-spec-issues) — 6 file(s)
 - [31-app](#31-app) — 35 file(s)
@@ -82,12 +82,14 @@
 | [`02-coding-guidelines/01-cross-language/01-issues-and-fixes-log/04-enum-standards.md`](./02-coding-guidelines/01-cross-language/01-issues-and-fixes-log/04-enum-standards.md) | 4. Enum Standard Violations | — | — |
 | [`02-coding-guidelines/01-cross-language/01-issues-and-fixes-log/05-formatting.md`](./02-coding-guidelines/01-cross-language/01-issues-and-fixes-log/05-formatting.md) | 5. Formatting Violations | — | — |
 | [`02-coding-guidelines/01-cross-language/01-issues-and-fixes-log/06-type-safety.md`](./02-coding-guidelines/01-cross-language/01-issues-and-fixes-log/06-type-safety.md) | 6. Type Safety Violations | — | — |
+| [`02-coding-guidelines/01-cross-language/01-issues-and-fixes-log/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/01-issues-and-fixes-log/97-acceptance-criteria.md) | Issues And Fixes Log — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`02-coding-guidelines/01-cross-language/02-boolean-principles/00-overview.md`](./02-coding-guidelines/01-cross-language/02-boolean-principles/00-overview.md) | Boolean Principles | 3.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/02-boolean-principles/01-naming-prefixes.md`](./02-coding-guidelines/01-cross-language/02-boolean-principles/01-naming-prefixes.md) | Boolean Principles — P1: is/has prefixes, P2: no negative words | 2.6.0 | — |
 | [`02-coding-guidelines/01-cross-language/02-boolean-principles/02-guards-and-extraction.md`](./02-coding-guidelines/01-cross-language/02-boolean-principles/02-guards-and-extraction.md) | Boolean Principles — P3: named guards, P4: extract complex expressions | 2.6.0 | — |
 | [`02-coding-guidelines/01-cross-language/02-boolean-principles/03-parameters-and-conditions.md`](./02-coding-guidelines/01-cross-language/02-boolean-principles/03-parameters-and-conditions.md) | Boolean Principles — P5: explicit params, P6: no mixed booleans, P7: no inline statements, P8: no raw system calls | 2.6.0 | — |
 | [`02-coding-guidelines/01-cross-language/02-boolean-principles/04-quick-reference.md`](./02-coding-guidelines/01-cross-language/02-boolean-principles/04-quick-reference.md) | Boolean Principles — Quick reference table, common mistakes | 2.6.0 | — |
 | [`02-coding-guidelines/01-cross-language/02-boolean-principles/05-exemptions-and-api.md`](./02-coding-guidelines/01-cross-language/02-boolean-principles/05-exemptions-and-api.md) | Boolean Principles — Static factory exemption, Result wrapper API | 2.6.0 | — |
+| [`02-coding-guidelines/01-cross-language/02-boolean-principles/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/02-boolean-principles/97-acceptance-criteria.md) | Boolean Principles — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`02-coding-guidelines/01-cross-language/02-boolean-principles/99-consistency-report.md`](./02-coding-guidelines/01-cross-language/02-boolean-principles/99-consistency-report.md) | Consistency Report: Boolean Principles | 3.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/00-overview.md`](./02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/00-overview.md) | Casting Elimination Patterns | 2.0.0 | Complete |
 | [`02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/01-context-and-errors.md`](./02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/01-context-and-errors.md) | 1. Context Values & Error Types | — | — |
@@ -95,6 +97,7 @@
 | [`02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/03-stdlib-boundaries.md`](./02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/03-stdlib-boundaries.md) | 3. Stdlib Boundaries — `sql.Scanner` & JSON-LD | — | — |
 | [`02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/04-cast-or-fail-utility.md`](./02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/04-cast-or-fail-utility.md) | 4. Centralized Safe-Cast Utility (`CastOrFail[T]`) | — | — |
 | [`02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/05-rules-and-verification.md`](./02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/05-rules-and-verification.md) | 5. Rules, Decision Matrix & Verification | — | — |
+| [`02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/97-acceptance-criteria.md) | Casting Elimination Patterns — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`02-coding-guidelines/01-cross-language/04-code-style/00-overview.md`](./02-coding-guidelines/01-cross-language/04-code-style/00-overview.md) | Cross-Language Code Style — Braces, Nesting, Spacing & Function Size | 3.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/04-code-style/01-braces-and-nesting.md`](./02-coding-guidelines/01-cross-language/04-code-style/01-braces-and-nesting.md) | Braces, Nesting & Exemptions | 4.0.0 | — |
 | [`02-coding-guidelines/01-cross-language/04-code-style/02-conditions-and-extraction.md`](./02-coding-guidelines/01-cross-language/04-code-style/02-conditions-and-extraction.md) | Condition Extraction | 4.0.0 | — |
@@ -102,10 +105,12 @@
 | [`02-coding-guidelines/01-cross-language/04-code-style/03-blank-lines-and-spacing/01-rule-4-before-return-throw.md`](./02-coding-guidelines/01-cross-language/04-code-style/03-blank-lines-and-spacing/01-rule-4-before-return-throw.md) | Rule 4 — Blank Line Before `return` or `throw` When Preceded by Other Statements | — | — |
 | [`02-coding-guidelines/01-cross-language/04-code-style/03-blank-lines-and-spacing/02-rule-5-after-closing-brace.md`](./02-coding-guidelines/01-cross-language/04-code-style/03-blank-lines-and-spacing/02-rule-5-after-closing-brace.md) | Rule 5 — Blank Line After Closing `}` When Followed by More Code | — | — |
 | [`02-coding-guidelines/01-cross-language/04-code-style/03-blank-lines-and-spacing/03-rule-10-before-control-structures.md`](./02-coding-guidelines/01-cross-language/04-code-style/03-blank-lines-and-spacing/03-rule-10-before-control-structures.md) | Rule 10 — Blank Line Before Control Structures When Preceded by Statements | — | — |
+| [`02-coding-guidelines/01-cross-language/04-code-style/03-blank-lines-and-spacing/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/04-code-style/03-blank-lines-and-spacing/97-acceptance-criteria.md) | Blank Lines And Spacing — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`02-coding-guidelines/01-cross-language/04-code-style/04-function-and-type-size.md`](./02-coding-guidelines/01-cross-language/04-code-style/04-function-and-type-size.md) | Function & Type Size Limits | 4.0.0 | — |
 | [`02-coding-guidelines/01-cross-language/04-code-style/05-multi-line-formatting.md`](./02-coding-guidelines/01-cross-language/04-code-style/05-multi-line-formatting.md) | Multi-Line Formatting | 4.0.0 | — |
 | [`02-coding-guidelines/01-cross-language/04-code-style/06-comments-and-documentation.md`](./02-coding-guidelines/01-cross-language/04-code-style/06-comments-and-documentation.md) | Comments, Documentation & Dead Code | 4.0.0 | — |
 | [`02-coding-guidelines/01-cross-language/04-code-style/07-checklist.md`](./02-coding-guidelines/01-cross-language/04-code-style/07-checklist.md) | Code Style Checklist & Cross-References | 4.0.0 | — |
+| [`02-coding-guidelines/01-cross-language/04-code-style/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/04-code-style/97-acceptance-criteria.md) | Code Style — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`02-coding-guidelines/01-cross-language/04-code-style/99-consistency-report.md`](./02-coding-guidelines/01-cross-language/04-code-style/99-consistency-report.md) | Consistency Report: Code Style | 3.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/05-cross-spec-contradiction-checks.md`](./02-coding-guidelines/01-cross-language/05-cross-spec-contradiction-checks.md) | Cross-Spec Contradiction Check Process | 1.0.0 | — |
 | [`02-coding-guidelines/01-cross-language/06-cyclomatic-complexity.md`](./02-coding-guidelines/01-cross-language/06-cyclomatic-complexity.md) | Cross-Language Rule: Reduce Cyclomatic Complexity to Near-Zero | 1.0.0 | — |
@@ -125,6 +130,7 @@
 | [`02-coding-guidelines/01-cross-language/15-master-coding-guidelines/05-magic-strings-and-organization.md`](./02-coding-guidelines/01-cross-language/15-master-coding-guidelines/05-magic-strings-and-organization.md) | Master Coding Guidelines — Magic strings, file organization, array keys | 2.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/15-master-coding-guidelines/06-advanced-patterns.md`](./02-coding-guidelines/01-cross-language/15-master-coding-guidelines/06-advanced-patterns.md) | Master Coding Guidelines — Lint, enum sync, tests, lazy eval, regex, mutation, null safety, nesting, newlines, defer | 2.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/15-master-coding-guidelines/07-checklist.md`](./02-coding-guidelines/01-cross-language/15-master-coding-guidelines/07-checklist.md) | Master Coding Guidelines — Quick checklist for any code change | 2.1.0 | — |
+| [`02-coding-guidelines/01-cross-language/15-master-coding-guidelines/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/15-master-coding-guidelines/97-acceptance-criteria.md) | Master Coding Guidelines — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`02-coding-guidelines/01-cross-language/15-master-coding-guidelines/99-consistency-report.md`](./02-coding-guidelines/01-cross-language/15-master-coding-guidelines/99-consistency-report.md) | Consistency Report: Master Coding Guidelines | 3.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/16-static-analysis/00-overview.md`](./02-coding-guidelines/01-cross-language/16-static-analysis/00-overview.md) | Cross-Language Static Analysis & Linter Enforcement | 3.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/16-static-analysis/02-go-golangci-lint.md`](./02-coding-guidelines/01-cross-language/16-static-analysis/02-go-golangci-lint.md) | Go — golangci-lint Enforcement Rule Mapping | 3.1.0 | — |
@@ -141,6 +147,7 @@
 | [`02-coding-guidelines/01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/04-sonarqube-config.md`](./02-coding-guidelines/01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/04-sonarqube-config.md) | SonarQube Configuration | — | — |
 | [`02-coding-guidelines/01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/05-ci-workflows.md`](./02-coding-guidelines/01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/05-ci-workflows.md) | CI Workflows — GitHub Actions, GitLab CI & Mono-Repo | — | — |
 | [`02-coding-guidelines/01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/06-exemptions-and-checklist.md`](./02-coding-guidelines/01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/06-exemptions-and-checklist.md) | Exemption Process, Dashboard & Integration Checklist | — | — |
+| [`02-coding-guidelines/01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/97-acceptance-criteria.md) | Ci Pipeline Quality Gate — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`02-coding-guidelines/01-cross-language/16-static-analysis/10-cross-language-rule-matrix.md`](./02-coding-guidelines/01-cross-language/16-static-analysis/10-cross-language-rule-matrix.md) | Cross-Language Rule Matrix | 1.0.0 | — |
 | [`02-coding-guidelines/01-cross-language/16-static-analysis/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/16-static-analysis/97-acceptance-criteria.md) | Acceptance Criteria: Static Analysis & Linter Enforcement | 3.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/16-static-analysis/98-changelog.md`](./02-coding-guidelines/01-cross-language/16-static-analysis/98-changelog.md) | Changelog: Static Analysis & Linter Enforcement | — | — |
@@ -160,6 +167,7 @@
 | [`02-coding-guidelines/01-cross-language/27-types-folder-convention/02-rules.md`](./02-coding-guidelines/01-cross-language/27-types-folder-convention/02-rules.md) | Rules | — | — |
 | [`02-coding-guidelines/01-cross-language/27-types-folder-convention/03-common-type-definitions.md`](./02-coding-guidelines/01-cross-language/27-types-folder-convention/03-common-type-definitions.md) | Common Type Definitions | — | — |
 | [`02-coding-guidelines/01-cross-language/27-types-folder-convention/04-anti-patterns-and-checklist.md`](./02-coding-guidelines/01-cross-language/27-types-folder-convention/04-anti-patterns-and-checklist.md) | Anti-Patterns & Summary Checklist | — | — |
+| [`02-coding-guidelines/01-cross-language/27-types-folder-convention/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/27-types-folder-convention/97-acceptance-criteria.md) | Types Folder Convention — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`02-coding-guidelines/01-cross-language/28-slug-conventions.md`](./02-coding-guidelines/01-cross-language/28-slug-conventions.md) | Slug Conventions | 3.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/29-lazy-evaluation-patterns.md`](./02-coding-guidelines/01-cross-language/29-lazy-evaluation-patterns.md) | Lazy Evaluation Patterns | 3.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/30-pinned-dependency-matrix.md`](./02-coding-guidelines/01-cross-language/30-pinned-dependency-matrix.md) | Pinned Dependency Matrix | — | Authoritative |
@@ -185,6 +193,7 @@
 | [`02-coding-guidelines/02-typescript/08-typescript-standards-reference/08-discriminated-unions.md`](./02-coding-guidelines/02-typescript/08-typescript-standards-reference/08-discriminated-unions.md) | 8. Discriminated Unions — Named Interfaces Required | — | — |
 | [`02-coding-guidelines/02-typescript/08-typescript-standards-reference/09-generics-reference.md`](./02-coding-guidelines/02-typescript/08-typescript-standards-reference/09-generics-reference.md) | 9. Generics Reference — When to Use What | — | — |
 | [`02-coding-guidelines/02-typescript/08-typescript-standards-reference/10-enum-inventory.md`](./02-coding-guidelines/02-typescript/08-typescript-standards-reference/10-enum-inventory.md) | 10. Enum Inventory | — | — |
+| [`02-coding-guidelines/02-typescript/08-typescript-standards-reference/97-acceptance-criteria.md`](./02-coding-guidelines/02-typescript/08-typescript-standards-reference/97-acceptance-criteria.md) | Typescript Standards Reference — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`02-coding-guidelines/02-typescript/09-promise-await-patterns.md`](./02-coding-guidelines/02-typescript/09-promise-await-patterns.md) | Promise & Await Patterns | 3.1.0 | — |
 | [`02-coding-guidelines/02-typescript/10-log-level-enum.md`](./02-coding-guidelines/02-typescript/10-log-level-enum.md) | TypeScript LogLevel Enum — `src/lib/enums/log-level.ts` | — | — |
 | [`02-coding-guidelines/02-typescript/11-eslint-enforcement.md`](./02-coding-guidelines/02-typescript/11-eslint-enforcement.md) | TypeScript ESLint Enforcement — Rule Mapping | 3.1.0 | — |
@@ -200,9 +209,11 @@
 | [`02-coding-guidelines/03-golang/01-enum-specification/02-required-methods/02-optional-and-domain-methods.md`](./02-coding-guidelines/03-golang/01-enum-specification/02-required-methods/02-optional-and-domain-methods.md) | Optional & Domain-Specific Methods | — | — |
 | [`02-coding-guidelines/03-golang/01-enum-specification/02-required-methods/03-complete-example.md`](./02-coding-guidelines/03-golang/01-enum-specification/02-required-methods/03-complete-example.md) | Complete Example | — | — |
 | [`02-coding-guidelines/03-golang/01-enum-specification/02-required-methods/04-pascalcase-labels.md`](./02-coding-guidelines/03-golang/01-enum-specification/02-required-methods/04-pascalcase-labels.md) | PascalCase Label Convention | — | — |
+| [`02-coding-guidelines/03-golang/01-enum-specification/02-required-methods/97-acceptance-criteria.md`](./02-coding-guidelines/03-golang/01-enum-specification/02-required-methods/97-acceptance-criteria.md) | Required Methods — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`02-coding-guidelines/03-golang/01-enum-specification/03-folder-structure.md`](./02-coding-guidelines/03-golang/01-enum-specification/03-folder-structure.md) | Folder Structure | 3.1.0 | Complete |
 | [`02-coding-guidelines/03-golang/01-enum-specification/04-validation-checklist.md`](./02-coding-guidelines/03-golang/01-enum-specification/04-validation-checklist.md) | Validation Checklist | 3.1.0 | Complete |
 | [`02-coding-guidelines/03-golang/01-enum-specification/05-info-object-pattern.md`](./02-coding-guidelines/03-golang/01-enum-specification/05-info-object-pattern.md) | Info-Object Pattern for Go Enums | 3.1.0 | Complete |
+| [`02-coding-guidelines/03-golang/01-enum-specification/97-acceptance-criteria.md`](./02-coding-guidelines/03-golang/01-enum-specification/97-acceptance-criteria.md) | Enum Specification — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`02-coding-guidelines/03-golang/01-enum-specification/99-consistency-report.md`](./02-coding-guidelines/03-golang/01-enum-specification/99-consistency-report.md) | Consistency Report: Enum Specification | 3.1.0 | — |
 | [`02-coding-guidelines/03-golang/02-boolean-standards/00-overview.md`](./02-coding-guidelines/03-golang/02-boolean-standards/00-overview.md) | Go Boolean Standards — Overview | — | — |
 | [`02-coding-guidelines/03-golang/02-boolean-standards/01-positive-naming.md`](./02-coding-guidelines/03-golang/02-boolean-standards/01-positive-naming.md) | Rule P1 — Positive Boolean Naming | — | — |
@@ -212,6 +223,7 @@
 | [`02-coding-guidelines/03-golang/02-boolean-standards/05-filesystem-and-errors.md`](./02-coding-guidelines/03-golang/02-boolean-standards/05-filesystem-and-errors.md) | Rules P8, P9 — Filesystem Wrappers & Compound Error Conditions | — | — |
 | [`02-coding-guidelines/03-golang/02-boolean-standards/06-idiomatic-exemptions.md`](./02-coding-guidelines/03-golang/02-boolean-standards/06-idiomatic-exemptions.md) | Idiomatic Go Exemptions | — | — |
 | [`02-coding-guidelines/03-golang/02-boolean-standards/07-summary-and-enforcement.md`](./02-coding-guidelines/03-golang/02-boolean-standards/07-summary-and-enforcement.md) | Variable Naming, Enforcement & Rule Summary | — | — |
+| [`02-coding-guidelines/03-golang/02-boolean-standards/97-acceptance-criteria.md`](./02-coding-guidelines/03-golang/02-boolean-standards/97-acceptance-criteria.md) | Boolean Standards — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`02-coding-guidelines/03-golang/03-httpmethod-enum.md`](./02-coding-guidelines/03-golang/03-httpmethod-enum.md) | HttpMethod Enum — `pkg/enums/httpmethodtype/variant.go` | — | — |
 | [`02-coding-guidelines/03-golang/04-golang-standards-reference/00-overview.md`](./02-coding-guidelines/03-golang/04-golang-standards-reference/00-overview.md) | Golang Coding Standards | 3.1.0 | — |
 | [`02-coding-guidelines/03-golang/04-golang-standards-reference/01-file-and-function-rules.md`](./02-coding-guidelines/03-golang/04-golang-standards-reference/01-file-and-function-rules.md) | Golang Coding Standards — File naming, size, function size, nesting ban | 3.7.0 | — |
@@ -220,6 +232,7 @@
 | [`02-coding-guidelines/03-golang/04-golang-standards-reference/04-naming-and-organization.md`](./02-coding-guidelines/03-golang/04-golang-standards-reference/04-naming-and-organization.md) | Golang Coding Standards — File organization, naming conventions, negations, guards | 3.7.0 | — |
 | [`02-coding-guidelines/03-golang/04-golang-standards-reference/05-enums-and-dry.md`](./02-coding-guidelines/03-golang/04-golang-standards-reference/05-enums-and-dry.md) | Golang Coding Standards — Typed constants, enums, DRY enforcement | 3.7.0 | — |
 | [`02-coding-guidelines/03-golang/04-golang-standards-reference/06-concurrency-and-patterns.md`](./02-coding-guidelines/03-golang/04-golang-standards-reference/06-concurrency-and-patterns.md) | Golang Coding Standards — Concurrency, forbidden patterns, imports, common mistakes | 3.7.0 | — |
+| [`02-coding-guidelines/03-golang/04-golang-standards-reference/97-acceptance-criteria.md`](./02-coding-guidelines/03-golang/04-golang-standards-reference/97-acceptance-criteria.md) | Golang Standards Reference — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`02-coding-guidelines/03-golang/04-golang-standards-reference/99-consistency-report.md`](./02-coding-guidelines/03-golang/04-golang-standards-reference/99-consistency-report.md) | Consistency Report: Golang Standards Reference | 3.1.0 | — |
 | [`02-coding-guidelines/03-golang/05-defer-rules.md`](./02-coding-guidelines/03-golang/05-defer-rules.md) | Go Defer Rules | 3.1.0 | — |
 | [`02-coding-guidelines/03-golang/06-string-slice-internals.md`](./02-coding-guidelines/03-golang/06-string-slice-internals.md) | Go String & Slice Internals | 3.1.0 | — |
@@ -247,6 +260,7 @@
 | [`02-coding-guidelines/04-php/01-enums/15-error-type-class.md`](./02-coding-guidelines/04-php/01-enums/15-error-type-class.md) | ErrorType — PHP Error Type Constants (Non-Enum Class) | — | — |
 | [`02-coding-guidelines/04-php/01-enums/16-classification-and-checklist.md`](./02-coding-guidelines/04-php/01-enums/16-classification-and-checklist.md) | Classification and "Add New Case" Checklist | — | — |
 | [`02-coding-guidelines/04-php/01-enums/17-log-context-keys.md`](./02-coding-guidelines/04-php/01-enums/17-log-context-keys.md) | Log Context Array Keys — camelCase | — | — |
+| [`02-coding-guidelines/04-php/01-enums/97-acceptance-criteria.md`](./02-coding-guidelines/04-php/01-enums/97-acceptance-criteria.md) | Enums — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`02-coding-guidelines/04-php/02-forbidden-patterns/00-overview.md`](./02-coding-guidelines/04-php/02-forbidden-patterns/00-overview.md) | PHP Forbidden Patterns — Quick Reference Checklist | 5.0.0 | — |
 | [`02-coding-guidelines/04-php/02-forbidden-patterns/01-error-handling.md`](./02-coding-guidelines/04-php/02-forbidden-patterns/01-error-handling.md) | §1 Error Handling & §7 Error Type Constants | — | — |
 | [`02-coding-guidelines/04-php/02-forbidden-patterns/02-magic-strings-hooks-paths.md`](./02-coding-guidelines/04-php/02-forbidden-patterns/02-magic-strings-hooks-paths.md) | §2 Magic Strings — Hooks & §3 File Paths | — | — |
@@ -255,12 +269,14 @@
 | [`02-coding-guidelines/04-php/02-forbidden-patterns/05-response-key-and-plugin-config.md`](./02-coding-guidelines/04-php/02-forbidden-patterns/05-response-key-and-plugin-config.md) | §8 ResponseKeyType & §9 PluginConfigType | — | — |
 | [`02-coding-guidelines/04-php/02-forbidden-patterns/06-date-formats-and-response-casing.md`](./02-coding-guidelines/04-php/02-forbidden-patterns/06-date-formats-and-response-casing.md) | §10 Hardcoded Date Formats & §11 snake_case Response Keys | — | — |
 | [`02-coding-guidelines/04-php/02-forbidden-patterns/07-checklist.md`](./02-coding-guidelines/04-php/02-forbidden-patterns/07-checklist.md) | Checklist Summary (Copy for PRs) | — | — |
+| [`02-coding-guidelines/04-php/02-forbidden-patterns/97-acceptance-criteria.md`](./02-coding-guidelines/04-php/02-forbidden-patterns/97-acceptance-criteria.md) | Forbidden Patterns — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`02-coding-guidelines/04-php/03-naming-conventions/00-overview.md`](./02-coding-guidelines/04-php/03-naming-conventions/00-overview.md) | PHP Naming Conventions | 2.0.0 | — |
 | [`02-coding-guidelines/04-php/03-naming-conventions/01-symbols.md`](./02-coding-guidelines/04-php/03-naming-conventions/01-symbols.md) | Symbols — Classes, Methods, Variables, Constants, Enum Cases | — | — |
 | [`02-coding-guidelines/04-php/03-naming-conventions/02-files-and-namespaces.md`](./02-coding-guidelines/04-php/03-naming-conventions/02-files-and-namespaces.md) | Files, Namespaces, and Directory Structure | — | — |
 | [`02-coding-guidelines/04-php/03-naming-conventions/03-array-keys.md`](./02-coding-guidelines/04-php/03-naming-conventions/03-array-keys.md) | Array Key Conventions | — | — |
 | [`02-coding-guidelines/04-php/03-naming-conventions/04-summary-table.md`](./02-coding-guidelines/04-php/03-naming-conventions/04-summary-table.md) | Summary Table | — | — |
 | [`02-coding-guidelines/04-php/03-naming-conventions/05-common-mistakes.md`](./02-coding-guidelines/04-php/03-naming-conventions/05-common-mistakes.md) | Common Mistakes — PHP Naming | — | — |
+| [`02-coding-guidelines/04-php/03-naming-conventions/97-acceptance-criteria.md`](./02-coding-guidelines/04-php/03-naming-conventions/97-acceptance-criteria.md) | Naming Conventions — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`02-coding-guidelines/04-php/05-response-array-standard.md`](./02-coding-guidelines/04-php/05-response-array-standard.md) | PHP Response Array Standard | 1.0.0 | — |
 | [`02-coding-guidelines/04-php/07-php-standards-reference/00-overview.md`](./02-coding-guidelines/04-php/07-php-standards-reference/00-overview.md) | PHP Coding Standards | 3.1.0 | — |
 | [`02-coding-guidelines/04-php/07-php-standards-reference/01-naming-and-errors.md`](./02-coding-guidelines/04-php/07-php-standards-reference/01-naming-and-errors.md) | PHP Coding Standards — Naming conventions, error handling, structured responses | 5.1.0 | — |
@@ -268,6 +284,7 @@
 | [`02-coding-guidelines/04-php/07-php-standards-reference/03-initialization-and-booleans.md`](./02-coding-guidelines/04-php/07-php-standards-reference/03-initialization-and-booleans.md) | PHP Coding Standards — Constructor rules, boolean logic, isDefined guards | 5.1.0 | — |
 | [`02-coding-guidelines/04-php/07-php-standards-reference/04-code-style.md`](./02-coding-guidelines/04-php/07-php-standards-reference/04-code-style.md) | PHP Coding Standards — Braces, nesting, spacing, function size | 5.1.0 | — |
 | [`02-coding-guidelines/04-php/07-php-standards-reference/05-forbidden-and-database.md`](./02-coding-guidelines/04-php/07-php-standards-reference/05-forbidden-and-database.md) | PHP Coding Standards — Forbidden patterns, database wrapper | 5.1.0 | — |
+| [`02-coding-guidelines/04-php/07-php-standards-reference/97-acceptance-criteria.md`](./02-coding-guidelines/04-php/07-php-standards-reference/97-acceptance-criteria.md) | Php Standards Reference — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`02-coding-guidelines/04-php/07-php-standards-reference/99-consistency-report.md`](./02-coding-guidelines/04-php/07-php-standards-reference/99-consistency-report.md) | Consistency Report: PHP Standards Reference | 3.1.0 | — |
 | [`02-coding-guidelines/04-php/08-spacing-and-imports.md`](./02-coding-guidelines/04-php/08-spacing-and-imports.md) | PHP Spacing and Import Rules | 3.1.0 | — |
 | [`02-coding-guidelines/04-php/09-response-key-type-inventory/00-overview.md`](./02-coding-guidelines/04-php/09-response-key-type-inventory/00-overview.md) | ResponseKeyType — Case Inventory & Usage Map | — | — |
@@ -282,6 +299,7 @@
 | [`02-coding-guidelines/04-php/09-response-key-type-inventory/09-stats-and-options.md`](./02-coding-guidelines/04-php/09-response-key-type-inventory/09-stats-and-options.md) | 9. Statistics, Backup/Scheduler Options & Storage Stats | — | — |
 | [`02-coding-guidelines/04-php/09-response-key-type-inventory/10-progress-cleanup-internal.md`](./02-coding-guidelines/04-php/09-response-key-type-inventory/10-progress-cleanup-internal.md) | 10. Progress Envelope, Cleanup Detail & Internal Passing Keys | — | — |
 | [`02-coding-guidelines/04-php/09-response-key-type-inventory/11-providers-and-misc.md`](./02-coding-guidelines/04-php/09-response-key-type-inventory/11-providers-and-misc.md) | 11. Provider/Plugin Info, Capability, Restore, OPcache, Plugin Archive & Status Payload | — | — |
+| [`02-coding-guidelines/04-php/09-response-key-type-inventory/97-acceptance-criteria.md`](./02-coding-guidelines/04-php/09-response-key-type-inventory/97-acceptance-criteria.md) | Response Key Type Inventory — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`02-coding-guidelines/04-php/10-php-go-consistency-audit.md`](./02-coding-guidelines/04-php/10-php-go-consistency-audit.md) | PHP–Go Cross-Language Consistency Audit | 1.0.0 | All |
 | [`02-coding-guidelines/04-php/97-acceptance-criteria.md`](./02-coding-guidelines/04-php/97-acceptance-criteria.md) | PHP Standards — Acceptance Criteria | 3.1.0 | — |
 | [`02-coding-guidelines/04-php/98-changelog.md`](./02-coding-guidelines/04-php/98-changelog.md) | PHP Standards — Changelog | 3.1.0 | — |
@@ -308,6 +326,7 @@
 | [`02-coding-guidelines/06-ai-optimization/03-common-ai-mistakes/06-enum-usage.md`](./02-coding-guidelines/06-ai-optimization/03-common-ai-mistakes/06-enum-usage.md) | Common AI Mistakes — Enum Usage | 3.2.0 | — |
 | [`02-coding-guidelines/06-ai-optimization/03-common-ai-mistakes/07-caching-red.md`](./02-coding-guidelines/06-ai-optimization/03-common-ai-mistakes/07-caching-red.md) | Common AI Mistakes — Caching (CODE RED) | 3.2.0 | — |
 | [`02-coding-guidelines/06-ai-optimization/03-common-ai-mistakes/08-pattern-recognition.md`](./02-coding-guidelines/06-ai-optimization/03-common-ai-mistakes/08-pattern-recognition.md) | Common AI Mistakes — Pattern Recognition | 3.2.0 | — |
+| [`02-coding-guidelines/06-ai-optimization/03-common-ai-mistakes/97-acceptance-criteria.md`](./02-coding-guidelines/06-ai-optimization/03-common-ai-mistakes/97-acceptance-criteria.md) | Common Ai Mistakes — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`02-coding-guidelines/06-ai-optimization/04-condensed-master-guidelines.md`](./02-coding-guidelines/06-ai-optimization/04-condensed-master-guidelines.md) | Condensed Master Coding Guidelines — AI Context Reference | 3.1.0 | — |
 | [`02-coding-guidelines/06-ai-optimization/05-enum-naming-quick-reference.md`](./02-coding-guidelines/06-ai-optimization/05-enum-naming-quick-reference.md) | Enum Naming Quick Reference — All Languages | 3.1.0 | — |
 | [`02-coding-guidelines/06-ai-optimization/97-acceptance-criteria.md`](./02-coding-guidelines/06-ai-optimization/97-acceptance-criteria.md) | Acceptance Criteria: AI Optimization | 3.1.0 | — |
@@ -326,6 +345,7 @@
 | [`02-coding-guidelines/08-file-folder-naming/03-golang.md`](./02-coding-guidelines/08-file-folder-naming/03-golang.md) | File & Folder Naming — Go | 3.1.0 | — |
 | [`02-coding-guidelines/08-file-folder-naming/04-typescript-javascript.md`](./02-coding-guidelines/08-file-folder-naming/04-typescript-javascript.md) | File & Folder Naming — TypeScript / JavaScript | 3.1.0 | — |
 | [`02-coding-guidelines/08-file-folder-naming/05-rust-csharp.md`](./02-coding-guidelines/08-file-folder-naming/05-rust-csharp.md) | File & Folder Naming — Rust / C# | 3.1.0 | — |
+| [`02-coding-guidelines/08-file-folder-naming/97-acceptance-criteria.md`](./02-coding-guidelines/08-file-folder-naming/97-acceptance-criteria.md) | File Folder Naming — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`02-coding-guidelines/08-file-folder-naming/99-consistency-report.md`](./02-coding-guidelines/08-file-folder-naming/99-consistency-report.md) | Consistency Report — File & Folder Naming | 3.1.0 | — |
 | [`02-coding-guidelines/09-powershell-integration/00-overview.md`](./02-coding-guidelines/09-powershell-integration/00-overview.md) | PowerShell Integration | 3.1.0 | — |
 | [`02-coding-guidelines/09-powershell-integration/99-consistency-report.md`](./02-coding-guidelines/09-powershell-integration/99-consistency-report.md) | Consistency Report — Powershell Integration | 1.0.0 | — |
@@ -358,6 +378,7 @@
 | [`02-coding-guidelines/consolidated-review-guide/12-logging.md`](./02-coding-guidelines/consolidated-review-guide/12-logging.md) | 12. Logging | — | — |
 | [`02-coding-guidelines/consolidated-review-guide/13-security-owasp.md`](./02-coding-guidelines/consolidated-review-guide/13-security-owasp.md) | 13. Security (OWASP) | — | — |
 | [`02-coding-guidelines/consolidated-review-guide/14-caching.md`](./02-coding-guidelines/consolidated-review-guide/14-caching.md) | 14. Caching | — | — |
+| [`02-coding-guidelines/consolidated-review-guide/97-acceptance-criteria.md`](./02-coding-guidelines/consolidated-review-guide/97-acceptance-criteria.md) | Consolidated Review Guide — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`02-coding-guidelines/consolidated-review-guide/99-quick-checklist.md`](./02-coding-guidelines/consolidated-review-guide/99-quick-checklist.md) | Quick Checklist (Pre-Merge) | — | — |
 
 ## 03-error-manage
@@ -376,8 +397,10 @@
 | [`03-error-manage/01-error-resolution/03-retrospectives/02-retry-debounce-dedup-fixes/03-websocket-listener-fixes.md`](./03-error-manage/01-error-resolution/03-retrospectives/02-retry-debounce-dedup-fixes/03-websocket-listener-fixes.md) | WebSocket Listener Fixes (§5) | — | — |
 | [`03-error-manage/01-error-resolution/03-retrospectives/02-retry-debounce-dedup-fixes/04-toast-and-circuit-breaker.md`](./03-error-manage/01-error-resolution/03-retrospectives/02-retry-debounce-dedup-fixes/04-toast-and-circuit-breaker.md) | Toast Dedup, Circuit Breaker & Snapshot Suppression (§6–8) | — | — |
 | [`03-error-manage/01-error-resolution/03-retrospectives/02-retry-debounce-dedup-fixes/05-anti-patterns-and-files.md`](./03-error-manage/01-error-resolution/03-retrospectives/02-retry-debounce-dedup-fixes/05-anti-patterns-and-files.md) | Anti-Patterns Summary & Files Involved (§9) | — | — |
+| [`03-error-manage/01-error-resolution/03-retrospectives/02-retry-debounce-dedup-fixes/97-acceptance-criteria.md`](./03-error-manage/01-error-resolution/03-retrospectives/02-retry-debounce-dedup-fixes/97-acceptance-criteria.md) | Retry Debounce Dedup Fixes — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`03-error-manage/01-error-resolution/03-retrospectives/03-zip-finalization-before-return.md`](./03-error-manage/01-error-resolution/03-retrospectives/03-zip-finalization-before-return.md) | (untitled) | 3.1.0 | — |
 | [`03-error-manage/01-error-resolution/03-retrospectives/04-activation-endpoint-mismatch.md`](./03-error-manage/01-error-resolution/03-retrospectives/04-activation-endpoint-mismatch.md) | (untitled) | 3.1.0 | — |
+| [`03-error-manage/01-error-resolution/03-retrospectives/97-acceptance-criteria.md`](./03-error-manage/01-error-resolution/03-retrospectives/97-acceptance-criteria.md) | Retrospectives — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`03-error-manage/01-error-resolution/03-retrospectives/99-consistency-report.md`](./03-error-manage/01-error-resolution/03-retrospectives/99-consistency-report.md) | Consistency Report: Retrospectives | 3.1.0 | — |
 | [`03-error-manage/01-error-resolution/04-verification-patterns/00-overview.md`](./03-error-manage/01-error-resolution/04-verification-patterns/00-overview.md) | Verification Patterns | 3.1.0 | Active |
 | [`03-error-manage/01-error-resolution/04-verification-patterns/01-frontend-backend-sync.md`](./03-error-manage/01-error-resolution/04-verification-patterns/01-frontend-backend-sync.md) | Frontend-Backend Sync Verification Pattern | 1.0.0 | MANDATORY |
@@ -393,6 +416,7 @@
 | [`03-error-manage/01-error-resolution/05-debugging-guides/02-debugging-go/06-common-issues.md`](./03-error-manage/01-error-resolution/05-debugging-guides/02-debugging-go/06-common-issues.md) | Common Issues and Solutions | — | — |
 | [`03-error-manage/01-error-resolution/05-debugging-guides/02-debugging-go/07-debug-commands-and-profiling.md`](./03-error-manage/01-error-resolution/05-debugging-guides/02-debugging-go/07-debug-commands-and-profiling.md) | Debugging Commands, Profiling, and Request Tracing | — | — |
 | [`03-error-manage/01-error-resolution/05-debugging-guides/02-debugging-go/08-database-stack-traces.md`](./03-error-manage/01-error-resolution/05-debugging-guides/02-debugging-go/08-database-stack-traces.md) | Database Error Stack Traces & ORM-Only Policy | — | — |
+| [`03-error-manage/01-error-resolution/05-debugging-guides/02-debugging-go/97-acceptance-criteria.md`](./03-error-manage/01-error-resolution/05-debugging-guides/02-debugging-go/97-acceptance-criteria.md) | Debugging Go — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`03-error-manage/01-error-resolution/05-debugging-guides/03-debugging-typescript/00-overview.md`](./03-error-manage/01-error-resolution/05-debugging-guides/03-debugging-typescript/00-overview.md) | TypeScript/React Debugging Guide | 1.0.0 | — |
 | [`03-error-manage/01-error-resolution/05-debugging-guides/03-debugging-typescript/01-api-integration-verification.md`](./03-error-manage/01-error-resolution/05-debugging-guides/03-debugging-typescript/01-api-integration-verification.md) | API Integration Verification (CRITICAL) | — | — |
 | [`03-error-manage/01-error-resolution/05-debugging-guides/03-debugging-typescript/02-environment-diagnostics.md`](./03-error-manage/01-error-resolution/05-debugging-guides/03-debugging-typescript/02-environment-diagnostics.md) | Environment Variable Diagnostics | — | — |
@@ -403,8 +427,10 @@
 | [`03-error-manage/01-error-resolution/05-debugging-guides/03-debugging-typescript/07-browser-devtools.md`](./03-error-manage/01-error-resolution/05-debugging-guides/03-debugging-typescript/07-browser-devtools.md) | Browser DevTools Tips | — | — |
 | [`03-error-manage/01-error-resolution/05-debugging-guides/03-debugging-typescript/08-error-boundary.md`](./03-error-manage/01-error-resolution/05-debugging-guides/03-debugging-typescript/08-error-boundary.md) | Error Boundary Pattern | — | — |
 | [`03-error-manage/01-error-resolution/05-debugging-guides/03-debugging-typescript/09-performance.md`](./03-error-manage/01-error-resolution/05-debugging-guides/03-debugging-typescript/09-performance.md) | Performance Debugging | — | — |
+| [`03-error-manage/01-error-resolution/05-debugging-guides/03-debugging-typescript/97-acceptance-criteria.md`](./03-error-manage/01-error-resolution/05-debugging-guides/03-debugging-typescript/97-acceptance-criteria.md) | Debugging Typescript — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`03-error-manage/01-error-resolution/05-debugging-guides/99-consistency-report.md`](./03-error-manage/01-error-resolution/05-debugging-guides/99-consistency-report.md) | Consistency Report: Debugging Guides | 3.1.0 | — |
 | [`03-error-manage/01-error-resolution/06-error-documentation-guideline.md`](./03-error-manage/01-error-resolution/06-error-documentation-guideline.md) | Error Documentation Guideline | 3.1.0 | Resolved |
+| [`03-error-manage/01-error-resolution/97-acceptance-criteria.md`](./03-error-manage/01-error-resolution/97-acceptance-criteria.md) | Error Resolution — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`03-error-manage/01-error-resolution/99-consistency-report.md`](./03-error-manage/01-error-resolution/99-consistency-report.md) | Consistency Report: Error Resolution | 3.1.0 | — |
 | [`03-error-manage/01-error-resolution/app-issues/00-overview.md`](./03-error-manage/01-error-resolution/app-issues/00-overview.md) | App Issues | 3.1.0 | — |
 | [`03-error-manage/01-error-resolution/app-issues/01-url-error-casing-fix.md`](./03-error-manage/01-error-resolution/app-issues/01-url-error-casing-fix.md) | Issue: URLError Renamed to UrlError — Inconsistent Casing | — | Resolved |
@@ -417,6 +443,7 @@
 | [`03-error-manage/02-error-architecture/01-error-handling-reference/03-tier2-go-backend.md`](./03-error-manage/02-error-architecture/01-error-handling-reference/03-tier2-go-backend.md) | 3. Tier 2 — Go Backend Error Handling | — | — |
 | [`03-error-manage/02-error-architecture/01-error-handling-reference/04-tier3-frontend.md`](./03-error-manage/02-error-architecture/01-error-handling-reference/04-tier3-frontend.md) | 4. Tier 3 — Frontend Error Handling | — | — |
 | [`03-error-manage/02-error-architecture/01-error-handling-reference/05-error-codes-and-fallbacks.md`](./03-error-manage/02-error-architecture/01-error-handling-reference/05-error-codes-and-fallbacks.md) | 5. Error Codes & Fallbacks | — | — |
+| [`03-error-manage/02-error-architecture/01-error-handling-reference/97-acceptance-criteria.md`](./03-error-manage/02-error-architecture/01-error-handling-reference/97-acceptance-criteria.md) | Error Handling Reference — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`03-error-manage/02-error-architecture/02-go-delegation-fix.md`](./03-error-manage/02-error-architecture/02-go-delegation-fix.md) | Go Backend Fix: Missing Delegation Fields | 3.1.0 | — |
 | [`03-error-manage/02-error-architecture/03-notification-colors.md`](./03-error-manage/02-error-architecture/03-notification-colors.md) | Notification & Toast Color System | — | — |
 | [`03-error-manage/02-error-architecture/04-error-modal/00-overview.md`](./03-error-manage/02-error-architecture/04-error-modal/00-overview.md) | Error Modal | 3.1.0 | Active |
@@ -430,6 +457,7 @@
 | [`03-error-manage/02-error-architecture/04-error-modal/01-copy-formats/07-envelope-error-response.md`](./03-error-manage/02-error-architecture/04-error-modal/01-copy-formats/07-envelope-error-response.md) | Envelope Error Response (JSON) | 3.1.0 | — |
 | [`03-error-manage/02-error-architecture/04-error-modal/01-copy-formats/08-session-diagnostics.md`](./03-error-manage/02-error-architecture/04-error-modal/01-copy-formats/08-session-diagnostics.md) | Session Diagnostics (JSON) | 3.1.0 | — |
 | [`03-error-manage/02-error-architecture/04-error-modal/01-copy-formats/09-generator-code-reference.md`](./03-error-manage/02-error-architecture/04-error-modal/01-copy-formats/09-generator-code-reference.md) | Generator Code Reference | 3.1.0 | — |
+| [`03-error-manage/02-error-architecture/04-error-modal/01-copy-formats/97-acceptance-criteria.md`](./03-error-manage/02-error-architecture/04-error-modal/01-copy-formats/97-acceptance-criteria.md) | Copy Formats — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`03-error-manage/02-error-architecture/04-error-modal/01-copy-formats/99-consistency-report.md`](./03-error-manage/02-error-architecture/04-error-modal/01-copy-formats/99-consistency-report.md) | Consistency Report: Copy Formats | 3.1.0 | — |
 | [`03-error-manage/02-error-architecture/04-error-modal/02-react-components/00-overview.md`](./03-error-manage/02-error-architecture/04-error-modal/02-react-components/00-overview.md) | Error Modal — Reusable React Components (Index) | 4.0.0 | — |
 | [`03-error-manage/02-error-architecture/04-error-modal/02-react-components/01-typescript-interfaces.md`](./03-error-manage/02-error-architecture/04-error-modal/02-react-components/01-typescript-interfaces.md) | TypeScript Interfaces | 4.0.0 | — |
@@ -440,6 +468,7 @@
 | [`03-error-manage/02-error-architecture/04-error-modal/02-react-components/06-component-source.md`](./03-error-manage/02-error-architecture/04-error-modal/02-react-components/06-component-source.md) | Component Source Code | 4.0.0 | — |
 | [`03-error-manage/02-error-architecture/04-error-modal/02-react-components/07-report-generator.md`](./03-error-manage/02-error-architecture/04-error-modal/02-react-components/07-report-generator.md) | Error Report Generator | 4.0.0 | — |
 | [`03-error-manage/02-error-architecture/04-error-modal/02-react-components/08-integration-guide.md`](./03-error-manage/02-error-architecture/04-error-modal/02-react-components/08-integration-guide.md) | Integration Guide | 3.1.0 | — |
+| [`03-error-manage/02-error-architecture/04-error-modal/02-react-components/97-acceptance-criteria.md`](./03-error-manage/02-error-architecture/04-error-modal/02-react-components/97-acceptance-criteria.md) | React Components — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`03-error-manage/02-error-architecture/04-error-modal/02-react-components/99-consistency-report.md`](./03-error-manage/02-error-architecture/04-error-modal/02-react-components/99-consistency-report.md) | Consistency Report: React Components | 3.1.0 | — |
 | [`03-error-manage/02-error-architecture/04-error-modal/03-error-modal-reference/00-overview.md`](./03-error-manage/02-error-architecture/04-error-modal/03-error-modal-reference/00-overview.md) | Error Modal — Frontend Specification (Index) | 2.2.0 | Active |
 | [`03-error-manage/02-error-architecture/04-error-modal/03-error-modal-reference/01-data-model.md`](./03-error-manage/02-error-architecture/04-error-modal/03-error-modal-reference/01-data-model.md) | Data Model: CapturedError | 2.2.0 | — |
@@ -455,22 +484,26 @@
 | [`03-error-manage/02-error-architecture/04-error-modal/03-error-modal-reference/11-queue-navigation.md`](./03-error-manage/02-error-architecture/04-error-modal/03-error-modal-reference/11-queue-navigation.md) | Error Queue Navigation | 2.2.0 | — |
 | [`03-error-manage/02-error-architecture/04-error-modal/03-error-modal-reference/12-code-examples.md`](./03-error-manage/02-error-architecture/04-error-modal/03-error-modal-reference/12-code-examples.md) | React Code Examples | 2.2.0 | — |
 | [`03-error-manage/02-error-architecture/04-error-modal/03-error-modal-reference/13-file-reference.md`](./03-error-manage/02-error-architecture/04-error-modal/03-error-modal-reference/13-file-reference.md) | File Reference | 2.2.0 | — |
+| [`03-error-manage/02-error-architecture/04-error-modal/03-error-modal-reference/97-acceptance-criteria.md`](./03-error-manage/02-error-architecture/04-error-modal/03-error-modal-reference/97-acceptance-criteria.md) | Error Modal Reference — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`03-error-manage/02-error-architecture/04-error-modal/03-error-modal-reference/99-consistency-report.md`](./03-error-manage/02-error-architecture/04-error-modal/03-error-modal-reference/99-consistency-report.md) | Consistency Report: Error Modal Reference | 3.1.0 | — |
 | [`03-error-manage/02-error-architecture/04-error-modal/04-color-themes/00-overview.md`](./03-error-manage/02-error-architecture/04-error-modal/04-color-themes/00-overview.md) | Color Theme & Design Token Reference (Index) | 2.1.0 | — |
 | [`03-error-manage/02-error-architecture/04-error-modal/04-color-themes/01-design-tokens.md`](./03-error-manage/02-error-architecture/04-error-modal/04-color-themes/01-design-tokens.md) | Design System Tokens & Error Level Colors | 2.1.0 | — |
 | [`03-error-manage/02-error-architecture/04-error-modal/04-color-themes/02-backend-tab-colors.md`](./03-error-manage/02-error-architecture/04-error-modal/04-color-themes/02-backend-tab-colors.md) | Backend Section — Tab-Specific Color Themes | 2.1.0 | — |
 | [`03-error-manage/02-error-architecture/04-error-modal/04-color-themes/03-frontend-and-ui-colors.md`](./03-error-manage/02-error-architecture/04-error-modal/04-color-themes/03-frontend-and-ui-colors.md) | Frontend Section & UI Element Colors | 2.1.0 | — |
+| [`03-error-manage/02-error-architecture/04-error-modal/04-color-themes/97-acceptance-criteria.md`](./03-error-manage/02-error-architecture/04-error-modal/04-color-themes/97-acceptance-criteria.md) | Color Themes — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`03-error-manage/02-error-architecture/04-error-modal/04-color-themes/99-consistency-report.md`](./03-error-manage/02-error-architecture/04-error-modal/04-color-themes/99-consistency-report.md) | Consistency Report: Color Themes | 3.1.0 | — |
 | [`03-error-manage/02-error-architecture/04-error-modal/05-error-history-persistence.md`](./03-error-manage/02-error-architecture/04-error-modal/05-error-history-persistence.md) | Error Modal — Error History Persistence | 1.1.0 | Active |
 | [`03-error-manage/02-error-architecture/04-error-modal/06-suppress-global-error.md`](./03-error-manage/02-error-architecture/04-error-modal/06-suppress-global-error.md) | Error Modal — suppressGlobalError Meta Pattern | 1.2.0 | Active |
 | [`03-error-manage/02-error-architecture/04-error-modal/07-error-modal-reference-legacy.md`](./03-error-manage/02-error-architecture/04-error-modal/07-error-modal-reference-legacy.md) | Error Modal — Frontend Specification (Legacy Redirect) | 3.0.0 | Redirect |
 | [`03-error-manage/02-error-architecture/04-error-modal/08-color-themes-legacy.md`](./03-error-manage/02-error-architecture/04-error-modal/08-color-themes-legacy.md) | Error Modal — Color Theme & Design Token Reference (Legacy Stub) | 3.0.0 | — |
+| [`03-error-manage/02-error-architecture/04-error-modal/97-acceptance-criteria.md`](./03-error-manage/02-error-architecture/04-error-modal/97-acceptance-criteria.md) | Error Modal — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`03-error-manage/02-error-architecture/04-error-modal/99-consistency-report.md`](./03-error-manage/02-error-architecture/04-error-modal/99-consistency-report.md) | Consistency Report: Error Modal | 3.1.0 | — |
 | [`03-error-manage/02-error-architecture/05-response-envelope/00-overview.md`](./03-error-manage/02-error-architecture/05-response-envelope/00-overview.md) | Response Envelope | 3.1.0 | Active |
 | [`03-error-manage/02-error-architecture/05-response-envelope/01-adr.md`](./03-error-manage/02-error-architecture/05-response-envelope/01-adr.md) | ADR: Universal Response Envelope — Architecture Decision Record | 3.1.0 | Accepted |
 | [`03-error-manage/02-error-architecture/05-response-envelope/02-changelog.md`](./03-error-manage/02-error-architecture/05-response-envelope/02-changelog.md) | Universal Response Envelope — Changelog | 3.1.0 | — |
 | [`03-error-manage/02-error-architecture/05-response-envelope/03-configurability.md`](./03-error-manage/02-error-architecture/05-response-envelope/03-configurability.md) | Envelope Configurability | 3.1.0 | — |
 | [`03-error-manage/02-error-architecture/05-response-envelope/04-response-envelope-reference.md`](./03-error-manage/02-error-architecture/05-response-envelope/04-response-envelope-reference.md) | Universal Response Envelope Specification | 3.1.0 | — |
+| [`03-error-manage/02-error-architecture/05-response-envelope/97-acceptance-criteria.md`](./03-error-manage/02-error-architecture/05-response-envelope/97-acceptance-criteria.md) | Response Envelope — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`03-error-manage/02-error-architecture/05-response-envelope/99-consistency-report.md`](./03-error-manage/02-error-architecture/05-response-envelope/99-consistency-report.md) | Consistency Report: Response Envelope | 3.1.0 | — |
 | [`03-error-manage/02-error-architecture/06-apperror-package/00-overview.md`](./03-error-manage/02-error-architecture/06-apperror-package/00-overview.md) | AppError Package | 3.1.0 | Active |
 | [`03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/00-overview.md`](./03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/00-overview.md) | AppError Package Reference | 3.1.0 | — |
@@ -482,6 +515,7 @@
 | [`03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/02-apperror-struct/04-merge.md`](./03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/02-apperror-struct/04-merge.md) | AppError Merge — Batch Error Aggregation | 3.0.0 | — |
 | [`03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/02-apperror-struct/05-display-methods.md`](./03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/02-apperror-struct/05-display-methods.md) | AppError Display Methods | 3.0.0 | — |
 | [`03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/02-apperror-struct/06-query-and-diagnostic-setters.md`](./03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/02-apperror-struct/06-query-and-diagnostic-setters.md) | AppError Query Methods & Diagnostic Setters | 3.0.0 | — |
+| [`03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/02-apperror-struct/97-acceptance-criteria.md`](./03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/02-apperror-struct/97-acceptance-criteria.md) | Apperror Struct — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/03-result-types.md`](./03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/03-result-types.md) | AppError Package Reference — Result[T], ResultSlice[T], ResultMap[K,V] | 1.3.0 | — |
 | [`03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/04-codes-and-policy.md`](./03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/04-codes-and-policy.md) | AppError Package Reference — Error code convention, stack trace skip rules, file size | 1.3.0 | — |
 | [`03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/05-apperrtype-enums/00-overview.md`](./03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/05-apperrtype-enums/00-overview.md) | AppError Package Reference — Domain Error Type Enums (`apperrtype`) | 2.1.0 | — |
@@ -491,8 +525,10 @@
 | [`03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/05-apperrtype-enums/04-reverse-lookup-maps.md`](./03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/05-apperrtype-enums/04-reverse-lookup-maps.md) | Reverse-Lookup Maps | — | — |
 | [`03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/05-apperrtype-enums/05-usage-and-display.md`](./03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/05-apperrtype-enums/05-usage-and-display.md) | Usage Examples & Display Methods | — | — |
 | [`03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/05-apperrtype-enums/06-rules-and-migration.md`](./03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/05-apperrtype-enums/06-rules-and-migration.md) | Rules, Migration, Registry Relationship & Adding Variants | — | — |
+| [`03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/05-apperrtype-enums/97-acceptance-criteria.md`](./03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/05-apperrtype-enums/97-acceptance-criteria.md) | Apperrtype Enums — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/06-serialization-and-guards.md`](./03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/06-serialization-and-guards.md) | AppError Package Reference — JSON serialization, Result guard rule | 1.3.0 | — |
 | [`03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/08-usage-and-adapters.md`](./03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/08-usage-and-adapters.md) | AppError Package Reference — Usage examples, service adapter unwrap pattern | 1.3.0 | — |
+| [`03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/97-acceptance-criteria.md`](./03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/97-acceptance-criteria.md) | Apperror Reference — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/99-consistency-report.md`](./03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/99-consistency-report.md) | Consistency Report: AppError Package Reference | 3.1.0 | — |
 | [`03-error-manage/02-error-architecture/06-apperror-package/99-consistency-report.md`](./03-error-manage/02-error-architecture/06-apperror-package/99-consistency-report.md) | Consistency Report: Apperror Package | 3.1.0 | — |
 | [`03-error-manage/02-error-architecture/07-logging-and-diagnostics/00-overview.md`](./03-error-manage/02-error-architecture/07-logging-and-diagnostics/00-overview.md) | Logging and Diagnostics | 3.1.0 | Active |
@@ -506,6 +542,7 @@
 | [`03-error-manage/02-error-architecture/07-logging-and-diagnostics/02-session-based-logging/06-security-considerations.md`](./03-error-manage/02-error-architecture/07-logging-and-diagnostics/02-session-based-logging/06-security-considerations.md) | 6. Security Considerations | — | — |
 | [`03-error-manage/02-error-architecture/07-logging-and-diagnostics/02-session-based-logging/07-implementation-and-error-log.md`](./03-error-manage/02-error-architecture/07-logging-and-diagnostics/02-session-based-logging/07-implementation-and-error-log.md) | 7. Implementation Files & Error Log Format | — | — |
 | [`03-error-manage/02-error-architecture/07-logging-and-diagnostics/02-session-based-logging/08-testing-monitoring-future.md`](./03-error-manage/02-error-architecture/07-logging-and-diagnostics/02-session-based-logging/08-testing-monitoring-future.md) | 8. Testing, Monitoring & Future Enhancements | — | — |
+| [`03-error-manage/02-error-architecture/07-logging-and-diagnostics/02-session-based-logging/97-acceptance-criteria.md`](./03-error-manage/02-error-architecture/07-logging-and-diagnostics/02-session-based-logging/97-acceptance-criteria.md) | Session Based Logging — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`03-error-manage/02-error-architecture/07-logging-and-diagnostics/99-consistency-report.md`](./03-error-manage/02-error-architecture/07-logging-and-diagnostics/99-consistency-report.md) | Consistency Report: Logging And Diagnostics | 3.1.0 | — |
 | [`03-error-manage/02-error-architecture/99-consistency-report.md`](./03-error-manage/02-error-architecture/99-consistency-report.md) | Consistency Report: Error Architecture | 3.1.0 | — |
 | [`03-error-manage/03-error-code-registry/00-overview.md`](./03-error-manage/03-error-code-registry/00-overview.md) | Error Code Registry | 3.1.0 | — |
@@ -526,6 +563,7 @@
 | [`03-error-manage/03-error-code-registry/09-templates/00-overview.md`](./03-error-manage/03-error-code-registry/09-templates/00-overview.md) | Templates | 3.1.0 | Active |
 | [`03-error-manage/03-error-code-registry/09-templates/01-error-codes-template.md`](./03-error-manage/03-error-code-registry/09-templates/01-error-codes-template.md) | [PROJECT_NAME] - Error Codes | 3.1.0 | — |
 | [`03-error-manage/03-error-code-registry/09-templates/99-consistency-report.md`](./03-error-manage/03-error-code-registry/09-templates/99-consistency-report.md) | Consistency Report: Templates | 3.1.0 | — |
+| [`03-error-manage/03-error-code-registry/97-acceptance-criteria.md`](./03-error-manage/03-error-code-registry/97-acceptance-criteria.md) | Error Code Registry — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`03-error-manage/03-error-code-registry/99-consistency-report.md`](./03-error-manage/03-error-code-registry/99-consistency-report.md) | Consistency Report: Error Code Registry | 3.1.0 | — |
 | [`03-error-manage/97-acceptance-criteria.md`](./03-error-manage/97-acceptance-criteria.md) | Error Management — Acceptance Criteria | 3.1.0 | — |
 | [`03-error-manage/98-changelog.md`](./03-error-manage/98-changelog.md) | Error Management — Changelog | 3.1.0 | — |
@@ -548,6 +586,7 @@
 | [`04-database-conventions/06-rest-api-format/03-envelope-and-flow.md`](./04-database-conventions/06-rest-api-format/03-envelope-and-flow.md) | Envelope Quick Reference & PascalCase Data Flow | — | — |
 | [`04-database-conventions/06-rest-api-format/04-language-implementation.md`](./04-database-conventions/06-rest-api-format/04-language-implementation.md) | Language Implementation | — | — |
 | [`04-database-conventions/06-rest-api-format/05-paths-and-references.md`](./04-database-conventions/06-rest-api-format/05-paths-and-references.md) | URL Paths vs JSON Keys & Cross-References | — | — |
+| [`04-database-conventions/06-rest-api-format/97-acceptance-criteria.md`](./04-database-conventions/06-rest-api-format/97-acceptance-criteria.md) | Rest Api Format — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`04-database-conventions/07-split-db-pattern.md`](./04-database-conventions/07-split-db-pattern.md) | Split DB Pattern | 3.1.0 | — |
 | [`04-database-conventions/97-acceptance-criteria.md`](./04-database-conventions/97-acceptance-criteria.md) | Database Conventions — Acceptance Criteria | 1.0.0 | Scaffold |
 | [`04-database-conventions/99-consistency-report.md`](./04-database-conventions/99-consistency-report.md) | Consistency Report — Database Conventions | 3.1.0 | — |
@@ -567,6 +606,7 @@
 | [`05-split-db-architecture/01-fundamentals/07-paths-and-lifecycle.md`](./05-split-db-architecture/01-fundamentals/07-paths-and-lifecycle.md) | File Paths & Lifecycle | — | — |
 | [`05-split-db-architecture/01-fundamentals/08-import-export.md`](./05-split-db-architecture/01-fundamentals/08-import-export.md) | Import / Export (Zip Files) | — | — |
 | [`05-split-db-architecture/01-fundamentals/09-logging-benefits-references.md`](./05-split-db-architecture/01-fundamentals/09-logging-benefits-references.md) | Logging, Benefits & References | — | — |
+| [`05-split-db-architecture/01-fundamentals/97-acceptance-criteria.md`](./05-split-db-architecture/01-fundamentals/97-acceptance-criteria.md) | Fundamentals — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`05-split-db-architecture/02-features/00-overview.md`](./05-split-db-architecture/02-features/00-overview.md) | Split DB Architecture — Features Index | — | — |
 | [`05-split-db-architecture/02-features/01-cli-examples/00-overview.md`](./05-split-db-architecture/02-features/01-cli-examples/00-overview.md) | CLI Examples — Overview | 3.1.0 | Active |
 | [`05-split-db-architecture/02-features/01-cli-examples/01-aibridge-examples.md`](./05-split-db-architecture/02-features/01-cli-examples/01-aibridge-examples.md) | Split DB Architecture: AI Bridge CLI Examples | 3.1.0 | Active |
@@ -574,6 +614,7 @@
 | [`05-split-db-architecture/02-features/01-cli-examples/03-brun-examples.md`](./05-split-db-architecture/02-features/01-cli-examples/03-brun-examples.md) | Split DB Architecture: BRun CLI Examples | 3.1.0 | Active |
 | [`05-split-db-architecture/02-features/01-cli-examples/04-nexusflow-examples.md`](./05-split-db-architecture/02-features/01-cli-examples/04-nexusflow-examples.md) | Split DB Architecture: Nexus Flow CLI Examples | 3.1.0 | Active |
 | [`05-split-db-architecture/02-features/01-cli-examples/05-reset-api-tables.md`](./05-split-db-architecture/02-features/01-cli-examples/05-reset-api-tables.md) | Split DB Architecture: Reset API Tables | 3.1.0 | Active |
+| [`05-split-db-architecture/02-features/01-cli-examples/97-acceptance-criteria.md`](./05-split-db-architecture/02-features/01-cli-examples/97-acceptance-criteria.md) | Cli Examples — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`05-split-db-architecture/02-features/02-reset-api-standard.md`](./05-split-db-architecture/02-features/02-reset-api-standard.md) | Split DB Architecture: Reset API Standard | 3.1.0 | Active |
 | [`05-split-db-architecture/02-features/03-database-flow-diagrams.md`](./05-split-db-architecture/02-features/03-database-flow-diagrams.md) | Split DB Architecture: Complete Database Flow Diagram | 3.1.0 | Active |
 | [`05-split-db-architecture/02-features/04-rbac-casbin/00-overview.md`](./05-split-db-architecture/02-features/04-rbac-casbin/00-overview.md) | Split DB Architecture: Role-Based Access Control (RBAC) with Casbin | 3.1.0 | Active |
@@ -586,6 +627,7 @@
 | [`05-split-db-architecture/02-features/04-rbac-casbin/07-role-definitions.md`](./05-split-db-architecture/02-features/04-rbac-casbin/07-role-definitions.md) | 7. Default Role Definitions | — | — |
 | [`05-split-db-architecture/02-features/04-rbac-casbin/08-best-practices.md`](./05-split-db-architecture/02-features/04-rbac-casbin/08-best-practices.md) | 8. Best Practices | — | — |
 | [`05-split-db-architecture/02-features/04-rbac-casbin/09-split-db-integration.md`](./05-split-db-architecture/02-features/04-rbac-casbin/09-split-db-integration.md) | 9. Split DB Integration | — | — |
+| [`05-split-db-architecture/02-features/04-rbac-casbin/97-acceptance-criteria.md`](./05-split-db-architecture/02-features/04-rbac-casbin/97-acceptance-criteria.md) | Rbac Casbin — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`05-split-db-architecture/02-features/05-user-scoped-isolation/00-overview.md`](./05-split-db-architecture/02-features/05-user-scoped-isolation/00-overview.md) | Split DB Architecture: User-Scoped Isolation | 3.1.0 | Active |
 | [`05-split-db-architecture/02-features/05-user-scoped-isolation/01-scoping-and-directory-patterns.md`](./05-split-db-architecture/02-features/05-user-scoped-isolation/01-scoping-and-directory-patterns.md) | 1. Scoping & Directory Patterns | — | — |
 | [`05-split-db-architecture/02-features/05-user-scoped-isolation/02-database-schema.md`](./05-split-db-architecture/02-features/05-user-scoped-isolation/02-database-schema.md) | 2. Database Schema | — | — |
@@ -593,6 +635,7 @@
 | [`05-split-db-architecture/02-features/05-user-scoped-isolation/04-usage-examples.md`](./05-split-db-architecture/02-features/05-user-scoped-isolation/04-usage-examples.md) | 4. Usage Examples | — | — |
 | [`05-split-db-architecture/02-features/05-user-scoped-isolation/05-session-management.md`](./05-split-db-architecture/02-features/05-user-scoped-isolation/05-session-management.md) | 5. Session Management | — | — |
 | [`05-split-db-architecture/02-features/05-user-scoped-isolation/06-privacy-and-gdpr.md`](./05-split-db-architecture/02-features/05-user-scoped-isolation/06-privacy-and-gdpr.md) | 6. Privacy & GDPR Compliance | — | — |
+| [`05-split-db-architecture/02-features/05-user-scoped-isolation/97-acceptance-criteria.md`](./05-split-db-architecture/02-features/05-user-scoped-isolation/97-acceptance-criteria.md) | User Scoped Isolation — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`05-split-db-architecture/02-features/99-consistency-report.md`](./05-split-db-architecture/02-features/99-consistency-report.md) | Consistency Report: Split DB Features | 3.1.0 | — |
 | [`05-split-db-architecture/97-changelog.md`](./05-split-db-architecture/97-changelog.md) | Split DB Architecture — Changelog | 3.1.0 | — |
 | [`05-split-db-architecture/98-acceptance-criteria.md`](./05-split-db-architecture/98-acceptance-criteria.md) | Split DB Architecture: Acceptance Criteria | 3.1.0 | Active |
@@ -613,6 +656,7 @@
 | [`06-seedable-config-architecture/01-fundamentals/07-ui-integration.md`](./06-seedable-config-architecture/01-fundamentals/07-ui-integration.md) | UI Integration | — | — |
 | [`06-seedable-config-architecture/01-fundamentals/08-theme-support.md`](./06-seedable-config-architecture/01-fundamentals/08-theme-support.md) | Theme Support | — | — |
 | [`06-seedable-config-architecture/01-fundamentals/09-applicable-projects-and-policy.md`](./06-seedable-config-architecture/01-fundamentals/09-applicable-projects-and-policy.md) | Applicable Projects & No-Hardcoded-Arrays Policy | — | — |
+| [`06-seedable-config-architecture/01-fundamentals/97-acceptance-criteria.md`](./06-seedable-config-architecture/01-fundamentals/97-acceptance-criteria.md) | Fundamentals — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`06-seedable-config-architecture/02-features/00-overview.md`](./06-seedable-config-architecture/02-features/00-overview.md) | Seedable Config Architecture — Features Index | — | — |
 | [`06-seedable-config-architecture/02-features/01-rag-chunk-settings.md`](./06-seedable-config-architecture/02-features/01-rag-chunk-settings.md) | RAG Chunk Configuration Settings | 3.1.0 | Active |
 | [`06-seedable-config-architecture/02-features/02-rag-validation-helpers/00-overview.md`](./06-seedable-config-architecture/02-features/02-rag-validation-helpers/00-overview.md) | RAG Configuration Validation Helpers | 3.1.0 | Active |
@@ -624,6 +668,7 @@
 | [`06-seedable-config-architecture/02-features/02-rag-validation-helpers/06-api-integration.md`](./06-seedable-config-architecture/02-features/02-rag-validation-helpers/06-api-integration.md) | 6. API Integration | — | — |
 | [`06-seedable-config-architecture/02-features/02-rag-validation-helpers/07-response-formats.md`](./06-seedable-config-architecture/02-features/02-rag-validation-helpers/07-response-formats.md) | 7. Response Formats | — | — |
 | [`06-seedable-config-architecture/02-features/02-rag-validation-helpers/08-unit-tests.md`](./06-seedable-config-architecture/02-features/02-rag-validation-helpers/08-unit-tests.md) | 8. Unit Tests | — | — |
+| [`06-seedable-config-architecture/02-features/02-rag-validation-helpers/97-acceptance-criteria.md`](./06-seedable-config-architecture/02-features/02-rag-validation-helpers/97-acceptance-criteria.md) | Rag Validation Helpers — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`06-seedable-config-architecture/02-features/03-rag-validation-tests/00-overview.md`](./06-seedable-config-architecture/02-features/03-rag-validation-tests/00-overview.md) | RAG Validation Helpers: Unit Test Specification | 4.0.0 | Active |
 | [`06-seedable-config-architecture/02-features/03-rag-validation-tests/01-chunk-size-tests.md`](./06-seedable-config-architecture/02-features/03-rag-validation-tests/01-chunk-size-tests.md) | 01 — ChunkSize Validation Tests (AB-9301, AB-9302) | — | — |
 | [`06-seedable-config-architecture/02-features/03-rag-validation-tests/02-chunk-overlap-tests.md`](./06-seedable-config-architecture/02-features/03-rag-validation-tests/02-chunk-overlap-tests.md) | 02 — ChunkOverlap Validation Tests (AB-9303) | — | — |
@@ -635,6 +680,7 @@
 | [`06-seedable-config-architecture/02-features/03-rag-validation-tests/08-config-load-save-tests.md`](./06-seedable-config-architecture/02-features/03-rag-validation-tests/08-config-load-save-tests.md) | 08 — Config Load/Save Tests (AB-9308, AB-9309, AB-9310) | — | — |
 | [`06-seedable-config-architecture/02-features/03-rag-validation-tests/09-helpers-and-benchmarks.md`](./06-seedable-config-architecture/02-features/03-rag-validation-tests/09-helpers-and-benchmarks.md) | 09 — Test Helpers & Benchmarks | — | — |
 | [`06-seedable-config-architecture/02-features/03-rag-validation-tests/10-test-data-files.md`](./06-seedable-config-architecture/02-features/03-rag-validation-tests/10-test-data-files.md) | 10 — Test Data Files | — | — |
+| [`06-seedable-config-architecture/02-features/03-rag-validation-tests/97-acceptance-criteria.md`](./06-seedable-config-architecture/02-features/03-rag-validation-tests/97-acceptance-criteria.md) | Rag Validation Tests — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`06-seedable-config-architecture/02-features/04-rag-test-coverage-matrix.md`](./06-seedable-config-architecture/02-features/04-rag-test-coverage-matrix.md) | RAG Validation Test Coverage Matrix | 3.1.0 | Active |
 | [`06-seedable-config-architecture/02-features/05-validation-data-seeding/00-overview.md`](./06-seedable-config-architecture/02-features/05-validation-data-seeding/00-overview.md) | Validation Data Seeding Pattern | 3.1.0 | Active |
 | [`06-seedable-config-architecture/02-features/05-validation-data-seeding/01-anti-pattern.md`](./06-seedable-config-architecture/02-features/05-validation-data-seeding/01-anti-pattern.md) | 1. Anti-Pattern: Hardcoded Arrays ❌ | — | — |
@@ -644,6 +690,7 @@
 | [`06-seedable-config-architecture/02-features/05-validation-data-seeding/05-validation-data-service.md`](./06-seedable-config-architecture/02-features/05-validation-data-seeding/05-validation-data-service.md) | 5. Step 4 + 5 — ValidationDataService and Validator Usage | — | — |
 | [`06-seedable-config-architecture/02-features/05-validation-data-seeding/06-categories-and-versioning.md`](./06-seedable-config-architecture/02-features/05-validation-data-seeding/06-categories-and-versioning.md) | 6. Categories Reference + Version Seeding Flow | — | — |
 | [`06-seedable-config-architecture/02-features/05-validation-data-seeding/07-api-and-checklist.md`](./06-seedable-config-architecture/02-features/05-validation-data-seeding/07-api-and-checklist.md) | 7. Runtime API + Per-Feature Checklist | — | — |
+| [`06-seedable-config-architecture/02-features/05-validation-data-seeding/97-acceptance-criteria.md`](./06-seedable-config-architecture/02-features/05-validation-data-seeding/97-acceptance-criteria.md) | Validation Data Seeding — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`06-seedable-config-architecture/02-features/99-consistency-report.md`](./06-seedable-config-architecture/02-features/99-consistency-report.md) | Consistency Report: Seedable Config Features | 3.1.0 | — |
 | [`06-seedable-config-architecture/97-changelog.md`](./06-seedable-config-architecture/97-changelog.md) | Seedable Config Architecture — Changelog | 3.1.0 | — |
 | [`06-seedable-config-architecture/98-acceptance-criteria.md`](./06-seedable-config-architecture/98-acceptance-criteria.md) | Seedable Config Architecture: Acceptance Criteria | 3.1.0 | Active |
@@ -697,7 +744,9 @@
 | [`08-docs-viewer-ui/02-features/07-visual-rendering-guide/11-welcome-and-landing.md`](./08-docs-viewer-ui/02-features/07-visual-rendering-guide/11-welcome-and-landing.md) | Welcome Screen & Landing Page | 3.2.0 | — |
 | [`08-docs-viewer-ui/02-features/07-visual-rendering-guide/12-sidebar-and-search.md`](./08-docs-viewer-ui/02-features/07-visual-rendering-guide/12-sidebar-and-search.md) | Sidebar Navigation & Search | 3.2.0 | — |
 | [`08-docs-viewer-ui/02-features/07-visual-rendering-guide/13-checklist-and-references.md`](./08-docs-viewer-ui/02-features/07-visual-rendering-guide/13-checklist-and-references.md) | Implementation Checklist & Cross-References | 3.2.0 | — |
+| [`08-docs-viewer-ui/02-features/07-visual-rendering-guide/97-acceptance-criteria.md`](./08-docs-viewer-ui/02-features/07-visual-rendering-guide/97-acceptance-criteria.md) | Visual Rendering Guide — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`08-docs-viewer-ui/02-features/08-shortcuts-overlay.md`](./08-docs-viewer-ui/02-features/08-shortcuts-overlay.md) | Feature: Shortcuts Help Overlay | 3.1.0 | — |
+| [`08-docs-viewer-ui/02-features/97-acceptance-criteria.md`](./08-docs-viewer-ui/02-features/97-acceptance-criteria.md) | Features — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`08-docs-viewer-ui/02-features/99-consistency-report.md`](./08-docs-viewer-ui/02-features/99-consistency-report.md) | Consistency Report: Docs Viewer UI Features | 3.1.0 | — |
 | [`08-docs-viewer-ui/97-acceptance-criteria.md`](./08-docs-viewer-ui/97-acceptance-criteria.md) | Docs Viewer Ui — Acceptance Criteria | 1.0.0 | Scaffold |
 | [`08-docs-viewer-ui/99-consistency-report.md`](./08-docs-viewer-ui/99-consistency-report.md) | Consistency Report: Docs Viewer UI | 3.1.0 | — |
@@ -734,6 +783,7 @@
 | [`10-powershell-integration/02-script-reference/05-timing-and-exit-codes.md`](./10-powershell-integration/02-script-reference/05-timing-and-exit-codes.md) | 5. Timing Output & Exit Codes | — | — |
 | [`10-powershell-integration/02-script-reference/06-pnpm-store-commands.md`](./10-powershell-integration/02-script-reference/06-pnpm-store-commands.md) | 6. pnpm Store Commands | — | — |
 | [`10-powershell-integration/02-script-reference/07-wp-plugins-config.md`](./10-powershell-integration/02-script-reference/07-wp-plugins-config.md) | 7. wpPlugins Configuration | — | — |
+| [`10-powershell-integration/02-script-reference/97-acceptance-criteria.md`](./10-powershell-integration/02-script-reference/97-acceptance-criteria.md) | Script Reference — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`10-powershell-integration/03-integration-guide.md`](./10-powershell-integration/03-integration-guide.md) | PowerShell Integration Guide | — | Active |
 | [`10-powershell-integration/04-error-codes.md`](./10-powershell-integration/04-error-codes.md) | PowerShell Runner Error Codes | 1.1.0 | Active |
 | [`10-powershell-integration/05-firewall-rules.md`](./10-powershell-integration/05-firewall-rules.md) | Windows Firewall Configuration | 1.1.0 | Active |
@@ -797,6 +847,7 @@
 | [`13-cicd-pipeline-workflows/02-go-binary-deploy/01-ci-pipeline.md`](./13-cicd-pipeline-workflows/02-go-binary-deploy/01-ci-pipeline.md) | Go Binary — CI Pipeline | 3.1.0 | — |
 | [`13-cicd-pipeline-workflows/02-go-binary-deploy/02-release-pipeline.md`](./13-cicd-pipeline-workflows/02-go-binary-deploy/02-release-pipeline.md) | Go Binary — Release Pipeline | 3.1.0 | — |
 | [`13-cicd-pipeline-workflows/02-go-binary-deploy/03-complete-workflow-reference.md`](./13-cicd-pipeline-workflows/02-go-binary-deploy/03-complete-workflow-reference.md) | Go Binary — Complete Workflow Reference | 3.1.0 | — |
+| [`13-cicd-pipeline-workflows/02-go-binary-deploy/97-acceptance-criteria.md`](./13-cicd-pipeline-workflows/02-go-binary-deploy/97-acceptance-criteria.md) | Go Binary Deploy — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`13-cicd-pipeline-workflows/02-go-binary-deploy/99-consistency-report.md`](./13-cicd-pipeline-workflows/02-go-binary-deploy/99-consistency-report.md) | Consistency Report — Go Binary Deploy | 3.1.0 | — |
 | [`13-cicd-pipeline-workflows/03-vulnerability-scanning.md`](./13-cicd-pipeline-workflows/03-vulnerability-scanning.md) | Vulnerability Scanning | — | — |
 | [`13-cicd-pipeline-workflows/04-install-script-generation.md`](./13-cicd-pipeline-workflows/04-install-script-generation.md) | Install Script Generation | 3.1.0 | — |
@@ -840,6 +891,7 @@
 | [`14-self-update-app-update/09-release-versioning/07-version-source-update.md`](./14-self-update-app-update/09-release-versioning/07-version-source-update.md) | 7. Version Source Update | — | — |
 | [`14-self-update-app-update/09-release-versioning/08-release-metadata.md`](./14-self-update-app-update/09-release-versioning/08-release-metadata.md) | 8. Release Metadata Files | — | — |
 | [`14-self-update-app-update/09-release-versioning/09-release-branch-strategy.md`](./14-self-update-app-update/09-release-versioning/09-release-branch-strategy.md) | 9. Release Branch Strategy | — | — |
+| [`14-self-update-app-update/09-release-versioning/97-acceptance-criteria.md`](./14-self-update-app-update/09-release-versioning/97-acceptance-criteria.md) | Release Versioning — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`14-self-update-app-update/09-release-versioning/99-constraints-and-cross-references.md`](./14-self-update-app-update/09-release-versioning/99-constraints-and-cross-references.md) | Constraints & Cross-References | — | — |
 | [`14-self-update-app-update/10-cross-compilation.md`](./14-self-update-app-update/10-cross-compilation.md) | Cross-Compilation | 3.1.0 | — |
 | [`14-self-update-app-update/11-release-pipeline.md`](./14-self-update-app-update/11-release-pipeline.md) | Release Pipeline | 3.1.0 | — |
@@ -864,6 +916,7 @@
 | [`15-wp-plugin-how-to/02-enums-and-coding-style/02-enum-metadata-pattern.md`](./15-wp-plugin-how-to/02-enums-and-coding-style/02-enum-metadata-pattern.md) | Enum Metadata Pattern | 2.0.0 | Complete |
 | [`15-wp-plugin-how-to/02-enums-and-coding-style/03-self-update-status-enum.md`](./15-wp-plugin-how-to/02-enums-and-coding-style/03-self-update-status-enum.md) | SelfUpdateStatusType — Reference Implementation | 2.0.0 | — |
 | [`15-wp-plugin-how-to/02-enums-and-coding-style/04-action-type-enum.md`](./15-wp-plugin-how-to/02-enums-and-coding-style/04-action-type-enum.md) | ActionType — Reference Implementation | 2.0.0 | — |
+| [`15-wp-plugin-how-to/02-enums-and-coding-style/97-acceptance-criteria.md`](./15-wp-plugin-how-to/02-enums-and-coding-style/97-acceptance-criteria.md) | Enums And Coding Style — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`15-wp-plugin-how-to/02-enums-and-coding-style/99-consistency-report.md`](./15-wp-plugin-how-to/02-enums-and-coding-style/99-consistency-report.md) | Consistency Report — Enums And Coding Style | 1.0.0 | — |
 | [`15-wp-plugin-how-to/03-traits-and-composition.md`](./15-wp-plugin-how-to/03-traits-and-composition.md) | Phase 3 — Traits and Composition | — | — |
 | [`15-wp-plugin-how-to/04-logging-and-error-handling/00-overview.md`](./15-wp-plugin-how-to/04-logging-and-error-handling/00-overview.md) | Phase 4 — Logging and Error Handling | 2.0.0 | Production |
@@ -882,6 +935,7 @@
 | [`15-wp-plugin-how-to/04-logging-and-error-handling/13-shutdown-handler.md`](./15-wp-plugin-how-to/04-logging-and-error-handling/13-shutdown-handler.md) | 4.13 Shutdown Handler (Fatal Errors) | — | — |
 | [`15-wp-plugin-how-to/04-logging-and-error-handling/14-date-helper.md`](./15-wp-plugin-how-to/04-logging-and-error-handling/14-date-helper.md) | 4.14 DateHelper — Timestamp Specification | — | — |
 | [`15-wp-plugin-how-to/04-logging-and-error-handling/15-end-to-end-flow.md`](./15-wp-plugin-how-to/04-logging-and-error-handling/15-end-to-end-flow.md) | 4.15 Complete Error Handling Flow — End to End | — | — |
+| [`15-wp-plugin-how-to/04-logging-and-error-handling/97-acceptance-criteria.md`](./15-wp-plugin-how-to/04-logging-and-error-handling/97-acceptance-criteria.md) | Logging And Error Handling — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`15-wp-plugin-how-to/05-helpers-responses-and-integration/00-overview.md`](./15-wp-plugin-how-to/05-helpers-responses-and-integration/00-overview.md) | Phase 5 — Helpers, Response Envelope, and Integration | — | — |
 | [`15-wp-plugin-how-to/05-helpers-responses-and-integration/01-helper-classes.md`](./15-wp-plugin-how-to/05-helpers-responses-and-integration/01-helper-classes.md) | 5.1 Helper Classes | — | — |
 | [`15-wp-plugin-how-to/05-helpers-responses-and-integration/02-boolean-helpers.md`](./15-wp-plugin-how-to/05-helpers-responses-and-integration/02-boolean-helpers.md) | 5.1.1 BooleanHelpers — Semantic Guard Class | — | — |
@@ -891,6 +945,7 @@
 | [`15-wp-plugin-how-to/05-helpers-responses-and-integration/06-integration-checklist.md`](./15-wp-plugin-how-to/05-helpers-responses-and-integration/06-integration-checklist.md) | 5.4 Integration Checklist — Adding a New Feature | — | — |
 | [`15-wp-plugin-how-to/05-helpers-responses-and-integration/07-database-and-split-db.md`](./15-wp-plugin-how-to/05-helpers-responses-and-integration/07-database-and-split-db.md) | 5.5 Database — Split DB Concept & Class Decomposition | — | — |
 | [`15-wp-plugin-how-to/05-helpers-responses-and-integration/08-security-and-summary.md`](./15-wp-plugin-how-to/05-helpers-responses-and-integration/08-security-and-summary.md) | 5.6–5.8 Notifications, Security & Complete Pattern | — | — |
+| [`15-wp-plugin-how-to/05-helpers-responses-and-integration/97-acceptance-criteria.md`](./15-wp-plugin-how-to/05-helpers-responses-and-integration/97-acceptance-criteria.md) | Helpers Responses And Integration — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`15-wp-plugin-how-to/06-input-validation-patterns.md`](./15-wp-plugin-how-to/06-input-validation-patterns.md) | Phase 6 — Input Validation Patterns | — | — |
 | [`15-wp-plugin-how-to/07-reference-implementations/00-overview.md`](./15-wp-plugin-how-to/07-reference-implementations/00-overview.md) | Phase 7 — Complete Reference Implementations | — | — |
 | [`15-wp-plugin-how-to/07-reference-implementations/01-bootstrap-file.md`](./15-wp-plugin-how-to/07-reference-implementations/01-bootstrap-file.md) | 7.1 Bootstrap File — `plugin-name.php` | — | — |
@@ -901,6 +956,7 @@
 | [`15-wp-plugin-how-to/07-reference-implementations/06-response-key-type-enum.md`](./15-wp-plugin-how-to/07-reference-implementations/06-response-key-type-enum.md) | 7.6 ResponseKeyType Enum — `includes/Enums/ResponseKeyType.php` | — | — |
 | [`15-wp-plugin-how-to/07-reference-implementations/07-ai-instructions-template.md`](./15-wp-plugin-how-to/07-reference-implementations/07-ai-instructions-template.md) | 7.7 `.ai-instructions` File Template | — | — |
 | [`15-wp-plugin-how-to/07-reference-implementations/08-plugin-config-type-example.md`](./15-wp-plugin-how-to/07-reference-implementations/08-plugin-config-type-example.md) | 7.8 Complete PluginConfigType Example | — | — |
+| [`15-wp-plugin-how-to/07-reference-implementations/97-acceptance-criteria.md`](./15-wp-plugin-how-to/07-reference-implementations/97-acceptance-criteria.md) | Reference Implementations — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`15-wp-plugin-how-to/08-wordpress-integration-patterns/00-overview.md`](./15-wp-plugin-how-to/08-wordpress-integration-patterns/00-overview.md) | Phase 8 — WordPress Integration Patterns | 2.0.0 | Production |
 | [`15-wp-plugin-how-to/08-wordpress-integration-patterns/01-admin-pages-and-settings.md`](./15-wp-plugin-how-to/08-wordpress-integration-patterns/01-admin-pages-and-settings.md) | 8.1 Admin Pages & Settings | — | — |
 | [`15-wp-plugin-how-to/08-wordpress-integration-patterns/02-ajax-handlers.md`](./15-wp-plugin-how-to/08-wordpress-integration-patterns/02-ajax-handlers.md) | 8.2 AJAX Handlers (Non-REST) | — | — |
@@ -912,6 +968,7 @@
 | [`15-wp-plugin-how-to/08-wordpress-integration-patterns/08-external-http-requests.md`](./15-wp-plugin-how-to/08-wordpress-integration-patterns/08-external-http-requests.md) | 8.7 HTTP Requests to External APIs | — | — |
 | [`15-wp-plugin-how-to/08-wordpress-integration-patterns/09-plugin-php-integration.md`](./15-wp-plugin-how-to/08-wordpress-integration-patterns/09-plugin-php-integration.md) | 8.8 Integration into Plugin.php | — | — |
 | [`15-wp-plugin-how-to/08-wordpress-integration-patterns/10-enum-inventory.md`](./15-wp-plugin-how-to/08-wordpress-integration-patterns/10-enum-inventory.md) | 8.9 Complete Enum Inventory for a Full-Featured Plugin | — | — |
+| [`15-wp-plugin-how-to/08-wordpress-integration-patterns/97-acceptance-criteria.md`](./15-wp-plugin-how-to/08-wordpress-integration-patterns/97-acceptance-criteria.md) | Wordpress Integration Patterns — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`15-wp-plugin-how-to/09-testing-patterns/00-overview.md`](./15-wp-plugin-how-to/09-testing-patterns/00-overview.md) | Phase 9 — Testing Patterns | 2.0.0 | Production |
 | [`15-wp-plugin-how-to/09-testing-patterns/01-philosophy.md`](./15-wp-plugin-how-to/09-testing-patterns/01-philosophy.md) | 9.1 Testing Philosophy | — | — |
 | [`15-wp-plugin-how-to/09-testing-patterns/02-directory-structure.md`](./15-wp-plugin-how-to/09-testing-patterns/02-directory-structure.md) | 9.2 Test Directory Structure | — | — |
@@ -926,6 +983,7 @@
 | [`15-wp-plugin-how-to/09-testing-patterns/11-conventions-coverage-ci.md`](./15-wp-plugin-how-to/09-testing-patterns/11-conventions-coverage-ci.md) | 9.11–9.13 Conventions, Coverage & CI | — | — |
 | [`15-wp-plugin-how-to/09-testing-patterns/12-testing-database-seeding.md`](./15-wp-plugin-how-to/09-testing-patterns/12-testing-database-seeding.md) | 9.14 Testing Database Seeding | — | — |
 | [`15-wp-plugin-how-to/09-testing-patterns/13-feature-checklist.md`](./15-wp-plugin-how-to/09-testing-patterns/13-feature-checklist.md) | 9.15 Test Checklist for New Features | — | — |
+| [`15-wp-plugin-how-to/09-testing-patterns/97-acceptance-criteria.md`](./15-wp-plugin-how-to/09-testing-patterns/97-acceptance-criteria.md) | Testing Patterns — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`15-wp-plugin-how-to/10-deployment-patterns/00-overview.md`](./15-wp-plugin-how-to/10-deployment-patterns/00-overview.md) | Phase 10 — Deployment Patterns (Overview) | 3.2.0 | — |
 | [`15-wp-plugin-how-to/10-deployment-patterns/01-versioning-strategy.md`](./15-wp-plugin-how-to/10-deployment-patterns/01-versioning-strategy.md) | 10.1 Versioning Strategy | — | — |
 | [`15-wp-plugin-how-to/10-deployment-patterns/02-distribution-structure.md`](./15-wp-plugin-how-to/10-deployment-patterns/02-distribution-structure.md) | 10.2 Plugin File Structure for Distribution | — | — |
@@ -939,6 +997,7 @@
 | [`15-wp-plugin-how-to/10-deployment-patterns/10-trait-decomposition.md`](./15-wp-plugin-how-to/10-deployment-patterns/10-trait-decomposition.md) | 10.10 Trait Decomposition for UpdateResolver | — | — |
 | [`15-wp-plugin-how-to/10-deployment-patterns/11-cicd-automation.md`](./15-wp-plugin-how-to/10-deployment-patterns/11-cicd-automation.md) | 10.11 CI/CD Automation (GitHub Actions) | — | — |
 | [`15-wp-plugin-how-to/10-deployment-patterns/12-summary.md`](./15-wp-plugin-how-to/10-deployment-patterns/12-summary.md) | 10.12 Summary Table | — | — |
+| [`15-wp-plugin-how-to/10-deployment-patterns/97-acceptance-criteria.md`](./15-wp-plugin-how-to/10-deployment-patterns/97-acceptance-criteria.md) | Deployment Patterns — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`15-wp-plugin-how-to/11-frontend-and-template-patterns/00-overview.md`](./15-wp-plugin-how-to/11-frontend-and-template-patterns/00-overview.md) | Phase 11 — Frontend & Template Patterns (Overview) | — | — |
 | [`15-wp-plugin-how-to/11-frontend-and-template-patterns/01-file-size-limits.md`](./15-wp-plugin-how-to/11-frontend-and-template-patterns/01-file-size-limits.md) | 11.1 File Size Limits | — | — |
 | [`15-wp-plugin-how-to/11-frontend-and-template-patterns/02-template-architecture.md`](./15-wp-plugin-how-to/11-frontend-and-template-patterns/02-template-architecture.md) | 11.2 Template Architecture | — | — |
@@ -950,6 +1009,7 @@
 | [`15-wp-plugin-how-to/11-frontend-and-template-patterns/08-source-maps-and-build.md`](./15-wp-plugin-how-to/11-frontend-and-template-patterns/08-source-maps-and-build.md) | 11.8 Source Maps — Dev vs. Production | — | — |
 | [`15-wp-plugin-how-to/11-frontend-and-template-patterns/09-react-asset-enqueuing.md`](./15-wp-plugin-how-to/11-frontend-and-template-patterns/09-react-asset-enqueuing.md) | 11.9 Enqueuing React Assets | — | — |
 | [`15-wp-plugin-how-to/11-frontend-and-template-patterns/10-decision-matrix-and-summary.md`](./15-wp-plugin-how-to/11-frontend-and-template-patterns/10-decision-matrix-and-summary.md) | 11.10 Decision Matrix — PHP Templates vs. React | — | — |
+| [`15-wp-plugin-how-to/11-frontend-and-template-patterns/97-acceptance-criteria.md`](./15-wp-plugin-how-to/11-frontend-and-template-patterns/97-acceptance-criteria.md) | Frontend And Template Patterns — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`15-wp-plugin-how-to/12-design-system/00-overview.md`](./15-wp-plugin-how-to/12-design-system/00-overview.md) | Phase 12 — WordPress Plugin Design System (Overview) | — | — |
 | [`15-wp-plugin-how-to/12-design-system/01-design-tokens.md`](./15-wp-plugin-how-to/12-design-system/01-design-tokens.md) | CSS Custom Properties (Design Tokens) | — | — |
 | [`15-wp-plugin-how-to/12-design-system/02-color-system.md`](./15-wp-plugin-how-to/12-design-system/02-color-system.md) | Color System | — | — |
@@ -963,6 +1023,7 @@
 | [`15-wp-plugin-how-to/12-design-system/10-modals.md`](./15-wp-plugin-how-to/12-design-system/10-modals.md) | Modal System | — | — |
 | [`15-wp-plugin-how-to/12-design-system/11-tabs-tables-filters.md`](./15-wp-plugin-how-to/12-design-system/11-tabs-tables-filters.md) | Tabs, Tables & Filter Bar | — | — |
 | [`15-wp-plugin-how-to/12-design-system/12-misc-and-organization.md`](./15-wp-plugin-how-to/12-design-system/12-misc-and-organization.md) | Misc Components, File Organization & Anti-Patterns | — | — |
+| [`15-wp-plugin-how-to/12-design-system/97-acceptance-criteria.md`](./15-wp-plugin-how-to/12-design-system/97-acceptance-criteria.md) | Design System — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`15-wp-plugin-how-to/13-admin-ui-patterns/00-overview.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/00-overview.md) | Phase 13 — Admin UI Patterns (Overview) | — | — |
 | [`15-wp-plugin-how-to/13-admin-ui-patterns/01-page-layout.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/01-page-layout.md) | Page Layout Architecture | — | — |
 | [`15-wp-plugin-how-to/13-admin-ui-patterns/02-actions-bar.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/02-actions-bar.md) | Actions Bar | — | — |
@@ -975,6 +1036,7 @@
 | [`15-wp-plugin-how-to/13-admin-ui-patterns/09-stats-and-progress.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/09-stats-and-progress.md) | Stats Bar & Progress Panel | — | — |
 | [`15-wp-plugin-how-to/13-admin-ui-patterns/10-forms-tabs-pagination.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/10-forms-tabs-pagination.md) | Forms, Tabs & Pagination | — | — |
 | [`15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md) | Misc Components, Composition, Accessibility & Anti-Patterns | — | — |
+| [`15-wp-plugin-how-to/13-admin-ui-patterns/97-acceptance-criteria.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/97-acceptance-criteria.md) | Admin Ui Patterns — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`15-wp-plugin-how-to/14-rest-api-conventions/00-overview.md`](./15-wp-plugin-how-to/14-rest-api-conventions/00-overview.md) | Phase 14 — REST API Conventions (Overview) | 2.0.0 | Active |
 | [`15-wp-plugin-how-to/14-rest-api-conventions/01-namespace.md`](./15-wp-plugin-how-to/14-rest-api-conventions/01-namespace.md) | 14.1 Namespace Convention | — | — |
 | [`15-wp-plugin-how-to/14-rest-api-conventions/02-route-naming.md`](./15-wp-plugin-how-to/14-rest-api-conventions/02-route-naming.md) | 14.2 Route Naming Conventions | — | — |
@@ -991,6 +1053,7 @@
 | [`15-wp-plugin-how-to/14-rest-api-conventions/13-dynamic-segments.md`](./15-wp-plugin-how-to/14-rest-api-conventions/13-dynamic-segments.md) | 14.13 Dynamic Route Segments | — | — |
 | [`15-wp-plugin-how-to/14-rest-api-conventions/14-openapi.md`](./15-wp-plugin-how-to/14-rest-api-conventions/14-openapi.md) | 14.14 OpenAPI Documentation (Optional) | — | — |
 | [`15-wp-plugin-how-to/14-rest-api-conventions/15-summary-table.md`](./15-wp-plugin-how-to/14-rest-api-conventions/15-summary-table.md) | 14.15 Summary Table | — | — |
+| [`15-wp-plugin-how-to/14-rest-api-conventions/97-acceptance-criteria.md`](./15-wp-plugin-how-to/14-rest-api-conventions/97-acceptance-criteria.md) | Rest Api Conventions — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`15-wp-plugin-how-to/15-settings-architecture/00-overview.md`](./15-wp-plugin-how-to/15-settings-architecture/00-overview.md) | Phase 15 — Settings Architecture | — | — |
 | [`15-wp-plugin-how-to/15-settings-architecture/01-data-model.md`](./15-wp-plugin-how-to/15-settings-architecture/01-data-model.md) | 15.1 Data Model | — | — |
 | [`15-wp-plugin-how-to/15-settings-architecture/02-settings-groups.md`](./15-wp-plugin-how-to/15-settings-architecture/02-settings-groups.md) | 15.2 Settings Groups | — | — |
@@ -1005,6 +1068,7 @@
 | [`15-wp-plugin-how-to/15-settings-architecture/11-warnings-and-endpoint-table.md`](./15-wp-plugin-how-to/15-settings-architecture/11-warnings-and-endpoint-table.md) | 15.11 Warnings & Endpoint Configuration Table | — | — |
 | [`15-wp-plugin-how-to/15-settings-architecture/12-partials-and-dual-save.md`](./15-wp-plugin-how-to/15-settings-architecture/12-partials-and-dual-save.md) | 15.12 Settings Section Partials & Dual Save Patterns | — | — |
 | [`15-wp-plugin-how-to/15-settings-architecture/13-anti-patterns.md`](./15-wp-plugin-how-to/15-settings-architecture/13-anti-patterns.md) | 15.13 Anti-Patterns (NEVER DO) | — | — |
+| [`15-wp-plugin-how-to/15-settings-architecture/97-acceptance-criteria.md`](./15-wp-plugin-how-to/15-settings-architecture/97-acceptance-criteria.md) | Settings Architecture — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`15-wp-plugin-how-to/16-error-handling-extraction/00-overview.md`](./15-wp-plugin-how-to/16-error-handling-extraction/00-overview.md) | Phase 16 — Error Handling & Diagnostics Extraction | 2.0.0 | Production |
 | [`15-wp-plugin-how-to/16-error-handling-extraction/01-error-type-classification.md`](./15-wp-plugin-how-to/16-error-handling-extraction/01-error-type-classification.md) | 16.1 Error Type Classification | — | — |
 | [`15-wp-plugin-how-to/16-error-handling-extraction/02-two-tier-error-capture.md`](./15-wp-plugin-how-to/16-error-handling-extraction/02-two-tier-error-capture.md) | 16.2 Two-Tier Error Capture | — | — |
@@ -1020,6 +1084,7 @@
 | [`15-wp-plugin-how-to/16-error-handling-extraction/12-admin-errors-template.md`](./15-wp-plugin-how-to/16-error-handling-extraction/12-admin-errors-template.md) | 16.12 Admin Errors Page — Complete Template | — | — |
 | [`15-wp-plugin-how-to/16-error-handling-extraction/13-error-sessions-table.md`](./15-wp-plugin-how-to/16-error-handling-extraction/13-error-sessions-table.md) | 16.13 ErrorSessions Table — SQLite Migration | — | — |
 | [`15-wp-plugin-how-to/16-error-handling-extraction/14-checklist.md`](./15-wp-plugin-how-to/16-error-handling-extraction/14-checklist.md) | 16.14 Checklist | — | — |
+| [`15-wp-plugin-how-to/16-error-handling-extraction/97-acceptance-criteria.md`](./15-wp-plugin-how-to/16-error-handling-extraction/97-acceptance-criteria.md) | Error Handling Extraction — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`15-wp-plugin-how-to/17-data-file-patterns.md`](./15-wp-plugin-how-to/17-data-file-patterns.md) | Phase 17 — Data File Patterns | — | — |
 | [`15-wp-plugin-how-to/18-frontend-javascript-patterns.md`](./15-wp-plugin-how-to/18-frontend-javascript-patterns.md) | Phase 18 — Frontend JavaScript Patterns | — | — |
 | [`15-wp-plugin-how-to/19-micro-orm-and-root-db/00-overview.md`](./15-wp-plugin-how-to/19-micro-orm-and-root-db/00-overview.md) | Phase 19 — Micro-ORM and Cross-Plugin Root Database | — | — |
@@ -1032,6 +1097,7 @@
 | [`15-wp-plugin-how-to/19-micro-orm-and-root-db/07-key-patterns-summary.md`](./15-wp-plugin-how-to/19-micro-orm-and-root-db/07-key-patterns-summary.md) | 19.8 Key Patterns Summary | — | — |
 | [`15-wp-plugin-how-to/19-micro-orm-and-root-db/08-typed-query.md`](./15-wp-plugin-how-to/19-micro-orm-and-root-db/08-typed-query.md) | 19.9 TypedQuery — Go-Style Typed Database Results | — | — |
 | [`15-wp-plugin-how-to/19-micro-orm-and-root-db/09-file-cache.md`](./15-wp-plugin-how-to/19-micro-orm-and-root-db/09-file-cache.md) | 19.10 FileCache — SQLite-Backed File Hash Cache | — | — |
+| [`15-wp-plugin-how-to/19-micro-orm-and-root-db/97-acceptance-criteria.md`](./15-wp-plugin-how-to/19-micro-orm-and-root-db/97-acceptance-criteria.md) | Micro Orm And Root Db — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`15-wp-plugin-how-to/20-end-to-end-walkthrough/00-overview.md`](./15-wp-plugin-how-to/20-end-to-end-walkthrough/00-overview.md) | Phase 20 — End-to-End Walkthrough: Building "Task Tracker" from Scratch | 2.0.0 | Production |
 | [`15-wp-plugin-how-to/20-end-to-end-walkthrough/01-what-were-building.md`](./15-wp-plugin-how-to/20-end-to-end-walkthrough/01-what-were-building.md) | 20.1 What We're Building | — | — |
 | [`15-wp-plugin-how-to/20-end-to-end-walkthrough/02-folder-structure.md`](./15-wp-plugin-how-to/20-end-to-end-walkthrough/02-folder-structure.md) | 20.2 Step 1 — Folder Structure | — | — |
@@ -1050,6 +1116,7 @@
 | [`15-wp-plugin-how-to/20-end-to-end-walkthrough/15-uninstall-cleanup.md`](./15-wp-plugin-how-to/20-end-to-end-walkthrough/15-uninstall-cleanup.md) | 20.15 Step 14 — Uninstall Cleanup | — | — |
 | [`15-wp-plugin-how-to/20-end-to-end-walkthrough/16-phase-coverage-matrix.md`](./15-wp-plugin-how-to/20-end-to-end-walkthrough/16-phase-coverage-matrix.md) | 20.16 Phase Coverage Matrix | — | — |
 | [`15-wp-plugin-how-to/20-end-to-end-walkthrough/17-final-checklist.md`](./15-wp-plugin-how-to/20-end-to-end-walkthrough/17-final-checklist.md) | 20.17 Final Checklist — "Is My Plugin Gold Standard?" | — | — |
+| [`15-wp-plugin-how-to/20-end-to-end-walkthrough/97-acceptance-criteria.md`](./15-wp-plugin-how-to/20-end-to-end-walkthrough/97-acceptance-criteria.md) | End To End Walkthrough — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`15-wp-plugin-how-to/21-ping-endpoint.md`](./15-wp-plugin-how-to/21-ping-endpoint.md) | Phase 21 — Ping Endpoint | 1.0.0 | — |
 | [`15-wp-plugin-how-to/22-quick-start.md`](./15-wp-plugin-how-to/22-quick-start.md) | Phase 00 — Quick Start Guide | — | — |
 | [`15-wp-plugin-how-to/97-acceptance-criteria.md`](./15-wp-plugin-how-to/97-acceptance-criteria.md) | Wp Plugin How To — Acceptance Criteria | 1.0.0 | Scaffold |
@@ -1082,6 +1149,7 @@
 | [`16-generic-cli/16-verbose-logging/03-command-pattern.md`](./16-generic-cli/16-verbose-logging/03-command-pattern.md) | Flag Registration, Command Handler Pattern & What to Log | — | — |
 | [`16-generic-cli/16-verbose-logging/04-release-pipeline-log-points.md`](./16-generic-cli/16-verbose-logging/04-release-pipeline-log-points.md) | Release Pipeline Log Points | — | — |
 | [`16-generic-cli/16-verbose-logging/05-constants-and-library-usage.md`](./16-generic-cli/16-verbose-logging/05-constants-and-library-usage.md) | Constants & Conditional Logging in Libraries | — | — |
+| [`16-generic-cli/16-verbose-logging/97-acceptance-criteria.md`](./16-generic-cli/16-verbose-logging/97-acceptance-criteria.md) | Verbose Logging — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`16-generic-cli/17-progress-tracking.md`](./16-generic-cli/17-progress-tracking.md) | Progress Tracking | — | — |
 | [`16-generic-cli/18-batch-execution.md`](./16-generic-cli/18-batch-execution.md) | Batch Execution | — | — |
 | [`16-generic-cli/19-shell-completion.md`](./16-generic-cli/19-shell-completion.md) | Shell Completion — Generic CLI Spec | — | — |
@@ -1098,6 +1166,7 @@
 | [`16-generic-cli/20-terminal-output-design/10-spacing-and-indentation.md`](./16-generic-cli/20-terminal-output-design/10-spacing-and-indentation.md) | Spacing and Indentation | — | — |
 | [`16-generic-cli/20-terminal-output-design/11-full-examples.md`](./16-generic-cli/20-terminal-output-design/11-full-examples.md) | Full Examples | — | — |
 | [`16-generic-cli/20-terminal-output-design/12-implementation-checklist.md`](./16-generic-cli/20-terminal-output-design/12-implementation-checklist.md) | Implementation Checklist | — | — |
+| [`16-generic-cli/20-terminal-output-design/97-acceptance-criteria.md`](./16-generic-cli/20-terminal-output-design/97-acceptance-criteria.md) | Terminal Output Design — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`16-generic-cli/97-acceptance-criteria.md`](./16-generic-cli/97-acceptance-criteria.md) | Generic Cli — Acceptance Criteria | 1.0.0 | Scaffold |
 | [`16-generic-cli/99-consistency-report.md`](./16-generic-cli/99-consistency-report.md) | Consistency Report — Generic Cli | 1.0.0 | — |
 
@@ -1341,4 +1410,4 @@
 
 ---
 
-*Auto-generated index — 1171 files across 25 top-level folders.*
+*Auto-generated index — 1240 files across 25 top-level folders.*
