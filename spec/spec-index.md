@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-25  
-**Total Files:** 1248  
+**Total Files:** 1249  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -34,7 +34,7 @@
 - [17-generic-update](#17-generic-update) — 11 file(s)
 - [18-spec-issues](#18-spec-issues) — 6 file(s)
 - [31-app](#31-app) — 35 file(s)
-- [32-ui-design](#32-ui-design) — 119 file(s)
+- [32-ui-design](#32-ui-design) — 120 file(s)
 - [33-feedback-report](#33-feedback-report) — 3 file(s)
 - [34-activity-feed](#34-activity-feed) — 3 file(s)
 - [35-enforcement-rules](#35-enforcement-rules) — 3 file(s)
@@ -1125,7 +1125,7 @@
 | [`15-wp-plugin-how-to/20-end-to-end-walkthrough/97-acceptance-criteria.md`](./15-wp-plugin-how-to/20-end-to-end-walkthrough/97-acceptance-criteria.md) | End-To-End Walkthrough — Acceptance Criteria | 1.0.0 | Curated |
 | [`15-wp-plugin-how-to/21-ping-endpoint.md`](./15-wp-plugin-how-to/21-ping-endpoint.md) | Phase 21 — Ping Endpoint | 1.0.0 | — |
 | [`15-wp-plugin-how-to/22-quick-start.md`](./15-wp-plugin-how-to/22-quick-start.md) | Phase 00 — Quick Start Guide | — | — |
-| [`15-wp-plugin-how-to/97-acceptance-criteria.md`](./15-wp-plugin-how-to/97-acceptance-criteria.md) | Wp Plugin How To — Acceptance Criteria | 1.0.0 | Scaffold |
+| [`15-wp-plugin-how-to/97-acceptance-criteria.md`](./15-wp-plugin-how-to/97-acceptance-criteria.md) | WP Plugin How-To — Acceptance Criteria (Roll-up) | 2.0.0 | Curated |
 | [`15-wp-plugin-how-to/99-consistency-report.md`](./15-wp-plugin-how-to/99-consistency-report.md) | Consistency Report — spec/15-wp-plugin-how-to/ | 1.1.0 | — |
 | [`15-wp-plugin-how-to/changelog.md`](./15-wp-plugin-how-to/changelog.md) | Gold Standard Spec — Changelog | — | — |
 | [`15-wp-plugin-how-to/readme.md`](./15-wp-plugin-how-to/readme.md) | How to Write a WordPress Plugin — Gold Standard Specification | — | — |
@@ -1316,7 +1316,7 @@
 | [`32-ui-design/06-workflowy-ui/03-right-panel/01-handbook-content.md`](./32-ui-design/06-workflowy-ui/03-right-panel/01-handbook-content.md) | Handbook Content Structure | — | — |
 | [`32-ui-design/06-workflowy-ui/03-right-panel/02-hotkeys.md`](./32-ui-design/06-workflowy-ui/03-right-panel/02-hotkeys.md) | Hotkeys Reference | — | — |
 | [`32-ui-design/06-workflowy-ui/03-right-panel/03-whats-new.md`](./32-ui-design/06-workflowy-ui/03-right-panel/03-whats-new.md) | What's New Panel | — | — |
-| [`32-ui-design/06-workflowy-ui/03-right-panel/97-acceptance-criteria.md`](./32-ui-design/06-workflowy-ui/03-right-panel/97-acceptance-criteria.md) | Phase 3 — Right-Side Panel Acceptance Criteria | 1.0.0 | — |
+| [`32-ui-design/06-workflowy-ui/03-right-panel/97-acceptance-criteria.md`](./32-ui-design/06-workflowy-ui/03-right-panel/97-acceptance-criteria.md) | Phase 3 — Right-Side Panel Acceptance Criteria | 2.0.0 | Curated |
 | [`32-ui-design/06-workflowy-ui/03-right-panel/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/03-right-panel/99-consistency-report.md) | Consistency Report — Right Panel (Phase 3) | 1.1.0 | — |
 | [`32-ui-design/06-workflowy-ui/04-bullet/00-overview.md`](./32-ui-design/06-workflowy-ui/04-bullet/00-overview.md) | Phase 4 — Bullet Anatomy & Context Menus | 1.0.0 | — |
 | [`32-ui-design/06-workflowy-ui/04-bullet/01-anatomy.md`](./32-ui-design/06-workflowy-ui/04-bullet/01-anatomy.md) | Bullet Row Anatomy | — | — |
@@ -1344,7 +1344,7 @@
 | [`32-ui-design/06-workflowy-ui/07-calendar/01-today-view.md`](./32-ui-design/06-workflowy-ui/07-calendar/01-today-view.md) | Today View | — | — |
 | [`32-ui-design/06-workflowy-ui/07-calendar/02-quick-add-modal.md`](./32-ui-design/06-workflowy-ui/07-calendar/02-quick-add-modal.md) | Quick Add Modal | — | — |
 | [`32-ui-design/06-workflowy-ui/07-calendar/03-found-dates.md`](./32-ui-design/06-workflowy-ui/07-calendar/03-found-dates.md) | Found Dates & Calendar Picker | — | — |
-| [`32-ui-design/06-workflowy-ui/07-calendar/97-acceptance-criteria.md`](./32-ui-design/06-workflowy-ui/07-calendar/97-acceptance-criteria.md) | Phase 7 — Calendar / Today Acceptance Criteria | 1.0.0 | — |
+| [`32-ui-design/06-workflowy-ui/07-calendar/97-acceptance-criteria.md`](./32-ui-design/06-workflowy-ui/07-calendar/97-acceptance-criteria.md) | Phase 7 — Calendar / Today Acceptance Criteria | 2.0.0 | Curated |
 | [`32-ui-design/06-workflowy-ui/07-calendar/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/07-calendar/99-consistency-report.md) | Consistency Report — Calendar (Phase 7) | 1.1.0 | — |
 | [`32-ui-design/06-workflowy-ui/08-app-shell/00-overview.md`](./32-ui-design/06-workflowy-ui/08-app-shell/00-overview.md) | Phase 8 — App Shell (Themes, Fonts, Settings, App Menu) | 1.0.0 | — |
 | [`32-ui-design/06-workflowy-ui/08-app-shell/01-app-menu.md`](./32-ui-design/06-workflowy-ui/08-app-shell/01-app-menu.md) | App Menu (⋮) | — | — |
@@ -1365,6 +1365,7 @@
 | [`32-ui-design/06-workflowy-ui/10-mobile/03-mobile-gestures.md`](./32-ui-design/06-workflowy-ui/10-mobile/03-mobile-gestures.md) | 03 — Mobile Gestures | 1.0.0 | — |
 | [`32-ui-design/06-workflowy-ui/10-mobile/97-acceptance-criteria.md`](./32-ui-design/06-workflowy-ui/10-mobile/97-acceptance-criteria.md) | 97 — Acceptance Criteria — Phase 10 Mobile / PWA | 1.0.0 | — |
 | [`32-ui-design/06-workflowy-ui/10-mobile/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/10-mobile/99-consistency-report.md) | Consistency Report — Mobile / PWA (Phase 10) | 1.2.0 | — |
+| [`32-ui-design/06-workflowy-ui/97-acceptance-criteria.md`](./32-ui-design/06-workflowy-ui/97-acceptance-criteria.md) | WorkFlowy UI — Acceptance Criteria (Roll-up) | 1.0.0 | Curated |
 | [`32-ui-design/06-workflowy-ui/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/99-consistency-report.md) | Consistency Report — WorkFlowy UI | 1.1.0 | — |
 | [`32-ui-design/97-acceptance-criteria.md`](./32-ui-design/97-acceptance-criteria.md) | Ui Design — Acceptance Criteria | 1.0.0 | Scaffold |
 | [`32-ui-design/99-consistency-report.md`](./32-ui-design/99-consistency-report.md) | Consistency Report — Ui Design | 1.3.0 | — |
@@ -1418,4 +1419,4 @@
 
 ---
 
-*Auto-generated index — 1248 files across 25 top-level folders.*
+*Auto-generated index — 1249 files across 25 top-level folders.*
