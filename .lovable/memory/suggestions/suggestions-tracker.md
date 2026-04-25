@@ -57,6 +57,10 @@
 
 > Completed suggestions are moved to `.lovable/memory/suggestions/completed/` as individual files.
 
+### A-04 — Enum-sync hygiene check
+- **Completed:** 2026-04-25 (UTC+8)
+- **Result:** New `15-check-enums-in-sync.mjs` parses `spec/20-enums-index.md` row + `src/types/index.ts` literal union for each tracked enum and fails on any drift. Wired into `00-run-all.mjs`. Negative-test verified.
+
 ### A-06 — Wire AppLayout into routes
 - **Completed:** 2026-04-25 (UTC+8)
 - **Result:** `App.tsx` now wraps `<Home>` and `<NotFound>` in `<AppLayout>` via React Router `<Outlet />`. AppLayout provides `min-h-screen` background/foreground tokens; ready for Navbar + Sidebar slots in P1.3. Build clean, 19/19 tests still pass.
