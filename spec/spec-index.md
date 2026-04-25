@@ -379,7 +379,7 @@
 | [`02-coding-guidelines/consolidated-review-guide/12-logging.md`](./02-coding-guidelines/consolidated-review-guide/12-logging.md) | 12. Logging | — | — |
 | [`02-coding-guidelines/consolidated-review-guide/13-security-owasp.md`](./02-coding-guidelines/consolidated-review-guide/13-security-owasp.md) | 13. Security (OWASP) | — | — |
 | [`02-coding-guidelines/consolidated-review-guide/14-caching.md`](./02-coding-guidelines/consolidated-review-guide/14-caching.md) | 14. Caching | — | — |
-| [`02-coding-guidelines/consolidated-review-guide/97-acceptance-criteria.md`](./02-coding-guidelines/consolidated-review-guide/97-acceptance-criteria.md) | Consolidated Review Guide — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`02-coding-guidelines/consolidated-review-guide/97-acceptance-criteria.md`](./02-coding-guidelines/consolidated-review-guide/97-acceptance-criteria.md) | Consolidated Review Guide — Acceptance Criteria | 1.0.0 | Curated |
 | [`02-coding-guidelines/consolidated-review-guide/99-quick-checklist.md`](./02-coding-guidelines/consolidated-review-guide/99-quick-checklist.md) | Quick Checklist (Pre-Merge) | — | — |
 
 ## 03-error-manage
@@ -920,7 +920,7 @@
 | [`15-wp-plugin-how-to/02-enums-and-coding-style/02-enum-metadata-pattern.md`](./15-wp-plugin-how-to/02-enums-and-coding-style/02-enum-metadata-pattern.md) | Enum Metadata Pattern | 2.0.0 | Complete |
 | [`15-wp-plugin-how-to/02-enums-and-coding-style/03-self-update-status-enum.md`](./15-wp-plugin-how-to/02-enums-and-coding-style/03-self-update-status-enum.md) | SelfUpdateStatusType — Reference Implementation | 2.0.0 | — |
 | [`15-wp-plugin-how-to/02-enums-and-coding-style/04-action-type-enum.md`](./15-wp-plugin-how-to/02-enums-and-coding-style/04-action-type-enum.md) | ActionType — Reference Implementation | 2.0.0 | — |
-| [`15-wp-plugin-how-to/02-enums-and-coding-style/97-acceptance-criteria.md`](./15-wp-plugin-how-to/02-enums-and-coding-style/97-acceptance-criteria.md) | Enums And Coding Style — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`15-wp-plugin-how-to/02-enums-and-coding-style/97-acceptance-criteria.md`](./15-wp-plugin-how-to/02-enums-and-coding-style/97-acceptance-criteria.md) | Enums And Coding Style — Acceptance Criteria | 1.0.0 | Curated |
 | [`15-wp-plugin-how-to/02-enums-and-coding-style/99-consistency-report.md`](./15-wp-plugin-how-to/02-enums-and-coding-style/99-consistency-report.md) | Consistency Report — Enums And Coding Style | 1.0.0 | — |
 | [`15-wp-plugin-how-to/03-traits-and-composition.md`](./15-wp-plugin-how-to/03-traits-and-composition.md) | Phase 3 — Traits and Composition | — | — |
 | [`15-wp-plugin-how-to/04-logging-and-error-handling/00-overview.md`](./15-wp-plugin-how-to/04-logging-and-error-handling/00-overview.md) | Phase 4 — Logging and Error Handling | 2.0.0 | Production |
@@ -939,7 +939,7 @@
 | [`15-wp-plugin-how-to/04-logging-and-error-handling/13-shutdown-handler.md`](./15-wp-plugin-how-to/04-logging-and-error-handling/13-shutdown-handler.md) | 4.13 Shutdown Handler (Fatal Errors) | — | — |
 | [`15-wp-plugin-how-to/04-logging-and-error-handling/14-date-helper.md`](./15-wp-plugin-how-to/04-logging-and-error-handling/14-date-helper.md) | 4.14 DateHelper — Timestamp Specification | — | — |
 | [`15-wp-plugin-how-to/04-logging-and-error-handling/15-end-to-end-flow.md`](./15-wp-plugin-how-to/04-logging-and-error-handling/15-end-to-end-flow.md) | 4.15 Complete Error Handling Flow — End to End | — | — |
-| [`15-wp-plugin-how-to/04-logging-and-error-handling/97-acceptance-criteria.md`](./15-wp-plugin-how-to/04-logging-and-error-handling/97-acceptance-criteria.md) | Logging And Error Handling — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`15-wp-plugin-how-to/04-logging-and-error-handling/97-acceptance-criteria.md`](./15-wp-plugin-how-to/04-logging-and-error-handling/97-acceptance-criteria.md) | Logging And Error Handling — Acceptance Criteria | 1.0.0 | Curated |
 | [`15-wp-plugin-how-to/05-helpers-responses-and-integration/00-overview.md`](./15-wp-plugin-how-to/05-helpers-responses-and-integration/00-overview.md) | Phase 5 — Helpers, Response Envelope, and Integration | — | — |
 | [`15-wp-plugin-how-to/05-helpers-responses-and-integration/01-helper-classes.md`](./15-wp-plugin-how-to/05-helpers-responses-and-integration/01-helper-classes.md) | 5.1 Helper Classes | — | — |
 | [`15-wp-plugin-how-to/05-helpers-responses-and-integration/02-boolean-helpers.md`](./15-wp-plugin-how-to/05-helpers-responses-and-integration/02-boolean-helpers.md) | 5.1.1 BooleanHelpers — Semantic Guard Class | — | — |
@@ -1057,7 +1057,7 @@
 | [`15-wp-plugin-how-to/14-rest-api-conventions/13-dynamic-segments.md`](./15-wp-plugin-how-to/14-rest-api-conventions/13-dynamic-segments.md) | 14.13 Dynamic Route Segments | — | — |
 | [`15-wp-plugin-how-to/14-rest-api-conventions/14-openapi.md`](./15-wp-plugin-how-to/14-rest-api-conventions/14-openapi.md) | 14.14 OpenAPI Documentation (Optional) | — | — |
 | [`15-wp-plugin-how-to/14-rest-api-conventions/15-summary-table.md`](./15-wp-plugin-how-to/14-rest-api-conventions/15-summary-table.md) | 14.15 Summary Table | — | — |
-| [`15-wp-plugin-how-to/14-rest-api-conventions/97-acceptance-criteria.md`](./15-wp-plugin-how-to/14-rest-api-conventions/97-acceptance-criteria.md) | Rest Api Conventions — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`15-wp-plugin-how-to/14-rest-api-conventions/97-acceptance-criteria.md`](./15-wp-plugin-how-to/14-rest-api-conventions/97-acceptance-criteria.md) | Rest Api Conventions — Acceptance Criteria | 1.0.0 | Curated |
 | [`15-wp-plugin-how-to/15-settings-architecture/00-overview.md`](./15-wp-plugin-how-to/15-settings-architecture/00-overview.md) | Phase 15 — Settings Architecture | — | — |
 | [`15-wp-plugin-how-to/15-settings-architecture/01-data-model.md`](./15-wp-plugin-how-to/15-settings-architecture/01-data-model.md) | 15.1 Data Model | — | — |
 | [`15-wp-plugin-how-to/15-settings-architecture/02-settings-groups.md`](./15-wp-plugin-how-to/15-settings-architecture/02-settings-groups.md) | 15.2 Settings Groups | — | — |
@@ -1072,7 +1072,7 @@
 | [`15-wp-plugin-how-to/15-settings-architecture/11-warnings-and-endpoint-table.md`](./15-wp-plugin-how-to/15-settings-architecture/11-warnings-and-endpoint-table.md) | 15.11 Warnings & Endpoint Configuration Table | — | — |
 | [`15-wp-plugin-how-to/15-settings-architecture/12-partials-and-dual-save.md`](./15-wp-plugin-how-to/15-settings-architecture/12-partials-and-dual-save.md) | 15.12 Settings Section Partials & Dual Save Patterns | — | — |
 | [`15-wp-plugin-how-to/15-settings-architecture/13-anti-patterns.md`](./15-wp-plugin-how-to/15-settings-architecture/13-anti-patterns.md) | 15.13 Anti-Patterns (NEVER DO) | — | — |
-| [`15-wp-plugin-how-to/15-settings-architecture/97-acceptance-criteria.md`](./15-wp-plugin-how-to/15-settings-architecture/97-acceptance-criteria.md) | Settings Architecture — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`15-wp-plugin-how-to/15-settings-architecture/97-acceptance-criteria.md`](./15-wp-plugin-how-to/15-settings-architecture/97-acceptance-criteria.md) | Settings Architecture — Acceptance Criteria | 1.0.0 | Curated |
 | [`15-wp-plugin-how-to/16-error-handling-extraction/00-overview.md`](./15-wp-plugin-how-to/16-error-handling-extraction/00-overview.md) | Phase 16 — Error Handling & Diagnostics Extraction | 2.0.0 | Production |
 | [`15-wp-plugin-how-to/16-error-handling-extraction/01-error-type-classification.md`](./15-wp-plugin-how-to/16-error-handling-extraction/01-error-type-classification.md) | 16.1 Error Type Classification | — | — |
 | [`15-wp-plugin-how-to/16-error-handling-extraction/02-two-tier-error-capture.md`](./15-wp-plugin-how-to/16-error-handling-extraction/02-two-tier-error-capture.md) | 16.2 Two-Tier Error Capture | — | — |
