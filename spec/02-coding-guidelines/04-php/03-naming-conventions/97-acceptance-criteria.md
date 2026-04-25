@@ -30,7 +30,7 @@
 | AT-NAMINGCONVENTIONS-10 | Procedural / config-only PHP files (no class) use **lowercase_with_underscores.php** (e.g., `constants.php`, `bootstrap.php`). | [`02-files-and-namespaces.md`](./02-files-and-namespaces.md) |
 | AT-NAMINGCONVENTIONS-11 | Domain folders (one per namespace segment) use **PascalCase** (e.g., `Snapshot/`, `Database/`); this is the documented exception to the cross-language lowercase-folders rule for PHP. | [`02-files-and-namespaces.md`](./02-files-and-namespaces.md), [`02-coding-guidelines/08-file-folder-naming/02-php-wordpress.md`](../../08-file-folder-naming/02-php-wordpress.md) |
 | AT-NAMINGCONVENTIONS-12 | Log context array keys use **camelCase** (`'postId'`, `'masterDir'`); they are NOT persisted and therefore exempt from the PascalCase Golden Rule. | [`03-array-keys.md`](./03-array-keys.md), [`04-summary-table.md`](./04-summary-table.md) |
-| AT-NAMINGCONVENTIONS-13 | DB column array keys and API response array keys use **PascalCase** (`'PluginSlug'`, `'PluginVersion'`, `'CreatedAt'`); enforced by the PascalCase Golden Rule. | [`03-array-keys.md`](./03-array-keys.md), [`04-summary-table.md`](./04-summary-table.md), [`04-database-conventions/06-rest-api-format/97-acceptance-criteria.md`](../../../../04-database-conventions/06-rest-api-format/97-acceptance-criteria.md) |
+| AT-NAMINGCONVENTIONS-13 | DB column array keys and API response array keys use **PascalCase** (`'PluginSlug'`, `'PluginVersion'`, `'CreatedAt'`); enforced by the PascalCase Golden Rule. | [`03-array-keys.md`](./03-array-keys.md), [`04-summary-table.md`](./04-summary-table.md), [`04-database-conventions/06-rest-api-format/97-acceptance-criteria.md`](../../../04-database-conventions/06-rest-api-format/97-acceptance-criteria.md) |
 
 ---
 
@@ -53,7 +53,7 @@ node scripts/spec-hygiene/00-run-all.mjs
 
 - [`00-overview.md`](./00-overview.md) — Parent overview
 - [`spec/19-glossary.md`](../../../19-glossary.md) — Terminology SSOT
-- [`spec/04-database-conventions/06-rest-api-format/00-overview.md`](../../../../04-database-conventions/06-rest-api-format/00-overview.md) — PascalCase Golden Rule
+- [`spec/04-database-conventions/06-rest-api-format/00-overview.md`](../../../04-database-conventions/06-rest-api-format/00-overview.md) — PascalCase Golden Rule
 - [`spec/02-coding-guidelines/08-file-folder-naming/00-overview.md`](../../08-file-folder-naming/00-overview.md) — File & folder naming SSOT
 
 ---
