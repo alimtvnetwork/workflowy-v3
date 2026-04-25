@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-25  
-**Total Files:** 1248  
+**Total Files:** 1249  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -30,7 +30,7 @@
 - [13-cicd-pipeline-workflows](#13-cicd-pipeline-workflows) — 30 file(s)
 - [14-self-update-app-update](#14-self-update-app-update) — 32 file(s)
 - [15-wp-plugin-how-to](#15-wp-plugin-how-to) — 216 file(s)
-- [16-generic-cli](#16-generic-cli) — 42 file(s)
+- [16-generic-cli](#16-generic-cli) — 43 file(s)
 - [17-generic-update](#17-generic-update) — 11 file(s)
 - [18-spec-issues](#18-spec-issues) — 6 file(s)
 - [31-app](#31-app) — 35 file(s)
@@ -1150,6 +1150,7 @@
 | [`16-generic-cli/14-date-formatting.md`](./16-generic-cli/14-date-formatting.md) | Date Display Format | — | — |
 | [`16-generic-cli/15-constants-reference.md`](./16-generic-cli/15-constants-reference.md) | Constants Reference | — | — |
 | [`16-generic-cli/15a-naming-and-contributors.md`](./16-generic-cli/15a-naming-and-contributors.md) | Constants — Naming Reference & Contributors | — | — |
+| [`16-generic-cli/15b-constants-category-catalog.md`](./16-generic-cli/15b-constants-category-catalog.md) | Constants — Category Catalog | — | — |
 | [`16-generic-cli/16-verbose-logging/00-overview.md`](./16-generic-cli/16-verbose-logging/00-overview.md) | Verbose Logging — Overview | 1.0.0 | — |
 | [`16-generic-cli/16-verbose-logging/01-design-and-api.md`](./16-generic-cli/16-verbose-logging/01-design-and-api.md) | Design Rules, Package Structure & Logger API | — | — |
 | [`16-generic-cli/16-verbose-logging/02-init-and-log-format.md`](./16-generic-cli/16-verbose-logging/02-init-and-log-format.md) | Init Flow & Log Entry Format | — | — |
@@ -1418,4 +1419,4 @@
 
 ---
 
-*Auto-generated index — 1248 files across 25 top-level folders.*
+*Auto-generated index — 1249 files across 25 top-level folders.*

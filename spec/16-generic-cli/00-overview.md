@@ -28,7 +28,7 @@
 | 11 | [`12-testing.md`](./12-testing.md) | Testing | 101 |
 | 12 | [`13-checklist.md`](./13-checklist.md) | Implementation Checklist | 190 |
 | 13 | [`14-date-formatting.md`](./14-date-formatting.md) | Date Display Format | 59 |
-| 14 | [`15-constants-reference.md`](./15-constants-reference.md) | Constants Reference | 403 |
+| 14 | [`15-constants-reference.md`](./15-constants-reference.md) | Constants Reference | 70 |
 | 15 | [`16-verbose-logging/`](./16-verbose-logging/00-overview.md) | Verbose Logging — Overview | subfolder |
 | 16 | [`17-progress-tracking.md`](./17-progress-tracking.md) | Progress Tracking | 312 |
 | 17 | [`18-batch-execution.md`](./18-batch-execution.md) | Batch Execution | 293 |
