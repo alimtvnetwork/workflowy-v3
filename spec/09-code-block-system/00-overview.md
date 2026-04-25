@@ -14,7 +14,7 @@
 |---|------|-------|-------|
 | 1 | [`01-architecture.md`](./01-architecture.md) | Architecture — Code Block System | 102 |
 | 2 | [`02-html-structure.md`](./02-html-structure.md) | HTML Structure — Code Block System | 153 |
-| 3 | [`03-syntax-highlighting.md`](./03-syntax-highlighting.md) | Syntax Highlighting — Code Block System | 118 |
+| 3 | [`03-syntax-highlighting.md`](./03-syntax-highlighting.md) | Syntax Highlighting — Code Block System | 105 |
 | 4 | [`04-interactions.md`](./04-interactions.md) | Interactions — Code Block System | 202 |
 | 5 | [`05-styling.md`](./05-styling.md) | Styling — Code Block System | 398 |
 | 6 | [`06-constants-and-maps.md`](./06-constants-and-maps.md) | Constants & Maps — Code Block System | 141 |
