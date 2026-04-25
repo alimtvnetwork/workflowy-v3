@@ -67,7 +67,7 @@ Canonical mapping from semantic icon role → Lucide React component. **No emoji
 | Tag suggestion | `Hash` | 14 | — |
 | Link suggestion | `Link` | 14 | — |
 | Highlight color suggestion | `Highlighter` | 14 | — |
-| Item type suggestion (`is:`) | varies | 14 | Per item type — see Phase 4 icon map |
+| Item type suggestion (`is:`) | varies | 14 | Per item type — see [`../05-editor/03-item-types.md`](../05-editor/03-item-types.md) § Item Type → Lucide Icon Map |
 | Saved search row | `Star` | 14 | — |
 | Recent search row | `Clock` | 14 | — |
 
@@ -115,8 +115,8 @@ Canonical mapping from semantic icon role → Lucide React component. **No emoji
 
 ---
 
-## 10. Forward references
+## 10. Cross-references (resolved)
 
-- Phase 4 (Bullet) provides item-type icon map for `is:` suggestions.
-- Phase 5 (Editor) provides highlight color swatches for `highlight:` suggestions.
-- Phase 8 (App Shell) owns the global hotkey indicator icons.
+- ✅ Phase 5 [`../05-editor/03-item-types.md`](../05-editor/03-item-types.md) § Item Type → Lucide Icon Map — canonical icon map for `is:` suggestions.
+- ✅ Phase 5 [`../05-editor/04-color-palettes.md`](../05-editor/04-color-palettes.md) — 11 highlight color swatches (hex enumerated) for `highlight:` suggestions.
+- ✅ Phase 8 [`../08-app-shell/00-overview.md`](../08-app-shell/00-overview.md) § Global Hotkey Registration — owns global hotkey registry incl. `⌘K`.
