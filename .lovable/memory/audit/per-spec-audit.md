@@ -8,6 +8,17 @@
 
 ---
 
+## ⚠️ Author's Note — Known False-Positives
+
+Gemini occasionally misreads scope. Findings to **discard**:
+
+1. **Top finding #1 ("Backend runtime constraint violation in `package.json`")** — *FALSE POSITIVE.* Spec L9 forbids Node as a **backend** runtime; Vite/React are the **frontend** build stack and are explicitly required by `mem://architecture/tech-stack`. The auditor confused "no Node backend" with "no Node anywhere". **No action needed.**
+2. **Any finding citing missing implementation files** (e.g., `ItemRow.tsx`, `BulletDot.tsx`) — *EXPECTED.* SPEC-ONLY mode = scaffold only. These correctly surface what to build during P1.2–P1.7.
+
+All other findings are **legitimate spec-level corrections** worth applying.
+
+---
+
 ## 📊 Aggregate Rubric (avg across 30 specs)
 
 | Dimension | Weight | Score |
