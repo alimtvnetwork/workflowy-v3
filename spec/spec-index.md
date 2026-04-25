@@ -167,7 +167,7 @@
 | [`02-coding-guidelines/01-cross-language/27-types-folder-convention/02-rules.md`](./02-coding-guidelines/01-cross-language/27-types-folder-convention/02-rules.md) | Rules | — | — |
 | [`02-coding-guidelines/01-cross-language/27-types-folder-convention/03-common-type-definitions.md`](./02-coding-guidelines/01-cross-language/27-types-folder-convention/03-common-type-definitions.md) | Common Type Definitions | — | — |
 | [`02-coding-guidelines/01-cross-language/27-types-folder-convention/04-anti-patterns-and-checklist.md`](./02-coding-guidelines/01-cross-language/27-types-folder-convention/04-anti-patterns-and-checklist.md) | Anti-Patterns & Summary Checklist | — | — |
-| [`02-coding-guidelines/01-cross-language/27-types-folder-convention/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/27-types-folder-convention/97-acceptance-criteria.md) | Types Folder Convention — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`02-coding-guidelines/01-cross-language/27-types-folder-convention/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/27-types-folder-convention/97-acceptance-criteria.md) | Types Folder Convention — Acceptance Criteria | 1.0.0 | Curated |
 | [`02-coding-guidelines/01-cross-language/28-slug-conventions.md`](./02-coding-guidelines/01-cross-language/28-slug-conventions.md) | Slug Conventions | 3.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/29-lazy-evaluation-patterns.md`](./02-coding-guidelines/01-cross-language/29-lazy-evaluation-patterns.md) | Lazy Evaluation Patterns | 3.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/30-pinned-dependency-matrix.md`](./02-coding-guidelines/01-cross-language/30-pinned-dependency-matrix.md) | Pinned Dependency Matrix | — | Authoritative |
@@ -209,7 +209,7 @@
 | [`02-coding-guidelines/03-golang/01-enum-specification/02-required-methods/02-optional-and-domain-methods.md`](./02-coding-guidelines/03-golang/01-enum-specification/02-required-methods/02-optional-and-domain-methods.md) | Optional & Domain-Specific Methods | — | — |
 | [`02-coding-guidelines/03-golang/01-enum-specification/02-required-methods/03-complete-example.md`](./02-coding-guidelines/03-golang/01-enum-specification/02-required-methods/03-complete-example.md) | Complete Example | — | — |
 | [`02-coding-guidelines/03-golang/01-enum-specification/02-required-methods/04-pascalcase-labels.md`](./02-coding-guidelines/03-golang/01-enum-specification/02-required-methods/04-pascalcase-labels.md) | PascalCase Label Convention | — | — |
-| [`02-coding-guidelines/03-golang/01-enum-specification/02-required-methods/97-acceptance-criteria.md`](./02-coding-guidelines/03-golang/01-enum-specification/02-required-methods/97-acceptance-criteria.md) | Required Methods — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`02-coding-guidelines/03-golang/01-enum-specification/02-required-methods/97-acceptance-criteria.md`](./02-coding-guidelines/03-golang/01-enum-specification/02-required-methods/97-acceptance-criteria.md) | Go Enum Required Methods — Acceptance Criteria | 1.0.0 | Curated |
 | [`02-coding-guidelines/03-golang/01-enum-specification/03-folder-structure.md`](./02-coding-guidelines/03-golang/01-enum-specification/03-folder-structure.md) | Folder Structure | 3.1.0 | Complete |
 | [`02-coding-guidelines/03-golang/01-enum-specification/04-validation-checklist.md`](./02-coding-guidelines/03-golang/01-enum-specification/04-validation-checklist.md) | Validation Checklist | 3.1.0 | Complete |
 | [`02-coding-guidelines/03-golang/01-enum-specification/05-info-object-pattern.md`](./02-coding-guidelines/03-golang/01-enum-specification/05-info-object-pattern.md) | Info-Object Pattern for Go Enums | 3.1.0 | Complete |
@@ -299,7 +299,7 @@
 | [`02-coding-guidelines/04-php/09-response-key-type-inventory/09-stats-and-options.md`](./02-coding-guidelines/04-php/09-response-key-type-inventory/09-stats-and-options.md) | 9. Statistics, Backup/Scheduler Options & Storage Stats | — | — |
 | [`02-coding-guidelines/04-php/09-response-key-type-inventory/10-progress-cleanup-internal.md`](./02-coding-guidelines/04-php/09-response-key-type-inventory/10-progress-cleanup-internal.md) | 10. Progress Envelope, Cleanup Detail & Internal Passing Keys | — | — |
 | [`02-coding-guidelines/04-php/09-response-key-type-inventory/11-providers-and-misc.md`](./02-coding-guidelines/04-php/09-response-key-type-inventory/11-providers-and-misc.md) | 11. Provider/Plugin Info, Capability, Restore, OPcache, Plugin Archive & Status Payload | — | — |
-| [`02-coding-guidelines/04-php/09-response-key-type-inventory/97-acceptance-criteria.md`](./02-coding-guidelines/04-php/09-response-key-type-inventory/97-acceptance-criteria.md) | Response Key Type Inventory — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`02-coding-guidelines/04-php/09-response-key-type-inventory/97-acceptance-criteria.md`](./02-coding-guidelines/04-php/09-response-key-type-inventory/97-acceptance-criteria.md) | Response Key Type Inventory — Acceptance Criteria | 1.0.0 | Curated |
 | [`02-coding-guidelines/04-php/10-php-go-consistency-audit.md`](./02-coding-guidelines/04-php/10-php-go-consistency-audit.md) | PHP–Go Cross-Language Consistency Audit | 1.0.0 | All |
 | [`02-coding-guidelines/04-php/97-acceptance-criteria.md`](./02-coding-guidelines/04-php/97-acceptance-criteria.md) | PHP Standards — Acceptance Criteria | 3.1.0 | — |
 | [`02-coding-guidelines/04-php/98-changelog.md`](./02-coding-guidelines/04-php/98-changelog.md) | PHP Standards — Changelog | 3.1.0 | — |
@@ -608,7 +608,7 @@
 | [`05-split-db-architecture/01-fundamentals/07-paths-and-lifecycle.md`](./05-split-db-architecture/01-fundamentals/07-paths-and-lifecycle.md) | File Paths & Lifecycle | — | — |
 | [`05-split-db-architecture/01-fundamentals/08-import-export.md`](./05-split-db-architecture/01-fundamentals/08-import-export.md) | Import / Export (Zip Files) | — | — |
 | [`05-split-db-architecture/01-fundamentals/09-logging-benefits-references.md`](./05-split-db-architecture/01-fundamentals/09-logging-benefits-references.md) | Logging, Benefits & References | — | — |
-| [`05-split-db-architecture/01-fundamentals/97-acceptance-criteria.md`](./05-split-db-architecture/01-fundamentals/97-acceptance-criteria.md) | Fundamentals — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`05-split-db-architecture/01-fundamentals/97-acceptance-criteria.md`](./05-split-db-architecture/01-fundamentals/97-acceptance-criteria.md) | Split DB Architecture — Fundamentals — Acceptance Criteria | 1.0.0 | Curated |
 | [`05-split-db-architecture/02-features/00-overview.md`](./05-split-db-architecture/02-features/00-overview.md) | Split DB Architecture — Features Index | — | — |
 | [`05-split-db-architecture/02-features/01-cli-examples/00-overview.md`](./05-split-db-architecture/02-features/01-cli-examples/00-overview.md) | CLI Examples — Overview | 3.1.0 | Active |
 | [`05-split-db-architecture/02-features/01-cli-examples/01-aibridge-examples.md`](./05-split-db-architecture/02-features/01-cli-examples/01-aibridge-examples.md) | Split DB Architecture: AI Bridge CLI Examples | 3.1.0 | Active |
@@ -658,7 +658,7 @@
 | [`06-seedable-config-architecture/01-fundamentals/07-ui-integration.md`](./06-seedable-config-architecture/01-fundamentals/07-ui-integration.md) | UI Integration | — | — |
 | [`06-seedable-config-architecture/01-fundamentals/08-theme-support.md`](./06-seedable-config-architecture/01-fundamentals/08-theme-support.md) | Theme Support | — | — |
 | [`06-seedable-config-architecture/01-fundamentals/09-applicable-projects-and-policy.md`](./06-seedable-config-architecture/01-fundamentals/09-applicable-projects-and-policy.md) | Applicable Projects & No-Hardcoded-Arrays Policy | — | — |
-| [`06-seedable-config-architecture/01-fundamentals/97-acceptance-criteria.md`](./06-seedable-config-architecture/01-fundamentals/97-acceptance-criteria.md) | Fundamentals — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`06-seedable-config-architecture/01-fundamentals/97-acceptance-criteria.md`](./06-seedable-config-architecture/01-fundamentals/97-acceptance-criteria.md) | Seedable Config Architecture — Fundamentals — Acceptance Criteria | 1.0.0 | Curated |
 | [`06-seedable-config-architecture/02-features/00-overview.md`](./06-seedable-config-architecture/02-features/00-overview.md) | Seedable Config Architecture — Features Index | — | — |
 | [`06-seedable-config-architecture/02-features/01-rag-chunk-settings.md`](./06-seedable-config-architecture/02-features/01-rag-chunk-settings.md) | RAG Chunk Configuration Settings | 3.1.0 | Active |
 | [`06-seedable-config-architecture/02-features/02-rag-validation-helpers/00-overview.md`](./06-seedable-config-architecture/02-features/02-rag-validation-helpers/00-overview.md) | RAG Configuration Validation Helpers | 3.1.0 | Active |
