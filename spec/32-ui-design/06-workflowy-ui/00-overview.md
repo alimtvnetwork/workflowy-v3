@@ -1,8 +1,9 @@
 # Workflowy UI Spec — Parent Overview
 
-> **Version:** 1.0.0
+> **Version:** 1.1.0
 > **Created:** 2026-04-21 (UTC+8)
-> **Status:** ✅ Complete (all blockers resolved 2026-04-23)
+> **Updated:** 2026-04-25 (UTC+8) — S05 cross-phase audit complete (all 10 phases)
+> **Status:** ✅ Complete (all blockers resolved 2026-04-23; cross-phase audit passed 2026-04-25)
 > **Parent:** [`../00-overview.md`](../00-overview.md)
 > **Source plan:** [`.lovable/plans/03-workflowy-spec-consolidation.md`](../../../.lovable/plans/03-workflowy-spec-consolidation.md)
 > **Reference assets:** `.lovable/references/workflowy-screenshots/` (28 screenshots img-40 → img-67)
@@ -81,6 +82,17 @@ This parent folder nests **10 phases** as numbered subfolders. Phase number = su
 | 4 | LinkedIn integration scope | Phase 9 | ✅ RESOLVED 2026-04-23 (deferred to post-v1; spec stays runtime-agnostic) |
 
 ---
+
+## S05 Cross-Phase Audit (2026-04-25)
+
+| # | Finding | Resolution |
+|---|---------|------------|
+| 1 | `⌘⇧S` collision (Phase 2 Saved Searches vs Phase 6 Send to Drafts) | ✅ Drafts demoted to right-click only; chord reserved for Phase 2 popover scope |
+| 2 | Phase 10 zoom hotkeys diverged from Phase 3 registry | ✅ Corrected to canonical `⌘←` / `⌘→` |
+| 3 | Legacy v1 search references (overlay, full-screen) | ✅ Purged from Phase 7 + active spec |
+| 4 | Phase 6 ↔ Phase 8 Fractal Conversations toggle linkage | ✅ Bidirectional cross-references added |
+| 5 | Global Hotkey Registry authority | ✅ Phase 8 confirmed as single source of truth |
+
 
 ## Related
 
