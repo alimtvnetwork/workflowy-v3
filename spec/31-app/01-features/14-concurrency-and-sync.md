@@ -11,6 +11,8 @@
 
 This file is the **single source of truth** for how concurrent edits resolve across tabs, devices, and collaborators. Every other feature (mirrors, sharing, multi-select, today, board) defers to the rules here. The MVP strategy is **field-level Last-Write-Wins (LWW)** keyed by **server-issued timestamp** with a deterministic tie-break, plus a visible "Restored remote change" banner whenever a local edit is overwritten. CRDT/OT is out of scope for MVP.
 
+**Transport (per `00-overview.md` L9):** Real-time delivery uses **WP-native Server-Sent Events (SSE)** on a long-lived `text/event-stream` endpoint, with a **5 s polling fallback** when SSE is unavailable (proxy buffering, mobile background, etc.). WebSockets, Postgres `LISTEN/NOTIFY`, and external pub/sub services are explicitly out of scope. Wherever this spec says "realtime channel `item:<id>`" or "realtime broadcast", read it as: *the WP plugin's SSE multiplexer pushes a JSON event over the open SSE connection scoped to that item, OR the next 5 s poll surfaces it*.
+
 ## User Story
 
 As a collaborator editing a shared outline at the same time as someone else, I want predictable conflict resolution and a clear notice when my unsaved change is replaced by a peer's, so that I never silently lose work and always know which version is authoritative.
