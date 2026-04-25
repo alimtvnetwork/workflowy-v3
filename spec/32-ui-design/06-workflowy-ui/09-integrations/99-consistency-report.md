@@ -1,7 +1,7 @@
 # Consistency Report — Integrations (Phase 9)
 
-> **Version:** 1.1.0
-> **Updated:** 2026-04-23 (UTC+8)
+> **Version:** 1.2.0
+> **Updated:** 2026-04-25 (UTC+8)
 > **Status:** ✅ Spec complete (implementation deferred to post-v1)
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
