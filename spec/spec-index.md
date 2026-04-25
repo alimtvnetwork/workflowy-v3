@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-25  
-**Total Files:** 1249  
+**Total Files:** 1248  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -34,7 +34,7 @@
 - [17-generic-update](#17-generic-update) — 11 file(s)
 - [18-spec-issues](#18-spec-issues) — 6 file(s)
 - [31-app](#31-app) — 35 file(s)
-- [32-ui-design](#32-ui-design) — 120 file(s)
+- [32-ui-design](#32-ui-design) — 119 file(s)
 - [33-feedback-report](#33-feedback-report) — 3 file(s)
 - [34-activity-feed](#34-activity-feed) — 3 file(s)
 - [35-enforcement-rules](#35-enforcement-rules) — 3 file(s)
@@ -1256,7 +1256,6 @@
 | [`32-ui-design/01-architecture/03-component-hierarchy.md`](./32-ui-design/01-architecture/03-component-hierarchy.md) | Component Hierarchy | 1.1.0 | — |
 | [`32-ui-design/01-architecture/04-file-organization.md`](./32-ui-design/01-architecture/04-file-organization.md) | File Organization | 1.1.0 | — |
 | [`32-ui-design/01-architecture/05-component-contract-map.md`](./32-ui-design/01-architecture/05-component-contract-map.md) | Component Contract Map | — | — |
-| [`32-ui-design/01-architecture/05a-component-path-index.md`](./32-ui-design/01-architecture/05a-component-path-index.md) | Component-Path Index | — | — |
 | [`32-ui-design/01-architecture/97-acceptance-criteria.md`](./32-ui-design/01-architecture/97-acceptance-criteria.md) | UI Architecture — Acceptance Criteria | 1.0.1 | Scaffold |
 | [`32-ui-design/01-architecture/99-consistency-report.md`](./32-ui-design/01-architecture/99-consistency-report.md) | Consistency Report — 01-architecture | 1.0.1 | — |
 | [`32-ui-design/02-state-and-data/00-overview.md`](./32-ui-design/02-state-and-data/00-overview.md) | State & Data | 1.0.0 | — |
@@ -1419,4 +1418,4 @@
 
 ---
 
-*Auto-generated index — 1249 files across 25 top-level folders.*
+*Auto-generated index — 1248 files across 25 top-level folders.*
