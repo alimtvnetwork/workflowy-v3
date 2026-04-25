@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-25  
-**Total Files:** 1255  
+**Total Files:** 1256  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -24,7 +24,7 @@
 - [07-design-system](#07-design-system) — 16 file(s)
 - [08-docs-viewer-ui](#08-docs-viewer-ui) — 29 file(s)
 - [09-code-block-system](#09-code-block-system) — 13 file(s)
-- [10-powershell-integration](#10-powershell-integration) — 23 file(s)
+- [10-powershell-integration](#10-powershell-integration) — 24 file(s)
 - [11-research](#11-research) — 2 file(s)
 - [12-consolidated-guidelines](#12-consolidated-guidelines) — 26 file(s)
 - [13-cicd-pipeline-workflows](#13-cicd-pipeline-workflows) — 36 file(s)
@@ -792,8 +792,9 @@
 | [`10-powershell-integration/05-firewall-rules.md`](./10-powershell-integration/05-firewall-rules.md) | Windows Firewall Configuration | 1.1.0 | Active |
 | [`10-powershell-integration/06-php-known-issues.md`](./10-powershell-integration/06-php-known-issues.md) | PHP Error Management — Known Issues & Cases | 1.0.0 | Active |
 | [`10-powershell-integration/07-template-vs-project-differences.md`](./10-powershell-integration/07-template-vs-project-differences.md) | Template vs Project-Specific Differences | — | — |
+| [`10-powershell-integration/08-wp-plugin-boundary.md`](./10-powershell-integration/08-wp-plugin-boundary.md) | PowerShell ↔ WP-Plugin Boundary | 1.0.0 | Canonical |
 | [`10-powershell-integration/25-multi-site-deployment.md`](./10-powershell-integration/25-multi-site-deployment.md) | Multi-Site Deployment | — | — |
-| [`10-powershell-integration/97-acceptance-criteria.md`](./10-powershell-integration/97-acceptance-criteria.md) | Powershell Integration — Acceptance Criteria | 1.0.0 | Scaffold |
+| [`10-powershell-integration/97-acceptance-criteria.md`](./10-powershell-integration/97-acceptance-criteria.md) | PowerShell Integration — Acceptance Criteria | 2.0.0 | — |
 | [`10-powershell-integration/99-consistency-report.md`](./10-powershell-integration/99-consistency-report.md) | Consistency Report — PowerShell Integration | 3.1.0 | — |
 | [`10-powershell-integration/changelog.md`](./10-powershell-integration/changelog.md) | PowerShell Script Changelog | — | — |
 | [`10-powershell-integration/parallel-work-sync-output.md`](./10-powershell-integration/parallel-work-sync-output.md) | Parallel Work Sync Output | — | — |
@@ -1425,4 +1426,4 @@
 
 ---
 
-*Auto-generated index — 1255 files across 25 top-level folders.*
+*Auto-generated index — 1256 files across 25 top-level folders.*
