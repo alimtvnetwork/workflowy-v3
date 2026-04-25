@@ -39,7 +39,8 @@
 - **Drop target:** YES — see `03-drag-drop.md`.
 
 ### 4. Drafts
-- Holds nodes the user explicitly marks as drafts (UI: `⌘⇧S` to send to Drafts).
+- Holds nodes the user explicitly marks as drafts.
+- **How to mark as draft:** right-click node → "Send to Drafts" (no global hotkey — `⌘⇧S` is reserved for Phase 2 Saved Searches when the Search Popover is open).
 - Counter badge = total draft count.
 - Hidden when "Fractal Conversations" setting is OFF (Phase 8).
 
