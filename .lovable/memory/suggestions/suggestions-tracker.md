@@ -1,22 +1,21 @@
 # Lovable Suggestions Tracker
 
 > **Convention:** All suggestions tracked in this single file. Update status when completed. Move completed entries to `completed/` folder.
-> **Updated:** 2026-04-25 (UTC+8) — A-25 closed (14th batch of leaf AT files curated; running totals: 71 AT files curated → ~912 testable criteria authored)
+> **Updated:** 2026-04-25 (UTC+8) — **S003 RESOLVED** (backend = WordPress plugin + SQLite). Phase-1 build path P1.1 → P1.7 unblocked, pending SPEC-ONLY mode lift.
 
 ---
 
 ## Active Suggestions
 
-### S003 — Resolve Backend Runtime Strategy
-- **Created:** 2026-03-18
-- **Source:** Lovable
-- **Affected:** Architecture (all backend modules)
-- **Description:** Specs describe split SQLite backend with filesystem access, but Lovable only runs frontend code.
-- **Rationale:** Without resolution, auth, data persistence, file uploads, and multi-user features are impossible.
-- **Proposed Change:** Choose one: (a) Lovable Cloud, (b) WordPress backend, (c) browser SQLite (sql.js), (d) frontend-only with localStorage.
-- **Acceptance Criteria:** Clear decision documented. Plan.md and specs updated to reflect chosen approach.
-- **Status:** open — **BLOCKS IMPLEMENTATION** of auth, data layer, and all persistence features
-- **User action required:** Yes — must choose backend strategy (memory hint: leaning WordPress)
+### S003 — Resolve Backend Runtime Strategy → ✅ closed
+- **Closed:** 2026-04-25 (UTC+8)
+- **Decision:** **WordPress plugin (PHP 8.1+ + SQLite via PDO-SQLite)**.
+- **Rationale chosen:** Matches existing `spec/15-wp-plugin-how-to/` investment (15 sub-leaves, 227 inherited AT IDs + 12 roll-up). Zero new infra. SQLite stays as planned. PHP coding guidelines (`spec/02-coding-guidelines/04-php/`) become active.
+- **Forbidden alternatives:** Lovable Cloud, Supabase, sql.js, IndexedDB-as-primary, Postgres, MySQL, Node standalone, Cloudflare D1, Go.
+- **Memory updated:** `mem://constraints/backend-runtime-deferred` rewritten as "RESOLVED" record.
+- **Index core line:** updated in `.lovable/memory/index.md`.
+- **Plan:** `.lovable/plans/00-active.md` updated — only blocker remaining is SPEC-ONLY mode lift (user authorization).
+- **Next:** P1.1 Bootstrap can begin once user says "exit spec-only".
 
 ### A-04 — Enum-sync hygiene check (ItemType drift guard) → ✅ closed
 - **Closed:** 2026-04-25 (UTC+8)
