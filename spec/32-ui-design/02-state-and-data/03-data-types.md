@@ -9,6 +9,8 @@
 
 The core data object. Represents any node in the outliner tree.
 
+> **Branded IDs (F-06):** `id`, `parent_id`, and `user_id` use opaque branded primitives (`ItemId`, `OwnerId`) at the TypeScript layer. The concrete runtime shape (UUID, integer, etc.) is decided by the chosen backend per `mem://constraints/backend-runtime-deferred`. See `src/types/index.ts` for the brand definition.
+
 | Field | Type | Description |
 |-------|------|-------------|
 | id | UUID | Unique identifier |
