@@ -6,20 +6,22 @@
 
 ---
 
-## Health Score: **96 / 100** ✅
+## Health Score: **99 / 100** ✅
 
 | Category | Score | Notes |
 |----------|-------|-------|
 | File completeness | 20/20 | All 16 files declared in overview exist |
-| Cross-ref integrity | 19/20 | 1 forward-ref to Phase 5 unresolved (palette TBD) |
+| Cross-ref integrity | 20/20 | Phase 8 reverse-link added 2026-04-25; Phase 5 palette confirmed enumerated |
 | AC coverage | 20/20 | 20/20 ACs map to ≥ 1 spec file |
 | Token discipline | 19/20 | 4 NEW tokens documented; not yet added to `@theme` (deferred) |
-| Deferral hygiene | 18/20 | All backend/storage references explicitly deferred |
+| Deferral hygiene | 20/20 | All backend/storage references explicitly deferred |
 
 Deductions:
-- **−1** Phase 5 highlight palette referenced in `12-icon-map.md` but Phase 5 spec hex values still TBD at parent level
-- **−1** `--accent-active` token pair must be added to `@theme` before Phase 2 implementation begins
-- **−2** Phase 8 (`⌘K` global hotkey registration) referenced 4× but Phase 8 hotkey-binding section not yet cross-linked back to Phase 2
+- **−1** `--accent-active` + `--highlight` token pairs must be added to `@theme` before Phase 2 implementation begins (intentional — spec-only mode)
+
+Resolved since 1.0.0:
+- ✅ Phase 8 reverse cross-link to Phase 2 `⌘K` added in [`../08-app-shell/00-overview.md`](../08-app-shell/00-overview.md) § Global Hotkey Registration
+- ✅ Phase 5 highlight palette confirmed fully enumerated (11 hex values) in [`../05-editor/04-color-palettes.md`](../05-editor/04-color-palettes.md)
 
 ---
 
