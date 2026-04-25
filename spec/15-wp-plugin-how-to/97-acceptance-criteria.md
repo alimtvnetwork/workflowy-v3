@@ -84,7 +84,7 @@ This roll-up applies BOTH to the canonical reference plugin AND to any future pl
 | ID | Criterion | Source |
 |----|-----------|--------|
 | AT-WPROOT-09 | Every public PHP class added under §07 / §08 / §11 / §13 / §14 / §15 / §19 MUST have at least one unit OR integration test in §09; uncovered public classes fail the §09 coverage gate. | [`./09-testing-patterns/97-acceptance-criteria.md`](./09-testing-patterns/97-acceptance-criteria.md) |
-| AT-WPROOT-10 | The §10 deployment pipeline MUST run the §09 test suite + the spec-hygiene suite + a static analysis pass before producing a release artefact; skipping any gate is a Code-Red CI bug. | [`./10-deployment-patterns/97-acceptance-criteria.md`](./10-deployment-patterns/97-acceptance-criteria.md), [`../13-cicd/`](../13-cicd/) |
+| AT-WPROOT-10 | The §10 deployment pipeline MUST run the §09 test suite + the spec-hygiene suite + a static analysis pass before producing a release artefact; skipping any gate is a Code-Red CI bug. | [`./10-deployment-patterns/97-acceptance-criteria.md`](./10-deployment-patterns/97-acceptance-criteria.md), [`../13-cicd-pipeline-workflows/00-overview.md`](../13-cicd-pipeline-workflows/00-overview.md) |
 
 ### Walkthrough & glossary alignment
 
