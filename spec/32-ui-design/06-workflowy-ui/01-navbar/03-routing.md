@@ -11,7 +11,7 @@
 |-------|---------|---------|
 | Home root | `/` | User's root node, no focus. Breadcrumb hidden. |
 | Focused node | `/n/{nodeId}` | Focused on the node with ID `{nodeId}`. Breadcrumb visible. |
-| Search results | `/search?q={query}` | Full-screen search overlay open. Tree below is dimmed/inactive. |
+| Search active | `/search?q={query}` | **Search Popover open** (Phase 2 v2.0.0 — popover anchored to navbar, not full-screen). Tree below remains interactive but is live-filtered + highlighted. |
 | Today view | `/today` | Special calendar/today view. See Phase 7. |
 | Trash | `/trash` | Trash view. See Phase 6 special nodes. |
 | Settings | `/settings` | Settings page. See Phase 8. |
