@@ -69,8 +69,9 @@ Specification for time-based views and quick-capture flow: Today view (date-scop
 
 - Phase 6 [`06-sidebar/02-special-nodes.md`](../06-sidebar/02-special-nodes.md) — Today, Calendar, Inbox sidebar items
 - Phase 6 [`06-sidebar/03-drag-drop.md`](../06-sidebar/03-drag-drop.md) — Drop on Calendar icon
-- Phase 2 [`02-search/02-filter-syntax.md`](../02-search/02-filter-syntax.md) — `date:`, `today`, `tomorrow` filters
-- Phase 1 [`01-navbar/04-keyboard-shortcuts.md`](../01-navbar/04-keyboard-shortcuts.md) — `⌘⇧N` registered
+- Phase 2 [`02-search/06-query-grammar.md`](../02-search/06-query-grammar.md) — `date:`, `today`, `tomorrow` filters (Phase 2 v2.0.0 — supersedes archived `02-filter-syntax.md`)
+- Phase 8 [`08-app-shell/00-overview.md`](../08-app-shell/00-overview.md) § Global Hotkey Registration — `⌘⇧N` registered here (behavior owned by this phase)
+- Phase 3 [`03-right-panel/02-hotkeys.md`](../03-right-panel/02-hotkeys.md) — User-facing hotkey table (includes `⌘⇧N`)
 
 ---
 
