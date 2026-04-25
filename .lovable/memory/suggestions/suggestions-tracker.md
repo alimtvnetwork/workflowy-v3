@@ -1,7 +1,7 @@
 # Lovable Suggestions Tracker
 
 > **Convention:** All suggestions tracked in this single file. Update status when completed. Move completed entries to `completed/` folder.
-> **Updated:** 2026-04-25 (UTC+8) — A-19 closed (8th batch of leaf AT files curated; running totals: 41 AT files curated → ~472 testable criteria authored)
+> **Updated:** 2026-04-25 (UTC+8) — A-20 closed (9th batch of leaf AT files curated; running totals: 46 AT files curated → ~540 testable criteria authored)
 
 ---
 
@@ -61,6 +61,10 @@
 ### A-19 — Curate 5 retry-debounce-dedup + code-style + blank-lines + boolean-principles + error-resolution-rollup AT files → ✅ closed
 - **Closed:** 2026-04-25 (UTC+8)
 - **Result:** Curated `03-error-manage/01-error-resolution/03-retrospectives/02-retry-debounce-dedup-fixes/` (14 criteria, AT-RETRYDEBOUNCEDEDUPFIXES-01..14 — global QueryClient retry policy, refetchOnWindowFocus disabled, API-level publish dedup lock + cooldown, stable WS listener cleanup, toast dedup window, circuit breaker, snapshot suppression, typed RetryPolicy value object), `02-coding-guidelines/01-cross-language/04-code-style/` (14, AT-CODESTYLE-01..14 — K&R braces, zero nested if, ≤15 logical lines, ≤3 params, multi-line params with trailing comma, no dead code), `02-coding-guidelines/01-cross-language/04-code-style/03-blank-lines-and-spacing/` (11, AT-BLANKLINESANDSPACING-01..11 — Rules 4/5/10 with explicit exemptions, no consecutive blanks), `02-coding-guidelines/01-cross-language/02-boolean-principles/` (13, AT-BOOLEANPRINCIPLES-01..13 — positive prefixes, no plural booleans, isDefined/isEmpty guards, no boolean-flag params, ternary-cond ban, adapter conversion at API boundary), `03-error-manage/01-error-resolution/` (12, AT-ERRORRESOLUTION-01..12 — cross-ref diagram SSOT, uniform cheat-sheet template, retro-before-merge rule, 5-field frontend↔backend sync recipe, registered-code requirement). Total: 64 testable criteria. All 18 hygiene checks pass. Stub count: 60 → 55. Version 0.18.0.
+
+### A-20 — Curate 5 error-modal sub-leaves + master-coding-guidelines + golang-standards-reference AT files → ✅ closed
+- **Closed:** 2026-04-25 (UTC+8)
+- **Result:** Curated `03-error-manage/02-error-architecture/04-error-modal/01-copy-formats/` (14 criteria, AT-COPYFORMATS-01..14 — exactly 9 documented formats, Compact Report as no-API-call default, ZIP bundle = report.md+error.log.txt+log.txt, fixed section ordering, raw-log no-post-processing rule, deterministic envelope key order), `03-error-manage/02-error-architecture/04-error-modal/02-react-components/` (14, AT-REACTCOMPONENTS-01..14 — CapturedError SSOT, single Zustand store, pure stack-trace parser, FIFO queue with seen-marker, 3-method API surface, lazy useSessionDiagnostics, deterministic suggested-fixes mapping, self-contained integration guide), `03-error-manage/02-error-architecture/04-error-modal/04-color-themes/` (11, AT-COLORTHEMES-01..11 — HSL-only tokens, light+dark variants, bijective LogLevel→token mapping, two-tier Go-blue/PHP-orange system, NO purple regression, severity-driven queue badge), `02-coding-guidelines/01-cross-language/15-master-coding-guidelines/` (15, AT-MASTERCODINGGUIDELINES-01..15 — PascalCase DB keys, parameterized SQL via views, positive booleans, ≤15 logical lines, no swallowed errors Code Red, apperror with stack trace, named discriminated unions, magic-number ban, domain-organized folders, Promise.all/errgroup for independent async, TTL caches with mutation invalidation), `02-coding-guidelines/03-golang/04-golang-standards-reference/` (14, AT-GOLANGSTANDARDSREFERENCE-01..14 — snake_case.go files, no nested if, no interface{}/any in business code, apperror-only constructors, (T,error) max return shape, dbutil-only DB access, domain/DTO/persistence struct separation, Is/Has prefixes, typed const enum blocks, errgroup-only goroutines). Total: 68 testable criteria. All 18 hygiene checks pass. Stub count: 55 → 50. Version 0.19.0.
 
 ---
 
