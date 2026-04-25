@@ -119,3 +119,21 @@ This subfolder **bridges** rather than duplicates. For deep details, follow thes
 ---
 
 *WP-Plugin Deploy overview — v1.0.0 — created 2026-04-25 (UTC+8) — closes audit gap F-02.*
+
+---
+
+## Related
+
+**In this section:**
+
+- [`01-distignore-and-zip-layout.md`](./01-distignore-and-zip-layout.md) — `.distignore` contract + final ZIP tree + 8 integrity gates
+- [`02-github-actions-workflow.md`](./02-github-actions-workflow.md) — Complete `release.yml` (CI gates → package → release)
+- [`03-update-server-contract.md`](./03-update-server-contract.md) — `info.json` shape + post-release verification gates
+- [`04-version-sync.md`](./04-version-sync.md) — `package.json` → header + enum + tag drift detection
+- [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) — AT-WPPLUGINDEPLOY-01..15
+
+**See also:**
+
+- [`../00-overview.md`](../00-overview.md) — Parent CI/CD overview
+- [`../97-acceptance-criteria.md`](../97-acceptance-criteria.md) — Cross-cutting CI/CD criteria
+- [`../../15-wp-plugin-how-to/10-deployment-patterns/00-overview.md`](../../15-wp-plugin-how-to/10-deployment-patterns/00-overview.md) — Canonical WP packaging patterns (referenced by P1–P9)

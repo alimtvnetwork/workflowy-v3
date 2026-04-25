@@ -17,21 +17,21 @@
 | 1 | [`01-browser-extension-deploy/`](./01-browser-extension-deploy/00-overview.md) | Browser Extension Deploy — Overview | subfolder |
 | 2 | [`02-go-binary-deploy/`](./02-go-binary-deploy/00-overview.md) | Go Binary Deploy — Overview | subfolder |
 | 3 | [`03-vulnerability-scanning.md`](./03-vulnerability-scanning.md) | Vulnerability Scanning | 105 |
-| 4 | [`18-wp-plugin-deploy/`](./18-wp-plugin-deploy/00-overview.md) | WP-Plugin Deploy — Overview | subfolder |
-| 5 | [`04-install-script-generation.md`](./04-install-script-generation.md) | Install Script Generation | 210 |
-| 6 | [`05-code-signing.md`](./05-code-signing.md) | Code Signing | 178 |
-| 7 | [`06-self-update-mechanism.md`](./06-self-update-mechanism.md) | Self-Update Mechanism | 365 |
-| 8 | [`07-release-body-and-changelog.md`](./07-release-body-and-changelog.md) | Release Body and Changelog | 356 |
-| 9 | [`08-terminal-output-standards.md`](./08-terminal-output-standards.md) | Terminal Output Standards | 260 |
-| 10 | [`09-binary-icon-branding.md`](./09-binary-icon-branding.md) | Binary Icon & Windows Resource Embedding | 191 |
-| 11 | [`10-ci-pipeline.md`](./10-ci-pipeline.md) | CI Pipeline | 378 |
-| 12 | [`11-release-pipeline.md`](./11-release-pipeline.md) | Release Pipeline | 273 |
-| 13 | [`12-installation-flow.md`](./12-installation-flow.md) | Installation Flow | 278 |
-| 14 | [`13-changelog-integration.md`](./13-changelog-integration.md) | Changelog Integration | 293 |
-| 15 | [`14-version-and-help.md`](./14-version-and-help.md) | Version Display and Help System | 299 |
-| 16 | [`15-environment-variable-setup.md`](./15-environment-variable-setup.md) | Environment Variable Setup | 327 |
-| 17 | [`16-shared-conventions.md`](./16-shared-conventions.md) | Shared Pipeline Conventions | 218 |
-| 18 | [`17-github-release-standard.md`](./17-github-release-standard.md) | GitHub Release Standard | 163 |
+| 4 | [`04-install-script-generation.md`](./04-install-script-generation.md) | Install Script Generation | 210 |
+| 5 | [`05-code-signing.md`](./05-code-signing.md) | Code Signing | 178 |
+| 6 | [`06-self-update-mechanism.md`](./06-self-update-mechanism.md) | Self-Update Mechanism | 365 |
+| 7 | [`07-release-body-and-changelog.md`](./07-release-body-and-changelog.md) | Release Body and Changelog | 356 |
+| 8 | [`08-terminal-output-standards.md`](./08-terminal-output-standards.md) | Terminal Output Standards | 260 |
+| 9 | [`09-binary-icon-branding.md`](./09-binary-icon-branding.md) | Binary Icon & Windows Resource Embedding | 191 |
+| 10 | [`10-ci-pipeline.md`](./10-ci-pipeline.md) | CI Pipeline | 378 |
+| 11 | [`11-release-pipeline.md`](./11-release-pipeline.md) | Release Pipeline | 273 |
+| 12 | [`12-installation-flow.md`](./12-installation-flow.md) | Installation Flow | 278 |
+| 13 | [`13-changelog-integration.md`](./13-changelog-integration.md) | Changelog Integration | 293 |
+| 14 | [`14-version-and-help.md`](./14-version-and-help.md) | Version Display and Help System | 299 |
+| 15 | [`15-environment-variable-setup.md`](./15-environment-variable-setup.md) | Environment Variable Setup | 327 |
+| 16 | [`16-shared-conventions.md`](./16-shared-conventions.md) | Shared Pipeline Conventions | 218 |
+| 17 | [`17-github-release-standard.md`](./17-github-release-standard.md) | GitHub Release Standard | 163 |
+| 18 | [`18-wp-plugin-deploy/`](./18-wp-plugin-deploy/00-overview.md) | WP-Plugin Deploy — Overview | subfolder |
 
 <!-- AUTO-TOC:END -->
 
