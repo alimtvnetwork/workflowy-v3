@@ -156,6 +156,6 @@ Add a date to any node:
 
 ## Cross-References
 
-- Phase 2 [`02-search/02-filter-syntax.md`](../02-search/02-filter-syntax.md) — `date:`, `date-before:`, `date-after:`
+- Phase 2 [`02-search/06-query-grammar.md`](../02-search/06-query-grammar.md) — `date:`, `date-before:`, `date-after:` (Phase 2 v2.0.0)
 - Phase 6 [`06-sidebar/02-special-nodes.md`](../06-sidebar/02-special-nodes.md) — Calendar sidebar item
 - `01-today-view.md` — Today view sister surface
