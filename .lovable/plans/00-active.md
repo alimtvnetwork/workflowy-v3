@@ -14,8 +14,9 @@ All historical plans are in `.lovable/plans/archive/`:
 
 ## What's still live
 
-- `mem://constraints/spec-only-mode` — implementation gated until specs are 100 % complete
-- **S003** in `.lovable/memory/suggestions/suggestions-tracker.md` — backend runtime decision (only true blocker)
-- Phase-1 build path P1.1 → P1.7 in `mem://` — runs once SPEC-ONLY lifts and S003 is resolved
+- `mem://constraints/spec-only-mode` — implementation gated until user explicitly authorizes exit
+- ~~**S003** backend runtime decision~~ → ✅ **RESOLVED 2026-04-25**: WordPress plugin (PHP + SQLite). See `mem://constraints/backend-runtime-deferred`.
+- Phase-1 build path P1.1 → P1.7 in `mem://` — **unblocked**, runs as soon as user lifts SPEC-ONLY mode
+- 22 AT stubs remaining across `02-coding-guidelines/` sub-leaves, top-level roll-ups, and spec meta files (non-blocking; tracked in suggestions-tracker)
 
 When a new multi-phase plan is needed, drop it here as `01-<short-name>.md`, `02-…`, etc.

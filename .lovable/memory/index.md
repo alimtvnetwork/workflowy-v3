@@ -3,8 +3,8 @@
 ## Core
 Official name is 'WorkFlowy'. Prioritize user requirements & UI specs absolutely over AI suggestions.
 SPEC TRACK COMPLETE (2026-04-23): all 10 Workflowy phases shipped at v1.0; awaiting user authorization to exit spec-only mode and start P1.1 Bootstrap.
-Backend runtime is DEFERRED — never propose Lovable Cloud, Supabase, sql.js, IndexedDB, etc. User will choose later (likely WordPress).
-Vite, React, TypeScript planned for frontend. No Go, PHP, Postgres, or Supabase.
+Backend = WordPress plugin (PHP 8.1+ + SQLite via PDO). REST envelope PascalCase. See `spec/15-wp-plugin-how-to/`. Decision date 2026-04-25.
+Vite, React, TypeScript for frontend. Forbidden: Lovable Cloud, Supabase, sql.js, IndexedDB-as-primary, Postgres, MySQL, Node standalone, Go, Cloudflare D1.
 Strict TS: zero 'any', max 3 params, no nested `if`s, 15-line logic limit, pure positive guard clauses.
 Every item is a unified Node interface (id, parentId, content, itemType). 250-item limit per view.
 Tailwind CSS v4 via @tailwindcss/vite in src/index.css @theme block.
