@@ -58,6 +58,10 @@
 - **Completed:** 2026-04-25 (UTC+8)
 - **Result:** New `15-check-enums-in-sync.mjs` parses `spec/20-enums-index.md` row + `src/types/index.ts` literal union for each tracked enum and fails on any drift. Wired into `00-run-all.mjs`. Negative-test verified.
 
+### Phase 4 — Workflowy Spec Consolidation (plan 03)
+- **Completed:** 2026-04-25 (UTC+8)
+- **Result:** Verified all 10 sub-phases live under `spec/32-ui-design/06-workflowy-ui/01-navbar/` … `10-mobile/` with consistency report scoring 100/100. All 4 cross-cutting blockers resolved (B1 hex swatches in `05-editor/04-color-palettes.md`, B2 sidebar drag = move-or-⌥-mirror in `06-sidebar/03-drag-drop.md`, B3 launch themes = light+dark in `08-app-shell/02-themes.md`, D1 LinkedIn read-only in `09-integrations/00-overview.md`). Also closed plan 02 (all 18 audit issues I-01…I-18 verified resolved — parallel folders gone, `.lovable/memories/` gone, audits folder gone, 18 hygiene scripts wired). Archived all three plans to `.lovable/plans/archive/`; created `00-active.md` index. Fixed 3 broken xrefs from spec → archived plan paths. Full hygiene suite passes; 28/28 tests pass.
+
 ### A-07 — Wire Toaster to typed queue
 - **Completed:** 2026-04-25 (UTC+8)
 - **Result:** Replaced no-op `Toaster` (returned `null`) with a real implementation: `src/contexts/ToastContext.tsx` exposes `<ToastProvider>`, `useToast()`, typed variants (`success | error | info | warning`), optional `errorCode` field for future `apperror` linkage, default 3000 ms auto-dismiss with overridable `durationMs`, plus `dismiss()` and `clear()`. `Toaster` now renders the queue with semantic-token classes only. Wired `<ToastProvider>` at `App.tsx` root. Added 9 tests (queue add/dismiss/auto-expire/custom-duration/clear/errorCode + render & empty-state) — total 28/28 pass.
