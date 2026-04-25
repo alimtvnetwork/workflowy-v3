@@ -15,7 +15,7 @@
 | # | File | Title | Lines |
 |---|------|-------|-------|
 | 1 | [`01-handbook-content.md`](./01-handbook-content.md) | Handbook Content Structure | 109 |
-| 2 | [`02-hotkeys.md`](./02-hotkeys.md) | Hotkeys Reference | 119 |
+| 2 | [`02-hotkeys.md`](./02-hotkeys.md) | Hotkeys Reference | 145 |
 | 3 | [`03-whats-new.md`](./03-whats-new.md) | What's New Panel | 132 |
 
 <!-- AUTO-TOC:END -->

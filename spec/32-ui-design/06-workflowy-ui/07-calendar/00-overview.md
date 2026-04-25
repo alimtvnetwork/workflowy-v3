@@ -17,7 +17,7 @@
 | # | File | Title | Lines |
 |---|------|-------|-------|
 | 1 | [`01-today-view.md`](./01-today-view.md) | Today View | 121 |
-| 2 | [`02-quick-add-modal.md`](./02-quick-add-modal.md) | Quick Add Modal | 157 |
+| 2 | [`02-quick-add-modal.md`](./02-quick-add-modal.md) | Quick Add Modal | 158 |
 | 3 | [`03-found-dates.md`](./03-found-dates.md) | Found Dates & Calendar Picker | 162 |
 
 <!-- AUTO-TOC:END -->

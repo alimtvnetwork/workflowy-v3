@@ -19,7 +19,7 @@
 | 1 | [`01-layout.md`](./01-layout.md) | 1. Navbar Layout | 107 |
 | 2 | [`02-breadcrumb.md`](./02-breadcrumb.md) | 2. Breadcrumb | 113 |
 | 3 | [`03-routing.md`](./03-routing.md) | 3. Routing & Focus | 92 |
-| 4 | [`04-keyboard-shortcuts.md`](./04-keyboard-shortcuts.md) | 4. Keyboard Shortcuts (Navbar Scope) | 52 |
+| 4 | [`04-keyboard-shortcuts.md`](./04-keyboard-shortcuts.md) | 4. Keyboard Shortcuts (Navbar Scope) | 56 |
 
 <!-- AUTO-TOC:END -->
 

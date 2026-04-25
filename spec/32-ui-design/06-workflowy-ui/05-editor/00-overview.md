@@ -18,7 +18,7 @@
 |---|------|-------|-------|
 | 1 | [`01-slash-menu.md`](./01-slash-menu.md) | Slash Command Menu | 85 |
 | 2 | [`02-selection-toolbar.md`](./02-selection-toolbar.md) | Selection Toolbar | 105 |
-| 3 | [`03-item-types.md`](./03-item-types.md) | Item Types | 108 |
+| 3 | [`03-item-types.md`](./03-item-types.md) | Item Types | 151 |
 | 4 | [`04-color-palettes.md`](./04-color-palettes.md) | Color Palettes (B1 RESOLVED) | 100 |
 | 5 | [`05-code-quote-blocks.md`](./05-code-quote-blocks.md) | Code & Quote Blocks | 149 |
 | 6 | [`06-markdown-shortcuts.md`](./06-markdown-shortcuts.md) | Markdown Shortcuts | 113 |
