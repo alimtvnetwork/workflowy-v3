@@ -1,7 +1,7 @@
 # Consistency Report — WorkFlowy UI
 
-> **Version:** 1.0.0
-> **Updated:** 2026-04-21
+> **Version:** 1.1.0
+> **Updated:** 2026-04-25 (UTC+8)
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
 ---
