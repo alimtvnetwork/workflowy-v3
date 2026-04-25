@@ -55,5 +55,6 @@
 | Date | Version | Action |
 |------|---------|--------|
 | 2026-04-21 | 1.0.0 | Initial report — created in S04 sweep after Phases 1–8 completion |
+| 2026-04-25 | 1.1.0 | S05 cross-phase audit sweep complete — all 10 phase reports bumped; hotkey conflicts resolved (`⌘⇧S`, `⌘←`/`⌘→`); archived v1 search refs purged from active spec |
 
-*Consistency Report — created 2026-04-21 (S04).*
+*Consistency Report — updated 2026-04-25 (S05 cross-phase audit).*
