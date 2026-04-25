@@ -1256,19 +1256,19 @@
 | [`32-ui-design/01-architecture/03-component-hierarchy.md`](./32-ui-design/01-architecture/03-component-hierarchy.md) | Component Hierarchy | 1.1.0 | — |
 | [`32-ui-design/01-architecture/04-file-organization.md`](./32-ui-design/01-architecture/04-file-organization.md) | File Organization | 1.1.0 | — |
 | [`32-ui-design/01-architecture/05-component-contract-map.md`](./32-ui-design/01-architecture/05-component-contract-map.md) | Component Contract Map | — | — |
-| [`32-ui-design/01-architecture/97-acceptance-criteria.md`](./32-ui-design/01-architecture/97-acceptance-criteria.md) | UI Architecture — Acceptance Criteria | 1.0.1 | Scaffold |
+| [`32-ui-design/01-architecture/97-acceptance-criteria.md`](./32-ui-design/01-architecture/97-acceptance-criteria.md) | UI Architecture — Acceptance Criteria | 2.0.0 | Curated |
 | [`32-ui-design/01-architecture/99-consistency-report.md`](./32-ui-design/01-architecture/99-consistency-report.md) | Consistency Report — 01-architecture | 1.0.1 | — |
 | [`32-ui-design/02-state-and-data/00-overview.md`](./32-ui-design/02-state-and-data/00-overview.md) | State & Data | 1.0.0 | — |
 | [`32-ui-design/02-state-and-data/01-state-management.md`](./32-ui-design/02-state-and-data/01-state-management.md) | State Management | 1.1.0 | — |
 | [`32-ui-design/02-state-and-data/02-data-flow.md`](./32-ui-design/02-state-and-data/02-data-flow.md) | Data Flow Patterns | 1.1.0 | — |
 | [`32-ui-design/02-state-and-data/03-data-types.md`](./32-ui-design/02-state-and-data/03-data-types.md) | Data Types | 1.1.0 | — |
-| [`32-ui-design/02-state-and-data/97-acceptance-criteria.md`](./32-ui-design/02-state-and-data/97-acceptance-criteria.md) | State & Data — Acceptance Criteria | 1.0.1 | Scaffold |
+| [`32-ui-design/02-state-and-data/97-acceptance-criteria.md`](./32-ui-design/02-state-and-data/97-acceptance-criteria.md) | State & Data — Acceptance Criteria | 2.0.0 | Curated |
 | [`32-ui-design/02-state-and-data/99-consistency-report.md`](./32-ui-design/02-state-and-data/99-consistency-report.md) | Consistency Report — 02-state-and-data | 1.0.1 | — |
 | [`32-ui-design/03-design-system/00-overview.md`](./32-ui-design/03-design-system/00-overview.md) | Design System | 1.0.0 | — |
 | [`32-ui-design/03-design-system/01-tokens-and-themes.md`](./32-ui-design/03-design-system/01-tokens-and-themes.md) | Design System | 1.1.0 | — |
 | [`32-ui-design/03-design-system/02-low-severity-clarifications.md`](./32-ui-design/03-design-system/02-low-severity-clarifications.md) | Low-Severity Clarifications | 1.1.0 | — |
 | [`32-ui-design/03-design-system/03-tailwind-version-ssot.md`](./32-ui-design/03-design-system/03-tailwind-version-ssot.md) | Tailwind CSS — Single Source of Truth | 1.0.0 | Authoritative |
-| [`32-ui-design/03-design-system/97-acceptance-criteria.md`](./32-ui-design/03-design-system/97-acceptance-criteria.md) | Design System — Acceptance Criteria | 1.0.1 | Scaffold |
+| [`32-ui-design/03-design-system/97-acceptance-criteria.md`](./32-ui-design/03-design-system/97-acceptance-criteria.md) | Design System — Acceptance Criteria | 2.0.0 | Curated |
 | [`32-ui-design/03-design-system/99-consistency-report.md`](./32-ui-design/03-design-system/99-consistency-report.md) | Consistency Report — 03-design-system | 1.0.1 | — |
 | [`32-ui-design/04-editor/00-overview.md`](./32-ui-design/04-editor/00-overview.md) | Editor | 1.0.0 | — |
 | [`32-ui-design/04-editor/01-rich-text-format.md`](./32-ui-design/04-editor/01-rich-text-format.md) | Rich Text Format Specification | 1.1.0 | — |
@@ -1276,13 +1276,13 @@
 | [`32-ui-design/04-editor/03-drag-and-drop.md`](./32-ui-design/04-editor/03-drag-and-drop.md) | Drag-and-Drop Zone Algorithm | 1.1.0 | — |
 | [`32-ui-design/04-editor/04-interaction-clarifications.md`](./32-ui-design/04-editor/04-interaction-clarifications.md) | Interaction Clarifications | 1.1.0 | — |
 | [`32-ui-design/04-editor/05-additional-behaviors.md`](./32-ui-design/04-editor/05-additional-behaviors.md) | Additional Behavioral Specifications | 1.1.0 | — |
-| [`32-ui-design/04-editor/97-acceptance-criteria.md`](./32-ui-design/04-editor/97-acceptance-criteria.md) | Editor (UI) — Acceptance Criteria | 1.0.1 | Scaffold |
+| [`32-ui-design/04-editor/97-acceptance-criteria.md`](./32-ui-design/04-editor/97-acceptance-criteria.md) | Editor (UI) — Acceptance Criteria | 2.0.0 | Curated |
 | [`32-ui-design/04-editor/99-consistency-report.md`](./32-ui-design/04-editor/99-consistency-report.md) | Consistency Report — 04-editor | 1.0.1 | — |
 | [`32-ui-design/05-quality/00-overview.md`](./32-ui-design/05-quality/00-overview.md) | Quality | 1.0.0 | — |
 | [`32-ui-design/05-quality/01-accessibility.md`](./32-ui-design/05-quality/01-accessibility.md) | Accessibility Requirements | 1.1.0 | — |
 | [`32-ui-design/05-quality/02-performance.md`](./32-ui-design/05-quality/02-performance.md) | Performance and Scale Proof Targets | 1.1.0 | — |
 | [`32-ui-design/05-quality/03-loading-empty-error-states.md`](./32-ui-design/05-quality/03-loading-empty-error-states.md) | Loading, Empty, and Error States | 1.1.0 | — |
-| [`32-ui-design/05-quality/97-acceptance-criteria.md`](./32-ui-design/05-quality/97-acceptance-criteria.md) | Quality — Acceptance Criteria | 1.0.1 | Scaffold |
+| [`32-ui-design/05-quality/97-acceptance-criteria.md`](./32-ui-design/05-quality/97-acceptance-criteria.md) | Quality — Acceptance Criteria | 2.0.0 | Curated |
 | [`32-ui-design/05-quality/99-consistency-report.md`](./32-ui-design/05-quality/99-consistency-report.md) | Consistency Report — 05-quality | 1.0.1 | — |
 | [`32-ui-design/06-workflowy-ui/00-overview.md`](./32-ui-design/06-workflowy-ui/00-overview.md) | Workflowy UI Spec — Parent Overview | 1.1.0 | — |
 | [`32-ui-design/06-workflowy-ui/01-navbar/00-overview.md`](./32-ui-design/06-workflowy-ui/01-navbar/00-overview.md) | Phase 1 — Navbar & Breadcrumb | 1.1.0 | — |
