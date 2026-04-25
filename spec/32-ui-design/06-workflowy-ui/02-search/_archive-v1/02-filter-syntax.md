@@ -304,6 +304,6 @@ A "Clear recent searches" link sits at the bottom of the recent list.
 ## 13. Cross-References
 
 - [`./01-overlay.md`](./01-overlay.md) — visual container.
-- [`./00-overview.md`](./00-overview.md) — phase overview.
+- [`../00-overview.md`](../00-overview.md) — phase overview.
 - [`../../01-navbar/01-layout.md`](../../01-navbar/01-layout.md) § Right cluster — search input entry point.
 - Forward-references: Phase 4 (bullet/comment), Phase 5 (highlight colors), Phase 6 (sidebar special nodes), Phase 8 (global hotkey binding).
