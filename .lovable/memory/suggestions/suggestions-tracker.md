@@ -60,6 +60,10 @@
 
 > Completed suggestions are moved to `.lovable/memory/suggestions/completed/` as individual files.
 
+### A-06 — Wire AppLayout into routes
+- **Completed:** 2026-04-25 (UTC+8)
+- **Result:** `App.tsx` now wraps `<Home>` and `<NotFound>` in `<AppLayout>` via React Router `<Outlet />`. AppLayout provides `min-h-screen` background/foreground tokens; ready for Navbar + Sidebar slots in P1.3. Build clean, 19/19 tests still pass.
+
 ### A-08 — Vitest setup + tests for pure helpers
 - **Completed:** 2026-04-25 (UTC+8)
 - **Result:** Added `vitest@3.2.4`, `@testing-library/react@16.3.2`, `@testing-library/jest-dom@6.9.1`, `jsdom@25.0.1`. Created `vitest.config.ts`, `src/test/setup.ts`. Added `test` / `test:watch` scripts. Wrote 19 tests covering `matches()`, `formatCombo()`, `getHotkey()`, registry shape, `asItemId()`, `asOwnerId()` — all passing in 3.7s. Closes audit finding A-08; partly mitigates A-02 (registry now snapshot-locked).
