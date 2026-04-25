@@ -31,6 +31,7 @@ Aggregated acceptance criteria for the 14 feature topics in this folder. Each fe
 | 12 | Multi-select | [`12-multi-select.md`](./12-multi-select.md) | AT-APPF-61..65 |
 | 13 | Templates | [`13-templates.md`](./13-templates.md) | AT-APPF-66..70 |
 | 14 | Concurrency & sync | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | AT-APPF-71..75 |
+| 15 | Roles & permissions | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | AT-APPF-76..85 |
 
 ---
 

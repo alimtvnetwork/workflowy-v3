@@ -16,7 +16,7 @@
 | 2 | [`02-routes.md`](./02-routes.md) | Routes | 20 |
 | 3 | [`03-component-hierarchy.md`](./03-component-hierarchy.md) | Component Hierarchy | 162 |
 | 4 | [`04-file-organization.md`](./04-file-organization.md) | File Organization | 28 |
-| 5 | [`05-component-contract-map.md`](./05-component-contract-map.md) | Component Contract Map | 413 |
+| 5 | [`05-component-contract-map.md`](./05-component-contract-map.md) | Component Contract Map | 435 |
 
 <!-- AUTO-TOC:END -->
 

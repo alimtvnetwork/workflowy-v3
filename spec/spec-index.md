@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-25  
-**Total Files:** 1170  
+**Total Files:** 1171  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -33,7 +33,7 @@
 - [16-generic-cli](#16-generic-cli) — 39 file(s)
 - [17-generic-update](#17-generic-update) — 11 file(s)
 - [18-spec-issues](#18-spec-issues) — 6 file(s)
-- [31-app](#31-app) — 34 file(s)
+- [31-app](#31-app) — 35 file(s)
 - [32-ui-design](#32-ui-design) — 119 file(s)
 - [33-feedback-report](#33-feedback-report) — 3 file(s)
 - [34-activity-feed](#34-activity-feed) — 3 file(s)
@@ -1148,6 +1148,7 @@
 | [`31-app/01-features/12-multi-select.md`](./31-app/01-features/12-multi-select.md) | Multi-Select Behavior | 2.0.0 | — |
 | [`31-app/01-features/13-templates.md`](./31-app/01-features/13-templates.md) | Template Application Flow | 2.0.0 | — |
 | [`31-app/01-features/14-concurrency-and-sync.md`](./31-app/01-features/14-concurrency-and-sync.md) | Concurrency & Sync | 1.0.0 | — |
+| [`31-app/01-features/15-roles-and-permissions.md`](./31-app/01-features/15-roles-and-permissions.md) | Roles & Permissions | 1.0.0 | Active |
 | [`31-app/01-features/97-acceptance-criteria.md`](./31-app/01-features/97-acceptance-criteria.md) | App Features — Acceptance Criteria | 1.0.1 | Scaffold |
 | [`31-app/01-features/99-consistency-report.md`](./31-app/01-features/99-consistency-report.md) | Consistency Report — 01-features | 1.0.1 | — |
 | [`31-app/02-workflows/00-overview.md`](./31-app/02-workflows/00-overview.md) | Workflows | 1.0.0 | — |
@@ -1340,4 +1341,4 @@
 
 ---
 
-*Auto-generated index — 1170 files across 25 top-level folders.*
+*Auto-generated index — 1171 files across 25 top-level folders.*

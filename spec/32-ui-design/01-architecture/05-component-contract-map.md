@@ -15,7 +15,7 @@ This file is the single global bridge from feature spec → component path → `
 - Find which acceptance tests cover a given component.
 - Find which `data-testid` to grep when wiring tests.
 
-Total surfaces mapped: **164** across **14** feature file(s).
+Total surfaces mapped: **173** across **15** feature file(s).
 
 ---
 
@@ -255,6 +255,20 @@ Total surfaces mapped: **164** across **14** feature file(s).
 | Stale-tab banner trigger | ``src/lib/sync/StaleTabDetector.ts`` | `concurrency-stale-tab` | AT-CONCURRENCY-12 |
 | Conflict log writer | ``src/server/concurrency/conflictLog.ts`` | `concurrency-conflict-log` | AT-CONCURRENCY-15 |
 
+### `15-roles-and-permissions.md`
+
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| Share dialog trigger button | ``src/components/share/ShareDialogTrigger.tsx`` | `share-dialog-trigger` | AT-APPF-76 |
+| Share remove button | ``src/components/share/ShareRemoveButton.tsx`` | `share-remove-button` | AT-APPF-78 |
+| Share public-link toggle | ``src/components/share/SharePublicToggle.tsx`` | `share-public-toggle` | AT-APPF-79 |
+| Permission badge on item row | ``src/components/items/PermissionBadge.tsx`` | `permission-badge` | AT-APPF-80 |
+| Permission-denied toast | ``src/components/feedback/PermissionDeniedToast.tsx`` | `permission-denied-toast` | AT-APPF-77, AT-APPF-85 |
+| Public-view banner | ``src/components/share/PublicViewBanner.tsx`` | `public-view-banner` | AT-APPF-81 |
+| Transfer-ownership button | ``src/components/share/TransferOwnershipButton.tsx`` | `transfer-ownership-button` | AT-APPF-82 |
+| Workspace invite button | ``src/components/workspace/WorkspaceInviteButton.tsx`` | `workspace-invite-button` | AT-APPF-83 |
+| Removed-user badge | ``src/components/items/RemovedUserBadge.tsx`` | `removed-user-badge` | AT-APPF-84 |
+
 ---
 
 ## Component-Path Index
@@ -287,6 +301,7 @@ Sorted alphabetically. Each row is one planned/implemented component file.
 | ``src/components/feedback/MirrorErrorToast.tsx`` | `mirror-cycle-error`, `mirror-duplicate-error`, `mirror-root-error` |
 | ``src/components/feedback/OfflineBanner.tsx`` | `offline-banner` |
 | ``src/components/feedback/PasteProgress.tsx`` | `paste-progress` |
+| ``src/components/feedback/PermissionDeniedToast.tsx`` | `permission-denied-toast` |
 | ``src/components/feedback/ProgressToast.tsx`` | `template-apply-progress`, `trash-empty-progress` |
 | ``src/components/feedback/QuotaToast.tsx`` | `quota-toast`, `share-quota-toast` |
 | ``src/components/feedback/RestoreToast.tsx`` | `trash-restore-error`, `trash-restore-toast` |
@@ -312,6 +327,8 @@ Sorted alphabetically. Each row is one planned/implemented component file.
 | ``src/components/items/MoveToDialog.tsx`` | `move-error-toast`, `move-to-dialog` |
 | ``src/components/items/NoteEditor.tsx`` | `note-editor` |
 | ``src/components/items/PendingBadge.tsx`` | `offline-pending-badge`, `template-pending-badge` |
+| ``src/components/items/PermissionBadge.tsx`` | `permission-badge` |
+| ``src/components/items/RemovedUserBadge.tsx`` | `removed-user-badge` |
 | ``src/components/items/ShareStatusPill.tsx`` | `share-status-pill` |
 | ``src/components/items/TodoCheckbox.tsx`` | `mirror-todo-checkbox`, `today-todo-checkbox`, `todo-checkbox` |
 | ``src/components/items/TurnIntoSubmenu.tsx`` | `turn-into-board`, `turn-into-code`, `turn-into-dashboard`, `turn-into-divider`, `turn-into-h1`, `turn-into-h2`, `turn-into-h3`, `turn-into-paragraph`, `turn-into-quote`, `turn-into-todo` |
@@ -351,12 +368,16 @@ Sorted alphabetically. Each row is one planned/implemented component file.
 | ``src/components/share/CascadeNotice.tsx`` | `cascade-notice` |
 | ``src/components/share/CopyLinkButton.tsx`` | `copy-link-button` |
 | ``src/components/share/PublicLinkToggle.tsx`` | `public-link-toggle` |
+| ``src/components/share/PublicViewBanner.tsx`` | `public-view-banner` |
 | ``src/components/share/ShareDialog.tsx`` | `share-dialog` |
+| ``src/components/share/ShareDialogTrigger.tsx`` | `share-dialog-trigger` |
 | ``src/components/share/ShareEmailInput.tsx`` | `share-email-error`, `share-email-input` |
 | ``src/components/share/ShareInviteButton.tsx`` | `share-invite-button` |
 | ``src/components/share/SharePermissionDropdown.tsx`` | `share-permission-dropdown` |
+| ``src/components/share/SharePublicToggle.tsx`` | `share-public-toggle` |
 | ``src/components/share/ShareRemoveButton.tsx`` | `share-remove-button` |
 | ``src/components/share/SharedUsersList.tsx`` | `share-search`, `share-user-row` |
+| ``src/components/share/TransferOwnershipButton.tsx`` | `transfer-ownership-button` |
 | ``src/components/shared/LoadMoreSentinel.tsx`` | `today-load-more` |
 | ``src/components/tags/TagChip.tsx`` | `tag-chip` |
 | ``src/components/templates/TemplateDeleteDialog.tsx`` | `template-delete-confirm` |
@@ -387,6 +408,7 @@ Sorted alphabetically. Each row is one planned/implemented component file.
 | ``src/components/tree/HoverActions.tsx`` | `hover-actions` |
 | ``src/components/tree/ItemRow.tsx`` | `item-row` |
 | ``src/components/tree/RootContainer.tsx`` | `root-item` |
+| ``src/components/workspace/WorkspaceInviteButton.tsx`` | `workspace-invite-button` |
 | ``src/hooks/useKeyboardActions.ts`` | `keyboard-action-coverage` |
 | ``src/lib/interactions/useBeforeUnload.ts`` | `unsaved-warning` |
 | ``src/lib/interactions/useGlobalKeys.ts`` | `— (hook)` |
