@@ -23,8 +23,8 @@ Touch-first interaction model that maps every desktop hotkey or context menu to 
 | Swipe left on row | Outdent | `Shift+Tab` |
 | Two-finger swipe down on row | Move down | `Cmd+Shift+↓` |
 | Two-finger swipe up on row | Move up | `Cmd+Shift+↑` |
-| Pinch to zoom out | Zoom to parent | `Cmd+[` |
-| Spread to zoom in | Zoom into focused node | `Cmd+]` |
+| Pinch to zoom out | Zoom to parent | `Cmd+←` (Phase 3 [`02-hotkeys.md`](../03-right-panel/02-hotkeys.md) § Navigation) |
+| Spread to zoom in | Zoom into focused node | `Cmd+→` (Phase 3 [`02-hotkeys.md`](../03-right-panel/02-hotkeys.md) § Navigation) |
 | Pull down at top of view | Refresh / sync now | (no desktop equivalent) |
 | Long-press chevron | Expand / collapse all descendants | `Alt+Click` chevron |
 
