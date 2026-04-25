@@ -1,4 +1,27 @@
 /**
+ * Branded ID types — runtime-agnostic, prevent accidental string mixing.
+ *
+ * Per `mem://constraints/backend-runtime-deferred` and audit finding F-06,
+ * the concrete shape of an owner identifier (UUID for Supabase, int for
+ * WordPress, etc.) is decided by the chosen backend. Branding keeps call
+ * sites type-safe today and makes the eventual concrete type a one-line
+ * swap (replace `string` with the runtime-specific primitive).
+ *
+ * Usage:
+ *   const id = "abc-123" as OwnerId;       // explicit cast at boundary
+ *   function fetchUser(id: OwnerId) {...}  // accepts only branded values
+ *   fetchUser("plain string");             // ❌ compile error
+ */
+declare const __brand: unique symbol;
+type Brand<T, B extends string> = T & { readonly [__brand]: B };
+
+/** Item primary key. Replace `string` with backend type when chosen. */
+export type ItemId = Brand<string, "ItemId">;
+
+/** User / owner identifier. Replace `string` with backend type when chosen. */
+export type OwnerId = Brand<string, "OwnerId">;
+
+/**
  * All possible item types in the outliner.
  *
  * SSOT: `spec/20-enums-index.md` §3.5 + `spec/32-ui-design/02-state-and-data/03-data-types.md`.
@@ -22,8 +45,8 @@ export type ItemType =
 
 /** Core item as stored in the database. */
 export interface Item {
-  readonly id: string;
-  readonly parentId: string | null;
+  readonly id: ItemId;
+  readonly parentId: ItemId | null;
   readonly content: string;
   readonly richContent: string | null;
   readonly note: string | null;
@@ -34,13 +57,13 @@ export interface Item {
   readonly dateAssigned: string | null;
   readonly createdAt: string;
   readonly updatedAt: string;
-  readonly userId: string;
+  readonly ownerId: OwnerId;
 }
 
 /** Zoom navigation history entry. */
 export interface ZoomState {
-  readonly currentItemId: string | null;
-  readonly history: readonly string[];
+  readonly currentItemId: ItemId | null;
+  readonly history: readonly ItemId[];
   readonly historyIndex: number;
 }
 
@@ -49,8 +72,8 @@ export type DropPosition = "before" | "after" | "child";
 
 /** Drag state during reorder operations. */
 export interface DragState {
-  readonly sourceItemId: string;
-  readonly targetItemId: string | null;
+  readonly sourceItemId: ItemId;
+  readonly targetItemId: ItemId | null;
   readonly dropPosition: DropPosition | null;
 }
 
@@ -73,7 +96,7 @@ export type UndoActionType =
 /** A single undo/redo entry. */
 export interface UndoAction {
   readonly type: UndoActionType;
-  readonly itemId: string;
+  readonly itemId: ItemId;
   readonly beforeState: Partial<Item> | null;
   readonly afterState: Partial<Item> | null;
   readonly timestamp: string;
@@ -81,9 +104,29 @@ export interface UndoAction {
 
 /** Search result with match highlighting. */
 export interface SearchResult {
-  readonly itemId: string;
+  readonly itemId: ItemId;
   readonly content: string;
   readonly note: string | null;
   readonly breadcrumbPath: readonly string[];
   readonly matchRanges: readonly [number, number][];
+}
+
+/**
+ * Construct an OwnerId from a raw string.
+ *
+ * Use only at trust boundaries (DB rows, auth session, URL params).
+ * Throws on empty input — IDs must be non-empty.
+ */
+export function asOwnerId(raw: string): OwnerId {
+  if (raw.length === 0) throw new Error("OwnerId cannot be empty");
+  return raw as OwnerId;
+}
+
+/**
+ * Construct an ItemId from a raw string.
+ * Use only at trust boundaries.
+ */
+export function asItemId(raw: string): ItemId {
+  if (raw.length === 0) throw new Error("ItemId cannot be empty");
+  return raw as ItemId;
 }
