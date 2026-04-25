@@ -39,5 +39,6 @@
 | Date | Version | Action |
 |------|---------|--------|
 | 2026-04-21 | 1.0.0 | Initial report — created in S04 sweep |
+| 2026-04-25 | 1.1.0 | S05 cross-phase audit — color palette + drag affordance bindings re-verified against Phase 5 + Phase 6 |
 
-*Consistency Report — created 2026-04-21 (S04).*
+*Consistency Report — updated 2026-04-25 (S05 audit sweep).*
