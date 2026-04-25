@@ -1,34 +1,93 @@
 # UI Architecture — Acceptance Criteria
 
-> **Version:** 1.0.1
-> **Created:** 2026-04-23 (UTC+8)
-> **Status:** Scaffold
+> **Version:** 2.0.0
+> **Updated:** 2026-04-25 (UTC+8)
+> **Status:** Curated — 16 testable criteria
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
 ---
 
-## Purpose
+## ID Range
 
-Aggregated acceptance criteria for the UI architecture domain. ID range: `AT-UIARC-NN`.
-
----
-
-## Coverage Map
-
-| # | Topic | Source File | ID Range |
-|---|-------|-------------|----------|
-| 1 | Tech stack | [`01-tech-stack.md`](./01-tech-stack.md) | AT-UIARC-01..05 |
-| 2 | Routes | [`02-routes.md`](./02-routes.md) | AT-UIARC-06..10 |
-| 3 | Component hierarchy | [`03-component-hierarchy.md`](./03-component-hierarchy.md) | AT-UIARC-11..15 |
-| 4 | File organization | [`04-file-organization.md`](./04-file-organization.md) | AT-UIARC-16..20 |
-| 5 | Component contract map | [`05-component-contract-map.md`](./05-component-contract-map.md) | Auto-generated |
+`AT-UIARC-01` … `AT-UIARC-16`
 
 ---
 
-## Criteria Summary
+## Criteria
 
-- [x] Tech stack matches `mem://architecture/tech-stack` (Vite + React 18 + TypeScript 5 + Tailwind v4).
-- [x] All routes documented with URL pattern + focus behavior.
-- [x] Component hierarchy depth ≤ 5 levels.
-- [x] No file exceeds 300 lines.
-- [x] Contract map auto-regenerates on every spec-hygiene run.
+### Tech stack (file 01)
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| AT-UIARC-01 | The frontend stack MUST be Vite 5 + React 18 + TypeScript 5 + Tailwind v4 (`@tailwindcss/vite` in `src/index.css` `@theme` block); proposing Next.js, CRA, Vue, Svelte, or Tailwind v3 is forbidden because it contradicts the pinned-dependency matrix. | [`01-tech-stack.md`](./01-tech-stack.md), [`mem://architecture/tech-stack`](mem://architecture/tech-stack) |
+| AT-UIARC-02 | NO backend runtime (Node server, Go, PHP, Supabase, sql.js, IndexedDB) MAY be referenced in any architecture file — backend choice is DEFERRED per `mem://constraints/backend-runtime-deferred`. | [`01-tech-stack.md`](./01-tech-stack.md), [`mem://constraints/backend-runtime-deferred`](mem://constraints/backend-runtime-deferred) |
+| AT-UIARC-03 | Every dependency added to `package.json` MUST be justified in the tech-stack file with a one-line rationale; un-rationalised additions fail review. | [`01-tech-stack.md`](./01-tech-stack.md) |
+
+### Routes (file 02)
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| AT-UIARC-04 | Every route MUST be documented with: URL pattern, page-component name, focus-on-mount target, AND scroll-restoration policy; partial entries fail review. | [`02-routes.md`](./02-routes.md) |
+| AT-UIARC-05 | Routes MUST use React Router v6 declarative `<Route>` config in `src/App.tsx`; file-based routing (Next-style) is forbidden because it contradicts the Vite + React Router stack decision. | [`02-routes.md`](./02-routes.md) |
+| AT-UIARC-06 | A `404` catch-all route MUST be the LAST entry in the router config; routes added after it are unreachable and fail review. | [`02-routes.md`](./02-routes.md) |
+
+### Component hierarchy (file 03)
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| AT-UIARC-07 | Component nesting depth MUST be ≤ 5 levels measured from page root to leaf; deeper trees fail review because they harm readability and prop-drilling explodes. | [`03-component-hierarchy.md`](./03-component-hierarchy.md) |
+| AT-UIARC-08 | Each component MUST have a single, documented responsibility (one-paragraph mission statement in its JSDoc); multi-responsibility "god components" are a Code-Red architecture bug. | [`03-component-hierarchy.md`](./03-component-hierarchy.md) |
+| AT-UIARC-09 | Cross-cutting state (selection, focus, drag) MUST live in a Zustand slice (NOT prop-drilled past 2 levels); prop-drilling > 2 levels is a Code-Red maintainability bug. | [`03-component-hierarchy.md`](./03-component-hierarchy.md), [`../02-state-and-data/97-acceptance-criteria.md`](../02-state-and-data/97-acceptance-criteria.md) |
+
+### File organization (file 04)
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| AT-UIARC-10 | NO source file MAY exceed 300 lines; files at ≥ 250 lines MUST be flagged for split in the next PR. Splits MUST follow the documented folder layout (`components/`, `hooks/`, `lib/`, `pages/`, `state/`, `types/`). | [`04-file-organization.md`](./04-file-organization.md) |
+| AT-UIARC-11 | Barrel files (`index.ts` re-exports) are FORBIDDEN except at top-level `src/lib/` and `src/components/ui/` boundaries because they break Vite's tree-shaking and blow up HMR. | [`04-file-organization.md`](./04-file-organization.md) |
+| AT-UIARC-12 | Every component file MUST be named PascalCase matching the default export; kebab-case or snake_case component files fail review. Hooks MUST be named `useFooBar.ts` (camelCase, `use` prefix). | [`04-file-organization.md`](./04-file-organization.md) |
+
+### Component contract map (file 05)
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| AT-UIARC-13 | The contract map MUST be auto-regenerated by `scripts/spec-hygiene/` on every CI run; manual edits to the auto-generated section between sentinels fail review. | [`05-component-contract-map.md`](./05-component-contract-map.md) |
+| AT-UIARC-14 | Every component listed in the map MUST have a typed Props interface (no inline `{...}` types in signature); inline prop types fail review because they're un-discoverable. | [`05-component-contract-map.md`](./05-component-contract-map.md) |
+| AT-UIARC-15 | The map MUST flag any component without an export entry in its parent folder's documented index; orphan components (referenced but undocumented) are a Code-Red drift bug. | [`05-component-contract-map.md`](./05-component-contract-map.md) |
+
+### Cross-cutting
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| AT-UIARC-16 | All architecture decisions MUST be runtime-agnostic — no assumption about whether persistence is local, WordPress, or anything else; assumptions about backend leak through and fail review. | [`00-overview.md`](./00-overview.md), [`mem://constraints/backend-runtime-deferred`](mem://constraints/backend-runtime-deferred) |
+
+---
+
+## Verification
+
+```bash
+# File length scan
+find src -name "*.tsx" -o -name "*.ts" | xargs wc -l | awk '$1 > 300 {print}'
+
+# Barrel files
+find src -name "index.ts" | grep -v 'src/lib/\|src/components/ui/'
+
+# Backend leak scan
+rg -nP "supabase|sql\.js|IndexedDB|express|fastify" spec/32-ui-design/
+
+# Hygiene suite
+node scripts/spec-hygiene/00-run-all.mjs
+```
+
+---
+
+## Related
+
+- [`00-overview.md`](./00-overview.md) — Parent overview
+- [`../02-state-and-data/97-acceptance-criteria.md`](../02-state-and-data/97-acceptance-criteria.md) — State management contract
+- [`../03-design-system/97-acceptance-criteria.md`](../03-design-system/97-acceptance-criteria.md) — Design system contract
+- [`mem://constraints/backend-runtime-deferred`](mem://constraints/backend-runtime-deferred) — Backend deferral SSOT
+
+---
+
+*Curated 2026-04-25 — closes batch-18 item 1. Replaces v1.0.1 scaffold.*
