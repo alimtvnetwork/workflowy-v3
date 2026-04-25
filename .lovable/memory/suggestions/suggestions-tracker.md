@@ -1,7 +1,7 @@
 # Lovable Suggestions Tracker
 
 > **Convention:** All suggestions tracked in this single file. Update status when completed. Move completed entries to `completed/` folder.
-> **Updated:** 2026-04-25 (UTC+8) — A-15 closed (4th batch of leaf AT files curated; running totals: 21 AT files curated → ~210 testable criteria authored)
+> **Updated:** 2026-04-25 (UTC+8) — A-16 closed (5th batch of leaf AT files curated; running totals: 26 AT files curated → ~279 testable criteria authored)
 
 ---
 
@@ -45,6 +45,10 @@
 ### A-15 — Curate 5 envelope + registry + casting + CI + DB-rollup AT files → ✅ closed
 - **Closed:** 2026-04-25 (UTC+8)
 - **Result:** Curated `03-error-manage/02-error-architecture/05-response-envelope/` (9 criteria, anchors envelope SSOT), `03-error-manage/03-error-code-registry/` (12, cross-project collision prevention), `02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/` (12, §7.2 enforcement), `02-coding-guidelines/01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/` (13, universal quality gate), `04-database-conventions/` top-level rollup (13, anchors PascalCase Golden Rule end-to-end). Total: 59 testable criteria. Fixed 3 broken links (envelope path depth + registry overview filename `01-overview.md` not `00-overview.md`). All 18 hygiene checks pass. Stub count: 80 → 75. Version 0.14.0.
+
+### A-16 — Curate 5 PHP-naming + file-folder + apperror-ref + debugging-TS + Go-bool AT files → ✅ closed
+- **Closed:** 2026-04-25 (UTC+8)
+- **Result:** Curated `02-coding-guidelines/04-php/03-naming-conventions/` (13 criteria, AT-NAMINGCONVENTIONS-01..13 — PSR-12 baseline + PascalCase array keys), `02-coding-guidelines/08-file-folder-naming/` (14, AT-FILEFOLDERNAMING-01..14 — universal + 6 per-language profiles incl. PowerShell), `03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/` (15, AT-APPERRORREFERENCE-01..15 — 4 invariants I-1..I-4 + StackTrace + Variation enum policy + skip table + 300-line file budget), `03-error-manage/01-error-resolution/05-debugging-guides/03-debugging-typescript/` (12, AT-DEBUGGINGTYPESCRIPT-01..12 — envelope validation, DiagnosticsPanel, structured logger, ErrorBoundary), `02-coding-guidelines/03-golang/02-boolean-standards/` (15, AT-BOOLEANSTANDARDS-01..15 — P1..P9 + 3 idiomatic exemptions + linter enforcement). Total: 69 testable criteria. Fixed 1 broken link (PHP-naming path depth `../../../../` → `../../../`). All 18 hygiene checks pass. Stub count: 75 → 70. Version 0.15.0.
 
 ---
 
