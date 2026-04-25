@@ -39,7 +39,7 @@ describe("useToast()", () => {
     });
     expect(id).toMatch(/^t_/);
     expect(result.current.toasts).toHaveLength(1);
-    expect(result.current.toasts[0].message).toBe("hello");
+    expect(result.current.toasts[0]?.message).toBe("hello");
   });
 
   it("dismisses by id", () => {
@@ -103,7 +103,7 @@ describe("useToast()", () => {
         errorCode: "E3025",
       });
     });
-    expect(result.current.toasts[0].errorCode).toBe("E3025");
+    expect(result.current.toasts[0]?.errorCode).toBe("E3025");
   });
 });
 
