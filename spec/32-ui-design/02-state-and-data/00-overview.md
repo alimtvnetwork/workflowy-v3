@@ -14,7 +14,7 @@
 |---|------|-------|-------|
 | 1 | [`01-state-management.md`](./01-state-management.md) | State Management | 65 |
 | 2 | [`02-data-flow.md`](./02-data-flow.md) | Data Flow Patterns | 60 |
-| 3 | [`03-data-types.md`](./03-data-types.md) | Data Types | 76 |
+| 3 | [`03-data-types.md`](./03-data-types.md) | Data Types | 78 |
 
 <!-- AUTO-TOC:END -->
 
