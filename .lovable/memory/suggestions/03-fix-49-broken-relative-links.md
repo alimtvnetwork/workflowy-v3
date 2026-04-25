@@ -5,7 +5,7 @@
 - **source:** Audit
 - **affectedProject:** WorkFlowy
 - **affectedArea:** `spec/` (only links inside folders 18+ are actionable)
-- **status:** open
+- **status:** ✅ completed (2026-04-25 UTC+8)
 - **priority:** Low
 
 ## Description
