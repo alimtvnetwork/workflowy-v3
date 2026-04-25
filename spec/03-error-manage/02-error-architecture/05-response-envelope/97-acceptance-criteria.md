@@ -23,7 +23,7 @@ ID format: `AT-RESPONSEENVELOPE-NN`.
 |----|-----------|--------|
 | AT-RESPONSEENVELOPE-01 | The Universal Envelope shape is the only response shape used by REST endpoints; per-endpoint custom shapes are forbidden. | [`01-adr.md`](./01-adr.md) |
 | AT-RESPONSEENVELOPE-02 | Every envelope contains the documented top-level keys (e.g. `Status`, `Data`, `Error`, `Meta`); presence of each follows the documented success/error rules. | [`01-adr.md`](./01-adr.md) + [`04-response-envelope-reference.md`](./04-response-envelope-reference.md) |
-| AT-RESPONSEENVELOPE-03 | Top-level keys are PascalCase, matching the REST API Format Golden Rule. | [`04-response-envelope-reference.md`](./04-response-envelope-reference.md) + [`../../../../04-database-conventions/06-rest-api-format/97-acceptance-criteria.md`](../../../../04-database-conventions/06-rest-api-format/97-acceptance-criteria.md) |
+| AT-RESPONSEENVELOPE-03 | Top-level keys are PascalCase, matching the REST API Format Golden Rule. | [`04-response-envelope-reference.md`](./04-response-envelope-reference.md) + [`../../../04-database-conventions/06-rest-api-format/97-acceptance-criteria.md`](../../../04-database-conventions/06-rest-api-format/97-acceptance-criteria.md) |
 
 ### Versioning (AT-RESPONSEENVELOPE-04)
 
