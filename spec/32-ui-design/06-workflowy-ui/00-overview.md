@@ -83,6 +83,17 @@ This parent folder nests **10 phases** as numbered subfolders. Phase number = su
 
 ---
 
+## S05 Cross-Phase Audit (2026-04-25)
+
+| # | Finding | Resolution |
+|---|---------|------------|
+| 1 | `⌘⇧S` collision (Phase 2 Saved Searches vs Phase 6 Send to Drafts) | ✅ Drafts demoted to right-click only; chord reserved for Phase 2 popover scope |
+| 2 | Phase 10 zoom hotkeys diverged from Phase 3 registry | ✅ Corrected to canonical `⌘←` / `⌘→` |
+| 3 | Legacy v1 search references (overlay, full-screen) | ✅ Purged from Phase 7 + active spec |
+| 4 | Phase 6 ↔ Phase 8 Fractal Conversations toggle linkage | ✅ Bidirectional cross-references added |
+| 5 | Global Hotkey Registry authority | ✅ Phase 8 confirmed as single source of truth |
+
+
 ## Related
 
 - [`../00-overview.md`](../00-overview.md) — UI Design root
