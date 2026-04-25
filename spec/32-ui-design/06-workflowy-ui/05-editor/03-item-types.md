@@ -26,6 +26,49 @@
 
 ---
 
+## Item Type → Lucide Icon Map
+
+Canonical icon mapping for all 12 item types. Used by:
+
+- Slash menu (Phase 5 [`01-slash-menu.md`](./01-slash-menu.md))
+- "Convert to" submenu in bullet ⋯ menu (Phase 4 [`02-three-dot-menu.md`](../04-bullet/02-three-dot-menu.md))
+- Search Popover `is:` value picker (Phase 2 [`12-icon-map.md`](../02-search/12-icon-map.md) § 5)
+
+Icons are from `lucide-react`. Stroke width 1.75. Size 16px (menus) or 14px (suggestion chips). Inherit `currentColor`.
+
+| # | Item type | `is:` value | Lucide component | Notes |
+|---|-----------|-------------|------------------|-------|
+| 1 | Bullet | `bullet` | `Circle` (filled at 6px) | Default; the dot itself, not an icon button |
+| 2 | To-do | `todo` | `Square` / `CheckSquare` | `CheckSquare` when complete |
+| 3 | Heading H1 | `h1` | `Heading1` | — |
+| 3 | Heading H2 | `h2` | `Heading2` | — |
+| 3 | Heading H3 | `h3` | `Heading3` | — |
+| 3 | Heading H4 | `h4` | `Heading4` | — |
+| 3 | Heading H5 | `h5` | `Heading5` | — |
+| 4 | Paragraph | `paragraph` | `Pilcrow` | ¶ symbol |
+| 5 | Board | `board` | `LayoutGrid` | Kanban-like grid |
+| 6 | Quote | `quote` | `Quote` | — |
+| 7 | Code Block | `code` | `Code2` | Prefer `Code2` over `Code` |
+| 8 | Divider | `divider` | `Minus` | Horizontal line |
+| 9 | Numbered List | `numbered` | `ListOrdered` | — |
+| 10 | Shortcut | `shortcut` | `ArrowRightFromLine` | One-way pointer |
+| 11 | Mirror | `mirror` | `Repeat2` | Two-way sync indicator |
+| 12 | Template | `template` | `LayoutTemplate` | — |
+
+Additional related icons (used in bullet rows, not item types proper):
+
+| Role | Lucide component | Used by |
+|------|------------------|---------|
+| Comment affordance (empty) | `MessagePlus` | Phase 4 [`04-comment-icon.md`](../04-bullet/04-comment-icon.md) |
+| Comment affordance (has thread) | `MessageCircle` | Phase 4 [`04-comment-icon.md`](../04-bullet/04-comment-icon.md) |
+| Row ⋯ menu trigger | `MoreVertical` | Phase 4 [`02-three-dot-menu.md`](../04-bullet/02-three-dot-menu.md) |
+| Drag handle | `GripVertical` | Phase 4 [`01-anatomy.md`](../04-bullet/01-anatomy.md) |
+| Expand/collapse | `ChevronRight` / `ChevronDown` | Phase 4 [`01-anatomy.md`](../04-bullet/01-anatomy.md) |
+
+> **Implementation rule:** No emoji glyphs in production JSX. Emojis in spec docs are illustrative only (matches Phase 2 [`12-icon-map.md`](../02-search/12-icon-map.md) § 9).
+
+
+
 ## Headings (H1–H5)
 
 Visual hierarchy:
