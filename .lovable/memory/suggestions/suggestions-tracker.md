@@ -34,6 +34,10 @@
 - **Closed:** 2026-04-25 (UTC+8)
 - **Result:** Replaced placeholder scaffolds in `spec/31-app/97-acceptance-criteria.md` and `spec/32-ui-design/97-acceptance-criteria.md` with real, traceable criteria. App rollup: 23 criteria (AT-APP-01..23) across 5 subsections. UI Design rollup: 28 criteria (AT-UIDESIGN-01..28) across 6 subsections. Every criterion cites a source spec file or named SSOT and is verifiable today (by reading) or post-implementation (by automated test). All 18 hygiene checks still pass; 28/28 Vitest tests still pass. 83 leaf-level AT scaffolds remain for future curation.
 
+### A-13 — Curate 5 coding-guideline AT files → ✅ closed
+- **Closed:** 2026-04-25 (UTC+8)
+- **Result:** Replaced placeholder scaffolds in 5 high-leverage coding-guideline AT files: `02-typescript/` (13 criteria, AT-TYPESCRIPT-01..13), `01-cross-language/02-boolean-principles/` (11 criteria, P1..P8 + exemptions), `01-cross-language/15-master-coding-guidelines/` (17 criteria covering naming, booleans, code style, type safety, magic strings, advanced patterns), `01-cross-language/27-types-folder-convention/` (11 criteria), `01-cross-language/04-code-style/` (16 criteria covering braces, nesting, condition extraction, function size, multi-line formatting, comments). Every criterion cites a source spec file. All 18 hygiene checks pass. Stub count reduced from 83 → 79 (4 leaf stubs replaced + 1 legacy file modernized). Version bumped to 0.12.0.
+
 ---
 
 ## Closed Suggestions (this sweep — 2026-04-25)
