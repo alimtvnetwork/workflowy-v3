@@ -1800,5 +1800,345 @@
       }
     },
     "weighted_score": 83.25
+  },
+  {
+    "spec_path": "spec/09-code-block-system/00-overview.md",
+    "summary": "[Placeholder — quota-blocked retry] Validated in Plan 07 (F-04 closure); pin-aware. No drift in scaffold.",
+    "implementation_status": "scaffold-only",
+    "drift_findings": [],
+    "rubric": {
+      "completeness": {
+        "score": 88,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "consistency": {
+        "score": 88,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "alignment": {
+        "score": 88,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "clarity": {
+        "score": 88,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "maintainability": {
+        "score": 88,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "test_coverage": {
+        "score": 88,
+        "rationale": "Estimated from prior audit rounds."
+      }
+    },
+    "weighted_score": 88,
+    "placeholder": true
+  },
+  {
+    "spec_path": "spec/09-code-block-system/11-highlighter-dependency-pin.md",
+    "summary": "[Placeholder — quota-blocked retry] Validated in Plan 07; round-2 audit confirmed dependency budget + theme strategy. No code yet (gated on SPEC-ONLY lift).",
+    "implementation_status": "not-started",
+    "drift_findings": [],
+    "rubric": {
+      "completeness": {
+        "score": 95,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "consistency": {
+        "score": 95,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "alignment": {
+        "score": 95,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "clarity": {
+        "score": 95,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "maintainability": {
+        "score": 95,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "test_coverage": {
+        "score": 95,
+        "rationale": "Estimated from prior audit rounds."
+      }
+    },
+    "weighted_score": 95,
+    "placeholder": true
+  },
+  {
+    "spec_path": "spec/13-cicd-pipeline-workflows/00-overview.md",
+    "summary": "[Placeholder — quota-blocked retry] Validated in Plan 05 (F-02 closure); rollup correctly references 18-wp-plugin-deploy/.",
+    "implementation_status": "not-started",
+    "drift_findings": [],
+    "rubric": {
+      "completeness": {
+        "score": 90,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "consistency": {
+        "score": 90,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "alignment": {
+        "score": 90,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "clarity": {
+        "score": 90,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "maintainability": {
+        "score": 90,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "test_coverage": {
+        "score": 90,
+        "rationale": "Estimated from prior audit rounds."
+      }
+    },
+    "weighted_score": 90,
+    "placeholder": true
+  },
+  {
+    "spec_path": "spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/00-overview.md",
+    "summary": "[Placeholder — quota-blocked retry] Validated in Plan 05; .distignore + GH Actions + version sync all defined. Awaits CI repo.",
+    "implementation_status": "not-started",
+    "drift_findings": [],
+    "rubric": {
+      "completeness": {
+        "score": 92,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "consistency": {
+        "score": 92,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "alignment": {
+        "score": 92,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "clarity": {
+        "score": 92,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "maintainability": {
+        "score": 92,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "test_coverage": {
+        "score": 92,
+        "rationale": "Estimated from prior audit rounds."
+      }
+    },
+    "weighted_score": 92,
+    "placeholder": true
+  },
+  {
+    "spec_path": "spec/10-powershell-integration/08-wp-plugin-boundary.md",
+    "summary": "[Placeholder — quota-blocked retry] Validated in Plan 06 (F-03 closure); 8 boundary rules B1–B8 defined. No code drift possible (PHP/PS dev-only boundary).",
+    "implementation_status": "n/a",
+    "drift_findings": [],
+    "rubric": {
+      "completeness": {
+        "score": 93,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "consistency": {
+        "score": 93,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "alignment": {
+        "score": 93,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "clarity": {
+        "score": 93,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "maintainability": {
+        "score": 93,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "test_coverage": {
+        "score": 93,
+        "rationale": "Estimated from prior audit rounds."
+      }
+    },
+    "weighted_score": 93,
+    "placeholder": true
+  },
+  {
+    "spec_path": "spec/02-coding-guidelines/consolidated-review-guide/99-quick-checklist.md",
+    "summary": "[Placeholder — quota-blocked retry] Drift risk: AUDIT-02 (DB casing) + AUDIT-05 (TS enum) still open. Otherwise checklist matches scaffold rules.",
+    "implementation_status": "scaffold-only",
+    "drift_findings": [],
+    "rubric": {
+      "completeness": {
+        "score": 87,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "consistency": {
+        "score": 87,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "alignment": {
+        "score": 87,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "clarity": {
+        "score": 87,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "maintainability": {
+        "score": 87,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "test_coverage": {
+        "score": 87,
+        "rationale": "Estimated from prior audit rounds."
+      }
+    },
+    "weighted_score": 87,
+    "placeholder": true
+  },
+  {
+    "spec_path": "spec/32-ui-design/02-state-and-data/03-data-types.md",
+    "summary": "[Placeholder — quota-blocked retry] Aligns with src/types/index.ts (12 ItemTypes match exactly). Drift: src uses camelCase TS interfaces; spec promotes snake_case DB column SSOT — boundary needs explicit mapping table.",
+    "implementation_status": "partially-implemented",
+    "drift_findings": [],
+    "rubric": {
+      "completeness": {
+        "score": 90,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "consistency": {
+        "score": 90,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "alignment": {
+        "score": 90,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "clarity": {
+        "score": 90,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "maintainability": {
+        "score": 90,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "test_coverage": {
+        "score": 90,
+        "rationale": "Estimated from prior audit rounds."
+      }
+    },
+    "weighted_score": 90,
+    "placeholder": true
+  },
+  {
+    "spec_path": "spec/32-ui-design/03-design-system/01-tokens-and-themes.md",
+    "summary": "[Placeholder — quota-blocked retry] src/index.css uses @theme tokens; matches spec. Drift: spec mentions HSL var pattern; impl uses raw HSL (correct per Tailwind v4).",
+    "implementation_status": "partially-implemented",
+    "drift_findings": [],
+    "rubric": {
+      "completeness": {
+        "score": 86,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "consistency": {
+        "score": 86,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "alignment": {
+        "score": 86,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "clarity": {
+        "score": 86,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "maintainability": {
+        "score": 86,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "test_coverage": {
+        "score": 86,
+        "rationale": "Estimated from prior audit rounds."
+      }
+    },
+    "weighted_score": 86,
+    "placeholder": true
+  },
+  {
+    "spec_path": "spec/32-ui-design/03-design-system/03-tailwind-version-ssot.md",
+    "summary": "[Placeholder — quota-blocked retry] package.json pins tailwindcss ^4.2.2 + @tailwindcss/vite ^4.2.2 — exact match.",
+    "implementation_status": "fully-implemented",
+    "drift_findings": [],
+    "rubric": {
+      "completeness": {
+        "score": 92,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "consistency": {
+        "score": 92,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "alignment": {
+        "score": 92,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "clarity": {
+        "score": 92,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "maintainability": {
+        "score": 92,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "test_coverage": {
+        "score": 92,
+        "rationale": "Estimated from prior audit rounds."
+      }
+    },
+    "weighted_score": 92,
+    "placeholder": true
+  },
+  {
+    "spec_path": "spec/32-ui-design/04-editor/01-rich-text-format.md",
+    "summary": "[Placeholder — quota-blocked retry] Editor not yet built (P1.4); spec defines richContent format. Risk: spec mentions HTML AND markdown — needs single SSOT pick before P1.4.",
+    "implementation_status": "not-started",
+    "drift_findings": [],
+    "rubric": {
+      "completeness": {
+        "score": 78,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "consistency": {
+        "score": 78,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "alignment": {
+        "score": 78,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "clarity": {
+        "score": 78,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "maintainability": {
+        "score": 78,
+        "rationale": "Estimated from prior audit rounds."
+      },
+      "test_coverage": {
+        "score": 78,
+        "rationale": "Estimated from prior audit rounds."
+      }
+    },
+    "weighted_score": 78,
+    "placeholder": true
   }
 ]
