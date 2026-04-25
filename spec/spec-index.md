@@ -769,7 +769,7 @@
 | [`09-code-block-system/09-tree-structure-rendering.md`](./09-code-block-system/09-tree-structure-rendering.md) | 09 — Tree-Structure Rendering | 3.1.0 | — |
 | [`09-code-block-system/10-selection-bar.md`](./09-code-block-system/10-selection-bar.md) | Selection Bar & Line Interaction — Code Block System | 3.1.0 | — |
 | [`09-code-block-system/11-highlighter-dependency-pin.md`](./09-code-block-system/11-highlighter-dependency-pin.md) | 11 — Highlighter Dependency Pin | 1.0.0 | Canonical |
-| [`09-code-block-system/97-acceptance-criteria.md`](./09-code-block-system/97-acceptance-criteria.md) | Code Block System — Acceptance Criteria | 1.0.0 | Curated |
+| [`09-code-block-system/97-acceptance-criteria.md`](./09-code-block-system/97-acceptance-criteria.md) | Code Block System — Acceptance Criteria | 1.1.0 | Curated |
 | [`09-code-block-system/99-consistency-report.md`](./09-code-block-system/99-consistency-report.md) | Consistency Report — Code Block System | 3.1.0 | — |
 
 ## 10-powershell-integration

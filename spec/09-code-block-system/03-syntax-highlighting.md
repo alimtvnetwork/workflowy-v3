@@ -1,15 +1,15 @@
 # Syntax Highlighting — Code Block System
 
-> **Version:** 3.1.0  
-> **Updated:** 2026-04-16
+> **Version:** 3.2.0
+> **Updated:** 2026-04-25 (UTC+8)
+> **Dependency SSOT:** [`11-highlighter-dependency-pin.md`](./11-highlighter-dependency-pin.md) — pins library, version, import paths, theme strategy, and bundle budget. This file describes the **resolution flow + token map only**; for "what to install / what to import / what theme to use", consult the pin file.
 
 ---
 
 ## Library
 
-- **highlight.js** v11+ (core only — tree-shakeable)
-- Theme CSS: `highlight.js/styles/github-dark.css`
-- Custom token colors override the theme (see Styling spec)
+- **highlight.js** — pinned at `^11.10.0` core import (see [`11-highlighter-dependency-pin.md`](./11-highlighter-dependency-pin.md))
+- Theme: **project HSL tokens only** — vendor stylesheets (`highlight.js/styles/*.css`) are FORBIDDEN per the dependency pin. The token-color map below documents which CSS variable each `.hljs-*` class MUST resolve to.
 
 ---
 
