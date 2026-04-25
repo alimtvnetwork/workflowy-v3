@@ -17,11 +17,14 @@ This file lists shortcuts whose **primary effect is on the navbar or focus navig
 |----------------|----------------------|--------|---------|
 | `⌃L` | `Ctrl+L` | Toggle left sidebar offcanvas | Global |
 | `⌘/` | `Ctrl+/` | Toggle right-side panel (Handbook/Hotkeys) | Global |
-| `⌘K` | `Ctrl+K` | Open search overlay | Global |
+| `⌘K` | `Ctrl+K` | Open Search Popover (canonical — Phase 2 v2.0.0) | Global |
+| `⌘F` | `Ctrl+F` | Open Search Popover (legacy alias) | Global |
 | `⌥←` | `Alt+←` | Focus history: back | Global, when back stack non-empty |
 | `⌥→` | `Alt+→` | Focus history: forward | Global, when forward stack non-empty |
 | `⌘⇧H` | `Ctrl+Shift+H` | Go to home root | Global |
-| `Esc` | `Esc` | Close right panel / search overlay if open | When overlay/panel open |
+| `Esc` | `Esc` | Close right panel / Search Popover if open | When popover/panel open |
+
+> The Search Popover is anchored to the navbar Search button on desktop and renders as a bottom sheet on viewports < 640px (see Phase 2 [`../02-search/09-states-and-edge-cases.md`](../02-search/09-states-and-edge-cases.md) § Mobile).
 
 ---
 
@@ -29,9 +32,10 @@ This file lists shortcuts whose **primary effect is on the navbar or focus navig
 
 | Conflict | Resolution |
 |----------|------------|
-| `⌘K` while editing a bullet's text | Open search overlay (search wins; editing pauses). |
+| `⌘K` while editing a bullet's text | Open Search Popover (search wins; editing pauses, content preserved). |
 | `Alt+←` while a text input has selection | Browser default (move cursor). Focus-history shortcut suppressed inside text inputs. |
-| `Esc` while a slash menu is open | Close slash menu first. Right panel/search overlay close on a second `Esc`. |
+| `Esc` while a slash menu is open | Close slash menu first. Right panel/Search Popover close on a second `Esc`. |
+| `Esc` while Search Popover is `pinned` | Does NOT close (per Phase 2 [`../02-search/04-right-action-icons.md`](../02-search/04-right-action-icons.md) § Pin). |
 
 ---
 
