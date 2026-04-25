@@ -760,7 +760,7 @@
 | [`09-code-block-system/00-overview.md`](./09-code-block-system/00-overview.md) | 08 — Code Block System | 3.1.0 | — |
 | [`09-code-block-system/01-architecture.md`](./09-code-block-system/01-architecture.md) | Architecture — Code Block System | 3.1.0 | — |
 | [`09-code-block-system/02-html-structure.md`](./09-code-block-system/02-html-structure.md) | HTML Structure — Code Block System | 3.1.0 | — |
-| [`09-code-block-system/03-syntax-highlighting.md`](./09-code-block-system/03-syntax-highlighting.md) | Syntax Highlighting — Code Block System | 3.1.0 | — |
+| [`09-code-block-system/03-syntax-highlighting.md`](./09-code-block-system/03-syntax-highlighting.md) | Syntax Highlighting — Code Block System | 3.2.0 | — |
 | [`09-code-block-system/04-interactions.md`](./09-code-block-system/04-interactions.md) | Interactions — Code Block System | 3.1.0 | — |
 | [`09-code-block-system/05-styling.md`](./09-code-block-system/05-styling.md) | Styling — Code Block System | 3.1.0 | — |
 | [`09-code-block-system/06-constants-and-maps.md`](./09-code-block-system/06-constants-and-maps.md) | Constants & Maps — Code Block System | 3.1.0 | — |
@@ -769,7 +769,7 @@
 | [`09-code-block-system/09-tree-structure-rendering.md`](./09-code-block-system/09-tree-structure-rendering.md) | 09 — Tree-Structure Rendering | 3.1.0 | — |
 | [`09-code-block-system/10-selection-bar.md`](./09-code-block-system/10-selection-bar.md) | Selection Bar & Line Interaction — Code Block System | 3.1.0 | — |
 | [`09-code-block-system/11-highlighter-dependency-pin.md`](./09-code-block-system/11-highlighter-dependency-pin.md) | 11 — Highlighter Dependency Pin | 1.0.0 | Canonical |
-| [`09-code-block-system/97-acceptance-criteria.md`](./09-code-block-system/97-acceptance-criteria.md) | Code Block System — Acceptance Criteria | 1.0.0 | Curated |
+| [`09-code-block-system/97-acceptance-criteria.md`](./09-code-block-system/97-acceptance-criteria.md) | Code Block System — Acceptance Criteria | 1.1.0 | Curated |
 | [`09-code-block-system/99-consistency-report.md`](./09-code-block-system/99-consistency-report.md) | Consistency Report — Code Block System | 3.1.0 | — |
 
 ## 10-powershell-integration

@@ -119,25 +119,7 @@ import 'highlight.js/styles/atom-one-dark.css';
 // ...any other highlight.js styles
 ```
 
-**MUST use** project HSL tokens. The `.hljs-*` classes are styled in `src/styles/code-block.css` (or equivalent), mapping each token type to a semantic CSS variable per the table in [`03-syntax-highlighting.md`](./03-syntax-highlighting.md) §"Syntax Token Colors":
-
-```css
-/* Excerpt — see 05-styling.md for full ruleset */
-.hljs                       { color: hsl(var(--foreground)); background: hsl(var(--code-bg)); }
-.hljs-keyword,
-.hljs-type,
-.hljs-built_in              { color: hsl(var(--primary)); }
-.hljs-title,
-.hljs-section               { color: hsl(var(--foreground) / 0.85); }
-.hljs-string,
-.hljs-attr,
-.hljs-property              { color: hsl(var(--accent)); }
-.hljs-number,
-.hljs-symbol,
-.hljs-regexp                { color: hsl(var(--warning)); }
-.hljs-comment,
-.hljs-quote                 { color: hsl(var(--muted-foreground)); font-style: italic; }
-```
+**MUST use** project HSL tokens. The complete `.hljs-*` → CSS-variable mapping is the **single responsibility of [`05-styling.md`](./05-styling.md)**. This file does not duplicate that ruleset; it only enforces the policy that vendor CSS is forbidden and project tokens are mandatory.
 
 This satisfies **AT-CODEBLOCKSYSTEM-10** (always-dark code blocks) and **AT-CODEBLOCKSYSTEM-11** (HSL-only colors).
 
