@@ -21,9 +21,9 @@ ID format: `AT-ERRORCODEREGISTRY-NN`.
 
 | ID | Criterion | Source |
 |----|-----------|--------|
-| AT-ERRORCODEREGISTRY-01 | `error-codes-master.json` is the SSOT for every reserved error-code range across all projects. | [`error-codes-master.json`](./error-codes-master.json) + [`01-registry/`](./01-registry/00-overview.md) |
+| AT-ERRORCODEREGISTRY-01 | `error-codes-master.json` is the SSOT for every reserved error-code range across all projects. | [`error-codes-master.json`](./error-codes-master.json) + [`01-registry/`](./01-registry/01-overview.md) |
 | AT-ERRORCODEREGISTRY-02 | Every error code matches one of the documented formats: `XX-NNN-NN` (string-prefixed) or `NNNN+` (integer). | [`00-overview.md`](./00-overview.md) |
-| AT-ERRORCODEREGISTRY-03 | No two projects share an overlapping numeric range or prefix; the registry assigns each project a unique slice. | [`01-registry/`](./01-registry/00-overview.md) |
+| AT-ERRORCODEREGISTRY-03 | No two projects share an overlapping numeric range or prefix; the registry assigns each project a unique slice. | [`01-registry/`](./01-registry/01-overview.md) |
 
 ### Integration (AT-ERRORCODEREGISTRY-04..05)
 
