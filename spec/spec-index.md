@@ -949,7 +949,7 @@
 | [`15-wp-plugin-how-to/05-helpers-responses-and-integration/06-integration-checklist.md`](./15-wp-plugin-how-to/05-helpers-responses-and-integration/06-integration-checklist.md) | 5.4 Integration Checklist — Adding a New Feature | — | — |
 | [`15-wp-plugin-how-to/05-helpers-responses-and-integration/07-database-and-split-db.md`](./15-wp-plugin-how-to/05-helpers-responses-and-integration/07-database-and-split-db.md) | 5.5 Database — Split DB Concept & Class Decomposition | — | — |
 | [`15-wp-plugin-how-to/05-helpers-responses-and-integration/08-security-and-summary.md`](./15-wp-plugin-how-to/05-helpers-responses-and-integration/08-security-and-summary.md) | 5.6–5.8 Notifications, Security & Complete Pattern | — | — |
-| [`15-wp-plugin-how-to/05-helpers-responses-and-integration/97-acceptance-criteria.md`](./15-wp-plugin-how-to/05-helpers-responses-and-integration/97-acceptance-criteria.md) | Helpers Responses And Integration — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`15-wp-plugin-how-to/05-helpers-responses-and-integration/97-acceptance-criteria.md`](./15-wp-plugin-how-to/05-helpers-responses-and-integration/97-acceptance-criteria.md) | Helpers Responses And Integration — Acceptance Criteria | 1.0.0 | Curated |
 | [`15-wp-plugin-how-to/06-input-validation-patterns.md`](./15-wp-plugin-how-to/06-input-validation-patterns.md) | Phase 6 — Input Validation Patterns | — | — |
 | [`15-wp-plugin-how-to/07-reference-implementations/00-overview.md`](./15-wp-plugin-how-to/07-reference-implementations/00-overview.md) | Phase 7 — Complete Reference Implementations | — | — |
 | [`15-wp-plugin-how-to/07-reference-implementations/01-bootstrap-file.md`](./15-wp-plugin-how-to/07-reference-implementations/01-bootstrap-file.md) | 7.1 Bootstrap File — `plugin-name.php` | — | — |
@@ -960,7 +960,7 @@
 | [`15-wp-plugin-how-to/07-reference-implementations/06-response-key-type-enum.md`](./15-wp-plugin-how-to/07-reference-implementations/06-response-key-type-enum.md) | 7.6 ResponseKeyType Enum — `includes/Enums/ResponseKeyType.php` | — | — |
 | [`15-wp-plugin-how-to/07-reference-implementations/07-ai-instructions-template.md`](./15-wp-plugin-how-to/07-reference-implementations/07-ai-instructions-template.md) | 7.7 `.ai-instructions` File Template | — | — |
 | [`15-wp-plugin-how-to/07-reference-implementations/08-plugin-config-type-example.md`](./15-wp-plugin-how-to/07-reference-implementations/08-plugin-config-type-example.md) | 7.8 Complete PluginConfigType Example | — | — |
-| [`15-wp-plugin-how-to/07-reference-implementations/97-acceptance-criteria.md`](./15-wp-plugin-how-to/07-reference-implementations/97-acceptance-criteria.md) | Reference Implementations — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`15-wp-plugin-how-to/07-reference-implementations/97-acceptance-criteria.md`](./15-wp-plugin-how-to/07-reference-implementations/97-acceptance-criteria.md) | Reference Implementations — Acceptance Criteria | 1.0.0 | Curated |
 | [`15-wp-plugin-how-to/08-wordpress-integration-patterns/00-overview.md`](./15-wp-plugin-how-to/08-wordpress-integration-patterns/00-overview.md) | Phase 8 — WordPress Integration Patterns | 2.0.0 | Production |
 | [`15-wp-plugin-how-to/08-wordpress-integration-patterns/01-admin-pages-and-settings.md`](./15-wp-plugin-how-to/08-wordpress-integration-patterns/01-admin-pages-and-settings.md) | 8.1 Admin Pages & Settings | — | — |
 | [`15-wp-plugin-how-to/08-wordpress-integration-patterns/02-ajax-handlers.md`](./15-wp-plugin-how-to/08-wordpress-integration-patterns/02-ajax-handlers.md) | 8.2 AJAX Handlers (Non-REST) | — | — |
@@ -987,7 +987,7 @@
 | [`15-wp-plugin-how-to/09-testing-patterns/11-conventions-coverage-ci.md`](./15-wp-plugin-how-to/09-testing-patterns/11-conventions-coverage-ci.md) | 9.11–9.13 Conventions, Coverage & CI | — | — |
 | [`15-wp-plugin-how-to/09-testing-patterns/12-testing-database-seeding.md`](./15-wp-plugin-how-to/09-testing-patterns/12-testing-database-seeding.md) | 9.14 Testing Database Seeding | — | — |
 | [`15-wp-plugin-how-to/09-testing-patterns/13-feature-checklist.md`](./15-wp-plugin-how-to/09-testing-patterns/13-feature-checklist.md) | 9.15 Test Checklist for New Features | — | — |
-| [`15-wp-plugin-how-to/09-testing-patterns/97-acceptance-criteria.md`](./15-wp-plugin-how-to/09-testing-patterns/97-acceptance-criteria.md) | Testing Patterns — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`15-wp-plugin-how-to/09-testing-patterns/97-acceptance-criteria.md`](./15-wp-plugin-how-to/09-testing-patterns/97-acceptance-criteria.md) | Testing Patterns — Acceptance Criteria | 1.0.0 | Curated |
 | [`15-wp-plugin-how-to/10-deployment-patterns/00-overview.md`](./15-wp-plugin-how-to/10-deployment-patterns/00-overview.md) | Phase 10 — Deployment Patterns (Overview) | 3.2.0 | — |
 | [`15-wp-plugin-how-to/10-deployment-patterns/01-versioning-strategy.md`](./15-wp-plugin-how-to/10-deployment-patterns/01-versioning-strategy.md) | 10.1 Versioning Strategy | — | — |
 | [`15-wp-plugin-how-to/10-deployment-patterns/02-distribution-structure.md`](./15-wp-plugin-how-to/10-deployment-patterns/02-distribution-structure.md) | 10.2 Plugin File Structure for Distribution | — | — |
@@ -1013,7 +1013,7 @@
 | [`15-wp-plugin-how-to/11-frontend-and-template-patterns/08-source-maps-and-build.md`](./15-wp-plugin-how-to/11-frontend-and-template-patterns/08-source-maps-and-build.md) | 11.8 Source Maps — Dev vs. Production | — | — |
 | [`15-wp-plugin-how-to/11-frontend-and-template-patterns/09-react-asset-enqueuing.md`](./15-wp-plugin-how-to/11-frontend-and-template-patterns/09-react-asset-enqueuing.md) | 11.9 Enqueuing React Assets | — | — |
 | [`15-wp-plugin-how-to/11-frontend-and-template-patterns/10-decision-matrix-and-summary.md`](./15-wp-plugin-how-to/11-frontend-and-template-patterns/10-decision-matrix-and-summary.md) | 11.10 Decision Matrix — PHP Templates vs. React | — | — |
-| [`15-wp-plugin-how-to/11-frontend-and-template-patterns/97-acceptance-criteria.md`](./15-wp-plugin-how-to/11-frontend-and-template-patterns/97-acceptance-criteria.md) | Frontend And Template Patterns — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`15-wp-plugin-how-to/11-frontend-and-template-patterns/97-acceptance-criteria.md`](./15-wp-plugin-how-to/11-frontend-and-template-patterns/97-acceptance-criteria.md) | Frontend And Template Patterns — Acceptance Criteria | 1.0.0 | Curated |
 | [`15-wp-plugin-how-to/12-design-system/00-overview.md`](./15-wp-plugin-how-to/12-design-system/00-overview.md) | Phase 12 — WordPress Plugin Design System (Overview) | — | — |
 | [`15-wp-plugin-how-to/12-design-system/01-design-tokens.md`](./15-wp-plugin-how-to/12-design-system/01-design-tokens.md) | CSS Custom Properties (Design Tokens) | — | — |
 | [`15-wp-plugin-how-to/12-design-system/02-color-system.md`](./15-wp-plugin-how-to/12-design-system/02-color-system.md) | Color System | — | — |
@@ -1027,7 +1027,7 @@
 | [`15-wp-plugin-how-to/12-design-system/10-modals.md`](./15-wp-plugin-how-to/12-design-system/10-modals.md) | Modal System | — | — |
 | [`15-wp-plugin-how-to/12-design-system/11-tabs-tables-filters.md`](./15-wp-plugin-how-to/12-design-system/11-tabs-tables-filters.md) | Tabs, Tables & Filter Bar | — | — |
 | [`15-wp-plugin-how-to/12-design-system/12-misc-and-organization.md`](./15-wp-plugin-how-to/12-design-system/12-misc-and-organization.md) | Misc Components, File Organization & Anti-Patterns | — | — |
-| [`15-wp-plugin-how-to/12-design-system/97-acceptance-criteria.md`](./15-wp-plugin-how-to/12-design-system/97-acceptance-criteria.md) | Design System — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`15-wp-plugin-how-to/12-design-system/97-acceptance-criteria.md`](./15-wp-plugin-how-to/12-design-system/97-acceptance-criteria.md) | Design System — Acceptance Criteria | 1.0.0 | Curated |
 | [`15-wp-plugin-how-to/13-admin-ui-patterns/00-overview.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/00-overview.md) | Phase 13 — Admin UI Patterns (Overview) | — | — |
 | [`15-wp-plugin-how-to/13-admin-ui-patterns/01-page-layout.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/01-page-layout.md) | Page Layout Architecture | — | — |
 | [`15-wp-plugin-how-to/13-admin-ui-patterns/02-actions-bar.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/02-actions-bar.md) | Actions Bar | — | — |

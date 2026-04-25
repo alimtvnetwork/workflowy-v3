@@ -1,50 +1,76 @@
 # Frontend And Template Patterns — Acceptance Criteria
 
-> **Version:** 0.1.0
-> **Created:** 2026-04-25 (UTC+8)
-> **Status:** Scaffold — populate per-topic criteria during next refinement pass
+> **Version:** 1.0.0
+> **Updated:** 2026-04-25 (UTC+8)
+> **Status:** Curated — 14 testable criteria
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
 ---
 
-## Purpose
+## ID Range
 
-Aggregated acceptance criteria for the 11 topic file(s) in this folder. ID range: `AT-FRONTENDANDTEMPLATEPATTERNS-NN`.
-
-A criterion is *complete* when (a) it has a stable ID, (b) it references a source file, and (c) it is verifiable by reading the source or running an automated check.
-
----
-
-## Coverage Map
-
-| # | Source File | ID Range | Status |
-|---|-------------|----------|--------|
-| 1 | [`01-file-size-limits.md`](./01-file-size-limits.md) | AT-FRONTENDANDTEMPLATEPATTERNS-01 | 📝 To populate |
-| 2 | [`02-template-architecture.md`](./02-template-architecture.md) | AT-FRONTENDANDTEMPLATEPATTERNS-02 | 📝 To populate |
-| 3 | [`03-page-templates-orchestrator.md`](./03-page-templates-orchestrator.md) | AT-FRONTENDANDTEMPLATEPATTERNS-03 | 📝 To populate |
-| 4 | [`04-partial-templates.md`](./04-partial-templates.md) | AT-FRONTENDANDTEMPLATEPATTERNS-04 | 📝 To populate |
-| 5 | [`05-when-to-extract-a-partial.md`](./05-when-to-extract-a-partial.md) | AT-FRONTENDANDTEMPLATEPATTERNS-05 | 📝 To populate |
-| 6 | [`06-traditional-js-css.md`](./06-traditional-js-css.md) | AT-FRONTENDANDTEMPLATEPATTERNS-06 | 📝 To populate |
-| 7 | [`07-react-integration.md`](./07-react-integration.md) | AT-FRONTENDANDTEMPLATEPATTERNS-07 | 📝 To populate |
-| 8 | [`08-source-maps-and-build.md`](./08-source-maps-and-build.md) | AT-FRONTENDANDTEMPLATEPATTERNS-08 | 📝 To populate |
-| 9 | [`09-react-asset-enqueuing.md`](./09-react-asset-enqueuing.md) | AT-FRONTENDANDTEMPLATEPATTERNS-09 | 📝 To populate |
-| 10 | [`10-decision-matrix-and-summary.md`](./10-decision-matrix-and-summary.md) | AT-FRONTENDANDTEMPLATEPATTERNS-10 | 📝 To populate |
+`AT-FRONTENDANDTEMPLATEPATTERNS-01` … `AT-FRONTENDANDTEMPLATEPATTERNS-14`
 
 ---
 
 ## Criteria
 
-Per-topic criteria are tracked inline in each source file's `## Acceptance Tests` section (where present), or will be extracted here during the next refinement pass.
+### File size limits (file 01)
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| AT-FRONTENDANDTEMPLATEPATTERNS-01 | Page templates ≤ **200 lines**; partial templates ≤ **120 lines**; React component files ≤ **200 lines** (test files exempt up to 400). | [`01-file-size-limits.md`](./01-file-size-limits.md), [`../../02-coding-guidelines/consolidated-review-guide/97-acceptance-criteria.md`](../../02-coding-guidelines/consolidated-review-guide/97-acceptance-criteria.md) |
+| AT-FRONTENDANDTEMPLATEPATTERNS-02 | A template exceeding the limit MUST be split via the partial-extraction rules in §05; a single oversized file is a Code-Red review block. | [`01-file-size-limits.md`](./01-file-size-limits.md), [`05-when-to-extract-a-partial.md`](./05-when-to-extract-a-partial.md) |
+
+### Template architecture & orchestrator (files 02, 03)
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| AT-FRONTENDANDTEMPLATEPATTERNS-03 | Templates live under `templates/<page>/{index,partials/}`; template files outside this layout are forbidden. | [`02-template-architecture.md`](./02-template-architecture.md) |
+| AT-FRONTENDANDTEMPLATEPATTERNS-04 | Page templates are **orchestrators only** — they declare layout + render partials; business logic, DB calls, or HTTP calls inside a page template are forbidden. | [`03-page-templates-orchestrator.md`](./03-page-templates-orchestrator.md) |
+
+### Partials (files 04, 05)
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| AT-FRONTENDANDTEMPLATEPATTERNS-05 | Partials receive data via an explicit `$context` array (NOT global state); reading `$_GET`/`$_POST`/`global $foo` inside a partial is forbidden. | [`04-partial-templates.md`](./04-partial-templates.md) |
+| AT-FRONTENDANDTEMPLATEPATTERNS-06 | A partial MUST be extracted when ANY of: (a) >50 lines of markup, (b) reused in 2+ pages, (c) has its own conditional-display logic; the §05 decision matrix is the SSOT. | [`05-when-to-extract-a-partial.md`](./05-when-to-extract-a-partial.md) |
+
+### Traditional JS/CSS (file 06)
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| AT-FRONTENDANDTEMPLATEPATTERNS-07 | Traditional (non-React) JS files use **vanilla ES2020+** (no jQuery in new code); jQuery is permitted ONLY for legacy WP-admin integration touchpoints documented in §06. | [`06-traditional-js-css.md`](./06-traditional-js-css.md) |
+| AT-FRONTENDANDTEMPLATEPATTERNS-08 | All inline event handlers (`onclick=`, `onchange=`) in templates are forbidden; bind via `addEventListener` in the enqueued JS. | [`06-traditional-js-css.md`](./06-traditional-js-css.md) |
+
+### React integration (files 07, 08, 09)
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| AT-FRONTENDANDTEMPLATEPATTERNS-09 | React apps mount into a single `<div id="riseup-react-root">` per page; multiple parallel React roots on one page are forbidden. | [`07-react-integration.md`](./07-react-integration.md) |
+| AT-FRONTENDANDTEMPLATEPATTERNS-10 | React state communicates with PHP via the canonical envelope (`Success`/`Data`/`Error`/`Meta`); ad-hoc JSON shapes break logging traceability. | [`07-react-integration.md`](./07-react-integration.md), [`../05-helpers-responses-and-integration/97-acceptance-criteria.md`](../05-helpers-responses-and-integration/97-acceptance-criteria.md) |
+| AT-FRONTENDANDTEMPLATEPATTERNS-11 | Source maps are emitted for all production builds (`sourcemap: true` in vite config); shipping minified JS without source maps is a Code-Red debuggability bug. | [`08-source-maps-and-build.md`](./08-source-maps-and-build.md) |
+| AT-FRONTENDANDTEMPLATEPATTERNS-12 | React assets are enqueued via `wp_enqueue_script` with version pinned to the build hash (NOT plugin version); cache busting is automatic. | [`09-react-asset-enqueuing.md`](./09-react-asset-enqueuing.md) |
+
+### Decision matrix (file 10)
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| AT-FRONTENDANDTEMPLATEPATTERNS-13 | The §10 decision matrix is the SSOT for choosing **traditional template** vs **React component** per surface; bypassing the matrix (e.g., React for a 50-line static report) requires a §10 update first. | [`10-decision-matrix-and-summary.md`](./10-decision-matrix-and-summary.md) |
+| AT-FRONTENDANDTEMPLATEPATTERNS-14 | The summary table in §10 is the canonical reference cited by the consolidated review guide; reviewers MUST verify every new frontend surface against the matrix. | [`10-decision-matrix-and-summary.md`](./10-decision-matrix-and-summary.md), [`../../02-coding-guidelines/consolidated-review-guide/97-acceptance-criteria.md`](../../02-coding-guidelines/consolidated-review-guide/97-acceptance-criteria.md) |
 
 ---
 
 ## Verification
 
 ```bash
-# List all referenced sources in this folder
-grep -rn "AT-FRONTENDANDTEMPLATEPATTERNS-" spec/15-wp-plugin-how-to/11-frontend-and-template-patterns/
+# Inline event handlers in templates
+rg -nP 'on(click|change|submit|input|focus|blur)=' templates/
 
-# Run hygiene checks
+# Multiple React roots
+rg -n 'id="riseup-react-root"' templates/ | sort -u | wc -l
+
+# Hygiene suite
 node scripts/spec-hygiene/00-run-all.mjs
 ```
 
@@ -53,9 +79,10 @@ node scripts/spec-hygiene/00-run-all.mjs
 ## Related
 
 - [`00-overview.md`](./00-overview.md) — Parent overview
-- [`spec/19-glossary.md`](../../19-glossary.md) — Terminology SSOT
-- [`spec/20-enums-index.md`](../../20-enums-index.md) — Enum registry
+- [`../05-helpers-responses-and-integration/97-acceptance-criteria.md`](../05-helpers-responses-and-integration/97-acceptance-criteria.md) — Response envelope
+- [`../12-design-system/97-acceptance-criteria.md`](../12-design-system/97-acceptance-criteria.md) — Design system
+- [`../../02-coding-guidelines/consolidated-review-guide/97-acceptance-criteria.md`](../../02-coding-guidelines/consolidated-review-guide/97-acceptance-criteria.md) — Master review
 
 ---
 
-*Acceptance criteria scaffold v0.1.0 — auto-generated by `scripts/spec-hygiene/13-generate-at-stubs.mjs` (closes F-09).*
+*Curated 2026-04-25 — closes A-23 (batch 12). Replaces v0.1.0 stub.*
