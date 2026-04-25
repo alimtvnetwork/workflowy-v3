@@ -15,7 +15,7 @@
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`01-naming-conventions.md`](./01-naming-conventions.md) | Rust Naming Conventions | 412 |
+| 1 | [`01-naming-conventions.md`](./01-naming-conventions.md) | Rust Naming Conventions | 247 |
 | 2 | [`02-error-handling.md`](./02-error-handling.md) | Rust Error Handling | 231 |
 | 3 | [`03-async-patterns.md`](./03-async-patterns.md) | Rust Async Patterns | 237 |
 | 4 | [`04-memory-safety.md`](./04-memory-safety.md) | Rust Memory Safety | 190 |

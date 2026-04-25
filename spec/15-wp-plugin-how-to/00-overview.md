@@ -28,8 +28,8 @@
 | 14 | [`14-rest-api-conventions/`](./14-rest-api-conventions/00-overview.md) | Phase 14 — REST API Conventions (Overview) | subfolder |
 | 15 | [`15-settings-architecture/`](./15-settings-architecture/00-overview.md) | Phase 15 — Settings Architecture | subfolder |
 | 16 | [`16-error-handling-extraction/`](./16-error-handling-extraction/00-overview.md) | Phase 16 — Error Handling & Diagnostics Extraction | subfolder |
-| 17 | [`17-data-file-patterns.md`](./17-data-file-patterns.md) | Phase 17 — Data File Patterns | 412 |
-| 18 | [`18-frontend-javascript-patterns.md`](./18-frontend-javascript-patterns.md) | Phase 18 — Frontend JavaScript Patterns | 421 |
+| 17 | [`17-data-file-patterns.md`](./17-data-file-patterns.md) | Phase 17 — Data File Patterns | 358 |
+| 18 | [`18-frontend-javascript-patterns.md`](./18-frontend-javascript-patterns.md) | Phase 18 — Frontend JavaScript Patterns | 317 |
 | 19 | [`19-micro-orm-and-root-db/`](./19-micro-orm-and-root-db/00-overview.md) | Phase 19 — Micro-ORM and Cross-Plugin Root Database | subfolder |
 | 20 | [`20-end-to-end-walkthrough/`](./20-end-to-end-walkthrough/00-overview.md) | Phase 20 — End-to-End Walkthrough: Building "Task Tracker" from Scratch | subfolder |
 | 21 | [`21-ping-endpoint.md`](./21-ping-endpoint.md) | Phase 21 — Ping Endpoint | 342 |

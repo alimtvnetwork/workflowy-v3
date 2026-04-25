@@ -14,7 +14,7 @@
 |---|------|-------|-------|
 | 1 | [`01-ci-pipeline.md`](./01-ci-pipeline.md) | Go Binary — CI Pipeline | 312 |
 | 2 | [`02-release-pipeline.md`](./02-release-pipeline.md) | Go Binary — Release Pipeline | 381 |
-| 3 | [`03-complete-workflow-reference.md`](./03-complete-workflow-reference.md) | Go Binary — Complete Workflow Reference | 424 |
+| 3 | [`03-complete-workflow-reference.md`](./03-complete-workflow-reference.md) | Go Binary — Complete Workflow Reference | 340 |
 
 <!-- AUTO-TOC:END -->
 
