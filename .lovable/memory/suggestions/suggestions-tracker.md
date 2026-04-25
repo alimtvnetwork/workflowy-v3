@@ -1,7 +1,7 @@
 # Lovable Suggestions Tracker
 
 > **Convention:** All suggestions tracked in this single file. Update status when completed. Move completed entries to `completed/` folder.
-> **Updated:** 2026-04-25 (UTC+8) — A-05 closed (Tailwind token-sync hygiene check wired)
+> **Updated:** 2026-04-25 (UTC+8) — A-07 closed (typed toast queue + 9 new tests)
 
 ---
 
@@ -57,6 +57,10 @@
 ### A-04 — Enum-sync hygiene check
 - **Completed:** 2026-04-25 (UTC+8)
 - **Result:** New `15-check-enums-in-sync.mjs` parses `spec/20-enums-index.md` row + `src/types/index.ts` literal union for each tracked enum and fails on any drift. Wired into `00-run-all.mjs`. Negative-test verified.
+
+### A-07 — Wire Toaster to typed queue
+- **Completed:** 2026-04-25 (UTC+8)
+- **Result:** Replaced no-op `Toaster` (returned `null`) with a real implementation: `src/contexts/ToastContext.tsx` exposes `<ToastProvider>`, `useToast()`, typed variants (`success | error | info | warning`), optional `errorCode` field for future `apperror` linkage, default 3000 ms auto-dismiss with overridable `durationMs`, plus `dismiss()` and `clear()`. `Toaster` now renders the queue with semantic-token classes only. Wired `<ToastProvider>` at `App.tsx` root. Added 9 tests (queue add/dismiss/auto-expire/custom-duration/clear/errorCode + render & empty-state) — total 28/28 pass.
 
 ### A-06 — Wire AppLayout into routes
 - **Completed:** 2026-04-25 (UTC+8)

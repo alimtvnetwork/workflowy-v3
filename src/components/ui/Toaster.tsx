@@ -1,35 +1,49 @@
-import { useEffect } from "react";
+import { useToast, type ToastEntry, type ToastVariant } from "@/contexts/ToastContext";
 
-interface ToastProps {
-  readonly message: string;
-  readonly isVisible: boolean;
-  readonly onClose: () => void;
-}
+/**
+ * Renders the live toast queue. Pure presentation — all state lives in
+ * `ToastContext`. Mount once near the app root; styling uses semantic
+ * design tokens only (`mem://design/theme`).
+ */
 
-export const Toaster = () => {
-  return null;
+const VARIANT_CLASSES: Record<ToastVariant, string> = {
+  success: "bg-success text-background",
+  error: "bg-destructive text-destructive-foreground",
+  info: "bg-foreground text-background",
+  warning: "bg-warning text-background",
 };
 
-export const Toast = ({ message, isVisible, onClose }: ToastProps) => {
-  const isHidden = !isVisible;
+interface ToastItemProps {
+  readonly entry: ToastEntry;
+  readonly onDismiss: (id: string) => void;
+}
 
-  useEffect(() => {
-    if (isHidden) {
-      return;
-    }
-
-    const timer = setTimeout(onClose, 3000);
-
-    return () => clearTimeout(timer);
-  }, [isHidden, onClose]);
-
-  if (isHidden) {
-    return null;
-  }
-
+const ToastItem = ({ entry, onDismiss }: ToastItemProps) => {
+  const variantClass = VARIANT_CLASSES[entry.variant];
   return (
-    <div className="fixed bottom-xl right-xl rounded-md bg-foreground px-xl py-lg text-menu text-background shadow-lg">
-      {message}
+    <button
+      type="button"
+      onClick={() => onDismiss(entry.id)}
+      className={`pointer-events-auto rounded-md px-xl py-lg text-menu shadow-lg ${variantClass}`}
+      aria-label="Dismiss notification"
+    >
+      {entry.message}
+    </button>
+  );
+};
+
+export const Toaster = () => {
+  const { toasts, dismiss } = useToast();
+  if (toasts.length === 0) return null;
+  return (
+    <div
+      role="region"
+      aria-label="Notifications"
+      className="pointer-events-none fixed bottom-xl right-xl flex flex-col gap-md"
+    >
+      {toasts.map((t) => (
+        <ToastItem key={t.id} entry={t} onDismiss={dismiss} />
+      ))}
     </div>
   );
 };
