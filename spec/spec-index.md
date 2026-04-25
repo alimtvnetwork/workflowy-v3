@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-25  
-**Total Files:** 1256  
+**Total Files:** 1257  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -23,7 +23,7 @@
 - [06-seedable-config-architecture](#06-seedable-config-architecture) — 50 file(s)
 - [07-design-system](#07-design-system) — 16 file(s)
 - [08-docs-viewer-ui](#08-docs-viewer-ui) — 29 file(s)
-- [09-code-block-system](#09-code-block-system) — 13 file(s)
+- [09-code-block-system](#09-code-block-system) — 14 file(s)
 - [10-powershell-integration](#10-powershell-integration) — 24 file(s)
 - [11-research](#11-research) — 2 file(s)
 - [12-consolidated-guidelines](#12-consolidated-guidelines) — 26 file(s)
@@ -768,6 +768,7 @@
 | [`09-code-block-system/08-checklist-blocks.md`](./09-code-block-system/08-checklist-blocks.md) | Checklist Blocks — Code Block System | 3.1.0 | — |
 | [`09-code-block-system/09-tree-structure-rendering.md`](./09-code-block-system/09-tree-structure-rendering.md) | 09 — Tree-Structure Rendering | 3.1.0 | — |
 | [`09-code-block-system/10-selection-bar.md`](./09-code-block-system/10-selection-bar.md) | Selection Bar & Line Interaction — Code Block System | 3.1.0 | — |
+| [`09-code-block-system/11-highlighter-dependency-pin.md`](./09-code-block-system/11-highlighter-dependency-pin.md) | 11 — Highlighter Dependency Pin | 1.0.0 | Canonical |
 | [`09-code-block-system/97-acceptance-criteria.md`](./09-code-block-system/97-acceptance-criteria.md) | Code Block System — Acceptance Criteria | 1.0.0 | Curated |
 | [`09-code-block-system/99-consistency-report.md`](./09-code-block-system/99-consistency-report.md) | Consistency Report — Code Block System | 3.1.0 | — |
 
@@ -1426,4 +1427,4 @@
 
 ---
 
-*Auto-generated index — 1256 files across 25 top-level folders.*
+*Auto-generated index — 1257 files across 25 top-level folders.*
