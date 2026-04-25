@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-25  
-**Total Files:** 1249  
+**Total Files:** 1255  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -27,7 +27,7 @@
 - [10-powershell-integration](#10-powershell-integration) — 23 file(s)
 - [11-research](#11-research) — 2 file(s)
 - [12-consolidated-guidelines](#12-consolidated-guidelines) — 26 file(s)
-- [13-cicd-pipeline-workflows](#13-cicd-pipeline-workflows) — 30 file(s)
+- [13-cicd-pipeline-workflows](#13-cicd-pipeline-workflows) — 36 file(s)
 - [14-self-update-app-update](#14-self-update-app-update) — 32 file(s)
 - [15-wp-plugin-how-to](#15-wp-plugin-how-to) — 216 file(s)
 - [16-generic-cli](#16-generic-cli) — 43 file(s)
@@ -841,7 +841,7 @@
 
 | File | Title | Version | Status |
 |------|-------|---------|--------|
-| [`13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | CI/CD Pipeline Workflows | 3.2.0 | — |
+| [`13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | CI/CD Pipeline Workflows | 3.3.0 | — |
 | [`13-cicd-pipeline-workflows/01-browser-extension-deploy/00-overview.md`](./13-cicd-pipeline-workflows/01-browser-extension-deploy/00-overview.md) | Browser Extension Deploy — Overview | 3.1.0 | — |
 | [`13-cicd-pipeline-workflows/01-browser-extension-deploy/01-ci-pipeline.md`](./13-cicd-pipeline-workflows/01-browser-extension-deploy/01-ci-pipeline.md) | Browser Extension — CI Pipeline | 3.1.0 | — |
 | [`13-cicd-pipeline-workflows/01-browser-extension-deploy/02-release-pipeline.md`](./13-cicd-pipeline-workflows/01-browser-extension-deploy/02-release-pipeline.md) | Browser Extension — Release Pipeline | 3.1.0 | — |
@@ -854,6 +854,12 @@
 | [`13-cicd-pipeline-workflows/02-go-binary-deploy/97-acceptance-criteria.md`](./13-cicd-pipeline-workflows/02-go-binary-deploy/97-acceptance-criteria.md) | Go Binary Deploy — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`13-cicd-pipeline-workflows/02-go-binary-deploy/99-consistency-report.md`](./13-cicd-pipeline-workflows/02-go-binary-deploy/99-consistency-report.md) | Consistency Report — Go Binary Deploy | 3.1.0 | — |
 | [`13-cicd-pipeline-workflows/03-vulnerability-scanning.md`](./13-cicd-pipeline-workflows/03-vulnerability-scanning.md) | Vulnerability Scanning | — | — |
+| [`13-cicd-pipeline-workflows/03-wp-plugin-deploy/00-overview.md`](./13-cicd-pipeline-workflows/03-wp-plugin-deploy/00-overview.md) | WP-Plugin Deploy — Overview | 1.0.0 | Canonical |
+| [`13-cicd-pipeline-workflows/03-wp-plugin-deploy/01-distignore-and-zip-layout.md`](./13-cicd-pipeline-workflows/03-wp-plugin-deploy/01-distignore-and-zip-layout.md) | 03.01 — `.distignore` and Final ZIP Layout | 1.0.0 | — |
+| [`13-cicd-pipeline-workflows/03-wp-plugin-deploy/02-github-actions-workflow.md`](./13-cicd-pipeline-workflows/03-wp-plugin-deploy/02-github-actions-workflow.md) | 03.02 — GitHub Actions Release Workflow | 1.0.0 | — |
+| [`13-cicd-pipeline-workflows/03-wp-plugin-deploy/03-update-server-contract.md`](./13-cicd-pipeline-workflows/03-wp-plugin-deploy/03-update-server-contract.md) | 03.03 — Update Server Contract (CI/CD Bridge) | 1.0.0 | — |
+| [`13-cicd-pipeline-workflows/03-wp-plugin-deploy/04-version-sync.md`](./13-cicd-pipeline-workflows/03-wp-plugin-deploy/04-version-sync.md) | 03.04 — Version Synchronization (`package.json` → PHP) | 1.0.0 | — |
+| [`13-cicd-pipeline-workflows/03-wp-plugin-deploy/97-acceptance-criteria.md`](./13-cicd-pipeline-workflows/03-wp-plugin-deploy/97-acceptance-criteria.md) | WP-Plugin Deploy — Acceptance Criteria | 1.0.0 | — |
 | [`13-cicd-pipeline-workflows/04-install-script-generation.md`](./13-cicd-pipeline-workflows/04-install-script-generation.md) | Install Script Generation | 3.1.0 | — |
 | [`13-cicd-pipeline-workflows/05-code-signing.md`](./13-cicd-pipeline-workflows/05-code-signing.md) | Code Signing | 3.1.0 | — |
 | [`13-cicd-pipeline-workflows/06-self-update-mechanism.md`](./13-cicd-pipeline-workflows/06-self-update-mechanism.md) | Self-Update Mechanism | 3.1.0 | — |
@@ -868,7 +874,7 @@
 | [`13-cicd-pipeline-workflows/15-environment-variable-setup.md`](./13-cicd-pipeline-workflows/15-environment-variable-setup.md) | Environment Variable Setup | — | — |
 | [`13-cicd-pipeline-workflows/16-shared-conventions.md`](./13-cicd-pipeline-workflows/16-shared-conventions.md) | Shared Pipeline Conventions | 3.1.0 | — |
 | [`13-cicd-pipeline-workflows/17-github-release-standard.md`](./13-cicd-pipeline-workflows/17-github-release-standard.md) | GitHub Release Standard | 3.1.0 | — |
-| [`13-cicd-pipeline-workflows/97-acceptance-criteria.md`](./13-cicd-pipeline-workflows/97-acceptance-criteria.md) | Cicd Pipeline Workflows — Acceptance Criteria | 1.0.0 | Scaffold |
+| [`13-cicd-pipeline-workflows/97-acceptance-criteria.md`](./13-cicd-pipeline-workflows/97-acceptance-criteria.md) | CI/CD Pipeline Workflows — Acceptance Criteria | 2.0.0 | — |
 | [`13-cicd-pipeline-workflows/99-consistency-report.md`](./13-cicd-pipeline-workflows/99-consistency-report.md) | Consistency Report — CI/CD Pipeline Workflows | 3.1.0 | — |
 | [`13-cicd-pipeline-workflows/README.md`](./13-cicd-pipeline-workflows/README.md) | 09 — Pipeline Specifications | — | — |
 
@@ -1419,4 +1425,4 @@
 
 ---
 
-*Auto-generated index — 1249 files across 25 top-level folders.*
+*Auto-generated index — 1255 files across 25 top-level folders.*
