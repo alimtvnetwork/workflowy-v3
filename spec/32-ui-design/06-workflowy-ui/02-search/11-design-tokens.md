@@ -3,7 +3,7 @@
 > **Version:** 1.0.0 · **Created:** 2026-04-25 (UTC+8) · **Status:** ✅ Authored (spec-only — no code edits)
 > **Parent:** [`00-overview.md`](./00-overview.md)
 > **Related:** [`../../03-design-system/03-tailwind-version-ssot.md`](../../03-design-system/03-tailwind-version-ssot.md) — Tailwind v4 `@theme` is the single source of truth
-> **Memory:** [`mem://design/theme`](../../../../.lovable/memory/design/theme.md)
+> **Memory:** `mem://design/theme` (memory-only reference)
 
 ---
 

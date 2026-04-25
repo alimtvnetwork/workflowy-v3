@@ -110,4 +110,4 @@ Transitions outside this matrix are bugs.
 - [`07-results-and-highlighting.md`](./07-results-and-highlighting.md) — cycling and footer pill
 - [`05-token-system.md`](./05-token-system.md) — chip behavior
 - [`10-accessibility.md`](./10-accessibility.md) — reduced-motion + ARIA states
-- [`mem://constraints/backend-runtime-deferred`](../../../../.lovable/memory/constraints/backend-runtime-deferred.md) — offline behavior is forward-spec
+- `mem://constraints/backend-runtime-deferred` — offline behavior is forward-spec (memory-only reference)

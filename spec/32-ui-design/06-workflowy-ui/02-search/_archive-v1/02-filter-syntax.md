@@ -3,7 +3,7 @@
 > **Version:** 1.0.0
 > **Created:** 2026-04-21 (UTC+8)
 > **Status:** ✅ Authored
-> **Parent:** [`./00-overview.md`](./00-overview.md)
+> **Parent:** [`../00-overview.md`](../00-overview.md) (archived — see `_archive-v1/README.md`)
 > **Sibling:** [`./01-overlay.md`](./01-overlay.md)
 > **Screenshots:** img-41, img-42, img-43, img-44, img-58
 
@@ -13,7 +13,7 @@
 
 Defines the **complete grammar** of the query string typed into the Search Overlay. Covers every filter keyword, operator, value format, combination rule, and the parser's behavior on malformed input.
 
-For the visual container, see [`./01-overlay.md`](./01-overlay.md).
+For the visual container, see [`./01-overlay.md`](./01-overlay.md). Parent overview at [`../00-overview.md`](../00-overview.md).
 
 ---
 
@@ -305,5 +305,5 @@ A "Clear recent searches" link sits at the bottom of the recent list.
 
 - [`./01-overlay.md`](./01-overlay.md) — visual container.
 - [`./00-overview.md`](./00-overview.md) — phase overview.
-- [`../01-navbar/01-layout.md`](../01-navbar/01-layout.md) § Right cluster — search input entry point.
+- [`../../01-navbar/01-layout.md`](../../01-navbar/01-layout.md) § Right cluster — search input entry point.
 - Forward-references: Phase 4 (bullet/comment), Phase 5 (highlight colors), Phase 6 (sidebar special nodes), Phase 8 (global hotkey binding).

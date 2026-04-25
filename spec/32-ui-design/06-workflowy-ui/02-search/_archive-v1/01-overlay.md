@@ -3,7 +3,7 @@
 > **Version:** 1.0.0
 > **Created:** 2026-04-21 (UTC+8)
 > **Status:** ✅ Authored
-> **Parent:** [`./00-overview.md`](./00-overview.md)
+> **Parent:** [`../00-overview.md`](../00-overview.md) (archived — see `_archive-v1/README.md`)
 > **Screenshots:** img-40, img-41, img-42, img-43, img-44, img-58
 > **Sibling:** [`./02-filter-syntax.md`](./02-filter-syntax.md)
 

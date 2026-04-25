@@ -97,7 +97,7 @@ Sorted by functional category, then alphabetical within category.
 
 ### Context-scoped (Search Popover only)
 
-When the Search Popover is open, the following overrides apply (see Phase 2 [`../../02-search/08-keyboard-shortcuts.md`](../../02-search/08-keyboard-shortcuts.md)):
+When the Search Popover is open, the following overrides apply (see Phase 2 [`../02-search/08-keyboard-shortcuts.md`](../02-search/08-keyboard-shortcuts.md)):
 
 | Shortcut | Action | Note |
 |----------|--------|------|
@@ -141,4 +141,4 @@ When the Search Popover is open, the following overrides apply (see Phase 2 [`..
 > - `⌘F` retained as alias for `⌘K` (legacy compatibility)
 >
 > Discrepancies with standard OS conventions (e.g., Ctrl vs Cmd) resolved by "Cmd on Mac / Ctrl elsewhere" rule.
-> Cross-cutting registry: Phase 8 [`../../08-app-shell/00-overview.md`](../../08-app-shell/00-overview.md) § Global Hotkey Registration.
+> Cross-cutting registry: Phase 8 [`../08-app-shell/00-overview.md`](../08-app-shell/00-overview.md) § Global Hotkey Registration.

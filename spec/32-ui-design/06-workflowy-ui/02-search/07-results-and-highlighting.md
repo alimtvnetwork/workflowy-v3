@@ -81,7 +81,7 @@ A pill anchored to **viewport bottom-center**, OUTSIDE the popover DOM.
 | ≤ 10k items | ≤ 120 ms |
 | ≤ 50k items | ≤ 400 ms |
 
-Implementer is free to use indexing strategies; spec only sets the budget. Engine choice deferred per [`mem://constraints/backend-runtime-deferred`](../../../../.lovable/memory/constraints/backend-runtime-deferred.md).
+Implementer is free to use indexing strategies; spec only sets the budget. Engine choice deferred per `mem://constraints/backend-runtime-deferred` (memory-only reference).
 
 ---
 

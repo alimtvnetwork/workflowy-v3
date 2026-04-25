@@ -2,7 +2,7 @@
 
 > **Version:** 1.0.0 · **Created:** 2026-04-25 (UTC+8) · **Status:** ✅ Authored (contract spec — runtime-agnostic)
 > **Parent:** [`00-overview.md`](./00-overview.md)
-> **Constraint:** [`mem://constraints/backend-runtime-deferred`](../../../../.lovable/memory/constraints/backend-runtime-deferred.md)
+> **Constraint:** `mem://constraints/backend-runtime-deferred` (memory-only reference)
 
 ---
 
