@@ -5,7 +5,7 @@
 > **Status:** ✅ Authored (v2)
 > **Parent:** [`../00-overview.md`](../00-overview.md)
 > **Supersedes:** v1.0.0 (full-screen overlay) — archived at [`./_archive-v1/`](./_archive-v1/README.md)
-> **Plan reference:** [`.lovable/plans/archive/03-workflowy-spec-consolidation.md`](../../../../.lovable/plans/archive/03-workflowy-spec-consolidation.md) § Phase 2
+> **Plan reference:** [`.lovable/plans/03-workflowy-spec-consolidation.md`](../../../../.lovable/plans/03-workflowy-spec-consolidation.md) § Phase 2
 
 
 <!-- AUTO-TOC:START -->

@@ -5,7 +5,7 @@
 > **Updated:** 2026-04-25 (UTC+8) — S05 cross-phase audit complete (all 10 phases)
 > **Status:** ✅ Complete (all blockers resolved 2026-04-23; cross-phase audit passed 2026-04-25)
 > **Parent:** [`../00-overview.md`](../00-overview.md)
-> **Source plan:** [`.lovable/plans/archive/03-workflowy-spec-consolidation.md`](../../../.lovable/plans/archive/03-workflowy-spec-consolidation.md)
+> **Source plan:** [`.lovable/plans/03-workflowy-spec-consolidation.md`](../../../.lovable/plans/03-workflowy-spec-consolidation.md)
 > **Reference assets:** `.lovable/references/workflowy-screenshots/` (28 screenshots img-40 → img-67)
 
 
@@ -98,5 +98,5 @@ This parent folder nests **10 phases** as numbered subfolders. Phase number = su
 
 - [`../00-overview.md`](../00-overview.md) — UI Design root
 - [`../01-architecture/00-overview.md`](../01-architecture/00-overview.md) — App architecture (separate track)
-- [`.lovable/plans/archive/03-workflowy-spec-consolidation.md`](../../../.lovable/plans/archive/03-workflowy-spec-consolidation.md) — Source plan
+- [`.lovable/plans/03-workflowy-spec-consolidation.md`](../../../.lovable/plans/03-workflowy-spec-consolidation.md) — Source plan
 - [`.lovable/memory/suggestions/01-workflowy-spec-consolidation.md`](../../../.lovable/memory/suggestions/01-workflowy-spec-consolidation.md) — Suggestion record

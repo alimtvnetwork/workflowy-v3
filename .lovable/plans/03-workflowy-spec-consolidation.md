@@ -1,6 +1,6 @@
 # Workflowy Spec Consolidation — 10-Phase Plan
 
-> **Created:** 2026-04-21 · **Updated:** 2026-04-25 · **Status:** ✅ ARCHIVED — All 10 phases complete; all 4 cross-cutting blockers resolved (B1 hex swatches, B2 sidebar drag = move/⌥-mirror, B3 launch themes = light+dark, D1 LinkedIn scope = read-only). Consistency report scores 100/100. No follow-up actionable.
+> **Created:** 2026-04-21 · **Updated:** 2026-04-23 · **Status:** ✅ All 10 phases complete
 > **Scope rule:** Only edit folders `spec/18+`. Folders `01–17` are READ-ONLY.
 > **Reference assets:** `.lovable/references/workflowy-screenshots/` (28 screenshots: img-40 → img-67, indexed in `00-index.md`).
 > **D1 resolution (2026-04-21):** All 10 phases nest under `spec/32-ui-design/06-workflowy-ui/` as subfolders `01-navbar/` … `10-mobile/`. Phase number = subfolder number. Existing siblings `01-architecture/` … `05-quality/` are untouched.
