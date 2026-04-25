@@ -1,7 +1,7 @@
 # Consistency Report — Navbar (Phase 1)
 
-> **Version:** 1.0.0
-> **Updated:** 2026-04-21
+> **Version:** 1.1.0
+> **Updated:** 2026-04-25 (UTC+8)
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
 ---
@@ -39,5 +39,6 @@
 | Date | Version | Action |
 |------|---------|--------|
 | 2026-04-21 | 1.0.0 | Initial report — created in S04 sweep |
+| 2026-04-25 | 1.1.0 | S05 cross-phase audit — no changes required; routing + hotkeys verified against Phase 8 registry |
 
-*Consistency Report — created 2026-04-21 (S04).*
+*Consistency Report — updated 2026-04-25 (S05 audit sweep).*

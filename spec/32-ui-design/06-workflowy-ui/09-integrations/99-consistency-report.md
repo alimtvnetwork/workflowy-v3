@@ -1,7 +1,7 @@
 # Consistency Report — Integrations (Phase 9)
 
-> **Version:** 1.1.0
-> **Updated:** 2026-04-23 (UTC+8)
+> **Version:** 1.2.0
+> **Updated:** 2026-04-25 (UTC+8)
 > **Status:** ✅ Spec complete (implementation deferred to post-v1)
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
@@ -53,5 +53,6 @@
 |------|---------|--------|
 | 2026-04-21 | 1.0.0 | Initial stub report — created in S04 sweep |
 | 2026-04-23 | 1.1.0 | Phase 9 promoted from stub to full spec; Blocker D-1 resolved; 18 ATs locked |
+| 2026-04-25 | 1.2.0 | S05 cross-phase audit — LinkedIn read-only scope re-confirmed; App Menu (Phase 8) → Phase 9 forward-link verified |
 
-*Consistency Report — updated 2026-04-23.*
+*Consistency Report — updated 2026-04-25 (S05 audit sweep).*

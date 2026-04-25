@@ -1,7 +1,7 @@
 # Consistency Report — Mobile / PWA (Phase 10)
 
-> **Version:** 1.1.0
-> **Updated:** 2026-04-23 (UTC+8)
+> **Version:** 1.2.0
+> **Updated:** 2026-04-25 (UTC+8)
 > **Status:** ✅ Spec complete (implementation deferred to post-v1)
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
@@ -45,5 +45,6 @@
 |------|---------|--------|
 | 2026-04-21 | 1.0.0 | Initial stub report — created in S04 sweep |
 | 2026-04-23 | 1.1.0 | Phase 10 promoted from stub to full spec; 20 ATs locked |
+| 2026-04-25 | 1.2.0 | S05 cross-phase audit — zoom hotkeys corrected from `Cmd+[`/`Cmd+]` to canonical `⌘←`/`⌘→` per Phase 3 registry; archived v1 search refs replaced with v2 equivalents |
 
-*Consistency Report — updated 2026-04-23.*
+*Consistency Report — updated 2026-04-25 (S05 audit sweep).*
