@@ -87,7 +87,7 @@ Negation: prefix any term with `-`. Combination: whitespace = AND. No `OR` opera
 | Full-text indexing engine | Backend runtime (S003) | Same |
 | Mobile sheet exact layout | Phase 10 | Forward-ref only |
 | Highlight color enumeration | Phase 5 § color palette | Forward-ref only |
-| `⌘K` global hotkey binding registration | Phase 8 app shell | Spec'd here, registered there |
+| `⌘K` global hotkey binding registration | Phase 8 app shell | Spec'd here, registered there — see [`../08-app-shell/00-overview.md#global-hotkey-registration`](../08-app-shell/00-overview.md) |
 
 ---
 
