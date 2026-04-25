@@ -1,7 +1,7 @@
 # CI/CD Pipeline Workflows
 
-> **Version:** 3.2.0  
-> **Updated:** 2026-04-19  
+> **Version:** 3.3.0
+> **Updated:** 2026-04-25 (UTC+8)
 
 
 
@@ -44,13 +44,14 @@ Central location for all CI/CD pipeline specifications, deployment automation, a
 
 ## Scope
 
-This module covers two distinct pipeline archetypes, shared conventions, and cross-cutting concerns:
+This module covers three distinct pipeline archetypes, shared conventions, and cross-cutting concerns:
 
-| Archetype | Subfolder | Description |
-|-----------|-----------|-------------|
-| Browser Extension Deploy | `01-browser-extension-deploy/` | Node.js/pnpm multi-component builds, zip packaging, Chrome Web Store |
-| Go Binary Deploy | `02-go-binary-deploy/` | Cross-compiled Go binaries, tar.gz/zip, install scripts, code signing |
-| Shared | Root files | Common patterns used across all pipeline types |
+| Archetype | Subfolder | Description | Status |
+|-----------|-----------|-------------|--------|
+| Browser Extension Deploy | `01-browser-extension-deploy/` | Node.js/pnpm multi-component builds, zip packaging, Chrome Web Store | 📚 Reference pattern (not used by WorkFlowy) |
+| Go Binary Deploy | `02-go-binary-deploy/` | Cross-compiled Go binaries, tar.gz/zip, install scripts, code signing | 📚 Reference pattern (not used by WorkFlowy) |
+| **WP-Plugin Deploy** | **`03-wp-plugin-deploy/`** | **Vite + React frontend → PHP 8.2 plugin → `.zip` → GitHub Release** | **✅ Canonical for WorkFlowy** |
+| Shared | Root files | Common patterns used across all pipeline types | ✅ Active |
 
 ---
 
@@ -106,12 +107,24 @@ AI INSTRUCTION:
 | 01 | [01-ci-pipeline.md](./02-go-binary-deploy/01-ci-pipeline.md) | CI: SHA dedup, lint, vulncheck, test matrix, cross-compile | ✅ Active |
 | 02 | [02-release-pipeline.md](./02-go-binary-deploy/02-release-pipeline.md) | Release: binary build, icon embedding, code signing, install scripts, GitHub Release | ✅ Active |
 
+### Subfolder: WP-Plugin Deploy ✅ Canonical
+
+| # | File | Description | Status |
+|---|------|-------------|--------|
+| 00 | [00-overview.md](./03-wp-plugin-deploy/00-overview.md) | Pipeline rules P1–P9 + 8-stage diagram | ✅ Active |
+| 01 | [01-distignore-and-zip-layout.md](./03-wp-plugin-deploy/01-distignore-and-zip-layout.md) | Canonical `.distignore` + final ZIP tree + 8 integrity gates | ✅ Active |
+| 02 | [02-github-actions-workflow.md](./03-wp-plugin-deploy/02-github-actions-workflow.md) | Complete `release.yml` (CI gates → package → release) | ✅ Active |
+| 03 | [03-update-server-contract.md](./03-wp-plugin-deploy/03-update-server-contract.md) | `info.json` shape + post-release verification gates | ✅ Active |
+| 04 | [04-version-sync.md](./03-wp-plugin-deploy/04-version-sync.md) | `package.json` → header + enum + tag drift detection | ✅ Active |
+| 97 | [97-acceptance-criteria.md](./03-wp-plugin-deploy/97-acceptance-criteria.md) | AT-WPPLUGINDEPLOY-01..15 | ✅ Active |
+
 ---
 
 ## Migration History
 
 | Date | Change |
 |------|--------|
+| 2026-04-25 | v3.3.0 — Added `03-wp-plugin-deploy/` (canonical archetype: Vite+React → PHP plugin .zip). Closes audit gap F-02. |
 | 2026-04-10 | v3.0.0 — Added 04-install-script-generation, 05-code-signing, 06-self-update-mechanism, 07-release-body-and-changelog; updated Go release pipeline with multi-module, icon embedding, LDFLAGS variables |
 | 2026-04-09 | v2.0.0 — Initial creation with shared conventions, two archetypes, vulnerability scanning |
 
