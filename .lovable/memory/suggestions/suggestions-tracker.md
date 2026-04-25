@@ -1,7 +1,7 @@
 # Lovable Suggestions Tracker
 
 > **Convention:** All suggestions tracked in this single file. Update status when completed. Move completed entries to `completed/` folder.
-> **Updated:** 2026-04-25 (UTC+8) — A-17 closed (6th batch of leaf AT files curated; running totals: 31 AT files curated → ~342 testable criteria authored)
+> **Updated:** 2026-04-25 (UTC+8) — A-18 closed (7th batch of leaf AT files curated; running totals: 36 AT files curated → ~408 testable criteria authored)
 
 ---
 
@@ -53,6 +53,11 @@
 ### A-17 — Curate 5 TS-ref + PHP-ref + retros + error-handling-ref + AI-mistakes AT files → ✅ closed
 - **Closed:** 2026-04-25 (UTC+8)
 - **Result:** Curated `02-coding-guidelines/02-typescript/08-typescript-standards-reference/` (14 criteria, AT-TYPESCRIPTSTANDARDSREFERENCE-01..14 — generics-first, zero-`any`, no-magic, 15-line/zero-nesting, isDefined guards, discriminated unions, enum parity, envelope validation), `02-coding-guidelines/04-php/07-php-standards-reference/` (13, AT-PHPSTANDARDSREFERENCE-01..13 — naming, structured errors, no-swallow catch, magic-value ban, constructor purity, isDefined guards, no-extract/eval/`$$var`, prepared statements + PascalCase DB keys), `03-error-manage/01-error-resolution/03-retrospectives/` (10, AT-RETROSPECTIVES-01..10 — Symptom→Root Cause→Detection→Fix→Prevention→Lessons format + 4 R-NN incident anchors), `03-error-manage/02-error-architecture/01-error-handling-reference/` (13, AT-ERRORHANDLINGREFERENCE-01..13 — 3-tier architecture, DelegatedRequestServer block, Global Error Modal tabs, E9999 unknown-code fallback), `02-coding-guidelines/06-ai-optimization/03-common-ai-mistakes/` (13, AT-COMMONAIMISTAKES-01..13 — 20 numbered mistakes incl. caching CODE RED §16-20, hallucination signals via tech-stack memory). Total: 63 testable criteria. All 18 hygiene checks pass. Stub count: 70 → 65. Version 0.16.0.
+
+### A-18 — Curate 5 error-modal-ref + apperror-struct + apperrtype-enums + debugging-go + session-logging AT files → ✅ closed
+- **Closed:** 2026-04-25 (UTC+8)
+- **Result:** Curated `03-error-manage/02-error-architecture/04-error-modal/03-error-modal-reference/` (15 criteria, AT-ERRORMODALREFERENCE-01..15 — CapturedError model, fixed Backend tabs Overview/Log/Execution/Stack/Session/Request/Traversal + Frontend tabs Overview/Stack/Context/Fixes, 3-hop request chain, deterministic Compact/Full reports, modal as sole error consumer), `03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/02-apperror-struct/` (12, AT-APPERRORSTRUCT-01..12 — struct purity, exact basic constructor set New/Wrap/NewType/WrapType/WrapTypeMsg, exact convenience set PathError/UrlError/SlugError/SiteError/EndpointError, Merge nil short-circuit, deterministic display methods), `03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/05-apperrtype-enums/` (13, AT-APPERRTYPEENUMS-01..13 — Variation as uint16, E1xxx-E18xxx ranges, JSON serializes by Code string, registry bijection, v1.x→v2.0 migration), `03-error-manage/01-error-resolution/05-debugging-guides/02-debugging-go/` (12, AT-DEBUGGINGGO-01..12 — 5-step boot order, zerolog structured fields, no-`http.Error` rule, pprof loopback-only, ORM-only policy, DBOperation wrapper), `03-error-manage/02-error-architecture/07-logging-and-diagnostics/02-session-based-logging/` (14, AT-SESSIONBASEDLOGGING-01..14 — SessionId at edge, 6-field complete capture, DelegatedRequestInfo for proxied calls, redact-before-persist, retention worker, 8 documented REST endpoints). Total: 66 testable criteria. All 18 hygiene checks pass. Stub count: 65 → 60. Version 0.17.0.
+
 ---
 
 ## Closed Suggestions (this sweep — 2026-04-25)
