@@ -97,21 +97,8 @@ Used for:
 
 ## Syntax Token Colors
 
-All colors use CSS custom properties (HSL format):
-
-| Token Type | CSS Class(es) | Color Variable |
-|------------|---------------|----------------|
-| Keywords, types, built-ins | `.hljs-keyword`, `.hljs-type`, `.hljs-built_in` | `--primary` (purple) |
-| Function/class names | `.hljs-title`, `.hljs-section` | `--foreground / 0.85` |
-| Strings, attributes | `.hljs-string`, `.hljs-attr`, `.hljs-property` | `--accent` (pink) |
-| Numbers, symbols | `.hljs-number`, `.hljs-symbol`, `.hljs-regexp` | `--warning` (amber) |
-| Comments | `.hljs-comment`, `.hljs-quote` | `--muted-foreground` (italic) |
-| Tree guides | `.tree-guide` | `--muted-foreground / 0.5` |
-| Tree directories | `.tree-dir` | `--foreground` (bold) |
-| Tree files | `.tree-file` | `--foreground / 0.85` |
-| Tree ellipsis | `.tree-ellipsis` | `--accent` (pink) |
-| Tree comments | `.tree-comment` | `--muted-foreground` (italic) |
+All `.hljs-*` and `.tree-*` token colors are mapped to project HSL CSS variables. The **complete CSS ruleset is the single responsibility of [`05-styling.md`](./05-styling.md)** — that file is the SSOT for selectors, exact variables, opacities, and font-style. This file only documents that colors MUST come from project tokens (never vendor stylesheets — see [`11-highlighter-dependency-pin.md`](./11-highlighter-dependency-pin.md)).
 
 ---
 
-*Syntax Highlighting — updated: 2026-04-08*
+*Syntax Highlighting — v3.2.0 — updated 2026-04-25 (UTC+8) — token map consolidated into `05-styling.md`.*
