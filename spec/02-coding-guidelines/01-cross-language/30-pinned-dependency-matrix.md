@@ -17,7 +17,7 @@ The runtime + tooling dependencies below are the **only versions** allowed in th
 | `react-router-dom` | `^7.13.2` | v7 data-router API; v6 not allowed |
 | `axios` | `1.14.0` **or** `0.30.3` (exact) | Security pin — see `scripts/validate-axios-version.ts` |
 | `@tanstack/react-query` | `^5.95.2` | v5 query API |
-| `lucide-react` | `^1.7.0` | Icon library — only icon source allowed |
+| `lucide-react` | `^0.460.0` | Icon library — only icon source allowed (corrected 2026-04-25; v1.x was a 2020 prerelease missing modern icons) |
 | `framer-motion` | `^12.38.0` | Motion primitives |
 | `class-variance-authority` | `^0.7.1` | Variant authoring for shadcn components |
 | `clsx` | `^2.1.1` | Class composition |
@@ -37,9 +37,9 @@ The runtime + tooling dependencies below are the **only versions** allowed in th
 
 | Package | Pinned version | Notes |
 |---------|---------------|-------|
-| `vite` | `^8.0.3` | Build + dev server |
+| `vite` | `^5.4.10` | Build + dev server (Vite 8 does not exist on npm; latest stable is 5.4.x) |
 | `@vitejs/plugin-react-swc` | `^4.3.0` | SWC transform — Babel plugin not allowed |
-| `typescript` | `^6.0.2` | Strict mode mandatory (see `13-strict-typing.md`) |
+| `typescript` | `^5.6.3` | Strict mode mandatory (see `13-strict-typing.md`). TS 6 does not exist on npm; latest stable is 5.6.x |
 | `@types/react` | `^19.2.14` | Must match React major |
 | `@types/react-dom` | `^19.2.3` | Must match React-DOM major |
 
