@@ -616,7 +616,7 @@
 | [`05-split-db-architecture/02-features/01-cli-examples/03-brun-examples.md`](./05-split-db-architecture/02-features/01-cli-examples/03-brun-examples.md) | Split DB Architecture: BRun CLI Examples | 3.1.0 | Active |
 | [`05-split-db-architecture/02-features/01-cli-examples/04-nexusflow-examples.md`](./05-split-db-architecture/02-features/01-cli-examples/04-nexusflow-examples.md) | Split DB Architecture: Nexus Flow CLI Examples | 3.1.0 | Active |
 | [`05-split-db-architecture/02-features/01-cli-examples/05-reset-api-tables.md`](./05-split-db-architecture/02-features/01-cli-examples/05-reset-api-tables.md) | Split DB Architecture: Reset API Tables | 3.1.0 | Active |
-| [`05-split-db-architecture/02-features/01-cli-examples/97-acceptance-criteria.md`](./05-split-db-architecture/02-features/01-cli-examples/97-acceptance-criteria.md) | Cli Examples — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`05-split-db-architecture/02-features/01-cli-examples/97-acceptance-criteria.md`](./05-split-db-architecture/02-features/01-cli-examples/97-acceptance-criteria.md) | CLI Examples (Split-DB) — Acceptance Criteria | 1.0.0 | Curated |
 | [`05-split-db-architecture/02-features/02-reset-api-standard.md`](./05-split-db-architecture/02-features/02-reset-api-standard.md) | Split DB Architecture: Reset API Standard | 3.1.0 | Active |
 | [`05-split-db-architecture/02-features/03-database-flow-diagrams.md`](./05-split-db-architecture/02-features/03-database-flow-diagrams.md) | Split DB Architecture: Complete Database Flow Diagram | 3.1.0 | Active |
 | [`05-split-db-architecture/02-features/04-rbac-casbin/00-overview.md`](./05-split-db-architecture/02-features/04-rbac-casbin/00-overview.md) | Split DB Architecture: Role-Based Access Control (RBAC) with Casbin | 3.1.0 | Active |
@@ -629,7 +629,7 @@
 | [`05-split-db-architecture/02-features/04-rbac-casbin/07-role-definitions.md`](./05-split-db-architecture/02-features/04-rbac-casbin/07-role-definitions.md) | 7. Default Role Definitions | — | — |
 | [`05-split-db-architecture/02-features/04-rbac-casbin/08-best-practices.md`](./05-split-db-architecture/02-features/04-rbac-casbin/08-best-practices.md) | 8. Best Practices | — | — |
 | [`05-split-db-architecture/02-features/04-rbac-casbin/09-split-db-integration.md`](./05-split-db-architecture/02-features/04-rbac-casbin/09-split-db-integration.md) | 9. Split DB Integration | — | — |
-| [`05-split-db-architecture/02-features/04-rbac-casbin/97-acceptance-criteria.md`](./05-split-db-architecture/02-features/04-rbac-casbin/97-acceptance-criteria.md) | Rbac Casbin — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`05-split-db-architecture/02-features/04-rbac-casbin/97-acceptance-criteria.md`](./05-split-db-architecture/02-features/04-rbac-casbin/97-acceptance-criteria.md) | RBAC Casbin — Acceptance Criteria | 1.0.0 | Curated |
 | [`05-split-db-architecture/02-features/05-user-scoped-isolation/00-overview.md`](./05-split-db-architecture/02-features/05-user-scoped-isolation/00-overview.md) | Split DB Architecture: User-Scoped Isolation | 3.1.0 | Active |
 | [`05-split-db-architecture/02-features/05-user-scoped-isolation/01-scoping-and-directory-patterns.md`](./05-split-db-architecture/02-features/05-user-scoped-isolation/01-scoping-and-directory-patterns.md) | 1. Scoping & Directory Patterns | — | — |
 | [`05-split-db-architecture/02-features/05-user-scoped-isolation/02-database-schema.md`](./05-split-db-architecture/02-features/05-user-scoped-isolation/02-database-schema.md) | 2. Database Schema | — | — |
@@ -637,7 +637,7 @@
 | [`05-split-db-architecture/02-features/05-user-scoped-isolation/04-usage-examples.md`](./05-split-db-architecture/02-features/05-user-scoped-isolation/04-usage-examples.md) | 4. Usage Examples | — | — |
 | [`05-split-db-architecture/02-features/05-user-scoped-isolation/05-session-management.md`](./05-split-db-architecture/02-features/05-user-scoped-isolation/05-session-management.md) | 5. Session Management | — | — |
 | [`05-split-db-architecture/02-features/05-user-scoped-isolation/06-privacy-and-gdpr.md`](./05-split-db-architecture/02-features/05-user-scoped-isolation/06-privacy-and-gdpr.md) | 6. Privacy & GDPR Compliance | — | — |
-| [`05-split-db-architecture/02-features/05-user-scoped-isolation/97-acceptance-criteria.md`](./05-split-db-architecture/02-features/05-user-scoped-isolation/97-acceptance-criteria.md) | User Scoped Isolation — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`05-split-db-architecture/02-features/05-user-scoped-isolation/97-acceptance-criteria.md`](./05-split-db-architecture/02-features/05-user-scoped-isolation/97-acceptance-criteria.md) | User-Scoped Isolation — Acceptance Criteria | 1.0.0 | Curated |
 | [`05-split-db-architecture/02-features/99-consistency-report.md`](./05-split-db-architecture/02-features/99-consistency-report.md) | Consistency Report: Split DB Features | 3.1.0 | — |
 | [`05-split-db-architecture/97-changelog.md`](./05-split-db-architecture/97-changelog.md) | Split DB Architecture — Changelog | 3.1.0 | — |
 | [`05-split-db-architecture/98-acceptance-criteria.md`](./05-split-db-architecture/98-acceptance-criteria.md) | Split DB Architecture: Acceptance Criteria | 3.1.0 | Active |
@@ -670,7 +670,7 @@
 | [`06-seedable-config-architecture/02-features/02-rag-validation-helpers/06-api-integration.md`](./06-seedable-config-architecture/02-features/02-rag-validation-helpers/06-api-integration.md) | 6. API Integration | — | — |
 | [`06-seedable-config-architecture/02-features/02-rag-validation-helpers/07-response-formats.md`](./06-seedable-config-architecture/02-features/02-rag-validation-helpers/07-response-formats.md) | 7. Response Formats | — | — |
 | [`06-seedable-config-architecture/02-features/02-rag-validation-helpers/08-unit-tests.md`](./06-seedable-config-architecture/02-features/02-rag-validation-helpers/08-unit-tests.md) | 8. Unit Tests | — | — |
-| [`06-seedable-config-architecture/02-features/02-rag-validation-helpers/97-acceptance-criteria.md`](./06-seedable-config-architecture/02-features/02-rag-validation-helpers/97-acceptance-criteria.md) | Rag Validation Helpers — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`06-seedable-config-architecture/02-features/02-rag-validation-helpers/97-acceptance-criteria.md`](./06-seedable-config-architecture/02-features/02-rag-validation-helpers/97-acceptance-criteria.md) | RAG Validation Helpers — Acceptance Criteria | 1.0.0 | Curated |
 | [`06-seedable-config-architecture/02-features/03-rag-validation-tests/00-overview.md`](./06-seedable-config-architecture/02-features/03-rag-validation-tests/00-overview.md) | RAG Validation Helpers: Unit Test Specification | 4.0.0 | Active |
 | [`06-seedable-config-architecture/02-features/03-rag-validation-tests/01-chunk-size-tests.md`](./06-seedable-config-architecture/02-features/03-rag-validation-tests/01-chunk-size-tests.md) | 01 — ChunkSize Validation Tests (AB-9301, AB-9302) | — | — |
 | [`06-seedable-config-architecture/02-features/03-rag-validation-tests/02-chunk-overlap-tests.md`](./06-seedable-config-architecture/02-features/03-rag-validation-tests/02-chunk-overlap-tests.md) | 02 — ChunkOverlap Validation Tests (AB-9303) | — | — |
@@ -1001,7 +1001,7 @@
 | [`15-wp-plugin-how-to/10-deployment-patterns/10-trait-decomposition.md`](./15-wp-plugin-how-to/10-deployment-patterns/10-trait-decomposition.md) | 10.10 Trait Decomposition for UpdateResolver | — | — |
 | [`15-wp-plugin-how-to/10-deployment-patterns/11-cicd-automation.md`](./15-wp-plugin-how-to/10-deployment-patterns/11-cicd-automation.md) | 10.11 CI/CD Automation (GitHub Actions) | — | — |
 | [`15-wp-plugin-how-to/10-deployment-patterns/12-summary.md`](./15-wp-plugin-how-to/10-deployment-patterns/12-summary.md) | 10.12 Summary Table | — | — |
-| [`15-wp-plugin-how-to/10-deployment-patterns/97-acceptance-criteria.md`](./15-wp-plugin-how-to/10-deployment-patterns/97-acceptance-criteria.md) | Deployment Patterns — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`15-wp-plugin-how-to/10-deployment-patterns/97-acceptance-criteria.md`](./15-wp-plugin-how-to/10-deployment-patterns/97-acceptance-criteria.md) | Deployment Patterns — Acceptance Criteria | 1.0.0 | Curated |
 | [`15-wp-plugin-how-to/11-frontend-and-template-patterns/00-overview.md`](./15-wp-plugin-how-to/11-frontend-and-template-patterns/00-overview.md) | Phase 11 — Frontend & Template Patterns (Overview) | — | — |
 | [`15-wp-plugin-how-to/11-frontend-and-template-patterns/01-file-size-limits.md`](./15-wp-plugin-how-to/11-frontend-and-template-patterns/01-file-size-limits.md) | 11.1 File Size Limits | — | — |
 | [`15-wp-plugin-how-to/11-frontend-and-template-patterns/02-template-architecture.md`](./15-wp-plugin-how-to/11-frontend-and-template-patterns/02-template-architecture.md) | 11.2 Template Architecture | — | — |
