@@ -1,7 +1,75 @@
 # UI Design
 
-> **Version:** 1.2.0  
-> **Updated:** 2026-04-18
+> **Version:** 2.0.0
+> **Updated:** 2026-04-25 (UTC+8)
+> **Status:** ✅ Implementation-grade rollup (F-01 closed)
+
+---
+
+## 🎯 Mission (read first)
+
+This folder is the **visual + interaction SSOT** for the WorkFlowy frontend. Behavior contracts (what features do) live in [`../31-app/`](../31-app/00-overview.md). **This folder answers "how does it look, animate, theme, and respond?"**
+
+**If you are an AI implementing UI, read in this exact order:**
+
+1. [`03-design-system/01-tokens-and-themes.md`](./03-design-system/01-tokens-and-themes.md) — HSL token SSOT.
+2. [`03-design-system/03-tailwind-version-ssot.md`](./03-design-system/03-tailwind-version-ssot.md) — Tailwind v4 + `@theme` block.
+3. [`01-architecture/01-tech-stack.md`](./01-architecture/01-tech-stack.md) — React 18 + Vite 5 + TS 5.
+4. [`01-architecture/03-component-hierarchy.md`](./01-architecture/03-component-hierarchy.md) — Component tree.
+5. [`01-architecture/05-component-contract-map.md`](./01-architecture/05-component-contract-map.md) — Per-component prop/event contracts.
+6. [`02-state-and-data/01-state-management.md`](./02-state-and-data/01-state-management.md) — Where state lives.
+7. [`06-workflowy-ui/00-overview.md`](./06-workflowy-ui/00-overview.md) — 10 visual phases (Navbar → Mobile) with screenshot refs.
+8. [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) — `AT-UIDESIGN-01..25`.
+
+---
+
+## 🔒 Load-Bearing UI Rules
+
+| # | Rule | Source |
+|---|------|--------|
+| U1 | All colors are HSL, defined in `src/index.css` `@theme` block. **Never** hardcode `#hex` or `rgb()` in components. | `03-design-system/01-tokens-and-themes.md` |
+| U2 | Components consume **semantic tokens** (`bg-background`, `text-foreground`, `border-border`), never raw color classes (`bg-white`, `text-black`). | `03-design-system/02-low-severity-clarifications.md` |
+| U3 | Tailwind is **v4 CSS-first via `@tailwindcss/vite`**. No `tailwind.config.ts` color extensions; tokens go in `@theme`. | `03-design-system/03-tailwind-version-ssot.md` |
+| U4 | Recursive item list virtualizes beyond **250 items per view**. | `02-state-and-data/02-data-flow.md` + `mem://architecture/data-model` |
+| U5 | Tech stack is **React 18 + Vite 5 + TS 5**. No Next.js, no Vue, no Svelte. | `01-architecture/01-tech-stack.md` |
+| U6 | Each component has a written contract in [`05-component-contract-map.md`](./01-architecture/05-component-contract-map.md). New components must extend that file. | `01-architecture/05-component-contract-map.md` |
+| U7 | Editor uses **fractional indexing** for child order. Drag-and-drop computes a midpoint key, never re-numbers siblings. | `04-editor/03-drag-and-drop.md` |
+| U8 | Loading / empty / error states are **mandatory** for every async surface. | `05-quality/03-loading-empty-error-states.md` |
+
+---
+
+## 🌳 Recursive-Tree Rendering Contract (the core UI)
+
+Most of this app is **one component rendered recursively**: `<ItemRow>` renders content + a `<ItemList>` of children, each child being an `<ItemRow>`. A mediocre AI tends to flatten this into a generic table — **do not**.
+
+- Indentation is visual only (margin-left × depth); the data model is a `parentId` graph, not a flat list with depth.
+- Collapsing a parent **does not** unmount children — it hides them via CSS so re-expand is instant.
+- Drag preview shows the **subtree**, not just the dragged row.
+- A view never holds more than 250 rendered nodes (rule U4).
+
+Full contract: [`02-state-and-data/02-data-flow.md`](./02-state-and-data/02-data-flow.md) and [`04-editor/03-drag-and-drop.md`](./04-editor/03-drag-and-drop.md).
+
+---
+
+## 🎨 Themes & Tokens — quickest path
+
+Define every token once in `src/index.css`:
+
+```css
+@import "tailwindcss";
+
+@theme {
+  --color-background: hsl(0 0% 100%);
+  --color-foreground: hsl(222 47% 11%);
+  --color-primary: hsl(222 47% 11%);
+  --color-primary-foreground: hsl(210 40% 98%);
+  /* …etc, all HSL */
+}
+```
+
+Then components only ever reference semantic classes. No exceptions.
+
+---
 
 
 <!-- AUTO-TOC:START -->
@@ -23,21 +91,16 @@
 
 ---
 
-## Overview
-
-Frontend UI/UX specification for the WorkFlowy app. The previous monolithic `01-frontend.md` has been split into themed subfolders covering architecture, state, design system, editor, and quality.
-
----
-
 ## Folders
 
-| # | Folder | Description |
-|---|--------|-------------|
-| 01 | [01-architecture/](./01-architecture/00-overview.md) | Tech stack, routes, component hierarchy, file organization |
-| 02 | [02-state-and-data/](./02-state-and-data/00-overview.md) | State management, data flow, shared TypeScript types |
-| 03 | [03-design-system/](./03-design-system/00-overview.md) | Tokens, themes, low-severity design clarifications |
-| 04 | [04-editor/](./04-editor/00-overview.md) | Rich text format, Enter key rules, drag-and-drop, interactions |
-| 05 | [05-quality/](./05-quality/00-overview.md) | Accessibility, performance, loading/empty/error states |
+| # | Folder | Purpose |
+|---|--------|---------|
+| 01 | [`01-architecture/`](./01-architecture/00-overview.md) | Tech stack, routes, component hierarchy, contract map |
+| 02 | [`02-state-and-data/`](./02-state-and-data/00-overview.md) | State management, data flow, shared TS types |
+| 03 | [`03-design-system/`](./03-design-system/00-overview.md) | HSL tokens, themes, Tailwind v4 SSOT |
+| 04 | [`04-editor/`](./04-editor/00-overview.md) | Rich text format, Enter/Tab rules, drag-and-drop |
+| 05 | [`05-quality/`](./05-quality/00-overview.md) | A11y, performance, loading/empty/error states |
+| 06 | [`06-workflowy-ui/`](./06-workflowy-ui/00-overview.md) | 10 visual phases (Navbar … Mobile) with screenshot refs |
 
 ---
 
@@ -45,14 +108,14 @@ Frontend UI/UX specification for the WorkFlowy app. The previous monolithic `01-
 
 | Reference | Location |
 |-----------|----------|
-| App | [../31-app/00-overview.md](../31-app/00-overview.md) |
-| Design System | [../07-design-system/00-overview.md](../07-design-system/00-overview.md) |
+| App behavior (SSOT) | [`../31-app/00-overview.md`](../31-app/00-overview.md) |
+| Coding guidelines | [`../02-coding-guidelines/00-overview.md`](../02-coding-guidelines/00-overview.md) |
+| Glossary | [`../19-glossary.md`](../19-glossary.md) |
 
 ---
 
 ## Related
 
-**See also:**
-
-- [`../00-overview.md`](../00-overview.md) — Parent overview
-- [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) — Acceptance criteria
+- [`../00-overview.md`](../00-overview.md) — Spec root
+- [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) — `AT-UIDESIGN-*` criteria
+- [`99-consistency-report.md`](./99-consistency-report.md) — Module health

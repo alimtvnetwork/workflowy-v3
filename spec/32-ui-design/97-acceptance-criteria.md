@@ -1,56 +1,94 @@
-# Ui Design — Acceptance Criteria
+# UI Design — Acceptance Criteria
 
-> **Version:** 1.0.0
-> **Updated:** 2026-04-20
-> **Status:** Scaffold — populate per-section criteria during next refinement pass
+> **Version:** 2.0.0
+> **Updated:** 2026-04-25 (UTC+8)
+> **Status:** ✅ Populated (F-01 closed)
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
 ---
 
 ## Purpose
 
-Testable acceptance criteria for the Ui Design domain. Each criterion is independently verifiable and traceable to a source spec file.
+Testable acceptance criteria for the UI Design domain. Each criterion is independently verifiable and traces back to a source spec file under `spec/32-ui-design/`. References load-bearing rules `U1..U8` in [`00-overview.md §🔒 Load-Bearing UI Rules`](./00-overview.md).
 
-Criteria use the stable ID format `AT-${folder.toUpperCase().replace(/[^A-Z]/g, '')}-NN`.
-
----
-
-## Coverage Map
-
-| # | Subsection | Acceptance ID Range | Status |
-|---|-----------|---------------------|--------|
-| 1 | [`01-architecture/`](./01-architecture/00-overview.md) | AT-UIDESIGN-01..05 | 📝 To populate |
-| 2 | [`02-state-and-data/`](./02-state-and-data/00-overview.md) | AT-UIDESIGN-06..10 | 📝 To populate |
-| 3 | [`03-design-system/`](./03-design-system/00-overview.md) | AT-UIDESIGN-11..15 | 📝 To populate |
-| 4 | [`04-editor/`](./04-editor/00-overview.md) | AT-UIDESIGN-16..20 | 📝 To populate |
-| 5 | [`05-quality/`](./05-quality/00-overview.md) | AT-UIDESIGN-21..25 | 📝 To populate |
+**ID format:** `AT-UIDESIGN-NN` (stable; never renumber).
 
 ---
 
 ## Criteria
 
-Per-subsection criteria are tracked in each subfolder's own `97-acceptance-criteria.md` (where present) or in the subsection's `00-overview.md` until extracted.
+### Tech stack & architecture
 
-**Convention:** A criterion is *complete* when (a) it has a stable ID, (b) it references a source file, and (c) it is verifiable by reading the source or running an automated check.
+| ID | Criterion | Source |
+|----|-----------|--------|
+| `AT-UIDESIGN-01` | App uses React 18 + Vite 5 + TypeScript 5. No Next.js, Vue, Svelte, or Angular. | `01-architecture/01-tech-stack.md` (rule U5) |
+| `AT-UIDESIGN-02` | All routes are declared in a single `routes` module per `01-architecture/02-routes.md`. | `01-architecture/02-routes.md` |
+| `AT-UIDESIGN-03` | Component tree matches `01-architecture/03-component-hierarchy.md` — `AppLayout` wraps every route via `<Outlet />`. | `src/components/layout/AppLayout.tsx` + spec |
+| `AT-UIDESIGN-04` | Source folders match `01-architecture/04-file-organization.md` (e.g., `src/components/layout/`, `src/pages/`). | `01-architecture/04-file-organization.md` |
+| `AT-UIDESIGN-05` | Every component listed in `01-architecture/05-component-contract-map.md` has matching props/events in code; new components extend that map. | `01-architecture/05-component-contract-map.md` (rule U6) |
+
+### Design system & theming
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| `AT-UIDESIGN-06` | All color tokens are defined in HSL inside `src/index.css` `@theme { … }`. No hex/rgb in components. | `03-design-system/01-tokens-and-themes.md` (rule U1) |
+| `AT-UIDESIGN-07` | Components use semantic Tailwind classes (`bg-background`, `text-foreground`, `border-border`). Raw classes (`bg-white`, `text-black`) are forbidden. | `03-design-system/02-low-severity-clarifications.md` (rule U2) |
+| `AT-UIDESIGN-08` | Tailwind is v4 via `@tailwindcss/vite`. No legacy `tailwind.config.ts` color extensions. | `03-design-system/03-tailwind-version-ssot.md` (rule U3) |
+| `AT-UIDESIGN-09` | Light and dark themes are token-driven; toggling theme changes only `@theme` variables, not component classes. | `03-design-system/01-tokens-and-themes.md` |
+
+### State & data
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| `AT-UIDESIGN-10` | State management approach matches `02-state-and-data/01-state-management.md` (no Redux unless that file mandates it). | `02-state-and-data/01-state-management.md` |
+| `AT-UIDESIGN-11` | Recursive item list renders a tree, not a flat array; collapsed children remain mounted (CSS-hidden) to keep re-expand instant. | `02-state-and-data/02-data-flow.md` |
+| `AT-UIDESIGN-12` | A view never holds more than 250 rendered item nodes; beyond that it virtualizes/paginates. | `02-state-and-data/02-data-flow.md` (rule U4) |
+| `AT-UIDESIGN-13` | Shared TS types live in `02-state-and-data/03-data-types.md` and are imported, not redefined. | `02-state-and-data/03-data-types.md` |
+
+### Editor
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| `AT-UIDESIGN-14` | Rich-text format matches `04-editor/01-rich-text-format.md`; storage is the documented serialized form. | `04-editor/01-rich-text-format.md` |
+| `AT-UIDESIGN-15` | Enter-key behavior matches `04-editor/02-enter-key-rules.md` exactly (sibling-after on non-empty, sibling-before on empty-at-start, etc.). | `04-editor/02-enter-key-rules.md` |
+| `AT-UIDESIGN-16` | Drag-and-drop computes a **fractional-index midpoint** for the new position; siblings are not re-numbered. Drag preview shows the full subtree. | `04-editor/03-drag-and-drop.md` (rule U7) |
+| `AT-UIDESIGN-17` | Tab indents under previous sibling; Shift+Tab outdents to grandparent. Both update only the moved item's `parentId` + index. | `04-editor/02-enter-key-rules.md` + `04-editor/04-interaction-clarifications.md` |
+
+### Quality (a11y, perf, states)
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| `AT-UIDESIGN-18` | All interactive elements meet WCAG 2.1 AA: 4.5:1 text contrast, visible focus ring, full keyboard reachability. | `05-quality/01-accessibility.md` |
+| `AT-UIDESIGN-19` | First contentful paint targets and bundle-size budgets in `05-quality/02-performance.md` are met. | `05-quality/02-performance.md` |
+| `AT-UIDESIGN-20` | Every async surface ships **all three** of: loading state, empty state, error state — no silent blank UI. | `05-quality/03-loading-empty-error-states.md` (rule U8) |
+
+### Workflowy UI phases (visual SSOT)
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| `AT-UIDESIGN-21` | Navbar matches Phase 1 spec (`06-workflowy-ui/01-navbar/`) including breadcrumb collapse and back/forward disabled states. | `06-workflowy-ui/01-navbar/00-overview.md` |
+| `AT-UIDESIGN-22` | Search popover behaves as a command-palette per Phase 2 (`06-workflowy-ui/02-search/`). | `06-workflowy-ui/02-search/00-overview.md` |
+| `AT-UIDESIGN-23` | Bullet anatomy and per-bullet context menus match Phase 4 (`06-workflowy-ui/04-bullet/`). | `06-workflowy-ui/04-bullet/00-overview.md` |
+| `AT-UIDESIGN-24` | Editor visuals (cursor, selection, inline tokens) match Phase 5 (`06-workflowy-ui/05-editor/`). | `06-workflowy-ui/05-editor/00-overview.md` |
+| `AT-UIDESIGN-25` | App shell — themes, fonts, settings, app menu — matches Phase 8 (`06-workflowy-ui/08-app-shell/`). | `06-workflowy-ui/08-app-shell/00-overview.md` |
 
 ---
 
 ## Verification
 
 ```bash
-# List all referenced sources in this folder
 grep -rn "AT-UIDESIGN-" spec/32-ui-design/
-
-# Run hygiene checks
 node scripts/spec-hygiene/00-run-all.mjs
 ```
+
+Each AT is "done" when (a) it has a stable ID, (b) its source file contains the rule, (c) it is verifiable by reading the source or running an automated check against an implementation.
 
 ---
 
 ## Related
 
-- [`00-overview.md`](./00-overview.md) — Parent overview
+- [`00-overview.md`](./00-overview.md) — Mission, Load-Bearing UI Rules (U1..U8)
 - [`spec/19-glossary.md`](../19-glossary.md) — Terminology SSOT
 - [`spec/20-enums-index.md`](../20-enums-index.md) — Enum registry
 
-*Acceptance criteria scaffold v1.0.0 — created 2026-04-20 (H-2.1).*
+*Populated 2026-04-25 to close audit finding F-01.*
