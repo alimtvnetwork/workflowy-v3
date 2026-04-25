@@ -33,6 +33,9 @@
   --color-completed: hsl(var(--completed));
   --color-note: hsl(var(--note));
   --color-highlight: hsl(var(--highlight));
+  --color-highlight-foreground: hsl(var(--highlight-foreground));
+  --color-accent-active: hsl(var(--accent-active));
+  --color-accent-active-foreground: hsl(var(--accent-active-foreground));
   --color-drag-indicator: hsl(var(--drag-indicator));
   --color-mirror: hsl(var(--mirror));
   --color-warning: hsl(var(--warning));
@@ -111,6 +114,9 @@
   --completed: 0 0% 75%;
   --note: 0 0% 45%;
   --highlight: 48 100% 90%;
+  --highlight-foreground: 48 90% 15%;
+  --accent-active: 220 90% 56%;
+  --accent-active-foreground: 0 0% 100%;
   --drag-indicator: 211 100% 50%;
   --mirror: 211 100% 50%;
   --warning: 38 92% 50%;
@@ -160,6 +166,9 @@
   --completed: 0 0% 35%;
   --note: 0 0% 55%;
   --highlight: 48 80% 20%;
+  --highlight-foreground: 48 100% 95%;
+  --accent-active: 220 80% 60%;
+  --accent-active-foreground: 0 0% 100%;
   --drag-indicator: 211 100% 55%;
   --mirror: 211 100% 60%;
   --warning: 38 92% 55%;

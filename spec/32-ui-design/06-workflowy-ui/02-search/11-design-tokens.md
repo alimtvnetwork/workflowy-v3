@@ -9,9 +9,9 @@
 
 ## Scope
 
-Maps every visual surface of the Search Popover to a **semantic design token**. This file is **spec-only**: it describes which tokens the future implementer must read from `src/index.css` `@theme` and which **3 NEW tokens** must be added before implementation begins.
+Maps every visual surface of the Search Popover to a **semantic design token**. This file describes which tokens the implementer must read from `src/index.css` `@theme` and which **4 NEW tokens** must be added before implementation begins.
 
-> ⚠️ **No code is written or modified by this spec file.** All token additions are an implementation prerequisite, not part of this spec phase.
+> ⚠️ **Status (2026-04-25):** All 4 new tokens have been added to `src/index.css` (`--highlight-foreground`, `--accent-active`, `--accent-active-foreground` joined the pre-existing `--highlight`). Closes audit finding F-05.
 
 ---
 
@@ -40,16 +40,16 @@ These tokens already exist in `@theme` and must be reused as-is. Do not redefine
 
 ## 2. NEW Tokens — REQUIRED Additions
 
-The implementer **MUST add these 3 tokens** to `src/index.css` `@theme` block (light + dark variants) before building Phase 2. Until added, the popover cannot be themed correctly.
+The implementer **MUST add these 4 tokens** to `src/index.css` `@theme` block (light + dark variants) before building Phase 2. ✅ **Done 2026-04-25** — see commit closing F-05.
 
-| Token | Purpose | Light value (suggested) | Dark value (suggested) | Contrast partner |
-|-------|---------|-------------------------|------------------------|------------------|
-| `--highlight` | `<mark>` background for matched text in outline + popover suggestions | `hsl(48 100% 88%)` | `hsl(48 70% 35%)` | `--highlight-foreground` |
-| `--highlight-foreground` | Text color on `<mark>` highlight surface | `hsl(48 90% 15%)` | `hsl(48 100% 95%)` | `--highlight` (≥ 4.5:1) |
-| `--accent-active` | Active/selected tab background (distinct from hover `--accent`) | `hsl(220 90% 56%)` | `hsl(220 80% 60%)` | `--accent-active-foreground` |
-| `--accent-active-foreground` | Text on active tab | `hsl(0 0% 100%)` | `hsl(0 0% 100%)` | `--accent-active` (≥ 7:1) |
+| Token | Purpose | Light value | Dark value | Contrast partner |
+|-------|---------|-------------|------------|------------------|
+| `--highlight` | `<mark>` background for matched text in outline + popover suggestions | `48 100% 90%` | `48 80% 20%` | `--highlight-foreground` |
+| `--highlight-foreground` | Text color on `<mark>` highlight surface | `48 90% 15%` | `48 100% 95%` | `--highlight` (≥ 4.5:1) |
+| `--accent-active` | Active/selected tab background (distinct from hover `--accent`) | `220 90% 56%` | `220 80% 60%` | `--accent-active-foreground` |
+| `--accent-active-foreground` | Text on active tab | `0 0% 100%` | `0 0% 100%` | `--accent-active` (≥ 7:1) |
 
-> Total new tokens: **4** (highlight pair + accent-active pair). The overview lists 3 because `--accent-active-foreground` is implicitly paired with `--accent-active`. Both pairs are required.
+> Total new tokens: **4** (highlight pair + accent-active pair). HSL values stored without the `hsl()` wrapper to match existing project convention (`hsl(var(--token))` used at consumption site).
 
 ### 2.1 Authoring location
 
@@ -139,10 +139,10 @@ Reuse existing z-index scale; no new tokens.
 
 Before any Phase 2 code is written, the implementer must:
 
-- [ ] Add `--highlight` + `--highlight-foreground` to `@theme` (light + dark)
-- [ ] Add `--accent-active` + `--accent-active-foreground` to `@theme` (light + dark)
+- [x] Add `--highlight` + `--highlight-foreground` to `@theme` (light + dark) — done 2026-04-25
+- [x] Add `--accent-active` + `--accent-active-foreground` to `@theme` (light + dark) — done 2026-04-25
 - [ ] Verify all contrast ratios in [`10-accessibility.md`](./10-accessibility.md) § 5
-- [ ] Update `tailwind.config.ts` if v3 fallback shim is in use (v4 `@theme` is canonical per Tailwind SSOT)
+- [ ] No `tailwind.config.ts` v3 fallback shim needed — project uses Tailwind v4 `@theme inline` exclusively
 
 ---
 
