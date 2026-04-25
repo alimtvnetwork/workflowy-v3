@@ -134,4 +134,11 @@ When the Search Popover is open, the following overrides apply (see Phase 2 [`..
 
 ## Source Attribution
 
-> All shortcuts transcribed verbatim from screenshot img-65. Discrepancies with standard OS conventions (e.g., Ctrl vs Cmd) resolved by "Cmd on Mac / Ctrl elsewhere" rule.
+> All shortcuts transcribed verbatim from screenshot img-65, then **extended (2026-04-25)** with:
+> - Phase 2 v2.0.0 additions: `⌘K` (canonical Search), `⌘J`, `⌘⇧S`, `⌘.` (popover-scoped pin)
+> - Phase 8 additions: `⌘⇧Y` theme cycle, `⌘,` settings, `⌘S` save, `⌘P` print
+> - Phase 7 addition: `⌘⇧N` Quick Add (already in img-65)
+> - `⌘F` retained as alias for `⌘K` (legacy compatibility)
+>
+> Discrepancies with standard OS conventions (e.g., Ctrl vs Cmd) resolved by "Cmd on Mac / Ctrl elsewhere" rule.
+> Cross-cutting registry: Phase 8 [`../../08-app-shell/00-overview.md`](../../08-app-shell/00-overview.md) § Global Hotkey Registration.
