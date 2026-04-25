@@ -38,5 +38,6 @@
 | Date | Version | Action |
 |------|---------|--------|
 | 2026-04-21 | 1.0.0 | Initial report — created in S04 sweep |
+| 2026-04-25 | 1.1.0 | S05 cross-phase audit — `⌘⇧S` collision with Phase 2 Saved Searches resolved (Drafts shortcut removed; right-click only); ⌥-mirror semantics re-verified against Phase 3 handbook |
 
-*Consistency Report — created 2026-04-21 (S04).*
+*Consistency Report — updated 2026-04-25 (S05 audit sweep).*
