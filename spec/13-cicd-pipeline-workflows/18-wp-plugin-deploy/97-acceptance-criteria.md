@@ -170,7 +170,7 @@ Only `package.json` may be hand-edited for version bumps. Plugin header and `Plu
 
 ```bash
 # List all referenced sources in this folder
-grep -rn "AT-WPPLUGINDEPLOY-" spec/13-cicd-pipeline-workflows/03-wp-plugin-deploy/
+grep -rn "AT-WPPLUGINDEPLOY-" spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/
 
 # Run hygiene checks
 node scripts/spec-hygiene/00-run-all.mjs

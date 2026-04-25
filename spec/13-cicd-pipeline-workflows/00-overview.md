@@ -17,7 +17,7 @@
 | 1 | [`01-browser-extension-deploy/`](./01-browser-extension-deploy/00-overview.md) | Browser Extension Deploy — Overview | subfolder |
 | 2 | [`02-go-binary-deploy/`](./02-go-binary-deploy/00-overview.md) | Go Binary Deploy — Overview | subfolder |
 | 3 | [`03-vulnerability-scanning.md`](./03-vulnerability-scanning.md) | Vulnerability Scanning | 105 |
-| 4 | [`03-wp-plugin-deploy/`](./03-wp-plugin-deploy/00-overview.md) | WP-Plugin Deploy — Overview | subfolder |
+| 4 | [`18-wp-plugin-deploy/`](./18-wp-plugin-deploy/00-overview.md) | WP-Plugin Deploy — Overview | subfolder |
 | 5 | [`04-install-script-generation.md`](./04-install-script-generation.md) | Install Script Generation | 210 |
 | 6 | [`05-code-signing.md`](./05-code-signing.md) | Code Signing | 178 |
 | 7 | [`06-self-update-mechanism.md`](./06-self-update-mechanism.md) | Self-Update Mechanism | 365 |
@@ -51,7 +51,7 @@ This module covers three distinct pipeline archetypes, shared conventions, and c
 |-----------|-----------|-------------|--------|
 | Browser Extension Deploy | `01-browser-extension-deploy/` | Node.js/pnpm multi-component builds, zip packaging, Chrome Web Store | 📚 Reference pattern (not used by WorkFlowy) |
 | Go Binary Deploy | `02-go-binary-deploy/` | Cross-compiled Go binaries, tar.gz/zip, install scripts, code signing | 📚 Reference pattern (not used by WorkFlowy) |
-| **WP-Plugin Deploy** | **`03-wp-plugin-deploy/`** | **Vite + React frontend → PHP 8.2 plugin → `.zip` → GitHub Release** | **✅ Canonical for WorkFlowy** |
+| **WP-Plugin Deploy** | **`18-wp-plugin-deploy/`** | **Vite + React frontend → PHP 8.2 plugin → `.zip` → GitHub Release** | **✅ Canonical for WorkFlowy** |
 | Shared | Root files | Common patterns used across all pipeline types | ✅ Active |
 
 ---
@@ -112,12 +112,12 @@ AI INSTRUCTION:
 
 | # | File | Description | Status |
 |---|------|-------------|--------|
-| 00 | [00-overview.md](./03-wp-plugin-deploy/00-overview.md) | Pipeline rules P1–P9 + 8-stage diagram | ✅ Active |
-| 01 | [01-distignore-and-zip-layout.md](./03-wp-plugin-deploy/01-distignore-and-zip-layout.md) | Canonical `.distignore` + final ZIP tree + 8 integrity gates | ✅ Active |
-| 02 | [02-github-actions-workflow.md](./03-wp-plugin-deploy/02-github-actions-workflow.md) | Complete `release.yml` (CI gates → package → release) | ✅ Active |
-| 03 | [03-update-server-contract.md](./03-wp-plugin-deploy/03-update-server-contract.md) | `info.json` shape + post-release verification gates | ✅ Active |
-| 04 | [04-version-sync.md](./03-wp-plugin-deploy/04-version-sync.md) | `package.json` → header + enum + tag drift detection | ✅ Active |
-| 97 | [97-acceptance-criteria.md](./03-wp-plugin-deploy/97-acceptance-criteria.md) | AT-WPPLUGINDEPLOY-01..15 | ✅ Active |
+| 00 | [00-overview.md](./18-wp-plugin-deploy/00-overview.md) | Pipeline rules P1–P9 + 8-stage diagram | ✅ Active |
+| 01 | [01-distignore-and-zip-layout.md](./18-wp-plugin-deploy/01-distignore-and-zip-layout.md) | Canonical `.distignore` + final ZIP tree + 8 integrity gates | ✅ Active |
+| 02 | [02-github-actions-workflow.md](./18-wp-plugin-deploy/02-github-actions-workflow.md) | Complete `release.yml` (CI gates → package → release) | ✅ Active |
+| 03 | [03-update-server-contract.md](./18-wp-plugin-deploy/03-update-server-contract.md) | `info.json` shape + post-release verification gates | ✅ Active |
+| 04 | [04-version-sync.md](./18-wp-plugin-deploy/04-version-sync.md) | `package.json` → header + enum + tag drift detection | ✅ Active |
+| 97 | [97-acceptance-criteria.md](./18-wp-plugin-deploy/97-acceptance-criteria.md) | AT-WPPLUGINDEPLOY-01..15 | ✅ Active |
 
 ---
 
@@ -125,7 +125,7 @@ AI INSTRUCTION:
 
 | Date | Change |
 |------|--------|
-| 2026-04-25 | v3.3.0 — Added `03-wp-plugin-deploy/` (canonical archetype: Vite+React → PHP plugin .zip). Closes audit gap F-02. |
+| 2026-04-25 | v3.3.0 — Added `18-wp-plugin-deploy/` (canonical archetype: Vite+React → PHP plugin .zip). Closes audit gap F-02. |
 | 2026-04-10 | v3.0.0 — Added 04-install-script-generation, 05-code-signing, 06-self-update-mechanism, 07-release-body-and-changelog; updated Go release pipeline with multi-module, icon embedding, LDFLAGS variables |
 | 2026-04-09 | v2.0.0 — Initial creation with shared conventions, two archetypes, vulnerability scanning |
 

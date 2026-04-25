@@ -21,7 +21,7 @@ Aggregated acceptance criteria for the CI/CD Pipeline Workflows domain. Per-arch
 | 3 | Vulnerability scanning | [`03-vulnerability-scanning.md`](./03-vulnerability-scanning.md) | AT-CICD-09..10 | ✅ |
 | 4 | Browser-Extension archetype | [`01-browser-extension-deploy/`](./01-browser-extension-deploy/00-overview.md) | AT-CICD-11..13 | 📚 Reference |
 | 5 | Go-Binary archetype | [`02-go-binary-deploy/`](./02-go-binary-deploy/00-overview.md) | AT-CICD-14..16 | 📚 Reference |
-| 6 | **WP-Plugin archetype (canonical)** | [`03-wp-plugin-deploy/`](./03-wp-plugin-deploy/00-overview.md) | **AT-WPPLUGINDEPLOY-01..15** | ✅ Active |
+| 6 | **WP-Plugin archetype (canonical)** | [`18-wp-plugin-deploy/`](./18-wp-plugin-deploy/00-overview.md) | **AT-WPPLUGINDEPLOY-01..15** | ✅ Active |
 
 ---
 
@@ -67,7 +67,7 @@ See [`01-browser-extension-deploy/`](./01-browser-extension-deploy/00-overview.m
 See [`02-go-binary-deploy/`](./02-go-binary-deploy/00-overview.md) — reference patterns only.
 
 ### AT-WPPLUGINDEPLOY-01..15 — WP-Plugin archetype (canonical)
-See [`03-wp-plugin-deploy/97-acceptance-criteria.md`](./03-wp-plugin-deploy/97-acceptance-criteria.md). 15 concrete, shell-verifiable criteria covering trigger, stage order, ZIP integrity (8 gates), workflow file presence, update-server contract, and version sync drift detection.
+See [`18-wp-plugin-deploy/97-acceptance-criteria.md`](./18-wp-plugin-deploy/97-acceptance-criteria.md). 15 concrete, shell-verifiable criteria covering trigger, stage order, ZIP integrity (8 gates), workflow file presence, update-server contract, and version sync drift detection.
 
 ---
 

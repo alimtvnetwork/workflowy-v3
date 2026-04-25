@@ -17,18 +17,18 @@ Add a third CI/CD archetype documenting the **Vite + React → PHP plugin .zip �
 | Issue | Evidence |
 |-------|----------|
 | Folder advertised "two archetypes" only | `13-cicd-pipeline-workflows/00-overview.md` v3.2.0 line 51–53 |
-| WP-plugin archetype absent | No `03-wp-plugin-deploy/` subfolder existed |
+| WP-plugin archetype absent | No `18-wp-plugin-deploy/` subfolder existed |
 | No spec for Vite-into-WP-plugin bundling | `15-wp-plugin-how-to/10-deployment-patterns/11-cicd-automation.md` is PHP-only — does not bundle a frontend SPA |
 | Parent AT file was scaffold | `13-cicd-pipeline-workflows/97-acceptance-criteria.md` v1.0.0 had 0 concrete criteria |
 
 ## Files Created
 
-1. `spec/13-cicd-pipeline-workflows/03-wp-plugin-deploy/00-overview.md` — 9 load-bearing pipeline rules (P1–P9), 8-stage diagram, cross-reference table to canonical sources
-2. `spec/13-cicd-pipeline-workflows/03-wp-plugin-deploy/01-distignore-and-zip-layout.md` — canonical `.distignore`, final ZIP tree, 8 integrity acceptance gates
-3. `spec/13-cicd-pipeline-workflows/03-wp-plugin-deploy/02-github-actions-workflow.md` — complete `release.yml` (3 jobs, 8 stages, integrity verification step inline)
-4. `spec/13-cicd-pipeline-workflows/03-wp-plugin-deploy/03-update-server-contract.md` — `info.json` JSON schema, 5 post-release verification gates
-5. `spec/13-cicd-pipeline-workflows/03-wp-plugin-deploy/04-version-sync.md` — `package.json` → header → enum → tag drift detection script + CI step
-6. `spec/13-cicd-pipeline-workflows/03-wp-plugin-deploy/97-acceptance-criteria.md` — `AT-WPPLUGINDEPLOY-01..15`, all shell-verifiable
+1. `spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/00-overview.md` — 9 load-bearing pipeline rules (P1–P9), 8-stage diagram, cross-reference table to canonical sources
+2. `spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/01-distignore-and-zip-layout.md` — canonical `.distignore`, final ZIP tree, 8 integrity acceptance gates
+3. `spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/02-github-actions-workflow.md` — complete `release.yml` (3 jobs, 8 stages, integrity verification step inline)
+4. `spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/03-update-server-contract.md` — `info.json` JSON schema, 5 post-release verification gates
+5. `spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/04-version-sync.md` — `package.json` → header → enum → tag drift detection script + CI step
+6. `spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md` — `AT-WPPLUGINDEPLOY-01..15`, all shell-verifiable
 
 ## Files Updated
 

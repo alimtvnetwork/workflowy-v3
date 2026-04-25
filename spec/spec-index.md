@@ -854,12 +854,12 @@
 | [`13-cicd-pipeline-workflows/02-go-binary-deploy/97-acceptance-criteria.md`](./13-cicd-pipeline-workflows/02-go-binary-deploy/97-acceptance-criteria.md) | Go Binary Deploy — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`13-cicd-pipeline-workflows/02-go-binary-deploy/99-consistency-report.md`](./13-cicd-pipeline-workflows/02-go-binary-deploy/99-consistency-report.md) | Consistency Report — Go Binary Deploy | 3.1.0 | — |
 | [`13-cicd-pipeline-workflows/03-vulnerability-scanning.md`](./13-cicd-pipeline-workflows/03-vulnerability-scanning.md) | Vulnerability Scanning | — | — |
-| [`13-cicd-pipeline-workflows/03-wp-plugin-deploy/00-overview.md`](./13-cicd-pipeline-workflows/03-wp-plugin-deploy/00-overview.md) | WP-Plugin Deploy — Overview | 1.0.0 | Canonical |
-| [`13-cicd-pipeline-workflows/03-wp-plugin-deploy/01-distignore-and-zip-layout.md`](./13-cicd-pipeline-workflows/03-wp-plugin-deploy/01-distignore-and-zip-layout.md) | 03.01 — `.distignore` and Final ZIP Layout | 1.0.0 | — |
-| [`13-cicd-pipeline-workflows/03-wp-plugin-deploy/02-github-actions-workflow.md`](./13-cicd-pipeline-workflows/03-wp-plugin-deploy/02-github-actions-workflow.md) | 03.02 — GitHub Actions Release Workflow | 1.0.0 | — |
-| [`13-cicd-pipeline-workflows/03-wp-plugin-deploy/03-update-server-contract.md`](./13-cicd-pipeline-workflows/03-wp-plugin-deploy/03-update-server-contract.md) | 03.03 — Update Server Contract (CI/CD Bridge) | 1.0.0 | — |
-| [`13-cicd-pipeline-workflows/03-wp-plugin-deploy/04-version-sync.md`](./13-cicd-pipeline-workflows/03-wp-plugin-deploy/04-version-sync.md) | 03.04 — Version Synchronization (`package.json` → PHP) | 1.0.0 | — |
-| [`13-cicd-pipeline-workflows/03-wp-plugin-deploy/97-acceptance-criteria.md`](./13-cicd-pipeline-workflows/03-wp-plugin-deploy/97-acceptance-criteria.md) | WP-Plugin Deploy — Acceptance Criteria | 1.0.0 | — |
+| [`13-cicd-pipeline-workflows/18-wp-plugin-deploy/00-overview.md`](./13-cicd-pipeline-workflows/18-wp-plugin-deploy/00-overview.md) | WP-Plugin Deploy — Overview | 1.0.0 | Canonical |
+| [`13-cicd-pipeline-workflows/18-wp-plugin-deploy/01-distignore-and-zip-layout.md`](./13-cicd-pipeline-workflows/18-wp-plugin-deploy/01-distignore-and-zip-layout.md) | 03.01 — `.distignore` and Final ZIP Layout | 1.0.0 | — |
+| [`13-cicd-pipeline-workflows/18-wp-plugin-deploy/02-github-actions-workflow.md`](./13-cicd-pipeline-workflows/18-wp-plugin-deploy/02-github-actions-workflow.md) | 03.02 — GitHub Actions Release Workflow | 1.0.0 | — |
+| [`13-cicd-pipeline-workflows/18-wp-plugin-deploy/03-update-server-contract.md`](./13-cicd-pipeline-workflows/18-wp-plugin-deploy/03-update-server-contract.md) | 03.03 — Update Server Contract (CI/CD Bridge) | 1.0.0 | — |
+| [`13-cicd-pipeline-workflows/18-wp-plugin-deploy/04-version-sync.md`](./13-cicd-pipeline-workflows/18-wp-plugin-deploy/04-version-sync.md) | 03.04 — Version Synchronization (`package.json` → PHP) | 1.0.0 | — |
+| [`13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md`](./13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md) | WP-Plugin Deploy — Acceptance Criteria | 1.0.0 | — |
 | [`13-cicd-pipeline-workflows/04-install-script-generation.md`](./13-cicd-pipeline-workflows/04-install-script-generation.md) | Install Script Generation | 3.1.0 | — |
 | [`13-cicd-pipeline-workflows/05-code-signing.md`](./13-cicd-pipeline-workflows/05-code-signing.md) | Code Signing | 3.1.0 | — |
 | [`13-cicd-pipeline-workflows/06-self-update-mechanism.md`](./13-cicd-pipeline-workflows/06-self-update-mechanism.md) | Self-Update Mechanism | 3.1.0 | — |
