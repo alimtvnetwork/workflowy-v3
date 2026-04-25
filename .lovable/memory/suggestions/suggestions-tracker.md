@@ -1,7 +1,7 @@
 # Lovable Suggestions Tracker
 
 > **Convention:** All suggestions tracked in this single file. Update status when completed. Move completed entries to `completed/` folder.
-> **Updated:** 2026-04-25 (UTC+8) — A-16 closed (5th batch of leaf AT files curated; running totals: 26 AT files curated → ~279 testable criteria authored)
+> **Updated:** 2026-04-25 (UTC+8) — A-17 closed (6th batch of leaf AT files curated; running totals: 31 AT files curated → ~342 testable criteria authored)
 
 ---
 
