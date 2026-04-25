@@ -66,7 +66,7 @@ A popover-anchored menu listing user-saved queries. Two sections:
 ### 3.4 Storage
 
 > **Storage adapter: TBD per backend choice.**
-> The UI is fully specified; persistence is deferred per [`mem://constraints/backend-runtime-deferred`](../../../../.lovable/memory/constraints/backend-runtime-deferred.md). Future implementer must choose a runtime (LocalStorage / WordPress meta / API endpoint / etc.) and wire the `SavedSearchStore` contract from [`13-data-contracts.md`](./13-data-contracts.md).
+> The UI is fully specified; persistence is deferred per `mem://constraints/backend-runtime-deferred` (memory-only reference). Future implementer must choose a runtime (LocalStorage / WordPress meta / API endpoint / etc.) and wire the `SavedSearchStore` contract from [`13-data-contracts.md`](./13-data-contracts.md).
 
 ARIA: `role="menu"` with `aria-label="Saved searches"`.
 
@@ -114,4 +114,4 @@ Bottom-sheet variant of dropdowns specified in [`09-states-and-edge-cases.md`](.
 - [`08-keyboard-shortcuts.md`](./08-keyboard-shortcuts.md) — full shortcut matrix incl. `⌘J`, `⌘S`, `⌘.`
 - [`13-data-contracts.md`](./13-data-contracts.md) — `SavedSearch`, `SavedSearchStore` shapes
 - [`12-icon-map.md`](./12-icon-map.md) — Lucide names
-- [`mem://constraints/backend-runtime-deferred`](../../../../.lovable/memory/constraints/backend-runtime-deferred.md) — storage deferral
+- `mem://constraints/backend-runtime-deferred` — storage deferral (memory-only reference)

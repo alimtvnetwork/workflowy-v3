@@ -2,7 +2,7 @@
 
 > **Version:** 1.0.0
 > **Updated:** 2026-04-21
-> **Parent:** [`00-overview.md`](./00-overview.md)
+> **Parent:** [`../00-overview.md`](../00-overview.md) (archived — see `_archive-v1/README.md`)
 
 ---
 

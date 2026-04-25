@@ -123,7 +123,7 @@ Negation: prefix any term with `-`. Combination: whitespace = AND. No `OR` opera
 - [`../03-design-system/03-tailwind-version-ssot.md`](../../03-design-system/03-tailwind-version-ssot.md) — token authoring location (v4 `@theme`)
 - [`../../06-workflowy-ui/05-editor/`](../05-editor/) — highlight color palette (forward-ref)
 - [`../../06-workflowy-ui/08-app-shell/`](../08-app-shell/) — global hotkey registration (forward-ref)
-- [`mem://constraints/backend-runtime-deferred`](../../../../.lovable/memory/constraints/backend-runtime-deferred.md) — storage deferral rationale
+- `mem://constraints/backend-runtime-deferred` — storage deferral rationale (memory-only reference)
 
 ---
 
