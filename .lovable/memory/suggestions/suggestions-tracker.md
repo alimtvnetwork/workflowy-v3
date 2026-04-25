@@ -1,7 +1,7 @@
 # Lovable Suggestions Tracker
 
 > **Convention:** All suggestions tracked in this single file. Update status when completed. Move completed entries to `completed/` folder.
-> **Updated:** 2026-04-25 (UTC+8) — A-04 closed (enum-sync hygiene check wired)
+> **Updated:** 2026-04-25 (UTC+8) — A-05 closed (Tailwind token-sync hygiene check wired)
 
 ---
 
@@ -22,12 +22,9 @@
 - **Closed:** 2026-04-25 (UTC+8)
 - **Result:** Added `scripts/spec-hygiene/15-check-enums-in-sync.mjs` (extensible `ENUMS` table). Wired into `00-run-all.mjs`. Verified positive ✅ on 12-case `ItemType` and negative ❌ on a synthetic `phantom` case (exit 1). Adding new tracked enums = one row in the script's `ENUMS` array.
 
-### A-05 — Tailwind token-sync hygiene check
-- **Created:** 2026-04-25
-- **Source:** Audit (this round)
-- **Description:** Components reference Tailwind classes (`text-h1`, `mb-md`, `bg-background`) without compile-time validation against `index.css` `@theme` block.
-- **Proposed Change:** Hygiene check that parses `@theme` and asserts every Tailwind class used in `src/**` resolves.
-- **Status:** open — non-blocking
+### A-05 — Tailwind token-sync hygiene check → ✅ closed
+- **Closed:** 2026-04-25 (UTC+8)
+- **Result:** Added `scripts/spec-hygiene/16-check-tailwind-tokens.mjs`. Parses `@theme` block (39 colors / 12 spacing / 8 font-size / 3 radius), then scans 24 source files and asserts every token-bound utility (`bg-*`, `text-*`, `m*-*`, `rounded-*`, etc.) resolves. Built-in Tailwind utilities and arbitrary `[…]` values are correctly ignored. Wired into `00-run-all.mjs`. Negative-test verified (synthetic `text-h99` caught with exit 1).
 
 ### A-11 — Encode `MAX_ITEMS_PER_VIEW = 250` → ✅ closed
 - **Closed:** 2026-04-25 (UTC+8)
