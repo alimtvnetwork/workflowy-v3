@@ -45,7 +45,7 @@
 
 | ID | Criterion | Source |
 |----|-----------|--------|
-| AT-RESPONSEKEYTYPEINVENTORY-10 | All response payloads in PHP/Go MUST use `ResponseKeyType` (or its language mirror) — string-literal keys in `wp_send_json_*` / Go `json.Marshal` of map literals are forbidden. | [`00-overview.md`](./00-overview.md), [`../05-error-handling.md`](../05-error-handling.md) |
+| AT-RESPONSEKEYTYPEINVENTORY-10 | All response payloads in PHP/Go MUST use `ResponseKeyType` (or its language mirror) — string-literal keys in `wp_send_json_*` / Go `json.Marshal` of map literals are forbidden. | [`00-overview.md`](./00-overview.md), [`../05-response-array-standard.md`](../05-response-array-standard.md) |
 | AT-RESPONSEKEYTYPEINVENTORY-11 | Adding a new response key REQUIRES (a) adding the case to the PHP enum, (b) regenerating the Go variant, (c) regenerating the TS constant map, (d) appending to the appropriate topic file; missing any step fails review. | [`00-overview.md`](./00-overview.md) |
 | AT-RESPONSEKEYTYPEINVENTORY-12 | Deprecated cases MUST be marked (not deleted) for at least one minor version with a deprecation note in the topic file AND a `@deprecated` tag in the PHP enum docblock. | [`00-overview.md`](./00-overview.md) |
 
