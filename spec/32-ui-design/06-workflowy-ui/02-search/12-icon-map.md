@@ -67,7 +67,7 @@ Canonical mapping from semantic icon role → Lucide React component. **No emoji
 | Tag suggestion | `Hash` | 14 | — |
 | Link suggestion | `Link` | 14 | — |
 | Highlight color suggestion | `Highlighter` | 14 | — |
-| Item type suggestion (`is:`) | varies | 14 | Per item type — see Phase 4 icon map |
+| Item type suggestion (`is:`) | varies | 14 | Per item type — see [`../05-editor/03-item-types.md`](../05-editor/03-item-types.md) § Item Type → Lucide Icon Map |
 | Saved search row | `Star` | 14 | — |
 | Recent search row | `Clock` | 14 | — |
 
