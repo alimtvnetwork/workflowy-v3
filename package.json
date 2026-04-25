@@ -1,13 +1,15 @@
 {
   "name": "workflowy-clone",
   "private": true,
-  "version": "0.4.1",
+  "version": "0.5.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "build:dev": "vite build",
     "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "validate:axios": "npx tsx scripts/validate-axios-version.ts",
     "spec:check": "node scripts/spec-hygiene/00-run-all.mjs",
     "prepare": "node scripts/install-git-hooks.mjs"
@@ -33,5 +35,11 @@
     "tailwindcss": "^4.2.2",
     "typescript": "^5.6.3",
     "vite": "^5.4.10"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.0",
+    "@testing-library/react": "^16.0.0",
+    "jsdom": "^25.0.0",
+    "vitest": "^3.2.4"
   }
 }
