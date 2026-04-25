@@ -1,8 +1,12 @@
 # Plan — Spec Hygiene Fixes (Phased)
 
-> **Version:** 1.0.0  
-> **Updated:** 2026-04-18  
-> **Source of truth for issues:** `spec/18-spec-issues/01-audit-2026-04-18.md`  
+> **Version:** 1.1.0 · **Updated:** 2026-04-25 (UTC+8) · **Status:** ✅ ARCHIVED
+> **Resolution audit (2026-04-25):** All 18 audit issues (I-01 … I-18) are closed. Verified:
+> - Parallel folders `spec/21-app/`, `spec/22-app-issues/`, `spec/23-app-database/`, `spec/24-app-design-system-and-ui/` and slots 25–30 are **gone** (closes I-02, I-03, I-04, I-17).
+> - `.lovable/memories/` is gone, only `.lovable/memory/` remains (closes I-10).
+> - `spec/31-app/02-audits/` removed (closes I-12, I-16).
+> - 18 hygiene scripts in `scripts/spec-hygiene/` wired into `00-run-all.mjs` (closes I-18).
+> **Source of truth for issues:** `spec/18-spec-issues/01-audit-2026-04-18.md`
 > **Memory mirror:** `.lovable/memory/issues/spec-hygiene.md`
 
 ---
