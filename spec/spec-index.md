@@ -213,7 +213,7 @@
 | [`02-coding-guidelines/03-golang/01-enum-specification/03-folder-structure.md`](./02-coding-guidelines/03-golang/01-enum-specification/03-folder-structure.md) | Folder Structure | 3.1.0 | Complete |
 | [`02-coding-guidelines/03-golang/01-enum-specification/04-validation-checklist.md`](./02-coding-guidelines/03-golang/01-enum-specification/04-validation-checklist.md) | Validation Checklist | 3.1.0 | Complete |
 | [`02-coding-guidelines/03-golang/01-enum-specification/05-info-object-pattern.md`](./02-coding-guidelines/03-golang/01-enum-specification/05-info-object-pattern.md) | Info-Object Pattern for Go Enums | 3.1.0 | Complete |
-| [`02-coding-guidelines/03-golang/01-enum-specification/97-acceptance-criteria.md`](./02-coding-guidelines/03-golang/01-enum-specification/97-acceptance-criteria.md) | Enum Specification — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`02-coding-guidelines/03-golang/01-enum-specification/97-acceptance-criteria.md`](./02-coding-guidelines/03-golang/01-enum-specification/97-acceptance-criteria.md) | Go Enum Specification — Acceptance Criteria | 2.0.0 | Curated |
 | [`02-coding-guidelines/03-golang/01-enum-specification/99-consistency-report.md`](./02-coding-guidelines/03-golang/01-enum-specification/99-consistency-report.md) | Consistency Report: Enum Specification | 3.1.0 | — |
 | [`02-coding-guidelines/03-golang/02-boolean-standards/00-overview.md`](./02-coding-guidelines/03-golang/02-boolean-standards/00-overview.md) | Go Boolean Standards — Overview | — | — |
 | [`02-coding-guidelines/03-golang/02-boolean-standards/01-positive-naming.md`](./02-coding-guidelines/03-golang/02-boolean-standards/01-positive-naming.md) | Rule P1 — Positive Boolean Naming | — | — |
@@ -260,7 +260,7 @@
 | [`02-coding-guidelines/04-php/01-enums/15-error-type-class.md`](./02-coding-guidelines/04-php/01-enums/15-error-type-class.md) | ErrorType — PHP Error Type Constants (Non-Enum Class) | — | — |
 | [`02-coding-guidelines/04-php/01-enums/16-classification-and-checklist.md`](./02-coding-guidelines/04-php/01-enums/16-classification-and-checklist.md) | Classification and "Add New Case" Checklist | — | — |
 | [`02-coding-guidelines/04-php/01-enums/17-log-context-keys.md`](./02-coding-guidelines/04-php/01-enums/17-log-context-keys.md) | Log Context Array Keys — camelCase | — | — |
-| [`02-coding-guidelines/04-php/01-enums/97-acceptance-criteria.md`](./02-coding-guidelines/04-php/01-enums/97-acceptance-criteria.md) | Enums — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`02-coding-guidelines/04-php/01-enums/97-acceptance-criteria.md`](./02-coding-guidelines/04-php/01-enums/97-acceptance-criteria.md) | PHP Enums — Acceptance Criteria | 2.0.0 | Curated |
 | [`02-coding-guidelines/04-php/02-forbidden-patterns/00-overview.md`](./02-coding-guidelines/04-php/02-forbidden-patterns/00-overview.md) | PHP Forbidden Patterns — Quick Reference Checklist | 5.0.0 | — |
 | [`02-coding-guidelines/04-php/02-forbidden-patterns/01-error-handling.md`](./02-coding-guidelines/04-php/02-forbidden-patterns/01-error-handling.md) | §1 Error Handling & §7 Error Type Constants | — | — |
 | [`02-coding-guidelines/04-php/02-forbidden-patterns/02-magic-strings-hooks-paths.md`](./02-coding-guidelines/04-php/02-forbidden-patterns/02-magic-strings-hooks-paths.md) | §2 Magic Strings — Hooks & §3 File Paths | — | — |
@@ -269,7 +269,7 @@
 | [`02-coding-guidelines/04-php/02-forbidden-patterns/05-response-key-and-plugin-config.md`](./02-coding-guidelines/04-php/02-forbidden-patterns/05-response-key-and-plugin-config.md) | §8 ResponseKeyType & §9 PluginConfigType | — | — |
 | [`02-coding-guidelines/04-php/02-forbidden-patterns/06-date-formats-and-response-casing.md`](./02-coding-guidelines/04-php/02-forbidden-patterns/06-date-formats-and-response-casing.md) | §10 Hardcoded Date Formats & §11 snake_case Response Keys | — | — |
 | [`02-coding-guidelines/04-php/02-forbidden-patterns/07-checklist.md`](./02-coding-guidelines/04-php/02-forbidden-patterns/07-checklist.md) | Checklist Summary (Copy for PRs) | — | — |
-| [`02-coding-guidelines/04-php/02-forbidden-patterns/97-acceptance-criteria.md`](./02-coding-guidelines/04-php/02-forbidden-patterns/97-acceptance-criteria.md) | Forbidden Patterns — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`02-coding-guidelines/04-php/02-forbidden-patterns/97-acceptance-criteria.md`](./02-coding-guidelines/04-php/02-forbidden-patterns/97-acceptance-criteria.md) | PHP Forbidden Patterns — Acceptance Criteria | 2.0.0 | Curated |
 | [`02-coding-guidelines/04-php/03-naming-conventions/00-overview.md`](./02-coding-guidelines/04-php/03-naming-conventions/00-overview.md) | PHP Naming Conventions | 2.0.0 | — |
 | [`02-coding-guidelines/04-php/03-naming-conventions/01-symbols.md`](./02-coding-guidelines/04-php/03-naming-conventions/01-symbols.md) | Symbols — Classes, Methods, Variables, Constants, Enum Cases | — | — |
 | [`02-coding-guidelines/04-php/03-naming-conventions/02-files-and-namespaces.md`](./02-coding-guidelines/04-php/03-naming-conventions/02-files-and-namespaces.md) | Files, Namespaces, and Directory Structure | — | — |
@@ -497,7 +497,7 @@
 | [`03-error-manage/02-error-architecture/04-error-modal/06-suppress-global-error.md`](./03-error-manage/02-error-architecture/04-error-modal/06-suppress-global-error.md) | Error Modal — suppressGlobalError Meta Pattern | 1.2.0 | Active |
 | [`03-error-manage/02-error-architecture/04-error-modal/07-error-modal-reference-legacy.md`](./03-error-manage/02-error-architecture/04-error-modal/07-error-modal-reference-legacy.md) | Error Modal — Frontend Specification (Legacy Redirect) | 3.0.0 | Redirect |
 | [`03-error-manage/02-error-architecture/04-error-modal/08-color-themes-legacy.md`](./03-error-manage/02-error-architecture/04-error-modal/08-color-themes-legacy.md) | Error Modal — Color Theme & Design Token Reference (Legacy Stub) | 3.0.0 | — |
-| [`03-error-manage/02-error-architecture/04-error-modal/97-acceptance-criteria.md`](./03-error-manage/02-error-architecture/04-error-modal/97-acceptance-criteria.md) | Error Modal — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`03-error-manage/02-error-architecture/04-error-modal/97-acceptance-criteria.md`](./03-error-manage/02-error-architecture/04-error-modal/97-acceptance-criteria.md) | Error Modal — Acceptance Criteria | 2.0.0 | Curated |
 | [`03-error-manage/02-error-architecture/04-error-modal/99-consistency-report.md`](./03-error-manage/02-error-architecture/04-error-modal/99-consistency-report.md) | Consistency Report: Error Modal | 3.1.0 | — |
 | [`03-error-manage/02-error-architecture/05-response-envelope/00-overview.md`](./03-error-manage/02-error-architecture/05-response-envelope/00-overview.md) | Response Envelope | 3.1.0 | Active |
 | [`03-error-manage/02-error-architecture/05-response-envelope/01-adr.md`](./03-error-manage/02-error-architecture/05-response-envelope/01-adr.md) | ADR: Universal Response Envelope — Architecture Decision Record | 3.1.0 | Accepted |
@@ -588,7 +588,7 @@
 | [`04-database-conventions/06-rest-api-format/03-envelope-and-flow.md`](./04-database-conventions/06-rest-api-format/03-envelope-and-flow.md) | Envelope Quick Reference & PascalCase Data Flow | — | — |
 | [`04-database-conventions/06-rest-api-format/04-language-implementation.md`](./04-database-conventions/06-rest-api-format/04-language-implementation.md) | Language Implementation | — | — |
 | [`04-database-conventions/06-rest-api-format/05-paths-and-references.md`](./04-database-conventions/06-rest-api-format/05-paths-and-references.md) | URL Paths vs JSON Keys & Cross-References | — | — |
-| [`04-database-conventions/06-rest-api-format/97-acceptance-criteria.md`](./04-database-conventions/06-rest-api-format/97-acceptance-criteria.md) | Rest Api Format — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`04-database-conventions/06-rest-api-format/97-acceptance-criteria.md`](./04-database-conventions/06-rest-api-format/97-acceptance-criteria.md) | REST API Format — Acceptance Criteria | 2.0.0 | Curated |
 | [`04-database-conventions/07-split-db-pattern.md`](./04-database-conventions/07-split-db-pattern.md) | Split DB Pattern | 3.1.0 | — |
 | [`04-database-conventions/97-acceptance-criteria.md`](./04-database-conventions/97-acceptance-criteria.md) | Database Conventions — Acceptance Criteria | 1.0.0 | Scaffold |
 | [`04-database-conventions/99-consistency-report.md`](./04-database-conventions/99-consistency-report.md) | Consistency Report — Database Conventions | 3.1.0 | — |
