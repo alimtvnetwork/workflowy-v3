@@ -1,7 +1,7 @@
 # Lovable Suggestions Tracker
 
 > **Convention:** All suggestions tracked in this single file. Update status when completed. Move completed entries to `completed/` folder.
-> **Updated:** 2026-04-25 (UTC+8) — A-07 closed (typed toast queue + 9 new tests)
+> **Updated:** 2026-04-25 (UTC+8) — Phase 4 closed (all 3 plans archived; 18 hygiene issues + 4 cross-cutting blockers verified resolved)
 
 ---
 
