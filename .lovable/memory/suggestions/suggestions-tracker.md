@@ -1,7 +1,7 @@
 # Lovable Suggestions Tracker
 
 > **Convention:** All suggestions tracked in this single file. Update status when completed. Move completed entries to `completed/` folder.
-> **Updated:** 2026-04-25 (UTC+8) — A-05 closed (Tailwind token-sync hygiene check wired)
+> **Updated:** 2026-04-25 (UTC+8) — A-12 closed (top-level AT rollups for `31-app/` & `32-ui-design/` curated)
 
 ---
 
@@ -29,6 +29,10 @@
 ### A-11 — Encode `MAX_ITEMS_PER_VIEW = 250` → ✅ closed
 - **Closed:** 2026-04-25 (UTC+8)
 - **Result:** Constant added to `src/lib/constants.ts` with SSOT cross-link to `mem://architecture/data-model` and `spec/31-app/01-features/04-page-content-area.md`. Other constants now annotated with spec refs too.
+
+### A-12 — Curate top-level AT rollups for App + UI Design → ✅ closed
+- **Closed:** 2026-04-25 (UTC+8)
+- **Result:** Replaced placeholder scaffolds in `spec/31-app/97-acceptance-criteria.md` and `spec/32-ui-design/97-acceptance-criteria.md` with real, traceable criteria. App rollup: 23 criteria (AT-APP-01..23) across 5 subsections. UI Design rollup: 28 criteria (AT-UIDESIGN-01..28) across 6 subsections. Every criterion cites a source spec file or named SSOT and is verifiable today (by reading) or post-implementation (by automated test). All 18 hygiene checks still pass; 28/28 Vitest tests still pass. 83 leaf-level AT scaffolds remain for future curation.
 
 ---
 
