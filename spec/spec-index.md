@@ -97,7 +97,7 @@
 | [`02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/03-stdlib-boundaries.md`](./02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/03-stdlib-boundaries.md) | 3. Stdlib Boundaries — `sql.Scanner` & JSON-LD | — | — |
 | [`02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/04-cast-or-fail-utility.md`](./02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/04-cast-or-fail-utility.md) | 4. Centralized Safe-Cast Utility (`CastOrFail[T]`) | — | — |
 | [`02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/05-rules-and-verification.md`](./02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/05-rules-and-verification.md) | 5. Rules, Decision Matrix & Verification | — | — |
-| [`02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/97-acceptance-criteria.md) | Casting Elimination Patterns — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/97-acceptance-criteria.md) | Casting Elimination Patterns — Acceptance Criteria | 2.0.0 | Curated |
 | [`02-coding-guidelines/01-cross-language/04-code-style/00-overview.md`](./02-coding-guidelines/01-cross-language/04-code-style/00-overview.md) | Cross-Language Code Style — Braces, Nesting, Spacing & Function Size | 3.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/04-code-style/01-braces-and-nesting.md`](./02-coding-guidelines/01-cross-language/04-code-style/01-braces-and-nesting.md) | Braces, Nesting & Exemptions | 4.0.0 | — |
 | [`02-coding-guidelines/01-cross-language/04-code-style/02-conditions-and-extraction.md`](./02-coding-guidelines/01-cross-language/04-code-style/02-conditions-and-extraction.md) | Condition Extraction | 4.0.0 | — |
@@ -147,7 +147,7 @@
 | [`02-coding-guidelines/01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/04-sonarqube-config.md`](./02-coding-guidelines/01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/04-sonarqube-config.md) | SonarQube Configuration | — | — |
 | [`02-coding-guidelines/01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/05-ci-workflows.md`](./02-coding-guidelines/01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/05-ci-workflows.md) | CI Workflows — GitHub Actions, GitLab CI & Mono-Repo | — | — |
 | [`02-coding-guidelines/01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/06-exemptions-and-checklist.md`](./02-coding-guidelines/01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/06-exemptions-and-checklist.md) | Exemption Process, Dashboard & Integration Checklist | — | — |
-| [`02-coding-guidelines/01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/97-acceptance-criteria.md) | Ci Pipeline Quality Gate — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`02-coding-guidelines/01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/97-acceptance-criteria.md) | CI Pipeline Quality Gate — Acceptance Criteria | 2.0.0 | Curated |
 | [`02-coding-guidelines/01-cross-language/16-static-analysis/10-cross-language-rule-matrix.md`](./02-coding-guidelines/01-cross-language/16-static-analysis/10-cross-language-rule-matrix.md) | Cross-Language Rule Matrix | 1.0.0 | — |
 | [`02-coding-guidelines/01-cross-language/16-static-analysis/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/16-static-analysis/97-acceptance-criteria.md) | Acceptance Criteria: Static Analysis & Linter Enforcement | 3.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/16-static-analysis/98-changelog.md`](./02-coding-guidelines/01-cross-language/16-static-analysis/98-changelog.md) | Changelog: Static Analysis & Linter Enforcement | — | — |
@@ -504,7 +504,7 @@
 | [`03-error-manage/02-error-architecture/05-response-envelope/02-changelog.md`](./03-error-manage/02-error-architecture/05-response-envelope/02-changelog.md) | Universal Response Envelope — Changelog | 3.1.0 | — |
 | [`03-error-manage/02-error-architecture/05-response-envelope/03-configurability.md`](./03-error-manage/02-error-architecture/05-response-envelope/03-configurability.md) | Envelope Configurability | 3.1.0 | — |
 | [`03-error-manage/02-error-architecture/05-response-envelope/04-response-envelope-reference.md`](./03-error-manage/02-error-architecture/05-response-envelope/04-response-envelope-reference.md) | Universal Response Envelope Specification | 3.1.0 | — |
-| [`03-error-manage/02-error-architecture/05-response-envelope/97-acceptance-criteria.md`](./03-error-manage/02-error-architecture/05-response-envelope/97-acceptance-criteria.md) | Response Envelope — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`03-error-manage/02-error-architecture/05-response-envelope/97-acceptance-criteria.md`](./03-error-manage/02-error-architecture/05-response-envelope/97-acceptance-criteria.md) | Response Envelope — Acceptance Criteria | 2.0.0 | Curated |
 | [`03-error-manage/02-error-architecture/05-response-envelope/99-consistency-report.md`](./03-error-manage/02-error-architecture/05-response-envelope/99-consistency-report.md) | Consistency Report: Response Envelope | 3.1.0 | — |
 | [`03-error-manage/02-error-architecture/06-apperror-package/00-overview.md`](./03-error-manage/02-error-architecture/06-apperror-package/00-overview.md) | AppError Package | 3.1.0 | Active |
 | [`03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/00-overview.md`](./03-error-manage/02-error-architecture/06-apperror-package/01-apperror-reference/00-overview.md) | AppError Package Reference | 3.1.0 | — |
@@ -565,7 +565,7 @@
 | [`03-error-manage/03-error-code-registry/09-templates/00-overview.md`](./03-error-manage/03-error-code-registry/09-templates/00-overview.md) | Templates | 3.1.0 | Active |
 | [`03-error-manage/03-error-code-registry/09-templates/01-error-codes-template.md`](./03-error-manage/03-error-code-registry/09-templates/01-error-codes-template.md) | [PROJECT_NAME] - Error Codes | 3.1.0 | — |
 | [`03-error-manage/03-error-code-registry/09-templates/99-consistency-report.md`](./03-error-manage/03-error-code-registry/09-templates/99-consistency-report.md) | Consistency Report: Templates | 3.1.0 | — |
-| [`03-error-manage/03-error-code-registry/97-acceptance-criteria.md`](./03-error-manage/03-error-code-registry/97-acceptance-criteria.md) | Error Code Registry — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`03-error-manage/03-error-code-registry/97-acceptance-criteria.md`](./03-error-manage/03-error-code-registry/97-acceptance-criteria.md) | Error Code Registry — Acceptance Criteria | 2.0.0 | Curated |
 | [`03-error-manage/03-error-code-registry/99-consistency-report.md`](./03-error-manage/03-error-code-registry/99-consistency-report.md) | Consistency Report: Error Code Registry | 3.1.0 | — |
 | [`03-error-manage/97-acceptance-criteria.md`](./03-error-manage/97-acceptance-criteria.md) | Error Management — Acceptance Criteria | 3.1.0 | — |
 | [`03-error-manage/98-changelog.md`](./03-error-manage/98-changelog.md) | Error Management — Changelog | 3.1.0 | — |
@@ -590,7 +590,7 @@
 | [`04-database-conventions/06-rest-api-format/05-paths-and-references.md`](./04-database-conventions/06-rest-api-format/05-paths-and-references.md) | URL Paths vs JSON Keys & Cross-References | — | — |
 | [`04-database-conventions/06-rest-api-format/97-acceptance-criteria.md`](./04-database-conventions/06-rest-api-format/97-acceptance-criteria.md) | REST API Format — Acceptance Criteria | 2.0.0 | Curated |
 | [`04-database-conventions/07-split-db-pattern.md`](./04-database-conventions/07-split-db-pattern.md) | Split DB Pattern | 3.1.0 | — |
-| [`04-database-conventions/97-acceptance-criteria.md`](./04-database-conventions/97-acceptance-criteria.md) | Database Conventions — Acceptance Criteria | 1.0.0 | Scaffold |
+| [`04-database-conventions/97-acceptance-criteria.md`](./04-database-conventions/97-acceptance-criteria.md) | Database Conventions — Acceptance Criteria | 2.0.0 | Curated |
 | [`04-database-conventions/99-consistency-report.md`](./04-database-conventions/99-consistency-report.md) | Consistency Report — Database Conventions | 3.1.0 | — |
 
 ## 05-split-db-architecture

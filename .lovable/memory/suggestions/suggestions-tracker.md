@@ -1,7 +1,7 @@
 # Lovable Suggestions Tracker
 
 > **Convention:** All suggestions tracked in this single file. Update status when completed. Move completed entries to `completed/` folder.
-> **Updated:** 2026-04-25 (UTC+8) — A-14 closed (3rd batch of leaf AT files curated; running totals: 16 AT files curated → ~150 testable criteria authored)
+> **Updated:** 2026-04-25 (UTC+8) — A-15 closed (4th batch of leaf AT files curated; running totals: 21 AT files curated → ~210 testable criteria authored)
 
 ---
 
@@ -41,6 +41,10 @@
 ### A-14 — Curate 5 error-mgmt + DB + PHP + Go AT files → ✅ closed
 - **Closed:** 2026-04-25 (UTC+8)
 - **Result:** Curated `03-error-manage/02-error-architecture/04-error-modal/` (12 criteria), `02-coding-guidelines/03-golang/01-enum-specification/` (13), `02-coding-guidelines/04-php/02-forbidden-patterns/` (13), `04-database-conventions/06-rest-api-format/` (11, anchors the PascalCase Golden Rule), `02-coding-guidelines/04-php/01-enums/` (19 — covers all 17 PHP enum cases). Total: 68 testable criteria. All 18 hygiene checks pass. Stub count: 79 → 80 (auto-stub generator created 1 new placeholder for a folder that gained an entry). Version 0.13.0.
+
+### A-15 — Curate 5 envelope + registry + casting + CI + DB-rollup AT files → ✅ closed
+- **Closed:** 2026-04-25 (UTC+8)
+- **Result:** Curated `03-error-manage/02-error-architecture/05-response-envelope/` (9 criteria, anchors envelope SSOT), `03-error-manage/03-error-code-registry/` (12, cross-project collision prevention), `02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/` (12, §7.2 enforcement), `02-coding-guidelines/01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/` (13, universal quality gate), `04-database-conventions/` top-level rollup (13, anchors PascalCase Golden Rule end-to-end). Total: 59 testable criteria. Fixed 3 broken links (envelope path depth + registry overview filename `01-overview.md` not `00-overview.md`). All 18 hygiene checks pass. Stub count: 80 → 75. Version 0.14.0.
 
 ---
 
