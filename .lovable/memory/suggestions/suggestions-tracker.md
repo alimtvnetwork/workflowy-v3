@@ -1,7 +1,7 @@
 # Lovable Suggestions Tracker
 
 > **Convention:** All suggestions tracked in this single file. Update status when completed. Move completed entries to `completed/` folder.
-> **Updated:** 2026-04-25 (UTC+8) — Phase 4 closed (all 3 plans archived; 18 hygiene issues + 4 cross-cutting blockers verified resolved)
+> **Updated:** 2026-04-25 (UTC+8) — A-14 closed (3rd batch of leaf AT files curated; running totals: 16 AT files curated → ~150 testable criteria authored)
 
 ---
 
@@ -29,6 +29,18 @@
 ### A-11 — Encode `MAX_ITEMS_PER_VIEW = 250` → ✅ closed
 - **Closed:** 2026-04-25 (UTC+8)
 - **Result:** Constant added to `src/lib/constants.ts` with SSOT cross-link to `mem://architecture/data-model` and `spec/31-app/01-features/04-page-content-area.md`. Other constants now annotated with spec refs too.
+
+### A-12 — Curate top-level AT rollups for App + UI Design → ✅ closed
+- **Closed:** 2026-04-25 (UTC+8)
+- **Result:** Replaced placeholder scaffolds in `spec/31-app/97-acceptance-criteria.md` (23 criteria, AT-APP-01..23) and `spec/32-ui-design/97-acceptance-criteria.md` (28 criteria, AT-UIDESIGN-01..28). Every criterion cites a source spec or named SSOT.
+
+### A-13 — Curate 5 coding-guideline AT files → ✅ closed
+- **Closed:** 2026-04-25 (UTC+8)
+- **Result:** Curated `02-typescript/` (13 criteria), `01-cross-language/02-boolean-principles/` (11), `01-cross-language/15-master-coding-guidelines/` (17), `01-cross-language/27-types-folder-convention/` (11), `01-cross-language/04-code-style/` (16). Total: 68 testable criteria. Version 0.12.0.
+
+### A-14 — Curate 5 error-mgmt + DB + PHP + Go AT files → ✅ closed
+- **Closed:** 2026-04-25 (UTC+8)
+- **Result:** Curated `03-error-manage/02-error-architecture/04-error-modal/` (12 criteria), `02-coding-guidelines/03-golang/01-enum-specification/` (13), `02-coding-guidelines/04-php/02-forbidden-patterns/` (13), `04-database-conventions/06-rest-api-format/` (11, anchors the PascalCase Golden Rule), `02-coding-guidelines/04-php/01-enums/` (19 — covers all 17 PHP enum cases). Total: 68 testable criteria. All 18 hygiene checks pass. Stub count: 79 → 80 (auto-stub generator created 1 new placeholder for a folder that gained an entry). Version 0.13.0.
 
 ---
 
