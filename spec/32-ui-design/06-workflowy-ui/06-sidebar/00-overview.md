@@ -17,7 +17,7 @@
 | # | File | Title | Lines |
 |---|------|-------|-------|
 | 1 | [`01-offcanvas.md`](./01-offcanvas.md) | Sidebar Offcanvas Behavior | 119 |
-| 2 | [`02-special-nodes.md`](./02-special-nodes.md) | Special Nodes (Sidebar Items) | 126 |
+| 2 | [`02-special-nodes.md`](./02-special-nodes.md) | Special Nodes (Sidebar Items) | 137 |
 | 3 | [`03-drag-drop.md`](./03-drag-drop.md) | Drag-Drop Semantics (B2 RESOLVED) | 138 |
 
 <!-- AUTO-TOC:END -->
