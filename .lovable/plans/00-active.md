@@ -1,6 +1,6 @@
 # Active Plans
 
-> **Updated:** 2026-04-25 (UTC+8) · **Status:** No active plans · **Audit confirmed: 99/100 (Excellent) — Round 2 by Gemini 2.5 Pro**
+> **Updated:** 2026-04-25 (UTC+8) · **Status:** No active plans · **Round-3 audit:** AUDIT-01 (CRITICAL backend contradiction) — **CLOSED v0.37.0**. 5 blockers remain (AUDIT-02..06).
 
 ---
 
@@ -15,6 +15,7 @@
 | `05-f02-wp-plugin-cicd.md` | ✅ 2026-04-25 — `18-wp-plugin-deploy/` archetype. v0.34.0. |
 | `06-f03-powershell-boundary.md` | ✅ 2026-04-25 — `08-wp-plugin-boundary.md` (B1–B8). v0.35.0. |
 | `07-f04-highlighter-pin.md` | ✅ 2026-04-25 — `11-highlighter-dependency-pin.md` + `AT-HLPIN-01..08`. v0.36.0. **All 4 audit findings closed.** |
+| `08-audit01-backend-contradiction.md` | ✅ 2026-04-25 — Round-3 AUDIT-01 (CRITICAL): WP-native SSE + `Auth::hasRole` PHP helper. v0.37.0. |
 
 ---
 

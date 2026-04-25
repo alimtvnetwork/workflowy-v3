@@ -34,8 +34,8 @@ Everything else under `01-features/` is a deeper view on a single feature; do no
 | L5 | Children are ordered by **fractional index** (string keys), not integer position. | `mem://features/editor-core` |
 | L6 | Mirrors reference the canonical source only — never a mirror of a mirror. | §1.3 |
 | L7 | Deleted items live in **Trash for 30 days** before hard delete. | `01-features/11-trash-view.md` |
-| L8 | Roles live in a **separate table** (never on profile/users). RLS uses `has_role()`. | `01-features/15-roles-and-permissions.md` |
-| L9 | Backend runtime is **WordPress plugin (PHP 8.1+ + SQLite via PDO)**. No Node, Postgres, Supabase. | `mem://constraints/backend-runtime-deferred` |
+| L8 | Roles live in a **separate table** (never on profile/users). All authorization checks go through a single PHP helper `Auth::hasRole($userId, $role)` (server-side, never client-trusted). | `01-features/15-roles-and-permissions.md` |
+| L9 | Backend runtime is **WordPress plugin (PHP 8.1+ + SQLite via PDO)**. No Node, Postgres, Supabase. Realtime is delivered via WP-native **Server-Sent Events (SSE)** with a 5 s poll fallback — never WebSockets, never Postgres LISTEN/NOTIFY. | `mem://constraints/backend-runtime-deferred` |
 
 Violating any load-bearing rule is a **rejected implementation**.
 

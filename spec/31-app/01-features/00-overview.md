@@ -101,7 +101,7 @@ Read this before picking a feature to implement. Arrows = "depends on, must exis
 | 11 | [`11-trash-view.md`](./11-trash-view.md) | Trash View Specification | 115 |
 | 12 | [`12-multi-select.md`](./12-multi-select.md) | Multi-Select Behavior | 148 |
 | 13 | [`13-templates.md`](./13-templates.md) | Template Application Flow | 150 |
-| 14 | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | Concurrency & Sync | 152 |
+| 14 | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | Concurrency & Sync | 154 |
 | 15 | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | Roles & Permissions | 249 |
 
 <!-- AUTO-TOC:END -->
