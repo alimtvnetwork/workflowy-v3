@@ -16,7 +16,7 @@ The core data object. Represents any node in the outliner tree.
 | parent_id | UUID or null | Parent item (null = root level) |
 | content | Text | Plain text content |
 | note | Text | Note/description text |
-| item_type | Enum | One of: bullet, h1, h2, h3, paragraph, todo, numbered, board, quote, code_block, divider |
+| item_type | Enum | One of: `bullet`, `h1`, `h2`, `h3`, `paragraph`, `todo`, `numbered`, `board`, `quote`, `code`, `divider`, `mirror` (12 types — canonical SSOT for UI taxonomy; mirrored in `spec/20-enums-index.md` §3.5) |
 | is_completed | Boolean | Whether the item is marked complete |
 | is_collapsed | Boolean | Whether children are hidden |
 | sort_order | Float | Position among siblings |

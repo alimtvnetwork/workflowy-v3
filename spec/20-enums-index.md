@@ -78,7 +78,7 @@ These enums exist (or should exist) in all three languages with matching case na
 
 | Enum | Cases | Used For |
 |------|-------|----------|
-| `ItemType` | `Bullet`, `Todo`, `Header`, `Note`, `Quote`, `Code`, `File`, `Image`, `Board`, `Mirror`, `Template`, `Embed` | 12 distinct outliner node types |
+| `ItemType` | `bullet`, `h1`, `h2`, `h3`, `paragraph`, `todo`, `numbered`, `board`, `quote`, `code`, `divider`, `mirror` | 12 distinct outliner node types — see [`32-ui-design/02-state-and-data/03-data-types.md`](./32-ui-design/02-state-and-data/03-data-types.md) for the UI taxonomy SSOT. Lowercase per DB column convention; the heading split (h1/h2/h3) matches what users actually create. |
 | `SortDirectionType` | `Asc`, `Desc`, `Manual` | Sibling ordering |
 | `ZoomLevelType` | `Root`, `Single`, `Filtered` | View focus mode |
 | `SharePermissionType` | `View`, `Comment`, `Edit`, `Owner` | Share-link role |
