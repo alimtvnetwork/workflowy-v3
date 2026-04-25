@@ -1,7 +1,7 @@
 # Lovable Suggestions Tracker
 
 > **Convention:** All suggestions tracked in this single file. Update status when completed. Move completed entries to `completed/` folder.
-> **Updated:** 2026-04-25 (UTC+8) — A-08 closed (Vitest + 19 tests for pure helpers)
+> **Updated:** 2026-04-25 (UTC+8) — A-06 + A-11 closed (AppLayout wired, MAX_ITEMS_PER_VIEW encoded)
 
 ---
 
@@ -32,12 +32,9 @@
 - **Proposed Change:** Hygiene check that parses `@theme` and asserts every Tailwind class used in `src/**` resolves.
 - **Status:** open — non-blocking
 
-### A-11 — Encode `MAX_ITEMS_PER_VIEW = 250`
-- **Created:** 2026-04-25
-- **Source:** Audit (this round)
-- **Description:** Core memory rule "250-item limit per view" exists in spec text but no constant in `lib/constants.ts`.
-- **Proposed Change:** Export the constant; reference from virtualization spec when authored.
-- **Status:** open — trivial fix
+### A-11 — Encode `MAX_ITEMS_PER_VIEW = 250` → ✅ closed
+- **Closed:** 2026-04-25 (UTC+8)
+- **Result:** Constant added to `src/lib/constants.ts` with SSOT cross-link to `mem://architecture/data-model` and `spec/31-app/01-features/04-page-content-area.md`. Other constants now annotated with spec refs too.
 
 ---
 
