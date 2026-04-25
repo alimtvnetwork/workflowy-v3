@@ -768,7 +768,7 @@
 | [`09-code-block-system/08-checklist-blocks.md`](./09-code-block-system/08-checklist-blocks.md) | Checklist Blocks — Code Block System | 3.1.0 | — |
 | [`09-code-block-system/09-tree-structure-rendering.md`](./09-code-block-system/09-tree-structure-rendering.md) | 09 — Tree-Structure Rendering | 3.1.0 | — |
 | [`09-code-block-system/10-selection-bar.md`](./09-code-block-system/10-selection-bar.md) | Selection Bar & Line Interaction — Code Block System | 3.1.0 | — |
-| [`09-code-block-system/97-acceptance-criteria.md`](./09-code-block-system/97-acceptance-criteria.md) | Code Block System — Acceptance Criteria | 1.0.0 | Scaffold |
+| [`09-code-block-system/97-acceptance-criteria.md`](./09-code-block-system/97-acceptance-criteria.md) | Code Block System — Acceptance Criteria | 1.0.0 | Curated |
 | [`09-code-block-system/99-consistency-report.md`](./09-code-block-system/99-consistency-report.md) | Consistency Report — Code Block System | 3.1.0 | — |
 
 ## 10-powershell-integration
@@ -1374,7 +1374,7 @@
 | File | Title | Version | Status |
 |------|-------|---------|--------|
 | [`33-feedback-report/00-overview.md`](./33-feedback-report/00-overview.md) | Feedback Report — Feature Spec | 2.0.0 | Planned |
-| [`33-feedback-report/97-acceptance-criteria.md`](./33-feedback-report/97-acceptance-criteria.md) | Feedback Report — Acceptance Criteria | 1.0.0 | Scaffold |
+| [`33-feedback-report/97-acceptance-criteria.md`](./33-feedback-report/97-acceptance-criteria.md) | Feedback Report — Acceptance Criteria | 1.0.0 | Curated |
 | [`33-feedback-report/99-consistency-report.md`](./33-feedback-report/99-consistency-report.md) | Consistency Report — Feedback Report Feature | 1.1.0 | — |
 
 ## 34-activity-feed
@@ -1382,7 +1382,7 @@
 | File | Title | Version | Status |
 |------|-------|---------|--------|
 | [`34-activity-feed/00-overview.md`](./34-activity-feed/00-overview.md) | Activity Feed — Feature Spec | 2.0.0 | Planned |
-| [`34-activity-feed/97-acceptance-criteria.md`](./34-activity-feed/97-acceptance-criteria.md) | Activity Feed — Acceptance Criteria | 1.0.0 | Scaffold |
+| [`34-activity-feed/97-acceptance-criteria.md`](./34-activity-feed/97-acceptance-criteria.md) | Activity Feed — Acceptance Criteria | 1.0.0 | Curated |
 | [`34-activity-feed/99-consistency-report.md`](./34-activity-feed/99-consistency-report.md) | Consistency Report — E2 Activity Feed | 1.1.0 | — |
 
 ## 35-enforcement-rules
@@ -1390,7 +1390,7 @@
 | File | Title | Version | Status |
 |------|-------|---------|--------|
 | [`35-enforcement-rules/00-overview.md`](./35-enforcement-rules/00-overview.md) | Enforcement Rules — Spec | 2.0.0 | Planned |
-| [`35-enforcement-rules/97-acceptance-criteria.md`](./35-enforcement-rules/97-acceptance-criteria.md) | Enforcement Rules — Acceptance Criteria | 1.0.0 | Scaffold |
+| [`35-enforcement-rules/97-acceptance-criteria.md`](./35-enforcement-rules/97-acceptance-criteria.md) | Enforcement Rules — Acceptance Criteria | 1.0.0 | Curated |
 | [`35-enforcement-rules/99-consistency-report.md`](./35-enforcement-rules/99-consistency-report.md) | Consistency Report — Generic Enforce | 1.1.0 | — |
 
 ## 36-user-management
@@ -1398,7 +1398,7 @@
 | File | Title | Version | Status |
 |------|-------|---------|--------|
 | [`36-user-management/00-overview.md`](./36-user-management/00-overview.md) | User Management — Feature Spec | 2.0.0 | Planned |
-| [`36-user-management/97-acceptance-criteria.md`](./36-user-management/97-acceptance-criteria.md) | User Management — Acceptance Criteria | 1.0.0 | Scaffold |
+| [`36-user-management/97-acceptance-criteria.md`](./36-user-management/97-acceptance-criteria.md) | User Management — Acceptance Criteria | 1.0.0 | Curated |
 | [`36-user-management/99-consistency-report.md`](./36-user-management/99-consistency-report.md) | Consistency Report — User Management | 1.1.0 | — |
 
 ## root
