@@ -1,8 +1,8 @@
 # 99 — Consistency Report
 
-> **Version:** 1.0.0 · **Created:** 2026-04-25 (UTC+8) · **Status:** ✅ Authored
+> **Version:** 1.1.0 · **Updated:** 2026-04-25 (UTC+8) · **Status:** ✅ Authored
 > **Parent:** [`00-overview.md`](./00-overview.md)
-> **Audit method:** Manual cross-reference walk + file inventory at authoring time.
+> **Audit method:** Manual cross-reference walk + file inventory at authoring time. S05 cross-phase audit appended 2026-04-25.
 
 ---
 
