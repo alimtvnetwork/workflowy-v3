@@ -54,6 +54,8 @@ Features specification module. See files below.
 | 11 | [11-trash-view.md](11-trash-view.md) | Trash view |
 | 12 | [12-multi-select.md](12-multi-select.md) | Multi-select behavior |
 | 13 | [13-templates.md](13-templates.md) | Template application flow |
+| 14 | [14-concurrency-and-sync.md](14-concurrency-and-sync.md) | Concurrency & sync rules |
+| 15 | [15-roles-and-permissions.md](15-roles-and-permissions.md) | Roles, capability matrix, authorization contract |
 
 ---
 
@@ -83,6 +85,7 @@ Features specification module. See files below.
 - [`12-multi-select.md`](./12-multi-select.md) — Multi Select
 - [`13-templates.md`](./13-templates.md) — Templates
 - [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) — Concurrency And Sync
+- [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) — Roles & Permissions
 
 **See also:**
 
