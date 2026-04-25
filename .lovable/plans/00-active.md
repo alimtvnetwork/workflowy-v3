@@ -1,6 +1,6 @@
 # Active Plans
 
-> **Updated:** 2026-04-25 (UTC+8) · **Status:** No active plans · **Audit confirmed: 99/100 (Excellent) — Round 2 by Gemini 2.5 Pro**
+> **Updated:** 2026-04-25 (UTC+8) · **Status:** No active plans · **Round-3 audit:** AUDIT-01 (CRITICAL backend contradiction) — **CLOSED v0.37.0**. 5 blockers remain (AUDIT-02..06).
 
 ---
 
