@@ -26,7 +26,7 @@
 | 12 | [`12-multi-select.md`](./12-multi-select.md) | Multi-Select Behavior | 148 |
 | 13 | [`13-templates.md`](./13-templates.md) | Template Application Flow | 150 |
 | 14 | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | Concurrency & Sync | 152 |
-| 15 | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | Roles & Permissions | 216 |
+| 15 | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | Roles & Permissions | 249 |
 
 <!-- AUTO-TOC:END -->
 
