@@ -47,7 +47,7 @@
 
 | ID | Criterion | Source |
 |----|-----------|--------|
-| AT-SPLITDBFUNDAMENTALS-09 | All DB access goes through the `DbManager` interface; direct `sql.Open` / `sqlite3.Open` outside the manager is forbidden. | [`05-go-implementation.md`](./05-go-implementation.md), [`../../../02-coding-guidelines/03-golang/04-golang-standards-reference/97-acceptance-criteria.md`](../../../02-coding-guidelines/03-golang/04-golang-standards-reference/97-acceptance-criteria.md) |
+| AT-SPLITDBFUNDAMENTALS-09 | All DB access goes through the `DbManager` interface; direct `sql.Open` / `sqlite3.Open` outside the manager is forbidden. | [`05-go-implementation.md`](./05-go-implementation.md), [`../../02-coding-guidelines/03-golang/04-golang-standards-reference/97-acceptance-criteria.md`](../../02-coding-guidelines/03-golang/04-golang-standards-reference/97-acceptance-criteria.md) |
 | AT-SPLITDBFUNDAMENTALS-10 | `GetOrCreateDb(type, scope) (*Db, error)` is idempotent — concurrent calls with the same `(type, scope)` return the same handle and never trigger duplicate-create races. | [`05-go-implementation.md`](./05-go-implementation.md) |
 
 ### Paths & lifecycle (file 07)
@@ -68,7 +68,7 @@
 
 | ID | Criterion | Source |
 |----|-----------|--------|
-| AT-SPLITDBFUNDAMENTALS-15 | DB operations emit structured logs with fields: `dbType`, `scope`, `operation`, `durationMs`, `rowsAffected`; printf-style log lines are forbidden. | [`09-logging-benefits-references.md`](./09-logging-benefits-references.md), [`../../../03-error-manage/02-error-architecture/07-logging-and-diagnostics/02-session-based-logging/97-acceptance-criteria.md`](../../../03-error-manage/02-error-architecture/07-logging-and-diagnostics/02-session-based-logging/97-acceptance-criteria.md) |
+| AT-SPLITDBFUNDAMENTALS-15 | DB operations emit structured logs with fields: `dbType`, `scope`, `operation`, `durationMs`, `rowsAffected`; printf-style log lines are forbidden. | [`09-logging-benefits-references.md`](./09-logging-benefits-references.md), [`../../03-error-manage/02-error-architecture/07-logging-and-diagnostics/02-session-based-logging/97-acceptance-criteria.md`](../../03-error-manage/02-error-architecture/07-logging-and-diagnostics/02-session-based-logging/97-acceptance-criteria.md) |
 
 ---
 
