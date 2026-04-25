@@ -89,7 +89,7 @@
 | [`02-coding-guidelines/01-cross-language/02-boolean-principles/03-parameters-and-conditions.md`](./02-coding-guidelines/01-cross-language/02-boolean-principles/03-parameters-and-conditions.md) | Boolean Principles — P5: explicit params, P6: no mixed booleans, P7: no inline statements, P8: no raw system calls | 2.6.0 | — |
 | [`02-coding-guidelines/01-cross-language/02-boolean-principles/04-quick-reference.md`](./02-coding-guidelines/01-cross-language/02-boolean-principles/04-quick-reference.md) | Boolean Principles — Quick reference table, common mistakes | 2.6.0 | — |
 | [`02-coding-guidelines/01-cross-language/02-boolean-principles/05-exemptions-and-api.md`](./02-coding-guidelines/01-cross-language/02-boolean-principles/05-exemptions-and-api.md) | Boolean Principles — Static factory exemption, Result wrapper API | 2.6.0 | — |
-| [`02-coding-guidelines/01-cross-language/02-boolean-principles/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/02-boolean-principles/97-acceptance-criteria.md) | Boolean Principles — Acceptance Criteria | 2.0.0 | Curated |
+| [`02-coding-guidelines/01-cross-language/02-boolean-principles/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/02-boolean-principles/97-acceptance-criteria.md) | Boolean Principles — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`02-coding-guidelines/01-cross-language/02-boolean-principles/99-consistency-report.md`](./02-coding-guidelines/01-cross-language/02-boolean-principles/99-consistency-report.md) | Consistency Report: Boolean Principles | 3.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/00-overview.md`](./02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/00-overview.md) | Casting Elimination Patterns | 2.0.0 | Complete |
 | [`02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/01-context-and-errors.md`](./02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/01-context-and-errors.md) | 1. Context Values & Error Types | — | — |
@@ -110,7 +110,7 @@
 | [`02-coding-guidelines/01-cross-language/04-code-style/05-multi-line-formatting.md`](./02-coding-guidelines/01-cross-language/04-code-style/05-multi-line-formatting.md) | Multi-Line Formatting | 4.0.0 | — |
 | [`02-coding-guidelines/01-cross-language/04-code-style/06-comments-and-documentation.md`](./02-coding-guidelines/01-cross-language/04-code-style/06-comments-and-documentation.md) | Comments, Documentation & Dead Code | 4.0.0 | — |
 | [`02-coding-guidelines/01-cross-language/04-code-style/07-checklist.md`](./02-coding-guidelines/01-cross-language/04-code-style/07-checklist.md) | Code Style Checklist & Cross-References | 4.0.0 | — |
-| [`02-coding-guidelines/01-cross-language/04-code-style/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/04-code-style/97-acceptance-criteria.md) | Cross-Language Code Style — Acceptance Criteria | 2.0.0 | Curated |
+| [`02-coding-guidelines/01-cross-language/04-code-style/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/04-code-style/97-acceptance-criteria.md) | Code Style — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`02-coding-guidelines/01-cross-language/04-code-style/99-consistency-report.md`](./02-coding-guidelines/01-cross-language/04-code-style/99-consistency-report.md) | Consistency Report: Code Style | 3.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/05-cross-spec-contradiction-checks.md`](./02-coding-guidelines/01-cross-language/05-cross-spec-contradiction-checks.md) | Cross-Spec Contradiction Check Process | 1.0.0 | — |
 | [`02-coding-guidelines/01-cross-language/06-cyclomatic-complexity.md`](./02-coding-guidelines/01-cross-language/06-cyclomatic-complexity.md) | Cross-Language Rule: Reduce Cyclomatic Complexity to Near-Zero | 1.0.0 | — |
@@ -130,7 +130,7 @@
 | [`02-coding-guidelines/01-cross-language/15-master-coding-guidelines/05-magic-strings-and-organization.md`](./02-coding-guidelines/01-cross-language/15-master-coding-guidelines/05-magic-strings-and-organization.md) | Master Coding Guidelines — Magic strings, file organization, array keys | 2.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/15-master-coding-guidelines/06-advanced-patterns.md`](./02-coding-guidelines/01-cross-language/15-master-coding-guidelines/06-advanced-patterns.md) | Master Coding Guidelines — Lint, enum sync, tests, lazy eval, regex, mutation, null safety, nesting, newlines, defer | 2.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/15-master-coding-guidelines/07-checklist.md`](./02-coding-guidelines/01-cross-language/15-master-coding-guidelines/07-checklist.md) | Master Coding Guidelines — Quick checklist for any code change | 2.1.0 | — |
-| [`02-coding-guidelines/01-cross-language/15-master-coding-guidelines/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/15-master-coding-guidelines/97-acceptance-criteria.md) | Master Coding Guidelines — Acceptance Criteria | 2.0.0 | Curated |
+| [`02-coding-guidelines/01-cross-language/15-master-coding-guidelines/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/15-master-coding-guidelines/97-acceptance-criteria.md) | Master Coding Guidelines — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`02-coding-guidelines/01-cross-language/15-master-coding-guidelines/99-consistency-report.md`](./02-coding-guidelines/01-cross-language/15-master-coding-guidelines/99-consistency-report.md) | Consistency Report: Master Coding Guidelines | 3.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/16-static-analysis/00-overview.md`](./02-coding-guidelines/01-cross-language/16-static-analysis/00-overview.md) | Cross-Language Static Analysis & Linter Enforcement | 3.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/16-static-analysis/02-go-golangci-lint.md`](./02-coding-guidelines/01-cross-language/16-static-analysis/02-go-golangci-lint.md) | Go — golangci-lint Enforcement Rule Mapping | 3.1.0 | — |
@@ -167,7 +167,7 @@
 | [`02-coding-guidelines/01-cross-language/27-types-folder-convention/02-rules.md`](./02-coding-guidelines/01-cross-language/27-types-folder-convention/02-rules.md) | Rules | — | — |
 | [`02-coding-guidelines/01-cross-language/27-types-folder-convention/03-common-type-definitions.md`](./02-coding-guidelines/01-cross-language/27-types-folder-convention/03-common-type-definitions.md) | Common Type Definitions | — | — |
 | [`02-coding-guidelines/01-cross-language/27-types-folder-convention/04-anti-patterns-and-checklist.md`](./02-coding-guidelines/01-cross-language/27-types-folder-convention/04-anti-patterns-and-checklist.md) | Anti-Patterns & Summary Checklist | — | — |
-| [`02-coding-guidelines/01-cross-language/27-types-folder-convention/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/27-types-folder-convention/97-acceptance-criteria.md) | Types Folder Convention — Acceptance Criteria | 2.0.0 | Curated |
+| [`02-coding-guidelines/01-cross-language/27-types-folder-convention/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/27-types-folder-convention/97-acceptance-criteria.md) | Types Folder Convention — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`02-coding-guidelines/01-cross-language/28-slug-conventions.md`](./02-coding-guidelines/01-cross-language/28-slug-conventions.md) | Slug Conventions | 3.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/29-lazy-evaluation-patterns.md`](./02-coding-guidelines/01-cross-language/29-lazy-evaluation-patterns.md) | Lazy Evaluation Patterns | 3.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/30-pinned-dependency-matrix.md`](./02-coding-guidelines/01-cross-language/30-pinned-dependency-matrix.md) | Pinned Dependency Matrix | — | Authoritative |
@@ -198,7 +198,7 @@
 | [`02-coding-guidelines/02-typescript/10-log-level-enum.md`](./02-coding-guidelines/02-typescript/10-log-level-enum.md) | TypeScript LogLevel Enum — `src/lib/enums/log-level.ts` | — | — |
 | [`02-coding-guidelines/02-typescript/11-eslint-enforcement.md`](./02-coding-guidelines/02-typescript/11-eslint-enforcement.md) | TypeScript ESLint Enforcement — Rule Mapping | 3.1.0 | — |
 | [`02-coding-guidelines/02-typescript/12-discriminated-union-patterns.md`](./02-coding-guidelines/02-typescript/12-discriminated-union-patterns.md) | Discriminated Union & Action Type Patterns | 1.0.0 | — |
-| [`02-coding-guidelines/02-typescript/97-acceptance-criteria.md`](./02-coding-guidelines/02-typescript/97-acceptance-criteria.md) | TypeScript Standards — Acceptance Criteria | 2.0.0 | Curated |
+| [`02-coding-guidelines/02-typescript/97-acceptance-criteria.md`](./02-coding-guidelines/02-typescript/97-acceptance-criteria.md) | TypeScript Standards — Acceptance Criteria | 3.1.0 | — |
 | [`02-coding-guidelines/02-typescript/98-changelog.md`](./02-coding-guidelines/02-typescript/98-changelog.md) | TypeScript Standards — Changelog | 3.1.0 | — |
 | [`02-coding-guidelines/02-typescript/99-consistency-report.md`](./02-coding-guidelines/02-typescript/99-consistency-report.md) | Consistency Report: TypeScript Standards | 3.1.0 | — |
 | [`02-coding-guidelines/03-golang/00-overview.md`](./02-coding-guidelines/03-golang/00-overview.md) | Golang Standards | 3.1.0 | Active |
@@ -213,7 +213,7 @@
 | [`02-coding-guidelines/03-golang/01-enum-specification/03-folder-structure.md`](./02-coding-guidelines/03-golang/01-enum-specification/03-folder-structure.md) | Folder Structure | 3.1.0 | Complete |
 | [`02-coding-guidelines/03-golang/01-enum-specification/04-validation-checklist.md`](./02-coding-guidelines/03-golang/01-enum-specification/04-validation-checklist.md) | Validation Checklist | 3.1.0 | Complete |
 | [`02-coding-guidelines/03-golang/01-enum-specification/05-info-object-pattern.md`](./02-coding-guidelines/03-golang/01-enum-specification/05-info-object-pattern.md) | Info-Object Pattern for Go Enums | 3.1.0 | Complete |
-| [`02-coding-guidelines/03-golang/01-enum-specification/97-acceptance-criteria.md`](./02-coding-guidelines/03-golang/01-enum-specification/97-acceptance-criteria.md) | Enum Specification — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`02-coding-guidelines/03-golang/01-enum-specification/97-acceptance-criteria.md`](./02-coding-guidelines/03-golang/01-enum-specification/97-acceptance-criteria.md) | Go Enum Specification — Acceptance Criteria | 2.0.0 | Curated |
 | [`02-coding-guidelines/03-golang/01-enum-specification/99-consistency-report.md`](./02-coding-guidelines/03-golang/01-enum-specification/99-consistency-report.md) | Consistency Report: Enum Specification | 3.1.0 | — |
 | [`02-coding-guidelines/03-golang/02-boolean-standards/00-overview.md`](./02-coding-guidelines/03-golang/02-boolean-standards/00-overview.md) | Go Boolean Standards — Overview | — | — |
 | [`02-coding-guidelines/03-golang/02-boolean-standards/01-positive-naming.md`](./02-coding-guidelines/03-golang/02-boolean-standards/01-positive-naming.md) | Rule P1 — Positive Boolean Naming | — | — |
@@ -260,7 +260,7 @@
 | [`02-coding-guidelines/04-php/01-enums/15-error-type-class.md`](./02-coding-guidelines/04-php/01-enums/15-error-type-class.md) | ErrorType — PHP Error Type Constants (Non-Enum Class) | — | — |
 | [`02-coding-guidelines/04-php/01-enums/16-classification-and-checklist.md`](./02-coding-guidelines/04-php/01-enums/16-classification-and-checklist.md) | Classification and "Add New Case" Checklist | — | — |
 | [`02-coding-guidelines/04-php/01-enums/17-log-context-keys.md`](./02-coding-guidelines/04-php/01-enums/17-log-context-keys.md) | Log Context Array Keys — camelCase | — | — |
-| [`02-coding-guidelines/04-php/01-enums/97-acceptance-criteria.md`](./02-coding-guidelines/04-php/01-enums/97-acceptance-criteria.md) | Enums — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`02-coding-guidelines/04-php/01-enums/97-acceptance-criteria.md`](./02-coding-guidelines/04-php/01-enums/97-acceptance-criteria.md) | PHP Enums — Acceptance Criteria | 2.0.0 | Curated |
 | [`02-coding-guidelines/04-php/02-forbidden-patterns/00-overview.md`](./02-coding-guidelines/04-php/02-forbidden-patterns/00-overview.md) | PHP Forbidden Patterns — Quick Reference Checklist | 5.0.0 | — |
 | [`02-coding-guidelines/04-php/02-forbidden-patterns/01-error-handling.md`](./02-coding-guidelines/04-php/02-forbidden-patterns/01-error-handling.md) | §1 Error Handling & §7 Error Type Constants | — | — |
 | [`02-coding-guidelines/04-php/02-forbidden-patterns/02-magic-strings-hooks-paths.md`](./02-coding-guidelines/04-php/02-forbidden-patterns/02-magic-strings-hooks-paths.md) | §2 Magic Strings — Hooks & §3 File Paths | — | — |
@@ -269,7 +269,7 @@
 | [`02-coding-guidelines/04-php/02-forbidden-patterns/05-response-key-and-plugin-config.md`](./02-coding-guidelines/04-php/02-forbidden-patterns/05-response-key-and-plugin-config.md) | §8 ResponseKeyType & §9 PluginConfigType | — | — |
 | [`02-coding-guidelines/04-php/02-forbidden-patterns/06-date-formats-and-response-casing.md`](./02-coding-guidelines/04-php/02-forbidden-patterns/06-date-formats-and-response-casing.md) | §10 Hardcoded Date Formats & §11 snake_case Response Keys | — | — |
 | [`02-coding-guidelines/04-php/02-forbidden-patterns/07-checklist.md`](./02-coding-guidelines/04-php/02-forbidden-patterns/07-checklist.md) | Checklist Summary (Copy for PRs) | — | — |
-| [`02-coding-guidelines/04-php/02-forbidden-patterns/97-acceptance-criteria.md`](./02-coding-guidelines/04-php/02-forbidden-patterns/97-acceptance-criteria.md) | Forbidden Patterns — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`02-coding-guidelines/04-php/02-forbidden-patterns/97-acceptance-criteria.md`](./02-coding-guidelines/04-php/02-forbidden-patterns/97-acceptance-criteria.md) | PHP Forbidden Patterns — Acceptance Criteria | 2.0.0 | Curated |
 | [`02-coding-guidelines/04-php/03-naming-conventions/00-overview.md`](./02-coding-guidelines/04-php/03-naming-conventions/00-overview.md) | PHP Naming Conventions | 2.0.0 | — |
 | [`02-coding-guidelines/04-php/03-naming-conventions/01-symbols.md`](./02-coding-guidelines/04-php/03-naming-conventions/01-symbols.md) | Symbols — Classes, Methods, Variables, Constants, Enum Cases | — | — |
 | [`02-coding-guidelines/04-php/03-naming-conventions/02-files-and-namespaces.md`](./02-coding-guidelines/04-php/03-naming-conventions/02-files-and-namespaces.md) | Files, Namespaces, and Directory Structure | — | — |
@@ -497,7 +497,7 @@
 | [`03-error-manage/02-error-architecture/04-error-modal/06-suppress-global-error.md`](./03-error-manage/02-error-architecture/04-error-modal/06-suppress-global-error.md) | Error Modal — suppressGlobalError Meta Pattern | 1.2.0 | Active |
 | [`03-error-manage/02-error-architecture/04-error-modal/07-error-modal-reference-legacy.md`](./03-error-manage/02-error-architecture/04-error-modal/07-error-modal-reference-legacy.md) | Error Modal — Frontend Specification (Legacy Redirect) | 3.0.0 | Redirect |
 | [`03-error-manage/02-error-architecture/04-error-modal/08-color-themes-legacy.md`](./03-error-manage/02-error-architecture/04-error-modal/08-color-themes-legacy.md) | Error Modal — Color Theme & Design Token Reference (Legacy Stub) | 3.0.0 | — |
-| [`03-error-manage/02-error-architecture/04-error-modal/97-acceptance-criteria.md`](./03-error-manage/02-error-architecture/04-error-modal/97-acceptance-criteria.md) | Error Modal — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`03-error-manage/02-error-architecture/04-error-modal/97-acceptance-criteria.md`](./03-error-manage/02-error-architecture/04-error-modal/97-acceptance-criteria.md) | Error Modal — Acceptance Criteria | 2.0.0 | Curated |
 | [`03-error-manage/02-error-architecture/04-error-modal/99-consistency-report.md`](./03-error-manage/02-error-architecture/04-error-modal/99-consistency-report.md) | Consistency Report: Error Modal | 3.1.0 | — |
 | [`03-error-manage/02-error-architecture/05-response-envelope/00-overview.md`](./03-error-manage/02-error-architecture/05-response-envelope/00-overview.md) | Response Envelope | 3.1.0 | Active |
 | [`03-error-manage/02-error-architecture/05-response-envelope/01-adr.md`](./03-error-manage/02-error-architecture/05-response-envelope/01-adr.md) | ADR: Universal Response Envelope — Architecture Decision Record | 3.1.0 | Accepted |
@@ -588,7 +588,7 @@
 | [`04-database-conventions/06-rest-api-format/03-envelope-and-flow.md`](./04-database-conventions/06-rest-api-format/03-envelope-and-flow.md) | Envelope Quick Reference & PascalCase Data Flow | — | — |
 | [`04-database-conventions/06-rest-api-format/04-language-implementation.md`](./04-database-conventions/06-rest-api-format/04-language-implementation.md) | Language Implementation | — | — |
 | [`04-database-conventions/06-rest-api-format/05-paths-and-references.md`](./04-database-conventions/06-rest-api-format/05-paths-and-references.md) | URL Paths vs JSON Keys & Cross-References | — | — |
-| [`04-database-conventions/06-rest-api-format/97-acceptance-criteria.md`](./04-database-conventions/06-rest-api-format/97-acceptance-criteria.md) | Rest Api Format — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`04-database-conventions/06-rest-api-format/97-acceptance-criteria.md`](./04-database-conventions/06-rest-api-format/97-acceptance-criteria.md) | REST API Format — Acceptance Criteria | 2.0.0 | Curated |
 | [`04-database-conventions/07-split-db-pattern.md`](./04-database-conventions/07-split-db-pattern.md) | Split DB Pattern | 3.1.0 | — |
 | [`04-database-conventions/97-acceptance-criteria.md`](./04-database-conventions/97-acceptance-criteria.md) | Database Conventions — Acceptance Criteria | 1.0.0 | Scaffold |
 | [`04-database-conventions/99-consistency-report.md`](./04-database-conventions/99-consistency-report.md) | Consistency Report — Database Conventions | 3.1.0 | — |
@@ -1242,7 +1242,7 @@
 | [`31-app/05-conventions/00-overview.md`](./31-app/05-conventions/00-overview.md) | Conventions | 1.0.0 | — |
 | [`31-app/05-conventions/01-axios-version-control.md`](./31-app/05-conventions/01-axios-version-control.md) | Axios Version Control Policy | 1.0.0 | — |
 | [`31-app/05-conventions/99-consistency-report.md`](./31-app/05-conventions/99-consistency-report.md) | Consistency Report — 05-conventions | 1.0.1 | — |
-| [`31-app/97-acceptance-criteria.md`](./31-app/97-acceptance-criteria.md) | App — Acceptance Criteria | 2.0.0 | Curated |
+| [`31-app/97-acceptance-criteria.md`](./31-app/97-acceptance-criteria.md) | App — Acceptance Criteria | 1.0.0 | Scaffold |
 | [`31-app/99-consistency-report.md`](./31-app/99-consistency-report.md) | Consistency Report — App | 1.3.0 | — |
 
 ## 32-ui-design
@@ -1366,7 +1366,7 @@
 | [`32-ui-design/06-workflowy-ui/10-mobile/97-acceptance-criteria.md`](./32-ui-design/06-workflowy-ui/10-mobile/97-acceptance-criteria.md) | 97 — Acceptance Criteria — Phase 10 Mobile / PWA | 1.0.0 | — |
 | [`32-ui-design/06-workflowy-ui/10-mobile/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/10-mobile/99-consistency-report.md) | Consistency Report — Mobile / PWA (Phase 10) | 1.2.0 | — |
 | [`32-ui-design/06-workflowy-ui/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/99-consistency-report.md) | Consistency Report — WorkFlowy UI | 1.1.0 | — |
-| [`32-ui-design/97-acceptance-criteria.md`](./32-ui-design/97-acceptance-criteria.md) | UI Design — Acceptance Criteria | 2.0.0 | Curated |
+| [`32-ui-design/97-acceptance-criteria.md`](./32-ui-design/97-acceptance-criteria.md) | Ui Design — Acceptance Criteria | 1.0.0 | Scaffold |
 | [`32-ui-design/99-consistency-report.md`](./32-ui-design/99-consistency-report.md) | Consistency Report — Ui Design | 1.3.0 | — |
 
 ## 33-feedback-report
