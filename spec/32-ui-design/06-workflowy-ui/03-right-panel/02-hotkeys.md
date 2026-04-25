@@ -72,10 +72,15 @@ Sorted by functional category, then alphabetical within category.
 
 | Shortcut | Action | Context |
 |----------|--------|---------|
-| ⌘/ / Ctrl+/ | Toggle right panel | Global |
-| ⌘⇧N / Ctrl+Shift+N | Quick Add modal | Global |
-| ⌘F / Ctrl+F | Open search overlay | Global |
-| ⌘L / Ctrl+L | Toggle left sidebar | Global |
+| ⌘K / Ctrl+K | Open Search Popover | Global (canonical — Phase 2) |
+| ⌘F / Ctrl+F | Open Search Popover (alias) | Global (legacy alias for ⌘K) |
+| ⌘/ / Ctrl+/ | Toggle right panel (Handbook) | Global |
+| ⌘⇧N / Ctrl+Shift+N | Quick Add modal | Global (Phase 7) |
+| ⌘L / Ctrl+L | Toggle left sidebar | Global (Phase 6) |
+| ⌘⇧Y / Ctrl+Shift+Y | Cycle theme (Light → Dark → System) | Global (Phase 8) |
+| ⌘, / Ctrl+, | Open Settings panel | Global (Phase 8) |
+| ⌘S / Ctrl+S | Force-flush save | Global (Phase 8) |
+| ⌘P / Ctrl+P | Print | Global (Phase 8 — browser passthrough) |
 | ⌘+ / Ctrl+Plus | Zoom in (font) | Global |
 | ⌘- / Ctrl+Minus | Zoom out (font) | Global |
 | ⌘0 / Ctrl+0 | Reset zoom | Global |
@@ -89,6 +94,20 @@ Sorted by functional category, then alphabetical within category.
 | ⌘⇧M / Ctrl+Shift+M | Toggle mirror | Node selected, has mirrors |
 | ⌘⇧T / Ctrl+Shift+T | Add/remove from Starred | Node selected |
 | / | Open slash menu | Editing mode |
+
+### Context-scoped (Search Popover only)
+
+When the Search Popover is open, the following overrides apply (see Phase 2 [`../../02-search/08-keyboard-shortcuts.md`](../../02-search/08-keyboard-shortcuts.md)):
+
+| Shortcut | Action | Note |
+|----------|--------|------|
+| ⌘. / Ctrl+. | Pin popover open | Overrides global "Go to Home" while popover focused |
+| ⌘J / Ctrl+J | Open Quick Actions menu | Popover-only |
+| ⌘⇧S / Ctrl+Shift+S | Open Saved Searches | Popover-only |
+| ↑ / ↓ | Cycle through matches | When focus is in footer pill |
+| Esc | Close popover | Returns focus to last node |
+
+> Outside the popover, `⌘.` retains its global "Go to Home" behavior (see Navigation section).
 
 ---
 
