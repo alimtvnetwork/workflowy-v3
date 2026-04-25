@@ -1,7 +1,83 @@
 # Features
 
-> **Version:** 1.0.0  
-> **Updated:** 2026-04-18
+> **Version:** 2.0.0
+> **Updated:** 2026-04-25 (UTC+8)
+> **Status:** ✅ Implementation-grade rollup (F-01 closed)
+
+---
+
+## 🎯 What this folder is
+
+Behavior contracts for every feature in WorkFlowy. Each file is a **single feature**, follows the [feature-file template](../../01-spec-authoring-guide/13-feature-file-template.md), and is the SSOT for that feature's rules.
+
+UI rendering (colors, layout, animations) lives in [`../../32-ui-design/`](../../32-ui-design/00-overview.md). **This folder is behavior-only.**
+
+---
+
+## 🧱 Feature Dependency Graph
+
+Read this before picking a feature to implement. Arrows = "depends on, must exist first":
+
+```
+01-information-model        ← foundation; everything depends on it
+        │
+        ├──► 03-layout-structure (NavBar + Sidebar + Page shell)
+        │           │
+        │           ├──► 04-page-content-area (recursive item list)
+        │           │           │
+        │           │           ├──► 05-interactions (Enter/Tab/drag)
+        │           │           │           │
+        │           │           │           ├──► 06-item-context-menu
+        │           │           │           ├──► 12-multi-select
+        │           │           │           └──► 13-templates
+        │           │           │
+        │           │           ├──► 07-board-view (alt rendering)
+        │           │           ├──► 09-mirrors (cross-tree refs)
+        │           │           ├──► 10-today-view (filtered slice)
+        │           │           └──► 11-trash-view (soft-deleted slice)
+        │           │
+        │           └──► 08-share-dialog (per-item)
+        │
+        ├──► 14-concurrency-and-sync (server-side rules)
+        └──► 15-roles-and-permissions (auth contract)
+```
+
+**Implementation order = topological sort of the graph above.** Do not implement `05-interactions` before `04-page-content-area`; do not implement `09-mirrors` before `01-information-model`.
+
+---
+
+## 🎒 MVP vs Phase-2
+
+| File | Feature | MVP? | Why |
+|------|---------|:----:|-----|
+| `01-information-model.md` | Item entity + root | ✅ | Foundation |
+| `02-personas.md` | Target users | ✅ | Reference doc |
+| `03-layout-structure.md` | App shell | ✅ | Container for everything |
+| `04-page-content-area.md` | Recursive item list | ✅ | The actual outliner |
+| `05-interactions.md` | Enter/Tab/Shift+Tab/drag | ✅ | Core editing |
+| `06-item-context-menu.md` | Per-item ⋮ menu | ✅ | Move/delete/share entry |
+| `11-trash-view.md` | Soft delete + 30d retention | ✅ | Data safety |
+| `12-multi-select.md` | Bulk ops | ✅ | Productivity |
+| `15-roles-and-permissions.md` | Auth + RLS via `has_role()` | ✅ | Security |
+| `07-board-view.md` | Kanban-style alt view | ⚠️ P2 | Adds rendering mode |
+| `08-share-dialog.md` | Public + invited shares | ⚠️ P2 | Needs roles first |
+| `09-mirrors.md` | Cross-tree linked items | ⚠️ P2 | Complex sync semantics |
+| `10-today-view.md` | Date-filtered slice | ⚠️ P2 | Needs scheduled-date field |
+| `13-templates.md` | Serialized tree snapshots | ⚠️ P2 | Needs full tree first |
+| `14-concurrency-and-sync.md` | Conflict resolution | ⚠️ P2 | WP-plugin-specific |
+
+---
+
+## 📖 Must-Read Sequence (for any AI starting cold)
+
+1. `01-information-model.md` — what an `Item` is.
+2. `03-layout-structure.md` — where things render.
+3. `04-page-content-area.md` — how items render recursively.
+4. `05-interactions.md` — keyboard contract.
+5. `15-roles-and-permissions.md` — who can do what.
+6. Stop here for MVP. For Phase-2, continue with the dependency graph above.
+
+---
 
 
 <!-- AUTO-TOC:START -->
@@ -32,62 +108,19 @@
 
 ---
 
-## Overview
-
-Features specification module. See files below.
-
----
-
-## Files
-
-| # | File | Description |
-|---|------|-------------|
-| 01 | [01-information-model.md](01-information-model.md) | Entity model, identity, root rules |
-| 02 | [02-personas.md](02-personas.md) | Target user personas |
-| 03 | [03-layout-structure.md](03-layout-structure.md) | Top-level layout zones, NavBar, Sidebar |
-| 04 | [04-page-content-area.md](04-page-content-area.md) | Main scrollable content area behavior |
-| 05 | [05-interactions.md](05-interactions.md) | Cross-feature interaction behaviors |
-| 06 | [06-item-context-menu.md](06-item-context-menu.md) | Per-item context menu (⋮) |
-| 07 | [07-board-view.md](07-board-view.md) | Board view specification |
-| 08 | [08-share-dialog.md](08-share-dialog.md) | Share dialog specification |
-| 09 | [09-mirrors.md](09-mirrors.md) | Mirror specification |
-| 10 | [10-today-view.md](10-today-view.md) | Today view |
-| 11 | [11-trash-view.md](11-trash-view.md) | Trash view |
-| 12 | [12-multi-select.md](12-multi-select.md) | Multi-select behavior |
-| 13 | [13-templates.md](13-templates.md) | Template application flow |
-| 14 | [14-concurrency-and-sync.md](14-concurrency-and-sync.md) | Concurrency & sync rules |
-| 15 | [15-roles-and-permissions.md](15-roles-and-permissions.md) | Roles, capability matrix, authorization contract |
-
----
-
 ## Cross-References
 
 | Reference | Location |
 |-----------|----------|
-| Parent | [../00-overview.md](../00-overview.md) |
+| Parent (App) | [`../00-overview.md`](../00-overview.md) |
+| UI Design SSOT | [`../../32-ui-design/00-overview.md`](../../32-ui-design/00-overview.md) |
+| Workflowy UI phases (visual SSOT) | [`../../32-ui-design/06-workflowy-ui/00-overview.md`](../../32-ui-design/06-workflowy-ui/00-overview.md) |
+| Glossary | [`../../19-glossary.md`](../../19-glossary.md) |
+| Enums | [`../../20-enums-index.md`](../../20-enums-index.md) |
 
 ---
 
 ## Related
 
-**In this section:**
-
-- [`01-information-model.md`](./01-information-model.md) — Information Model
-- [`02-personas.md`](./02-personas.md) — Personas
-- [`03-layout-structure.md`](./03-layout-structure.md) — Layout Structure
-- [`04-page-content-area.md`](./04-page-content-area.md) — Page Content Area
-- [`05-interactions.md`](./05-interactions.md) — Interactions
-- [`06-item-context-menu.md`](./06-item-context-menu.md) — Item Context Menu
-- [`07-board-view.md`](./07-board-view.md) — Board View
-- [`08-share-dialog.md`](./08-share-dialog.md) — Share Dialog
-- [`09-mirrors.md`](./09-mirrors.md) — Mirrors
-- [`10-today-view.md`](./10-today-view.md) — Today View
-- [`11-trash-view.md`](./11-trash-view.md) — Trash View
-- [`12-multi-select.md`](./12-multi-select.md) — Multi Select
-- [`13-templates.md`](./13-templates.md) — Templates
-- [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) — Concurrency And Sync
-- [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) — Roles & Permissions
-
-**See also:**
-
 - [`../00-overview.md`](../00-overview.md) — Parent overview
+- [`../97-acceptance-criteria.md`](../97-acceptance-criteria.md) — `AT-APP-*` criteria covering these features
