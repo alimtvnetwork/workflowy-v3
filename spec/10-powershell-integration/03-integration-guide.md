@@ -382,50 +382,13 @@ pnpm cache clean
 
 ---
 
-## CI/CD Integration
-
-### GitHub Actions
-
-```yaml
-- name: Setup pnpm
-  uses: pnpm/action-setup@v2
-  with:
-    version: 8
-
-- name: Build Frontend
-  shell: pwsh
-  run: .\run.ps1 -BuildOnly -SkipPull
-```
-
-### Azure DevOps
-
-```yaml
-- task: PowerShell@2
-  inputs:
-    filePath: 'run.ps1'
-    arguments: '-BuildOnly -SkipPull'
-```
-
 ---
 
-## AI Handoff Checklist
+## Continued
 
-When asking an AI to integrate this PowerShell runner:
+The remaining sections of this document have been moved to [`03a-cicd-and-handoff.md`](./03a-cicd-and-handoff.md) (split 2026-04-25 — F-08) to keep this file under 400 lines:
 
-1. ✅ Share `spec/powershell-integration/` spec folder
-2. ✅ Provide current project structure
-3. ✅ Specify port requirements
-4. ✅ List any custom build commands
-5. ✅ Indicate pnpm store path preference
+- CI/CD Integration
+- (and following sections)
 
-**Example Prompt:**
-
-> "Integrate the PowerShell runner from spec `spec/powershell-integration/` into this project. The backend is in `backend/` and frontend in root. Use port 8080. Enable pnpm PnP with a shared store at `D:/dev/.pnpm-store`."
-
----
-
-## Cross-References
-
-- [Overview](./00-overview.md) - Architecture and quick start
-- [Configuration Schema](./01-configuration-schema.md) - JSON config details
-- [Script Reference](./02-script-reference/00-overview.md) - All CLI flags
+See the sibling file for the full content.

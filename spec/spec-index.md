@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-25  
-**Total Files:** 1240  
+**Total Files:** 1248  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -16,21 +16,21 @@
 ## Table of Contents
 
 - [01-spec-authoring-guide](#01-spec-authoring-guide) — 21 file(s)
-- [02-coding-guidelines](#02-coding-guidelines) — 307 file(s)
-- [03-error-manage](#03-error-manage) — 184 file(s)
+- [02-coding-guidelines](#02-coding-guidelines) — 308 file(s)
+- [03-error-manage](#03-error-manage) — 185 file(s)
 - [04-database-conventions](#04-database-conventions) — 16 file(s)
 - [05-split-db-architecture](#05-split-db-architecture) — 45 file(s)
 - [06-seedable-config-architecture](#06-seedable-config-architecture) — 50 file(s)
 - [07-design-system](#07-design-system) — 16 file(s)
 - [08-docs-viewer-ui](#08-docs-viewer-ui) — 29 file(s)
 - [09-code-block-system](#09-code-block-system) — 13 file(s)
-- [10-powershell-integration](#10-powershell-integration) — 22 file(s)
+- [10-powershell-integration](#10-powershell-integration) — 23 file(s)
 - [11-research](#11-research) — 2 file(s)
 - [12-consolidated-guidelines](#12-consolidated-guidelines) — 26 file(s)
-- [13-cicd-pipeline-workflows](#13-cicd-pipeline-workflows) — 29 file(s)
+- [13-cicd-pipeline-workflows](#13-cicd-pipeline-workflows) — 30 file(s)
 - [14-self-update-app-update](#14-self-update-app-update) — 32 file(s)
-- [15-wp-plugin-how-to](#15-wp-plugin-how-to) — 214 file(s)
-- [16-generic-cli](#16-generic-cli) — 41 file(s)
+- [15-wp-plugin-how-to](#15-wp-plugin-how-to) — 216 file(s)
+- [16-generic-cli](#16-generic-cli) — 43 file(s)
 - [17-generic-update](#17-generic-update) — 11 file(s)
 - [18-spec-issues](#18-spec-issues) — 6 file(s)
 - [31-app](#31-app) — 35 file(s)
@@ -306,6 +306,7 @@
 | [`02-coding-guidelines/04-php/99-consistency-report.md`](./02-coding-guidelines/04-php/99-consistency-report.md) | Consistency Report: PHP Standards | 3.1.0 | — |
 | [`02-coding-guidelines/05-rust/00-overview.md`](./02-coding-guidelines/05-rust/00-overview.md) | Rust Coding Standards | 3.1.0 | Active |
 | [`02-coding-guidelines/05-rust/01-naming-conventions.md`](./02-coding-guidelines/05-rust/01-naming-conventions.md) | Rust Naming Conventions | 3.1.0 | — |
+| [`02-coding-guidelines/05-rust/01a-rust-json-and-decisions.md`](./02-coding-guidelines/05-rust/01a-rust-json-and-decisions.md) | Rust Naming — JSON Wire Format, Modules & Decision Tables | — | — |
 | [`02-coding-guidelines/05-rust/02-error-handling.md`](./02-coding-guidelines/05-rust/02-error-handling.md) | Rust Error Handling | 3.1.0 | — |
 | [`02-coding-guidelines/05-rust/03-async-patterns.md`](./02-coding-guidelines/05-rust/03-async-patterns.md) | Rust Async Patterns | 3.1.0 | — |
 | [`02-coding-guidelines/05-rust/04-memory-safety.md`](./02-coding-guidelines/05-rust/04-memory-safety.md) | Rust Memory Safety | 3.1.0 | — |
@@ -533,6 +534,7 @@
 | [`03-error-manage/02-error-architecture/06-apperror-package/99-consistency-report.md`](./03-error-manage/02-error-architecture/06-apperror-package/99-consistency-report.md) | Consistency Report: Apperror Package | 3.1.0 | — |
 | [`03-error-manage/02-error-architecture/07-logging-and-diagnostics/00-overview.md`](./03-error-manage/02-error-architecture/07-logging-and-diagnostics/00-overview.md) | Logging and Diagnostics | 3.1.0 | Active |
 | [`03-error-manage/02-error-architecture/07-logging-and-diagnostics/01-react-execution-logger.md`](./03-error-manage/02-error-architecture/07-logging-and-diagnostics/01-react-execution-logger.md) | Specification: React Execution Logger | 3.1.0 | Implemented |
+| [`03-error-manage/02-error-architecture/07-logging-and-diagnostics/01a-react-logger-performance-and-roadmap.md`](./03-error-manage/02-error-architecture/07-logging-and-diagnostics/01a-react-logger-performance-and-roadmap.md) | React Execution Logger — Performance, Best Practices & Roadmap | — | — |
 | [`03-error-manage/02-error-architecture/07-logging-and-diagnostics/02-session-based-logging/00-overview.md`](./03-error-manage/02-error-architecture/07-logging-and-diagnostics/02-session-based-logging/00-overview.md) | Specification: Session-Based Logging System | 3.1.0 | Implemented |
 | [`03-error-manage/02-error-architecture/07-logging-and-diagnostics/02-session-based-logging/01-requirements.md`](./03-error-manage/02-error-architecture/07-logging-and-diagnostics/02-session-based-logging/01-requirements.md) | 1. Requirements | — | — |
 | [`03-error-manage/02-error-architecture/07-logging-and-diagnostics/02-session-based-logging/02-architecture.md`](./03-error-manage/02-error-architecture/07-logging-and-diagnostics/02-session-based-logging/02-architecture.md) | 2. Architecture | — | — |
@@ -785,6 +787,7 @@
 | [`10-powershell-integration/02-script-reference/07-wp-plugins-config.md`](./10-powershell-integration/02-script-reference/07-wp-plugins-config.md) | 7. wpPlugins Configuration | — | — |
 | [`10-powershell-integration/02-script-reference/97-acceptance-criteria.md`](./10-powershell-integration/02-script-reference/97-acceptance-criteria.md) | Script Reference — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`10-powershell-integration/03-integration-guide.md`](./10-powershell-integration/03-integration-guide.md) | PowerShell Integration Guide | — | Active |
+| [`10-powershell-integration/03a-cicd-and-handoff.md`](./10-powershell-integration/03a-cicd-and-handoff.md) | PowerShell Integration — CI/CD & AI Handoff | — | — |
 | [`10-powershell-integration/04-error-codes.md`](./10-powershell-integration/04-error-codes.md) | PowerShell Runner Error Codes | 1.1.0 | Active |
 | [`10-powershell-integration/05-firewall-rules.md`](./10-powershell-integration/05-firewall-rules.md) | Windows Firewall Configuration | 1.1.0 | Active |
 | [`10-powershell-integration/06-php-known-issues.md`](./10-powershell-integration/06-php-known-issues.md) | PHP Error Management — Known Issues & Cases | 1.0.0 | Active |
@@ -847,6 +850,7 @@
 | [`13-cicd-pipeline-workflows/02-go-binary-deploy/01-ci-pipeline.md`](./13-cicd-pipeline-workflows/02-go-binary-deploy/01-ci-pipeline.md) | Go Binary — CI Pipeline | 3.1.0 | — |
 | [`13-cicd-pipeline-workflows/02-go-binary-deploy/02-release-pipeline.md`](./13-cicd-pipeline-workflows/02-go-binary-deploy/02-release-pipeline.md) | Go Binary — Release Pipeline | 3.1.0 | — |
 | [`13-cicd-pipeline-workflows/02-go-binary-deploy/03-complete-workflow-reference.md`](./13-cicd-pipeline-workflows/02-go-binary-deploy/03-complete-workflow-reference.md) | Go Binary — Complete Workflow Reference | 3.1.0 | — |
+| [`13-cicd-pipeline-workflows/02-go-binary-deploy/03a-stage-references-and-layout.md`](./13-cicd-pipeline-workflows/02-go-binary-deploy/03a-stage-references-and-layout.md) | Stage-by-Stage References & Multi-Module Layout | — | — |
 | [`13-cicd-pipeline-workflows/02-go-binary-deploy/97-acceptance-criteria.md`](./13-cicd-pipeline-workflows/02-go-binary-deploy/97-acceptance-criteria.md) | Go Binary Deploy — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`13-cicd-pipeline-workflows/02-go-binary-deploy/99-consistency-report.md`](./13-cicd-pipeline-workflows/02-go-binary-deploy/99-consistency-report.md) | Consistency Report — Go Binary Deploy | 3.1.0 | — |
 | [`13-cicd-pipeline-workflows/03-vulnerability-scanning.md`](./13-cicd-pipeline-workflows/03-vulnerability-scanning.md) | Vulnerability Scanning | — | — |
@@ -1086,7 +1090,9 @@
 | [`15-wp-plugin-how-to/16-error-handling-extraction/14-checklist.md`](./15-wp-plugin-how-to/16-error-handling-extraction/14-checklist.md) | 16.14 Checklist | — | — |
 | [`15-wp-plugin-how-to/16-error-handling-extraction/97-acceptance-criteria.md`](./15-wp-plugin-how-to/16-error-handling-extraction/97-acceptance-criteria.md) | Error Handling Extraction — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`15-wp-plugin-how-to/17-data-file-patterns.md`](./15-wp-plugin-how-to/17-data-file-patterns.md) | Phase 17 — Data File Patterns | — | — |
+| [`15-wp-plugin-how-to/17a-data-file-validation-and-checklist.md`](./15-wp-plugin-how-to/17a-data-file-validation-and-checklist.md) | Data File Patterns — Adding Files, Validation & Checklist | — | — |
 | [`15-wp-plugin-how-to/18-frontend-javascript-patterns.md`](./15-wp-plugin-how-to/18-frontend-javascript-patterns.md) | Phase 18 — Frontend JavaScript Patterns | — | — |
+| [`15-wp-plugin-how-to/18a-frontend-tables-urls-and-confirms.md`](./15-wp-plugin-how-to/18a-frontend-tables-urls-and-confirms.md) | Frontend JS Patterns — Tables, URL Builders & Confirm Actions | — | — |
 | [`15-wp-plugin-how-to/19-micro-orm-and-root-db/00-overview.md`](./15-wp-plugin-how-to/19-micro-orm-and-root-db/00-overview.md) | Phase 19 — Micro-ORM and Cross-Plugin Root Database | — | — |
 | [`15-wp-plugin-how-to/19-micro-orm-and-root-db/01-orm-shell-class.md`](./15-wp-plugin-how-to/19-micro-orm-and-root-db/01-orm-shell-class.md) | 19.1 Micro-ORM — Fluent Query Builder | — | — |
 | [`15-wp-plugin-how-to/19-micro-orm-and-root-db/02-orm-where-trait.md`](./15-wp-plugin-how-to/19-micro-orm-and-root-db/02-orm-where-trait.md) | 19.2 OrmWhereTrait — WHERE Clause Building | — | — |
@@ -1143,6 +1149,8 @@
 | [`16-generic-cli/13-checklist.md`](./16-generic-cli/13-checklist.md) | Implementation Checklist | — | — |
 | [`16-generic-cli/14-date-formatting.md`](./16-generic-cli/14-date-formatting.md) | Date Display Format | — | — |
 | [`16-generic-cli/15-constants-reference.md`](./16-generic-cli/15-constants-reference.md) | Constants Reference | — | — |
+| [`16-generic-cli/15a-naming-and-contributors.md`](./16-generic-cli/15a-naming-and-contributors.md) | Constants — Naming Reference & Contributors | — | — |
+| [`16-generic-cli/15b-constants-category-catalog.md`](./16-generic-cli/15b-constants-category-catalog.md) | Constants — Category Catalog | — | — |
 | [`16-generic-cli/16-verbose-logging/00-overview.md`](./16-generic-cli/16-verbose-logging/00-overview.md) | Verbose Logging — Overview | 1.0.0 | — |
 | [`16-generic-cli/16-verbose-logging/01-design-and-api.md`](./16-generic-cli/16-verbose-logging/01-design-and-api.md) | Design Rules, Package Structure & Logger API | — | — |
 | [`16-generic-cli/16-verbose-logging/02-init-and-log-format.md`](./16-generic-cli/16-verbose-logging/02-init-and-log-format.md) | Init Flow & Log Entry Format | — | — |
@@ -1410,4 +1418,4 @@
 
 ---
 
-*Auto-generated index — 1240 files across 25 top-level folders.*
+*Auto-generated index — 1248 files across 25 top-level folders.*
