@@ -1,6 +1,6 @@
 # Active Plans
 
-> **Updated:** 2026-04-26 (UTC+8) · **Status:** APP-FIX-01, 07, 06, 02, 03, 04, 05, 09, 10, 08, 11, 14 **DONE** + Round-3 AUDIT-04 CLOSED. AT naming reconciled: `AT-APP-NN` canonical, `AT-APPF-NN` frozen dispatch. Round-3 blockers remaining: AUDIT-03, AUDIT-06. Plus AUDIT-02a + 2 APP-FIX phases. Next per user order: APP-FIX-12.
+> **Updated:** 2026-04-26 (UTC+8) · **Status:** APP-FIX-01, 07, 06, 02, 03, 04, 05, 09, 10, 08, 11, 14, 12 **DONE** + Round-3 AUDIT-04 CLOSED. 3 cross-feature workflow files added (template-application, share-invite, trash-restore). Round-3 blockers remaining: AUDIT-03, AUDIT-06. Plus AUDIT-02a + 1 APP-FIX phase. Next per user order: APP-FIX-13 (final).
 
 ---
 
