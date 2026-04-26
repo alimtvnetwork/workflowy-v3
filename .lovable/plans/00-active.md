@@ -1,6 +1,6 @@
 # Active Plans
 
-> **Updated:** 2026-04-26 (UTC+8) · **Status:** 🎉 **AUDIT POLISH #2 DONE — 6/10 TBDs resolved (94→95/100).** A-26..A-30 closed. Search-UI specs now bind to WP plugin REST (`/wp-json/workflowy/v1/saved-searches`), `sessionStorage` for pin flag, `rounded-xl` for popover radius, and `N=5` for recent mentions. 4 remaining TBDs are intentional (Phase-5 palette-hex blocker, mutation-score runtime metric, archive history, forward-ref pointer). Only blocking failure is **F-AUD30-01** — `src/types/index.ts` `mirror` → `dashboard` (3-line fix gated by `mem://constraints/spec-only-mode`). **Say `exit spec-only` to apply that fix and start P1.1 Bootstrap.**
+> **Updated:** 2026-04-26 (UTC+8) · **Status:** 🎉 **AUDIT POLISH #3 DONE — 143/143 overviews now carry Keywords + AI Confidence + Scoring blocks.** A-26..A-30 closed; F-AUD30-03 (TBDs) and F-AUD30-04/05 (overview metadata) resolved. 106 overviews carry `auto-backfill TODO re-grade` markers so humans can prioritize manual scoring; the script (`/tmp/backfill_overviews.mjs`) is preserved if a re-run is needed. Only blocking failure is **F-AUD30-01** — `src/types/index.ts` `mirror` → `dashboard` (3-line fix gated by `mem://constraints/spec-only-mode`). **Say `exit spec-only` to apply that fix and start P1.1 Bootstrap.**
 
 ---
 
