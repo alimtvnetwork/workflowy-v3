@@ -19,6 +19,7 @@
 | 2 | [`02-changelog.md`](./02-changelog.md) | Universal Response Envelope — Changelog | 117 |
 | 3 | [`03-configurability.md`](./03-configurability.md) | Envelope Configurability | 94 |
 | 4 | [`04-response-envelope-reference.md`](./04-response-envelope-reference.md) | Universal Response Envelope Specification | 218 |
+| 5 | [`05-error-code-catalogue.md`](./05-error-code-catalogue.md) | Standard Error Code Catalogue (SSOT) | 230 |
 
 <!-- AUTO-TOC:END -->
 
@@ -56,12 +57,14 @@ Standardized API response envelope specification.
 | 02-changelog.md |
 | 03-configurability.md |
 | 04-response-envelope-reference.md |
+| 05-error-code-catalogue.md |
 | 99-consistency-report.md |
 
 | 01-adr.md |
 | 02-changelog.md |
 | 03-configurability.md |
 | 04-response-envelope-reference.md |
+| 05-error-code-catalogue.md |
 | 99-consistency-report.md |
 ---
 
@@ -79,6 +82,7 @@ _See parent folder's `00-overview.md` for broader context._
 - [`02-changelog.md`](./02-changelog.md) — Changelog
 - [`03-configurability.md`](./03-configurability.md) — Configurability
 - [`04-response-envelope-reference.md`](./04-response-envelope-reference.md) — Response Envelope Reference
+- [`05-error-code-catalogue.md`](./05-error-code-catalogue.md) — Standard Error Code Catalogue (SSOT)
 
 **See also:**
 
