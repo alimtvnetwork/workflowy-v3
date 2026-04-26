@@ -1,6 +1,6 @@
 # Active Plans
 
-> **Updated:** 2026-04-26 (UTC+8) · **Status:** 🎉 **A-19 CLOSED** — `spec/31-app/01-features/05a-hotkey-table.md` created (20-row machine-readable hotkey SSOT with full template compliance: Inputs/Outputs/Edge Cases/Acceptance Tests/Component Contract). Defines AT-HK-01..08 and a planned hygiene check `17-check-hotkeys.mjs`. Prior: A-03 closed (PowerShell overview split 406→273 lines). Hygiene 17/18; only **A-01** remains — `src/types/index.ts` `mirror` → `dashboard`, gated by `mem://constraints/spec-only-mode`. **Say `exit spec-only` to apply that fix and start P1.1 Bootstrap.**
+> **Updated:** 2026-04-26 (UTC+8) · **Status:** 🎉 **A-28 CLOSED** — full spec sweep for `mirror`-as-`ItemType` drift; fixed 2 leaks: `spec/32-ui-design/02-state-and-data/03-data-types.md` L21 (was claiming `mirror` as 12th `ItemType` "canonical SSOT for UI taxonomy" — directly contradicting the real SSOT) and `spec/19-glossary.md` L85–86 (Node + itemType definitions). All other matches are intentional (audit-3 closure language or `Mirrors` table column references). Prior: A-19 closed (hotkey table SSOT), A-03 closed (PowerShell overview split). Hygiene 17/18; only **A-01** remains — `src/types/index.ts` `mirror` → `dashboard`, gated by `mem://constraints/spec-only-mode`. **Say `exit spec-only` to apply that fix and start P1.1 Bootstrap.**
 
 ---
 
