@@ -22,6 +22,7 @@ This file exists to satisfy the spec-hygiene coverage gate (`scripts/spec-hygien
 | 1 | [`01-audit-2026-04-18.md`](./01-audit-2026-04-18.md) | Inline findings + closure status |
 | 2 | [`03-ai-readiness-audit-2026-04-19.md`](./03-ai-readiness-audit-2026-04-19.md) | Inline AI-readiness checklist |
 | 3 | [`04-required-files-gate.md`](./04-required-files-gate.md) | Inline gate definition |
+| 4 | [`05-audit-02a-column-rename.md`](./05-audit-02a-column-rename.md) | Inline acceptance criteria |
 
 ---
 
