@@ -25,6 +25,7 @@
 | 10 | [`10-role-escalation-policy.md`](./10-role-escalation-policy.md) | Role-Escalation Policy — SSOT | 230 |
 | 11 | [`11-session-token-lifecycle.md`](./11-session-token-lifecycle.md) | Session & Token Lifecycle — SSOT | 240 |
 | 12 | [`12-mfa-policy.md`](./12-mfa-policy.md) | MFA Policy — SSOT | 270 |
+| 13 | [`13-data-export-policy.md`](./13-data-export-policy.md) | Data-Export Policy — SSOT | 280 |
 
 <!-- AUTO-TOC:END -->
 
@@ -73,6 +74,7 @@ Conventions specification module. See files below.
 | 10 | [10-role-escalation-policy.md](10-role-escalation-policy.md) | Role-escalation policy: 4 grant classes, dual-control, expiry timers, revocation deadlines, G-24 gate |
 | 11 | [11-session-token-lifecycle.md](11-session-token-lifecycle.md) | Session & token lifecycle: 5 token kinds, mandatory rotation + reuse detection, idle/absolute timeouts, TRL, SSE-ticket flow, G-25 gate |
 | 12 | [12-mfa-policy.md](12-mfa-policy.md) | MFA policy: TOTP+WebAuthn+recovery codes, SMS/email-OTP forbidden, step-up freshness ladder, G-26 gate |
+| 13 | [13-data-export-policy.md](13-data-export-policy.md) | Data-export policy: 4 scopes, 5 formats, async jobs, MFA-gated, signed URLs, redaction matrix, G-27 gate |
 
 ---
 
@@ -100,6 +102,7 @@ Conventions specification module. See files below.
 - [`10-role-escalation-policy.md`](./10-role-escalation-policy.md) — Role-escalation policy
 - [`11-session-token-lifecycle.md`](./11-session-token-lifecycle.md) — Session & token lifecycle
 - [`12-mfa-policy.md`](./12-mfa-policy.md) — MFA policy
+- [`13-data-export-policy.md`](./13-data-export-policy.md) — Data-export policy
 
 **See also:**
 
