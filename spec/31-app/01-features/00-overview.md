@@ -1,7 +1,7 @@
 # Features
 
-> **Version:** 2.1.0
-> **Updated:** 2026-04-26 (UTC+8) — APP-FIX-07: Casing-Layers callout added (closes audit F-08)
+> **Version:** 2.2.0
+> **Updated:** 2026-04-26 (UTC+8) — APP-FIX-10: Boolean Conventions callout added (closes audit F-13). v2.1.0 added Casing Layers callout.
 > **Status:** ✅ Implementation-grade rollup (F-01 closed)
 
 ---
@@ -99,6 +99,32 @@ Read this before picking a feature to implement. Arrows = "depends on, must exis
 
 ---
 
+## ✅ Boolean Conventions (normative)
+
+> **Why this section:** Settings checkboxes (show completed, auto-collapse, sidebar toggles) and item flags (`isCompleted`, `isArchived`, `isStarred`, `Mirrors.BrokenAt IS NULL`) appear throughout the app folder. Without an enforced convention, AI implementers reach for negated guards (`if (!isCompleted)`), bare `== false` comparisons, or string-coerced booleans from form inputs — all banned. This section is the entry point; it does NOT restate the rules — it points to the SSOT.
+
+### Single Source of Truth
+
+| Layer | SSOT file | What it pins |
+|-------|-----------|--------------|
+| Cross-language | [`spec/02-coding-guidelines/01-cross-language/12-no-negatives.md`](../../02-coding-guidelines/01-cross-language/12-no-negatives.md) | Positive guard clauses only — no `if (!x)`, no `unless`, no double negatives. |
+| TypeScript / control flow | [`spec/02-coding-guidelines/06-ai-optimization/03-common-ai-mistakes/03-control-flow.md`](../../02-coding-guidelines/06-ai-optimization/03-common-ai-mistakes/03-control-flow.md) §Mistake #9 | Use early returns + positive guards; never nest `if`s for boolean state. |
+| PHP runtime | [`spec/02-coding-guidelines/04-php/07-php-standards-reference/03-initialization-and-booleans.md`](../../02-coding-guidelines/04-php/07-php-standards-reference/03-initialization-and-booleans.md) | `BooleanHelpers::hasValue($x)` is the ONLY way to test "is this a real value?". Forbidden: `empty()`, `isset() && $x`, `!!$x`, `$x == true`. |
+| PHP architecture | [`spec/02-coding-guidelines/04-php/02-forbidden-patterns/03-boolean-and-architecture.md`](../../02-coding-guidelines/04-php/02-forbidden-patterns/03-boolean-and-architecture.md) | Forbidden boolean parameters in public methods (use enum instead). |
+| Settings persistence | [`spec/15-wp-plugin-how-to/15-settings-architecture/13-anti-patterns.md`](../../15-wp-plugin-how-to/15-settings-architecture/13-anti-patterns.md) §Anti-pattern #10 | Boolean settings MUST go through `Sanitizer::bool()` — string `'1'`/`'0'`/`'true'`/`'false'` from forms is rejected outright. |
+
+### Rules in one paragraph
+
+Every feature in `spec/31-app/01-features/` MUST: (1) write boolean checks as **positive guards** (`if (item.isCompleted) return;`), (2) test PHP values with `BooleanHelpers::hasValue($x)` — never `empty()` or `isset()` alone, (3) declare boolean settings via `Sanitizer::bool()` (see APP-FIX-05 tables in `03/10/11/13`), (4) prefer enums over boolean parameters when a public method takes more than one boolean. The SSOTs above are normative; this overview is a directory.
+
+### Forbidden in feature specs
+
+- ❌ Writing `if (!user.isLoggedIn)` — invert: `if (user.isAnonymous)` or use early return.
+- ❌ Documenting a settings checkbox without naming its `OptionNameType` enum case + `Sanitizer::bool()`.
+- ❌ Treating `Mirrors.BrokenAt IS NOT NULL` as the primary check when `Mirrors.BrokenAt IS NULL` (healthy) is the positive form (see [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) §14.4).
+- ❌ Adding a new boolean parameter to a public PHP method — use an enum.
+
+---
 
 <!-- AUTO-TOC:START -->
 
