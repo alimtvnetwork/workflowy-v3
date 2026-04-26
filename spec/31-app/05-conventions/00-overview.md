@@ -83,6 +83,7 @@ Conventions specification module. See files below.
 - [`04-g19-workflow-contract-gate.md`](./04-g19-workflow-contract-gate.md) — G-19 workflow contract drift gate
 - [`05-precommit-hook-contract.md`](./05-precommit-hook-contract.md) — Pre-commit hook + installer contract
 - [`06-g20-precommit-contract-gate.md`](./06-g20-precommit-contract-gate.md) — G-20 pre-commit contract drift gate
+- [`07-g21-gate-discovery-audit.md`](./07-g21-gate-discovery-audit.md) — G-21 gate-discovery audit
 
 **See also:**
 
