@@ -231,7 +231,7 @@ Each finding has: ID · Severity · Files · What's wrong · Why it matters · F
 
 | # | Phase ID | Title | Files touched | Foundational rule it closes |
 |---|----------|-------|---------------|-----------------------------|
-| 1 | **APP-FIX-01** | Widen AUDIT-02a column rename to 12 files | 4 extra files added to existing rename map | F-01 |
+| 1 | **APP-FIX-01** ✅ | Widen AUDIT-02a column rename to 12 files | 4 extra files added to existing rename map | F-01 — **DONE 2026-04-26 (tracker widened to 12; mechanical rename of identifiers tracked there)** |
 | 2 | **APP-FIX-02** | Add `Storage` row (Root vs App DB) to every persistence-touching feature | 9 feature files | F-03 |
 | 3 | **APP-FIX-03** | Add SSE/poll-fallback callout to every realtime mention | 6 feature files | F-05 |
 | 4 | **APP-FIX-04** | Document `Auth::hasRole()` PHP contract in `15-roles-and-permissions.md` | 1 file | F-06 |
