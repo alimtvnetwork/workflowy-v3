@@ -82,8 +82,8 @@ interface ExportState {
 
 | Feature | Go | TypeScript |
 |---------|-----|-----------|
-| Package | `pkg/enums/exportstatus` | `src/lib/enums/export-status.ts` |
-| Type | `byte` iota | String enum |
+| Package | `pkg/enums/exportstatus` | `src/lib/enums/export-status-type.ts` |
+| Type | `byte` iota | `as const` object + derived union |
 | Values | `Pending`, `Processing`, `Completed`, `Failed` | Same |
 
 ---
@@ -93,7 +93,8 @@ interface ExportState {
 - Issue #10 — Domain Status Magic Strings <!-- external: spec/23-how-app-issues-track/10-domain-status-magic-strings.md -->
 - [HttpMethod Enum](./05-http-method-enum.md) — Sibling enum spec
 - [TypeScript Standards](./08-typescript-standards-reference/00-overview.md) — Parent spec
+- [TS Overview — Strategy B](./00-overview.md#canonical-enum-shape-strategy-b--as-const--derived-union)
 
 ---
 
-*ExportStatus enum v1.0.0 — 2026-02-27*
+*ExportStatus enum v2.0.0 — 2026-04-25 — migrated to `as const` + derived union (AUDIT-05).*
