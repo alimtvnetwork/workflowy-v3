@@ -35,7 +35,7 @@
 - **Request body**: `{ TargetParentId?: string }` — optional override; defaults to original parent or root if parent is gone.
 - **Success (200)** `Results`: the restored `Item`.
 - **Errors**: `ERR_NOT_FOUND`, `ERR_FORBIDDEN`, `ERR_RETENTION_EXPIRED` (item is older than 30 d), `ERR_PARENT_FULL`.
-- **Side effects**: clears `DeletedAt`. Restores the **subtree** (all descendants soft-deleted by the same operation). Emits SSE `item.restored`.
+- **Side effects**: clears `DeletedAt`. Restores the **subtree** (all descendants soft-deleted by the same operation). Emits SSE `item-restored`.
 - **AC refs**: `AT-APP-23`.
 
 ---

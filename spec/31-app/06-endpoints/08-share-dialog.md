@@ -34,7 +34,7 @@
 - **Request body**: `{ Email: string, Role: 'viewer' | 'editor' | 'owner', Message?: string }`.
 - **Success (201)** `Results`: the created `Share`.
 - **Errors**: `ERR_NOT_FOUND`, `ERR_FORBIDDEN`, `ERR_INVALID_EMAIL`, `ERR_DUPLICATE_GRANT`.
-- **Side effects**: inserts into `Shares`. Sends invite email via WP `wp_mail`. Emits SSE `share.created` on `item:{id}`.
+- **Side effects**: inserts into `Shares`. Sends invite email via WP `wp_mail`. Emits SSE `share-granted` on `item:{id}`.
 - **AC refs**: `AT-APP-16`.
 
 ---
@@ -45,7 +45,7 @@
 - **Request body**: `{ Role: 'viewer' | 'editor' | 'owner' }`.
 - **Success (200)** `Results`: updated `Share`.
 - **Errors**: `ERR_NOT_FOUND`, `ERR_FORBIDDEN`, `ERR_LAST_OWNER` (cannot demote sole owner).
-- **Side effects**: updates `Shares.Role`. Emits SSE `share.updated`.
+- **Side effects**: updates `Shares.Role`. Emits SSE `share-granted` (re-grant).
 
 ---
 
@@ -54,7 +54,7 @@
 - **Auth**: `owner`.
 - **Success (204)**: empty.
 - **Errors**: `ERR_NOT_FOUND`, `ERR_FORBIDDEN`, `ERR_LAST_OWNER`.
-- **Side effects**: deletes row from `Shares`. Emits SSE `share.revoked`. Affected user loses access immediately.
+- **Side effects**: deletes row from `Shares`. Emits SSE `share-revoked`. Affected user loses access immediately.
 
 ---
 
@@ -64,7 +64,7 @@
 - **Request body**: `{ Enabled: boolean }`.
 - **Success (200)** `Results`: `{ Enabled: boolean, PublicSlug?: string }` (slug present only when `Enabled=true`).
 - **Errors**: `ERR_NOT_FOUND`, `ERR_FORBIDDEN`.
-- **Side effects**: rotates the public slug whenever enabled→disabled→enabled. Anyone holding an old slug loses access immediately. Emits SSE `share.public-toggled`.
+- **Side effects**: rotates the public slug whenever enabled→disabled→enabled. Anyone holding an old slug loses access immediately. Emits SSE `share-granted` (public variant).
 - **AC refs**: `AT-APP-17`.
 
 ---

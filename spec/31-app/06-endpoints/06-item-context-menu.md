@@ -26,7 +26,7 @@
   - `Position` (`above` | `below` | `end`, default `below`)
 - **Success (201)** `Results`: `{ NewRootId, CopiedCount }`.
 - **Errors**: `ERR_NOT_FOUND`, `ERR_FORBIDDEN`, `ERR_LIMIT_EXCEEDED` (subtree exceeds duplication cap, default 1000 nodes).
-- **Side effects**: inserts a fresh subtree with **new IDs**. Mirrors are duplicated as new mirrors (still pointing at original canonical, per L6). Emits one `item.created` SSE per inserted node.
+- **Side effects**: inserts a fresh subtree with **new IDs**. Mirrors are duplicated as new mirrors (still pointing at original canonical, per L6). Emits one `item-created` SSE per inserted node.
 - **AC refs**: `AT-APP-10`.
 
 ---
@@ -37,7 +37,7 @@
 - **Request body**: `{ Completed: boolean }`.
 - **Success (200)** `Results`: the updated `Item`.
 - **Errors**: `ERR_NOT_FOUND`, `ERR_FORBIDDEN`.
-- **Side effects**: sets `Completed`, `CompletedAt`. Emits SSE `item.updated`.
+- **Side effects**: sets `Completed`, `CompletedAt`. Emits SSE `item-updated`.
 - **AC refs**: `AT-APP-11`.
 
 ---
@@ -49,7 +49,7 @@
 - **Rule**: server validates against the **allowed-transition matrix** in `01-features/06-item-context-menu.md`. Illegal transitions return `ERR_INVALID_TRANSITION`.
 - **Success (200)** `Results`: updated `Item`.
 - **Errors**: `ERR_NOT_FOUND`, `ERR_FORBIDDEN`, `ERR_INVALID_TRANSITION`.
-- **Side effects**: updates `ItemType`. May reset type-specific metadata (e.g. board columns when leaving `BoardProject`). Emits SSE `item.updated`.
+- **Side effects**: updates `ItemType`. May reset type-specific metadata (e.g. board columns when leaving `BoardProject`). Emits SSE `item-updated`.
 - **AC refs**: `AT-APP-12`.
 
 ---
@@ -61,7 +61,7 @@
 - **Rule**: tag strings are lowercased, max 32 chars, `[a-z0-9-]+`.
 - **Success (200)** `Results`: `{ Tags: string[] }` (canonical post-update list).
 - **Errors**: `ERR_NOT_FOUND`, `ERR_FORBIDDEN`, `ERR_INVALID_TAG`.
-- **Side effects**: updates `Items.Tags` (JSON column). Emits SSE `item.updated`.
+- **Side effects**: updates `Items.Tags` (JSON column). Emits SSE `item-updated`.
 - **AC refs**: `AT-APP-13`.
 
 ---

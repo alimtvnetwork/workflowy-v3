@@ -39,7 +39,7 @@
 - **Rule**: at most one of `BeforeCardId` / `AfterCardId` may be set. Server updates the card's column-discriminator and computes new `FractionalIndex` within the destination column.
 - **Success (200)** `Results`: updated `Item` (the card).
 - **Errors**: `ERR_NOT_FOUND`, `ERR_FORBIDDEN`, `ERR_NOT_BOARD`, `ERR_INVALID_COLUMN`.
-- **Side effects**: updates card's column field + `FractionalIndex`. Emits SSE `item.moved` on `item:{boardId}`.
+- **Side effects**: updates card's column field + `FractionalIndex`. Emits SSE `item-updated` on `item:{boardId}`.
 - **AC refs**: `AT-APP-15`. Structural sync per `mem://features/board-view`.
 
 ---

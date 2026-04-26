@@ -41,6 +41,7 @@
 | 6 | [`07-audit-03-dashboard-taxonomy.md`](./07-audit-03-dashboard-taxonomy.md) | AUDIT-03 — Dashboard Taxonomy Contradiction | 119 |
 | 7 | [`08-audit-06-sse-transport-contract.md`](./08-audit-06-sse-transport-contract.md) | AUDIT-06 — SSE Transport Contract Gaps | 93 |
 | 8 | [`09-app-folder-re-audit-2026-04-26.md`](./09-app-folder-re-audit-2026-04-26.md) | App Folder Re-Audit — 2026-04-26 (post-fix) | 103 |
+| 9 | [`10-content-audit-endpoints-and-db-diagram.md`](./10-content-audit-endpoints-and-db-diagram.md) | Content Audit — `06-endpoints/` + `07-db-diagram/` (2026-04-26) | 109 |
 
 <!-- AUTO-TOC:END -->
 

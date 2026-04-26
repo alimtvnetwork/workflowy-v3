@@ -55,7 +55,7 @@
 - **Request body**: `{ TargetParentId: string, Position?: 'above' | 'below' | 'end' }`.
 - **Success (201)** `Results`: `{ NewRootId: string, InsertedCount: number }`.
 - **Errors**: `ERR_NOT_FOUND`, `ERR_FORBIDDEN`, `ERR_PARENT_FULL`, `ERR_LIMIT_EXCEEDED`.
-- **Side effects**: inserts a fresh subtree with **new IDs** (mirrors NOT preserved — they degrade to plain items per `mem://features/templates`). Emits one `item.created` per inserted node.
+- **Side effects**: inserts a fresh subtree with **new IDs** (mirrors NOT preserved — they degrade to plain items per `mem://features/templates`). Emits one `item-created` per inserted node.
 - **AC refs**: `AT-APP-26`.
 
 ---

@@ -56,7 +56,7 @@
   - `Tags` (string[], optional)
 - **Success (201)** `Results`: the created `Item`.
 - **Errors**: `ERR_FORBIDDEN`, `ERR_INVALID_TYPE` (bad `ItemType`), `ERR_PARENT_FULL` (250-cap on view).
-- **Side effects**: inserts row in `Items`; emits SSE `item.created` on `item:{ParentId}`.
+- **Side effects**: inserts row in `Items`; emits SSE `item-created` on `item:{ParentId}`.
 - **AC refs**: `AT-APP-03`.
 
 ---
@@ -67,7 +67,7 @@
 - **Request body** (any subset, all PascalCase): `Content`, `ItemType`, `Tags`, `DueDate`, `Completed`.
 - **Success (200)** `Results`: the updated `Item`.
 - **Errors**: `ERR_NOT_FOUND`, `ERR_FORBIDDEN`, `ERR_INVALID_TRANSITION` (illegal `ItemType` change).
-- **Side effects**: updates row; emits SSE `item.updated` on `item:{id}`. LWW conflict resolution per §14.4.
+- **Side effects**: updates row; emits SSE `item-updated` on `item:{id}`. LWW conflict resolution per §14.4.
 - **AC refs**: `AT-APP-05`.
 
 ---
@@ -82,7 +82,7 @@
 - **Rule**: at most one of `BeforeId` / `AfterId` may be set. Server computes new `FractionalIndex`.
 - **Success (200)** `Results`: `{ Item, OldParentId, NewParentId, FractionalIndex }`.
 - **Errors**: `ERR_NOT_FOUND`, `ERR_FORBIDDEN`, `ERR_CYCLE` (would make item ancestor of itself), `ERR_PARENT_FULL`.
-- **Side effects**: updates `ParentId`, `FractionalIndex`. Emits SSE `item.moved` on `item:{OldParentId}` AND `item:{NewParentId}`.
+- **Side effects**: updates `ParentId`, `FractionalIndex`. Emits SSE `item-updated` on `item:{OldParentId}` AND `item:{NewParentId}`.
 - **AC refs**: `AT-APP-06`, `AT-APP-07`.
 
 ---
@@ -93,7 +93,7 @@
 - **Request body**: —
 - **Success (204)**: empty.
 - **Errors**: `ERR_NOT_FOUND`, `ERR_FORBIDDEN`, `ERR_ROOT_PROTECTED`.
-- **Side effects**: sets `DeletedAt = now()` (soft-delete). Subtree is recursively marked. Emits SSE `item.deleted`. Mirrors get `MirrorBroken` event per §14.4. See [`./11-trash-view.md`](./11-trash-view.md) for restore flow.
+- **Side effects**: sets `DeletedAt = now()` (soft-delete). Subtree is recursively marked. Emits SSE `item-deleted`. Mirrors get `MirrorBroken` event per §14.4. See [`./11-trash-view.md`](./11-trash-view.md) for restore flow.
 - **AC refs**: `AT-APP-18` (Trash retention).
 
 ---

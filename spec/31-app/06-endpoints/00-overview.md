@@ -27,7 +27,7 @@
 | 11 | [`11-trash-view.md`](./11-trash-view.md) | Endpoints — 11 Trash View | 68 |
 | 12 | [`12-multi-select.md`](./12-multi-select.md) | Endpoints — 12 Multi-Select (Bulk Operations) | 71 |
 | 13 | [`13-templates.md`](./13-templates.md) | Endpoints — 13 Templates | 78 |
-| 14 | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | Endpoints — 14 Concurrency & Sync (Realtime Transport) | 69 |
+| 14 | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | Endpoints — 14 Concurrency & Sync (Realtime Transport) | 70 |
 | 15 | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | Endpoints — 15 Roles & Permissions | 59 |
 
 <!-- AUTO-TOC:END -->
