@@ -1,4 +1,20 @@
 # Consolidated Guidelines — Redirect Index
+
+> **Version:** 4.1.0
+> **Updated:** 2026-04-26 (UTC+8) — collapsed duplicate Scoring block; added disambiguation vs `02-coding-guidelines/consolidated-review-guide/` (closes F-AUD30-09).
+> **Status:** Active
+
+> ⚠️ **NOT the same as** [`spec/02-coding-guidelines/consolidated-review-guide/`](../02-coding-guidelines/consolidated-review-guide/00-overview.md).
+> - **This folder** (`spec/12-consolidated-guidelines/`) is a **redirect index** — every file is a 56-line stub that points to the canonical source folder. **No rules live here.**
+> - **The other** (`spec/02-coding-guidelines/consolidated-review-guide/`) is a **PR-review checklist** scoped to coding rules only (function size, naming, type safety, OWASP, etc.). It IS authoritative content.
+> - **Mediocre-AI rule:** if you arrived here looking for actual coding rules, follow the redirect map below — do NOT read the redirect stubs and do NOT confuse this folder with `consolidated-review-guide`.
+
+## Keywords
+
+`redirect-index` · `single-source-of-truth` · `consolidated-guidelines` · `aud-c-01` · `disambiguation`
+
+---
+
 ## Scoring
 
 | Criterion | Status |
@@ -8,34 +24,10 @@
 | Ambiguity assigned | ✅ |
 | Keywords present | ✅ |
 | Scoring table present | ✅ |
-| AI Confidence (auto-backfill) | Medium — TODO re-grade |
-| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+| AI Confidence | High (folder is a stable redirect map; rules live in canonical sources) |
+| Ambiguity | Low |
 
 ---
-
-
-> **Version:** 4.0.0  
-> **Updated:** 2026-04-19  
-> **Status:** Active
-
-## Keywords
-
-`redirect-index` · `single-source-of-truth` · `consolidated-guidelines` · `aud-c-01`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| Overview present | ✅ |
-| Confidence rated | ✅ |
-| Ambiguity rated | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
----
-
 
 <!-- AUTO-TOC:START -->
 
