@@ -101,8 +101,8 @@ interface LogEntry {
 
 | Feature | Go | TypeScript |
 |---------|-----|-----------|
-| Package | `pkg/enums/loglevel` | `src/lib/enums/log-level.ts` |
-| Type | `byte` iota | String enum |
+| Package | `pkg/enums/loglevel` | `src/lib/enums/log-level-type.ts` |
+| Type | `byte` iota | `as const` object + derived union |
 | Values | `Debug`, `Info`, `Warn`, `Error`, `Fatal` | Same |
 
 ---
@@ -112,7 +112,8 @@ interface LogEntry {
 - [ConnectionStatus Enum](./01-connection-status-enum.md) — Sibling enum spec
 - [HttpMethod Enum](./05-http-method-enum.md) — Sibling enum spec
 - [TypeScript Standards](./08-typescript-standards-reference/00-overview.md) — Parent spec
+- [TS Overview — Strategy B](./00-overview.md#canonical-enum-shape-strategy-b--as-const--derived-union)
 
 ---
 
-*LogLevel enum v1.0.0 — 2026-03-31*
+*LogLevel enum v2.0.0 — 2026-04-25 — migrated to `as const` + derived union (AUDIT-05).*
