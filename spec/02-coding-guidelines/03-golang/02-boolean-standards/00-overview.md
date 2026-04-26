@@ -1,4 +1,8 @@
 # Go Boolean Standards — Overview
+
+
+> **Version**: 1.4.0
+
 ## Keywords
 
 `coding-guidelines` · `golang` · `boolean-standards` · `boolean` · `standards`
@@ -19,9 +23,6 @@
 **Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
-
-
-> **Version**: 1.4.0
 > **Last updated**: 2026-02-28
 > **Parent:** [../00-overview.md](../00-overview.md)
 
