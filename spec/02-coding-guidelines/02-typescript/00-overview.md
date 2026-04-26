@@ -34,7 +34,48 @@
 
 ## Overview
 
-TypeScript-specific coding standards, enum definitions, and type safety enforcement rules. All enums must use proper `enum` syntax with PascalCase values and a `Type` suffix — string union types are prohibited. Generics must use concrete type parameters; `unknown`, `any`, and `Record<string, unknown>` are banned.
+TypeScript-specific coding standards, enum definitions, and type safety enforcement rules. Generics must use concrete type parameters; `unknown`, `any`, and `Record<string, unknown>` are banned.
+
+### Canonical Enum Shape (Strategy B — `as const` + derived union)
+
+All named enums in TypeScript MUST be expressed as a frozen `as const` object **plus** a derived union type. The TypeScript `enum` keyword and bare literal string unions are **both forbidden** for named enums.
+
+```typescript
+// ✅ CANONICAL — `as const` object + derived union
+export const HttpMethod = {
+  Get: "GET",
+  Post: "POST",
+  Put: "PUT",
+  Patch: "PATCH",
+  Delete: "DELETE",
+  Options: "OPTIONS",
+  Head: "HEAD",
+} as const;
+
+export type HttpMethod = (typeof HttpMethod)[keyof typeof HttpMethod];
+```
+
+```typescript
+// ❌ FORBIDDEN — `enum` keyword (not a JS construct, breaks tree-shaking,
+// inconsistent emit semantics, discouraged by the TS team)
+export enum HttpMethod { Get = "GET", Post = "POST" }
+
+// ❌ FORBIDDEN — bare literal union (no `Foo.Case` access, can't iterate,
+// magic strings re-appear at every call site)
+export type HttpMethod = "GET" | "POST" | "PUT";
+```
+
+**Why Strategy B:**
+- Zero runtime cost beyond the object literal; fully tree-shakable.
+- The object provides `Foo.Case` ergonomics; the derived union provides exhaustive switch + interface typing.
+- Mirrors the Go `variantLabels` pattern, giving cross-language parity with the registry in [`spec/20-enums-index.md`](../../20-enums-index.md).
+- Compatible with the `15-check-enums-in-sync.mjs` hygiene script after the Phase-4 parser update (see migration note in `20-enums-index.md` §7).
+
+**Naming rules** (unchanged from prior versions):
+- File name: kebab-case with `-type` suffix — `http-method-type.ts`.
+- Exported identifier: PascalCase, no `Type` suffix — `HttpMethod` (the `const` and the type share one name; this is legal because they live in different declaration spaces).
+- Case keys: PascalCase (`Get`, `Post`).
+- Case values: protocol-driven enums keep wire format (`"GET"`); domain enums use PascalCase (`"Success"`) per [`20-enums-index.md`](../../20-enums-index.md) §1 rule 2.
 
 ---
 
