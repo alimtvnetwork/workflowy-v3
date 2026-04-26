@@ -1,4 +1,25 @@
 # Phase 9 — Email-to-WorkFlowy & Integrations 🚫 DEFERRED
+## Keywords
+
+`ui-design` · `workflowy-ui` · `integrations` · `phase` · `email-to-workflowy`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
+
+---
+
 
 > **Status:** 🚫 Deferred to post-v1 (spec authored 2026-04-23, implementation gated on backend runtime choice)
 > **Parent:** [`../00-overview.md`](../00-overview.md)

@@ -1,4 +1,25 @@
 # Retry, Debounce & Deduplication Fixes — Full Retrospective
+## Keywords
+
+`error-manage` · `error-resolution` · `retrospectives` · `retry-debounce-dedup-fixes` · `retry` · `debounce` · `deduplication`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
+
+---
+
 
 > **Created:** 2026-02-12
 > **Version:** 4.0.0 (split into subfolder 2026-04-20)

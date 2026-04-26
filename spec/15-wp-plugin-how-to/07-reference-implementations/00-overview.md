@@ -1,4 +1,25 @@
 # Phase 7 — Complete Reference Implementations
+## Keywords
+
+`wp-plugin-how-to` · `reference-implementations` · `phase` · `complete`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
+
+---
+
 
 > **Purpose:** Provide full, copy-paste-ready implementations of every foundational file so no AI has to guess. Every file shown in this section is a **complete, working implementation** — not a fragment.
 > **Rule:** When generating a new plugin, copy these files verbatim and search-replace `PluginName` / `plugin-name` / `PLUGIN_NAME` with the actual plugin identity.

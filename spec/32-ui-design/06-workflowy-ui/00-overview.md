@@ -1,4 +1,25 @@
 # Workflowy UI Spec — Parent Overview
+## Keywords
+
+`ui-design` · `workflowy-ui` · `workflowy`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
+
+---
+
 
 > **Version:** 1.1.0
 > **Created:** 2026-04-21 (UTC+8)

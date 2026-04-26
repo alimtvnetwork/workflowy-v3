@@ -1,4 +1,25 @@
 # AppError Package Reference — Domain Error Type Enums (`apperrtype`)
+## Keywords
+
+`error-manage` · `error-architecture` · `apperror-package` · `apperror-reference` · `apperrtype-enums` · `apperror` · `package` · `reference`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
+
+---
+
 
 > **Parent:** [AppError Package Reference](../00-overview.md)  
 > **Version:** 2.1.0 (split into subfolder 2026-04-20)

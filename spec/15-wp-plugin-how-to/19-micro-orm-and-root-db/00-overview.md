@@ -1,4 +1,25 @@
 # Phase 19 — Micro-ORM and Cross-Plugin Root Database
+## Keywords
+
+`wp-plugin-how-to` · `micro-orm-and-root-db` · `phase` · `micro-orm`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
+
+---
+
 
 > **Purpose:** Document the fluent micro-ORM query builder and the cross-plugin Root DB registration pattern for snapshot/backup coordination.
 

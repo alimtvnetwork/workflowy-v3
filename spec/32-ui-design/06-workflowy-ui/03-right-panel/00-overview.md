@@ -1,4 +1,25 @@
 # Phase 3 — Right-Side Panel (Handbook + Hotkeys + What's New)
+## Keywords
+
+`ui-design` · `workflowy-ui` · `right-panel` · `phase` · `right-side`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
+
+---
+
 
 > **Status:** ⏳ Ready to author
 > **Parent:** [`../00-overview.md`](../00-overview.md)

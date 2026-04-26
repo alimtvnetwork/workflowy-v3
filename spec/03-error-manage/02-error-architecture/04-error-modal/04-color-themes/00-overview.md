@@ -1,4 +1,25 @@
 # Color Theme & Design Token Reference (Index)
+## Keywords
+
+`error-manage` · `error-architecture` · `error-modal` · `color-themes` · `color` · `theme` · `design`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
+
+---
+
 
 > **Parent:** [Error Modal Spec](../00-overview.md)  
 > **Version:** 2.1.0  
