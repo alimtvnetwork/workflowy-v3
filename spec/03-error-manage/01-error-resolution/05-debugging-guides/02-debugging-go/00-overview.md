@@ -1,24 +1,4 @@
 # Go Debugging Guide
-## Keywords
-
-`error-manage` · `error-resolution` · `debugging-guides` · `debugging-go` · `debugging` · `guide`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| `00-overview.md` present | ✅ |
-| AI Confidence assigned | ✅ |
-| Ambiguity assigned | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
-**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
-
----
 
 
 > **Version:** 1.0.0
@@ -46,6 +26,27 @@
 | 8 | [`08-database-stack-traces.md`](./08-database-stack-traces.md) | Database Error Stack Traces & ORM-Only Policy | 106 |
 
 <!-- AUTO-TOC:END -->
+
+---
+
+## Keywords
+
+`error-manage` · `error-resolution` · `debugging-guides` · `debugging-go` · `debugging` · `guide`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
 

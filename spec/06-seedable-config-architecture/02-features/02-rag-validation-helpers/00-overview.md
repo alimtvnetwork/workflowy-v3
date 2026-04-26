@@ -1,24 +1,4 @@
 # RAG Configuration Validation Helpers
-## Keywords
-
-`seedable-config-architecture` · `features` · `rag-validation-helpers` · `rag` · `configuration` · `validation`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| `00-overview.md` present | ✅ |
-| AI Confidence assigned | ✅ |
-| Ambiguity assigned | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
-**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
-
----
 
 
 > **Version:** 3.1.0  
@@ -46,6 +26,27 @@
 | 8 | [`08-unit-tests.md`](./08-unit-tests.md) | 8. Unit Tests | 91 |
 
 <!-- AUTO-TOC:END -->
+
+---
+
+## Keywords
+
+`seedable-config-architecture` · `features` · `rag-validation-helpers` · `rag` · `configuration` · `validation`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
 

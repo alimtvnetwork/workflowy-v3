@@ -21,14 +21,6 @@
 
 ---
 
-## Purpose
-
-Specification for WorkFlowy's user management system: accounts, roles, permissions, authentication, and administrative operations.
-
-> 🟡 **Status:** This is a **planned feature** with high-level scope only. Sub-specs (data model, RBAC, auth flow) will be authored before implementation.
-
----
-
 ## Keywords
 
 `users` · `roles` · `permissions` · `auth` · `rbac` · `admin`
@@ -50,6 +42,15 @@ Specification for WorkFlowy's user management system: accounts, roles, permissio
 Draft (high-level only) · Ambiguity: Medium (sub-specs pending)
 
 ---
+
+## Purpose
+
+Specification for WorkFlowy's user management system: accounts, roles, permissions, authentication, and administrative operations.
+
+> 🟡 **Status:** This is a **planned feature** with high-level scope only. Sub-specs (data model, RBAC, auth flow) will be authored before implementation.
+
+---
+
 
 ## Scope
 

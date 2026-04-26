@@ -1,24 +1,4 @@
 # Error-Code Registry — Sub-Folder Overview
-## Keywords
-
-`error-manage` · `error-code-registry` · `registry` · `error-code` · `sub-folder`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| `00-overview.md` present | ✅ |
-| AI Confidence assigned | ✅ |
-| Ambiguity assigned | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
-**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
-
----
 
 
 > **Version:** 1.0.0
@@ -42,6 +22,27 @@
 | 6 | [`06-format-and-usage.md`](./06-format-and-usage.md) | 6. Format Reference & Usage | 39 |
 
 <!-- AUTO-TOC:END -->
+
+---
+
+## Keywords
+
+`error-manage` · `error-code-registry` · `registry` · `error-code` · `sub-folder`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
 

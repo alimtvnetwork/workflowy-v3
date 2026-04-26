@@ -21,14 +21,6 @@
 
 ---
 
-## Purpose
-
-Defines **reusable enforcement patterns** that codify the project's strict-typing, generics-first, and runtime-validation rules into mechanically checkable artefacts (ESLint rules, runtime guards, schema validators).
-
-> 🟡 **Status:** This is a **planned consolidation** of patterns currently scattered across [`02-coding-guidelines/`](../02-coding-guidelines/00-overview.md). Sub-specs will be authored when the patterns are formalised.
-
----
-
 ## Keywords
 
 `enforcement` · `generics` · `type-safety` · `runtime-validation` · `eslint` · `guard-clauses`
@@ -50,6 +42,15 @@ Defines **reusable enforcement patterns** that codify the project's strict-typin
 Draft (high-level only) · Ambiguity: Medium (sub-specs pending)
 
 ---
+
+## Purpose
+
+Defines **reusable enforcement patterns** that codify the project's strict-typing, generics-first, and runtime-validation rules into mechanically checkable artefacts (ESLint rules, runtime guards, schema validators).
+
+> 🟡 **Status:** This is a **planned consolidation** of patterns currently scattered across [`02-coding-guidelines/`](../02-coding-guidelines/00-overview.md). Sub-specs will be authored when the patterns are formalised.
+
+---
+
 
 ## Scope
 

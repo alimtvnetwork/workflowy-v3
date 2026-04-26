@@ -1,24 +1,4 @@
 # Seedable Config Architecture — Fundamentals (Overview)
-## Keywords
-
-`seedable-config-architecture` · `fundamentals` · `seedable` · `config` · `architecture`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| `00-overview.md` present | ✅ |
-| AI Confidence assigned | ✅ |
-| Ambiguity assigned | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
-**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
-
----
 
 
 > **Version:** 3.2.0
@@ -45,6 +25,27 @@
 | 9 | [`09-applicable-projects-and-policy.md`](./09-applicable-projects-and-policy.md) | Applicable Projects & No-Hardcoded-Arrays Policy | 42 |
 
 <!-- AUTO-TOC:END -->
+
+---
+
+## Keywords
+
+`seedable-config-architecture` · `fundamentals` · `seedable` · `config` · `architecture`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
 

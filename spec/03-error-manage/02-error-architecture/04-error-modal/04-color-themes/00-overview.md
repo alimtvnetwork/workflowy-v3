@@ -1,24 +1,4 @@
 # Color Theme & Design Token Reference (Index)
-## Keywords
-
-`error-manage` · `error-architecture` · `error-modal` · `color-themes` · `color` · `theme` · `design`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| `00-overview.md` present | ✅ |
-| AI Confidence assigned | ✅ |
-| Ambiguity assigned | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
-**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
-
----
 
 
 > **Parent:** [Error Modal Spec](../00-overview.md)  
@@ -40,6 +20,27 @@
 | 3 | [`03-frontend-and-ui-colors.md`](./03-frontend-and-ui-colors.md) | Frontend Section & UI Element Colors | 64 |
 
 <!-- AUTO-TOC:END -->
+
+---
+
+## Keywords
+
+`error-manage` · `error-architecture` · `error-modal` · `color-themes` · `color` · `theme` · `design`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
 

@@ -1,24 +1,4 @@
 # WP-Plugin Deploy — Overview
-## Keywords
-
-`cicd-pipeline-workflows` · `wp-plugin-deploy` · `wp-plugin` · `deploy` · `overview`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| `00-overview.md` present | ✅ |
-| AI Confidence assigned | ✅ |
-| Ambiguity assigned | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
-**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
-
----
 
 
 > **Version:** 1.0.0
@@ -42,6 +22,27 @@
 | 4 | [`04-version-sync.md`](./04-version-sync.md) | 03.04 — Version Synchronization (`package.json` → PHP) | 144 |
 
 <!-- AUTO-TOC:END -->
+
+---
+
+## Keywords
+
+`cicd-pipeline-workflows` · `wp-plugin-deploy` · `wp-plugin` · `deploy` · `overview`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
 

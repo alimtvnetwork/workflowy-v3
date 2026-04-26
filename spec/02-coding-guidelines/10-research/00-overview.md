@@ -1,4 +1,11 @@
 # Research
+
+
+> **Version:** 3.1.0  
+> **Updated:** 2026-04-16
+
+---
+
 ## Keywords
 
 `coding-guidelines` · `research`
@@ -17,12 +24,6 @@
 
 **AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
 **Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
-
----
-
-
-> **Version:** 3.1.0  
-> **Updated:** 2026-04-16
 
 ---
 

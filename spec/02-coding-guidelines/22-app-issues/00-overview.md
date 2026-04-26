@@ -1,4 +1,11 @@
 # App Issues
+
+
+> **Version:** 3.2.0  
+> **Updated:** 2026-04-19
+
+---
+
 ## Keywords
 
 `coding-guidelines` · `app-issues` · `app` · `issues`
@@ -17,12 +24,6 @@
 
 **AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
 **Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
-
----
-
-
-> **Version:** 3.2.0  
-> **Updated:** 2026-04-19
 
 ---
 

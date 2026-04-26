@@ -1,4 +1,11 @@
 # Conventions
+
+
+> **Version:** 1.0.0  
+> **Updated:** 2026-04-18
+
+---
+
 ## Keywords
 
 `app` · `conventions`
@@ -17,12 +24,6 @@
 
 **AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
 **Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
-
----
-
-
-> **Version:** 1.0.0  
-> **Updated:** 2026-04-18
 
 ---
 

@@ -1,24 +1,4 @@
 # Types Folder Convention & Common Type Aliases — Overview
-## Keywords
-
-`coding-guidelines` · `cross-language` · `types-folder-convention` · `types` · `folder` · `convention`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| `00-overview.md` present | ✅ |
-| AI Confidence assigned | ✅ |
-| Ambiguity assigned | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
-**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
-
----
 
 
 > **Version:** 3.2.0  
@@ -41,6 +21,27 @@
 | 4 | [`04-anti-patterns-and-checklist.md`](./04-anti-patterns-and-checklist.md) | Anti-Patterns & Summary Checklist | 76 |
 
 <!-- AUTO-TOC:END -->
+
+---
+
+## Keywords
+
+`coding-guidelines` · `cross-language` · `types-folder-convention` · `types` · `folder` · `convention`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
 

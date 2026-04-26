@@ -1,24 +1,4 @@
 # REST API Response Format
-## Keywords
-
-`database-conventions` · `rest-api-format` · `rest` · `api` · `response`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| `00-overview.md` present | ✅ |
-| AI Confidence assigned | ✅ |
-| Ambiguity assigned | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
-**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
-
----
 
 
 > **Version:** 3.2.0 (split into subfolder 2026-04-20)
@@ -41,6 +21,27 @@
 | 5 | [`05-paths-and-references.md`](./05-paths-and-references.md) | URL Paths vs JSON Keys & Cross-References | 36 |
 
 <!-- AUTO-TOC:END -->
+
+---
+
+## Keywords
+
+`database-conventions` · `rest-api-format` · `rest` · `api` · `response`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
 

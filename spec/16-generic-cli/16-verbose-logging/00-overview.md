@@ -1,24 +1,4 @@
 # Verbose Logging — Overview
-## Keywords
-
-`generic-cli` · `verbose-logging` · `verbose` · `logging` · `overview`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| `00-overview.md` present | ✅ |
-| AI Confidence assigned | ✅ |
-| Ambiguity assigned | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
-**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
-
----
 
 
 > **Parent:** [16-generic-cli](../00-overview.md)  
@@ -46,6 +26,27 @@
 | 5 | [`05-constants-and-library-usage.md`](./05-constants-and-library-usage.md) | Constants & Conditional Logging in Libraries | 65 |
 
 <!-- AUTO-TOC:END -->
+
+---
+
+## Keywords
+
+`generic-cli` · `verbose-logging` · `verbose` · `logging` · `overview`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
 

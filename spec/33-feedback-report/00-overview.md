@@ -21,14 +21,6 @@
 
 ---
 
-## Purpose
-
-Specification for the in-app feedback and bug-report feature in WorkFlowy. Lets users submit feedback, attach context (current item tree path, browser info, last actions), and lets reviewers triage submissions.
-
-> 🟡 **Status:** This is a **planned feature** with high-level scope only. Sub-specs (data model, UI flow, retention) will be added under numbered files (`01-…md`, `02-…md`) before implementation.
-
----
-
 ## Keywords
 
 `feedback` · `bug-report` · `user-input` · `report-generation` · `support`
@@ -50,6 +42,15 @@ Specification for the in-app feedback and bug-report feature in WorkFlowy. Lets 
 Draft (high-level only) · Ambiguity: Medium (sub-specs pending)
 
 ---
+
+## Purpose
+
+Specification for the in-app feedback and bug-report feature in WorkFlowy. Lets users submit feedback, attach context (current item tree path, browser info, last actions), and lets reviewers triage submissions.
+
+> 🟡 **Status:** This is a **planned feature** with high-level scope only. Sub-specs (data model, UI flow, retention) will be added under numbered files (`01-…md`, `02-…md`) before implementation.
+
+---
+
 
 ## Scope
 

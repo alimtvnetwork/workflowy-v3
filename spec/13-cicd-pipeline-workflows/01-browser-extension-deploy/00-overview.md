@@ -1,24 +1,4 @@
 # Browser Extension Deploy — Overview
-## Keywords
-
-`cicd-pipeline-workflows` · `browser-extension-deploy` · `browser` · `extension` · `deploy`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| `00-overview.md` present | ✅ |
-| AI Confidence assigned | ✅ |
-| Ambiguity assigned | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
-**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
-
----
 
 
 > **Version:** 3.1.0  
@@ -37,6 +17,27 @@
 | 2 | [`02-release-pipeline.md`](./02-release-pipeline.md) | Browser Extension — Release Pipeline | 158 |
 
 <!-- AUTO-TOC:END -->
+
+---
+
+## Keywords
+
+`cicd-pipeline-workflows` · `browser-extension-deploy` · `browser` · `extension` · `deploy`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
 

@@ -1,4 +1,11 @@
 # Diagrams — Self-Update & App Update
+
+
+> **Version:** 3.1.0  
+> **Updated:** 2026-04-16
+
+---
+
 ## Keywords
 
 `self-update-app-update` · `diagrams` · `self-update` · `app`
@@ -17,12 +24,6 @@
 
 **AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
 **Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
-
----
-
-
-> **Version:** 3.1.0  
-> **Updated:** 2026-04-16
 
 ---
 

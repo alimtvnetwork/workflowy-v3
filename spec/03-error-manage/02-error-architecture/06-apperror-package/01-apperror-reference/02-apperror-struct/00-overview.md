@@ -1,24 +1,4 @@
 # AppError Struct & Methods — Overview
-## Keywords
-
-`error-manage` · `error-architecture` · `apperror-package` · `apperror-reference` · `apperror-struct` · `apperror` · `struct` · `methods`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| `00-overview.md` present | ✅ |
-| AI Confidence assigned | ✅ |
-| Ambiguity assigned | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
-**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
-
----
 
 
 > **Parent:** [AppError Package Reference](../00-overview.md)  
@@ -42,6 +22,27 @@
 | 6 | [`06-query-and-diagnostic-setters.md`](./06-query-and-diagnostic-setters.md) | AppError Query Methods & Diagnostic Setters | 92 |
 
 <!-- AUTO-TOC:END -->
+
+---
+
+## Keywords
+
+`error-manage` · `error-architecture` · `apperror-package` · `apperror-reference` · `apperror-struct` · `apperror` · `struct` · `methods`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
 

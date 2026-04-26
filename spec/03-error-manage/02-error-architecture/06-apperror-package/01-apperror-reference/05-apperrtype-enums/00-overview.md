@@ -1,24 +1,4 @@
 # AppError Package Reference — Domain Error Type Enums (`apperrtype`)
-## Keywords
-
-`error-manage` · `error-architecture` · `apperror-package` · `apperror-reference` · `apperrtype-enums` · `apperror` · `package` · `reference`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| `00-overview.md` present | ✅ |
-| AI Confidence assigned | ✅ |
-| Ambiguity assigned | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
-**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
-
----
 
 
 > **Parent:** [AppError Package Reference](../00-overview.md)  
@@ -43,6 +23,27 @@
 | 6 | [`06-rules-and-migration.md`](./06-rules-and-migration.md) | Rules, Migration, Registry Relationship & Adding Variants | 72 |
 
 <!-- AUTO-TOC:END -->
+
+---
+
+## Keywords
+
+`error-manage` · `error-architecture` · `apperror-package` · `apperror-reference` · `apperrtype-enums` · `apperror` · `package` · `reference`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
 
