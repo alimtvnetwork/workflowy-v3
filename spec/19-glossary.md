@@ -114,4 +114,4 @@ This file is the canonical reference for terminology. When a term is used in any
 
 ---
 
-*Glossary v1.0.0 — created 2026-04-20 as terminology SSOT (H-5.1).*
+*Glossary v1.1.0 — 2026-04-26: AUDIT-02 resolved (PascalCase DB SSOT made normative; downstream rename queued as AUDIT-02a).*
