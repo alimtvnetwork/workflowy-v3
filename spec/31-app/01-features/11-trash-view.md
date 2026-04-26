@@ -1,6 +1,6 @@
 # Trash View Specification
 
-> **Version:** 2.3.0
+> **Version:** 2.4.0
 > **Updated:** 2026-04-26 — APP-FIX-05: Settings Keys (Seedable Config) section added (closes audit F-04 for this file). v2.2.0 added Realtime Transport callout.
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)

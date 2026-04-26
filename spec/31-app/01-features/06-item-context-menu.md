@@ -1,6 +1,6 @@
 # Item Context Menu (⋮)
 
-> **Version:** 2.2.0
+> **Version:** 2.3.0
 > **Updated:** 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)

@@ -1,6 +1,6 @@
 # Concurrency & Sync
 
-> **Version:** 1.3.0
+> **Version:** 1.4.0
 > **Updated:** 2026-04-26 — APP-FIX-09: §14.4 `Mirrors.BrokenAt` LWW rule added (closes audit F-14). v1.2.0 added Storage section. v1.1.0 pinned transport to WP-native SSE + poll fallback.
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)

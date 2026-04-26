@@ -1,6 +1,6 @@
 # Interaction Behaviors
 
-> **Version:** 2.0.0
+> **Version:** 2.1.0
 > **Updated:** 2026-04-19
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
