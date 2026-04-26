@@ -1,21 +1,46 @@
 # Workflows
 
-> **Version:** 1.0.0  
-> **Updated:** 2026-04-18
+> **Version:** 2.0.0
+> **Updated:** 2026-04-26 (UTC+8) — APP-FIX-12: added 3 cross-feature workflow files (closes audit F-10)
+> **Parent:** [`../00-overview.md`](../00-overview.md)
 
 ---
 
-## Overview
+## What this folder is
 
-Workflows specification module. See files below.
+Cross-feature **flow** specifications. Each file pins the end-to-end sequence for a multi-feature interaction that no single `01-features/` file owns. Where a feature file describes *what* a thing is, a workflow file describes *what happens, in what order, across which DBs and which channels*.
+
+---
+
+## When to add a workflow file
+
+Add a new file here when ALL of the following are true:
+
+1. The flow spans **two or more** feature files in `01-features/`.
+2. Step ordering matters (incorrect order produces orphans, zombie rows, or auth bypasses).
+3. The flow crosses the **Root DB ↔ App DB** boundary (cross-DB joins are forbidden — see `01-features/14-concurrency-and-sync.md` §Storage).
+4. There is at least one normative `Auth::hasRole()` call site that AI implementers might miss.
+
+If only #1 holds, the flow belongs inside the relevant feature file's Edge Cases instead.
 
 ---
 
 ## Files
 
-| # | File | Description |
-|---|------|-------------|
-| 01 | [01-keyboard-shortcuts.md](01-keyboard-shortcuts.md) | Complete keyboard shortcut reference |
+| # | File | Description | Closes |
+|---|------|-------------|--------|
+| 01 | [`01-keyboard-shortcuts.md`](./01-keyboard-shortcuts.md) | Complete keyboard shortcut reference | (baseline) |
+| 02 | [`02-template-application-flow.md`](./02-template-application-flow.md) | Picker → Root-DB snapshot → App-DB materialize → SSE broadcast | F-10 |
+| 03 | [`03-share-invite-flow.md`](./03-share-invite-flow.md) | Owner adds invitee → Root-DB lookup → App-DB grant → notification → accept | F-10 |
+| 04 | [`04-trash-restore-flow.md`](./04-trash-restore-flow.md) | Restore click → ancestor walk → LWW soft-delete clear → mirror re-heal | F-10 |
+
+---
+
+## Convention: `AT-WF-*` namespace
+
+Workflow files use a dedicated acceptance-criteria prefix: `AT-WF-{FLOW}-NN` (e.g. `AT-WF-TEMPLATE-01`, `AT-WF-SHARE-02`, `AT-WF-RESTORE-04`). This avoids collision with feature-file prefixes (`AT-LAYOUT`, `AT-CONCURRENCY`, etc.) and the canonical `AT-APP-NN`.
+
+Backfill into the canonical `spec/31-app/97-acceptance-criteria.md` is tracked as a Phase-2 polish item.
 
 ---
 
@@ -23,7 +48,10 @@ Workflows specification module. See files below.
 
 | Reference | Location |
 |-----------|----------|
-| Parent | [../00-overview.md](../00-overview.md) |
+| Parent | [`../00-overview.md`](../00-overview.md) |
+| Feature SSOTs | [`../01-features/`](../01-features/00-overview.md) |
+| LWW + SSE rules | [`../01-features/14-concurrency-and-sync.md`](../01-features/14-concurrency-and-sync.md) |
+| Auth helper | [`../01-features/15-roles-and-permissions.md`](../01-features/15-roles-and-permissions.md) |
 
 ---
 
@@ -32,7 +60,11 @@ Workflows specification module. See files below.
 **In this section:**
 
 - [`01-keyboard-shortcuts.md`](./01-keyboard-shortcuts.md) — Keyboard Shortcuts
+- [`02-template-application-flow.md`](./02-template-application-flow.md) — Template Application Flow
+- [`03-share-invite-flow.md`](./03-share-invite-flow.md) — Share Invite Flow
+- [`04-trash-restore-flow.md`](./04-trash-restore-flow.md) — Trash Restore Flow
 
 **See also:**
 
 - [`../00-overview.md`](../00-overview.md) — Parent overview
+- [`../01-features/00-overview.md`](../01-features/00-overview.md) — Feature index
