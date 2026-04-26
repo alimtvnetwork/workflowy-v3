@@ -244,7 +244,7 @@ Each finding has: ID · Severity · Files · What's wrong · Why it matters · F
 | 11 | **APP-FIX-11** ✅ | Update `99-consistency-report.md` scoring or add disclaimer | 1 file | F-09 — **DONE 2026-04-26 (99-consistency-report.md v2.0.0; split into Structural-only score vs Content-alignment status, added "Read this first" disclaimer + Content Audit Tracker, refreshed inventory from 15 → 18 files).** |
 | 12 | **APP-FIX-12** | Add 3 missing workflow files (template, share-invite, trash-restore) | 3 new files | F-10 |
 | 13 | **APP-FIX-13** | Split edge-cases into user vs system | 1 file | F-11 |
-| 14 | **APP-FIX-14** | Reconcile AT-APP / AT-APPF ID schemes | 2 AC files | F-12 |
+| 14 | **APP-FIX-14** ✅ | Reconcile AT-APP / AT-APPF ID schemes | 2 AC files | F-12 — **DONE 2026-04-26 (`spec/31-app/97-acceptance-criteria.md` v2.1.0 declared canonical; `01-features/97-acceptance-criteria.md` v2.0.0 demoted to frozen dispatch index with 3-column Coverage Map mapping canonical AT-APP-NN ↔ inline prefix ↔ legacy AT-APPF-NN; "How to add a new criterion" rule added).** |
 
 **Suggested order:** 01 → 07 → 06 → 02 → 03 → 04 → 05 → 09 → 10 → 08 → 11 → 14 → 12 → 13.
 
