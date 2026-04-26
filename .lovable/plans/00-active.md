@@ -1,6 +1,6 @@
 # Active Plans
 
-> **Updated:** 2026-04-26 (UTC+8) · **Status:** 🎉🎉🎉 **RE-AUDIT PASS: 96/100** (baseline 63 → +33). All 13 APP-FIX phases + all 6 Round-3 audits closed; 2 residuals (R-1 pseudocode casing, R-2 enum-source link) fixed in re-audit pass. Spec is **AI-handoff-ready**. Suggested next: 4 polish items (AT-APP backfill for Today/Templates/Concurrency + AT-WF→AT-APP folding + §14.5 SSE AT rows) → 100/100, OR `exit spec-only` → P1.1 Bootstrap immediately.
+> **Updated:** 2026-04-26 (UTC+8) · **Status:** 🎉🎉🎉 **SPEC 100% COMPLETE.** A-26 polish #3 closed all remaining `97-acceptance-criteria.md` scaffolds (stub count 11 → 1; the lone remaining `18-spec-issues/` is meta-by-design with inline ATs). Polish queue empty. Pending issues: 0. Open suggestions: 0. **The only remaining gate is `mem://constraints/spec-only-mode`** — implementation cannot begin until the user explicitly says `exit spec-only`. Once lifted: start **P1.1 Bootstrap** (Vite + React + TS scaffold).
 
 ---
 
