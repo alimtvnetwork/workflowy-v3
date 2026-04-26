@@ -1,7 +1,7 @@
 # App — Acceptance Criteria
 
-> **Version:** 2.1.0
-> **Updated:** 2026-04-26 (UTC+8) — APP-FIX-14: declared canonical over `AT-APPF-NN` (closes audit F-12). v2.0.0 closed F-01.
+> **Version:** 2.2.0
+> **Updated:** 2026-04-26 (UTC+8) — v2.2.0 added canonical AT rows for Today (`AT-APP-26..28`), Templates (`AT-APP-29..32`), Concurrency core (`AT-APP-33..35`), and SSE transport (`AT-APP-36..42`). v2.1.0 declared canonical over `AT-APPF-NN`. v2.0.0 closed F-01.
 > **Status:** ✅ Canonical AT index for the App domain
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
