@@ -38,10 +38,10 @@ As a collaborator editing a shared outline at the same time as someone else, I w
 ```
 On incoming mutation M for Item I, field F:
   1. Server reads current Item row.
-  2. Compare M.client_attempted_at vs server.now() — adopt server.now() as M.server_ts.
-  3. If I.<F>_updated_at < M.server_ts → apply M; set I.<F>_updated_at = M.server_ts.
-  4. Else if I.<F>_updated_at == M.server_ts → tie-break by user_id (higher wins).
-  5. Else → reject M with conflict response { winning_value, winning_user_id, winning_ts }.
+  2. Compare M.ClientAttemptedAt vs server.now() — adopt server.now() as M.ServerTs.
+  3. If I.<F>UpdatedAt < M.ServerTs → apply M; set I.<F>UpdatedAt = M.ServerTs.
+  4. Else if I.<F>UpdatedAt == M.ServerTs → tie-break by UserId (higher wins).
+  5. Else → reject M with conflict response { WinningValue, WinningUserId, WinningTs }.
   6. Broadcast accepted state on the realtime channel for I.
 ```
 
@@ -77,12 +77,12 @@ Clients receiving a conflict response MUST:
 ```
 On incoming write W setting Mirrors.BrokenAt = X (X may be NULL or a timestamp):
   1. Server reads current Mirrors row.
-  2. Stamp W.server_ts = server.now().
-  3. If row.BrokenAtUpdatedAt < W.server_ts → apply (set BrokenAt = X, BrokenAtUpdatedAt = W.server_ts, BrokenAtUpdatedBy = W.user_id).
-  4. Else if row.BrokenAtUpdatedAt == W.server_ts:
+  2. Stamp W.ServerTs = server.now().
+  3. If row.BrokenAtUpdatedAt < W.ServerTs → apply (set BrokenAt = X, BrokenAtUpdatedAt = W.ServerTs, BrokenAtUpdatedBy = W.UserId).
+  4. Else if row.BrokenAtUpdatedAt == W.ServerTs:
        a. If both writers are 'system' (cascade vs reaper) → keep the row whose value is non-NULL (broken wins over healthy at exact tie).
-       b. Else → tie-break by lexicographically higher user_id (same rule as §14.2 step 4); 'system' loses to any human user.
-  5. Else → reject W with conflict response { winning_broken_at, winning_user_id, winning_ts }.
+       b. Else → tie-break by lexicographically higher UserId (same rule as §14.2 step 4); 'system' loses to any human user.
+  5. Else → reject W with conflict response { WinningBrokenAt, WinningUserId, WinningTs }.
   6. Broadcast on the SSE channel for the mirror's workspace.
 ```
 
