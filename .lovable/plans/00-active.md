@@ -1,6 +1,6 @@
 # Active Plans
 
-> **Updated:** 2026-04-26 (UTC+8) · **Status:** 🎉 **A-28 CLOSED** — full spec sweep for `mirror`-as-`ItemType` drift; fixed 2 leaks: `spec/32-ui-design/02-state-and-data/03-data-types.md` L21 (was claiming `mirror` as 12th `ItemType` "canonical SSOT for UI taxonomy" — directly contradicting the real SSOT) and `spec/19-glossary.md` L85–86 (Node + itemType definitions). All other matches are intentional (audit-3 closure language or `Mirrors` table column references). Prior: A-19 closed (hotkey table SSOT), A-03 closed (PowerShell overview split). Hygiene 17/18; only **A-01** remains — `src/types/index.ts` `mirror` → `dashboard`, gated by `mem://constraints/spec-only-mode`. **Say `exit spec-only` to apply that fix and start P1.1 Bootstrap.**
+> **Updated:** 2026-04-26 (UTC+8) · **Status:** 🎉 **A-38 CLOSED** — created `spec/31-app/01-features/09a-mirror-cycle-detection.md` as the algorithmic SSOT for cycle detection (DFS + recursive CTE, AT-CYCLE-01..10, complexity bound, hygiene-script hook for SQL drift). Linked from `09-mirrors.md` Related list. Behavioral rules in 09-mirrors.md (AT-MIRRORS-08) + `ERR_CYCLE` on EP-ITEMS-MOVE remain canonical for behavior; the new file is canonical for *algorithm*. Prior: A-28 closed (mirror-as-ItemType drift sweep), A-19 closed (hotkey table SSOT), A-03 closed (PowerShell overview split). Hygiene 17/18; only **A-01** remains — `src/types/index.ts` `mirror` → `dashboard`, gated by `mem://constraints/spec-only-mode`. **Say `exit spec-only` to apply that fix and start P1.1 Bootstrap.**
 
 ---
 
