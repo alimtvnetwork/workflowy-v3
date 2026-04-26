@@ -1,8 +1,8 @@
 # Roles & Permissions
 
-> **Version:** 1.1.0
+> **Version:** 1.2.0
 > **Created:** 2026-04-25 (UTC+8)
-> **Updated:** 2026-04-26 — APP-FIX-06: enum sources linked (closes audit F-02 for this file)
+> **Updated:** 2026-04-26 — APP-FIX-02: Storage section added (closes audit F-03 for this file). v1.1.0 added Enum Sources callout.
 > **Status:** Active — runtime-agnostic contract
 > **Parent:** [`00-overview.md`](./00-overview.md)
 > **Closes audit finding:** F-04
@@ -105,6 +105,16 @@ Defines the **runtime-agnostic** roles, permission grants, and authorization che
 | `SharePermissionType` | [`spec/20-enums-index.md`](../../20-enums-index.md) §3.5 | TS Strategy B |
 
 > **Forbidden:** TS `enum` keyword and bare literal unions. Always import the canonical `as const` object. PHP equivalents live in `Auth::*` constants — see APP-FIX-04.
+
+---
+
+## Storage
+
+| Layer | Tables | Notes |
+|-------|--------|-------|
+| **Root DB** | `User`, `Workspace`, `WorkspaceMember` (`UserId`, `WorkspaceId`, `WorkspaceRole`) | All workspace-level role assignments live here. `Auth::hasRole()` reads from Root DB. |
+| **App DB** (per workspace) | `ItemShare` (`ItemId`, `GranteeUserId`, `ItemRole`, `GrantedAt`), `PublicShareLink` | Item-level grants and the public-link toggle. `resolveEffectiveRole()` walks ancestors here, then falls back to Root-DB workspace role. |
+| **Cross-DB joins** | **Forbidden.** | Authorization flow: Root DB → workspace role; if denied, open App DB → ancestor walk on `ItemShare`. Two queries, never joined. |
 
 ---
 

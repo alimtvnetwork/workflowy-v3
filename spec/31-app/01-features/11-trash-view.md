@@ -1,7 +1,7 @@
 # Trash View Specification
 
-> **Version:** 2.0.0
-> **Updated:** 2026-04-19
+> **Version:** 2.1.0
+> **Updated:** 2026-04-26 — APP-FIX-02: Storage section added (closes audit F-03 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -26,6 +26,16 @@ As a user who occasionally deletes the wrong item, I want a 30-day grace period 
 | Delete permanently button | Per item — permanently and irreversibly deletes the item. Requires a confirmation dialog: "This cannot be undone. Are you sure?" |
 | Empty trash button | Permanently deletes ALL trash items. Requires confirmation. |
 | Auto-cleanup | Items in trash expire automatically after 30 days (handled server-side). |
+
+---
+
+## Storage
+
+| Layer | Tables | Notes |
+|-------|--------|-------|
+| **Root DB** | — | Trash is workspace-local. |
+| **App DB** (per workspace) | `Items` (filtered `WHERE DeletedAt IS NOT NULL`), `Mirrors` (cascade-broken on parent deletion) | No separate `Trash` table — soft-delete via `Items.DeletedAt`. 30-day purge job runs against App DB. |
+| **Cross-DB joins** | **Forbidden.** | |
 
 ---
 

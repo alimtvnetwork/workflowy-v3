@@ -1,7 +1,7 @@
 # Multi-Select Behavior
 
-> **Version:** 2.0.0
-> **Updated:** 2026-04-19
+> **Version:** 2.1.0
+> **Updated:** 2026-04-26 — APP-FIX-02: Storage section added (closes audit F-03 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -52,6 +52,16 @@ When multiple items are selected, a **bulk action bar** appears at the bottom of
 | Cannot select across zoom levels | Selection only applies to items visible in the current zoom view. |
 | Cannot drag multi-selected items | Drag-and-drop works on single items only. For bulk moves, use "Move To…". |
 | Mirrors in selection | Bulk actions apply to the canonical source. A warning is shown if mirrors are in the selection. |
+
+---
+
+## Storage
+
+| Layer | Tables | Notes |
+|-------|--------|-------|
+| **Root DB** | — | Selection state is client-only; no Root DB touch. |
+| **App DB** (per workspace) | `Items` (bulk move/delete/tag writes), `ItemTags`, `Mirrors` (when bulk action affects sources) | Bulk operations are batched into a single transaction per App DB. |
+| **Cross-DB joins** | **Forbidden.** | A selection cannot span workspaces. |
 
 ---
 

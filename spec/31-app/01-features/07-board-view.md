@@ -1,7 +1,7 @@
 # Board View Specification
 
-> **Version:** 2.1.0
-> **Updated:** 2026-04-26 — APP-FIX-06: enum sources linked (closes audit F-02 for this file)
+> **Version:** 2.2.0
+> **Updated:** 2026-04-26 — APP-FIX-02: Storage section added (closes audit F-03 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -94,6 +94,16 @@ No special admin logic required — the tree model handles everything naturally.
 | `ItemType` (when card kind matters) | [`spec/20-enums-index.md`](../../20-enums-index.md) §2 | TS Strategy B |
 
 > **Forbidden:** TS `enum` keyword and bare literal unions. Always import the canonical `as const` object.
+
+---
+
+## Storage
+
+| Layer | Tables | Notes |
+|-------|--------|-------|
+| **Root DB** | — | Board view does not touch Root DB. |
+| **App DB** (per workspace) | `Items` (read tree, write `ParentId` + `SortOrder` on drag) | Board is a *view* over the same `Items` rows the list view uses. No board-specific table. |
+| **Cross-DB joins** | **Forbidden.** | Workspace resolved before opening this view. |
 
 ---
 

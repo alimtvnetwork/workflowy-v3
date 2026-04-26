@@ -1,7 +1,7 @@
 # Concurrency & Sync
 
-> **Version:** 1.1.0
-> **Updated:** 2026-04-25 (UTC+8) — transport pinned to WP-native SSE + poll fallback (per `00-overview.md` L9)
+> **Version:** 1.2.0
+> **Updated:** 2026-04-26 — APP-FIX-02: Storage section added (closes audit F-03 for this file). v1.1.0 pinned transport to WP-native SSE + poll fallback.
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -57,6 +57,16 @@ Clients receiving a conflict response MUST:
 | 1 (MVP) | Field-level LWW + UTC server timestamps + tie-break by `userId` | This spec |
 | 2 | Per-non-conflicting-field merge + presence indicators | Backlog |
 | 3 | CRDT (Yjs) or OT for content/note real-time text co-edit | Backlog |
+
+---
+
+## Storage
+
+| Layer | Tables | Notes |
+|-------|--------|-------|
+| **Root DB** | `SyncCursor` (per-user last-seen server timestamp) | Used to resume SSE / poll across reconnects, regardless of which App DB the user is viewing. |
+| **App DB** (per workspace) | `Items` + `Mirrors` (LWW field-level columns: `<Field>UpdatedAt`, `<Field>UpdatedBy`), `MutationLog` (server-assigned `ServerTs`, client-supplied `ClientAttemptedAt`) | All conflict resolution happens *inside* one App DB. The LWW algorithm in §14.2 reads/writes only this layer. |
+| **Cross-DB joins** | **Forbidden.** | A mutation in one workspace's App DB never references another workspace. SSE channel is keyed by `(UserId, WorkspaceId)`. |
 
 ---
 

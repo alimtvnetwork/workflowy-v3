@@ -1,6 +1,6 @@
 # Active Plans
 
-> **Updated:** 2026-04-26 (UTC+8) · **Status:** APP-FIX-01, 07, 06 **DONE**. Tracker widened 8→12; Casing-Layers callout added; Enum Sources callouts inserted in 6 feature files (01/03/04/07/08/15 → v2.1.0 / 1.1.0). Round-3: AUDIT-01/05/02 closed. 3 AUDIT blockers remain (03, 04, 06) + AUDIT-02a + 11 APP-FIX phases. Next per user order: APP-FIX-02.
+> **Updated:** 2026-04-26 (UTC+8) · **Status:** APP-FIX-01, 07, 06, 02 **DONE**. Tracker widened, Casing-Layers + Enum Sources + Storage callouts added across 16 file edits. Round-3: AUDIT-01/05/02 closed. 3 AUDIT blockers remain (03, 04, 06) + AUDIT-02a + 10 APP-FIX phases. Next per user order: APP-FIX-03.
 
 ---
 
