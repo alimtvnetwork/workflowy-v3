@@ -1,6 +1,6 @@
 # Active Plans
 
-> **Updated:** 2026-04-26 (UTC+8) · **Status:** APP-FIX-01, 07, 06, 02, 03 **DONE**. Realtime Transport callout added to 6 feature files (06/07/08/09/11/12). Round-3: AUDIT-01/05/02 closed. 3 AUDIT blockers remain (03, 04, 06) + AUDIT-02a + 9 APP-FIX phases. Next per user order: APP-FIX-04.
+> **Updated:** 2026-04-26 (UTC+8) · **Status:** APP-FIX-01, 07, 06, 02, 03, 04 **DONE** + **Round-3 AUDIT-04 CLOSED**. PHP `Auth::hasRole()` contract specified in `15-roles-and-permissions.md` v1.3.0. Round-3 blockers remaining: AUDIT-03, AUDIT-06. Plus AUDIT-02a + 8 APP-FIX phases. Next per user order: APP-FIX-05.
 
 ---
 
