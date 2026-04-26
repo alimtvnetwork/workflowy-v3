@@ -1,7 +1,7 @@
 # Mirror Specification
 
-> **Version:** 2.1.0
-> **Updated:** 2026-04-26 — APP-FIX-02: Storage section added (closes audit F-03 for this file)
+> **Version:** 2.2.0
+> **Updated:** 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -103,6 +103,17 @@ For cleaner UX, use only **"Mirror To…"** in the context menu (one unified act
 | **Root DB** | — | Mirrors are workspace-local. |
 | **App DB** (per workspace) | `Mirrors` (`MirrorId`, `SourceId`, `ParentId`, `SortOrder`, `BrokenAt`), `Items` (source rows mirrors point at) | `Mirrors.SourceId` references `Items.ItemId` *within the same App DB*. Cross-workspace mirrors are out of scope. |
 | **Cross-DB joins** | **Forbidden.** | A mirror cannot point at an item in a different workspace's App DB. |
+
+---
+
+## Realtime Transport
+
+| Channel | Mechanism | Fallback |
+|---------|-----------|----------|
+| `mirror:created` / source-edit propagation to all mirror locations | **WP-native SSE** keyed by `(UserId, WorkspaceId)` | **5 s poll** of `/api/sync?since={ServerTs}` when SSE drops |
+| Presence dot on item being co-edited | Same SSE channel | None (presence is best-effort) |
+
+> Per [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) §14.1 and `00-overview.md` L9. WebSockets / Pusher / Supabase Realtime / CRDT-Yjs are **forbidden** in MVP. Phase-3 CRDT is tracked separately.
 
 ---
 

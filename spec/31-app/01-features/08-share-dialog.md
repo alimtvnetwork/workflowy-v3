@@ -1,7 +1,7 @@
 # Share Dialog Specification
 
-> **Version:** 2.1.0
-> **Updated:** 2026-04-26 — APP-FIX-06: enum sources linked (closes audit F-02 for this file)
+> **Version:** 2.2.0
+> **Updated:** 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -45,6 +45,16 @@ As an owner, I want to share an outline branch with specific people at the right
 | `Permission` (`View` / `Edit` / `Admin`) | [`spec/20-enums-index.md`](../../20-enums-index.md) §3.5 — `SharePermissionType` | TS Strategy B (`as const` + derived union) — see [`spec/02-coding-guidelines/02-typescript/00-overview.md`](../../02-coding-guidelines/02-typescript/00-overview.md) |
 
 > **Forbidden:** TS `enum` keyword and bare literal unions. Always import the canonical `as const` object.
+
+---
+
+## Realtime Transport
+
+| Channel | Mechanism | Fallback |
+|---------|-----------|----------|
+| `share:granted` / `share:revoked` events to peers | **WP-native SSE** keyed by `(UserId, WorkspaceId)` | **5 s poll** of `/api/sync?since={ServerTs}` when SSE drops |
+
+> Per [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) §14.1 and `00-overview.md` L9. WebSockets / Pusher / Supabase Realtime are **forbidden**.
 
 ---
 
