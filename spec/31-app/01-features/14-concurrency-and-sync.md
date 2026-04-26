@@ -60,6 +60,53 @@ Clients receiving a conflict response MUST:
 
 ---
 
+## 14.4 `Mirrors.BrokenAt` — LWW Rule for Mirror Lifecycle
+
+> **Why this section:** [`01-information-model.md`](./01-information-model.md) Edge 7 says "mirrors of any descendant become broken" when an ancestor is trashed, and [`09-mirrors.md`](./09-mirrors.md) treats a mirror as broken when its `SourceId` is unreachable. Without an explicit LWW rule, a concurrent **restore-from-trash** + **mirror-create** race can flip `BrokenAt` and clear it within milliseconds, producing zombie mirrors. This section pins the deterministic resolution.
+
+### Field
+
+| Column | Type | Meaning |
+|--------|------|---------|
+| `Mirrors.BrokenAt` | `INTEGER` (UTC ms) NULL | `NULL` = healthy. Non-NULL = the server timestamp at which the source became unreachable (trashed, hard-deleted, or moved out of a shared subtree). |
+| `Mirrors.BrokenAtUpdatedAt` | `INTEGER` (UTC ms) NOT NULL | LWW timestamp for `BrokenAt` itself — the *only* value compared during conflict resolution. |
+| `Mirrors.BrokenAtUpdatedBy` | `TEXT` (UserId) NOT NULL | Tie-break attribution. `'system'` for reaper / cascade writes. |
+
+### Resolution algorithm (extends §14.2)
+
+```
+On incoming write W setting Mirrors.BrokenAt = X (X may be NULL or a timestamp):
+  1. Server reads current Mirrors row.
+  2. Stamp W.server_ts = server.now().
+  3. If row.BrokenAtUpdatedAt < W.server_ts → apply (set BrokenAt = X, BrokenAtUpdatedAt = W.server_ts, BrokenAtUpdatedBy = W.user_id).
+  4. Else if row.BrokenAtUpdatedAt == W.server_ts:
+       a. If both writers are 'system' (cascade vs reaper) → keep the row whose value is non-NULL (broken wins over healthy at exact tie).
+       b. Else → tie-break by lexicographically higher user_id (same rule as §14.2 step 4); 'system' loses to any human user.
+  5. Else → reject W with conflict response { winning_broken_at, winning_user_id, winning_ts }.
+  6. Broadcast on the SSE channel for the mirror's workspace.
+```
+
+### Cascade interactions (normative)
+
+| Scenario | Producer | `BrokenAtUpdatedBy` | Notes |
+|----------|----------|---------------------|-------|
+| Source trashed (soft-delete cascade) | trash handler | `'system'` | Sets `BrokenAt = serverNow` for every mirror of any descendant of the trashed subtree. |
+| Source restored from trash | restore handler | `'system'` | Sets `BrokenAt = NULL` ONLY if the restore's `serverTs` > the mirror's `BrokenAtUpdatedAt`. Older restores lose. |
+| Source hard-deleted (30-day reaper) | reaper | `'system'` | Permanent `BrokenAt = serverNow`. Subsequent restores cannot run (source is gone). |
+| User manually breaks mirror via UI | human | actual `UserId` | Wins tie-breaks against any `'system'` write at the same `serverTs` (rule 4b). |
+| User creates a new mirror with `BrokenAt = NULL` | human | actual `UserId` | New row — no LWW comparison; the row didn't exist. |
+
+### Forbidden patterns
+
+- ❌ Mutating `BrokenAt` without also writing `BrokenAtUpdatedAt = serverNow` and `BrokenAtUpdatedBy`.
+- ❌ Resolving "broken vs healthy" with `MAX(BrokenAt)` — the comparison is on `BrokenAtUpdatedAt`, not on `BrokenAt` itself.
+- ❌ Letting a stale restore re-heal a mirror whose source has since been hard-deleted (rule 5 rejects it).
+- ❌ Treating `'system'` writes as authoritative over human writes at exact ties — they are not (rule 4b).
+
+> **Cross-reference:** [`09-mirrors.md`](./09-mirrors.md) §Storage shows the `Mirrors` table layout. AT coverage lives in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) `AT-CONCURRENCY-14..16`.
+
+---
+
 ## Storage
 
 | Layer | Tables | Notes |
