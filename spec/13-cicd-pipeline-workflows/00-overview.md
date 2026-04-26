@@ -1,4 +1,9 @@
 # CI/CD Pipeline Workflows
+
+
+> **Version:** 3.3.0
+> **Updated:** 2026-04-25 (UTC+8)
+
 ## Keywords
 
 `cicd-pipeline-workflows` · `cicd` · `pipeline` · `workflows`
@@ -19,12 +24,6 @@
 **Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
-
-
-> **Version:** 3.3.0
-> **Updated:** 2026-04-25 (UTC+8)
-
-
 
 
 <!-- AUTO-TOC:START -->

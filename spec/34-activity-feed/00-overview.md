@@ -43,6 +43,7 @@ Draft (high-level only) · Ambiguity: Medium (sub-specs pending)
 
 ---
 
+
 ## Purpose
 
 Specification for **Feature E2 — Activity Feed**: a chronological, filterable audit log of every meaningful change to the WorkFlowy item tree. Lets users see who changed what, when, and lets them undo/restore.

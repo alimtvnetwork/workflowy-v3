@@ -5,6 +5,27 @@
 > **Created:** 2026-02-02  
 > **Updated:** 2026-04-20  
 > **Status:** Active  
+
+## Keywords
+
+`seedable-config-architecture` · `features` · `rag-validation-helpers` · `rag` · `configuration` · `validation`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
+
+---
 > **Parent:** [../00-overview.md](../00-overview.md)
 
 
@@ -29,26 +50,6 @@
 
 ---
 
-## Keywords
-
-`seedable-config-architecture` · `features` · `rag-validation-helpers` · `rag` · `configuration` · `validation`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| `00-overview.md` present | ✅ |
-| AI Confidence assigned | ✅ |
-| Ambiguity assigned | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
-**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
-
----
 
 ## Overview
 

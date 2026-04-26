@@ -1,4 +1,9 @@
 # TypeScript Coding Standards
+
+
+> **Version:** 3.2.0  
+> **Updated:** 2026-04-20  
+
 ## Keywords
 
 `coding-guidelines` · `typescript` · `typescript-standards-reference` · `coding` · `standards`
@@ -19,10 +24,6 @@
 **Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
-
-
-> **Version:** 3.2.0  
-> **Updated:** 2026-04-20  
 > **Applies to:** All frontend TypeScript/React code  
 > **Priority:** CRITICAL — These rules override all other conventions
 

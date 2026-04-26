@@ -43,6 +43,7 @@ Draft (high-level only) · Ambiguity: Medium (sub-specs pending)
 
 ---
 
+
 ## Purpose
 
 Defines **reusable enforcement patterns** that codify the project's strict-typing, generics-first, and runtime-validation rules into mechanically checkable artefacts (ESLint rules, runtime guards, schema validators).

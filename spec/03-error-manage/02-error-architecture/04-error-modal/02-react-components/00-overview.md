@@ -1,4 +1,10 @@
 # Error Modal — Reusable React Components (Index)
+
+
+> **Parent:** [Error Modal Spec](../00-overview.md)  
+> **Version:** 4.0.0  
+> **Updated:** 2026-04-01
+
 ## Keywords
 
 `error-manage` · `error-architecture` · `error-modal` · `react-components` · `error` · `modal` · `reusable`
@@ -19,11 +25,6 @@
 **Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
-
-
-> **Parent:** [Error Modal Spec](../00-overview.md)  
-> **Version:** 4.0.0  
-> **Updated:** 2026-04-01
 
 
 > **Purpose:** Portable React code for rebuilding the Global Error Modal in any project.

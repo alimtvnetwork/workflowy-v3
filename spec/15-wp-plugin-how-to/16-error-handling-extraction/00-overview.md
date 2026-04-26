@@ -19,6 +19,28 @@
 > **Updated:** 2026-04-19  
 > **Status:** Production-ready
 
+## Keywords
+
+`error-handling` · `wp-plugin` · `safe-execute` · `error-sessions` · `flash-banner` · `error-classification` · `admin-ui`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| Overview present | ✅ |
+| Confidence rated | ✅ |
+| Ambiguity rated | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+## Confidence
+
+Production-Ready · Ambiguity: None
+
+---
+
 
 <!-- AUTO-TOC:START -->
 
@@ -56,27 +78,6 @@ Defines the complete error handling, error log viewing, error session management
 
 ---
 
-## Keywords
-
-`error-handling` · `wp-plugin` · `safe-execute` · `error-sessions` · `flash-banner` · `error-classification` · `admin-ui`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| Overview present | ✅ |
-| Confidence rated | ✅ |
-| Ambiguity rated | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-## Confidence
-
-Production-Ready · Ambiguity: None
-
----
 
 ## Topic Index
 

@@ -4,6 +4,27 @@
 > **Version:** 1.0.0
 > **Created:** 2026-02-04
 > **Updated:** 2026-04-19 (split into subfolder)
+
+## Keywords
+
+`error-manage` · `error-resolution` · `debugging-guides` · `debugging-go` · `debugging` · `guide`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
+
+---
 > **Applies To:** GSearch CLI, BRun CLI, AI Bridge CLI, Nexus Flow CLI, AI Transcribe CLI
 > **Parent:** [../00-overview.md](../00-overview.md)
 
@@ -29,26 +50,6 @@
 
 ---
 
-## Keywords
-
-`error-manage` · `error-resolution` · `debugging-guides` · `debugging-go` · `debugging` · `guide`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| `00-overview.md` present | ✅ |
-| AI Confidence assigned | ✅ |
-| Ambiguity assigned | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
-**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
-
----
 
 ## Overview
 

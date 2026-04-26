@@ -1,4 +1,8 @@
 # Phase 3 — Right-Side Panel (Handbook + Hotkeys + What's New)
+
+
+> **Status:** ⏳ Ready to author
+
 ## Keywords
 
 `ui-design` · `workflowy-ui` · `right-panel` · `phase` · `right-side`
@@ -19,9 +23,6 @@
 **Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
-
-
-> **Status:** ⏳ Ready to author
 > **Parent:** [`../00-overview.md`](../00-overview.md)
 > **Screenshots:** img-45, img-54, img-55, img-58, img-63, img-64, img-65, img-66, img-67
 > **Target files:** `01-overview.md`, `02-handbook-content.md`, `03-hotkeys.md`, `04-whats-new.md`

@@ -1,4 +1,9 @@
 # WordPress Plugin How-To
+
+
+> **Version:** 1.0.0  
+> **Updated:** 2026-04-18
+
 ## Keywords
 
 `wp-plugin-how-to` · `wordpress` · `plugin` · `how-to`
@@ -19,10 +24,6 @@
 **Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
-
-
-> **Version:** 1.0.0  
-> **Updated:** 2026-04-18
 
 
 <!-- AUTO-TOC:START -->

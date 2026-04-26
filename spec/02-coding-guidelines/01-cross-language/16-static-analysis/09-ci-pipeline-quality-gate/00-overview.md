@@ -18,6 +18,18 @@
 > **Version:** 3.2.0  
 > **Updated:** 2026-04-20
 
+## Keywords
+
+`ci` · `pipeline` · `quality-gate` · `sonarqube` · `github-actions` · `gitlab-ci` · `linter` · `static-analysis` · `continuous-integration`
+
+---
+
+## Purpose
+
+Defines a **standard CI pipeline structure** and **quality gate** that applies to all 8 supported languages. Every repository MUST run the language-appropriate linter, type checker, formatter, and SonarQube analysis as blocking PR checks. This document is the single source of truth for CI enforcement.
+
+---
+
 
 <!-- AUTO-TOC:START -->
 
@@ -38,17 +50,6 @@
 
 ---
 
-## Keywords
-
-`ci` · `pipeline` · `quality-gate` · `sonarqube` · `github-actions` · `gitlab-ci` · `linter` · `static-analysis` · `continuous-integration`
-
----
-
-## Purpose
-
-Defines a **standard CI pipeline structure** and **quality gate** that applies to all 8 supported languages. Every repository MUST run the language-appropriate linter, type checker, formatter, and SonarQube analysis as blocking PR checks. This document is the single source of truth for CI enforcement.
-
----
 
 ## Topic Files
 

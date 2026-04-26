@@ -3,6 +3,27 @@
 
 > **Version:** 2.0.0  
 > **Updated:** 2026-04-20  
+
+## Keywords
+
+`coding-guidelines` · `cross-language` · `issues-and-fixes-log` · `issues` · `fixes` · `log`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
+
+---
 > **Purpose:** Comprehensive log of all coding standard violations found and fixed, with root cause analysis and prevention rules.
 
 
@@ -27,26 +48,6 @@ Split per AUD-L-01 from a 541-line monolith into 7 focused topic files (each <20
 
 ---
 
-## Keywords
-
-`coding-guidelines` · `cross-language` · `issues-and-fixes-log` · `issues` · `fixes` · `log`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| `00-overview.md` present | ✅ |
-| AI Confidence assigned | ✅ |
-| Ambiguity assigned | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
-**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
-
----
 
 ## Topic Index
 

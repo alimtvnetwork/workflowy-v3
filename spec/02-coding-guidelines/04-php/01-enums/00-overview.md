@@ -1,4 +1,9 @@
 # PHP Enums — Complete Reference
+
+
+> **Version:** 7.1.0
+> **Updated:** 2026-03-09
+
 ## Keywords
 
 `coding-guidelines` · `php` · `enums` · `complete`
@@ -19,10 +24,6 @@
 **Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
-
-
-> **Version:** 7.1.0
-> **Updated:** 2026-03-09
 > **Applies to:** WordPress companion plugins (PHP 8.1+)
 
 > **Related specs:**

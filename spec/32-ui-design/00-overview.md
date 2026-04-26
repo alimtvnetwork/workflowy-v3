@@ -28,6 +28,7 @@
 
 ---
 
+
 ## 🎯 Mission (read first)
 
 This folder is the **visual + interaction SSOT** for the WorkFlowy frontend. Behavior contracts (what features do) live in [`../31-app/`](../31-app/00-overview.md). **This folder answers "how does it look, animate, theme, and respond?"**

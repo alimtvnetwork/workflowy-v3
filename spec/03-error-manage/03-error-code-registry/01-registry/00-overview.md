@@ -2,6 +2,27 @@
 
 
 > **Version:** 1.0.0
+
+## Keywords
+
+`error-manage` · `error-code-registry` · `registry` · `error-code` · `sub-folder`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
+
+---
 > **Created:** 2026-04-26 (UTC+8) — closes F-AUD27-03 from `02-ai-readiness-report-post-a27.md` (folder previously had no `00-overview.md`).
 > **Parent:** [`../00-overview.md`](../00-overview.md)
 
@@ -25,26 +46,6 @@
 
 ---
 
-## Keywords
-
-`error-manage` · `error-code-registry` · `registry` · `error-code` · `sub-folder`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| `00-overview.md` present | ✅ |
-| AI Confidence assigned | ✅ |
-| Ambiguity assigned | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
-**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
-
----
 
 ## Purpose
 

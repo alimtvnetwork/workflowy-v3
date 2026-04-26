@@ -27,6 +27,7 @@
 
 ---
 
+
 ## Overview
 
 Dedicated folder for comparative studies, technology evaluations, exploratory technical notes, and research that supports foundational coding guidelines. This includes game development research, framework comparisons, language evaluations, and any other exploratory work categorized as part of the foundational system.

@@ -4,6 +4,27 @@
 > **Created:** 2026-02-12
 > **Version:** 4.0.0 (split into subfolder 2026-04-20)
 > **Updated:** 2026-04-20
+
+## Keywords
+
+`error-manage` · `error-resolution` · `retrospectives` · `retry-debounce-dedup-fixes` · `retry` · `debounce` · `deduplication`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
+
+---
 > **Purpose:** Document every retry/debounce/dedup issue that was found and fixed, with root causes, symptoms, and exact code solutions — for AI training.
 > **Parent:** [`../00-overview.md`](../00-overview.md)
 
@@ -26,26 +47,6 @@
 
 ---
 
-## Keywords
-
-`error-manage` · `error-resolution` · `retrospectives` · `retry-debounce-dedup-fixes` · `retry` · `debounce` · `deduplication`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| `00-overview.md` present | ✅ |
-| AI Confidence assigned | ✅ |
-| Ambiguity assigned | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
-**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
-
----
 
 ## In This Section
 

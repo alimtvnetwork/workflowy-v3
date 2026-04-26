@@ -1,4 +1,9 @@
 # Consolidated Code Review Guide (Overview)
+
+
+> **Version:** 3.2.0
+> **Updated:** 2026-04-19
+
 ## Keywords
 
 `coding-guidelines` · `consolidated-review-guide` · `consolidated` · `code` · `review`
@@ -19,10 +24,6 @@
 **Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
-
-
-> **Version:** 3.2.0
-> **Updated:** 2026-04-19
 > **Scope:** All Languages (Go, TypeScript, PHP, C#, Rust)
 > **Parent:** [../00-overview.md](../00-overview.md)
 

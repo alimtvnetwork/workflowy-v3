@@ -1,4 +1,10 @@
 # TypeScript/React Debugging Guide
+
+
+> **Version:** 1.0.0
+> **Created:** 2026-02-04
+> **Updated:** 2026-04-19 (split into subfolder)
+
 ## Keywords
 
 `error-manage` · `error-resolution` · `debugging-guides` · `debugging-typescript` · `typescriptreact` · `debugging` · `guide`
@@ -19,11 +25,6 @@
 **Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
-
-
-> **Version:** 1.0.0
-> **Created:** 2026-02-04
-> **Updated:** 2026-04-19 (split into subfolder)
 > **Applies To:** All React Frontend Applications, Shared CLI Frontend
 > **Parent:** [../00-overview.md](../00-overview.md)
 

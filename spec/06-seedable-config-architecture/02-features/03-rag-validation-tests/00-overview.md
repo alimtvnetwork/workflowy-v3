@@ -1,4 +1,11 @@
 # RAG Validation Helpers: Unit Test Specification
+
+
+> **Version:** 4.0.0  
+> **Created:** 2026-02-02  
+> **Updated:** 2026-04-19  
+> **Status:** Active  
+
 ## Keywords
 
 `seedable-config-architecture` · `features` · `rag-validation-tests` · `rag` · `validation` · `helpers`
@@ -19,12 +26,6 @@
 **Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
-
-
-> **Version:** 4.0.0  
-> **Created:** 2026-02-02  
-> **Updated:** 2026-04-19  
-> **Status:** Active  
 > **Parent:** [02-rag-validation-helpers/00-overview.md](../02-rag-validation-helpers/00-overview.md)
 
 

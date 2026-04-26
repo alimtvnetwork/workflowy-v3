@@ -1,4 +1,11 @@
 # Error Modal — Frontend Specification (Index)
+
+
+> **Parent:** [Error Modal Spec](../00-overview.md)  
+> **Version:** 2.2.0  
+> **Updated:** 2026-03-31  
+> **Status:** Active  
+
 ## Keywords
 
 `error-manage` · `error-architecture` · `error-modal` · `error-modal-reference` · `error` · `modal` · `frontend`
@@ -19,12 +26,6 @@
 **Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
-
-
-> **Parent:** [Error Modal Spec](../00-overview.md)  
-> **Version:** 2.2.0  
-> **Updated:** 2026-03-31  
-> **Status:** Active  
 > **Location:** `src/components/errors/`  
 
 

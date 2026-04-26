@@ -1,4 +1,9 @@
 # Blank Lines & Spacing
+
+
+> **Version:** 4.0.0
+> **Updated:** 2026-04-20
+
 ## Keywords
 
 `coding-guidelines` · `cross-language` · `code-style` · `blank-lines-and-spacing` · `blank` · `lines` · `spacing`
@@ -19,10 +24,6 @@
 **Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
-
-
-> **Version:** 4.0.0
-> **Updated:** 2026-04-20
 > **Applies to:** PHP, TypeScript, Go
 > **Rules covered:** 4, 5, 10
 

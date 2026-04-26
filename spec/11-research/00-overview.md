@@ -28,6 +28,7 @@
 
 ---
 
+
 ## Overview
 
 Dedicated folder for all exploratory and evaluative work that supports the spec system. This is the **single canonical location** for research content at the root spec level.

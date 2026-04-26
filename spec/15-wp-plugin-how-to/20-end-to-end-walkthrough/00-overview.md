@@ -19,6 +19,28 @@
 > **Updated:** 2026-04-19  
 > **Status:** Production-ready
 
+## Keywords
+
+`walkthrough` · `end-to-end` · `task-tracker` · `tutorial` · `gold-standard` · `worked-example`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| Overview present | ✅ |
+| Confidence rated | ✅ |
+| Ambiguity rated | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+## Confidence
+
+Production-Ready · Ambiguity: None
+
+---
+
 
 <!-- AUTO-TOC:START -->
 
@@ -60,27 +82,6 @@ Walk through building a complete, minimal WordPress plugin — **Task Tracker** 
 
 ---
 
-## Keywords
-
-`walkthrough` · `end-to-end` · `task-tracker` · `tutorial` · `gold-standard` · `worked-example`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| Overview present | ✅ |
-| Confidence rated | ✅ |
-| Ambiguity rated | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-## Confidence
-
-Production-Ready · Ambiguity: None
-
----
 
 ## Topic Index
 

@@ -1,4 +1,10 @@
 # CLI Examples — Overview
+
+
+> **Version:** 3.1.0  
+> **Updated:** 2026-04-19  
+> **Status:** Active  
+
 ## Keywords
 
 `split-db-architecture` · `features` · `cli-examples` · `cli` · `examples` · `overview`
@@ -19,11 +25,6 @@
 **Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
-
-
-> **Version:** 3.1.0  
-> **Updated:** 2026-04-19  
-> **Status:** Active  
 > **Parent:** [../00-overview.md](../00-overview.md)
 
 

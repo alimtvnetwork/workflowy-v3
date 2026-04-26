@@ -1,4 +1,9 @@
 # Self-Update & App Update
+
+
+> **Version:** 3.1.0  
+> **Updated:** 2026-04-16  
+
 ## Keywords
 
 `self-update-app-update` · `self-update` · `app` · `update`
@@ -19,12 +24,6 @@
 **Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
-
-
-> **Version:** 3.1.0  
-> **Updated:** 2026-04-16  
-
-
 
 
 <!-- AUTO-TOC:START -->

@@ -43,6 +43,7 @@ Draft (high-level only) · Ambiguity: Medium (sub-specs pending)
 
 ---
 
+
 ## Purpose
 
 Specification for WorkFlowy's user management system: accounts, roles, permissions, authentication, and administrative operations.

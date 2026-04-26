@@ -19,6 +19,28 @@
 > **Updated:** 2026-04-19  
 > **Status:** Production-ready
 
+## Keywords
+
+`wordpress` · `wp-plugin` · `admin-pages` · `wp-cron` · `ajax` · `file-upload` · `migrations` · `seeding` · `transients`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| Overview present | ✅ |
+| Confidence rated | ✅ |
+| Ambiguity rated | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+## Confidence
+
+Production-Ready · Ambiguity: None
+
+---
+
 
 <!-- AUTO-TOC:START -->
 
@@ -49,27 +71,6 @@ Defines patterns for WordPress-specific features that go beyond REST API endpoin
 
 ---
 
-## Keywords
-
-`wordpress` · `wp-plugin` · `admin-pages` · `wp-cron` · `ajax` · `file-upload` · `migrations` · `seeding` · `transients`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| Overview present | ✅ |
-| Confidence rated | ✅ |
-| Ambiguity rated | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-## Confidence
-
-Production-Ready · Ambiguity: None
-
----
 
 ## Topic Index
 

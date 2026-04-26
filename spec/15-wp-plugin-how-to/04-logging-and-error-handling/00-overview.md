@@ -19,6 +19,28 @@
 > **Updated:** 2026-04-19  
 > **Status:** Production-ready
 
+## Keywords
+
+`logging` · `error-handling` · `file-logger` · `safe-execute` · `debug-mode` · `stack-trace` · `rotation` · `deduplication` · `wp-plugin`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| Overview present | ✅ |
+| Confidence rated | ✅ |
+| Ambiguity rated | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+## Confidence
+
+Production-Ready · Ambiguity: None
+
+---
+
 
 <!-- AUTO-TOC:START -->
 
@@ -57,27 +79,6 @@ Define the complete logging architecture, error handling strategy, debug-mode ga
 
 ---
 
-## Keywords
-
-`logging` · `error-handling` · `file-logger` · `safe-execute` · `debug-mode` · `stack-trace` · `rotation` · `deduplication` · `wp-plugin`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| Overview present | ✅ |
-| Confidence rated | ✅ |
-| Ambiguity rated | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-## Confidence
-
-Production-Ready · Ambiguity: None
-
----
 
 ## Topic Index
 

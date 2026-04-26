@@ -28,6 +28,7 @@
 
 ---
 
+
 ## 🎯 Mission (read first)
 
 WorkFlowy is a **recursive outliner**: every entity the user creates is a single unified `Item` node that can contain itself indefinitely. This app spec defines **what the application does** (features, workflows, edge cases). The companion folder [`../32-ui-design/`](../32-ui-design/00-overview.md) defines **how it looks and behaves on screen**.

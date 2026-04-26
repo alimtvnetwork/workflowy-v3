@@ -1,4 +1,11 @@
 # Error Modal — Copy & Export Formats (Index)
+
+
+> **Parent:** [Error Modal Spec](../00-overview.md)  
+> **Version:** 3.1.0  
+> **Updated:** 2026-03-31  
+> **Status:** Active  
+
 ## Keywords
 
 `error-manage` · `error-architecture` · `error-modal` · `copy-formats` · `error` · `modal` · `copy`
@@ -19,12 +26,6 @@
 **Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
-
-
-> **Parent:** [Error Modal Spec](../00-overview.md)  
-> **Version:** 3.1.0  
-> **Updated:** 2026-03-31  
-> **Status:** Active  
 
 
 > **Purpose:** Complete, copy-pasteable samples of every error report format produced by the Global Error Modal. Each format lives in its own file for focused AI consumption.

@@ -19,7 +19,17 @@
 **Status:** Active  
 > **Updated:** 2026-04-16  
 
+## Keywords
 
+`coding`, `guidelines`, `php`, `enums`, `naming`, `spacing`, `response-key`
+
+---
+
+## Purpose
+
+PHP-specific coding standards and patterns for the RiseupAsia namespace.
+
+---
 
 
 <!-- AUTO-TOC:START -->
@@ -43,17 +53,6 @@
 
 ---
 
-## Keywords
-
-`coding`, `guidelines`, `php`, `enums`, `naming`, `spacing`, `response-key`
-
----
-
-## Purpose
-
-PHP-specific coding standards and patterns for the RiseupAsia namespace.
-
----
 
 ## Document Inventory
 

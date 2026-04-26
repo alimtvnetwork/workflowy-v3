@@ -1,4 +1,10 @@
 # Phase 13 — Admin UI Patterns (Overview)
+
+
+> **Created:** 2026-04-09
+> **Updated:** 2026-04-19
+> **Status:** ✅ Active
+
 ## Keywords
 
 `wp-plugin-how-to` · `admin-ui-patterns` · `phase` · `admin`
@@ -19,11 +25,6 @@
 **Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
-
-
-> **Created:** 2026-04-09
-> **Updated:** 2026-04-19
-> **Status:** ✅ Active
 > **Depends on:** [Phase 12 — Design System](../12-design-system/00-overview.md)
 
 

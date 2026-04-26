@@ -1,4 +1,9 @@
 # PHP Naming Conventions
+
+
+> **Version:** 2.0.0
+> **Updated:** 2026-04-20
+
 ## Keywords
 
 `coding-guidelines` · `php` · `naming-conventions` · `naming` · `conventions`
@@ -19,10 +24,6 @@
 **Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
-
-
-> **Version:** 2.0.0
-> **Updated:** 2026-04-20
 > **Baseline:** PSR-12 / PSR-1
 > **Applies to:** All PHP code unless overridden by project-specific or framework-specific conventions
 

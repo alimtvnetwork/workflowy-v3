@@ -27,6 +27,7 @@
 
 ---
 
+
 ## Purpose
 
 Index of all Mermaid diagrams supporting the self-update and app update specifications. These diagrams visualize decision trees and workflows described in the parent module.

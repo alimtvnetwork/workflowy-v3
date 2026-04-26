@@ -5,6 +5,27 @@
 > **Version:** 1.0.0  
 > **Updated:** 2026-04-20
 
+## Keywords
+
+`generic-cli` · `verbose-logging` · `verbose` · `logging` · `overview`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
+
+---
+
 > **Related specs:**
 > - [04-flag-parsing.md](../04-flag-parsing.md) — `--verbose` flag parsing
 > - [07-error-handling.md](../07-error-handling.md) — verbose output for error diagnosis
@@ -29,26 +50,6 @@
 
 ---
 
-## Keywords
-
-`generic-cli` · `verbose-logging` · `verbose` · `logging` · `overview`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| `00-overview.md` present | ✅ |
-| AI Confidence assigned | ✅ |
-| Ambiguity assigned | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
-**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
-
----
 
 ## Purpose
 

@@ -1,4 +1,10 @@
 # Phase 14 — REST API Conventions (Overview)
+
+
+> **Version:** 2.0.0  
+> **Updated:** 2026-04-19  
+> **Status:** Active  
+
 ## Keywords
 
 `wp-plugin-how-to` · `rest-api-conventions` · `phase` · `rest`
@@ -19,11 +25,6 @@
 **Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
-
-
-> **Version:** 2.0.0  
-> **Updated:** 2026-04-19  
-> **Status:** Active  
 > **Split from:** Original 859-line monolith per AUD-L-01
 
 

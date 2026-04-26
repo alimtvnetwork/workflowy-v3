@@ -43,6 +43,7 @@ Draft (high-level only) · Ambiguity: Medium (sub-specs pending)
 
 ---
 
+
 ## Purpose
 
 Specification for the in-app feedback and bug-report feature in WorkFlowy. Lets users submit feedback, attach context (current item tree path, browser info, last actions), and lets reviewers triage submissions.

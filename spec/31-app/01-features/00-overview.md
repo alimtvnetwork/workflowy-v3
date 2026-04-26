@@ -28,6 +28,7 @@
 
 ---
 
+
 ## 🎯 What this folder is
 
 Behavior contracts for every feature in WorkFlowy. Each file is a **single feature**, follows the [feature-file template](../../01-spec-authoring-guide/13-feature-file-template.md), and is the SSOT for that feature's rules.

@@ -4,6 +4,27 @@
 > **Version:** 1.0.0
 > **Created:** 2026-04-21 (UTC+8)
 > **Status:** ✅ Authored
+
+## Keywords
+
+`ui-design` · `workflowy-ui` · `app-shell` · `phase` · `app`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
+**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
+
+---
 > **Parent:** [`../00-overview.md`](../00-overview.md)
 > **Phase:** 8 of 10 (active — last active phase)
 > **Screenshots:** img-45, 55, 58
@@ -26,26 +47,6 @@
 
 ---
 
-## Keywords
-
-`ui-design` · `workflowy-ui` · `app-shell` · `phase` · `app`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| `00-overview.md` present | ✅ |
-| AI Confidence assigned | ✅ |
-| Ambiguity assigned | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
-**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
-
----
 
 ## Purpose
 

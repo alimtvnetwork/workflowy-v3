@@ -1,4 +1,10 @@
 # Phase 12 — WordPress Plugin Design System (Overview)
+
+
+> **Created:** 2026-04-09  
+> **Updated:** 2026-04-19  
+> **Status:** ✅ Active  
+
 ## Keywords
 
 `wp-plugin-how-to` · `design-system` · `phase` · `wordpress`
@@ -19,11 +25,6 @@
 **Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
-
-
-> **Created:** 2026-04-09  
-> **Updated:** 2026-04-19  
-> **Status:** ✅ Active  
 > **Applies to:** All WordPress admin plugin pages
 
 
