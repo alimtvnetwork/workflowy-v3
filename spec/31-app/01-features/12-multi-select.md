@@ -1,7 +1,7 @@
 # Multi-Select Behavior
 
-> **Version:** 2.1.0
-> **Updated:** 2026-04-26 — APP-FIX-02: Storage section added (closes audit F-03 for this file)
+> **Version:** 2.2.0
+> **Updated:** 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -62,6 +62,16 @@ When multiple items are selected, a **bulk action bar** appears at the bottom of
 | **Root DB** | — | Selection state is client-only; no Root DB touch. |
 | **App DB** (per workspace) | `Items` (bulk move/delete/tag writes), `ItemTags`, `Mirrors` (when bulk action affects sources) | Bulk operations are batched into a single transaction per App DB. |
 | **Cross-DB joins** | **Forbidden.** | A selection cannot span workspaces. |
+
+---
+
+## Realtime Transport
+
+| Channel | Mechanism | Fallback |
+|---------|-----------|----------|
+| Bulk move / delete / tag broadcast to peers (one batch event per transaction) | **WP-native SSE** keyed by `(UserId, WorkspaceId)` | **5 s poll** of `/api/sync?since={ServerTs}` when SSE drops |
+
+> Per [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) §14.1 and `00-overview.md` L9. WebSockets / Pusher / Supabase Realtime are **forbidden**. Bulk operations emit a single SSE event with the affected `ItemId` list, not one event per row.
 
 ---
 

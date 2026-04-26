@@ -1,7 +1,7 @@
 # Board View Specification
 
-> **Version:** 2.2.0
-> **Updated:** 2026-04-26 — APP-FIX-02: Storage section added (closes audit F-03 for this file)
+> **Version:** 2.3.0
+> **Updated:** 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -104,6 +104,16 @@ No special admin logic required — the tree model handles everything naturally.
 | **Root DB** | — | Board view does not touch Root DB. |
 | **App DB** (per workspace) | `Items` (read tree, write `ParentId` + `SortOrder` on drag) | Board is a *view* over the same `Items` rows the list view uses. No board-specific table. |
 | **Cross-DB joins** | **Forbidden.** | Workspace resolved before opening this view. |
+
+---
+
+## Realtime Transport
+
+| Channel | Mechanism | Fallback |
+|---------|-----------|----------|
+| Card add / move / rename broadcast to peers | **WP-native SSE** keyed by `(UserId, WorkspaceId)` | **5 s poll** of `/api/sync?since={ServerTs}` when SSE drops |
+
+> Per [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) §14.1 and `00-overview.md` L9. WebSockets / Pusher / Supabase Realtime are **forbidden**.
 
 ---
 
