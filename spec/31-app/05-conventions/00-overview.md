@@ -74,6 +74,7 @@ Conventions specification module. See files below.
 - [`01-axios-version-control.md`](./01-axios-version-control.md) — Axios Version Control
 - [`02-ci-quality-gates.md`](./02-ci-quality-gates.md) — CI Quality Gates runner contract
 - [`03-github-actions-workflow.md`](./03-github-actions-workflow.md) — GitHub Actions workflow contract
+- [`04-g19-workflow-contract-gate.md`](./04-g19-workflow-contract-gate.md) — G-19 workflow contract drift gate
 
 **See also:**
 
