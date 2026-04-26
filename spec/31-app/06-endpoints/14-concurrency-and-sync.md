@@ -1,7 +1,7 @@
 # Endpoints — 14 Concurrency & Sync (Realtime Transport)
 
-> **Version:** 1.1.0
-> **Updated:** 2026-04-26 (UTC+8) — v1.1.0 aligned event vocabulary to canonical hyphen notation per §14.5.2 (closes content-audit drift)
+> **Version:** 1.2.0
+> **Updated:** 2026-04-26 (UTC+8) — v1.2.0 corrected event vocabulary drift: removed non-existent `item-created` (creation is `item-updated` on a new ID), added missing `mirror-healed` per §14.5.2 SSOT (closes F-AUD30-07). v1.1.0 aligned event vocabulary to canonical hyphen notation per §14.5.2 (closes content-audit drift)
 > **Parent:** [`./00-overview.md`](./00-overview.md)
 > **Mirrors feature:** [`../01-features/14-concurrency-and-sync.md`](../01-features/14-concurrency-and-sync.md) §14.5
 
@@ -27,11 +27,11 @@
   - `Last-Event-Id` (header, optional) — resume cursor; server replays buffered events ≥ cursor.
 - **Response**: `Content-Type: text/event-stream`; long-lived; server emits `event:` + `data:` + `id:` triples.
 - **Event vocabulary** — closed set of 9 canonical names per §14.5.2 (do not invent new names):
-  - **Item lifecycle:** `item-created`, `item-updated`, `item-deleted`, `item-restored`
-  - **Mirrors:** `mirror-broken` (mirror parent updates flow through `item-updated`)
+  - **Item lifecycle:** `item-updated` (covers create + edit; new rows surface as `item-updated`), `item-deleted`, `item-restored`
+  - **Mirrors:** `mirror-broken`, `mirror-healed`
   - **Sharing:** `share-granted`, `share-revoked`
   - **Backpressure:** `cursor-overflow` (server cannot replay; client switches to poll)
-  - **Optional non-authoritative:** `presence` (cursor/selection avatar dot)
+  - **Optional non-authoritative:** `presence` (avatar dot; clients MAY drop on overload)
   - **Transport:** `: ping\n\n` heartbeat comment every 15 s (not an event; see AT-APP-41)
 - **Errors**: `ERR_UNAUTHENTICATED` (close immediately), `ERR_FORBIDDEN_TOPIC` (per-topic, sent as `event:error` on the stream rather than HTTP error).
 - **Side effects**: server records the connection, subscribes to topic queues. Disconnect releases subscriptions.
