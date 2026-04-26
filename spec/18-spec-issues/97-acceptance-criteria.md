@@ -1,8 +1,8 @@
 # Spec Issues — Acceptance Criteria
 
-> **Version:** 1.0.1
-> **Created:** 2026-04-23 (UTC+8)
-> **Status:** Scaffold — meta/tracking folder
+> **Version:** 1.1.0
+> **Created:** 2026-04-23 (UTC+8) · **Updated:** 2026-04-26 (UTC+8) — promoted from scaffold to dispatch index (closes A-29 / polish #6 / option-a).
+> **Status:** Dispatch index — meta/tracking folder; per-audit ACs live inline in each numbered file
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
 ---
