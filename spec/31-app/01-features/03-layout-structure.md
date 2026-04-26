@@ -1,7 +1,7 @@
 # Layout Structure
 
-> **Version:** 2.2.0
-> **Updated:** 2026-04-26 — APP-FIX-05: Settings Keys (Seedable Config) section added (closes audit F-04 for this file). v2.1.0 added Enum Sources callout.
+> **Version:** 2.3.0
+> **Updated:** 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-05: Settings Keys (Seedable Config) section added (closes audit F-04 for this file). v2.1.0 added Enum Sources callout.
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -194,7 +194,7 @@ This indicator is hidden for Pro/unlimited users.
 | Output | Persisted? | Channel | Notes |
 |--------|-----------|---------|-------|
 | Sidebar open/close state | ✅ `localStorage` | `ui.sidebarOpen` | Restored on next session |
-| Active view mode | ✅ SQLite | `items.view_mode` per item | Per-item preference |
+| Active view mode | ✅ SQLite | `Items.ViewMode` per item | Per-item preference |
 | `nav:zoom` event | ❌ | Event bus | Fires on breadcrumb / Home / sidebar tree click |
 | `nav:back` / `nav:forward` events | ❌ | Event bus | History traversal |
 | Favorite toggle write | ✅ SQLite | `favorites` table | Optimistic UI |

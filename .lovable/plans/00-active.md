@@ -1,6 +1,6 @@
 # Active Plans
 
-> **Updated:** 2026-04-26 (UTC+8) · **Status:** 🎉 **ALL 13 APP-FIX PHASES DONE** + Round-3 AUDIT-04 CLOSED. Edge-cases split into User/System/Cross-feature with Routing rule. Round-3 blockers remaining: AUDIT-03, AUDIT-06. Plus AUDIT-02a (mechanical rename across 12 files). Next memory-suggested batch: AUDIT-02a → AUDIT-03 → AUDIT-06.
+> **Updated:** 2026-04-26 (UTC+8) · **Status:** 🎉 **ALL 13 APP-FIX PHASES DONE** + Round-3 AUDIT-04 + AUDIT-02a CLOSED. 11 feature files renamed snake_case → PascalCase (zero DB-identifier hits remaining; only legitimate WP/PHP exemptions left). Round-3 blockers remaining: AUDIT-03, AUDIT-06. Next memory-suggested batch: AUDIT-03 → AUDIT-06 → re-audit → exit spec-only.
 
 ---
 

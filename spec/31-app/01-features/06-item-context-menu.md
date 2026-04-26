@@ -1,7 +1,7 @@
 # Item Context Menu (⋮)
 
-> **Version:** 2.3.0
-> **Updated:** 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
+> **Version:** 2.4.0
+> **Updated:** 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -95,7 +95,7 @@ Displayed in very small, muted text.
 |---------|-----------|----------|
 | Per-action mutation broadcasts (`item:moved`, `item:deleted`, `item:tagged`, `item:archived`, `item:mirrored`, `item:shared`, `item:commented`) to peers | **WP-native SSE** keyed by `(UserId, WorkspaceId)` | **5 s poll** of `/api/sync?since={ServerTs}` when SSE drops |
 
-> Per [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) §14.1 and `00-overview.md` L9. WebSockets / Pusher / Supabase Realtime are **forbidden**. Each menu action produces exactly one SSE event; sub-effects (e.g. mirror-cascade) reuse the callouts in `09-mirrors.md`, `12-multi-select.md`, `07-board-view.md`.
+> Per [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) §14.1 and `00-overview.md` L9. WebSockets / Pusher / Supabase Realtime are **forbidden**. Each menu action produces exactly one SSE event; sub-effects (e.g. mirror-cascade) reuse the callouts in `09-Mirrors.md`, `12-multi-select.md`, `07-board-view.md`.
 
 ---
 
@@ -107,7 +107,7 @@ Displayed in very small, muted text.
 | `triggerRect` | `DOMRect` | Anchor element | Yes | Drives popover position |
 | `currentUser` | `User` | Auth session | Yes | Enables/disables share, archive, delete |
 | `hasChildren` | `boolean` | Derived from `targetItem` | Yes | Gates Board, Dashboard, Sort, Expand/Collapse-all |
-| `isMirror` | `boolean` | Derived from `targetItem.source_id` | Yes | Drives "Mirrored from" metadata row |
+| `isMirror` | `boolean` | Derived from `targetItem.SourceId` | Yes | Drives "Mirrored from" metadata row |
 | `tagsCatalog` | `Tag[]` | Per-user tags from SQLite | Yes | Feeds Add-tag popover |
 | `templatesCount` | `number` | API: `GET /templates/count` | No | Used by template-naming dialog |
 | `quotaState` | `{ used: number; limit: number } \| null` | `GET /usage` | No | Disables Duplicate when over quota |
@@ -116,22 +116,22 @@ Displayed in very small, muted text.
 
 | Output | Persisted? | Channel | Notes |
 |--------|-----------|---------|-------|
-| Type conversion | ✅ SQLite | `items.item_type` | One row per Turn-Into selection |
-| Toggle complete | ✅ SQLite | `items.completed_at` | Children unaffected |
-| Note created/edited | ✅ SQLite | `items.note` | Inline editor commits on blur |
-| Date assignment | ✅ SQLite | `items.due_date` | Drives Today/Tomorrow/Next Week badges |
-| Comment thread opened | ✅ SQLite | `comments` table | Side panel anchored to source item |
-| Move | ✅ SQLite | `items.parent_id` + `items.sort_order` | Subtree moves intact |
-| Mirror | ✅ SQLite | `mirrors` table (source_id + parent_id) | Item ID of source unchanged (per `01-information-model.md` §1.2) |
-| Duplicate | ✅ SQLite | `items` insert (deep copy) | New IDs for every cloned row |
-| Tag assignment | ✅ SQLite | `item_tags` junction | Auto-creates `tags` row if new |
-| File upload | ✅ Object storage + SQLite `attachments` | `POST /files` | 10 MB hard cap |
+| Type conversion | ✅ SQLite | `Items.ItemType` | One row per Turn-Into selection |
+| Toggle complete | ✅ SQLite | `Items.CompletedAt` | Children unaffected |
+| Note created/edited | ✅ SQLite | `Items.Note` | Inline editor commits on blur |
+| Date assignment | ✅ SQLite | `Items.DueDate` | Drives Today/Tomorrow/Next Week badges |
+| Comment thread opened | ✅ SQLite | `Comments` table | Side panel anchored to source item |
+| Move | ✅ SQLite | `Items.ParentId` + `Items.SortOrder` | Subtree moves intact |
+| Mirror | ✅ SQLite | `Mirrors` table (`SourceId` + `ParentId`) | Item ID of source unchanged (per `01-information-model.md` §1.2) |
+| Duplicate | ✅ SQLite | `Items` insert (deep copy) | New IDs for every cloned row |
+| Tag assignment | ✅ SQLite | `ItemTags` junction | Auto-creates `Tags` row if new |
+| File upload | ✅ Object storage + SQLite `Attachments` | `POST /files` | 10 MB hard cap |
 | Export download | ❌ | Browser `Blob` download | OPML / Plain / JSON / Markdown |
 | Internal-link clipboard write | ❌ | `navigator.clipboard.writeText` | Toast confirms |
 | Template save | ✅ SQLite | `templates` table | Snapshot + name + description |
-| Sort children | ✅ SQLite | `items.sort_order` for children | One transaction |
-| Archive | ✅ SQLite | `items.archived_at` (or separate `archive` table) | Reversible via Unarchive |
-| Soft delete | ✅ SQLite | `items.deleted_at` | 30-day retention per `11-trash-view.md` |
+| Sort children | ✅ SQLite | `Items.SortOrder` for children | One transaction |
+| Archive | ✅ SQLite | `Items.ArchivedAt` (or separate `archive` table) | Reversible via Unarchive |
+| Soft delete | ✅ SQLite | `Items.DeletedAt` | 30-day retention per `11-trash-view.md` |
 | `menu:opened` / `menu:action` events | ❌ | Event bus | Drives telemetry |
 
 ## Edge Cases
@@ -158,17 +158,17 @@ Displayed in very small, muted text.
 |----|-------|------|------|--------|
 | AT-CTXMENU-01 | Item row with `hasChildren = true` | User clicks ⋮ | Menu opens; Board, Dashboard, Sort A-Z, Expand-all are enabled | `context-menu` |
 | AT-CTXMENU-02 | Item row with `hasChildren = false` | User opens menu | Board, Dashboard, Sort A-Z, Expand-all are disabled with tooltips | `context-menu-disabled` |
-| AT-CTXMENU-03 | User opens Turn-Into submenu and clicks "Heading 1" | Conversion commits | `items.item_type = 'H1'`; row re-renders at H1 size | `turn-into-h1` |
-| AT-CTXMENU-04 | Item is a to-do; user clicks Complete | Action commits | `completed_at` set; row strikethrough; toast "Item completed" | `action-complete` |
+| AT-CTXMENU-03 | User opens Turn-Into submenu and clicks "Heading 1" | Conversion commits | `Items.ItemType = 'H1'`; row re-renders at H1 size | `turn-into-h1` |
+| AT-CTXMENU-04 | Item is a to-do; user clicks Complete | Action commits | `CompletedAt` set; row strikethrough; toast "Item completed" | `action-complete` |
 | AT-CTXMENU-05 | User clicks Add note | Editor opens | Note area slides in below content; focus is on note editor | `note-editor` |
-| AT-CTXMENU-06 | User clicks Add date and selects Mar 18 | Picker confirms | Date badge "📅 Mar 18" appears next to content; `due_date` persisted | `date-badge` |
+| AT-CTXMENU-06 | User clicks Add date and selects Mar 18 | Picker confirms | Date badge "📅 Mar 18" appears next to content; `DueDate` persisted | `date-badge` |
 | AT-CTXMENU-07 | User clicks Move-To → selects descendant of itself | Confirm fires | Toast "Cannot move item into its own children"; tree state unchanged | `move-error-toast` |
 | AT-CTXMENU-08 | User clicks Mirror-To → selects valid target | Confirm fires | New mirror row inserted under target; toast "Mirror created in {name}" | `action-mirror` |
 | AT-CTXMENU-09 | Item is the user's root | User opens menu | Delete and Move-To items are disabled with tooltips | `context-menu-root` |
 | AT-CTXMENU-10 | Free-tier user at 250-item cap clicks Duplicate | Click fires | Action is disabled; tooltip links to upgrade page | `action-duplicate-disabled` |
 | AT-CTXMENU-11 | User clicks Upload file and chooses an 11 MB file | Picker validates | Toast "File too large (max 10 MB)"; no upload request fires | `upload-error-toast` |
 | AT-CTXMENU-12 | User clicks Copy internal link | Action commits | `navigator.clipboard.writeText` fires with deep-link URL; toast "Link copied to clipboard ✓" | `action-copy-link` |
-| AT-CTXMENU-13 | User clicks Sort A-Z on children of length 5 | Action commits | Children re-render in alphabetical order; `sort_order` updated | `action-sort` |
+| AT-CTXMENU-13 | User clicks Sort A-Z on children of length 5 | Action commits | Children re-render in alphabetical order; `SortOrder` updated | `action-sort` |
 | AT-CTXMENU-14 | Item has 3 mirrors; user clicks Delete | Confirm dialog opens | Dialog text includes "This item has 3 mirrors…"; cancel keeps state | `delete-mirror-warning` |
 | AT-CTXMENU-15 | Menu is open; user presses Escape | Key event fires | Menu closes; focus returns to ⋮ trigger | `context-menu-trigger` |
 | AT-CTXMENU-16 | Item is a mirror | User opens menu | Metadata row "Mirrored from: {source title}" renders; clicking it zooms to source | `metadata-mirrored-from` |

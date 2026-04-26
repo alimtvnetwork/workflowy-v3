@@ -1,7 +1,7 @@
 # Mirror Specification
 
-> **Version:** 2.3.0
-> **Updated:** 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
+> **Version:** 2.4.0
+> **Updated:** 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -131,12 +131,12 @@ For cleaner UX, use only **"Mirror To…"** in the context menu (one unified act
 
 | Output | Persisted? | Channel | Notes |
 |--------|-----------|---------|-------|
-| Mirror instance created | ✅ SQLite | `mirrors` table — `(source_id, parent_id, sort_key)` | No duplicated content |
+| Mirror instance created | ✅ SQLite | `Mirrors` table — `(SourceId, ParentId, SortKey)` | No duplicated content |
 | Mirror creation toast | ❌ | Toast bus | Subtitle: "Mirrors stay synced. Duplicates do not." |
 | Diamond badge render | ❌ | React state | Visible on every mirror instance + source |
 | `mirror:created` event | ❌ | Event bus | Drives real-time peer updates |
 | Source edit → sync to all mirrors | ✅ SQLite | Source item UPDATE | All mirror rows re-render from canonical row |
-| Broken-mirror warning | ❌ | React state | Shown when source `deleted_at` is set |
+| Broken-mirror warning | ❌ | React state | Shown when source `DeletedAt` is set |
 | Convert-to-independent action | ✅ SQLite | New item INSERT + mirror DELETE | Copies content snapshot at conversion time |
 
 ## Edge Cases

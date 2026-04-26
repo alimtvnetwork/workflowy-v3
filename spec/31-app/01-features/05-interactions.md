@@ -1,7 +1,7 @@
 # Interaction Behaviors
 
-> **Version:** 2.1.0
-> **Updated:** 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-19
+> **Version:** 2.2.0
+> **Updated:** 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-19
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -90,11 +90,11 @@ As a power user, I want every common action — split a line, indent, move, comp
 
 | Output | Persisted? | Channel | Notes |
 |--------|-----------|---------|-------|
-| Item split / new sibling row | ✅ SQLite | `items` insert + `parent_id` + `sort_order` | One transaction per Enter |
+| Item split / new sibling row | ✅ SQLite | `items` insert + `ParentId` + `SortOrder` | One transaction per Enter |
 | Item delete (Backspace on empty) | ✅ SQLite | `items` delete + child re-parent | Children inherit grandparent |
-| Indent / outdent | ✅ SQLite | `items.parent_id` + `items.sort_order` | Subtree moves intact |
-| Sibling reorder (⌘↑/⌘↓) | ✅ SQLite | `items.sort_order` | Fractional sort |
-| Toggle complete (⌘↵) | ✅ SQLite | `items.completed_at` | Children unaffected |
+| Indent / outdent | ✅ SQLite | `Items.ParentId` + `Items.SortOrder` | Subtree moves intact |
+| Sibling reorder (⌘↑/⌘↓) | ✅ SQLite | `Items.SortOrder` | Fractional sort |
+| Toggle complete (⌘↵) | ✅ SQLite | `Items.CompletedAt` | Children unaffected |
 | Zoom navigation | ✅ Browser history | `history.pushState` | Drives URL + breadcrumb |
 | Search-result selection | ❌ | Router navigate | Pushes new zoom state |
 | Autosave commit | ✅ Server | API `PATCH /items/{id}` | Debounced 1.5 s |
@@ -110,7 +110,7 @@ As a power user, I want every common action — split a line, indent, move, comp
 5. ⌘↑ on the first sibling, or ⌘↓ on the last — no-op.
 6. ↑/↓ arrow lands on a divider-type item — skip to the next editable item (per `04-page-content-area.md` AT-PAGE-15).
 7. Drag attempts to drop an item onto its own descendant — block with toast "Cannot move item into its own children" (per edge-case row 1 in `03-edge-cases/01-edge-cases.md`).
-8. ⌘↵ on a parent with completed children — only the parent's `completed_at` toggles; children unaffected.
+8. ⌘↵ on a parent with completed children — only the parent's `CompletedAt` toggles; children unaffected.
 9. Paste multi-line text into an empty item — first line replaces the empty content; remaining lines become new siblings below.
 10. Pasted formatted text contains unknown tags (e.g. `<table>`) — strip to plain text; preserve only Bold / Italic / Underline / Strikethrough / Code.
 11. Search query has zero results — show "No items found" centered, do not show the Recent list.
@@ -128,9 +128,9 @@ As a power user, I want every common action — split a line, indent, move, comp
 | AT-INTERACT-03 | Item is the first sibling at its level | User presses Tab | No DOM mutation; no API call fires | `item-row` |
 | AT-INTERACT-04 | Item is a non-first sibling at depth 2 | User presses Tab | Item becomes last child of the sibling above; depth becomes 3; subtree moves with it | `item-row` |
 | AT-INTERACT-05 | Item is at depth 3 | User presses ⇧Tab | Item moves to depth 2 directly after its parent | `item-row` |
-| AT-INTERACT-06 | Item is the 2nd of 3 siblings | User presses ⌘↑ | Item becomes the 1st sibling; `sort_order` updates | `item-row` |
+| AT-INTERACT-06 | Item is the 2nd of 3 siblings | User presses ⌘↑ | Item becomes the 1st sibling; `SortOrder` updates | `item-row` |
 | AT-INTERACT-07 | Item is the last sibling | User presses ⌘↓ | No DOM mutation; no API call | `item-row` |
-| AT-INTERACT-08 | Active item is a non-completed to-do | User presses ⌘↵ | Row renders strikethrough + muted; `completed_at` is set; child rows unchanged | `todo-checkbox` |
+| AT-INTERACT-08 | Active item is a non-completed to-do | User presses ⌘↵ | Row renders strikethrough + muted; `CompletedAt` is set; child rows unchanged | `todo-checkbox` |
 | AT-INTERACT-09 | User drags item A onto its own descendant B | Drop fires | Toast renders "Cannot move item into its own children"; tree state unchanged | `dnd-error-toast` |
 | AT-INTERACT-10 | User clicks the search button (or presses ⌘F) | Overlay opens | Full-screen overlay with auto-focused input renders | `search-overlay` |
 | AT-INTERACT-11 | Search overlay is open with non-empty query | User types | After 300 ms of inactivity, results render with matching text highlighted | `search-results` |

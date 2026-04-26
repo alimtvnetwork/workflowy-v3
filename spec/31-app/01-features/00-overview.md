@@ -1,7 +1,7 @@
 # Features
 
-> **Version:** 2.2.0
-> **Updated:** 2026-04-26 (UTC+8) — APP-FIX-10: Boolean Conventions callout added (closes audit F-13). v2.1.0 added Casing Layers callout.
+> **Version:** 2.3.0
+> **Updated:** 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 (UTC+8) — APP-FIX-10: Boolean Conventions callout added (closes audit F-13). v2.1.0 added Casing Layers callout.
 > **Status:** ✅ Implementation-grade rollup (F-01 closed)
 
 ---
@@ -58,12 +58,12 @@ Read this before picking a feature to implement. Arrows = "depends on, must exis
 | `06-item-context-menu.md` | Per-item ⋮ menu | ✅ | Move/delete/share entry |
 | `11-trash-view.md` | Soft delete + 30d retention | ✅ | Data safety |
 | `12-multi-select.md` | Bulk ops | ✅ | Productivity |
-| `15-roles-and-permissions.md` | Auth + RLS via `has_role()` | ✅ | Security |
+| `15-roles-and-permissions.md` | Auth + RLS via `Auth::hasRole()` | ✅ | Security |
 | `07-board-view.md` | Kanban-style alt view | ⚠️ P2 | Adds rendering mode |
 | `08-share-dialog.md` | Public + invited shares | ⚠️ P2 | Needs roles first |
-| `09-mirrors.md` | Cross-tree linked items | ⚠️ P2 | Complex sync semantics |
+| `09-Mirrors.md` | Cross-tree linked items | ⚠️ P2 | Complex sync semantics |
 | `10-today-view.md` | Date-filtered slice | ⚠️ P2 | Needs scheduled-date field |
-| `13-templates.md` | Serialized tree snapshots | ⚠️ P2 | Needs full tree first |
+| `13-Templates.md` | Serialized tree snapshots | ⚠️ P2 | Needs full tree first |
 | `14-concurrency-and-sync.md` | Conflict resolution | ⚠️ P2 | WP-plugin-specific |
 
 ---
@@ -93,7 +93,7 @@ Read this before picking a feature to implement. Arrows = "depends on, must exis
 | **URL slugs / HTTP headers / route paths** | **kebab-case / snake_case** (per protocol) | `/api/items/move`, `X-WP-Nonce`, `wp_options` | Protocol convention — exempt from PascalCase rule |
 | **Pseudocode** | **Match the layer being described** | If the snippet is DB-level, use PascalCase; if TS-level, camelCase | This document |
 
-**Forbidden:** snake_case for *new* DB identifiers (e.g. `items.parent_id` is **stale** — see [`05-audit-02a-column-rename.md`](../../18-spec-issues/05-audit-02a-column-rename.md)). The only snake_case identifiers permitted in DB context are WordPress core tables (`wp_posts`, `wp_options`) which are explicitly exempt.
+**Forbidden:** snake_case for *new* DB identifiers (e.g. `items.parent_id` is **stale**; canonical form is `Items.ParentId` — see [`05-audit-02a-column-rename.md`](../../18-spec-issues/05-audit-02a-column-rename.md)). The only snake_case identifiers permitted in DB context are WordPress core tables (`wp_posts`, `wp_options`) which are explicitly exempt.
 
 **Rule of thumb for spec authors:** before writing an identifier, ask *"which layer is this?"* and pick the casing from the table. Do not mix layers in the same code block — split into two blocks if needed.
 
@@ -142,11 +142,11 @@ Every feature in `spec/31-app/01-features/` MUST: (1) write boolean checks as **
 | 6 | [`06-item-context-menu.md`](./06-item-context-menu.md) | Item Context Menu (⋮) | 188 |
 | 7 | [`07-board-view.md`](./07-board-view.md) | Board View Specification | 178 |
 | 8 | [`08-share-dialog.md`](./08-share-dialog.md) | Share Dialog Specification | 133 |
-| 9 | [`09-mirrors.md`](./09-mirrors.md) | Mirror Specification | 188 |
+| 9 | [`09-Mirrors.md`](./09-mirrors.md) | Mirror Specification | 188 |
 | 10 | [`10-today-view.md`](./10-today-view.md) | Today View Specification | 109 |
 | 11 | [`11-trash-view.md`](./11-trash-view.md) | Trash View Specification | 115 |
 | 12 | [`12-multi-select.md`](./12-multi-select.md) | Multi-Select Behavior | 148 |
-| 13 | [`13-templates.md`](./13-templates.md) | Template Application Flow | 150 |
+| 13 | [`13-Templates.md`](./13-templates.md) | Template Application Flow | 150 |
 | 14 | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | Concurrency & Sync | 154 |
 | 15 | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | Roles & Permissions | 249 |
 

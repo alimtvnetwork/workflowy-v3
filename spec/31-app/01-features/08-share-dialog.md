@@ -1,7 +1,7 @@
 # Share Dialog Specification
 
-> **Version:** 2.2.0
-> **Updated:** 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
+> **Version:** 2.3.0
+> **Updated:** 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -74,14 +74,14 @@ As an owner, I want to share an outline branch with specific people at the right
 
 | Output | Persisted? | Channel | Notes |
 |--------|-----------|---------|-------|
-| Invite created | ✅ SQLite | `shares` table | One row per `(item_id, user_id, permission)` |
+| Invite created | ✅ SQLite | `shares` table | One row per `(ItemId, UserId, permission)` |
 | Invite email sent | ✅ Email queue | Outgoing email | Subject: "{owner} shared {item title} with you" |
-| Permission change | ✅ SQLite | `shares.permission` UPDATE | Optimistic UI |
+| Permission change | ✅ SQLite | `Shares.permission` UPDATE | Optimistic UI |
 | Grantee removed | ✅ SQLite | `shares` DELETE | Cascade does NOT remove grantee's content |
-| Public link enabled | ✅ SQLite | `public_links` row inserted | URL: `/p/{slug}` (random 12-char slug) |
-| Public link disabled | ✅ SQLite | `public_links.revoked_at` set | URL returns 404 thereafter |
+| Public link enabled | ✅ SQLite | `PublicLinks` row inserted | URL: `/p/{slug}` (random 12-char slug) |
+| Public link disabled | ✅ SQLite | `PublicLinks.RevokedAt` set | URL returns 404 thereafter |
 | Public link copied | ❌ | `navigator.clipboard.writeText` | Toast confirms |
-| Activity log entry | ✅ SQLite | `activity_log` table | Per share/unshare event |
+| Activity log entry | ✅ SQLite | `ActivityLog` table | Per share/unshare event |
 | `share:granted` / `share:revoked` events | ❌ | Event bus | Drives real-time peer updates |
 
 ## Edge Cases
@@ -112,9 +112,9 @@ As an owner, I want to share an outline branch with specific people at the right
 | AT-SHARE-04 | Valid email entered, permission = "Edit" | User clicks Invite | API `POST /items/{id}/shares` fires; new row appears in Shared-users list with "Edit" badge | `share-user-row` |
 | AT-SHARE-05 | Existing grantee row | Owner changes dropdown to "Admin" | API `PATCH /shares/{id}` fires; badge updates to "Admin" | `share-permission-dropdown` |
 | AT-SHARE-06 | Existing grantee row | Owner clicks Remove | Confirmation tooltip appears; on confirm, row disappears; `shares` row deleted | `share-remove-button` |
-| AT-SHARE-07 | Public link toggle is OFF | User flips it ON | Toggle animates to ON; new public URL renders next to it; `public_links` row exists | `public-link-toggle` |
+| AT-SHARE-07 | Public link toggle is OFF | User flips it ON | Toggle animates to ON; new public URL renders next to it; `PublicLinks` row exists | `public-link-toggle` |
 | AT-SHARE-08 | Public link is ON | User clicks Copy link | `navigator.clipboard.writeText` fires with the URL; toast "Link copied to clipboard ✓" | `copy-link-button` |
-| AT-SHARE-09 | Public link toggle is ON | User flips it OFF | `public_links.revoked_at` set; URL field clears; copy button disabled | `public-link-toggle` |
+| AT-SHARE-09 | Public link toggle is ON | User flips it OFF | `PublicLinks.RevokedAt` set; URL field clears; copy button disabled | `public-link-toggle` |
 | AT-SHARE-10 | Email matches an already-shared user | User types it | Invite button is disabled; tooltip "Already shared with this user" | `share-invite-button` |
 | AT-SHARE-11 | Email matches the current owner | User types it | Invite button disabled; tooltip "You already own this item" | `share-invite-button` |
 | AT-SHARE-12 | Item has 50 shared users | Dialog opens | List virtualizes; search input appears above; typing filters the visible rows | `share-search` |

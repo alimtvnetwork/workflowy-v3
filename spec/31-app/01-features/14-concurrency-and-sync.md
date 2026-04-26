@@ -1,7 +1,7 @@
 # Concurrency & Sync
 
-> **Version:** 1.4.0
-> **Updated:** 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-09: §14.4 `Mirrors.BrokenAt` LWW rule added (closes audit F-14). v1.2.0 added Storage section. v1.1.0 pinned transport to WP-native SSE + poll fallback.
+> **Version:** 1.5.0
+> **Updated:** 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-09: §14.4 `Mirrors.BrokenAt` LWW rule added (closes audit F-14). v1.2.0 added Storage section. v1.1.0 pinned transport to WP-native SSE + poll fallback.
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -62,7 +62,7 @@ Clients receiving a conflict response MUST:
 
 ## 14.4 `Mirrors.BrokenAt` — LWW Rule for Mirror Lifecycle
 
-> **Why this section:** [`01-information-model.md`](./01-information-model.md) Edge 7 says "mirrors of any descendant become broken" when an ancestor is trashed, and [`09-mirrors.md`](./09-mirrors.md) treats a mirror as broken when its `SourceId` is unreachable. Without an explicit LWW rule, a concurrent **restore-from-trash** + **mirror-create** race can flip `BrokenAt` and clear it within milliseconds, producing zombie mirrors. This section pins the deterministic resolution.
+> **Why this section:** [`01-information-model.md`](./01-information-model.md) Edge 7 says "mirrors of any descendant become broken" when an ancestor is trashed, and [`09-Mirrors.md`](./09-mirrors.md) treats a mirror as broken when its `SourceId` is unreachable. Without an explicit LWW rule, a concurrent **restore-from-trash** + **mirror-create** race can flip `BrokenAt` and clear it within milliseconds, producing zombie mirrors. This section pins the deterministic resolution.
 
 ### Field
 
@@ -103,7 +103,7 @@ On incoming write W setting Mirrors.BrokenAt = X (X may be NULL or a timestamp):
 - ❌ Letting a stale restore re-heal a mirror whose source has since been hard-deleted (rule 5 rejects it).
 - ❌ Treating `'system'` writes as authoritative over human writes at exact ties — they are not (rule 4b).
 
-> **Cross-reference:** [`09-mirrors.md`](./09-mirrors.md) §Storage shows the `Mirrors` table layout. AT coverage lives in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) `AT-CONCURRENCY-14..16`.
+> **Cross-reference:** [`09-Mirrors.md`](./09-mirrors.md) §Storage shows the `Mirrors` table layout. AT coverage lives in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) `AT-CONCURRENCY-14..16`.
 
 ---
 
@@ -139,7 +139,7 @@ On incoming write W setting Mirrors.BrokenAt = X (X may be NULL or a timestamp):
 | Local optimistic value | ❌ | React state | Replaced on conflict response |
 | "Restored remote change" banner | ❌ | Toast bus | 5 s with Undo affordance |
 | Undo write | ✅ SQLite | New mutation through same algorithm | Subject to LWW again |
-| Conflict log entry | ✅ SQLite | `conflict_log` (audit) | Records {item, field, loser_user, winner_user, ts} for support |
+| Conflict log entry | ✅ SQLite | `ConflictLog` (audit) | Records `{Item, Field, LoserUserId, WinnerUserId, ServerTs}` for support |
 | Presence dot | ❌ | Realtime presence channel | Optional; non-blocking |
 
 ## Edge Cases

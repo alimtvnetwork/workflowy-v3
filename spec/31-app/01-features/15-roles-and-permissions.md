@@ -1,8 +1,8 @@
 # Roles & Permissions
 
-> **Version:** 1.4.0
+> **Version:** 1.5.0
 > **Created:** 2026-04-25 (UTC+8)
-> **Updated:** 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-04: PHP `Auth::hasRole()` contract specified (closes audit F-06 / Round-3 AUDIT-04). v1.2.0 added Storage section. v1.1.0 added Enum Sources callout.
+> **Updated:** 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-04: PHP `Auth::hasRole()` contract specified (closes audit F-06 / Round-3 AUDIT-04). v1.2.0 added Storage section. v1.1.0 added Enum Sources callout.
 > **Status:** Active — runtime-agnostic contract
 > **Parent:** [`00-overview.md`](./00-overview.md)
 > **Closes audit finding:** F-04
@@ -136,17 +136,17 @@ Defines the **runtime-agnostic** roles, permission grants, and authorization che
 | Output | Persisted? | Channel | Notes |
 |--------|-----------|---------|-------|
 | Authorization decision | ❌ | Function return | `true` allows action; `false` denies |
-| Audit log entry | ✅ DB | `activity_log` table | Action type, actor, target, decision, timestamp |
+| Audit log entry | ✅ DB | `ActivityLog` table | Action type, actor, target, decision, timestamp |
 | Permission-denied UI toast | ❌ | React state | Only on user-initiated actions |
-| Grant row mutation | ✅ DB | `user_roles` table | Insert/update/delete on share grants |
-| Cascaded grant invalidation | ✅ DB | `user_roles` cascade | When grantee removed from workspace |
+| Grant row mutation | ✅ DB | `UserRoles` table | Insert/update/delete on share grants |
+| Cascaded grant invalidation | ✅ DB | `UserRoles` cascade | When grantee removed from workspace |
 | `share:revoked` event | ✅ Event bus | Realtime channel | `PublicView` sessions invalidated within 60 s |
 
 ---
 
 ## Edge Cases
 
-1. Grantee removed from workspace while holding item grants → all grants cascade-deleted; authored content preserved with `created_by = "Removed user"`.
+1. Grantee removed from workspace while holding item grants → all grants cascade-deleted; authored content preserved with `Items.CreatedBy = "Removed user"`.
 2. Item moved out of a shared subtree → grant remains on original ancestor; moved item resolves access from new ancestor chain.
 3. User invited via email but not yet signed up → invite stored as pending; grant materializes on first matching login.
 4. Mirror of a shared item rendered in an unshared parent → mirror displays "🔒 Shared from {ancestor}" badge; access still resolves from source's grants.
