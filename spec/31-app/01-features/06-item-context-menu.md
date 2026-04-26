@@ -1,7 +1,7 @@
 # Item Context Menu (⋮)
 
-> **Version:** 2.5.0
-> **Updated:** 2026-04-26 — Round-3 AUDIT-03: clarified Board / Dashboard rows as `ItemType` values with child-rendering effect (NOT separate VIEW modes); link to taxonomy doc. Prior: 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
+> **Version:** 2.5.1
+> **Updated:** 2026-04-26 — Re-audit residual fix: enum-source link added to §5.1 Turn-Into table per Casing Layers rule (closes residual F-02). Prior: 2026-04-26 — Round-3 AUDIT-03: clarified Board / Dashboard rows as `ItemType` values with child-rendering effect (NOT separate VIEW modes); link to taxonomy doc. Prior: 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -22,6 +22,8 @@ Opens as a dropdown anchored to the ⋮ trigger. Scrollable if content exceeds t
 ### 5.1 Turn Into Submenu
 
 Appears as a nested submenu when the user hovers or clicks "Turn into…".
+
+> **Enum source:** Each row below sets `Items.ItemType` to one value of the canonical `ItemType` enum (12 values, lowercase). Authoritative SSOT: [`spec/20-enums-index.md`](../../20-enums-index.md) §3.5. The exclusion of `mirror` and inclusion of `dashboard` is normative per [`spec/18-spec-issues/07-audit-03-dashboard-taxonomy.md`](../../18-spec-issues/07-audit-03-dashboard-taxonomy.md).
 
 | Type | Icon | Shortcut | Behavior |
 |------|------|----------|----------|

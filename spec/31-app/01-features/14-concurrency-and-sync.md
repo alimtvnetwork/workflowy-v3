@@ -1,7 +1,7 @@
 # Concurrency & Sync
 
-> **Version:** 1.6.0
-> **Updated:** 2026-04-26 — Round-3 AUDIT-06: §14.5 SSE Transport Contract added (endpoint URL, event vocabulary, Last-Event-Id resume, poll-fallback shape, server emission rules, forbidden transports). Closes AUDIT-06. Prior: 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-09: §14.4 `Mirrors.BrokenAt` LWW rule added (closes audit F-14). v1.2.0 added Storage section. v1.1.0 pinned transport to WP-native SSE + poll fallback.
+> **Version:** 1.6.1
+> **Updated:** 2026-04-26 — Re-audit residual fix: §14.2 + §14.4 pseudocode PascalCase'd per Casing Layers rule (closes residual F-08). Prior: 2026-04-26 — Round-3 AUDIT-06: §14.5 SSE Transport Contract added (endpoint URL, event vocabulary, Last-Event-Id resume, poll-fallback shape, server emission rules, forbidden transports). Closes AUDIT-06. Prior: 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-09: §14.4 `Mirrors.BrokenAt` LWW rule added (closes audit F-14). v1.2.0 added Storage section. v1.1.0 pinned transport to WP-native SSE + poll fallback.
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -38,10 +38,10 @@ As a collaborator editing a shared outline at the same time as someone else, I w
 ```
 On incoming mutation M for Item I, field F:
   1. Server reads current Item row.
-  2. Compare M.client_attempted_at vs server.now() — adopt server.now() as M.server_ts.
-  3. If I.<F>_updated_at < M.server_ts → apply M; set I.<F>_updated_at = M.server_ts.
-  4. Else if I.<F>_updated_at == M.server_ts → tie-break by user_id (higher wins).
-  5. Else → reject M with conflict response { winning_value, winning_user_id, winning_ts }.
+  2. Compare M.ClientAttemptedAt vs server.now() — adopt server.now() as M.ServerTs.
+  3. If I.<F>UpdatedAt < M.ServerTs → apply M; set I.<F>UpdatedAt = M.ServerTs.
+  4. Else if I.<F>UpdatedAt == M.ServerTs → tie-break by UserId (higher wins).
+  5. Else → reject M with conflict response { WinningValue, WinningUserId, WinningTs }.
   6. Broadcast accepted state on the realtime channel for I.
 ```
 
@@ -77,12 +77,12 @@ Clients receiving a conflict response MUST:
 ```
 On incoming write W setting Mirrors.BrokenAt = X (X may be NULL or a timestamp):
   1. Server reads current Mirrors row.
-  2. Stamp W.server_ts = server.now().
-  3. If row.BrokenAtUpdatedAt < W.server_ts → apply (set BrokenAt = X, BrokenAtUpdatedAt = W.server_ts, BrokenAtUpdatedBy = W.user_id).
-  4. Else if row.BrokenAtUpdatedAt == W.server_ts:
+  2. Stamp W.ServerTs = server.now().
+  3. If row.BrokenAtUpdatedAt < W.ServerTs → apply (set BrokenAt = X, BrokenAtUpdatedAt = W.ServerTs, BrokenAtUpdatedBy = W.UserId).
+  4. Else if row.BrokenAtUpdatedAt == W.ServerTs:
        a. If both writers are 'system' (cascade vs reaper) → keep the row whose value is non-NULL (broken wins over healthy at exact tie).
-       b. Else → tie-break by lexicographically higher user_id (same rule as §14.2 step 4); 'system' loses to any human user.
-  5. Else → reject W with conflict response { winning_broken_at, winning_user_id, winning_ts }.
+       b. Else → tie-break by lexicographically higher UserId (same rule as §14.2 step 4); 'system' loses to any human user.
+  5. Else → reject W with conflict response { WinningBrokenAt, WinningUserId, WinningTs }.
   6. Broadcast on the SSE channel for the mirror's workspace.
 ```
 

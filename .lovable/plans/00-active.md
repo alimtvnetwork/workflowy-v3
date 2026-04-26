@@ -1,6 +1,6 @@
 # Active Plans
 
-> **Updated:** 2026-04-26 (UTC+8) · **Status:** 🎉🎉 **ALL 13 APP-FIX PHASES + ALL 6 ROUND-3 AUDITS CLOSED.** AUDIT-06 final blocker closed via §14.5 SSE Transport Contract (endpoint, 9-event vocabulary, Last-Event-Id resume, poll fallback, reconnect algorithm, forbidden-transport list). Spec is now AI-handoff-ready for re-audit. Suggested next: `re-audit` to confirm 100/100 → `exit spec-only` → P1.1 Bootstrap.
+> **Updated:** 2026-04-26 (UTC+8) · **Status:** 🎉🎉🎉 **RE-AUDIT PASS: 96/100** (baseline 63 → +33). All 13 APP-FIX phases + all 6 Round-3 audits closed; 2 residuals (R-1 pseudocode casing, R-2 enum-source link) fixed in re-audit pass. Spec is **AI-handoff-ready**. Suggested next: 4 polish items (AT-APP backfill for Today/Templates/Concurrency + AT-WF→AT-APP folding + §14.5 SSE AT rows) → 100/100, OR `exit spec-only` → P1.1 Bootstrap immediately.
 
 ---
 

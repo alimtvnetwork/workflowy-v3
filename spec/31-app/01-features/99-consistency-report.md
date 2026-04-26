@@ -1,7 +1,7 @@
 # Consistency Report — 01-features
 
-> **Version:** 2.0.0
-> **Updated:** 2026-04-26 (UTC+8) — APP-FIX-11: structural vs content score split, content-audit disclaimer added, inventory refreshed (closes audit F-09).
+> **Version:** 2.1.0
+> **Updated:** 2026-04-26 (UTC+8) — Re-audit pass: all 14 content-alignment dimensions closed; all 6 Round-3 audits closed; pseudocode in `14-concurrency-and-sync.md` §14.2/§14.4 PascalCase'd (residual F-08); enum-source link added to `06-item-context-menu.md` §5.1 (residual F-02). Prior: 2026-04-26 — APP-FIX-11: structural vs content score split, content-audit disclaimer added (closes F-09).
 > **Prior versions:** 1.0.1 (2026-04-21) — reported "100/100 (A+)" while 15 normative violations existed; the score covered file presence + kebab-case only and was a tooling false-positive.
 
 ---
@@ -35,22 +35,24 @@
 
 | Criterion | Status | Source of truth |
 |-----------|--------|-----------------|
-| Snake_case DB identifiers absent | ⚠️ Partial — see AUDIT-02a | [`spec/18-spec-issues/05-audit-02a-column-rename.md`](../../18-spec-issues/05-audit-02a-column-rename.md) |
+| Snake_case DB identifiers absent | ✅ AUDIT-02a CLOSED 2026-04-26 (12 files renamed; pseudocode also cleaned in re-audit pass) | [`spec/18-spec-issues/05-audit-02a-column-rename.md`](../../18-spec-issues/05-audit-02a-column-rename.md) |
 | Storage section present in persistence-touching files | ✅ APP-FIX-02 done (9 files) | [`06-app-folder-audit-2026-04-26.md`](../../18-spec-issues/06-app-folder-audit-2026-04-26.md) §F-03 |
 | Realtime Transport callout in real-time files | ✅ APP-FIX-03 done (6 files) | §F-05 |
-| `Auth::hasRole()` PHP contract pinned | ✅ APP-FIX-04 done (`15-roles-and-permissions.md` v1.4.0) | §F-06 |
+| `Auth::hasRole()` PHP contract pinned | ✅ APP-FIX-04 done (`15-roles-and-permissions.md` v1.5.0) | §F-06 |
 | Settings keys enum-backed (Seedable Config) | ✅ APP-FIX-05 done (4 files) | §F-04 |
 | `Mirrors.BrokenAt` LWW rule pinned | ✅ APP-FIX-09 done (`14-concurrency-and-sync.md` §14.4) | §F-14 |
 | Aspirational-paths disclaimer in Component Contract tables | ✅ APP-FIX-08 done (10 files) | §F-07 |
-| Boolean Conventions callout in overview | ✅ APP-FIX-10 done (`00-overview.md` v2.2.0) | §F-13 |
+| Boolean Conventions callout in overview | ✅ APP-FIX-10 done (`00-overview.md` v2.3.0) | §F-13 |
 | Casing Layers callout in overview | ✅ APP-FIX-07 done | §F-08 |
-| Enum sources linked from feature files | ✅ APP-FIX-06 done | §F-02 |
-| Workflow folder coverage (cross-feature flows) | ⚠️ Pending APP-FIX-12 | §F-10 |
-| Edge cases split (user vs system) | ⚠️ Pending APP-FIX-13 | §F-11 |
-| AT-APP / AT-APPF naming reconciliation | ⚠️ Pending APP-FIX-14 | §F-12 |
+| Enum sources linked from feature files | ✅ APP-FIX-06 done + re-audit residual fix in `06-item-context-menu.md` §5.1 | §F-02 |
+| Workflow folder coverage (cross-feature flows) | ✅ APP-FIX-12 done (3 new flows: template-application, share-invite, trash-restore) | §F-10 |
+| Edge cases split (user vs system vs cross-feature) | ✅ APP-FIX-13 done (`03-edge-cases/01-edge-cases.md` v2.0.0) | §F-11 |
+| AT-APP / AT-APPF naming reconciliation | ✅ APP-FIX-14 done (canonical AT-APP-NN; AT-APPF frozen) | §F-12 |
+| Dashboard taxonomy (`ItemType` enum membership) | ✅ AUDIT-03 CLOSED (`mirror` → `dashboard`; count stays 12) | [`07-audit-03-dashboard-taxonomy.md`](../../18-spec-issues/07-audit-03-dashboard-taxonomy.md) |
+| SSE transport contract pinned | ✅ AUDIT-06 CLOSED (`14-concurrency-and-sync.md` §14.5) | [`08-audit-06-sse-transport-contract.md`](../../18-spec-issues/08-audit-06-sse-transport-contract.md) |
 | Personas styling | ℹ️ Stylistic only | §F-15 |
 
-**Content-alignment status:** **10 of 14 audit dimensions closed**. Open: AUDIT-02a (rename), APP-FIX-12, APP-FIX-13, APP-FIX-14.
+**Content-alignment status:** ✅ **All 14 audit dimensions closed (15 with AUDIT-03 / AUDIT-06).** Re-audit 2026-04-26 confirmed zero residuals after pseudocode cleanup + enum-link patch.
 
 ---
 
