@@ -1,7 +1,8 @@
 # Trash Restore Flow
 
-> **Version:** 1.0.0
+> **Version:** 1.1.0
 > **Created:** 2026-04-26 (UTC+8) — APP-FIX-12 (closes audit F-10)
+> **Updated:** 2026-04-26 (UTC+8) — v1.1.0 added canonical `AT-APP-NN` mapping column (polish #2)
 > **Status:** Canonical — cross-feature flow
 > **Parent:** [`00-overview.md`](./00-overview.md)
 > **SSOT for the underlying feature:** [`spec/31-app/01-features/11-trash-view.md`](../01-features/11-trash-view.md)
