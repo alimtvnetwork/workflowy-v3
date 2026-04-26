@@ -59,6 +59,7 @@ Conventions specification module. See files below.
 | 03 | [03-github-actions-workflow.md](03-github-actions-workflow.md) | GitHub Actions workflow contract (triggers, steps, drift detection, reserved workflows) |
 | 04 | [04-g19-workflow-contract-gate.md](04-g19-workflow-contract-gate.md) | G-19 hygiene-gate algorithm: detects drift between workflow files and the contract |
 | 05 | [05-precommit-hook-contract.md](05-precommit-hook-contract.md) | Pre-commit hook + installer contract (POSIX sh, single entry point, regenerated-artefact warning) |
+| 06 | [06-g20-precommit-contract-gate.md](06-g20-precommit-contract-gate.md) | G-20 hygiene-gate algorithm: detects drift between hook/installer files and the contract |
 
 ---
 
