@@ -1,7 +1,7 @@
 # Page / Content Area
 
-> **Version:** 2.1.0
-> **Updated:** 2026-04-26 — APP-FIX-06: enum sources linked (closes audit F-02 for this file)
+> **Version:** 2.2.0
+> **Updated:** 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-06: enum sources linked (closes audit F-02 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -174,6 +174,8 @@ Each swatch: small circle. Currently selected color has a ring border. Hover: sl
 | AT-PAGE-15 | A divider-type item exists | User presses ↓ to navigate from the prior row | Focus skips the divider and lands on the next editable item | `divider-row` |
 
 ## Component Contract
+
+> **Note:** None of these components exist yet — paths are the planned implementation order (aspirational, not normative). The disclaimer mirrors `01-information-model.md` L149 and feeds the global component-contract map (M-3). AI implementers MUST NOT treat the paths as binding imports.
 
 | Surface | Component path | `data-testid` | Acceptance tests |
 |---------|---------------|---------------|------------------|

@@ -1,7 +1,7 @@
 # Template Application Flow
 
-> **Version:** 2.2.0
-> **Updated:** 2026-04-26 — APP-FIX-05: Settings Keys (Seedable Config) section added (closes audit F-04 for this file). v2.1.0 added Storage section.
+> **Version:** 2.3.0
+> **Updated:** 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-05: Settings Keys (Seedable Config) section added (closes audit F-04 for this file). v2.1.0 added Storage section.
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -146,6 +146,8 @@ User clicks "Make template" in the item context menu → a dialog opens to name 
 | AT-TEMPLATES-18 | User is in Trash view | User triggers apply | Block; toast "Cannot apply templates inside Trash" | `template-apply-blocked-toast` |
 
 ## Component Contract
+
+> **Note:** None of these components exist yet — paths are the planned implementation order (aspirational, not normative). The disclaimer mirrors `01-information-model.md` L149 and feeds the global component-contract map (M-3). AI implementers MUST NOT treat the paths as binding imports.
 
 | Surface | Component path | `data-testid` | Acceptance tests |
 |---------|---------------|---------------|------------------|

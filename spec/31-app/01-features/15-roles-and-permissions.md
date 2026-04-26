@@ -1,8 +1,8 @@
 # Roles & Permissions
 
-> **Version:** 1.3.0
+> **Version:** 1.4.0
 > **Created:** 2026-04-25 (UTC+8)
-> **Updated:** 2026-04-26 — APP-FIX-04: PHP `Auth::hasRole()` contract specified (closes audit F-06 / Round-3 AUDIT-04). v1.2.0 added Storage section. v1.1.0 added Enum Sources callout.
+> **Updated:** 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-04: PHP `Auth::hasRole()` contract specified (closes audit F-06 / Round-3 AUDIT-04). v1.2.0 added Storage section. v1.1.0 added Enum Sources callout.
 > **Status:** Active — runtime-agnostic contract
 > **Parent:** [`00-overview.md`](./00-overview.md)
 > **Closes audit finding:** F-04
@@ -177,6 +177,8 @@ Defines the **runtime-agnostic** roles, permission grants, and authorization che
 ---
 
 ## Component Contract
+
+> **Note:** None of these components exist yet — paths are the planned implementation order (aspirational, not normative). The disclaimer mirrors `01-information-model.md` L149 and feeds the global component-contract map (M-3). AI implementers MUST NOT treat the paths as binding imports.
 
 | Surface | Component path | `data-testid` | Acceptance tests |
 |---------|----------------|---------------|------------------|

@@ -1,7 +1,7 @@
 # Mirror Specification
 
-> **Version:** 2.2.0
-> **Updated:** 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
+> **Version:** 2.3.0
+> **Updated:** 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -178,6 +178,8 @@ For cleaner UX, use only **"Mirror To…"** in the context menu (one unified act
 | AT-MIRRORS-16 | Network is offline | User completes "Mirror To…" flow | Operation queued; diamond badge + mirror row appear on reconnect | `mirror-pending-state` |
 
 ## Component Contract
+
+> **Note:** None of these components exist yet — paths are the planned implementation order (aspirational, not normative). The disclaimer mirrors `01-information-model.md` L149 and feeds the global component-contract map (M-3). AI implementers MUST NOT treat the paths as binding imports.
 
 | Surface | Component path | `data-testid` | Acceptance tests |
 |---------|---------------|---------------|------------------|
