@@ -1,8 +1,8 @@
 # Roles & Permissions
 
-> **Version:** 1.5.0
+> **Version:** 1.6.0
 > **Created:** 2026-04-25 (UTC+8)
-> **Updated:** 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-04: PHP `Auth::hasRole()` contract specified (closes audit F-06 / Round-3 AUDIT-04). v1.2.0 added Storage section. v1.1.0 added Enum Sources callout.
+> **Updated:** 2026-04-26 — v1.6.0 atomized Acceptance Tests to canonical inline `AT-ROLES-01..10` prefix per dispatch index, with explicit `AT-APP-21..23` rollup column and frozen `AT-APPF-76..85` legacy column (closes polish #4 prefix-drift). Prior: AUDIT-02a snake_case → PascalCase rename. Prior: APP-FIX-08 aspirational-paths disclaimer. Prior: APP-FIX-04 `Auth::hasRole()` contract. v1.2.0 Storage. v1.1.0 Enum Sources.
 > **Status:** Active — runtime-agnostic contract
 > **Parent:** [`00-overview.md`](./00-overview.md)
 > **Closes audit finding:** F-04
@@ -161,18 +161,20 @@ Defines the **runtime-agnostic** roles, permission grants, and authorization che
 
 ## Acceptance Tests
 
-| ID | Given | When | Then | testid |
-|----|-------|------|------|--------|
-| AT-APPF-76 | Item owned by A, shared with B as `View` | B opens the item | B sees content; no edit affordances; Share button hidden | `share-dialog-trigger` |
-| AT-APPF-77 | Item shared with B as `Edit` | B tries to delete the share root | Action rejected with permission-denied toast; descendants remain deletable | `permission-denied-toast` |
-| AT-APPF-78 | Item shared with B as `Admin` | B opens Share dialog and removes user C | C's grant deleted; C loses access immediately | `share-remove-button` |
-| AT-APPF-79 | Item shared with B as `Admin` | B tries to toggle public link | Toggle is disabled (Owner-only) | `share-public-toggle` |
-| AT-APPF-80 | User has `View` on parent + `Edit` on child | User opens child | Resolved role = `Edit` per §Inheritance rule 2 | `permission-badge` |
-| AT-APPF-81 | Public link enabled on item X | Anonymous user visits the URL | Read-only render with no comment/share affordances | `public-view-banner` |
-| AT-APPF-82 | Owner transfers ownership to user B | Transfer completes | B is now `Owner`; original owner removed from grants | `transfer-ownership-button` |
-| AT-APPF-83 | Workspace member tries to invite another member | Invite attempted | Rejected with 403; only `Owner`/`Admin` can invite | `workspace-invite-button` |
-| AT-APPF-84 | User removed from workspace | Their item grants checked | All grants cascade-deleted; authored items orphan-tagged | `removed-user-badge` |
-| AT-APPF-85 | Backend `hasRole()` throws | Capability check called | Returns `false`; action denied; `Warn` log emitted | `permission-denied-toast` |
+> **Inline prefix:** `AT-ROLES-NN` per dispatch index. Canonical rollups: `AT-APP-21..23` (see `spec/31-app/97-acceptance-criteria.md`). Legacy `AT-APPF-76..85` IDs remain as the third column for back-references already present in `spec/18-spec-issues/`.
+
+| ID | Canonical | Given | When | Then | testid | Legacy |
+|----|-----------|-------|------|------|--------|--------|
+| `AT-ROLES-01` | `AT-APP-21` | Item owned by A, shared with B as `View` | B opens the item | B sees content; no edit affordances; Share button hidden | `share-dialog-trigger` | `AT-APPF-76` |
+| `AT-ROLES-02` | `AT-APP-21` | Item shared with B as `Edit` | B tries to delete the share root | Action rejected with permission-denied toast; descendants remain deletable | `permission-denied-toast` | `AT-APPF-77` |
+| `AT-ROLES-03` | `AT-APP-22` | Item shared with B as `Admin` | B opens Share dialog and removes user C | C's grant deleted; C loses access immediately | `share-remove-button` | `AT-APPF-78` |
+| `AT-ROLES-04` | `AT-APP-22` | Item shared with B as `Admin` | B tries to toggle public link | Toggle is disabled (Owner-only) | `share-public-toggle` | `AT-APPF-79` |
+| `AT-ROLES-05` | `AT-APP-21` | User has `View` on parent + `Edit` on child | User opens child | Resolved role = `Edit` per §Inheritance rule 2 | `permission-badge` | `AT-APPF-80` |
+| `AT-ROLES-06` | `AT-APP-23` | Public link enabled on item X | Anonymous user visits the URL | Read-only render with no comment/share affordances | `public-view-banner` | `AT-APPF-81` |
+| `AT-ROLES-07` | `AT-APP-22` | Owner transfers ownership to user B | Transfer completes | B is now `Owner`; original owner removed from grants | `transfer-ownership-button` | `AT-APPF-82` |
+| `AT-ROLES-08` | `AT-APP-22` | Workspace member tries to invite another member | Invite attempted | Rejected with 403; only `Owner`/`Admin` can invite | `workspace-invite-button` | `AT-APPF-83` |
+| `AT-ROLES-09` | `AT-APP-22` | User removed from workspace | Their item grants checked | All grants cascade-deleted; authored items orphan-tagged | `removed-user-badge` | `AT-APPF-84` |
+| `AT-ROLES-10` | `AT-APP-23` | Backend `Auth::hasRole()` throws | Capability check called | Returns `false`; action denied; `Warn` log emitted | `permission-denied-toast` | `AT-APPF-85` |
 
 ---
 
@@ -182,15 +184,15 @@ Defines the **runtime-agnostic** roles, permission grants, and authorization che
 
 | Surface | Component path | `data-testid` | Acceptance tests |
 |---------|----------------|---------------|------------------|
-| Share dialog trigger button | `src/components/share/ShareDialogTrigger.tsx` | `share-dialog-trigger` | AT-APPF-76 |
-| Share remove button | `src/components/share/ShareRemoveButton.tsx` | `share-remove-button` | AT-APPF-78 |
-| Share public-link toggle | `src/components/share/SharePublicToggle.tsx` | `share-public-toggle` | AT-APPF-79 |
-| Permission badge on item row | `src/components/items/PermissionBadge.tsx` | `permission-badge` | AT-APPF-80 |
-| Permission-denied toast | `src/components/feedback/PermissionDeniedToast.tsx` | `permission-denied-toast` | AT-APPF-77, AT-APPF-85 |
-| Public-view banner | `src/components/share/PublicViewBanner.tsx` | `public-view-banner` | AT-APPF-81 |
-| Transfer-ownership button | `src/components/share/TransferOwnershipButton.tsx` | `transfer-ownership-button` | AT-APPF-82 |
-| Workspace invite button | `src/components/workspace/WorkspaceInviteButton.tsx` | `workspace-invite-button` | AT-APPF-83 |
-| Removed-user badge | `src/components/items/RemovedUserBadge.tsx` | `removed-user-badge` | AT-APPF-84 |
+| Share dialog trigger button | `src/components/share/ShareDialogTrigger.tsx` | `share-dialog-trigger` | `AT-ROLES-01` |
+| Share remove button | `src/components/share/ShareRemoveButton.tsx` | `share-remove-button` | `AT-ROLES-03` |
+| Share public-link toggle | `src/components/share/SharePublicToggle.tsx` | `share-public-toggle` | `AT-ROLES-04` |
+| Permission badge on item row | `src/components/items/PermissionBadge.tsx` | `permission-badge` | `AT-ROLES-05` |
+| Permission-denied toast | `src/components/feedback/PermissionDeniedToast.tsx` | `permission-denied-toast` | `AT-ROLES-02`, `AT-ROLES-10` |
+| Public-view banner | `src/components/share/PublicViewBanner.tsx` | `public-view-banner` | `AT-ROLES-06` |
+| Transfer-ownership button | `src/components/share/TransferOwnershipButton.tsx` | `transfer-ownership-button` | `AT-ROLES-07` |
+| Workspace invite button | `src/components/workspace/WorkspaceInviteButton.tsx` | `workspace-invite-button` | `AT-ROLES-08` |
+| Removed-user badge | `src/components/items/RemovedUserBadge.tsx` | `removed-user-badge` | `AT-ROLES-09` |
 
 ---
 

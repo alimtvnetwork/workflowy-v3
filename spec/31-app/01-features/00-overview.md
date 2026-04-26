@@ -170,7 +170,7 @@ Every feature in `spec/31-app/01-features/` MUST: (1) write boolean checks as **
 | 12 | [`12-multi-select.md`](./12-multi-select.md) | Multi-Select Behavior | 170 |
 | 13 | [`13-templates.md`](./13-templates.md) | Template Application Flow | 180 |
 | 14 | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | Concurrency & Sync | 296 |
-| 15 | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | Roles & Permissions | 390 |
+| 15 | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | Roles & Permissions | 392 |
 
 <!-- AUTO-TOC:END -->
 
