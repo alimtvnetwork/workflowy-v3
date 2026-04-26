@@ -1,8 +1,8 @@
 # App
 
 
-> **Version:** 2.0.0
-> **Updated:** 2026-04-25 (UTC+8)
+> **Version:** 2.1.0
+> **Updated:** 2026-04-26 (UTC+8) — registered `06-endpoints/` and `07-db-diagram/` subfolders
 > **Status:** ✅ Implementation-grade rollup (F-01 closed)
 
 ---
@@ -150,5 +150,7 @@ For UI rendering decisions (colors, fonts, spacing, animations), the SSOT is [`.
 ## Related
 
 - [`../00-overview.md`](../00-overview.md) — Spec root
-- [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) — Testable AT-APP-* criteria
+- [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) — Testable `AT-APP-*` criteria
 - [`99-consistency-report.md`](./99-consistency-report.md) — Module health (100/100)
+- [`06-endpoints/00-overview.md`](./06-endpoints/00-overview.md) — REST endpoint wire contracts (35 endpoints, 1:1 mirror of features)
+- [`07-db-diagram/00-overview.md`](./07-db-diagram/00-overview.md) — Visual database design (ERDs, lifecycles, indexes, migrations)
