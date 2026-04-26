@@ -19,6 +19,7 @@
 | 4 | [`04-g19-workflow-contract-gate.md`](./04-g19-workflow-contract-gate.md) | G-19 Workflow Contract Drift Gate — Algorithm Spec | 158 |
 | 5 | [`05-precommit-hook-contract.md`](./05-precommit-hook-contract.md) | Pre-Commit Hook Contract — Convention SSOT | 147 |
 | 6 | [`06-g20-precommit-contract-gate.md`](./06-g20-precommit-contract-gate.md) | G-20 Pre-Commit Hook Drift Gate — Algorithm Spec | 181 |
+| 7 | [`07-g21-gate-discovery-audit.md`](./07-g21-gate-discovery-audit.md) | G-21 Gate Discovery & Registration Audit — Algorithm Spec | 189 |
 
 <!-- AUTO-TOC:END -->
 
@@ -61,6 +62,7 @@ Conventions specification module. See files below.
 | 04 | [04-g19-workflow-contract-gate.md](04-g19-workflow-contract-gate.md) | G-19 hygiene-gate algorithm: detects drift between workflow files and the contract |
 | 05 | [05-precommit-hook-contract.md](05-precommit-hook-contract.md) | Pre-commit hook + installer contract (POSIX sh, single entry point, regenerated-artefact warning) |
 | 06 | [06-g20-precommit-contract-gate.md](06-g20-precommit-contract-gate.md) | G-20 hygiene-gate algorithm: detects drift between hook/installer files and the contract |
+| 07 | [07-g21-gate-discovery-audit.md](07-g21-gate-discovery-audit.md) | G-21 gate-discovery audit: catches orphan/ambiguous/unregistered hygiene scripts |
 
 ---
 
@@ -82,6 +84,7 @@ Conventions specification module. See files below.
 - [`04-g19-workflow-contract-gate.md`](./04-g19-workflow-contract-gate.md) — G-19 workflow contract drift gate
 - [`05-precommit-hook-contract.md`](./05-precommit-hook-contract.md) — Pre-commit hook + installer contract
 - [`06-g20-precommit-contract-gate.md`](./06-g20-precommit-contract-gate.md) — G-20 pre-commit contract drift gate
+- [`07-g21-gate-discovery-audit.md`](./07-g21-gate-discovery-audit.md) — G-21 gate-discovery audit
 
 **See also:**
 
