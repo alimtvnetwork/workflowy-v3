@@ -139,6 +139,8 @@ When multiple items are selected, a **bulk action bar** appears at the bottom of
 
 ## Component Contract
 
+> **Note:** None of these components exist yet — paths are the planned implementation order (aspirational, not normative). The disclaimer mirrors `01-information-model.md` L149 and feeds the global component-contract map (M-3). AI implementers MUST NOT treat the paths as binding imports.
+
 | Surface | Component path | `data-testid` | Acceptance tests |
 |---------|---------------|---------------|------------------|
 | Selectable item row | `src/components/items/BulletItem.tsx` | `multiselect-row` | AT-MULTISELECT-01..04 |

@@ -179,6 +179,8 @@ For cleaner UX, use only **"Mirror To…"** in the context menu (one unified act
 
 ## Component Contract
 
+> **Note:** None of these components exist yet — paths are the planned implementation order (aspirational, not normative). The disclaimer mirrors `01-information-model.md` L149 and feeds the global component-contract map (M-3). AI implementers MUST NOT treat the paths as binding imports.
+
 | Surface | Component path | `data-testid` | Acceptance tests |
 |---------|---------------|---------------|------------------|
 | Mirror badge | `src/components/items/MirrorBadge.tsx` | `mirror-badge`, `mirror-badge-tooltip` | AT-MIRRORS-05, 06 |

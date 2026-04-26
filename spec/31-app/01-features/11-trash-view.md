@@ -124,6 +124,8 @@ As a user who occasionally deletes the wrong item, I want a 30-day grace period 
 
 ## Component Contract
 
+> **Note:** None of these components exist yet — paths are the planned implementation order (aspirational, not normative). The disclaimer mirrors `01-information-model.md` L149 and feeds the global component-contract map (M-3). AI implementers MUST NOT treat the paths as binding imports.
+
 | Surface | Component path | `data-testid` | Acceptance tests |
 |---------|---------------|---------------|------------------|
 | Trash view root | `src/pages/Trash.tsx` | `trash-view-root` | AT-TRASH-01, 11 |

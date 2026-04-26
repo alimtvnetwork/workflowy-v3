@@ -175,6 +175,8 @@ Displayed in very small, muted text.
 
 ## Component Contract
 
+> **Note:** None of these components exist yet — paths are the planned implementation order (aspirational, not normative). The disclaimer mirrors `01-information-model.md` L149 and feeds the global component-contract map (M-3). AI implementers MUST NOT treat the paths as binding imports.
+
 | Surface | Component path | `data-testid` | Acceptance tests |
 |---------|---------------|---------------|------------------|
 | Context-menu trigger (⋮) | `src/components/tree/ContextMenuTrigger.tsx` | `context-menu-trigger` | AT-CTXMENU-15 |

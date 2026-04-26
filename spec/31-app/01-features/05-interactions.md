@@ -142,6 +142,8 @@ As a power user, I want every common action — split a line, indent, move, comp
 
 ## Component Contract
 
+> **Note:** None of these components exist yet — paths are the planned implementation order (aspirational, not normative). The disclaimer mirrors `01-information-model.md` L149 and feeds the global component-contract map (M-3). AI implementers MUST NOT treat the paths as binding imports.
+
 | Surface | Component path | `data-testid` | Acceptance tests |
 |---------|---------------|---------------|------------------|
 | Global key handler | `src/lib/interactions/useGlobalKeys.ts` | — (hook) | AT-INTERACT-01..08 |
