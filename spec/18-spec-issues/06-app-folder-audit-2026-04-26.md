@@ -240,7 +240,7 @@ Each finding has: ID · Severity · Files · What's wrong · Why it matters · F
 | 7 | **APP-FIX-07** ✅ | Add Casing-Layers callout in `01-features/00-overview.md` | 1 file | F-08 — **DONE 2026-04-26 (00-overview.md v2.1.0)** |
 | 8 | **APP-FIX-08** | Replicate aspirational-paths disclaimer in 9 Component Contract tables | 9 feature files | F-07 |
 | 9 | **APP-FIX-09** ✅ | Add `Mirror.BrokenAt` LWW row to concurrency spec | 1 file | F-14 — **DONE 2026-04-26 (14-concurrency-and-sync.md v1.3.0; §14.4 added with field/algorithm/cascade/forbidden tables; `mirrorBrokenAt` added to Inputs field enum and §14.1 conflict-scope row).** |
-| 10 | **APP-FIX-10** | Boolean Conventions callout (positive guards + `hasValue`) | 1 file (`00-overview.md`) | F-13 |
+| 10 | **APP-FIX-10** ✅ | Boolean Conventions callout (positive guards + `hasValue`) | 1 file (`00-overview.md`) | F-13 — **DONE 2026-04-26 (00-overview.md v2.2.0; SSOT table + 4-rule paragraph + forbidden list pointing at cross-language, control-flow, PHP booleans, PHP architecture, and Settings anti-pattern #10).** |
 | 11 | **APP-FIX-11** | Update `99-consistency-report.md` scoring or add disclaimer | 1 file | F-09 |
 | 12 | **APP-FIX-12** | Add 3 missing workflow files (template, share-invite, trash-restore) | 3 new files | F-10 |
 | 13 | **APP-FIX-13** | Split edge-cases into user vs system | 1 file | F-11 |
