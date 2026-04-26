@@ -1,7 +1,7 @@
 # Enums Index — Cross-Language Registry
 
-> **Version:** 1.0.0
-> **Updated:** 2026-04-20
+> **Version:** 1.1.0
+> **Updated:** 2026-04-26 — Round-3 AUDIT-03: `ItemType` corrected — swapped `mirror` → `dashboard` (mirrors are `Mirrors` table rows, not turn-into targets); count stays at 12. See [`spec/18-spec-issues/07-audit-03-dashboard-taxonomy.md`](./18-spec-issues/07-audit-03-dashboard-taxonomy.md). Prior: 2026-04-20.
 > **Status:** Active
 > **Purpose:** Single source of truth for every named enum across Go, PHP, and TypeScript. Maps each enum to its language-specific spec, canonical case naming, and usage rules.
 
