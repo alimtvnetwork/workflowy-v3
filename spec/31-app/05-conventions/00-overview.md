@@ -55,6 +55,7 @@ Conventions specification module. See files below.
 **In this section:**
 
 - [`01-axios-version-control.md`](./01-axios-version-control.md) — Axios Version Control
+- [`02-ci-quality-gates.md`](./02-ci-quality-gates.md) — CI Quality Gates runner contract
 
 **See also:**
 
