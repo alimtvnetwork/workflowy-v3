@@ -1,7 +1,28 @@
 # Phase 10 — Deployment Patterns (Overview)
 
+
 > **Version:** 3.2.0  
 > **Updated:** 2026-04-19  
+
+## Keywords
+
+`wp-plugin-how-to` · `deployment-patterns` · `phase` · `deployment`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Purpose:** Define how to package, version, distribute, and auto-update WordPress plugins. Covers ZIP packaging, semantic versioning, self-hosted update servers, self-update with rollback, and CI/CD automation.  
 > **Audience:** AI code generators and human developers.  
 > **Prerequisite:** Phases 1–9 must be read first.

@@ -1,8 +1,29 @@
 # AppError Package Reference — Domain Error Type Enums (`apperrtype`)
 
+
 > **Parent:** [AppError Package Reference](../00-overview.md)  
 > **Version:** 2.1.0 (split into subfolder 2026-04-20)
 > **Updated:** 2026-04-20
+
+## Keywords
+
+`error-manage` · `error-architecture` · `apperror-package` · `apperror-reference` · `apperrtype-enums` · `apperror` · `package` · `reference`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Breaking:** Migrated from per-domain `byte` enums to single `uint16` Variation enum (inspired by [evatix-go/errorwrapper/errtype](https://gitlab.com/auk-go/errorwrapper/-/tree/develop/errtype))
 
 
@@ -24,6 +45,7 @@
 <!-- AUTO-TOC:END -->
 
 ---
+
 
 ## Purpose
 

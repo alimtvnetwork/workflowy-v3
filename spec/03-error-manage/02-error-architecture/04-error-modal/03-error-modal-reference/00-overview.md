@@ -1,9 +1,30 @@
 # Error Modal — Frontend Specification (Index)
 
+
 > **Parent:** [Error Modal Spec](../00-overview.md)  
 > **Version:** 2.2.0  
 > **Updated:** 2026-03-31  
 > **Status:** Active  
+
+## Keywords
+
+`error-manage` · `error-architecture` · `error-modal` · `error-modal-reference` · `error` · `modal` · `frontend`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Location:** `src/components/errors/`  
 
 

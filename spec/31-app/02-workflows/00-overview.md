@@ -1,7 +1,28 @@
 # Workflows
 
+
 > **Version:** 2.1.0
 > **Updated:** 2026-04-26 (UTC+8) — v2.1.0 marked `AT-WF-*` ↔ `AT-APP-*` backfill complete (polish #2). v2.0.0 added 3 cross-feature workflow files (APP-FIX-12, closes F-10).
+
+## Keywords
+
+`app` · `workflows`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Parent:** [`../00-overview.md`](../00-overview.md)
 
 
@@ -21,6 +42,7 @@
 <!-- AUTO-TOC:END -->
 
 ---
+
 
 ## What this folder is
 

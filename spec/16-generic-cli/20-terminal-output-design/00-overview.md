@@ -1,4 +1,24 @@
 # Terminal Output Design — Rich CLI Report Formatting
+## Keywords
+
+`generic-cli` · `terminal-output-design` · `terminal` · `output` · `design`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
+
 
 > **Related specs:**
 > - [../06-output-formatting.md](../06-output-formatting.md) — multi-format output strategy this spec details for terminal

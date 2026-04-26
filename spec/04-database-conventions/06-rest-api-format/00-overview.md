@@ -1,7 +1,28 @@
 # REST API Response Format
 
+
 > **Version:** 3.2.0 (split into subfolder 2026-04-20)
 > **Updated:** 2026-04-20
+
+## Keywords
+
+`database-conventions` · `rest-api-format` · `rest` · `api` · `response`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Parent:** [`../00-overview.md`](../00-overview.md)
 
 
@@ -22,6 +43,7 @@
 <!-- AUTO-TOC:END -->
 
 ---
+
 
 ## Overview
 

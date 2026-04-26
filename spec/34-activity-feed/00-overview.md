@@ -1,16 +1,22 @@
 # Activity Feed — Feature Spec
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
+
 
 > **Version:** 2.0.0  
 > **Updated:** 2026-04-19  
 > **Status:** Planned (not yet implemented)
-
----
-
-## Purpose
-
-Specification for **Feature E2 — Activity Feed**: a chronological, filterable audit log of every meaningful change to the WorkFlowy item tree. Lets users see who changed what, when, and lets them undo/restore.
-
-> 🟡 **Status:** This is a **planned feature** with high-level scope only. Sub-specs (event taxonomy, retention, UI) will be added under numbered files before implementation.
 
 ---
 
@@ -35,6 +41,16 @@ Specification for **Feature E2 — Activity Feed**: a chronological, filterable 
 Draft (high-level only) · Ambiguity: Medium (sub-specs pending)
 
 ---
+
+
+## Purpose
+
+Specification for **Feature E2 — Activity Feed**: a chronological, filterable audit log of every meaningful change to the WorkFlowy item tree. Lets users see who changed what, when, and lets them undo/restore.
+
+> 🟡 **Status:** This is a **planned feature** with high-level scope only. Sub-specs (event taxonomy, retention, UI) will be added under numbered files before implementation.
+
+---
+
 
 ## Scope
 

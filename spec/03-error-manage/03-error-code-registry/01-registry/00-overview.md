@@ -1,6 +1,27 @@
 # Error-Code Registry — Sub-Folder Overview
 
+
 > **Version:** 1.0.0
+
+## Keywords
+
+`error-manage` · `error-code-registry` · `registry` · `error-code` · `sub-folder`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Created:** 2026-04-26 (UTC+8) — closes F-AUD27-03 from `02-ai-readiness-report-post-a27.md` (folder previously had no `00-overview.md`).
 > **Parent:** [`../00-overview.md`](../00-overview.md)
 
@@ -23,6 +44,7 @@
 <!-- AUTO-TOC:END -->
 
 ---
+
 
 ## Purpose
 

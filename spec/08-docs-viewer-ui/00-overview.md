@@ -1,9 +1,40 @@
 # Docs Viewer UI — Overview
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
+
 
 > **Version:** 3.1.0  
 > **Updated:** 2026-04-16  
 
+## Keywords
 
+docs-viewer, typography, ubuntu, poppins, syntax-highlighting, highlight-js, fullscreen, keyboard-navigation, copy-markdown, shortcuts
+
+---
+
+## Scoring
+
+| Criterion | Score | Notes |
+|-----------|-------|-------|
+| Completeness | 90% | All 6 features specified |
+| Testability | 85% | UI interactions are manually testable |
+| Ambiguity | 10% | Clear requirements |
+| Cross-Refs | 80% | Links to spec authoring guide |
+
+**Health Score:** 90%
+
+---
 
 
 <!-- AUTO-TOC:START -->
@@ -27,24 +58,6 @@ UI enhancement specification for the interactive documentation viewer at `/docs`
 
 ---
 
-## Keywords
-
-docs-viewer, typography, ubuntu, poppins, syntax-highlighting, highlight-js, fullscreen, keyboard-navigation, copy-markdown, shortcuts
-
----
-
-## Scoring
-
-| Criterion | Score | Notes |
-|-----------|-------|-------|
-| Completeness | 90% | All 6 features specified |
-| Testability | 85% | UI interactions are manually testable |
-| Ambiguity | 10% | Clear requirements |
-| Cross-Refs | 80% | Links to spec authoring guide |
-
-**Health Score:** 90%
-
----
 
 ## Document Inventory
 

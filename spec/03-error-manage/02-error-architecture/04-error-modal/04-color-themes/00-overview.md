@@ -1,8 +1,29 @@
 # Color Theme & Design Token Reference (Index)
 
+
 > **Parent:** [Error Modal Spec](../00-overview.md)  
 > **Version:** 2.1.0  
 > **Updated:** 2026-03-31  
+
+## Keywords
+
+`error-manage` · `error-architecture` · `error-modal` · `color-themes` · `color` · `theme` · `design`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Purpose:** Definitive color mapping for every error-related UI element.
 
 
@@ -21,6 +42,7 @@
 <!-- AUTO-TOC:END -->
 
 ---
+
 
 ## File Index
 

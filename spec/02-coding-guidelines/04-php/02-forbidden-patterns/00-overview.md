@@ -1,7 +1,28 @@
 # PHP Forbidden Patterns — Quick Reference Checklist
 
+
 > **Version:** 5.0.0
 > **Updated:** 2026-04-20
+
+## Keywords
+
+`coding-guidelines` · `php` · `forbidden-patterns` · `forbidden` · `patterns`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Consolidates:** [PHP Standards Reference](../07-php-standards-reference/00-overview.md), [PHP Enums](../01-enums/00-overview.md), WP Error Handling <!-- external: spec/28-wp-plugin-development/07-error-handling.md -->
 
 

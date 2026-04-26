@@ -1,6 +1,27 @@
 # Phase 9 — Email-to-WorkFlowy & Integrations 🚫 DEFERRED
 
+
 > **Status:** 🚫 Deferred to post-v1 (spec authored 2026-04-23, implementation gated on backend runtime choice)
+
+## Keywords
+
+`ui-design` · `workflowy-ui` · `integrations` · `phase` · `email-to-workflowy`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Parent:** [`../00-overview.md`](../00-overview.md)
 > **Screenshots:** img-54
 > **Topic files:** `01-email-to-workflowy.md`, `02-linkedin-import.md`, `03-allowlist-security.md`, `97-acceptance-criteria.md`
@@ -21,6 +42,7 @@
 <!-- AUTO-TOC:END -->
 
 ---
+
 
 ## Scope
 

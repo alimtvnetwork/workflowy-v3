@@ -1,16 +1,22 @@
 # Feedback Report — Feature Spec
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
+
 
 > **Version:** 2.0.0  
 > **Updated:** 2026-04-19  
 > **Status:** Planned (not yet implemented)
-
----
-
-## Purpose
-
-Specification for the in-app feedback and bug-report feature in WorkFlowy. Lets users submit feedback, attach context (current item tree path, browser info, last actions), and lets reviewers triage submissions.
-
-> 🟡 **Status:** This is a **planned feature** with high-level scope only. Sub-specs (data model, UI flow, retention) will be added under numbered files (`01-…md`, `02-…md`) before implementation.
 
 ---
 
@@ -35,6 +41,16 @@ Specification for the in-app feedback and bug-report feature in WorkFlowy. Lets 
 Draft (high-level only) · Ambiguity: Medium (sub-specs pending)
 
 ---
+
+
+## Purpose
+
+Specification for the in-app feedback and bug-report feature in WorkFlowy. Lets users submit feedback, attach context (current item tree path, browser info, last actions), and lets reviewers triage submissions.
+
+> 🟡 **Status:** This is a **planned feature** with high-level scope only. Sub-specs (data model, UI flow, retention) will be added under numbered files (`01-…md`, `02-…md`) before implementation.
+
+---
+
 
 ## Scope
 

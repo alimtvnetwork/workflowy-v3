@@ -1,8 +1,29 @@
 # WP-Plugin Deploy — Overview
 
+
 > **Version:** 1.0.0
 > **Created:** 2026-04-25 (UTC+8)
 > **Status:** Canonical — bridges `13-cicd-pipeline-workflows/` (CI/CD SSOT) with `15-wp-plugin-how-to/10-deployment-patterns/` (WP packaging SSOT).
+
+## Keywords
+
+`cicd-pipeline-workflows` · `wp-plugin-deploy` · `wp-plugin` · `deploy` · `overview`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Parent:** [`../00-overview.md`](../00-overview.md)
 > **Backend runtime:** WordPress plugin (PHP 8.2 + SQLite via PDO) — see `mem://constraints/backend-runtime-deferred`.
 
@@ -23,6 +44,7 @@
 <!-- AUTO-TOC:END -->
 
 ---
+
 
 ## Purpose
 

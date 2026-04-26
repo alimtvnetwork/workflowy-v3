@@ -1,6 +1,29 @@
 # Go Boolean Standards — Overview
 
+
 > **Version**: 1.4.0
+
+## Keywords
+
+`coding-guidelines` · `golang` · `boolean-standards` · `boolean` · `standards`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
+
+
 > **Last updated**: 2026-02-28
 > **Parent:** [../00-overview.md](../00-overview.md)
 

@@ -1,8 +1,44 @@
 # Phase 9 — Testing Patterns
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
+
 
 > **Version:** 2.0.0  
 > **Updated:** 2026-04-19  
 > **Status:** Production-ready
+
+## Keywords
+
+`testing` · `phpunit` · `wp-phpunit` · `unit-tests` · `integration-tests` · `coverage` · `ci`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| Overview present | ✅ |
+| Confidence rated | ✅ |
+| Ambiguity rated | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+## Confidence
+
+Production-Ready · Ambiguity: None
+
+---
 
 
 <!-- AUTO-TOC:START -->
@@ -37,27 +73,6 @@ Defines how to write unit and integration tests for WordPress plugins built with
 
 ---
 
-## Keywords
-
-`testing` · `phpunit` · `wp-phpunit` · `unit-tests` · `integration-tests` · `coverage` · `ci`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| Overview present | ✅ |
-| Confidence rated | ✅ |
-| Ambiguity rated | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-## Confidence
-
-Production-Ready · Ambiguity: None
-
----
 
 ## Topic Index
 

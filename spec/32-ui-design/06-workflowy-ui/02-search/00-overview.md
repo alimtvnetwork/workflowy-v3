@@ -1,8 +1,29 @@
 # Phase 2 — Search Popover (Command-Palette Surface)
 
+
 > **Version:** 2.0.0
 > **Created:** 2026-04-21 (UTC+8) · **Rewritten:** 2026-04-23 (UTC+8)
 > **Status:** ✅ Authored (v2)
+
+## Keywords
+
+`ui-design` · `workflowy-ui` · `search` · `phase`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Parent:** [`../00-overview.md`](../00-overview.md)
 > **Supersedes:** v1.0.0 (full-screen overlay) — archived at [`./_archive-v1/`](./_archive-v1/README.md)
 > **Plan reference:** [`.lovable/plans/archive/03-workflowy-spec-consolidation.md`](../../../../.lovable/plans/archive/03-workflowy-spec-consolidation.md) § Phase 2

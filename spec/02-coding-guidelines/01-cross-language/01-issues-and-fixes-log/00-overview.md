@@ -1,7 +1,28 @@
 # Issues & Fixes Log — Historical Reference
 
+
 > **Version:** 2.0.0  
 > **Updated:** 2026-04-20  
+
+## Keywords
+
+`coding-guidelines` · `cross-language` · `issues-and-fixes-log` · `issues` · `fixes` · `log`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Purpose:** Comprehensive log of all coding standard violations found and fixed, with root cause analysis and prevention rules.
 
 
@@ -25,6 +46,7 @@
 Split per AUD-L-01 from a 541-line monolith into 7 focused topic files (each <200 lines).
 
 ---
+
 
 ## Topic Index
 

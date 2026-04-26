@@ -1,9 +1,30 @@
 # Workflowy UI Spec — Parent Overview
 
+
 > **Version:** 1.1.0
 > **Created:** 2026-04-21 (UTC+8)
 > **Updated:** 2026-04-25 (UTC+8) — S05 cross-phase audit complete (all 10 phases)
 > **Status:** ✅ Complete (all blockers resolved 2026-04-23; cross-phase audit passed 2026-04-25)
+
+## Keywords
+
+`ui-design` · `workflowy-ui` · `workflowy`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Parent:** [`../00-overview.md`](../00-overview.md)
 > **Source plan:** [`.lovable/plans/archive/03-workflowy-spec-consolidation.md`](../../../.lovable/plans/archive/03-workflowy-spec-consolidation.md)
 > **Reference assets:** `.lovable/references/workflowy-screenshots/` (28 screenshots img-40 → img-67)

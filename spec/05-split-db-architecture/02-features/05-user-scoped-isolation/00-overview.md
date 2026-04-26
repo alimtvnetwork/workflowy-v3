@@ -1,8 +1,29 @@
 # Split DB Architecture: User-Scoped Isolation
 
+
 > **Version:** 3.1.0
 > **Created:** 2026-03-09
 > **Status:** Active
+
+## Keywords
+
+`split-db-architecture` · `features` · `user-scoped-isolation` · `split` · `architecture`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Parent:** [../00-overview.md](../../00-overview.md)
 
 
@@ -24,6 +45,7 @@
 <!-- AUTO-TOC:END -->
 
 ---
+
 
 ## Overview
 

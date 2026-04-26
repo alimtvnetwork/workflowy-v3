@@ -1,7 +1,28 @@
 # Types Folder Convention & Common Type Aliases — Overview
 
+
 > **Version:** 3.2.0  
 > **Updated:** 2026-04-20  
+
+## Keywords
+
+`coding-guidelines` · `cross-language` · `types-folder-convention` · `types` · `folder` · `convention`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Applies to:** All languages (Go, TypeScript, PHP, Rust, C#)  
 > **Source:** Derived from `apperror` package patterns, content type conventions, and real-world `riseup-asia-uploader` codebase
 
@@ -22,6 +43,7 @@
 <!-- AUTO-TOC:END -->
 
 ---
+
 
 ## Topic Files
 

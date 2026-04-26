@@ -1,8 +1,29 @@
 # Verbose Logging — Overview
 
+
 > **Parent:** [16-generic-cli](../00-overview.md)  
 > **Version:** 1.0.0  
 > **Updated:** 2026-04-20
+
+## Keywords
+
+`generic-cli` · `verbose-logging` · `verbose` · `logging` · `overview`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 
 > **Related specs:**
 > - [04-flag-parsing.md](../04-flag-parsing.md) — `--verbose` flag parsing
@@ -27,6 +48,7 @@
 <!-- AUTO-TOC:END -->
 
 ---
+
 
 ## Purpose
 

@@ -1,9 +1,30 @@
 # RAG Configuration Validation Helpers
 
+
 > **Version:** 3.1.0  
 > **Created:** 2026-02-02  
 > **Updated:** 2026-04-20  
 > **Status:** Active  
+
+## Keywords
+
+`seedable-config-architecture` · `features` · `rag-validation-helpers` · `rag` · `configuration` · `validation`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Parent:** [../00-overview.md](../00-overview.md)
 
 
@@ -27,6 +48,7 @@
 <!-- AUTO-TOC:END -->
 
 ---
+
 
 ## Overview
 

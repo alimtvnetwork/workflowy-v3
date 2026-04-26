@@ -1,16 +1,22 @@
 # Enforcement Rules — Spec
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
+
 
 > **Version:** 2.0.0  
 > **Updated:** 2026-04-19  
 > **Status:** Planned (not yet implemented)
-
----
-
-## Purpose
-
-Defines **reusable enforcement patterns** that codify the project's strict-typing, generics-first, and runtime-validation rules into mechanically checkable artefacts (ESLint rules, runtime guards, schema validators).
-
-> 🟡 **Status:** This is a **planned consolidation** of patterns currently scattered across [`02-coding-guidelines/`](../02-coding-guidelines/00-overview.md). Sub-specs will be authored when the patterns are formalised.
 
 ---
 
@@ -35,6 +41,16 @@ Defines **reusable enforcement patterns** that codify the project's strict-typin
 Draft (high-level only) · Ambiguity: Medium (sub-specs pending)
 
 ---
+
+
+## Purpose
+
+Defines **reusable enforcement patterns** that codify the project's strict-typing, generics-first, and runtime-validation rules into mechanically checkable artefacts (ESLint rules, runtime guards, schema validators).
+
+> 🟡 **Status:** This is a **planned consolidation** of patterns currently scattered across [`02-coding-guidelines/`](../02-coding-guidelines/00-overview.md). Sub-specs will be authored when the patterns are formalised.
+
+---
+
 
 ## Scope
 

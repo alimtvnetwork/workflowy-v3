@@ -1,7 +1,28 @@
 # PHP Enums — Complete Reference
 
+
 > **Version:** 7.1.0
 > **Updated:** 2026-03-09
+
+## Keywords
+
+`coding-guidelines` · `php` · `enums` · `complete`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Applies to:** WordPress companion plugins (PHP 8.1+)
 
 > **Related specs:**

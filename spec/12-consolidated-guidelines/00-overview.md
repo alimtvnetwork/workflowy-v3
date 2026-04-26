@@ -1,8 +1,40 @@
 # Consolidated Guidelines — Redirect Index
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
+
 
 > **Version:** 4.0.0  
 > **Updated:** 2026-04-19  
 > **Status:** Active
+
+## Keywords
+
+`redirect-index` · `single-source-of-truth` · `consolidated-guidelines` · `aud-c-01`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| Overview present | ✅ |
+| Confidence rated | ✅ |
+| Ambiguity rated | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+---
 
 
 <!-- AUTO-TOC:START -->
@@ -41,23 +73,6 @@
 
 ---
 
-## Keywords
-
-`redirect-index` · `single-source-of-truth` · `consolidated-guidelines` · `aud-c-01`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| Overview present | ✅ |
-| Confidence rated | ✅ |
-| Ambiguity rated | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
----
 
 ## Confidence
 

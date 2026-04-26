@@ -1,16 +1,22 @@
 # User Management — Feature Spec
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
+
 
 > **Version:** 2.0.0  
 > **Updated:** 2026-04-19  
 > **Status:** Planned (not yet implemented)
-
----
-
-## Purpose
-
-Specification for WorkFlowy's user management system: accounts, roles, permissions, authentication, and administrative operations.
-
-> 🟡 **Status:** This is a **planned feature** with high-level scope only. Sub-specs (data model, RBAC, auth flow) will be authored before implementation.
 
 ---
 
@@ -35,6 +41,16 @@ Specification for WorkFlowy's user management system: accounts, roles, permissio
 Draft (high-level only) · Ambiguity: Medium (sub-specs pending)
 
 ---
+
+
+## Purpose
+
+Specification for WorkFlowy's user management system: accounts, roles, permissions, authentication, and administrative operations.
+
+> 🟡 **Status:** This is a **planned feature** with high-level scope only. Sub-specs (data model, RBAC, auth flow) will be authored before implementation.
+
+---
+
 
 ## Scope
 

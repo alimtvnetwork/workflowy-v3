@@ -1,4 +1,24 @@
 # Phase 2 — Enums and Coding Style
+## Keywords
+
+`wp-plugin-how-to` · `enums-and-coding-style` · `phase` · `enums`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
+
 
 > **Purpose:** Define enum patterns, coding style, and naming conventions for WordPress plugins.
 

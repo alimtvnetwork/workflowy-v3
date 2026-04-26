@@ -1,4 +1,24 @@
 # Generic CLI Creation Guidelines — Overview
+## Keywords
+
+`generic-cli` · `generic` · `cli` · `creation`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
+
 
 > **Related specs:**
 > - [02-project-structure.md](02-project-structure.md) — package layout and file organization

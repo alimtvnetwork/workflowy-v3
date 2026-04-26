@@ -1,8 +1,29 @@
 # Casting Elimination Patterns
 
+
 > **Version:** 2.0.0
 > **Updated:** 2026-04-20
 > **Status:** Complete
+
+## Keywords
+
+`coding-guidelines` · `cross-language` · `casting-elimination-patterns` · `casting` · `elimination` · `patterns`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Priority:** Critical
 
 
@@ -23,6 +44,7 @@
 <!-- AUTO-TOC:END -->
 
 ---
+
 
 ## 1. Purpose
 

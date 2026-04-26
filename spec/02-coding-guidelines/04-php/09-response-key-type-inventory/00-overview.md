@@ -1,4 +1,24 @@
 # ResponseKeyType — Case Inventory & Usage Map
+## Keywords
+
+`coding-guidelines` · `php` · `response-key-type-inventory` · `responsekeytype` · `case` · `inventory`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
+
 
 > **Enum**: `RiseupAsia\Enums\ResponseKeyType`  
 > **File**: `includes/Enums/ResponseKeyType.php`  

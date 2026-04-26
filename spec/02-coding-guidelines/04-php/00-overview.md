@@ -1,10 +1,34 @@
 # PHP Standards
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
+
 
 > **Version:** 3.1.0  
 **Status:** Active  
 > **Updated:** 2026-04-16  
 
+## Keywords
 
+`coding`, `guidelines`, `php`, `enums`, `naming`, `spacing`, `response-key`
+
+---
+
+## Purpose
+
+PHP-specific coding standards and patterns for the RiseupAsia namespace.
+
+---
 
 
 <!-- AUTO-TOC:START -->
@@ -28,17 +52,6 @@
 
 ---
 
-## Keywords
-
-`coding`, `guidelines`, `php`, `enums`, `naming`, `spacing`, `response-key`
-
----
-
-## Purpose
-
-PHP-specific coding standards and patterns for the RiseupAsia namespace.
-
----
 
 ## Document Inventory
 

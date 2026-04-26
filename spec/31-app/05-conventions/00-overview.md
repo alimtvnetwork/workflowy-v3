@@ -1,9 +1,31 @@
 # Conventions
 
+
 > **Version:** 1.0.0  
 > **Updated:** 2026-04-18
 
 ---
+
+## Keywords
+
+`app` · `conventions`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
+
 
 ## Overview
 

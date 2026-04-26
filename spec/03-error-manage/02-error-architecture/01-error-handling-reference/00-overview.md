@@ -1,8 +1,29 @@
 # Error Handling — Cross-Stack Specification
 
+
 > **Version:** 2.0.0
 > **Updated:** 2026-04-20
 > **Status:** Active
+
+## Keywords
+
+`error-manage` · `error-architecture` · `error-handling-reference` · `error` · `handling` · `cross-stack`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Applies to:** Go backend, React/TypeScript frontend, PHP WordPress plugin, any delegated 3rd-party server
 
 
@@ -23,6 +44,7 @@
 <!-- AUTO-TOC:END -->
 
 ---
+
 
 ## Overview
 

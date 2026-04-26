@@ -1,8 +1,29 @@
 # CLI Examples — Overview
 
+
 > **Version:** 3.1.0  
 > **Updated:** 2026-04-19  
 > **Status:** Active  
+
+## Keywords
+
+`split-db-architecture` · `features` · `cli-examples` · `cli` · `examples` · `overview`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Parent:** [../00-overview.md](../00-overview.md)
 
 

@@ -1,7 +1,28 @@
 # Phase 15 — Settings Architecture
 
+
 > **Created:** 2026-04-09
 > **Status:** ✅ Active
+
+## Keywords
+
+`wp-plugin-how-to` · `settings-architecture` · `phase` · `settings`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Depends on:** [Phase 12 — Design System](../12-design-system/00-overview.md), [Phase 13 — Admin UI Patterns](../13-admin-ui-patterns/00-overview.md)
 
 

@@ -1,8 +1,29 @@
 # Phase 8 — App Shell (Themes, Fonts, Settings, App Menu)
 
+
 > **Version:** 1.0.0
 > **Created:** 2026-04-21 (UTC+8)
 > **Status:** ✅ Authored
+
+## Keywords
+
+`ui-design` · `workflowy-ui` · `app-shell` · `phase` · `app`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Parent:** [`../00-overview.md`](../00-overview.md)
 > **Phase:** 8 of 10 (active — last active phase)
 > **Screenshots:** img-45, 55, 58
@@ -24,6 +45,7 @@
 <!-- AUTO-TOC:END -->
 
 ---
+
 
 ## Purpose
 

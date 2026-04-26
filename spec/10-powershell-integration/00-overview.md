@@ -1,9 +1,30 @@
 # PowerShell Integration for Project Runner
 
+
 > **Spec Version:** 2.25.0  
 > **Script Version:** 2.25.0  
 > **Updated:** 2026-03-19  
 > **Status:** Active  
+
+## Keywords
+
+`powershell-integration` · `powershell` · `integration`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Location:** `spec/powershell-integration/`  
 > **Purpose:** Reusable PowerShell runner for Go backend + React frontend projects with pnpm PnP support
 

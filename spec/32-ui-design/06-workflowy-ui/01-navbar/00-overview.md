@@ -1,9 +1,30 @@
 # Phase 1 — Navbar & Breadcrumb
 
+
 > **Version:** 1.1.0
 > **Created:** 2026-04-21 (UTC+8)
 > **Updated:** 2026-04-21 (self-review polish: F1/F3/F5 fixes, acceptance criteria self-confirmed)
 > **Status:** ✅ Authored & self-reviewed
+
+## Keywords
+
+`ui-design` · `workflowy-ui` · `navbar` · `phase`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Parent:** [`../00-overview.md`](../00-overview.md)
 > **Reference screenshots:** `40-navbar-breadcrumb.png`, `52-absolute-path-and-context-menu.png`, `59-vibe-coding-prompts-context.png`, `60-left-menu-button.png`
 
@@ -24,6 +45,7 @@
 <!-- AUTO-TOC:END -->
 
 ---
+
 
 ## Topic Index
 

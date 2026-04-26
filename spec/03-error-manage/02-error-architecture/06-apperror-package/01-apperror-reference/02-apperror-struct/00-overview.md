@@ -1,8 +1,29 @@
 # AppError Struct & Methods — Overview
 
+
 > **Parent:** [AppError Package Reference](../00-overview.md)  
 > **Version:** 3.0.0  
 > **Updated:** 2026-04-20
+
+## Keywords
+
+`error-manage` · `error-architecture` · `apperror-package` · `apperror-reference` · `apperror-struct` · `apperror` · `struct` · `methods`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 
 
 <!-- AUTO-TOC:START -->
@@ -23,6 +44,7 @@
 <!-- AUTO-TOC:END -->
 
 ---
+
 
 ## Topic Files
 

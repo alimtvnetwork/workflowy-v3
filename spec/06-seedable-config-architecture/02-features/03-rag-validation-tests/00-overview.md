@@ -1,9 +1,30 @@
 # RAG Validation Helpers: Unit Test Specification
 
+
 > **Version:** 4.0.0  
 > **Created:** 2026-02-02  
 > **Updated:** 2026-04-19  
 > **Status:** Active  
+
+## Keywords
+
+`seedable-config-architecture` · `features` · `rag-validation-tests` · `rag` · `validation` · `helpers`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Parent:** [02-rag-validation-helpers/00-overview.md](../02-rag-validation-helpers/00-overview.md)
 
 

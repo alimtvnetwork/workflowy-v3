@@ -1,8 +1,29 @@
 # Phase 4 — Bullet Anatomy & Context Menus
 
+
 > **Version:** 1.0.0
 > **Created:** 2026-04-21 (UTC+8)
 > **Status:** ✅ Authored
+
+## Keywords
+
+`ui-design` · `workflowy-ui` · `bullet` · `phase`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Parent:** [`../00-overview.md`](../00-overview.md)
 > **Phase:** 4 of 10 (active)
 > **Screenshots:** img-46, 48, 49, 50, 51, 52, 63
@@ -24,6 +45,7 @@
 <!-- AUTO-TOC:END -->
 
 ---
+
 
 ## Purpose
 

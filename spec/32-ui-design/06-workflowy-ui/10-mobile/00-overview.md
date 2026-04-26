@@ -1,6 +1,27 @@
 # Phase 10 — Mobile / PWA 🚫 DEFERRED
 
+
 > **Status:** 🚫 Deferred to post-v1 (spec authored 2026-04-23, implementation gated on build pipeline + device QA matrix)
+
+## Keywords
+
+`ui-design` · `workflowy-ui` · `mobile` · `phase`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Parent:** [`../00-overview.md`](../00-overview.md)
 > **Screenshots:** img-57
 > **Topic files:** `01-pwa.md`, `02-share-target.md`, `03-mobile-gestures.md`, `97-acceptance-criteria.md`
@@ -21,6 +42,7 @@
 <!-- AUTO-TOC:END -->
 
 ---
+
 
 ## Scope
 

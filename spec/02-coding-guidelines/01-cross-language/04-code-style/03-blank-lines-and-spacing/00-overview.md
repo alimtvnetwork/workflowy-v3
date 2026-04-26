@@ -1,7 +1,28 @@
 # Blank Lines & Spacing
 
+
 > **Version:** 4.0.0
 > **Updated:** 2026-04-20
+
+## Keywords
+
+`coding-guidelines` · `cross-language` · `code-style` · `blank-lines-and-spacing` · `blank` · `lines` · `spacing`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Applies to:** PHP, TypeScript, Go
 > **Rules covered:** 4, 5, 10
 

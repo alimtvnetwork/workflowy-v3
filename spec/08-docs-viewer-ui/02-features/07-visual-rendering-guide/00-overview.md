@@ -1,7 +1,28 @@
 # Feature: Visual Rendering & Component Guide — Overview
 
+
 > **Version:** 3.2.0  
 > **Updated:** 2026-04-19
+
+## Keywords
+
+`docs-viewer-ui` · `features` · `visual-rendering-guide` · `feature` · `visual` · `rendering`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 
 
 <!-- AUTO-TOC:START -->

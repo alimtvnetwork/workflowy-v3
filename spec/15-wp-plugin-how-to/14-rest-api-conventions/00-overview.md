@@ -1,8 +1,29 @@
 # Phase 14 — REST API Conventions (Overview)
 
+
 > **Version:** 2.0.0  
 > **Updated:** 2026-04-19  
 > **Status:** Active  
+
+## Keywords
+
+`wp-plugin-how-to` · `rest-api-conventions` · `phase` · `rest`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Split from:** Original 859-line monolith per AUD-L-01
 
 

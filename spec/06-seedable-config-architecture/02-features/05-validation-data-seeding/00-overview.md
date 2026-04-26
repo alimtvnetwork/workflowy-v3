@@ -1,8 +1,29 @@
 # Validation Data Seeding Pattern
 
+
 > **Version:** 3.1.0
 > **Created:** 2026-03-09
 > **Status:** Active
+
+## Keywords
+
+`seedable-config-architecture` · `features` · `validation-data-seeding` · `validation` · `data` · `seeding`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Purpose:** Define pattern for loading validation arrays and lookup data from CW Config → Root DB
 
 
@@ -25,6 +46,7 @@
 <!-- AUTO-TOC:END -->
 
 ---
+
 
 ## Overview
 

@@ -1,4 +1,24 @@
 # Phase 5 — Helpers, Response Envelope, and Integration
+## Keywords
+
+`wp-plugin-how-to` · `helpers-responses-and-integration` · `phase` · `helpers`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
+
 
 > **Purpose:** Define helper class patterns, the standard API response format, and how all pieces integrate.
 > **Parent:** [../00-overview.md](../00-overview.md)

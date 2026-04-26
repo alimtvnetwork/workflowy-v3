@@ -1,9 +1,30 @@
 # PowerShell Script Reference
 
+
 > **Spec Version:** 2.5.0  
 > **Script Version:** run.ps1 2.1.0, upload-plugin-v2.ps1 2.1.0, upload-plugin-U-Q.ps1 1.1.0  
 > **Updated:** 2026-04-20  
 > **Status:** Active
+
+## Keywords
+
+`powershell-integration` · `script-reference` · `powershell` · `script` · `reference`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 
 
 <!-- AUTO-TOC:START -->
@@ -27,6 +48,7 @@
 Split per AUD-L-01 from a 564-line monolith into 7 focused topic files (each <200 lines).
 
 ---
+
 
 ## Topic Index
 

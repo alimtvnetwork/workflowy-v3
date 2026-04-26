@@ -1,6 +1,27 @@
 # Split DB Architecture — Features Index
 
+
 > **Updated:** 2026-04-16
+
+## Keywords
+
+`split-db-architecture` · `features` · `split` · `architecture`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 
 
 <!-- AUTO-TOC:START -->
@@ -20,6 +41,7 @@
 <!-- AUTO-TOC:END -->
 
 ---
+
 
 ## Feature Inventory
 

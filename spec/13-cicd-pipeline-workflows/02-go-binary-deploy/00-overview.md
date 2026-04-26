@@ -1,7 +1,28 @@
 # Go Binary Deploy — Overview
 
+
 > **Version:** 3.1.0  
 > **Updated:** 2026-04-16
+
+## Keywords
+
+`cicd-pipeline-workflows` · `go-binary-deploy` · `binary` · `deploy`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 
 
 <!-- AUTO-TOC:START -->
@@ -19,6 +40,7 @@
 <!-- AUTO-TOC:END -->
 
 ---
+
 
 ## Purpose
 

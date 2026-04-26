@@ -1,7 +1,28 @@
 # Common AI Mistakes — Overview
 
+
 > **Version:** 3.2.0
 > **Updated:** 2026-04-20
+
+## Keywords
+
+`coding-guidelines` · `ai-optimization` · `common-ai-mistakes` · `common` · `mistakes`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | ✅ |
+| Ambiguity assigned | ✅ |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+
+---
 > **Purpose:** Real examples of mistakes AI commonly makes when generating code for this project
 
 
@@ -25,6 +46,7 @@
 <!-- AUTO-TOC:END -->
 
 ---
+
 
 ## Mistake Categories
 
