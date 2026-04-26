@@ -1,7 +1,7 @@
 # Features
 
-> **Version:** 2.1.0
-> **Updated:** 2026-04-26 (UTC+8) — APP-FIX-07: Casing-Layers callout added (closes audit F-08)
+> **Version:** 2.2.0
+> **Updated:** 2026-04-26 (UTC+8) — APP-FIX-10: Boolean Conventions callout added (closes audit F-13). v2.1.0 added Casing Layers callout.
 > **Status:** ✅ Implementation-grade rollup (F-01 closed)
 
 ---
