@@ -1,12 +1,16 @@
 # Consolidated Code Review Guide (Overview)
 
 
-> **Version:** 3.2.0
-> **Updated:** 2026-04-19
+> **Version:** 3.3.0
+> **Updated:** 2026-04-26 (UTC+8) — added disambiguation vs `spec/12-consolidated-guidelines/` (closes F-AUD30-09).
+
+> ⚠️ **NOT the same as** [`spec/12-consolidated-guidelines/`](../../12-consolidated-guidelines/00-overview.md).
+> - **This folder** is the authoritative **PR-review checklist** for the coding-guidelines suite (function size, naming, type safety, OWASP, etc.). Reviewers (human or AI) score PRs against the `AT-CONSOLIDATEDREVIEWGUIDE-NN` IDs in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md).
+> - **The other** (`spec/12-consolidated-guidelines/`) is a folder-wide **redirect index** — every file there is a 56-line stub that points to its canonical source folder. **No rules live there.**
 
 ## Keywords
 
-`coding-guidelines` · `consolidated-review-guide` · `consolidated` · `code` · `review`
+`coding-guidelines` · `consolidated-review-guide` · `pr-review-checklist` · `code-review` · `disambiguation`
 
 ---
 
