@@ -63,6 +63,24 @@ User clicks "Make template" in the item context menu → a dialog opens to name 
 
 ---
 
+## Settings Keys (Seedable Config)
+
+> **Why this section:** The "Settings → Templates" surface (§User Story, AT-TEMPLATES-11) and template-apply preferences MUST be enum-backed per [`spec/06-seedable-config-architecture/`](../../06-seedable-config-architecture/00-overview.md) + [`spec/15-wp-plugin-how-to/15-settings-architecture/`](../../15-wp-plugin-how-to/15-settings-architecture/00-overview.md). Templates themselves are content (Root DB `Template` table) — these keys are the *user preferences* governing how the catalog and apply flow behave.
+
+| Setting | `OptionNameType` enum case | Default | Sanitizer | Group | Storage |
+|---------|---------------------------|---------|-----------|-------|---------|
+| Show Templates in sidebar | `OptionNameType::SIDEBAR_SHOW_TEMPLATES` → `'workflowy_sidebar_show_templates'` | `true` | `Sanitizer::bool()` | `wf_navigation` | Root DB (per-user) |
+| Default template picker view | `OptionNameType::TEMPLATE_PICKER_VIEW` → `'workflowy_template_picker_view'` | `'recent'` | `Sanitizer::oneOf(['recent','alphabetical','most-used'])` | `wf_templates` | Root DB (per-user) |
+| Confirm before applying template | `OptionNameType::TEMPLATE_CONFIRM_APPLY` → `'workflowy_template_confirm_apply'` | `true` | `Sanitizer::bool()` | `wf_safety` | Root DB (per-user) |
+| Max templates per workspace | `OptionNameType::TEMPLATE_MAX_PER_WORKSPACE` → `'workflowy_template_max_per_workspace'` | `50` | `Sanitizer::intRange(1, 500)` | `wf_limits` | App DB (per-workspace) |
+
+**Forbidden:**
+- ❌ Hard-coding the `50` cap in PHP — must read `OptionNameType::TEMPLATE_MAX_PER_WORKSPACE`.
+- ❌ Bare `get_option('workflowy_template_picker_view')` — go through the Settings facade.
+- ❌ Skipping the confirm-apply check when the setting is `true`.
+
+---
+
 ## Inputs
 
 | Field | Type | Source | Required | Notes |
