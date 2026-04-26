@@ -29,6 +29,7 @@ This file exists to satisfy the spec-hygiene coverage gate (`scripts/spec-hygien
 | 7 | [`08-audit-06-sse-transport-contract.md`](./08-audit-06-sse-transport-contract.md) | Inline acceptance criteria — ✅ **CLOSED 2026-04-26** (Round-3 AUDIT-06) |
 | 8 | [`09-app-folder-re-audit-2026-04-26.md`](./09-app-folder-re-audit-2026-04-26.md) | Re-audit verdict — ✅ **96/100 PASS** (baseline 63/100; +33) |
 | 9 | [`10-content-audit-endpoints-and-db-diagram.md`](./10-content-audit-endpoints-and-db-diagram.md) | Content audit on new folders — ✅ **95/100 PASS** (F-AUD30-01 SSE event vocabulary drift fixed in same pass) |
+| 10 | [`11-content-audit-at-app-coverage.md`](./11-content-audit-at-app-coverage.md) | AT-APP coverage audit — ✅ **98/100 PASS** (F-AUD30-07 event-vocabulary drift in `AT-APP-37` fixed; canonical 9-name set restored: `item-updated`, `item-deleted`, `item-restored`, `mirror-broken`, `mirror-healed`, `share-granted`, `share-revoked`, `presence`, `cursor-overflow`) |
 
 ---
 
