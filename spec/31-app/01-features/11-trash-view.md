@@ -1,7 +1,7 @@
 # Trash View Specification
 
-> **Version:** 2.2.0
-> **Updated:** 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
+> **Version:** 2.3.0
+> **Updated:** 2026-04-26 — APP-FIX-05: Settings Keys (Seedable Config) section added (closes audit F-04 for this file). v2.2.0 added Realtime Transport callout.
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -46,6 +46,23 @@ As a user who occasionally deletes the wrong item, I want a 30-day grace period 
 | Peer deletion / restore / 30-day reaper updates | **WP-native SSE** keyed by `(UserId, WorkspaceId)` | **5 s poll** of `/api/sync?since={ServerTs}` when SSE drops |
 
 > Per [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) §14.1 and `00-overview.md` L9. WebSockets / Pusher / Supabase Realtime are **forbidden**. The 30-day reaper runs server-side and emits the same SSE events as a manual permanent-delete.
+
+---
+
+## Settings Keys (Seedable Config)
+
+> **Why this section:** Trash View is reachable from the sidebar entry and exposes the 30-day retention window — both surfaces (sidebar visibility, retention days) MUST be enum-backed per [`spec/06-seedable-config-architecture/`](../../06-seedable-config-architecture/00-overview.md) + [`spec/15-wp-plugin-how-to/15-settings-architecture/`](../../15-wp-plugin-how-to/15-settings-architecture/00-overview.md).
+
+| Setting | `OptionNameType` enum case | Default | Sanitizer | Group | Storage |
+|---------|---------------------------|---------|-----------|-------|---------|
+| Show Trash in sidebar | `OptionNameType::SIDEBAR_SHOW_TRASH` → `'workflowy_sidebar_show_trash'` | `true` | `Sanitizer::bool()` | `wf_navigation` | Root DB (per-user) |
+| Trash retention days | `OptionNameType::TRASH_RETENTION_DAYS` → `'workflowy_trash_retention_days'` | `30` | `Sanitizer::intRange(7, 365)` | `wf_retention` | App DB (per-workspace; reaper reads this) |
+| Confirm before permanent delete | `OptionNameType::TRASH_CONFIRM_PERMANENT_DELETE` → `'workflowy_trash_confirm_permanent'` | `true` | `Sanitizer::bool()` | `wf_safety` | Root DB (per-user) |
+
+**Forbidden:**
+- ❌ Hard-coding `30` in the reaper — must read `OptionNameType::TRASH_RETENTION_DAYS`.
+- ❌ Skipping the confirm-permanent-delete check when the setting is `true`.
+- ❌ Bare `get_option('workflowy_trash_retention_days')` — go through the Settings facade.
 
 ---
 

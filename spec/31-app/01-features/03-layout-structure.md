@@ -1,7 +1,7 @@
 # Layout Structure
 
-> **Version:** 2.1.0
-> **Updated:** 2026-04-26 — APP-FIX-06: enum sources linked (closes audit F-02 for this file)
+> **Version:** 2.2.0
+> **Updated:** 2026-04-26 — APP-FIX-05: Settings Keys (Seedable Config) section added (closes audit F-04 for this file). v2.1.0 added Enum Sources callout.
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -154,6 +154,25 @@ This indicator is hidden for Pro/unlimited users.
 | `Breakpoint` (`Mobile` / `Tablet` / `Desktop`) | [`spec/20-enums-index.md`](../../20-enums-index.md) §3 | TS Strategy B |
 
 > **Forbidden:** TS `enum` keyword and bare literal unions. Always import the canonical `as const` object.
+
+---
+
+## Settings Keys (Seedable Config)
+
+> **Why this section:** §2.4 Settings Menu and the §3 Settings gear surface five user preferences (theme, font size, default view, show completed, auto-collapse depth). Per [`spec/06-seedable-config-architecture/`](../../06-seedable-config-architecture/00-overview.md) + [`spec/15-wp-plugin-how-to/15-settings-architecture/`](../../15-wp-plugin-how-to/15-settings-architecture/00-overview.md), every settings touchpoint MUST declare its enum-backed key, default, sanitizer, and group. No bare strings.
+
+| Setting | `OptionNameType` enum case | Default | Sanitizer | Group | Storage |
+|---------|---------------------------|---------|-----------|-------|---------|
+| Theme | `OptionNameType::THEME` → `'workflowy_theme'` | `'system'` | `Sanitizer::oneOf(['light','dark','system'])` | `wf_appearance` | Root DB (per-user) |
+| Font size | `OptionNameType::FONT_SIZE` → `'workflowy_font_size'` | `'medium'` | `Sanitizer::oneOf(['small','medium','large'])` | `wf_appearance` | Root DB (per-user) |
+| Default view | `OptionNameType::DEFAULT_VIEW` → `'workflowy_default_view'` | `'home'` | `Sanitizer::oneOf(['home','today','starred'])` | `wf_navigation` | Root DB (per-user) |
+| Show completed items | `OptionNameType::SHOW_COMPLETED` → `'workflowy_show_completed'` | `true` | `Sanitizer::bool()` | `wf_display` | App DB (per-workspace) |
+| Auto-collapse depth | `OptionNameType::AUTO_COLLAPSE_DEPTH` → `'workflowy_auto_collapse_depth'` | `0` (disabled) | `Sanitizer::intRange(0, 10)` | `wf_display` | App DB (per-workspace) |
+
+**Forbidden:**
+- ❌ Hard-coded string keys (`get_option('workflowy_theme')`) — anti-pattern #1 in [`13-anti-patterns.md`](../../15-wp-plugin-how-to/15-settings-architecture/13-anti-patterns.md).
+- ❌ Reading these keys without going through the Settings facade.
+- ❌ Mutating without the registered sanitizer.
 
 ---
 
