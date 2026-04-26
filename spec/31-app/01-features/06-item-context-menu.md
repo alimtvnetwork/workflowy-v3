@@ -1,7 +1,7 @@
 # Item Context Menu (⋮)
 
-> **Version:** 2.1.0
-> **Updated:** 2026-04-26 — APP-FIX-02: Storage section added (closes audit F-03 for this file)
+> **Version:** 2.2.0
+> **Updated:** 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -86,6 +86,16 @@ Displayed in very small, muted text.
 | **Root DB** | (read) `WorkspaceMember` for capability checks | See [`spec/05-split-db-architecture/00-overview.md`](../../05-split-db-architecture/00-overview.md). |
 | **App DB** (per workspace) | `Items` (move/duplicate/delete writes), `Mirrors` (mirror create), `ItemTags` (tag actions), `Comments` (comment action) | All mutations from this menu land here. |
 | **Cross-DB joins** | **Forbidden.** | Capability check resolves in Root DB → action executes in App DB. |
+
+---
+
+## Realtime Transport
+
+| Channel | Mechanism | Fallback |
+|---------|-----------|----------|
+| Per-action mutation broadcasts (`item:moved`, `item:deleted`, `item:tagged`, `item:archived`, `item:mirrored`, `item:shared`, `item:commented`) to peers | **WP-native SSE** keyed by `(UserId, WorkspaceId)` | **5 s poll** of `/api/sync?since={ServerTs}` when SSE drops |
+
+> Per [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) §14.1 and `00-overview.md` L9. WebSockets / Pusher / Supabase Realtime are **forbidden**. Each menu action produces exactly one SSE event; sub-effects (e.g. mirror-cascade) reuse the callouts in `09-mirrors.md`, `12-multi-select.md`, `07-board-view.md`.
 
 ---
 
