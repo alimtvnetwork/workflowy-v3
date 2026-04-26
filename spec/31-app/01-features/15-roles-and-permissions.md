@@ -1,7 +1,8 @@
 # Roles & Permissions
 
-> **Version:** 1.0.0
+> **Version:** 1.1.0
 > **Created:** 2026-04-25 (UTC+8)
+> **Updated:** 2026-04-26 — APP-FIX-06: enum sources linked (closes audit F-02 for this file)
 > **Status:** Active — runtime-agnostic contract
 > **Parent:** [`00-overview.md`](./00-overview.md)
 > **Closes audit finding:** F-04
