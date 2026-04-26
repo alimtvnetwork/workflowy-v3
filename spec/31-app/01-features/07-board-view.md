@@ -9,7 +9,7 @@
 
 ## Overview
 
-Board view is a Kanban-style **presentation mode** of the current item's subtree. Direct children render as columns, grandchildren as cards. The underlying tree model is unchanged — toggling between List and Board never mutates structure, only rendering. Drag/drop on the board mutates the same `parent_id` + `sort_order` fields list view uses.
+Board view is a Kanban-style **presentation mode** of the current item's subtree. Direct children render as columns, grandchildren as cards. The underlying tree model is unchanged — toggling between List and Board never mutates structure, only rendering. Drag/drop on the board mutates the same `ParentId` + `SortOrder` fields list view uses.
 
 ## User Story
 
@@ -122,7 +122,7 @@ No special admin logic required — the tree model handles everything naturally.
 | Field | Type | Source | Required | Notes |
 |-------|------|--------|----------|-------|
 | `boardRootId` | `string` | Router (current zoomed item) | Yes | Drives query for columns |
-| `columns` | `Item[]` | SQLite — direct children of `boardRootId` | Yes | Order = `sort_order` |
+| `columns` | `Item[]` | SQLite — direct children of `boardRootId` | Yes | Order = `SortOrder` |
 | `cardsByColumn` | `Record<string, Item[]>` | SQLite — children of each column item | Yes | Lazy-loaded per column on first render |
 | `viewMode` | `ViewMode` enum | Persisted on `boardRootId` | Yes | Must equal `Board` to render this view |
 | `dragState` | `DragState \| null` | DnD library | No | Tracks card or column drag |
@@ -133,13 +133,13 @@ No special admin logic required — the tree model handles everything naturally.
 
 | Output | Persisted? | Channel | Notes |
 |--------|-----------|---------|-------|
-| Column reorder | ✅ SQLite | `items.sort_order` of column row | Same field list view uses |
-| Column rename | ✅ SQLite | `items.content` of column row | Optimistic update |
+| Column reorder | ✅ SQLite | `Items.SortOrder` of column row | Same field list view uses |
+| Column rename | ✅ SQLite | `Items.Content` of column row | Optimistic update |
 | New column | ✅ SQLite | `items` insert under `boardRootId` | Inherits Board parent |
-| Column delete | ✅ SQLite | `items.deleted_at` (soft) | 30-day retention; cards cascade |
-| Card move within column | ✅ SQLite | `items.sort_order` of card row | Fractional sort |
-| Card move across columns | ✅ SQLite | `items.parent_id` + `items.sort_order` | One transaction |
-| New card | ✅ SQLite | `items` insert under column row | Default `item_type = 'Bullet'` |
+| Column delete | ✅ SQLite | `Items.DeletedAt` (soft) | 30-day retention; cards cascade |
+| Card move within column | ✅ SQLite | `Items.SortOrder` of card row | Fractional sort |
+| Card move across columns | ✅ SQLite | `Items.ParentId` + `Items.SortOrder` | One transaction |
+| New card | ✅ SQLite | `items` insert under column row | Default `ItemType = 'Bullet'` |
 | Card click → zoom | ❌ | Router push | Same as bullet-dot click in list view |
 | Column collapse toggle | ✅ `localStorage` | `ui.boardCollapsed[id]` | Per-user persisted |
 | `board:dropped` event | ❌ | Event bus | Drives telemetry + sync broadcast |
@@ -151,9 +151,9 @@ No special admin logic required — the tree model handles everything naturally.
 3. Column has 0 cards — render the column with just the header and the "+ Add card" button (per row 14).
 4. Card is a mirror — render the mirror badge on the card; dragging the mirror moves the **mirror** (not the source); zoom click navigates to the source's deep link.
 5. Drag card onto its own descendant — block the drop with the same toast list view uses ("Cannot move item into its own children").
-6. Column item already has the `item_type = 'Board'` (a board-of-boards) — render its cards but flag with a small icon indicating nested board; clicking the column header zooms into the nested board.
+6. Column item already has the `ItemType = 'Board'` (a board-of-boards) — render its cards but flag with a small icon indicating nested board; clicking the column header zooms into the nested board.
 7. User toggles List ↔ Board on the same item rapidly — debounce the persisted `viewMode` write to 200 ms; UI flips immediately.
-8. Two tabs reorder different columns concurrently — both writes apply via fractional `sort_order`; LWW per M-4 if they collide on the same column.
+8. Two tabs reorder different columns concurrently — both writes apply via fractional `SortOrder`; LWW per M-4 if they collide on the same column.
 9. Column is collapsed and a new card arrives via real-time sync — the column header card-count increments; the column stays collapsed until user expands it.
 10. Card content exceeds 2 lines — truncate with ellipsis; full content visible on zoom or hover-tooltip after 500 ms.
 11. Free-tier user adds a 251st item via "+ Add card" — block per `03-edge-cases/01-edge-cases.md` row 4 (item-limit toast).
@@ -163,13 +163,13 @@ No special admin logic required — the tree model handles everything naturally.
 
 | ID | Given | When | Then | testid |
 |----|-------|------|------|--------|
-| AT-BOARD-01 | Item has 3 children, each with 2 grandchildren | User toggles to Board view | 3 columns render with 2 cards each in `sort_order` | `board-container` |
+| AT-BOARD-01 | Item has 3 children, each with 2 grandchildren | User toggles to Board view | 3 columns render with 2 cards each in `SortOrder` | `board-container` |
 | AT-BOARD-02 | Item has 0 children | User toggles to Board view | Empty-state message + "+ Add column" button render; no columns | `board-empty` |
-| AT-BOARD-03 | Board has 3 columns | User drags column 3 to position 1 | Columns re-render in new order; `items.sort_order` of all 3 columns updates | `board-column-header` |
-| AT-BOARD-04 | Column header reads "Todo" | User clicks the header text | Header becomes inline-editable; on commit `items.content = "WIP"` persists | `board-column-name` |
+| AT-BOARD-03 | Board has 3 columns | User drags column 3 to position 1 | Columns re-render in new order; `Items.SortOrder` of all 3 columns updates | `board-column-header` |
+| AT-BOARD-04 | Column header reads "Todo" | User clicks the header text | Header becomes inline-editable; on commit `Items.Content = "WIP"` persists | `board-column-name` |
 | AT-BOARD-05 | Board has 3 columns | User clicks "+ Add column" | New column appears at far right; new `items` row exists under `boardRootId` | `board-add-column` |
-| AT-BOARD-06 | Card C is in column A at position 1 | User drags it to column A position 3 | Card re-renders at position 3; `sort_order` updates; `parent_id` unchanged | `board-card` |
-| AT-BOARD-07 | Card C is in column A | User drags it onto column B | Card appears in column B; `parent_id = B.id`; `sort_order` reflects drop position | `board-card` |
+| AT-BOARD-06 | Card C is in column A at position 1 | User drags it to column A position 3 | Card re-renders at position 3; `SortOrder` updates; `ParentId` unchanged | `board-card` |
+| AT-BOARD-07 | Card C is in column A | User drags it onto column B | Card appears in column B; `ParentId = B.id`; `SortOrder` reflects drop position | `board-card` |
 | AT-BOARD-08 | Card row | User clicks the card | Router navigates to `/items/{cardId}`; zoom occurs (same as bullet-dot click) | `board-card` |
 | AT-BOARD-09 | Card content is 5 lines long | Card renders | Visible content is 2 lines with ellipsis; tooltip with full content appears after 500 ms hover | `board-card-content` |
 | AT-BOARD-10 | Card is a mirror | Card renders | Mirror badge visible on the card; clicking zooms to the source item | `mirror-badge` |

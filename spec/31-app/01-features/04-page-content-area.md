@@ -128,14 +128,14 @@ Each swatch: small circle. Currently selected color has a ring border. Hover: sl
 
 | Output | Persisted? | Channel | Notes |
 |--------|-----------|---------|-------|
-| Edited content | ✅ SQLite | `items.content` | Debounced autosave (per `mem://features/editor-core`) |
-| Item type change | ✅ SQLite | `items.item_type` | Toolbar buttons (H1/H2/H3/¶) |
-| Inline formatting | ✅ SQLite | `items.content` rich-text JSON | Bold/italic/underline/strike/code |
-| Color span | ✅ SQLite | `items.content` rich-text JSON | One of 8 colors |
-| Mention link | ✅ SQLite | `items.content` rich-text JSON + `mentions` table | Internal item link |
-| Reorder / move | ✅ SQLite | `items.parent_id` + `items.sort_order` | Fractional sort |
+| Edited content | ✅ SQLite | `Items.Content` | Debounced autosave (per `mem://features/editor-core`) |
+| Item type change | ✅ SQLite | `Items.ItemType` | Toolbar buttons (H1/H2/H3/¶) |
+| Inline formatting | ✅ SQLite | `Items.Content` rich-text JSON | Bold/italic/underline/strike/code |
+| Color span | ✅ SQLite | `Items.Content` rich-text JSON | One of 8 colors |
+| Mention link | ✅ SQLite | `Items.Content` rich-text JSON + `Mentions` table | Internal item link |
+| Reorder / move | ✅ SQLite | `Items.ParentId` + `Items.SortOrder` | Fractional sort |
 | Toggle expanded | ✅ `localStorage` | `ui.expandedIds` | Per-user persisted |
-| Toggle complete | ✅ SQLite | `items.completed_at` | To-do checkbox |
+| Toggle complete | ✅ SQLite | `Items.CompletedAt` | To-do checkbox |
 | `item:zoom` event | ❌ | Event bus | Bullet-dot click |
 
 ## Edge Cases
@@ -146,8 +146,8 @@ Each swatch: small circle. Currently selected color has a ring border. Hover: sl
 4. User collapses a parent that contains the currently zoomed item in another tab — collapse persists locally; zoom in other tab unaffected (LWW per M-4).
 5. Selection spans two items — toolbar shows but type-conversion buttons (H1/H2/H3/¶) are disabled; only inline formatting buttons remain enabled.
 6. User applies bold then immediately undoes (⌘Z) — both the format and the selection are restored to pre-format state.
-7. To-do item is checked while child to-dos are unchecked — only the parent's `completed_at` is set; children are unaffected.
-8. Mirror badge clicked — opens the mirror peers popover (see `09-mirrors.md`); does not zoom.
+7. To-do item is checked while child to-dos are unchecked — only the parent's `CompletedAt` is set; children are unaffected.
+8. Mirror badge clicked — opens the mirror peers popover (see `09-Mirrors.md`); does not zoom.
 9. Comment button clicked on a mirror — comment is attached to the source item; all mirrors see the same dot indicator.
 10. User pastes 100+ lines into the content area — auto-split into individual sibling items per `03-edge-cases/01-edge-cases.md` row 7.
 11. Pasted URL — auto-detect and render as clickable link inside the content (no item conversion).
@@ -165,9 +165,9 @@ Each swatch: small circle. Currently selected color has a ring border. Hover: sl
 | AT-PAGE-06 | User hovers a row | After 0 ms | Comment button (💬) and context-menu trigger (⋮) fade in on the right | `hover-actions` |
 | AT-PAGE-07 | User selects text inside an item | Selection ≥ 1 char | Floating toolbar appears centered above the selection with caret arrow | `format-toolbar` |
 | AT-PAGE-08 | Selection is bold | Toolbar renders | Bold button shows highlighted/active state | `format-bold` |
-| AT-PAGE-09 | User clicks `H1` in toolbar | Conversion commits | Item row renders at 24px bold; `items.item_type = 'H1'` | `format-h1` |
+| AT-PAGE-09 | User clicks `H1` in toolbar | Conversion commits | Item row renders at 24px bold; `Items.ItemType = 'H1'` | `format-h1` |
 | AT-PAGE-10 | User clicks `A ▾` in toolbar | Picker opens | 8 swatches render in a 4-col grid; selected color shows ring border | `color-picker` |
-| AT-PAGE-11 | A to-do item is unchecked | User clicks the checkbox | Checkbox flips to ☑; row renders strikethrough + muted; `completed_at` is set | `todo-checkbox` |
+| AT-PAGE-11 | A to-do item is unchecked | User clicks the checkbox | Checkbox flips to ☑; row renders strikethrough + muted; `CompletedAt` is set | `todo-checkbox` |
 | AT-PAGE-12 | An item has a note | User clicks the note indicator | Note editor expands below content with light bg + left border accent | `note-editor` |
 | AT-PAGE-13 | User pastes 100 newline-separated lines | Paste commits | 100 sibling items are created (per `04-edge-cases` row 7); progress toast shows "Creating 100 items…" | `bulk-paste-progress` |
 | AT-PAGE-14 | User pastes a URL into content | Paste commits | URL renders as clickable `<a>` with primary color underline; no item conversion | `inline-link` |

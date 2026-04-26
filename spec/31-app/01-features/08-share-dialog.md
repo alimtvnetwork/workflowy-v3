@@ -74,9 +74,9 @@ As an owner, I want to share an outline branch with specific people at the right
 
 | Output | Persisted? | Channel | Notes |
 |--------|-----------|---------|-------|
-| Invite created | ✅ SQLite | `shares` table | One row per `(item_id, user_id, permission)` |
+| Invite created | ✅ SQLite | `shares` table | One row per `(ItemId, UserId, permission)` |
 | Invite email sent | ✅ Email queue | Outgoing email | Subject: "{owner} shared {item title} with you" |
-| Permission change | ✅ SQLite | `shares.permission` UPDATE | Optimistic UI |
+| Permission change | ✅ SQLite | `Shares.permission` UPDATE | Optimistic UI |
 | Grantee removed | ✅ SQLite | `shares` DELETE | Cascade does NOT remove grantee's content |
 | Public link enabled | ✅ SQLite | `public_links` row inserted | URL: `/p/{slug}` (random 12-char slug) |
 | Public link disabled | ✅ SQLite | `public_links.revoked_at` set | URL returns 404 thereafter |

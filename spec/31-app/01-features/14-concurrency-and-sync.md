@@ -62,7 +62,7 @@ Clients receiving a conflict response MUST:
 
 ## 14.4 `Mirrors.BrokenAt` — LWW Rule for Mirror Lifecycle
 
-> **Why this section:** [`01-information-model.md`](./01-information-model.md) Edge 7 says "mirrors of any descendant become broken" when an ancestor is trashed, and [`09-mirrors.md`](./09-mirrors.md) treats a mirror as broken when its `SourceId` is unreachable. Without an explicit LWW rule, a concurrent **restore-from-trash** + **mirror-create** race can flip `BrokenAt` and clear it within milliseconds, producing zombie mirrors. This section pins the deterministic resolution.
+> **Why this section:** [`01-information-model.md`](./01-information-model.md) Edge 7 says "mirrors of any descendant become broken" when an ancestor is trashed, and [`09-Mirrors.md`](./09-mirrors.md) treats a mirror as broken when its `SourceId` is unreachable. Without an explicit LWW rule, a concurrent **restore-from-trash** + **mirror-create** race can flip `BrokenAt` and clear it within milliseconds, producing zombie mirrors. This section pins the deterministic resolution.
 
 ### Field
 
@@ -103,7 +103,7 @@ On incoming write W setting Mirrors.BrokenAt = X (X may be NULL or a timestamp):
 - ❌ Letting a stale restore re-heal a mirror whose source has since been hard-deleted (rule 5 rejects it).
 - ❌ Treating `'system'` writes as authoritative over human writes at exact ties — they are not (rule 4b).
 
-> **Cross-reference:** [`09-mirrors.md`](./09-mirrors.md) §Storage shows the `Mirrors` table layout. AT coverage lives in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) `AT-CONCURRENCY-14..16`.
+> **Cross-reference:** [`09-Mirrors.md`](./09-mirrors.md) §Storage shows the `Mirrors` table layout. AT coverage lives in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) `AT-CONCURRENCY-14..16`.
 
 ---
 
