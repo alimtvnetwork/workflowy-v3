@@ -248,7 +248,7 @@ go test -bench=. ./internal/rag/...
 |--------|--------|---------|
 | Line Coverage | ≥90% | 100% |
 | Branch Coverage | ≥85% | 100% |
-| Mutation Score | ≥80% | TBD |
+| Mutation Score | ≥80% | Pending — measured after first `stryker` run in CI (tracked: P1.6 Quality Gates) |
 
 ---
 
