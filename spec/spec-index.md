@@ -555,7 +555,7 @@
 | [`03-error-manage/03-error-code-registry/01-registry/04-detailed-error-codes.md`](./03-error-manage/03-error-code-registry/01-registry/04-detailed-error-codes.md) | 4. Detailed Error Code Tables | — | — |
 | [`03-error-manage/03-error-code-registry/01-registry/05-gen-sm-lm-errors.md`](./03-error-manage/03-error-code-registry/01-registry/05-gen-sm-lm-errors.md) | 5. GEN, SM, LM, CLI, PS Error Codes | — | — |
 | [`03-error-manage/03-error-code-registry/01-registry/06-format-and-usage.md`](./03-error-manage/03-error-code-registry/01-registry/06-format-and-usage.md) | 6. Format Reference & Usage | — | — |
-| [`03-error-manage/03-error-code-registry/01-registry/97-acceptance-criteria.md`](./03-error-manage/03-error-code-registry/01-registry/97-acceptance-criteria.md) | Registry — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`03-error-manage/03-error-code-registry/01-registry/97-acceptance-criteria.md`](./03-error-manage/03-error-code-registry/01-registry/97-acceptance-criteria.md) | Error-Code Registry (sub-folder) — Acceptance Criteria (dispatch) | 1.0.0 | Dispatch |
 | [`03-error-manage/03-error-code-registry/02-integration-guide.md`](./03-error-manage/03-error-code-registry/02-integration-guide.md) | Error Code Registry - Integration Guide | 1.0.0 | — |
 | [`03-error-manage/03-error-code-registry/03-collision-resolution-summary.md`](./03-error-manage/03-error-code-registry/03-collision-resolution-summary.md) | Collision Resolution Summary Report | 3.1.0 | — |
 | [`03-error-manage/03-error-code-registry/04-error-code-utilization-report.md`](./03-error-manage/03-error-code-registry/04-error-code-utilization-report.md) | Error Code Range Utilization Report | 3.1.0 | — |
