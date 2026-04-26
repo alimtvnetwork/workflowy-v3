@@ -1277,6 +1277,7 @@
 | [`31-app/05-conventions/08-api-rate-limiting.md`](./31-app/05-conventions/08-api-rate-limiting.md) | API Rate-Limiting Policy — SSOT | 1.0.0 | — |
 | [`31-app/05-conventions/09-audit-log-policy.md`](./31-app/05-conventions/09-audit-log-policy.md) | Audit-Log Policy — SSOT | 1.0.0 | Active |
 | [`31-app/05-conventions/10-role-escalation-policy.md`](./31-app/05-conventions/10-role-escalation-policy.md) | Role-Escalation Policy — SSOT | 1.0.0 | Active |
+| [`31-app/05-conventions/11-session-token-lifecycle.md`](./31-app/05-conventions/11-session-token-lifecycle.md) | Session & Token Lifecycle — SSOT | 1.0.0 | Active |
 | [`31-app/05-conventions/97-acceptance-criteria.md`](./31-app/05-conventions/97-acceptance-criteria.md) | Conventions — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`31-app/05-conventions/99-consistency-report.md`](./31-app/05-conventions/99-consistency-report.md) | Consistency Report — 05-conventions | 1.0.1 | — |
 | [`31-app/06-endpoints/00-overview.md`](./31-app/06-endpoints/00-overview.md) | Endpoints — Master Index | 1.0.0 | — |

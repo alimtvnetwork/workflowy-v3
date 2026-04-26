@@ -23,6 +23,7 @@
 | 8 | [`08-api-rate-limiting.md`](./08-api-rate-limiting.md) | API Rate-Limiting Policy — SSOT | 200 |
 | 9 | [`09-audit-log-policy.md`](./09-audit-log-policy.md) | Audit-Log Policy — SSOT | 220 |
 | 10 | [`10-role-escalation-policy.md`](./10-role-escalation-policy.md) | Role-Escalation Policy — SSOT | 230 |
+| 11 | [`11-session-token-lifecycle.md`](./11-session-token-lifecycle.md) | Session & Token Lifecycle — SSOT | 240 |
 
 <!-- AUTO-TOC:END -->
 
@@ -69,6 +70,7 @@ Conventions specification module. See files below.
 | 08 | [08-api-rate-limiting.md](08-api-rate-limiting.md) | API rate-limiting policy: 3 buckets (burst/sustained/hourly), 429 envelope, client behaviour |
 | 09 | [09-audit-log-policy.md](09-audit-log-policy.md) | Audit-log policy: 22-action taxonomy, 365/90-day retention, hash-chain integrity, G-23 gate |
 | 10 | [10-role-escalation-policy.md](10-role-escalation-policy.md) | Role-escalation policy: 4 grant classes, dual-control, expiry timers, revocation deadlines, G-24 gate |
+| 11 | [11-session-token-lifecycle.md](11-session-token-lifecycle.md) | Session & token lifecycle: 5 token kinds, mandatory rotation + reuse detection, idle/absolute timeouts, TRL, SSE-ticket flow, G-25 gate |
 
 ---
 
@@ -94,6 +96,7 @@ Conventions specification module. See files below.
 - [`08-api-rate-limiting.md`](./08-api-rate-limiting.md) — API rate-limiting policy
 - [`09-audit-log-policy.md`](./09-audit-log-policy.md) — Audit-log policy
 - [`10-role-escalation-policy.md`](./10-role-escalation-policy.md) — Role-escalation policy
+- [`11-session-token-lifecycle.md`](./11-session-token-lifecycle.md) — Session & token lifecycle
 
 **See also:**
 
