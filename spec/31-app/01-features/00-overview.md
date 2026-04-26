@@ -58,7 +58,7 @@ Read this before picking a feature to implement. Arrows = "depends on, must exis
 | `06-item-context-menu.md` | Per-item ⋮ menu | ✅ | Move/delete/share entry |
 | `11-trash-view.md` | Soft delete + 30d retention | ✅ | Data safety |
 | `12-multi-select.md` | Bulk ops | ✅ | Productivity |
-| `15-roles-and-permissions.md` | Auth + RLS via `has_role()` | ✅ | Security |
+| `15-roles-and-permissions.md` | Auth + RLS via `Auth::hasRole()` | ✅ | Security |
 | `07-board-view.md` | Kanban-style alt view | ⚠️ P2 | Adds rendering mode |
 | `08-share-dialog.md` | Public + invited shares | ⚠️ P2 | Needs roles first |
 | `09-Mirrors.md` | Cross-tree linked items | ⚠️ P2 | Complex sync semantics |
