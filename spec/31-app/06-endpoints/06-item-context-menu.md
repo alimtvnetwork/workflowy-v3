@@ -26,7 +26,7 @@
   - `Position` (`above` | `below` | `end`, default `below`)
 - **Success (201)** `Results`: `{ NewRootId, CopiedCount }`.
 - **Errors**: `ERR_NOT_FOUND`, `ERR_FORBIDDEN`, `ERR_LIMIT_EXCEEDED` (subtree exceeds duplication cap, default 1000 nodes).
-- **Side effects**: inserts a fresh subtree with **new IDs**. Mirrors are duplicated as new mirrors (still pointing at original canonical, per L6). Emits one `item-created` SSE per inserted node.
+- **Side effects**: inserts a fresh subtree with **new IDs**. Mirrors are duplicated as new mirrors (still pointing at original canonical, per L6). Emits one `item-updated` (new ID) SSE per inserted node.
 - **AC refs**: `AT-APP-10`.
 
 ---

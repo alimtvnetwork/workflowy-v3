@@ -56,7 +56,7 @@
   - `Tags` (string[], optional)
 - **Success (201)** `Results`: the created `Item`.
 - **Errors**: `ERR_FORBIDDEN`, `ERR_INVALID_TYPE` (bad `ItemType`), `ERR_PARENT_FULL` (250-cap on view).
-- **Side effects**: inserts row in `Items`; emits SSE `item-created` on `item:{ParentId}`.
+- **Side effects**: inserts row in `Items`; emits SSE `item-updated` (new ID) on `item:{ParentId}`.
 - **AC refs**: `AT-APP-03`.
 
 ---

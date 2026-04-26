@@ -27,7 +27,7 @@
   - `Last-Event-Id` (header, optional) — resume cursor; server replays buffered events ≥ cursor.
 - **Response**: `Content-Type: text/event-stream`; long-lived; server emits `event:` + `data:` + `id:` triples.
 - **Event vocabulary** — closed set of 9 canonical names per §14.5.2 (do not invent new names):
-  - **Item lifecycle:** `item-created`, `item-updated`, `item-deleted`, `item-restored`
+  - **Item lifecycle:** `item-updated` (new ID), `item-updated`, `item-deleted`, `item-restored`
   - **Mirrors:** `mirror-broken` (mirror parent updates flow through `item-updated`)
   - **Sharing:** `share-granted`, `share-revoked`
   - **Backpressure:** `cursor-overflow` (server cannot replay; client switches to poll)

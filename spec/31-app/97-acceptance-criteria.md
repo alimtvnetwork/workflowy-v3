@@ -114,7 +114,7 @@ Testable acceptance criteria for the App domain. Each criterion is independently
 | ID | Criterion | Source |
 |----|-----------|--------|
 | `AT-APP-36` | Realtime updates use **Server-Sent Events** at `GET /wp-json/workflowy/v1/sync/stream?workspaceId={WorkspaceId}` with `X-WP-Nonce` auth and `Content-Type: text/event-stream`. WebSockets, Pusher, Ably, and long-polling chat protocols are forbidden. | `01-features/14-concurrency-and-sync.md` §14.5.1 + §14.5.7 |
-| `AT-APP-37` | The event vocabulary is a **closed set of 9 names** — `item-created`, `item-updated`, `item-deleted`, `item-restored`, `mirror-created`, `mirror-broken`, `share-granted`, `share-revoked`, `cursor-overflow` — every event MUST carry a JSON `data:` payload conforming to the schema in §14.5.2. | `01-features/14-concurrency-and-sync.md` §14.5.2 |
+| `AT-APP-37` | The event vocabulary is a **closed set of 9 names** — `item-updated` (new ID), `item-updated`, `item-deleted`, `item-restored`, `mirror-healed`, `mirror-broken`, `share-granted`, `share-revoked`, `cursor-overflow` — every event MUST carry a JSON `data:` payload conforming to the schema in §14.5.2. | `01-features/14-concurrency-and-sync.md` §14.5.2 |
 | `AT-APP-38` | Each SSE message MUST emit `id: {ServerTs}` so clients can resume via the `Last-Event-Id` request header on reconnect. | `01-features/14-concurrency-and-sync.md` §14.5.3 |
 | `AT-APP-39` | When SSE is unavailable (corp proxies, offline → online), clients fall back to `GET /wp-json/workflowy/v1/sync/poll?workspaceId={WorkspaceId}&since={LastServerTs}` returning `{ Events, Cursor, HasMore }`. Poll cadence MUST NOT exceed 1 request / 5 s per workspace. | `01-features/14-concurrency-and-sync.md` §14.5.4 |
 | `AT-APP-40` | On reconnect the client replays missed events in `ServerTs` order, deduplicates against its local `LastServerTs`, and only then resumes live SSE — no event may be applied twice. | `01-features/14-concurrency-and-sync.md` §14.5.5 |
@@ -126,7 +126,7 @@ Testable acceptance criteria for the App domain. Each criterion is independently
 | ID | Criterion | Source |
 |----|-----------|--------|
 | `AT-APP-43` | Applying a template requires `Edit` or `Admin` on the target parent; `View`-only callers receive **HTTP 403** and no `Items` rows are inserted. | `02-workflows/02-template-application-flow.md` (was `AT-WF-TEMPLATE-01`) |
-| `AT-APP-44` | A successful apply makes the new subtree visible to the local client immediately and propagates an SSE `item-created` event to peers within **1 s** under healthy SSE. | `02-workflows/02-template-application-flow.md` (was `AT-WF-TEMPLATE-02`) |
+| `AT-APP-44` | A successful apply makes the new subtree visible to the local client immediately and propagates an SSE `item-updated` (new ID) event to peers within **1 s** under healthy SSE. | `02-workflows/02-template-application-flow.md` (was `AT-WF-TEMPLATE-02`) |
 | `AT-APP-45` | Replaying the apply with the same `X-WorkFlowy-Idempotency-Key` within **24 h** returns **HTTP 200** with the original root `ItemId` and inserts no duplicate rows. | `02-workflows/02-template-application-flow.md` (was `AT-WF-TEMPLATE-03`) |
 | `AT-APP-46` | If the App-DB INSERT batch fails partway, the entire transaction ROLLBACKs, the client receives **HTTP 500**, and **no SSE event is emitted**. | `02-workflows/02-template-application-flow.md` (was `AT-WF-TEMPLATE-04`) |
 
@@ -148,7 +148,7 @@ Testable acceptance criteria for the App domain. Each criterion is independently
 | `AT-APP-53` | Restoring a healthy ancestor first and then a descendant succeeds for both, emitting an SSE `item-restored` event for each. | `02-workflows/04-trash-restore-flow.md` (was `AT-WF-RESTORE-02`) |
 | `AT-APP-54` | Restoring an item that has already been **hard-deleted** (purged after the 30-day window) returns **HTTP 410** and the UI removes the row from the Trash list. | `02-workflows/04-trash-restore-flow.md` (was `AT-WF-RESTORE-03`) + AT-APP-19 |
 | `AT-APP-55` | A restore racing with a concurrent re-delete carrying a newer `ServerTs` returns **HTTP 409**; the item stays trashed and the field-level LWW rule (AT-APP-33) is respected. | `02-workflows/04-trash-restore-flow.md` (was `AT-WF-RESTORE-04`) |
-| `AT-APP-56` | Restoring an item heals its broken mirrors by clearing `Mirrors.BrokenAt` via LWW (subject to AT-APP-34 stickiness) and emits an SSE `mirror-created` (heal variant) event. | `02-workflows/04-trash-restore-flow.md` (was `AT-WF-RESTORE-05`) |
+| `AT-APP-56` | Restoring an item heals its broken mirrors by clearing `Mirrors.BrokenAt` via LWW (subject to AT-APP-34 stickiness) and emits an SSE `mirror-healed` event. | `02-workflows/04-trash-restore-flow.md` (was `AT-WF-RESTORE-05`) |
 | `AT-APP-57` | A stale restore racing with the reaper's hard-delete loses LWW: the reaper's newer `ServerTs` wins and the broken-mirror state is preserved. | `02-workflows/04-trash-restore-flow.md` (was `AT-WF-RESTORE-06`) + AT-APP-34 |
 
 
