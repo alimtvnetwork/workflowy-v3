@@ -1,7 +1,7 @@
 # Template Application Flow
 
-> **Version:** 2.1.0
-> **Updated:** 2026-04-26 — APP-FIX-02: Storage section added (closes audit F-03 for this file)
+> **Version:** 2.2.0
+> **Updated:** 2026-04-26 — APP-FIX-05: Settings Keys (Seedable Config) section added (closes audit F-04 for this file). v2.1.0 added Storage section.
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
