@@ -1,7 +1,7 @@
 # Endpoints — 14 Concurrency & Sync (Realtime Transport)
 
-> **Version:** 1.1.0
-> **Updated:** 2026-04-26 (UTC+8) — v1.1.0 aligned event vocabulary to canonical hyphen notation per §14.5.2 (closes content-audit drift)
+> **Version:** 1.2.0
+> **Updated:** 2026-04-26 (UTC+8) — v1.2.0 corrected event vocabulary drift: removed non-existent `item-created` (creation is `item-updated` on a new ID), added missing `mirror-healed` per §14.5.2 SSOT (closes F-AUD30-07). v1.1.0 aligned event vocabulary to canonical hyphen notation per §14.5.2 (closes content-audit drift)
 > **Parent:** [`./00-overview.md`](./00-overview.md)
 > **Mirrors feature:** [`../01-features/14-concurrency-and-sync.md`](../01-features/14-concurrency-and-sync.md) §14.5
 
