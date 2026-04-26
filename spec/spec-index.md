@@ -1139,6 +1139,8 @@
 | [`15-wp-plugin-how-to/22-quick-start.md`](./15-wp-plugin-how-to/22-quick-start.md) | Phase 00 — Quick Start Guide | — | — |
 | [`15-wp-plugin-how-to/97-acceptance-criteria.md`](./15-wp-plugin-how-to/97-acceptance-criteria.md) | WP Plugin How-To — Acceptance Criteria (Roll-up) | 2.0.0 | Curated |
 | [`15-wp-plugin-how-to/99-consistency-report.md`](./15-wp-plugin-how-to/99-consistency-report.md) | Consistency Report — spec/15-wp-plugin-how-to/ | 1.1.0 | — |
+| [`15-wp-plugin-how-to/23-operator-runbooks/00-overview.md`](./15-wp-plugin-how-to/23-operator-runbooks/00-overview.md) | Operator Runbooks — folder overview | 1.0.0 | Active |
+| [`15-wp-plugin-how-to/23-operator-runbooks/01-disaster-recovery-restore.md`](./15-wp-plugin-how-to/23-operator-runbooks/01-disaster-recovery-restore.md) | Runbook: Disaster-Recovery Restore (implements A-44 §7) | 1.0.0 | Active |
 | [`15-wp-plugin-how-to/changelog.md`](./15-wp-plugin-how-to/changelog.md) | Gold Standard Spec — Changelog | — | — |
 | [`15-wp-plugin-how-to/readme.md`](./15-wp-plugin-how-to/readme.md) | How to Write a WordPress Plugin — Gold Standard Specification | — | — |
 
