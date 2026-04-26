@@ -107,15 +107,15 @@ This file pins the sequence. Each step cites the SSOT that governs its rule.
 
 ## Acceptance Tests (canonical)
 
-| ID | Source | Scenario | Expected |
-|----|--------|----------|----------|
-| `AT-WF-SHARE-01` | This flow | Inviter without `Admin` attempts to grant | 403; no rows written |
-| `AT-WF-SHARE-02` | This flow | Inviter shares with existing account, role=`Edit` | 201; ItemGrant row inserted with `AcceptedAt = NULL`; SSE delivered to inviter within 1 s |
-| `AT-WF-SHARE-03` | This flow | Inviter shares with non-existent email | 201; PendingInvite row inserted in Root DB with `ExpiresAt = serverNow + 14d` |
-| `AT-WF-SHARE-04` | This flow | Invitee clicks accept link | 200; `AcceptedAt` set; SSE `grants.accepted` to both parties; `Auth::hasRole` for invitee on a descendant returns true |
-| `AT-WF-SHARE-05` | This flow | Replayed POST with same `X-WorkFlowy-Idempotency-Key` | 201 with original GrantId; no duplicate row |
+| ID | Canonical | Source | Scenario | Expected |
+|----|-----------|--------|----------|----------|
+| `AT-WF-SHARE-01` | `AT-APP-47` | This flow | Inviter without `Admin` attempts to grant | 403; no rows written |
+| `AT-WF-SHARE-02` | `AT-APP-48` | This flow | Inviter shares with existing account, role=`Edit` | 201; ItemGrant row inserted with `AcceptedAt = NULL`; SSE delivered to inviter within 1 s |
+| `AT-WF-SHARE-03` | `AT-APP-49` | This flow | Inviter shares with non-existent email | 201; PendingInvite row inserted in Root DB with `ExpiresAt = serverNow + 14d` |
+| `AT-WF-SHARE-04` | `AT-APP-50` | This flow | Invitee clicks accept link | 200; `AcceptedAt` set; SSE `grants.accepted` to both parties; `Auth::hasRole` for invitee on a descendant returns true |
+| `AT-WF-SHARE-05` | `AT-APP-51` | This flow | Replayed POST with same `X-WorkFlowy-Idempotency-Key` | 201 with original GrantId; no duplicate row |
 
-> These IDs live in the `AT-WF-*` namespace introduced by APP-FIX-12.
+> ✅ **Backfilled into canonical** (2026-04-26, polish #2): each `AT-WF-SHARE-NN` maps 1:1 to an `AT-APP-NN` row in [`spec/31-app/97-acceptance-criteria.md`](../97-acceptance-criteria.md). Canonical column is authoritative.
 
 ---
 
