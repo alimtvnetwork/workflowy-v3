@@ -1,7 +1,7 @@
 # DB Diagram — Database Design SSOT (Visual)
 
-> **Version:** 1.0.0
-> **Updated:** 2026-04-26 (UTC+8)
+> **Version:** 1.1.0
+> **Updated:** 2026-04-26 (UTC+8) — v1.1.0 added cross-references to `06-endpoints/` and `97-acceptance-criteria.md`
 > **Status:** ✅ SSOT for visual database design — derived strictly from existing specs (no invented tables)
 > **Parent:** [`../00-overview.md`](../00-overview.md)
 
@@ -143,6 +143,11 @@ If a diagram contradicts any of those, the diagram is wrong — not the SSOT.
 - [`../00-overview.md`](../00-overview.md) — App spec root
 - [`../01-features/01-information-model.md`](../01-features/01-information-model.md) — Data model SSOT
 - [`../06-endpoints/00-overview.md`](../06-endpoints/00-overview.md) — REST endpoint wire contracts (defines readable/writable columns)
+- [`../97-acceptance-criteria.md`](../97-acceptance-criteria.md) — Canonical `AT-APP-NN` testable criteria
+- [`../../04-database-conventions/01-naming-conventions.md`](../../04-database-conventions/01-naming-conventions.md) — PascalCase singular table names
+- [`../../04-database-conventions/02-schema-design.md`](../../04-database-conventions/02-schema-design.md) — Key-sizing rules (SMALLINT/INTEGER/BIGINT)
+- [`../../05-split-db-architecture/00-overview.md`](../../05-split-db-architecture/00-overview.md) — Root vs App DB isolation
+- [`../../20-enums-index.md`](../../20-enums-index.md) — Enum registry (ItemType, WorkspaceRoleType, etc.)
 - [`../../04-database-conventions/01-naming-conventions.md`](../../04-database-conventions/01-naming-conventions.md) — PascalCase singular table names
 - [`../../04-database-conventions/02-schema-design.md`](../../04-database-conventions/02-schema-design.md) — Key-sizing rules (SMALLINT/INTEGER/BIGINT)
 - [`../../05-split-db-architecture/00-overview.md`](../../05-split-db-architecture/00-overview.md) — Root vs App DB isolation
