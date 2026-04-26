@@ -27,3 +27,4 @@ Tailwind CSS v4 via @tailwindcss/vite in src/index.css @theme block.
 - [Sharing Model](mem://features/sharing-model) — Public and invited-user sharing permissions
 - [Offline Resilience](mem://features/offline-resilience) — Background autosave and local queuing
 - [Trash Logic](mem://features/trash-logic) — 30-day retention policy
+- [App Folder Audit 2026-04-26](mem://audits/app-folder-2026-04-26) — 15 findings (F-01..F-15) + 14 atomic fix phases (APP-FIX-01..14); composite 63/100, blind-AI failure ≈70%

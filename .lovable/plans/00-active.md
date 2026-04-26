@@ -1,6 +1,6 @@
 # Active Plans
 
-> **Updated:** 2026-04-26 (UTC+8) · **Status:** No active plans · **Round-3 audit:** AUDIT-01 **CLOSED v0.37.0**, AUDIT-05 **CLOSED**, AUDIT-02 **CLOSED v0.38.0** (downstream rename queued as AUDIT-02a). 3 blockers remain (AUDIT-03, 04, 06) + AUDIT-02a (mechanical rename).
+> **Updated:** 2026-04-26 (UTC+8) · **Status:** App-folder audit logged (audit-only, no fixes) · **Round-3 audit:** AUDIT-01 **CLOSED v0.37.0**, AUDIT-05 **CLOSED**, AUDIT-02 **CLOSED v0.38.0**. 3 blockers remain (AUDIT-03, 04, 06) + AUDIT-02a + **NEW: APP-FIX-01..14** (see `spec/18-spec-issues/06-app-folder-audit-2026-04-26.md`).
 
 ---
 
