@@ -241,7 +241,7 @@ Each finding has: ID · Severity · Files · What's wrong · Why it matters · F
 | 8 | **APP-FIX-08** ✅ | Replicate aspirational-paths disclaimer in Component Contract tables | 10 feature files (`04`, `05`, `06`, `07`, `09`, `11`, `12`, `13`, `14`, `15`) | F-07 — **DONE 2026-04-26 (versions bumped: 04→2.2.0, 05→2.1.0, 06→2.3.0, 07→2.4.0, 09→2.3.0, 11→2.4.0, 12→2.3.0, 13→2.3.0, 14→1.4.0, 15→1.4.0; one-line disclaimer mirrors `01-information-model.md` L149).** |
 | 9 | **APP-FIX-09** ✅ | Add `Mirror.BrokenAt` LWW row to concurrency spec | 1 file | F-14 — **DONE 2026-04-26 (14-concurrency-and-sync.md v1.3.0; §14.4 added with field/algorithm/cascade/forbidden tables; `mirrorBrokenAt` added to Inputs field enum and §14.1 conflict-scope row).** |
 | 10 | **APP-FIX-10** ✅ | Boolean Conventions callout (positive guards + `hasValue`) | 1 file (`00-overview.md`) | F-13 — **DONE 2026-04-26 (00-overview.md v2.2.0; SSOT table + 4-rule paragraph + forbidden list pointing at cross-language, control-flow, PHP booleans, PHP architecture, and Settings anti-pattern #10).** |
-| 11 | **APP-FIX-11** | Update `99-consistency-report.md` scoring or add disclaimer | 1 file | F-09 |
+| 11 | **APP-FIX-11** ✅ | Update `99-consistency-report.md` scoring or add disclaimer | 1 file | F-09 — **DONE 2026-04-26 (99-consistency-report.md v2.0.0; split into Structural-only score vs Content-alignment status, added "Read this first" disclaimer + Content Audit Tracker, refreshed inventory from 15 → 18 files).** |
 | 12 | **APP-FIX-12** | Add 3 missing workflow files (template, share-invite, trash-restore) | 3 new files | F-10 |
 | 13 | **APP-FIX-13** | Split edge-cases into user vs system | 1 file | F-11 |
 | 14 | **APP-FIX-14** | Reconcile AT-APP / AT-APPF ID schemes | 2 AC files | F-12 |
