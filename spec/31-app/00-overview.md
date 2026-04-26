@@ -129,6 +129,7 @@ For UI rendering decisions (colors, fonts, spacing, animations), the SSOT is [`.
 | 04 | [`04-roadmap/`](./04-roadmap/00-overview.md) | Phasing and resolved product decisions |
 | 05 | [`05-conventions/`](./05-conventions/00-overview.md) | App-scoped tooling (e.g., Axios pinning) |
 | 06 | [`06-endpoints/`](./06-endpoints/00-overview.md) | REST endpoint contracts (1:1 mirror of `01-features/`) |
+| 07 | [`07-db-diagram/`](./07-db-diagram/00-overview.md) | Visual database design — ERDs, lifecycle flows, indexes, migrations |
 
 ---
 
