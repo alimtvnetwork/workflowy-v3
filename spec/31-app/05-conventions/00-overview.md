@@ -15,6 +15,7 @@
 |---|------|-------|-------|
 | 1 | [`01-axios-version-control.md`](./01-axios-version-control.md) | Axios Version Control Policy | 91 |
 | 2 | [`02-ci-quality-gates.md`](./02-ci-quality-gates.md) | CI Quality Gates — Convention SSOT | 171 |
+| 3 | [`03-github-actions-workflow.md`](./03-github-actions-workflow.md) | GitHub Actions Workflow Contract — Convention SSOT | 157 |
 
 <!-- AUTO-TOC:END -->
 
@@ -53,6 +54,7 @@ Conventions specification module. See files below.
 |---|------|-------------|
 | 01 | [01-axios-version-control.md](01-axios-version-control.md) | Strict Axios pinning policy |
 | 02 | [02-ci-quality-gates.md](02-ci-quality-gates.md) | CI quality-gate runner contract (G-01..G-16, exit-code rules, when each gate runs) |
+| 03 | [03-github-actions-workflow.md](03-github-actions-workflow.md) | GitHub Actions workflow contract (triggers, steps, drift detection, reserved workflows) |
 
 ---
 
@@ -70,6 +72,7 @@ Conventions specification module. See files below.
 
 - [`01-axios-version-control.md`](./01-axios-version-control.md) — Axios Version Control
 - [`02-ci-quality-gates.md`](./02-ci-quality-gates.md) — CI Quality Gates runner contract
+- [`03-github-actions-workflow.md`](./03-github-actions-workflow.md) — GitHub Actions workflow contract
 
 **See also:**
 
