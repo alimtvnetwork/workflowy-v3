@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-26  
-**Total Files:** 1296  
+**Total Files:** 1298  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -33,7 +33,7 @@
 - [16-generic-cli](#16-generic-cli) — 43 file(s)
 - [17-generic-update](#17-generic-update) — 11 file(s)
 - [18-spec-issues](#18-spec-issues) — 11 file(s)
-- [31-app](#31-app) — 67 file(s)
+- [31-app](#31-app) — 69 file(s)
 - [32-ui-design](#32-ui-design) — 120 file(s)
 - [33-feedback-report](#33-feedback-report) — 3 file(s)
 - [34-activity-feed](#34-activity-feed) — 3 file(s)
@@ -1280,6 +1280,7 @@
 | [`31-app/06-endpoints/14-concurrency-and-sync.md`](./31-app/06-endpoints/14-concurrency-and-sync.md) | Endpoints — 14 Concurrency & Sync (Realtime Transport) | 1.0.0 | — |
 | [`31-app/06-endpoints/15-roles-and-permissions.md`](./31-app/06-endpoints/15-roles-and-permissions.md) | Endpoints — 15 Roles & Permissions | 1.0.0 | — |
 | [`31-app/06-endpoints/97-acceptance-criteria.md`](./31-app/06-endpoints/97-acceptance-criteria.md) | Endpoints — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`31-app/06-endpoints/99-consistency-report.md`](./31-app/06-endpoints/99-consistency-report.md) | Consistency Report — 06-endpoints | 1.0.0 | — |
 | [`31-app/07-db-diagram/00-overview.md`](./31-app/07-db-diagram/00-overview.md) | DB Diagram — Database Design SSOT (Visual) | 1.0.0 | — |
 | [`31-app/07-db-diagram/01-master-erd.md`](./31-app/07-db-diagram/01-master-erd.md) | 01 — Master ERD (All Tables, Both DBs) | 1.0.0 | — |
 | [`31-app/07-db-diagram/02-root-db-erd.md`](./31-app/07-db-diagram/02-root-db-erd.md) | 02 — Root DB ERD | 1.0.0 | — |
@@ -1289,6 +1290,7 @@
 | [`31-app/07-db-diagram/06-indexes.md`](./31-app/07-db-diagram/06-indexes.md) | 06 — Indexes | 1.0.0 | — |
 | [`31-app/07-db-diagram/07-migrations.md`](./31-app/07-db-diagram/07-migrations.md) | 07 — Migrations Roadmap | 1.0.0 | — |
 | [`31-app/07-db-diagram/97-acceptance-criteria.md`](./31-app/07-db-diagram/97-acceptance-criteria.md) | Db Diagram — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`31-app/07-db-diagram/99-consistency-report.md`](./31-app/07-db-diagram/99-consistency-report.md) | Consistency Report — 07-db-diagram | 1.0.0 | — |
 | [`31-app/97-acceptance-criteria.md`](./31-app/97-acceptance-criteria.md) | App — Acceptance Criteria | 2.3.0 | — |
 | [`31-app/99-consistency-report.md`](./31-app/99-consistency-report.md) | Consistency Report — App | 1.3.0 | — |
 
@@ -1466,4 +1468,4 @@
 
 ---
 
-*Auto-generated index — 1296 files across 25 top-level folders.*
+*Auto-generated index — 1298 files across 25 top-level folders.*
