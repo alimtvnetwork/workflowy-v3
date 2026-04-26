@@ -1,6 +1,6 @@
 # Active Plans
 
-> **Updated:** 2026-04-26 (UTC+8) · **Status:** APP-FIX-01, 07, 06, 02, 03, 04, 05, 09 **DONE** + Round-3 AUDIT-04 CLOSED. §14.4 `Mirrors.BrokenAt` LWW rule added to concurrency spec v1.3.0. Round-3 blockers remaining: AUDIT-03, AUDIT-06. Plus AUDIT-02a + 6 APP-FIX phases. Next per user order: APP-FIX-10.
+> **Updated:** 2026-04-26 (UTC+8) · **Status:** APP-FIX-01, 07, 06, 02, 03, 04, 05, 09, 10 **DONE** + Round-3 AUDIT-04 CLOSED. Boolean Conventions callout added to `00-overview.md` v2.2.0. Round-3 blockers remaining: AUDIT-03, AUDIT-06. Plus AUDIT-02a + 5 APP-FIX phases. Next per user order: APP-FIX-08.
 
 ---
 
