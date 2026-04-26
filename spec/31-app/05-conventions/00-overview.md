@@ -19,6 +19,7 @@
 | 4 | [`04-g19-workflow-contract-gate.md`](./04-g19-workflow-contract-gate.md) | G-19 Workflow Contract Drift Gate — Algorithm Spec | 158 |
 | 5 | [`05-precommit-hook-contract.md`](./05-precommit-hook-contract.md) | Pre-Commit Hook Contract — Convention SSOT | 147 |
 | 6 | [`06-g20-precommit-contract-gate.md`](./06-g20-precommit-contract-gate.md) | G-20 Pre-Commit Hook Drift Gate — Algorithm Spec | 181 |
+| 7 | [`07-g21-gate-discovery-audit.md`](./07-g21-gate-discovery-audit.md) | G-21 Gate Discovery & Registration Audit — Algorithm Spec | 189 |
 
 <!-- AUTO-TOC:END -->
 
