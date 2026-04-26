@@ -14,6 +14,7 @@
 |---|------|-------|-------|
 | 1 | [`01-implementation-phases.md`](./01-implementation-phases.md) | Implementation Phases | 68 |
 | 2 | [`02-resolved-decisions.md`](./02-resolved-decisions.md) | Resolved Product Decisions | 19 |
+| 3 | [`03-implementation-checklist.md`](./03-implementation-checklist.md) | Implementation Checklist (per-phase pre-flight) | 182 |
 
 <!-- AUTO-TOC:END -->
 

@@ -32,8 +32,8 @@
 | 16 | [`16-generic-cli/`](./16-generic-cli/00-overview.md) | Generic CLI Creation Guidelines — Overview | subfolder |
 | 17 | [`17-generic-update/`](./17-generic-update/00-overview.md) | Generic Update | subfolder |
 | 18 | [`18-spec-issues/`](./18-spec-issues/00-overview.md) | Spec Issues | subfolder |
-| 19 | [`19-glossary.md`](./19-glossary.md) | Glossary — Cross-Spec Terminology SSOT | 114 |
-| 20 | [`20-enums-index.md`](./20-enums-index.md) | Enums Index — Cross-Language Registry | 135 |
+| 19 | [`19-glossary.md`](./19-glossary.md) | Glossary — Cross-Spec Terminology SSOT | 118 |
+| 20 | [`20-enums-index.md`](./20-enums-index.md) | Enums Index — Cross-Language Registry | 177 |
 | 21 | [`21-ai-readiness-audit-round-2.md`](./21-ai-readiness-audit-round-2.md) | AI-Readiness Audit Report — Round 2 (post C/M/H/L tier completion) | 138 |
 | 22 | [`31-app/`](./31-app/00-overview.md) | App | subfolder |
 | 23 | [`32-ui-design/`](./32-ui-design/00-overview.md) | UI Design | subfolder |
