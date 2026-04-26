@@ -157,6 +157,25 @@ This indicator is hidden for Pro/unlimited users.
 
 ---
 
+## Settings Keys (Seedable Config)
+
+> **Why this section:** §2.4 Settings Menu and the §3 Settings gear surface five user preferences (theme, font size, default view, show completed, auto-collapse depth). Per [`spec/06-seedable-config-architecture/`](../../06-seedable-config-architecture/00-overview.md) + [`spec/15-wp-plugin-how-to/15-settings-architecture/`](../../15-wp-plugin-how-to/15-settings-architecture/00-overview.md), every settings touchpoint MUST declare its enum-backed key, default, sanitizer, and group. No bare strings.
+
+| Setting | `OptionNameType` enum case | Default | Sanitizer | Group | Storage |
+|---------|---------------------------|---------|-----------|-------|---------|
+| Theme | `OptionNameType::THEME` → `'workflowy_theme'` | `'system'` | `Sanitizer::oneOf(['light','dark','system'])` | `wf_appearance` | Root DB (per-user) |
+| Font size | `OptionNameType::FONT_SIZE` → `'workflowy_font_size'` | `'medium'` | `Sanitizer::oneOf(['small','medium','large'])` | `wf_appearance` | Root DB (per-user) |
+| Default view | `OptionNameType::DEFAULT_VIEW` → `'workflowy_default_view'` | `'home'` | `Sanitizer::oneOf(['home','today','starred'])` | `wf_navigation` | Root DB (per-user) |
+| Show completed items | `OptionNameType::SHOW_COMPLETED` → `'workflowy_show_completed'` | `true` | `Sanitizer::bool()` | `wf_display` | App DB (per-workspace) |
+| Auto-collapse depth | `OptionNameType::AUTO_COLLAPSE_DEPTH` → `'workflowy_auto_collapse_depth'` | `0` (disabled) | `Sanitizer::intRange(0, 10)` | `wf_display` | App DB (per-workspace) |
+
+**Forbidden:**
+- ❌ Hard-coded string keys (`get_option('workflowy_theme')`) — anti-pattern #1 in [`13-anti-patterns.md`](../../15-wp-plugin-how-to/15-settings-architecture/13-anti-patterns.md).
+- ❌ Reading these keys without going through the Settings facade.
+- ❌ Mutating without the registered sanitizer.
+
+---
+
 ## Inputs
 
 | Field | Type | Source | Required | Notes |
