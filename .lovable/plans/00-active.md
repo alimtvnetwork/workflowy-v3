@@ -1,6 +1,6 @@
 # Active Plans
 
-> **Updated:** 2026-04-26 (UTC+8) · **Status:** 🎉🎉🎉 **SPEC 100% COMPLETE + handoff polish A-27 done.** A-26 closed all `97-acceptance-criteria.md` scaffolds; A-27 added [`spec/31-app/04-roadmap/03-implementation-checklist.md`](../../spec/31-app/04-roadmap/03-implementation-checklist.md) — the per-phase pre-flight gate the next AI session walks before P1.1. **The only remaining gate is `mem://constraints/spec-only-mode`.** Say `exit spec-only` to start P1.1 Bootstrap.
+> **Updated:** 2026-04-26 (UTC+8) · **Status:** 🎉🎉🎉 **SPEC HYGIENE 17/18 (94/100).** A-26 + A-27 + A-28 closed. The only remaining hygiene failure is **F-AUD27-01** — `src/types/index.ts` has stale `ItemType` (`mirror` should be `dashboard` per Round-3 AUDIT-03). Fix is a 3-line TS edit blocked by `mem://constraints/spec-only-mode`. **Say `exit spec-only` to apply that fix and start P1.1 Bootstrap.** Full audit: [`.lovable/reports/02-ai-readiness-report-post-a27.md`](../reports/02-ai-readiness-report-post-a27.md).
 
 ---
 
