@@ -1,7 +1,7 @@
 # Audit-Log Policy (SSOT)
 
-> **Version:** 1.0.0
-> **Updated:** 2026-04-26
+> **Version:** 1.2.0
+> **Updated:** 2026-04-26 — v1.2.0 backfill of 52 actions emitted by sibling SSOTs A-40..A-44 (role-escalation, session/token, MFA, export, backup/DR). Prior: v1.0.0 initial 22 actions.
 > **Scope:** Defines what the WordPress-plugin backend MUST persist as security/compliance audit records, how long, with what integrity guarantees, and who may query. Distinct from `spec/34-activity-feed/` (user-visible undo log) and from `Logger::*` (operational logs).
 
 ---
@@ -70,7 +70,90 @@ Every audit record has the shape:
 | `SYSTEM` | `system.startup` / `system.shutdown` | Plugin lifecycle |
 | `SYSTEM` | `system.integrity.breach` | Hash chain verification failed |
 
-> Adding a new action requires (a) a new row above, (b) a translation key under `errors.audit.*` in i18n table, and (c) an acceptance test under `97-acceptance-criteria.md` (`AT-AUDIT-*`).
+#### v1.2.0 backfill — actions emitted by sibling SSOTs
+
+> Added 2026-04-26. These actions are emitted by the policies in `10-role-escalation-policy.md`, `11-session-token-lifecycle.md`, `12-mfa-policy.md`, `13-data-export-policy.md`, and `14-backup-and-dr-policy.md`. Sibling SSOTs reference these in `DOT.UPPER_CASE` shorthand for readability; **the canonical wire format is `dot.lower.case` as listed below** — emitters MUST normalize via `Audit::action()` helper before write. G-23 enforces.
+
+##### Role-escalation (A-40 → 10 actions)
+
+| Category | Action | Trigger |
+|---|---|---|
+| `AUTHZ` | `authz.role.request` | L1+ grant requested (`AUTHZ.ROLE_REQUEST`) |
+| `AUTHZ` | `authz.role.approve` | Approver signs off (`AUTHZ.ROLE_APPROVE`) |
+| `AUTHZ` | `authz.role.deny` | Manual deny (`AUTHZ.ROLE_DENY`) |
+| `AUTHZ` | `authz.role.deny.timeout` | 30-min approval window expired (`AUTHZ.ROLE_DENY_TIMEOUT`) |
+| `AUTHZ` | `authz.role.grant` | Grant activated (`AUTHZ.ROLE_GRANT`) — at `warn` |
+| `AUTHZ` | `authz.role.renew` | L1 standing-Admin renewal (`AUTHZ.ROLE_RENEW`) |
+| `AUTHZ` | `authz.role.expire` | Cron sweep / request-time expiry (`AUTHZ.ROLE_EXPIRE`) |
+| `AUTHZ` | `authz.role.revoke` | Manual revoke (`AUTHZ.ROLE_REVOKE`) — at `warn` |
+| `AUTHZ` | `authz.owner.transfer` | Atomic ownership swap (`AUTHZ.OWNER_TRANSFER`) — at `error` |
+| `AUTHZ` | `authz.break.glass` | Owner single-actor emergency grant (`AUTHZ.BREAK_GLASS`) — at `fatal` |
+
+##### Session/token lifecycle (A-41 → 9 actions)
+
+| Category | Action | Trigger |
+|---|---|---|
+| `AUTH` | `auth.token.refresh` | Successful RefreshToken rotation (sampled 1:100, see §6.3) |
+| `AUTH` | `auth.logout.all` | "Logout from all devices" (`AUTH.LOGOUT_ALL`) — at `warn` |
+| `AUTH` | `auth.session.evict` | 11th login evicts oldest session (`AUTH.SESSION_EVICT`) |
+| `AUTHZ` | `authz.refresh.reuse` | Rotated RefreshToken replayed → family revoked (`AUTHZ.REFRESH_REUSE`) — at `error` |
+| `SYSTEM` | `system.secret.rotate` | HMAC signing secret rotated (`SYSTEM.SECRET_ROTATE`) — at `warn` |
+| `AUTH` | `auth.token.stale` | AccessToken jti added to TRL on role change (sampled 1:50) |
+| `AUTH` | `auth.session.idle.expire` | Idle-timeout fired |
+| `AUTH` | `auth.session.absolute.expire` | Absolute-timeout fired |
+| `AUTH` | `auth.sse.ticket.consume` | SSE one-shot ticket redeemed (sampled 1:100) |
+
+##### MFA policy (A-42 → 11 actions)
+
+| Category | Action | Trigger |
+|---|---|---|
+| `AUTH` | `auth.mfa.verify.success` | Sign-in MFA challenge passed (`AUTH.MFA_VERIFY_SUCCESS`) |
+| `AUTH` | `auth.mfa.verify.failure` | Wrong code / expired challenge (`AUTH.MFA_VERIFY_FAILURE`) — at `warn` |
+| `AUTH` | `auth.mfa.stepup.success` | Step-up challenge passed (`AUTH.MFA_STEPUP_SUCCESS`) |
+| `AUTH` | `auth.mfa.stepup.failure` | Step-up challenge failed (`AUTH.MFA_STEPUP_FAILURE`) — at `warn` |
+| `AUTH` | `auth.mfa.enroll` | First-factor enrollment complete (`AUTH.MFA_ENROLL`) |
+| `AUTH` | `auth.mfa.factor.add` | Additional factor added (`AUTH.MFA_FACTOR_ADD`) |
+| `AUTH` | `auth.mfa.factor.remove` | Factor removed (`AUTH.MFA_FACTOR_REMOVE`) — at `warn` |
+| `AUTH` | `auth.mfa.recovery` | Recovery code consumed (`AUTH.MFA_RECOVERY`) — at `warn` |
+| `AUTH` | `auth.mfa.recovery.regen` | Recovery codes regenerated (`AUTH.MFA_RECOVERY_REGEN`) — at `warn` |
+| `AUTH` | `auth.mfa.lockout` | 20 failures in 1 h → 30 min lockout (`AUTH.MFA_LOCKOUT`) — at `error` |
+| `AUTHZ` | `authz.webauthn.counter.rollback` | WebAuthn signCount ≤ stored (`AUTHZ.WEBAUTHN_COUNTER_ROLLBACK`) — at `error` |
+
+##### Data-export policy (A-43 → 10 actions)
+
+| Category | Action | Trigger |
+|---|---|---|
+| `DATA` | `data.export.request` | Job created (`EXPORT.REQUEST`) — supersedes legacy `data.export.requested` |
+| `DATA` | `data.export.start` | Worker picks up job (`EXPORT.START`) |
+| `DATA` | `data.export.ready` | Artifact built and encrypted (`EXPORT.READY`) — supersedes legacy `data.export.delivered` |
+| `DATA` | `data.export.failure` | Build/encrypt error (`EXPORT.FAILURE`) — at `warn` |
+| `DATA` | `data.export.download` | Signed URL consumed (`EXPORT.DOWNLOAD`) |
+| `DATA` | `data.export.download.throttled` | Per-IP 20 MB/s exceeded (`EXPORT.DOWNLOAD_THROTTLED`) — at `warn` |
+| `DATA` | `data.export.expired` | TTL elapsed before download (`EXPORT.EXPIRED`) |
+| `DATA` | `data.export.purge` | File zero-filled and unlinked (`EXPORT.PURGE`) |
+| `DATA` | `data.export.account.self` | GDPR Art. 20 self-export (`EXPORT.ACCOUNT_SELF`) — at `warn` |
+| `POLICY` | `policy.export.scraping.suspected` | ≥50 distinct owners exported / 24 h (`EXPORT.SCRAPING_SUSPECTED`) — at `error` |
+
+##### Backup & DR policy (A-44 → 12 actions)
+
+| Category | Action | Trigger |
+|---|---|---|
+| `SYSTEM` | `system.backup.lag` | WAL ship > 10 min behind (`SYSTEM.BACKUP_LAG`) — at `warn` |
+| `SYSTEM` | `system.backup.failure` | 3 consecutive WAL ship failures (`SYSTEM.BACKUP_FAILURE`) — at `error` |
+| `SYSTEM` | `system.backup.missed` | > 90 min since last hot snapshot (`SYSTEM.BACKUP_MISSED`) — at `error` |
+| `SYSTEM` | `system.backup.daily.missed` | > 26 h since last daily full (`SYSTEM.BACKUP_DAILY_MISSED`) — at `fatal` |
+| `SYSTEM` | `system.backup.offsite.failure` | Local snapshot ok but off-site upload failed (`SYSTEM.BACKUP_OFFSITE_FAILURE`) — at `error` |
+| `SYSTEM` | `system.backup.corrupt` | Tarball integrity check failed (`SYSTEM.BACKUP_CORRUPT`) — at `fatal` |
+| `SYSTEM` | `system.backup.key.rotate` | 90-day KEK rotation event (`SYSTEM.BACKUP_KEY_ROTATE`) — at `warn` |
+| `SYSTEM` | `system.restore.drill.pass` | Quarterly drill met all RTOs (`SYSTEM.RESTORE_DRILL_PASS`) — at `warn` |
+| `SYSTEM` | `system.restore.drill.fail` | Quarterly drill failed (`SYSTEM.RESTORE_DRILL_FAIL`) — at `error` |
+| `SYSTEM` | `system.restore.drill.overdue` | > 100 days since last pass — release gate (`SYSTEM.RESTORE_DRILL_OVERDUE`) — at `error` |
+| `SYSTEM` | `system.restore.initiated` | Live (production) restore started (`SYSTEM.RESTORE_INITIATED`) — at `fatal` |
+| `SYSTEM` | `system.restore.complete` | Live restore finished, users emailed (`SYSTEM.RESTORE_COMPLETE`) — at `warn` |
+
+> **Deprecation:** legacy actions `data.export.requested` and `data.export.delivered` (v1.0.0) are superseded by `data.export.request` and `data.export.ready` respectively. v1.0.0 names remain accepted by the verifier through **2027-04-26** (one-year overlap), then rejected by G-23.
+
+> Adding a new action requires (a) a new row in the appropriate sub-table above, (b) a translation key under `errors.audit.*` in i18n table, and (c) an acceptance test under `97-acceptance-criteria.md` (`AT-AUDIT-*`).
 
 ### 2.2 · Forbidden categories
 
@@ -240,3 +323,4 @@ See `spec/31-app/05-conventions/97-acceptance-criteria.md` §AUDIT for `AT-AUDIT
 | Version | Date | Change |
 |---|---|---|
 | 1.0.0 | 2026-04-26 | Initial SSOT — taxonomy of 22 audit actions across 7 categories, 365/90-day retention floors, SHA-256 + rotating-salt PII scrubbing, hash-chain integrity, three-endpoint query API, gate G-23. |
+| 1.2.0 | 2026-04-26 | Backfill of **52 new actions** emitted by sibling SSOTs A-40..A-44: 10 role-escalation, 9 session/token, 11 MFA, 10 export, 12 backup/DR. Total taxonomy now **74 actions** across 7 categories. Documented `DOT.UPPER_CASE` shorthand vs canonical `dot.lower.case` wire format with `Audit::action()` normalizer. Deprecated `data.export.requested` / `data.export.delivered` with one-year overlap to 2027-04-26. |
