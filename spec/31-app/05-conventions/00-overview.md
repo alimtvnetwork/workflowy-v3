@@ -22,6 +22,7 @@
 | 7 | [`07-g21-gate-discovery-audit.md`](./07-g21-gate-discovery-audit.md) | G-21 Gate Discovery & Registration Audit — Algorithm Spec | 189 |
 | 8 | [`08-api-rate-limiting.md`](./08-api-rate-limiting.md) | API Rate-Limiting Policy — SSOT | 200 |
 | 9 | [`09-audit-log-policy.md`](./09-audit-log-policy.md) | Audit-Log Policy — SSOT | 220 |
+| 10 | [`10-role-escalation-policy.md`](./10-role-escalation-policy.md) | Role-Escalation Policy — SSOT | 230 |
 
 <!-- AUTO-TOC:END -->
 
@@ -67,6 +68,7 @@ Conventions specification module. See files below.
 | 07 | [07-g21-gate-discovery-audit.md](07-g21-gate-discovery-audit.md) | G-21 gate-discovery audit: catches orphan/ambiguous/unregistered hygiene scripts |
 | 08 | [08-api-rate-limiting.md](08-api-rate-limiting.md) | API rate-limiting policy: 3 buckets (burst/sustained/hourly), 429 envelope, client behaviour |
 | 09 | [09-audit-log-policy.md](09-audit-log-policy.md) | Audit-log policy: 22-action taxonomy, 365/90-day retention, hash-chain integrity, G-23 gate |
+| 10 | [10-role-escalation-policy.md](10-role-escalation-policy.md) | Role-escalation policy: 4 grant classes, dual-control, expiry timers, revocation deadlines, G-24 gate |
 
 ---
 
@@ -91,6 +93,7 @@ Conventions specification module. See files below.
 - [`07-g21-gate-discovery-audit.md`](./07-g21-gate-discovery-audit.md) — G-21 gate-discovery audit
 - [`08-api-rate-limiting.md`](./08-api-rate-limiting.md) — API rate-limiting policy
 - [`09-audit-log-policy.md`](./09-audit-log-policy.md) — Audit-log policy
+- [`10-role-escalation-policy.md`](./10-role-escalation-policy.md) — Role-escalation policy
 
 **See also:**
 
