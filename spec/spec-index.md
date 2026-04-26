@@ -1224,7 +1224,7 @@
 
 | File | Title | Version | Status |
 |------|-------|---------|--------|
-| [`31-app/00-overview.md`](./31-app/00-overview.md) | App | 2.0.0 | — |
+| [`31-app/00-overview.md`](./31-app/00-overview.md) | App | 2.1.0 | — |
 | [`31-app/01-features/00-overview.md`](./31-app/01-features/00-overview.md) | Features | 2.3.0 | — |
 | [`31-app/01-features/01-information-model.md`](./31-app/01-features/01-information-model.md) | Information Model Foundations | 2.3.0 | — |
 | [`31-app/01-features/02-personas.md`](./31-app/01-features/02-personas.md) | Target User Personas | 2.0.0 | — |
@@ -1279,7 +1279,7 @@
 | [`31-app/06-endpoints/13-templates.md`](./31-app/06-endpoints/13-templates.md) | Endpoints — 13 Templates | 1.0.0 | — |
 | [`31-app/06-endpoints/14-concurrency-and-sync.md`](./31-app/06-endpoints/14-concurrency-and-sync.md) | Endpoints — 14 Concurrency & Sync (Realtime Transport) | 1.0.0 | — |
 | [`31-app/06-endpoints/15-roles-and-permissions.md`](./31-app/06-endpoints/15-roles-and-permissions.md) | Endpoints — 15 Roles & Permissions | 1.0.0 | — |
-| [`31-app/06-endpoints/97-acceptance-criteria.md`](./31-app/06-endpoints/97-acceptance-criteria.md) | Endpoints — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`31-app/06-endpoints/97-acceptance-criteria.md`](./31-app/06-endpoints/97-acceptance-criteria.md) | Endpoints — Acceptance Criteria | 1.0.0 | — |
 | [`31-app/06-endpoints/99-consistency-report.md`](./31-app/06-endpoints/99-consistency-report.md) | Consistency Report — 06-endpoints | 1.0.0 | — |
 | [`31-app/07-db-diagram/00-overview.md`](./31-app/07-db-diagram/00-overview.md) | DB Diagram — Database Design SSOT (Visual) | 1.0.0 | — |
 | [`31-app/07-db-diagram/01-master-erd.md`](./31-app/07-db-diagram/01-master-erd.md) | 01 — Master ERD (All Tables, Both DBs) | 1.0.0 | — |
