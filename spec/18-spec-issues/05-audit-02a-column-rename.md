@@ -72,10 +72,10 @@ AUDIT-02 originally flagged a contradiction in `spec/19-glossary.md`: the glossa
 
 ## Acceptance Criteria
 
-- [ ] All **12** files above contain zero snake_case DB identifiers (verified via `rg -nP "[a-z]+_[a-z]+" spec/31-app/01-features/` returning zero DB-identifier matches; protocol/URL/HTTP-header exemptions still allowed).
-- [ ] Glossary §Database Vocabulary remains the SSOT — no inline contradictions reintroduced.
-- [ ] Each rename PR bumps the file's version (per `.lovable/strictly-avoid.md`).
-- [ ] On completion, this file is marked **Closed** in `spec/18-spec-issues/97-acceptance-criteria.md` AND APP-FIX-01 is marked done in `06-app-folder-audit-2026-04-26.md` §4.
+- [x] All **12** files above contain zero snake_case DB identifiers (verified 2026-04-26 — only legitimate exemptions remain: `wp_options`/`wp_posts` WP-core tables, `OptionNameType::*` PHP enum constants, `workflowy_*`/`wf_*` WP option keys, the stale-example demo on `00-overview.md` L96, and the snake_case description label on L93).
+- [x] Glossary §Database Vocabulary remains the SSOT — no inline contradictions reintroduced.
+- [x] Each rename PR bumps the file's version (11 files bumped one minor version).
+- [x] On completion, this file is marked **Closed** in `spec/18-spec-issues/97-acceptance-criteria.md` AND APP-FIX-01 is marked done in `06-app-folder-audit-2026-04-26.md` §4 (already done).
 
 ---
 
