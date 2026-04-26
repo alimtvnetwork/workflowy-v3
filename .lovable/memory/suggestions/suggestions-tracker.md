@@ -1,7 +1,7 @@
 # Lovable Suggestions Tracker
 
 > **Convention:** All suggestions tracked in this single file. Update status when completed. Move completed entries to `completed/` folder.
-> **Updated:** 2026-04-25 (UTC+8) — **S003 RESOLVED** (backend = WordPress plugin + SQLite). Phase-1 build path P1.1 → P1.7 unblocked, pending SPEC-ONLY mode lift.
+> **Updated:** 2026-04-26 (UTC+8) — **A-26 closed** (polish #3: all remaining `97-acceptance-criteria.md` scaffolds resolved; stub count 11 → 1). Phase-1 build path P1.1 → P1.7 unblocked, pending SPEC-ONLY mode lift.
 
 ---
 
