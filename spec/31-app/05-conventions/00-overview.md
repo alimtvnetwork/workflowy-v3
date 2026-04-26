@@ -16,6 +16,7 @@
 | 1 | [`01-axios-version-control.md`](./01-axios-version-control.md) | Axios Version Control Policy | 91 |
 | 2 | [`02-ci-quality-gates.md`](./02-ci-quality-gates.md) | CI Quality Gates — Convention SSOT | 171 |
 | 3 | [`03-github-actions-workflow.md`](./03-github-actions-workflow.md) | GitHub Actions Workflow Contract — Convention SSOT | 157 |
+| 4 | [`04-g19-workflow-contract-gate.md`](./04-g19-workflow-contract-gate.md) | G-19 Workflow Contract Drift Gate — Algorithm Spec | 158 |
 
 <!-- AUTO-TOC:END -->
 
