@@ -21,6 +21,7 @@
 | 6 | [`06-g20-precommit-contract-gate.md`](./06-g20-precommit-contract-gate.md) | G-20 Pre-Commit Hook Drift Gate — Algorithm Spec | 181 |
 | 7 | [`07-g21-gate-discovery-audit.md`](./07-g21-gate-discovery-audit.md) | G-21 Gate Discovery & Registration Audit — Algorithm Spec | 189 |
 | 8 | [`08-api-rate-limiting.md`](./08-api-rate-limiting.md) | API Rate-Limiting Policy — SSOT | 200 |
+| 9 | [`09-audit-log-policy.md`](./09-audit-log-policy.md) | Audit-Log Policy — SSOT | 220 |
 
 <!-- AUTO-TOC:END -->
 
@@ -65,6 +66,7 @@ Conventions specification module. See files below.
 | 06 | [06-g20-precommit-contract-gate.md](06-g20-precommit-contract-gate.md) | G-20 hygiene-gate algorithm: detects drift between hook/installer files and the contract |
 | 07 | [07-g21-gate-discovery-audit.md](07-g21-gate-discovery-audit.md) | G-21 gate-discovery audit: catches orphan/ambiguous/unregistered hygiene scripts |
 | 08 | [08-api-rate-limiting.md](08-api-rate-limiting.md) | API rate-limiting policy: 3 buckets (burst/sustained/hourly), 429 envelope, client behaviour |
+| 09 | [09-audit-log-policy.md](09-audit-log-policy.md) | Audit-log policy: 22-action taxonomy, 365/90-day retention, hash-chain integrity, G-23 gate |
 
 ---
 
@@ -88,6 +90,7 @@ Conventions specification module. See files below.
 - [`06-g20-precommit-contract-gate.md`](./06-g20-precommit-contract-gate.md) — G-20 pre-commit contract drift gate
 - [`07-g21-gate-discovery-audit.md`](./07-g21-gate-discovery-audit.md) — G-21 gate-discovery audit
 - [`08-api-rate-limiting.md`](./08-api-rate-limiting.md) — API rate-limiting policy
+- [`09-audit-log-policy.md`](./09-audit-log-policy.md) — Audit-log policy
 
 **See also:**
 
