@@ -49,6 +49,23 @@ As a user who occasionally deletes the wrong item, I want a 30-day grace period 
 
 ---
 
+## Settings Keys (Seedable Config)
+
+> **Why this section:** Trash View is reachable from the sidebar entry and exposes the 30-day retention window — both surfaces (sidebar visibility, retention days) MUST be enum-backed per [`spec/06-seedable-config-architecture/`](../../06-seedable-config-architecture/00-overview.md) + [`spec/15-wp-plugin-how-to/15-settings-architecture/`](../../15-wp-plugin-how-to/15-settings-architecture/00-overview.md).
+
+| Setting | `OptionNameType` enum case | Default | Sanitizer | Group | Storage |
+|---------|---------------------------|---------|-----------|-------|---------|
+| Show Trash in sidebar | `OptionNameType::SIDEBAR_SHOW_TRASH` → `'workflowy_sidebar_show_trash'` | `true` | `Sanitizer::bool()` | `wf_navigation` | Root DB (per-user) |
+| Trash retention days | `OptionNameType::TRASH_RETENTION_DAYS` → `'workflowy_trash_retention_days'` | `30` | `Sanitizer::intRange(7, 365)` | `wf_retention` | App DB (per-workspace; reaper reads this) |
+| Confirm before permanent delete | `OptionNameType::TRASH_CONFIRM_PERMANENT_DELETE` → `'workflowy_trash_confirm_permanent'` | `true` | `Sanitizer::bool()` | `wf_safety` | Root DB (per-user) |
+
+**Forbidden:**
+- ❌ Hard-coding `30` in the reaper — must read `OptionNameType::TRASH_RETENTION_DAYS`.
+- ❌ Skipping the confirm-permanent-delete check when the setting is `true`.
+- ❌ Bare `get_option('workflowy_trash_retention_days')` — go through the Settings facade.
+
+---
+
 ## Inputs
 
 | Field | Type | Source | Required | Notes |
