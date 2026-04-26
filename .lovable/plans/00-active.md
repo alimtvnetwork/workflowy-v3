@@ -1,6 +1,6 @@
 # Active Plans
 
-> **Updated:** 2026-04-26 (UTC+8) · **Status:** App-folder audit logged (audit-only, no fixes) · **Round-3 audit:** AUDIT-01 **CLOSED v0.37.0**, AUDIT-05 **CLOSED**, AUDIT-02 **CLOSED v0.38.0**. 3 blockers remain (AUDIT-03, 04, 06) + AUDIT-02a + **NEW: APP-FIX-01..14** (see `spec/18-spec-issues/06-app-folder-audit-2026-04-26.md`).
+> **Updated:** 2026-04-26 (UTC+8) · **Status:** APP-FIX-01 **DONE** (AUDIT-02a tracker widened 8→12 files) · **Round-3 audit:** AUDIT-01/05/02 closed. 3 blockers remain (AUDIT-03, 04, 06) + AUDIT-02a (rename in progress) + APP-FIX-02..14 (13 phases left). Next per user order: APP-FIX-07.
 
 ---
 
