@@ -1,7 +1,7 @@
 # TypeScript EntityStatus Enum — `src/lib/enums/entity-status.ts`
 
-> **Version**: 1.0.0  
-> **Last updated**: 2026-02-27  
+> **Version**: 2.0.0
+> **Last updated**: 2026-04-25
 > **Tracks**: Issue #10 (`spec/23-how-app-issues-track/10-domain-status-magic-strings.md`)
 
 ---
@@ -15,15 +15,19 @@ Typed enum for general entity lifecycle states — projects, plugins, shares, re
 ## Reference Implementation
 
 ```typescript
-// src/lib/enums/entity-status.ts
+// src/lib/enums/entity-status-type.ts
 
-export enum EntityStatus {
-  Active = "ACTIVE",
-  Inactive = "INACTIVE",
-  Draft = "DRAFT",
-  Archived = "ARCHIVED",
-}
+export const EntityStatus = {
+  Active: "ACTIVE",
+  Inactive: "INACTIVE",
+  Draft: "DRAFT",
+  Archived: "ARCHIVED",
+} as const;
+
+export type EntityStatus = (typeof EntityStatus)[keyof typeof EntityStatus];
 ```
+
+> **Convention** (per [`20-enums-index.md`](../../20-enums-index.md) §1 rule 9): canonical TS enum shape is `as const` object + derived union (Strategy B). The `enum` keyword and bare literal unions are forbidden. See [TS Overview](./00-overview.md#canonical-enum-shape-strategy-b--as-const--derived-union).
 
 ---
 
@@ -91,8 +95,8 @@ const DEFAULT_STATUS = EntityStatus.Active;
 
 | Feature | Go | TypeScript |
 |---------|-----|-----------|
-| Package | `pkg/enums/entitystatus` | `src/lib/enums/entity-status.ts` |
-| Type | `byte` iota | String enum |
+| Package | `pkg/enums/entitystatus` | `src/lib/enums/entity-status-type.ts` |
+| Type | `byte` iota | `as const` object + derived union |
 | Values | `Active`, `Inactive`, `Draft`, `Archived` | Same |
 
 ---
@@ -102,7 +106,8 @@ const DEFAULT_STATUS = EntityStatus.Active;
 - Issue #10 — Domain Status Magic Strings <!-- external: spec/23-how-app-issues-track/10-domain-status-magic-strings.md -->
 - [HttpMethod Enum](./05-http-method-enum.md) — Sibling enum spec
 - [TypeScript Standards](./08-typescript-standards-reference/00-overview.md) — Parent spec
+- [TS Overview — Strategy B](./00-overview.md#canonical-enum-shape-strategy-b--as-const--derived-union)
 
 ---
 
-*EntityStatus enum v1.0.0 — 2026-02-27*
+*EntityStatus enum v2.0.0 — 2026-04-25 — migrated to `as const` + derived union (AUDIT-05).*

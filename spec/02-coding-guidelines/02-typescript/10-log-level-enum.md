@@ -1,7 +1,7 @@
 # TypeScript LogLevel Enum — `src/lib/enums/log-level.ts`
 
-> **Version**: 1.0.0  
-> **Last updated**: 2026-03-31  
+> **Version**: 2.0.0
+> **Last updated**: 2026-04-25
 > **Tracks**: Magic string elimination in error modal color-themes spec
 
 ---
@@ -15,16 +15,20 @@ Typed enum for application log severity levels. Replaces `level === 'error'` mag
 ## Reference Implementation
 
 ```typescript
-// src/lib/enums/log-level.ts
+// src/lib/enums/log-level-type.ts
 
-export enum LogLevel {
-  Debug = "DEBUG",
-  Info = "INFO",
-  Warn = "WARN",
-  Error = "ERROR",
-  Fatal = "FATAL",
-}
+export const LogLevel = {
+  Debug: "DEBUG",
+  Info: "INFO",
+  Warn: "WARN",
+  Error: "ERROR",
+  Fatal: "FATAL",
+} as const;
+
+export type LogLevel = (typeof LogLevel)[keyof typeof LogLevel];
 ```
+
+> **Convention** (per [`20-enums-index.md`](../../20-enums-index.md) §1 rule 9): canonical TS enum shape is `as const` object + derived union (Strategy B). The `enum` keyword and bare literal unions are forbidden. See [TS Overview](./00-overview.md#canonical-enum-shape-strategy-b--as-const--derived-union).
 
 ---
 
@@ -97,8 +101,8 @@ interface LogEntry {
 
 | Feature | Go | TypeScript |
 |---------|-----|-----------|
-| Package | `pkg/enums/loglevel` | `src/lib/enums/log-level.ts` |
-| Type | `byte` iota | String enum |
+| Package | `pkg/enums/loglevel` | `src/lib/enums/log-level-type.ts` |
+| Type | `byte` iota | `as const` object + derived union |
 | Values | `Debug`, `Info`, `Warn`, `Error`, `Fatal` | Same |
 
 ---
@@ -108,7 +112,8 @@ interface LogEntry {
 - [ConnectionStatus Enum](./01-connection-status-enum.md) — Sibling enum spec
 - [HttpMethod Enum](./05-http-method-enum.md) — Sibling enum spec
 - [TypeScript Standards](./08-typescript-standards-reference/00-overview.md) — Parent spec
+- [TS Overview — Strategy B](./00-overview.md#canonical-enum-shape-strategy-b--as-const--derived-union)
 
 ---
 
-*LogLevel enum v1.0.0 — 2026-03-31*
+*LogLevel enum v2.0.0 — 2026-04-25 — migrated to `as const` + derived union (AUDIT-05).*

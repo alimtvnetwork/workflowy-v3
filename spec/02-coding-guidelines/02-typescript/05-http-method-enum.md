@@ -1,7 +1,7 @@
 # TypeScript HttpMethod Enum — `src/lib/enums/http-method-type.ts`
 
-> **Version**: 2.0.0  
-> **Last updated**: 2026-02-28  
+> **Version**: 3.0.0
+> **Last updated**: 2026-04-25
 > **Parity with**: [Go HttpMethod Enum](../03-golang/03-httpmethod-enum.md)
 
 ---
@@ -17,18 +17,24 @@ Frontend equivalent of the Go `httpmethod.Variant` enum. Replaces all magic stri
 ```typescript
 // src/lib/enums/http-method-type.ts
 
-export enum HttpMethod {
-  Get = "GET",
-  Head = "HEAD",
-  Post = "POST",
-  Put = "PUT",
-  Patch = "PATCH",
-  Delete = "DELETE",
-  Options = "OPTIONS",
-}
+export const HttpMethod = {
+  Get: "GET",
+  Head: "HEAD",
+  Post: "POST",
+  Put: "PUT",
+  Patch: "PATCH",
+  Delete: "DELETE",
+  Options: "OPTIONS",
+} as const;
+
+export type HttpMethod = (typeof HttpMethod)[keyof typeof HttpMethod];
 ```
 
-> **Convention:** TypeScript enum files use `-type` suffix in kebab-case (e.g., `http-method-type.ts`, `execution-status-type.ts`). The enum name itself remains PascalCase without suffix since the `enum` keyword already signals the construct.
+> **Conventions** (per [`20-enums-index.md`](../../20-enums-index.md) §1 rule 9 and [`00-overview.md`](./00-overview.md)):
+> - Canonical shape is `as const` object + derived union (Strategy B). The `enum` keyword is forbidden.
+> - File name uses kebab-case `-type` suffix: `http-method-type.ts`.
+> - The exported identifier (`HttpMethod`) is shared between the value-space `const` and the type-space union — this is legal because they live in separate declaration spaces.
+> - `HttpMethod.Post` continues to give `Foo.Case` ergonomics; `HttpMethod` (as a type) gives exhaustive switch and interface typing.
 
 ---
 
@@ -89,10 +95,10 @@ interface WebhookConfig {
 | Feature | Go (`httpmethodtype.Variant`) | TypeScript (`HttpMethod`) |
 |---------|--------------------------|---------------------------|
 | Package | `pkg/enums/httpmethodtype` | `src/lib/enums/http-method-type.ts` |
-| Type | `byte` iota | String enum |
+| Type | `byte` iota | `as const` object + derived union |
 | Values | `Get`, `Post`, `Put`, `Patch`, `Delete`, `Head`, `Options` | Same |
 | String output | `.String()` → `"GET"` | Direct value `"GET"` |
-| Parse | `httpmethodtype.Parse("GET")` | N/A (enum is the string) |
+| Parse | `httpmethodtype.Parse("GET")` | N/A (the const value IS the string) |
 
 ---
 
@@ -100,9 +106,11 @@ interface WebhookConfig {
 
 - [Go HttpMethod Enum](../03-golang/03-httpmethod-enum.md) — Backend parity spec
 - [TypeScript Standards](./08-typescript-standards-reference/00-overview.md) — Parent TS spec
+- [TS Overview — Strategy B rationale](./00-overview.md#canonical-enum-shape-strategy-b--as-const--derived-union)
+- [`20-enums-index.md` §1 rule 9 + §5 step 4](../../20-enums-index.md) — Cross-language enum SSOT
 - [Master Coding Guidelines §8](../01-cross-language/15-master-coding-guidelines/00-overview.md) — Magic strings zero tolerance
 - Enum Consumer Checklist — Cross-language sync process <!-- external: spec/02-spec-management-software/18-enum-consumer-checklist.md -->
 
 ---
 
-*TypeScript HttpMethod enum v1.0.0 — 2026-02-27*
+*TypeScript HttpMethod enum v3.0.0 — 2026-04-25 — migrated from `enum` keyword to `as const` + derived union (AUDIT-05).*
