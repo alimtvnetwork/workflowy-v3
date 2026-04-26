@@ -1,6 +1,6 @@
 # Active Plans
 
-> **Updated:** 2026-04-26 (UTC+8) · **Status:** 🎉 **AUDIT POLISH #5 DONE — Core memory + tech-stack + backend-runtime memories synced to WP-plugin reality.** A-26..A-30 closed; F-AUD30-02 + F-AUD30-03 + F-AUD30-04/05 + F-AUD30-10 resolved. Hygiene 17/18 (only F-AUD30-01 remains — `src/types/index.ts` `mirror` → `dashboard`, gated by `mem://constraints/spec-only-mode`). **Say `exit spec-only` to apply that fix and start P1.1 Bootstrap.**
+> **Updated:** 2026-04-26 (UTC+8) · **Status:** 🎉🎉 **ALL OPTIONAL SPEC POLISH EXHAUSTED — F-AUD30-02..06 + F-AUD30-09..10 all closed.** Both consolidated-* folders now carry mutual "NOT the same as" disambiguation. Hygiene 17/18; only **F-AUD30-01** remains — `src/types/index.ts` `mirror` → `dashboard`, gated by `mem://constraints/spec-only-mode`. **There is literally no more spec-only work to do. Say `exit spec-only` to apply that fix and start P1.1 Bootstrap.**
 
 ---
 
