@@ -4,7 +4,7 @@
 
 ---
 
-All standardized TypeScript enums for the frontend. Each enum has a dedicated spec file with values, usage examples, and Go parity mapping.
+All standardized TypeScript enums for the frontend. Each enum follows the canonical **`as const` object + derived union** shape (Strategy B) — see [TS Overview](../00-overview.md#canonical-enum-shape-strategy-b--as-const--derived-union) and [`20-enums-index.md` §1 rule 9](../../../20-enums-index.md). The `enum` keyword and bare literal string unions are forbidden for named enums.
 
 | Enum | Values | Spec File | Go Equivalent |
 |------|--------|-----------|---------------|
@@ -14,5 +14,6 @@ All standardized TypeScript enums for the frontend. Each enum has a dedicated sp
 | `ExportStatus` | `Pending`, `Processing`, `Completed`, `Failed` | [export-status-enum.md](../04-export-status-enum.md) | `pkg/enums/exportstatustype` |
 | `MessageStatus` | `Pending`, `Streaming`, `Completed`, `Error` | [message-status-enum.md](../06-message-status-enum.md) | `pkg/enums/messagestatustype` |
 | `EntityStatus` | `Active`, `Inactive`, `Draft`, `Archived` | [entity-status-enum.md](../02-entity-status-enum.md) | `pkg/enums/entitystatustype` |
+| `LogLevel` | `Debug`, `Info`, `Warn`, `Error`, `Fatal` | [log-level-enum.md](../10-log-level-enum.md) | `pkg/enums/loglevel` |
 
-**Location:** All frontend enums live in `src/lib/enums/` (e.g., `src/lib/enums/http-method-type.ts`).
+**Location:** All frontend enums live in `src/lib/enums/` with kebab-case `-type` suffix (e.g., `src/lib/enums/http-method-type.ts`, `src/lib/enums/connection-status-type.ts`).
