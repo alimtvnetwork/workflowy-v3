@@ -25,6 +25,21 @@ As a daily planner, I want a single screen that shows everything due today plus 
 
 ---
 
+## Settings Keys (Seedable Config)
+
+> **Why this section:** Today View consumes `userTimezone` from settings (see Inputs §). Per [`spec/06-seedable-config-architecture/`](../../06-seedable-config-architecture/00-overview.md) + [`spec/15-wp-plugin-how-to/15-settings-architecture/`](../../15-wp-plugin-how-to/15-settings-architecture/00-overview.md), the timezone key MUST be enum-backed, defaulted, sanitized, and grouped — never read via a bare string.
+
+| Setting | `OptionNameType` enum case | Default | Sanitizer | Group | Storage |
+|---------|---------------------------|---------|-----------|-------|---------|
+| User timezone | `OptionNameType::USER_TIMEZONE` → `'workflowy_user_timezone'` | Browser TZ via `Intl.DateTimeFormat().resolvedOptions().timeZone`; PHP fallback `wp_timezone_string()` | `Sanitizer::ianaTimezone()` (rejects unknown TZDB names) | `wf_locale` | Root DB (per-user) |
+
+**Forbidden:**
+- ❌ `get_option('workflowy_user_timezone')` — must go through the Settings facade.
+- ❌ Storing offsets (e.g. `+08:00`) instead of IANA names — DST breaks.
+- ❌ Defaulting to UTC silently — fall back to the browser TZ then `wp_timezone_string()`.
+
+---
+
 ## Inputs
 
 | Field | Type | Source | Required | Notes |
