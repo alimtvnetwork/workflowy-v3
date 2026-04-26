@@ -63,6 +63,7 @@ Conventions specification module. See files below.
 | 05 | [05-precommit-hook-contract.md](05-precommit-hook-contract.md) | Pre-commit hook + installer contract (POSIX sh, single entry point, regenerated-artefact warning) |
 | 06 | [06-g20-precommit-contract-gate.md](06-g20-precommit-contract-gate.md) | G-20 hygiene-gate algorithm: detects drift between hook/installer files and the contract |
 | 07 | [07-g21-gate-discovery-audit.md](07-g21-gate-discovery-audit.md) | G-21 gate-discovery audit: catches orphan/ambiguous/unregistered hygiene scripts |
+| 08 | [08-api-rate-limiting.md](08-api-rate-limiting.md) | API rate-limiting policy: 3 buckets (burst/sustained/hourly), 429 envelope, client behaviour |
 
 ---
 
