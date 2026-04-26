@@ -38,6 +38,7 @@ Conventions specification module. See files below.
 | # | File | Description |
 |---|------|-------------|
 | 01 | [01-axios-version-control.md](01-axios-version-control.md) | Strict Axios pinning policy |
+| 02 | [02-ci-quality-gates.md](02-ci-quality-gates.md) | CI quality-gate runner contract (G-01..G-16, exit-code rules, when each gate runs) |
 
 ---
 
