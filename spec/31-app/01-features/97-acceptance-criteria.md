@@ -1,8 +1,8 @@
 # App Features — Acceptance Criteria
 
-> **Version:** 2.0.0
+> **Version:** 2.1.0
 > **Created:** 2026-04-23 (UTC+8)
-> **Updated:** 2026-04-26 — APP-FIX-14: AT-APPF demoted to per-feature dispatch index; AT-APP is canonical (closes audit F-12).
+> **Updated:** 2026-04-26 — v2.1.0 backfilled canonical AT for Today/Templates/Concurrency/SSE (`AT-APP-26..42`). v2.0.0 declared `AT-APP-NN` canonical (APP-FIX-14, closes F-12).
 > **Status:** Active — dispatch index for `AT-APP-*` (canonical) and per-feature inline `AT-*-*` IDs
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
