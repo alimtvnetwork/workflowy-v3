@@ -17,6 +17,7 @@
 | 2 | [`02-ci-quality-gates.md`](./02-ci-quality-gates.md) | CI Quality Gates — Convention SSOT | 171 |
 | 3 | [`03-github-actions-workflow.md`](./03-github-actions-workflow.md) | GitHub Actions Workflow Contract — Convention SSOT | 157 |
 | 4 | [`04-g19-workflow-contract-gate.md`](./04-g19-workflow-contract-gate.md) | G-19 Workflow Contract Drift Gate — Algorithm Spec | 158 |
+| 5 | [`05-precommit-hook-contract.md`](./05-precommit-hook-contract.md) | Pre-Commit Hook Contract — Convention SSOT | 147 |
 
 <!-- AUTO-TOC:END -->
 
@@ -57,6 +58,7 @@ Conventions specification module. See files below.
 | 02 | [02-ci-quality-gates.md](02-ci-quality-gates.md) | CI quality-gate runner contract (G-01..G-16, exit-code rules, when each gate runs) |
 | 03 | [03-github-actions-workflow.md](03-github-actions-workflow.md) | GitHub Actions workflow contract (triggers, steps, drift detection, reserved workflows) |
 | 04 | [04-g19-workflow-contract-gate.md](04-g19-workflow-contract-gate.md) | G-19 hygiene-gate algorithm: detects drift between workflow files and the contract |
+| 05 | [05-precommit-hook-contract.md](05-precommit-hook-contract.md) | Pre-commit hook + installer contract (POSIX sh, single entry point, regenerated-artefact warning) |
 
 ---
 
@@ -76,6 +78,7 @@ Conventions specification module. See files below.
 - [`02-ci-quality-gates.md`](./02-ci-quality-gates.md) — CI Quality Gates runner contract
 - [`03-github-actions-workflow.md`](./03-github-actions-workflow.md) — GitHub Actions workflow contract
 - [`04-g19-workflow-contract-gate.md`](./04-g19-workflow-contract-gate.md) — G-19 workflow contract drift gate
+- [`05-precommit-hook-contract.md`](./05-precommit-hook-contract.md) — Pre-commit hook + installer contract
 
 **See also:**
 
