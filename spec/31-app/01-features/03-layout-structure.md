@@ -69,7 +69,7 @@ The Handbook is an in-app reference panel accessible from the Settings menu or v
 | Language selector | "English ▾" dropdown | Switch handbook language (if supported). |
 | Content area | Rich text with embedded screenshots, annotated UI examples, and interactive tooltips | Scrollable documentation. Hovering annotated elements shows tooltips explaining that feature. |
 
-**Handbook covers:** Bullet Types (all 12 types with visual examples), Board view, Dashboard view, item type conversions, sidebar usage, keyboard shortcuts, and all major features.
+**Handbook covers:** Bullet Types (all 12 types with visual examples), Board view, Dashboard view, item type conversions, sidebar usage, keyboard shortcuts, and all major features. (Both "Board view" and "Dashboard view" are the child-rendering effect of `ItemType = 'board'` / `ItemType = 'dashboard'` — they are NOT separate VIEW modes; see [`spec/18-spec-issues/07-audit-03-dashboard-taxonomy.md`](../../18-spec-issues/07-audit-03-dashboard-taxonomy.md).)
 
 **Close behavior:** Click the arrow icon on the side, press Ctrl+/, or press Escape.
 

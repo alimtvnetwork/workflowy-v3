@@ -55,8 +55,8 @@ When a note exists and is expanded:
 | Paragraph | No dot (invisible spacer) | Normal text, full width | No bullet dot shown. |
 | To-do | Checkbox (☐ or ☑) | Normal text. Checked items: strikethrough + muted. | Checkbox replaces the bullet dot. |
 | Numbered | Auto-incremented number (1., 2., etc.) | Normal text | Number based on sibling position, replaces bullet dot. |
-| Board | Filled circle (•) | Normal text | Children render as board/kanban columns instead of nested list. |
-| Dashboard | Filled circle (•) | Normal text | Children render as a dashboard/overview layout with metrics and visual summaries. |
+| Board | Filled circle (•) | Normal text | Children render as board/kanban columns instead of nested list. (`ItemType = 'board'`) |
+| Dashboard | Filled circle (•) | Normal text | Children render as a dashboard/overview layout with metrics and visual summaries. (`ItemType = 'dashboard'`) — see [`spec/18-spec-issues/07-audit-03-dashboard-taxonomy.md`](../../18-spec-issues/07-audit-03-dashboard-taxonomy.md) for why both `board` and `dashboard` are `ItemType` values (not separate VIEW modes). |
 | Quote | Filled circle (•) | Italic text with left border accent and light background | Left border is the primary accent color. |
 | Code Block | Filled circle (•) | Monospace font with light background and padding | Rounded corners. No syntax highlighting. |
 | Divider | No dot | No editable content — renders as a horizontal line | Full-width thin line. |
