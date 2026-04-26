@@ -1281,7 +1281,7 @@
 | [`31-app/06-endpoints/15-roles-and-permissions.md`](./31-app/06-endpoints/15-roles-and-permissions.md) | Endpoints — 15 Roles & Permissions | 1.0.0 | — |
 | [`31-app/06-endpoints/97-acceptance-criteria.md`](./31-app/06-endpoints/97-acceptance-criteria.md) | Endpoints — Acceptance Criteria | 1.0.0 | — |
 | [`31-app/06-endpoints/99-consistency-report.md`](./31-app/06-endpoints/99-consistency-report.md) | Consistency Report — 06-endpoints | 1.0.0 | — |
-| [`31-app/07-db-diagram/00-overview.md`](./31-app/07-db-diagram/00-overview.md) | DB Diagram — Database Design SSOT (Visual) | 1.0.0 | — |
+| [`31-app/07-db-diagram/00-overview.md`](./31-app/07-db-diagram/00-overview.md) | DB Diagram — Database Design SSOT (Visual) | 1.1.0 | — |
 | [`31-app/07-db-diagram/01-master-erd.md`](./31-app/07-db-diagram/01-master-erd.md) | 01 — Master ERD (All Tables, Both DBs) | 1.0.0 | — |
 | [`31-app/07-db-diagram/02-root-db-erd.md`](./31-app/07-db-diagram/02-root-db-erd.md) | 02 — Root DB ERD | 1.0.0 | — |
 | [`31-app/07-db-diagram/03-app-db-erd.md`](./31-app/07-db-diagram/03-app-db-erd.md) | 03 — App DB ERD (per Workspace) | 1.0.0 | — |
@@ -1291,7 +1291,7 @@
 | [`31-app/07-db-diagram/07-migrations.md`](./31-app/07-db-diagram/07-migrations.md) | 07 — Migrations Roadmap | 1.0.0 | — |
 | [`31-app/07-db-diagram/97-acceptance-criteria.md`](./31-app/07-db-diagram/97-acceptance-criteria.md) | Db Diagram — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`31-app/07-db-diagram/99-consistency-report.md`](./31-app/07-db-diagram/99-consistency-report.md) | Consistency Report — 07-db-diagram | 1.0.0 | — |
-| [`31-app/97-acceptance-criteria.md`](./31-app/97-acceptance-criteria.md) | App — Acceptance Criteria | 2.3.0 | — |
+| [`31-app/97-acceptance-criteria.md`](./31-app/97-acceptance-criteria.md) | App — Acceptance Criteria | 2.4.0 | — |
 | [`31-app/99-consistency-report.md`](./31-app/99-consistency-report.md) | Consistency Report — App | 1.3.0 | — |
 
 ## 32-ui-design
