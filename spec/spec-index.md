@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-26  
-**Total Files:** 1310  
+**Total Files:** 1311  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -33,7 +33,7 @@
 - [16-generic-cli](#16-generic-cli) — 43 file(s)
 - [17-generic-update](#17-generic-update) — 11 file(s)
 - [18-spec-issues](#18-spec-issues) — 13 file(s)
-- [31-app](#31-app) — 78 file(s)
+- [31-app](#31-app) — 79 file(s)
 - [32-ui-design](#32-ui-design) — 120 file(s)
 - [33-feedback-report](#33-feedback-report) — 3 file(s)
 - [34-activity-feed](#34-activity-feed) — 3 file(s)
@@ -1273,6 +1273,7 @@
 | [`31-app/05-conventions/05-precommit-hook-contract.md`](./31-app/05-conventions/05-precommit-hook-contract.md) | Pre-Commit Hook Contract — Convention SSOT | 1.0.0 | — |
 | [`31-app/05-conventions/06-g20-precommit-contract-gate.md`](./31-app/05-conventions/06-g20-precommit-contract-gate.md) | G-20 Pre-Commit Hook Drift Gate — Algorithm Spec | 1.0.0 | — |
 | [`31-app/05-conventions/07-g21-gate-discovery-audit.md`](./31-app/05-conventions/07-g21-gate-discovery-audit.md) | G-21 Gate Discovery & Registration Audit — Algorithm Spec | 1.0.0 | — |
+| [`31-app/05-conventions/08-api-rate-limiting.md`](./31-app/05-conventions/08-api-rate-limiting.md) | API Rate-Limiting Policy — SSOT | 1.0.0 | — |
 | [`31-app/05-conventions/97-acceptance-criteria.md`](./31-app/05-conventions/97-acceptance-criteria.md) | Conventions — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`31-app/05-conventions/99-consistency-report.md`](./31-app/05-conventions/99-consistency-report.md) | Consistency Report — 05-conventions | 1.0.1 | — |
 | [`31-app/06-endpoints/00-overview.md`](./31-app/06-endpoints/00-overview.md) | Endpoints — Master Index | 1.0.0 | — |
@@ -1480,4 +1481,4 @@
 
 ---
 
-*Auto-generated index — 1310 files across 25 top-level folders.*
+*Auto-generated index — 1311 files across 25 top-level folders.*
