@@ -1,7 +1,7 @@
 # Item Context Menu (⋮)
 
-> **Version:** 2.0.0
-> **Updated:** 2026-04-19
+> **Version:** 2.1.0
+> **Updated:** 2026-04-26 — APP-FIX-02: Storage section added (closes audit F-03 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -76,6 +76,16 @@ Separated from the actions above by a thin divider line. Non-interactive, inform
 | Mirrored from (only on mirrors) | Source item title, clickable | "Mirrored from: Project Plan" — clicking zooms to the source. |
 
 Displayed in very small, muted text.
+
+---
+
+## Storage
+
+| Layer | Tables | Notes |
+|-------|--------|-------|
+| **Root DB** | (read) `WorkspaceMember` for capability checks | See [`spec/05-split-db-architecture/00-overview.md`](../../05-split-db-architecture/00-overview.md). |
+| **App DB** (per workspace) | `Items` (move/duplicate/delete writes), `Mirrors` (mirror create), `ItemTags` (tag actions), `Comments` (comment action) | All mutations from this menu land here. |
+| **Cross-DB joins** | **Forbidden.** | Capability check resolves in Root DB → action executes in App DB. |
 
 ---
 

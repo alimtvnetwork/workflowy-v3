@@ -1,7 +1,7 @@
 # Mirror Specification
 
-> **Version:** 2.0.0
-> **Updated:** 2026-04-19
+> **Version:** 2.1.0
+> **Updated:** 2026-04-26 — APP-FIX-02: Storage section added (closes audit F-03 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -93,6 +93,16 @@ For cleaner UX, use only **"Mirror To…"** in the context menu (one unified act
 | Phase 3 | CRDT or OT-based text merge for real-time collaborative text editing per item. |
 
 **Presence indicators**: The system MAY show that another user is currently editing the same source item (e.g. a small avatar dot on the item row).
+
+---
+
+## Storage
+
+| Layer | Tables | Notes |
+|-------|--------|-------|
+| **Root DB** | — | Mirrors are workspace-local. |
+| **App DB** (per workspace) | `Mirrors` (`MirrorId`, `SourceId`, `ParentId`, `SortOrder`, `BrokenAt`), `Items` (source rows mirrors point at) | `Mirrors.SourceId` references `Items.ItemId` *within the same App DB*. Cross-workspace mirrors are out of scope. |
+| **Cross-DB joins** | **Forbidden.** | A mirror cannot point at an item in a different workspace's App DB. |
 
 ---
 

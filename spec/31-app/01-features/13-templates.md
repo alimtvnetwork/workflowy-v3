@@ -1,7 +1,7 @@
 # Template Application Flow
 
-> **Version:** 2.0.0
-> **Updated:** 2026-04-19
+> **Version:** 2.1.0
+> **Updated:** 2026-04-26 — APP-FIX-02: Storage section added (closes audit F-03 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -50,6 +50,16 @@ User clicks "Make template" in the item context menu → a dialog opens to name 
 | Template contains to-dos | To-dos are created uncompleted regardless of original state. |
 | Template contains mirrors | Mirrors are NOT preserved — all items become independent. |
 | Template contains dates | Dates are cleared on application (user assigns new dates). |
+
+---
+
+## Storage
+
+| Layer | Tables | Notes |
+|-------|--------|-------|
+| **Root DB** | `Template` (workspace-scoped catalog metadata: `TemplateId`, `Name`, `WorkspaceId`, `CreatedAt`) | Templates are listed in the Settings UI before any App DB is opened, so the catalog lives in Root DB. |
+| **App DB** (per workspace) | `Items` (rows materialized from template snapshot on apply) | Snapshot JSON is stored in `Template.SnapshotJson` (Root DB) and *expanded* into `Items` rows in the target workspace's App DB. |
+| **Cross-DB joins** | **Forbidden.** | Apply flow: read snapshot from Root DB → open App DB → INSERT batch. Two transactions, never joined. |
 
 ---
 

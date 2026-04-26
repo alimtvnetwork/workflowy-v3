@@ -1,8 +1,8 @@
 # Roles & Permissions
 
-> **Version:** 1.1.0
+> **Version:** 1.2.0
 > **Created:** 2026-04-25 (UTC+8)
-> **Updated:** 2026-04-26 — APP-FIX-06: enum sources linked (closes audit F-02 for this file)
+> **Updated:** 2026-04-26 — APP-FIX-02: Storage section added (closes audit F-03 for this file). v1.1.0 added Enum Sources callout.
 > **Status:** Active — runtime-agnostic contract
 > **Parent:** [`00-overview.md`](./00-overview.md)
 > **Closes audit finding:** F-04
