@@ -1,6 +1,6 @@
 # Active Plans
 
-> **Updated:** 2026-04-26 (UTC+8) · **Status:** 🎉🎉 **A-03 CLOSED** — `spec/10-powershell-integration/00-overview.md` split (406→273 lines); new sibling `09-runner-features.md` (206 lines) holds the verbose config example, features, path resolution, and per-project setup. File-length gate green (0 over 400). Hygiene 17/18; only **F-AUD30-01 / A-01** remains — `src/types/index.ts` `mirror` → `dashboard`, gated by `mem://constraints/spec-only-mode`. **No more spec-only work in active scope. Say `exit spec-only` to apply that fix and start P1.1 Bootstrap.**
+> **Updated:** 2026-04-26 (UTC+8) · **Status:** 🎉 **A-19 CLOSED** — `spec/31-app/01-features/05a-hotkey-table.md` created (20-row machine-readable hotkey SSOT with full template compliance: Inputs/Outputs/Edge Cases/Acceptance Tests/Component Contract). Defines AT-HK-01..08 and a planned hygiene check `17-check-hotkeys.mjs`. Prior: A-03 closed (PowerShell overview split 406→273 lines). Hygiene 17/18; only **A-01** remains — `src/types/index.ts` `mirror` → `dashboard`, gated by `mem://constraints/spec-only-mode`. **Say `exit spec-only` to apply that fix and start P1.1 Bootstrap.**
 
 ---
 

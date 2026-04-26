@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-26  
-**Total Files:** 1301  
+**Total Files:** 1302  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -33,7 +33,7 @@
 - [16-generic-cli](#16-generic-cli) — 43 file(s)
 - [17-generic-update](#17-generic-update) — 11 file(s)
 - [18-spec-issues](#18-spec-issues) — 13 file(s)
-- [31-app](#31-app) — 69 file(s)
+- [31-app](#31-app) — 70 file(s)
 - [32-ui-design](#32-ui-design) — 120 file(s)
 - [33-feedback-report](#33-feedback-report) — 3 file(s)
 - [34-activity-feed](#34-activity-feed) — 3 file(s)
@@ -1234,6 +1234,7 @@
 | [`31-app/01-features/03-layout-structure.md`](./31-app/01-features/03-layout-structure.md) | Layout Structure | 2.4.0 | — |
 | [`31-app/01-features/04-page-content-area.md`](./31-app/01-features/04-page-content-area.md) | Page / Content Area | 2.4.0 | — |
 | [`31-app/01-features/05-interactions.md`](./31-app/01-features/05-interactions.md) | Interaction Behaviors | 2.2.0 | — |
+| [`31-app/01-features/05a-hotkey-table.md`](./31-app/01-features/05a-hotkey-table.md) | Hotkey Table — Machine-Readable SSOT | 1.0.0 | Active |
 | [`31-app/01-features/06-item-context-menu.md`](./31-app/01-features/06-item-context-menu.md) | Item Context Menu (⋮) | 2.5.1 | — |
 | [`31-app/01-features/07-board-view.md`](./31-app/01-features/07-board-view.md) | Board View Specification | 2.5.0 | — |
 | [`31-app/01-features/08-share-dialog.md`](./31-app/01-features/08-share-dialog.md) | Share Dialog Specification | 2.3.0 | — |
@@ -1471,4 +1472,4 @@
 
 ---
 
-*Auto-generated index — 1301 files across 25 top-level folders.*
+*Auto-generated index — 1302 files across 25 top-level folders.*

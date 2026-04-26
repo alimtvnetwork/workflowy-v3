@@ -15,7 +15,7 @@ This file is the single global bridge from feature spec → component path → `
 - Find which acceptance tests cover a given component.
 - Find which `data-testid` to grep when wiring tests.
 
-Total surfaces mapped: **173** across **15** feature file(s).
+Total surfaces mapped: **180** across **16** feature file(s).
 
 ---
 
@@ -104,6 +104,18 @@ Total surfaces mapped: **173** across **15** feature file(s).
 | Autosave indicator | ``src/components/feedback/SaveIndicator.tsx`` | `save-indicator` | AT-INTERACT-14 |
 | Offline banner | ``src/components/feedback/OfflineBanner.tsx`` | `offline-banner` | AT-INTERACT-15 |
 | Unsaved-changes warning hook | ``src/lib/interactions/useBeforeUnload.ts`` | `unsaved-warning` | AT-INTERACT-16 |
+
+### `05a-hotkey-table.md`
+
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| Hotkey registry map | ``src/lib/hotkeys.ts`` | `— (module)` | AT-HK-01, AT-HK-03, AT-HK-04 |
+| Global key dispatcher | ``src/lib/interactions/useGlobalKeys.ts`` | `— (hook)` | AT-HK-02, AT-HK-05, AT-HK-06 |
+| Hygiene check | ``scripts/spec-hygiene/17-check-hotkeys.mjs`` | `— (script)` | AT-HK-04 |
+| Save indicator | ``src/components/feedback/SaveIndicator.tsx`` | `save-indicator` | AT-HK-05 |
+| Search overlay shell | ``src/components/search/SearchOverlay.tsx`` | `search-overlay` | AT-HK-06, AT-HK-08 |
+| Item row | ``src/components/tree/ItemRow.tsx`` | `item-row` | AT-HK-07 |
+| Search result row | ``src/components/search/SearchResults.tsx`` | `search-result-row` | AT-HK-08 |
 
 ### `06-item-context-menu.md`
 
@@ -277,6 +289,7 @@ Sorted alphabetically. Each row is one planned/implemented component file.
 
 | Component path | `data-testid`(s) |
 |---------------|-----------------|
+| ``scripts/spec-hygiene/17-check-hotkeys.mjs`` | `— (script)` |
 | ``src/components/board/AddColumnButton.tsx`` | `board-add-column` |
 | ``src/components/board/BoardCard.tsx`` | `board-card`, `board-card-content` |
 | ``src/components/board/BoardColumn.tsx`` | `board-column` |
@@ -410,6 +423,7 @@ Sorted alphabetically. Each row is one planned/implemented component file.
 | ``src/components/tree/RootContainer.tsx`` | `root-item` |
 | ``src/components/workspace/WorkspaceInviteButton.tsx`` | `workspace-invite-button` |
 | ``src/hooks/useKeyboardActions.ts`` | `keyboard-action-coverage` |
+| ``src/lib/hotkeys.ts`` | `— (module)` |
 | ``src/lib/interactions/useBeforeUnload.ts`` | `unsaved-warning` |
 | ``src/lib/interactions/useGlobalKeys.ts`` | `— (hook)` |
 | ``src/lib/perf/AppReadyMarker.ts`` | `app-ready-marker` |
