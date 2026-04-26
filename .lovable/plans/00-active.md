@@ -1,6 +1,6 @@
 # Active Plans
 
-> **Updated:** 2026-04-26 (UTC+8) · **Status:** APP-FIX-01, 07, 06, 02, 03, 04, 05, 09, 10, 08 **DONE** + Round-3 AUDIT-04 CLOSED. Aspirational-paths disclaimer added to 10 Component Contract tables (04, 05, 06, 07, 09, 11, 12, 13, 14, 15). Round-3 blockers remaining: AUDIT-03, AUDIT-06. Plus AUDIT-02a + 4 APP-FIX phases. Next per user order: APP-FIX-11.
+> **Updated:** 2026-04-26 (UTC+8) · **Status:** APP-FIX-01, 07, 06, 02, 03, 04, 05, 09, 10, 08, 11 **DONE** + Round-3 AUDIT-04 CLOSED. `99-consistency-report.md` v2.0.0 split into Structural vs Content scores with audit tracker. Round-3 blockers remaining: AUDIT-03, AUDIT-06. Plus AUDIT-02a + 3 APP-FIX phases. Next per user order: APP-FIX-14.
 
 ---
 
