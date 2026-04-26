@@ -1,11 +1,13 @@
 # AUDIT-02a — Downstream Column-Name Rename (snake_case → PascalCase)
 
-> **Version:** 1.0.0
+> **Version:** 1.1.0
 > **Created:** 2026-04-26 (UTC+8)
+> **Updated:** 2026-04-26 (UTC+8) — APP-FIX-01 widens scope from 8 → 12 files
 > **Status:** Open — tracked
 > **Parent:** [`00-overview.md`](./00-overview.md)
 > **SSOT:** [`spec/19-glossary.md`](../19-glossary.md) §Database Vocabulary
 > **Closes (partially):** AUDIT-02
+> **Widened by:** [`06-app-folder-audit-2026-04-26.md`](./06-app-folder-audit-2026-04-26.md) §F-01 / APP-FIX-01
 
 ---
 
@@ -17,18 +19,26 @@ AUDIT-02 originally flagged a contradiction in `spec/19-glossary.md`: the glossa
 
 ---
 
-## Affected Files (8)
+## Affected Files (12)
 
-| # | File | snake_case occurrences |
-|---|------|------------------------|
-| 1 | `spec/31-app/01-features/01-information-model.md` | 4 |
-| 2 | `spec/31-app/01-features/04-page-content-area.md` | 4 |
-| 3 | `spec/31-app/01-features/05-interactions.md` | 3 |
-| 4 | `spec/31-app/01-features/06-item-context-menu.md` | 11 |
-| 5 | `spec/31-app/01-features/07-board-view.md` | 5 |
-| 6 | `spec/31-app/01-features/08-share-dialog.md` | 1 |
-| 7 | `spec/31-app/01-features/09-mirrors.md` | 1 |
-| 8 | `spec/31-app/01-features/14-concurrency-and-sync.md` | 2 |
+> Counts re-measured 2026-04-26 by APP-FIX-01 audit. The 4 files added in v1.1.0 are marked **NEW**.
+
+| # | File | snake_case occurrences | Added |
+|---|------|------------------------|-------|
+| 1 | `spec/31-app/01-features/06-item-context-menu.md` | 14 | v1.0.0 |
+| 2 | `spec/31-app/01-features/07-board-view.md` | 13 | v1.0.0 |
+| 3 | `spec/31-app/01-features/01-information-model.md` | 10 | v1.0.0 |
+| 4 | `spec/31-app/01-features/05-interactions.md` | 7 | v1.0.0 |
+| 5 | `spec/31-app/01-features/04-page-content-area.md` | 6 | v1.0.0 |
+| 6 | `spec/31-app/01-features/08-share-dialog.md` | 6 | v1.0.0 |
+| 7 | `spec/31-app/01-features/14-concurrency-and-sync.md` | 5 | v1.0.0 |
+| 8 | `spec/31-app/01-features/15-roles-and-permissions.md` | 4 | **NEW v1.1.0** |
+| 9 | `spec/31-app/01-features/09-mirrors.md` | 2 | v1.0.0 |
+| 10 | `spec/31-app/01-features/12-multi-select.md` | 1 | **NEW v1.1.0** |
+| 11 | `spec/31-app/01-features/03-layout-structure.md` | 1 | **NEW v1.1.0** |
+| 12 | `spec/31-app/01-features/00-overview.md` | 1 | **NEW v1.1.0** |
+
+**Total snake_case hits across 12 files:** 70
 
 ---
 
@@ -62,10 +72,10 @@ AUDIT-02 originally flagged a contradiction in `spec/19-glossary.md`: the glossa
 
 ## Acceptance Criteria
 
-- [ ] All 8 files above contain zero snake_case DB identifiers (verified via `rg -n "items\\.[a-z_]+|_id|_at|_order|_slug|_type" spec/31-app/01-features/`).
+- [ ] All **12** files above contain zero snake_case DB identifiers (verified via `rg -nP "[a-z]+_[a-z]+" spec/31-app/01-features/` returning zero DB-identifier matches; protocol/URL/HTTP-header exemptions still allowed).
 - [ ] Glossary §Database Vocabulary remains the SSOT — no inline contradictions reintroduced.
 - [ ] Each rename PR bumps the file's version (per `.lovable/strictly-avoid.md`).
-- [ ] On completion, this file is marked **Closed** in `spec/18-spec-issues/97-acceptance-criteria.md`.
+- [ ] On completion, this file is marked **Closed** in `spec/18-spec-issues/97-acceptance-criteria.md` AND APP-FIX-01 is marked done in `06-app-folder-audit-2026-04-26.md` §4.
 
 ---
 
