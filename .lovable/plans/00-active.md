@@ -1,6 +1,6 @@
 # Active Plans
 
-> **Updated:** 2026-04-26 (UTC+8) · **Status:** APP-FIX-01 **DONE** (AUDIT-02a tracker widened 8→12 files) · **Round-3 audit:** AUDIT-01/05/02 closed. 3 blockers remain (AUDIT-03, 04, 06) + AUDIT-02a (rename in progress) + APP-FIX-02..14 (13 phases left). Next per user order: APP-FIX-07.
+> **Updated:** 2026-04-26 (UTC+8) · **Status:** APP-FIX-01 + APP-FIX-07 **DONE**. AUDIT-02a tracker widened 8→12; Casing-Layers callout added to `01-features/00-overview.md` v2.1.0. Round-3: AUDIT-01/05/02 closed. 3 AUDIT blockers remain (03, 04, 06) + AUDIT-02a + 12 APP-FIX phases. Next per user order: APP-FIX-06.
 
 ---
 

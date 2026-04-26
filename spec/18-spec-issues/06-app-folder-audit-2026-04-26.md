@@ -237,7 +237,7 @@ Each finding has: ID · Severity · Files · What's wrong · Why it matters · F
 | 4 | **APP-FIX-04** | Document `Auth::hasRole()` PHP contract in `15-roles-and-permissions.md` | 1 file | F-06 |
 | 5 | **APP-FIX-05** | Add settings/seedable-config keys to all settings touchpoints | 4 feature files (`03`, `10`, `11`, `13`) | F-04 |
 | 6 | **APP-FIX-06** | Link every enum mention to canonical Strategy-B file | 6 feature files | F-02 |
-| 7 | **APP-FIX-07** | Add Casing-Layers callout in `01-features/00-overview.md` | 1 file | F-08 |
+| 7 | **APP-FIX-07** ✅ | Add Casing-Layers callout in `01-features/00-overview.md` | 1 file | F-08 — **DONE 2026-04-26 (00-overview.md v2.1.0)** |
 | 8 | **APP-FIX-08** | Replicate aspirational-paths disclaimer in 9 Component Contract tables | 9 feature files | F-07 |
 | 9 | **APP-FIX-09** | Add `Mirror.BrokenAt` LWW row to concurrency spec | 1 file | F-14 |
 | 10 | **APP-FIX-10** | Boolean Conventions callout (positive guards + `hasValue`) | 1 file (`00-overview.md`) | F-13 |
