@@ -1,0 +1,126 @@
+# DB Diagram — Database Design SSOT (Visual)
+
+> **Version:** 1.0.0
+> **Updated:** 2026-04-26 (UTC+8)
+> **Status:** ✅ SSOT for visual database design — derived strictly from existing specs (no invented tables)
+> **Parent:** [`../00-overview.md`](../00-overview.md)
+
+---
+
+## Keywords
+
+`app` · `db-diagram` · `erd` · `schema` · `mermaid` · `sqlite` · `split-db`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | High |
+| Ambiguity assigned | Low |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+---
+
+## 🎯 Mission
+
+This folder is the **single source of truth** for the **visual database design** of WorkFlowy. Every diagram here is a Mermaid `erDiagram`, `flowchart`, or `sequenceDiagram` and is **derived strictly from**:
+
+1. [`../01-features/`](../01-features/00-overview.md) — feature behavior contracts (defines what entities must exist).
+2. [`../06-endpoints/`](../06-endpoints/00-overview.md) — REST endpoint contracts (defines what columns must be readable/writable).
+3. [`../../04-database-conventions/`](../../04-database-conventions/00-overview.md) — naming + key-sizing rules (defines how tables look).
+4. [`../../05-split-db-architecture/`](../../05-split-db-architecture/00-overview.md) — Split DB pattern (defines which DB owns which table).
+
+If a diagram contradicts any of those, the diagram is wrong — not the SSOT.
+
+---
+
+## 🔒 Load-Bearing Rules (must not be violated)
+
+| # | Rule | Source |
+|---|------|--------|
+| D1 | **Split DB**: identity (`User`, `Workspace`, `WorkspaceMember`) lives in **Root DB**. All item content (`Items`, `Tags`, `Comments`, …) lives in **App DB** (one file per workspace). | [`../01-features/01-information-model.md`](../01-features/01-information-model.md) §Storage |
+| D2 | **No cross-DB joins.** Workspace lookup → switch SQLite connection → query App DB. Diagrams MUST visually separate the two DBs. | Same |
+| D3 | All table names are **PascalCase singular** (`Item`, not `Items` — even though feature SSOTs use the plural `Items` informally, the canonical SQL table name follows `04-database-conventions/01-naming-conventions.md`). PK = `{TableName}Id`. | [`../../04-database-conventions/01-naming-conventions.md`](../../04-database-conventions/01-naming-conventions.md) |
+| D4 | **No UUID PKs.** All PKs are `INTEGER AUTOINCREMENT`. The 10-year row estimate per table dictates `SMALLINT` / `INTEGER` / `BIGINT`. | [`../../04-database-conventions/02-schema-design.md`](../../04-database-conventions/02-schema-design.md) §1 |
+| D5 | **Soft delete via timestamp** (`DeletedAt TEXT NULL`), never via boolean `IsDeleted`. The Trash view is a query over `DeletedAt IS NOT NULL`. | [`../../04-database-conventions/01-naming-conventions.md`](../../04-database-conventions/01-naming-conventions.md) Rule 7 |
+| D6 | **Roles in their own table.** `UserRole` (Root DB) is the only place where role-to-user assignments exist — never on `User` or `Profile`. | `mem://constraints/coding-guidelines` + L8 in [`../00-overview.md`](../00-overview.md) |
+| D7 | **Mirrors point at canonical only.** A mirror's `MirrorOfItemId` MUST reference an `Item` whose own `MirrorOfItemId IS NULL`. No mirror-of-mirror. Diagrams MUST annotate this constraint. | [`../01-features/09-mirrors.md`](../01-features/09-mirrors.md) §L6 |
+
+---
+
+## 📁 Files in This Folder
+
+| # | File | Diagram Type | Purpose |
+|---|------|--------------|---------|
+| 00 | [`00-overview.md`](./00-overview.md) | (this index) | SSOT pointers + table-of-tables |
+| 01 | [`01-master-erd.md`](./01-master-erd.md) | `erDiagram` | Single Mermaid ERD showing **every table in both DBs** with FKs |
+| 02 | [`02-root-db-erd.md`](./02-root-db-erd.md) | `erDiagram` | Root DB only — identity + workspace registry |
+| 03 | [`03-app-db-erd.md`](./03-app-db-erd.md) | `erDiagram` | App DB only — item content tree |
+| 04 | [`04-feature-slices.md`](./04-feature-slices.md) | Multiple `erDiagram` | One small ERD per feature (items, mirrors, shares, templates, trash, roles, tags, comments) |
+| 05 | [`05-lifecycle-flows.md`](./05-lifecycle-flows.md) | `sequenceDiagram` + `stateDiagram` | Item create, soft-delete → trash → restore, mirror create → broken, share invite → accept, conflict resolution (LWW) |
+| 06 | [`06-indexes.md`](./06-indexes.md) | `flowchart` + table | Every index, the queries it serves, and why |
+| 07 | [`07-migrations.md`](./07-migrations.md) | `flowchart` | Schema evolution roadmap (M-001 → M-NNN) with dependency arrows |
+
+---
+
+## 📊 Master Table-of-Tables
+
+> **Authority**: every row below is referenced by at least one feature SSOT or endpoint SSOT. The "Source" column points at the file that mandates the table's existence.
+
+### Root DB (`workflowy_root.db`)
+
+| # | Table | Purpose | PK Type | 10-yr Volume | Source |
+|---|-------|---------|---------|--------------|--------|
+| 1 | `User` | One row per WordPress user (mirrors `wp_users.ID`) | INTEGER | < 2 B | [`../01-features/01-information-model.md`](../01-features/01-information-model.md) §Storage |
+| 2 | `Workspace` | One row per workspace (= one App DB file) | INTEGER | < 2 B | Same |
+| 3 | `WorkspaceMember` | N-to-M `User` ↔ `Workspace` with `WorkspaceRoleTypeId` | INTEGER | < 2 B | [`../01-features/15-roles-and-permissions.md`](../01-features/15-roles-and-permissions.md) §Storage |
+| 4 | `WorkspaceRoleType` | Lookup: `Owner` / `Admin` / `Member` | SMALLINT | < 32 K | [`../../20-enums-index.md`](../../20-enums-index.md) §3 |
+| 5 | `UserRole` | System-level role assignments (`admin` / `user`) | INTEGER | < 2 B | `mem://constraints/coding-guidelines` (separate-table rule) |
+| 6 | `RoleType` | Lookup: `admin` / `user` | SMALLINT | < 32 K | Same |
+
+### App DB (`workflowy_app_{WorkspaceId}.db`) — one per workspace
+
+| # | Table | Purpose | PK Type | 10-yr Volume | Source |
+|---|-------|---------|---------|--------------|--------|
+| 1 | `Item` | The unified node (every entity in WorkFlowy) | INTEGER | < 2 B | [`../01-features/01-information-model.md`](../01-features/01-information-model.md) |
+| 2 | `ItemType` | Lookup of the 12 types (Bullet, Note, Task, BoardProject, …) | SMALLINT | < 32 K | [`../../20-enums-index.md`](../../20-enums-index.md) §2 |
+| 3 | `Mirror` | A mirror placement: source `Item` rendered under another parent | INTEGER | < 2 B | [`../01-features/09-mirrors.md`](../01-features/09-mirrors.md) |
+| 4 | `Tag` | Per-workspace tag definitions | INTEGER | < 32 K | [`../01-features/01-information-model.md`](../01-features/01-information-model.md) §1.3 |
+| 5 | `ItemTag` | N-to-M junction `Item` ↔ `Tag` | INTEGER | < 2 B | Same |
+| 6 | `Share` | Grant of access to an `Item` (per email or `UserId`) | INTEGER | < 2 B | [`../01-features/08-share-dialog.md`](../01-features/08-share-dialog.md) |
+| 7 | `ShareRoleType` | Lookup: `Viewer` / `Editor` / `Owner` (item-scoped roles) | SMALLINT | < 32 K | [`../01-features/15-roles-and-permissions.md`](../01-features/15-roles-and-permissions.md) |
+| 8 | `Comment` | Per-item comments (mirrors inherit the source's comments) | INTEGER | < 2 B | [`../01-features/01-information-model.md`](../01-features/01-information-model.md) §1.3 |
+| 9 | `Attachment` | File attachments on items | INTEGER | < 2 B | Same |
+| 10 | `Mention` | `@user` references inside `Item.Content` | INTEGER | < 2 B | Same |
+| 11 | `Favorite` | Per-user bookmarked items (sidebar pins) | INTEGER | < 2 B | Same |
+| 12 | `Template` | Serialized subtree snapshots | INTEGER | < 32 K | [`../01-features/13-templates.md`](../01-features/13-templates.md) |
+| 13 | `ActivityLog` | Audit trail (one row per create/move/delete/restore) | BIGINT | > 2 B | [`../01-features/01-information-model.md`](../01-features/01-information-model.md) §Outputs |
+| 14 | `SyncCursor` | Per-user LWW cursor for SSE/poll resume | INTEGER | < 2 B | [`../06-endpoints/14-concurrency-and-sync.md`](../06-endpoints/14-concurrency-and-sync.md) `EP-SYNC-ACK` |
+
+> **Soft-delete is not a separate table.** "Trash" is a query: `SELECT * FROM Item WHERE DeletedAt IS NOT NULL AND DeletedAt > date('now', '-30 days')`. See `01-master-erd.md`.
+
+---
+
+## 🔗 Cross-References
+
+| Reference | Location |
+|-----------|----------|
+| Feature SSOTs | [`../01-features/`](../01-features/00-overview.md) |
+| Endpoint SSOTs | [`../06-endpoints/`](../06-endpoints/00-overview.md) |
+| Naming conventions | [`../../04-database-conventions/01-naming-conventions.md`](../../04-database-conventions/01-naming-conventions.md) |
+| Schema design rules | [`../../04-database-conventions/02-schema-design.md`](../../04-database-conventions/02-schema-design.md) |
+| Existing relationship diagrams (text) | [`../../04-database-conventions/05-relationship-diagrams.md`](../../04-database-conventions/05-relationship-diagrams.md) |
+| Split DB architecture | [`../../05-split-db-architecture/00-overview.md`](../../05-split-db-architecture/00-overview.md) |
+| Enums | [`../../20-enums-index.md`](../../20-enums-index.md) |
+
+---
+
+## Related
+
+- [`../00-overview.md`](../00-overview.md) — App spec root
+- [`../01-features/01-information-model.md`](../01-features/01-information-model.md) — Data model SSOT
+- [`../06-endpoints/00-overview.md`](../06-endpoints/00-overview.md) — Wire contract
