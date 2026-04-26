@@ -1275,7 +1275,7 @@
 | [`31-app/05-conventions/06-g20-precommit-contract-gate.md`](./31-app/05-conventions/06-g20-precommit-contract-gate.md) | G-20 Pre-Commit Hook Drift Gate — Algorithm Spec | 1.0.0 | — |
 | [`31-app/05-conventions/07-g21-gate-discovery-audit.md`](./31-app/05-conventions/07-g21-gate-discovery-audit.md) | G-21 Gate Discovery & Registration Audit — Algorithm Spec | 1.0.0 | — |
 | [`31-app/05-conventions/08-api-rate-limiting.md`](./31-app/05-conventions/08-api-rate-limiting.md) | API Rate-Limiting Policy — SSOT | 1.0.0 | — |
-| [`31-app/05-conventions/09-audit-log-policy.md`](./31-app/05-conventions/09-audit-log-policy.md) | Audit-Log Policy — SSOT | 1.0.0 | Active |
+| [`31-app/05-conventions/09-audit-log-policy.md`](./31-app/05-conventions/09-audit-log-policy.md) | Audit-Log Policy — SSOT | 1.2.0 | Active |
 | [`31-app/05-conventions/10-role-escalation-policy.md`](./31-app/05-conventions/10-role-escalation-policy.md) | Role-Escalation Policy — SSOT | 1.0.0 | Active |
 | [`31-app/05-conventions/11-session-token-lifecycle.md`](./31-app/05-conventions/11-session-token-lifecycle.md) | Session & Token Lifecycle — SSOT | 1.0.0 | Active |
 | [`31-app/05-conventions/12-mfa-policy.md`](./31-app/05-conventions/12-mfa-policy.md) | MFA Policy — SSOT | 1.0.0 | Active |
