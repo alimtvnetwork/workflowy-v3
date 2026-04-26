@@ -85,6 +85,18 @@ No special admin logic required — the tree model handles everything naturally.
 
 ---
 
+## Enum Sources (normative)
+
+| Enum mentioned in this file | Canonical SSOT | Strategy |
+|------------------------------|----------------|----------|
+| `ViewMode` (`List` / `Board`) | [`spec/20-enums-index.md`](../../20-enums-index.md) §3 | TS Strategy B (`as const` + derived union) — see [`spec/02-coding-guidelines/02-typescript/00-overview.md`](../../02-coding-guidelines/02-typescript/00-overview.md) |
+| `Breakpoint` (`Mobile` / `Tablet` / `Desktop`) | [`spec/20-enums-index.md`](../../20-enums-index.md) §3 | TS Strategy B |
+| `ItemType` (when card kind matters) | [`spec/20-enums-index.md`](../../20-enums-index.md) §2 | TS Strategy B |
+
+> **Forbidden:** TS `enum` keyword and bare literal unions. Always import the canonical `as const` object.
+
+---
+
 ## Inputs
 
 | Field | Type | Source | Required | Notes |

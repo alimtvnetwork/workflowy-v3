@@ -95,6 +95,19 @@ Defines the **runtime-agnostic** roles, permission grants, and authorization che
 
 ---
 
+## Enum Sources (normative)
+
+| Enum mentioned in this file | Canonical SSOT | Strategy |
+|------------------------------|----------------|----------|
+| `WorkspaceRole` (`Owner` / `Admin` / `Member`) | [`spec/20-enums-index.md`](../../20-enums-index.md) §3 | TS Strategy B (`as const` + derived union) — see [`spec/02-coding-guidelines/02-typescript/00-overview.md`](../../02-coding-guidelines/02-typescript/00-overview.md) |
+| `ItemRole` (`Owner` / `Admin` / `Edit` / `View` / `PublicView`) | [`spec/20-enums-index.md`](../../20-enums-index.md) §3 | TS Strategy B |
+| `Action` (capability matrix verbs) | [`spec/20-enums-index.md`](../../20-enums-index.md) §3 | TS Strategy B |
+| `SharePermissionType` | [`spec/20-enums-index.md`](../../20-enums-index.md) §3.5 | TS Strategy B |
+
+> **Forbidden:** TS `enum` keyword and bare literal unions. Always import the canonical `as const` object. PHP equivalents live in `Auth::*` constants — see APP-FIX-04.
+
+---
+
 ## Inputs
 
 | Field | Type | Source | Required | Notes |
