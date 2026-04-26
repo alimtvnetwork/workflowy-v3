@@ -1219,7 +1219,7 @@
 | [`18-spec-issues/09-app-folder-re-audit-2026-04-26.md`](./18-spec-issues/09-app-folder-re-audit-2026-04-26.md) | App Folder Re-Audit — 2026-04-26 (post-fix) | 1.0.0 | — |
 | [`18-spec-issues/10-content-audit-endpoints-and-db-diagram.md`](./18-spec-issues/10-content-audit-endpoints-and-db-diagram.md) | Content Audit — `06-endpoints/` + `07-db-diagram/` (2026-04-26) | 1.0.0 | — |
 | [`18-spec-issues/11-content-audit-at-app-coverage.md`](./18-spec-issues/11-content-audit-at-app-coverage.md) | Content Audit — `AT-APP-NN` Coverage Completeness (2026-04-26) | 1.0.0 | — |
-| [`18-spec-issues/97-acceptance-criteria.md`](./18-spec-issues/97-acceptance-criteria.md) | Spec Issues — Acceptance Criteria | 1.2.0 | Dispatch |
+| [`18-spec-issues/97-acceptance-criteria.md`](./18-spec-issues/97-acceptance-criteria.md) | Spec Issues — Acceptance Criteria | 1.3.0 | Dispatch |
 | [`18-spec-issues/99-consistency-report.md`](./18-spec-issues/99-consistency-report.md) | Consistency Report — Spec Issues | 1.0.0 | — |
 
 ## 31-app
@@ -1242,7 +1242,7 @@
 | [`31-app/01-features/12-multi-select.md`](./31-app/01-features/12-multi-select.md) | Multi-Select Behavior | 2.3.0 | — |
 | [`31-app/01-features/13-templates.md`](./31-app/01-features/13-templates.md) | Template Application Flow | 2.3.0 | — |
 | [`31-app/01-features/14-concurrency-and-sync.md`](./31-app/01-features/14-concurrency-and-sync.md) | Concurrency & Sync | 1.6.1 | — |
-| [`31-app/01-features/15-roles-and-permissions.md`](./31-app/01-features/15-roles-and-permissions.md) | Roles & Permissions | 1.5.0 | Active |
+| [`31-app/01-features/15-roles-and-permissions.md`](./31-app/01-features/15-roles-and-permissions.md) | Roles & Permissions | 1.6.0 | Active |
 | [`31-app/01-features/97-acceptance-criteria.md`](./31-app/01-features/97-acceptance-criteria.md) | App Features — Acceptance Criteria | 2.1.0 | Active |
 | [`31-app/01-features/99-consistency-report.md`](./31-app/01-features/99-consistency-report.md) | Consistency Report — 01-features | 2.1.0 | — |
 | [`31-app/02-workflows/00-overview.md`](./31-app/02-workflows/00-overview.md) | Workflows | 2.1.0 | — |

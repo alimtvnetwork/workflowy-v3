@@ -259,15 +259,15 @@ Total surfaces mapped: **173** across **15** feature file(s).
 
 | Surface | Component path | `data-testid` | Acceptance tests |
 |---------|---------------|---------------|------------------|
-| Share dialog trigger button | ``src/components/share/ShareDialogTrigger.tsx`` | `share-dialog-trigger` | AT-APPF-76 |
-| Share remove button | ``src/components/share/ShareRemoveButton.tsx`` | `share-remove-button` | AT-APPF-78 |
-| Share public-link toggle | ``src/components/share/SharePublicToggle.tsx`` | `share-public-toggle` | AT-APPF-79 |
-| Permission badge on item row | ``src/components/items/PermissionBadge.tsx`` | `permission-badge` | AT-APPF-80 |
-| Permission-denied toast | ``src/components/feedback/PermissionDeniedToast.tsx`` | `permission-denied-toast` | AT-APPF-77, AT-APPF-85 |
-| Public-view banner | ``src/components/share/PublicViewBanner.tsx`` | `public-view-banner` | AT-APPF-81 |
-| Transfer-ownership button | ``src/components/share/TransferOwnershipButton.tsx`` | `transfer-ownership-button` | AT-APPF-82 |
-| Workspace invite button | ``src/components/workspace/WorkspaceInviteButton.tsx`` | `workspace-invite-button` | AT-APPF-83 |
-| Removed-user badge | ``src/components/items/RemovedUserBadge.tsx`` | `removed-user-badge` | AT-APPF-84 |
+| Share dialog trigger button | ``src/components/share/ShareDialogTrigger.tsx`` | `share-dialog-trigger` | `AT-ROLES-01` |
+| Share remove button | ``src/components/share/ShareRemoveButton.tsx`` | `share-remove-button` | `AT-ROLES-03` |
+| Share public-link toggle | ``src/components/share/SharePublicToggle.tsx`` | `share-public-toggle` | `AT-ROLES-04` |
+| Permission badge on item row | ``src/components/items/PermissionBadge.tsx`` | `permission-badge` | `AT-ROLES-05` |
+| Permission-denied toast | ``src/components/feedback/PermissionDeniedToast.tsx`` | `permission-denied-toast` | `AT-ROLES-02`, `AT-ROLES-10` |
+| Public-view banner | ``src/components/share/PublicViewBanner.tsx`` | `public-view-banner` | `AT-ROLES-06` |
+| Transfer-ownership button | ``src/components/share/TransferOwnershipButton.tsx`` | `transfer-ownership-button` | `AT-ROLES-07` |
+| Workspace invite button | ``src/components/workspace/WorkspaceInviteButton.tsx`` | `workspace-invite-button` | `AT-ROLES-08` |
+| Removed-user badge | ``src/components/items/RemovedUserBadge.tsx`` | `removed-user-badge` | `AT-ROLES-09` |
 
 ---
 
