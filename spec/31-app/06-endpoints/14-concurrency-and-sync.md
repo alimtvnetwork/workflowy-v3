@@ -27,10 +27,10 @@
   - `Last-Event-Id` (header, optional) — resume cursor; server replays buffered events ≥ cursor.
 - **Response**: `Content-Type: text/event-stream`; long-lived; server emits `event:` + `data:` + `id:` triples.
 - **Event vocabulary** (matches §14.5):
-  - `item.created`, `item.updated`, `item.moved`, `item.deleted`, `item.restored`
-  - `mirror.created`, `mirror.deleted`, `mirror.broken`
-  - `share.created`, `share.updated`, `share.revoked`, `share.public-toggled`
-  - `presence.cursor`, `presence.selection`
+  - `item-created`, `item-updated`, `item-updated`, `item-deleted`, `item-restored`
+  - `item-updated` (mirror parent), `item-updated` (mirror parent), `mirror-broken`
+  - `share-granted`, `share-granted` (re-grant), `share-revoked`, `share-granted` (public variant)
+  - `presence`, `presence`
   - `keepalive` (every 25 s, no payload)
 - **Errors**: `ERR_UNAUTHENTICATED` (close immediately), `ERR_FORBIDDEN_TOPIC` (per-topic, sent as `event:error` on the stream rather than HTTP error).
 - **Side effects**: server records the connection, subscribes to topic queues. Disconnect releases subscriptions.

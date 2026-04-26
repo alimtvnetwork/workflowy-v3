@@ -24,7 +24,7 @@
 - **Request body**: `{ TargetParentId: string, Position?: 'above' | 'below' | 'end' }`.
 - **Success (201)** `Results`: the new mirror `Item` (a thin row whose `MirrorOf = id`).
 - **Errors**: `ERR_NOT_FOUND`, `ERR_FORBIDDEN`, `ERR_MIRROR_OF_MIRROR`, `ERR_PARENT_FULL`.
-- **Side effects**: inserts a mirror row. Emits SSE `mirror.created` on both `item:{id}` and `item:{TargetParentId}`.
+- **Side effects**: inserts a mirror row. Emits SSE `item-updated` (mirror parent) on both `item:{id}` and `item:{TargetParentId}`.
 - **AC refs**: `AT-APP-19`.
 
 ---
@@ -43,7 +43,7 @@
 - **Auth**: `user` with write access on the mirror's parent.
 - **Success (204)**: empty.
 - **Errors**: `ERR_NOT_FOUND`, `ERR_FORBIDDEN`, `ERR_NOT_A_MIRROR`.
-- **Side effects**: removes the mirror row only — the canonical item is untouched (per L6). Emits SSE `mirror.deleted`. The `Mirrors.BrokenAt` LWW rule from §14.4 applies if the canonical was concurrently deleted.
+- **Side effects**: removes the mirror row only — the canonical item is untouched (per L6). Emits SSE `item-updated` (mirror parent). The `Mirrors.BrokenAt` LWW rule from §14.4 applies if the canonical was concurrently deleted.
 - **AC refs**: `AT-APP-20`.
 
 ---
