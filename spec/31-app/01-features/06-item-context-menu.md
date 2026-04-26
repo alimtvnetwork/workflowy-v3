@@ -23,6 +23,8 @@ Opens as a dropdown anchored to the ⋮ trigger. Scrollable if content exceeds t
 
 Appears as a nested submenu when the user hovers or clicks "Turn into…".
 
+> **Enum source:** Each row below sets `Items.ItemType` to one value of the canonical `ItemType` enum (12 values, lowercase). Authoritative SSOT: [`spec/20-enums-index.md`](../../20-enums-index.md) §3.5. The exclusion of `mirror` and inclusion of `dashboard` is normative per [`spec/18-spec-issues/07-audit-03-dashboard-taxonomy.md`](../../18-spec-issues/07-audit-03-dashboard-taxonomy.md).
+
 | Type | Icon | Shortcut | Behavior |
 |------|------|----------|----------|
 | Bullets | List icon | ⌥⌘8 | Converts the item to a standard bullet. This is the default type. |
