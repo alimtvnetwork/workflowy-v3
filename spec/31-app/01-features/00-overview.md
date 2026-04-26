@@ -1,7 +1,7 @@
 # Features
 
-> **Version:** 2.2.0
-> **Updated:** 2026-04-26 (UTC+8) — APP-FIX-10: Boolean Conventions callout added (closes audit F-13). v2.1.0 added Casing Layers callout.
+> **Version:** 2.3.0
+> **Updated:** 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 (UTC+8) — APP-FIX-10: Boolean Conventions callout added (closes audit F-13). v2.1.0 added Casing Layers callout.
 > **Status:** ✅ Implementation-grade rollup (F-01 closed)
 
 ---
