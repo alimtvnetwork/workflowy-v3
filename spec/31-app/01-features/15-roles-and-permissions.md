@@ -1,8 +1,8 @@
 # Roles & Permissions
 
-> **Version:** 1.5.0
+> **Version:** 1.6.0
 > **Created:** 2026-04-25 (UTC+8)
-> **Updated:** 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-04: PHP `Auth::hasRole()` contract specified (closes audit F-06 / Round-3 AUDIT-04). v1.2.0 added Storage section. v1.1.0 added Enum Sources callout.
+> **Updated:** 2026-04-26 — v1.6.0 atomized Acceptance Tests to canonical inline `AT-ROLES-01..10` prefix per dispatch index, with explicit `AT-APP-21..23` rollup column and frozen `AT-APPF-76..85` legacy column (closes polish #4 prefix-drift). Prior: AUDIT-02a snake_case → PascalCase rename. Prior: APP-FIX-08 aspirational-paths disclaimer. Prior: APP-FIX-04 `Auth::hasRole()` contract. v1.2.0 Storage. v1.1.0 Enum Sources.
 > **Status:** Active — runtime-agnostic contract
 > **Parent:** [`00-overview.md`](./00-overview.md)
 > **Closes audit finding:** F-04
