@@ -12,7 +12,7 @@
 | ID | Criterion | Source |
 |----|-----------|--------|
 | AT-CGCL-01 | Boolean principles define **naming, evaluation, and composition** patterns (positive prefixes, no negated names, no plurals). | [`./02-boolean-principles/00-overview.md`](./02-boolean-principles/00-overview.md) |
-| AT-CGCL-02 | Casting-elimination patterns provide type-safe alternatives to type assertions across all 8 supported languages. | [`./03-casting-elimination/00-overview.md`](./03-casting-elimination/00-overview.md) |
+| AT-CGCL-02 | Casting-elimination patterns provide type-safe alternatives to type assertions across all 8 supported languages. | [`./03-casting-elimination-patterns/00-overview.md`](./03-casting-elimination-patterns/00-overview.md) |
 | AT-CGCL-03 | Code-style rules define formatting, naming, and structural conventions with concrete `❌` / `✅` examples per language. | [`./04-code-style/00-overview.md`](./04-code-style/00-overview.md) |
 | AT-CGCL-04 | Every cross-language guideline includes **both** ❌ (forbidden) and ✅ (compliant) code examples — no unmatched-pair examples allowed. | every spec file in this folder |
 | AT-CGCL-05 | ESLint / linter rule IDs are documented for automated enforcement of every rule that can be machine-checked. | [`./16-static-analysis/97-acceptance-criteria.md`](./16-static-analysis/97-acceptance-criteria.md) (cf. AT-CGSA-03) |
