@@ -82,8 +82,8 @@ This file is the canonical reference for terminology. When a term is used in any
 
 | Term | Definition |
 |------|-----------|
-| **Node** (WorkFlowy) | Unified item interface: `{ id, parentId, content, itemType }`. Every outliner item — bullet, todo, header, board, mirror — is a Node. |
-| **itemType** | Enum field on Node distinguishing 12 distinct item types (bullet, todo, header, note, file, board, mirror, …). |
+| **Node** (WorkFlowy) | Unified item interface: `{ id, parentId, content, itemType }`. Every outliner item — bullet, todo, h1/h2/h3, paragraph, numbered, board, dashboard, quote, code, divider — is a Node. A **Mirror** is a separate concept (a row in the `Mirrors` table) and is NOT a Node `itemType`. |
+| **itemType** | Enum field on Node. Exactly 12 values: `bullet`, `h1`, `h2`, `h3`, `paragraph`, `todo`, `numbered`, `board`, `dashboard`, `quote`, `code`, `divider`. Authoritative SSOT: [`spec/20-enums-index.md`](./20-enums-index.md) §3.5. **Note:** `mirror` is intentionally NOT a value — see [`spec/18-spec-issues/07-audit-03-dashboard-taxonomy.md`](./18-spec-issues/07-audit-03-dashboard-taxonomy.md). |
 | **Mirror** | Linked instance of an existing Node. Edits propagate to all mirrors of the source. |
 | **Zoom** | Focus mode that treats a single Node as the temporary root. Drives `/item/:id` URL routing and breadcrumbs. |
 | **Fractional sort key** | String-based ordering key (e.g., `a0`, `a0V`) allowing infinite insertion between siblings without re-numbering. |

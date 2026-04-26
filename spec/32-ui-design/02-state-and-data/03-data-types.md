@@ -18,7 +18,7 @@ The core data object. Represents any node in the outliner tree.
 | parent_id | UUID or null | Parent item (null = root level) |
 | content | Text | Plain text content |
 | note | Text | Note/description text |
-| item_type | Enum | One of: `bullet`, `h1`, `h2`, `h3`, `paragraph`, `todo`, `numbered`, `board`, `quote`, `code`, `divider`, `mirror` (12 types — canonical SSOT for UI taxonomy; mirrored in `spec/20-enums-index.md` §3.5) |
+| item_type | Enum | One of: `bullet`, `h1`, `h2`, `h3`, `paragraph`, `todo`, `numbered`, `board`, `dashboard`, `quote`, `code`, `divider` (12 types). **Authoritative SSOT:** [`spec/20-enums-index.md`](../../20-enums-index.md) §3.5. **Note:** `mirror` is intentionally NOT a value — mirrors are rows in the `Mirrors` table referencing a source `Items` row, not a turn-into target. See [`spec/18-spec-issues/07-audit-03-dashboard-taxonomy.md`](../../18-spec-issues/07-audit-03-dashboard-taxonomy.md) (Round-3 AUDIT-03 closure). |
 | is_completed | Boolean | Whether the item is marked complete |
 | is_collapsed | Boolean | Whether children are hidden |
 | sort_order | Float | Position among siblings |
