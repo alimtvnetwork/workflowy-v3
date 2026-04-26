@@ -15,6 +15,11 @@
 | 1 | [`01-audit-2026-04-18.md`](./01-audit-2026-04-18.md) | Spec Audit — 2026-04-18 | 154 |
 | 2 | [`03-ai-readiness-audit-2026-04-19.md`](./03-ai-readiness-audit-2026-04-19.md) | Spec Tree AI-Development Readiness Audit | 98 |
 | 3 | [`04-required-files-gate.md`](./04-required-files-gate.md) | Spec-Hygiene Gate: Required Files | 64 |
+| 4 | [`05-audit-02a-column-rename.md`](./05-audit-02a-column-rename.md) | AUDIT-02a — Downstream Column-Name Rename (snake_case → PascalCase) | 86 |
+| 5 | [`06-app-folder-audit-2026-04-26.md`](./06-app-folder-audit-2026-04-26.md) | App Folder Audit — 2026-04-26 | 280 |
+| 6 | [`07-audit-03-dashboard-taxonomy.md`](./07-audit-03-dashboard-taxonomy.md) | AUDIT-03 — Dashboard Taxonomy Contradiction | 119 |
+| 7 | [`08-audit-06-sse-transport-contract.md`](./08-audit-06-sse-transport-contract.md) | AUDIT-06 — SSE Transport Contract Gaps | 93 |
+| 8 | [`09-app-folder-re-audit-2026-04-26.md`](./09-app-folder-re-audit-2026-04-26.md) | App Folder Re-Audit — 2026-04-26 (post-fix) | 103 |
 
 <!-- AUTO-TOC:END -->
 

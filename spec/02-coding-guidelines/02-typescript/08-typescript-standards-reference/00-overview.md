@@ -23,7 +23,7 @@
 | 7 | [`07-positive-guards.md`](./07-positive-guards.md) | 7. Positive Guards — `isDefined()` / `isDefinedAndValid()` / `isEmpty()` | 149 |
 | 8 | [`08-discriminated-unions.md`](./08-discriminated-unions.md) | 8. Discriminated Unions — Named Interfaces Required | 105 |
 | 9 | [`09-generics-reference.md`](./09-generics-reference.md) | 9. Generics Reference — When to Use What | 15 |
-| 10 | [`10-enum-inventory.md`](./10-enum-inventory.md) | 10. Enum Inventory | 19 |
+| 10 | [`10-enum-inventory.md`](./10-enum-inventory.md) | 10. Enum Inventory | 20 |
 
 <!-- AUTO-TOC:END -->
 

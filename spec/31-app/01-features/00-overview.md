@@ -134,21 +134,21 @@ Every feature in `spec/31-app/01-features/` MUST: (1) write boolean checks as **
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`01-information-model.md`](./01-information-model.md) | Information Model Foundations | 140 |
+| 1 | [`01-information-model.md`](./01-information-model.md) | Information Model Foundations | 160 |
 | 2 | [`02-personas.md`](./02-personas.md) | Target User Personas | 119 |
-| 3 | [`03-layout-structure.md`](./03-layout-structure.md) | Layout Structure | 232 |
-| 4 | [`04-page-content-area.md`](./04-page-content-area.md) | Page / Content Area | 199 |
-| 5 | [`05-interactions.md`](./05-interactions.md) | Interaction Behaviors | 170 |
-| 6 | [`06-item-context-menu.md`](./06-item-context-menu.md) | Item Context Menu (⋮) | 188 |
-| 7 | [`07-board-view.md`](./07-board-view.md) | Board View Specification | 178 |
-| 8 | [`08-share-dialog.md`](./08-share-dialog.md) | Share Dialog Specification | 133 |
-| 9 | [`09-Mirrors.md`](./09-mirrors.md) | Mirror Specification | 188 |
-| 10 | [`10-today-view.md`](./10-today-view.md) | Today View Specification | 109 |
-| 11 | [`11-trash-view.md`](./11-trash-view.md) | Trash View Specification | 115 |
-| 12 | [`12-multi-select.md`](./12-multi-select.md) | Multi-Select Behavior | 148 |
-| 13 | [`13-Templates.md`](./13-templates.md) | Template Application Flow | 150 |
-| 14 | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | Concurrency & Sync | 154 |
-| 15 | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | Roles & Permissions | 249 |
+| 3 | [`03-layout-structure.md`](./03-layout-structure.md) | Layout Structure | 262 |
+| 4 | [`04-page-content-area.md`](./04-page-content-area.md) | Page / Content Area | 212 |
+| 5 | [`05-interactions.md`](./05-interactions.md) | Interaction Behaviors | 172 |
+| 6 | [`06-item-context-menu.md`](./06-item-context-menu.md) | Item Context Menu (⋮) | 212 |
+| 7 | [`07-board-view.md`](./07-board-view.md) | Board View Specification | 212 |
+| 8 | [`08-share-dialog.md`](./08-share-dialog.md) | Share Dialog Specification | 153 |
+| 9 | [`09-mirrors.md`](./09-mirrors.md) | Mirror Specification | 211 |
+| 10 | [`10-today-view.md`](./10-today-view.md) | Today View Specification | 124 |
+| 11 | [`11-trash-view.md`](./11-trash-view.md) | Trash View Specification | 154 |
+| 12 | [`12-multi-select.md`](./12-multi-select.md) | Multi-Select Behavior | 170 |
+| 13 | [`13-templates.md`](./13-templates.md) | Template Application Flow | 180 |
+| 14 | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | Concurrency & Sync | 296 |
+| 15 | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | Roles & Permissions | 390 |
 
 <!-- AUTO-TOC:END -->
 

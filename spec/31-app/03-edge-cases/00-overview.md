@@ -12,7 +12,7 @@
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`01-edge-cases.md`](./01-edge-cases.md) | Edge Cases | 34 |
+| 1 | [`01-edge-cases.md`](./01-edge-cases.md) | Edge Cases | 93 |
 | 2 | [`02-product-boundaries.md`](./02-product-boundaries.md) | Product Boundaries | 23 |
 
 <!-- AUTO-TOC:END -->

@@ -15,16 +15,16 @@
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`01-connection-status-enum.md`](./01-connection-status-enum.md) | TypeScript ConnectionStatus Enum — `src/lib/enums/connection-status.ts` | 100 |
-| 2 | [`02-entity-status-enum.md`](./02-entity-status-enum.md) | TypeScript EntityStatus Enum — `src/lib/enums/entity-status.ts` | 109 |
-| 3 | [`03-execution-status-enum.md`](./03-execution-status-enum.md) | TypeScript ExecutionStatus Enum — `src/lib/enums/execution-status.ts` | 118 |
-| 4 | [`04-export-status-enum.md`](./04-export-status-enum.md) | TypeScript ExportStatus Enum — `src/lib/enums/export-status.ts` | 96 |
-| 5 | [`05-http-method-enum.md`](./05-http-method-enum.md) | TypeScript HttpMethod Enum — `src/lib/enums/http-method-type.ts` | 109 |
-| 6 | [`06-message-status-enum.md`](./06-message-status-enum.md) | TypeScript MessageStatus Enum — `src/lib/enums/message-status.ts` | 96 |
-| 7 | [`07-type-safety-remediation-plan.md`](./07-type-safety-remediation-plan.md) | Codebase Type Safety Remediation Plan | 370 |
+| 1 | [`01-connection-status-enum.md`](./01-connection-status-enum.md) | TypeScript ConnectionStatus Enum — `src/lib/enums/connection-status.ts` | 105 |
+| 2 | [`02-entity-status-enum.md`](./02-entity-status-enum.md) | TypeScript EntityStatus Enum — `src/lib/enums/entity-status.ts` | 114 |
+| 3 | [`03-execution-status-enum.md`](./03-execution-status-enum.md) | TypeScript ExecutionStatus Enum — `src/lib/enums/execution-status.ts` | 123 |
+| 4 | [`04-export-status-enum.md`](./04-export-status-enum.md) | TypeScript ExportStatus Enum — `src/lib/enums/export-status.ts` | 101 |
+| 5 | [`05-http-method-enum.md`](./05-http-method-enum.md) | TypeScript HttpMethod Enum — `src/lib/enums/http-method-type.ts` | 117 |
+| 6 | [`06-message-status-enum.md`](./06-message-status-enum.md) | TypeScript MessageStatus Enum — `src/lib/enums/message-status.ts` | 101 |
+| 7 | [`07-type-safety-remediation-plan.md`](./07-type-safety-remediation-plan.md) | Codebase Type Safety Remediation Plan | 372 |
 | 8 | [`08-typescript-standards-reference/`](./08-typescript-standards-reference/00-overview.md) | TypeScript Coding Standards | subfolder |
 | 9 | [`09-promise-await-patterns.md`](./09-promise-await-patterns.md) | Promise & Await Patterns | 161 |
-| 10 | [`10-log-level-enum.md`](./10-log-level-enum.md) | TypeScript LogLevel Enum — `src/lib/enums/log-level.ts` | 115 |
+| 10 | [`10-log-level-enum.md`](./10-log-level-enum.md) | TypeScript LogLevel Enum — `src/lib/enums/log-level.ts` | 120 |
 | 11 | [`11-eslint-enforcement.md`](./11-eslint-enforcement.md) | TypeScript ESLint Enforcement — Rule Mapping | 146 |
 | 12 | [`12-discriminated-union-patterns.md`](./12-discriminated-union-patterns.md) | Discriminated Union & Action Type Patterns | 182 |
 
