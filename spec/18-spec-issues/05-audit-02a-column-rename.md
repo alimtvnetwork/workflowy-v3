@@ -1,12 +1,12 @@
 # AUDIT-02a — Downstream Column-Name Rename (snake_case → PascalCase)
 
-> **Version:** 1.1.0
+> **Version:** 1.2.0
 > **Created:** 2026-04-26 (UTC+8)
-> **Updated:** 2026-04-26 (UTC+8) — APP-FIX-01 widens scope from 8 → 12 files
-> **Status:** Open — tracked
+> **Updated:** 2026-04-26 (UTC+8) — **CLOSED.** All 12 files renamed; zero DB-identifier snake_case remaining (verified). Each file bumped one minor version with AUDIT-02a note. v1.1.0 widened scope from 8 → 12 files.
+> **Status:** ✅ **CLOSED 2026-04-26**
 > **Parent:** [`00-overview.md`](./00-overview.md)
 > **SSOT:** [`spec/19-glossary.md`](../19-glossary.md) §Database Vocabulary
-> **Closes (partially):** AUDIT-02
+> **Closes:** AUDIT-02 (fully), audit F-01 (per `06-app-folder-audit-2026-04-26.md`)
 > **Widened by:** [`06-app-folder-audit-2026-04-26.md`](./06-app-folder-audit-2026-04-26.md) §F-01 / APP-FIX-01
 
 ---
