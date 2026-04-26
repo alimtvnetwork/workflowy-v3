@@ -3,6 +3,7 @@
 > **Version:** 1.1.0
 > **Created:** 2026-04-23 (UTC+8) · **Updated:** 2026-04-26 (UTC+8) — promoted from scaffold to dispatch index (closes A-29 / polish #6 / option-a).
 > **Status:** Dispatch index — meta/tracking folder; per-audit ACs live inline in each numbered file
+> **Type:** Dispatch Index — **no `AT-SPECISSUES-NN` IDs by design.** A mediocre AI scanning for atomic IDs MUST treat this folder as a meta-tracker; the per-audit `01-…`, `06-…`, `09-…` files own their own inline acceptance criteria.
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
 ---

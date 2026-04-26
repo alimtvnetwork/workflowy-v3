@@ -1,6 +1,6 @@
 # Active Plans
 
-> **Updated:** 2026-04-26 (UTC+8) · **Status:** 🎉 **AUDIT POLISH #3 DONE — 143/143 overviews now carry Keywords + AI Confidence + Scoring blocks.** A-26..A-30 closed; F-AUD30-03 (TBDs) and F-AUD30-04/05 (overview metadata) resolved. 106 overviews carry `auto-backfill TODO re-grade` markers so humans can prioritize manual scoring; the script (`/tmp/backfill_overviews.mjs`) is preserved if a re-run is needed. Only blocking failure is **F-AUD30-01** — `src/types/index.ts` `mirror` → `dashboard` (3-line fix gated by `mem://constraints/spec-only-mode`). **Say `exit spec-only` to apply that fix and start P1.1 Bootstrap.**
+> **Updated:** 2026-04-26 (UTC+8) · **Status:** 🎉 **AUDIT POLISH #4 DONE — 19 atomic AT-IDs added (8 AT-CGCL-NN + 11 AT-CGSA-NN); 2 dispatch indexes carry explicit `Type: Dispatch Index` opt-out.** A-26..A-30 closed; F-AUD30-02 + F-AUD30-03 + F-AUD30-04/05 resolved. Hygiene 17/18 (only F-AUD30-01 remains — `src/types/index.ts` `mirror` → `dashboard`, gated by `mem://constraints/spec-only-mode`). **Say `exit spec-only` to apply that fix and start P1.1 Bootstrap.**
 
 ---
 

@@ -3,6 +3,7 @@
 > **Version:** 1.0.0
 > **Updated:** 2026-04-26 (UTC+8) — replaces auto-generated v0.1.0 stub (closes F-AUD27-02 from `02-ai-readiness-report-post-a27.md`).
 > **Status:** Dispatch index — the roadmap folder has no normative ACs of its own; it dispatches to the implementation-checklist file and the global app rollup.
+> **Type:** Dispatch Index — **no `AT-ROADMAP-NN` IDs by design.** The verification block at the bottom of this file enforces the no-`AT-ROADMAP-*` rule via `grep`.
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
 ---
