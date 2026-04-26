@@ -1,0 +1,939 @@
+{
+  "version": "Round-4-deterministic",
+  "generated": "2026-04-26",
+  "ai_scoring_attempted": true,
+  "ai_scoring_blocked_reason": "Lovable AI Gateway credits exhausted (gemini-2.5-flash, 2.5-flash-lite, 3-flash-preview, gpt-5-nano all 402)",
+  "overall_score": 92,
+  "aggregate_dims": {
+    "completeness": 99,
+    "consistency": 100,
+    "clarity": 63,
+    "testability": 94,
+    "ai_actionability": 99,
+    "alignment": 95
+  },
+  "module_count": 24,
+  "findings": [
+    {
+      "id": "F-R4-01",
+      "severity": 9,
+      "impact": 9,
+      "score": 81,
+      "category": "Drift",
+      "title": "ItemType enum drift: src uses `mirror`, spec uses `dashboard`",
+      "why_ai_fails": "AI generates dispatch/Zod schemas with wrong literal; type errors cascade.",
+      "fix": "Edit src/types/index.ts: replace `| \"mirror\"` with `| \"dashboard\"`. Blocked by spec-only-mode.",
+      "evidence": "src/types/index.ts contains 'mirror'"
+    },
+    {
+      "id": "F-R4-03",
+      "severity": 7,
+      "impact": 7,
+      "score": 49,
+      "category": "Missing-Test",
+      "title": "2 modules have AC files lacking atomic AC-NN/AT-XXX-NN IDs",
+      "why_ai_fails": "Cannot assert 'all ACs satisfied' for PR merge gate.",
+      "fix": "Atomize narrative checklists into AC-NN rows OR mark file as `> Type: Dispatch Index`.",
+      "evidence": "18-spec-issues, 31-app"
+    },
+    {
+      "id": "F-R4-04",
+      "severity": 6,
+      "impact": 7,
+      "score": 42,
+      "category": "Ambiguity",
+      "title": "296 TBD/TODO/FIXME markers across 21 modules",
+      "why_ai_fails": "AI invents values (e.g. 'last 5 results', random hex); user rejects output.",
+      "fix": "Resolve each TBD or wrap in `<<TBD-PhaseN>>` token the runner refuses to compile.",
+      "evidence": "18-spec-issues(8); 31-app(31); 32-ui-design(86); 02-coding-guidelines(48); 03-error-manage(24); 15-wp-plugin-how-to(32)"
+    },
+    {
+      "id": "F-R4-07",
+      "severity": 3,
+      "impact": 8,
+      "score": 24,
+      "category": "Implementation-Risk",
+      "title": "Spec=1270 files, src=25 files \u2014 99% of surface unimplemented",
+      "why_ai_fails": "Fresh AI without spec-only-mode memory may treat empty modules as 'done'.",
+      "fix": "Add src/STATUS.md mirroring spec/31-app/04-roadmap/03-implementation-checklist.md.",
+      "evidence": "src has 8 placeholder files"
+    },
+    {
+      "id": "F-R4-06",
+      "severity": 4,
+      "impact": 5,
+      "score": 20,
+      "category": "Gap",
+      "title": "2 short-stub files (<400 chars) treated as authoritative",
+      "why_ai_fails": "AI treats stub as complete spec ('workflow is empty \u2192 no workflow exists').",
+      "fix": "Expand to \u2265 800 chars or add `> Status: Placeholder \u2014 see <link>` banner.",
+      "evidence": "02-coding-guidelines:01-workflow-and-process.md; 10-powershell-integration:06-pnpm-store-commands.md"
+    },
+    {
+      "id": "F-R4-05",
+      "severity": 3,
+      "impact": 5,
+      "score": 15,
+      "category": "Clarity",
+      "title": "10 hedge phrases (might/maybe/probably) in normative text",
+      "why_ai_fails": "Creates false branches in AI planning tree; generates code for both paths.",
+      "fix": "Rewrite to definitive imperatives: 'If X, abort; else retry exactly twice.'",
+      "evidence": "worst: 18-spec-issues"
+    },
+    {
+      "id": "F-R4-08",
+      "severity": 3,
+      "impact": 4,
+      "score": 12,
+      "category": "Inconsistency",
+      "title": "Two 'consolidation' folders exist (12-consolidated-guidelines + 02-.../consolidated-review-guide)",
+      "why_ai_fails": "AI reads both, finds divergent advice, freezes.",
+      "fix": "Pick one canonical; demote other to redirect. (Round 3 added disambiguation banners \u2014 verify.)",
+      "evidence": ""
+    }
+  ],
+  "modules": [
+    {
+      "module": "18-spec-issues",
+      "files": 11,
+      "size_kb": 70.3,
+      "overviews": 1,
+      "ac_files": 1,
+      "ac_files_with_atomic_ids": 0,
+      "ac_id_count": 0,
+      "consistency_reports": 1,
+      "short_stubs": [],
+      "hedge_count": 3,
+      "tbd_count": 8,
+      "tbd_examples": [
+        "spec/18-spec-issues/00-overview.md:22 \u2192 TODO",
+        "spec/18-spec-issues/00-overview.md:23 \u2192 TODO",
+        "spec/18-spec-issues/06-app-folder-audit-2026-04-26.md:202 \u2192 TODO",
+        "spec/18-spec-issues/07-audit-03-dashboard-taxonomy.md:25 \u2192 todo",
+        "spec/18-spec-issues/07-audit-03-dashboard-taxonomy.md:27 \u2192 todo"
+      ],
+      "hedge_examples": [
+        "spec/18-spec-issues/03-ai-readiness-audit-2026-04-19.md:68 \u2192 possibly",
+        "spec/18-spec-issues/07-audit-03-dashboard-taxonomy.md:39 \u2192 kind of",
+        "spec/18-spec-issues/07-audit-03-dashboard-taxonomy.md:69 \u2192 kind of"
+      ],
+      "overview_meta": {
+        "with_keywords": 1,
+        "with_scoring": 1,
+        "with_ai_confidence": 1,
+        "total": 1
+      },
+      "dims": {
+        "completeness": 100,
+        "consistency": 100,
+        "clarity": 54,
+        "testability": 0,
+        "ai_actionability": 100,
+        "alignment": 95
+      },
+      "overall_score": 73
+    },
+    {
+      "module": "31-app",
+      "files": 41,
+      "size_kb": 337.6,
+      "overviews": 6,
+      "ac_files": 4,
+      "ac_files_with_atomic_ids": 3,
+      "ac_id_count": 106,
+      "consistency_reports": 6,
+      "short_stubs": [],
+      "hedge_count": 2,
+      "tbd_count": 31,
+      "tbd_examples": [
+        "spec/31-app/00-overview.md:25 \u2192 TODO",
+        "spec/31-app/00-overview.md:26 \u2192 TODO",
+        "spec/31-app/97-acceptance-criteria.md:91 \u2192 todo",
+        "spec/31-app/97-acceptance-criteria.md:92 \u2192 todo",
+        "spec/31-app/01-features/00-overview.md:25 \u2192 TODO"
+      ],
+      "hedge_examples": [
+        "spec/31-app/01-features/00-overview.md:67 \u2192 sort of",
+        "spec/31-app/02-workflows/00-overview.md:60 \u2192 might"
+      ],
+      "overview_meta": {
+        "with_keywords": 6,
+        "with_scoring": 6,
+        "with_ai_confidence": 6,
+        "total": 6
+      },
+      "dims": {
+        "completeness": 100,
+        "consistency": 100,
+        "clarity": 0,
+        "testability": 75,
+        "ai_actionability": 100,
+        "alignment": 95
+      },
+      "overall_score": 80
+    },
+    {
+      "module": "32-ui-design",
+      "files": 120,
+      "size_kb": 503.2,
+      "overviews": 17,
+      "ac_files": 17,
+      "ac_files_with_atomic_ids": 14,
+      "ac_id_count": 268,
+      "consistency_reports": 18,
+      "short_stubs": [],
+      "hedge_count": 0,
+      "tbd_count": 86,
+      "tbd_examples": [
+        "spec/32-ui-design/00-overview.md:25 \u2192 TODO",
+        "spec/32-ui-design/00-overview.md:26 \u2192 TODO",
+        "spec/32-ui-design/01-architecture/00-overview.md:22 \u2192 TODO",
+        "spec/32-ui-design/01-architecture/00-overview.md:23 \u2192 TODO",
+        "spec/32-ui-design/01-architecture/05-component-contract-map.md:86 \u2192 todo"
+      ],
+      "hedge_examples": [],
+      "overview_meta": {
+        "with_keywords": 17,
+        "with_scoring": 17,
+        "with_ai_confidence": 17,
+        "total": 17
+      },
+      "dims": {
+        "completeness": 100,
+        "consistency": 100,
+        "clarity": 0,
+        "testability": 82,
+        "ai_actionability": 100,
+        "alignment": 95
+      },
+      "overall_score": 81
+    },
+    {
+      "module": "02-coding-guidelines",
+      "files": 308,
+      "size_kb": 1200.4,
+      "overviews": 35,
+      "ac_files": 30,
+      "ac_files_with_atomic_ids": 30,
+      "ac_id_count": 486,
+      "consistency_reports": 21,
+      "short_stubs": [
+        "spec/02-coding-guidelines/consolidated-review-guide/01-workflow-and-process.md"
+      ],
+      "hedge_count": 1,
+      "tbd_count": 48,
+      "tbd_examples": [
+        "spec/02-coding-guidelines/00-overview.md:24 \u2192 TODO",
+        "spec/02-coding-guidelines/00-overview.md:25 \u2192 TODO",
+        "spec/02-coding-guidelines/04-php/00-overview.md:11 \u2192 TODO",
+        "spec/02-coding-guidelines/04-php/00-overview.md:12 \u2192 TODO",
+        "spec/02-coding-guidelines/05-rust/97-acceptance-criteria.md:32 \u2192 todo"
+      ],
+      "hedge_examples": [
+        "spec/02-coding-guidelines/01-cross-language/19-null-pointer-safety.md:26 \u2192 might"
+      ],
+      "overview_meta": {
+        "with_keywords": 35,
+        "with_scoring": 35,
+        "with_ai_confidence": 35,
+        "total": 35
+      },
+      "dims": {
+        "completeness": 97,
+        "consistency": 95,
+        "clarity": 0,
+        "testability": 100,
+        "ai_actionability": 100,
+        "alignment": 95
+      },
+      "overall_score": 83
+    },
+    {
+      "module": "03-error-manage",
+      "files": 187,
+      "size_kb": 728.7,
+      "overviews": 28,
+      "ac_files": 19,
+      "ac_files_with_atomic_ids": 19,
+      "ac_id_count": 268,
+      "consistency_reports": 20,
+      "short_stubs": [],
+      "hedge_count": 1,
+      "tbd_count": 24,
+      "tbd_examples": [
+        "spec/03-error-manage/03-error-code-registry/01-registry/00-overview.md:21 \u2192 TODO",
+        "spec/03-error-manage/03-error-code-registry/01-registry/00-overview.md:22 \u2192 TODO",
+        "spec/03-error-manage/02-error-architecture/01-error-handling-reference/00-overview.md:23 \u2192 TODO",
+        "spec/03-error-manage/02-error-architecture/01-error-handling-reference/00-overview.md:24 \u2192 TODO",
+        "spec/03-error-manage/02-error-architecture/07-logging-and-diagnostics/02-session-based-logging/00-overview.md:24 \u2192 TODO"
+      ],
+      "hedge_examples": [
+        "spec/03-error-manage/01-error-resolution/03-retrospectives/02-retry-debounce-dedup-fixes/04-toast-and-circuit-breaker.md:55 \u2192 might"
+      ],
+      "overview_meta": {
+        "with_keywords": 28,
+        "with_scoring": 28,
+        "with_ai_confidence": 28,
+        "total": 28
+      },
+      "dims": {
+        "completeness": 100,
+        "consistency": 100,
+        "clarity": 0,
+        "testability": 100,
+        "ai_actionability": 100,
+        "alignment": 95
+      },
+      "overall_score": 84
+    },
+    {
+      "module": "15-wp-plugin-how-to",
+      "files": 216,
+      "size_kb": 739.0,
+      "overviews": 16,
+      "ac_files": 16,
+      "ac_files_with_atomic_ids": 16,
+      "ac_id_count": 287,
+      "consistency_reports": 2,
+      "short_stubs": [],
+      "hedge_count": 0,
+      "tbd_count": 32,
+      "tbd_examples": [
+        "spec/15-wp-plugin-how-to/00-overview.md:22 \u2192 TODO",
+        "spec/15-wp-plugin-how-to/00-overview.md:23 \u2192 TODO",
+        "spec/15-wp-plugin-how-to/02-enums-and-coding-style/00-overview.md:17 \u2192 TODO",
+        "spec/15-wp-plugin-how-to/02-enums-and-coding-style/00-overview.md:18 \u2192 TODO",
+        "spec/15-wp-plugin-how-to/04-logging-and-error-handling/00-overview.md:11 \u2192 TODO"
+      ],
+      "hedge_examples": [],
+      "overview_meta": {
+        "with_keywords": 16,
+        "with_scoring": 16,
+        "with_ai_confidence": 16,
+        "total": 16
+      },
+      "dims": {
+        "completeness": 100,
+        "consistency": 100,
+        "clarity": 0,
+        "testability": 100,
+        "ai_actionability": 100,
+        "alignment": 95
+      },
+      "overall_score": 84
+    },
+    {
+      "module": "06-seedable-config-architecture",
+      "files": 50,
+      "size_kb": 162.8,
+      "overviews": 6,
+      "ac_files": 4,
+      "ac_files_with_atomic_ids": 4,
+      "ac_id_count": 69,
+      "consistency_reports": 2,
+      "short_stubs": [],
+      "hedge_count": 0,
+      "tbd_count": 11,
+      "tbd_examples": [
+        "spec/06-seedable-config-architecture/01-fundamentals/00-overview.md:22 \u2192 TODO",
+        "spec/06-seedable-config-architecture/01-fundamentals/00-overview.md:23 \u2192 TODO",
+        "spec/06-seedable-config-architecture/02-features/00-overview.md:21 \u2192 TODO",
+        "spec/06-seedable-config-architecture/02-features/00-overview.md:22 \u2192 TODO",
+        "spec/06-seedable-config-architecture/02-features/04-rag-test-coverage-matrix.md:251 \u2192 TBD"
+      ],
+      "hedge_examples": [],
+      "overview_meta": {
+        "with_keywords": 6,
+        "with_scoring": 6,
+        "with_ai_confidence": 6,
+        "total": 6
+      },
+      "dims": {
+        "completeness": 100,
+        "consistency": 100,
+        "clarity": 45,
+        "testability": 100,
+        "ai_actionability": 100,
+        "alignment": 95
+      },
+      "overall_score": 91
+    },
+    {
+      "module": "05-split-db-architecture",
+      "files": 45,
+      "size_kb": 207.6,
+      "overviews": 6,
+      "ac_files": 4,
+      "ac_files_with_atomic_ids": 4,
+      "ac_id_count": 66,
+      "consistency_reports": 2,
+      "short_stubs": [],
+      "hedge_count": 0,
+      "tbd_count": 10,
+      "tbd_examples": [
+        "spec/05-split-db-architecture/01-fundamentals/00-overview.md:22 \u2192 TODO",
+        "spec/05-split-db-architecture/01-fundamentals/00-overview.md:23 \u2192 TODO",
+        "spec/05-split-db-architecture/02-features/00-overview.md:21 \u2192 TODO",
+        "spec/05-split-db-architecture/02-features/00-overview.md:22 \u2192 TODO",
+        "spec/05-split-db-architecture/02-features/01-cli-examples/00-overview.md:23 \u2192 TODO"
+      ],
+      "hedge_examples": [],
+      "overview_meta": {
+        "with_keywords": 6,
+        "with_scoring": 6,
+        "with_ai_confidence": 6,
+        "total": 6
+      },
+      "dims": {
+        "completeness": 100,
+        "consistency": 100,
+        "clarity": 50,
+        "testability": 100,
+        "ai_actionability": 100,
+        "alignment": 95
+      },
+      "overall_score": 92
+    },
+    {
+      "module": "01-spec-authoring-guide",
+      "files": 21,
+      "size_kb": 125.6,
+      "overviews": 1,
+      "ac_files": 1,
+      "ac_files_with_atomic_ids": 1,
+      "ac_id_count": 22,
+      "consistency_reports": 1,
+      "short_stubs": [],
+      "hedge_count": 0,
+      "tbd_count": 0,
+      "tbd_examples": [],
+      "hedge_examples": [],
+      "overview_meta": {
+        "with_keywords": 1,
+        "with_scoring": 0,
+        "with_ai_confidence": 1,
+        "total": 1
+      },
+      "dims": {
+        "completeness": 100,
+        "consistency": 100,
+        "clarity": 100,
+        "testability": 100,
+        "ai_actionability": 66,
+        "alignment": 95
+      },
+      "overall_score": 93
+    },
+    {
+      "module": "11-research",
+      "files": 2,
+      "size_kb": 2.6,
+      "overviews": 1,
+      "ac_files": 0,
+      "ac_files_with_atomic_ids": 0,
+      "ac_id_count": 0,
+      "consistency_reports": 1,
+      "short_stubs": [],
+      "hedge_count": 0,
+      "tbd_count": 2,
+      "tbd_examples": [
+        "spec/11-research/00-overview.md:25 \u2192 TODO",
+        "spec/11-research/00-overview.md:26 \u2192 TODO"
+      ],
+      "hedge_examples": [],
+      "overview_meta": {
+        "with_keywords": 1,
+        "with_scoring": 1,
+        "with_ai_confidence": 1,
+        "total": 1
+      },
+      "dims": {
+        "completeness": 80,
+        "consistency": 100,
+        "clarity": 90,
+        "testability": 100,
+        "ai_actionability": 100,
+        "alignment": 95
+      },
+      "overall_score": 94
+    },
+    {
+      "module": "13-cicd-pipeline-workflows",
+      "files": 36,
+      "size_kb": 222.5,
+      "overviews": 4,
+      "ac_files": 3,
+      "ac_files_with_atomic_ids": 3,
+      "ac_id_count": 60,
+      "consistency_reports": 3,
+      "short_stubs": [],
+      "hedge_count": 0,
+      "tbd_count": 8,
+      "tbd_examples": [
+        "spec/13-cicd-pipeline-workflows/00-overview.md:22 \u2192 TODO",
+        "spec/13-cicd-pipeline-workflows/00-overview.md:23 \u2192 TODO",
+        "spec/13-cicd-pipeline-workflows/01-browser-extension-deploy/00-overview.md:22 \u2192 TODO",
+        "spec/13-cicd-pipeline-workflows/01-browser-extension-deploy/00-overview.md:23 \u2192 TODO",
+        "spec/13-cicd-pipeline-workflows/02-go-binary-deploy/00-overview.md:22 \u2192 TODO"
+      ],
+      "hedge_examples": [],
+      "overview_meta": {
+        "with_keywords": 4,
+        "with_scoring": 4,
+        "with_ai_confidence": 4,
+        "total": 4
+      },
+      "dims": {
+        "completeness": 100,
+        "consistency": 100,
+        "clarity": 60,
+        "testability": 100,
+        "ai_actionability": 100,
+        "alignment": 95
+      },
+      "overall_score": 94
+    },
+    {
+      "module": "08-docs-viewer-ui",
+      "files": 29,
+      "size_kb": 83.8,
+      "overviews": 3,
+      "ac_files": 3,
+      "ac_files_with_atomic_ids": 3,
+      "ac_id_count": 43,
+      "consistency_reports": 2,
+      "short_stubs": [],
+      "hedge_count": 0,
+      "tbd_count": 6,
+      "tbd_examples": [
+        "spec/08-docs-viewer-ui/00-overview.md:11 \u2192 TODO",
+        "spec/08-docs-viewer-ui/00-overview.md:12 \u2192 TODO",
+        "spec/08-docs-viewer-ui/02-features/00-overview.md:22 \u2192 TODO",
+        "spec/08-docs-viewer-ui/02-features/00-overview.md:23 \u2192 TODO",
+        "spec/08-docs-viewer-ui/02-features/07-visual-rendering-guide/00-overview.md:22 \u2192 TODO"
+      ],
+      "hedge_examples": [],
+      "overview_meta": {
+        "with_keywords": 3,
+        "with_scoring": 3,
+        "with_ai_confidence": 3,
+        "total": 3
+      },
+      "dims": {
+        "completeness": 100,
+        "consistency": 100,
+        "clarity": 70,
+        "testability": 100,
+        "ai_actionability": 100,
+        "alignment": 95
+      },
+      "overall_score": 95
+    },
+    {
+      "module": "10-powershell-integration",
+      "files": 24,
+      "size_kb": 102.1,
+      "overviews": 2,
+      "ac_files": 2,
+      "ac_files_with_atomic_ids": 2,
+      "ac_id_count": 37,
+      "consistency_reports": 1,
+      "short_stubs": [
+        "spec/10-powershell-integration/02-script-reference/06-pnpm-store-commands.md"
+      ],
+      "hedge_count": 0,
+      "tbd_count": 4,
+      "tbd_examples": [
+        "spec/10-powershell-integration/00-overview.md:24 \u2192 TODO",
+        "spec/10-powershell-integration/00-overview.md:25 \u2192 TODO",
+        "spec/10-powershell-integration/02-script-reference/00-overview.md:24 \u2192 TODO",
+        "spec/10-powershell-integration/02-script-reference/00-overview.md:25 \u2192 TODO"
+      ],
+      "hedge_examples": [],
+      "overview_meta": {
+        "with_keywords": 2,
+        "with_scoring": 2,
+        "with_ai_confidence": 2,
+        "total": 2
+      },
+      "dims": {
+        "completeness": 97,
+        "consistency": 95,
+        "clarity": 80,
+        "testability": 100,
+        "ai_actionability": 100,
+        "alignment": 95
+      },
+      "overall_score": 95
+    },
+    {
+      "module": "14-self-update-app-update",
+      "files": 32,
+      "size_kb": 143.5,
+      "overviews": 3,
+      "ac_files": 2,
+      "ac_files_with_atomic_ids": 2,
+      "ac_id_count": 29,
+      "consistency_reports": 2,
+      "short_stubs": [],
+      "hedge_count": 1,
+      "tbd_count": 6,
+      "tbd_examples": [
+        "spec/14-self-update-app-update/00-overview.md:22 \u2192 TODO",
+        "spec/14-self-update-app-update/00-overview.md:23 \u2192 TODO",
+        "spec/14-self-update-app-update/09-release-versioning/00-overview.md:22 \u2192 TODO",
+        "spec/14-self-update-app-update/09-release-versioning/00-overview.md:23 \u2192 TODO",
+        "spec/14-self-update-app-update/diagrams/00-overview.md:24 \u2192 TODO"
+      ],
+      "hedge_examples": [
+        "spec/14-self-update-app-update/03-rename-first-deploy.md:223 \u2192 might"
+      ],
+      "overview_meta": {
+        "with_keywords": 3,
+        "with_scoring": 3,
+        "with_ai_confidence": 3,
+        "total": 3
+      },
+      "dims": {
+        "completeness": 100,
+        "consistency": 100,
+        "clarity": 68,
+        "testability": 100,
+        "ai_actionability": 100,
+        "alignment": 95
+      },
+      "overall_score": 95
+    },
+    {
+      "module": "16-generic-cli",
+      "files": 43,
+      "size_kb": 155.5,
+      "overviews": 3,
+      "ac_files": 3,
+      "ac_files_with_atomic_ids": 3,
+      "ac_id_count": 46,
+      "consistency_reports": 1,
+      "short_stubs": [],
+      "hedge_count": 1,
+      "tbd_count": 6,
+      "tbd_examples": [
+        "spec/16-generic-cli/00-overview.md:17 \u2192 TODO",
+        "spec/16-generic-cli/00-overview.md:18 \u2192 TODO",
+        "spec/16-generic-cli/16-verbose-logging/00-overview.md:23 \u2192 TODO",
+        "spec/16-generic-cli/16-verbose-logging/00-overview.md:24 \u2192 TODO",
+        "spec/16-generic-cli/20-terminal-output-design/00-overview.md:17 \u2192 TODO"
+      ],
+      "hedge_examples": [
+        "spec/16-generic-cli/20-terminal-output-design/00-overview.md:110 \u2192 might"
+      ],
+      "overview_meta": {
+        "with_keywords": 3,
+        "with_scoring": 3,
+        "with_ai_confidence": 3,
+        "total": 3
+      },
+      "dims": {
+        "completeness": 100,
+        "consistency": 100,
+        "clarity": 68,
+        "testability": 100,
+        "ai_actionability": 100,
+        "alignment": 95
+      },
+      "overall_score": 95
+    },
+    {
+      "module": "04-database-conventions",
+      "files": 16,
+      "size_kb": 90.1,
+      "overviews": 2,
+      "ac_files": 2,
+      "ac_files_with_atomic_ids": 2,
+      "ac_id_count": 36,
+      "consistency_reports": 1,
+      "short_stubs": [],
+      "hedge_count": 0,
+      "tbd_count": 2,
+      "tbd_examples": [
+        "spec/04-database-conventions/06-rest-api-format/00-overview.md:22 \u2192 TODO",
+        "spec/04-database-conventions/06-rest-api-format/00-overview.md:23 \u2192 TODO"
+      ],
+      "hedge_examples": [],
+      "overview_meta": {
+        "with_keywords": 2,
+        "with_scoring": 2,
+        "with_ai_confidence": 2,
+        "total": 2
+      },
+      "dims": {
+        "completeness": 100,
+        "consistency": 100,
+        "clarity": 90,
+        "testability": 100,
+        "ai_actionability": 100,
+        "alignment": 95
+      },
+      "overall_score": 98
+    },
+    {
+      "module": "09-code-block-system",
+      "files": 14,
+      "size_kb": 79.5,
+      "overviews": 1,
+      "ac_files": 1,
+      "ac_files_with_atomic_ids": 1,
+      "ac_id_count": 31,
+      "consistency_reports": 1,
+      "short_stubs": [],
+      "hedge_count": 0,
+      "tbd_count": 2,
+      "tbd_examples": [
+        "spec/09-code-block-system/00-overview.md:22 \u2192 TODO",
+        "spec/09-code-block-system/00-overview.md:23 \u2192 TODO"
+      ],
+      "hedge_examples": [],
+      "overview_meta": {
+        "with_keywords": 1,
+        "with_scoring": 1,
+        "with_ai_confidence": 1,
+        "total": 1
+      },
+      "dims": {
+        "completeness": 100,
+        "consistency": 100,
+        "clarity": 90,
+        "testability": 100,
+        "ai_actionability": 100,
+        "alignment": 95
+      },
+      "overall_score": 98
+    },
+    {
+      "module": "17-generic-update",
+      "files": 11,
+      "size_kb": 66.6,
+      "overviews": 1,
+      "ac_files": 1,
+      "ac_files_with_atomic_ids": 1,
+      "ac_id_count": 11,
+      "consistency_reports": 1,
+      "short_stubs": [],
+      "hedge_count": 1,
+      "tbd_count": 2,
+      "tbd_examples": [
+        "spec/17-generic-update/00-overview.md:22 \u2192 TODO",
+        "spec/17-generic-update/00-overview.md:23 \u2192 TODO"
+      ],
+      "hedge_examples": [
+        "spec/17-generic-update/03-rename-first-deploy.md:229 \u2192 might"
+      ],
+      "overview_meta": {
+        "with_keywords": 1,
+        "with_scoring": 1,
+        "with_ai_confidence": 1,
+        "total": 1
+      },
+      "dims": {
+        "completeness": 100,
+        "consistency": 100,
+        "clarity": 88,
+        "testability": 100,
+        "ai_actionability": 100,
+        "alignment": 95
+      },
+      "overall_score": 98
+    },
+    {
+      "module": "33-feedback-report",
+      "files": 3,
+      "size_kb": 9.9,
+      "overviews": 1,
+      "ac_files": 1,
+      "ac_files_with_atomic_ids": 1,
+      "ac_id_count": 16,
+      "consistency_reports": 1,
+      "short_stubs": [],
+      "hedge_count": 0,
+      "tbd_count": 2,
+      "tbd_examples": [
+        "spec/33-feedback-report/00-overview.md:11 \u2192 TODO",
+        "spec/33-feedback-report/00-overview.md:12 \u2192 TODO"
+      ],
+      "hedge_examples": [],
+      "overview_meta": {
+        "with_keywords": 1,
+        "with_scoring": 1,
+        "with_ai_confidence": 1,
+        "total": 1
+      },
+      "dims": {
+        "completeness": 100,
+        "consistency": 100,
+        "clarity": 90,
+        "testability": 100,
+        "ai_actionability": 100,
+        "alignment": 95
+      },
+      "overall_score": 98
+    },
+    {
+      "module": "34-activity-feed",
+      "files": 3,
+      "size_kb": 10.4,
+      "overviews": 1,
+      "ac_files": 1,
+      "ac_files_with_atomic_ids": 1,
+      "ac_id_count": 18,
+      "consistency_reports": 1,
+      "short_stubs": [],
+      "hedge_count": 0,
+      "tbd_count": 2,
+      "tbd_examples": [
+        "spec/34-activity-feed/00-overview.md:11 \u2192 TODO",
+        "spec/34-activity-feed/00-overview.md:12 \u2192 TODO"
+      ],
+      "hedge_examples": [],
+      "overview_meta": {
+        "with_keywords": 1,
+        "with_scoring": 1,
+        "with_ai_confidence": 1,
+        "total": 1
+      },
+      "dims": {
+        "completeness": 100,
+        "consistency": 100,
+        "clarity": 90,
+        "testability": 100,
+        "ai_actionability": 100,
+        "alignment": 95
+      },
+      "overall_score": 98
+    },
+    {
+      "module": "35-enforcement-rules",
+      "files": 3,
+      "size_kb": 10.8,
+      "overviews": 1,
+      "ac_files": 1,
+      "ac_files_with_atomic_ids": 1,
+      "ac_id_count": 16,
+      "consistency_reports": 1,
+      "short_stubs": [],
+      "hedge_count": 0,
+      "tbd_count": 2,
+      "tbd_examples": [
+        "spec/35-enforcement-rules/00-overview.md:11 \u2192 TODO",
+        "spec/35-enforcement-rules/00-overview.md:12 \u2192 TODO"
+      ],
+      "hedge_examples": [],
+      "overview_meta": {
+        "with_keywords": 1,
+        "with_scoring": 1,
+        "with_ai_confidence": 1,
+        "total": 1
+      },
+      "dims": {
+        "completeness": 100,
+        "consistency": 100,
+        "clarity": 90,
+        "testability": 100,
+        "ai_actionability": 100,
+        "alignment": 95
+      },
+      "overall_score": 98
+    },
+    {
+      "module": "36-user-management",
+      "files": 3,
+      "size_kb": 11.6,
+      "overviews": 1,
+      "ac_files": 1,
+      "ac_files_with_atomic_ids": 1,
+      "ac_id_count": 18,
+      "consistency_reports": 1,
+      "short_stubs": [],
+      "hedge_count": 0,
+      "tbd_count": 2,
+      "tbd_examples": [
+        "spec/36-user-management/00-overview.md:11 \u2192 TODO",
+        "spec/36-user-management/00-overview.md:12 \u2192 TODO"
+      ],
+      "hedge_examples": [],
+      "overview_meta": {
+        "with_keywords": 1,
+        "with_scoring": 1,
+        "with_ai_confidence": 1,
+        "total": 1
+      },
+      "dims": {
+        "completeness": 100,
+        "consistency": 100,
+        "clarity": 90,
+        "testability": 100,
+        "ai_actionability": 100,
+        "alignment": 95
+      },
+      "overall_score": 98
+    },
+    {
+      "module": "07-design-system",
+      "files": 16,
+      "size_kb": 82.8,
+      "overviews": 1,
+      "ac_files": 1,
+      "ac_files_with_atomic_ids": 1,
+      "ac_id_count": 34,
+      "consistency_reports": 1,
+      "short_stubs": [],
+      "hedge_count": 0,
+      "tbd_count": 0,
+      "tbd_examples": [],
+      "hedge_examples": [],
+      "overview_meta": {
+        "with_keywords": 1,
+        "with_scoring": 1,
+        "with_ai_confidence": 1,
+        "total": 1
+      },
+      "dims": {
+        "completeness": 100,
+        "consistency": 100,
+        "clarity": 100,
+        "testability": 100,
+        "ai_actionability": 100,
+        "alignment": 95
+      },
+      "overall_score": 100
+    },
+    {
+      "module": "12-consolidated-guidelines",
+      "files": 26,
+      "size_kb": 60.0,
+      "overviews": 1,
+      "ac_files": 1,
+      "ac_files_with_atomic_ids": 1,
+      "ac_id_count": 15,
+      "consistency_reports": 1,
+      "short_stubs": [],
+      "hedge_count": 0,
+      "tbd_count": 0,
+      "tbd_examples": [],
+      "hedge_examples": [],
+      "overview_meta": {
+        "with_keywords": 1,
+        "with_scoring": 1,
+        "with_ai_confidence": 1,
+        "total": 1
+      },
+      "dims": {
+        "completeness": 100,
+        "consistency": 100,
+        "clarity": 100,
+        "testability": 100,
+        "ai_actionability": 100,
+        "alignment": 95
+      },
+      "overall_score": 100
+    }
+  ]
+}
