@@ -1,8 +1,8 @@
 # App — Acceptance Criteria
 
-> **Version:** 2.0.0
-> **Updated:** 2026-04-25 (UTC+8)
-> **Status:** ✅ Populated (F-01 closed)
+> **Version:** 2.1.0
+> **Updated:** 2026-04-26 (UTC+8) — APP-FIX-14: declared canonical over `AT-APPF-NN` (closes audit F-12). v2.0.0 closed F-01.
+> **Status:** ✅ Canonical AT index for the App domain
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
 ---
@@ -11,7 +11,9 @@
 
 Testable acceptance criteria for the App domain. Each criterion is independently verifiable, traceable to a source spec file, and references load-bearing rules in [`00-overview.md §🔒 Load-Bearing Rules`](./00-overview.md).
 
-**ID format:** `AT-APP-NN` (stable; never renumber).
+**ID format:** `AT-APP-NN` (stable; never renumber). This is the **canonical** scheme.
+
+> **Naming-scheme reconciliation (APP-FIX-14, 2026-04-26):** The legacy `AT-APPF-NN` IDs in [`01-features/97-acceptance-criteria.md`](./01-features/97-acceptance-criteria.md) are now a **frozen dispatch index** — they map onto AT-APP ranges and per-feature inline prefixes (`AT-LAYOUT`, `AT-INTERACT`, `AT-CONCURRENCY`, etc.). New criteria MUST be added here as the next `AT-APP-NN`; never invent a new `AT-APPF-NN`. See the Coverage Map in `01-features/97-acceptance-criteria.md` for the full mapping.
 
 ---
 
