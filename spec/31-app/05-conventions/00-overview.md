@@ -26,6 +26,7 @@
 | 11 | [`11-session-token-lifecycle.md`](./11-session-token-lifecycle.md) | Session & Token Lifecycle — SSOT | 240 |
 | 12 | [`12-mfa-policy.md`](./12-mfa-policy.md) | MFA Policy — SSOT | 270 |
 | 13 | [`13-data-export-policy.md`](./13-data-export-policy.md) | Data-Export Policy — SSOT | 280 |
+| 14 | [`14-backup-and-dr-policy.md`](./14-backup-and-dr-policy.md) | Backup & DR Policy — SSOT | 290 |
 
 <!-- AUTO-TOC:END -->
 
@@ -75,6 +76,7 @@ Conventions specification module. See files below.
 | 11 | [11-session-token-lifecycle.md](11-session-token-lifecycle.md) | Session & token lifecycle: 5 token kinds, mandatory rotation + reuse detection, idle/absolute timeouts, TRL, SSE-ticket flow, G-25 gate |
 | 12 | [12-mfa-policy.md](12-mfa-policy.md) | MFA policy: TOTP+WebAuthn+recovery codes, SMS/email-OTP forbidden, step-up freshness ladder, G-26 gate |
 | 13 | [13-data-export-policy.md](13-data-export-policy.md) | Data-export policy: 4 scopes, 5 formats, async jobs, MFA-gated, signed URLs, redaction matrix, G-27 gate |
+| 14 | [14-backup-and-dr-policy.md](14-backup-and-dr-policy.md) | Backup & DR policy: RPO/RTO tiers, `.backup()` API, AES-256-GCM off-site, two-region WORM, mandatory quarterly drill, G-28 gate |
 
 ---
 
@@ -103,6 +105,7 @@ Conventions specification module. See files below.
 - [`11-session-token-lifecycle.md`](./11-session-token-lifecycle.md) — Session & token lifecycle
 - [`12-mfa-policy.md`](./12-mfa-policy.md) — MFA policy
 - [`13-data-export-policy.md`](./13-data-export-policy.md) — Data-export policy
+- [`14-backup-and-dr-policy.md`](./14-backup-and-dr-policy.md) — Backup & DR policy
 
 **See also:**
 
