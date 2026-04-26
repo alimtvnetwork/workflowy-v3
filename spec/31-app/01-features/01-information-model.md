@@ -1,7 +1,7 @@
 # Information Model Foundations
 
-> **Version:** 2.0.0
-> **Updated:** 2026-04-19
+> **Version:** 2.1.0
+> **Updated:** 2026-04-26 — APP-FIX-06: enum sources linked (closes audit F-02 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -14,6 +14,16 @@ The information model is the foundational data contract for every item the user 
 ## User Story
 
 As a user, I want every item I create to live in a single coherent tree under my account, so that I can move, mirror, share, and recover items without losing references or breaking deep links.
+
+---
+
+## Enum Sources (normative)
+
+| Enum mentioned in this file | Canonical SSOT | Strategy |
+|------------------------------|----------------|----------|
+| `ItemType` | [`spec/20-enums-index.md`](../../20-enums-index.md) §2 | TS Strategy B (`as const` + derived union) — see [`spec/02-coding-guidelines/02-typescript/00-overview.md`](../../02-coding-guidelines/02-typescript/00-overview.md) |
+
+> **Forbidden:** TS `enum` keyword and bare literal unions. Always import the canonical `as const` object.
 
 ---
 

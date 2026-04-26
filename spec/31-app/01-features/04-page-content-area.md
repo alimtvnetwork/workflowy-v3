@@ -1,7 +1,7 @@
 # Page / Content Area
 
-> **Version:** 2.0.0
-> **Updated:** 2026-04-19
+> **Version:** 2.1.0
+> **Updated:** 2026-04-26 — APP-FIX-06: enum sources linked (closes audit F-02 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -97,6 +97,17 @@ Grid layout (4 columns) of circular color swatches:
 | Gray | Gray/muted text. |
 
 Each swatch: small circle. Currently selected color has a ring border. Hover: slightly larger scale.
+
+---
+
+## Enum Sources (normative)
+
+| Enum mentioned in this file | Canonical SSOT | Strategy |
+|------------------------------|----------------|----------|
+| `ViewMode` (`List` / `Board`) | [`spec/20-enums-index.md`](../../20-enums-index.md) §3 | TS Strategy B (`as const` + derived union) — see [`spec/02-coding-guidelines/02-typescript/00-overview.md`](../../02-coding-guidelines/02-typescript/00-overview.md) |
+| `ItemType` | [`spec/20-enums-index.md`](../../20-enums-index.md) §2 | TS Strategy B |
+
+> **Forbidden:** TS `enum` keyword and bare literal unions. Always import the canonical `as const` object.
 
 ---
 

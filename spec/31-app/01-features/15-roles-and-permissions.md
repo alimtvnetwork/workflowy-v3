@@ -1,7 +1,8 @@
 # Roles & Permissions
 
-> **Version:** 1.0.0
+> **Version:** 1.1.0
 > **Created:** 2026-04-25 (UTC+8)
+> **Updated:** 2026-04-26 — APP-FIX-06: enum sources linked (closes audit F-02 for this file)
 > **Status:** Active — runtime-agnostic contract
 > **Parent:** [`00-overview.md`](./00-overview.md)
 > **Closes audit finding:** F-04
@@ -91,6 +92,19 @@ Defines the **runtime-agnostic** roles, permission grants, and authorization che
 3. **Share root non-deletable by grantees:** A user with `Edit` on `X` cannot delete `X`, only its descendants.
 4. **Public link non-cascading across grants:** Toggling public link on `X` makes `X`+subtree publicly viewable; does NOT elevate any private grant.
 5. **Owner is permanent until transfer:** Removing the owner is impossible — only `transfer ownership` swaps the role atomically.
+
+---
+
+## Enum Sources (normative)
+
+| Enum mentioned in this file | Canonical SSOT | Strategy |
+|------------------------------|----------------|----------|
+| `WorkspaceRole` (`Owner` / `Admin` / `Member`) | [`spec/20-enums-index.md`](../../20-enums-index.md) §3 | TS Strategy B (`as const` + derived union) — see [`spec/02-coding-guidelines/02-typescript/00-overview.md`](../../02-coding-guidelines/02-typescript/00-overview.md) |
+| `ItemRole` (`Owner` / `Admin` / `Edit` / `View` / `PublicView`) | [`spec/20-enums-index.md`](../../20-enums-index.md) §3 | TS Strategy B |
+| `Action` (capability matrix verbs) | [`spec/20-enums-index.md`](../../20-enums-index.md) §3 | TS Strategy B |
+| `SharePermissionType` | [`spec/20-enums-index.md`](../../20-enums-index.md) §3.5 | TS Strategy B |
+
+> **Forbidden:** TS `enum` keyword and bare literal unions. Always import the canonical `as const` object. PHP equivalents live in `Auth::*` constants — see APP-FIX-04.
 
 ---
 

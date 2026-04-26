@@ -1,7 +1,7 @@
 # Layout Structure
 
-> **Version:** 2.0.0
-> **Updated:** 2026-04-19
+> **Version:** 2.1.0
+> **Updated:** 2026-04-26 — APP-FIX-06: enum sources linked (closes audit F-02 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -143,6 +143,17 @@ When visible (free-tier users), a usage indicator appears at the top-right corne
 | Upgrade link | "Upgrade to unlimited →" | Click navigates to the billing/upgrade page. |
 
 This indicator is hidden for Pro/unlimited users.
+
+---
+
+## Enum Sources (normative)
+
+| Enum mentioned in this file | Canonical SSOT | Strategy |
+|------------------------------|----------------|----------|
+| `ViewMode` (`List` / `Board`) | [`spec/20-enums-index.md`](../../20-enums-index.md) §3 | TS Strategy B (`as const` + derived union) — see [`spec/02-coding-guidelines/02-typescript/00-overview.md`](../../02-coding-guidelines/02-typescript/00-overview.md) |
+| `Breakpoint` (`Mobile` / `Tablet` / `Desktop`) | [`spec/20-enums-index.md`](../../20-enums-index.md) §3 | TS Strategy B |
+
+> **Forbidden:** TS `enum` keyword and bare literal unions. Always import the canonical `as const` object.
 
 ---
 
