@@ -1,4 +1,4 @@
-# Coding Guidelines
+
 ## Keywords
 
 `coding-guidelines` · `coding` · `guidelines`
@@ -19,6 +19,7 @@
 **Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
 
 ---
+# Coding Guidelines
 
 
 > **Version:** 3.2.0  
