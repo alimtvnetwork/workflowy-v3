@@ -1,7 +1,7 @@
 # Features
 
-> **Version:** 2.0.0
-> **Updated:** 2026-04-25 (UTC+8)
+> **Version:** 2.1.0
+> **Updated:** 2026-04-26 (UTC+8) — APP-FIX-07: Casing-Layers callout added (closes audit F-08)
 > **Status:** ✅ Implementation-grade rollup (F-01 closed)
 
 ---
@@ -76,6 +76,26 @@ Read this before picking a feature to implement. Arrows = "depends on, must exis
 4. `05-interactions.md` — keyboard contract.
 5. `15-roles-and-permissions.md` — who can do what.
 6. Stop here for MVP. For Phase-2, continue with the dependency graph above.
+
+---
+
+## 🔤 Casing Layers (normative)
+
+> **Why this exists:** AI readers see camelCase, PascalCase, and snake_case in the same feature file and cannot tell which is the *wire* identifier vs the *DB* identifier vs *legacy pseudocode*. Pick the layer first, then the casing follows.
+
+| Layer | Casing | Examples | SSOT |
+|-------|--------|----------|------|
+| **DB** — SQLite tables, columns, indexes | **PascalCase** | `Items.ParentId`, `Items.ItemType`, `Mirrors.BrokenAt` | [`../../19-glossary.md`](../../19-glossary.md) §Database Vocabulary |
+| **Wire** — JSON request/response bodies, REST query params | **camelCase** | `{ "userId": 1, "parentId": "abc" }`, `?sortOrder=asc` | [`../../02-coding-guidelines/02-typescript/00-overview.md`](../../02-coding-guidelines/02-typescript/00-overview.md) |
+| **TS code** — variables, props, function names | **camelCase** | `const parentId = …`, `function moveItem(...)` | TS guidelines |
+| **TS types / enums** — interfaces, type aliases, `as const` consts | **PascalCase** | `interface Item`, `const ItemType = { … } as const` | TS Strategy B |
+| **PHP code** — classes, methods, helpers | **PascalCase / camelCase** | `Auth::hasRole($userId, $role)` | [`../../15-wp-plugin-how-to/`](../../15-wp-plugin-how-to/00-overview.md) |
+| **URL slugs / HTTP headers / route paths** | **kebab-case / snake_case** (per protocol) | `/api/items/move`, `X-WP-Nonce`, `wp_options` | Protocol convention — exempt from PascalCase rule |
+| **Pseudocode** | **Match the layer being described** | If the snippet is DB-level, use PascalCase; if TS-level, camelCase | This document |
+
+**Forbidden:** snake_case for *new* DB identifiers (e.g. `items.parent_id` is **stale** — see [`05-audit-02a-column-rename.md`](../../18-spec-issues/05-audit-02a-column-rename.md)). The only snake_case identifiers permitted in DB context are WordPress core tables (`wp_posts`, `wp_options`) which are explicitly exempt.
+
+**Rule of thumb for spec authors:** before writing an identifier, ask *"which layer is this?"* and pick the casing from the table. Do not mix layers in the same code block — split into two blocks if needed.
 
 ---
 
