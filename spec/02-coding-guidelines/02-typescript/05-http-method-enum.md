@@ -95,10 +95,10 @@ interface WebhookConfig {
 | Feature | Go (`httpmethodtype.Variant`) | TypeScript (`HttpMethod`) |
 |---------|--------------------------|---------------------------|
 | Package | `pkg/enums/httpmethodtype` | `src/lib/enums/http-method-type.ts` |
-| Type | `byte` iota | String enum |
+| Type | `byte` iota | `as const` object + derived union |
 | Values | `Get`, `Post`, `Put`, `Patch`, `Delete`, `Head`, `Options` | Same |
 | String output | `.String()` → `"GET"` | Direct value `"GET"` |
-| Parse | `httpmethodtype.Parse("GET")` | N/A (enum is the string) |
+| Parse | `httpmethodtype.Parse("GET")` | N/A (the const value IS the string) |
 
 ---
 
@@ -106,9 +106,11 @@ interface WebhookConfig {
 
 - [Go HttpMethod Enum](../03-golang/03-httpmethod-enum.md) — Backend parity spec
 - [TypeScript Standards](./08-typescript-standards-reference/00-overview.md) — Parent TS spec
+- [TS Overview — Strategy B rationale](./00-overview.md#canonical-enum-shape-strategy-b--as-const--derived-union)
+- [`20-enums-index.md` §1 rule 9 + §5 step 4](../../20-enums-index.md) — Cross-language enum SSOT
 - [Master Coding Guidelines §8](../01-cross-language/15-master-coding-guidelines/00-overview.md) — Magic strings zero tolerance
 - Enum Consumer Checklist — Cross-language sync process <!-- external: spec/02-spec-management-software/18-enum-consumer-checklist.md -->
 
 ---
 
-*TypeScript HttpMethod enum v1.0.0 — 2026-02-27*
+*TypeScript HttpMethod enum v3.0.0 — 2026-04-25 — migrated from `enum` keyword to `as const` + derived union (AUDIT-05).*
