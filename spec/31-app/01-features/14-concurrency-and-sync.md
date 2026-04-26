@@ -23,7 +23,7 @@ As a collaborator editing a shared outline at the same time as someone else, I w
 
 | Concern | MVP Decision |
 |---------|--------------|
-| Conflict scope | Field-level on the canonical `Item` row (content, note, dateAssigned, completedAt, itemType, parentId, sortKey, color, deletedAt). |
+| Conflict scope | Field-level on the canonical `Item` row (content, note, dateAssigned, completedAt, itemType, parentId, sortKey, color, deletedAt) **and** on `Mirrors.BrokenAt` (see §14.4). |
 | Resolution rule | **Last-Write-Wins (LWW)** keyed by `Item.<field>UpdatedAt` (server-stamped). |
 | Tie-break | Higher `userId` wins on identical millisecond timestamps. Documented + deterministic. |
 | Timestamp source | **Server clock only.** Client clocks are NEVER authoritative. The server stamps every accepted mutation in UTC ms. |
