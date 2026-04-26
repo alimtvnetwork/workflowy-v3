@@ -95,8 +95,8 @@ const DEFAULT_STATUS = EntityStatus.Active;
 
 | Feature | Go | TypeScript |
 |---------|-----|-----------|
-| Package | `pkg/enums/entitystatus` | `src/lib/enums/entity-status.ts` |
-| Type | `byte` iota | String enum |
+| Package | `pkg/enums/entitystatus` | `src/lib/enums/entity-status-type.ts` |
+| Type | `byte` iota | `as const` object + derived union |
 | Values | `Active`, `Inactive`, `Draft`, `Archived` | Same |
 
 ---
@@ -106,7 +106,8 @@ const DEFAULT_STATUS = EntityStatus.Active;
 - Issue #10 — Domain Status Magic Strings <!-- external: spec/23-how-app-issues-track/10-domain-status-magic-strings.md -->
 - [HttpMethod Enum](./05-http-method-enum.md) — Sibling enum spec
 - [TypeScript Standards](./08-typescript-standards-reference/00-overview.md) — Parent spec
+- [TS Overview — Strategy B](./00-overview.md#canonical-enum-shape-strategy-b--as-const--derived-union)
 
 ---
 
-*EntityStatus enum v1.0.0 — 2026-02-27*
+*EntityStatus enum v2.0.0 — 2026-04-25 — migrated to `as const` + derived union (AUDIT-05).*
