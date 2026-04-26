@@ -86,6 +86,7 @@ Conventions specification module. See files below.
 - [`05-precommit-hook-contract.md`](./05-precommit-hook-contract.md) — Pre-commit hook + installer contract
 - [`06-g20-precommit-contract-gate.md`](./06-g20-precommit-contract-gate.md) — G-20 pre-commit contract drift gate
 - [`07-g21-gate-discovery-audit.md`](./07-g21-gate-discovery-audit.md) — G-21 gate-discovery audit
+- [`08-api-rate-limiting.md`](./08-api-rate-limiting.md) — API rate-limiting policy
 
 **See also:**
 
