@@ -1,7 +1,7 @@
 # TypeScript ExportStatus Enum — `src/lib/enums/export-status.ts`
 
-> **Version**: 1.0.0  
-> **Last updated**: 2026-02-27  
+> **Version**: 2.0.0
+> **Last updated**: 2026-04-25
 > **Tracks**: Issue #10 (`spec/23-how-app-issues-track/10-domain-status-magic-strings.md`)
 
 ---
@@ -15,15 +15,19 @@ Typed enum for import/export operation lifecycle states. Replaces `exportStatus 
 ## Reference Implementation
 
 ```typescript
-// src/lib/enums/export-status.ts
+// src/lib/enums/export-status-type.ts
 
-export enum ExportStatus {
-  Pending = "PENDING",
-  Processing = "PROCESSING",
-  Completed = "COMPLETED",
-  Failed = "FAILED",
-}
+export const ExportStatus = {
+  Pending: "PENDING",
+  Processing: "PROCESSING",
+  Completed: "COMPLETED",
+  Failed: "FAILED",
+} as const;
+
+export type ExportStatus = (typeof ExportStatus)[keyof typeof ExportStatus];
 ```
+
+> **Convention** (per [`20-enums-index.md`](../../20-enums-index.md) §1 rule 9): canonical TS enum shape is `as const` object + derived union (Strategy B). The `enum` keyword and bare literal unions are forbidden. See [TS Overview](./00-overview.md#canonical-enum-shape-strategy-b--as-const--derived-union).
 
 ---
 
