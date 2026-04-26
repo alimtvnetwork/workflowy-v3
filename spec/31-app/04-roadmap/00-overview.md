@@ -1,7 +1,7 @@
 # Roadmap
 
-> **Version:** 1.0.0  
-> **Updated:** 2026-04-18
+> **Version:** 1.1.0
+> **Updated:** 2026-04-26 (UTC+8) — added `03-implementation-checklist.md` (per-phase pre-flight gate)
 
 
 <!-- AUTO-TOC:START -->
@@ -31,6 +31,7 @@ Roadmap specification module. See files below.
 |---|------|-------------|
 | 01 | [01-implementation-phases.md](01-implementation-phases.md) | Phased implementation plan |
 | 02 | [02-resolved-decisions.md](02-resolved-decisions.md) | Resolved product decisions |
+| 03 | [03-implementation-checklist.md](03-implementation-checklist.md) | Per-phase pre-flight checklist (SPEC-ONLY → BUILD gate) |
 
 ---
 
@@ -48,6 +49,7 @@ Roadmap specification module. See files below.
 
 - [`01-implementation-phases.md`](./01-implementation-phases.md) — Implementation Phases
 - [`02-resolved-decisions.md`](./02-resolved-decisions.md) — Resolved Decisions
+- [`03-implementation-checklist.md`](./03-implementation-checklist.md) — Per-phase pre-flight checklist
 
 **See also:**
 
