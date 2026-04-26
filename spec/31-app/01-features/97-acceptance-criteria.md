@@ -71,3 +71,4 @@
 | 2026-04-23 | 1.0.0 | Initial scaffold; introduced `AT-APPF-NN` |
 | 2026-04-23 | 1.0.1 | Marked checkboxes complete |
 | 2026-04-26 | 2.0.0 | **APP-FIX-14.** Demoted `AT-APPF-NN` to frozen dispatch; declared `AT-APP-NN` canonical; added Coverage Map with three columns (canonical / inline / legacy); added "How to add a new criterion" rule. Closes audit F-12. |
+| 2026-04-26 | 2.1.0 | **Polish #1.** Backfilled canonical AT for the four "no canonical AT yet" rows: Today (`AT-APP-26..28`), Templates (`AT-APP-29..32`), Concurrency core (`AT-APP-33..35`), SSE transport (`AT-APP-36..42`). Coverage Map now fully canonical. |
