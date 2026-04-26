@@ -1,6 +1,6 @@
 # Active Plans
 
-> **Updated:** 2026-04-26 (UTC+8) · **Status:** 🎉🎉 **ALL OPTIONAL SPEC POLISH EXHAUSTED — F-AUD30-02..06 + F-AUD30-09..10 all closed.** Both consolidated-* folders now carry mutual "NOT the same as" disambiguation. Hygiene 17/18; only **F-AUD30-01** remains — `src/types/index.ts` `mirror` → `dashboard`, gated by `mem://constraints/spec-only-mode`. **There is literally no more spec-only work to do. Say `exit spec-only` to apply that fix and start P1.1 Bootstrap.**
+> **Updated:** 2026-04-26 (UTC+8) · **Status:** 🎉🎉 **A-03 CLOSED** — `spec/10-powershell-integration/00-overview.md` split (406→273 lines); new sibling `09-runner-features.md` (206 lines) holds the verbose config example, features, path resolution, and per-project setup. File-length gate green (0 over 400). Hygiene 17/18; only **F-AUD30-01 / A-01** remains — `src/types/index.ts` `mirror` → `dashboard`, gated by `mem://constraints/spec-only-mode`. **No more spec-only work in active scope. Say `exit spec-only` to apply that fix and start P1.1 Bootstrap.**
 
 ---
 

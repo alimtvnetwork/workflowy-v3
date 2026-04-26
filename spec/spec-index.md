@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-26  
-**Total Files:** 1300  
+**Total Files:** 1301  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -24,7 +24,7 @@
 - [07-design-system](#07-design-system) — 16 file(s)
 - [08-docs-viewer-ui](#08-docs-viewer-ui) — 29 file(s)
 - [09-code-block-system](#09-code-block-system) — 14 file(s)
-- [10-powershell-integration](#10-powershell-integration) — 24 file(s)
+- [10-powershell-integration](#10-powershell-integration) — 25 file(s)
 - [11-research](#11-research) — 2 file(s)
 - [12-consolidated-guidelines](#12-consolidated-guidelines) — 26 file(s)
 - [13-cicd-pipeline-workflows](#13-cicd-pipeline-workflows) — 36 file(s)
@@ -796,6 +796,7 @@
 | [`10-powershell-integration/06-php-known-issues.md`](./10-powershell-integration/06-php-known-issues.md) | PHP Error Management — Known Issues & Cases | 1.0.0 | Active |
 | [`10-powershell-integration/07-template-vs-project-differences.md`](./10-powershell-integration/07-template-vs-project-differences.md) | Template vs Project-Specific Differences | — | — |
 | [`10-powershell-integration/08-wp-plugin-boundary.md`](./10-powershell-integration/08-wp-plugin-boundary.md) | PowerShell ↔ WP-Plugin Boundary | 1.0.0 | Canonical |
+| [`10-powershell-integration/09-runner-features.md`](./10-powershell-integration/09-runner-features.md) | PowerShell Runner — Features & Configuration Examples | — | Active |
 | [`10-powershell-integration/25-multi-site-deployment.md`](./10-powershell-integration/25-multi-site-deployment.md) | Multi-Site Deployment | — | — |
 | [`10-powershell-integration/97-acceptance-criteria.md`](./10-powershell-integration/97-acceptance-criteria.md) | PowerShell Integration — Acceptance Criteria | 2.0.0 | — |
 | [`10-powershell-integration/99-consistency-report.md`](./10-powershell-integration/99-consistency-report.md) | Consistency Report — PowerShell Integration | 3.1.0 | — |
@@ -1470,4 +1471,4 @@
 
 ---
 
-*Auto-generated index — 1300 files across 25 top-level folders.*
+*Auto-generated index — 1301 files across 25 top-level folders.*
