@@ -95,7 +95,7 @@ When content drift is suspected, run the audits in this order:
 
 | Audit | Scope | Tracker file |
 |-------|-------|-------------|
-| Round-3 spec audit | Cross-folder contradictions, SSE contract gaps, dashboard taxonomy | `spec/18-spec-issues/` (AUDIT-01 ✅, AUDIT-02a ✅, AUDIT-03 ✅, AUDIT-04 ✅, AUDIT-06 ⏳) |
+| Round-3 spec audit | Cross-folder contradictions, SSE contract gaps, dashboard taxonomy | `spec/18-spec-issues/` (AUDIT-01 ✅, AUDIT-02a ✅, AUDIT-03 ✅, AUDIT-04 ✅, **AUDIT-06 ✅**) — **all 6 Round-3 audits closed 2026-04-26** |
 | App-folder audit (15 findings) | This folder, normative content checks | [`06-app-folder-audit-2026-04-26.md`](../../18-spec-issues/06-app-folder-audit-2026-04-26.md) — all 13 APP-FIX phases done |
 | Column-rename audit | snake_case → PascalCase across 12 files | [`05-audit-02a-column-rename.md`](../../18-spec-issues/05-audit-02a-column-rename.md) — ✅ CLOSED |
 | Dashboard taxonomy | `ItemType` enum membership of `dashboard` vs `mirror` | [`07-audit-03-dashboard-taxonomy.md`](../../18-spec-issues/07-audit-03-dashboard-taxonomy.md) — ✅ CLOSED |

@@ -1,6 +1,6 @@
 # Active Plans
 
-> **Updated:** 2026-04-26 (UTC+8) · **Status:** 🎉 **ALL 13 APP-FIX PHASES DONE** + Round-3 AUDIT-03 / 04 / AUDIT-02a CLOSED. `ItemType` enum corrected (mirror → dashboard); `Mirrors` table is the SSOT for mirrors. Round-3 blocker remaining: AUDIT-06. Next memory-suggested batch: AUDIT-06 → re-audit → exit spec-only.
+> **Updated:** 2026-04-26 (UTC+8) · **Status:** 🎉🎉 **ALL 13 APP-FIX PHASES + ALL 6 ROUND-3 AUDITS CLOSED.** AUDIT-06 final blocker closed via §14.5 SSE Transport Contract (endpoint, 9-event vocabulary, Last-Event-Id resume, poll fallback, reconnect algorithm, forbidden-transport list). Spec is now AI-handoff-ready for re-audit. Suggested next: `re-audit` to confirm 100/100 → `exit spec-only` → P1.1 Bootstrap.
 
 ---
 
