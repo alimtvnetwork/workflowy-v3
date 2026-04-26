@@ -77,6 +77,7 @@ Conventions specification module. See files below.
 - [`02-ci-quality-gates.md`](./02-ci-quality-gates.md) — CI Quality Gates runner contract
 - [`03-github-actions-workflow.md`](./03-github-actions-workflow.md) — GitHub Actions workflow contract
 - [`04-g19-workflow-contract-gate.md`](./04-g19-workflow-contract-gate.md) — G-19 workflow contract drift gate
+- [`05-precommit-hook-contract.md`](./05-precommit-hook-contract.md) — Pre-commit hook + installer contract
 
 **See also:**
 
