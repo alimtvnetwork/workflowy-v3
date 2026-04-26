@@ -96,14 +96,14 @@ The client generates a UUIDv7 `ApplyToken` and sends it as `X-WorkFlowy-Idempote
 
 ## Acceptance Tests (canonical)
 
-| ID | Source | Scenario | Expected |
-|----|--------|----------|----------|
-| `AT-WF-TEMPLATE-01` | This flow | User with `View` only on parent applies template | 403; no Items inserted |
-| `AT-WF-TEMPLATE-02` | This flow | Successful apply | New tree visible locally; SSE event reaches peers within 1 s on healthy SSE |
-| `AT-WF-TEMPLATE-03` | This flow | Apply replayed with same `X-WorkFlowy-Idempotency-Key` within 24 h | 200 with original ItemId set; no duplicate rows |
-| `AT-WF-TEMPLATE-04` | This flow | App-DB INSERT fails mid-batch | ROLLBACK; client receives 500; SSE NOT emitted |
+| ID | Canonical | Source | Scenario | Expected |
+|----|-----------|--------|----------|----------|
+| `AT-WF-TEMPLATE-01` | `AT-APP-43` | This flow | User with `View` only on parent applies template | 403; no Items inserted |
+| `AT-WF-TEMPLATE-02` | `AT-APP-44` | This flow | Successful apply | New tree visible locally; SSE event reaches peers within 1 s on healthy SSE |
+| `AT-WF-TEMPLATE-03` | `AT-APP-45` | This flow | Apply replayed with same `X-WorkFlowy-Idempotency-Key` within 24 h | 200 with original ItemId set; no duplicate rows |
+| `AT-WF-TEMPLATE-04` | `AT-APP-46` | This flow | App-DB INSERT fails mid-batch | ROLLBACK; client receives 500; SSE NOT emitted |
 
-> These IDs are tracked in [`spec/31-app/97-acceptance-criteria.md`](../97-acceptance-criteria.md) under the `AT-WF-*` namespace (new sub-prefix introduced by APP-FIX-12; backfill into AT-APP canonical pending Phase-2).
+> ✅ **Backfilled into canonical** (2026-04-26, polish #2): each `AT-WF-TEMPLATE-NN` now maps 1:1 to an `AT-APP-NN` row in [`spec/31-app/97-acceptance-criteria.md`](../97-acceptance-criteria.md). The `AT-WF-*` IDs remain as a flow-scoped alias for traceability inside this file; the canonical column is authoritative.
 
 ---
 
