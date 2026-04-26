@@ -207,4 +207,5 @@ For cleaner UX, use only **"Mirror To…"** in the context menu (one unified act
 - [08-share-dialog.md](./08-share-dialog.md) — share grants attach to source, inherited by mirrors
 - [10-today-view.md](./10-today-view.md) — Today is the most common mirror target
 - [03-edge-cases/01-edge-cases.md](../03-edge-cases/01-edge-cases.md) — broken-mirror + cycle edge cases
+- [09a-mirror-cycle-detection.md](./09a-mirror-cycle-detection.md) — algorithmic SSOT for `ERR_CYCLE` (SQL CTE + DFS + AT-CYCLE-01..10)
 - `mem://features/mirroring` — linked-instance sync rules
