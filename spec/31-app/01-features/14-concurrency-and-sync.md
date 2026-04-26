@@ -107,6 +107,89 @@ On incoming write W setting Mirrors.BrokenAt = X (X may be NULL or a timestamp):
 
 ---
 
+## 14.5 SSE Transport Contract (Round-3 AUDIT-06)
+
+> **Why this section:** §14.1–§14.4 specify the **behavior** of conflict resolution but leave the **wire format** unspecified. Without a fixed transport contract, an implementer must invent event names, payload shapes, resume semantics, and the poll-fallback endpoint — and any guess will diverge from peer code (server-side reaper, mirror broadcaster, offline replay queue) that all consume the same channel. This section pins those choices. SSOT for runtime: WordPress plugin (PHP + SQLite, per `mem://constraints/backend-runtime-deferred`); SSOT for "no WebSockets/Pusher": `00-overview.md` L9.
+
+### 14.5.1 SSE Endpoint
+
+| Aspect | Value |
+|--------|-------|
+| URL | `GET /wp-json/workflowy/v1/sync/stream?workspaceId={WorkspaceId}` |
+| Auth | WP nonce header `X-WP-Nonce`; session cookie required. Reject with `401` otherwise. |
+| Response `Content-Type` | `text/event-stream; charset=utf-8` |
+| Response headers (required) | `Cache-Control: no-cache, no-transform`, `X-Accel-Buffering: no` (disables nginx buffering), `Connection: keep-alive` |
+| Heartbeat | Comment line `:hb\n\n` every **15 s**. Client treats absence > 30 s as a drop. |
+| Initial replay | On connect, server replays all events with `ServerTs > Last-Event-Id` (if header present) up to the current cursor, then streams live. |
+| Server-side `retry:` | `5000` (ms). Client honors browser default if absent. |
+| Backpressure | If the client falls > 1000 events behind, server closes with `event: cursor-overflow` carrying `{ resumeWith: 'poll' }`. Client switches to §14.5.4 poll fallback until next page load. |
+
+### 14.5.2 Event Name Vocabulary (closed set)
+
+Every SSE message has an `event:` line drawn from this list. Unknown events MUST be ignored by the client (forward-compatible).
+
+| Event | When emitted | `data:` payload (JSON) |
+|-------|--------------|------------------------|
+| `item-updated` | Any field on `Items` accepted by §14.2 | `{ ItemId, WorkspaceId, ChangedFields: string[], ServerTs, ActorUserId }` |
+| `item-deleted` | `Items.DeletedAt` set (soft-delete) | `{ ItemId, WorkspaceId, ServerTs, ActorUserId }` |
+| `item-restored` | `Items.DeletedAt` cleared from Trash | `{ ItemId, WorkspaceId, ServerTs, ActorUserId }` |
+| `mirror-broken` | `Mirrors.BrokenAt` set non-NULL by §14.4 | `{ MirrorId, SourceId, WorkspaceId, BrokenAt, ServerTs, ActorUserId }` |
+| `mirror-healed` | `Mirrors.BrokenAt` cleared by §14.4 | `{ MirrorId, SourceId, WorkspaceId, ServerTs, ActorUserId }` |
+| `share-granted` | New row in `Shares` table | `{ ItemId, WorkspaceId, GranteeUserId, Permission, ServerTs, ActorUserId }` |
+| `share-revoked` | `Shares` row removed or `RevokedAt` set | `{ ItemId, WorkspaceId, GranteeUserId, ServerTs, ActorUserId }` |
+| `presence` | Optional avatar dot per §14.1 | `{ ItemId, WorkspaceId, UserId, State: 'editing' \| 'viewing' \| 'idle' }` — non-authoritative; clients MAY drop on overload |
+| `cursor-overflow` | Backpressure (see §14.5.1) | `{ resumeWith: 'poll' }` — client switches to poll mode |
+| `:hb` (comment, not `event:`) | Every 15 s | empty — keepalive only |
+
+**Forbidden:** ad-hoc event names (`update`, `change`, `notify`, `broadcast`); JSON envelope keys outside the schemas above; nesting (no event carries another event); binary frames.
+
+### 14.5.3 `id:` Field — Resume Cursor
+
+Every event line MUST include `id: {ServerTs}` where `ServerTs` is the integer UTC millisecond stamp from §14.2. The browser auto-sends the last received id as `Last-Event-Id` on reconnect; the server uses it for replay (§14.5.1). The client MUST NOT compare `id` values across workspaces — the cursor is scoped per `(UserId, WorkspaceId)` and stored in the Root DB `SyncCursor` table (per §Storage).
+
+### 14.5.4 Poll Fallback Endpoint
+
+When SSE is unavailable (proxy strips `text/event-stream`, mobile background, `cursor-overflow`), the client polls every **5000 ms**:
+
+| Aspect | Value |
+|--------|-------|
+| URL | `GET /wp-json/workflowy/v1/sync/poll?workspaceId={WorkspaceId}&since={LastServerTs}` |
+| Auth | Same as §14.5.1 |
+| Response `Content-Type` | `application/json` |
+| Response shape | `{ Events: Event[], Cursor: ServerTs, HasMore: boolean }` where each `Event` matches one row of §14.5.2 (with an extra `Event: 'item-updated' \| ...` discriminator key in place of the SSE `event:` line). |
+| `HasMore = true` | Client polls again immediately (without 5 s wait) until drained. |
+| Empty result | `{ Events: [], Cursor: <unchanged>, HasMore: false }`. Cursor never moves backward. |
+| Idempotency | Two polls with the same `since` MUST return identical bytes (modulo new events past the cursor). |
+
+**Forbidden:** long-poll (server holds the request open) — that's a poor approximation of SSE and breaks the 5 s SLA. Use proper SSE when available; otherwise short-poll only.
+
+### 14.5.5 Client Reconnect & Replay Algorithm
+
+```
+On client startup OR SSE drop:
+  1. Read SyncCursor for (UserId, WorkspaceId) from Root DB → cursor.
+  2. Open SSE with header Last-Event-Id: cursor.
+  3. On each event: apply locally (per §14.2 / §14.4); update cursor = event.id.
+  4. On any of: cursor-overflow event, 30 s without heartbeat, or 3 SSE failures within 60 s
+       → switch to poll mode (§14.5.4); set a 60 s probe to retry SSE.
+  5. On successful SSE re-open: stop polling.
+```
+
+### 14.5.6 Server Emission Rules (normative)
+
+- A successful §14.2 LWW write MUST emit exactly **one** SSE event in the same transaction commit phase (no separate publish step that can drift).
+- Failed (rejected) writes MUST NOT emit any event.
+- The `ChangedFields` array in `item-updated` lists **only** the fields whose `<Field>UpdatedAt` advanced; unchanged fields (e.g. tie-break loser fields) are excluded.
+- `ActorUserId = 'system'` for reaper / cascade writes (consistent with §14.4 `BrokenAtUpdatedBy`).
+- Cross-workspace events are **never** emitted on a workspace stream; the SSE channel is keyed by `(UserId, WorkspaceId)`.
+
+### 14.5.7 Forbidden Transports (reaffirmed)
+
+❌ WebSockets · ❌ Pusher · ❌ Ably · ❌ Supabase Realtime · ❌ Postgres `LISTEN/NOTIFY` · ❌ Redis pub/sub · ❌ Server-managed long-poll · ❌ Custom binary protocol · ❌ Multiple parallel SSE connections per workspace.
+
+---
+
+
 ## Storage
 
 | Layer | Tables | Notes |
