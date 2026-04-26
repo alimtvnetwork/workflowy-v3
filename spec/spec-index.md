@@ -149,7 +149,7 @@
 | [`02-coding-guidelines/01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/06-exemptions-and-checklist.md`](./02-coding-guidelines/01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/06-exemptions-and-checklist.md) | Exemption Process, Dashboard & Integration Checklist | — | — |
 | [`02-coding-guidelines/01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/97-acceptance-criteria.md) | CI Pipeline Quality Gate — Acceptance Criteria | 2.0.0 | Curated |
 | [`02-coding-guidelines/01-cross-language/16-static-analysis/10-cross-language-rule-matrix.md`](./02-coding-guidelines/01-cross-language/16-static-analysis/10-cross-language-rule-matrix.md) | Cross-Language Rule Matrix | 1.0.0 | — |
-| [`02-coding-guidelines/01-cross-language/16-static-analysis/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/16-static-analysis/97-acceptance-criteria.md) | Acceptance Criteria: Static Analysis & Linter Enforcement | 3.1.0 | — |
+| [`02-coding-guidelines/01-cross-language/16-static-analysis/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/16-static-analysis/97-acceptance-criteria.md) | Acceptance Criteria — Static Analysis & Linter Enforcement | 3.2.0 | Active |
 | [`02-coding-guidelines/01-cross-language/16-static-analysis/98-changelog.md`](./02-coding-guidelines/01-cross-language/16-static-analysis/98-changelog.md) | Changelog: Static Analysis & Linter Enforcement | — | — |
 | [`02-coding-guidelines/01-cross-language/16-static-analysis/99-consistency-report.md`](./02-coding-guidelines/01-cross-language/16-static-analysis/99-consistency-report.md) | Consistency Report: Static Analysis | 3.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/17-regex-usage-guidelines.md`](./02-coding-guidelines/01-cross-language/17-regex-usage-guidelines.md) | Regex Usage Guidelines | 3.1.0 | — |
@@ -171,7 +171,7 @@
 | [`02-coding-guidelines/01-cross-language/28-slug-conventions.md`](./02-coding-guidelines/01-cross-language/28-slug-conventions.md) | Slug Conventions | 3.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/29-lazy-evaluation-patterns.md`](./02-coding-guidelines/01-cross-language/29-lazy-evaluation-patterns.md) | Lazy Evaluation Patterns | 3.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/30-pinned-dependency-matrix.md`](./02-coding-guidelines/01-cross-language/30-pinned-dependency-matrix.md) | Pinned Dependency Matrix | — | Authoritative |
-| [`02-coding-guidelines/01-cross-language/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/97-acceptance-criteria.md) | Coding Guidelines — Acceptance Criteria | 3.1.0 | — |
+| [`02-coding-guidelines/01-cross-language/97-acceptance-criteria.md`](./02-coding-guidelines/01-cross-language/97-acceptance-criteria.md) | Coding Guidelines — Cross-Language Acceptance Criteria | 3.2.0 | Active |
 | [`02-coding-guidelines/01-cross-language/98-changelog.md`](./02-coding-guidelines/01-cross-language/98-changelog.md) | Coding Guidelines — Changelog | 3.1.0 | — |
 | [`02-coding-guidelines/01-cross-language/99-consistency-report.md`](./02-coding-guidelines/01-cross-language/99-consistency-report.md) | Consistency Report: Cross-Language Guidelines | 3.1.0 | — |
 | [`02-coding-guidelines/02-typescript/00-overview.md`](./02-coding-guidelines/02-typescript/00-overview.md) | TypeScript Standards | 3.1.0 | Active |
