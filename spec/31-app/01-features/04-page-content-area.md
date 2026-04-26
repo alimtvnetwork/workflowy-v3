@@ -1,7 +1,7 @@
 # Page / Content Area
 
-> **Version:** 2.3.0
-> **Updated:** 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-06: enum sources linked (closes audit F-02 for this file)
+> **Version:** 2.4.0
+> **Updated:** 2026-04-26 — Round-3 AUDIT-03: Board / Dashboard rows in §3.3 annotated with `ItemType` values + link to taxonomy doc. Prior: 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-06: enum sources linked (closes audit F-02 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -55,8 +55,8 @@ When a note exists and is expanded:
 | Paragraph | No dot (invisible spacer) | Normal text, full width | No bullet dot shown. |
 | To-do | Checkbox (☐ or ☑) | Normal text. Checked items: strikethrough + muted. | Checkbox replaces the bullet dot. |
 | Numbered | Auto-incremented number (1., 2., etc.) | Normal text | Number based on sibling position, replaces bullet dot. |
-| Board | Filled circle (•) | Normal text | Children render as board/kanban columns instead of nested list. |
-| Dashboard | Filled circle (•) | Normal text | Children render as a dashboard/overview layout with metrics and visual summaries. |
+| Board | Filled circle (•) | Normal text | Children render as board/kanban columns instead of nested list. (`ItemType = 'board'`) |
+| Dashboard | Filled circle (•) | Normal text | Children render as a dashboard/overview layout with metrics and visual summaries. (`ItemType = 'dashboard'`) — see [`spec/18-spec-issues/07-audit-03-dashboard-taxonomy.md`](../../18-spec-issues/07-audit-03-dashboard-taxonomy.md) for why both `board` and `dashboard` are `ItemType` values (not separate VIEW modes). |
 | Quote | Filled circle (•) | Italic text with left border accent and light background | Left border is the primary accent color. |
 | Code Block | Filled circle (•) | Monospace font with light background and padding | Rounded corners. No syntax highlighting. |
 | Divider | No dot | No editable content — renders as a horizontal line | Full-width thin line. |

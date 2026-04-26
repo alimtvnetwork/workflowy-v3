@@ -1,7 +1,7 @@
 # Layout Structure
 
-> **Version:** 2.3.0
-> **Updated:** 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-05: Settings Keys (Seedable Config) section added (closes audit F-04 for this file). v2.1.0 added Enum Sources callout.
+> **Version:** 2.4.0
+> **Updated:** 2026-04-26 — Round-3 AUDIT-03: handbook line clarifies Board / Dashboard "view" = child-rendering effect of `ItemType`, not separate VIEW modes. Prior: 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-05: Settings Keys (Seedable Config) section added (closes audit F-04 for this file). v2.1.0 added Enum Sources callout.
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -69,7 +69,7 @@ The Handbook is an in-app reference panel accessible from the Settings menu or v
 | Language selector | "English ▾" dropdown | Switch handbook language (if supported). |
 | Content area | Rich text with embedded screenshots, annotated UI examples, and interactive tooltips | Scrollable documentation. Hovering annotated elements shows tooltips explaining that feature. |
 
-**Handbook covers:** Bullet Types (all 12 types with visual examples), Board view, Dashboard view, item type conversions, sidebar usage, keyboard shortcuts, and all major features.
+**Handbook covers:** Bullet Types (all 12 types with visual examples), Board view, Dashboard view, item type conversions, sidebar usage, keyboard shortcuts, and all major features. (Both "Board view" and "Dashboard view" are the child-rendering effect of `ItemType = 'board'` / `ItemType = 'dashboard'` — they are NOT separate VIEW modes; see [`spec/18-spec-issues/07-audit-03-dashboard-taxonomy.md`](../../18-spec-issues/07-audit-03-dashboard-taxonomy.md).)
 
 **Close behavior:** Click the arrow icon on the side, press Ctrl+/, or press Escape.
 

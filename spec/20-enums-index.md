@@ -1,7 +1,7 @@
 # Enums Index — Cross-Language Registry
 
-> **Version:** 1.0.0
-> **Updated:** 2026-04-20
+> **Version:** 1.1.0
+> **Updated:** 2026-04-26 — Round-3 AUDIT-03: `ItemType` corrected — swapped `mirror` → `dashboard` (mirrors are `Mirrors` table rows, not turn-into targets); count stays at 12. See [`spec/18-spec-issues/07-audit-03-dashboard-taxonomy.md`](./18-spec-issues/07-audit-03-dashboard-taxonomy.md). Prior: 2026-04-20.
 > **Status:** Active
 > **Purpose:** Single source of truth for every named enum across Go, PHP, and TypeScript. Maps each enum to its language-specific spec, canonical case naming, and usage rules.
 
@@ -79,7 +79,7 @@ These enums exist (or should exist) in all three languages with matching case na
 
 | Enum | Cases | Used For |
 |------|-------|----------|
-| `ItemType` | `bullet`, `h1`, `h2`, `h3`, `paragraph`, `todo`, `numbered`, `board`, `quote`, `code`, `divider`, `mirror` | 12 distinct outliner node types — see [`32-ui-design/02-state-and-data/03-data-types.md`](./32-ui-design/02-state-and-data/03-data-types.md) for the UI taxonomy SSOT. Lowercase per DB column convention; the heading split (h1/h2/h3) matches what users actually create. |
+| `ItemType` | `bullet`, `h1`, `h2`, `h3`, `paragraph`, `todo`, `numbered`, `board`, `dashboard`, `quote`, `code`, `divider` | 12 distinct outliner node types — see [`32-ui-design/02-state-and-data/03-data-types.md`](./32-ui-design/02-state-and-data/03-data-types.md) for the UI taxonomy SSOT. **Note:** `mirror` is intentionally NOT in this list — mirrors are rows in the `Mirrors` table referencing a source `Items` row, not a turn-into target. `dashboard` and `board` are the two values whose effect is **child-rendering** rather than self-rendering. Full reasoning: [`spec/18-spec-issues/07-audit-03-dashboard-taxonomy.md`](./18-spec-issues/07-audit-03-dashboard-taxonomy.md). Lowercase per DB column convention; the heading split (h1/h2/h3) matches what users actually create. |
 | `SortDirectionType` | `Asc`, `Desc`, `Manual` | Sibling ordering |
 | `ZoomLevelType` | `Root`, `Single`, `Filtered` | View focus mode |
 | `SharePermissionType` | `View`, `Comment`, `Edit`, `Owner` | Share-link role |

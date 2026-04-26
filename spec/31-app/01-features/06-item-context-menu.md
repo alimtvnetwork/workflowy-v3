@@ -1,7 +1,7 @@
 # Item Context Menu (⋮)
 
-> **Version:** 2.4.0
-> **Updated:** 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
+> **Version:** 2.5.0
+> **Updated:** 2026-04-26 — Round-3 AUDIT-03: clarified Board / Dashboard rows as `ItemType` values with child-rendering effect (NOT separate VIEW modes); link to taxonomy doc. Prior: 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -32,8 +32,8 @@ Appears as a nested submenu when the user hovers or clicks "Turn into…".
 | Paragraph | "¶" text | ⌥⌘4 | Converts to paragraph. No bullet dot shown. Full-width text. |
 | To-do | Empty checkbox | ⌥⌘9 | Converts to a checkbox item. Shows ☐ or ☑ instead of the bullet dot. |
 | Number | Numbered list icon | — | Converts to numbered list. Shows auto-incremented number based on sibling position. |
-| Board | Grid icon | — | Converts to board/kanban view. Children become columns, grandchildren become cards. Only available if the item has children. |
-| Dashboard | Dashboard icon | — | Converts to dashboard view. Provides a high-level visual overview of the item's subtree with metrics and summaries. Only available if the item has children. |
+| Board | Grid icon | — | Sets `Items.ItemType = 'board'`. Child-rendering mode: kanban (children become columns, grandchildren become cards — see `07-board-view.md`). Only available if the item has children. |
+| Dashboard | Dashboard icon | — | Sets `Items.ItemType = 'dashboard'`. Child-rendering mode: dashboard/overview layout with metrics and visual summaries. Only available if the item has children. **Note:** "Board view" / "Dashboard view" refer to the child-rendering effect of the parent's `ItemType`, NOT a separate VIEW field — see [`spec/18-spec-issues/07-audit-03-dashboard-taxonomy.md`](../../18-spec-issues/07-audit-03-dashboard-taxonomy.md). |
 | Quote | Quote mark icon | ⌥⌘7 | Converts to blockquote. Renders with a left border accent and light background. Italic text. |
 | Code Block | Code icon | ⌥⌘6 | Converts to code block. Renders in monospace font with a light background. |
 | Divider | Horizontal line icon | — | Converts to a horizontal divider. No editable content — just a thin line. |
