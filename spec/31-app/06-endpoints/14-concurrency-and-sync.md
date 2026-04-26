@@ -1,7 +1,7 @@
 # Endpoints — 14 Concurrency & Sync (Realtime Transport)
 
-> **Version:** 1.0.0
-> **Updated:** 2026-04-26 (UTC+8)
+> **Version:** 1.1.0
+> **Updated:** 2026-04-26 (UTC+8) — v1.1.0 aligned event vocabulary to canonical hyphen notation per §14.5.2 (closes content-audit drift)
 > **Parent:** [`./00-overview.md`](./00-overview.md)
 > **Mirrors feature:** [`../01-features/14-concurrency-and-sync.md`](../01-features/14-concurrency-and-sync.md) §14.5
 
@@ -26,15 +26,16 @@
   - `Topics` (string, comma-separated, required) — e.g. `item:abc,item:def,workspace:42`.
   - `Last-Event-Id` (header, optional) — resume cursor; server replays buffered events ≥ cursor.
 - **Response**: `Content-Type: text/event-stream`; long-lived; server emits `event:` + `data:` + `id:` triples.
-- **Event vocabulary** (matches §14.5):
-  - `item-created`, `item-updated`, `item-updated`, `item-deleted`, `item-restored`
-  - `item-updated` (mirror parent), `item-updated` (mirror parent), `mirror-broken`
-  - `share-granted`, `share-granted` (re-grant), `share-revoked`, `share-granted` (public variant)
-  - `presence`, `presence`
-  - `keepalive` (every 25 s, no payload)
+- **Event vocabulary** — closed set of 9 canonical names per §14.5.2 (do not invent new names):
+  - **Item lifecycle:** `item-created`, `item-updated`, `item-deleted`, `item-restored`
+  - **Mirrors:** `mirror-broken` (mirror parent updates flow through `item-updated`)
+  - **Sharing:** `share-granted`, `share-revoked`
+  - **Backpressure:** `cursor-overflow` (server cannot replay; client switches to poll)
+  - **Optional non-authoritative:** `presence` (cursor/selection avatar dot)
+  - **Transport:** `: ping\n\n` heartbeat comment every 15 s (not an event; see AT-APP-41)
 - **Errors**: `ERR_UNAUTHENTICATED` (close immediately), `ERR_FORBIDDEN_TOPIC` (per-topic, sent as `event:error` on the stream rather than HTTP error).
 - **Side effects**: server records the connection, subscribes to topic queues. Disconnect releases subscriptions.
-- **AC refs**: `AT-APP-27`.
+- **AC refs**: `AT-APP-36`, `AT-APP-37`, `AT-APP-38`, `AT-APP-40`, `AT-APP-41`, `AT-APP-42`.
 
 ---
 
