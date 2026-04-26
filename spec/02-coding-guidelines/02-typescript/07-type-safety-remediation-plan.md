@@ -245,6 +245,8 @@ export interface RawEnvelope<T> {
 
 ## Phase 5: Constants & Enums for Magic Strings (Priority: 🟡 HIGH)
 
+> ⚠️ **Shape-only deprecation notice (v0.37.0, AUDIT-05):** the `export enum` blocks below illustrate the *cases* and *naming* only. The actual files MUST be authored in the canonical Strategy B shape (`export const Foo = { ... } as const; export type Foo = ...`) per [TS Overview](./00-overview.md#canonical-enum-shape-strategy-b--as-const--derived-union) and [`20-enums-index.md`](../../20-enums-index.md) §1 rule 9. The `enum` keyword shown here is grandfathered in this older plan; do not copy the syntax.
+
 ### P5.1 — Create `src/lib/constants.ts`
 
 ```typescript
