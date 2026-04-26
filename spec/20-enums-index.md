@@ -21,6 +21,7 @@ These rules apply across **all three languages**. Language-specific extensions a
 | 6 | **`Invalid` is the zero value** (Go) or default fallback (PHP/TS) | Go, PHP, TS |
 | 7 | **Single `variantLabels` table** — dual-table pattern (`variantStrings` + `variantLabels`) is deprecated as of v2.1.0 | Go |
 | 8 | **Protocol-driven enums** (`content_type`, `endpoint`, `header`, `response_key`, `response_message`) are exempt from PascalCase string rule | Go |
+| 9 | **TS shape is `as const` object + derived union** — the `enum` keyword and bare literal string unions are both forbidden for named enums. See §5 for the worked pattern. | TS |
 
 See [Glossary](./19-glossary.md) for term definitions.
 
