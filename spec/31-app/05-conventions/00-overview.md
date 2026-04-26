@@ -18,6 +18,7 @@
 | 3 | [`03-github-actions-workflow.md`](./03-github-actions-workflow.md) | GitHub Actions Workflow Contract — Convention SSOT | 157 |
 | 4 | [`04-g19-workflow-contract-gate.md`](./04-g19-workflow-contract-gate.md) | G-19 Workflow Contract Drift Gate — Algorithm Spec | 158 |
 | 5 | [`05-precommit-hook-contract.md`](./05-precommit-hook-contract.md) | Pre-Commit Hook Contract — Convention SSOT | 147 |
+| 6 | [`06-g20-precommit-contract-gate.md`](./06-g20-precommit-contract-gate.md) | G-20 Pre-Commit Hook Drift Gate — Algorithm Spec | 181 |
 
 <!-- AUTO-TOC:END -->
 
