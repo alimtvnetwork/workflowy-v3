@@ -80,6 +80,7 @@ Conventions specification module. See files below.
 - [`03-github-actions-workflow.md`](./03-github-actions-workflow.md) — GitHub Actions workflow contract
 - [`04-g19-workflow-contract-gate.md`](./04-g19-workflow-contract-gate.md) — G-19 workflow contract drift gate
 - [`05-precommit-hook-contract.md`](./05-precommit-hook-contract.md) — Pre-commit hook + installer contract
+- [`06-g20-precommit-contract-gate.md`](./06-g20-precommit-contract-gate.md) — G-20 pre-commit contract drift gate
 
 **See also:**
 
