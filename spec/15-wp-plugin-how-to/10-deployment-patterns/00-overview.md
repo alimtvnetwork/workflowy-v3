@@ -19,9 +19,8 @@
 | Ambiguity assigned | ✅ |
 | Keywords present | ✅ |
 | Scoring table present | ✅ |
-
-**AI Confidence:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->  
-**Ambiguity:** Medium <!-- TODO: re-grade after manual review (auto-backfilled 2026-04-26) -->
+| AI Confidence (auto-backfill) | Medium — TODO re-grade |
+| Ambiguity (auto-backfill) | Medium — TODO re-grade |
 
 ---
 > **Purpose:** Define how to package, version, distribute, and auto-update WordPress plugins. Covers ZIP packaging, semantic versioning, self-hosted update servers, self-update with rollback, and CI/CD automation.  
