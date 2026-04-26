@@ -58,7 +58,7 @@ Transitions outside this matrix are bugs.
 ### 2.7 Pinned state
 - Outside-click does nothing.
 - Esc still works (clears then closes).
-- Closing while pinned preserves the pinned flag for the session (storage TBD).
+- Closing while pinned preserves the pinned flag for the session via `sessionStorage["workflowy.search.pinned"] = "1"` (UI-only; cleared on tab close — no server round-trip).
 - Visual: pin icon variant on the popover (or in Quick Actions toggle).
 
 ### 2.8 Mobile (< md viewport)

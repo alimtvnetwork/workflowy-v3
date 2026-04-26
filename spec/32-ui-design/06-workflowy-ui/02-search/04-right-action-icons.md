@@ -30,7 +30,7 @@ A popover-anchored menu that exposes session-wide search-related toggles and act
 
 | Item | Type | Action |
 |------|------|--------|
-| Include mirrors in results | Toggle | Default ON. Persists in user settings (storage TBD) |
+| Include mirrors in results | Toggle | Default ON. Persists per-user via WP plugin user-meta key `workflowy_search_prefs.include_mirrors` (SQLite-backed, see [`13-data-contracts.md`](./13-data-contracts.md) §6.1) |
 | Show completed items | Toggle | Default OFF |
 | Match case | Toggle | Default OFF |
 | Whole-word match | Toggle | Default OFF |
@@ -65,8 +65,18 @@ A popover-anchored menu listing user-saved queries. Two sections:
 
 ### 3.4 Storage
 
-> **Storage adapter: TBD per backend choice.**
-> The UI is fully specified; persistence is deferred per `mem://constraints/backend-runtime-deferred` (memory-only reference). Future implementer must choose a runtime (LocalStorage / WordPress meta / API endpoint / etc.) and wire the `SavedSearchStore` contract from [`13-data-contracts.md`](./13-data-contracts.md).
+> **Storage adapter: WordPress plugin REST** (resolved 2026-04-26 per `mem://constraints/backend-runtime-deferred`).
+>
+> Persistence is provided by the WP plugin via SQLite. The implementer MUST wire the `SavedSearchStore` contract from [`13-data-contracts.md`](./13-data-contracts.md) §6.2 to these endpoints:
+>
+> | Method | Path | Purpose |
+> |--------|------|---------|
+> | `GET`    | `/wp-json/workflowy/v1/saved-searches`        | List current user's saved searches |
+> | `POST`   | `/wp-json/workflowy/v1/saved-searches`        | Create one (body = `SavedSearch` minus `id`) |
+> | `PATCH`  | `/wp-json/workflowy/v1/saved-searches/{id}`   | Rename / re-pin / update `lastUsedAt` |
+> | `DELETE` | `/wp-json/workflowy/v1/saved-searches/{id}`   | Remove one |
+>
+> All endpoints are scoped to the authenticated WP user (capability check: `read`). Storage table: `wp_workflowy_saved_searches` (see plugin DB spec).
 
 ARIA: `role="menu"` with `aria-label="Saved searches"`.
 

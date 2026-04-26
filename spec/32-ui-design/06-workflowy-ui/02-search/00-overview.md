@@ -19,7 +19,7 @@
 | 1 | [`01-popover-anatomy.md`](./01-popover-anatomy.md) | 01 — Popover Anatomy | 117 |
 | 2 | [`02-filter-tab-rail.md`](./02-filter-tab-rail.md) | 02 — Filter Tab Rail | 105 |
 | 3 | [`03-hint-and-suggestions.md`](./03-hint-and-suggestions.md) | 03 — Hint & Suggestions | 125 |
-| 4 | [`04-right-action-icons.md`](./04-right-action-icons.md) | 04 — Right-Side Action Icons | 118 |
+| 4 | [`04-right-action-icons.md`](./04-right-action-icons.md) | 04 — Right-Side Action Icons | 128 |
 | 5 | [`05-token-system.md`](./05-token-system.md) | 05 — Token System | 127 |
 | 6 | [`06-query-grammar.md`](./06-query-grammar.md) | 06 — Query Grammar | 154 |
 | 7 | [`07-results-and-highlighting.md`](./07-results-and-highlighting.md) | 07 — Results & Highlighting | 122 |
@@ -28,7 +28,7 @@
 | 10 | [`10-accessibility.md`](./10-accessibility.md) | 10 — Accessibility | 157 |
 | 11 | [`11-design-tokens.md`](./11-design-tokens.md) | 11 — Design Tokens | 152 |
 | 12 | [`12-icon-map.md`](./12-icon-map.md) | 12 — Icon Map | 123 |
-| 13 | [`13-data-contracts.md`](./13-data-contracts.md) | 13 — Data Contracts | 219 |
+| 13 | [`13-data-contracts.md`](./13-data-contracts.md) | 13 — Data Contracts | 230 |
 
 <!-- AUTO-TOC:END -->
 

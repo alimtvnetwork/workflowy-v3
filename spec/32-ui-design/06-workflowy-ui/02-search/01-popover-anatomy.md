@@ -20,7 +20,7 @@ Define the **structural regions** of the search popover surface and the rules th
 | Backdrop | None. Outline behind remains visible and live-filtered |
 | Width | Wide command-palette feel — exact px deferred to implementer; must match Workflowy reference (img-41) |
 | Height | Auto. Grows with hint/suggestion/listbox content |
-| Corner radius | Large rounded — semantic token TBD by implementer |
+| Corner radius | `rounded-xl` (Tailwind utility derived from the single `--radius` token; see `spec/32-ui-design/03-design-system/` AT-UIDS-07) |
 | Elevation | Single soft shadow, no border, sits above outline |
 | Anchor | Centered horizontally; vertical offset from top of viewport (not full-screen) |
 | Z-index | Above outline + sidebars; below modals/dialogs |
