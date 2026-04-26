@@ -26,6 +26,7 @@ This file exists to satisfy the spec-hygiene coverage gate (`scripts/spec-hygien
 | 5 | [`06-app-folder-audit-2026-04-26.md`](./06-app-folder-audit-2026-04-26.md) | Inline findings F-01..F-15 + APP-FIX-01..14 atomic phase plan |
 | 6 | [`07-audit-03-dashboard-taxonomy.md`](./07-audit-03-dashboard-taxonomy.md) | Inline acceptance criteria — ✅ **CLOSED 2026-04-26** (Round-3 AUDIT-03) |
 | 7 | [`08-audit-06-sse-transport-contract.md`](./08-audit-06-sse-transport-contract.md) | Inline acceptance criteria — ✅ **CLOSED 2026-04-26** (Round-3 AUDIT-06) |
+| 8 | [`09-app-folder-re-audit-2026-04-26.md`](./09-app-folder-re-audit-2026-04-26.md) | Re-audit verdict — ✅ **96/100 PASS** (baseline 63/100; +33) |
 
 ---
 
