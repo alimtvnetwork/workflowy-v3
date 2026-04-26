@@ -93,14 +93,59 @@ The Action ID is the registry key in the planned `src/lib/hotkeys.ts` map; multi
 
 ---
 
-## Acceptance Criteria
+## Inputs
 
-- [ ] **AT-HK-01** — Every row in the table maps to exactly one registered handler in `src/lib/hotkeys.ts`.
-- [ ] **AT-HK-02** — `useGlobalKeys.ts` parses `navigator.platform` once at mount and dispatches by Action ID.
-- [ ] **AT-HK-03** — A unit test enumerates all 20 rows and asserts each Action ID resolves to a non-undefined handler.
-- [ ] **AT-HK-04** — Hygiene script `17-check-hotkeys.mjs` parses this table and the registry; CI fails on any mismatch (count, ID, or combo).
-- [ ] **AT-HK-05** — Conflict-rule §3 verified by integration test: typing `⌘S` inside an editor still flushes (does not produce literal `s`).
-- [ ] **AT-HK-06** — Conflict-rule §4 verified: `Escape` while search overlay is open closes the overlay without blurring the underlying editor.
+| Field | Type | Source | Required | Notes |
+|-------|------|--------|----------|-------|
+| `keyEvent` | `KeyboardEvent` | Global key listener | Yes | `key`, `ctrlKey`, `metaKey`, `shiftKey`, `altKey` consumed |
+| `platform` | `'mac' \| 'win' \| 'linux'` | `navigator.platform` parse | Yes | Drives `mod` resolution (⌘ vs Ctrl) |
+| `activeScope` | `'global' \| 'editor' \| 'search-overlay' \| 'tree'` | Focus tracker | Yes | Highest-priority match per Conflict Rules §2–4 |
+| `registry` | `Map<ActionId, Handler>` | `src/lib/hotkeys.ts` | Yes | Built once at boot from this table |
+
+## Outputs
+
+| Output | Persisted? | Channel | Notes |
+|--------|-----------|---------|-------|
+| Action dispatch | ❌ | In-process call to handler | Handler decides DB / toast / nav side effects |
+| `event.preventDefault()` | ❌ | DOM | Fired for every matched binding |
+| Hygiene report row | ❌ | CI stdout | `17-check-hotkeys.mjs` diff vs registry |
+
+## Edge Cases
+
+1. User holds Mod+Key inside an `<input>` outside the editor (e.g. share-dialog text box) — global bindings (⌘S, ⌘F, ⌘Z, ⌘⇧Z, ⌘\\) STILL fire; others suppressed by browser default.
+2. Two scopes match the same combo simultaneously (e.g. editor focused while search overlay opening) — the scope listed later in `['global','tree','editor','search-overlay']` wins.
+3. Platform detection fails (rare; non-standard `navigator.platform`) — fallback to `'win'` semantics (Ctrl as Mod).
+4. Combo registered in `lib/hotkeys.ts` but absent from this table — hygiene check fails CI.
+5. Combo present in this table but no registry handler — hygiene check fails CI.
+6. `Escape` pressed with both editor and search overlay active — overlay closes, editor retains focus (per Conflict Rule §4).
+
+## Acceptance Tests
+
+| ID | Given | When | Then | testid |
+|----|-------|------|------|--------|
+| AT-HK-01 | Registry built at boot | Hygiene check runs | Every row maps to exactly one registered handler | — |
+| AT-HK-02 | Component mounts on macOS | `useGlobalKeys` initializes | `platform === 'mac'`; `mod` resolves to `metaKey` | — |
+| AT-HK-03 | Unit test enumerates all 20 rows | For each row | Action ID resolves to non-undefined handler | — |
+| AT-HK-04 | Combo missing from registry | CI runs | `17-check-hotkeys.mjs` exits non-zero | — |
+| AT-HK-05 | Editor focused | User presses ⌘S | `autosave.flush-now` fires; no literal `s` typed | `save-indicator` |
+| AT-HK-06 | Search overlay open over editor | User presses Escape | Overlay closes; editor retains focus | `search-overlay` |
+| AT-HK-07 | Item row focused | User presses Tab on first sibling | No mutation; no API call | `item-row` |
+| AT-HK-08 | Search overlay open | User presses ↓ then Enter | Selected result is zoomed; overlay closes | `search-result-row` |
+
+## Component Contract
+
+> **Note:** None of these components exist yet — paths are aspirational. The disclaimer mirrors `05-interactions.md` L145; AI implementers MUST NOT treat the paths as binding imports.
+
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| Hotkey registry map | `src/lib/hotkeys.ts` | — (module) | AT-HK-01, AT-HK-03, AT-HK-04 |
+| Global key dispatcher | `src/lib/interactions/useGlobalKeys.ts` | — (hook) | AT-HK-02, AT-HK-05, AT-HK-06 |
+| Hygiene check | `scripts/spec-hygiene/17-check-hotkeys.mjs` | — (script) | AT-HK-04 |
+| Save indicator | `src/components/feedback/SaveIndicator.tsx` | `save-indicator` | AT-HK-05 |
+| Search overlay shell | `src/components/search/SearchOverlay.tsx` | `search-overlay` | AT-HK-06, AT-HK-08 |
+| Item row | `src/components/tree/ItemRow.tsx` | `item-row` | AT-HK-07 |
+| Search result row | `src/components/search/SearchResults.tsx` | `search-result-row` | AT-HK-08 |
+
 
 ---
 
