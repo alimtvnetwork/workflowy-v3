@@ -1,7 +1,7 @@
 # Glossary — Cross-Spec Terminology SSOT
 
-> **Version:** 1.0.0
-> **Updated:** 2026-04-20
+> **Version:** 1.1.0
+> **Updated:** 2026-04-26
 > **Status:** Active
 > **Purpose:** Single source of truth for every recurring term, acronym, and named concept across the spec/ directory.
 
