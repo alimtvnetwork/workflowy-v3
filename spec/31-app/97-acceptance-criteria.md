@@ -173,5 +173,8 @@ Each AT is "done" when (a) it has a stable ID, (b) its source file exists and co
 - [`00-overview.md`](./00-overview.md) — Mission, Load-Bearing Rules, MVP scope
 - [`spec/19-glossary.md`](../19-glossary.md) — Terminology SSOT
 - [`spec/20-enums-index.md`](../20-enums-index.md) — Enum registry
+- [`06-endpoints/00-overview.md`](./06-endpoints/00-overview.md) — REST endpoint wire contracts (mirrors every feature)
+- [`07-db-diagram/00-overview.md`](./07-db-diagram/00-overview.md) — Visual database design (ERDs, lifecycles, indexes)
 
-*Populated 2026-04-25 to close audit finding F-01. Extended v2.2.0 with Today / Templates / Concurrency / SSE coverage (`AT-APP-26..42`); v2.3.0 backfilled workflow flows (`AT-APP-43..57`).*
+*Populated 2026-04-25 to close audit finding F-01. Extended v2.2.0 with Today / Templates / Concurrency / SSE coverage (`AT-APP-26..42`); v2.3.0 backfilled workflow flows (`AT-APP-43..57`). v2.4.0 added cross-references to `06-endpoints/` and `07-db-diagram/` (2026-04-26).*
+
