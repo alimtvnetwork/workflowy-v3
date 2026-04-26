@@ -122,7 +122,7 @@ On incoming write W setting Mirrors.BrokenAt = X (X may be NULL or a timestamp):
 | Field | Type | Source | Required | Notes |
 |-------|------|--------|----------|-------|
 | `itemId` | `string` | URL / state | Yes | The row receiving the mutation |
-| `field` | `'content' \| 'note' \| 'dateAssigned' \| 'completedAt' \| 'itemType' \| 'parentId' \| 'sortKey' \| 'color' \| 'deletedAt'` | Mutation request | Yes | One of the LWW-managed columns |
+| `field` | `'content' \| 'note' \| 'dateAssigned' \| 'completedAt' \| 'itemType' \| 'parentId' \| 'sortKey' \| 'color' \| 'deletedAt' \| 'mirrorBrokenAt'` | Mutation request | Yes | One of the LWW-managed columns. `'mirrorBrokenAt'` resolves per §14.4 (target row is `Mirrors`, not `Items`). |
 | `newValue` | `unknown` | Mutation payload | Yes | Type matches the field |
 | `clientAttemptedAt` | `number` (UTC ms) | Browser clock | No | Logging only — NEVER authoritative |
 | `currentUserId` | `string` | Auth session | Yes | Used for tie-break + banner attribution |
