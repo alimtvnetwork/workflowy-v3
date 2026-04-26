@@ -1,7 +1,7 @@
 # Roadmap
 
-> **Version:** 1.0.0  
-> **Updated:** 2026-04-18
+> **Version:** 1.1.0
+> **Updated:** 2026-04-26 (UTC+8) — added `03-implementation-checklist.md` (per-phase pre-flight gate)
 
 
 <!-- AUTO-TOC:START -->
