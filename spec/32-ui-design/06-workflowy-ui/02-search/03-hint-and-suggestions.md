@@ -34,7 +34,7 @@ Each tab populates Region 3 with a chip list. Chips are clickable AND keyboard-n
 - No chips. Hint copy only.
 
 ### 2.2 Mentions
-- Section A: **Recent** — last N (TBD; suggested 5) `@user` tokens used in queries this session.
+- Section A: **Recent** — last **5** `@user` tokens used in queries this session (FIFO eviction; session-scoped, not persisted).
 - Section B: **All people** — alphabetical list of workspace members rendered as `@name` chips.
 - Empty workspace fallback: hint *"No collaborators yet. Share a node to mention people."*
 

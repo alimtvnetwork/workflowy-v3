@@ -95,7 +95,18 @@ Each token's `value` is parsed into one of:
 | `lastUsedAt` | `string` (ISO) | ✓ | Updated on load |
 | `pinned` | `boolean` | ✓ | Sort priority |
 
-> Storage contract is **TBD** — the implementer will provide a `SavedSearchStore` interface (CRUD methods) when backend is chosen.
+> **Storage contract** (resolved 2026-04-26): the implementer MUST provide a `SavedSearchStore` interface with the following async CRUD methods, backed by the WP plugin REST endpoints documented in [`04-right-action-icons.md`](./04-right-action-icons.md) §3.4:
+>
+> ```ts
+> interface SavedSearchStore {
+>   list(): Promise<SavedSearch[]>;
+>   create(input: Omit<SavedSearch, "id" | "createdAt" | "lastUsedAt">): Promise<SavedSearch>;
+>   update(id: string, patch: Partial<Pick<SavedSearch, "name" | "pinned" | "lastUsedAt">>): Promise<SavedSearch>;
+>   remove(id: string): Promise<void>;
+> }
+> ```
+>
+> All errors surface as rejected promises; UI handles them per [`09-states-and-edge-cases.md`](./09-states-and-edge-cases.md) §3 (network error toast).
 
 ---
 
