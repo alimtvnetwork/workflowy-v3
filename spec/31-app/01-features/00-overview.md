@@ -93,7 +93,7 @@ Read this before picking a feature to implement. Arrows = "depends on, must exis
 | **URL slugs / HTTP headers / route paths** | **kebab-case / snake_case** (per protocol) | `/api/items/move`, `X-WP-Nonce`, `wp_options` | Protocol convention — exempt from PascalCase rule |
 | **Pseudocode** | **Match the layer being described** | If the snippet is DB-level, use PascalCase; if TS-level, camelCase | This document |
 
-**Forbidden:** snake_case for *new* DB identifiers (e.g. `Items.ParentId` is **stale** — see [`05-audit-02a-column-rename.md`](../../18-spec-issues/05-audit-02a-column-rename.md)). The only snake_case identifiers permitted in DB context are WordPress core tables (`wp_posts`, `wp_options`) which are explicitly exempt.
+**Forbidden:** snake_case for *new* DB identifiers (e.g. `items.parent_id` is **stale**; canonical form is `Items.ParentId` — see [`05-audit-02a-column-rename.md`](../../18-spec-issues/05-audit-02a-column-rename.md)). The only snake_case identifiers permitted in DB context are WordPress core tables (`wp_posts`, `wp_options`) which are explicitly exempt.
 
 **Rule of thumb for spec authors:** before writing an identifier, ask *"which layer is this?"* and pick the casing from the table. Do not mix layers in the same code block — split into two blocks if needed.
 

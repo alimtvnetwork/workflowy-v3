@@ -194,7 +194,7 @@ This indicator is hidden for Pro/unlimited users.
 | Output | Persisted? | Channel | Notes |
 |--------|-----------|---------|-------|
 | Sidebar open/close state | ✅ `localStorage` | `ui.sidebarOpen` | Restored on next session |
-| Active view mode | ✅ SQLite | `items.view_mode` per item | Per-item preference |
+| Active view mode | ✅ SQLite | `Items.ViewMode` per item | Per-item preference |
 | `nav:zoom` event | ❌ | Event bus | Fires on breadcrumb / Home / sidebar tree click |
 | `nav:back` / `nav:forward` events | ❌ | Event bus | History traversal |
 | Favorite toggle write | ✅ SQLite | `favorites` table | Optimistic UI |

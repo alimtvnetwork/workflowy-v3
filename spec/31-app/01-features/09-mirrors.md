@@ -131,7 +131,7 @@ For cleaner UX, use only **"Mirror To…"** in the context menu (one unified act
 
 | Output | Persisted? | Channel | Notes |
 |--------|-----------|---------|-------|
-| Mirror instance created | ✅ SQLite | `mirrors` table — `(SourceId, ParentId, sort_key)` | No duplicated content |
+| Mirror instance created | ✅ SQLite | `Mirrors` table — `(SourceId, ParentId, SortKey)` | No duplicated content |
 | Mirror creation toast | ❌ | Toast bus | Subtitle: "Mirrors stay synced. Duplicates do not." |
 | Diamond badge render | ❌ | React state | Visible on every mirror instance + source |
 | `mirror:created` event | ❌ | Event bus | Drives real-time peer updates |

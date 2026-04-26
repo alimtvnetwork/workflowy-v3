@@ -100,7 +100,7 @@ This table describes how every core data entity relates to others in the system.
 | Parent-child link | ✅ SQLite | `Items.ParentId` FK | Null for root-level |
 | `item:created` event | ❌ | Event bus | Drives mirror sync, search index, activity log |
 | Optimistic UI render | ❌ | React state | Rolls back on save failure |
-| Activity log entry | ✅ SQLite | `activity_log` table | One row per create/move/delete/restore |
+| Activity log entry | ✅ SQLite | `ActivityLog` table | One row per create/move/delete/restore |
 
 ## Edge Cases
 

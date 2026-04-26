@@ -146,7 +146,7 @@ Defines the **runtime-agnostic** roles, permission grants, and authorization che
 
 ## Edge Cases
 
-1. Grantee removed from workspace while holding item grants → all grants cascade-deleted; authored content preserved with `created_by = "Removed user"`.
+1. Grantee removed from workspace while holding item grants → all grants cascade-deleted; authored content preserved with `Items.CreatedBy = "Removed user"`.
 2. Item moved out of a shared subtree → grant remains on original ancestor; moved item resolves access from new ancestor chain.
 3. User invited via email but not yet signed up → invite stored as pending; grant materializes on first matching login.
 4. Mirror of a shared item rendered in an unshared parent → mirror displays "🔒 Shared from {ancestor}" badge; access still resolves from source's grants.

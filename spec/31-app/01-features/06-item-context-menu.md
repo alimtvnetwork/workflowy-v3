@@ -120,11 +120,11 @@ Displayed in very small, muted text.
 | Toggle complete | ✅ SQLite | `Items.CompletedAt` | Children unaffected |
 | Note created/edited | ✅ SQLite | `Items.Note` | Inline editor commits on blur |
 | Date assignment | ✅ SQLite | `Items.DueDate` | Drives Today/Tomorrow/Next Week badges |
-| Comment thread opened | ✅ SQLite | `comments` table | Side panel anchored to source item |
+| Comment thread opened | ✅ SQLite | `Comments` table | Side panel anchored to source item |
 | Move | ✅ SQLite | `Items.ParentId` + `Items.SortOrder` | Subtree moves intact |
-| Mirror | ✅ SQLite | `mirrors` table (source_id + parent_id) | Item ID of source unchanged (per `01-information-model.md` §1.2) |
-| Duplicate | ✅ SQLite | `items` insert (deep copy) | New IDs for every cloned row |
-| Tag assignment | ✅ SQLite | `ItemTags` junction | Auto-creates `tags` row if new |
+| Mirror | ✅ SQLite | `Mirrors` table (`SourceId` + `ParentId`) | Item ID of source unchanged (per `01-information-model.md` §1.2) |
+| Duplicate | ✅ SQLite | `Items` insert (deep copy) | New IDs for every cloned row |
+| Tag assignment | ✅ SQLite | `ItemTags` junction | Auto-creates `Tags` row if new |
 | File upload | ✅ Object storage + SQLite `Attachments` | `POST /files` | 10 MB hard cap |
 | Export download | ❌ | Browser `Blob` download | OPML / Plain / JSON / Markdown |
 | Internal-link clipboard write | ❌ | `navigator.clipboard.writeText` | Toast confirms |

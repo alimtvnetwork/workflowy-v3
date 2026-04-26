@@ -139,7 +139,7 @@ On incoming write W setting Mirrors.BrokenAt = X (X may be NULL or a timestamp):
 | Local optimistic value | ❌ | React state | Replaced on conflict response |
 | "Restored remote change" banner | ❌ | Toast bus | 5 s with Undo affordance |
 | Undo write | ✅ SQLite | New mutation through same algorithm | Subject to LWW again |
-| Conflict log entry | ✅ SQLite | `conflict_log` (audit) | Records {item, field, loser_user, winner_user, ts} for support |
+| Conflict log entry | ✅ SQLite | `ConflictLog` (audit) | Records `{Item, Field, LoserUserId, WinnerUserId, ServerTs}` for support |
 | Presence dot | ❌ | Realtime presence channel | Optional; non-blocking |
 
 ## Edge Cases
