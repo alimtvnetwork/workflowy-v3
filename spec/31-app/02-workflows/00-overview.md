@@ -1,7 +1,7 @@
 # Workflows
 
-> **Version:** 2.0.0
-> **Updated:** 2026-04-26 (UTC+8) — APP-FIX-12: added 3 cross-feature workflow files (closes audit F-10)
+> **Version:** 2.1.0
+> **Updated:** 2026-04-26 (UTC+8) — v2.1.0 marked `AT-WF-*` ↔ `AT-APP-*` backfill complete (polish #2). v2.0.0 added 3 cross-feature workflow files (APP-FIX-12, closes F-10).
 > **Parent:** [`../00-overview.md`](../00-overview.md)
 
 ---
@@ -36,11 +36,11 @@ If only #1 holds, the flow belongs inside the relevant feature file's Edge Cases
 
 ---
 
-## Convention: `AT-WF-*` namespace
+## Convention: `AT-WF-*` namespace (canonical-mapped)
 
-Workflow files use a dedicated acceptance-criteria prefix: `AT-WF-{FLOW}-NN` (e.g. `AT-WF-TEMPLATE-01`, `AT-WF-SHARE-02`, `AT-WF-RESTORE-04`). This avoids collision with feature-file prefixes (`AT-LAYOUT`, `AT-CONCURRENCY`, etc.) and the canonical `AT-APP-NN`.
+Workflow files use a flow-scoped acceptance-criteria prefix: `AT-WF-{FLOW}-NN` (e.g. `AT-WF-TEMPLATE-01`, `AT-WF-SHARE-02`, `AT-WF-RESTORE-04`). This avoids collision with feature-file prefixes (`AT-LAYOUT`, `AT-CONCURRENCY`, etc.).
 
-Backfill into the canonical `spec/31-app/97-acceptance-criteria.md` is tracked as a Phase-2 polish item.
+✅ **Backfill complete (2026-04-26, polish #2):** every `AT-WF-*` row now has a 1:1 canonical `AT-APP-NN` mapping in [`../97-acceptance-criteria.md`](../97-acceptance-criteria.md) (`AT-APP-43..57`). The `AT-WF-*` IDs remain as flow-scoped aliases for in-file traceability; the `AT-APP-*` column is authoritative.
 
 ---
 

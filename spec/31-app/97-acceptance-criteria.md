@@ -1,7 +1,7 @@
 # App — Acceptance Criteria
 
-> **Version:** 2.2.0
-> **Updated:** 2026-04-26 (UTC+8) — v2.2.0 added canonical AT rows for Today (`AT-APP-26..28`), Templates (`AT-APP-29..32`), Concurrency core (`AT-APP-33..35`), and SSE transport (`AT-APP-36..42`). v2.1.0 declared canonical over `AT-APPF-NN`. v2.0.0 closed F-01.
+> **Version:** 2.3.0
+> **Updated:** 2026-04-26 (UTC+8) — v2.3.0 backfilled `AT-WF-*` workflows into canonical (`AT-APP-43..57`: Templates flow, Share-invite flow, Trash-restore flow). v2.2.0 added Today/Templates/Concurrency/SSE (`AT-APP-26..42`). v2.1.0 declared canonical over `AT-APPF-NN`. v2.0.0 closed F-01.
 > **Status:** ✅ Canonical AT index for the App domain
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
@@ -121,6 +121,37 @@ Testable acceptance criteria for the App domain. Each criterion is independently
 | `AT-APP-41` | Server emits a heartbeat comment (`: ping\n\n`) every **15 s**; clients treat absence of any frame for **30 s** as a dropped connection and trigger the reconnect+replay algorithm. | `01-features/14-concurrency-and-sync.md` §14.5.6 |
 | `AT-APP-42` | If the server cannot replay (cursor older than retention window) it emits a single `cursor-overflow` event; clients MUST respond by issuing a full re-sync of the workspace rather than continuing incremental playback. | `01-features/14-concurrency-and-sync.md` §14.5.2 + §14.5.5 |
 
+### Workflows — Template application (mirrors `AT-WF-TEMPLATE-*`)
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| `AT-APP-43` | Applying a template requires `Edit` or `Admin` on the target parent; `View`-only callers receive **HTTP 403** and no `Items` rows are inserted. | `02-workflows/02-template-application-flow.md` (was `AT-WF-TEMPLATE-01`) |
+| `AT-APP-44` | A successful apply makes the new subtree visible to the local client immediately and propagates an SSE `item-created` event to peers within **1 s** under healthy SSE. | `02-workflows/02-template-application-flow.md` (was `AT-WF-TEMPLATE-02`) |
+| `AT-APP-45` | Replaying the apply with the same `X-WorkFlowy-Idempotency-Key` within **24 h** returns **HTTP 200** with the original root `ItemId` and inserts no duplicate rows. | `02-workflows/02-template-application-flow.md` (was `AT-WF-TEMPLATE-03`) |
+| `AT-APP-46` | If the App-DB INSERT batch fails partway, the entire transaction ROLLBACKs, the client receives **HTTP 500**, and **no SSE event is emitted**. | `02-workflows/02-template-application-flow.md` (was `AT-WF-TEMPLATE-04`) |
+
+### Workflows — Share invite (mirrors `AT-WF-SHARE-*`)
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| `AT-APP-47` | An inviter without `Admin` on the target item attempting to grant access receives **HTTP 403** and no rows are written to `ItemGrants` or `PendingInvites`. | `02-workflows/03-share-invite-flow.md` (was `AT-WF-SHARE-01`) |
+| `AT-APP-48` | Sharing with an existing account at role `Edit` returns **HTTP 201**, inserts an `ItemGrants` row with `AcceptedAt = NULL`, and delivers an SSE `share-granted` event to the inviter within **1 s**. | `02-workflows/03-share-invite-flow.md` (was `AT-WF-SHARE-02`) |
+| `AT-APP-49` | Sharing with a non-existent email returns **HTTP 201** and inserts a `PendingInvites` row in the Root DB with `ExpiresAt = serverNow + 14 days`. | `02-workflows/03-share-invite-flow.md` (was `AT-WF-SHARE-03`) |
+| `AT-APP-50` | When an invitee clicks the accept link the server returns **HTTP 200**, sets `AcceptedAt = serverNow`, emits SSE `share-granted` (accepted variant) to both parties, and `Auth::hasRole($invitee, 'Edit')` on any descendant of the shared item returns true. | `02-workflows/03-share-invite-flow.md` (was `AT-WF-SHARE-04`) |
+| `AT-APP-51` | Replayed POST with the same `X-WorkFlowy-Idempotency-Key` returns **HTTP 201** with the original `GrantId` and inserts no duplicate row. | `02-workflows/03-share-invite-flow.md` (was `AT-WF-SHARE-05`) |
+
+### Workflows — Trash restore (mirrors `AT-WF-RESTORE-*`)
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| `AT-APP-52` | Restoring an item whose parent is also trashed returns **HTTP 422** with `blockingAncestorId` populated and writes nothing to the DB. | `02-workflows/04-trash-restore-flow.md` (was `AT-WF-RESTORE-01`) |
+| `AT-APP-53` | Restoring a healthy ancestor first and then a descendant succeeds for both, emitting an SSE `item-restored` event for each. | `02-workflows/04-trash-restore-flow.md` (was `AT-WF-RESTORE-02`) |
+| `AT-APP-54` | Restoring an item that has already been **hard-deleted** (purged after the 30-day window) returns **HTTP 410** and the UI removes the row from the Trash list. | `02-workflows/04-trash-restore-flow.md` (was `AT-WF-RESTORE-03`) + AT-APP-19 |
+| `AT-APP-55` | A restore racing with a concurrent re-delete carrying a newer `ServerTs` returns **HTTP 409**; the item stays trashed and the field-level LWW rule (AT-APP-33) is respected. | `02-workflows/04-trash-restore-flow.md` (was `AT-WF-RESTORE-04`) |
+| `AT-APP-56` | Restoring an item heals its broken mirrors by clearing `Mirrors.BrokenAt` via LWW (subject to AT-APP-34 stickiness) and emits an SSE `mirror-created` (heal variant) event. | `02-workflows/04-trash-restore-flow.md` (was `AT-WF-RESTORE-05`) |
+| `AT-APP-57` | A stale restore racing with the reaper's hard-delete loses LWW: the reaper's newer `ServerTs` wins and the broken-mirror state is preserved. | `02-workflows/04-trash-restore-flow.md` (was `AT-WF-RESTORE-06`) + AT-APP-34 |
+
+
 ---
 
 ## Verification
@@ -143,4 +174,4 @@ Each AT is "done" when (a) it has a stable ID, (b) its source file exists and co
 - [`spec/19-glossary.md`](../19-glossary.md) — Terminology SSOT
 - [`spec/20-enums-index.md`](../20-enums-index.md) — Enum registry
 
-*Populated 2026-04-25 to close audit finding F-01. Extended 2026-04-26 (v2.2.0) with Today / Templates / Concurrency / SSE coverage (`AT-APP-26..42`).*
+*Populated 2026-04-25 to close audit finding F-01. Extended v2.2.0 with Today / Templates / Concurrency / SSE coverage (`AT-APP-26..42`); v2.3.0 backfilled workflow flows (`AT-APP-43..57`).*

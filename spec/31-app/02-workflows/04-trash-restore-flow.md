@@ -1,7 +1,8 @@
 # Trash Restore Flow
 
-> **Version:** 1.0.0
+> **Version:** 1.1.0
 > **Created:** 2026-04-26 (UTC+8) — APP-FIX-12 (closes audit F-10)
+> **Updated:** 2026-04-26 (UTC+8) — v1.1.0 added canonical `AT-APP-NN` mapping column (polish #2)
 > **Status:** Canonical — cross-feature flow
 > **Parent:** [`00-overview.md`](./00-overview.md)
 > **SSOT for the underlying feature:** [`spec/31-app/01-features/11-trash-view.md`](../01-features/11-trash-view.md)
@@ -109,16 +110,16 @@ Restore is naturally idempotent — replaying after success is a no-op (LWW guar
 
 ## Acceptance Tests (canonical)
 
-| ID | Source | Scenario | Expected |
-|----|--------|----------|----------|
-| `AT-WF-RESTORE-01` | This flow | Restore item whose parent is also trashed | 422 with `blockingAncestorId`; no DB write |
-| `AT-WF-RESTORE-02` | This flow | Restore healthy ancestor first, then descendant | Both succeed; `items.restored` SSE for each |
-| `AT-WF-RESTORE-03` | This flow | Restore item that was hard-deleted | 410; UI removes the row from Trash |
-| `AT-WF-RESTORE-04` | This flow | Concurrent re-delete with newer `serverTs` | Restore returns 409; item stays trashed; LWW respected |
-| `AT-WF-RESTORE-05` | This flow | Restore re-heals broken mirrors of restored item | `Mirrors.BrokenAt` cleared via LWW; `mirrors.healed` SSE emitted |
-| `AT-WF-RESTORE-06` | This flow | Stale restore racing with reaper hard-delete | Mirror heal LOSES LWW (reaper's ts is newer); broken state preserved |
+| ID | Canonical | Source | Scenario | Expected |
+|----|-----------|--------|----------|----------|
+| `AT-WF-RESTORE-01` | `AT-APP-52` | This flow | Restore item whose parent is also trashed | 422 with `blockingAncestorId`; no DB write |
+| `AT-WF-RESTORE-02` | `AT-APP-53` | This flow | Restore healthy ancestor first, then descendant | Both succeed; `items.restored` SSE for each |
+| `AT-WF-RESTORE-03` | `AT-APP-54` | This flow | Restore item that was hard-deleted | 410; UI removes the row from Trash |
+| `AT-WF-RESTORE-04` | `AT-APP-55` | This flow | Concurrent re-delete with newer `serverTs` | Restore returns 409; item stays trashed; LWW respected |
+| `AT-WF-RESTORE-05` | `AT-APP-56` | This flow | Restore re-heals broken mirrors of restored item | `Mirrors.BrokenAt` cleared via LWW; `mirrors.healed` SSE emitted |
+| `AT-WF-RESTORE-06` | `AT-APP-57` | This flow | Stale restore racing with reaper hard-delete | Mirror heal LOSES LWW (reaper's ts is newer); broken state preserved |
 
-> These IDs live in the `AT-WF-*` namespace introduced by APP-FIX-12.
+> ✅ **Backfilled into canonical** (2026-04-26, polish #2): each `AT-WF-RESTORE-NN` maps 1:1 to an `AT-APP-NN` row in [`spec/31-app/97-acceptance-criteria.md`](../97-acceptance-criteria.md). Canonical column is authoritative.
 
 ---
 
