@@ -1,8 +1,8 @@
 # Roles & Permissions
 
-> **Version:** 1.2.0
+> **Version:** 1.3.0
 > **Created:** 2026-04-25 (UTC+8)
-> **Updated:** 2026-04-26 — APP-FIX-02: Storage section added (closes audit F-03 for this file). v1.1.0 added Enum Sources callout.
+> **Updated:** 2026-04-26 — APP-FIX-04: PHP `Auth::hasRole()` contract specified (closes audit F-06 / Round-3 AUDIT-04). v1.2.0 added Storage section. v1.1.0 added Enum Sources callout.
 > **Status:** Active — runtime-agnostic contract
 > **Parent:** [`00-overview.md`](./00-overview.md)
 > **Closes audit finding:** F-04
@@ -237,6 +237,121 @@ The backend MUST expose a server-side function `hasRole(userId, scope, scopeId, 
 - Runs with elevated privileges (security-definer pattern).
 - Is the **only** path RLS / capability checks use.
 - Returns `false` on any error rather than throwing.
+
+---
+
+## PHP Authorization Helper Contract — `Auth::hasRole()` (normative)
+
+> **Why this section:** `00-overview.md` L8 + `97-acceptance-criteria.md` AT-APP-22 cite `Auth::hasRole($userId, $role)` as the single authorization choke-point. Until v1.3.0 the contract was implicit. This section pins the signature, exceptions, return values, and call sites so no AI re-invents it.
+
+### Location
+
+```
+plugin-root/
+└── src/
+    └── Auth/
+        └── Auth.php          ← class Auth { public static function hasRole(...) }
+```
+
+The class is **always static** — never instantiated. It lives in namespace `WorkFlowy\Auth`.
+
+### Signature
+
+```php
+namespace WorkFlowy\Auth;
+
+final class Auth
+{
+    /**
+     * Authoritative role check. The ONLY function any handler calls before
+     * mutating state. Reads `WorkspaceMember` (Root DB) and, when $scope is
+     * 'Item', walks ancestors in the App DB via resolveEffectiveRole().
+     *
+     * @param int    $userId    Current user's wp_users.ID. Must be > 0.
+     * @param string $role      One of WorkspaceRole | ItemRole enum values
+     *                          (e.g. 'Owner', 'Admin', 'Edit', 'View',
+     *                          'PublicView'). Case-sensitive.
+     * @param string $scope     'Workspace' | 'Item'. Default 'Workspace'.
+     * @param ?int   $scopeId   WorkspaceId when $scope='Workspace';
+     *                          ItemId when $scope='Item'. Required if $scope='Item'.
+     *
+     * @return bool TRUE if the user holds AT LEAST $role at $scope/$scopeId.
+     *              FALSE on missing grant, unknown user, or any internal error.
+     *              NEVER throws to the caller — internal errors are logged
+     *              via Logger::error() and converted to FALSE (fail-closed).
+     *
+     * @throws \InvalidArgumentException ONLY for programmer error
+     *                                    ($userId <= 0, unknown $role string,
+     *                                    $scope='Item' with null $scopeId).
+     *                                    Caught by the global REST middleware
+     *                                    and returned as 500.
+     */
+    public static function hasRole(
+        int $userId,
+        string $role,
+        string $scope = 'Workspace',
+        ?int $scopeId = null
+    ): bool { /* … */ }
+}
+```
+
+### Exception taxonomy
+
+| Exception | When | Caller behavior |
+|-----------|------|-----------------|
+| `\InvalidArgumentException` | `$userId <= 0`, unknown `$role` string, `$scope='Item'` with `null $scopeId` | **Programmer error.** Bubbles to global middleware → HTTP 500. Never user-visible. |
+| (none — internal DB / SQLite errors) | Connection lost, query failed | Logged via `Logger::error()` then **return `false`** (fail-closed). Caller proceeds as "denied". |
+
+### Return contract
+
+- `true` — user holds the requested role **or higher** at the given scope. Action MAY proceed.
+- `false` — denied for any reason (no grant, unknown user, internal error). Caller MUST reject the action with HTTP 403 (or equivalent).
+
+> **Rule:** `Auth::hasRole()` is **fail-closed**. Treat `false` as "denied" without inspecting why. The audit trail (`Logger::error`) is the only place to learn the cause.
+
+### Comparison semantics ("at least")
+
+`Auth::hasRole($u, 'Edit', 'Item', $i)` returns `true` when the effective role for `$u` on `$i` is `Edit`, `Admin`, or `Owner`. The hierarchy is fixed:
+
+```
+Owner  >  Admin  >  Edit  >  View  >  PublicView
+```
+
+Implementation MUST use the integer rank from the canonical enum file ([`spec/20-enums-index.md`](../../20-enums-index.md) §3) — never compare strings directly.
+
+### Required call sites (non-exhaustive)
+
+| Surface | Call |
+|---------|------|
+| Any REST handler that mutates `Items` | `Auth::hasRole($userId, 'Edit', 'Item', $itemId)` |
+| Share dialog grant create | `Auth::hasRole($userId, 'Admin', 'Item', $itemId)` |
+| Workspace settings change | `Auth::hasRole($userId, 'Admin', 'Workspace', $workspaceId)` |
+| Trash permanent-delete | `Auth::hasRole($userId, 'Admin', 'Item', $itemId)` |
+| Public link toggle | `Auth::hasRole($userId, 'Admin', 'Item', $itemId)` |
+| SSE channel subscribe | `Auth::hasRole($userId, 'View', 'Workspace', $workspaceId)` |
+
+### Forbidden patterns
+
+- ❌ Trusting any role value sent from the client.
+- ❌ Calling `Auth::hasRole()` from JavaScript / TypeScript — there is no client equivalent. Client UI may *hide* actions optimistically but the server check is authoritative.
+- ❌ Wrapping `Auth::hasRole()` in `try/catch` to convert `false` into `true`.
+- ❌ Hard-coded role strings outside the enum file (use `Roles::EDIT`, not `'Edit'`).
+
+### Example handler
+
+```php
+public function handleMoveItem(\WP_REST_Request $req): \WP_REST_Response
+{
+    $userId = get_current_user_id();
+    $itemId = (int) $req['itemId'];
+
+    if (!Auth::hasRole($userId, 'Edit', 'Item', $itemId)) {
+        return new \WP_REST_Response(['error' => 'forbidden'], 403);
+    }
+
+    // …mutation proceeds…
+}
+```
 
 ---
 

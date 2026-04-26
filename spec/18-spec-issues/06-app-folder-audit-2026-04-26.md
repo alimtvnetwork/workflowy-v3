@@ -234,7 +234,7 @@ Each finding has: ID · Severity · Files · What's wrong · Why it matters · F
 | 1 | **APP-FIX-01** ✅ | Widen AUDIT-02a column rename to 12 files | 4 extra files added to existing rename map | F-01 — **DONE 2026-04-26 (tracker widened to 12; mechanical rename of identifiers tracked there)** |
 | 2 | **APP-FIX-02** ✅ | Add `Storage` row (Root vs App DB) to every persistence-touching feature | 9 feature files | F-03 — **DONE 2026-04-26 (01, 06, 07, 09, 11, 12, 13, 14, 15 versions bumped; Storage section inserted)** |
 | 3 | **APP-FIX-03** ✅ | Add SSE/poll-fallback callout to every realtime mention | 6 feature files | F-05 — **DONE 2026-04-26 (06, 07, 08, 09, 11, 12 versions bumped; Realtime Transport callout inserted)** |
-| 4 | **APP-FIX-04** | Document `Auth::hasRole()` PHP contract in `15-roles-and-permissions.md` | 1 file | F-06 |
+| 4 | **APP-FIX-04** ✅ | Document `Auth::hasRole()` PHP contract in `15-roles-and-permissions.md` | 1 file | F-06 — **DONE 2026-04-26 (15-roles-and-permissions.md v1.3.0; signature, exceptions, return contract, call sites, forbidden patterns added). Also closes Round-3 AUDIT-04.** |
 | 5 | **APP-FIX-05** | Add settings/seedable-config keys to all settings touchpoints | 4 feature files (`03`, `10`, `11`, `13`) | F-04 |
 | 6 | **APP-FIX-06** ✅ | Link every enum mention to canonical Strategy-B file | 6 feature files | F-02 — **DONE 2026-04-26 (01, 03, 04, 07, 08, 15 versions bumped; Enum Sources callout inserted)** |
 | 7 | **APP-FIX-07** ✅ | Add Casing-Layers callout in `01-features/00-overview.md` | 1 file | F-08 — **DONE 2026-04-26 (00-overview.md v2.1.0)** |
