@@ -136,10 +136,10 @@ Defines the **runtime-agnostic** roles, permission grants, and authorization che
 | Output | Persisted? | Channel | Notes |
 |--------|-----------|---------|-------|
 | Authorization decision | ❌ | Function return | `true` allows action; `false` denies |
-| Audit log entry | ✅ DB | `activity_log` table | Action type, actor, target, decision, timestamp |
+| Audit log entry | ✅ DB | `ActivityLog` table | Action type, actor, target, decision, timestamp |
 | Permission-denied UI toast | ❌ | React state | Only on user-initiated actions |
-| Grant row mutation | ✅ DB | `user_roles` table | Insert/update/delete on share grants |
-| Cascaded grant invalidation | ✅ DB | `user_roles` cascade | When grantee removed from workspace |
+| Grant row mutation | ✅ DB | `UserRoles` table | Insert/update/delete on share grants |
+| Cascaded grant invalidation | ✅ DB | `UserRoles` cascade | When grantee removed from workspace |
 | `share:revoked` event | ✅ Event bus | Realtime channel | `PublicView` sessions invalidated within 60 s |
 
 ---
