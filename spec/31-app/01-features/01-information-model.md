@@ -1,7 +1,7 @@
 # Information Model Foundations
 
-> **Version:** 2.1.0
-> **Updated:** 2026-04-26 — APP-FIX-06: enum sources linked (closes audit F-02 for this file)
+> **Version:** 2.2.0
+> **Updated:** 2026-04-26 — APP-FIX-02: Storage section added (closes audit F-03 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -68,6 +68,16 @@ This table describes how every core data entity relates to others in the system.
 - Deleting a source item marks all its mirrors as broken.
 - Sharing an item cascades view access to all descendants.
 - Mirrors always reference the canonical source — never another mirror.
+
+---
+
+## Storage
+
+| Layer | Tables | Notes |
+|-------|--------|-------|
+| **Root DB** | `User`, `Workspace`, `WorkspaceMember` | Per [`spec/05-split-db-architecture/00-overview.md`](../../05-split-db-architecture/00-overview.md): identity + workspace registry only. |
+| **App DB** (per workspace) | `Items`, `ItemTags`, `Tags`, `Comments`, `Attachments`, `Mentions` | All item content lives here. One App DB file per workspace. |
+| **Cross-DB joins** | **Forbidden.** | Workspace lookup happens via Root DB → switch connection → query App DB. |
 
 ---
 
