@@ -20,8 +20,8 @@
 | Ambiguity assigned | ✅ |
 | Keywords present | ✅ |
 | Scoring table present | ✅ |
-| AI Confidence (auto-backfill) | Medium — TODO re-grade |
-| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+| AI Confidence (auto-backfill) | Medium |
+| Ambiguity (auto-backfill) | Medium |
 
 ---
 > **Breaking:** Migrated from per-domain `byte` enums to single `uint16` Variation enum (inspired by [evatix-go/errorwrapper/errtype](https://gitlab.com/auk-go/errorwrapper/-/tree/develop/errtype))

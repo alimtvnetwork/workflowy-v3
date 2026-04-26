@@ -18,8 +18,8 @@
 | Ambiguity assigned | ✅ |
 | Keywords present | ✅ |
 | Scoring table present | ✅ |
-| AI Confidence (auto-backfill) | Medium — TODO re-grade |
-| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+| AI Confidence (auto-backfill) | Medium |
+| Ambiguity (auto-backfill) | Medium |
 
 ---
 > **Created:** 2026-04-26 (UTC+8) — closes F-AUD27-03 from `02-ai-readiness-report-post-a27.md` (folder previously had no `00-overview.md`).

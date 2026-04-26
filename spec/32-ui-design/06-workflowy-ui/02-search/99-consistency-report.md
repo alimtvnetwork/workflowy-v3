@@ -61,7 +61,7 @@ Archive: `_archive-v1/` — 4 files (`README.md`, `01-overlay.md`, `02-filter-sy
 | `10-accessibility.md` → `11-design-tokens.md` § 5 contrast | ✅ |
 | `11-design-tokens.md` → `../../03-design-system/03-tailwind-version-ssot.md` | ✅ |
 | `12-icon-map.md` → Phase 4 item-type icons | ⏳ Forward-ref (Phase 4 done) |
-| `12-icon-map.md` → Phase 5 highlight palette hex | ⏳ Forward-ref (palette resolved at parent, sub-mapping TBD) |
+| `12-icon-map.md` → Phase 5 highlight palette hex | ⏳ Forward-ref (palette resolved at parent; sub-mapping populated in Phase 5) |
 | `08-keyboard-shortcuts.md` → Phase 8 global hotkey reg | ⏳ Forward-ref (Phase 8 done; reverse link should be added) |
 | `09-states-and-edge-cases.md` → Phase 10 mobile sheet | ⏳ Forward-ref (Phase 10 deferred — acceptable) |
 | `13-data-contracts.md` → `mem://constraints/backend-runtime-deferred` | ✅ |

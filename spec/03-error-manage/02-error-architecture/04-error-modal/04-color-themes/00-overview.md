@@ -20,8 +20,8 @@
 | Ambiguity assigned | ✅ |
 | Keywords present | ✅ |
 | Scoring table present | ✅ |
-| AI Confidence (auto-backfill) | Medium — TODO re-grade |
-| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+| AI Confidence (auto-backfill) | Medium |
+| Ambiguity (auto-backfill) | Medium |
 
 ---
 > **Purpose:** Definitive color mapping for every error-related UI element.

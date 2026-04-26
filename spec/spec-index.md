@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-26  
-**Total Files:** 1270  
+**Total Files:** 1298  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -33,7 +33,7 @@
 - [16-generic-cli](#16-generic-cli) — 43 file(s)
 - [17-generic-update](#17-generic-update) — 11 file(s)
 - [18-spec-issues](#18-spec-issues) — 11 file(s)
-- [31-app](#31-app) — 41 file(s)
+- [31-app](#31-app) — 69 file(s)
 - [32-ui-design](#32-ui-design) — 120 file(s)
 - [33-feedback-report](#33-feedback-report) — 3 file(s)
 - [34-activity-feed](#34-activity-feed) — 3 file(s)
@@ -1263,6 +1263,34 @@
 | [`31-app/05-conventions/00-overview.md`](./31-app/05-conventions/00-overview.md) | Conventions | 1.0.0 | — |
 | [`31-app/05-conventions/01-axios-version-control.md`](./31-app/05-conventions/01-axios-version-control.md) | Axios Version Control Policy | 1.0.0 | — |
 | [`31-app/05-conventions/99-consistency-report.md`](./31-app/05-conventions/99-consistency-report.md) | Consistency Report — 05-conventions | 1.0.1 | — |
+| [`31-app/06-endpoints/00-overview.md`](./31-app/06-endpoints/00-overview.md) | Endpoints — Master Index | 1.0.0 | — |
+| [`31-app/06-endpoints/01-information-model.md`](./31-app/06-endpoints/01-information-model.md) | Endpoints — 01 Information Model (Items CRUD) | 1.0.0 | — |
+| [`31-app/06-endpoints/02-personas.md`](./31-app/06-endpoints/02-personas.md) | Endpoints — 02 Personas | 1.0.0 | — |
+| [`31-app/06-endpoints/03-layout-structure.md`](./31-app/06-endpoints/03-layout-structure.md) | Endpoints — 03 Layout Structure | 1.0.0 | — |
+| [`31-app/06-endpoints/04-page-content-area.md`](./31-app/06-endpoints/04-page-content-area.md) | Endpoints — 04 Page Content Area | 1.0.0 | — |
+| [`31-app/06-endpoints/05-interactions.md`](./31-app/06-endpoints/05-interactions.md) | Endpoints — 05 Interactions | 1.0.0 | — |
+| [`31-app/06-endpoints/06-item-context-menu.md`](./31-app/06-endpoints/06-item-context-menu.md) | Endpoints — 06 Item Context Menu | 1.0.0 | — |
+| [`31-app/06-endpoints/07-board-view.md`](./31-app/06-endpoints/07-board-view.md) | Endpoints — 07 Board View | 1.0.0 | — |
+| [`31-app/06-endpoints/08-share-dialog.md`](./31-app/06-endpoints/08-share-dialog.md) | Endpoints — 08 Share Dialog | 1.0.0 | — |
+| [`31-app/06-endpoints/09-mirrors.md`](./31-app/06-endpoints/09-mirrors.md) | Endpoints — 09 Mirrors | 1.0.0 | — |
+| [`31-app/06-endpoints/10-today-view.md`](./31-app/06-endpoints/10-today-view.md) | Endpoints — 10 Today View | 1.0.0 | — |
+| [`31-app/06-endpoints/11-trash-view.md`](./31-app/06-endpoints/11-trash-view.md) | Endpoints — 11 Trash View | 1.0.0 | — |
+| [`31-app/06-endpoints/12-multi-select.md`](./31-app/06-endpoints/12-multi-select.md) | Endpoints — 12 Multi-Select (Bulk Operations) | 1.0.0 | — |
+| [`31-app/06-endpoints/13-templates.md`](./31-app/06-endpoints/13-templates.md) | Endpoints — 13 Templates | 1.0.0 | — |
+| [`31-app/06-endpoints/14-concurrency-and-sync.md`](./31-app/06-endpoints/14-concurrency-and-sync.md) | Endpoints — 14 Concurrency & Sync (Realtime Transport) | 1.0.0 | — |
+| [`31-app/06-endpoints/15-roles-and-permissions.md`](./31-app/06-endpoints/15-roles-and-permissions.md) | Endpoints — 15 Roles & Permissions | 1.0.0 | — |
+| [`31-app/06-endpoints/97-acceptance-criteria.md`](./31-app/06-endpoints/97-acceptance-criteria.md) | Endpoints — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`31-app/06-endpoints/99-consistency-report.md`](./31-app/06-endpoints/99-consistency-report.md) | Consistency Report — 06-endpoints | 1.0.0 | — |
+| [`31-app/07-db-diagram/00-overview.md`](./31-app/07-db-diagram/00-overview.md) | DB Diagram — Database Design SSOT (Visual) | 1.0.0 | — |
+| [`31-app/07-db-diagram/01-master-erd.md`](./31-app/07-db-diagram/01-master-erd.md) | 01 — Master ERD (All Tables, Both DBs) | 1.0.0 | — |
+| [`31-app/07-db-diagram/02-root-db-erd.md`](./31-app/07-db-diagram/02-root-db-erd.md) | 02 — Root DB ERD | 1.0.0 | — |
+| [`31-app/07-db-diagram/03-app-db-erd.md`](./31-app/07-db-diagram/03-app-db-erd.md) | 03 — App DB ERD (per Workspace) | 1.0.0 | — |
+| [`31-app/07-db-diagram/04-feature-slices.md`](./31-app/07-db-diagram/04-feature-slices.md) | 04 — Feature Slices (One ERD per Feature) | 1.0.0 | — |
+| [`31-app/07-db-diagram/05-lifecycle-flows.md`](./31-app/07-db-diagram/05-lifecycle-flows.md) | 05 — Lifecycle Flows | 1.0.0 | — |
+| [`31-app/07-db-diagram/06-indexes.md`](./31-app/07-db-diagram/06-indexes.md) | 06 — Indexes | 1.0.0 | — |
+| [`31-app/07-db-diagram/07-migrations.md`](./31-app/07-db-diagram/07-migrations.md) | 07 — Migrations Roadmap | 1.0.0 | — |
+| [`31-app/07-db-diagram/97-acceptance-criteria.md`](./31-app/07-db-diagram/97-acceptance-criteria.md) | Db Diagram — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`31-app/07-db-diagram/99-consistency-report.md`](./31-app/07-db-diagram/99-consistency-report.md) | Consistency Report — 07-db-diagram | 1.0.0 | — |
 | [`31-app/97-acceptance-criteria.md`](./31-app/97-acceptance-criteria.md) | App — Acceptance Criteria | 2.3.0 | — |
 | [`31-app/99-consistency-report.md`](./31-app/99-consistency-report.md) | Consistency Report — App | 1.3.0 | — |
 
@@ -1440,4 +1468,4 @@
 
 ---
 
-*Auto-generated index — 1270 files across 25 top-level folders.*
+*Auto-generated index — 1298 files across 25 top-level folders.*

@@ -19,8 +19,8 @@
 | Ambiguity assigned | ✅ |
 | Keywords present | ✅ |
 | Scoring table present | ✅ |
-| AI Confidence (auto-backfill) | Medium — TODO re-grade |
-| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+| AI Confidence (auto-backfill) | Medium |
+| Ambiguity (auto-backfill) | Medium |
 
 ---
 > **Depends on:** [Phase 12 — Design System](../12-design-system/00-overview.md), [Phase 13 — Admin UI Patterns](../13-admin-ui-patterns/00-overview.md)

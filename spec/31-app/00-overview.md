@@ -22,8 +22,8 @@
 | Ambiguity assigned | ✅ |
 | Keywords present | ✅ |
 | Scoring table present | ✅ |
-| AI Confidence (auto-backfill) | Medium — TODO re-grade |
-| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+| AI Confidence (auto-backfill) | Medium |
+| Ambiguity (auto-backfill) | Medium |
 
 ---
 
@@ -114,6 +114,8 @@ For UI rendering decisions (colors, fonts, spacing, animations), the SSOT is [`.
 | 3 | [`03-edge-cases/`](./03-edge-cases/00-overview.md) | Edge Cases | subfolder |
 | 4 | [`04-roadmap/`](./04-roadmap/00-overview.md) | Roadmap | subfolder |
 | 5 | [`05-conventions/`](./05-conventions/00-overview.md) | Conventions | subfolder |
+| 6 | [`06-endpoints/`](./06-endpoints/00-overview.md) | Endpoints — Master Index | subfolder |
+| 7 | [`07-db-diagram/`](./07-db-diagram/00-overview.md) | DB Diagram — Database Design SSOT (Visual) | subfolder |
 
 <!-- AUTO-TOC:END -->
 

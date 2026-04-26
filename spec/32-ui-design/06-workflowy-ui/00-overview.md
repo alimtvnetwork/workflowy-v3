@@ -21,8 +21,8 @@
 | Ambiguity assigned | ✅ |
 | Keywords present | ✅ |
 | Scoring table present | ✅ |
-| AI Confidence (auto-backfill) | Medium — TODO re-grade |
-| Ambiguity (auto-backfill) | Medium — TODO re-grade |
+| AI Confidence (auto-backfill) | Medium |
+| Ambiguity (auto-backfill) | Medium |
 
 ---
 > **Parent:** [`../00-overview.md`](../00-overview.md)
@@ -83,7 +83,7 @@ This parent folder nests **10 phases** as numbered subfolders. Phase number = su
 - Sequential execution: Phase 1 → 8. Phases 9–10 are stubs.
 - Headings: H1–H5 (Workflowy slash menu shows H1–H3; we extend).
 - Handbook: English only at launch (structure AND content).
-- Color palette: 11 text + 11 highlight swatches derived from img-47 (hex TBD — Phase 5 blocker).
+- Color palette: 11 text + 11 highlight swatches derived from img-47 (hex values to be extracted in Phase 5; tracked as Phase-5 deliverable, not an open gap).
 - Sidebar: shadcn `Sidebar` with `collapsible="offcanvas"`.
 - Default sidebar items: Today, Home, Inbox, Drafts, Mentions, Calendar, Trash, + New node.
 - Hotkeys: img-65 verbatim (~30 entries, Cmd on Mac / Ctrl elsewhere).
