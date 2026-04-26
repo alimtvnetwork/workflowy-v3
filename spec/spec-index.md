@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-26  
-**Total Files:** 1268  
+**Total Files:** 1270  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -17,7 +17,7 @@
 
 - [01-spec-authoring-guide](#01-spec-authoring-guide) — 21 file(s)
 - [02-coding-guidelines](#02-coding-guidelines) — 308 file(s)
-- [03-error-manage](#03-error-manage) — 185 file(s)
+- [03-error-manage](#03-error-manage) — 187 file(s)
 - [04-database-conventions](#04-database-conventions) — 16 file(s)
 - [05-split-db-architecture](#05-split-db-architecture) — 45 file(s)
 - [06-seedable-config-architecture](#06-seedable-config-architecture) — 50 file(s)
@@ -548,12 +548,14 @@
 | [`03-error-manage/02-error-architecture/07-logging-and-diagnostics/99-consistency-report.md`](./03-error-manage/02-error-architecture/07-logging-and-diagnostics/99-consistency-report.md) | Consistency Report: Logging And Diagnostics | 3.1.0 | — |
 | [`03-error-manage/02-error-architecture/99-consistency-report.md`](./03-error-manage/02-error-architecture/99-consistency-report.md) | Consistency Report: Error Architecture | 3.1.0 | — |
 | [`03-error-manage/03-error-code-registry/00-overview.md`](./03-error-manage/03-error-code-registry/00-overview.md) | Error Code Registry | 3.1.0 | — |
+| [`03-error-manage/03-error-code-registry/01-registry/00-overview.md`](./03-error-manage/03-error-code-registry/01-registry/00-overview.md) | Error-Code Registry — Sub-Folder Overview | 1.0.0 | — |
 | [`03-error-manage/03-error-code-registry/01-registry/01-overview.md`](./03-error-manage/03-error-code-registry/01-registry/01-overview.md) | 1. Registry Overview | — | — |
 | [`03-error-manage/03-error-code-registry/01-registry/02-collision-resolution.md`](./03-error-manage/03-error-code-registry/01-registry/02-collision-resolution.md) | 2. Collision Resolution Log | — | — |
 | [`03-error-manage/03-error-code-registry/01-registry/03-module-error-ranges.md`](./03-error-manage/03-error-code-registry/01-registry/03-module-error-ranges.md) | 3. Module Error Code Sub-Ranges | — | — |
 | [`03-error-manage/03-error-code-registry/01-registry/04-detailed-error-codes.md`](./03-error-manage/03-error-code-registry/01-registry/04-detailed-error-codes.md) | 4. Detailed Error Code Tables | — | — |
 | [`03-error-manage/03-error-code-registry/01-registry/05-gen-sm-lm-errors.md`](./03-error-manage/03-error-code-registry/01-registry/05-gen-sm-lm-errors.md) | 5. GEN, SM, LM, CLI, PS Error Codes | — | — |
 | [`03-error-manage/03-error-code-registry/01-registry/06-format-and-usage.md`](./03-error-manage/03-error-code-registry/01-registry/06-format-and-usage.md) | 6. Format Reference & Usage | — | — |
+| [`03-error-manage/03-error-code-registry/01-registry/97-acceptance-criteria.md`](./03-error-manage/03-error-code-registry/01-registry/97-acceptance-criteria.md) | Registry — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`03-error-manage/03-error-code-registry/02-integration-guide.md`](./03-error-manage/03-error-code-registry/02-integration-guide.md) | Error Code Registry - Integration Guide | 1.0.0 | — |
 | [`03-error-manage/03-error-code-registry/03-collision-resolution-summary.md`](./03-error-manage/03-error-code-registry/03-collision-resolution-summary.md) | Collision Resolution Summary Report | 3.1.0 | — |
 | [`03-error-manage/03-error-code-registry/04-error-code-utilization-report.md`](./03-error-manage/03-error-code-registry/04-error-code-utilization-report.md) | Error Code Range Utilization Report | 3.1.0 | — |
@@ -1246,7 +1248,7 @@
 | [`31-app/02-workflows/02-template-application-flow.md`](./31-app/02-workflows/02-template-application-flow.md) | Template Application Flow | 1.1.0 | Canonical |
 | [`31-app/02-workflows/03-share-invite-flow.md`](./31-app/02-workflows/03-share-invite-flow.md) | Share Invite Flow | 1.1.0 | Canonical |
 | [`31-app/02-workflows/04-trash-restore-flow.md`](./31-app/02-workflows/04-trash-restore-flow.md) | Trash Restore Flow | 1.1.0 | Canonical |
-| [`31-app/02-workflows/97-acceptance-criteria.md`](./31-app/02-workflows/97-acceptance-criteria.md) | Workflows — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`31-app/02-workflows/97-acceptance-criteria.md`](./31-app/02-workflows/97-acceptance-criteria.md) | Workflows — Acceptance Criteria (dispatch) | 1.0.0 | Dispatch |
 | [`31-app/02-workflows/99-consistency-report.md`](./31-app/02-workflows/99-consistency-report.md) | Consistency Report — 02-workflows | 1.1.0 | — |
 | [`31-app/03-edge-cases/00-overview.md`](./31-app/03-edge-cases/00-overview.md) | Edge Cases | 1.0.0 | — |
 | [`31-app/03-edge-cases/01-edge-cases.md`](./31-app/03-edge-cases/01-edge-cases.md) | Edge Cases | 2.0.0 | Canonical |
@@ -1256,7 +1258,7 @@
 | [`31-app/04-roadmap/01-implementation-phases.md`](./31-app/04-roadmap/01-implementation-phases.md) | Implementation Phases | 1.1.0 | — |
 | [`31-app/04-roadmap/02-resolved-decisions.md`](./31-app/04-roadmap/02-resolved-decisions.md) | Resolved Product Decisions | 1.1.0 | — |
 | [`31-app/04-roadmap/03-implementation-checklist.md`](./31-app/04-roadmap/03-implementation-checklist.md) | Implementation Checklist (per-phase pre-flight) | 1.0.0 | — |
-| [`31-app/04-roadmap/97-acceptance-criteria.md`](./31-app/04-roadmap/97-acceptance-criteria.md) | Roadmap — Acceptance Criteria | 0.1.0 | Scaffold |
+| [`31-app/04-roadmap/97-acceptance-criteria.md`](./31-app/04-roadmap/97-acceptance-criteria.md) | Roadmap — Acceptance Criteria (dispatch) | 1.0.0 | Dispatch |
 | [`31-app/04-roadmap/99-consistency-report.md`](./31-app/04-roadmap/99-consistency-report.md) | Consistency Report — 04-roadmap | 1.0.1 | — |
 | [`31-app/05-conventions/00-overview.md`](./31-app/05-conventions/00-overview.md) | Conventions | 1.0.0 | — |
 | [`31-app/05-conventions/01-axios-version-control.md`](./31-app/05-conventions/01-axios-version-control.md) | Axios Version Control Policy | 1.0.0 | — |
@@ -1438,4 +1440,4 @@
 
 ---
 
-*Auto-generated index — 1268 files across 25 top-level folders.*
+*Auto-generated index — 1270 files across 25 top-level folders.*

@@ -15,13 +15,14 @@
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`02-integration-guide.md`](./02-integration-guide.md) | Error Code Registry - Integration Guide | 225 |
-| 2 | [`03-collision-resolution-summary.md`](./03-collision-resolution-summary.md) | Collision Resolution Summary Report | 82 |
-| 3 | [`04-error-code-utilization-report.md`](./04-error-code-utilization-report.md) | Error Code Range Utilization Report | 68 |
-| 4 | [`05-overlap-validator.md`](./05-overlap-validator.md) | 02 — Error Code Registry Overlap Validator | 206 |
-| 5 | [`07-schemas/`](./07-schemas/00-overview.md) | Schemas | subfolder |
-| 6 | [`08-linter-scripts/`](./08-linter-scripts/00-overview.md) | Linter Scripts | subfolder |
-| 7 | [`09-templates/`](./09-templates/00-overview.md) | Templates | subfolder |
+| 1 | [`01-registry/`](./01-registry/00-overview.md) | Error-Code Registry — Sub-Folder Overview | subfolder |
+| 2 | [`02-integration-guide.md`](./02-integration-guide.md) | Error Code Registry - Integration Guide | 225 |
+| 3 | [`03-collision-resolution-summary.md`](./03-collision-resolution-summary.md) | Collision Resolution Summary Report | 82 |
+| 4 | [`04-error-code-utilization-report.md`](./04-error-code-utilization-report.md) | Error Code Range Utilization Report | 68 |
+| 5 | [`05-overlap-validator.md`](./05-overlap-validator.md) | 02 — Error Code Registry Overlap Validator | 206 |
+| 6 | [`07-schemas/`](./07-schemas/00-overview.md) | Schemas | subfolder |
+| 7 | [`08-linter-scripts/`](./08-linter-scripts/00-overview.md) | Linter Scripts | subfolder |
+| 8 | [`09-templates/`](./09-templates/00-overview.md) | Templates | subfolder |
 
 <!-- AUTO-TOC:END -->
 
