@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-26  
-**Total Files:** 1299  
+**Total Files:** 1300  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -32,7 +32,7 @@
 - [15-wp-plugin-how-to](#15-wp-plugin-how-to) — 216 file(s)
 - [16-generic-cli](#16-generic-cli) — 43 file(s)
 - [17-generic-update](#17-generic-update) — 11 file(s)
-- [18-spec-issues](#18-spec-issues) — 12 file(s)
+- [18-spec-issues](#18-spec-issues) — 13 file(s)
 - [31-app](#31-app) — 69 file(s)
 - [32-ui-design](#32-ui-design) — 120 file(s)
 - [33-feedback-report](#33-feedback-report) — 3 file(s)
@@ -1218,6 +1218,7 @@
 | [`18-spec-issues/08-audit-06-sse-transport-contract.md`](./18-spec-issues/08-audit-06-sse-transport-contract.md) | AUDIT-06 — SSE Transport Contract Gaps | 1.0.0 | — |
 | [`18-spec-issues/09-app-folder-re-audit-2026-04-26.md`](./18-spec-issues/09-app-folder-re-audit-2026-04-26.md) | App Folder Re-Audit — 2026-04-26 (post-fix) | 1.0.0 | — |
 | [`18-spec-issues/10-content-audit-endpoints-and-db-diagram.md`](./18-spec-issues/10-content-audit-endpoints-and-db-diagram.md) | Content Audit — `06-endpoints/` + `07-db-diagram/` (2026-04-26) | 1.0.0 | — |
+| [`18-spec-issues/11-content-audit-at-app-coverage.md`](./18-spec-issues/11-content-audit-at-app-coverage.md) | Content Audit — `AT-APP-NN` Coverage Completeness (2026-04-26) | 1.0.0 | — |
 | [`18-spec-issues/97-acceptance-criteria.md`](./18-spec-issues/97-acceptance-criteria.md) | Spec Issues — Acceptance Criteria | 1.2.0 | Dispatch |
 | [`18-spec-issues/99-consistency-report.md`](./18-spec-issues/99-consistency-report.md) | Consistency Report — Spec Issues | 1.0.0 | — |
 
@@ -1278,7 +1279,7 @@
 | [`31-app/06-endpoints/11-trash-view.md`](./31-app/06-endpoints/11-trash-view.md) | Endpoints — 11 Trash View | 1.0.0 | — |
 | [`31-app/06-endpoints/12-multi-select.md`](./31-app/06-endpoints/12-multi-select.md) | Endpoints — 12 Multi-Select (Bulk Operations) | 1.0.0 | — |
 | [`31-app/06-endpoints/13-templates.md`](./31-app/06-endpoints/13-templates.md) | Endpoints — 13 Templates | 1.0.0 | — |
-| [`31-app/06-endpoints/14-concurrency-and-sync.md`](./31-app/06-endpoints/14-concurrency-and-sync.md) | Endpoints — 14 Concurrency & Sync (Realtime Transport) | 1.1.0 | — |
+| [`31-app/06-endpoints/14-concurrency-and-sync.md`](./31-app/06-endpoints/14-concurrency-and-sync.md) | Endpoints — 14 Concurrency & Sync (Realtime Transport) | 1.2.0 | — |
 | [`31-app/06-endpoints/15-roles-and-permissions.md`](./31-app/06-endpoints/15-roles-and-permissions.md) | Endpoints — 15 Roles & Permissions | 1.0.0 | — |
 | [`31-app/06-endpoints/97-acceptance-criteria.md`](./31-app/06-endpoints/97-acceptance-criteria.md) | Endpoints — Acceptance Criteria | 1.0.0 | — |
 | [`31-app/06-endpoints/99-consistency-report.md`](./31-app/06-endpoints/99-consistency-report.md) | Consistency Report — 06-endpoints | 1.0.0 | — |
@@ -1292,7 +1293,7 @@
 | [`31-app/07-db-diagram/07-migrations.md`](./31-app/07-db-diagram/07-migrations.md) | 07 — Migrations Roadmap | 1.0.0 | — |
 | [`31-app/07-db-diagram/97-acceptance-criteria.md`](./31-app/07-db-diagram/97-acceptance-criteria.md) | Db Diagram — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`31-app/07-db-diagram/99-consistency-report.md`](./31-app/07-db-diagram/99-consistency-report.md) | Consistency Report — 07-db-diagram | 1.0.0 | — |
-| [`31-app/97-acceptance-criteria.md`](./31-app/97-acceptance-criteria.md) | App — Acceptance Criteria | 2.4.0 | — |
+| [`31-app/97-acceptance-criteria.md`](./31-app/97-acceptance-criteria.md) | App — Acceptance Criteria | 2.5.0 | — |
 | [`31-app/99-consistency-report.md`](./31-app/99-consistency-report.md) | Consistency Report — App | 1.3.0 | — |
 
 ## 32-ui-design
@@ -1469,4 +1470,4 @@
 
 ---
 
-*Auto-generated index — 1299 files across 25 top-level folders.*
+*Auto-generated index — 1300 files across 25 top-level folders.*
