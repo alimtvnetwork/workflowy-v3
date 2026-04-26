@@ -1,6 +1,6 @@
 # Active Plans
 
-> **Updated:** 2026-04-26 (UTC+8) · **Status:** APP-FIX-01, 07, 06, 02 **DONE**. Tracker widened, Casing-Layers + Enum Sources + Storage callouts added across 16 file edits. Round-3: AUDIT-01/05/02 closed. 3 AUDIT blockers remain (03, 04, 06) + AUDIT-02a + 10 APP-FIX phases. Next per user order: APP-FIX-03.
+> **Updated:** 2026-04-26 (UTC+8) · **Status:** APP-FIX-01, 07, 06, 02, 03 **DONE**. Realtime Transport callout added to 6 feature files (06/07/08/09/11/12). Round-3: AUDIT-01/05/02 closed. 3 AUDIT blockers remain (03, 04, 06) + AUDIT-02a + 9 APP-FIX phases. Next per user order: APP-FIX-04.
 
 ---
 
