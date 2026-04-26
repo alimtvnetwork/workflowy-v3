@@ -1,6 +1,6 @@
 # Audit-Log Policy (SSOT)
 
-> **Version:** 1.2.0
+> **Version:** 1.2.1
 > **Updated:** 2026-04-26 — v1.2.0 backfill of 52 actions emitted by sibling SSOTs A-40..A-44 (role-escalation, session/token, MFA, export, backup/DR). Prior: v1.0.0 initial 22 actions.
 > **Scope:** Defines what the WordPress-plugin backend MUST persist as security/compliance audit records, how long, with what integrity guarantees, and who may query. Distinct from `spec/34-activity-feed/` (user-visible undo log) and from `Logger::*` (operational logs).
 
@@ -346,3 +346,4 @@ See `spec/31-app/05-conventions/97-acceptance-criteria.md` §AUDIT for `AT-AUDIT
 |---|---|---|
 | 1.0.0 | 2026-04-26 | Initial SSOT — taxonomy of 22 audit actions across 7 categories, 365/90-day retention floors, SHA-256 + rotating-salt PII scrubbing, hash-chain integrity, three-endpoint query API, gate G-23. |
 | 1.2.0 | 2026-04-26 | Backfill of **52 new actions** emitted by sibling SSOTs A-40..A-44: 10 role-escalation, 9 session/token, 11 MFA, 10 export, 12 backup/DR. Total taxonomy now **74 actions** across 7 categories. Documented `DOT.UPPER_CASE` shorthand vs canonical `dot.lower.case` wire format with `Audit::action()` normalizer. Deprecated `data.export.requested` / `data.export.delivered` with one-year overlap to 2027-04-26. |
+| 1.2.1 | 2026-04-26 | Cross-reference audit patch: registered 4 missed actions referenced by sibling SSOTs — `system.audit.chain.rewind` (A-44), `auth.password.change` / `admin.user.disable` / `admin.workspace.delete` (A-41). Added explicit shorthand→canonical normalization rules table covering `EXPORT.*` → `data.export.*` ambiguity and the special-case `EXPORT.SCRAPING_SUSPECTED` → `policy.export.*`. Total taxonomy now **78 actions**. |
