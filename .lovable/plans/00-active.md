@@ -1,6 +1,6 @@
 # Active Plans
 
-> **Updated:** 2026-04-26 (UTC+8) · **Status:** APP-FIX-01, 07, 06, 02, 03, 04, 05 **DONE** + Round-3 AUDIT-04 CLOSED. Settings Keys (Seedable Config) tables added to 4 feature files (03/10/11/13). Round-3 blockers remaining: AUDIT-03, AUDIT-06. Plus AUDIT-02a + 7 APP-FIX phases. Next per user order: APP-FIX-09.
+> **Updated:** 2026-04-26 (UTC+8) · **Status:** APP-FIX-01, 07, 06, 02, 03, 04, 05, 09 **DONE** + Round-3 AUDIT-04 CLOSED. §14.4 `Mirrors.BrokenAt` LWW rule added to concurrency spec v1.3.0. Round-3 blockers remaining: AUDIT-03, AUDIT-06. Plus AUDIT-02a + 6 APP-FIX phases. Next per user order: APP-FIX-10.
 
 ---
 
