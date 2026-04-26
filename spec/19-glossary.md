@@ -67,10 +67,14 @@ This file is the canonical reference for terminology. When a term is used in any
 |------|-----------|
 | **Root DB** | Shared SQLite database storing cross-site data (sites, agents, snapshots index). |
 | **Per-site DB** | Per-WordPress-site SQLite database storing site-scoped data (transactions, plugin state). |
-| **`TableType` enum** | Go/PHP enum whose values exactly match PascalCase SQLite table names. |
+| **`TableType` enum** | PHP enum whose values exactly match PascalCase SQLite table names (e.g., `Items`, `Mirrors`, `Comments`). |
 | **`LogColumnType` enum** | Type-safe column-name accessor for logging tables. |
 | **V13 Migration** | Schema migration that renamed all snake_case tables/columns to PascalCase. See `02-coding-guidelines/01-cross-language/01-issues-and-fixes-log/02-database-casing.md`. |
-| **micro-ORM** | Minimal Go ORM in `internal/store/microorm`. Provides `Insert`, `Update`, `Upsert`, `Select` with PascalCase struct-tag binding. |
+| **PHP micro-ORM** | Minimal PHP query helper in the WP-plugin runtime. Provides `Insert`, `Update`, `Upsert`, `Select` with PascalCase column binding. |
+
+> **Normative DB-casing rule (SSOT — resolves AUDIT-02):**
+> All SQLite table names, column names, and JSON keys representing rows are **PascalCase** (e.g., `Items.ItemType`, `Items.ParentId`, `Items.CompletedAt`, `Items.SortOrder`, `Items.DueDate`).
+> Any spec file showing snake_case identifiers (`items.item_type`, `items.parent_id`, `completed_at`, `sort_order`, `due_date`, `user_id`, `plugin_slug`, `item_tags`, `source_id`, etc.) is **stale** and tracked under **AUDIT-02a — Downstream column-name rename** in `spec/18-spec-issues/`. PascalCase wins on every conflict.
 
 ---
 
