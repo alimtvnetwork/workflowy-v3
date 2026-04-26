@@ -1,0 +1,230 @@
+# Endpoints — Master Index
+
+> **Version:** 1.0.0
+> **Updated:** 2026-04-26 (UTC+8)
+> **Status:** ✅ SSOT — every REST endpoint exposed by the WorkFlowy WP plugin
+> **Parent:** [`../00-overview.md`](../00-overview.md)
+
+---
+
+## Keywords
+
+`app` · `endpoints` · `rest` · `api` · `wp-plugin` · `routes`
+
+---
+
+## Scoring
+
+| Criterion | Status |
+|-----------|--------|
+| `00-overview.md` present | ✅ |
+| AI Confidence assigned | High |
+| Ambiguity assigned | Low |
+| Keywords present | ✅ |
+| Scoring table present | ✅ |
+
+---
+
+## 🎯 Mission
+
+This folder is the **single source of truth** for **every REST endpoint** the WorkFlowy WordPress plugin exposes to the React frontend.
+
+- **Behavior** of each feature lives in [`../01-features/`](../01-features/00-overview.md).
+- **Wire contract** (URL, method, request, response, errors) lives **here**.
+- The two folders mirror each other 1:1: file `01-features/07-board-view.md` ↔ `06-endpoints/07-board-view.md`.
+
+If a feature has no server interaction (purely client-side), its endpoint file states `No server endpoints — client-only feature.` and lists why.
+
+---
+
+## 🔒 Load-Bearing Rules (must not be violated)
+
+| # | Rule | Source |
+|---|------|--------|
+| E1 | All routes are mounted under `/wp-json/workflowy/v1/`. The plugin namespace is `workflowy/v1`. | `mem://constraints/backend-runtime-deferred` |
+| E2 | Every response uses the **Universal Envelope** (`Status`, `Attributes`, `Results`, optional `Navigation`/`Errors`/`MethodsStack`) with **PascalCase** keys. | [`../../04-database-conventions/06-rest-api-format/`](../../04-database-conventions/06-rest-api-format/00-overview.md) |
+| E3 | URL **path segments** are **kebab-case lowercase** (e.g. `/items/{id}/move`). JSON **body keys** are **PascalCase**. | [`../../04-database-conventions/06-rest-api-format/05-paths-and-references.md`](../../04-database-conventions/06-rest-api-format/05-paths-and-references.md) |
+| E4 | Every route is registered through `EndpointType` enum + `route()` helper — never a hardcoded string. | [`../../02-coding-guidelines/04-php/01-enums/12-endpoint-type.md`](../../02-coding-guidelines/04-php/01-enums/12-endpoint-type.md) |
+| E5 | Every authenticated route MUST call `Auth::hasRole($userId, $role)` server-side. Client-trusted role checks are forbidden. | [`../01-features/15-roles-and-permissions.md`](../01-features/15-roles-and-permissions.md) |
+| E6 | Realtime is delivered via **SSE** on a dedicated long-lived endpoint with a **5 s polling fallback**. WebSockets are forbidden. | [`../01-features/14-concurrency-and-sync.md`](../01-features/14-concurrency-and-sync.md) §14.5 |
+| E7 | Frontend MUST resolve route URLs via `endpoints.json` (generated from `EndpointType`), never hardcode `/wp-json/...` strings in TS/JSX. | [`../../15-wp-plugin-how-to/97-acceptance-criteria.md`](../../15-wp-plugin-how-to/97-acceptance-criteria.md) AT-WPROOT-07 |
+
+Violating any load-bearing rule is a **rejected implementation**.
+
+---
+
+## 📜 Endpoint Catalogue (all features at a glance)
+
+> **Notation:** `M` = method, `Path` is the segment after `/wp-json/workflowy/v1/`. `Auth` column shows the minimum role required (`-` = public, `user` = authenticated, `editor` = workspace editor, `owner` = workspace owner, `admin` = system admin).
+
+### 01 — Information Model & Items (CRUD on the unified `Item` node)
+
+| # | M | Path | Auth | Purpose | Spec |
+|---|---|------|------|---------|------|
+| 1.1 | GET | `items?ParentId={id}&Limit=250` | user | List children of a node (paginated, max 250) | [`./01-information-model.md`](./01-information-model.md) |
+| 1.2 | GET | `items/{id}` | user | Fetch a single item with its metadata | [`./01-information-model.md`](./01-information-model.md) |
+| 1.3 | POST | `items` | user | Create a new item under a parent | [`./01-information-model.md`](./01-information-model.md) |
+| 1.4 | PUT | `items/{id}` | user | Update content / itemType / metadata | [`./01-information-model.md`](./01-information-model.md) |
+| 1.5 | POST | `items/{id}/move` | user | Reparent + reorder via fractional index | [`./01-information-model.md`](./01-information-model.md) |
+| 1.6 | DELETE | `items/{id}` | user | Soft-delete (moves to Trash, 30 d retention) | [`./11-trash-view.md`](./11-trash-view.md) |
+| 1.7 | GET | `items/root` | user | Fetch the user's undeletable root item | [`./01-information-model.md`](./01-information-model.md) |
+
+### 02 — Personas (workspace membership lookups)
+
+| # | M | Path | Auth | Purpose | Spec |
+|---|---|------|------|---------|------|
+| 2.1 | GET | `me` | user | Current user profile + persona derivation | [`./02-personas.md`](./02-personas.md) |
+
+### 03–05 — Layout, Page, Interactions
+
+| # | M | Path | Auth | Purpose | Spec |
+|---|---|------|------|---------|------|
+| — | — | — | — | **No server endpoints** — pure UI/UX layers, see feature files. | [`./03-layout-structure.md`](./03-layout-structure.md), [`./04-page-content-area.md`](./04-page-content-area.md), [`./05-interactions.md`](./05-interactions.md) |
+
+### 06 — Item Context Menu
+
+| # | M | Path | Auth | Purpose | Spec |
+|---|---|------|------|---------|------|
+| 6.1 | POST | `items/{id}/duplicate` | user | Deep-copy a subtree | [`./06-item-context-menu.md`](./06-item-context-menu.md) |
+| 6.2 | POST | `items/{id}/complete` | user | Toggle completion state | [`./06-item-context-menu.md`](./06-item-context-menu.md) |
+| 6.3 | POST | `items/{id}/turn-into` | user | Change `itemType` (with allowed-transition guard) | [`./06-item-context-menu.md`](./06-item-context-menu.md) |
+| 6.4 | POST | `items/{id}/tags` | user | Add/remove tags | [`./06-item-context-menu.md`](./06-item-context-menu.md) |
+
+### 07 — Board View (Kanban projection)
+
+| # | M | Path | Auth | Purpose | Spec |
+|---|---|------|------|---------|------|
+| 7.1 | GET | `items/{id}/board` | user | Fetch board projection (columns + cards) | [`./07-board-view.md`](./07-board-view.md) |
+| 7.2 | POST | `items/{id}/board/move` | user | Move card across columns (updates `itemType` + index) | [`./07-board-view.md`](./07-board-view.md) |
+
+### 08 — Share Dialog
+
+| # | M | Path | Auth | Purpose | Spec |
+|---|---|------|------|---------|------|
+| 8.1 | GET | `items/{id}/shares` | user | List share grants on an item | [`./08-share-dialog.md`](./08-share-dialog.md) |
+| 8.2 | POST | `items/{id}/shares` | owner | Invite user(s) by email at a given role | [`./08-share-dialog.md`](./08-share-dialog.md) |
+| 8.3 | PUT | `items/{id}/shares/{shareId}` | owner | Change role on an existing grant | [`./08-share-dialog.md`](./08-share-dialog.md) |
+| 8.4 | DELETE | `items/{id}/shares/{shareId}` | owner | Revoke a grant | [`./08-share-dialog.md`](./08-share-dialog.md) |
+| 8.5 | POST | `items/{id}/shares/public` | owner | Toggle public link, returns slug | [`./08-share-dialog.md`](./08-share-dialog.md) |
+
+### 09 — Mirrors
+
+| # | M | Path | Auth | Purpose | Spec |
+|---|---|------|------|---------|------|
+| 9.1 | POST | `items/{id}/mirror` | user | Create a mirror that points at canonical source | [`./09-mirrors.md`](./09-mirrors.md) |
+| 9.2 | GET | `items/{id}/mirrors` | user | List all mirrors of a canonical item | [`./09-mirrors.md`](./09-mirrors.md) |
+| 9.3 | DELETE | `mirrors/{mirrorId}` | user | Detach a single mirror (canonical is untouched) | [`./09-mirrors.md`](./09-mirrors.md) |
+
+### 10 — Today View
+
+| # | M | Path | Auth | Purpose | Spec |
+|---|---|------|------|---------|------|
+| 10.1 | GET | `views/today` | user | Items whose `DueDate` is today, in user's TZ | [`./10-today-view.md`](./10-today-view.md) |
+
+### 11 — Trash View
+
+| # | M | Path | Auth | Purpose | Spec |
+|---|---|------|------|---------|------|
+| 11.1 | GET | `trash` | user | List soft-deleted items (≤ 30 d) | [`./11-trash-view.md`](./11-trash-view.md) |
+| 11.2 | POST | `trash/{id}/restore` | user | Restore one item back to its prior parent | [`./11-trash-view.md`](./11-trash-view.md) |
+| 11.3 | DELETE | `trash/{id}` | user | Hard-delete one item immediately | [`./11-trash-view.md`](./11-trash-view.md) |
+| 11.4 | DELETE | `trash` | user | Empty trash (purge all soft-deleted items) | [`./11-trash-view.md`](./11-trash-view.md) |
+
+### 12 — Multi-Select (bulk operations)
+
+| # | M | Path | Auth | Purpose | Spec |
+|---|---|------|------|---------|------|
+| 12.1 | POST | `items/bulk/move` | user | Move N items to a new parent | [`./12-multi-select.md`](./12-multi-select.md) |
+| 12.2 | POST | `items/bulk/delete` | user | Soft-delete N items in one call | [`./12-multi-select.md`](./12-multi-select.md) |
+| 12.3 | POST | `items/bulk/complete` | user | Toggle completion on N items | [`./12-multi-select.md`](./12-multi-select.md) |
+| 12.4 | POST | `items/bulk/tags` | user | Add/remove tags on N items | [`./12-multi-select.md`](./12-multi-select.md) |
+
+### 13 — Templates
+
+| # | M | Path | Auth | Purpose | Spec |
+|---|---|------|------|---------|------|
+| 13.1 | GET | `templates` | user | List user-visible templates | [`./13-templates.md`](./13-templates.md) |
+| 13.2 | POST | `templates` | user | Save a subtree as a template | [`./13-templates.md`](./13-templates.md) |
+| 13.3 | GET | `templates/{id}` | user | Fetch a template payload | [`./13-templates.md`](./13-templates.md) |
+| 13.4 | POST | `templates/{id}/apply` | user | Instantiate a template under a parent | [`./13-templates.md`](./13-templates.md) |
+| 13.5 | DELETE | `templates/{id}` | owner | Delete a template | [`./13-templates.md`](./13-templates.md) |
+
+### 14 — Concurrency & Sync (realtime transport)
+
+| # | M | Path | Auth | Purpose | Spec |
+|---|---|------|------|---------|------|
+| 14.1 | GET (SSE) | `sync/stream?Topics=item:{id},item:{id2}` | user | Long-lived `text/event-stream` channel | [`./14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) §14.5 |
+| 14.2 | GET | `sync/poll?Since={cursor}&Topics=...` | user | 5 s fallback polling endpoint | [`./14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) §14.5.4 |
+| 14.3 | POST | `sync/ack` | user | Acknowledge processed events (LWW cursor advance) | [`./14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) |
+
+### 15 — Roles & Permissions
+
+| # | M | Path | Auth | Purpose | Spec |
+|---|---|------|------|---------|------|
+| 15.1 | GET | `roles?WorkspaceId={id}` | user | List role assignments for a workspace | [`./15-roles-and-permissions.md`](./15-roles-and-permissions.md) |
+| 15.2 | POST | `roles` | owner | Assign a role to a user in a workspace | [`./15-roles-and-permissions.md`](./15-roles-and-permissions.md) |
+| 15.3 | DELETE | `roles/{assignmentId}` | owner | Revoke a role assignment | [`./15-roles-and-permissions.md`](./15-roles-and-permissions.md) |
+
+---
+
+## 📁 Files in This Folder
+
+| # | File | Mirrors Feature | Endpoints |
+|---|------|-----------------|-----------|
+| 00 | [`00-overview.md`](./00-overview.md) | (this index) | 35 total |
+| 01 | [`01-information-model.md`](./01-information-model.md) | `01-features/01-information-model.md` | 7 |
+| 02 | [`02-personas.md`](./02-personas.md) | `01-features/02-personas.md` | 1 |
+| 03 | [`03-layout-structure.md`](./03-layout-structure.md) | `01-features/03-layout-structure.md` | 0 (UI-only) |
+| 04 | [`04-page-content-area.md`](./04-page-content-area.md) | `01-features/04-page-content-area.md` | 0 (UI-only) |
+| 05 | [`05-interactions.md`](./05-interactions.md) | `01-features/05-interactions.md` | 0 (UI-only) |
+| 06 | [`06-item-context-menu.md`](./06-item-context-menu.md) | `01-features/06-item-context-menu.md` | 4 |
+| 07 | [`07-board-view.md`](./07-board-view.md) | `01-features/07-board-view.md` | 2 |
+| 08 | [`08-share-dialog.md`](./08-share-dialog.md) | `01-features/08-share-dialog.md` | 5 |
+| 09 | [`09-mirrors.md`](./09-mirrors.md) | `01-features/09-mirrors.md` | 3 |
+| 10 | [`10-today-view.md`](./10-today-view.md) | `01-features/10-today-view.md` | 1 |
+| 11 | [`11-trash-view.md`](./11-trash-view.md) | `01-features/11-trash-view.md` | 4 |
+| 12 | [`12-multi-select.md`](./12-multi-select.md) | `01-features/12-multi-select.md` | 4 |
+| 13 | [`13-templates.md`](./13-templates.md) | `01-features/13-templates.md` | 5 |
+| 14 | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | `01-features/14-concurrency-and-sync.md` | 3 |
+| 15 | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | `01-features/15-roles-and-permissions.md` | 3 |
+
+---
+
+## 🧱 Per-File Template (every endpoint file follows this)
+
+Each endpoint file uses the same fixed structure so any AI can parse it:
+
+1. **Header** — version, parent, mirrored feature link.
+2. **Summary table** — every endpoint in the file (M / Path / Auth / Purpose).
+3. **Per-endpoint sections**, each containing:
+   - **ID** — stable identifier (e.g. `EP-ITEMS-CREATE`).
+   - **Method + Path** — including path/query parameters with types.
+   - **Auth** — minimum role + which `Auth::hasRole` check is invoked.
+   - **Request body** — PascalCase JSON shape (or `—` for GET/DELETE).
+   - **Success response** — Status code + `Results` shape.
+   - **Error responses** — explicit error codes from `19-glossary.md` / error registry.
+   - **Side effects** — DB rows touched, SSE events emitted, files written.
+   - **Acceptance criteria refs** — `AT-APP-NN` IDs from `97-acceptance-criteria.md`.
+
+If any of these sections is absent in a file, the file is **non-compliant** and must be fixed.
+
+---
+
+## 🔗 Cross-References
+
+| Reference | Location |
+|-----------|----------|
+| Universal envelope | [`../../04-database-conventions/06-rest-api-format/`](../../04-database-conventions/06-rest-api-format/00-overview.md) |
+| `EndpointType` enum (PHP SSOT) | [`../../02-coding-guidelines/04-php/01-enums/12-endpoint-type.md`](../../02-coding-guidelines/04-php/01-enums/12-endpoint-type.md) |
+| Route registry (WP plugin how-to) | [`../../15-wp-plugin-how-to/14-rest-api-conventions/04-endpoint-type-enum.md`](../../15-wp-plugin-how-to/14-rest-api-conventions/04-endpoint-type-enum.md) |
+| URL path casing rules | [`../../04-database-conventions/06-rest-api-format/05-paths-and-references.md`](../../04-database-conventions/06-rest-api-format/05-paths-and-references.md) |
+| Acceptance criteria | [`../97-acceptance-criteria.md`](../97-acceptance-criteria.md) |
+| Backend runtime constraint | `mem://constraints/backend-runtime-deferred` |
+
+---
+
+## Related
+
+- [`../00-overview.md`](../00-overview.md) — App spec root
+- [`../01-features/00-overview.md`](../01-features/00-overview.md) — Feature behavior contracts
+- [`../97-acceptance-criteria.md`](../97-acceptance-criteria.md) — `AT-APP-*` testable criteria
