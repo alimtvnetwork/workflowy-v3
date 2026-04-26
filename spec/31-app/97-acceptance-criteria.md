@@ -1,7 +1,7 @@
 # App — Acceptance Criteria
 
-> **Version:** 2.3.0
-> **Updated:** 2026-04-26 (UTC+8) — v2.3.0 backfilled `AT-WF-*` workflows into canonical (`AT-APP-43..57`: Templates flow, Share-invite flow, Trash-restore flow). v2.2.0 added Today/Templates/Concurrency/SSE (`AT-APP-26..42`). v2.1.0 declared canonical over `AT-APPF-NN`. v2.0.0 closed F-01.
+> **Version:** 2.4.0
+> **Updated:** 2026-04-26 (UTC+8) — v2.4.0 added cross-references to `06-endpoints/` and `07-db-diagram/`. v2.3.0 backfilled `AT-WF-*` workflows into canonical (`AT-APP-43..57`). v2.2.0 added Today/Templates/Concurrency/SSE (`AT-APP-26..42`). v2.1.0 declared canonical over `AT-APPF-NN`. v2.0.0 closed F-01.
 > **Status:** ✅ Canonical AT index for the App domain
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
@@ -173,5 +173,8 @@ Each AT is "done" when (a) it has a stable ID, (b) its source file exists and co
 - [`00-overview.md`](./00-overview.md) — Mission, Load-Bearing Rules, MVP scope
 - [`spec/19-glossary.md`](../19-glossary.md) — Terminology SSOT
 - [`spec/20-enums-index.md`](../20-enums-index.md) — Enum registry
+- [`06-endpoints/00-overview.md`](./06-endpoints/00-overview.md) — REST endpoint wire contracts (mirrors every feature)
+- [`07-db-diagram/00-overview.md`](./07-db-diagram/00-overview.md) — Visual database design (ERDs, lifecycles, indexes)
 
-*Populated 2026-04-25 to close audit finding F-01. Extended v2.2.0 with Today / Templates / Concurrency / SSE coverage (`AT-APP-26..42`); v2.3.0 backfilled workflow flows (`AT-APP-43..57`).*
+*Populated 2026-04-25 to close audit finding F-01. Extended v2.2.0 with Today / Templates / Concurrency / SSE coverage (`AT-APP-26..42`); v2.3.0 backfilled workflow flows (`AT-APP-43..57`). v2.4.0 added cross-references to `06-endpoints/` and `07-db-diagram/` (2026-04-26).*
+
