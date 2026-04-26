@@ -143,4 +143,4 @@ Each AT is "done" when (a) it has a stable ID, (b) its source file exists and co
 - [`spec/19-glossary.md`](../19-glossary.md) — Terminology SSOT
 - [`spec/20-enums-index.md`](../20-enums-index.md) — Enum registry
 
-*Populated 2026-04-25 to close audit finding F-01.*
+*Populated 2026-04-25 to close audit finding F-01. Extended 2026-04-26 (v2.2.0) with Today / Templates / Concurrency / SSE coverage (`AT-APP-26..42`).*
