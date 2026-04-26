@@ -155,7 +155,7 @@ sequenceDiagram
     TabB->>API: PUT /items/{id} {Content: "Hello B", ClientTs: 12}
     API->>DB: SELECT UpdatedAt FROM Item WHERE ItemId=id
     DB-->>API: UpdatedAt = (TabA's commit time)
-    Note right of API: TabB.ClientTs (12) &gt; current UpdatedAt → wins by LWW
+    Note right of API: TabB.ClientTs 12 is newer than current UpdatedAt — wins by LWW
     API->>DB: UPDATE Item SET Content="Hello B", UpdatedAt=now WHERE ItemId=id
     API->>SSE: emit item.updated
     SSE-->>TabA: SSE event item.updated → re-render with "Hello B"
