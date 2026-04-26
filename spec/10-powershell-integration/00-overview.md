@@ -45,7 +45,8 @@
 | 6 | [`06-php-known-issues.md`](./06-php-known-issues.md) | PHP Error Management — Known Issues & Cases | 85 |
 | 7 | [`07-template-vs-project-differences.md`](./07-template-vs-project-differences.md) | Template vs Project-Specific Differences | 102 |
 | 8 | [`08-wp-plugin-boundary.md`](./08-wp-plugin-boundary.md) | PowerShell ↔ WP-Plugin Boundary | 109 |
-| 9 | [`25-multi-site-deployment.md`](./25-multi-site-deployment.md) | Multi-Site Deployment | 94 |
+| 9 | [`09-runner-features.md`](./09-runner-features.md) | PowerShell Runner — Features & Configuration Examples | 207 |
+| 10 | [`25-multi-site-deployment.md`](./25-multi-site-deployment.md) | Multi-Site Deployment | 94 |
 
 <!-- AUTO-TOC:END -->
 
