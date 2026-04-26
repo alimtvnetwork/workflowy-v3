@@ -1,7 +1,7 @@
 # Spec Issues — Acceptance Criteria
 
-> **Version:** 1.2.0
-> **Created:** 2026-04-23 (UTC+8) · **Updated:** 2026-04-26 (UTC+8) — v1.2.0 added row #9 for content-audit on `06-endpoints/` + `07-db-diagram/`. v1.1.0 promoted from scaffold to dispatch index.
+> **Version:** 1.3.0
+> **Created:** 2026-04-23 (UTC+8) · **Updated:** 2026-04-26 (UTC+8) — v1.3.0 added row #10 for AT-APP coverage audit (closed F-AUD30-07 event-vocabulary drift). v1.2.0 added row #9 for content-audit on `06-endpoints/` + `07-db-diagram/`. v1.1.0 promoted from scaffold to dispatch index.
 > **Status:** Dispatch index — meta/tracking folder; per-audit ACs live inline in each numbered file
 > **Type:** Dispatch Index — **no `AT-SPECISSUES-NN` IDs by design.** A mediocre AI scanning for atomic IDs MUST treat this folder as a meta-tracker; the per-audit `01-…`, `06-…`, `09-…`, `10-…` files own their own inline acceptance criteria.
 > **Parent:** [`00-overview.md`](./00-overview.md)
