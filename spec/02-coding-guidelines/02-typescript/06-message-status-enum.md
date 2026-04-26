@@ -1,7 +1,7 @@
 # TypeScript MessageStatus Enum — `src/lib/enums/message-status.ts`
 
-> **Version**: 1.0.0  
-> **Last updated**: 2026-02-27  
+> **Version**: 2.0.0
+> **Last updated**: 2026-04-25
 > **Tracks**: Issue #10 (`spec/23-how-app-issues-track/10-domain-status-magic-strings.md`)
 
 ---
@@ -15,15 +15,19 @@ Typed enum for AI chat message lifecycle states — pending send, actively strea
 ## Reference Implementation
 
 ```typescript
-// src/lib/enums/message-status.ts
+// src/lib/enums/message-status-type.ts
 
-export enum MessageStatus {
-  Pending = "PENDING",
-  Streaming = "STREAMING",
-  Completed = "COMPLETED",
-  Error = "ERROR",
-}
+export const MessageStatus = {
+  Pending: "PENDING",
+  Streaming: "STREAMING",
+  Completed: "COMPLETED",
+  Error: "ERROR",
+} as const;
+
+export type MessageStatus = (typeof MessageStatus)[keyof typeof MessageStatus];
 ```
+
+> **Convention** (per [`20-enums-index.md`](../../20-enums-index.md) §1 rule 9): canonical TS enum shape is `as const` object + derived union (Strategy B). The `enum` keyword and bare literal unions are forbidden. See [TS Overview](./00-overview.md#canonical-enum-shape-strategy-b--as-const--derived-union).
 
 ---
 
