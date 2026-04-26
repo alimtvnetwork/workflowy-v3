@@ -108,6 +108,16 @@ Defines the **runtime-agnostic** roles, permission grants, and authorization che
 
 ---
 
+## Storage
+
+| Layer | Tables | Notes |
+|-------|--------|-------|
+| **Root DB** | `User`, `Workspace`, `WorkspaceMember` (`UserId`, `WorkspaceId`, `WorkspaceRole`) | All workspace-level role assignments live here. `Auth::hasRole()` reads from Root DB. |
+| **App DB** (per workspace) | `ItemShare` (`ItemId`, `GranteeUserId`, `ItemRole`, `GrantedAt`), `PublicShareLink` | Item-level grants and the public-link toggle. `resolveEffectiveRole()` walks ancestors here, then falls back to Root-DB workspace role. |
+| **Cross-DB joins** | **Forbidden.** | Authorization flow: Root DB → workspace role; if denied, open App DB → ancestor walk on `ItemShare`. Two queries, never joined. |
+
+---
+
 ## Inputs
 
 | Field | Type | Source | Required | Notes |
