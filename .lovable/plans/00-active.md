@@ -1,6 +1,6 @@
 # Active Plans
 
-> **Updated:** 2026-04-26 (UTC+8) · **Status:** 🎉🎉🎉 **RE-AUDIT PASS: 96/100** (baseline 63 → +33). All 13 APP-FIX phases + all 6 Round-3 audits closed; 2 residuals (R-1 pseudocode casing, R-2 enum-source link) fixed in re-audit pass. Spec is **AI-handoff-ready**. Suggested next: 4 polish items (AT-APP backfill for Today/Templates/Concurrency + AT-WF→AT-APP folding + §14.5 SSE AT rows) → 100/100, OR `exit spec-only` → P1.1 Bootstrap immediately.
+> **Updated:** 2026-04-26 (UTC+8) · **Status:** 🎉🎉🎉 **SPEC 100% COMPLETE.** A-26 polish #3 closed all remaining `97-acceptance-criteria.md` scaffolds (stub count 11 → 1; the lone remaining `18-spec-issues/` is meta-by-design with inline ATs). Polish queue empty. Pending issues: 0. Open suggestions: 0. **The only remaining gate is `mem://constraints/spec-only-mode`** — implementation cannot begin until the user explicitly says `exit spec-only`. Once lifted: start **P1.1 Bootstrap** (Vite + React + TS scaffold).
 
 ---
 
@@ -21,12 +21,12 @@
 
 ## What's still live
 
-- `mem://constraints/spec-only-mode` — implementation gated until user explicitly authorizes exit
+- `mem://constraints/spec-only-mode` — implementation gated until user explicitly authorizes exit ⛔ **only remaining blocker**
 - ~~**S003** backend runtime~~ → ✅ **RESOLVED 2026-04-25**: WordPress plugin (PHP + SQLite)
 - ~~**F-01** rollup gap~~ → ✅ **RESOLVED 2026-04-25** (Plan 04)
 - ~~**F-02** CI/CD packaging~~ → ✅ **RESOLVED 2026-04-25** (Plan 05)
 - ~~**F-03** PowerShell/CLI boundary~~ → ✅ **RESOLVED 2026-04-25** (Plan 06)
 - ~~**F-04** Code-block highlighter~~ → ✅ **RESOLVED 2026-04-25** (Plan 07)
+- ~~**A-26** AT-stub scaffolds (11 files)~~ → ✅ **RESOLVED 2026-04-26** (polish #3, 107 new criteria)
 - Phase-1 build path P1.1 → P1.7 — unblocked, awaits SPEC-ONLY lift
-- 22 AT stubs across remaining domains (non-blocking polish; tracked in suggestions-tracker)
-- **Recommended next:** `re-audit` to confirm 100/100, then `exit spec-only` to start P1.1 Bootstrap
+- **Recommended next:** say **`exit spec-only`** to start **P1.1 Bootstrap** — there is no more spec work to do
