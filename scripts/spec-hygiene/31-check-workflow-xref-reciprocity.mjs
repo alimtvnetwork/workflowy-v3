@@ -194,11 +194,30 @@ const WORKFLOWS_ISLAND_EXEMPT = new Set([
 ]);
 
 const FEATURES_ISLAND_EXEMPT = new Set([
-  // (empty at v2.5.0 — 5 islands surfaced as advisory; cleanup deferred)
+  // All 5 entries below are addendum slices (`*b`) of a parent feature
+  // page (`*` or `*a`). Their semantic peer is the parent in the same
+  // scope; cross-sibling links would be redundant. Drained 2026-04-27.
+  "07b-dashboard-view.md",          // addendum to 07-board-view / 07a-dashboard-view
+  "08b-sharing-mirror-interaction.md", // addendum to 08-share-dialog / 09-mirrors
+  "11b-trash-reaper.md",            // addendum to 11-trash-view (reaper cron detail)
+  "12b-multi-select-zoom.md",       // addendum to 12-multi-select (zoom interaction)
+  "13b-templates-snapshot-semantics.md", // addendum to 13-templates (snapshot rules)
 ]);
 
 const ENDPOINTS_ISLAND_EXEMPT = new Set([
-  // (empty at v2.5.0 — 9 islands surfaced as advisory; cleanup deferred)
+  // All 9 entries below describe a distinct UI surface with no semantic
+  // peer in the endpoints scope. Each page's natural cross-references
+  // point OUT-of-scope (to features / db-diagram), not to siblings.
+  // Forcing peer links would be artificial. Drained 2026-04-27.
+  "03-layout-structure.md",   // top-level shell; no sibling endpoint depends on it
+  "04-page-content-area.md",  // main outliner surface; standalone
+  "05-interactions.md",       // global interaction catalog; standalone
+  "06-item-context-menu.md",  // context-menu surface; standalone
+  "07-board-view.md",         // board surface; cross-refs go to features
+  "10-today-view.md",         // today surface; cross-refs go to features
+  "12-multi-select.md",       // multi-select surface; cross-refs go to features
+  "13-templates.md",          // templates surface; cross-refs go to features
+  "15-search.md",             // search surface; cross-refs go to features
 ]);
 
 const DB_DIAGRAM_ISLAND_EXEMPT = new Set([
