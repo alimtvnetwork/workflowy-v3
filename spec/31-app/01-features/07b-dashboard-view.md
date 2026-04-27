@@ -121,6 +121,14 @@ The 8 acceptance tests **AT-DV-01 … AT-DV-08** are defined in §6 above. This 
 
 ## Component Contract
 
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| Dashboard container | `src/components/dashboard/DashboardContainer.tsx` | `dashboard-container` | AT-DV-01, AT-DV-02 |
+| Dashboard card | `src/components/dashboard/DashboardCard.tsx` | `dashboard-card`, `dashboard-card-title`, `dashboard-card-checkbox` | AT-DV-03, AT-DV-04, AT-DV-05 |
+| Convert action | `src/components/contextmenu/TurnIntoDashboard.tsx` | `turn-into-dashboard` | AT-DV-06, AT-DV-07, AT-DV-08 |
+
+### Notes
+
 - **Test-id:** `turn-into-dashboard` (context-menu action) per [`spec/32-ui-design/01-architecture/05-component-contract-map.md`](../../32-ui-design/01-architecture/05-component-contract-map.md).
 - **State store:** `useTreeStore.updateContent()` (title edits) + `useTreeStore.toggleCompleted()` (checkbox) + `useTreeStore.reorder()` (drag) — same hooks as outline view; Dashboard introduces no new mutation surface.
 - **Op envelope:** every card-level mutation produces exactly one `Op.Update` (or `Op.Insert` for new cards) targeting the child row.

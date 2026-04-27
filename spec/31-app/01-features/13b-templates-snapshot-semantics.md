@@ -101,6 +101,13 @@ The 5 acceptance tests **AT-TPL-01 … AT-TPL-05** are defined in §3 above. Thi
 
 ## Component Contract
 
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| Template instantiation procedure | `wp-plugin/src/Templates/Instantiate.php` | n/a (server-side) | AT-TPL-01, AT-TPL-02, AT-TPL-03 |
+| Template payload storage | `wp-plugin/src/Templates/PayloadRepository.php` | n/a (server-side) | AT-TPL-04, AT-TPL-05 |
+
+### Notes
+
 - **Storage:** `Templates.PayloadJson` (full subtree, JSON-serialised).
 - **Instantiation surface:** server-side procedure (DFS clone) — no client orchestrates the multi-row insert.
 - **Trash interaction:** templates are unaffected by the reaper (per `11b` AT cross-link); independent lifecycle.

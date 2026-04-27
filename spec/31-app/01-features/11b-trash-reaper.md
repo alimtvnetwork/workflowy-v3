@@ -102,6 +102,13 @@ The 5 acceptance tests **AT-TR-01 … AT-TR-05** are defined in §5 above. This 
 
 ## Component Contract
 
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| Reaper edge function | `wp-plugin/src/Cron/ReapTrash.php` | n/a (server-side) | AT-TR-01, AT-TR-02, AT-TR-03 |
+| Reaper audit log surface | `wp-plugin/src/Cron/ReaperRunsLogger.php` | n/a (server-side) | AT-TR-04, AT-TR-05 |
+
+### Notes
+
 - **Edge function:** `reap-trash` (cron-triggered).
 - **Predicate SQL:** as in §2; batch size 1,000; idempotent.
 - **Audit surface:** `ReaperRuns` table (per `mem://features/trash-logic` + `spec/31-app/07-db-diagram/03-app-db-erd.md`).

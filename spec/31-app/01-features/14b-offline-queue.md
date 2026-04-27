@@ -122,6 +122,13 @@ The 6 acceptance tests **AT-OQ-01 … AT-OQ-06** are defined under the existing 
 
 ## Component Contract
 
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| Offline queue store | `src/stores/useOfflineQueueStore.ts` | n/a (pure store) | AT-OQ-01, AT-OQ-02, AT-OQ-03 |
+| SaveStatus indicator | `src/components/sync/SaveStatusBadge.tsx` | `save-status-badge` | AT-OQ-04, AT-OQ-05, AT-OQ-06 |
+
+### Notes
+
 - **Local storage:** SQLite mirror — concrete tech deferred per `mem://constraints/backend-runtime-deferred`.
 - **Queue type:** `SaveStatus` enum surfaced via [`src/types/index.ts`](../../../src/types/index.ts).
 - **Sync companion:** all LWW + tiebreak rules delegated to [14-concurrency-and-sync.md §14.2](./14-concurrency-and-sync.md); this addendum specifies durability + replay only.

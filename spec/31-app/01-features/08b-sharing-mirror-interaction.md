@@ -93,6 +93,13 @@ The 5 acceptance tests **AT-SM-01 … AT-SM-05** are defined in §4 above. This 
 
 ## Component Contract
 
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| Share dialog (per-instance) | `src/components/share/ShareDialog.tsx` | `share-dialog`, `share-grant`, `share-revoke` | AT-SM-01, AT-SM-02, AT-SM-03 |
+| Mirror peer-group propagator | `src/lib/sync/peerGroupPropagator.ts` | n/a (pure module) | AT-SM-04, AT-SM-05 |
+
+### Notes
+
 - **Storage:** `Permissions` table — composite key `(ItemId, GranteeId)`.
 - **Mutation hook:** `useShareStore.grant()` / `useShareStore.revoke()` — per-instance, never group-wide.
 - **Sync source:** content fan-out reuses the existing peer-group propagation in `09b-mirror-peer-group-model.md`; this addendum adds **no new code surface** beyond per-instance ACL semantics.

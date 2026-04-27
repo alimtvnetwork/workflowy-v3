@@ -106,6 +106,13 @@ The 6 acceptance tests **AT-MZ-01 … AT-MZ-06** are defined in §5 above. This 
 
 ## Component Contract
 
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| Virtual zoom scope store | `src/stores/useZoomStore.ts` | n/a (pure store) | AT-MZ-01, AT-MZ-02, AT-MZ-03 |
+| Zoom breadcrumb (virtual) | `src/components/zoom/ZoomBreadcrumb.tsx` | `zoom-breadcrumb-virtual` | AT-MZ-04, AT-MZ-05, AT-MZ-06 |
+
+### Notes
+
 - **State location:** client-only zustand slice (e.g. `useZoomStore.virtualScope`); never persisted, never serialised to URL.
 - **Identity:** `virtual:<sessionId>` synthetic node id; not a valid `Items.Id`; FK constraints are bypassed because no DB write occurs.
 - **State machine:** as defined in §3; transitions are pure UI events with no DB side-effects.
