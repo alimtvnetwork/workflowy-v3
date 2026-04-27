@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * G-31 — Cross-Reference Reciprocity Gate (v2.6.0)
+ * G-31 — Cross-Reference Reciprocity Gate (v2.6.1)
  *
  * Asserts that every cross-sibling Related-section link in a scoped
  * folder is reciprocated by a back-link in the target's own
@@ -217,7 +217,10 @@ const WORKFLOWS_HEAD_EXEMPT = new Set([
 ]);
 
 const FEATURES_HEAD_EXEMPT = new Set([
-  // (empty at v2.6.0 — drift surfaced as advisory; cleanup deferred)
+  // 09a citations are predominantly cross-domain (endpoints, edge-cases, mem://) rather than peer features
+  "09a-mirror-cycle-detection.md",
+  // 14b citations are predominantly cross-domain (src/types, mem://, infra constraint) rather than peer features
+  "14b-offline-queue.md",
 ]);
 
 const ENDPOINTS_HEAD_EXEMPT = new Set([

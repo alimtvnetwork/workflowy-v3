@@ -10,7 +10,7 @@ gate_id: G-31
 # G-31 — Cross-Reference Reciprocity Gate
 
 > **Version:** 2.5.0
-> **Updated:** 2026-04-27 (UTC+8) — v2.6.0 (F-future-G31d) added the **G-31.7 canonical-heading normalisation sub-check** (WARN advisory): each scope declares one `canonicalHead` (workflows + features → `## Related`; endpoints + db-diagram → `## Cross-References`); files using one of the OTHER accepted variants (`## Cross-References` / `## See also` / etc.) are flagged so authors can normalise prose for cross-scope readability. Reciprocity logic still accepts ALL variants (back-compat preserved). Per-scope `*_HEAD_EXEMPT` Sets opt out legitimate variants (G-31.5-enforced rationale; ALLOWLIST_NAMES grew 8 → 12). Initial probe: workflows 0, features 3 (`09a-mirror-cycle-detection.md`, `14b-offline-queue.md`, `16-search-ranking.md` all use `## Cross-References` instead of canonical `## Related`), endpoints 0, db-diagram 0. Earlier: v2.5.0 added G-31.6 island-detection (WARN); v2.4.0 added the G-31.5 meta sub-check enforcing rationale comments on all per-scope exemption Sets (algorithm ported verbatim from G-32.4); v2.3.0 drained features (30 → 0); v2.2.0 drained db-diagram (6 → 0); v2.1.0 drained endpoints (8 → 0); v2.0.0 generalised to N parameterised scopes; v1.0.0 originated as the F25 prototype `/tmp/audit_xrefs.mjs`.
+> **Updated:** 2026-04-27 (UTC+8) — v2.6.1 (F-future-G31f) drained the 3 G-31.7 heading-drift advisories: allow-listed `09a-mirror-cycle-detection.md` + `14b-offline-queue.md` in `FEATURES_HEAD_EXEMPT` (both cite predominantly cross-domain content — endpoints, `src/types`, `mem://` — so `## Cross-References` is the semantically accurate heading); renamed `16-search-ranking.md` heading `## Cross-References` → `## Related` (cites mostly peer features). G-31.7 now ✅ 0 drift. Earlier: v2.6.0 added the G-31.7 canonical-heading sub-check; v2.5.0 added G-31.6 island-detection; v2.4.0 added G-31.5 meta sub-check; v2.3.0 drained features (30 → 0); v2.2.0 drained db-diagram (6 → 0); v2.1.0 drained endpoints (8 → 0); v2.0.0 generalised to N parameterised scopes; v1.0.0 originated as the F25 prototype `/tmp/audit_xrefs.mjs`.
 > **Parent:** [`02-ci-quality-gates.md`](./02-ci-quality-gates.md)
 > **Sibling:** [`23-g30-at-citation-validity-gate.md`](./23-g30-at-citation-validity-gate.md), [`25-g32-ddl-unique-coverage-gate.md`](./25-g32-ddl-unique-coverage-gate.md)
 > **Runner:** [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs)
@@ -27,7 +27,7 @@ gate_id: G-31
 | G-31.4   | db-diagram       | ERROR | `spec/31-app/07-db-diagram/` | 7               | 0 asymmetries ✅      | v2.0.0 (WARN) → v2.2.0 (ERROR) |
 | G-31.5   | meta (rationale) | ERROR | (runner self)                | 12 Sets, 0 entries | 0 unrationaled ✅    | v2.4.0   |
 | G-31.6   | islands (advisory) | WARN | all 4 scopes               | 58 (sum)        | 14 islands ⚠️         | v2.5.0   |
-| G-31.7   | heading (advisory) | WARN | all 4 scopes               | 58 (sum)        | 3 heading-drift ⚠️    | v2.6.0   |
+| G-31.7   | heading (advisory) | WARN | all 4 scopes               | 58 (sum)        | 0 heading-drift ✅    | v2.6.0   |
 
 **Mode semantics:**
 - **ERROR** — any asymmetry, or any unrationaled exemption entry (G-31.5), contributes to exit code 1; CI fails.
@@ -190,12 +190,11 @@ Reciprocity catches the F25 drift class without overreach.
 
 ## Future-promotion ladder (not scoped to this gate)
 
-Two enhancements remain (F-future-G31a, G31b, G31c, and G31d are all complete):
+One enhancement remains (F-future-G31a, G31b, G31c, G31d, and G31f are all complete):
 
 1. **F-future-G31e** (logged at v2.5.0): Drain the 14 G-31.6 island advisories (workflows 0, features 5, endpoints 9, db-diagram 0) — for each island, either author one peer cross-reference (preferred — strengthens the doc graph) or add the bare filename to the per-scope `*_ISLAND_EXEMPT` Set with a rationale (acceptable for genuine leaves). Most islands are MVP-leaf addendum slices (`07b/08b/11b/12b/13b` from F1–F5) and self-contained endpoint pages — triage required to decide per file. Once the queue reaches 0 across all scopes, G-31.6 could be promoted from WARN to ERROR; alternatively, leave it permanent-WARN since "is this file a leaf?" is sometimes a judgement call.
-2. **F-future-G31f** (newly logged at v2.6.0): Drain the 3 G-31.7 heading-drift advisories (`01-features/09a-mirror-cycle-detection.md`, `01-features/14b-offline-queue.md`, `01-features/16-search-ranking.md` — all use `## Cross-References` instead of canonical `## Related`). Either rename the heading in each file or add the bare filename to `FEATURES_HEAD_EXEMPT` with a rationale (e.g. "uses Cross-References intentionally because the linked content is cross-domain rather than peer-feature"). Once drained, the runner's per-scope `relatedHeads[]` could be tightened to a single string for each scope (currently keeps all 3 variants for back-compat).
 
-Logging here so they're discoverable when "check memory for remaining tasks" runs in a later loop.
+Logging here so it's discoverable when "check memory for remaining tasks" runs in a later loop.
 
 ---
 
