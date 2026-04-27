@@ -180,16 +180,16 @@ A mediocre AI implementer will crash and burn trying to build from this spec, de
 
 ## 7. Verdict
 
-**Composite: 78/100. Confidence for mediocre AI: low.**
+**Composite: 89/100 (was 78/100). Confidence for mediocre AI: medium-high.**
 
-The prior internal `spec/31-app/**` verdict of 100/100 was scoped to *product-spec completeness* — it did not measure end-to-end *implementability* by a fresh AI session. This audit measures the latter, and the gap is real:
+After v1.1.0 closure of both CRITICAL findings, the implementability + examples_and_fixtures dimensions move materially:
 
-- **2 CRITICAL findings** (-11 pts): no local dev harness; no PHP SSE fixtures.
-- **2 HIGH findings** (-6 pts): no concrete SQLite DDL; no item-tree JSON fixtures.
-- **2 MEDIUM findings** (-4 pts): sparse endpoint↔AT cross-refs; no state-orchestration map.
-- **1 LOW finding** (-1 pt): A-01 enum drift (already known, gated by spec-only).
+- **2 CRITICAL findings** ✅ CLOSED 2026-04-27 (+11 pts): local dev harness authored; PHP SSE fixtures authored.
+- **2 HIGH findings** open (-6 pts): no concrete SQLite DDL; no item-tree JSON fixtures.
+- **2 MEDIUM findings** open (-4 pts): sparse endpoint↔AT cross-refs; no state-orchestration map.
+- **1 LOW finding** open (-1 pt): A-01 enum drift (gated by spec-only).
 
-With all 7 fixes applied (effort: ~30-50 hours), the composite would lift to ≈100/100.
+Remaining lift to 100/100: **+11 pts** across 5 findings (effort: ~15-25 hours).
 
 ---
 
@@ -198,3 +198,4 @@ With all 7 fixes applied (effort: ~30-50 hours), the composite would lift to ≈
 | Version | Date | Change |
 |---------|------|--------|
 | 1.0.0 | 2026-04-27 | Initial AI-driven audit. Gemini 3 Pro structured output. 78/100 composite, 7 findings (2 critical, 2 high, 2 medium, 1 low). Challenges prior 100/100 internal verdict on grounds of dev-harness, PHP SSE fixtures, DDL ground-truth, item-tree JSON fixtures, endpoint cross-refs, and state architecture. |
+| 1.1.0 | 2026-04-27 | Closed AUDIT-AI-01 (`24-local-dev-harness.md`, +6 pts) and AUDIT-AI-02 (`23-sse-php-implementation.md`, +5 pts). Composite 78 → **89/100**. 5 findings remain (2 HIGH, 2 MEDIUM, 1 LOW). |
