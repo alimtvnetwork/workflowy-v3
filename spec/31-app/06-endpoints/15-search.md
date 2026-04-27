@@ -47,7 +47,7 @@
 - **Errors**: `ERR_QUERY_TOO_SHORT`, `ERR_QUERY_TOO_LONG`, `ERR_FORBIDDEN` (Scope unreadable), `ERR_LIMIT_EXCEEDED`.
 - **Side effects**: none. Read-only against `Item` + FTS5 virtual table (see `03-app-indexes.sql` commented template).
 - **Performance budget**: P95 ≤ 150 ms for workspaces ≤ 100k items.
-- **AC refs**: `AT-APP-100`, `AT-APP-101`, `AT-APP-102`, `AT-APP-103`.
+- **AC refs**: `AT-APP-103`, `AT-APP-104`, `AT-APP-105`, `AT-APP-106`, `AT-APP-107`.
 
 ---
 

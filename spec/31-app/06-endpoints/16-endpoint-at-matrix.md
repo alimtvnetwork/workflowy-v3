@@ -34,7 +34,7 @@ A single matrix mapping every one of the **41 REST endpoints** in this folder to
 | 13 | `EP-TRASH-LIST` | GET | `/trash` | `11-trash-view.md` | `AT-TRASH-03`, `AT-TRASH-04`, `AT-APP-25`, `AT-APPF-56` |
 | 14 | `EP-TRASH-RESTORE` | POST | `/trash/{id}/restore` | `11-trash-view.md` | `AT-TRASH-05`, `AT-APP-26`, `AT-DDL-08` |
 | 15 | `EP-TRASH-PURGE-ONE` | DELETE | `/trash/{id}` | `11-trash-view.md` | `AT-TRASH-06`, `AT-APP-29`, `AT-APPF-61` |
-| 15b | `EP-TRASH-PURGE-ALL` | DELETE | `/trash` | `11-trash-view.md` | `AT-APP-24`, `AT-TRASH-07` |
+| 15b | `EP-TRASH-PURGE-ALL` | DELETE | `/trash` | `11-trash-view.md` | `AT-APP-19`, `AT-TRASH-08`, `AT-TRASH-09` |
 | 16 | `EP-MIRRORS-CREATE` | POST | `/mirrors` | `09-mirrors.md` | `AT-MIRROR-01`, `AT-MIRROR-02`, `AT-APP-33`, `AT-APPF-66` |
 | 17 | `EP-MIRRORS-LIST` | GET | `/mirrors?source={id}` | `09-mirrors.md` | `AT-MIRROR-03`, `AT-MIRROR-04`, `AT-APP-36` |
 | 18 | `EP-MIRRORS-DELETE` | DELETE | `/mirrors/{id}` | `09-mirrors.md` | `AT-MIRROR-05`, `AT-MIRROR-06`, `AT-APPF-71` |
@@ -61,12 +61,12 @@ A single matrix mapping every one of the **41 REST endpoints** in this folder to
 | 39 | `EP-ROLES-LIST` | GET | `/workspaces/{id}/roles` | `15-roles-and-permissions.md` | `AT-ROLES-05`, `AT-ROLES-06` |
 | 40 | `EP-ROLES-ASSIGN` | POST | `/workspaces/{id}/roles` | `15-roles-and-permissions.md` | `AT-ROLES-07`, `AT-ROLES-08` |
 | 41 | `EP-ROLES-REVOKE` | DELETE | `/workspaces/{id}/roles/{userId}` | `15-roles-and-permissions.md` | `AT-ROLES-09`, `AT-ROLES-10` |
-| 42 | `EP-REAPER-RUN` | POST | `/admin/trash/reaper/run` | `11b-trash-reaper.md` | `AT-APP-78`, `AT-APP-79`, `AT-APP-80` |
-| 43 | `EP-REAPER-RUNS-LIST` | GET | `/admin/trash/reaper/runs` | `11b-trash-reaper.md` | `AT-APP-81` |
-| 44 | `EP-SEARCH-QUERY` | GET | `/search` | `15-search.md` (endpoints) · `mem://features/search-functionality` | `AT-APP-100`, `AT-APP-101`, `AT-APP-102`, `AT-APP-103` |
-| 45 | `EP-SYNC-REPLAY` | POST | `/sync/replay` | `14b-sync-replay.md` · `mem://features/offline-resilience` | `AT-APP-90`, `AT-APP-91`, `AT-APP-92`, `AT-APP-93`, `AT-APP-94` |
-| 46 | `EP-MIRRORS-GROUP-GET` | GET | `/items/{id}/mirror-group` | `09b-mirror-peer-group.md` | `AT-MGP-58`, `AT-MGP-59` |
-| 47 | `EP-MIRRORS-DETACH` | POST | `/items/{id}/mirror-detach` | `09b-mirror-peer-group.md` | `AT-MGP-60`, `AT-MGP-61`, `AT-MGP-62` |
+| 42 | `EP-REAPER-RUN` | POST | `/admin/trash/reaper/run` | `11b-trash-reaper.md` | `AT-APP-81`, `AT-APP-82`, `AT-APP-83`, `AT-APP-84` |
+| 43 | `EP-REAPER-RUNS-LIST` | GET | `/admin/trash/reaper/runs` | `11b-trash-reaper.md` | `AT-APP-85` |
+| 44 | `EP-SEARCH-QUERY` | GET | `/search` | `15-search.md` (endpoints) · `mem://features/search-functionality` | `AT-APP-103`, `AT-APP-104`, `AT-APP-105`, `AT-APP-106`, `AT-APP-107` |
+| 45 | `EP-SYNC-REPLAY` | POST | `/sync/replay` | `14b-sync-replay.md` · `mem://features/offline-resilience` | `AT-APP-97`, `AT-APP-98`, `AT-APP-99`, `AT-APP-100`, `AT-APP-101`, `AT-APP-102` |
+| 46 | `EP-MIRRORS-GROUP-GET` | GET | `/items/{id}/mirror-group` | `09b-mirror-peer-group.md` | `AT-APP-58`, `AT-APP-60`, `AT-APP-65` |
+| 47 | `EP-MIRRORS-DETACH` | POST | `/items/{id}/mirror-detach` | `09b-mirror-peer-group.md` | `AT-APP-61`, `AT-APP-63`, `AT-APP-64` |
 
 ---
 
