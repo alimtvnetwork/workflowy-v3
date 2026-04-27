@@ -2,7 +2,7 @@
 
 **Status:** 🟢 ACTIVE
 **Activated:** 2026-04-27
-**Tasks completed: 36 / 40**
+**Tasks completed: 37 / 40**
 
 ---
 
@@ -53,3 +53,4 @@
 - Increment after each completed user task.
 - One row per task, even if the task logged zero ambiguities.
 - When count reaches **40**, set Status to 🔴 EXPIRED and notify the user to review the ambiguity folder.
+| 37 | 2026-04-27 | F-future-G31b — added the **G-31.5 meta sub-check** to `31-check-workflow-xref-reciprocity.mjs` (v2.3.0→v2.4.0). New helpers `findUnrationaledEntries()` + `printRationaleReport()` + constants `ALLOWLIST_NAMES` (4-name array) + `SELF_PATH` ported verbatim from G-32.4 (`32-check-ddl-unique-coverage.mjs` v4.0.0). Algorithm: for each of `WORKFLOWS_EXEMPT` / `FEATURES_EXEMPT` / `ENDPOINTS_EXEMPT` / `DB_DIAGRAM_EXEMPT`, parse the runner's own source between `const NAME = new Set([` and the next `]`; for every active entry line accept either (a) trailing inline `// …` OR (b) ≥1 contiguous `// …` line directly above with no blank-line gap; skip pure separator comments (`// ===`/`// ---`) and sample-template lines (`// "…"`). Final exit changed from `totalErrorAsym === 0 ? 0 : 1` → `failed = totalErrorAsym > 0 \|\| unrationaled.length > 0`. Updated comment block above the 4 Set declarations (removed stale "informational; not yet machine-enforced" → "machine-enforced by G-31.5 since v2.4.0"). All 4 Sets are currently empty so the gate ships green; the convention is now locked before any exemption is added. Negative-tested injecting `"foo.md → bar.md"` into FEATURES_EXEMPT → exit 1 with `[FEATURES_EXEMPT]` violation row; restored → exit 0. Positive-tested both rationale styles (trailing + above) → exit 0. Bumped SSOT `24-g31-workflow-xref-reciprocity-gate.md` v2.0.0→v2.4.0 (added 5th sub-check row, removed completed F-future-G31a/b items from ladder, added v2.3.0+v2.4.0 changelog rows). Updated G-31 row in `02-ci-quality-gates.md` to enumerate the 5 sub-checks. Master runner unchanged. | 1 (`32-g31-5-meta-shared-helper-vs-port.md`) |
