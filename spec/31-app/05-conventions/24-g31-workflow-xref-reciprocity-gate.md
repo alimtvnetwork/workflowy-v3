@@ -1,19 +1,37 @@
 ---
 slug: g31-workflow-xref-reciprocity-gate
-version: 1.0.0
+version: 2.0.0
 updated: 2026-04-27
 parent: ../../05-conventions/02-ci-quality-gates.md
 status: canonical
 gate_id: G-31
 ---
 
-# G-31 — Workflow Cross-Reference Reciprocity Gate
+# G-31 — Cross-Reference Reciprocity Gate
 
-> **Version:** 1.0.0
-> **Updated:** 2026-04-27 (UTC+8)
+> **Version:** 2.0.0
+> **Updated:** 2026-04-27 (UTC+8) — v2.0.0 (F-future-G31a) generalised the gate from a single workflows scope to **N parameterised scopes** with per-scope `mode: "error" | "warn"`. Added 3 new WARN scopes (`01-features/`, `06-endpoints/`, `07-db-diagram/`) reporting pre-existing drift (30 + 8 + 6 = 44 asymmetries) without failing CI. Workflows scope (G-31.1) remains ERROR-mode and stays at 0 asymmetries. Each scope has its own `excludeRx` for aggregator-page filtering, its own `relatedHeads` array (different folders use `## Related`, `## Cross-References`, or `## See also`), and its own exemption Set. Promotion to ERROR is per-scope: drain the queue via reciprocity-fix tasks, then change `mode: "warn"` → `mode: "error"` in the runner's `SCOPES` registry.
 > **Parent:** [`02-ci-quality-gates.md`](./02-ci-quality-gates.md)
-> **Sibling:** [`23-g30-at-citation-validity-gate.md`](./23-g30-at-citation-validity-gate.md)
+> **Sibling:** [`23-g30-at-citation-validity-gate.md`](./23-g30-at-citation-validity-gate.md), [`25-g32-ddl-unique-coverage-gate.md`](./25-g32-ddl-unique-coverage-gate.md)
 > **Runner:** [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs)
+
+---
+
+## Sub-checks
+
+| ID       | Scope            | Mode  | Folder                       | Files (current) | Asymmetries (current) | Added in |
+|----------|------------------|-------|------------------------------|-----------------|------------------------|----------|
+| G-31.1   | workflows        | ERROR | `spec/31-app/02-workflows/`  | 9               | 0 ✅                  | v1.0.0   |
+| G-31.2   | features         | WARN  | `spec/31-app/01-features/`   | 23              | 30 ⚠️                 | v2.0.0   |
+| G-31.3   | endpoints        | WARN  | `spec/31-app/06-endpoints/`  | 19              | 8 ⚠️                  | v2.0.0   |
+| G-31.4   | db-diagram       | WARN  | `spec/31-app/07-db-diagram/` | 7               | 6 ⚠️                  | v2.0.0   |
+
+**Mode semantics:**
+- **ERROR** — any asymmetry contributes to exit code 1; CI fails.
+- **WARN** — asymmetries are reported in stdout but exit code stays 0. Used as a staged-rollout pattern (mirrors F24/F27/F28 G-30.2 rollout): introduce the check, surface drift, drain via follow-up tasks, then promote to ERROR.
+
+A scope is promoted to ERROR by changing the literal `mode: "warn"` to `mode: "error"` on its entry in the runner's `SCOPES` array. No other code changes are needed.
+
 
 ---
 
@@ -37,15 +55,16 @@ silent regression by failing CI on any new asymmetric forward-link.
 
 ## Scope
 
-| # | Path | Filter | Notes |
-|---|------|--------|-------|
-| 1 | `spec/31-app/02-workflows/` | Filenames matching `/^\d{2}-.+-flow\.md$/` | The `00-overview.md`, `97-acceptance-criteria.md`, and `01-keyboard-shortcuts.md` files are excluded — they're indices/registries, not flows |
+| # | Path | Filter | Excluded aggregators | Headings recognised | Mode | Notes |
+|---|------|--------|----------------------|---------------------|------|-------|
+| 1 | `spec/31-app/02-workflows/` | `/^\d{2}-.+-flow\.md$/` | (regex already strict) | `## Related` | ERROR | Drained F25 → 0 asymmetries; current state ✅ |
+| 2 | `spec/31-app/01-features/`  | `/^\d{2}[a-z]?-.+\.md$/i` | `00-overview`, `02-personas`, `05a-hotkey-table`, `97-acceptance-criteria`, `99-consistency-report` | `## Related`, `## Cross-References`, `## See also` | WARN | Pre-existing drift: 30 |
+| 3 | `spec/31-app/06-endpoints/` | `/^\d{2}[a-z]?-.+\.md$/i` | `00-overview`, `16-endpoint-at-matrix`, `97-acceptance-criteria`, `99-consistency-report` | `## Related`, `## Cross-References`, `## See also` | WARN | Pre-existing drift: 8 |
+| 4 | `spec/31-app/07-db-diagram/` | `/^\d{2}-.+\.md$/` (top-level only — skips `sql/` subfolder) | `00-overview`, `97-acceptance-criteria`, `99-consistency-report` | `## Cross-References`, `## Related`, `## See also` | WARN | Pre-existing drift: 6 |
 
-The runner reads each flow file's `## Related` section (text from the
-`## Related` heading until the next non-`R` H2). A "link" to another flow
-file is detected by literal filename substring match within that section
-— this catches both bare references (`05-trash-reaper-flow.md`) and
-markdown links (`[label](./05-trash-reaper-flow.md)`).
+The runner reads each scoped file's back-link section (text from the first matching heading until the next H2 that isn't another related-head variant). A "link" to a sibling file is detected by literal filename substring match within that section — this catches both bare references (`05-trash-reaper-flow.md`) and markdown links (`[label](./05-trash-reaper-flow.md)`).
+
+**Why three heading variants?** Different folders adopted different conventions before G-31 existed: workflows use `## Related`; db-diagram historically used `## Cross-References`; some features pages use `## See also`. Rather than force a renaming sweep, the runner accepts any of the three (in scope-specific priority order). A future task can normalise heading names if drift becomes a pain.
 
 ---
 
@@ -167,20 +186,13 @@ Reciprocity catches the F25 drift class without overreach.
 
 ## Future-promotion ladder (not scoped to this gate)
 
-Three further enhancements remain available for future tasks:
+Three further enhancements remain:
 
-1. **F-future-G31a**: Extend scope to other folders with `## Related`
-   sections (e.g. `01-features/`, `06-endpoints/`). Requires deciding
-   whether reciprocity is the right invariant for non-flow content.
-2. **F-future-G31b**: Add a G-31.2 sub-check enforcing that every
-   `ASYMMETRIC_BY_DESIGN` entry has a corresponding rationale comment
-   in the runner source (machine-checkable, mirrors G-30.3 plan).
-3. **F-future-G31c**: Detect "unreferenced" flow files (a flow file
-   that no other file links to AND that links to no other file). These
-   are documentation islands — likely a smell, but not always a bug.
+1. **F-future-G31a-promote**: Promote the WARN scopes (G-31.2 / G-31.3 / G-31.4) to ERROR by draining their reciprocity queues. Each scope can be promoted independently — change `mode: "warn"` → `mode: "error"` on its registry entry once `unreciprocated forward-links` reaches 0 (or matches an exemption Set).
+2. **F-future-G31b**: Add a meta sub-check enforcing that every per-scope exemption Set entry carries a rationale comment in the runner source (machine-checkable, mirrors G-32.4).
+3. **F-future-G31c**: Detect "unreferenced" sibling files (a file that no other sibling links to AND that links to no other sibling). These are documentation islands — likely a smell, but not always a bug.
 
-Logging here so they're discoverable when "check memory for remaining
-tasks" runs in a later loop.
+Logging here so they're discoverable when "check memory for remaining tasks" runs in a later loop.
 
 ---
 
@@ -188,4 +200,5 @@ tasks" runs in a later loop.
 
 | Version | Date | Change |
 |---------|------|--------|
-| 1.0.0 | 2026-04-27 | F29 — initial implementation; promoted from F25 prototype `/tmp/audit_xrefs.mjs`; allow-list empty; current state ✅ 28 reciprocated cross-flow links across 9 files |
+| 1.0.0 | 2026-04-27 | F29 — initial implementation; promoted from F25 prototype `/tmp/audit_xrefs.mjs`; allow-list empty; current state ✅ 28 reciprocated cross-flow links across 9 files. |
+| 2.0.0 | 2026-04-27 | F-future-G31a — generalised the runner from a single workflows scope to **N parameterised scopes** with per-scope `mode: "error" \| "warn"`. New `SCOPES` registry array (each entry: `id`, `label`, `dir`, `filenameRx`, `excludeRx`, `relatedHeads[]`, `mode`, `exemptions`). New helpers: per-scope `listSiblingFiles()`, `extractRelatedSection()` accepts multiple heading variants in priority order and stops at next H2 that isn't another related-head, `printScopeReport()` emits per-scope `❌`/`⚠️` verdict + (WARN-only) drain-and-promote hint, `findAsymmetries()` consults per-scope exemption Set. Final exit = `totalErrorAsym === 0 ? 0 : 1` (WARN drift never fails). 4 separate exemption Sets: `WORKFLOWS_EXEMPT`, `FEATURES_EXEMPT`, `ENDPOINTS_EXEMPT`, `DB_DIAGRAM_EXEMPT` (all empty at v2.0.0). Added 3 new sub-checks: G-31.2 features (23 files, 64 cross-links, 30 asymmetries WARN), G-31.3 endpoints (19 files, 8 cross-links, 8 asymmetries WARN), G-31.4 db-diagram (7 files, 8 cross-links, 6 asymmetries WARN). Negative-tested: ERROR-scope drift in `02-workflows/04-trash-restore-flow.md` (sed-rewrote one filename) → exit 1; restored → exit 0. WARN-scope drift surfaces in stdout but stays exit 0. Master runner unchanged. Promotion path (per-scope `mode` flip) is documented in §Sub-checks. |
