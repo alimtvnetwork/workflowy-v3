@@ -2,8 +2,10 @@
 -- WorkFlowy — App DB Schema (per workspace)
 -- File: 02-app-schema.sql
 -- Target: workflowy_app_{WorkspaceId}.db (one per workspace)
--- Version: 1.0.0
--- Updated: 2026-04-27 (UTC+8)
+-- Version: 2.0.0
+-- Updated: 2026-04-27 (UTC+8) — v2.0.0 replaces source/target Mirror schema with peer-group
+--                                model per spec/31-app/01-features/09b-mirror-peer-group-model.md
+--                                (closes AUDIT-AI-07).
 -- Authority: spec/31-app/07-db-diagram/03-app-db-erd.md
 --
 -- Run order: this file FIRST, then 03-app-indexes.sql, then 04-app-triggers.sql,
@@ -34,40 +36,51 @@ CREATE TABLE IF NOT EXISTS ShareRoleType (
 );
 
 -- ----------------------------------------------------------------------------
--- Item — the unified Node (every bullet, board, mirror, attachment, etc.)
--- Self-recursive via ParentItemId. Mirrors point to canonical via MirrorOfItemId.
+-- Item — the unified Node (every bullet, board, attachment, etc.)
+-- Self-recursive via ParentItemId. Mirror peering is modelled separately
+-- via MirrorGroup + MirrorMember (see spec/31-app/01-features/09b-mirror-peer-group-model.md).
 -- ----------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS Item (
     ItemId           INTEGER PRIMARY KEY AUTOINCREMENT,
     ParentItemId     INTEGER NULL,
     OwnerUserId      INTEGER NOT NULL,                    -- Logical FK to Root.User.UserId
-    ItemTypeId       INTEGER NOT NULL,
-    Content          TEXT    NOT NULL DEFAULT '',
-    FractionalIndex  TEXT    NOT NULL,                    -- String key, never integer
+    ItemTypeId       INTEGER NOT NULL,                    -- Never 'mirror'; mirror is a relation, not a type
+    Content          TEXT    NOT NULL DEFAULT '',         -- For peers: empty; reads through canonical
+    FractionalIndex  TEXT    NOT NULL,                    -- Per-instance even for mirror peers
     DueDate          TEXT    NULL,                        -- ISO date 'YYYY-MM-DD'
     CompletedAt      TEXT    NULL,                        -- NULL = open
-    IsCollapsed      INTEGER NOT NULL DEFAULT 0 CHECK (IsCollapsed IN (0, 1)),
-    MirrorOfItemId   INTEGER NULL,                        -- NULL = canonical
+    IsCollapsed      INTEGER NOT NULL DEFAULT 0 CHECK (IsCollapsed IN (0, 1)),  -- Per-instance
     CreatedAt        TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
     UpdatedAt        TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
     DeletedAt        TEXT    NULL,                        -- NULL = live; NOT NULL = trashed
-    FOREIGN KEY (ParentItemId)   REFERENCES Item(ItemId)         ON DELETE CASCADE,
-    FOREIGN KEY (ItemTypeId)     REFERENCES ItemType(ItemTypeId) ON DELETE RESTRICT,
-    FOREIGN KEY (MirrorOfItemId) REFERENCES Item(ItemId)         ON DELETE SET NULL
+    FOREIGN KEY (ParentItemId) REFERENCES Item(ItemId)         ON DELETE CASCADE,
+    FOREIGN KEY (ItemTypeId)   REFERENCES ItemType(ItemTypeId) ON DELETE RESTRICT
 );
 
 -- ----------------------------------------------------------------------------
--- Mirror — bookkeeping table for cross-tree linked instances
--- 1:1 with Item rows where MirrorOfItemId IS NOT NULL.
+-- MirrorGroup — one row per logical mirror peer-group (v2.0.0 model).
+-- See spec/31-app/01-features/09b-mirror-peer-group-model.md §4 for full SSOT.
 -- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS Mirror (
-    MirrorId      INTEGER PRIMARY KEY AUTOINCREMENT,
-    MirrorItemId  INTEGER NOT NULL,                       -- The placeholder Item row
-    SourceItemId  INTEGER NOT NULL,                       -- The canonical Item
-    BrokenAt      TEXT    NULL,                           -- LWW per features/14 §14.4
-    CreatedAt     TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
-    FOREIGN KEY (MirrorItemId) REFERENCES Item(ItemId) ON DELETE CASCADE,
-    FOREIGN KEY (SourceItemId) REFERENCES Item(ItemId) ON DELETE CASCADE
+CREATE TABLE IF NOT EXISTS MirrorGroup (
+    MirrorGroupId   INTEGER PRIMARY KEY AUTOINCREMENT,
+    CanonicalItemId INTEGER NOT NULL,                     -- The peer that owns content rows; convention: lowest ItemId
+    CreatedAt       TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
+    FOREIGN KEY (CanonicalItemId) REFERENCES Item(ItemId) ON DELETE CASCADE
+);
+
+-- ----------------------------------------------------------------------------
+-- MirrorMember — peer membership. Each Item can be in at most one group.
+-- Group dissolves automatically when size drops to 1 (see 04-app-triggers.sql).
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS MirrorMember (
+    MirrorMemberId INTEGER PRIMARY KEY AUTOINCREMENT,
+    MirrorGroupId  INTEGER NOT NULL,
+    ItemId         INTEGER NOT NULL,
+    JoinedAt       TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
+    FOREIGN KEY (MirrorGroupId) REFERENCES MirrorGroup(MirrorGroupId) ON DELETE CASCADE,
+    FOREIGN KEY (ItemId)        REFERENCES Item(ItemId)               ON DELETE CASCADE,
+    UNIQUE (MirrorGroupId, ItemId),
+    UNIQUE (ItemId)                                       -- An Item belongs to at most one group
 );
 
 -- ----------------------------------------------------------------------------
