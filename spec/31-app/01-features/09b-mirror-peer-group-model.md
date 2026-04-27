@@ -212,6 +212,63 @@ This migration is in [`07-db-diagram/sql/07-migration-v2-mirror-peer-groups.sql`
 
 ---
 
+## Inputs
+
+| Field | Type | Source | Required | Notes |
+|-------|------|--------|----------|-------|
+| `originatingItemId` | `string` | Selected item | Yes | Item the user invoked `/mirror` / ⇧⌘M on |
+| `targetParentItemId` | `string` | Mirror picker | Yes | Where the new peer is placed |
+| `targetFractionalIndex` | `string` | FI generator | Yes | Per-instance position inside target parent |
+| `currentUser` | `User` | Auth session | Yes | Must hold Edit on origin AND target parent |
+| `existingGroupId` | `number \| null` | `MirrorMember` lookup | Yes | If origin already in a group, reuse it |
+
+## Outputs
+
+| Output | Persisted? | Channel | Notes |
+|--------|-----------|---------|-------|
+| `MirrorGroup` row | ✅ SQLite | `MirrorGroup` table | Only if origin was previously regular |
+| `MirrorMember` rows | ✅ SQLite | `MirrorMember` table | Two on first mirror; one per subsequent peer |
+| New peer `Item` row | ✅ SQLite | `Item` table | Empty `Content`; reads through canonical |
+| `mirror.member.added` event | ❌ | SSE | Triggers diamond badge on every connected client |
+| Diamond ◇ badge | ❌ | React state | Renders for both peers (or all N) |
+| Toast | ❌ | Toast bus | "Mirror created in {target}" |
+
+## Edge Cases
+
+1. User mirrors X under X's own subtree → block with `ERR_CYCLE` (see [`09a-mirror-cycle-detection.md`](./09a-mirror-cycle-detection.md)).
+2. User mirrors X under a parent where X already has a peer → block with toast "Already mirrored in this location".
+3. Group has 2 members; user detaches one → `TrgMirrorMember_DissolveOnSingleton` deletes the group; lone surviving Item becomes regular.
+4. Group has 5 members; user detaches one → group + 4 remaining peers stay; diamonds intact.
+5. Canonical peer is hard-deleted → `ON DELETE CASCADE` on `MirrorGroup.CanonicalItemId` would dissolve the group; **before delete**, application code re-points `CanonicalItemId` to next-lowest `ItemId` in group.
+6. Two devices edit the canonical row's title offline → on reconnect, LWW by `(UpdatedAt DESC, OwnerUserId ASC)` picks the winner; all peers re-render.
+7. Peer A is collapsed in location-1, peer B is expanded in location-2 → `IsCollapsed` is per-instance; toggling A does not affect B.
+8. User reorders peer A inside its parent → only A's `FractionalIndex` changes; peers B, C, ... keep theirs.
+9. User shares the source content to a teammate → share grant is on the canonical `ItemId`; all peers inherit the grant.
+10. Network drops mid-mirror-create → operation queued per `mem://features/offline-resilience`; peer + diamond appear on reconnect.
+
+## Acceptance Tests
+
+(See §7 above for the canonical AT table — `AT-MGP-01..10`.)
+
+## Component Contract
+
+> **Note:** None of these components exist yet — paths are the planned implementation order (aspirational, not normative). Follows the same disclaimer as `09-mirrors.md`.
+
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| Diamond peer badge | `src/components/items/MirrorBadge.tsx` | `mirror-badge` | AT-MGP-01 |
+| Cross-peer content sync | `src/state/mirrorGroupStore.ts` | `mirror-content-sync` | AT-MGP-02 |
+| Per-peer position lane | `src/components/items/PeerPositionLane.tsx` | `mirror-position-isolation` | AT-MGP-03 |
+| Singleton-dissolve handler | `src/state/mirrorDissolveSaga.ts` | `mirror-singleton-dissolve` | AT-MGP-04 |
+| Survivor preservation | `src/state/mirrorDetachSaga.ts` | `mirror-detach-survivors` | AT-MGP-05 |
+| "See them" peer list | `src/components/items/MirrorPeerList.tsx` | `mirror-see-them` | AT-MGP-06 |
+| Per-instance collapse | `src/components/items/ExpandToggle.tsx` | `mirror-collapse-isolation` | AT-MGP-07 |
+| Canonical promotion | `src/state/mirrorCanonicalPromotionSaga.ts` | `mirror-canonical-promotion` | AT-MGP-08 |
+| LWW tiebreak | `src/state/lwwResolver.ts` | `mirror-lww-tiebreak` | AT-MGP-09 |
+| Cycle guard | `src/components/items/MirrorPicker.tsx` | `mirror-cycle-error` | AT-MGP-10 |
+
+---
+
 ## Related
 
 - [09-mirrors.md](./09-mirrors.md) — UX and feature contract (will be folded into this model in v3.0.0)
