@@ -67,3 +67,8 @@
 | Full transport contract | [`../01-features/14-concurrency-and-sync.md`](../01-features/14-concurrency-and-sync.md) §14.5 |
 | LWW conflict rules | [`../01-features/14-concurrency-and-sync.md`](../01-features/14-concurrency-and-sync.md) §14.4 |
 | Forbidden transports rationale | [`../../18-spec-issues/08-audit-06-sse-transport-contract.md`](../../18-spec-issues/08-audit-06-sse-transport-contract.md) |
+| ← Item CRUD producers (forward link from) | [`./01-information-model.md`](./01-information-model.md) |
+| ← Mirror create/break events (forward link from) | [`./09-mirrors.md`](./09-mirrors.md) |
+| ← Mirror peer-group events (forward link from) | [`./09b-mirror-peer-group.md`](./09b-mirror-peer-group.md) |
+| ← Trash soft-delete / restore events (forward link from) | [`./11-trash-view.md`](./11-trash-view.md) |
+| ← Sync replay buffer consumers (forward link from) | [`./14b-sync-replay.md`](./14b-sync-replay.md) |
