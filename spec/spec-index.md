@@ -1242,7 +1242,7 @@
 | [`31-app/01-features/07-board-view.md`](./31-app/01-features/07-board-view.md) | Board View Specification | 2.5.0 | — |
 | [`31-app/01-features/08-share-dialog.md`](./31-app/01-features/08-share-dialog.md) | Share Dialog Specification | 2.3.0 | — |
 | [`31-app/01-features/09-mirrors.md`](./31-app/01-features/09-mirrors.md) | Mirror Specification | 2.4.0 | — |
-| [`31-app/01-features/09a-mirror-cycle-detection.md`](./31-app/01-features/09a-mirror-cycle-detection.md) | Mirror Cycle Detection — Algorithm Spec | 1.0.0 | — |
+| [`31-app/01-features/09a-mirror-cycle-detection.md`](./31-app/01-features/09a-mirror-cycle-detection.md) | Mirror Cycle Detection — Algorithm Spec | 1.1.0 | — |
 | [`31-app/01-features/10-today-view.md`](./31-app/01-features/10-today-view.md) | Today View Specification | 2.1.0 | — |
 | [`31-app/01-features/11-trash-view.md`](./31-app/01-features/11-trash-view.md) | Trash View Specification | 2.4.0 | — |
 | [`31-app/01-features/12-multi-select.md`](./31-app/01-features/12-multi-select.md) | Multi-Select Behavior | 2.3.0 | — |
@@ -1319,7 +1319,7 @@
 | [`31-app/07-db-diagram/05-lifecycle-flows.md`](./31-app/07-db-diagram/05-lifecycle-flows.md) | 05 — Lifecycle Flows | 1.0.0 | — |
 | [`31-app/07-db-diagram/06-indexes.md`](./31-app/07-db-diagram/06-indexes.md) | 06 — Indexes | 1.0.0 | — |
 | [`31-app/07-db-diagram/07-migrations.md`](./31-app/07-db-diagram/07-migrations.md) | 07 — Migrations Roadmap | 1.0.0 | — |
-| [`31-app/07-db-diagram/97-acceptance-criteria.md`](./31-app/07-db-diagram/97-acceptance-criteria.md) | DB Diagram — Acceptance Criteria | 1.0.0 | — |
+| [`31-app/07-db-diagram/97-acceptance-criteria.md`](./31-app/07-db-diagram/97-acceptance-criteria.md) | DB Diagram — Acceptance Criteria | 1.0.1 | — |
 | [`31-app/07-db-diagram/99-consistency-report.md`](./31-app/07-db-diagram/99-consistency-report.md) | Consistency Report — 07-db-diagram | 1.0.0 | — |
 | [`31-app/97-acceptance-criteria.md`](./31-app/97-acceptance-criteria.md) | App — Acceptance Criteria | 2.5.0 | — |
 | [`31-app/99-consistency-report.md`](./31-app/99-consistency-report.md) | Consistency Report — App | 1.3.0 | — |
