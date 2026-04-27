@@ -180,6 +180,29 @@ const DB_DIAGRAM_ISLAND_EXEMPT = new Set([
 ]);
 
 // =====================================================================
+// Per-scope HEADING-NORMALISATION allow-lists (G-31.7, v2.6.0+).
+// Format: bare filename. Files in the allow-list may carry a
+// non-canonical heading (e.g. a domain-overlap page that legitimately
+// belongs to two scopes). G-31.5 enforces a rationale on each entry.
+// =====================================================================
+
+const WORKFLOWS_HEAD_EXEMPT = new Set([
+  // (empty at v2.6.0 — workflows uses '## Related' uniformly)
+]);
+
+const FEATURES_HEAD_EXEMPT = new Set([
+  // (empty at v2.6.0 — drift surfaced as advisory; cleanup deferred)
+]);
+
+const ENDPOINTS_HEAD_EXEMPT = new Set([
+  // (empty at v2.6.0 — drift surfaced as advisory; cleanup deferred)
+]);
+
+const DB_DIAGRAM_HEAD_EXEMPT = new Set([
+  // (empty at v2.6.0 — drift surfaced as advisory; cleanup deferred)
+]);
+
+// =====================================================================
 // Scope registry. Order = output order.
 // =====================================================================
 
