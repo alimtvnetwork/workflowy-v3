@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * G-32 — DDL ↔ Doc Index Coverage Gate (v3.0.0)
+ * G-32 — DDL ↔ Doc Index Coverage Gate (v4.0.0)
  *
- * Three sub-checks:
+ * Four sub-checks:
  *   G-32.1 (forward, v1.0.0)  — every UNIQUE declaration in DDL is
  *                              documented in 06-indexes.md.
  *   G-32.2 (reverse, v2.0.0)  — every Idx{Name} / sqlite_autoindex_{T} name
@@ -13,6 +13,13 @@
  *                              06-indexes.md by its DDL name OR its
  *                              prose-alias name (resolved via
  *                              sql/00-overview.md §Index-name aliases).
+ *   G-32.4 (meta,    v4.0.0)  — every entry in COVERAGE_EXEMPT,
+ *                              REVERSE_EXEMPT, and NONUNIQUE_EXEMPT
+ *                              MUST carry a rationale: either a
+ *                              trailing inline `// …` on the same line,
+ *                              or a `// …` line within the array block
+ *                              immediately above the entry (no blank
+ *                              line between).
  *
  * Asserts that every `UNIQUE` declaration in the SQLite DDL files
  * (`spec/31-app/07-db-diagram/sql/01-root-schema.sql` and
