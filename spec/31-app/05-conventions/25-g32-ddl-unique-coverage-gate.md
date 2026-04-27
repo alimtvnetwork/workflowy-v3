@@ -1,6 +1,6 @@
 ---
 slug: g32-ddl-unique-coverage-gate
-version: 3.0.0
+version: 4.0.0
 updated: 2026-04-27
 parent: ../../05-conventions/02-ci-quality-gates.md
 status: canonical
