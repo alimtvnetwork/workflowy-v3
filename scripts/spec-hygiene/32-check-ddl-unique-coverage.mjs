@@ -565,6 +565,12 @@ const aliasMap = collectIndexAliasMap();
 const undocCreates = findUndocumentedCreateIndexes(allCreates, aliasMap, indexesText);
 printCreateIndexReport(allCreates, aliasMap, undocCreates);
 
+const unrationaled = findUnrationaledEntries();
+printRationaleReport(unrationaled);
+
 const failed =
-  violations.length > 0 || fabricated.length > 0 || undocCreates.length > 0;
+  violations.length > 0 ||
+  fabricated.length > 0 ||
+  undocCreates.length > 0 ||
+  unrationaled.length > 0;
 process.exit(failed ? 1 : 0);
