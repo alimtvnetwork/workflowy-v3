@@ -169,8 +169,8 @@ Every feature in `spec/31-app/01-features/` MUST: (1) write boolean checks as **
 | 11 | [`11-trash-view.md`](./11-trash-view.md) | Trash View Specification | 154 |
 | 12 | [`12-multi-select.md`](./12-multi-select.md) | Multi-Select Behavior | 170 |
 | 13 | [`13-templates.md`](./13-templates.md) | Template Application Flow | 180 |
-| 14 | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | Concurrency & Sync | 296 |
-| 15 | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | Roles & Permissions | 392 |
+| 14 | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | Concurrency & Sync | 310 |
+| 15 | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | Roles & Permissions | 391 |
 
 <!-- AUTO-TOC:END -->
 
