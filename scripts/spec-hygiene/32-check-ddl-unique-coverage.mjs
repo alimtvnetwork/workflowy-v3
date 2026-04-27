@@ -761,7 +761,8 @@ const blocks = parseCreateIndexBlocks();
 if (blocks.length === 0) {
   fail("no CREATE INDEX blocks parseable — regex failure?");
 }
-const parityViolations = checkParity(blocks, aliasMap, indexesText);
+const colAliasMap = collectColumnAliasMap();
+const parityViolations = checkParity(blocks, aliasMap, colAliasMap, indexesText);
 printParityReport(blocks, parityViolations);
 
 const failed =
