@@ -52,6 +52,39 @@
 
 ---
 
+## Inline-Prefix Alias Enumeration (closed)
+
+> Some inline prefixes have **shorter aliases** used by consumer files (matrix, endpoint contracts) that differ from the source file's actual `AT-*` IDs. To prevent G-30 from relying on the open-prefix `NN` license forever, the alias→source mappings below are **explicitly enumerated**, turning each citation into a closed table-row registration.
+>
+> When the source feature file gains a new `AT-INFOMODEL-NN` or `AT-MIRRORS-NN` row that consumers want to cite under the short alias, **add the corresponding alias row here in the same PR**.
+
+### `AT-INFO-NN` ↔ `AT-INFOMODEL-NN` (source: [`01-information-model.md`](./01-information-model.md))
+
+| Alias | Source ID | Used by |
+|-------|-----------|---------|
+| `AT-INFO-01` | `AT-INFOMODEL-01` | `EP-ITEMS-LIST` |
+| `AT-INFO-02` | `AT-INFOMODEL-02` | `EP-ITEMS-LIST` |
+| `AT-INFO-03` | `AT-INFOMODEL-03` | `EP-ITEMS-GET` |
+| `AT-INFO-04` | `AT-INFOMODEL-04` | `EP-ITEMS-ROOT` |
+| `AT-INFO-05` | `AT-INFOMODEL-05` | `EP-ITEMS-CREATE` |
+| `AT-INFO-06` | `AT-INFOMODEL-06` | `EP-ITEMS-UPDATE` |
+| `AT-INFO-07` | `AT-INFOMODEL-07` | `EP-ITEMS-TURN-INTO` |
+
+### `AT-MIRROR-NN` ↔ `AT-MIRRORS-NN` (source: [`09-mirrors.md`](./09-mirrors.md))
+
+| Alias | Source ID | Used by |
+|-------|-----------|---------|
+| `AT-MIRROR-01` | `AT-MIRRORS-01` | `EP-MIRRORS-CREATE` |
+| `AT-MIRROR-02` | `AT-MIRRORS-02` | `EP-MIRRORS-CREATE` |
+| `AT-MIRROR-03` | `AT-MIRRORS-03` | `EP-MIRRORS-LIST` |
+| `AT-MIRROR-04` | `AT-MIRRORS-04` | `EP-MIRRORS-LIST` |
+| `AT-MIRROR-05` | `AT-MIRRORS-05` | `EP-MIRRORS-DELETE` |
+| `AT-MIRROR-06` | `AT-MIRRORS-06` | `EP-MIRRORS-DELETE` |
+
+> The open-prefix declarations `` `AT-INFO-NN` `` and `` `AT-MIRROR-NN` `` in the Coverage Map above remain (they document the *naming convention*) — but G-30 now resolves these specific 13 citations via the closed rows here. If a citation appears for `AT-INFO-08` or `AT-MIRROR-07`, the gate will reject it until the alias is added to the table above.
+
+---
+
 ## How to add a new acceptance criterion
 
 1. **Default to canonical** — add the new criterion to [`spec/31-app/97-acceptance-criteria.md`](../97-acceptance-criteria.md) with the next `AT-APP-NN` (continue from the highest existing ID; never renumber).
