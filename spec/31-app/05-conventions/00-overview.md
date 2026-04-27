@@ -32,6 +32,7 @@
 | 17 | [`17-g24-role-escalation-coverage-gate.md`](./17-g24-role-escalation-coverage-gate.md) | G-24 Role-Escalation Drift Gate — Algorithm Spec | 230 |
 | 18 | [`18-g25-token-lifecycle-coverage-gate.md`](./18-g25-token-lifecycle-coverage-gate.md) | G-25 Session & Token Lifecycle Drift Gate — Algorithm Spec | 240 |
 | 19 | [`19-g26-mfa-coverage-gate.md`](./19-g26-mfa-coverage-gate.md) | G-26 MFA Policy Drift Gate — Algorithm Spec | 250 |
+| 20 | [`20-g27-export-coverage-gate.md`](./20-g27-export-coverage-gate.md) | G-27 Data-Export Policy Drift Gate — Algorithm Spec | 260 |
 
 <!-- AUTO-TOC:END -->
 
