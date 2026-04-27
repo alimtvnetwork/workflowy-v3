@@ -189,10 +189,10 @@ Reciprocity catches the F25 drift class without overreach.
 
 ## Future-promotion ladder (not scoped to this gate)
 
-Two further enhancements remain (F-future-G31a and F-future-G31b are both complete):
+Two enhancements remain (F-future-G31a, G31b, and G31c are all complete):
 
-1. **F-future-G31c**: Detect "unreferenced" sibling files (a file that no other sibling links to AND that links to no other sibling). These are documentation islands — likely a smell, but not always a bug.
-2. **F-future-G31d** (newly logged): A heading-name normalisation sweep — pick one of `## Related` / `## Cross-References` / `## See also` per scope and rename the others. Currently the runner accepts all three (in scope-priority order) for back-compat; once drained, this flexibility is dead weight.
+1. **F-future-G31d**: A heading-name normalisation sweep — pick one of `## Related` / `## Cross-References` / `## See also` per scope and rename the others. Currently the runner accepts all three (in scope-priority order) for back-compat; once drained, this flexibility is dead weight.
+2. **F-future-G31e** (newly logged): Drain the 14 G-31.6 island advisories (workflows 0, features 5, endpoints 9, db-diagram 0) — for each island, either author one peer cross-reference (preferred — strengthens the doc graph) or add the bare filename to the per-scope `*_ISLAND_EXEMPT` Set with a rationale (acceptable for genuine leaves). Most islands are MVP-leaf addendum slices (`07b/08b/11b/12b/13b` from F1–F5) and self-contained endpoint pages — triage required to decide per file. Once the queue reaches 0 across all scopes, G-31.6 could be promoted from WARN to ERROR; alternatively, leave it permanent-WARN since "is this file a leaf?" is sometimes a judgement call.
 
 Logging here so they're discoverable when "check memory for remaining tasks" runs in a later loop.
 
