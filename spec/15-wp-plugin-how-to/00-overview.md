@@ -56,6 +56,7 @@
 | 21 | [`21-ping-endpoint.md`](./21-ping-endpoint.md) | Phase 21 — Ping Endpoint | 342 |
 | 22 | [`22-quick-start.md`](./22-quick-start.md) | Phase 00 — Quick Start Guide | 250 |
 | 23 | [`23-operator-runbooks/`](./23-operator-runbooks/00-overview.md) | 16 — Operator Runbooks | subfolder |
+| 24 | [`24-local-dev-harness.md`](./24-local-dev-harness.md) | Phase 24 — Local WordPress Development Harness | 288 |
 
 <!-- AUTO-TOC:END -->
 
