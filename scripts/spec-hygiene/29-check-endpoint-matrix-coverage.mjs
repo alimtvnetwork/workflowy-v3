@@ -17,9 +17,12 @@
  */
 
 import { readFileSync, readdirSync, existsSync } from "node:fs";
-import { join, basename, resolve } from "node:path";
+import { join, basename, resolve, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const REPO_ROOT = resolve(new URL("../..", import.meta.url).pathname);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const REPO_ROOT = resolve(__dirname, "..", "..");
 const ENDPOINTS_DIR = join(REPO_ROOT, "spec/31-app/06-endpoints");
 const MATRIX_FILE = join(ENDPOINTS_DIR, "16-endpoint-at-matrix.md");
 
