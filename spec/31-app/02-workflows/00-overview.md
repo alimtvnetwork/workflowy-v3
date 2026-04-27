@@ -90,6 +90,8 @@ Workflow files use a flow-scoped acceptance-criteria prefix: `AT-WF-{FLOW}-NN` (
 
 ✅ **Extended (2026-04-27, F16):** added `AT-WF-CREATE-NN` → `AT-APP-58, 59, 62, 66, 67` (subset relevant to create). Open-prefix licensed for the create-flow's 5 acceptance tests.
 
+✅ **Extended (2026-04-27, F17):** added `AT-WF-MIGRATE-NN` → `AT-APP-66, 67` (the migration ATs). Open-prefix licensed for the migration-execution flow's 6 acceptance tests. Note: `AT-APP-66, 67` are also cited by `09-mirror-create-flow.md` (F16) — different test scenarios, both files' tables are independent.
+
 ### Open-prefix declarations (G-30 §RX_DECL_OPEN)
 
 The following table-row placeholders license the entire numeric series under each prefix, satisfying the AT citation validity gate:
