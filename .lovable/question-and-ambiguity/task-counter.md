@@ -2,7 +2,7 @@
 
 **Status:** 🟢 ACTIVE
 **Activated:** 2026-04-27
-**Tasks completed: 10 / 40**
+**Tasks completed: 11 / 40**
 
 ---
 
@@ -20,6 +20,7 @@
 | 08 | 2026-04-27 | F10 G-30 gate: created algorithm SSOT `23-g30-at-citation-validity-gate.md` v1.0.0; shipped runner `scripts/spec-hygiene/30-check-at-citation-validity.mjs` (190 lines) supporting three declaration shapes — single-ID (backticked or plain), backticked range (`AT-APPF-01..05` enumeration), and open-prefix placeholder (`AT-INFO-NN` series licensing). Caught + fixed two regex bugs during dev (digit-swallowing prefix, missed un-backticked first cells). Registered in `02-ci-quality-gates.md` row G-30 + `00-run-all.mjs`. Gate is green: 856 closed IDs + 32 open prefixes covering 163 unique citations across 201 sites. Negative-tested with bogus `AT-BOGUS-99` injection (correctly exits 1). | 1 (`08-at-open-prefix-licensing.md`) |
 | 09 | 2026-04-27 | F11 workflow specs: authored 4 cross-feature flow files in `02-workflows/` — `05-trash-reaper-flow.md` (cron→batch→cascade→audit, AT-WF-REAPER-01..05↔AT-APP-81..85), `06-search-query-flow.md` (debounce→permission filter→5-tier scoring→tie-break, AT-WF-SEARCH-01..05↔AT-APP-103..107), `07-sync-replay-flow.md` (online→FIFO drain→ServerTs stamp→LWW→SSE, AT-WF-REPLAY-01..06↔AT-APP-97..102), `08-mirror-detach-flow.md` (membership delete→auto-dissolve trigger→SSE, AT-WF-DETACH-01..05↔AT-APP-60..65 subset). Bumped `00-overview.md` v2.1.0→v2.2.0; added Open-Prefix Declarations table for G-30 licensing. G-29 + G-30 still ✅ green (open prefixes 32→36; 877 closed IDs). | 1 (`09-detach-at-scope.md`) |
 | 10 | 2026-04-27 | F12 v1→v2 Mirror Peer-Group migration plan: bumped `07-migrations.md` v1.0.0→v2.0.0; promoted M-115/M-116/M-117 from placeholders to **allocated** slots for the peer-group migration (Phase 1 create / Phase 2 backfill / Phase 3 drop legacy `Mirror`+`MirrorOfItemId`); allocated M-118 for `ReaperRuns`; renumbered Phase-2 placeholders to M-119..M-121. Added §"v1→v2 Mirror Peer-Group Migration — Execution Plan" with pre-flight checks (incl. mandatory file backup, SQLite≥3.35 check), 10-step transactional sequence, 4 failure modes (orphan FK, singleton group, ALTER fail, crash mid-`user_version` bump), forbidden patterns, and rollback procedure. All slot rows link to existing SQL files. G-29 + G-30 still ✅ green. | 1 (`10-migration-numbering-vs-naming-bridge.md`) |
+| 11 | 2026-04-27 | F13 feature-slices refresh: bumped `04-feature-slices.md` v1.0.0→v2.0.0. Replaced §4.2 (legacy `Mirror` source/placeholder ERD) with new **Mirror Peer Groups** slice (`MirrorGroup`/`MirrorMember`, ≥2-member invariant, auto-dissolve trigger note, naming-bridge footnote). Bumped §4.6 from "Trash (a query)" → "Trash + Reaper Audit": added second ERD for `ReaperRuns` (audit-only, no FKs), updated flowchart with reaper→audit edge, added `IdxReaperRuns_RanAt` note. Added two new slices: §4.10 Search (no new tables; flowchart for permission-filter→tier-scoring path; touched tables Item/Share/WorkspaceMember/Tag/ItemTag) and §4.11 Sync Replay (no new tables; reuses SyncCursor; flowchart for online→drain→LWW→SSE; notes ProcessedMutations not yet allocated). All sections now carry `**ATs**:` cross-refs. G-29 + G-30 still ✅ green. | 1 (`11-feature-slices-not-in-g30-scope.md`) |
 
 ---
 

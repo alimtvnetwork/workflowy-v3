@@ -1,7 +1,7 @@
 # 04 — Feature Slices (One ERD per Feature)
 
-> **Version:** 1.0.0
-> **Updated:** 2026-04-26 (UTC+8)
+> **Version:** 2.0.0
+> **Updated:** 2026-04-27 (UTC+8) — v2.0.0 replaces §4.2 with the v2 Mirror Peer-Group model (legacy `Mirror` table marked deprecated); adds `ReaperRuns` to §4.6 Trash; adds new §4.10 (Search) and §4.11 (Sync Replay) slices.
 > **Parent:** [`./00-overview.md`](./00-overview.md)
 
 ---
@@ -45,28 +45,40 @@ erDiagram
 
 ---
 
-## 4.2 — Mirrors (mirrors `09-mirrors.md`)
+## 4.2 — Mirror Peer Groups (mirrors `09b-mirror-peer-group-model.md`)
+
+> **Schema authority**: SQL uses `MirrorGroup` / `MirrorMember`. ERD docs (`03-app-db-erd.md`, `06-indexes.md`) call the same tables `MirrorPeerGroup` / `MirrorPeerGroupMember`. This slice uses the SQL names — see [`./sql/00-overview.md`](./sql/00-overview.md) §Naming Bridge.
 
 ```mermaid
 erDiagram
-    Item ||--o{ Mirror : "is canonical source of"
-    Item ||--o| Mirror : "is placeholder of"
+    MirrorGroup ||--|{ MirrorMember : "has 2+ members"
+    Item ||--o| MirrorMember : "is member of (≤1)"
+    Item ||--o{ MirrorGroup : "is canonical of"
 
+    MirrorGroup {
+        INTEGER MirrorGroupId PK
+        INTEGER CanonicalItemId FK "Item that originated the group"
+        TEXT CreatedAt
+    }
+    MirrorMember {
+        INTEGER MirrorMemberId PK
+        INTEGER MirrorGroupId FK
+        INTEGER ItemId FK "UNIQUE — an Item belongs to at most one group"
+        TEXT JoinedAt
+    }
     Item {
         INTEGER ItemId PK
-        INTEGER MirrorOfItemId FK "NULL when canonical"
-    }
-    Mirror {
-        INTEGER MirrorId PK
-        INTEGER MirrorItemId FK "Placeholder Item"
-        INTEGER SourceItemId FK "Canonical Item"
-        TEXT BrokenAt "LWW per §14.4"
     }
 ```
 
-**Constraint (D7)**: `Mirror.SourceItemId` MUST reference an `Item` whose `MirrorOfItemId IS NULL`. Enforced via DB trigger or app check.
+**Constraints**:
+- `UNIQUE(MirrorGroupId, ItemId)` and `UNIQUE(ItemId)` on `MirrorMember` — an Item belongs to at most one peer group.
+- A `MirrorGroup` MUST have ≥ 2 `MirrorMember` rows. Singleton groups are auto-dissolved by an `AFTER DELETE` trigger on `MirrorMember` (see [`../02-workflows/08-mirror-detach-flow.md`](../02-workflows/08-mirror-detach-flow.md)).
+- `Item.MirrorOfItemId` and the legacy `Mirror` table are **removed** in M-117 — see [`./07-migrations.md`](./07-migrations.md) §v1→v2 Mirror Peer-Group Migration.
 
-**Endpoints**: `EP-MIRRORS-CREATE`, `EP-MIRRORS-LIST`, `EP-MIRRORS-DELETE`.
+**Endpoints**: `EP-MIRRORS-CREATE`, `EP-MIRRORS-LIST`, `EP-MIRRORS-GROUP-GET`, `EP-MIRRORS-DETACH`.
+
+**ATs**: `AT-APP-58..65`, `AT-WF-DETACH-01..05`.
 
 ---
 
@@ -175,22 +187,41 @@ erDiagram
 
 ---
 
-## 4.6 — Trash (a query, not a table)
+## 4.6 — Trash + Reaper Audit (mirrors `11-trash-and-undo.md` + `11b-trash-reaper.md`)
 
 ```mermaid
 flowchart LR
     Live["Live items<br/>WHERE DeletedAt IS NULL"]
     Trash["Trash view<br/>WHERE DeletedAt IS NOT NULL<br/>AND DeletedAt &gt; date('now', '-30 days')"]
-    Reaper["Daily reaper<br/>DELETE WHERE DeletedAt &lt; date('now', '-30 days')"]
+    Reaper["Daily reaper job<br/>DELETE WHERE DeletedAt &lt; date('now', '-30 days')"]
+    ReaperRuns["ReaperRuns<br/>(audit row per run)"]
 
     Live -->|"DELETE /items/{id}<br/>sets DeletedAt"| Trash
     Trash -->|"POST /trash/{id}/restore<br/>clears DeletedAt"| Live
     Trash -->|"30 days elapsed"| Reaper
+    Reaper -->|"INSERT one row<br/>per execution"| ReaperRuns
 ```
 
-**Per D5**: there is no `Trash` table. The Trash view is a query over `Item.DeletedAt`.
+```mermaid
+erDiagram
+    ReaperRuns {
+        INTEGER ReaperRunId PK
+        TEXT RanAt "ISO8601 UTC start time"
+        INTEGER ItemsPurged "rows hard-deleted this run"
+        INTEGER GroupsDissolved "MirrorGroups dissolved via cascade"
+        TEXT Status "ok|partial|failed"
+        TEXT Error "NULL when Status = ok"
+        INTEGER DurationMs
+    }
+```
 
-**Endpoints**: `EP-TRASH-LIST`, `EP-TRASH-RESTORE`, `EP-TRASH-PURGE-ONE`, `EP-TRASH-PURGE-ALL`.
+**Per D5**: there is no `Trash` table — the Trash view is a query over `Item.DeletedAt`. `ReaperRuns` is an **audit-only** table; it has no FKs and is never read on the user request path.
+
+**Index**: `IdxReaperRuns_RanAt` (DESC) — supports the `EP-REAPER-RUNS-LIST` "last N runs" query.
+
+**Endpoints**: `EP-TRASH-LIST`, `EP-TRASH-RESTORE`, `EP-TRASH-PURGE-ONE`, `EP-TRASH-PURGE-ALL`, `EP-REAPER-RUN`, `EP-REAPER-RUNS-LIST`.
+
+**ATs**: `AT-APP-19`, `AT-APP-81..85`, `AT-TRASH-08`, `AT-TRASH-09`, `AT-WF-REAPER-01..05`.
 
 ---
 
@@ -269,6 +300,59 @@ erDiagram
 One row per user. Advanced by `EP-SYNC-ACK`. Used by `EP-SYNC-STREAM` (resume) and `EP-SYNC-POLL` (since-cursor query).
 
 ---
+
+## 4.10 — Search (mirrors `15-search.md` + `02-workflows/06-search-query-flow.md`)
+
+> **No new tables in v2.0.** Search is a query over `Item` filtered by the workspace permission view. The FTS5 virtual table (`FtsItem`) is reserved as **M-120** in [`./07-migrations.md`](./07-migrations.md) — until then, search uses `LIKE` + tier-scoring in app code.
+
+```mermaid
+flowchart LR
+    Q["EP-SEARCH-QUERY<br/>?q=&kind=&limit="]
+    Item["Item<br/>(scoped to workspace)"]
+    Perm["Permission filter<br/>(Share + WorkspaceMember)"]
+    Score["5-tier match scoring<br/>× field weight × recency tie-break"]
+    Resp["Ranked result list"]
+
+    Q --> Item
+    Item --> Perm
+    Perm --> Score
+    Score --> Resp
+```
+
+**Touched tables (read-only)**: `Item`, `Share`, `WorkspaceMember`, `Tag`, `ItemTag`.
+
+**Endpoints**: `EP-SEARCH-QUERY`.
+
+**ATs**: `AT-APP-103..107`, `AT-WF-SEARCH-01..05`.
+
+---
+
+## 4.11 — Sync Replay (mirrors `14b-sync-replay.md` + `02-workflows/07-sync-replay-flow.md`)
+
+> **No new tables in v2.0.** Replay reuses `SyncCursor` (§4.9) for LWW resolution and the existing `Item.UpdatedAt` server stamp. A future `ProcessedMutations` table is not yet allocated; idempotency currently relies on client-supplied mutation IDs deduplicated in app memory during the drain.
+
+```mermaid
+flowchart LR
+    Online["window 'online' event"]
+    Queue["Local FIFO queue<br/>(IndexedDB, client-side)"]
+    Drain["Single-threaded drain<br/>POST EP-SYNC-REPLAY"]
+    Server["Server LWW vs Item.UpdatedAt<br/>+ advance SyncCursor"]
+    SSE["EP-SYNC-STREAM<br/>broadcast deltas"]
+
+    Online --> Drain
+    Queue --> Drain
+    Drain --> Server
+    Server --> SSE
+```
+
+**Touched tables (read+write)**: `Item`, `SyncCursor`, `ActivityLog`.
+
+**Endpoints**: `EP-SYNC-REPLAY`, `EP-SYNC-ACK`, `EP-SYNC-STREAM`.
+
+**ATs**: `AT-APP-97..102`, `AT-WF-REPLAY-01..06`.
+
+---
+
 
 ## Cross-References
 
