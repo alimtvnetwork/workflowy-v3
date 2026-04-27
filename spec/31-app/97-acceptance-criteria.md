@@ -1,7 +1,7 @@
 # App — Acceptance Criteria
 
-> **Version:** 2.5.0
-> **Updated:** 2026-04-26 (UTC+8) — v2.5.0 corrected `AT-APP-37` event vocabulary drift: removed non-existent `item-created`/`mirror-created`, restored canonical `mirror-healed` + `presence` per §14.5.2 SSOT (closes F-AUD30-07). Also fixed `AT-APP-44` (`item-created` → `item-updated`) and `AT-APP-56` (`mirror-created` → `mirror-healed`). v2.4.0 added cross-references to `06-endpoints/` and `07-db-diagram/`. v2.3.0 backfilled `AT-WF-*` workflows into canonical (`AT-APP-43..57`). v2.2.0 added Today/Templates/Concurrency/SSE (`AT-APP-26..42`). v2.1.0 declared canonical over `AT-APPF-NN`. v2.0.0 closed F-01.
+> **Version:** 2.6.0
+> **Updated:** 2026-04-27 (UTC+8) — v2.6.0 registered 50 new ATs from B1–B4 product-clarification batches: `AT-APP-58..67` (mirror peer-group, B1), `AT-APP-68..75` (dashboard view, B2), `AT-APP-76..80` (sharing×mirror, B4), `AT-APP-81..85` (trash reaper, B4), `AT-APP-86..91` (multi-select zoom, B4), `AT-APP-92..96` (templates snapshot, B4), `AT-APP-97..102` (offline queue, B3), `AT-APP-103..107` (search ranking, B3). v2.5.0 corrected `AT-APP-37` event vocabulary drift; v2.4.0 added cross-references; v2.3.0 backfilled workflows; v2.2.0 added Today/Templates/Concurrency/SSE; v2.1.0 declared canonical over `AT-APPF-NN`; v2.0.0 closed F-01.
 > **Status:** ✅ Canonical AT index for the App domain
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
