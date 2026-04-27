@@ -16,7 +16,7 @@
 |---|------|-------|-------|
 | 1 | [`01-information-model.md`](./01-information-model.md) | Endpoints — 01 Information Model (Items CRUD) | 119 |
 | 2 | [`02-personas.md`](./02-personas.md) | Endpoints — 02 Personas | 42 |
-| 3 | [`03-layout-structure.md`](./03-layout-structure.md) | Endpoints — 03 Layout Structure | 32 |
+| 3 | [`03-layout-structure.md`](./03-layout-structure.md) | Endpoints — 03 Layout Structure | 33 |
 | 4 | [`04-page-content-area.md`](./04-page-content-area.md) | Endpoints — 04 Page Content Area | 34 |
 | 5 | [`05-interactions.md`](./05-interactions.md) | Endpoints — 05 Interactions | 39 |
 | 6 | [`06-item-context-menu.md`](./06-item-context-menu.md) | Endpoints — 06 Item Context Menu | 75 |

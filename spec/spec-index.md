@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-27  
-**Total Files:** 1351  
+**Total Files:** 1357  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -33,7 +33,7 @@
 - [16-generic-cli](#16-generic-cli) — 43 file(s)
 - [17-generic-update](#17-generic-update) — 11 file(s)
 - [18-spec-issues](#18-spec-issues) — 14 file(s)
-- [31-app](#31-app) — 113 file(s)
+- [31-app](#31-app) — 119 file(s)
 - [32-ui-design](#32-ui-design) — 120 file(s)
 - [33-feedback-report](#33-feedback-report) — 3 file(s)
 - [34-activity-feed](#34-activity-feed) — 3 file(s)
@@ -1260,13 +1260,19 @@
 | [`31-app/01-features/14b-offline-queue.md`](./31-app/01-features/14b-offline-queue.md) | Offline Queue & Local Mirror | 1.0.0 | — |
 | [`31-app/01-features/15-roles-and-permissions.md`](./31-app/01-features/15-roles-and-permissions.md) | Roles & Permissions | 1.6.0 | Active |
 | [`31-app/01-features/16-search-ranking.md`](./31-app/01-features/16-search-ranking.md) | Search Ranking | 1.0.0 | — |
-| [`31-app/01-features/97-acceptance-criteria.md`](./31-app/01-features/97-acceptance-criteria.md) | App Features — Acceptance Criteria | 2.2.0 | Active |
+| [`31-app/01-features/97-acceptance-criteria.md`](./31-app/01-features/97-acceptance-criteria.md) | App Features — Acceptance Criteria | 2.3.0 | Active |
 | [`31-app/01-features/99-consistency-report.md`](./31-app/01-features/99-consistency-report.md) | Consistency Report — 01-features | 2.2.0 | — |
-| [`31-app/02-workflows/00-overview.md`](./31-app/02-workflows/00-overview.md) | Workflows | 2.1.0 | — |
+| [`31-app/02-workflows/00-overview.md`](./31-app/02-workflows/00-overview.md) | Workflows | 2.4.0 | — |
 | [`31-app/02-workflows/01-keyboard-shortcuts.md`](./31-app/02-workflows/01-keyboard-shortcuts.md) | Keyboard Shortcuts — Complete Reference | 1.1.0 | — |
 | [`31-app/02-workflows/02-template-application-flow.md`](./31-app/02-workflows/02-template-application-flow.md) | Template Application Flow | 1.1.0 | Canonical |
 | [`31-app/02-workflows/03-share-invite-flow.md`](./31-app/02-workflows/03-share-invite-flow.md) | Share Invite Flow | 1.1.0 | Canonical |
 | [`31-app/02-workflows/04-trash-restore-flow.md`](./31-app/02-workflows/04-trash-restore-flow.md) | Trash Restore Flow | 1.1.0 | Canonical |
+| [`31-app/02-workflows/05-trash-reaper-flow.md`](./31-app/02-workflows/05-trash-reaper-flow.md) | Trash Reaper Flow | 1.0.0 | Canonical |
+| [`31-app/02-workflows/06-search-query-flow.md`](./31-app/02-workflows/06-search-query-flow.md) | Search Query Flow | 1.0.0 | Canonical |
+| [`31-app/02-workflows/07-sync-replay-flow.md`](./31-app/02-workflows/07-sync-replay-flow.md) | Sync Replay Flow | 1.0.0 | Canonical |
+| [`31-app/02-workflows/08-mirror-detach-flow.md`](./31-app/02-workflows/08-mirror-detach-flow.md) | Mirror Detach Flow | 1.1.0 | Canonical |
+| [`31-app/02-workflows/09-mirror-create-flow.md`](./31-app/02-workflows/09-mirror-create-flow.md) | Mirror Create Flow | 1.1.0 | Canonical |
+| [`31-app/02-workflows/10-migration-execution-flow.md`](./31-app/02-workflows/10-migration-execution-flow.md) | Migration Execution Flow — v1 → v2 Mirror Peer-Group | 1.0.0 | Canonical |
 | [`31-app/02-workflows/97-acceptance-criteria.md`](./31-app/02-workflows/97-acceptance-criteria.md) | Workflows — Acceptance Criteria (dispatch) | 1.0.0 | Dispatch |
 | [`31-app/02-workflows/99-consistency-report.md`](./31-app/02-workflows/99-consistency-report.md) | Consistency Report — 02-workflows | 1.1.0 | — |
 | [`31-app/03-edge-cases/00-overview.md`](./31-app/03-edge-cases/00-overview.md) | Edge Cases | 1.0.0 | — |
@@ -1305,7 +1311,7 @@
 | [`31-app/05-conventions/21-g28-backup-coverage-gate.md`](./31-app/05-conventions/21-g28-backup-coverage-gate.md) | G-28 Backup & DR Policy Drift Gate — Algorithm Spec | 1.0.0 | — |
 | [`31-app/05-conventions/22-g29-endpoint-matrix-coverage-gate.md`](./31-app/05-conventions/22-g29-endpoint-matrix-coverage-gate.md) | G-29 Endpoint ↔ Matrix Coverage Gate — Algorithm Spec | 1.0.0 | — |
 | [`31-app/05-conventions/22-wp-plugin-folder-skeleton.md`](./31-app/05-conventions/22-wp-plugin-folder-skeleton.md) | WP-Plugin Folder Skeleton — SSOT | 1.0.0 | Spec |
-| [`31-app/05-conventions/23-g30-at-citation-validity-gate.md`](./31-app/05-conventions/23-g30-at-citation-validity-gate.md) | G-30 — AT Citation Validity Gate | 1.0.0 | — |
+| [`31-app/05-conventions/23-g30-at-citation-validity-gate.md`](./31-app/05-conventions/23-g30-at-citation-validity-gate.md) | G-30 — AT Citation Validity Gate | 1.2.0 | WARN |
 | [`31-app/05-conventions/23-sse-php-implementation.md`](./31-app/05-conventions/23-sse-php-implementation.md) | Convention 23 — PHP SSE Implementation Pattern | 1.0.0 | Active |
 | [`31-app/05-conventions/24-state-management-architecture.md`](./31-app/05-conventions/24-state-management-architecture.md) | State Management Architecture | 1.0.0 | — |
 | [`31-app/05-conventions/97-acceptance-criteria.md`](./31-app/05-conventions/97-acceptance-criteria.md) | Conventions — Acceptance Criteria | 1.0.0 | — |
@@ -1313,7 +1319,7 @@
 | [`31-app/06-endpoints/00-overview.md`](./31-app/06-endpoints/00-overview.md) | Endpoints — Master Index | 1.0.0 | — |
 | [`31-app/06-endpoints/01-information-model.md`](./31-app/06-endpoints/01-information-model.md) | Endpoints — 01 Information Model (Items CRUD) | 1.0.0 | — |
 | [`31-app/06-endpoints/02-personas.md`](./31-app/06-endpoints/02-personas.md) | Endpoints — 02 Personas | 1.0.0 | — |
-| [`31-app/06-endpoints/03-layout-structure.md`](./31-app/06-endpoints/03-layout-structure.md) | Endpoints — 03 Layout Structure | 1.0.0 | — |
+| [`31-app/06-endpoints/03-layout-structure.md`](./31-app/06-endpoints/03-layout-structure.md) | Endpoints — 03 Layout Structure | 1.1.0 | — |
 | [`31-app/06-endpoints/04-page-content-area.md`](./31-app/06-endpoints/04-page-content-area.md) | Endpoints — 04 Page Content Area | 1.0.0 | — |
 | [`31-app/06-endpoints/05-interactions.md`](./31-app/06-endpoints/05-interactions.md) | Endpoints — 05 Interactions | 1.0.0 | — |
 | [`31-app/06-endpoints/06-item-context-menu.md`](./31-app/06-endpoints/06-item-context-menu.md) | Endpoints — 06 Item Context Menu | 1.0.0 | — |
@@ -1336,14 +1342,14 @@
 | [`31-app/07-db-diagram/00-overview.md`](./31-app/07-db-diagram/00-overview.md) | DB Diagram — Database Design SSOT (Visual) | 1.1.0 | — |
 | [`31-app/07-db-diagram/01-master-erd.md`](./31-app/07-db-diagram/01-master-erd.md) | 01 — Master ERD (All Tables, Both DBs) | 1.0.0 | — |
 | [`31-app/07-db-diagram/02-root-db-erd.md`](./31-app/07-db-diagram/02-root-db-erd.md) | 02 — Root DB ERD | 1.0.0 | — |
-| [`31-app/07-db-diagram/03-app-db-erd.md`](./31-app/07-db-diagram/03-app-db-erd.md) | 03 — App DB ERD (per Workspace) | 1.1.0 | — |
-| [`31-app/07-db-diagram/04-feature-slices.md`](./31-app/07-db-diagram/04-feature-slices.md) | 04 — Feature Slices (One ERD per Feature) | 1.0.0 | — |
+| [`31-app/07-db-diagram/03-app-db-erd.md`](./31-app/07-db-diagram/03-app-db-erd.md) | 03 — App DB ERD (per Workspace) | 1.2.0 | — |
+| [`31-app/07-db-diagram/04-feature-slices.md`](./31-app/07-db-diagram/04-feature-slices.md) | 04 — Feature Slices (One ERD per Feature) | 2.1.0 | — |
 | [`31-app/07-db-diagram/05-lifecycle-flows.md`](./31-app/07-db-diagram/05-lifecycle-flows.md) | 05 — Lifecycle Flows | 1.0.0 | — |
-| [`31-app/07-db-diagram/06-indexes.md`](./31-app/07-db-diagram/06-indexes.md) | 06 — Indexes | 1.1.0 | — |
-| [`31-app/07-db-diagram/07-migrations.md`](./31-app/07-db-diagram/07-migrations.md) | 07 — Migrations Roadmap | 1.0.0 | — |
+| [`31-app/07-db-diagram/06-indexes.md`](./31-app/07-db-diagram/06-indexes.md) | 06 — Indexes | 1.3.0 | — |
+| [`31-app/07-db-diagram/07-migrations.md`](./31-app/07-db-diagram/07-migrations.md) | 07 — Migrations Roadmap | 2.0.0 | — |
 | [`31-app/07-db-diagram/97-acceptance-criteria.md`](./31-app/07-db-diagram/97-acceptance-criteria.md) | DB Diagram — Acceptance Criteria | 1.0.1 | — |
 | [`31-app/07-db-diagram/99-consistency-report.md`](./31-app/07-db-diagram/99-consistency-report.md) | Consistency Report — 07-db-diagram | 1.0.0 | — |
-| [`31-app/07-db-diagram/sql/00-overview.md`](./31-app/07-db-diagram/sql/00-overview.md) | SQLite DDL — Reference Implementation | 2.1.0 | — |
+| [`31-app/07-db-diagram/sql/00-overview.md`](./31-app/07-db-diagram/sql/00-overview.md) | SQLite DDL — Reference Implementation | 2.2.0 | — |
 | [`31-app/97-acceptance-criteria.md`](./31-app/97-acceptance-criteria.md) | App — Acceptance Criteria | 2.6.0 | — |
 | [`31-app/99-consistency-report.md`](./31-app/99-consistency-report.md) | Consistency Report — App | 1.3.0 | — |
 
@@ -1521,4 +1527,4 @@
 
 ---
 
-*Auto-generated index — 1351 files across 25 top-level folders.*
+*Auto-generated index — 1357 files across 25 top-level folders.*
