@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 /**
- * G-30 — AT Citation Validity Gate
+ * G-30 — AT Citation Validity Gate (v1.1.0)
  *
- * Asserts every `AT-*` ID cited in endpoint contract files
- * (spec/31-app/06-endpoints/*.md) is declared in at least one
- * markdown-table registry row across spec/31-app/**.
+ * Asserts every `AT-*` ID cited under three consumer scopes is declared
+ * in at least one markdown-table registry row across spec/31-app/**:
+ *   1. spec/31-app/06-endpoints/**\/*.md
+ *   2. spec/31-app/02-workflows/**\/*.md
+ *   3. spec/31-app/07-db-diagram/04-feature-slices.md
  *
  * Algorithm SSOT: spec/31-app/05-conventions/23-g30-at-citation-validity-gate.md
  *
