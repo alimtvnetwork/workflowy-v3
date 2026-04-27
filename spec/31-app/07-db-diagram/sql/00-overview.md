@@ -1,8 +1,8 @@
 # SQLite DDL — Reference Implementation
 
-> **Version:** 1.0.0  
-> **Updated:** 2026-04-27 (UTC+8)  
-> **Status:** ✅ SSOT for `.sql` schema files (AUDIT-AI-03 closure)  
+> **Version:** 2.0.0
+> **Updated:** 2026-04-27 (UTC+8) — v2.0.0 swaps the source/target Mirror schema for the bidirectional MirrorGroup + MirrorMember peer-group model and adds the v1→v2 migration script. Closes AUDIT-AI-07. v1.0.0: initial AUDIT-AI-03 closure.
+> **Status:** ✅ SSOT for `.sql` schema files (closes AUDIT-AI-03 + AUDIT-AI-07)
 > **Parent:** [`../00-overview.md`](../00-overview.md)
 
 ---
@@ -14,11 +14,12 @@ Concrete, executable **`.sql` files** the WordPress plugin runs at install/activ
 | File | Target DB | Purpose |
 |------|-----------|---------|
 | [`01-root-schema.sql`](./01-root-schema.sql) | `workflowy_root.db` | Identity, workspaces, system roles |
-| [`02-app-schema.sql`](./02-app-schema.sql) | `workflowy_app_{WorkspaceId}.db` | Items, mirrors, shares, comments, etc. |
-| [`03-app-indexes.sql`](./03-app-indexes.sql) | App DB | All performance indexes (run AFTER `02-app-schema.sql`) |
-| [`04-app-triggers.sql`](./04-app-triggers.sql) | App DB | `UpdatedAt` auto-touch + soft-delete/restore cascade |
+| [`02-app-schema.sql`](./02-app-schema.sql) v2.0.0 | `workflowy_app_{WorkspaceId}.db` | Items, MirrorGroup + MirrorMember peer-group, shares, comments |
+| [`03-app-indexes.sql`](./03-app-indexes.sql) v2.0.0 | App DB | All performance indexes (run AFTER `02-app-schema.sql`) |
+| [`04-app-triggers.sql`](./04-app-triggers.sql) v2.0.0 | App DB | `UpdatedAt` auto-touch, soft-delete/restore cascade, MirrorGroup auto-dissolve |
 | [`05-root-seeds.sql`](./05-root-seeds.sql) | Root DB | Lookup seeds: `RoleType`, `WorkspaceRoleType` |
 | [`06-app-seeds.sql`](./06-app-seeds.sql) | App DB | Lookup seeds: `ItemType` (12), `ShareRoleType` (3) |
+| [`07-migration-v2-mirror-peer-groups.sql`](./07-migration-v2-mirror-peer-groups.sql) v1.0.0 | App DB | One-shot v1→v2 migration: drops `Item.MirrorOfItemId` + `Mirror` table; backfills `MirrorGroup` + `MirrorMember` |
 
 > **Why split seeds**: SQLite parses an `executescript()` block in one pass before executing it. A single seed file referencing both Root-only and App-only tables fails on whichever DB is missing the tables. Two files keep each script self-contained and parseable.
 
@@ -82,11 +83,13 @@ SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' O
 
 -- (4) All expected tables exist (App)
 -- expects: ActivityLog, Attachment, Comment, Favorite, Item, ItemTag, ItemType,
---          Mention, Mirror, Share, ShareRoleType, SyncCursor, Tag, Template
+--          Mention, MirrorGroup, MirrorMember, Share, ShareRoleType, SyncCursor,
+--          Tag, Template
 
 -- (5) Required indexes exist
 SELECT name FROM sqlite_master WHERE type='index' AND name LIKE 'Idx%' ORDER BY name;
--- expects 21 App-DB indexes per ../06-indexes.md
+-- expects 22 App-DB indexes per ../06-indexes.md (v2: removed IdxItem_MirrorOfItemId
+-- + IdxMirror_*; added IdxMirrorMember_*, IdxMirrorGroup_CanonicalItemId)
 ```
 
 ---
@@ -96,13 +99,14 @@ SELECT name FROM sqlite_master WHERE type='index' AND name LIKE 'Idx%' ORDER BY 
 | ID | Statement |
 |----|-----------|
 | `AT-DDL-01` | Running `01-root-schema.sql` against an empty `:memory:` DB produces all 6 Root tables with the column types listed in [`../02-root-db-erd.md`](../02-root-db-erd.md). |
-| `AT-DDL-02` | Running `02-app-schema.sql` then `03-app-indexes.sql` then `04-app-triggers.sql` produces all 14 App tables and 21 indexes from [`../06-indexes.md`](../06-indexes.md). |
+| `AT-DDL-02` | Running `02-app-schema.sql` then `03-app-indexes.sql` then `04-app-triggers.sql` produces all 15 App tables (now including `MirrorGroup` + `MirrorMember`; no longer includes the deprecated `Mirror` table) and 22 indexes from [`../06-indexes.md`](../06-indexes.md). |
 | `AT-DDL-03` | No column uses `BOOLEAN`, `DATETIME`, `TIMESTAMP`, `VARCHAR`, or `ENUM`; static grep returns zero matches. |
 | `AT-DDL-04` | `PRAGMA foreign_keys` returns `1` and `PRAGMA journal_mode` returns `wal` after install. |
 | `AT-DDL-05` | Both `05-root-seeds.sql` and `06-app-seeds.sql` are idempotent (`INSERT OR IGNORE`); running each twice does not duplicate rows. |
 | `AT-DDL-06` | Triggers in `04-app-triggers.sql` set `Item.UpdatedAt = strftime('%Y-%m-%dT%H:%M:%fZ','now')` on every UPDATE. |
 | `AT-DDL-07` | Inserting `Item.IsCompleted = 2` (out of 0/1 range) raises a `CHECK` constraint violation. |
-| `AT-DDL-08` | `Item.MirrorOfItemId` enforces `ON DELETE SET NULL` so deleting a source breaks (does not cascade-delete) its mirrors. |
+| `AT-DDL-08` | Trigger `TrgMirrorMember_DissolveOnSingleton` deletes the `MirrorGroup` row when its membership drops to 1, leaving the lone surviving `Item` with no diamond badge (per [`spec/31-app/01-features/09b-mirror-peer-group-model.md`](../../01-features/09b-mirror-peer-group-model.md) §R-3). |
+| `AT-DDL-09` | Running `07-migration-v2-mirror-peer-groups.sql` against a v1 DB with N `Mirror` rows produces ⌈N⌉ `MirrorGroup` rows + (N + distinct sources) `MirrorMember` rows; subsequent `SELECT MirrorOfItemId FROM Item LIMIT 1` raises "no such column". |
 
 ---
 

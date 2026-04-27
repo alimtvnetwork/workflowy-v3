@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-27  
-**Total Files:** 1337  
+**Total Files:** 1338  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -33,7 +33,7 @@
 - [16-generic-cli](#16-generic-cli) — 43 file(s)
 - [17-generic-update](#17-generic-update) — 11 file(s)
 - [18-spec-issues](#18-spec-issues) — 14 file(s)
-- [31-app](#31-app) — 99 file(s)
+- [31-app](#31-app) — 100 file(s)
 - [32-ui-design](#32-ui-design) — 120 file(s)
 - [33-feedback-report](#33-feedback-report) — 3 file(s)
 - [34-activity-feed](#34-activity-feed) — 3 file(s)
@@ -1225,7 +1225,7 @@
 | [`18-spec-issues/09-app-folder-re-audit-2026-04-26.md`](./18-spec-issues/09-app-folder-re-audit-2026-04-26.md) | App Folder Re-Audit — 2026-04-26 (post-fix) | 1.0.0 | — |
 | [`18-spec-issues/10-content-audit-endpoints-and-db-diagram.md`](./18-spec-issues/10-content-audit-endpoints-and-db-diagram.md) | Content Audit — `06-endpoints/` + `07-db-diagram/` (2026-04-26) | 1.0.0 | — |
 | [`18-spec-issues/11-content-audit-at-app-coverage.md`](./18-spec-issues/11-content-audit-at-app-coverage.md) | Content Audit — `AT-APP-NN` Coverage Completeness (2026-04-26) | 1.0.0 | — |
-| [`18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md`](./18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md) | AI Readiness Audit — Spec Corpus (Round 4) | 1.2.0 | — |
+| [`18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md`](./18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md) | AI Readiness Audit — Spec Corpus (Round 4) | 1.3.0 | — |
 | [`18-spec-issues/97-acceptance-criteria.md`](./18-spec-issues/97-acceptance-criteria.md) | Spec Issues — Acceptance Criteria | 1.3.0 | Dispatch |
 | [`18-spec-issues/99-consistency-report.md`](./18-spec-issues/99-consistency-report.md) | Consistency Report — Spec Issues | 1.0.0 | — |
 
@@ -1246,6 +1246,7 @@
 | [`31-app/01-features/08-share-dialog.md`](./31-app/01-features/08-share-dialog.md) | Share Dialog Specification | 2.3.0 | — |
 | [`31-app/01-features/09-mirrors.md`](./31-app/01-features/09-mirrors.md) | Mirror Specification | 2.4.0 | — |
 | [`31-app/01-features/09a-mirror-cycle-detection.md`](./31-app/01-features/09a-mirror-cycle-detection.md) | Mirror Cycle Detection — Algorithm Spec | 1.1.0 | — |
+| [`31-app/01-features/09b-mirror-peer-group-model.md`](./31-app/01-features/09b-mirror-peer-group-model.md) | Mirror Peer-Group Model — SSOT | 1.0.0 | — |
 | [`31-app/01-features/10-today-view.md`](./31-app/01-features/10-today-view.md) | Today View Specification | 2.1.0 | — |
 | [`31-app/01-features/11-trash-view.md`](./31-app/01-features/11-trash-view.md) | Trash View Specification | 2.4.0 | — |
 | [`31-app/01-features/12-multi-select.md`](./31-app/01-features/12-multi-select.md) | Multi-Select Behavior | 2.3.0 | — |
@@ -1329,7 +1330,7 @@
 | [`31-app/07-db-diagram/07-migrations.md`](./31-app/07-db-diagram/07-migrations.md) | 07 — Migrations Roadmap | 1.0.0 | — |
 | [`31-app/07-db-diagram/97-acceptance-criteria.md`](./31-app/07-db-diagram/97-acceptance-criteria.md) | DB Diagram — Acceptance Criteria | 1.0.1 | — |
 | [`31-app/07-db-diagram/99-consistency-report.md`](./31-app/07-db-diagram/99-consistency-report.md) | Consistency Report — 07-db-diagram | 1.0.0 | — |
-| [`31-app/07-db-diagram/sql/00-overview.md`](./31-app/07-db-diagram/sql/00-overview.md) | SQLite DDL — Reference Implementation | 1.0.0 | — |
+| [`31-app/07-db-diagram/sql/00-overview.md`](./31-app/07-db-diagram/sql/00-overview.md) | SQLite DDL — Reference Implementation | 2.0.0 | — |
 | [`31-app/97-acceptance-criteria.md`](./31-app/97-acceptance-criteria.md) | App — Acceptance Criteria | 2.5.0 | — |
 | [`31-app/99-consistency-report.md`](./31-app/99-consistency-report.md) | Consistency Report — App | 1.3.0 | — |
 
@@ -1507,4 +1508,4 @@
 
 ---
 
-*Auto-generated index — 1337 files across 25 top-level folders.*
+*Auto-generated index — 1338 files across 25 top-level folders.*

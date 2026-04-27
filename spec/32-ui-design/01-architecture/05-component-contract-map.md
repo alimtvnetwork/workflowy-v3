@@ -15,7 +15,7 @@ This file is the single global bridge from feature spec → component path → `
 - Find which acceptance tests cover a given component.
 - Find which `data-testid` to grep when wiring tests.
 
-Total surfaces mapped: **192** across **17** feature file(s).
+Total surfaces mapped: **202** across **18** feature file(s).
 
 ---
 
@@ -195,6 +195,21 @@ Total surfaces mapped: **192** across **17** feature file(s).
 | Cycle error toast | ``src/components/feedback/MirrorErrorToast.tsx`` | `mirror-cycle-error` | AT-CYCLE-08 |
 | Hygiene drift check (SQL byte-equality) | ``scripts/spec-hygiene/18-check-cycle-algo.mjs`` | `cycle-hygiene-drift` | AT-CYCLE-10 |
 
+### `09b-mirror-peer-group-model.md`
+
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| Diamond peer badge | ``src/components/items/MirrorBadge.tsx`` | `mirror-badge` | AT-MGP-01 |
+| Cross-peer content sync | ``src/state/mirrorGroupStore.ts`` | `mirror-content-sync` | AT-MGP-02 |
+| Per-peer position lane | ``src/components/items/PeerPositionLane.tsx`` | `mirror-position-isolation` | AT-MGP-03 |
+| Singleton-dissolve handler | ``src/state/mirrorDissolveSaga.ts`` | `mirror-singleton-dissolve` | AT-MGP-04 |
+| Survivor preservation | ``src/state/mirrorDetachSaga.ts`` | `mirror-detach-survivors` | AT-MGP-05 |
+| "See them" peer list | ``src/components/items/MirrorPeerList.tsx`` | `mirror-see-them` | AT-MGP-06 |
+| Per-instance collapse | ``src/components/items/ExpandToggle.tsx`` | `mirror-collapse-isolation` | AT-MGP-07 |
+| Canonical promotion | ``src/state/mirrorCanonicalPromotionSaga.ts`` | `mirror-canonical-promotion` | AT-MGP-08 |
+| LWW tiebreak | ``src/state/lwwResolver.ts`` | `mirror-lww-tiebreak` | AT-MGP-09 |
+| Cycle guard | ``src/components/items/MirrorPicker.tsx`` | `mirror-cycle-error` | AT-MGP-10 |
+
 ### `10-today-view.md`
 
 | Surface | Component path | `data-testid` | Acceptance tests |
@@ -347,17 +362,20 @@ Sorted alphabetically. Each row is one planned/implemented component file.
 | ``src/components/items/DeleteConfirmDialog.tsx`` | `delete-confirm-dialog` |
 | ``src/components/items/DeleteMirrorWarningDialog.tsx`` | `delete-mirror-warning` |
 | ``src/components/items/DividerRow.tsx`` | `divider-row` |
-| ``src/components/items/ExpandToggle.tsx`` | `mirror-expand-toggle` |
+| ``src/components/items/ExpandToggle.tsx`` | `mirror-collapse-isolation`, `mirror-expand-toggle` |
 | ``src/components/items/HighlightFlash.tsx`` | `template-first-item-highlight` |
 | ``src/components/items/MirrorBadge.tsx`` | `mirror-badge`, `mirror-badge-tooltip` |
 | ``src/components/items/MirrorContent.tsx`` | `mirror-content` |
 | ``src/components/items/MirrorConvertButton.tsx`` | `mirror-convert-button` |
 | ``src/components/items/MirrorDeleteButton.tsx`` | `mirror-delete-button` |
+| ``src/components/items/MirrorPeerList.tsx`` | `mirror-see-them` |
 | ``src/components/items/MirrorPendingBadge.tsx`` | `mirror-pending-state` |
+| ``src/components/items/MirrorPicker.tsx`` | `mirror-cycle-error` |
 | ``src/components/items/MirrorPickerDialog.tsx`` | `mirror-picker-dialog` |
 | ``src/components/items/MirrorSourceLink.tsx`` | `mirror-source-link` |
 | ``src/components/items/MoveToDialog.tsx`` | `move-error-toast`, `move-to-dialog` |
 | ``src/components/items/NoteEditor.tsx`` | `note-editor` |
+| ``src/components/items/PeerPositionLane.tsx`` | `mirror-position-isolation` |
 | ``src/components/items/PendingBadge.tsx`` | `offline-pending-badge`, `template-pending-badge` |
 | ``src/components/items/PermissionBadge.tsx`` | `permission-badge` |
 | ``src/components/items/RemovedUserBadge.tsx`` | `removed-user-badge` |
@@ -459,6 +477,11 @@ Sorted alphabetically. Each row is one planned/implemented component file.
 | ``src/server/concurrency/monotonicTs.ts`` | `concurrency-monotonic-ts` |
 | ``src/server/concurrency/serverClock.ts`` | `concurrency-server-clock` |
 | ``src/server/concurrency/tieBreak.ts`` | `concurrency-tiebreak` |
+| ``src/state/lwwResolver.ts`` | `mirror-lww-tiebreak` |
+| ``src/state/mirrorCanonicalPromotionSaga.ts`` | `mirror-canonical-promotion` |
+| ``src/state/mirrorDetachSaga.ts`` | `mirror-detach-survivors` |
+| ``src/state/mirrorDissolveSaga.ts`` | `mirror-singleton-dissolve` |
+| ``src/state/mirrorGroupStore.ts`` | `mirror-content-sync` |
 | ``wp-plugin/Repository/CycleCheck.php`` | `cycle-mirror-rejected`, `cycle-move-rejected` |
 | ``wp-plugin/Repository/sql/cycle-check.sql`` | `cycle-hygiene-drift` |
 | ``wp-plugin/Sync/BackpressureGuard.php`` | `sse-cursor-overflow` |
