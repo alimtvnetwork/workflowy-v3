@@ -1,11 +1,11 @@
 # AI Readiness Audit — Spec Corpus (Round 4)
 
-> **Version:** 1.1.0
-> **Created:** 2026-04-27 (UTC+8) · **Updated:** 2026-04-27 (UTC+8) — v1.1.0 closed AUDIT-AI-01 + AUDIT-AI-02 (both CRITICAL, +11 pts → composite **89/100**)
+> **Version:** 1.2.0
+> **Created:** 2026-04-27 (UTC+8) · **Updated:** 2026-04-27 (UTC+8) — v1.2.0 closed AUDIT-AI-03/04/05/06 (+10 pts → composite **99/100**); v1.1.0 closed AUDIT-AI-01 + AUDIT-AI-02 (+11 pts).
 > **Auditor:** Gemini 3 Pro (via Lovable AI Gateway, structured-output mode)
 > **Scope:** Whether a *mediocre* AI can implement WorkFlowy end-to-end at 100% confidence using only the spec.
-> **Composite score:** **89/100** (was 78/100) — Confidence for mediocre AI: **medium-high**
-> **Status:** 🟢 2 CRITICAL findings closed; 2 HIGH + 2 MEDIUM + 1 LOW remain.
+> **Composite score:** **99/100** (was 89 → was 78) — Confidence for mediocre AI: **HIGH**
+> **Status:** 🟢 6 of 7 findings CLOSED. Only AUDIT-AI-07 (A-01 enum drift, +1) remains and is **gated** by `mem://constraints/spec-only-mode`.
 
 ---
 
