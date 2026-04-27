@@ -1,8 +1,8 @@
 # App Features — Acceptance Criteria
 
-> **Version:** 2.2.0
+> **Version:** 2.3.0
 > **Created:** 2026-04-23 (UTC+8)
-> **Updated:** 2026-04-27 — v2.2.0 added 8 dispatch rows for B1–B4 addendums (`07b`, `08b`, `09b`, `11b`, `12b`, `13b`, `14b`, `16`) covering `AT-APP-58..107` and inline prefixes `AT-MGP/DV/SM/TR/MZ/TPL/OQ/SR-NN`. Prior: v2.1.0 backfilled canonical AT for Today/Templates/Concurrency/SSE (`AT-APP-26..42`). v2.0.0 declared `AT-APP-NN` canonical (APP-FIX-14, closes F-12).
+> **Updated:** 2026-04-27 — v2.3.0 (F15) closed two open prefixes: enumerated `AT-INFO-01..07` and `AT-MIRROR-01..06` as explicit alias rows mapping to source-file IDs (`AT-INFOMODEL-NN`, `AT-MIRRORS-NN`). Cited by 8 endpoint matrix rows. Prior: v2.2.0 added 8 dispatch rows for B1–B4 addendums (`07b`, `08b`, `09b`, `11b`, `12b`, `13b`, `14b`, `16`) covering `AT-APP-58..107` and inline prefixes `AT-MGP/DV/SM/TR/MZ/TPL/OQ/SR-NN`. v2.1.0 backfilled canonical AT for Today/Templates/Concurrency/SSE (`AT-APP-26..42`). v2.0.0 declared `AT-APP-NN` canonical (APP-FIX-14, closes F-12).
 > **Status:** Active — dispatch index for `AT-APP-*` (canonical) and per-feature inline `AT-*-*` IDs
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
@@ -52,6 +52,39 @@
 
 ---
 
+## Inline-Prefix Alias Enumeration (closed)
+
+> Some inline prefixes have **shorter aliases** used by consumer files (matrix, endpoint contracts) that differ from the source file's actual `AT-*` IDs. To prevent G-30 from relying on the open-prefix `NN` license forever, the alias→source mappings below are **explicitly enumerated**, turning each citation into a closed table-row registration.
+>
+> When the source feature file gains a new `AT-INFOMODEL-NN` or `AT-MIRRORS-NN` row that consumers want to cite under the short alias, **add the corresponding alias row here in the same PR**.
+
+### `AT-INFO-NN` ↔ `AT-INFOMODEL-NN` (source: [`01-information-model.md`](./01-information-model.md))
+
+| Alias | Source ID | Used by |
+|-------|-----------|---------|
+| `AT-INFO-01` | `AT-INFOMODEL-01` | `EP-ITEMS-LIST` |
+| `AT-INFO-02` | `AT-INFOMODEL-02` | `EP-ITEMS-LIST` |
+| `AT-INFO-03` | `AT-INFOMODEL-03` | `EP-ITEMS-GET` |
+| `AT-INFO-04` | `AT-INFOMODEL-04` | `EP-ITEMS-ROOT` |
+| `AT-INFO-05` | `AT-INFOMODEL-05` | `EP-ITEMS-CREATE` |
+| `AT-INFO-06` | `AT-INFOMODEL-06` | `EP-ITEMS-UPDATE` |
+| `AT-INFO-07` | `AT-INFOMODEL-07` | `EP-ITEMS-TURN-INTO` |
+
+### `AT-MIRROR-NN` ↔ `AT-MIRRORS-NN` (source: [`09-mirrors.md`](./09-mirrors.md))
+
+| Alias | Source ID | Used by |
+|-------|-----------|---------|
+| `AT-MIRROR-01` | `AT-MIRRORS-01` | `EP-MIRRORS-CREATE` |
+| `AT-MIRROR-02` | `AT-MIRRORS-02` | `EP-MIRRORS-CREATE` |
+| `AT-MIRROR-03` | `AT-MIRRORS-03` | `EP-MIRRORS-LIST` |
+| `AT-MIRROR-04` | `AT-MIRRORS-04` | `EP-MIRRORS-LIST` |
+| `AT-MIRROR-05` | `AT-MIRRORS-05` | `EP-MIRRORS-DELETE` |
+| `AT-MIRROR-06` | `AT-MIRRORS-06` | `EP-MIRRORS-DELETE` |
+
+> The open-prefix declarations `` `AT-INFO-NN` `` and `` `AT-MIRROR-NN` `` in the Coverage Map above remain (they document the *naming convention*) — but G-30 now resolves these specific 13 citations via the closed rows here. If a citation appears for `AT-INFO-08` or `AT-MIRROR-07`, the gate will reject it until the alias is added to the table above.
+
+---
+
 ## How to add a new acceptance criterion
 
 1. **Default to canonical** — add the new criterion to [`spec/31-app/97-acceptance-criteria.md`](../97-acceptance-criteria.md) with the next `AT-APP-NN` (continue from the highest existing ID; never renumber).
@@ -81,3 +114,4 @@
 | 2026-04-26 | 2.0.0 | **APP-FIX-14.** Demoted `AT-APPF-NN` to frozen dispatch; declared `AT-APP-NN` canonical; added Coverage Map with three columns (canonical / inline / legacy); added "How to add a new criterion" rule. Closes audit F-12. |
 | 2026-04-26 | 2.1.0 | **Polish #1.** Backfilled canonical AT for the four "no canonical AT yet" rows: Today (`AT-APP-26..28`), Templates (`AT-APP-29..32`), Concurrency core (`AT-APP-33..35`), SSE transport (`AT-APP-36..42`). Coverage Map now fully canonical. |
 | 2026-04-27 | 2.2.0 | **B1–B4 batch.** Added 8 dispatch rows (7b, 8b, 9b, 11b, 12b, 13b, 14b, 16) covering 50 new ATs (`AT-APP-58..107`) with inline prefixes `AT-DV/SM/MGP/TR/MZ/TPL/OQ/SR-NN`. |
+| 2026-04-27 | 2.3.0 | **F15.** Added "Inline-Prefix Alias Enumeration (closed)" section enumerating `AT-INFO-01..07` ↔ `AT-INFOMODEL-01..07` (7 rows) and `AT-MIRROR-01..06` ↔ `AT-MIRRORS-01..06` (6 rows). G-30 now resolves these 13 specific citations from closed rows; open prefixes retained for documenting the naming convention but no longer the *only* declaration source. |
