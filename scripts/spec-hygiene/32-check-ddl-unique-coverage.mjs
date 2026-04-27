@@ -645,7 +645,7 @@ function normalisePredicate(s) {
   return s.replace(/\s+/g, " ").trim();
 }
 
-function checkParity(blocks, aliasMap, indexesText) {
+function checkParity(blocks, aliasMap, colAliasMap, indexesText) {
   const violations = [];
   for (const b of blocks) {
     const alias = aliasMap.get(b.name);
@@ -654,9 +654,14 @@ function checkParity(blocks, aliasMap, indexesText) {
     const rowNorm = normalisePredicate(row);
 
     if (!PARITY_EXEMPT.has(`${b.name}:columns`)) {
-      const missingCols = b.columns
-        .map(bareColName)
-        .filter((c) => !new RegExp("`[^`]*\\b" + c + "\\b[^`]*`").test(row));
+      const missingCols = b.columns.map(bareColName).filter((c) => {
+        const proseAlias = colAliasMap.get(c);
+        const probes = proseAlias ? [c, proseAlias] : [c];
+        // Pass if ANY probe identifier appears inside backticks on the row.
+        return !probes.some((p) =>
+          new RegExp("`[^`]*\\b" + p + "\\b[^`]*`").test(row)
+        );
+      });
       if (missingCols.length > 0) {
         violations.push({
           block: b,
