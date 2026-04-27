@@ -64,8 +64,9 @@ The runner executes these in order. Each gate is independent: a failure in one d
 | G-13 | `13-generate-at-stubs.mjs` | Generator | Creates AT-stub files for new feature folders |
 | G-15 | `15-check-enums-in-sync.mjs` | Hard | Spec enums equal TypeScript enums (currently ItemType) |
 | G-16 | `16-check-tailwind-tokens.mjs` | Hard | Every `bg-*` / `text-*` token in `src/**` resolves in `@theme` |
+| G-22 | `22-check-error-code-catalogue.mjs` | Hard *(reserved — algorithm SSOT exists, not yet implemented)* | Every `ERR_*` literal in source has a catalogue row; HttpStatus parity per emitter — see [`15-g22-error-code-catalogue-gate.md`](./15-g22-error-code-catalogue-gate.md) |
 
-> **Note** — IDs `G-14` is reserved (see `14-split-oversized-files.mjs` — operator-only, not part of the runner). `G-17` and `G-18` are reserved for the hotkey-drift check (A-19 follow-up) and the cycle-algorithm SQL drift check (A-38 follow-up) respectively, both already promised in their parent specs.
+> **Note** — `G-14` is reserved (see `14-split-oversized-files.mjs` — operator-only, not part of the runner). `G-17` and `G-18` are reserved for the hotkey-drift check (A-19 follow-up) and the cycle-algorithm SQL drift check (A-38 follow-up) respectively, both already promised in their parent specs. **`G-19`–`G-22` algorithm SSOTs exist** in this folder (`04-`, `06-`, `07-`, `15-` respectively); pending runner implementation. **`G-23`–`G-28` are reserved** for the audit-log, role-escalation, session-token, MFA, data-export, and backup/DR policy gates (rows referenced in `09-..14-` policy files); algorithm SSOTs to be authored.
 
 ---
 
