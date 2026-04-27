@@ -1,9 +1,10 @@
 # Trash View Specification
 
-> **Version:** 2.4.0
-> **Updated:** 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-05: Settings Keys (Seedable Config) section added (closes audit F-04 for this file). v2.2.0 added Realtime Transport callout.
+> **Version:** 2.5.0
+> **Updated:** 2026-04-27 — Linked addendum `11b-trash-reaper.md` (daily 03:00 UTC cron, hard-delete cascade rules, `ReaperRuns` log). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-05: Settings Keys (Seedable Config) section added (closes audit F-04 for this file). v2.2.0 added Realtime Transport callout.
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
+> **Addendum:** [`11b-trash-reaper.md`](./11b-trash-reaper.md) — 30-day hard-delete cron, cascade matrix, AT-TR-01..05.
 
 ---
 

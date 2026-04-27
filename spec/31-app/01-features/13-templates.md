@@ -1,9 +1,10 @@
 # Template Application Flow
 
-> **Version:** 2.3.0
-> **Updated:** 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-05: Settings Keys (Seedable Config) section added (closes audit F-04 for this file). v2.1.0 added Storage section.
+> **Version:** 2.4.0
+> **Updated:** 2026-04-27 — Linked addendum `13b-templates-snapshot-semantics.md` (one-shot snapshot copy; no `TemplateId` FK; mirrors collapse on instantiation). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-05: Settings Keys (Seedable Config) section added (closes audit F-04 for this file). v2.1.0 added Storage section.
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
+> **Addendum:** [`13b-templates-snapshot-semantics.md`](./13b-templates-snapshot-semantics.md) — Snapshot semantics, instantiation algorithm, AT-TPL-01..05.
 
 ---
 
