@@ -162,6 +162,7 @@ const SCOPES = [
     relatedHeads: ["## Related"],
     mode: "error",
     exemptions: WORKFLOWS_EXEMPT,
+    islandExemptions: WORKFLOWS_ISLAND_EXEMPT,
   },
   {
     id: "G-31.2",
@@ -173,6 +174,7 @@ const SCOPES = [
     relatedHeads: ["## Related", "## Cross-References", "## See also"],
     mode: "error",
     exemptions: FEATURES_EXEMPT,
+    islandExemptions: FEATURES_ISLAND_EXEMPT,
   },
   {
     id: "G-31.3",
@@ -183,6 +185,7 @@ const SCOPES = [
     relatedHeads: ["## Related", "## Cross-References", "## See also"],
     mode: "error",
     exemptions: ENDPOINTS_EXEMPT,
+    islandExemptions: ENDPOINTS_ISLAND_EXEMPT,
   },
   {
     id: "G-31.4",
@@ -195,6 +198,7 @@ const SCOPES = [
     relatedHeads: ["## Cross-References", "## Related", "## See also"],
     mode: "error",
     exemptions: DB_DIAGRAM_EXEMPT,
+    islandExemptions: DB_DIAGRAM_ISLAND_EXEMPT,
   },
 ];
 
