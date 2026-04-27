@@ -149,11 +149,12 @@ function main() {
   const registered = collectRegistered();
   const citations = collectCitations();
   const uniqueCited = new Set(citations.map((c) => c.id));
-  const unregistered = citations.filter((c) => !registered.has(c.id));
+  const unregistered = citations.filter((c) => !isRegistered(c.id, registered));
 
   if (unregistered.length === 0) {
     console.log("G-30 AT citation validity:");
-    console.log(`  registered AT IDs (spec/31-app/**): ${registered.size}`);
+    console.log(`  registered AT IDs (closed):         ${registered.ids.size}`);
+    console.log(`  registered open prefixes:           ${registered.openPrefixes.size}`);
     console.log(`  endpoint citations scanned:         ${citations.length}`);
     console.log(`  unique cited IDs:                   ${uniqueCited.size}`);
     console.log(`  unregistered citations:             0`);
