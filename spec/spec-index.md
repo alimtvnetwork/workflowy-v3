@@ -1286,6 +1286,7 @@
 | [`31-app/05-conventions/15-g22-error-code-catalogue-gate.md`](./31-app/05-conventions/15-g22-error-code-catalogue-gate.md) | G-22 Error-Code Catalogue Drift Gate — Algorithm Spec | 1.0.0 | Active |
 | [`31-app/05-conventions/16-g23-audit-log-coverage-gate.md`](./31-app/05-conventions/16-g23-audit-log-coverage-gate.md) | G-23 Audit-Log Drift Gate — Algorithm Spec | 1.0.0 | Active |
 | [`31-app/05-conventions/17-g24-role-escalation-coverage-gate.md`](./31-app/05-conventions/17-g24-role-escalation-coverage-gate.md) | G-24 Role-Escalation Drift Gate — Algorithm Spec | 1.0.0 | Active |
+| [`31-app/05-conventions/18-g25-token-lifecycle-coverage-gate.md`](./31-app/05-conventions/18-g25-token-lifecycle-coverage-gate.md) | G-25 Session & Token Lifecycle Drift Gate — Algorithm Spec | 1.0.0 | Active |
 | [`31-app/05-conventions/97-acceptance-criteria.md`](./31-app/05-conventions/97-acceptance-criteria.md) | Conventions — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`31-app/05-conventions/99-consistency-report.md`](./31-app/05-conventions/99-consistency-report.md) | Consistency Report — 05-conventions | 1.0.1 | — |
 | [`31-app/06-endpoints/00-overview.md`](./31-app/06-endpoints/00-overview.md) | Endpoints — Master Index | 1.0.0 | — |
