@@ -1,7 +1,7 @@
 # Mirror Create Flow
 
-> **Version:** 1.0.0
-> **Created:** 2026-04-27 (UTC+8) — F16 (No-Questions Mode)
+> **Version:** 1.1.0
+> **Created:** 2026-04-27 (UTC+8) — F16 (No-Questions Mode); v1.1.0 (F21) sharpened the `08-mirror-detach-flow.md` link as the explicit **inverse path** and added a cross-reference to `10-migration-execution-flow.md` (the bootstrap path that creates peer groups in batch via M-116 backfill).
 > **Status:** Canonical — cross-feature flow
 > **Parent:** [`00-overview.md`](./00-overview.md)
 > **SSOT for the underlying feature:** [`spec/31-app/01-features/09b-mirror-peer-group-model.md`](../01-features/09b-mirror-peer-group-model.md)
@@ -162,7 +162,8 @@ The `FOR UPDATE` lock in step 4f serializes group lookup so two concurrent mirro
 
 ## Related
 
-- [`08-mirror-detach-flow.md`](./08-mirror-detach-flow.md) — inverse path; same group's auto-dissolve trigger
+- [`08-mirror-detach-flow.md`](./08-mirror-detach-flow.md) — **inverse path**; create grows a peer group (≥2 members), detach shrinks it; both share the auto-dissolve trigger when membership count would fall to 1
+- [`10-migration-execution-flow.md`](./10-migration-execution-flow.md) — bootstrap path that **batch-creates** peer groups (M-116 backfill) using the same `MirrorPeerGroup`/`MirrorPeerGroupMember` invariants this runtime flow enforces per-row
 - [`07-sync-replay-flow.md`](./07-sync-replay-flow.md) — offline mirror-create mutations drain via this flow's request shape
 - [`../01-features/09b-mirror-peer-group-model.md`](../01-features/09b-mirror-peer-group-model.md) — feature-level SSOT
 - [`../01-features/09a-mirror-cycle-detection.md`](../01-features/09a-mirror-cycle-detection.md) — cycle-prevention algorithm SSOT

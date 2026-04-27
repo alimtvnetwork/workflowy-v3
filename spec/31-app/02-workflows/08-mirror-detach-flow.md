@@ -1,7 +1,7 @@
 # Mirror Detach Flow
 
-> **Version:** 1.0.0
-> **Created:** 2026-04-27 (UTC+8) — F11 (No-Questions Mode)
+> **Version:** 1.1.0
+> **Created:** 2026-04-27 (UTC+8) — F11 (No-Questions Mode); v1.1.0 (F21) added bidirectional cross-references to `09-mirror-create-flow.md` (inverse path) and `10-migration-execution-flow.md` (which mimics this flow's singleton-dissolve semantics).
 > **Status:** Canonical — cross-feature flow
 > **Parent:** [`00-overview.md`](./00-overview.md)
 > **SSOT for the underlying feature:** [`spec/31-app/01-features/09b-mirror-peer-group-model.md`](../01-features/09b-mirror-peer-group-model.md)
@@ -134,6 +134,8 @@ If the user issues two near-simultaneous detach requests on the *same* peer, the
 
 ## Related
 
+- [`09-mirror-create-flow.md`](./09-mirror-create-flow.md) — **inverse path**; create grows a peer group (≥2 members), detach shrinks it; both share the auto-dissolve trigger when membership count would fall to 1
+- [`10-migration-execution-flow.md`](./10-migration-execution-flow.md) — bootstrap-time migration that backfills peer groups and runs a one-shot singleton sweep mimicking this flow's auto-dissolve semantics
 - [`05-trash-reaper-flow.md`](./05-trash-reaper-flow.md) — reaper triggers the same auto-dissolve trigger on hard-delete
 - [`07-sync-replay-flow.md`](./07-sync-replay-flow.md) — offline detach mutations drain via this flow's request shape
 - [`../01-features/09b-mirror-peer-group-model.md`](../01-features/09b-mirror-peer-group-model.md) — feature-level SSOT
