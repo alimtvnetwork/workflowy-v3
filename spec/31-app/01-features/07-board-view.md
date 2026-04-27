@@ -210,3 +210,4 @@ No special admin logic required — the tree model handles everything naturally.
 - [06-item-context-menu.md](./06-item-context-menu.md) — same context menu fires on cards
 - [09-mirrors.md](./09-mirrors.md) — mirror-card semantics
 - [03-edge-cases/01-edge-cases.md](../03-edge-cases/01-edge-cases.md) — board edge-case rows
+- [07b-dashboard-view.md](./07b-dashboard-view.md) — sister card-grid view (same data, different layout)
