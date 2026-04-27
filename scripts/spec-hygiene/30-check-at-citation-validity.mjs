@@ -137,22 +137,28 @@ function isRegistered(id, registered) {
 }
 
 function collectCitations() {
-  if (!existsSync(ENDPOINTS_DIR)) fail(`endpoints dir missing: ${ENDPOINTS_DIR}`);
   const citations = [];
-  for (const name of readdirSync(ENDPOINTS_DIR)) {
-    if (!name.endsWith(".md")) continue;
-    if (CONSUMER_EXCLUDED.has(name)) continue;
-    const full = join(ENDPOINTS_DIR, name);
-    const lines = readFileSync(full, "utf8").split("\n");
-    lines.forEach((line, idx) => {
-      for (const m of line.matchAll(RX_CITE)) {
-        citations.push({
-          id: m[1],
-          file: relative(REPO_ROOT, full),
-          line: idx + 1,
-        });
-      }
+  for (const scope of CONSUMER_SCOPES) {
+    if (!existsSync(scope.dir)) fail(`consumer dir missing: ${scope.dir}`);
+    const files = walkMd(scope.dir).filter((full) => {
+      const base = full.split("/").pop();
+      if (CONSUMER_EXCLUDED.has(base)) return false;
+      if (scope.fileFilter && !scope.fileFilter(base)) return false;
+      return true;
     });
+    for (const full of files) {
+      const lines = readFileSync(full, "utf8").split("\n");
+      lines.forEach((line, idx) => {
+        for (const m of line.matchAll(RX_CITE)) {
+          citations.push({
+            id: m[1],
+            file: relative(REPO_ROOT, full),
+            line: idx + 1,
+            scope: scope.label,
+          });
+        }
+      });
+    }
   }
   return citations;
 }
@@ -167,7 +173,8 @@ function main() {
     console.log("G-30 AT citation validity:");
     console.log(`  registered AT IDs (closed):         ${registered.ids.size}`);
     console.log(`  registered open prefixes:           ${registered.openPrefixes.size}`);
-    console.log(`  endpoint citations scanned:         ${citations.length}`);
+    console.log(`  consumer scopes scanned:            ${CONSUMER_SCOPES.length}`);
+    console.log(`  citations scanned:                  ${citations.length}`);
     console.log(`  unique cited IDs:                   ${uniqueCited.size}`);
     console.log(`  unregistered citations:             0`);
     console.log("  ✅ all citations resolve");
