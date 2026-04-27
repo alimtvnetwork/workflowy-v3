@@ -278,6 +278,118 @@ function printScopeReport(scope, files, matrix, asymmetries) {
   }
 }
 
+// =====================================================================
+// G-31.5 — Meta: every per-scope exemption Set entry MUST carry a
+// rationale comment. Parses the runner's own source; for each named
+// exemption Set, extracts every active string-literal entry and verifies
+// rationale presence:
+//   * trailing inline `// …` on the same line (preferred), OR
+//   * one or more `// …` lines immediately above (no blank-line gap).
+// Sample/template lines (`// "Foo → Bar"`) are skipped — those are not
+// active entries, just hints for future authors.
+//
+// Algorithm ported verbatim from G-32.4 in
+// scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs (v4.0.0).
+// =====================================================================
+
+const ALLOWLIST_NAMES = [
+  "WORKFLOWS_EXEMPT",
+  "FEATURES_EXEMPT",
+  "ENDPOINTS_EXEMPT",
+  "DB_DIAGRAM_EXEMPT",
+];
+
+const SELF_PATH = "scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs";
+
+function findUnrationaledEntries() {
+  let lines;
+  try {
+    lines = readFileSync(SELF_PATH, "utf8").split("\n");
+  } catch (e) {
+    fail(`G-31.5: cannot read self at ${SELF_PATH}: ${e.message}`);
+  }
+  const violations = []; // [{listName, entry, line}]
+
+  for (const listName of ALLOWLIST_NAMES) {
+    const startRe = new RegExp(`^const\\s+${listName}\\s*=\\s*new\\s+Set\\(\\[`);
+    let i = lines.findIndex((l) => startRe.test(l));
+    if (i < 0) {
+      fail(`G-31.5: cannot find allow-list \`${listName}\` in ${SELF_PATH}`);
+    }
+    i += 1; // first line inside the array literal
+
+    while (i < lines.length) {
+      const raw = lines[i];
+      const trimmed = raw.trim();
+
+      // End of array literal.
+      if (trimmed.startsWith("]")) break;
+
+      // Active entry: starts with `"` (after optional whitespace).
+      // We deliberately ignore `// "..."` sample-template lines.
+      const entryMatch = raw.match(/^\s*"([^"]+)"\s*,?\s*(\/\/.*)?$/);
+      if (entryMatch) {
+        const entry = entryMatch[1];
+        const inlineComment = entryMatch[2];
+
+        // Trailing inline rationale satisfies the rule.
+        if (inlineComment) {
+          i += 1;
+          continue;
+        }
+
+        // Otherwise scan upwards for contiguous `// …` lines (no blank gap).
+        let j = i - 1;
+        let hasAbove = false;
+        while (j >= 0) {
+          const t = lines[j].trim();
+          if (t === "") break; // blank line breaks the block
+          if (t.startsWith("//")) {
+            // Skip pure section separators like `// ----` or `// ===`.
+            if (/^\/\/\s*[-=*_]{3,}\s*$/.test(t)) {
+              j -= 1;
+              continue;
+            }
+            hasAbove = true;
+            break;
+          }
+          break; // anything non-blank, non-comment ends the search
+        }
+
+        if (!hasAbove) {
+          violations.push({ listName, entry, line: i + 1 });
+        }
+      }
+
+      i += 1;
+    }
+  }
+
+  return violations;
+}
+
+function printRationaleReport(violations) {
+  console.log("");
+  console.log(`G-31.5 (meta, ERROR) exemption-Set rationale-comment coverage:`);
+  console.log(`  allow-lists scanned:                ${ALLOWLIST_NAMES.length} (${ALLOWLIST_NAMES.join(", ")})`);
+  console.log(`  entries missing rationale:          ${violations.length}`);
+
+  if (violations.length === 0) {
+    console.log(`  ✅ every exemption-Set entry carries a rationale (inline or above)`);
+    return;
+  }
+
+  console.log("");
+  console.log(`  ❌ ${violations.length} unrationaled entry/entries:`);
+  for (const v of violations) {
+    console.log(`    [${v.listName}] "${v.entry}"`);
+    console.log(`      source:    ${SELF_PATH}:${v.line}`);
+  }
+  console.log("");
+  console.log(`  To fix: add either (a) a trailing \`// rationale\` on the same line, or`);
+  console.log(`  (b) a \`// …\` comment line immediately above (no blank line in between).`);
+}
+
 // --- main ---
 let totalErrorAsym = 0;
 let totalWarnAsym = 0;
@@ -306,7 +418,11 @@ for (const scope of SCOPES) {
   else totalWarnAsym += asym.length;
 }
 
-console.log("");
-console.log(`G-31 summary: ${SCOPES.length} scope(s) scanned — ${totalErrorAsym} ERROR-scope asymmetries, ${totalWarnAsym} WARN-scope asymmetries.`);
+const unrationaled = findUnrationaledEntries();
+printRationaleReport(unrationaled);
 
-process.exit(totalErrorAsym === 0 ? 0 : 1);
+console.log("");
+console.log(`G-31 summary: ${SCOPES.length} scope(s) scanned — ${totalErrorAsym} ERROR-scope asymmetries, ${totalWarnAsym} WARN-scope asymmetries, ${unrationaled.length} unrationaled exemption entry/entries.`);
+
+const failed = totalErrorAsym > 0 || unrationaled.length > 0;
+process.exit(failed ? 1 : 0);
