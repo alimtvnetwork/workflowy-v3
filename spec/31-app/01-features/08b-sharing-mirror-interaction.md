@@ -61,7 +61,7 @@ Standard LWW (per `14b-offline-queue.md`) applies to `Permissions` rows.
 
 ---
 
-## 5. Cross-references
+## Related
 
 - `spec/31-app/01-features/08-share-dialog.md` (parent SSOT)
 - `spec/31-app/01-features/09b-mirror-peer-group-model.md` (peer-group identity)

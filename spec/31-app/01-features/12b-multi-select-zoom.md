@@ -75,7 +75,7 @@ VIRTUAL_SCOPE ──(deselect all)──▶ stays in VIRTUAL_SCOPE (membership l
 
 ---
 
-## 7. Cross-references
+## Related
 
 - `spec/31-app/01-features/12-multi-select.md` (parent SSOT)
 - `spec/31-app/01-features/05-interactions.md` (zoom hotkey)

@@ -90,7 +90,7 @@ Visual example:
 
 ---
 
-## 7. Cross-References
+## Related
 
 - **ItemType SSOT:** [`spec/20-enums-index.md`](../../20-enums-index.md) §3.5 — `dashboard` is one of 12 `ItemType` values; child-rendering effect (parallel to `board`).
 - **Why dashboard is an ItemType (not a ViewMode):** [`spec/18-spec-issues/07-audit-03-dashboard-taxonomy.md`](../../18-spec-issues/07-audit-03-dashboard-taxonomy.md) §2.3.

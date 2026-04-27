@@ -71,7 +71,7 @@ When `Items.Id = X` is hard-deleted:
 
 ---
 
-## 7. Cross-references
+## Related
 
 - `spec/31-app/01-features/11-trash-view.md` (parent SSOT)
 - `spec/31-app/01-features/09b-mirror-peer-group-model.md` (peer-group dissolve rule)

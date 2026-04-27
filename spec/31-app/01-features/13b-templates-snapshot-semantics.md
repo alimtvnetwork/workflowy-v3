@@ -71,7 +71,7 @@ fn instantiate(template_id, target_parent_id, owner_id):
 
 ---
 
-## 5. Cross-references
+## Related
 
 - `spec/31-app/01-features/13-templates.md` (parent SSOT)
 - `spec/31-app/01-features/09b-mirror-peer-group-model.md` (why mirrors don't survive snapshot)
