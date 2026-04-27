@@ -1243,16 +1243,23 @@
 | [`31-app/01-features/05a-hotkey-table.md`](./31-app/01-features/05a-hotkey-table.md) | Hotkey Table — Machine-Readable SSOT | 1.0.0 | Active |
 | [`31-app/01-features/06-item-context-menu.md`](./31-app/01-features/06-item-context-menu.md) | Item Context Menu (⋮) | 2.5.1 | — |
 | [`31-app/01-features/07-board-view.md`](./31-app/01-features/07-board-view.md) | Board View Specification | 2.5.0 | — |
+| [`31-app/01-features/07b-dashboard-view.md`](./31-app/01-features/07b-dashboard-view.md) | Dashboard View — SSOT | 1.0.0 | Active |
 | [`31-app/01-features/08-share-dialog.md`](./31-app/01-features/08-share-dialog.md) | Share Dialog Specification | 2.3.0 | — |
+| [`31-app/01-features/08b-sharing-mirror-interaction.md`](./31-app/01-features/08b-sharing-mirror-interaction.md) | Sharing × Mirror Interaction — Clarification | 1.0.0 | Active |
 | [`31-app/01-features/09-mirrors.md`](./31-app/01-features/09-mirrors.md) | Mirror Specification | 2.4.0 | — |
 | [`31-app/01-features/09a-mirror-cycle-detection.md`](./31-app/01-features/09a-mirror-cycle-detection.md) | Mirror Cycle Detection — Algorithm Spec | 1.1.0 | — |
 | [`31-app/01-features/09b-mirror-peer-group-model.md`](./31-app/01-features/09b-mirror-peer-group-model.md) | Mirror Peer-Group Model — SSOT | 1.0.0 | — |
 | [`31-app/01-features/10-today-view.md`](./31-app/01-features/10-today-view.md) | Today View Specification | 2.1.0 | — |
 | [`31-app/01-features/11-trash-view.md`](./31-app/01-features/11-trash-view.md) | Trash View Specification | 2.4.0 | — |
+| [`31-app/01-features/11b-trash-reaper.md`](./31-app/01-features/11b-trash-reaper.md) | Trash Reaper — 30-Day Hard Delete | 1.0.0 | Active |
 | [`31-app/01-features/12-multi-select.md`](./31-app/01-features/12-multi-select.md) | Multi-Select Behavior | 2.3.0 | — |
+| [`31-app/01-features/12b-multi-select-zoom.md`](./31-app/01-features/12b-multi-select-zoom.md) | Multi-Select Zoom — Virtual Scope | 1.0.0 | Active |
 | [`31-app/01-features/13-templates.md`](./31-app/01-features/13-templates.md) | Template Application Flow | 2.3.0 | — |
+| [`31-app/01-features/13b-templates-snapshot-semantics.md`](./31-app/01-features/13b-templates-snapshot-semantics.md) | Templates — Snapshot Semantics | 1.0.0 | Active |
 | [`31-app/01-features/14-concurrency-and-sync.md`](./31-app/01-features/14-concurrency-and-sync.md) | Concurrency & Sync | 1.7.0 | — |
+| [`31-app/01-features/14b-offline-queue.md`](./31-app/01-features/14b-offline-queue.md) | Offline Queue — Full Local Mirror + LWW | 1.0.0 | Active |
 | [`31-app/01-features/15-roles-and-permissions.md`](./31-app/01-features/15-roles-and-permissions.md) | Roles & Permissions | 1.6.0 | Active |
+| [`31-app/01-features/16-search-ranking.md`](./31-app/01-features/16-search-ranking.md) | Search Ranking — Hybrid Relevance + Recency | 1.0.0 | Active |
 | [`31-app/01-features/97-acceptance-criteria.md`](./31-app/01-features/97-acceptance-criteria.md) | App Features — Acceptance Criteria | 2.1.0 | Active |
 | [`31-app/01-features/99-consistency-report.md`](./31-app/01-features/99-consistency-report.md) | Consistency Report — 01-features | 2.1.0 | — |
 | [`31-app/02-workflows/00-overview.md`](./31-app/02-workflows/00-overview.md) | Workflows | 2.1.0 | — |
