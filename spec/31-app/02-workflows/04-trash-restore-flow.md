@@ -1,8 +1,8 @@
 # Trash Restore Flow
 
-> **Version:** 1.1.0
+> **Version:** 1.2.0
 > **Created:** 2026-04-26 (UTC+8) — APP-FIX-12 (closes audit F-10)
-> **Updated:** 2026-04-26 (UTC+8) — v1.1.0 added canonical `AT-APP-NN` mapping column (polish #2)
+> **Updated:** 2026-04-27 (UTC+8) — v1.2.0 added back-link to `05-trash-reaper-flow.md` (F25)
 > **Status:** Canonical — cross-feature flow
 > **Parent:** [`00-overview.md`](./00-overview.md)
 > **SSOT for the underlying feature:** [`spec/31-app/01-features/11-trash-view.md`](../01-features/11-trash-view.md)
@@ -127,6 +127,7 @@ Restore is naturally idempotent — replaying after success is a no-op (LWW guar
 
 - [`02-template-application-flow.md`](./02-template-application-flow.md) — sister cross-feature flow
 - [`03-share-invite-flow.md`](./03-share-invite-flow.md) — sister cross-feature flow
+- [`05-trash-reaper-flow.md`](./05-trash-reaper-flow.md) — **terminal counterpart**: restore re-surfaces soft-deleted rows within the 30-day window; reaper hard-deletes the same rows once the window elapses (mutually exclusive on a given `Item.DeletedAt`)
 - [`../01-features/11-trash-view.md`](../01-features/11-trash-view.md) — feature-level SSOT
 - [`../01-features/14-concurrency-and-sync.md`](../01-features/14-concurrency-and-sync.md) §14.4 — `Mirrors.BrokenAt` LWW
 - [`../01-features/09-mirrors.md`](../01-features/09-mirrors.md) — broken-mirror semantics
