@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * G-31 — Cross-Reference Reciprocity Gate (v2.4.0)
+ * G-31 — Cross-Reference Reciprocity Gate (v2.5.0)
  *
  * Asserts that every cross-sibling Related-section link in a scoped
  * folder is reciprocated by a back-link in the target's own
