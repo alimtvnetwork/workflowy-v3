@@ -229,15 +229,21 @@ The plugin uses Composer's PSR-4 autoloader. The §1 layout maps to one PSR-4 ro
 
 ---
 
-## 6. Required Follow-Up Spec Edits
+## 6. Cleanup-Pass Receipt — DONE 2026-04-27
 
-These edits retire the `wp-plugin/src/` prefix from the two specs that still reference it. They are deferred to a single cleanup pass (NOT made in this commit) so reviewers can audit the path-canonicalisation as one diff:
+The cleanup pass v1.0.0 deferred is now complete. All `wp-plugin/src/` references retired and the `Auth.php` placeholder resolved.
 
-| # | File | Change |
-|---|------|--------|
-| 1 | `08-api-rate-limiting.md` | `wp-plugin/src/Middleware/RateLimit.php` → `wp-plugin/Middleware/RateLimit.php` (also `BucketProfiles.php`); `wp-plugin/src/Migrations/0007_rate_limit_buckets.sql` → `wp-plugin/Migrations/0007_rate_limit_buckets.sql`. Bump policy version per change-log. |
-| 2 | `18-g25-token-lifecycle-coverage-gate.md` | `wp-plugin/src/Repository/CycleCheck.php` → `wp-plugin/Repository/CycleCheck.php`; `wp-plugin/src/Repository/sql/cycle-check.sql` → `wp-plugin/Repository/sql/cycle-check.sql`. Bump algorithm-spec version. |
-| 3 | `11-session-token-lifecycle.md` | Clarify the placeholder `wp-plugin/Auth.php` reference — replace with `wp-plugin/Auth/SignIn.php` or `wp-plugin/Auth/TokenStore.php` per call-site context. |
+| # | File | Edit applied |
+|---|------|--------------|
+| 1 | `08-api-rate-limiting.md` (Component Contract L182–L184) | `wp-plugin/src/Middleware/RateLimit.php` → `wp-plugin/Middleware/RateLimit.php`; `wp-plugin/src/Middleware/BucketProfiles.php` → `wp-plugin/Middleware/BucketProfiles.php`; `wp-plugin/src/Migrations/0007_rate_limit_buckets.sql` → `wp-plugin/Migrations/0007_rate_limit_buckets.sql`. (No change-log section in this file — edits are append-only path corrections within an aspirational-paths table.) |
+| 2 | `01-features/09a-mirror-cycle-detection.md` (AT-CYCLE-10 + Component Contract) | `wp-plugin/src/Repository/CycleCheck.php` → `wp-plugin/Repository/CycleCheck.php`; `wp-plugin/src/Repository/sql/cycle-check.sql` → `wp-plugin/Repository/sql/cycle-check.sql`. (Source of cycle-check refs was `09a-...md`, NOT `18-g25-...md` as v1.0.0 §6 incorrectly claimed.) |
+| 3 | `01-features/15-roles-and-permissions.md` (§Location L253–L258) | `plugin-root/src/Auth/Auth.php` (legacy directory diagram) → `wp-plugin/Auth/Auth.php`. Added cross-link to this skeleton spec. |
+| 4 | `15-g22-error-code-catalogue-gate.md` (AT-G22-02 L153) | `wp-plugin/Auth.php` (placeholder in AT example) → `wp-plugin/Auth/Auth.php` (canonical static helper). |
+| 5 | This spec §1 (Auth/ tree) | Added `Auth.php` row to `Auth/` directory: `static class Auth::hasRole() — sole authorization helper (per 15-roles-and-permissions, namespace WorkFlowy\Auth)`. |
+
+> **Inventory correction:** v1.0.0 §6 row 2 misattributed the `wp-plugin/src/Repository/...` references to `18-g25-token-lifecycle-coverage-gate.md`. Re-scan revealed the actual source was `01-features/09a-mirror-cycle-detection.md`. v1.0.0 §6 row 3 misattributed the `Auth.php` placeholder to `11-session-token-lifecycle.md`. Re-scan revealed the actual sources were `15-roles-and-permissions.md` and `15-g22-error-code-catalogue-gate.md`. Both attribution errors corrected by the inventory reconciliation in §2 above (rows now factual).
+
+> **Verification:** `rg "wp-plugin/src/" spec/` returns 4 hits, all inside this spec's documentary text (§Why this Spec Exists, §6 Cleanup-Pass Receipt, AT-SKEL-07, §3 Ruling) — all are intentional historical or didactic references. Zero live `wp-plugin/src/` paths remain in the corpus.
 
 ---
 
