@@ -109,6 +109,7 @@ flowchart LR
 | `IdxReaperRuns_RanAt` | `(RanAt DESC)` | `EP-REAPER-RUNS-LIST` | Newest-first audit listing |
 | `IdxMirrorPeerGroupMember_ItemId` | `(ItemId)` UNIQUE (full-table) | `EP-MIRRORS-GROUP-GET`, `EP-MIRRORS-DETACH` | Item → peer group lookup; enforces "Item in ≤1 group" invariant. **Full-table UNIQUE, not partial** — detach is performed by row DELETE per `02-workflows/08-mirror-detach-flow.md` step 3c, so a "soft-detach" `DetachedAt` column would be redundant and does not exist (corrected in v1.4.0 / F26) |
 | `IdxMirrorPeerGroupMember_GroupId` | `(MirrorPeerGroupId)` | List peers in a group | FK index for fan-out reads |
+| `IdxMirrorPeerGroup_CanonicalItemId` | `(CanonicalItemId)` | Canonical-item → group lookup; resolves "what group does this canonical item own?" during peer-group reads | FK fan-out index. Emitted as `IdxMirrorGroup_CanonicalItemId` in `03-app-indexes.sql` (per `sql/00-overview.md` §Index-name aliases). Added to docs in v1.5.0 (F-future-G32b) — gate G-32.3 caught the prior omission |
 
 ---
 
