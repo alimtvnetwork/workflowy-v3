@@ -22,7 +22,19 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const REPO_ROOT = resolve(__dirname, "..", "..");
 const APP_ROOT = join(REPO_ROOT, "spec/31-app");
-const ENDPOINTS_DIR = join(APP_ROOT, "06-endpoints");
+
+// G-30.1 — extended consumer scope.
+// Each entry: { dir, label } — the gate scans every *.md in dir
+// (recursively), excluding files in CONSUMER_EXCLUDED.
+const CONSUMER_SCOPES = [
+  { dir: join(APP_ROOT, "06-endpoints"), label: "06-endpoints" },
+  { dir: join(APP_ROOT, "02-workflows"), label: "02-workflows" },
+  {
+    dir: join(APP_ROOT, "07-db-diagram"),
+    label: "07-db-diagram",
+    fileFilter: (name) => name === "04-feature-slices.md",
+  },
+];
 
 const CONSUMER_EXCLUDED = new Set([
   "99-consistency-report.md",
