@@ -287,6 +287,13 @@ On client startup OR SSE drop:
 | Split-state acceptance | `src/server/concurrency/fieldLevelLWW.ts` | `concurrency-split-state`, `concurrency-bulk-vs-single` | AT-CONCURRENCY-11, 13 |
 | Stale-tab banner trigger | `src/lib/sync/StaleTabDetector.ts` | `concurrency-stale-tab` | AT-CONCURRENCY-12 |
 | Conflict log writer | `src/server/concurrency/conflictLog.ts` | `concurrency-conflict-log` | AT-CONCURRENCY-15 |
+| SSE endpoint handler (WP) | `wp-plugin/Sync/SseEndpoint.php` | `sse-endpoint-handshake` | AT-CONCURRENCY-16 |
+| SSE event framer | `wp-plugin/Sync/EventFramer.php` | `sse-event-frame` | AT-CONCURRENCY-17 |
+| SSE resume/replay buffer | `wp-plugin/Sync/ResumeBuffer.php` | `sse-resume-replay` | AT-CONCURRENCY-18 |
+| Cursor-overflow detector | `wp-plugin/Sync/BackpressureGuard.php` | `sse-cursor-overflow` | AT-CONCURRENCY-19 |
+| Poll-fallback endpoint | `wp-plugin/Sync/PollEndpoint.php` | `sse-poll-fallback` | AT-CONCURRENCY-20 |
+| Transactional emit hook | `wp-plugin/Sync/TransactionalEmitter.php` | `sse-emission-atomic` | AT-CONCURRENCY-21 |
+| Forbidden-transport guard (CI) | `scripts/spec-hygiene/forbidden-transports.mjs` | `sse-forbidden-transports` | AT-CONCURRENCY-22 |
 
 > **Note:** Components are planned paths — none exist yet. Feeds the global component-contract map (M-3).
 
