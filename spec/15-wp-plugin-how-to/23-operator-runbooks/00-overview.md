@@ -27,6 +27,7 @@ A runbook MUST cite the policy SSOT it implements (forward link). The policy SSO
 | File | Implements policy | Severity of failure |
 |------|---|---|
 | [`01-disaster-recovery-restore.md`](./01-disaster-recovery-restore.md) | A-44 (`14-backup-and-dr-policy.md`) §7 | `fatal` — service down |
+| [`02-backup-key-rotation.md`](./02-backup-key-rotation.md) | A-44 (`14-backup-and-dr-policy.md`) §5 | `warn` (scheduled) / `fatal` (if retired KEK destroyed before 2-yr overlap expires) |
 
 ## Authoring rules
 
