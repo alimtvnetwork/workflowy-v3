@@ -115,7 +115,7 @@ node scripts/spec-hygiene/00-run-all.mjs
 | Conventions rollup | [`../05-conventions/97-acceptance-criteria.md`](../05-conventions/97-acceptance-criteria.md) |
 | WP-plugin folder skeleton (Migrations/ naming) | [`../05-conventions/22-wp-plugin-folder-skeleton.md`](../05-conventions/22-wp-plugin-folder-skeleton.md) |
 | Audit-log policy (lifecycle audit pairing) | [`../05-conventions/09-audit-log-policy.md`](../05-conventions/09-audit-log-policy.md) |
-| Concurrency + LWW (Mirrors.BrokenAt) | [`../14-concurrency-and-sync.md`](../14-concurrency-and-sync.md) |
+| Concurrency + LWW (Mirrors.BrokenAt) | [`../01-features/14-concurrency-and-sync.md`](../01-features/14-concurrency-and-sync.md) |
 | Glossary | [`spec/19-glossary.md`](../../19-glossary.md) |
 | Enum registry | [`spec/20-enums-index.md`](../../20-enums-index.md) |
 
