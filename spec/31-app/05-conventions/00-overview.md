@@ -32,6 +32,7 @@
 | 17 | [`17-g24-role-escalation-coverage-gate.md`](./17-g24-role-escalation-coverage-gate.md) | G-24 Role-Escalation Drift Gate — Algorithm Spec | 230 |
 | 18 | [`18-g25-token-lifecycle-coverage-gate.md`](./18-g25-token-lifecycle-coverage-gate.md) | G-25 Session & Token Lifecycle Drift Gate — Algorithm Spec | 240 |
 | 19 | [`19-g26-mfa-coverage-gate.md`](./19-g26-mfa-coverage-gate.md) | G-26 MFA Policy Drift Gate — Algorithm Spec | 250 |
+| 20 | [`20-g27-export-coverage-gate.md`](./20-g27-export-coverage-gate.md) | G-27 Data-Export Policy Drift Gate — Algorithm Spec | 260 |
 
 <!-- AUTO-TOC:END -->
 
@@ -87,6 +88,7 @@ Conventions specification module. See files below.
 | 17 | [17-g24-role-escalation-coverage-gate.md](17-g24-role-escalation-coverage-gate.md) | G-24 hygiene-gate algorithm: four-axis privilege check — role-mutation gating (30-line window), break-glass containment (single file), 24h ExpiresAt static bound, test-file parity for `Auth/Escalation/` source files |
 | 18 | [18-g25-token-lifecycle-coverage-gate.md](18-g25-token-lifecycle-coverage-gate.md) | G-25 hygiene-gate algorithm: five-axis token check — browser-storage prohibition (no `localStorage`/`sessionStorage`/`IndexedDB` token writes), issuance/revocation audit pairing, refresh-cookie path-scoping + `HttpOnly`/`Secure`/`SameSite=Strict` hardening |
 | 19 | [19-g26-mfa-coverage-gate.md](19-g26-mfa-coverage-gate.md) | G-26 hygiene-gate algorithm: five-axis MFA check — forbidden-literal prohibition (`'sms'`/`'email_otp'`/`'voice'`/`'remember_mfa'`/`MFA_DISABLED`/`bypass_mfa`), mutation-route freshness declaration, step-up-map bidirectional parity (spec ↔ runtime), factor-registry static containment (TOTP/WebAuthn/Recovery only), recovery-code argon2id hash strength |
+| 20 | [20-g27-export-coverage-gate.md](20-g27-export-coverage-gate.md) | G-27 hygiene-gate algorithm: six-axis export check — `/export/*` route MFA(300) + rate-limit hardening, `workflowy-exports/` writes paired with `Crypto::aesGcmEncrypt()` within 30 lines, serializer redactor-precedence over `Owner`/`SharedWith`/etc., `FormatRegistry::ALLOWED` mutations contained to canonical file, install-hook `.htaccess` deny-directive presence, signed-URL leak prevention (Email is only sink) |
 
 ---
 
@@ -121,6 +123,7 @@ Conventions specification module. See files below.
 - [`17-g24-role-escalation-coverage-gate.md`](./17-g24-role-escalation-coverage-gate.md) — G-24 role-escalation drift gate (4-axis privilege gating)
 - [`18-g25-token-lifecycle-coverage-gate.md`](./18-g25-token-lifecycle-coverage-gate.md) — G-25 session/token-lifecycle drift gate (5-axis token hygiene)
 - [`19-g26-mfa-coverage-gate.md`](./19-g26-mfa-coverage-gate.md) — G-26 MFA policy drift gate (5-axis MFA hygiene)
+- [`20-g27-export-coverage-gate.md`](./20-g27-export-coverage-gate.md) — G-27 data-export policy drift gate (6-axis export hygiene)
 
 **See also:**
 
