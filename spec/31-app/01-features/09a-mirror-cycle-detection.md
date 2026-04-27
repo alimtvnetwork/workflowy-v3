@@ -1,7 +1,7 @@
 # Mirror Cycle Detection — Algorithm Spec
 
-> **Version:** 1.0.0
-> **Updated:** 2026-04-26 (UTC+8)
+> **Version:** 1.1.0
+> **Updated:** 2026-04-27 (UTC+8) — Reshaped Component Contract to canonical `Surface | Component path | data-testid | Acceptance tests` schema (was `Concern | Path | Function`); each row now wires `mirror-cycle-error` testid to AT-MIRRORS-08. Closes hygiene check `07-extract-contract-map.mjs`. Algorithm signatures preserved as a §Note below the table. Prior: 2026-04-26 (UTC+8) — initial spec.
 > **Parent:** [09-mirrors.md](./09-mirrors.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 > **Closes:** A-38 (cycle-detection algorithmic SSOT — gap identified during A-28 mirror-drift sweep)
@@ -160,15 +160,17 @@ If the query returns a row → reject with `ERR_CYCLE`.
 
 ## Component Contract
 
-> **Aspirational paths** — files below are the agreed implementation targets, not yet present.
+> **Aspirational paths** — files below are the agreed implementation targets, not yet present. Schema follows the canonical `Surface | Component path | data-testid | Acceptance tests` shape enforced by `scripts/spec-hygiene/07-extract-contract-map.mjs`.
 
-| Concern | Path | Function |
-|---------|------|----------|
-| Server algorithm | `wp-plugin/Repository/CycleCheck.php` | `public static function hasCycle(string $SourceId, string $TargetParentId): bool` |
-| Recursive CTE constant | `wp-plugin/Repository/sql/cycle-check.sql` | Verbatim copy of the SQL above |
-| Client optimistic check | `src/lib/mirror-cycle.ts` | `hasCycle(sourceId, targetParentId, store): boolean` (in-memory mirror of the SQL) |
-| Cycle toast | `src/components/feedback/MirrorErrorToast.tsx` | Reads `mirror-cycle-error` testid (already exists per 09-mirrors.md L191) |
-| Hygiene drift check | `scripts/spec-hygiene/18-check-cycle-algo.mjs` | Asserts byte-equality between SQL block here and `cycle-check.sql` |
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| Server cycle-check algorithm | `wp-plugin/Repository/CycleCheck.php` | `cycle-move-rejected`, `cycle-mirror-rejected` | AT-CYCLE-01, AT-CYCLE-02, AT-CYCLE-03, AT-CYCLE-04, AT-CYCLE-07, AT-CYCLE-08, AT-CYCLE-09 |
+| Recursive CTE constant (SSOT SQL) | `wp-plugin/Repository/sql/cycle-check.sql` | `cycle-hygiene-drift` | AT-CYCLE-10 |
+| Client optimistic cycle check | `src/lib/mirror-cycle.ts` | `cycle-self-parent`, `cycle-clean-target` | AT-CYCLE-01, AT-CYCLE-05, AT-CYCLE-06 |
+| Cycle error toast | `src/components/feedback/MirrorErrorToast.tsx` | `mirror-cycle-error` | AT-CYCLE-08 |
+| Hygiene drift check (SQL byte-equality) | `scripts/spec-hygiene/18-check-cycle-algo.mjs` | `cycle-hygiene-drift` | AT-CYCLE-10 |
+
+> **Note:** The signature contract for the server algorithm is `public static function hasCycle(string $SourceId, string $TargetParentId): bool`; the client mirror is `hasCycle(sourceId, targetParentId, store): boolean`. The SQL block in §Algorithm above is byte-equal to `wp-plugin/Repository/sql/cycle-check.sql` (enforced by hygiene check 18).
 
 ---
 

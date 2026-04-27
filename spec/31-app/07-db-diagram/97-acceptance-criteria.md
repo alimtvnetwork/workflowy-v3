@@ -1,7 +1,7 @@
 # DB Diagram — Acceptance Criteria
 
-> **Version:** 1.0.0
-> **Updated:** 2026-04-27 (UTC+8)
+> **Version:** 1.0.1
+> **Updated:** 2026-04-27 (UTC+8) — Patch: fixed broken link to `14-concurrency-and-sync.md` (corrected path from `../` to `../01-features/`). Closes hygiene check `03-check-links.mjs`. Prior: 2026-04-27 (UTC+8) v1.0.0 — Full curation, 21 criteria authored.
 > **Status:** ✅ Curated — every ERD source file has a verifiable rollup criterion. Stub status retired.
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
@@ -115,7 +115,7 @@ node scripts/spec-hygiene/00-run-all.mjs
 | Conventions rollup | [`../05-conventions/97-acceptance-criteria.md`](../05-conventions/97-acceptance-criteria.md) |
 | WP-plugin folder skeleton (Migrations/ naming) | [`../05-conventions/22-wp-plugin-folder-skeleton.md`](../05-conventions/22-wp-plugin-folder-skeleton.md) |
 | Audit-log policy (lifecycle audit pairing) | [`../05-conventions/09-audit-log-policy.md`](../05-conventions/09-audit-log-policy.md) |
-| Concurrency + LWW (Mirrors.BrokenAt) | [`../14-concurrency-and-sync.md`](../14-concurrency-and-sync.md) |
+| Concurrency + LWW (Mirrors.BrokenAt) | [`../01-features/14-concurrency-and-sync.md`](../01-features/14-concurrency-and-sync.md) |
 | Glossary | [`spec/19-glossary.md`](../../19-glossary.md) |
 | Enum registry | [`spec/20-enums-index.md`](../../20-enums-index.md) |
 
