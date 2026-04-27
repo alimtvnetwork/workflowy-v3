@@ -625,7 +625,7 @@ function collectColumnAliasMap() {
   return map;
 }
 
-
+function findDocRow(indexesText, name, alias) {
   const lines = indexesText.split("\n");
   const probes = alias ? [name, alias] : [name];
   for (const line of lines) {
