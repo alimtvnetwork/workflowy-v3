@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-27  
-**Total Files:** 1336  
+**Total Files:** 1337  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -33,7 +33,7 @@
 - [16-generic-cli](#16-generic-cli) — 43 file(s)
 - [17-generic-update](#17-generic-update) — 11 file(s)
 - [18-spec-issues](#18-spec-issues) — 14 file(s)
-- [31-app](#31-app) — 98 file(s)
+- [31-app](#31-app) — 99 file(s)
 - [32-ui-design](#32-ui-design) — 120 file(s)
 - [33-feedback-report](#33-feedback-report) — 3 file(s)
 - [34-activity-feed](#34-activity-feed) — 3 file(s)
@@ -1267,6 +1267,7 @@
 | [`31-app/03-edge-cases/02-product-boundaries.md`](./31-app/03-edge-cases/02-product-boundaries.md) | Product Boundaries | 1.1.0 | — |
 | [`31-app/03-edge-cases/99-consistency-report.md`](./31-app/03-edge-cases/99-consistency-report.md) | Consistency Report — 03-edge-cases | 1.0.1 | — |
 | [`31-app/04-fixtures/00-overview.md`](./31-app/04-fixtures/00-overview.md) | Fixtures — JSON & Sample Payloads | 1.0.0 | — |
+| [`31-app/04-fixtures/99-consistency-report.md`](./31-app/04-fixtures/99-consistency-report.md) | Consistency Report — 04-fixtures | 1.0.0 | — |
 | [`31-app/04-roadmap/00-overview.md`](./31-app/04-roadmap/00-overview.md) | Roadmap | 1.1.0 | — |
 | [`31-app/04-roadmap/01-implementation-phases.md`](./31-app/04-roadmap/01-implementation-phases.md) | Implementation Phases | 1.1.0 | — |
 | [`31-app/04-roadmap/02-resolved-decisions.md`](./31-app/04-roadmap/02-resolved-decisions.md) | Resolved Product Decisions | 1.1.0 | — |
@@ -1506,4 +1507,4 @@
 
 ---
 
-*Auto-generated index — 1336 files across 25 top-level folders.*
+*Auto-generated index — 1337 files across 25 top-level folders.*
