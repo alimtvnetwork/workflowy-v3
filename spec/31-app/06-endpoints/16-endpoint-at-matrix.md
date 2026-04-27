@@ -28,12 +28,13 @@ A single matrix mapping every one of the **41 REST endpoints** in this folder to
 | 7 | `EP-ITEMS-MOVE` | POST | `/items/{id}/move` | `05-interactions.md` | `AT-INTERACT-03`, `AT-INTERACT-04`, `AT-APP-15`, `AT-APPF-31` |
 | 8 | `EP-ITEMS-DUPLICATE` | POST | `/items/{id}/duplicate` | `06-item-context-menu.md` | `AT-CTXMENU-01`, `AT-APP-16`, `AT-APPF-36` |
 | 9 | `EP-ITEMS-COMPLETE` | POST | `/items/{id}/complete` | `06-item-context-menu.md` | `AT-CTXMENU-02`, `AT-INTERACT-05`, `AT-APP-17` |
-| 10 | `EP-ITEMS-TURN` | POST | `/items/{id}/turn-into` | `06-item-context-menu.md` | `AT-CTXMENU-03`, `AT-INFO-07`, `AT-APPF-41` |
+| 10 | `EP-ITEMS-TURN-INTO` | POST | `/items/{id}/turn-into` | `06-item-context-menu.md` | `AT-CTXMENU-03`, `AT-INFO-07`, `AT-APPF-41` |
 | 11 | `EP-ITEMS-TAGS` | PUT | `/items/{id}/tags` | `06-item-context-menu.md` | `AT-CTXMENU-04`, `AT-APP-21`, `AT-APPF-46` |
 | 12 | `EP-VIEWS-TODAY` | GET | `/views/today` | `10-today-view.md` | `AT-TODAY-01`, `AT-TODAY-02`, `AT-APP-24`, `AT-APPF-51` |
 | 13 | `EP-TRASH-LIST` | GET | `/trash` | `11-trash-view.md` | `AT-TRASH-03`, `AT-TRASH-04`, `AT-APP-25`, `AT-APPF-56` |
 | 14 | `EP-TRASH-RESTORE` | POST | `/trash/{id}/restore` | `11-trash-view.md` | `AT-TRASH-05`, `AT-APP-26`, `AT-DDL-08` |
-| 15 | `EP-TRASH-PURGE` | DELETE | `/trash/{id}` | `11-trash-view.md` | `AT-TRASH-06`, `AT-APP-29`, `AT-APPF-61` |
+| 15 | `EP-TRASH-PURGE-ONE` | DELETE | `/trash/{id}` | `11-trash-view.md` | `AT-TRASH-06`, `AT-APP-29`, `AT-APPF-61` |
+| 15b | `EP-TRASH-PURGE-ALL` | DELETE | `/trash` | `11-trash-view.md` | `AT-APP-24`, `AT-TRASH-07` |
 | 16 | `EP-MIRRORS-CREATE` | POST | `/mirrors` | `09-mirrors.md` | `AT-MIRROR-01`, `AT-MIRROR-02`, `AT-APP-33`, `AT-APPF-66` |
 | 17 | `EP-MIRRORS-LIST` | GET | `/mirrors?source={id}` | `09-mirrors.md` | `AT-MIRROR-03`, `AT-MIRROR-04`, `AT-APP-36` |
 | 18 | `EP-MIRRORS-DELETE` | DELETE | `/mirrors/{id}` | `09-mirrors.md` | `AT-MIRROR-05`, `AT-MIRROR-06`, `AT-APPF-71` |
@@ -56,7 +57,7 @@ A single matrix mapping every one of the **41 REST endpoints** in this folder to
 | 35 | `EP-SYNC-POLL` | GET | `/sync/poll?cursor={c}` | `14-concurrency-and-sync.md` | `AT-CONCURRENCY-01`, `AT-CONCURRENCY-02`, `AT-CONCURRENCY-17` |
 | 36 | `EP-SYNC-ACK` | POST | `/sync/ack` | `14-concurrency-and-sync.md` | `AT-CONCURRENCY-03`, `AT-CONCURRENCY-04` |
 | 37 | `EP-SYNC-STREAM` | GET | `/sync/stream` (SSE) | `14-concurrency-and-sync.md` | `AT-CONCURRENCY-05`, `AT-SSE-PHP-01`, `AT-SSE-PHP-02`, `AT-SSE-PHP-05`, `AT-SSE-PHP-08` |
-| 38 | `EP-PERSONAS-ME` | GET | `/me` | `02-personas.md` | `AT-APP-01`, `AT-LAYOUT-02`, `AT-ROLES-04` |
+| 38 | `EP-ME` | GET | `/me` | `02-personas.md` | `AT-APP-01`, `AT-LAYOUT-02`, `AT-ROLES-04` |
 | 39 | `EP-ROLES-LIST` | GET | `/workspaces/{id}/roles` | `15-roles-and-permissions.md` | `AT-ROLES-05`, `AT-ROLES-06` |
 | 40 | `EP-ROLES-ASSIGN` | POST | `/workspaces/{id}/roles` | `15-roles-and-permissions.md` | `AT-ROLES-07`, `AT-ROLES-08` |
 | 41 | `EP-ROLES-REVOKE` | DELETE | `/workspaces/{id}/roles/{userId}` | `15-roles-and-permissions.md` | `AT-ROLES-09`, `AT-ROLES-10` |
