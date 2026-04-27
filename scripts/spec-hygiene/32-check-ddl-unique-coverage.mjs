@@ -350,4 +350,3 @@ printReverseReport(docNames, ddlNames, fabricated);
 
 const failed = violations.length > 0 || fabricated.length > 0;
 process.exit(failed ? 1 : 0);
-process.exit(violations.length === 0 ? 0 : 1);
