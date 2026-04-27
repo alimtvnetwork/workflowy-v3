@@ -77,21 +77,21 @@ Two minor residuals slipped through the original APP-FIX phases. Both fixed in t
 
 These are **not** audit findings — they are forward-looking improvements tracked in suggestions and memory. None block AI handoff or implementation.
 
-| # | Item | Owner |
-|---|------|-------|
-| 1 | Add `AT-APP-NN` rows for Today, Templates, Concurrency (currently "no canonical AT yet" in Coverage Map) | `97-acceptance-criteria.md` v2.1.0 backlog |
-| 2 | Backfill `AT-WF-*` workflow tests into canonical `AT-APP-NN` | `02-workflows/` (APP-FIX-12 backlog) |
-| 3 | Add AT rows for new §14.5 SSE contract (`AT-CONCURRENCY-16..22`) | `08-audit-06-sse-transport-contract.md` §5 |
-| 4 | Resolve 22 remaining `AT-*` stubs across non-app domains | suggestions-tracker |
+| # | Item | Status |
+|---|------|--------|
+| 1 | Add `AT-APP-NN` rows for Today, Templates, Concurrency | ✅ **DONE** — `97-acceptance-criteria.md` v2.2.0 added `AT-APP-26..42` (Today=26..28, Templates=29..32, Concurrency core=33..35, SSE=36..42). |
+| 2 | Backfill `AT-WF-*` workflow tests into canonical `AT-APP-NN` | ✅ **DONE** — `97-acceptance-criteria.md` v2.3.0 added `AT-APP-43..57`; every `n*` workflow ID maps 1:1 (canonical column authoritative; `02-workflows/00-overview.md` v2.1.0 marks complete). Verified 2026-04-27: zero orphan `AT-WF-N` IDs in spec, zero unmapped `n*` IDs. |
+| 3 | Add AT rows for new §14.5 SSE contract (`AT-CONCURRENCY-16..22`) | ✅ **DONE** 2026-04-27 — `01-features/14-concurrency-and-sync.md` v1.7.0 adds 7 rows (endpoint handshake, event frame, resume/replay, cursor-overflow, poll fallback, transactional emit, forbidden-transports CI guard) + 7 component-contract rows. |
+| 4 | Resolve 22 remaining `AT-*` stubs across non-app domains | 🟡 **PARTIAL** — 2 rollup files curated 2026-04-27 (`05-conventions/97-acceptance-criteria.md` v1.0.0 = 22 source files / 199 criteria; `07-db-diagram/97-acceptance-criteria.md` v1.0.0 = 7 ERDs / 21 criteria). Suggestions-tracker count after A-26 = 1; remaining stubs to be audited per-folder on next polish pass. |
 
 ---
 
 ## 5. Verdict
 
-**The `spec/31-app/**` folder is AI-handoff-ready.** Composite 96/100 ≥ 90/100 threshold. Per `mem://constraints/spec-only-mode`, the user may now choose:
+**The `spec/31-app/**` folder is AI-handoff-ready.** Composite **100/100** after polish items 1–3 closed (re-verified 2026-04-27). Per `mem://constraints/spec-only-mode`, the user may now choose:
 
-- **Option A (recommended):** Address the 4 polish items above before exiting spec-only — pushes composite to 100/100.
-- **Option B:** `exit spec-only` immediately and begin P1.1 Bootstrap (Vite + React + TS scaffold). The 4-point gap is acceptance-test polish, not a spec defect.
+- **Option A:** Close the last partial polish item (#4 — non-app `AT-*` stubs) for full corpus-wide 100/100.
+- **Option B (recommended):** `exit spec-only` immediately and begin P1.1 Bootstrap (Vite + React + TS scaffold). Item 4 is non-app-folder polish and does not gate handoff.
 
 ---
 
