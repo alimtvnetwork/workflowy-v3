@@ -84,13 +84,13 @@ const REVERSE_EXEMPT = new Set([
   // Historic / explicitly-rejected names mentioned in §"Indexes intentionally
   // NOT created" — the runner cannot tell prose-rejected from prose-claimed
   // without parsing section headings, so we suppress these by name.
-  "IdxItem_Content",
-  "IdxItem_CreatedAt",
-  "IdxComment_AuthorUserId",
+  "IdxItem_Content",         // §"Indexes NOT created" — FTS5 ships in Phase 2
+  "IdxItem_CreatedAt",       // §"Indexes NOT created" — order is by FractionalIndex, not CreatedAt
+  "IdxComment_AuthorUserId", // §"Indexes NOT created" — "all my comments" is not an MVP view
   // v2-deprecated names mentioned in the v1.3.0 deprecation note for traceability.
-  "IdxItem_MirrorOfItemId",
-  "IdxMirror_SourceItemId",
-  "IdxMirror_MirrorItemId",
+  "IdxItem_MirrorOfItemId",  // dropped by M-117 (legacy Mirror table)
+  "IdxMirror_SourceItemId",  // dropped by M-117 (legacy Mirror table)
+  "IdxMirror_MirrorItemId",  // dropped by M-117 (legacy Mirror table)
 ]);
 
 // G-32.3 allow-list — DDL CREATE INDEX names whose documentation is
