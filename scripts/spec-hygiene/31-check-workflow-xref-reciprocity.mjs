@@ -125,6 +125,20 @@
  *        do NOT influence the exit code; only ERROR-asymmetries and
  *        unrationaled exemptions fail. Cleanup deferred — surfaced for
  *        author triage.
+ * v2.6.0 (F-future-G31d) added the **G-31.7 canonical-heading
+ *        normalisation sub-check** (WARN advisory). Each scope declares
+ *        a `canonicalHead` (the dominant H2 used by the majority of its
+ *        files: workflows + features → "## Related"; endpoints +
+ *        db-diagram → "## Cross-References"). Files using one of the
+ *        OTHER accepted variants are flagged so authors can normalise
+ *        prose for cross-scope readability. Files with no related-section
+ *        heading are NOT flagged here (that's G-31.6's island advisory).
+ *        Added 4 new exemption Sets (`WORKFLOWS_HEAD_EXEMPT` / etc.,
+ *        all empty at v2.6.0) registered in `ALLOWLIST_NAMES` so G-31.5
+ *        enforces rationale comments on heading opt-outs too. Each scope
+ *        entry gained `canonicalHead` + `headExemptions` fields.
+ *        Reciprocity logic still accepts ALL variants — G-31.7 is a
+ *        prose-style advisory only and does NOT influence the exit code.
  */
 
 import { readFileSync, readdirSync, statSync } from "node:fs";
