@@ -120,7 +120,23 @@ field in the meantime.
 
 The 6 acceptance tests **AT-OQ-01 … AT-OQ-06** are defined under the existing `## Acceptance Criteria` heading above. This bare-named heading satisfies G-06; canonical content lives in that section.
 
+| AT ID | Summary | Source |
+|-------|---------|--------|
+| AT-OQ-01 | FIFO replay order preserved | Acceptance Criteria |
+| AT-OQ-02 | LWW resolution on reconnect | Acceptance Criteria |
+| AT-OQ-03 | Partial drain resumes from last-acked op | Acceptance Criteria |
+| AT-OQ-04 | 50-edit batch coalesces banner | Acceptance Criteria |
+| AT-OQ-05 | Corrupt cache triggers full re-sync | Acceptance Criteria |
+| AT-OQ-06 | SaveStatus badge reflects queue state | Acceptance Criteria |
+
 ## Component Contract
+
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| Offline queue store | `src/stores/useOfflineQueueStore.ts` | n/a (pure store) | AT-OQ-01, AT-OQ-02, AT-OQ-03 |
+| SaveStatus indicator | `src/components/sync/SaveStatusBadge.tsx` | `save-status-badge` | AT-OQ-04, AT-OQ-05, AT-OQ-06 |
+
+### Notes
 
 - **Local storage:** SQLite mirror — concrete tech deferred per `mem://constraints/backend-runtime-deferred`.
 - **Queue type:** `SaveStatus` enum surfaced via [`src/types/index.ts`](../../../src/types/index.ts).

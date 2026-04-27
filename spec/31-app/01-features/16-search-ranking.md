@@ -115,7 +115,22 @@ concatenation of buckets from highest to lowest.
 
 The 5 acceptance tests **AT-SR-01 … AT-SR-05** are defined under the existing `## Acceptance Criteria` heading above. This bare-named heading satisfies G-06; canonical content lives in that section.
 
+| AT ID | Summary | Source |
+|-------|---------|--------|
+| AT-SR-01 | Determinism: identical query+snapshot → identical order | Acceptance Criteria |
+| AT-SR-02 | Title-exact dominates 100-substring | Acceptance Criteria |
+| AT-SR-03 | Same-score recency tiebreak then OwnerId | Acceptance Criteria |
+| AT-SR-04 | Mirror peers rank independently with distinct breadcrumbs | Acceptance Criteria |
+| AT-SR-05 | Filter-only query falls into bucket-60 default | Acceptance Criteria |
+
 ## Component Contract
+
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| Server-side ranker | `wp-plugin/src/Search/Ranker.php` | n/a (server-side) | AT-SR-01, AT-SR-02, AT-SR-03 |
+| Coarse-grain bucket strategy | `wp-plugin/src/Search/BucketStrategy.php` | n/a (server-side) | AT-SR-04, AT-SR-05 |
+
+### Notes
 
 - **Ranking site:** server-side query handler (no client-side re-rank).
 - **Determinism contract:** identical `(query, DB snapshot)` MUST produce byte-identical ordering (per **I-SR-01**).

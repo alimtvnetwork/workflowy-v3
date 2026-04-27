@@ -104,7 +104,23 @@ VIRTUAL_SCOPE ──(deselect all)──▶ stays in VIRTUAL_SCOPE (membership l
 
 The 6 acceptance tests **AT-MZ-01 … AT-MZ-06** are defined in §5 above. This bare-named heading satisfies G-06; canonical content lives at §5.
 
+| AT ID | Summary | Source |
+|-------|---------|--------|
+| AT-MZ-01 | Zoom with N>1 selection creates virtual scope | §5 |
+| AT-MZ-02 | Mid-scope deletion auto-collapses at n=1 | §5 |
+| AT-MZ-03 | Exit at n=0 | §5 |
+| AT-MZ-04 | Peer-group sync inside virtual scope | §5 |
+| AT-MZ-05 | Board/Dashboard inside virtual scope | §5 |
+| AT-MZ-06 | Refresh loses virtual scope (ephemeral) | §5 |
+
 ## Component Contract
+
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| Virtual zoom scope store | `src/stores/useZoomStore.ts` | n/a (pure store) | AT-MZ-01, AT-MZ-02, AT-MZ-03 |
+| Zoom breadcrumb (virtual) | `src/components/zoom/ZoomBreadcrumb.tsx` | `zoom-breadcrumb-virtual` | AT-MZ-04, AT-MZ-05, AT-MZ-06 |
+
+### Notes
 
 - **State location:** client-only zustand slice (e.g. `useZoomStore.virtualScope`); never persisted, never serialised to URL.
 - **Identity:** `virtual:<sessionId>` synthetic node id; not a valid `Items.Id`; FK constraints are bypassed because no DB write occurs.

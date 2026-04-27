@@ -100,7 +100,22 @@ When `Items.Id = X` is hard-deleted:
 
 The 5 acceptance tests **AT-TR-01 … AT-TR-05** are defined in §5 above. This bare-named heading satisfies G-06; canonical content lives at §5.
 
+| AT ID | Summary | Source |
+|-------|---------|--------|
+| AT-TR-01 | Day-30 hard delete fires once | §5 |
+| AT-TR-02 | Crash mid-batch resumes idempotently | §5 |
+| AT-TR-03 | Peer-group dissolve on last-peer reap | §5 |
+| AT-TR-04 | 29-day boundary preserves item | §5 |
+| AT-TR-05 | ReaperRuns audit row written per batch | §5 |
+
 ## Component Contract
+
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| Reaper edge function | `wp-plugin/src/Cron/ReapTrash.php` | n/a (server-side) | AT-TR-01, AT-TR-02, AT-TR-03 |
+| Reaper audit log surface | `wp-plugin/src/Cron/ReaperRunsLogger.php` | n/a (server-side) | AT-TR-04, AT-TR-05 |
+
+### Notes
 
 - **Edge function:** `reap-trash` (cron-triggered).
 - **Predicate SQL:** as in §2; batch size 1,000; idempotent.
