@@ -1,6 +1,17 @@
 #!/usr/bin/env node
 /**
- * G-30 — AT Citation Validity Gate (v1.4.0)
+ * G-30 — AT Citation Validity Gate (v1.5.0)
+ *
+ * v1.5.0 (F-future-G30-A) — Promoted G-30.2 redundancy from WARN→ERROR.
+ *   Safe to flip because the queue has been at 0 candidates since v1.4.0
+ *   default-on rollout; allow-list is stable at 41 documented entries
+ *   across 3 intent-categories. Any new redundant open-prefix declaration
+ *   now FAILS CI immediately (exit 1) instead of accumulating silently.
+ *   The previous WARN behaviour can be restored for one-off audits via
+ *   `--warn-redundant-only` flag (does not affect exit code).
+ *   Opt-out (emergency CI bypass): `G30_REDUNDANT_ENFORCE=0` env var
+ *   reverts to v1.4.0 WARN-only behaviour. Intended for short-lived
+ *   regression-recovery windows; remove ASAP.
  *
  * v1.4.0 (F28) — Promoted G-30.2 redundancy advisory to DEFAULT-ON.
  *   Safe to flip because F27 drained the queue to 0 candidates via
@@ -164,6 +175,12 @@ const WARN_REDUNDANT = !(
   process.argv.includes("--no-warn-redundant")
   || process.env.G30_WARN_REDUNDANT === "0"
 );
+
+// G-30.2 enforcement (v1.5.0+): redundant open prefixes now FAIL CI by
+// default. Set `G30_REDUNDANT_ENFORCE=0` to revert to v1.4.0 WARN-only
+// behaviour during regression-recovery windows.
+const ENFORCE_REDUNDANT = process.env.G30_REDUNDANT_ENFORCE !== "0";
+const WARN_ONLY_FLAG = process.argv.includes("--warn-redundant-only");
 
 // Declaration — first table cell holds an AT-* ID, optionally backticked.
 // Examples that match:
