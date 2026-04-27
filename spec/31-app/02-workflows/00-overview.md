@@ -87,6 +87,8 @@ Workflow files use a flow-scoped acceptance-criteria prefix: `AT-WF-{FLOW}-NN` (
 
 ✅ **Extended (2026-04-27, F11):** four new flow-scoped namespaces — `AT-WF-REAPER-NN` → `AT-APP-81..85`, `AT-WF-SEARCH-NN` → `AT-APP-103..107`, `AT-WF-REPLAY-NN` → `AT-APP-97..102`, `AT-WF-DETACH-NN` → `AT-APP-60..65` (subset relevant to detach). The `AT-WF-*` IDs remain as flow-scoped aliases for in-file traceability; the `AT-APP-*` column is authoritative.
 
+✅ **Extended (2026-04-27, F16):** added `AT-WF-CREATE-NN` → `AT-APP-58, 59, 62, 66, 67` (subset relevant to create). Open-prefix licensed for the create-flow's 5 acceptance tests.
+
 ### Open-prefix declarations (G-30 §RX_DECL_OPEN)
 
 The following table-row placeholders license the entire numeric series under each prefix, satisfying the AT citation validity gate:
