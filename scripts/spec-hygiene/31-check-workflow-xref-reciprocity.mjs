@@ -17,9 +17,9 @@
  *   G-31.3 (endpoints, ERROR, v2.1.0)  — 06-endpoints/NN[a-z]?-*.md
  *                                       reciprocity. Drained 2026-04-27
  *                                       (8 → 0) and promoted to ERROR.
- *   G-31.4 (db-diagram,WARN,  v2.0.0)  — 07-db-diagram/NN-*.md
- *                                       reciprocity. Pre-existing drift
- *                                       at intro: 6 asymmetries.
+ *   G-31.4 (db-diagram,ERROR, v2.2.0)  — 07-db-diagram/NN-*.md
+ *                                       reciprocity. Drained 2026-04-27
+ *                                       (6 → 0) and promoted to ERROR.
  *
  * Mode semantics:
  *   - ERROR scopes contribute to exit code 1 on any asymmetry.
