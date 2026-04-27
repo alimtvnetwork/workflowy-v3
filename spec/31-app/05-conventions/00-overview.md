@@ -40,7 +40,7 @@
 | 25 | [`23-sse-php-implementation.md`](./23-sse-php-implementation.md) | Convention 23 — PHP SSE Implementation Pattern | 343 |
 | 26 | [`24-g31-workflow-xref-reciprocity-gate.md`](./24-g31-workflow-xref-reciprocity-gate.md) | G-31 — Workflow Cross-Reference Reciprocity Gate | 192 |
 | 27 | [`24-state-management-architecture.md`](./24-state-management-architecture.md) | State Management Architecture | 277 |
-| 28 | [`25-g32-ddl-unique-coverage-gate.md`](./25-g32-ddl-unique-coverage-gate.md) | G-32 — DDL UNIQUE Documentation Coverage Gate | 234 |
+| 28 | [`25-g32-ddl-unique-coverage-gate.md`](./25-g32-ddl-unique-coverage-gate.md) | G-32 — DDL ↔ Doc Index Coverage Gate | 246 |
 
 <!-- AUTO-TOC:END -->
 

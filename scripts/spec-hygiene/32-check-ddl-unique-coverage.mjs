@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * G-32 — DDL UNIQUE Documentation Coverage Gate (v1.0.0)
+ * G-32 — DDL ↔ Doc Index Coverage Gate (v2.0.0)
  *
  * Asserts that every `UNIQUE` declaration in the SQLite DDL files
  * (`spec/31-app/07-db-diagram/sql/01-root-schema.sql` and
@@ -37,6 +37,8 @@ const SCHEMA_FILES = [
   "spec/31-app/07-db-diagram/sql/01-root-schema.sql",
   "spec/31-app/07-db-diagram/sql/02-app-schema.sql",
 ];
+const APP_INDEXES_FILE = "spec/31-app/07-db-diagram/sql/03-app-indexes.sql";
+const NAMING_BRIDGE = "spec/31-app/07-db-diagram/sql/00-overview.md";
 const INDEXES_DOC = "spec/31-app/07-db-diagram/06-indexes.md";
 
 // Allow-list — UNIQUE declarations whose documentation is intentionally
@@ -48,6 +50,28 @@ const INDEXES_DOC = "spec/31-app/07-db-diagram/06-indexes.md";
 // `// rationale` comment. Mirrors the F27/F28 G-30.2 allow-list pattern.
 const COVERAGE_EXEMPT = new Set([
   // "01-root-schema.sql:User(Email):docs-in-auth-spec",
+]);
+
+// G-32.2 allow-list — index identifiers that legitimately appear in
+// `06-indexes.md` prose without a literal DDL match. Use sparingly; the
+// preferred fix is to register the alias in `sql/00-overview.md` §Index-name
+// aliases (which the runner reads automatically) rather than adding entries
+// here. Format: bare identifier (e.g. `IdxItem_Foo`).
+const REVERSE_EXEMPT = new Set([
+  // Conceptual / "logical" tags used in §Implicit Indexes prose. The actual
+  // index is the autoindex; the Idx* name is doc-only shorthand.
+  "IdxUser_Email",         // logical tag for sqlite_autoindex_User_*
+  "IdxWorkspace_AppDbPath", // logical tag for sqlite_autoindex_Workspace_*
+  // Historic / explicitly-rejected names mentioned in §"Indexes intentionally
+  // NOT created" — the runner cannot tell prose-rejected from prose-claimed
+  // without parsing section headings, so we suppress these by name.
+  "IdxItem_Content",
+  "IdxItem_CreatedAt",
+  "IdxComment_AuthorUserId",
+  // v2-deprecated names mentioned in the v1.3.0 deprecation note for traceability.
+  "IdxItem_MirrorOfItemId",
+  "IdxMirror_SourceItemId",
+  "IdxMirror_MirrorItemId",
 ]);
 
 function fail(msg, code = 2) {
@@ -197,6 +221,113 @@ function printReport(decls, violations) {
   console.log("  COVERAGE_EXEMPT in this runner with a rationale comment.");
 }
 
+// =====================================================================
+// G-32.2 — Reverse drift: every Idx*/sqlite_autoindex_* identifier
+// mentioned in 06-indexes.md must resolve to a real DDL backing.
+// =====================================================================
+
+/**
+ * Collect every distinct identifier matching /Idx[A-Z]\w+/ or
+ * /sqlite_autoindex_\w+/ that appears inside backticks in the doc.
+ * We restrict to backticked occurrences to avoid prose noise.
+ */
+function collectDocIndexNames(docText) {
+  const names = new Set();
+  const re = /`(Idx[A-Z]\w+|sqlite_autoindex_\w+)`/g;
+  let m;
+  while ((m = re.exec(docText)) !== null) names.add(m[1]);
+  // Also catch ~~strikethrough~~ form used to mark reversed decisions:
+  //   `~~`IdxItem_UpdatedAt`~~`. The backtick capture above already gets it.
+  return [...names].sort();
+}
+
+/**
+ * Build the universe of DDL-backed index identifiers:
+ *   - Every CREATE [UNIQUE] INDEX name across all SQL files.
+ *   - Every `sqlite_autoindex_<Table>_*` derived from UNIQUE declarations.
+ *   - Every alias from sql/00-overview.md §Index-name aliases (LHS↔RHS rows).
+ */
+function collectDdlIndexNames(allDecls) {
+  const names = new Set();
+
+  // Explicit CREATE INDEX names from every SQL file (not just UNIQUE).
+  const sqlFiles = [...SCHEMA_FILES, APP_INDEXES_FILE];
+  for (const f of sqlFiles) {
+    const text = readOrFail(f);
+    const re = /CREATE\s+(?:UNIQUE\s+)?INDEX\s+(?:IF NOT EXISTS\s+)?(\w+)/gi;
+    let m;
+    while ((m = re.exec(text)) !== null) names.add(m[1]);
+  }
+
+  // sqlite_autoindex names — one per table that has any UNIQUE decl.
+  // Authoritatively, SQLite numbers them _1, _2, ... but doc convention
+  // uses `sqlite_autoindex_<Table>_*` with a wildcard, so we register the
+  // wildcard form. We'll match doc claims by stripping the `_<digit>` or
+  // `_*` suffix down to `sqlite_autoindex_<Table>`.
+  for (const d of allDecls) {
+    if (d.kind === "explicit") continue;
+    names.add(`sqlite_autoindex_${d.table}`);
+  }
+
+  // Alias bridge from sql/00-overview.md — register both sides as valid.
+  const bridge = readOrFail(NAMING_BRIDGE);
+  // Match table rows like:
+  //   | `IdxMirrorMember_ItemId` ... | `IdxMirrorPeerGroupMember_ItemId` ...
+  const rowRe = /\|\s*`(Idx[A-Z]\w+)`[^|]*\|\s*`(Idx[A-Z]\w+)`/g;
+  let mm;
+  while ((mm = rowRe.exec(bridge)) !== null) {
+    names.add(mm[1]);
+    names.add(mm[2]);
+  }
+
+  return names;
+}
+
+/**
+ * Normalise a doc-claimed name for comparison.
+ *   sqlite_autoindex_User_1  → sqlite_autoindex_User
+ *   sqlite_autoindex_User_*  → sqlite_autoindex_User
+ *   IdxFoo                   → IdxFoo (unchanged)
+ */
+function normaliseAutoindex(name) {
+  const m = name.match(/^(sqlite_autoindex_[A-Za-z]\w*?)(_\*|_\d+)?$/);
+  return m ? m[1] : name;
+}
+
+function findFabricatedIndexes(docNames, ddlNames) {
+  const fab = [];
+  for (const name of docNames) {
+    if (REVERSE_EXEMPT.has(name)) continue;
+    const probe = normaliseAutoindex(name);
+    if (ddlNames.has(probe) || ddlNames.has(name)) continue;
+    fab.push(name);
+  }
+  return fab;
+}
+
+function printReverseReport(docNames, ddlNames, fabricated) {
+  console.log("");
+  console.log("G-32.2 reverse drift (doc-claimed indexes ↔ DDL backing):");
+  console.log(`  distinct Idx*/autoindex names in 06-indexes.md: ${docNames.length}`);
+  console.log(`  DDL-backed identifiers (incl. aliases):         ${ddlNames.size}`);
+  console.log(`  reverse-exempt (allow-list):                    ${REVERSE_EXEMPT.size}`);
+  console.log(`  fabricated (no DDL backing):                    ${fabricated.length}`);
+
+  if (fabricated.length === 0) {
+    console.log("  ✅ every doc-claimed index resolves to DDL or an alias");
+    return;
+  }
+
+  console.log("");
+  console.log(`  ❌ ${fabricated.length} fabricated identifier(s) in ${INDEXES_DOC}:`);
+  for (const n of fabricated) console.log(`    \`${n}\``);
+  console.log("");
+  console.log("  To fix: either (a) add the missing CREATE [UNIQUE] INDEX to a SQL file,");
+  console.log("  (b) register an alias row in sql/00-overview.md §Index-name aliases, or");
+  console.log("  (c) remove the fabricated mention from 06-indexes.md.");
+  console.log("  Last-resort: add the name to REVERSE_EXEMPT in this runner with rationale.");
+}
+
 // --- main ---
 const indexesText = readOrFail(INDEXES_DOC);
 
@@ -212,4 +343,10 @@ if (allDecls.length === 0) {
 const violations = findUndocumented(allDecls, indexesText);
 printReport(allDecls, violations);
 
-process.exit(violations.length === 0 ? 0 : 1);
+const docNames = collectDocIndexNames(indexesText);
+const ddlNames = collectDdlIndexNames(allDecls);
+const fabricated = findFabricatedIndexes(docNames, ddlNames);
+printReverseReport(docNames, ddlNames, fabricated);
+
+const failed = violations.length > 0 || fabricated.length > 0;
+process.exit(failed ? 1 : 0);

@@ -1,19 +1,34 @@
 ---
 slug: g32-ddl-unique-coverage-gate
-version: 1.0.0
+version: 2.0.0
 updated: 2026-04-27
 parent: ../../05-conventions/02-ci-quality-gates.md
 status: canonical
 gate_id: G-32
 ---
 
-# G-32 — DDL UNIQUE Documentation Coverage Gate
+# G-32 — DDL ↔ Doc Index Coverage Gate
 
-> **Version:** 1.0.0
+> **Version:** 2.0.0
 > **Updated:** 2026-04-27 (UTC+8)
 > **Parent:** [`02-ci-quality-gates.md`](./02-ci-quality-gates.md)
 > **Sibling:** [`24-g31-workflow-xref-reciprocity-gate.md`](./24-g31-workflow-xref-reciprocity-gate.md)
 > **Runner:** [`scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs`](../../../scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs)
+
+---
+
+## Sub-checks
+
+| ID       | Direction | Question                                                                  | Added in |
+|----------|-----------|---------------------------------------------------------------------------|----------|
+| G-32.1   | forward   | Does every DDL `UNIQUE` declaration appear in `06-indexes.md`?            | v1.0.0   |
+| G-32.2   | reverse   | Does every `Idx*` / `sqlite_autoindex_*` name in `06-indexes.md` resolve to an explicit DDL index, a UNIQUE-implied autoindex, or a documented alias? | v2.0.0   |
+
+G-32.2 closes the symmetric gap: F26 caught the **fabricated-column**
+class (UNIQUE in DDL but cited the wrong column name in docs); G-32.2
+catches the **fabricated-index** class (a name written into prose with
+no DDL backing whatsoever — exactly the F26 ambiguity #23 root cause if
+nobody had spotted it manually).
 
 ---
 
@@ -207,19 +222,15 @@ connectivity" choice.
 
 ## Future-promotion ladder (not scoped to this gate)
 
-Three further enhancements remain available for future tasks:
+Two further enhancements remain available for future tasks:
 
-1. **F-future-G32a**: Add G-32.2 reverse-drift sub-check — enumerate all
-   `Idx*` and `sqlite_autoindex_*` identifiers mentioned in
-   `06-indexes.md` and verify each maps back to a real DDL declaration.
-   Would have caught F26's fabricated-column bug at gate level.
-2. **F-future-G32b**: Extend scope to non-UNIQUE indexes (`CREATE INDEX`
+1. **F-future-G32b**: Extend scope to non-UNIQUE indexes (`CREATE INDEX`
    without UNIQUE). Would require deciding how to handle partial
    indexes and expression indexes whose names don't follow
    `Idx{Table}_{Cols}` convention.
-3. **F-future-G32c**: Add G-32.3 enforcing every `COVERAGE_EXEMPT` entry
-   has a corresponding rationale comment in the runner source
-   (machine-checkable; mirrors the G-30.3 and G-31.2 plans).
+2. **F-future-G32c**: Add G-32.3 enforcing every `COVERAGE_EXEMPT` /
+   `REVERSE_EXEMPT` entry has a corresponding rationale comment in the
+   runner source (machine-checkable; mirrors the G-30.3 and G-31.2 plans).
 
 Logging here so they're discoverable when "check memory for remaining
 tasks" runs in a later loop.
@@ -231,3 +242,4 @@ tasks" runs in a later loop.
 | Version | Date | Change |
 |---------|------|--------|
 | 1.0.0 | 2026-04-27 | F30 — initial implementation; promoted from F26 prototype `/tmp/audit_unique.mjs`; allow-list empty; current state ✅ 13/13 UNIQUE declarations documented across 2 schema files (7 column-level + 4 table-level + 2 explicit) |
+| 2.0.0 | 2026-04-27 | F-future-G32a — added **G-32.2 reverse-drift sub-check**. Parses every backticked `Idx*`/`sqlite_autoindex_*` identifier in `06-indexes.md`, builds DDL universe from explicit `CREATE INDEX` across 3 SQL files + UNIQUE-implied autoindexes + alias rows from `sql/00-overview.md` §Index-name aliases. New `REVERSE_EXEMPT` allow-list (8 entries: 2 logical-tag aliases for autoindex shorthands, 3 prose-rejected names from §"Indexes intentionally NOT created", 3 v2-deprecated names retained for traceability). Negative-tested by injecting `IdxFabricated_Foo` (correctly exits 1). Current state ✅ 37 doc identifiers / 42 DDL identifiers / 0 fabricated. |
