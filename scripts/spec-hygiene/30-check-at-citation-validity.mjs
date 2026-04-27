@@ -142,8 +142,20 @@ const REDUNDANCY_ALLOWLIST = new Set([
   "AT-APPF-",         // FROZEN legacy dispatch column (APP-FIX-14)
 ]);
 
-const WARN_REDUNDANT = process.argv.includes("--warn-redundant")
-  || process.env.G30_WARN_REDUNDANT === "1";
+// G-30.2 advisory is DEFAULT-ON as of v1.4.0 (F28). The redundancy queue
+// was drained to 0 in F27 via REDUNDANCY_ALLOWLIST expansion, so default-on
+// surfaces ANY new redundant declaration immediately rather than letting
+// it accumulate silently. Still WARN-only — never affects exit code.
+//
+// Escape hatches (rarely needed):
+//   --no-warn-redundant            CLI flag suppresses advisory output
+//   G30_WARN_REDUNDANT=0           env var suppresses advisory output
+//   --warn-redundant               CLI flag (legacy, no-op now; default-on)
+//   G30_WARN_REDUNDANT=1           env var (legacy, no-op now; default-on)
+const WARN_REDUNDANT = !(
+  process.argv.includes("--no-warn-redundant")
+  || process.env.G30_WARN_REDUNDANT === "0"
+);
 
 // Declaration — first table cell holds an AT-* ID, optionally backticked.
 // Examples that match:
