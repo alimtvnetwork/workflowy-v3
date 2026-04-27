@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-27  
-**Total Files:** 1329  
+**Total Files:** 1330  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -32,7 +32,7 @@
 - [15-wp-plugin-how-to](#15-wp-plugin-how-to) — 219 file(s)
 - [16-generic-cli](#16-generic-cli) — 43 file(s)
 - [17-generic-update](#17-generic-update) — 11 file(s)
-- [18-spec-issues](#18-spec-issues) — 13 file(s)
+- [18-spec-issues](#18-spec-issues) — 14 file(s)
 - [31-app](#31-app) — 93 file(s)
 - [32-ui-design](#32-ui-design) — 120 file(s)
 - [33-feedback-report](#33-feedback-report) — 3 file(s)
@@ -1222,6 +1222,7 @@
 | [`18-spec-issues/07-audit-03-dashboard-taxonomy.md`](./18-spec-issues/07-audit-03-dashboard-taxonomy.md) | AUDIT-03 — Dashboard Taxonomy Contradiction | 1.0.0 | — |
 | [`18-spec-issues/08-audit-06-sse-transport-contract.md`](./18-spec-issues/08-audit-06-sse-transport-contract.md) | AUDIT-06 — SSE Transport Contract Gaps | 1.0.0 | — |
 | [`18-spec-issues/09-app-folder-re-audit-2026-04-26.md`](./18-spec-issues/09-app-folder-re-audit-2026-04-26.md) | App Folder Re-Audit — 2026-04-26 (post-fix) | 1.0.0 | — |
+| [`18-spec-issues/10-ai-readiness-audit-round-4-2026-04-27.md`](./18-spec-issues/10-ai-readiness-audit-round-4-2026-04-27.md) | AI Readiness Audit — Spec Corpus (Round 4) | 1.0.0 | — |
 | [`18-spec-issues/10-content-audit-endpoints-and-db-diagram.md`](./18-spec-issues/10-content-audit-endpoints-and-db-diagram.md) | Content Audit — `06-endpoints/` + `07-db-diagram/` (2026-04-26) | 1.0.0 | — |
 | [`18-spec-issues/11-content-audit-at-app-coverage.md`](./18-spec-issues/11-content-audit-at-app-coverage.md) | Content Audit — `AT-APP-NN` Coverage Completeness (2026-04-26) | 1.0.0 | — |
 | [`18-spec-issues/97-acceptance-criteria.md`](./18-spec-issues/97-acceptance-criteria.md) | Spec Issues — Acceptance Criteria | 1.3.0 | Dispatch |
@@ -1499,4 +1500,4 @@
 
 ---
 
-*Auto-generated index — 1329 files across 25 top-level folders.*
+*Auto-generated index — 1330 files across 25 top-level folders.*
