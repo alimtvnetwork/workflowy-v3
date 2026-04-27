@@ -1,9 +1,15 @@
 # 03 — App DB ERD (per Workspace)
 
-> **Version:** 1.1.0
-> **Updated:** 2026-04-27 (UTC+8) — v1.1.0 added `ReaperRuns` (B4) and `MirrorPeerGroup` + `MirrorPeerGroupMember` (B1) entities; deprecated `Mirror` source/copy table in favour of peer-group model per `mem://features/mirroring`.
+> **Version:** 1.2.0
+> **Updated:** 2026-04-27 (UTC+8) — v1.2.0 added §Naming bridge footnote pointing to [`./sql/00-overview.md`](./sql/00-overview.md) §Naming Bridge for the DDL↔prose alias table (`MirrorGroup`/`MirrorMember` ↔ `MirrorPeerGroup`/`MirrorPeerGroupMember`, plus column + index aliases). v1.1.0 added `ReaperRuns` (B4) and `MirrorPeerGroup` + `MirrorPeerGroupMember` (B1) entities; deprecated `Mirror` source/copy table in favour of peer-group model per `mem://features/mirroring`.
 > **Parent:** [`./00-overview.md`](./00-overview.md)
 > **DB file:** `workflowy_app_{WorkspaceId}.db` (one per workspace)
+
+---
+
+## Naming bridge
+
+> The entities labelled **`MirrorPeerGroup`** and **`MirrorPeerGroupMember`** in this ERD are emitted by the SQL DDL as **`MirrorGroup`** and **`MirrorMember`** (shorter identifiers per AUDIT-AI-07 fix). Same rows, same FKs. Full alias table — including PK/FK column aliases and index-name aliases — lives in **[`./sql/00-overview.md`](./sql/00-overview.md) §Naming Bridge**. Do not duplicate the table here; link only.
 
 ---
 

@@ -1,7 +1,7 @@
 # SQLite DDL — Reference Implementation
 
-> **Version:** 2.1.0
-> **Updated:** 2026-04-27 (UTC+8) — v2.1.0 added `ReaperRuns` table (B4/11b), search-ranking + LWW indexes (B3/14b/16), and Naming Bridge between DDL identifiers and spec prose. v2.0.0 swapped source/target Mirror schema for the bidirectional MirrorGroup + MirrorMember peer-group model and added the v1→v2 migration script. Closes AUDIT-AI-07. v1.0.0: initial AUDIT-AI-03 closure.
+> **Version:** 2.2.0
+> **Updated:** 2026-04-27 (UTC+8) — v2.2.0 extended Naming Bridge with **index-name aliases** (`IdxMirrorMember_*`/`IdxMirrorGroup_*` ↔ `IdxMirrorPeerGroupMember_*`/`IdxMirrorPeerGroup_*`) and **FK column aliases** (`MirrorMember.MirrorGroupId` ↔ `MirrorPeerGroupMembers.MirrorPeerGroupId`); also added a "Reverse pointers" subsection so ERD-side readers (`03-app-db-erd.md`, `06-indexes.md`) can find the bridge. v2.1.0 added `ReaperRuns` table (B4/11b), search-ranking + LWW indexes (B3/14b/16), and Naming Bridge between DDL identifiers and spec prose. v2.0.0 swapped source/target Mirror schema for the bidirectional MirrorGroup + MirrorMember peer-group model and added the v1→v2 migration script. Closes AUDIT-AI-07. v1.0.0: initial AUDIT-AI-03 closure.
 > **Status:** ✅ SSOT for `.sql` schema files (closes AUDIT-AI-03 + AUDIT-AI-07; carries B1–B4 DDL extensions)
 > **Parent:** [`../00-overview.md`](../00-overview.md)
 
@@ -9,16 +9,39 @@
 
 ## Naming Bridge — DDL ↔ spec prose
 
-> **Read this if you bounce between SQL files and feature specs.** The DDL is the implementation ground truth; spec prose uses Workflowy-style aliases.
+> **Read this if you bounce between SQL files and feature specs.** The DDL is the implementation ground truth; spec prose uses Workflowy-style aliases. **This section is the single SSOT for DDL↔prose aliases** — every cross-doc reference (e.g. `03-app-db-erd.md`, `06-indexes.md`, `04-feature-slices.md`, `07-migrations.md`) MUST link here rather than restate the mappings.
+
+### Tables & columns
 
 | DDL identifier (canonical at runtime) | Spec prose alias (canonical at design time) | Notes |
 |---------------------------------------|---------------------------------------------|-------|
 | `Item` (singular table) | `Items` | Pluralised in prose for readability; same rows. |
 | `Item.Content` | `Items.Title` / item title | Workflowy items have a single text body that doubles as title — first non-empty line. |
 | `Item.FractionalIndex` | `SortOrder` / fractional-index string key | Identical concept; ordering key per `mem://features/editor-core`. |
-| `MirrorGroup` + `MirrorMember` | `MirrorPeerGroups` + `MirrorPeerGroupMembers` | Same tables; spec prose pluralises and prefixes "Peer". |
-| `ReaperRuns` | `ReaperRuns` | Identical (introduced in v2.1.0). |
 | `Item.OwnerUserId` | `Items.OwnerId` | DDL spells out "User"; prose abbreviates. |
+| `MirrorGroup` + `MirrorMember` | `MirrorPeerGroups` + `MirrorPeerGroupMembers` | Same tables; spec prose pluralises and prefixes "Peer". |
+| `MirrorGroup.MirrorGroupId` (PK) | `MirrorPeerGroup.MirrorPeerGroupId` | Same column. |
+| `MirrorGroup.CanonicalItemId` | `MirrorPeerGroup.CanonicalItemId` | Identical (no alias). |
+| `MirrorMember.MirrorGroupId` (FK) | `MirrorPeerGroupMembers.MirrorPeerGroupId` | Same FK column; renamed to match short table name in DDL. |
+| `MirrorMember.MirrorMemberId` (PK) | `MirrorPeerGroupMembers.MirrorPeerGroupMemberId` | Same column. |
+| `ReaperRuns` | `ReaperRuns` | Identical (introduced in v2.1.0). |
+
+### Indexes (added v2.2.0)
+
+| DDL identifier (`03-app-indexes.sql`) | Spec prose alias (`06-indexes.md`) | Notes |
+|----------------------------------------|------------------------------------|-------|
+| `IdxMirrorMember_ItemId` (UNIQUE partial) | `IdxMirrorPeerGroupMember_ItemId` | Same index, same `WHERE DetachedAt IS NULL` predicate. |
+| `IdxMirrorMember_MirrorGroupId` | `IdxMirrorPeerGroupMember_GroupId` | Same FK fan-out index. |
+| `IdxMirrorGroup_CanonicalItemId` | `IdxMirrorPeerGroup_CanonicalItemId` | Same canonical-lookup index. |
+
+### Reverse pointers
+
+If you arrived from one of the prose-side documents and need this bridge, the canonical link is **`spec/31-app/07-db-diagram/sql/00-overview.md` §Naming Bridge** (this section). The following files contain a one-line callback that points here:
+
+- [`../03-app-db-erd.md`](../03-app-db-erd.md) §Naming bridge (footnote)
+- [`../06-indexes.md`](../06-indexes.md) §Naming bridge (footnote)
+- [`../04-feature-slices.md`](../04-feature-slices.md) §4.2 schema-authority callout
+- [`../07-migrations.md`](../07-migrations.md) §v1→v2 Mirror Peer-Group naming-bridge note
 
 When 50 ATs (`AT-APP-58..107`) say "`Items.Title`", read it as `Item.Content` at the SQL layer. When prose says "field-level LWW on `UpdatedAt`", read it as `Item.UpdatedAt` (column exists, indexed v2.1.0).
 
