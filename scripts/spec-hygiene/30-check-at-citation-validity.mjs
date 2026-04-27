@@ -28,11 +28,15 @@ const CONSUMER_EXCLUDED = new Set([
   "99-consistency-report.md",
 ]);
 
-// Declaration: first table cell must be a backticked AT-* ID.
+// Declaration — first table cell holds an AT-* ID, optionally backticked.
 // Examples that match:
 //   | `AT-APP-01` | something | source |
-//   |  `AT-WF-SHARE-03`  | foo | bar |
-const RX_DECL = /^\|\s*`(AT-[A-Z][A-Z0-9-]*-?\d+)`\s*\|/gm;
+//   | AT-LAYOUT-01 | When... | Then... |
+const RX_DECL_SINGLE = /^\|\s*`?(AT-[A-Z][A-Z0-9-]*-?\d+)`?\s*\|/gm;
+
+// Range declarations like `AT-APPF-01..05` or `AT-APP-58..67` expand
+// to every integer in [start, end].
+const RX_DECL_RANGE = /`(AT-[A-Z][A-Z0-9-]*-?)(\d+)\.\.(\d+)`/g;
 
 // Citation: any backticked AT-* ID in prose, tables, or lists.
 const RX_CITE = /`(AT-[A-Z][A-Z0-9-]*-?\d+)`/g;
@@ -61,15 +65,35 @@ function walkMd(dir) {
   return out;
 }
 
+function padToWidth(numStr, width) {
+  return numStr.padStart(width, "0");
+}
+
 function collectRegistered() {
   if (!existsSync(APP_ROOT)) fail(`app spec dir missing: ${APP_ROOT}`);
   const registered = new Map(); // id -> first declaring file (relative)
   for (const file of walkMd(APP_ROOT)) {
     const content = readFileSync(file, "utf8");
-    for (const m of content.matchAll(RX_DECL)) {
+    const relFile = relative(REPO_ROOT, file);
+
+    // Single-ID declarations.
+    for (const m of content.matchAll(RX_DECL_SINGLE)) {
       const id = m[1];
-      if (!registered.has(id)) {
-        registered.set(id, relative(REPO_ROOT, file));
+      if (!registered.has(id)) registered.set(id, relFile);
+    }
+
+    // Range declarations — `AT-APP-58..67` → AT-APP-58, …, AT-APP-67.
+    for (const m of content.matchAll(RX_DECL_RANGE)) {
+      const prefix = m[1]; // e.g. "AT-APPF-"
+      const start = parseInt(m[2], 10);
+      const end = parseInt(m[3], 10);
+      const width = Math.max(m[2].length, m[3].length);
+      if (!Number.isFinite(start) || !Number.isFinite(end) || end < start) {
+        continue;
+      }
+      for (let n = start; n <= end; n++) {
+        const id = `${prefix}${padToWidth(String(n), width)}`;
+        if (!registered.has(id)) registered.set(id, relFile);
       }
     }
   }
