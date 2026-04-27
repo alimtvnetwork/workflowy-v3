@@ -32,12 +32,16 @@ runtime check is the durable guardrail.
 
 ### Consumer scope (what gets checked)
 
-All `*.md` under:
+As of v1.1.0, three scopes are scanned (closes F14):
 
-- `spec/31-app/06-endpoints/`
+| # | Path | Recursion | Notes |
+|---|------|-----------|-------|
+| 1 | `spec/31-app/06-endpoints/` | All `*.md` | Original v1.0.0 scope |
+| 2 | `spec/31-app/02-workflows/` | All `*.md` | Cross-feature flow specs (added v1.1.0) |
+| 3 | `spec/31-app/07-db-diagram/04-feature-slices.md` | Single file | Per-slice `**ATs**:` cross-refs (added v1.1.0) |
 
-(Future: extend to `02-workflows/` consumers; deliberately tight v1.0.0 scope
-to mirror the file set that F6/F9 created and that G-29 already polices.)
+`99-consistency-report.md` is excluded everywhere (audit reports may freely
+quote historical IDs).
 
 ### Declaration scope (what counts as "registered")
 
