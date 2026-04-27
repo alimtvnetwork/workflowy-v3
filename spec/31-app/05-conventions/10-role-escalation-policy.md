@@ -167,7 +167,7 @@ Every state transition emits exactly one audit row using the taxonomy from `09-a
 | Property | Value |
 |----------|-------|
 | Gate ID | `G-24` |
-| Script | `scripts/spec-hygiene/14-role-escalation-coverage-audit.mjs` |
+| Script | `scripts/spec-hygiene/24-check-role-escalation-coverage.mjs` *(numeric prefix matches gate ID; original `14-` slot taken by `split-oversized-files.mjs`)* |
 | Trigger | Pre-commit + CI |
 | Exit codes | `0` ok · `1` violation · `2` runner error |
 
@@ -178,7 +178,7 @@ Every state transition emits exactly one audit row using the taxonomy from `09-a
 3. Every `RoleEscalationRequest` insert has a matching `ExpiresAt` ≤ 24 h.
 4. Every PHP file under `src/Auth/Escalation/` has a sibling `*Test.php`.
 
-Drift output format mirrors G-22 / G-23 (one finding per line, `file:line code message`).
+Drift output format mirrors G-22 / G-23 (one finding per line, `file:line code message`). Algorithm SSOT: [`17-g24-role-escalation-coverage-gate.md`](./17-g24-role-escalation-coverage-gate.md).
 
 ---
 
@@ -255,3 +255,4 @@ Migration ID: planned `M-014` (next free slot after current migrations sequence)
 | Version | Date | Change |
 |---------|------|--------|
 | 1.0.0 | 2026-04-26 | Initial SSOT — closes A-40. 4 grant classes, dual-control, expiry timers, revocation deadlines, G-24 gate, 12 ATs. |
+| 1.0.1 | 2026-04-27 | §7 path correction — implementation slot moved from `14-` (collision with `split-oversized-files`) to `24-` (matches gate ID). Algorithm SSOT linked: [`17-g24-role-escalation-coverage-gate.md`](./17-g24-role-escalation-coverage-gate.md). |
