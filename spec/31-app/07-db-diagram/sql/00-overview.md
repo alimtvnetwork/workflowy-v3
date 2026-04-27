@@ -1,9 +1,26 @@
 # SQLite DDL — Reference Implementation
 
-> **Version:** 2.0.0
-> **Updated:** 2026-04-27 (UTC+8) — v2.0.0 swaps the source/target Mirror schema for the bidirectional MirrorGroup + MirrorMember peer-group model and adds the v1→v2 migration script. Closes AUDIT-AI-07. v1.0.0: initial AUDIT-AI-03 closure.
-> **Status:** ✅ SSOT for `.sql` schema files (closes AUDIT-AI-03 + AUDIT-AI-07)
+> **Version:** 2.1.0
+> **Updated:** 2026-04-27 (UTC+8) — v2.1.0 added `ReaperRuns` table (B4/11b), search-ranking + LWW indexes (B3/14b/16), and Naming Bridge between DDL identifiers and spec prose. v2.0.0 swapped source/target Mirror schema for the bidirectional MirrorGroup + MirrorMember peer-group model and added the v1→v2 migration script. Closes AUDIT-AI-07. v1.0.0: initial AUDIT-AI-03 closure.
+> **Status:** ✅ SSOT for `.sql` schema files (closes AUDIT-AI-03 + AUDIT-AI-07; carries B1–B4 DDL extensions)
 > **Parent:** [`../00-overview.md`](../00-overview.md)
+
+---
+
+## Naming Bridge — DDL ↔ spec prose
+
+> **Read this if you bounce between SQL files and feature specs.** The DDL is the implementation ground truth; spec prose uses Workflowy-style aliases.
+
+| DDL identifier (canonical at runtime) | Spec prose alias (canonical at design time) | Notes |
+|---------------------------------------|---------------------------------------------|-------|
+| `Item` (singular table) | `Items` | Pluralised in prose for readability; same rows. |
+| `Item.Content` | `Items.Title` / item title | Workflowy items have a single text body that doubles as title — first non-empty line. |
+| `Item.FractionalIndex` | `SortOrder` / fractional-index string key | Identical concept; ordering key per `mem://features/editor-core`. |
+| `MirrorGroup` + `MirrorMember` | `MirrorPeerGroups` + `MirrorPeerGroupMembers` | Same tables; spec prose pluralises and prefixes "Peer". |
+| `ReaperRuns` | `ReaperRuns` | Identical (introduced in v2.1.0). |
+| `Item.OwnerUserId` | `Items.OwnerId` | DDL spells out "User"; prose abbreviates. |
+
+When 50 ATs (`AT-APP-58..107`) say "`Items.Title`", read it as `Item.Content` at the SQL layer. When prose says "field-level LWW on `UpdatedAt`", read it as `Item.UpdatedAt` (column exists, indexed v2.1.0).
 
 ---
 
@@ -14,8 +31,8 @@ Concrete, executable **`.sql` files** the WordPress plugin runs at install/activ
 | File | Target DB | Purpose |
 |------|-----------|---------|
 | [`01-root-schema.sql`](./01-root-schema.sql) | `workflowy_root.db` | Identity, workspaces, system roles |
-| [`02-app-schema.sql`](./02-app-schema.sql) v2.0.0 | `workflowy_app_{WorkspaceId}.db` | Items, MirrorGroup + MirrorMember peer-group, shares, comments |
-| [`03-app-indexes.sql`](./03-app-indexes.sql) v2.0.0 | App DB | All performance indexes (run AFTER `02-app-schema.sql`) |
+| [`02-app-schema.sql`](./02-app-schema.sql) v2.1.0 | `workflowy_app_{WorkspaceId}.db` | Items, MirrorGroup + MirrorMember peer-group, shares, comments, **ReaperRuns** |
+| [`03-app-indexes.sql`](./03-app-indexes.sql) v2.1.0 | App DB | All performance indexes (run AFTER `02-app-schema.sql`) — incl. **LWW + search-ranking + reaper** indexes |
 | [`04-app-triggers.sql`](./04-app-triggers.sql) v2.0.0 | App DB | `UpdatedAt` auto-touch, soft-delete/restore cascade, MirrorGroup auto-dissolve |
 | [`05-root-seeds.sql`](./05-root-seeds.sql) | Root DB | Lookup seeds: `RoleType`, `WorkspaceRoleType` |
 | [`06-app-seeds.sql`](./06-app-seeds.sql) | App DB | Lookup seeds: `ItemType` (12), `ShareRoleType` (3) |
