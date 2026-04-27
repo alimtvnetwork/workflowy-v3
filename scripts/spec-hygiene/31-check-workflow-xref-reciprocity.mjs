@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 /**
- * G-31 — Cross-Reference Reciprocity Gate (v2.3.0)
+ * G-31 — Cross-Reference Reciprocity Gate (v2.4.0)
  *
  * Asserts that every cross-sibling Related-section link in a scoped
  * folder is reciprocated by a back-link in the target's own
  * Related/Cross-References section.
  *
- * Sub-checks (one per registered scope):
+ * Sub-checks (one per registered scope, plus a meta sub-check):
  *
  *   G-31.1 (workflows, ERROR, v1.0.0)  — 02-workflows/NN-*-flow.md
  *                                       reciprocity. Drained queue from
@@ -20,6 +20,17 @@
  *   G-31.4 (db-diagram,ERROR, v2.2.0)  — 07-db-diagram/NN-*.md
  *                                       reciprocity. Drained 2026-04-27
  *                                       (6 → 0) and promoted to ERROR.
+ *   G-31.5 (meta,      ERROR, v2.4.0)  — every entry in each per-scope
+ *                                       exemption Set MUST carry a
+ *                                       rationale comment (trailing
+ *                                       inline `// …` OR a contiguous
+ *                                       `// …` line directly above with
+ *                                       no blank-line gap). Mirrors the
+ *                                       G-32.4 pattern verbatim. All 4
+ *                                       Sets currently empty so this
+ *                                       ships green; the gate locks the
+ *                                       convention before any exemption
+ *                                       is added (F-future-G31b).
  *
  * Mode semantics:
  *   - ERROR scopes contribute to exit code 1 on any asymmetry.
