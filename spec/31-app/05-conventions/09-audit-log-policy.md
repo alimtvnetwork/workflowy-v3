@@ -322,7 +322,7 @@ Recomputes hash chain across an `OccurredAt` range. Returns `OutcomeIsSuccess: f
 |---|---|---|
 | **G-23** | A handler that calls `Auth::*`, `Sharing::*`, or `Admin::*` mutation methods but does NOT call `AuditLog::write(...)` in the same code path | CI fails with the offending file:line list |
 
-Implementation: `scripts/spec-hygiene/13-audit-log-coverage-audit.mjs`. Registered in `02-ci-quality-gates.md`.
+Algorithm SSOT lives at [`16-g23-audit-log-coverage-gate.md`](./16-g23-audit-log-coverage-gate.md). Implementation will live at `scripts/spec-hygiene/23-check-audit-log-coverage.mjs` (numeric prefix matches gate ID, per the convention used by G-19→`19-`, G-20→`20-`, G-21→`21-`, G-22→`22-`). Registered in [`02-ci-quality-gates.md`](./02-ci-quality-gates.md).
 
 ---
 
@@ -346,4 +346,5 @@ See `spec/31-app/05-conventions/97-acceptance-criteria.md` §AUDIT for `AT-AUDIT
 |---|---|---|
 | 1.0.0 | 2026-04-26 | Initial SSOT — taxonomy of 22 audit actions across 7 categories, 365/90-day retention floors, SHA-256 + rotating-salt PII scrubbing, hash-chain integrity, three-endpoint query API, gate G-23. |
 | 1.2.0 | 2026-04-26 | Backfill of **52 new actions** emitted by sibling SSOTs A-40..A-44: 10 role-escalation, 9 session/token, 11 MFA, 10 export, 12 backup/DR. Total taxonomy now **74 actions** across 7 categories. Documented `DOT.UPPER_CASE` shorthand vs canonical `dot.lower.case` wire format with `Audit::action()` normalizer. Deprecated `data.export.requested` / `data.export.delivered` with one-year overlap to 2027-04-26. |
+| 1.2.1 | 2026-04-27 | §9 path correction — implementation slot moved from `13-` (collision with `generate-at-stubs`) to `23-` (matches gate ID). Algorithm SSOT linked: [`16-g23-audit-log-coverage-gate.md`](./16-g23-audit-log-coverage-gate.md). |
 | 1.2.1 | 2026-04-26 | Cross-reference audit patch: registered 4 missed actions referenced by sibling SSOTs — `system.audit.chain.rewind` (A-44), `auth.password.change` / `admin.user.disable` / `admin.workspace.delete` (A-41). Added explicit shorthand→canonical normalization rules table covering `EXPORT.*` → `data.export.*` ambiguity and the special-case `EXPORT.SCRAPING_SUSPECTED` → `policy.export.*`. Total taxonomy now **78 actions**. |
