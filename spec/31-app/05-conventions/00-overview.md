@@ -129,6 +129,7 @@ Conventions specification module. See files below.
 - [`19-g26-mfa-coverage-gate.md`](./19-g26-mfa-coverage-gate.md) — G-26 MFA policy drift gate (5-axis MFA hygiene)
 - [`20-g27-export-coverage-gate.md`](./20-g27-export-coverage-gate.md) — G-27 data-export policy drift gate (6-axis export hygiene)
 - [`21-g28-backup-coverage-gate.md`](./21-g28-backup-coverage-gate.md) — G-28 backup/DR policy drift gate (7-axis backup hygiene) — **completes orphan-gate cluster**
+- [`22-wp-plugin-folder-skeleton.md`](./22-wp-plugin-folder-skeleton.md) — WP-plugin folder skeleton (Flat-PSR canonical layout, P1.5 prerequisite)
 
 **See also:**
 
