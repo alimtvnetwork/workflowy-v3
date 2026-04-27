@@ -106,6 +106,7 @@ The following table-row placeholders license the entire numeric series under eac
 | `AT-WF-REPLAY-NN` | `AT-APP-97..102` | `07-sync-replay-flow.md` |
 | `AT-WF-DETACH-NN` | `AT-APP-60..65` (subset) | `08-mirror-detach-flow.md` |
 | `AT-WF-CREATE-NN` | `AT-APP-58, 59, 62, 66, 67` (subset) | `09-mirror-create-flow.md` |
+| `AT-WF-MIGRATE-NN` | `AT-APP-66, 67` (subset) | `10-migration-execution-flow.md` |
 
 ---
 
