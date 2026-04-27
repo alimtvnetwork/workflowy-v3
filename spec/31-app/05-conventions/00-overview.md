@@ -14,7 +14,7 @@
 | # | File | Title | Lines |
 |---|------|-------|-------|
 | 1 | [`01-axios-version-control.md`](./01-axios-version-control.md) | Axios Version Control Policy | 91 |
-| 2 | [`02-ci-quality-gates.md`](./02-ci-quality-gates.md) | CI Quality Gates — Convention SSOT | 178 |
+| 2 | [`02-ci-quality-gates.md`](./02-ci-quality-gates.md) | CI Quality Gates — Convention SSOT | 180 |
 | 3 | [`03-github-actions-workflow.md`](./03-github-actions-workflow.md) | GitHub Actions Workflow Contract — Convention SSOT | 157 |
 | 4 | [`04-g19-workflow-contract-gate.md`](./04-g19-workflow-contract-gate.md) | G-19 Workflow Contract Drift Gate — Algorithm Spec | 158 |
 | 5 | [`05-precommit-hook-contract.md`](./05-precommit-hook-contract.md) | Pre-Commit Hook Contract — Convention SSOT | 147 |
@@ -34,9 +34,11 @@
 | 19 | [`19-g26-mfa-coverage-gate.md`](./19-g26-mfa-coverage-gate.md) | G-26 MFA Policy Drift Gate — Algorithm Spec | 288 |
 | 20 | [`20-g27-export-coverage-gate.md`](./20-g27-export-coverage-gate.md) | G-27 Data-Export Policy Drift Gate — Algorithm Spec | 297 |
 | 21 | [`21-g28-backup-coverage-gate.md`](./21-g28-backup-coverage-gate.md) | G-28 Backup & DR Policy Drift Gate — Algorithm Spec | 346 |
-| 22 | [`22-wp-plugin-folder-skeleton.md`](./22-wp-plugin-folder-skeleton.md) | WP-Plugin Folder Skeleton — SSOT | 290 |
-| 23 | [`23-sse-php-implementation.md`](./23-sse-php-implementation.md) | Convention 23 — PHP SSE Implementation Pattern | 343 |
-| 24 | [`24-state-management-architecture.md`](./24-state-management-architecture.md) | State Management Architecture | 277 |
+| 22 | [`22-g29-endpoint-matrix-coverage-gate.md`](./22-g29-endpoint-matrix-coverage-gate.md) | G-29 Endpoint ↔ Matrix Coverage Gate — Algorithm Spec | 144 |
+| 23 | [`22-wp-plugin-folder-skeleton.md`](./22-wp-plugin-folder-skeleton.md) | WP-Plugin Folder Skeleton — SSOT | 290 |
+| 24 | [`23-g30-at-citation-validity-gate.md`](./23-g30-at-citation-validity-gate.md) | G-30 — AT Citation Validity Gate | 158 |
+| 25 | [`23-sse-php-implementation.md`](./23-sse-php-implementation.md) | Convention 23 — PHP SSE Implementation Pattern | 343 |
+| 26 | [`24-state-management-architecture.md`](./24-state-management-architecture.md) | State Management Architecture | 277 |
 
 <!-- AUTO-TOC:END -->
 

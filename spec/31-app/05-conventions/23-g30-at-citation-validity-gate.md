@@ -77,17 +77,32 @@ up — no allow-list maintenance.
 4. exit 1 if unregistered.length > 0 else exit 0
 ```
 
-### Why backtick-fenced declaration regex
+### Declaration regexes
 
-Tables use `` `AT-FOO-NN` `` in the **first cell**. This excludes prose
-mentions ("the AT-FOO-* series describes…") that are not formal declarations.
-A consumer file that *cites* an ID inside a sentence still gets caught
-because step 2 matches any backtick-wrapped occurrence.
+Three independent declaration shapes are accepted:
 
-### Why citations may include same ID multiple times
+1. **Single-ID** (`RX_DECL_SINGLE`) — first table cell, optionally backticked:
+   ```
+   ^\|\s*`?(AT-[A-Z][A-Z0-9-]*-?\d+)`?\s*\|
+   ```
+   Matches both `` | `AT-APP-01` | `` and `| AT-LAYOUT-01 |`.
 
-Citations are line-tracked so the failure report shows *every* offending site.
-A single bad ID rippled across 3 files surfaces as 3 distinct violations.
+2. **Backticked range** (`RX_DECL_RANGE`) — `` `AT-APPF-01..05` ``:
+   ```
+   `(AT-[A-Z][A-Z0-9]*(?:-[A-Z][A-Z0-9]*)*-)(\d+)\.\.(\d+)`
+   ```
+   Expanded to every integer in `[start, end]`. The trailing `-` in the
+   prefix capture prevents digit-swallowing (an early bug split `AT-APPF-01`
+   into prefix `AT-APPF-0` + number `1`).
+
+3. **Open-prefix placeholder** (`RX_DECL_OPEN`) — `` `AT-INFO-NN` ``:
+   ```
+   `(AT-[A-Z][A-Z0-9]*(?:-[A-Z][A-Z0-9]*)*-)NN`
+   ```
+   Licenses the entire numeric series under that prefix. Citations whose
+   prefix matches plus a tail of `^\d+$` resolve as registered. This codifies
+   the "inline-prefix" convention documented in
+   `01-features/97-acceptance-criteria.md` (per APP-FIX-14 reconciliation).
 
 ---
 
