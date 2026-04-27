@@ -27,6 +27,7 @@ const checks = [
   "scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs",
   "scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs",
   "scripts/spec-hygiene/33-check-cross-runner-duplicates.mjs",
+  "scripts/spec-hygiene/34-check-allow-list-age.mjs",
   "scripts/spec-hygiene/35-allow-list-inventory.mjs --check",
   "scripts/spec-hygiene/04-generate-index.mjs",
 ];
