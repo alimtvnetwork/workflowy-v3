@@ -1,9 +1,11 @@
 # Mirror Specification
 
-> **Version:** 2.4.0
-> **Updated:** 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
+> **Version:** 2.5.0
+> **Updated:** 2026-04-27 — Linked authoritative model `09b-mirror-peer-group-model.md` (Workflowy parity: peer-group, not source/copy). Prose below describes legacy source-of-truth model; `09b` overrides on conflict and is being folded into a future v3.0.0. Prior: 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
+> **Authoritative model (overrides on conflict):** [`09b-mirror-peer-group-model.md`](./09b-mirror-peer-group-model.md) — peer-group identity, detach dissolves singletons, per-peer position.
+> **Algorithm spec:** [`09a-mirror-cycle-detection.md`](./09a-mirror-cycle-detection.md) — DFS cycle prevention.
 
 ---
 

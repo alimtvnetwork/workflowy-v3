@@ -2,7 +2,7 @@
 
 **Status:** 🟢 ACTIVE
 **Activated:** 2026-04-27
-**Tasks completed: 0 / 40**
+**Tasks completed: 1 / 40**
 
 ---
 
@@ -10,7 +10,7 @@
 
 | # | Date | Task summary | Ambiguities logged |
 |---|------|--------------|--------------------|
-| _none yet_ | | | |
+| 01 | 2026-04-27 | Spec consolidation pass (F1+F2+F3): bumped 7 parent SSOTs with addendum cross-refs, refreshed 99-consistency-report.md to v2.2.0 (inventory 18→27), added §8 footnote to round-4 audit linking B1–B4 work, updated spec-index.md version cells. | 1 (`01-audit-already-closed.md`) |
 
 ---
 

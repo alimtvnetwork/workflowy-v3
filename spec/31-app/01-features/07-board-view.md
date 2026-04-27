@@ -1,9 +1,10 @@
 # Board View Specification
 
-> **Version:** 2.5.0
-> **Updated:** 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
+> **Version:** 2.6.0
+> **Updated:** 2026-04-27 — Linked sibling SSOT `07b-dashboard-view.md` (same data, depth=1 card-grid presentation). Prior: 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
+> **Sibling SSOT:** [`07b-dashboard-view.md`](./07b-dashboard-view.md) — Dashboard view (same tree data, depth-1 inline-editable card grid).
 
 ---
 
