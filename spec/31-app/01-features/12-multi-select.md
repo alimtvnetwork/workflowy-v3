@@ -169,3 +169,4 @@ When multiple items are selected, a **bulk action bar** appears at the bottom of
 - [11-trash-view.md](./11-trash-view.md) — Bulk Delete sends here
 - `mem://features/multi-select` — Shift/Cmd-click bulk-operation rules
 - [`./14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) — ← Concurrency + sync rules (forward link from)
+- [12b-multi-select-zoom.md](./12b-multi-select-zoom.md) — addendum: zoom interaction when ≥2 items selected

@@ -153,3 +153,4 @@ As an owner, I want to share an outline branch with specific people at the right
 - `mem://features/sharing-model` — public + invited-user permission rules
 - [`./14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) — ← Concurrency + sync rules (forward link from)
 - [`./15-roles-and-permissions.md`](./15-roles-and-permissions.md) — ← Roles + permissions (forward link from)
+- [08b-sharing-mirror-interaction.md](./08b-sharing-mirror-interaction.md) — addendum: how share grants interact with mirror peer-group membership
