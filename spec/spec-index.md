@@ -1222,9 +1222,9 @@
 | [`18-spec-issues/07-audit-03-dashboard-taxonomy.md`](./18-spec-issues/07-audit-03-dashboard-taxonomy.md) | AUDIT-03 — Dashboard Taxonomy Contradiction | 1.0.0 | — |
 | [`18-spec-issues/08-audit-06-sse-transport-contract.md`](./18-spec-issues/08-audit-06-sse-transport-contract.md) | AUDIT-06 — SSE Transport Contract Gaps | 1.0.0 | — |
 | [`18-spec-issues/09-app-folder-re-audit-2026-04-26.md`](./18-spec-issues/09-app-folder-re-audit-2026-04-26.md) | App Folder Re-Audit — 2026-04-26 (post-fix) | 1.0.0 | — |
-| [`18-spec-issues/10-ai-readiness-audit-round-4-2026-04-27.md`](./18-spec-issues/10-ai-readiness-audit-round-4-2026-04-27.md) | AI Readiness Audit — Spec Corpus (Round 4) | 1.0.0 | — |
 | [`18-spec-issues/10-content-audit-endpoints-and-db-diagram.md`](./18-spec-issues/10-content-audit-endpoints-and-db-diagram.md) | Content Audit — `06-endpoints/` + `07-db-diagram/` (2026-04-26) | 1.0.0 | — |
 | [`18-spec-issues/11-content-audit-at-app-coverage.md`](./18-spec-issues/11-content-audit-at-app-coverage.md) | Content Audit — `AT-APP-NN` Coverage Completeness (2026-04-26) | 1.0.0 | — |
+| [`18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md`](./18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md) | AI Readiness Audit — Spec Corpus (Round 4) | 1.0.0 | — |
 | [`18-spec-issues/97-acceptance-criteria.md`](./18-spec-issues/97-acceptance-criteria.md) | Spec Issues — Acceptance Criteria | 1.3.0 | Dispatch |
 | [`18-spec-issues/99-consistency-report.md`](./18-spec-issues/99-consistency-report.md) | Consistency Report — Spec Issues | 1.0.0 | — |
 
