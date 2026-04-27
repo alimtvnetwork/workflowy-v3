@@ -188,6 +188,62 @@ function collectCitations() {
   return citations;
 }
 
+// G-30.2 — open-prefix redundancy advisory.
+// Returns array of { prefix, reason, citedCount, file } for open prefixes
+// whose citations are 100% covered by closed declarations OR have zero
+// citations. Allow-listed prefixes are filtered out.
+function findRedundantOpenPrefixes(registered, citations) {
+  const cited = new Set(citations.map((c) => c.id));
+  const out = [];
+  for (const [prefix, file] of registered.openPrefixes.entries()) {
+    if (REDUNDANCY_ALLOWLIST.has(prefix)) continue;
+    const citedUnder = [...cited].filter(
+      (id) => id.startsWith(prefix) && /^\d+$/.test(id.slice(prefix.length)),
+    );
+    if (citedUnder.length === 0) {
+      out.push({ prefix, reason: "zero-citations", citedCount: 0, file });
+      continue;
+    }
+    const uncovered = citedUnder.filter((id) => !registered.ids.has(id));
+    if (uncovered.length === 0) {
+      out.push({
+        prefix,
+        reason: "all-closed-covered",
+        citedCount: citedUnder.length,
+        file,
+      });
+    }
+  }
+  return out;
+}
+
+function printRedundancyAdvisory(redundant) {
+  if (redundant.length === 0) {
+    console.log("");
+    console.log("  G-30.2 redundancy advisory: no cleanup candidates 🎉");
+    return;
+  }
+  console.log("");
+  console.log(
+    `  G-30.2 redundancy advisory (WARN-only): ${redundant.length} open prefix(es) may be safe to remove`,
+  );
+  console.log("    (citations 100% covered by closed declarations OR zero usage)");
+  console.log("");
+  for (const r of redundant) {
+    const tag = r.reason === "zero-citations"
+      ? "  zero citations    "
+      : `  ${String(r.citedCount).padStart(2)} cited / all closed`;
+    console.log(`    ${r.prefix.padEnd(20)} ${tag}  ${r.file}`);
+  }
+  console.log("");
+  console.log(
+    "    To suppress: add the prefix to REDUNDANCY_ALLOWLIST in this runner",
+  );
+  console.log(
+    "    (intentional future-licensing) or delete the open declaration row.",
+  );
+}
+
 function main() {
   const registered = collectRegistered();
   const citations = collectCitations();
@@ -203,6 +259,10 @@ function main() {
     console.log(`  unique cited IDs:                   ${uniqueCited.size}`);
     console.log(`  unregistered citations:             0`);
     console.log("  ✅ all citations resolve");
+    if (WARN_REDUNDANT) {
+      const redundant = findRedundantOpenPrefixes(registered, citations);
+      printRedundancyAdvisory(redundant);
+    }
     process.exit(0);
   }
 
