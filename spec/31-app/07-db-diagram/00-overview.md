@@ -16,11 +16,11 @@
 |---|------|-------|-------|
 | 1 | [`01-master-erd.md`](./01-master-erd.md) | 01 — Master ERD (All Tables, Both DBs) | 251 |
 | 2 | [`02-root-db-erd.md`](./02-root-db-erd.md) | 02 — Root DB ERD | 103 |
-| 3 | [`03-app-db-erd.md`](./03-app-db-erd.md) | 03 — App DB ERD (per Workspace) | 228 |
-| 4 | [`04-feature-slices.md`](./04-feature-slices.md) | 04 — Feature Slices (One ERD per Feature) | 280 |
+| 3 | [`03-app-db-erd.md`](./03-app-db-erd.md) | 03 — App DB ERD (per Workspace) | 234 |
+| 4 | [`04-feature-slices.md`](./04-feature-slices.md) | 04 — Feature Slices (One ERD per Feature) | 412 |
 | 5 | [`05-lifecycle-flows.md`](./05-lifecycle-flows.md) | 05 — Lifecycle Flows | 192 |
-| 6 | [`06-indexes.md`](./06-indexes.md) | 06 — Indexes | 154 |
-| 7 | [`07-migrations.md`](./07-migrations.md) | 07 — Migrations Roadmap | 141 |
+| 6 | [`06-indexes.md`](./06-indexes.md) | 06 — Indexes | 168 |
+| 7 | [`07-migrations.md`](./07-migrations.md) | 07 — Migrations Roadmap | 212 |
 
 <!-- AUTO-TOC:END -->
 

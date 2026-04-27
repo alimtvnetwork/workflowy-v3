@@ -1,12 +1,19 @@
 #!/usr/bin/env node
 /**
- * G-30 — AT Citation Validity Gate (v1.1.0)
+ * G-30 — AT Citation Validity Gate (v1.2.0)
  *
  * Asserts every `AT-*` ID cited under three consumer scopes is declared
  * in at least one markdown-table registry row across spec/31-app/**:
  *   1. spec/31-app/06-endpoints/**\/*.md
  *   2. spec/31-app/02-workflows/**\/*.md
  *   3. spec/31-app/07-db-diagram/04-feature-slices.md
+ *
+ * G-30.2 (v1.2.0) — open-prefix redundancy advisory:
+ *   When `--warn-redundant` flag is passed (or env G30_WARN_REDUNDANT=1),
+ *   prints an advisory list of `AT-FOO-NN` open-prefix declarations whose
+ *   citations are *all* covered by closed declarations. WARN-only — never
+ *   changes exit code. Intent: surface cleanup candidates without breaking
+ *   CI on intentional future-licensing prefixes (AT-WORKFLOWS-NN, etc).
  *
  * Algorithm SSOT: spec/31-app/05-conventions/23-g30-at-citation-validity-gate.md
  *
@@ -41,6 +48,22 @@ const CONSUMER_SCOPES = [
 const CONSUMER_EXCLUDED = new Set([
   "99-consistency-report.md",
 ]);
+
+// G-30.2 — open-prefix redundancy advisory.
+// Prefixes in this allow-list are NEVER reported as redundant — they are
+// intentional future-licensing declarations that reserve a namespace for
+// growth (AT-ROADMAP-NN reserves the roadmap AT space; AT-FOO-NN is the
+// canonical doc example in 02-ci-quality-gates.md).
+const REDUNDANCY_ALLOWLIST = new Set([
+  "AT-FOO-",          // Doc-example placeholder
+  "AT-WORKFLOWS-",    // 02-workflows/97 future
+  "AT-ROADMAP-",      // 04-roadmap/97 future
+  "AT-ENDPOINTS-",    // 06-endpoints/97 future
+  "AT-DBDIAGRAM-",    // 07-db-diagram/97 future
+]);
+
+const WARN_REDUNDANT = process.argv.includes("--warn-redundant")
+  || process.env.G30_WARN_REDUNDANT === "1";
 
 // Declaration — first table cell holds an AT-* ID, optionally backticked.
 // Examples that match:
@@ -165,6 +188,62 @@ function collectCitations() {
   return citations;
 }
 
+// G-30.2 — open-prefix redundancy advisory.
+// Returns array of { prefix, reason, citedCount, file } for open prefixes
+// whose citations are 100% covered by closed declarations OR have zero
+// citations. Allow-listed prefixes are filtered out.
+function findRedundantOpenPrefixes(registered, citations) {
+  const cited = new Set(citations.map((c) => c.id));
+  const out = [];
+  for (const [prefix, file] of registered.openPrefixes.entries()) {
+    if (REDUNDANCY_ALLOWLIST.has(prefix)) continue;
+    const citedUnder = [...cited].filter(
+      (id) => id.startsWith(prefix) && /^\d+$/.test(id.slice(prefix.length)),
+    );
+    if (citedUnder.length === 0) {
+      out.push({ prefix, reason: "zero-citations", citedCount: 0, file });
+      continue;
+    }
+    const uncovered = citedUnder.filter((id) => !registered.ids.has(id));
+    if (uncovered.length === 0) {
+      out.push({
+        prefix,
+        reason: "all-closed-covered",
+        citedCount: citedUnder.length,
+        file,
+      });
+    }
+  }
+  return out;
+}
+
+function printRedundancyAdvisory(redundant) {
+  if (redundant.length === 0) {
+    console.log("");
+    console.log("  G-30.2 redundancy advisory: no cleanup candidates 🎉");
+    return;
+  }
+  console.log("");
+  console.log(
+    `  G-30.2 redundancy advisory (WARN-only): ${redundant.length} open prefix(es) may be safe to remove`,
+  );
+  console.log("    (citations 100% covered by closed declarations OR zero usage)");
+  console.log("");
+  for (const r of redundant) {
+    const tag = r.reason === "zero-citations"
+      ? "  zero citations    "
+      : `  ${String(r.citedCount).padStart(2)} cited / all closed`;
+    console.log(`    ${r.prefix.padEnd(20)} ${tag}  ${r.file}`);
+  }
+  console.log("");
+  console.log(
+    "    To suppress: add the prefix to REDUNDANCY_ALLOWLIST in this runner",
+  );
+  console.log(
+    "    (intentional future-licensing) or delete the open declaration row.",
+  );
+}
+
 function main() {
   const registered = collectRegistered();
   const citations = collectCitations();
@@ -180,6 +259,10 @@ function main() {
     console.log(`  unique cited IDs:                   ${uniqueCited.size}`);
     console.log(`  unregistered citations:             0`);
     console.log("  ✅ all citations resolve");
+    if (WARN_REDUNDANT) {
+      const redundant = findRedundantOpenPrefixes(registered, citations);
+      printRedundancyAdvisory(redundant);
+    }
     process.exit(0);
   }
 

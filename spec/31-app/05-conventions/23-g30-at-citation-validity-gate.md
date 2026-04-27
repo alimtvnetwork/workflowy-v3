@@ -1,6 +1,6 @@
 ---
 slug: g30-at-citation-validity-gate
-version: 1.1.0
+version: 1.2.0
 updated: 2026-04-27
 parent: ../../05-conventions/02-ci-quality-gates.md
 status: canonical
@@ -9,7 +9,7 @@ gate_id: G-30
 
 # G-30 — AT Citation Validity Gate
 
-> **Version:** 1.1.0
+> **Version:** 1.2.0
 > **Updated:** 2026-04-27 (UTC+8)
 > **Parent:** [`02-ci-quality-gates.md`](./02-ci-quality-gates.md)
 > **Sibling:** [`22-g29-endpoint-matrix-coverage-gate.md`](./22-g29-endpoint-matrix-coverage-gate.md)
@@ -160,13 +160,76 @@ G-30 AT citation validity FAILED:
 
 ---
 
-## Out of scope (v1.1.0)
+## Out of scope (v1.2.0)
 
 - Other `07-db-diagram/*.md` files (only `04-feature-slices.md` is in scope;
   the master ERD and migration plan use prose-style refs, not citation density)
-- Reverse-direction check ("registered but never cited") → not a defect
-  per current policy; ATs may be declared ahead of consumers
+- Reverse-direction check ("registered but never cited") → see G-30.2 below;
+  emitted as advisory, not failure.
 - Cross-domain AT IDs (e.g. `spec/16-generic-cli/`) → out of App-domain scope
+
+---
+
+## G-30.2 — Open-prefix redundancy advisory (v1.2.0)
+
+**Status:** WARN-only — never changes exit code.
+
+**Problem this addresses.** Now that F15 + F20 closed 25 alias prefixes into
+explicit registration tables (908 closed IDs as of 2026-04-27), most of the
+41 surviving open-prefix declarations are technically dead — every cited ID
+under their prefix already has a closed-table row. They were originally
+needed to license citations before per-ID rows existed; they now linger as
+historical baggage.
+
+**What it reports.** When invoked with `--warn-redundant` (or env
+`G30_WARN_REDUNDANT=1`), the runner enumerates open prefixes whose:
+
+- citations are 100% covered by closed declarations (e.g. `AT-MIRROR-NN`
+  declared but `AT-MIRROR-01..06` all live in closed alias-enumeration table), OR
+- have zero matching citations across all 3 consumer scopes (e.g.
+  `AT-MULTISELECT-NN` — declared but no consumer cites it).
+
+**Allow-list.** Five prefixes are excluded from the advisory because they
+are intentional future-licensing slots, not cleanup candidates:
+
+| Prefix | Why excluded |
+|--------|-------------|
+| `AT-FOO-` | Doc-example placeholder in `02-ci-quality-gates.md` |
+| `AT-WORKFLOWS-` | Reserves namespace for future per-workflow ATs |
+| `AT-ROADMAP-` | Reserves roadmap AT space |
+| `AT-ENDPOINTS-` | Reserves endpoints AT space |
+| `AT-DBDIAGRAM-` | Reserves DB-diagram AT space |
+
+To suppress additional prefixes, edit `REDUNDANCY_ALLOWLIST` in the runner.
+
+**Why WARN-only.** Some closed ID coverage is provisional (e.g. an alias
+table may be removed in a v3.0.0 sweep). Failing CI on redundancy would
+incentivise re-adding open declarations defensively. Advisory output lets
+F-series cleanup tasks (e.g. F-future) prune in batches without churn.
+
+**Sample output.**
+```
+G-30.2 redundancy advisory (WARN-only): 36 open prefix(es) may be safe to remove
+  (citations 100% covered by closed declarations OR zero usage)
+
+  AT-ROLES-              10 cited / all closed  spec/31-app/01-features/15-roles-and-permissions.md
+  AT-MULTISELECT-       zero citations          spec/31-app/01-features/97-acceptance-criteria.md
+  AT-WF-CREATE-          5 cited / all closed   spec/31-app/02-workflows/00-overview.md
+  ...
+  To suppress: add the prefix to REDUNDANCY_ALLOWLIST in this runner
+  (intentional future-licensing) or delete the open declaration row.
+```
+
+**Invocation.**
+```sh
+node scripts/spec-hygiene/30-check-at-citation-validity.mjs --warn-redundant
+# or
+G30_WARN_REDUNDANT=1 node scripts/spec-hygiene/00-run-all.mjs
+```
+
+The master runner (`00-run-all.mjs`) does NOT pass the flag by default —
+opt-in only. Promotion to default-on is reserved for a future loop after
+the redundancy queue is drained.
 
 ---
 
@@ -174,5 +237,6 @@ G-30 AT citation validity FAILED:
 
 | Version | Date | Change |
 |---------|------|--------|
+| 1.2.0 | 2026-04-27 | F24 — added G-30.2 open-prefix redundancy advisory (`--warn-redundant`, WARN-only); allow-list of 5 future-licensing prefixes; current advisory surfaces 36 cleanup candidates |
 | 1.1.0 | 2026-04-27 | F14 — extended consumer scope to `02-workflows/` and `07-db-diagram/04-feature-slices.md`; output now reports per-scope provenance on failure |
 | 1.0.0 | 2026-04-27 | Initial — created in response to F9 drift discovery |
