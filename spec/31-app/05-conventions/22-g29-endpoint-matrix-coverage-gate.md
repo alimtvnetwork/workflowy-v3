@@ -37,7 +37,7 @@ As a reviewer of any PR that adds, renames, or deletes an endpoint, I want CI to
 | Endpoint file glob | Filesystem scan | `spec/31-app/06-endpoints/*.md` | EXCLUDES `16-endpoint-at-matrix.md`, `00-overview.md`, `97-acceptance-criteria.md`, `99-consistency-report.md` |
 | Endpoint declaration pattern | Inline regex | This script | `/EP-[A-Z][A-Z0-9-]+/g` matched against summary tables (rows starting with `\| EP-…`) and section headers (lines starting with `## EP-…`) |
 | Matrix file | File read | `spec/31-app/06-endpoints/16-endpoint-at-matrix.md` | Markdown table parser scans rows under the `## Matrix` heading |
-| Matrix row pattern | Inline regex | This script | `/^\|\s*\d+\s*\|\s*`EP-[A-Z0-9-]+`/` — first column is row number, second is endpoint ID in backticks |
+| Matrix row pattern | Inline regex | This script | `/^\|\s*[\w.]+\s*\|\s*`EP-[A-Z0-9-]+`/` — first column is row tag (digits or alphanumeric like `15b`), second is endpoint ID in backticks |
 | AT citation pattern | Inline regex | This script | `/`AT-[A-Z][A-Z0-9-]*-?\d+`/` matched in the matrix row body |
 
 ## Outputs

@@ -32,7 +32,7 @@ const EXCLUDED = new Set([
 
 const RX_TABLE_DECL = /^\|\s*(EP-[A-Z][A-Z0-9-]+)\s*\|/gm;
 const RX_HEADER_DECL = /^##\s+(EP-[A-Z][A-Z0-9-]+)\b/gm;
-const RX_MATRIX_ROW = /^\|\s*\d+\s*\|\s*`(EP-[A-Z][A-Z0-9-]+)`/;
+const RX_MATRIX_ROW = /^\|\s*[\w.]+\s*\|\s*`(EP-[A-Z][A-Z0-9-]+)`/;
 const RX_AT_CITATION = /`AT-[A-Z][A-Z0-9-]*-?\d+`/g;
 
 function fail(msg, code = 2) {
