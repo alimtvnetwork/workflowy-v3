@@ -1315,7 +1315,7 @@
 | [`31-app/05-conventions/23-sse-php-implementation.md`](./31-app/05-conventions/23-sse-php-implementation.md) | Convention 23 — PHP SSE Implementation Pattern | 1.0.0 | Active |
 | [`31-app/05-conventions/24-g31-workflow-xref-reciprocity-gate.md`](./31-app/05-conventions/24-g31-workflow-xref-reciprocity-gate.md) | G-31 — Workflow Cross-Reference Reciprocity Gate | 1.0.0 | — |
 | [`31-app/05-conventions/24-state-management-architecture.md`](./31-app/05-conventions/24-state-management-architecture.md) | State Management Architecture | 1.0.0 | — |
-| [`31-app/05-conventions/25-g32-ddl-unique-coverage-gate.md`](./31-app/05-conventions/25-g32-ddl-unique-coverage-gate.md) | G-32 — DDL ↔ Doc Index Coverage Gate | 2.0.0 | — |
+| [`31-app/05-conventions/25-g32-ddl-unique-coverage-gate.md`](./31-app/05-conventions/25-g32-ddl-unique-coverage-gate.md) | G-32 — DDL ↔ Doc Index Coverage Gate | 3.0.0 | — |
 | [`31-app/05-conventions/97-acceptance-criteria.md`](./31-app/05-conventions/97-acceptance-criteria.md) | Conventions — Acceptance Criteria | 1.0.0 | — |
 | [`31-app/05-conventions/99-consistency-report.md`](./31-app/05-conventions/99-consistency-report.md) | Consistency Report — 05-conventions | 1.0.1 | — |
 | [`31-app/06-endpoints/00-overview.md`](./31-app/06-endpoints/00-overview.md) | Endpoints — Master Index | 1.0.0 | — |
@@ -1347,7 +1347,7 @@
 | [`31-app/07-db-diagram/03-app-db-erd.md`](./31-app/07-db-diagram/03-app-db-erd.md) | 03 — App DB ERD (per Workspace) | 1.3.0 | — |
 | [`31-app/07-db-diagram/04-feature-slices.md`](./31-app/07-db-diagram/04-feature-slices.md) | 04 — Feature Slices (One ERD per Feature) | 2.1.0 | — |
 | [`31-app/07-db-diagram/05-lifecycle-flows.md`](./31-app/07-db-diagram/05-lifecycle-flows.md) | 05 — Lifecycle Flows | 1.0.0 | — |
-| [`31-app/07-db-diagram/06-indexes.md`](./31-app/07-db-diagram/06-indexes.md) | 06 — Indexes | 1.4.0 | — |
+| [`31-app/07-db-diagram/06-indexes.md`](./31-app/07-db-diagram/06-indexes.md) | 06 — Indexes | 1.5.0 | — |
 | [`31-app/07-db-diagram/07-migrations.md`](./31-app/07-db-diagram/07-migrations.md) | 07 — Migrations Roadmap | 2.0.0 | — |
 | [`31-app/07-db-diagram/97-acceptance-criteria.md`](./31-app/07-db-diagram/97-acceptance-criteria.md) | DB Diagram — Acceptance Criteria | 1.0.1 | — |
 | [`31-app/07-db-diagram/99-consistency-report.md`](./31-app/07-db-diagram/99-consistency-report.md) | Consistency Report — 07-db-diagram | 1.0.0 | — |

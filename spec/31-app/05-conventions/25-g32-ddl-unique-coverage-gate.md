@@ -1,6 +1,6 @@
 ---
 slug: g32-ddl-unique-coverage-gate
-version: 2.0.0
+version: 3.0.0
 updated: 2026-04-27
 parent: ../../05-conventions/02-ci-quality-gates.md
 status: canonical
@@ -9,7 +9,7 @@ gate_id: G-32
 
 # G-32 — DDL ↔ Doc Index Coverage Gate
 
-> **Version:** 2.0.0
+> **Version:** 3.0.0
 > **Updated:** 2026-04-27 (UTC+8)
 > **Parent:** [`02-ci-quality-gates.md`](./02-ci-quality-gates.md)
 > **Sibling:** [`24-g31-workflow-xref-reciprocity-gate.md`](./24-g31-workflow-xref-reciprocity-gate.md)
@@ -23,6 +23,7 @@ gate_id: G-32
 |----------|-----------|---------------------------------------------------------------------------|----------|
 | G-32.1   | forward   | Does every DDL `UNIQUE` declaration appear in `06-indexes.md`?            | v1.0.0   |
 | G-32.2   | reverse   | Does every `Idx*` / `sqlite_autoindex_*` name in `06-indexes.md` resolve to an explicit DDL index, a UNIQUE-implied autoindex, or a documented alias? | v2.0.0   |
+| G-32.3   | forward   | Does every `CREATE INDEX` (UNIQUE OR plain) across all SQL files appear in `06-indexes.md` by its DDL name OR its prose-alias name (resolved via `sql/00-overview.md` §Index-name aliases)? | v3.0.0   |
 
 G-32.2 closes the symmetric gap: F26 caught the **fabricated-column**
 class (UNIQUE in DDL but cited the wrong column name in docs); G-32.2
@@ -222,15 +223,21 @@ connectivity" choice.
 
 ## Future-promotion ladder (not scoped to this gate)
 
-Two further enhancements remain available for future tasks:
+One further enhancement remains available for future tasks:
 
-1. **F-future-G32b**: Extend scope to non-UNIQUE indexes (`CREATE INDEX`
-   without UNIQUE). Would require deciding how to handle partial
-   indexes and expression indexes whose names don't follow
-   `Idx{Table}_{Cols}` convention.
-2. **F-future-G32c**: Add G-32.3 enforcing every `COVERAGE_EXEMPT` /
-   `REVERSE_EXEMPT` entry has a corresponding rationale comment in the
-   runner source (machine-checkable; mirrors the G-30.3 and G-31.2 plans).
+1. **F-future-G32c**: Add G-32.4 enforcing every `COVERAGE_EXEMPT` /
+   `REVERSE_EXEMPT` / `NONUNIQUE_EXEMPT` entry has a corresponding
+   rationale comment in the runner source (machine-checkable; mirrors
+   the G-30.3 and G-31.2 plans).
+
+Note on partial / expression indexes: G-32.3 matches by **DDL index
+name** alone, not by `(cols)` or `WHERE …` predicate. So
+`IdxItem_LiveByUpdatedAt (UpdatedAt DESC) WHERE DeletedAt IS NULL` is
+covered by the same name-presence check as a plain index — no special
+casing required. Predicate drift (DDL says `WHERE DeletedAt IS NULL`,
+docs say `WHERE DeletedAt IS NOT NULL`) is **out of scope** for G-32.3
+— that would require a SQL parser; logged as F-future-G32d if ever
+needed.
 
 Logging here so they're discoverable when "check memory for remaining
 tasks" runs in a later loop.
@@ -243,3 +250,4 @@ tasks" runs in a later loop.
 |---------|------|--------|
 | 1.0.0 | 2026-04-27 | F30 — initial implementation; promoted from F26 prototype `/tmp/audit_unique.mjs`; allow-list empty; current state ✅ 13/13 UNIQUE declarations documented across 2 schema files (7 column-level + 4 table-level + 2 explicit) |
 | 2.0.0 | 2026-04-27 | F-future-G32a — added **G-32.2 reverse-drift sub-check**. Parses every backticked `Idx*`/`sqlite_autoindex_*` identifier in `06-indexes.md`, builds DDL universe from explicit `CREATE INDEX` across 3 SQL files + UNIQUE-implied autoindexes + alias rows from `sql/00-overview.md` §Index-name aliases. New `REVERSE_EXEMPT` allow-list (8 entries: 2 logical-tag aliases for autoindex shorthands, 3 prose-rejected names from §"Indexes intentionally NOT created", 3 v2-deprecated names retained for traceability). Negative-tested by injecting `IdxFabricated_Foo` (correctly exits 1). Current state ✅ 37 doc identifiers / 42 DDL identifiers / 0 fabricated. |
+| 3.0.0 | 2026-04-27 | F-future-G32b — added **G-32.3 forward CREATE INDEX coverage** (UNIQUE OR plain). New helpers `collectAllCreateIndexNames()` (29 statements across 3 SQL files), `collectIndexAliasMap()` (DDL→prose map from `sql/00-overview.md` §Index-name aliases, 3 entries), `findUndocumentedCreateIndexes()` matches by backticked name OR alias. New `NONUNIQUE_EXEMPT` allow-list (empty). Predicate/column drift explicitly out of scope (name-presence only). **Caught real drift on first run**: `IdxMirrorGroup_CanonicalItemId` (DDL) ↔ `IdxMirrorPeerGroup_CanonicalItemId` (prose alias) was undocumented — only the v1.3.0 deprecation note mentioned the prose name; added Required-Indexes row in `06-indexes.md` v1.5.0 to close. Negative-tested by sed-renaming `IdxItem_DueDate` → `IdxItem_FabricatedDueDate` in DDL (correctly exits 1; restored). Current state ✅ 29/29 CREATE INDEX statements documented; final exit = OR(forward UNIQUE, reverse, forward all). |
