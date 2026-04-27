@@ -1,7 +1,7 @@
 # 07 — Migrations Roadmap
 
-> **Version:** 1.0.0
-> **Updated:** 2026-04-26 (UTC+8)
+> **Version:** 2.0.0
+> **Updated:** 2026-04-27 (UTC+8) — v2.0.0 reserves M-115..M-118 for the v1→v2 Mirror Peer-Group migration and ReaperRuns table; adds §"v1→v2 Mirror Peer-Group Migration" execution plan.
 > **Parent:** [`./00-overview.md`](./00-overview.md)
 
 ---
@@ -119,15 +119,86 @@ flowchart TD
 
 ---
 
-## Future Migrations (placeholder slots)
+## Allocated Migration Slots (v2.0)
 
-These are reserved for Phase 2 features so the numbering stays predictable:
+The following slots are **allocated** (not placeholders) and will be applied as part of the v1→v2 schema upgrade. Their `up` SQL exists in [`./sql/`](./sql/) and is referenced from the execution plan below.
+
+| Slot | Purpose | Source SQL | AT Coverage |
+|------|---------|------------|-------------|
+| **M-115** | Create `MirrorGroup` + `MirrorMember` tables (peer-group model, AUDIT-AI-07 fix) | [`./sql/07-migration-v2-mirror-peer-groups.sql`](./sql/07-migration-v2-mirror-peer-groups.sql) §Phase 1 | `AT-APP-58..65` |
+| **M-116** | Backfill `MirrorGroup` + `MirrorMember` rows from legacy `Mirror` table | [`./sql/07-migration-v2-mirror-peer-groups.sql`](./sql/07-migration-v2-mirror-peer-groups.sql) §Phase 2 | `AT-APP-58..65` |
+| **M-117** | Drop legacy `Mirror` table + `Item.MirrorOfItemId` column + their indexes | [`./sql/07-migration-v2-mirror-peer-groups.sql`](./sql/07-migration-v2-mirror-peer-groups.sql) §Phase 3–4 | `AT-APP-58..65` |
+| **M-118** | Create `ReaperRuns` audit table (B4 trash-reaper) + `IdxReaperRuns_RanAt` | [`./sql/02-app-schema.sql`](./sql/02-app-schema.sql) §ReaperRuns + [`./sql/03-app-indexes.sql`](./sql/03-app-indexes.sql) | `AT-APP-81..85` |
+
+> **Naming bridge**: ERD docs (`03-app-db-erd.md`, `06-indexes.md`) call these tables `MirrorPeerGroup` / `MirrorPeerGroupMember`. The SQL files use `MirrorGroup` / `MirrorMember` (shorter, matches AUDIT-AI-07 fix). See [`./sql/00-overview.md`](./sql/00-overview.md) §Naming Bridge.
+
+---
+
+## v1→v2 Mirror Peer-Group Migration — Execution Plan
+
+> **Trigger**: WP-plugin bootstrap detects `PRAGMA user_version < 2` on an App DB.
+> **Authority**: [`../01-features/09b-mirror-peer-group-model.md`](../01-features/09b-mirror-peer-group-model.md) §8
+> **Workflow ref**: [`../02-workflows/08-mirror-detach-flow.md`](../02-workflows/08-mirror-detach-flow.md) (post-migration runtime behaviour)
+
+### Pre-flight checks (per App DB)
+
+| # | Check | Action on fail |
+|---|-------|----------------|
+| 1 | `PRAGMA user_version` returns `1` (or `0` for legacy installs predating versioning) | Skip migration, log `SKIP: already v{n}` |
+| 2 | SQLite version ≥ `3.35.0` (required for `ALTER TABLE … DROP COLUMN`) | Abort, surface error to admin — manual upgrade path required |
+| 3 | Legacy `Mirror` table exists OR is already absent | If absent AND new tables present → mark `user_version=2`, exit |
+| 4 | Make a file-level backup copy: `workflowy_app_{WorkspaceId}.db.pre-v2.bak` | Abort if backup write fails |
+
+### Execution sequence
+
+| Step | Action | Reversible? | Notes |
+|------|--------|:-----------:|-------|
+| 1 | `PRAGMA foreign_keys = OFF` | ✅ | Required so Phase 3 drop doesn't trip cascades mid-flight |
+| 2 | `BEGIN TRANSACTION` | ✅ | Whole migration is atomic; failure → full rollback |
+| 3 | M-115: create `MirrorGroup`, `MirrorMember` (`IF NOT EXISTS`) | ✅ | Idempotent |
+| 4 | M-116: backfill — one `MirrorGroup` per distinct `Mirror.SourceItemId`; insert source + each mirror placeholder as members | ✅ | `WHERE NOT EXISTS` guards make it re-runnable |
+| 5 | M-117: `DROP INDEX` legacy mirror indexes; `DROP TABLE Mirror`; `ALTER TABLE Item DROP COLUMN MirrorOfItemId` | ⚠️ Destructive | Backup from pre-flight #4 is the only rollback |
+| 6 | M-118: ensure `ReaperRuns` exists + its index | ✅ | No-op if v2.1 schema already applied |
+| 7 | Recreate v2 indexes (`IF NOT EXISTS`) | ✅ | See [`./06-indexes.md`](./06-indexes.md) §Mirror peer-group |
+| 8 | `PRAGMA user_version = 2` | ✅ | Bootstrap marker — gates re-runs |
+| 9 | `COMMIT` + `PRAGMA foreign_keys = ON` | — | |
+| 10 | Record `wp_options` row `workflowy_migration_v2_{WorkspaceId} = {ISO8601}` | — | Cross-instance audit; survives DB file replacement |
+
+### Failure modes
+
+| Failure | Detection | Response |
+|---------|-----------|----------|
+| Legacy `Mirror` row references a deleted `Item` (orphan FK after FKs disabled) | Phase 2 INSERT succeeds but member count mismatch with `(SELECT 2*COUNT(*) FROM Mirror) - duplicates` | Log warning, continue — orphans are dropped (matches v2 semantics) |
+| Singleton group created (only the source survives) | After Phase 2, `SELECT MirrorGroupId FROM MirrorMember GROUP BY MirrorGroupId HAVING COUNT(*) = 1` | Run [`../02-workflows/08-mirror-detach-flow.md`](../02-workflows/08-mirror-detach-flow.md) §auto-dissolve trigger semantics — delete the singleton `MirrorGroup` row |
+| `ALTER TABLE … DROP COLUMN` fails (SQLite < 3.35) | Step 5 raises | Rollback transaction, restore backup, surface "SQLite upgrade required" |
+| `PRAGMA user_version` not bumped (crash between step 8 and 9) | Next bootstrap re-detects v1 | Re-run is safe — Phase 1+2 are idempotent; Phase 3 is no-op once `Mirror` is gone |
+
+### Forbidden patterns
+
+- ❌ Running M-115/M-116/M-117 individually outside one transaction (partial state leaves unusable schema)
+- ❌ Skipping the file backup (pre-flight #4) — Phase 3 is irreversible without it
+- ❌ Editing the v2 SQL after a single workspace has migrated (would break later workspaces' replay)
+
+### Rollback
+
+There is no in-DB rollback for M-117. Recovery path:
+
+1. Stop the WP plugin runtime
+2. Replace the App DB file with the `.pre-v2.bak` backup
+3. Investigate the failure offline
+4. Re-run migration after fixing root cause
+
+---
+
+## Future Migration Slots (Phase 2)
+
+Reserved for unshipped features so numbering stays predictable:
 
 | Slot | Reserved for | Source |
 |------|--------------|--------|
-| M-115 | `BoardColumn` table (when board view ships) | [`../01-features/07-board-view.md`](../01-features/07-board-view.md) |
-| M-116 | `FtsItem` virtual table (FTS5 search index) | `mem://features/search-functionality` |
-| M-117 | `Presence` table (cursor / selection broadcast) | [`../01-features/14-concurrency-and-sync.md`](../01-features/14-concurrency-and-sync.md) |
+| M-119 | `BoardColumn` table (when board view ships) | [`../01-features/07-board-view.md`](../01-features/07-board-view.md) |
+| M-120 | `FtsItem` virtual table (FTS5 search index) | `mem://features/search-functionality` |
+| M-121 | `Presence` table (cursor / selection broadcast) | [`../01-features/14-concurrency-and-sync.md`](../01-features/14-concurrency-and-sync.md) |
 
 ---
 
