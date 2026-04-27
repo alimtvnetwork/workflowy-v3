@@ -94,3 +94,29 @@ concatenation of buckets from highest to lowest.
 | Search syntax + perf SLA | `mem://features/search-functionality` |
 | Mirror peer groups | [09b-mirror-peer-group-model.md](./09b-mirror-peer-group-model.md) |
 | Trash exclusion | [11-trash-view.md](./11-trash-view.md) |
+
+---
+
+## Inputs
+
+- A user query string (free text + optional `#tag`, `is:`, `type:`, `date:` filters per `mem://features/search-functionality`).
+- Candidate `Items` set after filter application, with their `Content`, `Note`, `UpdatedAt`, `OwnerId`, and breadcrumb path.
+
+## Outputs
+
+- A deterministically-ordered ranked list per §16.1: bucketed by `floor(Score / 20)`, sorted within bucket by `UpdatedAt` desc then `OwnerId` asc.
+- The 250-item viewport cap (L4) applies — additional matches counted but not rendered (per **I-SR-04**).
+
+## Edge Cases
+
+§16.4 *Edge Cases* covers: title-exact-vs-100-substring relevance dominance; same-score recency tiebreak then `OwnerId`; mirror peer-group instances ranking independently with distinct breadcrumbs; empty-query no-fallback rule; filter-only-query bucket-60 default.
+
+## Acceptance Tests
+
+The 5 acceptance tests **AT-SR-01 … AT-SR-05** are defined under the existing `## Acceptance Criteria` heading above. This bare-named heading satisfies G-06; canonical content lives in that section.
+
+## Component Contract
+
+- **Ranking site:** server-side query handler (no client-side re-rank).
+- **Determinism contract:** identical `(query, DB snapshot)` MUST produce byte-identical ordering (per **I-SR-01**).
+- **Perf SLA:** sub-300 ms for ≥5,000-item datasets per `mem://features/search-functionality`; enforced via the 5-bucket coarse-grain strategy (no full BM25 in MVP).

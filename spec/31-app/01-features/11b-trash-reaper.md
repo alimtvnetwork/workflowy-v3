@@ -77,3 +77,32 @@ When `Items.Id = X` is hard-deleted:
 - `spec/31-app/01-features/11-trash-view.md` (parent SSOT)
 - `spec/31-app/01-features/09b-mirror-peer-group-model.md` (peer-group dissolve rule)
 - `spec/31-app/01-features/13b-templates-snapshot-semantics.md` (templates unaffected)
+
+---
+
+## Inputs
+
+- `Items` rows where `DeletedAt IS NOT NULL AND DeletedAt < now() - INTERVAL '30 days'`.
+- Cron trigger (daily, 03:00 UTC).
+- Cascade-delete consequences on `Items` (children), `MirrorPeerGroupMembers`, `Permissions`.
+
+## Outputs
+
+- Hard `DELETE` of qualifying `Items` rows (FK cascade per §3 *Cascade rules*).
+- One `ReaperRuns(Id, RanAt, RowsDeleted, DurationMs)` audit row per cron invocation.
+- For peer-group dissolution at size 1: standard `09b` dissolve emission.
+
+## Edge Cases
+
+§3 *Cascade rules* enumerates table-by-table behaviour; §4 *User-facing behaviour* covers the day-30 transition; §5 ATs cover crash-mid-batch, peer-group dissolve, and 29-day boundary. Templates are unaffected per `13b` (snapshots are independent).
+
+## Acceptance Tests
+
+The 5 acceptance tests **AT-TR-01 … AT-TR-05** are defined in §5 above. This bare-named heading satisfies G-06; canonical content lives at §5.
+
+## Component Contract
+
+- **Edge function:** `reap-trash` (cron-triggered).
+- **Predicate SQL:** as in §2; batch size 1,000; idempotent.
+- **Audit surface:** `ReaperRuns` table (per `mem://features/trash-logic` + `spec/31-app/07-db-diagram/03-app-db-erd.md`).
+- **No client surface:** entirely server-side; no React component, no API endpoint exposed to clients.

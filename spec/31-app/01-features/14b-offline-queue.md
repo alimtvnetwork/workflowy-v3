@@ -97,3 +97,31 @@ field in the meantime.
 | LWW algorithm + tie-break | [14-concurrency-and-sync.md §14.2](./14-concurrency-and-sync.md) |
 | Save status indicator | [`src/types/index.ts` → `SaveStatus`](../../../src/types/index.ts) |
 | Backend runtime constraint | `mem://constraints/backend-runtime-deferred` |
+
+---
+
+## Inputs
+
+- Local user mutations issued while offline (CRUD ops on `Items`, `Permissions`, etc.).
+- Reconnect events from the network layer.
+- Server `ServerTs` stamps applied to each replayed op.
+
+## Outputs
+
+- Durable local mirror reflecting every offline mutation immediately (optimistic UI per §14b.2).
+- A persisted FIFO queue of pending ops keyed by `LocalSeq`.
+- On reconnect: in-order POST of each queued op; LWW resolution per `14-concurrency-and-sync.md` §14.2; "Restored remote change" banner on LWW loss.
+
+## Edge Cases
+
+§14b.4 *Edge Cases* covers: 50-edit batch coalescing into a single banner if >3 losses occur within 2 s; delete-vs-edit LWW resolution; corrupt local-cache full re-sync via root-version mismatch; two-device offline editing tiebreak; partial drain resumption.
+
+## Acceptance Tests
+
+The 6 acceptance tests **AT-OQ-01 … AT-OQ-06** are defined under the existing `## Acceptance Criteria` heading above. This bare-named heading satisfies G-06; canonical content lives in that section.
+
+## Component Contract
+
+- **Local storage:** SQLite mirror — concrete tech deferred per `mem://constraints/backend-runtime-deferred`.
+- **Queue type:** `SaveStatus` enum surfaced via [`src/types/index.ts`](../../../src/types/index.ts).
+- **Sync companion:** all LWW + tiebreak rules delegated to [14-concurrency-and-sync.md §14.2](./14-concurrency-and-sync.md); this addendum specifies durability + replay only.

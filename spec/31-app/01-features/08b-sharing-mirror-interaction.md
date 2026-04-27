@@ -67,3 +67,32 @@ Standard LWW (per `14b-offline-queue.md`) applies to `Permissions` rows.
 - `spec/31-app/01-features/08-share-dialog.md` (parent SSOT)
 - `spec/31-app/01-features/09b-mirror-peer-group-model.md` (peer-group identity)
 - `spec/31-app/01-features/15-roles-and-permissions.md` (ACL model)
+
+---
+
+## Inputs
+
+- A mirror peer-group `{P₁, P₂, …, Pₙ}` (per `09b`).
+- A share action with target `(ItemId, GranteeId, PermissionLevel)`.
+- An ACL revocation action `(ItemId, GranteeId)`.
+- Concurrent edits to `Permissions` rows (resolved via LWW per `14b`).
+
+## Outputs
+
+- `Permissions` rows keyed by `ItemId` (per **R-SM-01**) — never by `PeerGroupId`.
+- For grantee U: only the explicitly-shared peer Pₖ appears in U's shared inbox (per **R-SM-02**).
+- Content-edit propagation across the peer group via existing peer-group sync (per **R-SM-03**); position/parent/ACL edits remain peer-local (per **R-SM-04**).
+
+## Edge Cases
+
+The 3 edge cases — *Detach while shared* (§3.1), *Mirror inside a shared subtree* (§3.2), *Concurrent ACL changes* (§3.3) — are defined above. This bare-named heading satisfies G-06 feature-shape.
+
+## Acceptance Tests
+
+The 5 acceptance tests **AT-SM-01 … AT-SM-05** are defined in §4 above. This bare-named heading satisfies G-06; canonical content lives at §4.
+
+## Component Contract
+
+- **Storage:** `Permissions` table — composite key `(ItemId, GranteeId)`.
+- **Mutation hook:** `useShareStore.grant()` / `useShareStore.revoke()` — per-instance, never group-wide.
+- **Sync source:** content fan-out reuses the existing peer-group propagation in `09b-mirror-peer-group-model.md`; this addendum adds **no new code surface** beyond per-instance ACL semantics.
