@@ -1,7 +1,7 @@
 # App — Acceptance Criteria
 
-> **Version:** 2.5.0
-> **Updated:** 2026-04-26 (UTC+8) — v2.5.0 corrected `AT-APP-37` event vocabulary drift: removed non-existent `item-created`/`mirror-created`, restored canonical `mirror-healed` + `presence` per §14.5.2 SSOT (closes F-AUD30-07). Also fixed `AT-APP-44` (`item-created` → `item-updated`) and `AT-APP-56` (`mirror-created` → `mirror-healed`). v2.4.0 added cross-references to `06-endpoints/` and `07-db-diagram/`. v2.3.0 backfilled `AT-WF-*` workflows into canonical (`AT-APP-43..57`). v2.2.0 added Today/Templates/Concurrency/SSE (`AT-APP-26..42`). v2.1.0 declared canonical over `AT-APPF-NN`. v2.0.0 closed F-01.
+> **Version:** 2.6.0
+> **Updated:** 2026-04-27 (UTC+8) — v2.6.0 registered 50 new ATs from B1–B4 product-clarification batches: `AT-APP-58..67` (mirror peer-group, B1), `AT-APP-68..75` (dashboard view, B2), `AT-APP-76..80` (sharing×mirror, B4), `AT-APP-81..85` (trash reaper, B4), `AT-APP-86..91` (multi-select zoom, B4), `AT-APP-92..96` (templates snapshot, B4), `AT-APP-97..102` (offline queue, B3), `AT-APP-103..107` (search ranking, B3). v2.5.0 corrected `AT-APP-37` event vocabulary drift; v2.4.0 added cross-references; v2.3.0 backfilled workflows; v2.2.0 added Today/Templates/Concurrency/SSE; v2.1.0 declared canonical over `AT-APPF-NN`; v2.0.0 closed F-01.
 > **Status:** ✅ Canonical AT index for the App domain
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
@@ -150,6 +150,96 @@ Testable acceptance criteria for the App domain. Each criterion is independently
 | `AT-APP-55` | A restore racing with a concurrent re-delete carrying a newer `ServerTs` returns **HTTP 409**; the item stays trashed and the field-level LWW rule (AT-APP-33) is respected. | `02-workflows/04-trash-restore-flow.md` (was `AT-WF-RESTORE-04`) |
 | `AT-APP-56` | Restoring an item heals its broken mirrors by clearing `Mirrors.BrokenAt` via LWW (subject to AT-APP-34 stickiness) and emits an SSE `mirror-healed` event. | `02-workflows/04-trash-restore-flow.md` (was `AT-WF-RESTORE-05`) |
 | `AT-APP-57` | A stale restore racing with the reaper's hard-delete loses LWW: the reaper's newer `ServerTs` wins and the broken-mirror state is preserved. | `02-workflows/04-trash-restore-flow.md` (was `AT-WF-RESTORE-06`) + AT-APP-34 |
+
+### Mirror peer-group model (B1 addendum, mirrors `AT-MGP-*`)
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| `AT-APP-58` | Mirroring item X under parent P creates a peer-group `G` and inserts P-scoped peer P₂ such that `MirrorPeerGroupMembers` contains both X and P₂ with the same `PeerGroupId`. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MGP-01`) |
+| `AT-APP-59` | Editing the title of any peer in `G` updates `Items.Title` of the canonical content row, and an SSE `item-updated` event fans out to all peers within **1 s**. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MGP-02`) |
+| `AT-APP-60` | `ParentId`, `SortOrder`, and `Permissions` are stored per peer (not per group) and are independent across peers. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MGP-03`) |
+| `AT-APP-61` | Detaching peer P₁ removes it from `MirrorPeerGroupMembers`; if the group's surviving member count drops to **1**, the group is auto-dissolved (group row deleted, last member's PeerGroupId nulled). | `01-features/09b-mirror-peer-group-model.md` (was `AT-MGP-04`) |
+| `AT-APP-62` | Cycle-prevention algorithm rejects a mirror operation that would create a peer of an ancestor of itself, returning **HTTP 409**. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MGP-05`) + `09a-mirror-cycle-detection.md` |
+| `AT-APP-63` | Soft-deleting one peer does NOT delete other peers; the group survives at size ≥2. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MGP-06`) |
+| `AT-APP-64` | Hard-deleting (reaper) a peer that drops the group to size 1 triggers auto-dissolve via DB trigger within the same transaction. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MGP-07`) + `11b-trash-reaper.md` |
+| `AT-APP-65` | LWW conflicts on shared content fields use server `ServerTs` with `OwnerId` ASC tiebreak. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MGP-08`) + AT-APP-33 |
+| `AT-APP-66` | Mirror peer-group migration script v1→v2 converts every legacy `Mirrors(SourceId, MirrorId)` pair into a peer-group with both rows as members; idempotent re-runs are no-ops. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MGP-09`) + `07-db-diagram/sql/07-migration-v2-mirror-peer-groups.sql` |
+| `AT-APP-67` | The legacy `Mirrors` table is read-only after v2 migration; writes return **HTTP 410**. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MGP-10`) |
+
+### Dashboard view (B2 addendum, mirrors `AT-DV-*`)
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| `AT-APP-68` | Dashboard view renders **only** direct children of the zoomed item (depth = 1); grandchildren are not displayed. | `01-features/07b-dashboard-view.md` (was `AT-DV-01`) |
+| `AT-APP-69` | Each card displays the child's title and completion checkbox; both are inline-editable. | `01-features/07b-dashboard-view.md` (was `AT-DV-02`) |
+| `AT-APP-70` | Toggling between List, Board, and Dashboard never mutates the tree structure — only `Items.ItemType` of the parent changes. | `01-features/07b-dashboard-view.md` (was `AT-DV-03`) |
+| `AT-APP-71` | Editing a card title persists to `Items.Title` of the underlying child within **150 ms** debounce. | `01-features/07b-dashboard-view.md` (was `AT-DV-04`) |
+| `AT-APP-72` | Toggling a card's checkbox persists to `Items.CompletedAt` of the underlying child. | `01-features/07b-dashboard-view.md` (was `AT-DV-05`) |
+| `AT-APP-73` | Clicking into a card zooms to that child; back navigation returns to the dashboard with state preserved. | `01-features/07b-dashboard-view.md` (was `AT-DV-06`) |
+| `AT-APP-74` | A dashboard with ≥250 direct children virtualizes per AT-APP-05. | `01-features/07b-dashboard-view.md` (was `AT-DV-07`) |
+| `AT-APP-75` | Switching back to List view restores the original child ordering by `SortOrder`. | `01-features/07b-dashboard-view.md` (was `AT-DV-08`) |
+
+### Sharing × Mirror (B4 addendum, mirrors `AT-SM-*`)
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| `AT-APP-76` | `Permissions` rows are keyed by `ItemId`, never by `PeerGroupId`. Sharing peer P₁ inserts a Permissions row only for P₁'s `ItemId`. | `01-features/08b-sharing-mirror-interaction.md` (was `AT-SM-01`) |
+| `AT-APP-77` | Recipient of a shared peer P₁ sees content edits from peer P₂ propagated to P₁ within **1 s** via peer-group sync. | `01-features/08b-sharing-mirror-interaction.md` (was `AT-SM-02`) |
+| `AT-APP-78` | Recipient editing P₁'s `ParentId` or `SortOrder` does NOT change P₂'s `ParentId` or `SortOrder`. | `01-features/08b-sharing-mirror-interaction.md` (was `AT-SM-03`) |
+| `AT-APP-79` | Revoking access to peer P₁ does NOT revoke access to peer Pₖ that the same user was independently granted. | `01-features/08b-sharing-mirror-interaction.md` (was `AT-SM-04`) |
+| `AT-APP-80` | When sharing a subtree R that contains peer P₁, the recipient cannot navigate to peer P₂ that lives outside R, even though P₁'s content updates reflect P₂'s edits. | `01-features/08b-sharing-mirror-interaction.md` (was `AT-SM-05`) |
+
+### Trash reaper (B4 addendum, mirrors `AT-TR-*`)
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| `AT-APP-81` | Reaper runs daily at 03:00 UTC and hard-deletes every `Items` row where `DeletedAt < now() - INTERVAL '30 days'`, in batches of 1,000. | `01-features/11b-trash-reaper.md` (was `AT-TR-01`) |
+| `AT-APP-82` | Items with `DeletedAt = now() - 29d` survive a reaper pass and remain restorable. | `01-features/11b-trash-reaper.md` (was `AT-TR-02`) |
+| `AT-APP-83` | Hard-deleting an item cascades to its children, mirror peer-group memberships, and permissions via FK `ON DELETE CASCADE`. | `01-features/11b-trash-reaper.md` (was `AT-TR-03`) |
+| `AT-APP-84` | If a reap drops a peer-group to size 1, the group auto-dissolves in the same transaction (per AT-APP-61/64). | `01-features/11b-trash-reaper.md` (was `AT-TR-04`) |
+| `AT-APP-85` | Each reaper run inserts one row into `ReaperRuns(Id, RanAt, RowsDeleted, DurationMs)`. | `01-features/11b-trash-reaper.md` (was `AT-TR-05`) |
+
+### Multi-select zoom (B4 addendum, mirrors `AT-MZ-*`)
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| `AT-APP-86` | Triggering zoom while N>1 items are selected opens an ephemeral virtual scope with synthetic parent `virtual:<sessionId>` titled "N items". | `01-features/12b-multi-select-zoom.md` (was `AT-MZ-01`) |
+| `AT-APP-87` | Edits inside the virtual scope persist to the **real** `Items` rows (titles, completion). | `01-features/12b-multi-select-zoom.md` (was `AT-MZ-02`) |
+| `AT-APP-88` | Pressing `Esc` or breadcrumb-up exits the virtual scope and restores the original selection in the real tree. | `01-features/12b-multi-select-zoom.md` (was `AT-MZ-03`) |
+| `AT-APP-89` | If the virtual-scope membership drops to 1 (item deleted), the scope auto-collapses to a normal zoom on the surviving item. | `01-features/12b-multi-select-zoom.md` (was `AT-MZ-04`) |
+| `AT-APP-90` | Drag operations are locked to within-scope reordering; drag out-of-scope is rejected with a no-drop cursor. | `01-features/12b-multi-select-zoom.md` (was `AT-MZ-05`) |
+| `AT-APP-91` | Page refresh discards the virtual scope (ephemeral, client-only state); user lands on the last persisted scope. | `01-features/12b-multi-select-zoom.md` (was `AT-MZ-06`) |
+
+### Templates — snapshot semantics (B4 addendum, mirrors `AT-TPL-*`)
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| `AT-APP-92` | Instantiating template T under parent P creates N new `Items` rows with **fresh UUIDs**; no `TemplateId` FK is set. | `01-features/13b-templates-snapshot-semantics.md` (was `AT-TPL-01`) |
+| `AT-APP-93` | Editing T's `PayloadJson` does NOT modify any previously instantiated `Items` rows. | `01-features/13b-templates-snapshot-semantics.md` (was `AT-TPL-02`) |
+| `AT-APP-94` | Editing an instantiated `Items` row does NOT modify T's `PayloadJson`. | `01-features/13b-templates-snapshot-semantics.md` (was `AT-TPL-03`) |
+| `AT-APP-95` | Mirror peer-groups inside T's payload collapse to plain items on instantiation (no `MirrorPeerGroupMembers` rows created from a template apply). | `01-features/13b-templates-snapshot-semantics.md` (was `AT-TPL-04`) |
+| `AT-APP-96` | The `OwnerId` of every instantiated row equals `auth.uid()` of the instantiating user, regardless of T's author. | `01-features/13b-templates-snapshot-semantics.md` (was `AT-TPL-05`) |
+
+### Offline queue (B3 addendum, mirrors `AT-OQ-*`)
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| `AT-APP-97` | The full account tree is mirrored locally (IndexedDB) so all CRUD operations work while offline. | `01-features/14b-offline-queue.md` (was `AT-OQ-01`) |
+| `AT-APP-98` | Local mutations are appended to a FIFO queue and optimistically applied to the local mirror; UI never blocks on network. | `01-features/14b-offline-queue.md` (was `AT-OQ-02`) |
+| `AT-APP-99` | On reconnect, the queue is drained in **strict insertion order**; the server timestamps each accepted mutation and broadcasts via SSE. | `01-features/14b-offline-queue.md` (was `AT-OQ-03`) |
+| `AT-APP-100` | Field-level conflicts resolve via Last-Write-Wins keyed on server `ServerTs`, with `OwnerId` ASC as tiebreak (per AT-APP-33). | `01-features/14b-offline-queue.md` (was `AT-OQ-04`) |
+| `AT-APP-101` | A mutation rejected by the server (validation, 410, etc.) is reverted in the local mirror and surfaced to the user as a non-blocking toast. | `01-features/14b-offline-queue.md` (was `AT-OQ-05`) |
+| `AT-APP-102` | Queue persistence survives browser restart; the queue resumes drain from the head on next online event. | `01-features/14b-offline-queue.md` (was `AT-OQ-06`) |
+
+### Search ranking (B3 addendum, mirrors `AT-SR-*`)
+
+| ID | Criterion | Source |
+|----|-----------|--------|
+| `AT-APP-103` | Search results are scored into 5 tiers (exact-whole-field=100, prefix=90, substring=80, token=70, fuzzy=60) × field weight. | `01-features/16-search-ranking.md` (was `AT-SR-01`) |
+| `AT-APP-104` | Within the same tier, results are ordered by `Items.UpdatedAt DESC`. | `01-features/16-search-ranking.md` (was `AT-SR-02`) |
+| `AT-APP-105` | A query matching both Title (weight 1.0) and Note (weight 0.4) of different items ranks the Title-match higher. | `01-features/16-search-ranking.md` (was `AT-SR-03`) |
+| `AT-APP-106` | Soft-deleted items (`DeletedAt IS NOT NULL`) are excluded from search results. | `01-features/16-search-ranking.md` (was `AT-SR-04`) |
+| `AT-APP-107` | Search respects sharing: a user only sees results they have at least `View` permission on (per AT-APP-23). | `01-features/16-search-ranking.md` (was `AT-SR-05`) |
 
 
 ---
