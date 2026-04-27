@@ -1,6 +1,18 @@
 #!/usr/bin/env node
 /**
- * G-32 — DDL ↔ Doc Index Coverage Gate (v2.0.0)
+ * G-32 — DDL ↔ Doc Index Coverage Gate (v3.0.0)
+ *
+ * Three sub-checks:
+ *   G-32.1 (forward, v1.0.0)  — every UNIQUE declaration in DDL is
+ *                              documented in 06-indexes.md.
+ *   G-32.2 (reverse, v2.0.0)  — every Idx*/sqlite_autoindex_* name
+ *                              in 06-indexes.md backticks resolves to
+ *                              real DDL, an autoindex, or an alias.
+ *   G-32.3 (forward, v3.0.0)  — every CREATE INDEX (UNIQUE OR plain)
+ *                              across all SQL files is documented in
+ *                              06-indexes.md by its DDL name OR its
+ *                              prose-alias name (resolved via
+ *                              sql/00-overview.md §Index-name aliases).
  *
  * Asserts that every `UNIQUE` declaration in the SQLite DDL files
  * (`spec/31-app/07-db-diagram/sql/01-root-schema.sql` and
