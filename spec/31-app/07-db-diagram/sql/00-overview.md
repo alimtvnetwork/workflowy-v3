@@ -15,9 +15,12 @@ Concrete, executable **`.sql` files** the WordPress plugin runs at install/activ
 |------|-----------|---------|
 | [`01-root-schema.sql`](./01-root-schema.sql) | `workflowy_root.db` | Identity, workspaces, system roles |
 | [`02-app-schema.sql`](./02-app-schema.sql) | `workflowy_app_{WorkspaceId}.db` | Items, mirrors, shares, comments, etc. |
-| [`03-app-indexes.sql`](./03-app-indexes.sql) | App DB | All performance indexes (ran AFTER `02-app-schema.sql`) |
-| [`04-app-triggers.sql`](./04-app-triggers.sql) | App DB | `UpdatedAt` auto-touch + soft-delete cascade |
-| [`05-seed-enums.sql`](./05-seed-enums.sql) | Both | Lookup table seed rows (`ItemType`, `RoleType`, `WorkspaceRoleType`, `ShareRoleType`) |
+| [`03-app-indexes.sql`](./03-app-indexes.sql) | App DB | All performance indexes (run AFTER `02-app-schema.sql`) |
+| [`04-app-triggers.sql`](./04-app-triggers.sql) | App DB | `UpdatedAt` auto-touch + soft-delete/restore cascade |
+| [`05-root-seeds.sql`](./05-root-seeds.sql) | Root DB | Lookup seeds: `RoleType`, `WorkspaceRoleType` |
+| [`06-app-seeds.sql`](./06-app-seeds.sql) | App DB | Lookup seeds: `ItemType` (12), `ShareRoleType` (3) |
+
+> **Why split seeds**: SQLite parses an `executescript()` block in one pass before executing it. A single seed file referencing both Root-only and App-only tables fails on whichever DB is missing the tables. Two files keep each script self-contained and parseable.
 
 ---
 
@@ -50,8 +53,8 @@ public static function install(\PDO $pdo, string $kind): void {
 
     $base = __DIR__ . '/../../sql/';
     $files = $kind === 'root'
-        ? ['01-root-schema.sql', '05-seed-enums.sql']
-        : ['02-app-schema.sql', '03-app-indexes.sql', '04-app-triggers.sql', '05-seed-enums.sql'];
+        ? ['01-root-schema.sql', '05-root-seeds.sql']
+        : ['02-app-schema.sql', '03-app-indexes.sql', '04-app-triggers.sql', '06-app-seeds.sql'];
 
     foreach ($files as $file) {
         $sql = file_get_contents($base . $file);
@@ -96,7 +99,7 @@ SELECT name FROM sqlite_master WHERE type='index' AND name LIKE 'Idx%' ORDER BY 
 | `AT-DDL-02` | Running `02-app-schema.sql` then `03-app-indexes.sql` then `04-app-triggers.sql` produces all 14 App tables and 21 indexes from [`../06-indexes.md`](../06-indexes.md). |
 | `AT-DDL-03` | No column uses `BOOLEAN`, `DATETIME`, `TIMESTAMP`, `VARCHAR`, or `ENUM`; static grep returns zero matches. |
 | `AT-DDL-04` | `PRAGMA foreign_keys` returns `1` and `PRAGMA journal_mode` returns `wal` after install. |
-| `AT-DDL-05` | `05-seed-enums.sql` is idempotent (`INSERT OR IGNORE`); running it twice does not duplicate rows. |
+| `AT-DDL-05` | Both `05-root-seeds.sql` and `06-app-seeds.sql` are idempotent (`INSERT OR IGNORE`); running each twice does not duplicate rows. |
 | `AT-DDL-06` | Triggers in `04-app-triggers.sql` set `Item.UpdatedAt = strftime('%Y-%m-%dT%H:%M:%fZ','now')` on every UPDATE. |
 | `AT-DDL-07` | Inserting `Item.IsCompleted = 2` (out of 0/1 range) raises a `CHECK` constraint violation. |
 | `AT-DDL-08` | `Item.MirrorOfItemId` enforces `ON DELETE SET NULL` so deleting a source breaks (does not cascade-delete) its mirrors. |
