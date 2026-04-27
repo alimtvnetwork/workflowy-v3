@@ -96,4 +96,4 @@ field in the meantime.
 |-------|------|
 | LWW algorithm + tie-break | [14-concurrency-and-sync.md §14.2](./14-concurrency-and-sync.md) |
 | Save status indicator | [`src/types/index.ts` → `SaveStatus`](../../../src/types/index.ts) |
-| Backend runtime constraint | [`mem://constraints/backend-runtime-deferred`](../../../.lovable/memory/constraints/backend-runtime-deferred.md) |
+| Backend runtime constraint | `mem://constraints/backend-runtime-deferred` |

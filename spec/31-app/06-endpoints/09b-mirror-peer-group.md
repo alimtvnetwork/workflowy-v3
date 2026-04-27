@@ -3,7 +3,7 @@
 > **Version:** 1.0.0
 > **Updated:** 2026-04-27 (UTC+8)
 > **Parent:** [`./00-overview.md`](./00-overview.md)
-> **Mirrors feature:** [`../01-features/09b-mirrors-peer-group.md`](../01-features/09b-mirrors-peer-group.md)
+> **Mirrors feature:** [`../01-features/09b-mirror-peer-group-model.md`](../01-features/09b-mirror-peer-group-model.md)
 > **Addendum to:** [`./09-mirrors.md`](./09-mirrors.md)
 
 ---
@@ -50,7 +50,7 @@
 
 | Topic | Link |
 |-------|------|
-| Peer-group semantics | [`../01-features/09b-mirrors-peer-group.md`](../01-features/09b-mirrors-peer-group.md) |
+| Peer-group semantics | [`../01-features/09b-mirror-peer-group-model.md`](../01-features/09b-mirror-peer-group-model.md) |
 | Per-instance ACLs (independent) | [`../01-features/08b-sharing-mirror-interaction.md`](../01-features/08b-sharing-mirror-interaction.md) |
 | Schema | `MirrorPeerGroups` table in [`../07-db-diagram/sql/02-app-schema.sql`](../07-db-diagram/sql/02-app-schema.sql) |
 | SSE event vocab | [`./14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) — `mirror-broken`, `mirror-healed` |
