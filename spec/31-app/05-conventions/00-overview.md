@@ -36,6 +36,7 @@
 | 21 | [`21-g28-backup-coverage-gate.md`](./21-g28-backup-coverage-gate.md) | G-28 Backup & DR Policy Drift Gate — Algorithm Spec | 346 |
 | 22 | [`22-wp-plugin-folder-skeleton.md`](./22-wp-plugin-folder-skeleton.md) | WP-Plugin Folder Skeleton — SSOT | 290 |
 | 23 | [`23-sse-php-implementation.md`](./23-sse-php-implementation.md) | Convention 23 — PHP SSE Implementation Pattern | 343 |
+| 24 | [`24-state-management-architecture.md`](./24-state-management-architecture.md) | State Management Architecture | 277 |
 
 <!-- AUTO-TOC:END -->
 

@@ -1235,7 +1235,6 @@
 |------|-------|---------|--------|
 | [`31-app/00-overview.md`](./31-app/00-overview.md) | App | 2.1.0 | — |
 | [`31-app/01-features/00-overview.md`](./31-app/01-features/00-overview.md) | Features | 2.3.0 | — |
-| [`31-app/05-conventions/24-state-management-architecture.md`](./31-app/05-conventions/24-state-management-architecture.md) | State Management Architecture | 1.0.0 | — |
 | [`31-app/01-features/01-information-model.md`](./31-app/01-features/01-information-model.md) | Information Model Foundations | 2.3.0 | — |
 | [`31-app/01-features/02-personas.md`](./31-app/01-features/02-personas.md) | Target User Personas | 2.0.0 | — |
 | [`31-app/01-features/03-layout-structure.md`](./31-app/01-features/03-layout-structure.md) | Layout Structure | 2.4.0 | — |
@@ -1266,14 +1265,14 @@
 | [`31-app/03-edge-cases/01-edge-cases.md`](./31-app/03-edge-cases/01-edge-cases.md) | Edge Cases | 2.0.0 | Canonical |
 | [`31-app/03-edge-cases/02-product-boundaries.md`](./31-app/03-edge-cases/02-product-boundaries.md) | Product Boundaries | 1.1.0 | — |
 | [`31-app/03-edge-cases/99-consistency-report.md`](./31-app/03-edge-cases/99-consistency-report.md) | Consistency Report — 03-edge-cases | 1.0.1 | — |
-| [`31-app/04a-fixtures/00-overview.md`](./31-app/04a-fixtures/00-overview.md) | Fixtures — JSON & Sample Payloads | 1.0.0 | — |
-| [`31-app/04a-fixtures/99-consistency-report.md`](./31-app/04a-fixtures/99-consistency-report.md) | Consistency Report — 04-fixtures | 1.0.0 | — |
 | [`31-app/04-roadmap/00-overview.md`](./31-app/04-roadmap/00-overview.md) | Roadmap | 1.1.0 | — |
 | [`31-app/04-roadmap/01-implementation-phases.md`](./31-app/04-roadmap/01-implementation-phases.md) | Implementation Phases | 1.1.0 | — |
 | [`31-app/04-roadmap/02-resolved-decisions.md`](./31-app/04-roadmap/02-resolved-decisions.md) | Resolved Product Decisions | 1.1.0 | — |
 | [`31-app/04-roadmap/03-implementation-checklist.md`](./31-app/04-roadmap/03-implementation-checklist.md) | Implementation Checklist (per-phase pre-flight) | 1.0.0 | — |
 | [`31-app/04-roadmap/97-acceptance-criteria.md`](./31-app/04-roadmap/97-acceptance-criteria.md) | Roadmap — Acceptance Criteria (dispatch) | 1.0.0 | Dispatch |
 | [`31-app/04-roadmap/99-consistency-report.md`](./31-app/04-roadmap/99-consistency-report.md) | Consistency Report — 04-roadmap | 1.0.1 | — |
+| [`31-app/04a-fixtures/00-overview.md`](./31-app/04a-fixtures/00-overview.md) | Fixtures — JSON & Sample Payloads | 1.0.0 | — |
+| [`31-app/04a-fixtures/99-consistency-report.md`](./31-app/04a-fixtures/99-consistency-report.md) | Consistency Report — 04-fixtures | 1.0.0 | — |
 | [`31-app/05-conventions/00-overview.md`](./31-app/05-conventions/00-overview.md) | Conventions | 1.0.0 | — |
 | [`31-app/05-conventions/01-axios-version-control.md`](./31-app/05-conventions/01-axios-version-control.md) | Axios Version Control Policy | 1.0.0 | — |
 | [`31-app/05-conventions/02-ci-quality-gates.md`](./31-app/05-conventions/02-ci-quality-gates.md) | CI Quality Gates — Convention SSOT | 1.0.0 | — |
@@ -1298,6 +1297,7 @@
 | [`31-app/05-conventions/21-g28-backup-coverage-gate.md`](./31-app/05-conventions/21-g28-backup-coverage-gate.md) | G-28 Backup & DR Policy Drift Gate — Algorithm Spec | 1.0.0 | — |
 | [`31-app/05-conventions/22-wp-plugin-folder-skeleton.md`](./31-app/05-conventions/22-wp-plugin-folder-skeleton.md) | WP-Plugin Folder Skeleton — SSOT | 1.0.0 | Spec |
 | [`31-app/05-conventions/23-sse-php-implementation.md`](./31-app/05-conventions/23-sse-php-implementation.md) | Convention 23 — PHP SSE Implementation Pattern | 1.0.0 | Active |
+| [`31-app/05-conventions/24-state-management-architecture.md`](./31-app/05-conventions/24-state-management-architecture.md) | State Management Architecture | 1.0.0 | — |
 | [`31-app/05-conventions/97-acceptance-criteria.md`](./31-app/05-conventions/97-acceptance-criteria.md) | Conventions — Acceptance Criteria | 1.0.0 | — |
 | [`31-app/05-conventions/99-consistency-report.md`](./31-app/05-conventions/99-consistency-report.md) | Consistency Report — 05-conventions | 1.0.1 | — |
 | [`31-app/06-endpoints/00-overview.md`](./31-app/06-endpoints/00-overview.md) | Endpoints — Master Index | 1.0.0 | — |
