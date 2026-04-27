@@ -67,14 +67,16 @@ These are operational SLOs, not contractual SLAs. They drive the schedule and th
 
 ## 3 — Backup Types & Schedule
 
-| Type | Method | Frequency | Retention |
-|------|--------|-----------|-----------|
-| **Continuous WAL ship** | SQLite WAL file rsync (read-only, no `VACUUM` interference) | every **15 min** | 48 h on hot off-site |
-| **Hot snapshot** | `sqlite3 .backup` API (online, consistent) | hourly | 7 days |
-| **Daily full** | `sqlite3 .backup` + tar attachments | daily 03:00 host-local | 30 days |
-| **Weekly archive** | Daily-full copy promoted | every Sunday | 12 weeks |
-| **Monthly archive** | Weekly-archive copy promoted | first Sunday of month | 12 months |
-| **Yearly archive** | Monthly-archive copy promoted | first Sunday of January | 7 years (audit floor) |
+| Type | Method | Frequency | Retention | WP Hook |
+|------|--------|-----------|-----------|---------|
+| **Continuous WAL ship** | SQLite WAL file rsync (read-only, no `VACUUM` interference) | every **15 min** | 48 h on hot off-site | `workflowy_wal_ship` |
+| **Hot snapshot** | `sqlite3 .backup` API (online, consistent) | hourly | 7 days | `workflowy_hot_snap` |
+| **Daily full** | `sqlite3 .backup` + tar attachments | daily 03:00 host-local | 30 days | `workflowy_daily_full` |
+| **Weekly archive** | Daily-full copy promoted | every Sunday | 12 weeks | `workflowy_weekly_full` |
+| **Monthly archive** | Weekly-archive copy promoted | first Sunday of month | 12 months | `workflowy_monthly_full` |
+| **Yearly archive** | Monthly-archive copy promoted | first Sunday of January | 7 years (audit floor) | `workflowy_yearly_full` |
+
+> **Hook canon** — Each row's `WP Hook` column is the **canonical action name** registered via `wp_schedule_event()` in `wp-plugin/Lifecycle/Install.php`. G-28 axis 7 (bidirectional schedule↔cron parity, see [`21-g28-backup-coverage-gate.md`](./21-g28-backup-coverage-gate.md)) requires this column to remain in sync with the install-hook `wp_schedule_event` calls. Frequency normalisation: `15 min` → `quarter_hourly` (custom recurrence), `hourly` → `hourly`, `daily 03:00 host-local` → `daily`, `every Sunday` → `weekly`, `first Sunday of month` → `monthly`, `first Sunday of January` → `yearly`.
 
 ### Why `.backup` API and not file copy
 
