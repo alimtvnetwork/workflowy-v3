@@ -30,7 +30,7 @@
   - Mirrors of purged items receive `Mirrors.BrokenAt = now()` per §14.4 and emit SSE `mirror-broken`.
   - Inserts one row into `ReaperRuns` (per `02-app-schema.sql` v2.1.0).
   - When `DryRun = true`: counts only, no deletes, no `ReaperRuns` row, no SSE.
-- **AC refs**: `AT-APP-78`, `AT-APP-79`, `AT-APP-80`.
+- **AC refs**: `AT-APP-81`, `AT-APP-82`, `AT-APP-83`, `AT-APP-84`.
 
 ---
 
