@@ -24,6 +24,7 @@ gate_id: G-32
 | G-32.1   | forward   | Does every DDL `UNIQUE` declaration appear in `06-indexes.md`?            | v1.0.0   |
 | G-32.2   | reverse   | Does every `Idx*` / `sqlite_autoindex_*` name in `06-indexes.md` resolve to an explicit DDL index, a UNIQUE-implied autoindex, or a documented alias? | v2.0.0   |
 | G-32.3   | forward   | Does every `CREATE INDEX` (UNIQUE OR plain) across all SQL files appear in `06-indexes.md` by its DDL name OR its prose-alias name (resolved via `sql/00-overview.md` §Index-name aliases)? | v3.0.0   |
+| G-32.4   | meta      | Does every entry in `COVERAGE_EXEMPT`, `REVERSE_EXEMPT`, and `NONUNIQUE_EXEMPT` carry a rationale comment — either a trailing inline `// …` on the entry's line, or a `// …` line immediately above (no blank-line gap)? | v4.0.0   |
 
 G-32.2 closes the symmetric gap: F26 caught the **fabricated-column**
 class (UNIQUE in DDL but cited the wrong column name in docs); G-32.2
