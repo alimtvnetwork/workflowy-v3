@@ -45,28 +45,40 @@ erDiagram
 
 ---
 
-## 4.2 — Mirrors (mirrors `09-mirrors.md`)
+## 4.2 — Mirror Peer Groups (mirrors `09b-mirror-peer-group-model.md`)
+
+> **Schema authority**: SQL uses `MirrorGroup` / `MirrorMember`. ERD docs (`03-app-db-erd.md`, `06-indexes.md`) call the same tables `MirrorPeerGroup` / `MirrorPeerGroupMember`. This slice uses the SQL names — see [`./sql/00-overview.md`](./sql/00-overview.md) §Naming Bridge.
 
 ```mermaid
 erDiagram
-    Item ||--o{ Mirror : "is canonical source of"
-    Item ||--o| Mirror : "is placeholder of"
+    MirrorGroup ||--|{ MirrorMember : "has 2+ members"
+    Item ||--o| MirrorMember : "is member of (≤1)"
+    Item ||--o{ MirrorGroup : "is canonical of"
 
+    MirrorGroup {
+        INTEGER MirrorGroupId PK
+        INTEGER CanonicalItemId FK "Item that originated the group"
+        TEXT CreatedAt
+    }
+    MirrorMember {
+        INTEGER MirrorMemberId PK
+        INTEGER MirrorGroupId FK
+        INTEGER ItemId FK "UNIQUE — an Item belongs to at most one group"
+        TEXT JoinedAt
+    }
     Item {
         INTEGER ItemId PK
-        INTEGER MirrorOfItemId FK "NULL when canonical"
-    }
-    Mirror {
-        INTEGER MirrorId PK
-        INTEGER MirrorItemId FK "Placeholder Item"
-        INTEGER SourceItemId FK "Canonical Item"
-        TEXT BrokenAt "LWW per §14.4"
     }
 ```
 
-**Constraint (D7)**: `Mirror.SourceItemId` MUST reference an `Item` whose `MirrorOfItemId IS NULL`. Enforced via DB trigger or app check.
+**Constraints**:
+- `UNIQUE(MirrorGroupId, ItemId)` and `UNIQUE(ItemId)` on `MirrorMember` — an Item belongs to at most one peer group.
+- A `MirrorGroup` MUST have ≥ 2 `MirrorMember` rows. Singleton groups are auto-dissolved by an `AFTER DELETE` trigger on `MirrorMember` (see [`../02-workflows/08-mirror-detach-flow.md`](../02-workflows/08-mirror-detach-flow.md)).
+- `Item.MirrorOfItemId` and the legacy `Mirror` table are **removed** in M-117 — see [`./07-migrations.md`](./07-migrations.md) §v1→v2 Mirror Peer-Group Migration.
 
-**Endpoints**: `EP-MIRRORS-CREATE`, `EP-MIRRORS-LIST`, `EP-MIRRORS-DELETE`.
+**Endpoints**: `EP-MIRRORS-CREATE`, `EP-MIRRORS-LIST`, `EP-MIRRORS-GROUP-GET`, `EP-MIRRORS-DETACH`.
+
+**ATs**: `AT-APP-58..65`, `AT-WF-DETACH-01..05`.
 
 ---
 
