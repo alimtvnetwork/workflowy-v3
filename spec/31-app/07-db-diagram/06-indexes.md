@@ -1,7 +1,7 @@
 # 06 — Indexes
 
-> **Version:** 1.2.0
-> **Updated:** 2026-04-27 (UTC+8) — v1.2.0 added §Naming bridge footnote pointing to [`./sql/00-overview.md`](./sql/00-overview.md) §Naming Bridge for index-name aliases (`IdxMirrorPeerGroupMember_*` ↔ `IdxMirrorMember_*`, `IdxMirrorPeerGroup_CanonicalItemId` ↔ `IdxMirrorGroup_CanonicalItemId`). v1.1.0 added 4 indexes (`IdxItem_UpdatedAt`, `IdxItem_LiveByUpdatedAt`, `IdxReaperRuns_RanAt`, `IdxMirrorPeerGroupMember_ItemId`) for B1–B4; reversed prior "NOT needed" stance on `IdxItem_UpdatedAt` (now required by offline-replay LWW + search tie-break).
+> **Version:** 1.3.0
+> **Updated:** 2026-04-27 (UTC+8) — v1.3.0 (F22) audited DDL drift: removed 3 deprecated index rows (`IdxItem_MirrorOfItemId`, `IdxMirror_SourceItemId`, `IdxMirror_MirrorItemId`) that referenced columns/tables dropped in v2 migration M-117; demoted `IdxUser_Email` from "Required" to new §"Implicit Indexes" (it's only an `UNIQUE`-implied index, no explicit `CREATE INDEX`); cleaned up the Index → Query Map flowchart to remove dropped nodes I4/I5 and rewire `EP-MIRRORS-LIST` → `IdxMirrorPeerGroupMember_GroupId`. v1.2.0 added §Naming bridge footnote pointing to [`./sql/00-overview.md`](./sql/00-overview.md) §Naming Bridge for index-name aliases (`IdxMirrorPeerGroupMember_*` ↔ `IdxMirrorMember_*`, `IdxMirrorPeerGroup_CanonicalItemId` ↔ `IdxMirrorGroup_CanonicalItemId`). v1.1.0 added 4 indexes (`IdxItem_UpdatedAt`, `IdxItem_LiveByUpdatedAt`, `IdxReaperRuns_RanAt`, `IdxMirrorPeerGroupMember_ItemId`) for B1–B4; reversed prior "NOT needed" stance on `IdxItem_UpdatedAt` (now required by offline-replay LWW + search tie-break).
 > **Parent:** [`./00-overview.md`](./00-overview.md)
 
 ---
@@ -42,8 +42,6 @@ flowchart LR
         I1[IdxItem_ParentItemId_FractionalIndex]
         I2[IdxItem_DueDate]
         I3[IdxItem_DeletedAt]
-        I4[IdxItem_MirrorOfItemId]
-        I5[IdxMirror_SourceItemId]
         I6[IdxShare_ItemId]
         I7[IdxShare_GranteeUserId]
         I8[IdxItemTag_ItemId]
@@ -57,6 +55,7 @@ flowchart LR
         I16[IdxItem_LiveByUpdatedAt]
         I17[IdxReaperRuns_RanAt]
         I18[IdxMirrorPeerGroupMember_ItemId]
+        I19[IdxMirrorPeerGroupMember_GroupId]
     end
 
     subgraph "Root DB Indexes"
@@ -70,8 +69,7 @@ flowchart LR
     E3 --> I2
     E3 --> I3
     E4 --> I3
-    E5 --> I5
-    E5 --> I4
+    E5 --> I19
     E6 --> I6
     E6 --> I7
     E7 --> I11
