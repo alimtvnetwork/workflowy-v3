@@ -1,7 +1,7 @@
 # 04 — Feature Slices (One ERD per Feature)
 
-> **Version:** 2.0.0
-> **Updated:** 2026-04-27 (UTC+8) — v2.0.0 replaces §4.2 with the v2 Mirror Peer-Group model (legacy `Mirror` table marked deprecated); adds `ReaperRuns` to §4.6 Trash; adds new §4.10 (Search) and §4.11 (Sync Replay) slices.
+> **Version:** 2.1.0
+> **Updated:** 2026-04-27 (UTC+8) — v2.1.0 adds §4.12 Favorites slice (the `Favorite` table has been DDL-allocated since `02-app-schema.sql` v1.0.0 but had no slice; this aligns the per-feature index with the schema and with `AT-LAYOUT-12`). v2.0.0 replaces §4.2 with the v2 Mirror Peer-Group model (legacy `Mirror` table marked deprecated); adds `ReaperRuns` to §4.6 Trash; adds new §4.10 (Search) and §4.11 (Sync Replay) slices.
 > **Parent:** [`./00-overview.md`](./00-overview.md)
 
 ---
@@ -350,6 +350,54 @@ flowchart LR
 **Endpoints**: `EP-SYNC-REPLAY`, `EP-SYNC-ACK`, `EP-SYNC-STREAM`.
 
 **ATs**: `AT-APP-97..102`, `AT-WF-REPLAY-01..06`.
+
+---
+
+## 4.12 — Favorites (mirrors `01-features/03-layout-structure.md` §⭐ Favorite Button)
+
+> **Per-user, per-item bookmark slice.** The `Favorite` table is allocated in `02-app-schema.sql` v1.0.0 + indexed by `IdxFavorite_UserId_FractionalIndex` (`06-indexes.md`). Endpoint family is **deferred to a future endpoint slot** — current MVP toggles favorites via `EP-ITEMS-UPDATE` carrying an `isFavorited: bool` field per `01-features/03-layout-structure.md` §"Field Reference" + AT-LAYOUT-12.
+
+```mermaid
+erDiagram
+    Item ||--o{ Favorite : "favorited as"
+    Favorite {
+        INTEGER FavoriteId PK
+        INTEGER ItemId FK
+        INTEGER UserId "Logical FK to Root.User.UserId"
+        TEXT FractionalIndex "Sidebar order"
+        TEXT CreatedAt
+    }
+```
+
+**Invariants** (enforced at the DDL layer):
+
+- `UNIQUE (UserId, ItemId)` — a user can favorite a given item at most once. Toggle = INSERT-OR-DELETE; never UPDATE.
+- `FractionalIndex TEXT NOT NULL` — sidebar reorder uses the same fractional-index scheme as `Item.FractionalIndex` (per `mem://features/editor-core`).
+- `FOREIGN KEY (ItemId) REFERENCES Item(ItemId) ON DELETE CASCADE` — hard-deleting an item removes its favorites; soft-delete (Trash) leaves them intact (the trashed item is just hidden from sidebar render until restored or hard-deleted by the reaper).
+- `UserId` is a **logical FK** (App DB has no `User` table; that lives in Root DB per `02-root-db-erd.md`). Per `mem://constraints/coding-guidelines` SQLite rules, no cross-DB FK is declared; integrity is enforced at the application layer.
+
+```mermaid
+flowchart LR
+    Click["⭐ click<br/>(toggle)"]
+    Update["EP-ITEMS-UPDATE<br/>{isFavorited: bool}"]
+    Insert["INSERT INTO Favorite<br/>(or DELETE on untoggle)"]
+    Sidebar["Sidebar render<br/>via IdxFavorite_UserId_FractionalIndex"]
+
+    Click --> Update
+    Update --> Insert
+    Insert --> Sidebar
+```
+
+**Touched tables (read+write)**: `Favorite`, `Item` (read-only — for sidebar label).
+
+**Endpoints (current MVP)**: `EP-ITEMS-UPDATE` (carries `isFavorited` boolean per AT-LAYOUT-12).
+**Endpoints (deferred)**: A dedicated `EP-FAVORITES-*` family is **not yet allocated**. When promoted, it will land at the next free slot in `06-endpoints/` (likely `17-favorites.md`) per the endpoint-numbering note in `06-endpoints/00-overview.md`. Until then, do not invent `EP-FAV-*` IDs in citations.
+
+**Sidebar reorder**: Drag-and-drop in the sidebar mutates `Favorite.FractionalIndex` only (no `Item` write). This is intentionally outside `EP-ITEMS-UPDATE`; reorder will move to the deferred `EP-FAVORITES-REORDER` slot when the endpoint family is allocated.
+
+**ATs**: `AT-LAYOUT-12` (toggle); `AT-LAYOUT-NN` open-prefix reserves future favorite ATs (sidebar reorder, drag-into-sidebar, etc.).
+
+**Outstanding contradiction (logged)**: `06-endpoints/03-layout-structure.md` line 20 still claims "no favorites table in MVP". That sentence pre-dates the v1.0.0 DDL allocation of `Favorite` and is stale; see [`.lovable/question-and-ambiguity/17-favorites-endpoint-vs-table-contradiction.md`](../../../.lovable/question-and-ambiguity/17-favorites-endpoint-vs-table-contradiction.md). A separate task (F23) will reword that endpoint-overview sentence; this slice intentionally does not touch endpoint files.
 
 ---
 
