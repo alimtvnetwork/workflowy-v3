@@ -187,22 +187,41 @@ erDiagram
 
 ---
 
-## 4.6 — Trash (a query, not a table)
+## 4.6 — Trash + Reaper Audit (mirrors `11-trash-and-undo.md` + `11b-trash-reaper.md`)
 
 ```mermaid
 flowchart LR
     Live["Live items<br/>WHERE DeletedAt IS NULL"]
     Trash["Trash view<br/>WHERE DeletedAt IS NOT NULL<br/>AND DeletedAt &gt; date('now', '-30 days')"]
-    Reaper["Daily reaper<br/>DELETE WHERE DeletedAt &lt; date('now', '-30 days')"]
+    Reaper["Daily reaper job<br/>DELETE WHERE DeletedAt &lt; date('now', '-30 days')"]
+    ReaperRuns["ReaperRuns<br/>(audit row per run)"]
 
     Live -->|"DELETE /items/{id}<br/>sets DeletedAt"| Trash
     Trash -->|"POST /trash/{id}/restore<br/>clears DeletedAt"| Live
     Trash -->|"30 days elapsed"| Reaper
+    Reaper -->|"INSERT one row<br/>per execution"| ReaperRuns
 ```
 
-**Per D5**: there is no `Trash` table. The Trash view is a query over `Item.DeletedAt`.
+```mermaid
+erDiagram
+    ReaperRuns {
+        INTEGER ReaperRunId PK
+        TEXT RanAt "ISO8601 UTC start time"
+        INTEGER ItemsPurged "rows hard-deleted this run"
+        INTEGER GroupsDissolved "MirrorGroups dissolved via cascade"
+        TEXT Status "ok|partial|failed"
+        TEXT Error "NULL when Status = ok"
+        INTEGER DurationMs
+    }
+```
 
-**Endpoints**: `EP-TRASH-LIST`, `EP-TRASH-RESTORE`, `EP-TRASH-PURGE-ONE`, `EP-TRASH-PURGE-ALL`.
+**Per D5**: there is no `Trash` table — the Trash view is a query over `Item.DeletedAt`. `ReaperRuns` is an **audit-only** table; it has no FKs and is never read on the user request path.
+
+**Index**: `IdxReaperRuns_RanAt` (DESC) — supports the `EP-REAPER-RUNS-LIST` "last N runs" query.
+
+**Endpoints**: `EP-TRASH-LIST`, `EP-TRASH-RESTORE`, `EP-TRASH-PURGE-ONE`, `EP-TRASH-PURGE-ALL`, `EP-REAPER-RUN`, `EP-REAPER-RUNS-LIST`.
+
+**ATs**: `AT-APP-19`, `AT-APP-81..85`, `AT-TRASH-08`, `AT-TRASH-09`, `AT-WF-REAPER-01..05`.
 
 ---
 
