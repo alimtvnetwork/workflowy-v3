@@ -301,6 +301,59 @@ One row per user. Advanced by `EP-SYNC-ACK`. Used by `EP-SYNC-STREAM` (resume) a
 
 ---
 
+## 4.10 — Search (mirrors `15-search.md` + `02-workflows/06-search-query-flow.md`)
+
+> **No new tables in v2.0.** Search is a query over `Item` filtered by the workspace permission view. The FTS5 virtual table (`FtsItem`) is reserved as **M-120** in [`./07-migrations.md`](./07-migrations.md) — until then, search uses `LIKE` + tier-scoring in app code.
+
+```mermaid
+flowchart LR
+    Q["EP-SEARCH-QUERY<br/>?q=&kind=&limit="]
+    Item["Item<br/>(scoped to workspace)"]
+    Perm["Permission filter<br/>(Share + WorkspaceMember)"]
+    Score["5-tier match scoring<br/>× field weight × recency tie-break"]
+    Resp["Ranked result list"]
+
+    Q --> Item
+    Item --> Perm
+    Perm --> Score
+    Score --> Resp
+```
+
+**Touched tables (read-only)**: `Item`, `Share`, `WorkspaceMember`, `Tag`, `ItemTag`.
+
+**Endpoints**: `EP-SEARCH-QUERY`.
+
+**ATs**: `AT-APP-103..107`, `AT-WF-SEARCH-01..05`.
+
+---
+
+## 4.11 — Sync Replay (mirrors `14b-sync-replay.md` + `02-workflows/07-sync-replay-flow.md`)
+
+> **No new tables in v2.0.** Replay reuses `SyncCursor` (§4.9) for LWW resolution and the existing `Item.UpdatedAt` server stamp. A future `ProcessedMutations` table is not yet allocated; idempotency currently relies on client-supplied mutation IDs deduplicated in app memory during the drain.
+
+```mermaid
+flowchart LR
+    Online["window 'online' event"]
+    Queue["Local FIFO queue<br/>(IndexedDB, client-side)"]
+    Drain["Single-threaded drain<br/>POST EP-SYNC-REPLAY"]
+    Server["Server LWW vs Item.UpdatedAt<br/>+ advance SyncCursor"]
+    SSE["EP-SYNC-STREAM<br/>broadcast deltas"]
+
+    Online --> Drain
+    Queue --> Drain
+    Drain --> Server
+    Server --> SSE
+```
+
+**Touched tables (read+write)**: `Item`, `SyncCursor`, `ActivityLog`.
+
+**Endpoints**: `EP-SYNC-REPLAY`, `EP-SYNC-ACK`, `EP-SYNC-STREAM`.
+
+**ATs**: `AT-APP-97..102`, `AT-WF-REPLAY-01..06`.
+
+---
+
+
 ## Cross-References
 
 | Topic | Link |
