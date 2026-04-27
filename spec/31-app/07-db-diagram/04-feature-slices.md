@@ -409,3 +409,4 @@ flowchart LR
 | Master ERD | [`./01-master-erd.md`](./01-master-erd.md) |
 | Lifecycle flows | [`./05-lifecycle-flows.md`](./05-lifecycle-flows.md) |
 | Endpoints | [`../06-endpoints/00-overview.md`](../06-endpoints/00-overview.md) |
+| ← App DB schema source (forward link from) | [`./03-app-db-erd.md`](./03-app-db-erd.md) |

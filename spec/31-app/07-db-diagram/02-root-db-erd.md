@@ -100,3 +100,4 @@ erDiagram
 | Split DB rationale | [`../../05-split-db-architecture/00-overview.md`](../../05-split-db-architecture/00-overview.md) |
 | Auth helper contract | [`../01-features/15-roles-and-permissions.md`](../01-features/15-roles-and-permissions.md) §PHP Authorization Helper Contract |
 | `EP-ME` reads from this DB | [`../06-endpoints/02-personas.md`](../06-endpoints/02-personas.md) |
+| ← Master ERD aggregator (forward link from) | [`./01-master-erd.md`](./01-master-erd.md) |
