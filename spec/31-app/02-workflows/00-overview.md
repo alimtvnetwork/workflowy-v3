@@ -37,10 +37,10 @@
 | 1 | [`01-keyboard-shortcuts.md`](./01-keyboard-shortcuts.md) | Keyboard Shortcuts — Complete Reference | 80 |
 | 2 | [`02-template-application-flow.md`](./02-template-application-flow.md) | Template Application Flow | 119 |
 | 3 | [`03-share-invite-flow.md`](./03-share-invite-flow.md) | Share Invite Flow | 130 |
-| 4 | [`04-trash-restore-flow.md`](./04-trash-restore-flow.md) | Trash Restore Flow | 134 |
-| 5 | [`05-trash-reaper-flow.md`](./05-trash-reaper-flow.md) | Trash Reaper Flow | 142 |
+| 4 | [`04-trash-restore-flow.md`](./04-trash-restore-flow.md) | Trash Restore Flow | 135 |
+| 5 | [`05-trash-reaper-flow.md`](./05-trash-reaper-flow.md) | Trash Reaper Flow | 144 |
 | 6 | [`06-search-query-flow.md`](./06-search-query-flow.md) | Search Query Flow | 144 |
-| 7 | [`07-sync-replay-flow.md`](./07-sync-replay-flow.md) | Sync Replay Flow | 158 |
+| 7 | [`07-sync-replay-flow.md`](./07-sync-replay-flow.md) | Sync Replay Flow | 159 |
 | 8 | [`08-mirror-detach-flow.md`](./08-mirror-detach-flow.md) | Mirror Detach Flow | 145 |
 | 9 | [`09-mirror-create-flow.md`](./09-mirror-create-flow.md) | Mirror Create Flow | 174 |
 | 10 | [`10-migration-execution-flow.md`](./10-migration-execution-flow.md) | Migration Execution Flow — v1 → v2 Mirror Peer-Group | 200 |

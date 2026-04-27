@@ -1266,10 +1266,10 @@
 | [`31-app/02-workflows/01-keyboard-shortcuts.md`](./31-app/02-workflows/01-keyboard-shortcuts.md) | Keyboard Shortcuts — Complete Reference | 1.1.0 | — |
 | [`31-app/02-workflows/02-template-application-flow.md`](./31-app/02-workflows/02-template-application-flow.md) | Template Application Flow | 1.1.0 | Canonical |
 | [`31-app/02-workflows/03-share-invite-flow.md`](./31-app/02-workflows/03-share-invite-flow.md) | Share Invite Flow | 1.1.0 | Canonical |
-| [`31-app/02-workflows/04-trash-restore-flow.md`](./31-app/02-workflows/04-trash-restore-flow.md) | Trash Restore Flow | 1.1.0 | Canonical |
-| [`31-app/02-workflows/05-trash-reaper-flow.md`](./31-app/02-workflows/05-trash-reaper-flow.md) | Trash Reaper Flow | 1.0.0 | Canonical |
+| [`31-app/02-workflows/04-trash-restore-flow.md`](./31-app/02-workflows/04-trash-restore-flow.md) | Trash Restore Flow | 1.2.0 | Canonical |
+| [`31-app/02-workflows/05-trash-reaper-flow.md`](./31-app/02-workflows/05-trash-reaper-flow.md) | Trash Reaper Flow | 1.1.0 | Canonical |
 | [`31-app/02-workflows/06-search-query-flow.md`](./31-app/02-workflows/06-search-query-flow.md) | Search Query Flow | 1.0.0 | Canonical |
-| [`31-app/02-workflows/07-sync-replay-flow.md`](./31-app/02-workflows/07-sync-replay-flow.md) | Sync Replay Flow | 1.0.0 | Canonical |
+| [`31-app/02-workflows/07-sync-replay-flow.md`](./31-app/02-workflows/07-sync-replay-flow.md) | Sync Replay Flow | 1.1.0 | Canonical |
 | [`31-app/02-workflows/08-mirror-detach-flow.md`](./31-app/02-workflows/08-mirror-detach-flow.md) | Mirror Detach Flow | 1.1.0 | Canonical |
 | [`31-app/02-workflows/09-mirror-create-flow.md`](./31-app/02-workflows/09-mirror-create-flow.md) | Mirror Create Flow | 1.1.0 | Canonical |
 | [`31-app/02-workflows/10-migration-execution-flow.md`](./31-app/02-workflows/10-migration-execution-flow.md) | Migration Execution Flow — v1 → v2 Mirror Peer-Group | 1.0.0 | Canonical |
@@ -1342,10 +1342,10 @@
 | [`31-app/07-db-diagram/00-overview.md`](./31-app/07-db-diagram/00-overview.md) | DB Diagram — Database Design SSOT (Visual) | 1.1.0 | — |
 | [`31-app/07-db-diagram/01-master-erd.md`](./31-app/07-db-diagram/01-master-erd.md) | 01 — Master ERD (All Tables, Both DBs) | 1.0.0 | — |
 | [`31-app/07-db-diagram/02-root-db-erd.md`](./31-app/07-db-diagram/02-root-db-erd.md) | 02 — Root DB ERD | 1.0.0 | — |
-| [`31-app/07-db-diagram/03-app-db-erd.md`](./31-app/07-db-diagram/03-app-db-erd.md) | 03 — App DB ERD (per Workspace) | 1.2.0 | — |
+| [`31-app/07-db-diagram/03-app-db-erd.md`](./31-app/07-db-diagram/03-app-db-erd.md) | 03 — App DB ERD (per Workspace) | 1.3.0 | — |
 | [`31-app/07-db-diagram/04-feature-slices.md`](./31-app/07-db-diagram/04-feature-slices.md) | 04 — Feature Slices (One ERD per Feature) | 2.1.0 | — |
 | [`31-app/07-db-diagram/05-lifecycle-flows.md`](./31-app/07-db-diagram/05-lifecycle-flows.md) | 05 — Lifecycle Flows | 1.0.0 | — |
-| [`31-app/07-db-diagram/06-indexes.md`](./31-app/07-db-diagram/06-indexes.md) | 06 — Indexes | 1.3.0 | — |
+| [`31-app/07-db-diagram/06-indexes.md`](./31-app/07-db-diagram/06-indexes.md) | 06 — Indexes | 1.4.0 | — |
 | [`31-app/07-db-diagram/07-migrations.md`](./31-app/07-db-diagram/07-migrations.md) | 07 — Migrations Roadmap | 2.0.0 | — |
 | [`31-app/07-db-diagram/97-acceptance-criteria.md`](./31-app/07-db-diagram/97-acceptance-criteria.md) | DB Diagram — Acceptance Criteria | 1.0.1 | — |
 | [`31-app/07-db-diagram/99-consistency-report.md`](./31-app/07-db-diagram/99-consistency-report.md) | Consistency Report — 07-db-diagram | 1.0.0 | — |
