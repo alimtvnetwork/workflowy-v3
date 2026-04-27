@@ -231,7 +231,7 @@ A code MAY be deprecated but never deleted.
 |---|---|---|
 | **G-22** | Any `ERR_*` literal in source code or spec that is not in §5 | CI fails with diff of unregistered codes |
 
-Implementation lives in `scripts/spec-hygiene/12-error-code-catalogue-audit.mjs` (per A-26 stub plan); registration in `spec/31-app/05-conventions/02-ci-quality-gates.md`.
+Algorithm SSOT lives at [`spec/31-app/05-conventions/15-g22-error-code-catalogue-gate.md`](../../../31-app/05-conventions/15-g22-error-code-catalogue-gate.md). Implementation will live at `scripts/spec-hygiene/22-check-error-code-catalogue.mjs` (numeric prefix matches gate ID, per the convention used by G-19→`19-`, G-20→`20-`, G-21→`21-`); registration in [`spec/31-app/05-conventions/02-ci-quality-gates.md`](../../../31-app/05-conventions/02-ci-quality-gates.md).
 
 ---
 
@@ -246,3 +246,4 @@ See `spec/03-error-manage/02-error-architecture/05-response-envelope/97-acceptan
 | Version | Date | Change |
 |---|---|---|
 | 1.0.0 | 2026-04-26 | Initial SSOT — 74 codes catalogued, 6 Go-toolchain codes deprecated, G-22 gate proposed. |
+| 1.0.1 | 2026-04-27 | §9 path correction — implementation slot moved from `12-` (collision with `check-required-files`) to `22-` (matches gate ID). Algorithm SSOT linked: `spec/31-app/05-conventions/15-g22-error-code-catalogue-gate.md`. |
