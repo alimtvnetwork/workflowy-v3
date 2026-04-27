@@ -154,7 +154,7 @@ If the query returns a row → reject with `ERR_CYCLE`.
 | AT-CYCLE-07 | EP-ITEMS-MOVE called with cycle-creating params | Server runs CTE | Responds `400 ERR_CYCLE`; no row mutated | `cycle-move-rejected` |
 | AT-CYCLE-08 | Mirror-create called with cycle-creating params | Server runs CTE | Responds `400 ERR_CYCLE`; toast `mirror-cycle-error` shown | `cycle-mirror-rejected` |
 | AT-CYCLE-09 | Pre-existing corrupt cycle in DB | Algorithm runs against any node in the cycle | Terminates (no infinite loop); returns `true` | `cycle-corrupt-graph-safe` |
-| AT-CYCLE-10 | Hygiene script `scripts/spec-hygiene/18-check-cycle-algo.mjs` runs | Compares this spec's CTE to `wp-plugin/src/Repository/CycleCheck.php` | Exits 0 only when the CTE strings are byte-identical (whitespace-normalized) | `cycle-hygiene-drift` |
+| AT-CYCLE-10 | Hygiene script `scripts/spec-hygiene/18-check-cycle-algo.mjs` runs | Compares this spec's CTE to `wp-plugin/Repository/CycleCheck.php` | Exits 0 only when the CTE strings are byte-identical (whitespace-normalized) | `cycle-hygiene-drift` |
 
 ---
 
@@ -164,8 +164,8 @@ If the query returns a row → reject with `ERR_CYCLE`.
 
 | Concern | Path | Function |
 |---------|------|----------|
-| Server algorithm | `wp-plugin/src/Repository/CycleCheck.php` | `public static function hasCycle(string $SourceId, string $TargetParentId): bool` |
-| Recursive CTE constant | `wp-plugin/src/Repository/sql/cycle-check.sql` | Verbatim copy of the SQL above |
+| Server algorithm | `wp-plugin/Repository/CycleCheck.php` | `public static function hasCycle(string $SourceId, string $TargetParentId): bool` |
+| Recursive CTE constant | `wp-plugin/Repository/sql/cycle-check.sql` | Verbatim copy of the SQL above |
 | Client optimistic check | `src/lib/mirror-cycle.ts` | `hasCycle(sourceId, targetParentId, store): boolean` (in-memory mirror of the SQL) |
 | Cycle toast | `src/components/feedback/MirrorErrorToast.tsx` | Reads `mirror-cycle-error` testid (already exists per 09-mirrors.md L191) |
 | Hygiene drift check | `scripts/spec-hygiene/18-check-cycle-algo.mjs` | Asserts byte-equality between SQL block here and `cycle-check.sql` |

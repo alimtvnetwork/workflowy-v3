@@ -150,7 +150,7 @@ function auditErrorCodeCatalogue(SourceRoots, CataloguePath, TestFixtures, Exclu
 | ID | Given | When | Then | testid |
 |----|-------|------|------|--------|
 | AT-G22-01 | All emitters reconciled with catalogue | G-22 runs | Exits 0 with `✅ G-22: <N> code(s) reconciled` | `g22-clean` |
-| AT-G22-02 | New `ERR_FOO` in `wp-plugin/Auth.php` not in catalogue | G-22 runs | Exits 1 with "unregistered" violation citing file:line | `g22-detect-unregistered` |
+| AT-G22-02 | New `ERR_FOO` in `wp-plugin/Auth/Auth.php` not in catalogue | G-22 runs | Exits 1 with "unregistered" violation citing file:line | `g22-detect-unregistered` |
 | AT-G22-03 | Handler emits `ERR_AUTH_REQUIRED` with HTTP 500; catalogue says 401 | G-22 runs | Exits 1 with "HttpStatus mismatch" violation | `g22-detect-status-drift` |
 | AT-G22-04 | Catalogue row exists for `ERR_LEGACY_X` but no emitter found | G-22 runs | Exits 1 with "no emitter found" violation citing catalogue line | `g22-detect-orphan-row` |
 | AT-G22-05 | `ERR_TEST_FIXTURE_X` appears in `Auth.test.ts` only | G-22 runs | Ignored; clean exit | `g22-test-fixture-allowed` |
