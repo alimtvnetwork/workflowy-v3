@@ -1,6 +1,14 @@
 #!/usr/bin/env node
 /**
- * G-30 — AT Citation Validity Gate (v1.3.0)
+ * G-30 — AT Citation Validity Gate (v1.4.0)
+ *
+ * v1.4.0 (F28) — Promoted G-30.2 redundancy advisory to DEFAULT-ON.
+ *   Safe to flip because F27 drained the queue to 0 candidates via
+ *   REDUNDANCY_ALLOWLIST expansion (5→41 entries, 3 intent-categories).
+ *   Default-on surfaces ANY new redundant declaration in CI immediately
+ *   instead of letting allow-list bloat accumulate silently. Still
+ *   WARN-only — never affects exit code. Opt-out via
+ *   `--no-warn-redundant` flag or `G30_WARN_REDUNDANT=0` env var.
  *
  * v1.3.0 (F27) — Drained the G-30.2 open-prefix redundancy queue by
  *   expanding REDUNDANCY_ALLOWLIST from 5 → 41 entries, grouped into
