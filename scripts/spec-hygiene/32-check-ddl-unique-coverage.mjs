@@ -603,7 +603,29 @@ function parseCreateIndexBlocks() {
   return out;
 }
 
-function findDocRow(indexesText, name, alias) {
+/**
+ * Build a DDL→prose column-alias map from `sql/00-overview.md` §Naming
+ * Bridge tables. Returns Map<ddlBareCol, proseBareCol>. Bridge rows look
+ * like `\`MirrorMember.MirrorGroupId\` (FK) | \`MirrorPeerGroupMembers.MirrorPeerGroupId\``.
+ * We only register entries where the bare column name (after the dot)
+ * differs between sides.
+ */
+function collectColumnAliasMap() {
+  const text = readOrFail(NAMING_BRIDGE);
+  const map = new Map();
+  // Capture two backticked `Table.Col` cells in the same row; tolerate trailing
+  // qualifier text like `(PK)` or `(FK)` between the backtick and `|`.
+  const rowRe = /\|\s*`([A-Z]\w+)\.(\w+)`[^|]*\|\s*`([A-Z]\w+)\.(\w+)`/g;
+  let m;
+  while ((m = rowRe.exec(text)) !== null) {
+    const ddlCol = m[2];
+    const proseCol = m[4];
+    if (ddlCol !== proseCol) map.set(ddlCol, proseCol);
+  }
+  return map;
+}
+
+
   const lines = indexesText.split("\n");
   const probes = alias ? [name, alias] : [name];
   for (const line of lines) {
