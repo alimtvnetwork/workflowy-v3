@@ -188,11 +188,10 @@ Reciprocity catches the F25 drift class without overreach.
 
 ## Future-promotion ladder (not scoped to this gate)
 
-Three further enhancements remain:
+Two further enhancements remain (F-future-G31a and F-future-G31b are both complete):
 
-1. **F-future-G31a-promote**: Promote the WARN scopes (G-31.2 / G-31.3 / G-31.4) to ERROR by draining their reciprocity queues. Each scope can be promoted independently — change `mode: "warn"` → `mode: "error"` on its registry entry once `unreciprocated forward-links` reaches 0 (or matches an exemption Set).
-2. **F-future-G31b**: Add a meta sub-check enforcing that every per-scope exemption Set entry carries a rationale comment in the runner source (machine-checkable, mirrors G-32.4).
-3. **F-future-G31c**: Detect "unreferenced" sibling files (a file that no other sibling links to AND that links to no other sibling). These are documentation islands — likely a smell, but not always a bug.
+1. **F-future-G31c**: Detect "unreferenced" sibling files (a file that no other sibling links to AND that links to no other sibling). These are documentation islands — likely a smell, but not always a bug.
+2. **F-future-G31d** (newly logged): A heading-name normalisation sweep — pick one of `## Related` / `## Cross-References` / `## See also` per scope and rename the others. Currently the runner accepts all three (in scope-priority order) for back-compat; once drained, this flexibility is dead weight.
 
 Logging here so they're discoverable when "check memory for remaining tasks" runs in a later loop.
 
