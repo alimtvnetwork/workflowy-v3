@@ -9,9 +9,9 @@
 
 ## Summary
 
-**No server endpoints — UI-only feature.**
+**No shell-specific endpoints — UI-only feature; persistence reuses items endpoints.**
 
-The NavBar + Sidebar + Page shell is rendered entirely from React state seeded by `EP-ME` (current user) and `EP-ITEMS-ROOT` (root item). Sidebar contents are derived client-side from `EP-ITEMS-LIST` calls scoped to the user's root.
+The NavBar + Sidebar + Page shell is rendered entirely from React state seeded by `EP-ME` (current user) and `EP-ITEMS-ROOT` (root item). Sidebar contents are derived client-side from `EP-ITEMS-LIST` calls scoped to the user's root. The header's ⭐ Favorite toggle persists via `EP-ITEMS-UPDATE` (see Why-section).
 
 ---
 
