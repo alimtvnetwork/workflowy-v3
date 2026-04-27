@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 /**
- * G-30 — AT Citation Validity Gate
+ * G-30 — AT Citation Validity Gate (v1.1.0)
  *
- * Asserts every `AT-*` ID cited in endpoint contract files
- * (spec/31-app/06-endpoints/*.md) is declared in at least one
- * markdown-table registry row across spec/31-app/**.
+ * Asserts every `AT-*` ID cited under three consumer scopes is declared
+ * in at least one markdown-table registry row across spec/31-app/**:
+ *   1. spec/31-app/06-endpoints/**\/*.md
+ *   2. spec/31-app/02-workflows/**\/*.md
+ *   3. spec/31-app/07-db-diagram/04-feature-slices.md
  *
  * Algorithm SSOT: spec/31-app/05-conventions/23-g30-at-citation-validity-gate.md
  *
@@ -22,7 +24,19 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const REPO_ROOT = resolve(__dirname, "..", "..");
 const APP_ROOT = join(REPO_ROOT, "spec/31-app");
-const ENDPOINTS_DIR = join(APP_ROOT, "06-endpoints");
+
+// G-30.1 — extended consumer scope.
+// Each entry: { dir, label } — the gate scans every *.md in dir
+// (recursively), excluding files in CONSUMER_EXCLUDED.
+const CONSUMER_SCOPES = [
+  { dir: join(APP_ROOT, "06-endpoints"), label: "06-endpoints" },
+  { dir: join(APP_ROOT, "02-workflows"), label: "02-workflows" },
+  {
+    dir: join(APP_ROOT, "07-db-diagram"),
+    label: "07-db-diagram",
+    fileFilter: (name) => name === "04-feature-slices.md",
+  },
+];
 
 const CONSUMER_EXCLUDED = new Set([
   "99-consistency-report.md",
@@ -125,22 +139,28 @@ function isRegistered(id, registered) {
 }
 
 function collectCitations() {
-  if (!existsSync(ENDPOINTS_DIR)) fail(`endpoints dir missing: ${ENDPOINTS_DIR}`);
   const citations = [];
-  for (const name of readdirSync(ENDPOINTS_DIR)) {
-    if (!name.endsWith(".md")) continue;
-    if (CONSUMER_EXCLUDED.has(name)) continue;
-    const full = join(ENDPOINTS_DIR, name);
-    const lines = readFileSync(full, "utf8").split("\n");
-    lines.forEach((line, idx) => {
-      for (const m of line.matchAll(RX_CITE)) {
-        citations.push({
-          id: m[1],
-          file: relative(REPO_ROOT, full),
-          line: idx + 1,
-        });
-      }
+  for (const scope of CONSUMER_SCOPES) {
+    if (!existsSync(scope.dir)) fail(`consumer dir missing: ${scope.dir}`);
+    const files = walkMd(scope.dir).filter((full) => {
+      const base = full.split("/").pop();
+      if (CONSUMER_EXCLUDED.has(base)) return false;
+      if (scope.fileFilter && !scope.fileFilter(base)) return false;
+      return true;
     });
+    for (const full of files) {
+      const lines = readFileSync(full, "utf8").split("\n");
+      lines.forEach((line, idx) => {
+        for (const m of line.matchAll(RX_CITE)) {
+          citations.push({
+            id: m[1],
+            file: relative(REPO_ROOT, full),
+            line: idx + 1,
+            scope: scope.label,
+          });
+        }
+      });
+    }
   }
   return citations;
 }
@@ -155,7 +175,8 @@ function main() {
     console.log("G-30 AT citation validity:");
     console.log(`  registered AT IDs (closed):         ${registered.ids.size}`);
     console.log(`  registered open prefixes:           ${registered.openPrefixes.size}`);
-    console.log(`  endpoint citations scanned:         ${citations.length}`);
+    console.log(`  consumer scopes scanned:            ${CONSUMER_SCOPES.length}`);
+    console.log(`  citations scanned:                  ${citations.length}`);
     console.log(`  unique cited IDs:                   ${uniqueCited.size}`);
     console.log(`  unregistered citations:             0`);
     console.log("  ✅ all citations resolve");
@@ -165,11 +186,11 @@ function main() {
   console.error("G-30 AT citation validity FAILED:");
   console.error("");
   console.error(
-    `  ❌ ${unregistered.length} unregistered AT citation(s) in spec/31-app/06-endpoints/:`,
+    `  ❌ ${unregistered.length} unregistered AT citation(s) across consumer scopes:`,
   );
   console.error("");
   for (const v of unregistered) {
-    console.error(`    ${v.file}:${v.line}  ${v.id}`);
+    console.error(`    [${v.scope}] ${v.file}:${v.line}  ${v.id}`);
   }
   console.error("");
   console.error("  Resolution:");
