@@ -56,3 +56,5 @@
 | Roles SSOT | [`../01-features/15-roles-and-permissions.md`](../01-features/15-roles-and-permissions.md) |
 | Auth helper rule | `mem://constraints/coding-guidelines` |
 | User-roles table pattern | [`../../00-overview.md`](../../00-overview.md) |
+| ← Persona role checks (forward link from) | [`./02-personas.md`](./02-personas.md) |
+| ← Share-dialog role assignment (forward link from) | [`./08-share-dialog.md`](./08-share-dialog.md) |
