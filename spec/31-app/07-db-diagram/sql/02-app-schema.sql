@@ -2,9 +2,11 @@
 -- WorkFlowy — App DB Schema (per workspace)
 -- File: 02-app-schema.sql
 -- Target: workflowy_app_{WorkspaceId}.db (one per workspace)
--- Version: 2.0.0
--- Updated: 2026-04-27 (UTC+8) — v2.0.0 replaces source/target Mirror schema with peer-group
---                                model per spec/31-app/01-features/09b-mirror-peer-group-model.md
+-- Version: 2.1.0
+-- Updated: 2026-04-27 (UTC+8) — v2.1.0 added ReaperRuns table for B4/11b trash-reaper
+--                                cron audit log (AT-APP-85). v2.0.0 replaced source/target
+--                                Mirror schema with peer-group model per
+--                                spec/31-app/01-features/09b-mirror-peer-group-model.md
 --                                (closes AUDIT-AI-07).
 -- Authority: spec/31-app/07-db-diagram/03-app-db-erd.md
 --
@@ -208,6 +210,20 @@ CREATE TABLE IF NOT EXISTS SyncCursor (
     UserId       INTEGER NOT NULL UNIQUE,                 -- Logical FK to Root.User.UserId
     Cursor       TEXT    NOT NULL,
     UpdatedAt    TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
+);
+
+-- ----------------------------------------------------------------------------
+-- ReaperRuns — one row per trash-reaper cron execution.
+-- See spec/31-app/01-features/11b-trash-reaper.md §2 for full SSOT.
+-- AT-APP-85 requires Insert-on-completion of every reap pass.
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS ReaperRuns (
+    ReaperRunId   INTEGER PRIMARY KEY AUTOINCREMENT,
+    RanAt         TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
+    RowsDeleted   INTEGER NOT NULL CHECK (RowsDeleted >= 0),
+    DurationMs    INTEGER NOT NULL CHECK (DurationMs  >= 0),
+    BatchCount    INTEGER NOT NULL CHECK (BatchCount  >= 0),  -- Number of 1k-row batches drained this pass
+    Notes         TEXT    NULL                                -- Optional: error message on partial failure
 );
 
 -- End of 02-app-schema.sql
