@@ -1,6 +1,6 @@
 # Component Contract Map
 
-> **Generated:** 2026-04-26
+> **Generated:** 2026-04-27
 > **Source:** every `## Component Contract` table in `spec/31-app/01-features/`
 > **Generator:** `scripts/spec-hygiene/07-extract-contract-map.mjs`
 > **DO NOT EDIT BY HAND** — re-run the generator after editing feature files.
@@ -15,7 +15,7 @@ This file is the single global bridge from feature spec → component path → `
 - Find which acceptance tests cover a given component.
 - Find which `data-testid` to grep when wiring tests.
 
-Total surfaces mapped: **180** across **16** feature file(s).
+Total surfaces mapped: **192** across **17** feature file(s).
 
 ---
 
@@ -185,6 +185,16 @@ Total surfaces mapped: **180** across **16** feature file(s).
 | Mirror to-do checkbox | ``src/components/items/TodoCheckbox.tsx`` | `mirror-todo-checkbox` | AT-MIRRORS-14 |
 | Pending mirror state | ``src/components/items/MirrorPendingBadge.tsx`` | `mirror-pending-state` | AT-MIRRORS-16 |
 
+### `09a-mirror-cycle-detection.md`
+
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| Server cycle-check algorithm | ``wp-plugin/Repository/CycleCheck.php`` | `cycle-move-rejected`, `cycle-mirror-rejected` | AT-CYCLE-01, AT-CYCLE-02, AT-CYCLE-03, AT-CYCLE-04, AT-CYCLE-07, AT-CYCLE-08, AT-CYCLE-09 |
+| Recursive CTE constant (SSOT SQL) | ``wp-plugin/Repository/sql/cycle-check.sql`` | `cycle-hygiene-drift` | AT-CYCLE-10 |
+| Client optimistic cycle check | ``src/lib/mirror-cycle.ts`` | `cycle-self-parent`, `cycle-clean-target` | AT-CYCLE-01, AT-CYCLE-05, AT-CYCLE-06 |
+| Cycle error toast | ``src/components/feedback/MirrorErrorToast.tsx`` | `mirror-cycle-error` | AT-CYCLE-08 |
+| Hygiene drift check (SQL byte-equality) | ``scripts/spec-hygiene/18-check-cycle-algo.mjs`` | `cycle-hygiene-drift` | AT-CYCLE-10 |
+
 ### `10-today-view.md`
 
 | Surface | Component path | `data-testid` | Acceptance tests |
@@ -266,6 +276,13 @@ Total surfaces mapped: **180** across **16** feature file(s).
 | Split-state acceptance | ``src/server/concurrency/fieldLevelLWW.ts`` | `concurrency-split-state`, `concurrency-bulk-vs-single` | AT-CONCURRENCY-11, 13 |
 | Stale-tab banner trigger | ``src/lib/sync/StaleTabDetector.ts`` | `concurrency-stale-tab` | AT-CONCURRENCY-12 |
 | Conflict log writer | ``src/server/concurrency/conflictLog.ts`` | `concurrency-conflict-log` | AT-CONCURRENCY-15 |
+| SSE endpoint handler (WP) | ``wp-plugin/Sync/SseEndpoint.php`` | `sse-endpoint-handshake` | AT-CONCURRENCY-16 |
+| SSE event framer | ``wp-plugin/Sync/EventFramer.php`` | `sse-event-frame` | AT-CONCURRENCY-17 |
+| SSE resume/replay buffer | ``wp-plugin/Sync/ResumeBuffer.php`` | `sse-resume-replay` | AT-CONCURRENCY-18 |
+| Cursor-overflow detector | ``wp-plugin/Sync/BackpressureGuard.php`` | `sse-cursor-overflow` | AT-CONCURRENCY-19 |
+| Poll-fallback endpoint | ``wp-plugin/Sync/PollEndpoint.php`` | `sse-poll-fallback` | AT-CONCURRENCY-20 |
+| Transactional emit hook | ``wp-plugin/Sync/TransactionalEmitter.php`` | `sse-emission-atomic` | AT-CONCURRENCY-21 |
+| Forbidden-transport guard (CI) | ``scripts/spec-hygiene/forbidden-transports.mjs`` | `sse-forbidden-transports` | AT-CONCURRENCY-22 |
 
 ### `15-roles-and-permissions.md`
 
@@ -290,6 +307,8 @@ Sorted alphabetically. Each row is one planned/implemented component file.
 | Component path | `data-testid`(s) |
 |---------------|-----------------|
 | ``scripts/spec-hygiene/17-check-hotkeys.mjs`` | `— (script)` |
+| ``scripts/spec-hygiene/18-check-cycle-algo.mjs`` | `cycle-hygiene-drift` |
+| ``scripts/spec-hygiene/forbidden-transports.mjs`` | `sse-forbidden-transports` |
 | ``src/components/board/AddColumnButton.tsx`` | `board-add-column` |
 | ``src/components/board/BoardCard.tsx`` | `board-card`, `board-card-content` |
 | ``src/components/board/BoardColumn.tsx`` | `board-column` |
@@ -426,6 +445,7 @@ Sorted alphabetically. Each row is one planned/implemented component file.
 | ``src/lib/hotkeys.ts`` | `— (module)` |
 | ``src/lib/interactions/useBeforeUnload.ts`` | `unsaved-warning` |
 | ``src/lib/interactions/useGlobalKeys.ts`` | `— (hook)` |
+| ``src/lib/mirror-cycle.ts`` | `cycle-clean-target`, `cycle-self-parent` |
 | ``src/lib/perf/AppReadyMarker.ts`` | `app-ready-marker` |
 | ``src/lib/sync/MirrorSyncBroadcaster.ts`` | `concurrency-mirror-sync` |
 | ``src/lib/sync/OfflineReplayQueue.ts`` | `concurrency-offline-replay` |
@@ -439,6 +459,14 @@ Sorted alphabetically. Each row is one planned/implemented component file.
 | ``src/server/concurrency/monotonicTs.ts`` | `concurrency-monotonic-ts` |
 | ``src/server/concurrency/serverClock.ts`` | `concurrency-server-clock` |
 | ``src/server/concurrency/tieBreak.ts`` | `concurrency-tiebreak` |
+| ``wp-plugin/Repository/CycleCheck.php`` | `cycle-mirror-rejected`, `cycle-move-rejected` |
+| ``wp-plugin/Repository/sql/cycle-check.sql`` | `cycle-hygiene-drift` |
+| ``wp-plugin/Sync/BackpressureGuard.php`` | `sse-cursor-overflow` |
+| ``wp-plugin/Sync/EventFramer.php`` | `sse-event-frame` |
+| ``wp-plugin/Sync/PollEndpoint.php`` | `sse-poll-fallback` |
+| ``wp-plugin/Sync/ResumeBuffer.php`` | `sse-resume-replay` |
+| ``wp-plugin/Sync/SseEndpoint.php`` | `sse-endpoint-handshake` |
+| ``wp-plugin/Sync/TransactionalEmitter.php`` | `sse-emission-atomic` |
 
 ---
 
