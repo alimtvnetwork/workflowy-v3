@@ -10,7 +10,7 @@ gate_id: G-31
 # G-31 — Cross-Reference Reciprocity Gate
 
 > **Version:** 2.0.0
-> **Updated:** 2026-04-27 (UTC+8) — v2.1.0 (F-future-G31a-promote-endpoints) drained the G-31.3 endpoints scope (8 → 0) by adding back-link rows to the `## Cross-References` tables of `14-concurrency-and-sync.md` (×5), `15-roles-and-permissions.md` (×2), and `11-trash-view.md` (×1); promoted G-31.3 from WARN to ERROR. v2.0.0 (F-future-G31a) generalised the gate from a single workflows scope to **N parameterised scopes** with per-scope `mode: "error" | "warn"`. Workflows scope (G-31.1) remains ERROR-mode and stays at 0 asymmetries. Each scope has its own `excludeRx` for aggregator-page filtering, its own `relatedHeads` array (different folders use `## Related`, `## Cross-References`, or `## See also`), and its own exemption Set. Promotion to ERROR is per-scope: drain the queue via reciprocity-fix tasks, then change `mode: "warn"` → `mode: "error"` in the runner's `SCOPES` registry.
+> **Updated:** 2026-04-27 (UTC+8) — v2.2.0 (F-future-G31a-promote-db-diagram) drained the G-31.4 db-diagram scope (6 → 0) by adding back-link rows across 5 target files (`02-root-db-erd.md`, `03-app-db-erd.md`, `06-indexes.md`, `04-feature-slices.md`, `05-lifecycle-flows.md`); promoted G-31.4 from WARN to ERROR. v2.1.0 drained G-31.3 endpoints (8 → 0) and promoted to ERROR. v2.0.0 (F-future-G31a) generalised the gate from a single workflows scope to **N parameterised scopes** with per-scope `mode: "error" | "warn"`. Only G-31.2 (features) remains in WARN mode (30 asymmetries). Workflows, endpoints, db-diagram all ERROR-mode at 0 asymmetries.
 > **Parent:** [`02-ci-quality-gates.md`](./02-ci-quality-gates.md)
 > **Sibling:** [`23-g30-at-citation-validity-gate.md`](./23-g30-at-citation-validity-gate.md), [`25-g32-ddl-unique-coverage-gate.md`](./25-g32-ddl-unique-coverage-gate.md)
 > **Runner:** [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs)
@@ -24,7 +24,7 @@ gate_id: G-31
 | G-31.1   | workflows        | ERROR | `spec/31-app/02-workflows/`  | 9               | 0 ✅                  | v1.0.0   |
 | G-31.2   | features         | WARN  | `spec/31-app/01-features/`   | 23              | 30 ⚠️                 | v2.0.0   |
 | G-31.3   | endpoints        | ERROR | `spec/31-app/06-endpoints/`  | 19              | 0 ✅                  | v2.0.0 (WARN) → v2.1.0 (ERROR) |
-| G-31.4   | db-diagram       | WARN  | `spec/31-app/07-db-diagram/` | 7               | 6 ⚠️                  | v2.0.0   |
+| G-31.4   | db-diagram       | ERROR | `spec/31-app/07-db-diagram/` | 7               | 0 ✅                  | v2.0.0 (WARN) → v2.2.0 (ERROR) |
 
 **Mode semantics:**
 - **ERROR** — any asymmetry contributes to exit code 1; CI fails.
@@ -60,7 +60,7 @@ silent regression by failing CI on any new asymmetric forward-link.
 | 1 | `spec/31-app/02-workflows/` | `/^\d{2}-.+-flow\.md$/` | (regex already strict) | `## Related` | ERROR | Drained F25 → 0 asymmetries; current state ✅ |
 | 2 | `spec/31-app/01-features/`  | `/^\d{2}[a-z]?-.+\.md$/i` | `00-overview`, `02-personas`, `05a-hotkey-table`, `97-acceptance-criteria`, `99-consistency-report` | `## Related`, `## Cross-References`, `## See also` | WARN | Pre-existing drift: 30 |
 | 3 | `spec/31-app/06-endpoints/` | `/^\d{2}[a-z]?-.+\.md$/i` | `00-overview`, `16-endpoint-at-matrix`, `97-acceptance-criteria`, `99-consistency-report` | `## Related`, `## Cross-References`, `## See also` | ERROR | Drained 2026-04-27 (8 → 0); promoted to ERROR in v2.1.0 |
-| 4 | `spec/31-app/07-db-diagram/` | `/^\d{2}-.+\.md$/` (top-level only — skips `sql/` subfolder) | `00-overview`, `97-acceptance-criteria`, `99-consistency-report` | `## Cross-References`, `## Related`, `## See also` | WARN | Pre-existing drift: 6 |
+| 4 | `spec/31-app/07-db-diagram/` | `/^\d{2}-.+\.md$/` (top-level only — skips `sql/` subfolder) | `00-overview`, `97-acceptance-criteria`, `99-consistency-report` | `## Cross-References`, `## Related`, `## See also` | ERROR | Drained 2026-04-27 (6 → 0); promoted to ERROR in v2.2.0 |
 
 The runner reads each scoped file's back-link section (text from the first matching heading until the next H2 that isn't another related-head variant). A "link" to a sibling file is detected by literal filename substring match within that section — this catches both bare references (`05-trash-reaper-flow.md`) and markdown links (`[label](./05-trash-reaper-flow.md)`).
 
