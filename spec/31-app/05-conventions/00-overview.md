@@ -41,7 +41,7 @@
 | 26 | [`24-g31-workflow-xref-reciprocity-gate.md`](./24-g31-workflow-xref-reciprocity-gate.md) | G-31 — Cross-Reference Reciprocity Gate | 213 |
 | 27 | [`24-state-management-architecture.md`](./24-state-management-architecture.md) | State Management Architecture | 277 |
 | 28 | [`25-g32-ddl-unique-coverage-gate.md`](./25-g32-ddl-unique-coverage-gate.md) | G-32 — DDL ↔ Doc Index Coverage Gate | 259 |
-| 29 | [`26-allow-list-inventory.md`](./26-allow-list-inventory.md) | Allow-List Inventory | 267 |
+| 29 | [`26-allow-list-inventory.md`](./26-allow-list-inventory.md) | Allow-List Inventory | 269 |
 | 30 | [`27-g33-cross-runner-duplicate-gate.md`](./27-g33-cross-runner-duplicate-gate.md) | G-33 — Cross-Runner Allow-List Duplicate Detector | 144 |
 | 31 | [`28-g34-allow-list-age-gate.md`](./28-g34-allow-list-age-gate.md) | G-34 — Allow-List Entry Age Gate (Algorithm SSOT) | 106 |
 | 32 | [`29-g36-cross-scope-island-gate.md`](./29-g36-cross-scope-island-gate.md) | G-36 — Cross-Scope Island Detector (Algorithm SSOT) | 92 |
