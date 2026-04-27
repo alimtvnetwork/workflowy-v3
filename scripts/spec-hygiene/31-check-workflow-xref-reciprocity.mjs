@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * G-31 — Cross-Reference Reciprocity Gate (v2.0.0)
+ * G-31 — Cross-Reference Reciprocity Gate (v2.1.0)
  *
  * Asserts that every cross-sibling Related-section link in a scoped
  * folder is reciprocated by a back-link in the target's own
@@ -54,6 +54,10 @@
  * Promoted from one-shot prototype `/tmp/audit_xrefs.mjs` (built during
  * F25). v1.0.0 added typed exit codes, allow-list, suppression hint.
  * v2.0.0 (F-future-G31a) generalised to N scopes with per-scope mode.
+ * v2.1.0 (F-future-G31a-promote-endpoints) drained 8 endpoint asymmetries
+ *        by adding back-link rows to the Cross-References tables of
+ *        14-concurrency-and-sync.md (×5), 15-roles-and-permissions.md (×2),
+ *        and 11-trash-view.md (×1); promoted G-31.3 from WARN to ERROR.
  */
 
 import { readFileSync, readdirSync, statSync } from "node:fs";
