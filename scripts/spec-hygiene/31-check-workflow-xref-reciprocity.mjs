@@ -62,8 +62,15 @@
  *        asymmetries by adding back-link rows to 02-root-db-erd.md (×1),
  *        03-app-db-erd.md (×2), 06-indexes.md (×2), 04-feature-slices.md
  *        (×1), and 05-lifecycle-flows.md (×1); promoted G-31.4 from
- *        WARN to ERROR. Only G-31.2 (features, 30 asymmetries) remains
- *        in WARN mode.
+ *        WARN to ERROR. Only G-31.2 (features, 30 asymmetries) remained
+ *        in WARN mode at end of v2.2.0.
+ * v2.3.0 (F-future-G31a-promote-features) drained 30 features
+ *        asymmetries by appending back-link rows across 12 target files
+ *        via /tmp/drain_g312.py (programmatic insertion under existing
+ *        ## Related / ## Cross-References sections, preserving each
+ *        target's native bullet-vs-table format); promoted G-31.2 from
+ *        WARN to ERROR. All 4 G-31 sub-checks now ERROR-mode at 0
+ *        asymmetries — staged WARN-then-ERROR rollout complete.
  */
 
 import { readFileSync, readdirSync, statSync } from "node:fs";
