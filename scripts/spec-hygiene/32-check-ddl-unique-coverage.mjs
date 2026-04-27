@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * G-32 — DDL UNIQUE Documentation Coverage Gate (v1.0.0)
+ * G-32 — DDL ↔ Doc Index Coverage Gate (v2.0.0)
  *
  * Asserts that every `UNIQUE` declaration in the SQLite DDL files
  * (`spec/31-app/07-db-diagram/sql/01-root-schema.sql` and
