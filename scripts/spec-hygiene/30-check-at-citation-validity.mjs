@@ -35,8 +35,9 @@ const CONSUMER_EXCLUDED = new Set([
 const RX_DECL_SINGLE = /^\|\s*`?(AT-[A-Z][A-Z0-9-]*-?\d+)`?\s*\|/gm;
 
 // Range declarations like `AT-APPF-01..05` or `AT-APP-58..67` expand
-// to every integer in [start, end].
-const RX_DECL_RANGE = /`(AT-[A-Z][A-Z0-9-]*-?)(\d+)\.\.(\d+)`/g;
+// to every integer in [start, end]. Prefix ends with the trailing `-`
+// so it never swallows leading digits.
+const RX_DECL_RANGE = /`(AT-[A-Z][A-Z0-9]*(?:-[A-Z][A-Z0-9]*)*-)(\d+)\.\.(\d+)`/g;
 
 // Citation: any backticked AT-* ID in prose, tables, or lists.
 const RX_CITE = /`(AT-[A-Z][A-Z0-9-]*-?\d+)`/g;
