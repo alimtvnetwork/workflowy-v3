@@ -83,6 +83,19 @@
  *        WARN to ERROR. All 4 G-31 sub-checks now ERROR-mode at 0
  *        asymmetries — staged WARN-then-ERROR rollout complete.
  */
+ * v2.4.0 (F-future-G31b) added the **G-31.5 meta sub-check** enforcing
+ *        that every entry in `WORKFLOWS_EXEMPT`, `FEATURES_EXEMPT`,
+ *        `ENDPOINTS_EXEMPT`, and `DB_DIAGRAM_EXEMPT` carries a rationale
+ *        comment (trailing inline `// …` OR contiguous `// …` line(s)
+ *        directly above with no blank-line gap). Algorithm ported
+ *        verbatim from G-32.4 (`32-check-ddl-unique-coverage.mjs`),
+ *        swapping the self-path and allow-list names. All 4 Sets are
+ *        currently empty so the gate ships green; this locks in the
+ *        convention before the first exemption is added so authors
+ *        can't sneak in silent suppressions. Sample template entries
+ *        (lines starting with `// "…"`) are skipped — they are not
+ *        active entries, just stylistic hints for future authors.
+ */
 
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
