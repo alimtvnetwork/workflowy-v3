@@ -91,4 +91,38 @@ CREATE INDEX IF NOT EXISTS IdxActivityLog_CreatedAt
 CREATE UNIQUE INDEX IF NOT EXISTS IdxSyncCursor_UserId
     ON SyncCursor (UserId);
 
+-- ----------------------------------------------------------------------------
+-- B3 / 14b — Offline queue + LWW conflict resolution.
+-- Field-level LWW reads Item.UpdatedAt during reconnect drain.
+-- ----------------------------------------------------------------------------
+CREATE INDEX IF NOT EXISTS IdxItem_UpdatedAt
+    ON Item (UpdatedAt DESC);
+
+-- ----------------------------------------------------------------------------
+-- B3 / 16-search-ranking — Hybrid relevance + recency.
+-- AT-APP-104: tiebreak by UpdatedAt DESC inside each match-tier.
+-- AT-APP-106: search excludes soft-deleted items (partial index on live rows).
+-- LIKE/substring scans Item.Content; FTS5 virtual table is recommended for prod
+-- but a partial index on (DeletedAt, UpdatedAt DESC) materially helps the
+-- "live items recently updated" hot path used by the ranking tiebreak.
+-- ----------------------------------------------------------------------------
+CREATE INDEX IF NOT EXISTS IdxItem_LiveByUpdatedAt
+    ON Item (UpdatedAt DESC)
+    WHERE DeletedAt IS NULL;
+
+-- Optional FTS5 mirror for the Content column (commented — flip on for prod).
+-- CREATE VIRTUAL TABLE IF NOT EXISTS ItemContentFts USING fts5(
+--     Content,
+--     content='Item',
+--     content_rowid='ItemId',
+--     tokenize='unicode61 remove_diacritics 2'
+-- );
+
+-- ----------------------------------------------------------------------------
+-- B4 / 11b — ReaperRuns audit log.
+-- Recent-runs lookup for ops dashboards + idempotency checks.
+-- ----------------------------------------------------------------------------
+CREATE INDEX IF NOT EXISTS IdxReaperRuns_RanAt
+    ON ReaperRuns (RanAt DESC);
+
 -- End of 03-app-indexes.sql

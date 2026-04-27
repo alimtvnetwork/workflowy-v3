@@ -210,4 +210,18 @@ CREATE TABLE IF NOT EXISTS SyncCursor (
     UpdatedAt    TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
 );
 
+-- ----------------------------------------------------------------------------
+-- ReaperRuns — one row per trash-reaper cron execution.
+-- See spec/31-app/01-features/11b-trash-reaper.md §2 for full SSOT.
+-- AT-APP-85 requires Insert-on-completion of every reap pass.
+-- ----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS ReaperRuns (
+    ReaperRunId   INTEGER PRIMARY KEY AUTOINCREMENT,
+    RanAt         TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
+    RowsDeleted   INTEGER NOT NULL CHECK (RowsDeleted >= 0),
+    DurationMs    INTEGER NOT NULL CHECK (DurationMs  >= 0),
+    BatchCount    INTEGER NOT NULL CHECK (BatchCount  >= 0),  -- Number of 1k-row batches drained this pass
+    Notes         TEXT    NULL                                -- Optional: error message on partial failure
+);
+
 -- End of 02-app-schema.sql
