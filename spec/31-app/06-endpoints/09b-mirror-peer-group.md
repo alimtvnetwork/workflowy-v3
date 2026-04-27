@@ -25,7 +25,7 @@
 - **Success (200)** `Results`: `{ GroupId: string, Peers: Item[], Count: number }` — `Peers` excludes `id` itself unless `IncludeSelf=true` query is set.
 - **Errors**: `ERR_NOT_FOUND`, `ERR_FORBIDDEN`, `ERR_NOT_MIRRORED` (item is not a member of any peer group — i.e. singleton not yet linked).
 - **Side effects**: none.
-- **AC refs**: `AT-MGP-58`, `AT-MGP-59`.
+- **AC refs**: `AT-APP-58`, `AT-APP-60`, `AT-APP-65`.
 
 ---
 
@@ -42,7 +42,7 @@
   - Emits SSE `mirror-broken` on `mirror-group:{groupId}` to surviving peers.
   - Emits SSE `item-updated` on `item:{id}` (now standalone).
   - If `GroupDissolved = true`, emits a second `mirror-broken` for the lone surviving peer.
-- **AC refs**: `AT-MGP-60`, `AT-MGP-61`, `AT-MGP-62`.
+- **AC refs**: `AT-APP-61`, `AT-APP-63`, `AT-APP-64`.
 
 ---
 
