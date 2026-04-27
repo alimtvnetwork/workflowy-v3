@@ -145,22 +145,21 @@ Every `wp-plugin/**` path currently referenced in the spec corpus, mapped to its
 | `09-audit-log-policy.md` | `wp-plugin/Audit/AuditChain.php` *(implied)* | `wp-plugin/Audit/AuditChain.php` | ✅ aligns |
 | `10-role-escalation-policy.md` | `wp-plugin/Auth/Escalation.php` | `wp-plugin/Auth/Escalation.php` | ✅ aligns |
 | `10-role-escalation-policy.md` | `wp-plugin/Auth/Escalation/Notifier.php` | `wp-plugin/Auth/Escalation/Notifier.php` | ✅ aligns |
-| `11-session-token-lifecycle.md` | `wp-plugin/Auth.php` | `wp-plugin/Auth/SignIn.php` *(or `TokenStore.php`)* | **clarify** — `Auth.php` was placeholder; resolve per call site |
-| `11-session-token-lifecycle.md` | `wp-plugin/Auth/SignIn.php` | `wp-plugin/Auth/SignIn.php` | ✅ aligns |
-| `11-session-token-lifecycle.md` | `wp-plugin/Routes/auth-refresh.php` | `wp-plugin/Routes/auth-refresh.php` | ✅ aligns |
+| `15-roles-and-permissions.md` (§Location) | `plugin-root/src/Auth/Auth.php` (legacy diagram) | `wp-plugin/Auth/Auth.php` | ✅ migrated 2026-04-27 (cleanup pass) — `Auth/Auth.php` is the static `WorkFlowy\Auth\Auth::hasRole()` helper, distinct from `SignIn.php`/`TokenStore.php` |
+| `15-g22-error-code-catalogue-gate.md` (AT-G22-02) | `wp-plugin/Auth.php` (placeholder) | `wp-plugin/Auth/Auth.php` | ✅ migrated 2026-04-27 (cleanup pass) — AT example now cites the canonical static helper |
 | `12-mfa-policy.md` | `wp-plugin/Auth/Mfa/StepUpMap.php` | `wp-plugin/Auth/Mfa/StepUpMap.php` | ✅ aligns |
 | `13-data-export-policy.md` | `wp-plugin/Export/FormatRegistry.php` | `wp-plugin/Export/FormatRegistry.php` | ✅ aligns |
 | `14-backup-and-dr-policy.md` | `wp-plugin/Backup/SqliteBackup.php` | `wp-plugin/Backup/SqliteBackup.php` | ✅ aligns |
 | `14-backup-and-dr-policy.md` | `wp-plugin/Backup/DrillScheduler.php` | `wp-plugin/Backup/DrillScheduler.php` | ✅ aligns |
 | `14-backup-and-dr-policy.md` | `wp-plugin/Lifecycle/Install.php` | `wp-plugin/Lifecycle/Install.php` | ✅ aligns |
-| G-25 spec (`18-`) | `wp-plugin/src/Repository/CycleCheck.php` | `wp-plugin/Repository/CycleCheck.php` | **migrate** — drop `src/` prefix |
-| G-25 spec (`18-`) | `wp-plugin/src/Repository/sql/cycle-check.sql` | `wp-plugin/Repository/sql/cycle-check.sql` | **migrate** |
+| `01-features/09a-mirror-cycle-detection.md` (Component Contract + AT-CYCLE-10) | `wp-plugin/src/Repository/CycleCheck.php` | `wp-plugin/Repository/CycleCheck.php` | ✅ migrated 2026-04-27 (cleanup pass) — drop `src/` prefix |
+| `01-features/09a-mirror-cycle-detection.md` (Component Contract) | `wp-plugin/src/Repository/sql/cycle-check.sql` | `wp-plugin/Repository/sql/cycle-check.sql` | ✅ migrated 2026-04-27 (cleanup pass) |
 | G-27 spec (`20-`) | `wp-plugin/Export/Serializers/` | `wp-plugin/Export/Serializers/` | ✅ aligns |
 | G-28 spec (`21-`) | `wp-plugin/Backup/Restore/` | `wp-plugin/Backup/Restore/` | ✅ aligns |
 
-**Migration count:** 5 paths in 2 specs (`08-api-rate-limiting.md` ×3, G-25 spec `18-` ×2). All retire the `wp-plugin/src/` prefix.
+**Migration count (post-cleanup):** 5 paths migrated across 3 files (`08-api-rate-limiting.md` ×3, `09a-mirror-cycle-detection.md` ×3 incl. one AT-CYCLE-10 reference, `15-roles-and-permissions.md` ×1 directory diagram). 1 AT example clarified (`15-g22-...md` AT-G22-02). All `wp-plugin/src/` references retired from the corpus.
 
-> **Forward action (this changelog only):** §6 of this spec lists the exact follow-up edits required to remove `src/` references from `08-api-rate-limiting.md` and the G-25 algorithm spec. Those edits are NOT made in this commit — they are deferred to a single dedicated cleanup pass to keep the path-canonicalisation reviewable.
+> **Forward action — DONE.** v1.0.0 deferred these edits to a cleanup pass; v1.0.1 executes that pass. The original §2 row claiming `11-session-token-lifecycle.md` held an `Auth.php` placeholder was incorrect — the actual `Auth.php` references lived in `15-roles-and-permissions.md` (Location diagram) and `15-g22-error-code-catalogue-gate.md` (AT-G22-02). Both fixed in this same pass.
 
 ---
 
