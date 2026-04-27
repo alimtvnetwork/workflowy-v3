@@ -33,6 +33,7 @@
 | 18 | [`18-g25-token-lifecycle-coverage-gate.md`](./18-g25-token-lifecycle-coverage-gate.md) | G-25 Session & Token Lifecycle Drift Gate — Algorithm Spec | 240 |
 | 19 | [`19-g26-mfa-coverage-gate.md`](./19-g26-mfa-coverage-gate.md) | G-26 MFA Policy Drift Gate — Algorithm Spec | 250 |
 | 20 | [`20-g27-export-coverage-gate.md`](./20-g27-export-coverage-gate.md) | G-27 Data-Export Policy Drift Gate — Algorithm Spec | 260 |
+| 21 | [`21-g28-backup-coverage-gate.md`](./21-g28-backup-coverage-gate.md) | G-28 Backup & DR Policy Drift Gate — Algorithm Spec | 280 |
 
 <!-- AUTO-TOC:END -->
 
@@ -89,6 +90,7 @@ Conventions specification module. See files below.
 | 18 | [18-g25-token-lifecycle-coverage-gate.md](18-g25-token-lifecycle-coverage-gate.md) | G-25 hygiene-gate algorithm: five-axis token check — browser-storage prohibition (no `localStorage`/`sessionStorage`/`IndexedDB` token writes), issuance/revocation audit pairing, refresh-cookie path-scoping + `HttpOnly`/`Secure`/`SameSite=Strict` hardening |
 | 19 | [19-g26-mfa-coverage-gate.md](19-g26-mfa-coverage-gate.md) | G-26 hygiene-gate algorithm: five-axis MFA check — forbidden-literal prohibition (`'sms'`/`'email_otp'`/`'voice'`/`'remember_mfa'`/`MFA_DISABLED`/`bypass_mfa`), mutation-route freshness declaration, step-up-map bidirectional parity (spec ↔ runtime), factor-registry static containment (TOTP/WebAuthn/Recovery only), recovery-code argon2id hash strength |
 | 20 | [20-g27-export-coverage-gate.md](20-g27-export-coverage-gate.md) | G-27 hygiene-gate algorithm: six-axis export check — `/export/*` route MFA(300) + rate-limit hardening, `workflowy-exports/` writes paired with `Crypto::aesGcmEncrypt()` within 30 lines, serializer redactor-precedence over `Owner`/`SharedWith`/etc., `FormatRegistry::ALLOWED` mutations contained to canonical file, install-hook `.htaccess` deny-directive presence, signed-URL leak prevention (Email is only sink) |
+| 21 | [21-g28-backup-coverage-gate.md](21-g28-backup-coverage-gate.md) | G-28 hygiene-gate algorithm: seven-axis backup/DR check — SQLite `\SQLite3::backup()`-only (no `cp`/`copy()`/`rsync` of `*.sqlite`), tarball `Crypto::aesGcmEncrypt()` before object-storage upload, S3Client config hardening (`'encryption' => 'AES256'` + `'acl' => 'private'` + `https://` endpoint), sensitive-file exclusion (no `wp-config.php`/`auth_key`/`secret`/`password`), restore integrity verification (`PRAGMA integrity_check` AND `AuditChain::reWalk` within 50 lines of `Restore\Engine::swap`), drill-scheduler 90-day cadence presence, bidirectional schedule↔cron parity |
 
 ---
 
@@ -124,6 +126,7 @@ Conventions specification module. See files below.
 - [`18-g25-token-lifecycle-coverage-gate.md`](./18-g25-token-lifecycle-coverage-gate.md) — G-25 session/token-lifecycle drift gate (5-axis token hygiene)
 - [`19-g26-mfa-coverage-gate.md`](./19-g26-mfa-coverage-gate.md) — G-26 MFA policy drift gate (5-axis MFA hygiene)
 - [`20-g27-export-coverage-gate.md`](./20-g27-export-coverage-gate.md) — G-27 data-export policy drift gate (6-axis export hygiene)
+- [`21-g28-backup-coverage-gate.md`](./21-g28-backup-coverage-gate.md) — G-28 backup/DR policy drift gate (7-axis backup hygiene) — **completes orphan-gate cluster**
 
 **See also:**
 
