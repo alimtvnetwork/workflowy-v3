@@ -1,8 +1,8 @@
 # Workflows
 
 
-> **Version:** 2.3.0
-> **Updated:** 2026-04-27 (UTC+8) — v2.3.0 (F16) added `09-mirror-create-flow.md` as the create-side counterpart to `08-mirror-detach-flow.md`; new `AT-WF-CREATE-NN` open-prefix licensed (canonical-mapped to `AT-APP-58, 59, 62, 66, 67`). Prior: v2.2.0 added 4 cross-feature workflow files for B1–B4 backlog: `05-trash-reaper-flow.md`, `06-search-query-flow.md`, `07-sync-replay-flow.md`, `08-mirror-detach-flow.md` (F11, No-Questions Mode). v2.1.0 marked `AT-WF-*` ↔ `AT-APP-*` backfill complete (polish #2). v2.0.0 added 3 cross-feature workflow files (APP-FIX-12, closes F-10).
+> **Version:** 2.4.0
+> **Updated:** 2026-04-27 (UTC+8) — v2.4.0 (F17) added `10-migration-execution-flow.md` — operational runbook for the v1→v2 mirror peer-group migration (M-115/M-116/M-117/M-118), complementing the SQL-detail SSOT at `07-db-diagram/07-migrations.md`; new `AT-WF-MIGRATE-NN` open-prefix licensed (canonical-mapped to `AT-APP-66, 67`). v2.3.0 (F16) added `09-mirror-create-flow.md` as the create-side counterpart to `08-mirror-detach-flow.md`; new `AT-WF-CREATE-NN` open-prefix licensed (canonical-mapped to `AT-APP-58, 59, 62, 66, 67`). Prior: v2.2.0 added 4 cross-feature workflow files for B1–B4 backlog: `05-trash-reaper-flow.md`, `06-search-query-flow.md`, `07-sync-replay-flow.md`, `08-mirror-detach-flow.md` (F11, No-Questions Mode). v2.1.0 marked `AT-WF-*` ↔ `AT-APP-*` backfill complete (polish #2). v2.0.0 added 3 cross-feature workflow files (APP-FIX-12, closes F-10).
 
 ## Keywords
 
@@ -76,6 +76,7 @@ If only #1 holds, the flow belongs inside the relevant feature file's Edge Cases
 | 07 | [`07-sync-replay-flow.md`](./07-sync-replay-flow.md) | `online` event → FIFO drain → server stamp `ServerTs` → LWW resolution → SSE fan-out | F11 (B3) |
 | 08 | [`08-mirror-detach-flow.md`](./08-mirror-detach-flow.md) | Detach click → membership delete → auto-dissolve trigger on size→1 → SSE | F11 (B1) |
 | 09 | [`09-mirror-create-flow.md`](./09-mirror-create-flow.md) | Picker submit → auth → cycle CTE → group lookup-or-create → dual member insert → SSE fan-out | F16 (B1) |
+| 10 | [`10-migration-execution-flow.md`](./10-migration-execution-flow.md) | Bootstrap → global lock → per-workspace serial backup + 10-step DDL + audit row → aggregate report → batch-complete SSE | F17 (B1) |
 
 ---
 
@@ -88,6 +89,8 @@ Workflow files use a flow-scoped acceptance-criteria prefix: `AT-WF-{FLOW}-NN` (
 ✅ **Extended (2026-04-27, F11):** four new flow-scoped namespaces — `AT-WF-REAPER-NN` → `AT-APP-81..85`, `AT-WF-SEARCH-NN` → `AT-APP-103..107`, `AT-WF-REPLAY-NN` → `AT-APP-97..102`, `AT-WF-DETACH-NN` → `AT-APP-60..65` (subset relevant to detach). The `AT-WF-*` IDs remain as flow-scoped aliases for in-file traceability; the `AT-APP-*` column is authoritative.
 
 ✅ **Extended (2026-04-27, F16):** added `AT-WF-CREATE-NN` → `AT-APP-58, 59, 62, 66, 67` (subset relevant to create). Open-prefix licensed for the create-flow's 5 acceptance tests.
+
+✅ **Extended (2026-04-27, F17):** added `AT-WF-MIGRATE-NN` → `AT-APP-66, 67` (the migration ATs). Open-prefix licensed for the migration-execution flow's 6 acceptance tests. Note: `AT-APP-66, 67` are also cited by `09-mirror-create-flow.md` (F16) — different test scenarios, both files' tables are independent.
 
 ### Open-prefix declarations (G-30 §RX_DECL_OPEN)
 
@@ -103,6 +106,7 @@ The following table-row placeholders license the entire numeric series under eac
 | `AT-WF-REPLAY-NN` | `AT-APP-97..102` | `07-sync-replay-flow.md` |
 | `AT-WF-DETACH-NN` | `AT-APP-60..65` (subset) | `08-mirror-detach-flow.md` |
 | `AT-WF-CREATE-NN` | `AT-APP-58, 59, 62, 66, 67` (subset) | `09-mirror-create-flow.md` |
+| `AT-WF-MIGRATE-NN` | `AT-APP-66, 67` (subset) | `10-migration-execution-flow.md` |
 
 ---
 
