@@ -258,7 +258,7 @@ If any expectation fails: open a P1 ticket and re-read step 5–7.
 
 Even on a clean rotation, fill in the post-mortem template within **48 hours**:
 
-> [Post-rotation review template](../../99-operations/01-post-mortem-template.md) _(planned; not yet authored — see backup-key-rotation runbook backlog)_
+> Post-rotation review template at `spec/99-operations/01-post-mortem-template.md` _(planned; not yet authored — see backup-key-rotation runbook backlog)_
 
 Until the template exists, attach a short note to ticket `$TICKET_ID` listing:
 - Wall-clock duration of each step
