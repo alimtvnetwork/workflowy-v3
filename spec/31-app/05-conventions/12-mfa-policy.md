@@ -260,7 +260,7 @@ When the user has only **2 unused codes left**, the next login displays a banner
 | Property | Value |
 |----------|-------|
 | Gate ID | `G-26` |
-| Script | `scripts/spec-hygiene/16-mfa-policy-coverage-audit.mjs` |
+| Script | `scripts/spec-hygiene/26-check-mfa-policy-coverage.mjs` *(numeric prefix matches gate ID; original `16-` slot taken by `check-rest-envelope-format.mjs`)* — algorithm SSOT: [`19-g26-mfa-coverage-gate.md`](./19-g26-mfa-coverage-gate.md) |
 | Trigger | Pre-commit + CI |
 | Exit codes | `0` ok · `1` violation · `2` runner error |
 
