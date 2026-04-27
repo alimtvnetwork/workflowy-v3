@@ -1,7 +1,7 @@
 # Concurrency & Sync
 
-> **Version:** 1.6.1
-> **Updated:** 2026-04-26 — Re-audit residual fix: §14.2 + §14.4 pseudocode PascalCase'd per Casing Layers rule (closes residual F-08). Prior: 2026-04-26 — Round-3 AUDIT-06: §14.5 SSE Transport Contract added (endpoint URL, event vocabulary, Last-Event-Id resume, poll-fallback shape, server emission rules, forbidden transports). Closes AUDIT-06. Prior: 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-09: §14.4 `Mirrors.BrokenAt` LWW rule added (closes audit F-14). v1.2.0 added Storage section. v1.1.0 pinned transport to WP-native SSE + poll fallback.
+> **Version:** 1.7.0
+> **Updated:** 2026-04-27 — Polish: added AT-CONCURRENCY-16..22 covering §14.5 SSE contract (endpoint handshake, event frame format, Last-Event-Id resume/replay, cursor-overflow backpressure, poll-fallback shape, transactional emission atomicity, forbidden-transports CI guard) plus 7 matching Component Contract rows (planned WP plugin paths). Closes re-audit §4 item 3. Prior: 2026-04-26 — Re-audit residual fix: §14.2 + §14.4 pseudocode PascalCase'd per Casing Layers rule (closes residual F-08). Prior: 2026-04-26 — Round-3 AUDIT-06: §14.5 SSE Transport Contract added (endpoint URL, event vocabulary, Last-Event-Id resume, poll-fallback shape, server emission rules, forbidden transports). Closes AUDIT-06. Prior: 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-09: §14.4 `Mirrors.BrokenAt` LWW rule added (closes audit F-14). v1.2.0 added Storage section. v1.1.0 pinned transport to WP-native SSE + poll fallback.
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
@@ -261,6 +261,13 @@ On client startup OR SSE drop:
 | AT-CONCURRENCY-13 | Bulk operation on 5 items + concurrent single edit on item 3 | Both submit | Each item resolves LWW independently; bulk loses on item 3 if its edit was newer | `concurrency-bulk-vs-single` |
 | AT-CONCURRENCY-14 | Realtime channel disconnects mid-edit | Reconnect happens | If server has newer state, banner appears retroactively | `concurrency-banner` |
 | AT-CONCURRENCY-15 | A conflict resolves | Conflict log row inserted | Audit row contains {itemId, field, loserUserId, winnerUserId, serverTs} | `concurrency-conflict-log` |
+| AT-CONCURRENCY-16 | Authenticated client opens `GET /wp-json/workflowy/v1/sse?WorkspaceId={id}` | Connection established | Response is `Content-Type: text/event-stream`, `X-Accel-Buffering: no`, no proxy buffering; first line within 1 s is `event: heartbeat` | `sse-endpoint-handshake` |
+| AT-CONCURRENCY-17 | SSE stream open | Server sends an `item-updated` event | Frame contains `event: item-updated`, `id: {ServerTs}` (integer ms), and a JSON `data:` payload with `{ItemId, Fields, ServerTs}`; `id` is monotonically non-decreasing across all events on the stream | `sse-event-frame` |
+| AT-CONCURRENCY-18 | Client lost connection at `Last-Event-Id: 1700000000123` | Client reconnects with that header | Server replays every event with `ServerTs > 1700000000123` for that `(UserId, WorkspaceId)`, in order, before resuming live emission | `sse-resume-replay` |
+| AT-CONCURRENCY-19 | Client falls > 1000 events behind | Server detects backpressure | Server emits `event: cursor-overflow` with `data: {"resumeWith":"poll"}` then closes the connection; client switches to §14.5.4 poll fallback until next page load | `sse-cursor-overflow` |
+| AT-CONCURRENCY-20 | SSE unavailable (proxy strips `text/event-stream`) | Client polls `GET /wp-json/workflowy/v1/sync/poll?Cursor={ts}&WorkspaceId={id}` every 5000 ms | Response shape is `{Events: Event[], Cursor: ServerTs, HasMore: boolean}`; each `Event` carries an `Event` discriminator key matching the §14.5.2 vocabulary; no long-polling (server returns immediately) | `sse-poll-fallback` |
+| AT-CONCURRENCY-21 | A successful §14.2 LWW write commits in workspace W | Same DB transaction commits | Exactly **one** SSE event is emitted on the `(UserId, WorkspaceId=W)` channel in the same commit phase; the event is **never** broadcast on any other workspace's channel | `sse-emission-atomic` |
+| AT-CONCURRENCY-22 | Implementation review of the realtime layer | Code search for forbidden transports | Zero references to WebSockets, Pusher, Ably, Supabase Realtime, Postgres `LISTEN/NOTIFY`, Redis pub/sub, server-managed long-poll, custom binary protocols, or multiple parallel SSE connections per workspace (§14.5.7) | `sse-forbidden-transports` |
 
 ## Component Contract
 
@@ -280,6 +287,13 @@ On client startup OR SSE drop:
 | Split-state acceptance | `src/server/concurrency/fieldLevelLWW.ts` | `concurrency-split-state`, `concurrency-bulk-vs-single` | AT-CONCURRENCY-11, 13 |
 | Stale-tab banner trigger | `src/lib/sync/StaleTabDetector.ts` | `concurrency-stale-tab` | AT-CONCURRENCY-12 |
 | Conflict log writer | `src/server/concurrency/conflictLog.ts` | `concurrency-conflict-log` | AT-CONCURRENCY-15 |
+| SSE endpoint handler (WP) | `wp-plugin/Sync/SseEndpoint.php` | `sse-endpoint-handshake` | AT-CONCURRENCY-16 |
+| SSE event framer | `wp-plugin/Sync/EventFramer.php` | `sse-event-frame` | AT-CONCURRENCY-17 |
+| SSE resume/replay buffer | `wp-plugin/Sync/ResumeBuffer.php` | `sse-resume-replay` | AT-CONCURRENCY-18 |
+| Cursor-overflow detector | `wp-plugin/Sync/BackpressureGuard.php` | `sse-cursor-overflow` | AT-CONCURRENCY-19 |
+| Poll-fallback endpoint | `wp-plugin/Sync/PollEndpoint.php` | `sse-poll-fallback` | AT-CONCURRENCY-20 |
+| Transactional emit hook | `wp-plugin/Sync/TransactionalEmitter.php` | `sse-emission-atomic` | AT-CONCURRENCY-21 |
+| Forbidden-transport guard (CI) | `scripts/spec-hygiene/forbidden-transports.mjs` | `sse-forbidden-transports` | AT-CONCURRENCY-22 |
 
 > **Note:** Components are planned paths — none exist yet. Feeds the global component-contract map (M-3).
 

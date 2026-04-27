@@ -19,7 +19,7 @@
 | 2 | [`02-changelog.md`](./02-changelog.md) | Universal Response Envelope — Changelog | 117 |
 | 3 | [`03-configurability.md`](./03-configurability.md) | Envelope Configurability | 94 |
 | 4 | [`04-response-envelope-reference.md`](./04-response-envelope-reference.md) | Universal Response Envelope Specification | 218 |
-| 5 | [`05-error-code-catalogue.md`](./05-error-code-catalogue.md) | Standard Error Code Catalogue (SSOT) | 230 |
+| 5 | [`05-error-code-catalogue.md`](./05-error-code-catalogue.md) | Standard Error Code Catalogue (SSOT) | 250 |
 
 <!-- AUTO-TOC:END -->
 

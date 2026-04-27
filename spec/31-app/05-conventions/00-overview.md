@@ -14,27 +14,27 @@
 | # | File | Title | Lines |
 |---|------|-------|-------|
 | 1 | [`01-axios-version-control.md`](./01-axios-version-control.md) | Axios Version Control Policy | 91 |
-| 2 | [`02-ci-quality-gates.md`](./02-ci-quality-gates.md) | CI Quality Gates — Convention SSOT | 171 |
+| 2 | [`02-ci-quality-gates.md`](./02-ci-quality-gates.md) | CI Quality Gates — Convention SSOT | 178 |
 | 3 | [`03-github-actions-workflow.md`](./03-github-actions-workflow.md) | GitHub Actions Workflow Contract — Convention SSOT | 157 |
 | 4 | [`04-g19-workflow-contract-gate.md`](./04-g19-workflow-contract-gate.md) | G-19 Workflow Contract Drift Gate — Algorithm Spec | 158 |
 | 5 | [`05-precommit-hook-contract.md`](./05-precommit-hook-contract.md) | Pre-Commit Hook Contract — Convention SSOT | 147 |
 | 6 | [`06-g20-precommit-contract-gate.md`](./06-g20-precommit-contract-gate.md) | G-20 Pre-Commit Hook Drift Gate — Algorithm Spec | 181 |
 | 7 | [`07-g21-gate-discovery-audit.md`](./07-g21-gate-discovery-audit.md) | G-21 Gate Discovery & Registration Audit — Algorithm Spec | 189 |
 | 8 | [`08-api-rate-limiting.md`](./08-api-rate-limiting.md) | API Rate-Limiting Policy — SSOT | 200 |
-| 9 | [`09-audit-log-policy.md`](./09-audit-log-policy.md) | Audit-Log Policy — SSOT | 220 |
-| 10 | [`10-role-escalation-policy.md`](./10-role-escalation-policy.md) | Role-Escalation Policy — SSOT | 230 |
-| 11 | [`11-session-token-lifecycle.md`](./11-session-token-lifecycle.md) | Session & Token Lifecycle — SSOT | 240 |
-| 12 | [`12-mfa-policy.md`](./12-mfa-policy.md) | MFA Policy — SSOT | 270 |
-| 13 | [`13-data-export-policy.md`](./13-data-export-policy.md) | Data-Export Policy — SSOT | 280 |
-| 14 | [`14-backup-and-dr-policy.md`](./14-backup-and-dr-policy.md) | Backup & DR Policy — SSOT | 290 |
-| 15 | [`15-g22-error-code-catalogue-gate.md`](./15-g22-error-code-catalogue-gate.md) | G-22 Error-Code Catalogue Drift Gate — Algorithm Spec | 195 |
-| 16 | [`16-g23-audit-log-coverage-gate.md`](./16-g23-audit-log-coverage-gate.md) | G-23 Audit-Log Drift Gate — Algorithm Spec | 235 |
-| 17 | [`17-g24-role-escalation-coverage-gate.md`](./17-g24-role-escalation-coverage-gate.md) | G-24 Role-Escalation Drift Gate — Algorithm Spec | 230 |
-| 18 | [`18-g25-token-lifecycle-coverage-gate.md`](./18-g25-token-lifecycle-coverage-gate.md) | G-25 Session & Token Lifecycle Drift Gate — Algorithm Spec | 240 |
-| 19 | [`19-g26-mfa-coverage-gate.md`](./19-g26-mfa-coverage-gate.md) | G-26 MFA Policy Drift Gate — Algorithm Spec | 250 |
-| 20 | [`20-g27-export-coverage-gate.md`](./20-g27-export-coverage-gate.md) | G-27 Data-Export Policy Drift Gate — Algorithm Spec | 260 |
-| 21 | [`21-g28-backup-coverage-gate.md`](./21-g28-backup-coverage-gate.md) | G-28 Backup & DR Policy Drift Gate — Algorithm Spec | 280 |
-| 22 | [`22-wp-plugin-folder-skeleton.md`](./22-wp-plugin-folder-skeleton.md) | WP-Plugin Folder Skeleton — SSOT | 230 |
+| 9 | [`09-audit-log-policy.md`](./09-audit-log-policy.md) | Audit-Log Policy (SSOT) | 351 |
+| 10 | [`10-role-escalation-policy.md`](./10-role-escalation-policy.md) | Role-Escalation Policy — SSOT | 259 |
+| 11 | [`11-session-token-lifecycle.md`](./11-session-token-lifecycle.md) | Session & Token Lifecycle — SSOT | 285 |
+| 12 | [`12-mfa-policy.md`](./12-mfa-policy.md) | Multi-Factor Authentication (MFA) Policy — SSOT | 345 |
+| 13 | [`13-data-export-policy.md`](./13-data-export-policy.md) | Data-Export Policy — SSOT | 325 |
+| 14 | [`14-backup-and-dr-policy.md`](./14-backup-and-dr-policy.md) | Backup & Disaster-Recovery Policy — SSOT | 287 |
+| 15 | [`15-g22-error-code-catalogue-gate.md`](./15-g22-error-code-catalogue-gate.md) | G-22 Error-Code Catalogue Drift Gate — Algorithm Spec | 206 |
+| 16 | [`16-g23-audit-log-coverage-gate.md`](./16-g23-audit-log-coverage-gate.md) | G-23 Audit-Log Drift Gate — Algorithm Spec | 261 |
+| 17 | [`17-g24-role-escalation-coverage-gate.md`](./17-g24-role-escalation-coverage-gate.md) | G-24 Role-Escalation Drift Gate — Algorithm Spec | 233 |
+| 18 | [`18-g25-token-lifecycle-coverage-gate.md`](./18-g25-token-lifecycle-coverage-gate.md) | G-25 Session & Token Lifecycle Drift Gate — Algorithm Spec | 255 |
+| 19 | [`19-g26-mfa-coverage-gate.md`](./19-g26-mfa-coverage-gate.md) | G-26 MFA Policy Drift Gate — Algorithm Spec | 288 |
+| 20 | [`20-g27-export-coverage-gate.md`](./20-g27-export-coverage-gate.md) | G-27 Data-Export Policy Drift Gate — Algorithm Spec | 297 |
+| 21 | [`21-g28-backup-coverage-gate.md`](./21-g28-backup-coverage-gate.md) | G-28 Backup & DR Policy Drift Gate — Algorithm Spec | 346 |
+| 22 | [`22-wp-plugin-folder-skeleton.md`](./22-wp-plugin-folder-skeleton.md) | WP-Plugin Folder Skeleton — SSOT | 290 |
 
 <!-- AUTO-TOC:END -->
 
