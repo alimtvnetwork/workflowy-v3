@@ -120,6 +120,7 @@ Conventions specification module. See files below.
 - [`16-g23-audit-log-coverage-gate.md`](./16-g23-audit-log-coverage-gate.md) — G-23 audit-log drift gate (action registry + handler coverage)
 - [`17-g24-role-escalation-coverage-gate.md`](./17-g24-role-escalation-coverage-gate.md) — G-24 role-escalation drift gate (4-axis privilege gating)
 - [`18-g25-token-lifecycle-coverage-gate.md`](./18-g25-token-lifecycle-coverage-gate.md) — G-25 session/token-lifecycle drift gate (5-axis token hygiene)
+- [`19-g26-mfa-coverage-gate.md`](./19-g26-mfa-coverage-gate.md) — G-26 MFA policy drift gate (5-axis MFA hygiene)
 
 **See also:**
 
