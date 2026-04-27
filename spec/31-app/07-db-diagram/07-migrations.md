@@ -1,7 +1,7 @@
 # 07 — Migrations Roadmap
 
-> **Version:** 1.0.0
-> **Updated:** 2026-04-26 (UTC+8)
+> **Version:** 2.0.0
+> **Updated:** 2026-04-27 (UTC+8) — v2.0.0 reserves M-115..M-118 for the v1→v2 Mirror Peer-Group migration and ReaperRuns table; adds §"v1→v2 Mirror Peer-Group Migration" execution plan.
 > **Parent:** [`./00-overview.md`](./00-overview.md)
 
 ---
