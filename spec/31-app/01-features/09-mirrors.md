@@ -211,3 +211,10 @@ For cleaner UX, use only **"Mirror To…"** in the context menu (one unified act
 - [03-edge-cases/01-edge-cases.md](../03-edge-cases/01-edge-cases.md) — broken-mirror + cycle edge cases
 - [09a-mirror-cycle-detection.md](./09a-mirror-cycle-detection.md) — algorithmic SSOT for `ERR_CYCLE` (SQL CTE + DFS + AT-CYCLE-01..10)
 - `mem://features/mirroring` — linked-instance sync rules
+- [`./04-page-content-area.md`](./04-page-content-area.md) — ← Page content-area renderer (forward link from)
+- [`./07-board-view.md`](./07-board-view.md) — ← Board view (forward link from)
+- [`./09b-mirror-peer-group-model.md`](./09b-mirror-peer-group-model.md) — ← Mirror peer-group data model (forward link from)
+- [`./11-trash-view.md`](./11-trash-view.md) — ← Trash view (forward link from)
+- [`./12-multi-select.md`](./12-multi-select.md) — ← Multi-select bulk ops (forward link from)
+- [`./13-templates.md`](./13-templates.md) — ← Templates (forward link from)
+- [`./14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) — ← Concurrency + sync rules (forward link from)

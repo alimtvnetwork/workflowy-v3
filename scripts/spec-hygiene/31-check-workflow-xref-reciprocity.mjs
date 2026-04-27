@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * G-31 — Cross-Reference Reciprocity Gate (v2.2.0)
+ * G-31 — Cross-Reference Reciprocity Gate (v2.3.0)
  *
  * Asserts that every cross-sibling Related-section link in a scoped
  * folder is reciprocated by a back-link in the target's own
@@ -11,9 +11,9 @@
  *   G-31.1 (workflows, ERROR, v1.0.0)  — 02-workflows/NN-*-flow.md
  *                                       reciprocity. Drained queue from
  *                                       6 asymmetries (F25) to 0.
- *   G-31.2 (features,  WARN,  v2.0.0)  — 01-features/NN[a-z]?-*.md
- *                                       reciprocity. Pre-existing drift
- *                                       at intro: 30 asymmetries.
+ *   G-31.2 (features,  ERROR, v2.3.0)  — 01-features/NN[a-z]?-*.md
+ *                                       reciprocity. Drained 2026-04-27
+ *                                       (30 → 0) and promoted to ERROR.
  *   G-31.3 (endpoints, ERROR, v2.1.0)  — 06-endpoints/NN[a-z]?-*.md
  *                                       reciprocity. Drained 2026-04-27
  *                                       (8 → 0) and promoted to ERROR.
@@ -62,8 +62,15 @@
  *        asymmetries by adding back-link rows to 02-root-db-erd.md (×1),
  *        03-app-db-erd.md (×2), 06-indexes.md (×2), 04-feature-slices.md
  *        (×1), and 05-lifecycle-flows.md (×1); promoted G-31.4 from
- *        WARN to ERROR. Only G-31.2 (features, 30 asymmetries) remains
- *        in WARN mode.
+ *        WARN to ERROR. Only G-31.2 (features, 30 asymmetries) remained
+ *        in WARN mode at end of v2.2.0.
+ * v2.3.0 (F-future-G31a-promote-features) drained 30 features
+ *        asymmetries by appending back-link rows across 12 target files
+ *        via /tmp/drain_g312.py (programmatic insertion under existing
+ *        ## Related / ## Cross-References sections, preserving each
+ *        target's native bullet-vs-table format); promoted G-31.2 from
+ *        WARN to ERROR. All 4 G-31 sub-checks now ERROR-mode at 0
+ *        asymmetries — staged WARN-then-ERROR rollout complete.
  */
 
 import { readFileSync, readdirSync, statSync } from "node:fs";
@@ -115,7 +122,7 @@ const SCOPES = [
     // Aggregator pages — not first-class cross-referencing peers.
     excludeRx: /^(00-overview|02-personas|05a-hotkey-table|97-acceptance-criteria|99-consistency-report)\.md$/,
     relatedHeads: ["## Related", "## Cross-References", "## See also"],
-    mode: "warn",
+    mode: "error",
     exemptions: FEATURES_EXEMPT,
   },
   {

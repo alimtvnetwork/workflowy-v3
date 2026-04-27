@@ -169,3 +169,4 @@ As a power user, I want every common action — split a line, indent, move, comp
 - [03-layout-structure.md](./03-layout-structure.md) — Search button, Back/Forward chrome
 - [06-item-context-menu.md](./06-item-context-menu.md) — pointer alternative for the same actions
 - [03-edge-cases/01-edge-cases.md](../03-edge-cases/01-edge-cases.md) — drag/drop, paste, offline edge cases
+- [`./12-multi-select.md`](./12-multi-select.md) — ← Multi-select bulk ops (forward link from)

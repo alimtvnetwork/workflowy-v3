@@ -308,3 +308,5 @@ On client startup OR SSE drop:
 - [12-multi-select.md](./12-multi-select.md) — bulk operations are N independent field writes
 - [03-edge-cases/01-edge-cases.md](../03-edge-cases/01-edge-cases.md) — concurrent-edit + clock-skew edge cases
 - `mem://features/offline-resilience` — offline queue + reconnect replay
+- [`./09a-mirror-cycle-detection.md`](./09a-mirror-cycle-detection.md) — ← Mirror cycle-detection algorithm (forward link from)
+- [`./14b-offline-queue.md`](./14b-offline-queue.md) — ← Offline FIFO queue (forward link from)

@@ -259,3 +259,5 @@ This indicator is hidden for Pro/unlimited users.
 - [05-interactions.md](./05-interactions.md) — keyboard shortcuts referenced above
 - [10-today-view.md](./10-today-view.md) — destination of Today shortcut
 - [11-trash-view.md](./11-trash-view.md) — destination of Settings → Trash
+- [`./07-board-view.md`](./07-board-view.md) — ← Board view (forward link from)
+- [`./08-share-dialog.md`](./08-share-dialog.md) — ← Share dialog (forward link from)

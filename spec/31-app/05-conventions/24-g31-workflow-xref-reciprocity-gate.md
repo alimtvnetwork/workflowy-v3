@@ -10,7 +10,7 @@ gate_id: G-31
 # G-31 — Cross-Reference Reciprocity Gate
 
 > **Version:** 2.0.0
-> **Updated:** 2026-04-27 (UTC+8) — v2.2.0 (F-future-G31a-promote-db-diagram) drained the G-31.4 db-diagram scope (6 → 0) by adding back-link rows across 5 target files (`02-root-db-erd.md`, `03-app-db-erd.md`, `06-indexes.md`, `04-feature-slices.md`, `05-lifecycle-flows.md`); promoted G-31.4 from WARN to ERROR. v2.1.0 drained G-31.3 endpoints (8 → 0) and promoted to ERROR. v2.0.0 (F-future-G31a) generalised the gate from a single workflows scope to **N parameterised scopes** with per-scope `mode: "error" | "warn"`. Only G-31.2 (features) remains in WARN mode (30 asymmetries). Workflows, endpoints, db-diagram all ERROR-mode at 0 asymmetries.
+> **Updated:** 2026-04-27 (UTC+8) — v2.3.0 (F-future-G31a-promote-features) drained the G-31.2 features scope (30 → 0) by programmatically appending back-link rows across 12 target files (preserving each target's native bullet-vs-table format); promoted G-31.2 from WARN to ERROR. **All four G-31 sub-checks are now ERROR-mode at 0 asymmetries — staged WARN-then-ERROR rollout complete.** Earlier: v2.2.0 drained db-diagram (6 → 0); v2.1.0 drained endpoints (8 → 0); v2.0.0 generalised to N parameterised scopes; v1.0.0 originated as the F25 prototype `/tmp/audit_xrefs.mjs` covering only workflows.
 > **Parent:** [`02-ci-quality-gates.md`](./02-ci-quality-gates.md)
 > **Sibling:** [`23-g30-at-citation-validity-gate.md`](./23-g30-at-citation-validity-gate.md), [`25-g32-ddl-unique-coverage-gate.md`](./25-g32-ddl-unique-coverage-gate.md)
 > **Runner:** [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs)
@@ -22,7 +22,7 @@ gate_id: G-31
 | ID       | Scope            | Mode  | Folder                       | Files (current) | Asymmetries (current) | Added in |
 |----------|------------------|-------|------------------------------|-----------------|------------------------|----------|
 | G-31.1   | workflows        | ERROR | `spec/31-app/02-workflows/`  | 9               | 0 ✅                  | v1.0.0   |
-| G-31.2   | features         | WARN  | `spec/31-app/01-features/`   | 23              | 30 ⚠️                 | v2.0.0   |
+| G-31.2   | features         | ERROR | `spec/31-app/01-features/`   | 23              | 0 ✅                  | v2.0.0 (WARN) → v2.3.0 (ERROR) |
 | G-31.3   | endpoints        | ERROR | `spec/31-app/06-endpoints/`  | 19              | 0 ✅                  | v2.0.0 (WARN) → v2.1.0 (ERROR) |
 | G-31.4   | db-diagram       | ERROR | `spec/31-app/07-db-diagram/` | 7               | 0 ✅                  | v2.0.0 (WARN) → v2.2.0 (ERROR) |
 
@@ -58,7 +58,7 @@ silent regression by failing CI on any new asymmetric forward-link.
 | # | Path | Filter | Excluded aggregators | Headings recognised | Mode | Notes |
 |---|------|--------|----------------------|---------------------|------|-------|
 | 1 | `spec/31-app/02-workflows/` | `/^\d{2}-.+-flow\.md$/` | (regex already strict) | `## Related` | ERROR | Drained F25 → 0 asymmetries; current state ✅ |
-| 2 | `spec/31-app/01-features/`  | `/^\d{2}[a-z]?-.+\.md$/i` | `00-overview`, `02-personas`, `05a-hotkey-table`, `97-acceptance-criteria`, `99-consistency-report` | `## Related`, `## Cross-References`, `## See also` | WARN | Pre-existing drift: 30 |
+| 2 | `spec/31-app/01-features/`  | `/^\d{2}[a-z]?-.+\.md$/i` | `00-overview`, `02-personas`, `05a-hotkey-table`, `97-acceptance-criteria`, `99-consistency-report` | `## Related`, `## Cross-References`, `## See also` | ERROR | Drained 2026-04-27 (30 → 0); promoted to ERROR in v2.3.0 |
 | 3 | `spec/31-app/06-endpoints/` | `/^\d{2}[a-z]?-.+\.md$/i` | `00-overview`, `16-endpoint-at-matrix`, `97-acceptance-criteria`, `99-consistency-report` | `## Related`, `## Cross-References`, `## See also` | ERROR | Drained 2026-04-27 (8 → 0); promoted to ERROR in v2.1.0 |
 | 4 | `spec/31-app/07-db-diagram/` | `/^\d{2}-.+\.md$/` (top-level only — skips `sql/` subfolder) | `00-overview`, `97-acceptance-criteria`, `99-consistency-report` | `## Cross-References`, `## Related`, `## See also` | ERROR | Drained 2026-04-27 (6 → 0); promoted to ERROR in v2.2.0 |
 

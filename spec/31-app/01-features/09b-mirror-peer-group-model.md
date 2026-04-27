@@ -290,3 +290,4 @@ This migration is in [`07-db-diagram/sql/07-migration-v2-mirror-peer-groups.sql`
 - [../20-enums-index.md](../../20-enums-index.md) §`ItemType` — confirms `mirror` is NOT a type
 - [../18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md](../../18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md#audit-ai-07) — closes AUDIT-AI-07
 - `mem://features/mirroring` — peer-group memory rule
+- [`./16-search-ranking.md`](./16-search-ranking.md) — ← Search ranking (forward link from)
