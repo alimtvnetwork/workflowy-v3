@@ -31,6 +31,16 @@
  *                                       ships green; the gate locks the
  *                                       convention before any exemption
  *                                       is added (F-future-G31b).
+ *   G-31.6 (islands,   WARN,  v2.5.0)  — files with **zero in + zero out**
+ *                                       cross-sibling Related-section
+ *                                       references are flagged as
+ *                                       documentation islands. Per-scope
+ *                                       `*_ISLAND_EXEMPT` Sets opt out
+ *                                       genuine leaves (G-31.5-enforced
+ *                                       rationale required). WARN-only:
+ *                                       does not fail CI; cleanup happens
+ *                                       by authoring a peer link or
+ *                                       allow-listing (F-future-G31c).
  *
  * Mode semantics:
  *   - ERROR scopes contribute to exit code 1 on any asymmetry.
@@ -52,12 +62,14 @@
  *                  workflows use "## Related"; db-diagram uses
  *                  "## Cross-References"; we accept either when present)
  *   mode         — "error" | "warn"
- *   exemptions   — Set<`${from} → ${to}`> intentionally one-way pairs
+ *   exemptions       — Set<`${from} → ${to}`> intentionally one-way pairs
+ *   islandExemptions — Set<bareFilename> opting a leaf out of G-31.6
  *
  * Exit codes:
- *   0  No asymmetries in any ERROR scope (WARN scope drift is reported
- *      but does not fail)
- *   1  At least one ERROR-scope asymmetry detected
+ *   0  No asymmetries in any ERROR scope and no unrationaled exemption
+ *      entries (WARN-scope drift and island advisories are reported but
+ *      do not fail)
+ *   1  At least one ERROR-scope asymmetry OR unrationaled exemption
  *   2  Runner error (missing dir, malformed file, etc.)
  *
  * Algorithm SSOT: spec/31-app/05-conventions/24-g31-workflow-xref-reciprocity-gate.md
