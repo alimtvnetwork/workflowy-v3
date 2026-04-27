@@ -84,7 +84,21 @@ Workflow files use a flow-scoped acceptance-criteria prefix: `AT-WF-{FLOW}-NN` (
 
 ✅ **Backfill complete (2026-04-26, polish #2):** `AT-WF-{TEMPLATE,SHARE,RESTORE}-NN` rows have a 1:1 canonical `AT-APP-NN` mapping in [`../97-acceptance-criteria.md`](../97-acceptance-criteria.md) (`AT-APP-43..57`).
 
-✅ **Extended (2026-04-27, F11):** four new flow-scoped namespaces — `AT-WF-REAPER-NN` → `AT-APP-81..85`, `AT-WF-SEARCH-NN` → `AT-APP-103..107`, `AT-WF-REPLAY-NN` → `AT-APP-97..102`, `AT-WF-DETACH-NN` → `AT-APP-60..65` (subset relevant to detach). The `AT-WF-*` IDs remain as flow-scoped aliases for in-file traceability; the `AT-APP-*` column is authoritative. Open-prefix licensing (G-30 §RX_DECL_OPEN) means `AT-WF-{REAPER,SEARCH,REPLAY,DETACH}-NN` placeholder rows in this overview legitimize the per-flow citations.
+✅ **Extended (2026-04-27, F11):** four new flow-scoped namespaces — `AT-WF-REAPER-NN` → `AT-APP-81..85`, `AT-WF-SEARCH-NN` → `AT-APP-103..107`, `AT-WF-REPLAY-NN` → `AT-APP-97..102`, `AT-WF-DETACH-NN` → `AT-APP-60..65` (subset relevant to detach). The `AT-WF-*` IDs remain as flow-scoped aliases for in-file traceability; the `AT-APP-*` column is authoritative.
+
+### Open-prefix declarations (G-30 §RX_DECL_OPEN)
+
+The following table-row placeholders license the entire numeric series under each prefix, satisfying the AT citation validity gate:
+
+| Prefix | Canonical range | Owning flow file |
+|--------|----------------|------------------|
+| `AT-WF-TEMPLATE-NN` | `AT-APP-43..46` | `02-template-application-flow.md` |
+| `AT-WF-SHARE-NN` | `AT-APP-47..51` | `03-share-invite-flow.md` |
+| `AT-WF-RESTORE-NN` | `AT-APP-52..57` | `04-trash-restore-flow.md` |
+| `AT-WF-REAPER-NN` | `AT-APP-81..85` | `05-trash-reaper-flow.md` |
+| `AT-WF-SEARCH-NN` | `AT-APP-103..107` | `06-search-query-flow.md` |
+| `AT-WF-REPLAY-NN` | `AT-APP-97..102` | `07-sync-replay-flow.md` |
+| `AT-WF-DETACH-NN` | `AT-APP-60..65` (subset) | `08-mirror-detach-flow.md` |
 
 ---
 
