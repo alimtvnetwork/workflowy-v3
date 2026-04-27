@@ -334,31 +334,40 @@ function findRedundantOpenPrefixes(registered, citations) {
   return out;
 }
 
-function printRedundancyAdvisory(redundant) {
+function printRedundancyAdvisory(redundant, mode) {
   if (redundant.length === 0) {
     console.log("");
-    console.log("  G-30.2 redundancy advisory: no cleanup candidates 🎉");
+    console.log(`  G-30.2 redundancy (${mode}): no cleanup candidates 🎉`);
     return;
   }
-  console.log("");
-  console.log(
-    `  G-30.2 redundancy advisory (WARN-only): ${redundant.length} open prefix(es) may be safe to remove`,
+  const stream = mode === "ERROR" ? console.error : console.log;
+  stream("");
+  stream(
+    `  G-30.2 redundancy (${mode}): ${redundant.length} open prefix(es) ${
+      mode === "ERROR" ? "MUST be removed" : "may be safe to remove"
+    }`,
   );
-  console.log("    (citations 100% covered by closed declarations OR zero usage)");
-  console.log("");
+  stream("    (citations 100% covered by closed declarations OR zero usage)");
+  stream("");
   for (const r of redundant) {
     const tag = r.reason === "zero-citations"
       ? "  zero citations    "
       : `  ${String(r.citedCount).padStart(2)} cited / all closed`;
-    console.log(`    ${r.prefix.padEnd(20)} ${tag}  ${r.file}`);
+    stream(`    ${r.prefix.padEnd(20)} ${tag}  ${r.file}`);
   }
-  console.log("");
-  console.log(
-    "    To suppress: add the prefix to REDUNDANCY_ALLOWLIST in this runner",
+  stream("");
+  stream(
+    "    Resolution: delete the open `AT-FOO-NN` declaration row, OR add",
   );
-  console.log(
-    "    (intentional future-licensing) or delete the open declaration row.",
+  stream(
+    "    the prefix to REDUNDANCY_ALLOWLIST in this runner with a one-line",
   );
+  stream(
+    "    rationale (intentional future-licensing / convention-doc / placeholder).",
+  );
+  if (mode === "ERROR") {
+    stream("    Bypass (emergency only): G30_REDUNDANT_ENFORCE=0");
+  }
 }
 
 function main() {
@@ -376,12 +385,24 @@ function main() {
     console.log(`  unique cited IDs:                   ${uniqueCited.size}`);
     console.log(`  unregistered citations:             0`);
     console.log("  ✅ all citations resolve");
+    const redundant = WARN_REDUNDANT
+      ? findRedundantOpenPrefixes(registered, citations)
+      : [];
+    const enforce = ENFORCE_REDUNDANT && !WARN_ONLY_FLAG;
+    const mode = enforce ? "ERROR" : "WARN";
     if (WARN_REDUNDANT) {
-      const redundant = findRedundantOpenPrefixes(registered, citations);
-      printRedundancyAdvisory(redundant);
+      printRedundancyAdvisory(redundant, mode);
+    }
+    if (enforce && redundant.length > 0) {
+      console.error("");
+      console.error(
+        `G-30.2 FAILED: ${redundant.length} redundant open-prefix declaration(s) — see above.`,
+      );
+      process.exit(1);
     }
     process.exit(0);
   }
+
 
   console.error("G-30 AT citation validity FAILED:");
   console.error("");
