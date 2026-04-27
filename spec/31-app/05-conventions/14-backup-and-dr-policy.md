@@ -67,14 +67,16 @@ These are operational SLOs, not contractual SLAs. They drive the schedule and th
 
 ## 3 — Backup Types & Schedule
 
-| Type | Method | Frequency | Retention |
-|------|--------|-----------|-----------|
-| **Continuous WAL ship** | SQLite WAL file rsync (read-only, no `VACUUM` interference) | every **15 min** | 48 h on hot off-site |
-| **Hot snapshot** | `sqlite3 .backup` API (online, consistent) | hourly | 7 days |
-| **Daily full** | `sqlite3 .backup` + tar attachments | daily 03:00 host-local | 30 days |
-| **Weekly archive** | Daily-full copy promoted | every Sunday | 12 weeks |
-| **Monthly archive** | Weekly-archive copy promoted | first Sunday of month | 12 months |
-| **Yearly archive** | Monthly-archive copy promoted | first Sunday of January | 7 years (audit floor) |
+| Type | Method | Frequency | Retention | WP Hook |
+|------|--------|-----------|-----------|---------|
+| **Continuous WAL ship** | SQLite WAL file rsync (read-only, no `VACUUM` interference) | every **15 min** | 48 h on hot off-site | `workflowy_wal_ship` |
+| **Hot snapshot** | `sqlite3 .backup` API (online, consistent) | hourly | 7 days | `workflowy_hot_snap` |
+| **Daily full** | `sqlite3 .backup` + tar attachments | daily 03:00 host-local | 30 days | `workflowy_daily_full` |
+| **Weekly archive** | Daily-full copy promoted | every Sunday | 12 weeks | `workflowy_weekly_full` |
+| **Monthly archive** | Weekly-archive copy promoted | first Sunday of month | 12 months | `workflowy_monthly_full` |
+| **Yearly archive** | Monthly-archive copy promoted | first Sunday of January | 7 years (audit floor) | `workflowy_yearly_full` |
+
+> **Hook canon** — Each row's `WP Hook` column is the **canonical action name** registered via `wp_schedule_event()` in `wp-plugin/Lifecycle/Install.php`. G-28 axis 7 (bidirectional schedule↔cron parity, see [`21-g28-backup-coverage-gate.md`](./21-g28-backup-coverage-gate.md)) requires this column to remain in sync with the install-hook `wp_schedule_event` calls. Frequency normalisation: `15 min` → `quarter_hourly` (custom recurrence), `hourly` → `hourly`, `daily 03:00 host-local` → `daily`, `every Sunday` → `weekly`, `first Sunday of month` → `monthly`, `first Sunday of January` → `yearly`.
 
 ### Why `.backup` API and not file copy
 
@@ -281,3 +283,4 @@ The drill is a **policy gate**, not a nice-to-have. Operators that miss two cons
 |---------|------|--------|
 | 1.0.0 | 2026-04-26 | Initial SSOT — closes A-44. 5 backup tiers (Audit/Root/App/Files/Config) with RPO 15min→7d / RTO 1h→24h, 6 backup types (WAL-ship 15min / hot 1h / daily / weekly / monthly / yearly 7y), `\SQLite3::backup()` API mandatory (no `cp`/`copy()`), client-side AES-256-GCM with operator-vault KEK (90-day rotation, 2-yr overlap), two-region off-site placement with WORM + versioning + lifecycle, audit-chain re-walk required on restore, **mandatory quarterly restore drill** (overdue >100d blocks releases), 12-signal monitoring with pager alerts on `fatal`, hygiene gate **G-28**, 18 ATs `AT-BACKUP-01..18`, 12 new audit codes for v1.2.0 batch (now **52 total** across A-40+A-41+A-42+A-43+A-44). |
 | 1.0.1 | 2026-04-27 | §10 path correction — implementation slot moved from `18-` (reserved for G-18 cycle-algorithm SQL drift check) to `28-` (matches gate ID). Algorithm SSOT linked: [`21-g28-backup-coverage-gate.md`](./21-g28-backup-coverage-gate.md). **Follow-up required:** add a "WP Hook" column to §3's "Backup Types & Schedule" table (one canonical hook name per row: `workflowy_wal_ship`, `workflowy_hot_snap`, `workflowy_daily_full`, `workflowy_weekly_full`, `workflowy_monthly_full`, `workflowy_yearly_full`) — precondition for axis 7 implementation; see Edge Case 7 in the algorithm spec. |
+| 1.0.2 | 2026-04-27 | §3 "WP Hook" column added — precondition from v1.0.1 satisfied. All 6 backup tiers now declare canonical `wp_schedule_event` action names (`workflowy_wal_ship`, `workflowy_hot_snap`, `workflowy_daily_full`, `workflowy_weekly_full`, `workflowy_monthly_full`, `workflowy_yearly_full`). Added "Hook canon" callout below the table linking to G-28 axis 7 and documenting frequency→recurrence normalisation (`15 min` → `quarter_hourly` custom recurrence; remaining 5 use WP built-ins `hourly`/`daily`/`weekly`/`monthly`/`yearly`). G-28 axis 7 unblocked. |
