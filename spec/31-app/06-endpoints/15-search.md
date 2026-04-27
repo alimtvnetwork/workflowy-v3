@@ -1,0 +1,60 @@
+# Endpoints — 15 Search
+
+> **Version:** 1.0.0
+> **Updated:** 2026-04-27 (UTC+8)
+> **Parent:** [`./00-overview.md`](./00-overview.md)
+> **Mirrors feature:** `mem://features/search-functionality`
+
+---
+
+## Summary
+
+| ID | M | Path | Auth | Purpose |
+|----|---|------|------|---------|
+| EP-SEARCH-QUERY | GET | `search` | user | Hybrid relevance-then-recency search across owned + shared items |
+
+---
+
+## EP-SEARCH-QUERY — GET `search`
+
+- **Auth**: `user`. Server filters results to items the caller can read (own + shared with read or higher).
+- **Query**:
+  - `Q` (string, required, 1–256 chars) — query text. Tokenised on whitespace + punctuation.
+  - `Scope` (string, optional) — Item ID to constrain to a subtree. Default = entire workspace.
+  - `Types` (csv, optional) — filter by `ItemType` (`bullet`, `board`, `dashboard`, `mirror`).
+  - `IncludeTrashed` (bool, optional, default `false`).
+  - `Limit` (≤ 50, default 25), `Cursor`.
+- **Success (200)** `Results`:
+  ```json
+  {
+    "Hits": [
+      {
+        "Item": { /* Item */ },
+        "Score": 0.873,
+        "MatchKind": "title-exact" | "title-prefix" | "title-fuzzy" | "content-fts",
+        "FieldWeight": 1.0,
+        "Snippet": "…highlighted <mark>match</mark>…"
+      }
+    ],
+    "NextCursor": "string?",
+    "TookMs": 12
+  }
+  ```
+- **Ranking** (per `mem://features/search-functionality`):
+  1. `Score = MatchKindScore × FieldWeight` (tiered: title-exact > title-prefix > title-fuzzy > content-fts).
+  2. **Tie-break** by `UpdatedAt DESC` — uses partial index `IdxItem_LiveByUpdatedAt`.
+  3. Trashed items always rank below live items, even when `IncludeTrashed = true`.
+- **Errors**: `ERR_QUERY_TOO_SHORT`, `ERR_QUERY_TOO_LONG`, `ERR_FORBIDDEN` (Scope unreadable), `ERR_LIMIT_EXCEEDED`.
+- **Side effects**: none. Read-only against `Item` + FTS5 virtual table (see `03-app-indexes.sql` commented template).
+- **Performance budget**: P95 ≤ 150 ms for workspaces ≤ 100k items.
+- **AC refs**: `AT-APP-100`, `AT-APP-101`, `AT-APP-102`, `AT-APP-103`.
+
+---
+
+## Cross-References
+
+| Topic | Link |
+|-------|------|
+| Ranking algorithm | `mem://features/search-functionality` |
+| FTS5 virtual table | [`../07-db-diagram/sql/03-app-indexes.sql`](../07-db-diagram/sql/03-app-indexes.sql) |
+| Tie-break index | `IdxItem_LiveByUpdatedAt` (partial, `DeletedAt IS NULL`) |
