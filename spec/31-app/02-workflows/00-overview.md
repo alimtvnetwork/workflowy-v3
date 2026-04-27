@@ -1,8 +1,8 @@
 # Workflows
 
 
-> **Version:** 2.1.0
-> **Updated:** 2026-04-26 (UTC+8) — v2.1.0 marked `AT-WF-*` ↔ `AT-APP-*` backfill complete (polish #2). v2.0.0 added 3 cross-feature workflow files (APP-FIX-12, closes F-10).
+> **Version:** 2.2.0
+> **Updated:** 2026-04-27 (UTC+8) — v2.2.0 added 4 cross-feature workflow files for B1–B4 backlog: `05-trash-reaper-flow.md`, `06-search-query-flow.md`, `07-sync-replay-flow.md`, `08-mirror-detach-flow.md` (F11, No-Questions Mode). v2.1.0 marked `AT-WF-*` ↔ `AT-APP-*` backfill complete (polish #2). v2.0.0 added 3 cross-feature workflow files (APP-FIX-12, closes F-10).
 
 ## Keywords
 
@@ -71,6 +71,10 @@ If only #1 holds, the flow belongs inside the relevant feature file's Edge Cases
 | 02 | [`02-template-application-flow.md`](./02-template-application-flow.md) | Picker → Root-DB snapshot → App-DB materialize → SSE broadcast | F-10 |
 | 03 | [`03-share-invite-flow.md`](./03-share-invite-flow.md) | Owner adds invitee → Root-DB lookup → App-DB grant → notification → accept | F-10 |
 | 04 | [`04-trash-restore-flow.md`](./04-trash-restore-flow.md) | Restore click → ancestor walk → LWW soft-delete clear → mirror re-heal | F-10 |
+| 05 | [`05-trash-reaper-flow.md`](./05-trash-reaper-flow.md) | Cron tick → batch select → cascade delete → group-dissolve trigger → audit insert → SSE broadcast | F11 (B4) |
+| 06 | [`06-search-query-flow.md`](./06-search-query-flow.md) | Debounced query → permission-filtered SQL → 5-tier scoring → `UpdatedAt` tie-break → paged results | F11 (B3) |
+| 07 | [`07-sync-replay-flow.md`](./07-sync-replay-flow.md) | `online` event → FIFO drain → server stamp `ServerTs` → LWW resolution → SSE fan-out | F11 (B3) |
+| 08 | [`08-mirror-detach-flow.md`](./08-mirror-detach-flow.md) | Detach click → membership delete → auto-dissolve trigger on size→1 → SSE | F11 (B1) |
 
 ---
 
@@ -78,7 +82,9 @@ If only #1 holds, the flow belongs inside the relevant feature file's Edge Cases
 
 Workflow files use a flow-scoped acceptance-criteria prefix: `AT-WF-{FLOW}-NN` (e.g. `AT-WF-TEMPLATE-01`, `AT-WF-SHARE-02`, `AT-WF-RESTORE-04`). This avoids collision with feature-file prefixes (`AT-LAYOUT`, `AT-CONCURRENCY`, etc.).
 
-✅ **Backfill complete (2026-04-26, polish #2):** every `AT-WF-*` row now has a 1:1 canonical `AT-APP-NN` mapping in [`../97-acceptance-criteria.md`](../97-acceptance-criteria.md) (`AT-APP-43..57`). The `AT-WF-*` IDs remain as flow-scoped aliases for in-file traceability; the `AT-APP-*` column is authoritative.
+✅ **Backfill complete (2026-04-26, polish #2):** `AT-WF-{TEMPLATE,SHARE,RESTORE}-NN` rows have a 1:1 canonical `AT-APP-NN` mapping in [`../97-acceptance-criteria.md`](../97-acceptance-criteria.md) (`AT-APP-43..57`).
+
+✅ **Extended (2026-04-27, F11):** four new flow-scoped namespaces — `AT-WF-REAPER-NN` → `AT-APP-81..85`, `AT-WF-SEARCH-NN` → `AT-APP-103..107`, `AT-WF-REPLAY-NN` → `AT-APP-97..102`, `AT-WF-DETACH-NN` → `AT-APP-60..65` (subset relevant to detach). The `AT-WF-*` IDs remain as flow-scoped aliases for in-file traceability; the `AT-APP-*` column is authoritative. Open-prefix licensing (G-30 §RX_DECL_OPEN) means `AT-WF-{REAPER,SEARCH,REPLAY,DETACH}-NN` placeholder rows in this overview legitimize the per-flow citations.
 
 ---
 
