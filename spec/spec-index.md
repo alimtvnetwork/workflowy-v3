@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-27  
-**Total Files:** 1357  
+**Total Files:** 1358  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -33,7 +33,7 @@
 - [16-generic-cli](#16-generic-cli) — 43 file(s)
 - [17-generic-update](#17-generic-update) — 11 file(s)
 - [18-spec-issues](#18-spec-issues) — 14 file(s)
-- [31-app](#31-app) — 119 file(s)
+- [31-app](#31-app) — 120 file(s)
 - [32-ui-design](#32-ui-design) — 120 file(s)
 - [33-feedback-report](#33-feedback-report) — 3 file(s)
 - [34-activity-feed](#34-activity-feed) — 3 file(s)
@@ -1311,8 +1311,9 @@
 | [`31-app/05-conventions/21-g28-backup-coverage-gate.md`](./31-app/05-conventions/21-g28-backup-coverage-gate.md) | G-28 Backup & DR Policy Drift Gate — Algorithm Spec | 1.0.0 | — |
 | [`31-app/05-conventions/22-g29-endpoint-matrix-coverage-gate.md`](./31-app/05-conventions/22-g29-endpoint-matrix-coverage-gate.md) | G-29 Endpoint ↔ Matrix Coverage Gate — Algorithm Spec | 1.0.0 | — |
 | [`31-app/05-conventions/22-wp-plugin-folder-skeleton.md`](./31-app/05-conventions/22-wp-plugin-folder-skeleton.md) | WP-Plugin Folder Skeleton — SSOT | 1.0.0 | Spec |
-| [`31-app/05-conventions/23-g30-at-citation-validity-gate.md`](./31-app/05-conventions/23-g30-at-citation-validity-gate.md) | G-30 — AT Citation Validity Gate | 1.3.0 | WARN |
+| [`31-app/05-conventions/23-g30-at-citation-validity-gate.md`](./31-app/05-conventions/23-g30-at-citation-validity-gate.md) | G-30 — AT Citation Validity Gate | 1.4.0 | WARN |
 | [`31-app/05-conventions/23-sse-php-implementation.md`](./31-app/05-conventions/23-sse-php-implementation.md) | Convention 23 — PHP SSE Implementation Pattern | 1.0.0 | Active |
+| [`31-app/05-conventions/24-g31-workflow-xref-reciprocity-gate.md`](./31-app/05-conventions/24-g31-workflow-xref-reciprocity-gate.md) | G-31 — Workflow Cross-Reference Reciprocity Gate | 1.0.0 | — |
 | [`31-app/05-conventions/24-state-management-architecture.md`](./31-app/05-conventions/24-state-management-architecture.md) | State Management Architecture | 1.0.0 | — |
 | [`31-app/05-conventions/97-acceptance-criteria.md`](./31-app/05-conventions/97-acceptance-criteria.md) | Conventions — Acceptance Criteria | 1.0.0 | — |
 | [`31-app/05-conventions/99-consistency-report.md`](./31-app/05-conventions/99-consistency-report.md) | Consistency Report — 05-conventions | 1.0.1 | — |
@@ -1527,4 +1528,4 @@
 
 ---
 
-*Auto-generated index — 1357 files across 25 top-level folders.*
+*Auto-generated index — 1358 files across 25 top-level folders.*
