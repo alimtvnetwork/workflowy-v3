@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * G-31 — Cross-Reference Reciprocity Gate (v2.5.0)
+ * G-31 — Cross-Reference Reciprocity Gate (v2.6.0)
  *
  * Asserts that every cross-sibling Related-section link in a scoped
  * folder is reciprocated by a back-link in the target's own
@@ -41,6 +41,18 @@
  *                                       does not fail CI; cleanup happens
  *                                       by authoring a peer link or
  *                                       allow-listing (F-future-G31c).
+ *   G-31.7 (heading,   WARN,  v2.6.0)  — files using a non-canonical
+ *                                       related-section heading variant
+ *                                       (e.g. "## Cross-References" in
+ *                                       a scope whose canonical is
+ *                                       "## Related") are flagged so
+ *                                       authors can normalise prose.
+ *                                       Per-scope `*_HEAD_EXEMPT` Sets
+ *                                       opt out legitimate variants
+ *                                       (G-31.5-enforced rationale).
+ *                                       WARN-only: does not fail CI.
+ *                                       Reciprocity still accepts all
+ *                                       variants (F-future-G31d).
  *
  * Mode semantics:
  *   - ERROR scopes contribute to exit code 1 on any asymmetry.
@@ -125,6 +137,20 @@
  *        do NOT influence the exit code; only ERROR-asymmetries and
  *        unrationaled exemptions fail. Cleanup deferred — surfaced for
  *        author triage.
+ * v2.6.0 (F-future-G31d) added the **G-31.7 canonical-heading
+ *        normalisation sub-check** (WARN advisory). Each scope declares
+ *        a `canonicalHead` (the dominant H2 used by the majority of its
+ *        files: workflows + features → "## Related"; endpoints +
+ *        db-diagram → "## Cross-References"). Files using one of the
+ *        OTHER accepted variants are flagged so authors can normalise
+ *        prose for cross-scope readability. Files with no related-section
+ *        heading are NOT flagged here (that's G-31.6's island advisory).
+ *        Added 4 new exemption Sets (`WORKFLOWS_HEAD_EXEMPT` / etc.,
+ *        all empty at v2.6.0) registered in `ALLOWLIST_NAMES` so G-31.5
+ *        enforces rationale comments on heading opt-outs too. Each scope
+ *        entry gained `canonicalHead` + `headExemptions` fields.
+ *        Reciprocity logic still accepts ALL variants — G-31.7 is a
+ *        prose-style advisory only and does NOT influence the exit code.
  */
 
 import { readFileSync, readdirSync, statSync } from "node:fs";
@@ -180,6 +206,29 @@ const DB_DIAGRAM_ISLAND_EXEMPT = new Set([
 ]);
 
 // =====================================================================
+// Per-scope HEADING-NORMALISATION allow-lists (G-31.7, v2.6.0+).
+// Format: bare filename. Files in the allow-list may carry a
+// non-canonical heading (e.g. a domain-overlap page that legitimately
+// belongs to two scopes). G-31.5 enforces a rationale on each entry.
+// =====================================================================
+
+const WORKFLOWS_HEAD_EXEMPT = new Set([
+  // (empty at v2.6.0 — workflows uses '## Related' uniformly)
+]);
+
+const FEATURES_HEAD_EXEMPT = new Set([
+  // (empty at v2.6.0 — drift surfaced as advisory; cleanup deferred)
+]);
+
+const ENDPOINTS_HEAD_EXEMPT = new Set([
+  // (empty at v2.6.0 — drift surfaced as advisory; cleanup deferred)
+]);
+
+const DB_DIAGRAM_HEAD_EXEMPT = new Set([
+  // (empty at v2.6.0 — drift surfaced as advisory; cleanup deferred)
+]);
+
+// =====================================================================
 // Scope registry. Order = output order.
 // =====================================================================
 
@@ -191,9 +240,11 @@ const SCOPES = [
     filenameRx: /^\d{2}-.+-flow\.md$/,
     excludeRx: /^$/,                       // filename regex already restrictive
     relatedHeads: ["## Related"],
+    canonicalHead: "## Related",           // G-31.7 normalisation target
     mode: "error",
     exemptions: WORKFLOWS_EXEMPT,
     islandExemptions: WORKFLOWS_ISLAND_EXEMPT,
+    headExemptions: WORKFLOWS_HEAD_EXEMPT,
   },
   {
     id: "G-31.2",
@@ -203,9 +254,11 @@ const SCOPES = [
     // Aggregator pages — not first-class cross-referencing peers.
     excludeRx: /^(00-overview|02-personas|05a-hotkey-table|97-acceptance-criteria|99-consistency-report)\.md$/,
     relatedHeads: ["## Related", "## Cross-References", "## See also"],
+    canonicalHead: "## Related",           // 18 / 24 use Related (75%)
     mode: "error",
     exemptions: FEATURES_EXEMPT,
     islandExemptions: FEATURES_ISLAND_EXEMPT,
+    headExemptions: FEATURES_HEAD_EXEMPT,
   },
   {
     id: "G-31.3",
@@ -214,9 +267,11 @@ const SCOPES = [
     filenameRx: /^\d{2}[a-z]?-.+\.md$/i,
     excludeRx: /^(00-overview|16-endpoint-at-matrix|97-acceptance-criteria|99-consistency-report)\.md$/,
     relatedHeads: ["## Related", "## Cross-References", "## See also"],
+    canonicalHead: "## Cross-References",  // 20 / 23 use Cross-References (87%)
     mode: "error",
     exemptions: ENDPOINTS_EXEMPT,
     islandExemptions: ENDPOINTS_ISLAND_EXEMPT,
+    headExemptions: ENDPOINTS_HEAD_EXEMPT,
   },
   {
     id: "G-31.4",
@@ -227,9 +282,11 @@ const SCOPES = [
     filenameRx: /^\d{2}-.+\.md$/,
     excludeRx: /^(00-overview|97-acceptance-criteria|99-consistency-report)\.md$/,
     relatedHeads: ["## Cross-References", "## Related", "## See also"],
+    canonicalHead: "## Cross-References",  // 7 / 10 use Cross-References (70%)
     mode: "error",
     exemptions: DB_DIAGRAM_EXEMPT,
     islandExemptions: DB_DIAGRAM_ISLAND_EXEMPT,
+    headExemptions: DB_DIAGRAM_HEAD_EXEMPT,
   },
 ];
 
@@ -361,6 +418,10 @@ const ALLOWLIST_NAMES = [
   "FEATURES_ISLAND_EXEMPT",
   "ENDPOINTS_ISLAND_EXEMPT",
   "DB_DIAGRAM_ISLAND_EXEMPT",
+  "WORKFLOWS_HEAD_EXEMPT",
+  "FEATURES_HEAD_EXEMPT",
+  "ENDPOINTS_HEAD_EXEMPT",
+  "DB_DIAGRAM_HEAD_EXEMPT",
 ];
 
 const SELF_PATH = "scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs";
@@ -504,10 +565,74 @@ function printIslandReport(scope, files, islands) {
   console.log(`   *_ISLAND_EXEMPT Set with a one-line rationale.)`);
 }
 
+// =====================================================================
+// G-31.7 — Canonical-heading normalisation (WARN advisory). Each scope
+// declares one `canonicalHead` (the dominant H2 used by the majority
+// of files). Files using one of the OTHER accepted variants (still
+// recognised by `extractRelatedSection` for reciprocity purposes) are
+// flagged so authors can normalise prose for cross-scope readability.
+// Files with NO related-section heading at all are intentionally NOT
+// flagged here — that's the G-31.6 island advisory's job.
+// Per-scope `*_HEAD_EXEMPT` Set opts a file out (G-31.5-enforced).
+// =====================================================================
+
+function findHeadingDrift(scope, files) {
+  const drift = []; // [{file, foundHead}]
+  for (const f of files) {
+    if (scope.headExemptions.has(f)) continue;
+    let content;
+    try {
+      content = readFileSync(join(scope.dir, f), "utf8");
+    } catch (e) {
+      fail(`G-31.7: cannot read ${join(scope.dir, f)}: ${e.message}`);
+    }
+    // Look for any of the accepted heads, preferring the canonical.
+    let found = null;
+    for (const head of scope.relatedHeads) {
+      // Match as a whole-line H2 (avoid sub-string matches inside prose).
+      const re = new RegExp(`^${head.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s*$`, "m");
+      if (re.test(content)) {
+        found = head;
+        break;
+      }
+    }
+    if (!found) continue;                  // no heading → island territory
+    if (found === scope.canonicalHead) continue;
+    drift.push({ file: f, foundHead: found });
+  }
+  return drift;
+}
+
+function printHeadingReport(scope, files, drift) {
+  console.log("");
+  console.log(`G-31.7 (${scope.label}, WARN) canonical-heading normalisation:`);
+  console.log(`  scope:                              ${scope.dir}`);
+  console.log(`  files scanned:                      ${files.length}`);
+  console.log(`  canonical heading:                  ${scope.canonicalHead}`);
+  console.log(`  head-exempt (allow-list):           ${scope.headExemptions.size}`);
+  console.log(`  files using non-canonical heading:  ${drift.length}`);
+
+  if (drift.length === 0) {
+    console.log(`  ✅ all related-section headings match the canonical for this scope`);
+    return;
+  }
+
+  console.log("");
+  console.log(`  ⚠️  ${drift.length} file(s) using a non-canonical heading variant:`);
+  for (const { file, foundHead } of drift) {
+    console.log(`    ${file}    (uses "${foundHead}", canonical is "${scope.canonicalHead}")`);
+  }
+  console.log("");
+  console.log(`  (WARN advisory — does not fail the gate. Either rename the heading`);
+  console.log(`   to "${scope.canonicalHead}", or add the bare filename to this`);
+  console.log(`   scope's *_HEAD_EXEMPT Set with a one-line rationale.)`);
+}
+
 // --- main ---
 let totalErrorAsym = 0;
 let totalWarnAsym = 0;
 let totalIslands = 0;
+let totalHeadDrift = 0;
 
 for (const scope of SCOPES) {
   let dirStat;
@@ -533,6 +658,10 @@ for (const scope of SCOPES) {
   printIslandReport(scope, files, islands);
   totalIslands += islands.length;
 
+  const headDrift = findHeadingDrift(scope, files);
+  printHeadingReport(scope, files, headDrift);
+  totalHeadDrift += headDrift.length;
+
   if (scope.mode === "error") totalErrorAsym += asym.length;
   else totalWarnAsym += asym.length;
 }
@@ -541,7 +670,7 @@ const unrationaled = findUnrationaledEntries();
 printRationaleReport(unrationaled);
 
 console.log("");
-console.log(`G-31 summary: ${SCOPES.length} scope(s) scanned — ${totalErrorAsym} ERROR-scope asymmetries, ${totalWarnAsym} WARN-scope asymmetries, ${totalIslands} island advisory(ies), ${unrationaled.length} unrationaled exemption entry/entries.`);
+console.log(`G-31 summary: ${SCOPES.length} scope(s) scanned — ${totalErrorAsym} ERROR-scope asymmetries, ${totalWarnAsym} WARN-scope asymmetries, ${totalIslands} island advisory(ies), ${totalHeadDrift} heading-drift advisory(ies), ${unrationaled.length} unrationaled exemption entry/entries.`);
 
 const failed = totalErrorAsym > 0 || unrationaled.length > 0;
 process.exit(failed ? 1 : 0);
