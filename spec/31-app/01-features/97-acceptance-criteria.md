@@ -2,7 +2,7 @@
 
 > **Version:** 2.3.0
 > **Created:** 2026-04-23 (UTC+8)
-> **Updated:** 2026-04-27 — v2.3.0 (F15) closed two open prefixes: enumerated `AT-INFO-01..07` and `AT-MIRROR-01..06` as explicit alias rows mapping to source-file IDs (`AT-INFOMODEL-NN`, `AT-MIRRORS-NN`). Cited by 8 endpoint matrix rows. Prior: v2.2.0 added 8 dispatch rows for B1–B4 addendums (`07b`, `08b`, `09b`, `11b`, `12b`, `13b`, `14b`, `16`) covering `AT-APP-58..107` and inline prefixes `AT-MGP/DV/SM/TR/MZ/TPL/OQ/SR-NN`. v2.1.0 backfilled canonical AT for Today/Templates/Concurrency/SSE (`AT-APP-26..42`). v2.0.0 declared `AT-APP-NN` canonical (APP-FIX-14, closes F-12).
+> **Updated:** 2026-04-27 — v2.4.0 (F20) closed 12 more open prefixes via §"Inline-Prefix Closure (12 prefixes, 67 IDs)" — 11 identity registrations (`AT-BOARD/CONCURRENCY/CTXMENU/INTERACT/LAYOUT/PAGE/ROLES/SHARE/TEMPLATES/TODAY/TRASH-NN`) + 1 alias closure (`AT-MULTI-NN` → `AT-MULTISELECT-NN`). G-30 closed IDs 901→968. v2.3.0 (F15) closed two open prefixes: enumerated `AT-INFO-01..07` and `AT-MIRROR-01..06` as explicit alias rows mapping to source-file IDs (`AT-INFOMODEL-NN`, `AT-MIRRORS-NN`). Cited by 8 endpoint matrix rows. Prior: v2.2.0 added 8 dispatch rows for B1–B4 addendums (`07b`, `08b`, `09b`, `11b`, `12b`, `13b`, `14b`, `16`) covering `AT-APP-58..107` and inline prefixes `AT-MGP/DV/SM/TR/MZ/TPL/OQ/SR-NN`. v2.1.0 backfilled canonical AT for Today/Templates/Concurrency/SSE (`AT-APP-26..42`). v2.0.0 declared `AT-APP-NN` canonical (APP-FIX-14, closes F-12).
 > **Status:** Active — dispatch index for `AT-APP-*` (canonical) and per-feature inline `AT-*-*` IDs
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
@@ -85,6 +85,90 @@
 
 ---
 
+## Inline-Prefix Closure (identity + alias, 12 prefixes, 67 IDs)
+
+> **F20 — 2026-04-27.** This section closes the open-prefix license for 12 inline prefixes that were previously satisfied only by the open-prefix `NN` placeholder. Each cited ID is now an explicit closed registration. The open-prefix declarations in the Coverage Map above remain (they continue to document the naming convention), but G-30 resolves these 67 specific citations via the rows here — meaning a citation to e.g. `AT-LAYOUT-99` will now be **rejected** unless added below.
+>
+> **Mostly identity** — 11 of 12 prefixes (`AT-BOARD/CONCURRENCY/CTXMENU/INTERACT/LAYOUT/PAGE/ROLES/SHARE/TEMPLATES/TODAY/TRASH`) match their source-file ID 1:1; the row exists to close the open-prefix license, not to translate names. **One alias** — `AT-MULTI-NN` resolves to `AT-MULTISELECT-NN` (source file `12-multi-select.md` uses the longer form; consumers shortened it).
+>
+> When the source file gains a new inline AT row that consumers want to cite, **add the corresponding row here in the same PR** (or remove the citation if the open prefix should remain placeholder-only).
+
+| Closed ID (cited) | Source ID (in feature file) | Source file | Used by (consumer scope) |
+|-------------------|------------------------------|-------------|---------------------------|
+| `AT-BOARD-01` | `AT-BOARD-01` | [`07-board-view.md`](./07-board-view.md) | endpoint matrix, board endpoints |
+| `AT-BOARD-02` | `AT-BOARD-02` | [`07-board-view.md`](./07-board-view.md) | endpoint matrix |
+| `AT-BOARD-03` | `AT-BOARD-03` | [`07-board-view.md`](./07-board-view.md) | endpoint matrix |
+| `AT-BOARD-04` | `AT-BOARD-04` | [`07-board-view.md`](./07-board-view.md) | endpoint matrix |
+| `AT-CONCURRENCY-01` | `AT-CONCURRENCY-01` | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | sync endpoints, replay workflow |
+| `AT-CONCURRENCY-02` | `AT-CONCURRENCY-02` | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | sync endpoints |
+| `AT-CONCURRENCY-03` | `AT-CONCURRENCY-03` | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | sync endpoints |
+| `AT-CONCURRENCY-04` | `AT-CONCURRENCY-04` | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | sync endpoints |
+| `AT-CONCURRENCY-05` | `AT-CONCURRENCY-05` | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | sync endpoints |
+| `AT-CONCURRENCY-17` | `AT-CONCURRENCY-17` | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | SSE event-frame contract |
+| `AT-CTXMENU-01` | `AT-CTXMENU-01` | [`06-item-context-menu.md`](./06-item-context-menu.md) | endpoint matrix |
+| `AT-CTXMENU-02` | `AT-CTXMENU-02` | [`06-item-context-menu.md`](./06-item-context-menu.md) | endpoint matrix |
+| `AT-CTXMENU-03` | `AT-CTXMENU-03` | [`06-item-context-menu.md`](./06-item-context-menu.md) | endpoint matrix |
+| `AT-CTXMENU-04` | `AT-CTXMENU-04` | [`06-item-context-menu.md`](./06-item-context-menu.md) | endpoint matrix |
+| `AT-INTERACT-01` | `AT-INTERACT-01` | [`05-interactions.md`](./05-interactions.md) | item endpoints |
+| `AT-INTERACT-02` | `AT-INTERACT-02` | [`05-interactions.md`](./05-interactions.md) | item endpoints |
+| `AT-INTERACT-03` | `AT-INTERACT-03` | [`05-interactions.md`](./05-interactions.md) | item endpoints |
+| `AT-INTERACT-04` | `AT-INTERACT-04` | [`05-interactions.md`](./05-interactions.md) | item endpoints |
+| `AT-INTERACT-05` | `AT-INTERACT-05` | [`05-interactions.md`](./05-interactions.md) | item endpoints |
+| `AT-INTERACT-06` | `AT-INTERACT-06` | [`05-interactions.md`](./05-interactions.md) | item endpoints |
+| `AT-LAYOUT-01` | `AT-LAYOUT-01` | [`03-layout-structure.md`](./03-layout-structure.md) | layout shell |
+| `AT-LAYOUT-02` | `AT-LAYOUT-02` | [`03-layout-structure.md`](./03-layout-structure.md) | layout shell |
+| `AT-LAYOUT-12` | `AT-LAYOUT-12` | [`03-layout-structure.md`](./03-layout-structure.md) | favorite toggle (`EP-ITEMS-UPDATE`), feature-slices §4.12 |
+| `AT-MULTI-01` | `AT-MULTISELECT-01` | [`12-multi-select.md`](./12-multi-select.md) | endpoint matrix (alias) |
+| `AT-MULTI-02` | `AT-MULTISELECT-02` | [`12-multi-select.md`](./12-multi-select.md) | endpoint matrix (alias) |
+| `AT-MULTI-03` | `AT-MULTISELECT-03` | [`12-multi-select.md`](./12-multi-select.md) | endpoint matrix (alias) |
+| `AT-MULTI-04` | `AT-MULTISELECT-04` | [`12-multi-select.md`](./12-multi-select.md) | endpoint matrix (alias) |
+| `AT-MULTI-05` | `AT-MULTISELECT-05` | [`12-multi-select.md`](./12-multi-select.md) | endpoint matrix (alias) |
+| `AT-MULTI-06` | `AT-MULTISELECT-06` | [`12-multi-select.md`](./12-multi-select.md) | endpoint matrix (alias) |
+| `AT-MULTI-07` | `AT-MULTISELECT-07` | [`12-multi-select.md`](./12-multi-select.md) | endpoint matrix (alias) |
+| `AT-PAGE-01` | `AT-PAGE-01` | [`04-page-content-area.md`](./04-page-content-area.md) | endpoint matrix |
+| `AT-ROLES-01` | `AT-ROLES-01` | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | role endpoints |
+| `AT-ROLES-02` | `AT-ROLES-02` | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | role endpoints |
+| `AT-ROLES-03` | `AT-ROLES-03` | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | role endpoints |
+| `AT-ROLES-04` | `AT-ROLES-04` | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | role endpoints |
+| `AT-ROLES-05` | `AT-ROLES-05` | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | role endpoints |
+| `AT-ROLES-06` | `AT-ROLES-06` | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | role endpoints |
+| `AT-ROLES-07` | `AT-ROLES-07` | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | role endpoints |
+| `AT-ROLES-08` | `AT-ROLES-08` | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | role endpoints |
+| `AT-ROLES-09` | `AT-ROLES-09` | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | role endpoints |
+| `AT-ROLES-10` | `AT-ROLES-10` | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | role endpoints |
+| `AT-SHARE-01` | `AT-SHARE-01` | [`08-share-dialog.md`](./08-share-dialog.md) | share endpoints |
+| `AT-SHARE-02` | `AT-SHARE-02` | [`08-share-dialog.md`](./08-share-dialog.md) | share endpoints |
+| `AT-SHARE-03` | `AT-SHARE-03` | [`08-share-dialog.md`](./08-share-dialog.md) | share endpoints |
+| `AT-SHARE-04` | `AT-SHARE-04` | [`08-share-dialog.md`](./08-share-dialog.md) | share endpoints |
+| `AT-SHARE-05` | `AT-SHARE-05` | [`08-share-dialog.md`](./08-share-dialog.md) | share endpoints |
+| `AT-SHARE-06` | `AT-SHARE-06` | [`08-share-dialog.md`](./08-share-dialog.md) | share endpoints |
+| `AT-SHARE-07` | `AT-SHARE-07` | [`08-share-dialog.md`](./08-share-dialog.md) | share endpoints |
+| `AT-SHARE-08` | `AT-SHARE-08` | [`08-share-dialog.md`](./08-share-dialog.md) | share endpoints |
+| `AT-TEMPLATES-01` | `AT-TEMPLATES-01` | [`13-templates.md`](./13-templates.md) | template endpoints |
+| `AT-TEMPLATES-02` | `AT-TEMPLATES-02` | [`13-templates.md`](./13-templates.md) | template endpoints |
+| `AT-TEMPLATES-03` | `AT-TEMPLATES-03` | [`13-templates.md`](./13-templates.md) | template endpoints |
+| `AT-TEMPLATES-04` | `AT-TEMPLATES-04` | [`13-templates.md`](./13-templates.md) | template endpoints |
+| `AT-TEMPLATES-05` | `AT-TEMPLATES-05` | [`13-templates.md`](./13-templates.md) | template endpoints |
+| `AT-TEMPLATES-06` | `AT-TEMPLATES-06` | [`13-templates.md`](./13-templates.md) | template endpoints |
+| `AT-TEMPLATES-07` | `AT-TEMPLATES-07` | [`13-templates.md`](./13-templates.md) | template endpoints |
+| `AT-TEMPLATES-08` | `AT-TEMPLATES-08` | [`13-templates.md`](./13-templates.md) | template endpoints |
+| `AT-TODAY-01` | `AT-TODAY-01` | [`10-today-view.md`](./10-today-view.md) | today endpoints |
+| `AT-TODAY-02` | `AT-TODAY-02` | [`10-today-view.md`](./10-today-view.md) | today endpoints |
+| `AT-TRASH-01` | `AT-TRASH-01` | [`11-trash-view.md`](./11-trash-view.md) | trash endpoints |
+| `AT-TRASH-02` | `AT-TRASH-02` | [`11-trash-view.md`](./11-trash-view.md) | trash endpoints |
+| `AT-TRASH-03` | `AT-TRASH-03` | [`11-trash-view.md`](./11-trash-view.md) | trash endpoints |
+| `AT-TRASH-04` | `AT-TRASH-04` | [`11-trash-view.md`](./11-trash-view.md) | trash endpoints |
+| `AT-TRASH-05` | `AT-TRASH-05` | [`11-trash-view.md`](./11-trash-view.md) | trash endpoints |
+| `AT-TRASH-06` | `AT-TRASH-06` | [`11-trash-view.md`](./11-trash-view.md) | trash endpoints |
+| `AT-TRASH-08` | `AT-TRASH-08` | [`11-trash-view.md`](./11-trash-view.md) | `EP-TRASH-PURGE-ALL` |
+| `AT-TRASH-09` | `AT-TRASH-09` | [`11-trash-view.md`](./11-trash-view.md) | `EP-TRASH-PURGE-ALL` |
+
+**Closure totals**: 67 closed registrations. New citations to any of these 12 prefixes outside the enumerated IDs (e.g. `AT-BOARD-99`, `AT-LAYOUT-13`) will be **rejected by G-30** until added to the table above.
+
+**Why keep the open-prefix declarations in the Coverage Map?** The Coverage Map documents the *naming convention* (which inline prefix a feature file uses) and is used by humans for orientation. The closure table here is what G-30 actually consumes. Coexistence is intentional — see [`.lovable/question-and-ambiguity/13-alias-vs-open-prefix-coexistence.md`](../../../.lovable/question-and-ambiguity/13-alias-vs-open-prefix-coexistence.md).
+
+---
+
 ## How to add a new acceptance criterion
 
 1. **Default to canonical** — add the new criterion to [`spec/31-app/97-acceptance-criteria.md`](../97-acceptance-criteria.md) with the next `AT-APP-NN` (continue from the highest existing ID; never renumber).
@@ -115,3 +199,4 @@
 | 2026-04-26 | 2.1.0 | **Polish #1.** Backfilled canonical AT for the four "no canonical AT yet" rows: Today (`AT-APP-26..28`), Templates (`AT-APP-29..32`), Concurrency core (`AT-APP-33..35`), SSE transport (`AT-APP-36..42`). Coverage Map now fully canonical. |
 | 2026-04-27 | 2.2.0 | **B1–B4 batch.** Added 8 dispatch rows (7b, 8b, 9b, 11b, 12b, 13b, 14b, 16) covering 50 new ATs (`AT-APP-58..107`) with inline prefixes `AT-DV/SM/MGP/TR/MZ/TPL/OQ/SR-NN`. |
 | 2026-04-27 | 2.3.0 | **F15.** Added "Inline-Prefix Alias Enumeration (closed)" section enumerating `AT-INFO-01..07` ↔ `AT-INFOMODEL-01..07` (7 rows) and `AT-MIRROR-01..06` ↔ `AT-MIRRORS-01..06` (6 rows). G-30 now resolves these 13 specific citations from closed rows; open prefixes retained for documenting the naming convention but no longer the *only* declaration source. |
+| 2026-04-27 | 2.4.0 | **F20.** Closed 12 more open prefixes via §"Inline-Prefix Closure" — 11 identity registrations (`AT-BOARD/CONCURRENCY/CTXMENU/INTERACT/LAYOUT/PAGE/ROLES/SHARE/TEMPLATES/TODAY/TRASH-NN`) + 1 alias closure (`AT-MULTI-NN` → `AT-MULTISELECT-NN`). 67 closed registrations total; G-30 closed IDs 901→968. Open-prefix declarations in Coverage Map retained for naming-convention documentation only. |
