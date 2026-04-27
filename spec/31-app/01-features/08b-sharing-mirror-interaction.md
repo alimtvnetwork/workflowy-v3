@@ -91,6 +91,14 @@ The 3 edge cases — *Detach while shared* (§3.1), *Mirror inside a shared subt
 
 The 5 acceptance tests **AT-SM-01 … AT-SM-05** are defined in §4 above. This bare-named heading satisfies G-06; canonical content lives at §4.
 
+| AT ID | Summary | Source |
+|-------|---------|--------|
+| AT-SM-01 | Detach while shared preserves ACL on remaining peer | §4 |
+| AT-SM-02 | Mirror inside shared subtree inherits scope ACL | §4 |
+| AT-SM-03 | Per-instance grant does not propagate to peers | §4 |
+| AT-SM-04 | Concurrent ACL changes resolve via LWW | §4 |
+| AT-SM-05 | Revoke on one peer leaves others unaffected | §4 |
+
 ## Component Contract
 
 | Surface | Component path | `data-testid` | Acceptance tests |

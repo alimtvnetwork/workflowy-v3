@@ -99,6 +99,14 @@ fn instantiate(template_id, target_parent_id, owner_id):
 
 The 5 acceptance tests **AT-TPL-01 … AT-TPL-05** are defined in §3 above. This bare-named heading satisfies G-06; canonical content lives at §3.
 
+| AT ID | Summary | Source |
+|-------|---------|--------|
+| AT-TPL-01 | Instantiation re-stamps UUIDs | §3 |
+| AT-TPL-02 | Ownership rewritten to instantiator | §3 |
+| AT-TPL-03 | Mirror peer-groups collapse to singletons | §3 |
+| AT-TPL-04 | No back-link from instance to template | §3 |
+| AT-TPL-05 | Reaper does not affect templates | §3 |
+
 ## Component Contract
 
 | Surface | Component path | `data-testid` | Acceptance tests |

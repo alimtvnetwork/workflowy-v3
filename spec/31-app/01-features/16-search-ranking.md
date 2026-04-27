@@ -115,6 +115,14 @@ concatenation of buckets from highest to lowest.
 
 The 5 acceptance tests **AT-SR-01 … AT-SR-05** are defined under the existing `## Acceptance Criteria` heading above. This bare-named heading satisfies G-06; canonical content lives in that section.
 
+| AT ID | Summary | Source |
+|-------|---------|--------|
+| AT-SR-01 | Determinism: identical query+snapshot → identical order | Acceptance Criteria |
+| AT-SR-02 | Title-exact dominates 100-substring | Acceptance Criteria |
+| AT-SR-03 | Same-score recency tiebreak then OwnerId | Acceptance Criteria |
+| AT-SR-04 | Mirror peers rank independently with distinct breadcrumbs | Acceptance Criteria |
+| AT-SR-05 | Filter-only query falls into bucket-60 default | Acceptance Criteria |
+
 ## Component Contract
 
 | Surface | Component path | `data-testid` | Acceptance tests |

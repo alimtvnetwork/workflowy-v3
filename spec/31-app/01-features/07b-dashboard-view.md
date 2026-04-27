@@ -119,6 +119,17 @@ See §3.4 *Out of scope (vs Board)* and the AT table at §6 for boundary conditi
 
 The 8 acceptance tests **AT-DV-01 … AT-DV-08** are defined in §6 above. This bare-named heading exists to satisfy G-06 feature-shape; the canonical content lives at §6.
 
+| AT ID | Summary | Source |
+|-------|---------|--------|
+| AT-DV-01 | Dashboard renders direct children only | §6 |
+| AT-DV-02 | Empty dashboard state | §6 |
+| AT-DV-03 | Inline title edit | §6 |
+| AT-DV-04 | Checkbox toggle | §6 |
+| AT-DV-05 | Card drag reorder | §6 |
+| AT-DV-06 | Turn-into-dashboard action | §6 |
+| AT-DV-07 | Depth-1 enforcement | §6 |
+| AT-DV-08 | Zoom into card | §6 |
+
 ## Component Contract
 
 | Surface | Component path | `data-testid` | Acceptance tests |
