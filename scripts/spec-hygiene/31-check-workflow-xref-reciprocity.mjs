@@ -214,9 +214,11 @@ const SCOPES = [
     filenameRx: /^\d{2}-.+-flow\.md$/,
     excludeRx: /^$/,                       // filename regex already restrictive
     relatedHeads: ["## Related"],
+    canonicalHead: "## Related",           // G-31.7 normalisation target
     mode: "error",
     exemptions: WORKFLOWS_EXEMPT,
     islandExemptions: WORKFLOWS_ISLAND_EXEMPT,
+    headExemptions: WORKFLOWS_HEAD_EXEMPT,
   },
   {
     id: "G-31.2",
@@ -226,9 +228,11 @@ const SCOPES = [
     // Aggregator pages — not first-class cross-referencing peers.
     excludeRx: /^(00-overview|02-personas|05a-hotkey-table|97-acceptance-criteria|99-consistency-report)\.md$/,
     relatedHeads: ["## Related", "## Cross-References", "## See also"],
+    canonicalHead: "## Related",           // 18 / 24 use Related (75%)
     mode: "error",
     exemptions: FEATURES_EXEMPT,
     islandExemptions: FEATURES_ISLAND_EXEMPT,
+    headExemptions: FEATURES_HEAD_EXEMPT,
   },
   {
     id: "G-31.3",
@@ -237,9 +241,11 @@ const SCOPES = [
     filenameRx: /^\d{2}[a-z]?-.+\.md$/i,
     excludeRx: /^(00-overview|16-endpoint-at-matrix|97-acceptance-criteria|99-consistency-report)\.md$/,
     relatedHeads: ["## Related", "## Cross-References", "## See also"],
+    canonicalHead: "## Cross-References",  // 20 / 23 use Cross-References (87%)
     mode: "error",
     exemptions: ENDPOINTS_EXEMPT,
     islandExemptions: ENDPOINTS_ISLAND_EXEMPT,
+    headExemptions: ENDPOINTS_HEAD_EXEMPT,
   },
   {
     id: "G-31.4",
@@ -250,9 +256,11 @@ const SCOPES = [
     filenameRx: /^\d{2}-.+\.md$/,
     excludeRx: /^(00-overview|97-acceptance-criteria|99-consistency-report)\.md$/,
     relatedHeads: ["## Cross-References", "## Related", "## See also"],
+    canonicalHead: "## Cross-References",  // 7 / 10 use Cross-References (70%)
     mode: "error",
     exemptions: DB_DIAGRAM_EXEMPT,
     islandExemptions: DB_DIAGRAM_ISLAND_EXEMPT,
+    headExemptions: DB_DIAGRAM_HEAD_EXEMPT,
   },
 ];
 
