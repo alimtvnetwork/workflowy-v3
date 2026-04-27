@@ -126,6 +126,7 @@ Conventions specification module. See files below.
 - [`18-g25-token-lifecycle-coverage-gate.md`](./18-g25-token-lifecycle-coverage-gate.md) — G-25 session/token-lifecycle drift gate (5-axis token hygiene)
 - [`19-g26-mfa-coverage-gate.md`](./19-g26-mfa-coverage-gate.md) — G-26 MFA policy drift gate (5-axis MFA hygiene)
 - [`20-g27-export-coverage-gate.md`](./20-g27-export-coverage-gate.md) — G-27 data-export policy drift gate (6-axis export hygiene)
+- [`21-g28-backup-coverage-gate.md`](./21-g28-backup-coverage-gate.md) — G-28 backup/DR policy drift gate (7-axis backup hygiene) — **completes orphan-gate cluster**
 
 **See also:**
 
