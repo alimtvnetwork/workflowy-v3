@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-27  
-**Total Files:** 1332  
+**Total Files:** 1336  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -33,7 +33,7 @@
 - [16-generic-cli](#16-generic-cli) — 43 file(s)
 - [17-generic-update](#17-generic-update) — 11 file(s)
 - [18-spec-issues](#18-spec-issues) — 14 file(s)
-- [31-app](#31-app) — 94 file(s)
+- [31-app](#31-app) — 98 file(s)
 - [32-ui-design](#32-ui-design) — 120 file(s)
 - [33-feedback-report](#33-feedback-report) — 3 file(s)
 - [34-activity-feed](#34-activity-feed) — 3 file(s)
@@ -1225,7 +1225,7 @@
 | [`18-spec-issues/09-app-folder-re-audit-2026-04-26.md`](./18-spec-issues/09-app-folder-re-audit-2026-04-26.md) | App Folder Re-Audit — 2026-04-26 (post-fix) | 1.0.0 | — |
 | [`18-spec-issues/10-content-audit-endpoints-and-db-diagram.md`](./18-spec-issues/10-content-audit-endpoints-and-db-diagram.md) | Content Audit — `06-endpoints/` + `07-db-diagram/` (2026-04-26) | 1.0.0 | — |
 | [`18-spec-issues/11-content-audit-at-app-coverage.md`](./18-spec-issues/11-content-audit-at-app-coverage.md) | Content Audit — `AT-APP-NN` Coverage Completeness (2026-04-26) | 1.0.0 | — |
-| [`18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md`](./18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md) | AI Readiness Audit — Spec Corpus (Round 4) | 1.1.0 | — |
+| [`18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md`](./18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md) | AI Readiness Audit — Spec Corpus (Round 4) | 1.2.0 | — |
 | [`18-spec-issues/97-acceptance-criteria.md`](./18-spec-issues/97-acceptance-criteria.md) | Spec Issues — Acceptance Criteria | 1.3.0 | Dispatch |
 | [`18-spec-issues/99-consistency-report.md`](./18-spec-issues/99-consistency-report.md) | Consistency Report — Spec Issues | 1.0.0 | — |
 
@@ -1235,6 +1235,7 @@
 |------|-------|---------|--------|
 | [`31-app/00-overview.md`](./31-app/00-overview.md) | App | 2.1.0 | — |
 | [`31-app/01-features/00-overview.md`](./31-app/01-features/00-overview.md) | Features | 2.3.0 | — |
+| [`31-app/01-features/00-state-management-architecture.md`](./31-app/01-features/00-state-management-architecture.md) | State Management Architecture | 1.0.0 | — |
 | [`31-app/01-features/01-information-model.md`](./31-app/01-features/01-information-model.md) | Information Model Foundations | 2.3.0 | — |
 | [`31-app/01-features/02-personas.md`](./31-app/01-features/02-personas.md) | Target User Personas | 2.0.0 | — |
 | [`31-app/01-features/03-layout-structure.md`](./31-app/01-features/03-layout-structure.md) | Layout Structure | 2.4.0 | — |
@@ -1265,6 +1266,7 @@
 | [`31-app/03-edge-cases/01-edge-cases.md`](./31-app/03-edge-cases/01-edge-cases.md) | Edge Cases | 2.0.0 | Canonical |
 | [`31-app/03-edge-cases/02-product-boundaries.md`](./31-app/03-edge-cases/02-product-boundaries.md) | Product Boundaries | 1.1.0 | — |
 | [`31-app/03-edge-cases/99-consistency-report.md`](./31-app/03-edge-cases/99-consistency-report.md) | Consistency Report — 03-edge-cases | 1.0.1 | — |
+| [`31-app/04-fixtures/00-overview.md`](./31-app/04-fixtures/00-overview.md) | Fixtures — JSON & Sample Payloads | 1.0.0 | — |
 | [`31-app/04-roadmap/00-overview.md`](./31-app/04-roadmap/00-overview.md) | Roadmap | 1.1.0 | — |
 | [`31-app/04-roadmap/01-implementation-phases.md`](./31-app/04-roadmap/01-implementation-phases.md) | Implementation Phases | 1.1.0 | — |
 | [`31-app/04-roadmap/02-resolved-decisions.md`](./31-app/04-roadmap/02-resolved-decisions.md) | Resolved Product Decisions | 1.1.0 | — |
@@ -1313,6 +1315,7 @@
 | [`31-app/06-endpoints/13-templates.md`](./31-app/06-endpoints/13-templates.md) | Endpoints — 13 Templates | 1.0.0 | — |
 | [`31-app/06-endpoints/14-concurrency-and-sync.md`](./31-app/06-endpoints/14-concurrency-and-sync.md) | Endpoints — 14 Concurrency & Sync (Realtime Transport) | 1.2.0 | — |
 | [`31-app/06-endpoints/15-roles-and-permissions.md`](./31-app/06-endpoints/15-roles-and-permissions.md) | Endpoints — 15 Roles & Permissions | 1.0.0 | — |
+| [`31-app/06-endpoints/16-endpoint-at-matrix.md`](./31-app/06-endpoints/16-endpoint-at-matrix.md) | Endpoint ↔ Acceptance-Test Cross-Reference Matrix | 1.0.0 | — |
 | [`31-app/06-endpoints/97-acceptance-criteria.md`](./31-app/06-endpoints/97-acceptance-criteria.md) | Endpoints — Acceptance Criteria | 1.0.0 | — |
 | [`31-app/06-endpoints/99-consistency-report.md`](./31-app/06-endpoints/99-consistency-report.md) | Consistency Report — 06-endpoints | 1.0.0 | — |
 | [`31-app/07-db-diagram/00-overview.md`](./31-app/07-db-diagram/00-overview.md) | DB Diagram — Database Design SSOT (Visual) | 1.1.0 | — |
@@ -1325,6 +1328,7 @@
 | [`31-app/07-db-diagram/07-migrations.md`](./31-app/07-db-diagram/07-migrations.md) | 07 — Migrations Roadmap | 1.0.0 | — |
 | [`31-app/07-db-diagram/97-acceptance-criteria.md`](./31-app/07-db-diagram/97-acceptance-criteria.md) | DB Diagram — Acceptance Criteria | 1.0.1 | — |
 | [`31-app/07-db-diagram/99-consistency-report.md`](./31-app/07-db-diagram/99-consistency-report.md) | Consistency Report — 07-db-diagram | 1.0.0 | — |
+| [`31-app/07-db-diagram/sql/00-overview.md`](./31-app/07-db-diagram/sql/00-overview.md) | SQLite DDL — Reference Implementation | 1.0.0 | — |
 | [`31-app/97-acceptance-criteria.md`](./31-app/97-acceptance-criteria.md) | App — Acceptance Criteria | 2.5.0 | — |
 | [`31-app/99-consistency-report.md`](./31-app/99-consistency-report.md) | Consistency Report — App | 1.3.0 | — |
 
@@ -1502,4 +1506,4 @@
 
 ---
 
-*Auto-generated index — 1332 files across 25 top-level folders.*
+*Auto-generated index — 1336 files across 25 top-level folders.*
