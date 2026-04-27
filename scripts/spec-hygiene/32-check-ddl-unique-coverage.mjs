@@ -349,6 +349,86 @@ function printReverseReport(docNames, ddlNames, fabricated) {
   console.log("  Last-resort: add the name to REVERSE_EXEMPT in this runner with rationale.");
 }
 
+// =====================================================================
+// G-32.3 — Forward (all CREATE INDEX): every named index in DDL —
+// UNIQUE OR plain — must appear in 06-indexes.md by its DDL name OR
+// its prose-alias name. Aliases come from sql/00-overview.md
+// §Index-name aliases (DDL → prose mapping).
+// =====================================================================
+
+function collectAllCreateIndexNames() {
+  const sqlFiles = [...SCHEMA_FILES, APP_INDEXES_FILE];
+  const out = []; // [{name, file, line}]
+  for (const f of sqlFiles) {
+    const fileBase = f.split("/").pop();
+    const lines = readOrFail(f).split("\n");
+    const re = /CREATE\s+(?:UNIQUE\s+)?INDEX\s+(?:IF NOT EXISTS\s+)?(\w+)/i;
+    for (let i = 0; i < lines.length; i++) {
+      const m = lines[i].match(re);
+      if (m) out.push({ name: m[1], file: fileBase, line: i + 1, filePath: f });
+    }
+  }
+  return out;
+}
+
+/**
+ * Build a DDL→prose alias map from sql/00-overview.md §Index-name aliases.
+ * Returns Map<ddlName, proseName>. Bridge rows look like:
+ *   | `IdxMirrorMember_ItemId` ... | `IdxMirrorPeerGroupMember_ItemId` ...
+ */
+function collectIndexAliasMap() {
+  const text = readOrFail(NAMING_BRIDGE);
+  const map = new Map();
+  const rowRe = /\|\s*`(Idx[A-Z]\w+)`[^|]*\|\s*`(Idx[A-Z]\w+)`/g;
+  let m;
+  while ((m = rowRe.exec(text)) !== null) map.set(m[1], m[2]);
+  return map;
+}
+
+function findUndocumentedCreateIndexes(allCreates, aliasMap, indexesText) {
+  const undocumented = [];
+  // Match only backticked occurrences in the doc to avoid prose noise.
+  const docHas = (n) => new RegExp("`" + n + "`").test(indexesText);
+  for (const c of allCreates) {
+    if (NONUNIQUE_EXEMPT.has(c.name)) continue;
+    const aliased = aliasMap.get(c.name);
+    if (docHas(c.name) || (aliased && docHas(aliased))) continue;
+    undocumented.push({ ...c, aliased });
+  }
+  return undocumented;
+}
+
+function printCreateIndexReport(allCreates, aliasMap, undocumented) {
+  console.log("");
+  console.log("G-32.3 CREATE INDEX coverage (UNIQUE + plain):");
+  console.log(`  CREATE INDEX statements scanned:    ${allCreates.length}`);
+  console.log(`  DDL→prose aliases registered:       ${aliasMap.size}`);
+  console.log(`  nonunique-exempt (allow-list):      ${NONUNIQUE_EXEMPT.size}`);
+  console.log(`  undocumented CREATE INDEX names:    ${undocumented.length}`);
+
+  if (undocumented.length === 0) {
+    console.log("  ✅ every CREATE INDEX is documented (by DDL name or alias)");
+    return;
+  }
+
+  console.log("");
+  console.log(`  ❌ ${undocumented.length} undocumented CREATE INDEX name(s):`);
+  console.log("");
+  for (const u of undocumented) {
+    console.log(`    ${u.name}`);
+    console.log(`      source:    ${u.filePath}:${u.line}`);
+    if (u.aliased) {
+      console.log(`      alias:     prose-name \`${u.aliased}\` (also missing from 06-indexes.md)`);
+    } else {
+      console.log(`      alias:     none registered in sql/00-overview.md §Index-name aliases`);
+    }
+  }
+  console.log("");
+  console.log("  To fix: either add the index to 06-indexes.md (Required-Indexes table),");
+  console.log("  or register a DDL→prose alias row in sql/00-overview.md §Index-name aliases.");
+  console.log("  Last-resort: add the DDL name to NONUNIQUE_EXEMPT in this runner.");
+}
+
 // --- main ---
 const indexesText = readOrFail(INDEXES_DOC);
 
@@ -369,5 +449,14 @@ const ddlNames = collectDdlIndexNames(allDecls);
 const fabricated = findFabricatedIndexes(docNames, ddlNames);
 printReverseReport(docNames, ddlNames, fabricated);
 
-const failed = violations.length > 0 || fabricated.length > 0;
+const allCreates = collectAllCreateIndexNames();
+if (allCreates.length === 0) {
+  fail("no CREATE INDEX statements found across SQL files — parse error?");
+}
+const aliasMap = collectIndexAliasMap();
+const undocCreates = findUndocumentedCreateIndexes(allCreates, aliasMap, indexesText);
+printCreateIndexReport(allCreates, aliasMap, undocCreates);
+
+const failed =
+  violations.length > 0 || fabricated.length > 0 || undocCreates.length > 0;
 process.exit(failed ? 1 : 0);
