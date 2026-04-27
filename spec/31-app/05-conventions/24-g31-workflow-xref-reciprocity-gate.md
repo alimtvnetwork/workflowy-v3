@@ -9,8 +9,8 @@ gate_id: G-31
 
 # G-31 — Cross-Reference Reciprocity Gate
 
-> **Version:** 2.4.0
-> **Updated:** 2026-04-27 (UTC+8) — v2.4.0 (F-future-G31b) added the **G-31.5 meta sub-check** enforcing rationale comments on every entry of the 4 per-scope exemption Sets (`WORKFLOWS_EXEMPT` / `FEATURES_EXEMPT` / `ENDPOINTS_EXEMPT` / `DB_DIAGRAM_EXEMPT`). Algorithm ported verbatim from G-32.4 (`32-check-ddl-unique-coverage.mjs` v4.0.0): trailing inline `// …` OR contiguous `// …` line(s) directly above with no blank-line gap; sample/template `// "…"` lines are skipped. All 4 Sets are currently empty so the gate ships green; this locks the convention before the first exemption is added so authors can't sneak in silent suppressions. Earlier: v2.3.0 drained features (30 → 0); v2.2.0 drained db-diagram (6 → 0); v2.1.0 drained endpoints (8 → 0); v2.0.0 generalised to N parameterised scopes; v1.0.0 originated as the F25 prototype `/tmp/audit_xrefs.mjs` covering only workflows.
+> **Version:** 2.5.0
+> **Updated:** 2026-04-27 (UTC+8) — v2.5.0 (F-future-G31c) added the **G-31.6 island-detection sub-check** (WARN advisory): files with **zero outgoing AND zero incoming** cross-sibling Related-section references are flagged as documentation islands. Surfaces likely-orphaned spec pages without failing CI; cleanup happens by authoring a peer cross-reference or adding the bare filename to the per-scope `*_ISLAND_EXEMPT` Set with a one-line rationale (G-31.5 enforced — the 4 new island Sets are registered in `ALLOWLIST_NAMES`). Initial probe: workflows 0, features 5, endpoints 9, db-diagram 0 (14 total). Earlier: v2.4.0 added the G-31.5 meta sub-check enforcing rationale comments on all per-scope exemption Sets (algorithm ported verbatim from G-32.4); v2.3.0 drained features (30 → 0); v2.2.0 drained db-diagram (6 → 0); v2.1.0 drained endpoints (8 → 0); v2.0.0 generalised to N parameterised scopes; v1.0.0 originated as the F25 prototype `/tmp/audit_xrefs.mjs`.
 > **Parent:** [`02-ci-quality-gates.md`](./02-ci-quality-gates.md)
 > **Sibling:** [`23-g30-at-citation-validity-gate.md`](./23-g30-at-citation-validity-gate.md), [`25-g32-ddl-unique-coverage-gate.md`](./25-g32-ddl-unique-coverage-gate.md)
 > **Runner:** [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs)
@@ -19,17 +19,18 @@ gate_id: G-31
 
 ## Sub-checks
 
-| ID       | Scope            | Mode  | Folder                       | Files (current) | Asymmetries (current) | Added in |
-|----------|------------------|-------|------------------------------|-----------------|------------------------|----------|
-| G-31.1   | workflows        | ERROR | `spec/31-app/02-workflows/`  | 9               | 0 ✅                  | v1.0.0   |
-| G-31.2   | features         | ERROR | `spec/31-app/01-features/`   | 23              | 0 ✅                  | v2.0.0 (WARN) → v2.3.0 (ERROR) |
-| G-31.3   | endpoints        | ERROR | `spec/31-app/06-endpoints/`  | 19              | 0 ✅                  | v2.0.0 (WARN) → v2.1.0 (ERROR) |
-| G-31.4   | db-diagram       | ERROR | `spec/31-app/07-db-diagram/` | 7               | 0 ✅                  | v2.0.0 (WARN) → v2.2.0 (ERROR) |
-| G-31.5   | meta (rationale) | ERROR | (runner self)                | 4 Sets, 0 entries | 0 ✅                | v2.4.0   |
+| ID       | Scope            | Mode  | Folder                       | Files (current) | Violations (current) | Added in |
+|----------|------------------|-------|------------------------------|-----------------|----------------------|----------|
+| G-31.1   | workflows        | ERROR | `spec/31-app/02-workflows/`  | 9               | 0 asymmetries ✅      | v1.0.0   |
+| G-31.2   | features         | ERROR | `spec/31-app/01-features/`   | 23              | 0 asymmetries ✅      | v2.0.0 (WARN) → v2.3.0 (ERROR) |
+| G-31.3   | endpoints        | ERROR | `spec/31-app/06-endpoints/`  | 19              | 0 asymmetries ✅      | v2.0.0 (WARN) → v2.1.0 (ERROR) |
+| G-31.4   | db-diagram       | ERROR | `spec/31-app/07-db-diagram/` | 7               | 0 asymmetries ✅      | v2.0.0 (WARN) → v2.2.0 (ERROR) |
+| G-31.5   | meta (rationale) | ERROR | (runner self)                | 8 Sets, 0 entries | 0 unrationaled ✅    | v2.4.0   |
+| G-31.6   | islands (advisory) | WARN | all 4 scopes               | 58 (sum)        | 14 islands ⚠️         | v2.5.0   |
 
 **Mode semantics:**
-- **ERROR** — any asymmetry (or, for G-31.5, any unrationaled exemption entry) contributes to exit code 1; CI fails.
-- **WARN** — asymmetries are reported in stdout but exit code stays 0. Used as a staged-rollout pattern (mirrors F24/F27/F28 G-30.2 rollout): introduce the check, surface drift, drain via follow-up tasks, then promote to ERROR.
+- **ERROR** — any asymmetry, or any unrationaled exemption entry (G-31.5), contributes to exit code 1; CI fails.
+- **WARN** — violations are reported in stdout but exit code stays 0. G-31.6 is permanent-WARN by design (not a staged rollout) — islands are a smell, not always a bug. The historical staged-rollout pattern was for the 4 reciprocity scopes (G-31.2 / G-31.3 / G-31.4) and is now complete.
 
 A scope is promoted to ERROR by changing the literal `mode: "warn"` to `mode: "error"` on its entry in the runner's `SCOPES` array. No other code changes are needed.
 
