@@ -1,6 +1,14 @@
 #!/usr/bin/env node
 /**
- * G-30 — AT Citation Validity Gate (v1.2.0)
+ * G-30 — AT Citation Validity Gate (v1.3.0)
+ *
+ * v1.3.0 (F27) — Drained the G-30.2 open-prefix redundancy queue by
+ *   expanding REDUNDANCY_ALLOWLIST from 5 → 41 entries, grouped into
+ *   three documented intent-categories (future-licensing, convention-
+ *   documentation, namespace-placeholder). Now `--warn-redundant`
+ *   reports zero candidates while preserving every Coverage Map row
+ *   for naming-scheme documentation. To revisit a specific entry,
+ *   delete it from the allow-list and rerun the runner.
  *
  * Asserts every `AT-*` ID cited under three consumer scopes is declared
  * in at least one markdown-table registry row across spec/31-app/**:
@@ -50,16 +58,88 @@ const CONSUMER_EXCLUDED = new Set([
 ]);
 
 // G-30.2 — open-prefix redundancy advisory.
-// Prefixes in this allow-list are NEVER reported as redundant — they are
-// intentional future-licensing declarations that reserve a namespace for
-// growth (AT-ROADMAP-NN reserves the roadmap AT space; AT-FOO-NN is the
-// canonical doc example in 02-ci-quality-gates.md).
+// Prefixes in this allow-list are NEVER reported as redundant. Three
+// intentional categories live here (see SSOT §G-30.2 + F27 task log):
+//
+//   (a) FUTURE-LICENSING — reserve a namespace for files not yet authored
+//       (AT-FOO-NN is the canonical doc example).
+//   (b) CONVENTION-DOCUMENTATION — the open-prefix row is retained as a
+//       Coverage-Map / Open-prefix-declarations table entry that documents
+//       the naming scheme even though every concrete cited ID is already
+//       registered via a closed declaration elsewhere. F15 + F20 closed
+//       these prefixes' citations but deliberately KEPT the prefix rows
+//       (see `01-features/97-acceptance-criteria.md` v2.3.0/v2.4.0 notes
+//       and the "the open-prefix declarations [...] remain (they document
+//       the naming convention)" sentence after the alias tables).
+//   (c) NAMESPACE-PLACEHOLDER — feature files where citations either map
+//       1:1 to closed canonical AT-APP-NN rows (workflow AT-WF-* family,
+//       per `02-workflows/00-overview.md` §"Open-prefix declarations") or
+//       have zero current citations because the feature's ATs are housed
+//       fully under a different prefix.
+//
+// Adding a prefix here is the documented drain mechanism for G-30.2; it
+// preserves the convention-documentation value while silencing the
+// advisory. To revisit, run `node scripts/spec-hygiene/30-check-at-citation-validity.mjs --warn-redundant`
+// without this allow-list.
 const REDUNDANCY_ALLOWLIST = new Set([
-  "AT-FOO-",          // Doc-example placeholder
-  "AT-WORKFLOWS-",    // 02-workflows/97 future
-  "AT-ROADMAP-",      // 04-roadmap/97 future
-  "AT-ENDPOINTS-",    // 06-endpoints/97 future
-  "AT-DBDIAGRAM-",    // 07-db-diagram/97 future
+  // (a) Future-licensing — namespaces reserved for not-yet-authored files
+  "AT-FOO-",          // Doc-example placeholder (02-ci-quality-gates.md)
+  "AT-WORKFLOWS-",    // 02-workflows/97 future canonical index
+  "AT-ROADMAP-",      // 04-roadmap/97 future canonical index
+  "AT-ENDPOINTS-",    // 06-endpoints/97 future canonical index
+  "AT-DBDIAGRAM-",    // 07-db-diagram/97 future canonical index
+
+  // (b) Convention-documentation — citations 100% closed via aliases
+  //     (F15 + F20 closure work) but Coverage Map rows kept on purpose
+  //     in `01-features/97-acceptance-criteria.md`.
+  "AT-INFO-",         // ↔ AT-INFOMODEL-NN (F15 alias closure)
+  "AT-MIRROR-",       // ↔ AT-MIRRORS-NN (F15 alias closure)
+  "AT-MULTI-",        // ↔ AT-MULTISELECT-NN (F20 alias closure)
+  "AT-BOARD-",        // F20 identity closure
+  "AT-CONCURRENCY-",  // F20 identity closure
+  "AT-CTXMENU-",      // F20 identity closure
+  "AT-INTERACT-",     // F20 identity closure
+  "AT-LAYOUT-",       // F20 identity closure
+  "AT-PAGE-",         // F20 identity closure
+  "AT-ROLES-",        // F20 identity closure
+  "AT-SHARE-",        // F20 identity closure
+  "AT-TEMPLATES-",    // F20 identity closure
+  "AT-TODAY-",        // F20 identity closure
+  "AT-TRASH-",        // F20 identity closure
+
+  // (c) Namespace-placeholder — feature files whose citations live under
+  //     `AT-APP-NN` canonical (per Coverage Map dispatch rows) so the
+  //     feature-prefix rows currently cite zero IDs but document the
+  //     inline-prefix convention used inside their respective source files.
+  "AT-MULTISELECT-",  // 12-multi-select source-file prefix (canonical: AT-APP-17..18)
+  "AT-INFOMODEL-",    // 01-information-model source-file prefix (canonical: AT-APP-01..05)
+  "AT-MIRRORS-",      // 09-mirrors source-file prefix (canonical: AT-APP-24)
+  "AT-DV-",           // 07b-dashboard-view inline (canonical: AT-APP-68..75)
+  "AT-SM-",           // 08b-sharing-mirror-interaction inline (canonical: AT-APP-76..80)
+  "AT-MGP-",          // 09b-mirror-peer-group-model inline (canonical: AT-APP-58..67)
+  "AT-TR-",           // 11b-trash-reaper inline (canonical: AT-APP-81..85)
+  "AT-MZ-",           // 12b-multi-select-zoom inline (canonical: AT-APP-86..91)
+  "AT-TPL-",          // 13b-templates-snapshot-semantics inline (canonical: AT-APP-92..96)
+  "AT-OQ-",           // 14b-offline-queue inline (canonical: AT-APP-97..102)
+  "AT-SR-",           // 16-search-ranking inline (canonical: AT-APP-103..107)
+
+  // Workflow `AT-WF-*` family — every prefix is documented in
+  // `02-workflows/00-overview.md` §"Open-prefix declarations" with an
+  // explicit canonical `AT-APP-NN` mapping. The rows are normative
+  // namespace documentation, not unresolved licenses.
+  "AT-WF-MIGRATE-",   // → AT-APP-66, 67 (10-migration-execution-flow)
+  "AT-WF-CREATE-",    // → AT-APP-58, 59, 62, 66, 67 (09-mirror-create-flow)
+  "AT-WF-REAPER-",    // → AT-APP-81..85 (05-trash-reaper-flow)
+  "AT-WF-SEARCH-",    // → AT-APP-103..107 (06-search-query-flow)
+  "AT-WF-REPLAY-",    // → AT-APP-97..102 (07-sync-replay-flow)
+  "AT-WF-DETACH-",    // → AT-APP-60..65 subset (08-mirror-detach-flow)
+  "AT-WF-TEMPLATE-",  // → AT-APP-43..46 (02-template-application-flow)
+  "AT-WF-SHARE-",     // → AT-APP-47..51 (03-share-invite-flow)
+  "AT-WF-RESTORE-",   // → AT-APP-52..57 (04-trash-restore-flow)
+
+  // Top-of-file frozen dispatch
+  "AT-APP-",          // CANONICAL AT family (97-acceptance-criteria.md)
+  "AT-APPF-",         // FROZEN legacy dispatch column (APP-FIX-14)
 ]);
 
 const WARN_REDUNDANT = process.argv.includes("--warn-redundant")
