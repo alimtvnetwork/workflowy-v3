@@ -81,15 +81,15 @@ Two fields (`ItemTypeName`, `Depth`) are fixture-only conveniences so test asser
 ## Regenerating the fixture
 
 ```bash
-python3 spec/31-app/04-fixtures/generate.py
+python3 spec/31-app/04a-fixtures/generate.py
 # ✓ wrote item-tree-217.json: 217 items, 120.0 KB, depth 5
 ```
 
 The generator is **deterministic** (seed `20260427`). Re-running on any machine produces a byte-identical file. To check this in CI:
 
 ```bash
-python3 spec/31-app/04-fixtures/generate.py
-git diff --exit-code spec/31-app/04-fixtures/item-tree-217.json
+python3 spec/31-app/04a-fixtures/generate.py
+git diff --exit-code spec/31-app/04a-fixtures/item-tree-217.json
 ```
 
 ---

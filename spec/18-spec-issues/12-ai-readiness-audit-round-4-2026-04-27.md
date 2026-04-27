@@ -126,7 +126,7 @@ A mediocre AI implementer will crash and burn trying to build from this spec, de
 
 **Why it can fail:** The AI will hallucinate massive React prop drilling to satisfy deeply nested aspirational components instead of creating unified architectural Contexts, leading to brittle refactors.
 
-**How to fix:** Create `spec/31-app/01-features/00-state-management-architecture.md` dictating which contexts wrap the aspirational components and what state is lifted.
+**How to fix:** Create `spec/31-app/01-features/16-state-management-architecture.md` dictating which contexts wrap the aspirational components and what state is lifted.
 
 ### 🟢 AUDIT-AI-07 — A-01 Spec-Code Enum Drift
 

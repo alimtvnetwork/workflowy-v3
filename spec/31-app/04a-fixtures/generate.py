@@ -2,7 +2,7 @@
 """
 WorkFlowy fixture generator — 217-item nested item tree.
 
-Output: spec/31-app/04-fixtures/item-tree-217.json (~1MB target)
+Output: spec/31-app/04a-fixtures/item-tree-217.json (~1MB target)
 Shape:  matches the unified Node interface in mem://architecture/data-model
         and the App DB Item table in spec/31-app/07-db-diagram/03-app-db-erd.md.
 
@@ -22,7 +22,7 @@ Distribution (deterministic, seeded):
     stress text rendering / virtualisation row-height calc.
 
 Run:
-    python3 spec/31-app/04-fixtures/generate.py
+    python3 spec/31-app/04a-fixtures/generate.py
 """
 
 import json
@@ -249,7 +249,7 @@ def main() -> None:
     payload = {
         "$schema": "https://workflowy.local/schemas/item-tree.v1.json",
         "GeneratedAt": iso(NOW),
-        "Generator": "spec/31-app/04-fixtures/generate.py",
+        "Generator": "spec/31-app/04a-fixtures/generate.py",
         "Seed": 20260427,
         "Stats": {
             "TotalItems": len(b.items),
