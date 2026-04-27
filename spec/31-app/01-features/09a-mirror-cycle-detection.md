@@ -164,11 +164,11 @@ If the query returns a row → reject with `ERR_CYCLE`.
 
 | Surface | Component path | `data-testid` | Acceptance tests |
 |---------|---------------|---------------|------------------|
-| Server cycle-check algorithm | `wp-plugin/Repository/CycleCheck.php` | `mirror-cycle-error` | AT-MIRRORS-08 |
-| Recursive CTE constant (SSOT SQL) | `wp-plugin/Repository/sql/cycle-check.sql` | `mirror-cycle-error` | AT-MIRRORS-08 |
-| Client optimistic cycle check | `src/lib/mirror-cycle.ts` | `mirror-cycle-error` | AT-MIRRORS-08 |
-| Cycle error toast | `src/components/feedback/MirrorErrorToast.tsx` | `mirror-cycle-error` | AT-MIRRORS-08 |
-| Hygiene drift check (SQL byte-equality) | `scripts/spec-hygiene/18-check-cycle-algo.mjs` | `mirror-cycle-error` | AT-MIRRORS-08 |
+| Server cycle-check algorithm | `wp-plugin/Repository/CycleCheck.php` | `cycle-move-rejected`, `cycle-mirror-rejected` | AT-CYCLE-01, AT-CYCLE-02, AT-CYCLE-03, AT-CYCLE-04, AT-CYCLE-07, AT-CYCLE-08, AT-CYCLE-09 |
+| Recursive CTE constant (SSOT SQL) | `wp-plugin/Repository/sql/cycle-check.sql` | `cycle-hygiene-drift` | AT-CYCLE-10 |
+| Client optimistic cycle check | `src/lib/mirror-cycle.ts` | `cycle-self-parent`, `cycle-clean-target` | AT-CYCLE-01, AT-CYCLE-05, AT-CYCLE-06 |
+| Cycle error toast | `src/components/feedback/MirrorErrorToast.tsx` | `mirror-cycle-error` | AT-CYCLE-08 |
+| Hygiene drift check (SQL byte-equality) | `scripts/spec-hygiene/18-check-cycle-algo.mjs` | `cycle-hygiene-drift` | AT-CYCLE-10 |
 
 > **Note:** The signature contract for the server algorithm is `public static function hasCycle(string $SourceId, string $TargetParentId): bool`; the client mirror is `hasCycle(sourceId, targetParentId, store): boolean`. The SQL block in §Algorithm above is byte-equal to `wp-plugin/Repository/sql/cycle-check.sql` (enforced by hygiene check 18).
 
