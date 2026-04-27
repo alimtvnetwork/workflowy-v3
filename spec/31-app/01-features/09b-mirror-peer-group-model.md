@@ -29,7 +29,7 @@ The `MirrorOfItemId` column on `Item` and the `Mirror(SourceItemId, MirrorItemId
 | **R-2** | When user creates a mirror via `/mirror`, `/mirror to`, `/mirror here`, or **⇧⌘M**, both the originating item AND the new instance become group members. The "originating" item gains a diamond badge. | Workflowy parity |
 | **R-3** | **Detach removes one member from the group.** If the group's size drops to **1**, the group is **dissolved** and the remaining lone item also becomes a regular item (no diamond). | User confirmation 2026-04-27 |
 | **R-4** | **Edits flow read-through.** Title, Notes, Tags, Completion, Children, Child-order, Attachments, Comments, ItemType — synced across all peers. **Position** (FractionalIndex within parent) and **IsCollapsed** are per-instance. | User confirmation 2026-04-27 |
-| **R-5** | Conflict tiebreak is **LWW by `(UpdatedAt DESC, OwnerUserId ASC)`** at the field level. See [`05-conventions/24-state-management-architecture.md`](../05-conventions/24-state-management-architecture.md) §3. | User confirmation 2026-04-27 |
+| **R-5** | Conflict tiebreak is **LWW by `(UpdatedAt DESC, OwnerUserId ASC)`** at the field level. See [`05-conventions/33-state-management-architecture.md`](../05-conventions/33-state-management-architecture.md) §3. | User confirmation 2026-04-27 |
 
 ---
 
@@ -285,7 +285,7 @@ This migration is in [`07-db-diagram/sql/07-migration-v2-mirror-peer-groups.sql`
 
 - [09-mirrors.md](./09-mirrors.md) — UX and feature contract (will be folded into this model in v3.0.0)
 - [09a-mirror-cycle-detection.md](./09a-mirror-cycle-detection.md) — Cycle detection algorithm
-- [05-conventions/24-state-management-architecture.md](../05-conventions/24-state-management-architecture.md) §3 — LWW tiebreak SSOT
+- [05-conventions/33-state-management-architecture.md](../05-conventions/33-state-management-architecture.md) §3 — LWW tiebreak SSOT
 - [07-db-diagram/sql/02-app-schema.sql](../07-db-diagram/sql/02-app-schema.sql) — DDL
 - [../20-enums-index.md](../../20-enums-index.md) §`ItemType` — confirms `mirror` is NOT a type
 - [../18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md](../../18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md#audit-ai-07) — closes AUDIT-AI-07

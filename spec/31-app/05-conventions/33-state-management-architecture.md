@@ -268,7 +268,7 @@ src/
 |-------|------|
 | State catalog | [`../../32-ui-design/02-state-and-data/01-state-management.md`](../../32-ui-design/02-state-and-data/01-state-management.md) |
 | Universal envelope | [`../../04-database-conventions/06-rest-api-format/`](../../04-database-conventions/06-rest-api-format/00-overview.md) |
-| SSE PHP reference | [`../05-conventions/23-sse-php-implementation.md`](../05-conventions/23-sse-php-implementation.md) |
+| SSE PHP reference | [`../05-conventions/32-sse-php-implementation.md`](../05-conventions/32-sse-php-implementation.md) |
 | Endpoint↔AT matrix | [`../06-endpoints/16-endpoint-at-matrix.md`](../06-endpoints/16-endpoint-at-matrix.md) |
 | Concurrency & sync | [`./14-concurrency-and-sync.md`](../01-features/14-concurrency-and-sync.md) |
 | Mirror semantics | [`./09-mirrors.md`](../01-features/09-mirrors.md), [`./09a-mirror-cycle-detection.md`](../01-features/09a-mirror-cycle-detection.md) |

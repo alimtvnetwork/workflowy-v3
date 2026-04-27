@@ -29,7 +29,7 @@
 | 13 | [`13-templates.md`](./13-templates.md) | Endpoints — 13 Templates | 78 |
 | 14 | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | Endpoints — 14 Concurrency & Sync (Realtime Transport) | 75 |
 | 15 | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | Endpoints — 15 Roles & Permissions | 61 |
-| 16 | [`15-search.md`](./15-search.md) | Endpoints — 15 Search | 61 |
+| 16 | [`15b-search.md`](./15b-search.md) | Endpoints — 15 Search | 61 |
 | 17 | [`16-endpoint-at-matrix.md`](./16-endpoint-at-matrix.md) | Endpoint ↔ Acceptance-Test Cross-Reference Matrix | 114 |
 
 <!-- AUTO-TOC:END -->
@@ -39,7 +39,7 @@
 > - [`09b-mirror-peer-group.md`](./09b-mirror-peer-group.md) — `EP-MIRRORS-GROUP-GET`, `EP-MIRRORS-DETACH`
 > - [`11b-trash-reaper.md`](./11b-trash-reaper.md) — `EP-REAPER-RUN`, `EP-REAPER-RUNS-LIST`
 > - [`14b-sync-replay.md`](./14b-sync-replay.md) — `EP-SYNC-REPLAY`
-> - [`15-search.md`](./15-search.md) — `EP-SEARCH-QUERY`
+> - [`15b-search.md`](./15b-search.md) — `EP-SEARCH-QUERY`
 
 ---
 

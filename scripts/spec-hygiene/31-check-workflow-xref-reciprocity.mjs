@@ -227,7 +227,7 @@ const ENDPOINTS_ISLAND_EXEMPT = new Set([
   "10-today-view.md",         // today surface; cross-refs go to features
   "12-multi-select.md",       // multi-select surface; cross-refs go to features
   "13-templates.md",          // templates surface; cross-refs go to features
-  "15-search.md",             // search surface; cross-refs go to features
+  "15b-search.md",             // search surface; cross-refs go to features
 ]);
 
 const DB_DIAGRAM_ISLAND_EXEMPT = new Set([

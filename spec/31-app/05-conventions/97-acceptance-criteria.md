@@ -42,7 +42,7 @@ A criterion is *complete* when (a) it has a stable ID, (b) it cites a source fil
 | 19 | [`19-g26-mfa-coverage-gate.md`](./19-g26-mfa-coverage-gate.md) | `AT-G26` | `AT-G26-01..16` | 16 | G-26 5-axis MFA hygiene |
 | 20 | [`20-g27-export-coverage-gate.md`](./20-g27-export-coverage-gate.md) | `AT-G27` | `AT-G27-01..16` | 16 | G-27 6-axis export hygiene |
 | 21 | [`21-g28-backup-coverage-gate.md`](./21-g28-backup-coverage-gate.md) | `AT-G28` | `AT-G28-01..20` | 20 | G-28 7-axis backup/DR hygiene — **largest single AT block in conventions** |
-| 22 | [`22-wp-plugin-folder-skeleton.md`](./22-wp-plugin-folder-skeleton.md) | `AT-SKEL` | `AT-SKEL-01..10` | 10 | Flat-PSR layout enforcement, `wp-plugin/src/` retired |
+| 22 | [`31-wp-plugin-folder-skeleton.md`](./31-wp-plugin-folder-skeleton.md) | `AT-SKEL` | `AT-SKEL-01..10` | 10 | Flat-PSR layout enforcement, `wp-plugin/src/` retired |
 
 > **Why prefixes diverge from the folder name** — Each AT prefix matches the **subject domain** (`AXIOS`, `RATELIMIT`, `MFA`, …), not the folder. This keeps cross-document references stable when files move folders. The conventions rollup is the discovery anchor; the prefix is the file's own SSOT.
 

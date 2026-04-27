@@ -129,7 +129,7 @@ G-30 AT citation validity FAILED:
 
   ❌ 3 unregistered AT citation(s) in spec/31-app/06-endpoints/:
 
-    spec/31-app/06-endpoints/15-search.md:42  AT-APP-200
+    spec/31-app/06-endpoints/15b-search.md:42  AT-APP-200
     spec/31-app/06-endpoints/11b-trash-reaper.md:18  AT-MGP-58
     spec/31-app/06-endpoints/11b-trash-reaper.md:19  AT-MGP-58
 

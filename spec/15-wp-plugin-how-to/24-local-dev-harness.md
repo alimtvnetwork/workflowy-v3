@@ -283,5 +283,5 @@ No separate "CI config" — the harness is the only source of truth.
 | Backend runtime decision | [`mem://constraints/backend-runtime-deferred`](mem://constraints/backend-runtime-deferred) |
 | Quick start (operator-facing) | [`./22-quick-start.md`](./22-quick-start.md) |
 | PHPUnit bootstrap | [`./09-testing-patterns/03-bootstrap.md`](./09-testing-patterns/03-bootstrap.md) |
-| SSE PHP implementation (paired) | [`../31-app/05-conventions/23-sse-php-implementation.md`](../31-app/05-conventions/23-sse-php-implementation.md) |
+| SSE PHP implementation (paired) | [`../31-app/05-conventions/32-sse-php-implementation.md`](../31-app/05-conventions/32-sse-php-implementation.md) |
 | Audit closure | [`../18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md`](../18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md) §AUDIT-AI-01 |

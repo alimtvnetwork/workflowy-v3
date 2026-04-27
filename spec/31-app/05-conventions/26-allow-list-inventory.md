@@ -173,7 +173,7 @@ Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:217`](../.
 | 6 | `10-today-view.md` | today surface; cross-refs go to features |
 | 7 | `12-multi-select.md` | multi-select surface; cross-refs go to features |
 | 8 | `13-templates.md` | templates surface; cross-refs go to features |
-| 9 | `15-search.md` | search surface; cross-refs go to features |
+| 9 | `15b-search.md` | search surface; cross-refs go to features |
 
 ### `DB_DIAGRAM_ISLAND_EXEMPT` (G-31.6)
 
