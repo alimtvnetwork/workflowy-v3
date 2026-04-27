@@ -124,6 +124,31 @@ const DB_DIAGRAM_EXEMPT = new Set([
 ]);
 
 // =====================================================================
+// Per-scope ISLAND allow-lists (G-31.6, v2.5.0+). Format: bare filename.
+// An "island" is a sibling file with neither incoming nor outgoing
+// cross-sibling Related-section references. Allow-list opts a file out
+// of the WARN advisory when it is genuinely a leaf (e.g. a self-contained
+// reference page with no semantic peers). Each entry MUST carry a
+// rationale (machine-enforced by G-31.5).
+// =====================================================================
+
+const WORKFLOWS_ISLAND_EXEMPT = new Set([
+  // (empty at v2.5.0 — workflows scope has 0 islands)
+]);
+
+const FEATURES_ISLAND_EXEMPT = new Set([
+  // (empty at v2.5.0 — 5 islands surfaced as advisory; cleanup deferred)
+]);
+
+const ENDPOINTS_ISLAND_EXEMPT = new Set([
+  // (empty at v2.5.0 — 9 islands surfaced as advisory; cleanup deferred)
+]);
+
+const DB_DIAGRAM_ISLAND_EXEMPT = new Set([
+  // (empty at v2.5.0 — db-diagram scope has 0 islands)
+]);
+
+// =====================================================================
 // Scope registry. Order = output order.
 // =====================================================================
 
