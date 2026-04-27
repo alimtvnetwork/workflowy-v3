@@ -97,3 +97,30 @@ Visual example:
 - **Sister view:** [`07-board-view.md`](./07-board-view.md) — same data, kanban-style.
 - **Page content area row:** [`04-page-content-area.md`](./04-page-content-area.md) §3.3 (Bullet Types table).
 - **Component contract:** [`spec/32-ui-design/01-architecture/05-component-contract-map.md`](../../32-ui-design/01-architecture/05-component-contract-map.md) — `turn-into-dashboard` test id.
+
+---
+
+## Inputs
+
+- Current item context: an `Item` row with `ItemType = 'dashboard'` and its direct children (`Items WHERE ParentId = dashboard.Id`).
+- Inline-edit input events on cards (title text, completion toggle, drag-reorder, zoom click).
+- View-switch context-menu actions (`turn-into-list`, `turn-into-board`).
+
+## Outputs
+
+- A responsive card grid rendering one card per direct child (depth = 1).
+- DB mutations on child rows only: `Items.Content`, `Items.IsCompleted`, `Items.SortOrder`, and `Items` INSERT for new cards. Dashboard parent row is **never mutated** by Dashboard-surface interactions (the `ItemType` change is a separate explicit op).
+
+## Edge Cases
+
+See §3.4 *Out of scope (vs Board)* and the AT table at §6 for boundary conditions: depth-1 enforcement, no aggregated metrics, no grouping, and zoom-only access to grandchildren.
+
+## Acceptance Tests
+
+The 8 acceptance tests **AT-DV-01 … AT-DV-08** are defined in §6 above. This bare-named heading exists to satisfy G-06 feature-shape; the canonical content lives at §6.
+
+## Component Contract
+
+- **Test-id:** `turn-into-dashboard` (context-menu action) per [`spec/32-ui-design/01-architecture/05-component-contract-map.md`](../../32-ui-design/01-architecture/05-component-contract-map.md).
+- **State store:** `useTreeStore.updateContent()` (title edits) + `useTreeStore.toggleCompleted()` (checkbox) + `useTreeStore.reorder()` (drag) — same hooks as outline view; Dashboard introduces no new mutation surface.
+- **Op envelope:** every card-level mutation produces exactly one `Op.Update` (or `Op.Insert` for new cards) targeting the child row.

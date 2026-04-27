@@ -81,3 +81,31 @@ VIRTUAL_SCOPE ──(deselect all)──▶ stays in VIRTUAL_SCOPE (membership l
 - `spec/31-app/01-features/12-multi-select.md` (parent SSOT)
 - `spec/31-app/01-features/05-interactions.md` (zoom hotkey)
 - `spec/31-app/01-features/09b-mirror-peer-group-model.md` (peer sync inside scope)
+
+---
+
+## Inputs
+
+- A multi-selection set `{I₁, I₂, …, Iₙ}` with `n > 1` from the live tree.
+- A zoom gesture (hotkey or breadcrumb action) issued while the multi-selection is active.
+- Subsequent edit/delete/refresh events affecting members of the set.
+
+## Outputs
+
+- An ephemeral client-only virtual scope keyed `virtual:<sessionId>` with title `"N items"`.
+- Edits performed inside the scope mutate the **real** items (titles, completion, intra-scope drag); no DB row is created for the virtual parent.
+- On exit (Esc / breadcrumb up): selection of the original N items is restored in the real tree.
+
+## Edge Cases
+
+§4 *Edge cases* enumerates all 5 boundary conditions: mid-scope deletion (auto-collapse at n=1, exit at n=0), peer-group sync inside scope, share semantics, Board/Dashboard inside virtual scope, and refresh-loses-scope (ephemeral by design).
+
+## Acceptance Tests
+
+The 6 acceptance tests **AT-MZ-01 … AT-MZ-06** are defined in §5 above. This bare-named heading satisfies G-06; canonical content lives at §5.
+
+## Component Contract
+
+- **State location:** client-only zustand slice (e.g. `useZoomStore.virtualScope`); never persisted, never serialised to URL.
+- **Identity:** `virtual:<sessionId>` synthetic node id; not a valid `Items.Id`; FK constraints are bypassed because no DB write occurs.
+- **State machine:** as defined in §3; transitions are pure UI events with no DB side-effects.

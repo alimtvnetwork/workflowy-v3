@@ -77,3 +77,30 @@ fn instantiate(template_id, target_parent_id, owner_id):
 - [`./13-templates.md`](./13-templates.md) (parent SSOT)
 - [`./11b-trash-reaper.md`](./11b-trash-reaper.md) — sister addendum: trash reaper cron (templates unaffected)
 - [`./09b-mirror-peer-group-model.md`](./09b-mirror-peer-group-model.md) — why mirrors don't survive snapshot
+
+---
+
+## Inputs
+
+- A `Templates` row with `Id`, `PayloadJson` (serialised subtree), and template metadata.
+- An instantiation request `(template_id, target_parent_id, owner_id = auth.uid())`.
+
+## Outputs
+
+- A new subtree of `Items` rows under `target_parent_id` with **fresh UUIDs** (no `TemplateId` FK on the new rows — per §1).
+- Owner of every new row = `auth.uid()` of the instantiating user (per §2).
+- No `MirrorPeerGroupMembers` rows created — mirrors inside the template collapse to plain items per §1 / AT-TPL-04.
+
+## Edge Cases
+
+§1 *Decision* table establishes the no-link invariant (template ↔ instance are fully independent in both directions); §2 *Instantiation algorithm* documents UUID re-stamping, ownership rewrite, and mirror collapse; §4 *Non-goals* fences out future variants (live templates, parameters, versioning).
+
+## Acceptance Tests
+
+The 5 acceptance tests **AT-TPL-01 … AT-TPL-05** are defined in §3 above. This bare-named heading satisfies G-06; canonical content lives at §3.
+
+## Component Contract
+
+- **Storage:** `Templates.PayloadJson` (full subtree, JSON-serialised).
+- **Instantiation surface:** server-side procedure (DFS clone) — no client orchestrates the multi-row insert.
+- **Trash interaction:** templates are unaffected by the reaper (per `11b` AT cross-link); independent lifecycle.
