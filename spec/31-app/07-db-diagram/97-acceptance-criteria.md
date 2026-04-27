@@ -1,7 +1,7 @@
 # DB Diagram — Acceptance Criteria
 
-> **Version:** 1.0.0
-> **Updated:** 2026-04-27 (UTC+8)
+> **Version:** 1.0.1
+> **Updated:** 2026-04-27 (UTC+8) — Patch: fixed broken link to `14-concurrency-and-sync.md` (corrected path from `../` to `../01-features/`). Closes hygiene check `03-check-links.mjs`. Prior: 2026-04-27 (UTC+8) v1.0.0 — Full curation, 21 criteria authored.
 > **Status:** ✅ Curated — every ERD source file has a verifiable rollup criterion. Stub status retired.
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
