@@ -44,6 +44,7 @@
 | 29 | [`26-allow-list-inventory.md`](./26-allow-list-inventory.md) | Allow-List Inventory | 267 |
 | 30 | [`27-g33-cross-runner-duplicate-gate.md`](./27-g33-cross-runner-duplicate-gate.md) | G-33 — Cross-Runner Allow-List Duplicate Detector | 144 |
 | 31 | [`28-g34-allow-list-age-gate.md`](./28-g34-allow-list-age-gate.md) | G-34 — Allow-List Entry Age Gate (Algorithm SSOT) | 106 |
+| 32 | [`29-g36-cross-scope-island-gate.md`](./29-g36-cross-scope-island-gate.md) | G-36 — Cross-Scope Island Detector (Algorithm SSOT) | 92 |
 
 <!-- AUTO-TOC:END -->
 
