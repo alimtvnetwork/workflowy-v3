@@ -29,6 +29,7 @@
 | 13 | [`13-templates.md`](./13-templates.md) | Endpoints — 13 Templates | 78 |
 | 14 | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | Endpoints — 14 Concurrency & Sync (Realtime Transport) | 70 |
 | 15 | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | Endpoints — 15 Roles & Permissions | 59 |
+| 16 | [`16-endpoint-at-matrix.md`](./16-endpoint-at-matrix.md) | Endpoint ↔ Acceptance-Test Cross-Reference Matrix | 107 |
 
 <!-- AUTO-TOC:END -->
 

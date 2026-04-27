@@ -56,3 +56,12 @@ A runbook MUST cite the policy SSOT it implements (forward link). The policy SSO
 ## Hygiene gate
 
 A runbook is **stale** if its referenced policy SSOT version is newer than the runbook's `_(matches A-XX vYY.ZZ.W)_` annotation. The next CI hygiene check (`19-check-runbook-staleness.mjs`, future) will fail builds where runbook ↔ policy versions drift.
+
+## Related
+
+| Topic | Link |
+|-------|------|
+| Parent folder | [`../00-overview.md`](../00-overview.md) |
+| Backup & DR policy SSOT | [`../../31-app/05-conventions/14-backup-and-dr-policy.md`](../../31-app/05-conventions/14-backup-and-dr-policy.md) |
+| Disaster-recovery runbook | [`./01-disaster-recovery-restore.md`](./01-disaster-recovery-restore.md) |
+| Backup key-rotation runbook | [`./02-backup-key-rotation.md`](./02-backup-key-rotation.md) |

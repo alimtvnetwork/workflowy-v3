@@ -1,7 +1,7 @@
 {
   "$schema": "https://workflowy.local/schemas/item-tree.v1.json",
   "GeneratedAt": "2026-04-27T08:00:00.000Z",
-  "Generator": "spec/31-app/04-fixtures/generate.py",
+  "Generator": "spec/31-app/04a-fixtures/generate.py",
   "Seed": 20260427,
   "Stats": {
     "TotalItems": 217,
