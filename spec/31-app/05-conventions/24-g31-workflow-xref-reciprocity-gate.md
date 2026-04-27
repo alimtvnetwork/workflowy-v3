@@ -1,6 +1,6 @@
 ---
 slug: g31-workflow-xref-reciprocity-gate
-version: 2.5.0
+version: 2.7.0
 updated: 2026-04-27
 parent: ../../05-conventions/02-ci-quality-gates.md
 status: canonical
@@ -9,8 +9,8 @@ gate_id: G-31
 
 # G-31 — Cross-Reference Reciprocity Gate
 
-> **Version:** 2.5.0
-> **Updated:** 2026-04-27 (UTC+8) — v2.6.1 (F-future-G31f) drained the 3 G-31.7 heading-drift advisories: allow-listed `09a-mirror-cycle-detection.md` + `14b-offline-queue.md` in `FEATURES_HEAD_EXEMPT` (both cite predominantly cross-domain content — endpoints, `src/types`, `mem://` — so `## Cross-References` is the semantically accurate heading); renamed `16-search-ranking.md` heading `## Cross-References` → `## Related` (cites mostly peer features). G-31.7 now ✅ 0 drift. Earlier: v2.6.0 added the G-31.7 canonical-heading sub-check; v2.5.0 added G-31.6 island-detection; v2.4.0 added G-31.5 meta sub-check; v2.3.0 drained features (30 → 0); v2.2.0 drained db-diagram (6 → 0); v2.1.0 drained endpoints (8 → 0); v2.0.0 generalised to N parameterised scopes; v1.0.0 originated as the F25 prototype `/tmp/audit_xrefs.mjs`.
+> **Version:** 2.7.0
+> **Updated:** 2026-04-27 (UTC+8) — v2.7.0 (F-future-G31e) drained the 14 G-31.6 island advisories: allow-listed all 5 features `*b` addendum slices in `FEATURES_ISLAND_EXEMPT` (each is a child slice of a parent SSOT; cross-sibling links would be redundant) and all 9 endpoint UI-surface pages in `ENDPOINTS_ISLAND_EXEMPT` (each describes a distinct surface whose natural cross-references point out-of-scope to features / db-diagram, not to sibling endpoints). G-31.6 now ✅ 0 island advisories. Earlier: v2.6.1 drained G-31.7 heading-drift; v2.6.0 added G-31.7 canonical-heading sub-check; v2.5.0 added G-31.6 island-detection; v2.4.0 added G-31.5 meta sub-check; v2.3.0 drained features (30 → 0); v2.2.0 drained db-diagram (6 → 0); v2.1.0 drained endpoints (8 → 0); v2.0.0 generalised to N parameterised scopes; v1.0.0 originated as the F25 prototype `/tmp/audit_xrefs.mjs`.
 > **Parent:** [`02-ci-quality-gates.md`](./02-ci-quality-gates.md)
 > **Sibling:** [`23-g30-at-citation-validity-gate.md`](./23-g30-at-citation-validity-gate.md), [`25-g32-ddl-unique-coverage-gate.md`](./25-g32-ddl-unique-coverage-gate.md)
 > **Runner:** [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs)
@@ -25,9 +25,9 @@ gate_id: G-31
 | G-31.2   | features         | ERROR | `spec/31-app/01-features/`   | 23              | 0 asymmetries ✅      | v2.0.0 (WARN) → v2.3.0 (ERROR) |
 | G-31.3   | endpoints        | ERROR | `spec/31-app/06-endpoints/`  | 19              | 0 asymmetries ✅      | v2.0.0 (WARN) → v2.1.0 (ERROR) |
 | G-31.4   | db-diagram       | ERROR | `spec/31-app/07-db-diagram/` | 7               | 0 asymmetries ✅      | v2.0.0 (WARN) → v2.2.0 (ERROR) |
-| G-31.5   | meta (rationale) | ERROR | (runner self)                | 12 Sets, 0 entries | 0 unrationaled ✅    | v2.4.0   |
-| G-31.6   | islands (advisory) | WARN | all 4 scopes               | 58 (sum)        | 14 islands ⚠️         | v2.5.0   |
-| G-31.7   | heading (advisory) | WARN | all 4 scopes               | 58 (sum)        | 0 heading-drift ✅    | v2.6.0   |
+| G-31.5   | meta (rationale) | ERROR | (runner self)                | 12 Sets, 14 entries | 0 unrationaled ✅    | v2.4.0   |
+| G-31.6   | islands (advisory) | WARN | all 4 scopes               | 58 (sum)        | 0 islands ✅          | v2.5.0 (WARN) → v2.7.0 (drained) |
+| G-31.7   | heading (advisory) | WARN | all 4 scopes               | 58 (sum)        | 0 heading-drift ✅    | v2.6.0 (WARN) → v2.6.1 (drained) |
 
 **Mode semantics:**
 - **ERROR** — any asymmetry, or any unrationaled exemption entry (G-31.5), contributes to exit code 1; CI fails.
