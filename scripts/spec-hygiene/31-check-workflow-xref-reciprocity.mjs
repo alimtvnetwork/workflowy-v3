@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * G-31 — Cross-Reference Reciprocity Gate (v2.2.0)
+ * G-31 — Cross-Reference Reciprocity Gate (v2.3.0)
  *
  * Asserts that every cross-sibling Related-section link in a scoped
  * folder is reciprocated by a back-link in the target's own
@@ -115,7 +115,7 @@ const SCOPES = [
     // Aggregator pages — not first-class cross-referencing peers.
     excludeRx: /^(00-overview|02-personas|05a-hotkey-table|97-acceptance-criteria|99-consistency-report)\.md$/,
     relatedHeads: ["## Related", "## Cross-References", "## See also"],
-    mode: "warn",
+    mode: "error",
     exemptions: FEATURES_EXEMPT,
   },
   {
