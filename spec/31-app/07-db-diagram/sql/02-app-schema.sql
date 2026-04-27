@@ -2,9 +2,11 @@
 -- WorkFlowy — App DB Schema (per workspace)
 -- File: 02-app-schema.sql
 -- Target: workflowy_app_{WorkspaceId}.db (one per workspace)
--- Version: 2.0.0
--- Updated: 2026-04-27 (UTC+8) — v2.0.0 replaces source/target Mirror schema with peer-group
---                                model per spec/31-app/01-features/09b-mirror-peer-group-model.md
+-- Version: 2.1.0
+-- Updated: 2026-04-27 (UTC+8) — v2.1.0 added ReaperRuns table for B4/11b trash-reaper
+--                                cron audit log (AT-APP-85). v2.0.0 replaced source/target
+--                                Mirror schema with peer-group model per
+--                                spec/31-app/01-features/09b-mirror-peer-group-model.md
 --                                (closes AUDIT-AI-07).
 -- Authority: spec/31-app/07-db-diagram/03-app-db-erd.md
 --
