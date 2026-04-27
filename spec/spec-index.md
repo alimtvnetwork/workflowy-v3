@@ -1235,7 +1235,7 @@
 |------|-------|---------|--------|
 | [`31-app/00-overview.md`](./31-app/00-overview.md) | App | 2.1.0 | — |
 | [`31-app/01-features/00-overview.md`](./31-app/01-features/00-overview.md) | Features | 2.3.0 | — |
-| [`31-app/01-features/16-state-management-architecture.md`](./31-app/01-features/16-state-management-architecture.md) | State Management Architecture | 1.0.0 | — |
+| [`31-app/05-conventions/24-state-management-architecture.md`](./31-app/05-conventions/24-state-management-architecture.md) | State Management Architecture | 1.0.0 | — |
 | [`31-app/01-features/01-information-model.md`](./31-app/01-features/01-information-model.md) | Information Model Foundations | 2.3.0 | — |
 | [`31-app/01-features/02-personas.md`](./31-app/01-features/02-personas.md) | Target User Personas | 2.0.0 | — |
 | [`31-app/01-features/03-layout-structure.md`](./31-app/01-features/03-layout-structure.md) | Layout Structure | 2.4.0 | — |
