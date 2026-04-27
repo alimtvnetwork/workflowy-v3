@@ -33,7 +33,8 @@ const checks = [
 let failed = 0;
 for (const script of checks) {
   console.log(`\n--- ${script} ---`);
-  const r = spawnSync("node", [script], { stdio: "inherit" });
+  const parts = script.split(/\s+/);
+  const r = spawnSync("node", parts, { stdio: "inherit" });
   if (r.status !== 0) failed += 1;
 }
 
