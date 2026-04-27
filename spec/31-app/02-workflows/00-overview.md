@@ -1,7 +1,7 @@
 # Workflows
 
 
-> **Version:** 2.3.0
+> **Version:** 2.4.0
 > **Updated:** 2026-04-27 (UTC+8) — v2.4.0 (F17) added `10-migration-execution-flow.md` — operational runbook for the v1→v2 mirror peer-group migration (M-115/M-116/M-117/M-118), complementing the SQL-detail SSOT at `07-db-diagram/07-migrations.md`; new `AT-WF-MIGRATE-NN` open-prefix licensed (canonical-mapped to `AT-APP-66, 67`). v2.3.0 (F16) added `09-mirror-create-flow.md` as the create-side counterpart to `08-mirror-detach-flow.md`; new `AT-WF-CREATE-NN` open-prefix licensed (canonical-mapped to `AT-APP-58, 59, 62, 66, 67`). Prior: v2.2.0 added 4 cross-feature workflow files for B1–B4 backlog: `05-trash-reaper-flow.md`, `06-search-query-flow.md`, `07-sync-replay-flow.md`, `08-mirror-detach-flow.md` (F11, No-Questions Mode). v2.1.0 marked `AT-WF-*` ↔ `AT-APP-*` backfill complete (polish #2). v2.0.0 added 3 cross-feature workflow files (APP-FIX-12, closes F-10).
 
 ## Keywords
