@@ -65,8 +65,8 @@ A single matrix mapping every one of the **41 REST endpoints** in this folder to
 | 43 | `EP-REAPER-RUNS-LIST` | GET | `/admin/trash/reaper/runs` | `11b-trash-reaper.md` | `AT-APP-85` |
 | 44 | `EP-SEARCH-QUERY` | GET | `/search` | `15-search.md` (endpoints) · `mem://features/search-functionality` | `AT-APP-103`, `AT-APP-104`, `AT-APP-105`, `AT-APP-106`, `AT-APP-107` |
 | 45 | `EP-SYNC-REPLAY` | POST | `/sync/replay` | `14b-sync-replay.md` · `mem://features/offline-resilience` | `AT-APP-97`, `AT-APP-98`, `AT-APP-99`, `AT-APP-100`, `AT-APP-101`, `AT-APP-102` |
-| 46 | `EP-MIRRORS-GROUP-GET` | GET | `/items/{id}/mirror-group` | `09b-mirror-peer-group.md` | `AT-MGP-58`, `AT-MGP-59` |
-| 47 | `EP-MIRRORS-DETACH` | POST | `/items/{id}/mirror-detach` | `09b-mirror-peer-group.md` | `AT-MGP-60`, `AT-MGP-61`, `AT-MGP-62` |
+| 46 | `EP-MIRRORS-GROUP-GET` | GET | `/items/{id}/mirror-group` | `09b-mirror-peer-group.md` | `AT-APP-58`, `AT-APP-60`, `AT-APP-65` |
+| 47 | `EP-MIRRORS-DETACH` | POST | `/items/{id}/mirror-detach` | `09b-mirror-peer-group.md` | `AT-APP-61`, `AT-APP-63`, `AT-APP-64` |
 
 ---
 
