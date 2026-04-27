@@ -2,7 +2,7 @@
 
 **Status:** 🟢 ACTIVE
 **Activated:** 2026-04-27
-**Tasks completed: 4 / 40**
+**Tasks completed: 5 / 40**
 
 ---
 
@@ -14,6 +14,7 @@
 | 02 | 2026-04-27 | Registered 50 new ATs (`AT-APP-58..107`) from B1–B4 addendums in canonical `spec/31-app/97-acceptance-criteria.md` (v2.6.0); added 8 dispatch rows + validation history to `spec/31-app/01-features/97-acceptance-criteria.md` (v2.2.0). | 1 (`02-at-prefix-mgp-vs-mpg.md`) |
 | 03 | 2026-04-27 | F4 SQL DDL audit: added `ReaperRuns` table (B4/11b) to `02-app-schema.sql` v2.1.0; added `IdxItem_UpdatedAt`, `IdxItem_LiveByUpdatedAt` (partial), `IdxReaperRuns_RanAt`, plus commented FTS5 template to `03-app-indexes.sql` v2.1.0; added Naming Bridge section to sql/`00-overview.md` v2.1.0 documenting `Item↔Items`, `Content↔Title`, `FractionalIndex↔SortOrder` aliases. | 1 (`03-ddl-naming-bridge.md`) |
 | 04 | 2026-04-27 | F6 endpoint contracts: created 4 endpoint files — `11b-trash-reaper.md` (EP-REAPER-RUN, EP-REAPER-RUNS-LIST), `15-search.md` (EP-SEARCH-QUERY), `14b-sync-replay.md` (EP-SYNC-REPLAY), `09b-mirror-peer-group.md` (EP-MIRRORS-GROUP-GET, EP-MIRRORS-DETACH). Bumped `16-endpoint-at-matrix.md` v1.0.0→v1.1.0 (41→47 endpoints, 6 new rows, coverage counts updated). Added addendum-files note to `00-overview.md`. | 1 (`04-at-prefix-for-new-endpoints.md`) |
+| 05 | 2026-04-27 | F7 ERD refresh: bumped `03-app-db-erd.md` v1.0.0→v1.1.0 — added `MirrorPeerGroup`, `MirrorPeerGroupMember`, `ReaperRuns` entities + relationships; deprecated legacy `Mirror` (kept for back-compat). Bumped `06-indexes.md` v1.0.0→v1.1.0 — added 4 new indexes (`IdxItem_UpdatedAt`, `IdxItem_LiveByUpdatedAt` partial, `IdxReaperRuns_RanAt`, `IdxMirrorPeerGroupMember_ItemId` UNIQUE partial, `IdxMirrorPeerGroupMember_GroupId`); added 4 endpoints + edges to flowchart; reversed prior "NOT needed" stance on `IdxItem_UpdatedAt`. | 1 (`05-mirror-table-deprecation.md`) |
 
 ---
 

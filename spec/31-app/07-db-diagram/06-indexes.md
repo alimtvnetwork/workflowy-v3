@@ -1,7 +1,7 @@
 # 06 — Indexes
 
-> **Version:** 1.0.0
-> **Updated:** 2026-04-26 (UTC+8)
+> **Version:** 1.1.0
+> **Updated:** 2026-04-27 (UTC+8) — v1.1.0 added 4 indexes (`IdxItem_UpdatedAt`, `IdxItem_LiveByUpdatedAt`, `IdxReaperRuns_RanAt`, `IdxMirrorPeerGroupMember_ItemId`) for B1–B4; reversed prior "NOT needed" stance on `IdxItem_UpdatedAt` (now required by offline-replay LWW + search tie-break).
 > **Parent:** [`./00-overview.md`](./00-overview.md)
 
 ---
@@ -26,6 +26,10 @@ flowchart LR
         E5[EP-MIRRORS-LIST]
         E6[EP-SHARES-LIST]
         E7[EP-SYNC-POLL]
+        E8[EP-SYNC-REPLAY]
+        E9[EP-SEARCH-QUERY]
+        E10[EP-REAPER-RUNS-LIST]
+        E11[EP-MIRRORS-GROUP-GET]
     end
 
     subgraph "App DB Indexes"
@@ -43,6 +47,10 @@ flowchart LR
         I12[IdxComment_ItemId]
         I13[IdxFavorite_UserId_FractionalIndex]
         I14[IdxSyncCursor_UserId]
+        I15[IdxItem_UpdatedAt]
+        I16[IdxItem_LiveByUpdatedAt]
+        I17[IdxReaperRuns_RanAt]
+        I18[IdxMirrorPeerGroupMember_ItemId]
     end
 
     subgraph "Root DB Indexes"
@@ -62,6 +70,10 @@ flowchart LR
     E6 --> I7
     E7 --> I11
     E7 --> I14
+    E8 --> I15
+    E9 --> I16
+    E10 --> I17
+    E11 --> I18
 ```
 
 ---
@@ -91,6 +103,11 @@ flowchart LR
 | `IdxActivityLog_ItemId_CreatedAt` | `(ItemId, CreatedAt DESC)` | Per-item history | Recent-first audit trail |
 | `IdxActivityLog_CreatedAt` | `(CreatedAt)` | `EP-SYNC-POLL` since-cursor scan | Time-ordered event drain |
 | `IdxSyncCursor_UserId` | `(UserId)` UNIQUE | `EP-SYNC-ACK`, `EP-SYNC-POLL` | One cursor per user |
+| `IdxItem_UpdatedAt` | `(UpdatedAt)` | `EP-SYNC-REPLAY` LWW comparison | Per-mutation `ServerItem.UpdatedAt > ClientUpdatedAt` lookup (`mem://features/offline-resilience`) |
+| `IdxItem_LiveByUpdatedAt` | `(UpdatedAt DESC)` partial `WHERE DeletedAt IS NULL` | `EP-SEARCH-QUERY` tie-break | Recency tie-break after MatchKind×FieldWeight scoring (`mem://features/search-functionality`) |
+| `IdxReaperRuns_RanAt` | `(RanAt DESC)` | `EP-REAPER-RUNS-LIST` | Newest-first audit listing |
+| `IdxMirrorPeerGroupMember_ItemId` | `(ItemId)` UNIQUE partial `WHERE DetachedAt IS NULL` | `EP-MIRRORS-GROUP-GET`, `EP-MIRRORS-DETACH` | Item → active peer group lookup; enforces "Item in ≤1 active group" invariant |
+| `IdxMirrorPeerGroupMember_GroupId` | `(MirrorPeerGroupId)` | List peers in a group | FK index for fan-out reads |
 
 ---
 
@@ -112,7 +129,7 @@ flowchart LR
 |----------------|-------------|
 | `IdxItem_Content` (full text on Content) | MVP search is client-side; full-text search ships in Phase 2 via FTS5 virtual table, not a btree index |
 | `IdxItem_CreatedAt` | No endpoint sorts items by creation; ordering is by `FractionalIndex` |
-| `IdxItem_UpdatedAt` | LWW conflict resolution reads UpdatedAt on a single row (already PK lookup); no scan needed |
+| ~~`IdxItem_UpdatedAt`~~ | **REVERSED in v1.1.0** — now required for `EP-SYNC-REPLAY` LWW and `EP-SEARCH-QUERY` tie-break. See App DB indexes table above. |
 | `IdxComment_AuthorUserId` | "All my comments" is not an MVP view |
 
 > **Add an index only when a real query needs it.** Speculative indexes slow writes and cost storage with zero benefit.

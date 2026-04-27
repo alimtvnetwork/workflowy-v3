@@ -1,7 +1,7 @@
 # 03 — App DB ERD (per Workspace)
 
-> **Version:** 1.0.0
-> **Updated:** 2026-04-26 (UTC+8)
+> **Version:** 1.1.0
+> **Updated:** 2026-04-27 (UTC+8) — v1.1.0 added `ReaperRuns` (B4) and `MirrorPeerGroup` + `MirrorPeerGroupMember` (B1) entities; deprecated `Mirror` source/copy table in favour of peer-group model per `mem://features/mirroring`.
 > **Parent:** [`./00-overview.md`](./00-overview.md)
 > **DB file:** `workflowy_app_{WorkspaceId}.db` (one per workspace)
 
@@ -19,7 +19,9 @@ The **item content** layer. Every workspace gets its own App DB file. The unifie
 erDiagram
     Item ||--o{ Item : "parent of (recursive tree)"
     ItemType ||--o{ Item : "classifies"
-    Item ||--o{ Mirror : "is canonical source of"
+    Item ||--o{ Mirror : "is canonical source of (DEPRECATED — see MirrorPeerGroup)"
+    MirrorPeerGroup ||--o{ MirrorPeerGroupMember : "contains"
+    Item ||--o{ MirrorPeerGroupMember : "is peer in"
     Item ||--o{ ItemTag : "has tags"
     Tag ||--o{ ItemTag : "tags"
     Item ||--o{ Share : "shared via"
@@ -30,6 +32,7 @@ erDiagram
     Item ||--o{ Favorite : "favorited as"
     Item ||--o| Template : "saved as"
     Item ||--o{ ActivityLog : "logged in"
+    ReaperRuns }o--|| Item : "audits hard-deletes of"
 
     Item {
         INTEGER ItemId PK
@@ -150,7 +153,32 @@ erDiagram
         TEXT Cursor
         TEXT UpdatedAt
     }
+
+    MirrorPeerGroup {
+        INTEGER MirrorPeerGroupId PK
+        TEXT CreatedAt
+        TEXT DissolvedAt "NULL = active; set on singleton dissolution"
+    }
+
+    MirrorPeerGroupMember {
+        INTEGER MirrorPeerGroupMemberId PK
+        INTEGER MirrorPeerGroupId FK
+        INTEGER ItemId FK "Each Item appears in at most one group"
+        TEXT JoinedAt
+        TEXT DetachedAt "NULL = still a peer"
+    }
+
+    ReaperRuns {
+        INTEGER ReaperRunId PK
+        TEXT RanAt "ISO timestamp; indexed DESC for audit list"
+        INTEGER RowsDeleted
+        INTEGER BatchCount
+        INTEGER DurationMs
+        BOOLEAN DryRun
+    }
 ```
+
+> **Migration note (Mirror → MirrorPeerGroup)**: `Mirror` and `Item.MirrorOfItemId` remain in v1.1.0 for backwards compatibility but are **deprecated**. New code MUST write to `MirrorPeerGroup` + `MirrorPeerGroupMember`. A migration in `07-migrations.md` (planned) will backfill: every `(Source, Mirror)` pair becomes a 2-member group, then both `Mirror` and `Item.MirrorOfItemId` are dropped.
 
 ---
 
