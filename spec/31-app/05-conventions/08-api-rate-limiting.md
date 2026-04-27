@@ -179,9 +179,9 @@ The React client (per `mem://architecture/tech-stack` Axios layer) must:
 
 | Concern | Path | Function |
 |---------|------|----------|
-| Server middleware | `wp-plugin/src/Middleware/RateLimit.php` | `public function check(string $BucketKey, string $EndpointId): RateLimitResult` |
-| Bucket table | `wp-plugin/src/Migrations/0007_rate_limit_buckets.sql` | `CREATE TABLE RateLimitBuckets (BucketKey TEXT, Endpoint TEXT, WindowStart INT, Count INT, PRIMARY KEY(BucketKey, Endpoint, WindowStart))` |
-| Bucket profile constants | `wp-plugin/src/Middleware/BucketProfiles.php` | Mirror of [Endpoint-Specific Buckets](#endpoint-specific-buckets) |
+| Server middleware | `wp-plugin/Middleware/RateLimit.php` | `public function check(string $BucketKey, string $EndpointId): RateLimitResult` |
+| Bucket table | `wp-plugin/Migrations/0007_rate_limit_buckets.sql` | `CREATE TABLE RateLimitBuckets (BucketKey TEXT, Endpoint TEXT, WindowStart INT, Count INT, PRIMARY KEY(BucketKey, Endpoint, WindowStart))` |
+| Bucket profile constants | `wp-plugin/Middleware/BucketProfiles.php` | Mirror of [Endpoint-Specific Buckets](#endpoint-specific-buckets) |
 | Client interceptor | `src/lib/api/rate-limit-interceptor.ts` | Axios response interceptor reading rate-limit headers |
 | 429 toast | `src/components/feedback/RateLimitToast.tsx` | Reads `ratelimit-client-toast` testid |
 
