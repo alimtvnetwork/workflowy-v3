@@ -1,8 +1,14 @@
 # 06 — Indexes
 
-> **Version:** 1.1.0
-> **Updated:** 2026-04-27 (UTC+8) — v1.1.0 added 4 indexes (`IdxItem_UpdatedAt`, `IdxItem_LiveByUpdatedAt`, `IdxReaperRuns_RanAt`, `IdxMirrorPeerGroupMember_ItemId`) for B1–B4; reversed prior "NOT needed" stance on `IdxItem_UpdatedAt` (now required by offline-replay LWW + search tie-break).
+> **Version:** 1.2.0
+> **Updated:** 2026-04-27 (UTC+8) — v1.2.0 added §Naming bridge footnote pointing to [`./sql/00-overview.md`](./sql/00-overview.md) §Naming Bridge for index-name aliases (`IdxMirrorPeerGroupMember_*` ↔ `IdxMirrorMember_*`, `IdxMirrorPeerGroup_CanonicalItemId` ↔ `IdxMirrorGroup_CanonicalItemId`). v1.1.0 added 4 indexes (`IdxItem_UpdatedAt`, `IdxItem_LiveByUpdatedAt`, `IdxReaperRuns_RanAt`, `IdxMirrorPeerGroupMember_ItemId`) for B1–B4; reversed prior "NOT needed" stance on `IdxItem_UpdatedAt` (now required by offline-replay LWW + search tie-break).
 > **Parent:** [`./00-overview.md`](./00-overview.md)
+
+---
+
+## Naming bridge
+
+> The indexes prefixed **`IdxMirrorPeerGroup*`** in the tables below are emitted by `03-app-indexes.sql` as **`IdxMirrorGroup*`** / **`IdxMirrorMember*`** (matching the shorter DDL table names per AUDIT-AI-07). Same indexes, same predicates. Full alias table — including table, column, and index aliases — lives in **[`./sql/00-overview.md`](./sql/00-overview.md) §Naming Bridge**. Do not duplicate the table here; link only.
 
 ---
 
