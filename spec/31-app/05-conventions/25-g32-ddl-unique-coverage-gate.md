@@ -1,19 +1,34 @@
 ---
 slug: g32-ddl-unique-coverage-gate
-version: 1.0.0
+version: 2.0.0
 updated: 2026-04-27
 parent: ../../05-conventions/02-ci-quality-gates.md
 status: canonical
 gate_id: G-32
 ---
 
-# G-32 — DDL UNIQUE Documentation Coverage Gate
+# G-32 — DDL ↔ Doc Index Coverage Gate
 
-> **Version:** 1.0.0
+> **Version:** 2.0.0
 > **Updated:** 2026-04-27 (UTC+8)
 > **Parent:** [`02-ci-quality-gates.md`](./02-ci-quality-gates.md)
 > **Sibling:** [`24-g31-workflow-xref-reciprocity-gate.md`](./24-g31-workflow-xref-reciprocity-gate.md)
 > **Runner:** [`scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs`](../../../scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs)
+
+---
+
+## Sub-checks
+
+| ID       | Direction | Question                                                                  | Added in |
+|----------|-----------|---------------------------------------------------------------------------|----------|
+| G-32.1   | forward   | Does every DDL `UNIQUE` declaration appear in `06-indexes.md`?            | v1.0.0   |
+| G-32.2   | reverse   | Does every `Idx*` / `sqlite_autoindex_*` name in `06-indexes.md` resolve to an explicit DDL index, a UNIQUE-implied autoindex, or a documented alias? | v2.0.0   |
+
+G-32.2 closes the symmetric gap: F26 caught the **fabricated-column**
+class (UNIQUE in DDL but cited the wrong column name in docs); G-32.2
+catches the **fabricated-index** class (a name written into prose with
+no DDL backing whatsoever — exactly the F26 ambiguity #23 root cause if
+nobody had spotted it manually).
 
 ---
 
