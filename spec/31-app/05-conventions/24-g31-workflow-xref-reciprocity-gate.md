@@ -1,6 +1,6 @@
 ---
 slug: g31-workflow-xref-reciprocity-gate
-version: 2.0.0
+version: 2.4.0
 updated: 2026-04-27
 parent: ../../05-conventions/02-ci-quality-gates.md
 status: canonical
@@ -9,8 +9,8 @@ gate_id: G-31
 
 # G-31 — Cross-Reference Reciprocity Gate
 
-> **Version:** 2.0.0
-> **Updated:** 2026-04-27 (UTC+8) — v2.3.0 (F-future-G31a-promote-features) drained the G-31.2 features scope (30 → 0) by programmatically appending back-link rows across 12 target files (preserving each target's native bullet-vs-table format); promoted G-31.2 from WARN to ERROR. **All four G-31 sub-checks are now ERROR-mode at 0 asymmetries — staged WARN-then-ERROR rollout complete.** Earlier: v2.2.0 drained db-diagram (6 → 0); v2.1.0 drained endpoints (8 → 0); v2.0.0 generalised to N parameterised scopes; v1.0.0 originated as the F25 prototype `/tmp/audit_xrefs.mjs` covering only workflows.
+> **Version:** 2.4.0
+> **Updated:** 2026-04-27 (UTC+8) — v2.4.0 (F-future-G31b) added the **G-31.5 meta sub-check** enforcing rationale comments on every entry of the 4 per-scope exemption Sets (`WORKFLOWS_EXEMPT` / `FEATURES_EXEMPT` / `ENDPOINTS_EXEMPT` / `DB_DIAGRAM_EXEMPT`). Algorithm ported verbatim from G-32.4 (`32-check-ddl-unique-coverage.mjs` v4.0.0): trailing inline `// …` OR contiguous `// …` line(s) directly above with no blank-line gap; sample/template `// "…"` lines are skipped. All 4 Sets are currently empty so the gate ships green; this locks the convention before the first exemption is added so authors can't sneak in silent suppressions. Earlier: v2.3.0 drained features (30 → 0); v2.2.0 drained db-diagram (6 → 0); v2.1.0 drained endpoints (8 → 0); v2.0.0 generalised to N parameterised scopes; v1.0.0 originated as the F25 prototype `/tmp/audit_xrefs.mjs` covering only workflows.
 > **Parent:** [`02-ci-quality-gates.md`](./02-ci-quality-gates.md)
 > **Sibling:** [`23-g30-at-citation-validity-gate.md`](./23-g30-at-citation-validity-gate.md), [`25-g32-ddl-unique-coverage-gate.md`](./25-g32-ddl-unique-coverage-gate.md)
 > **Runner:** [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs)
@@ -25,12 +25,14 @@ gate_id: G-31
 | G-31.2   | features         | ERROR | `spec/31-app/01-features/`   | 23              | 0 ✅                  | v2.0.0 (WARN) → v2.3.0 (ERROR) |
 | G-31.3   | endpoints        | ERROR | `spec/31-app/06-endpoints/`  | 19              | 0 ✅                  | v2.0.0 (WARN) → v2.1.0 (ERROR) |
 | G-31.4   | db-diagram       | ERROR | `spec/31-app/07-db-diagram/` | 7               | 0 ✅                  | v2.0.0 (WARN) → v2.2.0 (ERROR) |
+| G-31.5   | meta (rationale) | ERROR | (runner self)                | 4 Sets, 0 entries | 0 ✅                | v2.4.0   |
 
 **Mode semantics:**
-- **ERROR** — any asymmetry contributes to exit code 1; CI fails.
+- **ERROR** — any asymmetry (or, for G-31.5, any unrationaled exemption entry) contributes to exit code 1; CI fails.
 - **WARN** — asymmetries are reported in stdout but exit code stays 0. Used as a staged-rollout pattern (mirrors F24/F27/F28 G-30.2 rollout): introduce the check, surface drift, drain via follow-up tasks, then promote to ERROR.
 
 A scope is promoted to ERROR by changing the literal `mode: "warn"` to `mode: "error"` on its entry in the runner's `SCOPES` array. No other code changes are needed.
+
 
 
 ---
