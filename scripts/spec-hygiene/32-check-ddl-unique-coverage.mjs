@@ -730,9 +730,17 @@ printCreateIndexReport(allCreates, aliasMap, undocCreates);
 const unrationaled = findUnrationaledEntries();
 printRationaleReport(unrationaled);
 
+const blocks = parseCreateIndexBlocks();
+if (blocks.length === 0) {
+  fail("no CREATE INDEX blocks parseable — regex failure?");
+}
+const parityViolations = checkParity(blocks, aliasMap, indexesText);
+printParityReport(blocks, parityViolations);
+
 const failed =
   violations.length > 0 ||
   fabricated.length > 0 ||
   undocCreates.length > 0 ||
-  unrationaled.length > 0;
+  unrationaled.length > 0 ||
+  parityViolations.length > 0;
 process.exit(failed ? 1 : 0);
