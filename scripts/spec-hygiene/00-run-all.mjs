@@ -21,6 +21,7 @@ const checks = [
   "scripts/spec-hygiene/13-generate-at-stubs.mjs",
   "scripts/spec-hygiene/15-check-enums-in-sync.mjs",
   "scripts/spec-hygiene/16-check-tailwind-tokens.mjs",
+  "scripts/spec-hygiene/19-check-runbook-staleness.mjs",
   "scripts/spec-hygiene/04-generate-index.mjs",
 ];
 
