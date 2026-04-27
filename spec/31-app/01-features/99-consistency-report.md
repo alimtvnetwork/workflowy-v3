@@ -1,7 +1,7 @@
 # Consistency Report — 01-features
 
-> **Version:** 2.1.0
-> **Updated:** 2026-04-26 (UTC+8) — Re-audit pass: all 14 content-alignment dimensions closed; all 6 Round-3 audits closed; pseudocode in `14-concurrency-and-sync.md` §14.2/§14.4 PascalCase'd (residual F-08); enum-source link added to `06-item-context-menu.md` §5.1 (residual F-02). Prior: 2026-04-26 — APP-FIX-11: structural vs content score split, content-audit disclaimer added (closes F-09).
+> **Version:** 2.2.0
+> **Updated:** 2026-04-27 (UTC+8) — Registered 7 new addendum SSOTs (`07b`, `08b`, `09b`, `11b`, `12b`, `13b`, `14b`) and `16-search-ranking.md` from product-clarification batches B1–B4. All 7 parent SSOTs bumped (cross-ref headers added). Zero contradictions vs parents. Prior: 2026-04-26 — Re-audit pass: all 14 content-alignment dimensions closed; all 6 Round-3 audits closed; pseudocode in `14-concurrency-and-sync.md` §14.2/§14.4 PascalCase'd (residual F-08); enum-source link added to `06-item-context-menu.md` §5.1 (residual F-02). Prior: 2026-04-26 — APP-FIX-11: structural vs content score split, content-audit disclaimer added (closes F-09).
 > **Prior versions:** 1.0.1 (2026-04-21) — reported "100/100 (A+)" while 15 normative violations existed; the score covered file presence + kebab-case only and was a tooling false-positive.
 
 ---
@@ -66,20 +66,30 @@
 | 03 | `03-layout-structure.md` | ✅ Present | v2.2.0 (Settings Keys table) |
 | 04 | `04-page-content-area.md` | ✅ Present | v2.2.0 (aspirational disclaimer) |
 | 05 | `05-interactions.md` | ✅ Present | v2.1.0 (aspirational disclaimer) |
+| 05a | `05a-hotkey-table.md` | ✅ Present | v1.0.0 (machine-readable hotkey SSOT) |
 | 06 | `06-item-context-menu.md` | ✅ Present | v2.3.0 (Storage + Realtime + disclaimer) |
-| 07 | `07-board-view.md` | ✅ Present | v2.4.0 (Storage + Realtime + disclaimer) |
-| 08 | `08-share-dialog.md` | ✅ Present | Realtime Transport added |
-| 09 | `09-mirrors.md` | ✅ Present | v2.3.0 (Storage + Realtime + disclaimer) |
+| 07 | `07-board-view.md` | ✅ Present | v2.6.0 (sibling 07b cross-ref) |
+| 07b | `07b-dashboard-view.md` | ✅ Present | v1.0.0 (depth-1 inline-editable card grid; B2) |
+| 08 | `08-share-dialog.md` | ✅ Present | v2.4.0 (08b addendum cross-ref) |
+| 08b | `08b-sharing-mirror-interaction.md` | ✅ Present | v1.0.0 (per-instance ACL on peer groups; B4) |
+| 09 | `09-mirrors.md` | ✅ Present | v2.5.0 (09b authoritative-model cross-ref) |
+| 09a | `09a-mirror-cycle-detection.md` | ✅ Present | v1.1.0 (DFS algorithm spec) |
+| 09b | `09b-mirror-peer-group-model.md` | ✅ Present | v1.0.0 (peer-group identity, Workflowy parity; B1) |
 | 10 | `10-today-view.md` | ✅ Present | v2.1.0 (Settings Keys: timezone) |
-| 11 | `11-trash-view.md` | ✅ Present | v2.4.0 (Storage + Realtime + Settings + disclaimer) |
-| 12 | `12-multi-select.md` | ✅ Present | v2.3.0 (Storage + Realtime + disclaimer) |
-| 13 | `13-templates.md` | ✅ Present | v2.3.0 (Storage + Settings + disclaimer) |
-| 14 | `14-concurrency-and-sync.md` | ✅ Present | v1.4.0 (Storage + §14.4 BrokenAt LWW + disclaimer) |
-| 15 | `15-roles-and-permissions.md` | ✅ Present | v1.4.0 (Storage + Realtime + `Auth::hasRole()` contract + disclaimer) |
-| 97 | `97-acceptance-criteria.md` | ✅ Present | AT-APP-* schema (reconciliation pending APP-FIX-14) |
-| 99 | `99-consistency-report.md` | ✅ Present | v2.0.0 (this file) |
+| 11 | `11-trash-view.md` | ✅ Present | v2.5.0 (11b addendum cross-ref) |
+| 11b | `11b-trash-reaper.md` | ✅ Present | v1.0.0 (30d cron hard-delete; B4) |
+| 12 | `12-multi-select.md` | ✅ Present | v2.4.0 (12b addendum cross-ref) |
+| 12b | `12b-multi-select-zoom.md` | ✅ Present | v1.0.0 (virtual-scope zoom; B4) |
+| 13 | `13-templates.md` | ✅ Present | v2.4.0 (13b addendum cross-ref) |
+| 13b | `13b-templates-snapshot-semantics.md` | ✅ Present | v1.0.0 (snapshot copy semantics; B4) |
+| 14 | `14-concurrency-and-sync.md` | ✅ Present | v1.8.0 (14b addendum cross-ref) |
+| 14b | `14b-offline-queue.md` | ✅ Present | v1.0.0 (full local mirror + FIFO replay + LWW; B3) |
+| 15 | `15-roles-and-permissions.md` | ✅ Present | v1.6.0 (Active) |
+| 16 | `16-search-ranking.md` | ✅ Present | v1.0.0 (hybrid relevance + recency; B3) |
+| 97 | `97-acceptance-criteria.md` | ✅ Present | v2.1.0 (AT-APP-* canonical) |
+| 99 | `99-consistency-report.md` | ✅ Present | v2.2.0 (this file) |
 
-**Total:** 18 files (was 15 in v1.0.1; `14-concurrency-and-sync.md`, `15-roles-and-permissions.md`, `97-acceptance-criteria.md` were not yet tracked).
+**Total:** 27 files (was 18 in v2.1.0; +9: hotkey table, dashboard, mirror cycle/peer-group, trash reaper, multi-select zoom, templates snapshot, offline queue, search ranking, sharing×mirror).
 
 ---
 
@@ -114,3 +124,5 @@ If any tracker has open items, the **content-alignment status above must read �
 | 2026-04-18 | 1.0.0 | Initial consistency report after restructure |
 | 2026-04-21 | 1.0.1 | Marked all 15 files present; reported "100/100 (A+)" — later flagged as misleading by F-09 |
 | 2026-04-26 | 2.0.0 | **APP-FIX-11.** Split score into Structural vs Content; added disclaimer; refreshed inventory to 18 files; added Content Audit Tracker pointing at `spec/18-spec-issues/`. Closes F-09. |
+| 2026-04-26 | 2.1.0 | Re-audit pass — all 14 content dimensions + all 6 Round-3 audits closed; pseudocode PascalCase'd; enum-source link patched. |
+| 2026-04-27 | 2.2.0 | **Product-clarification batches B1–B4.** Registered 7 new addendum SSOTs (`07b`, `08b`, `09b`, `11b`, `12b`, `13b`, `14b`) + `16-search-ranking.md`; bumped 7 parent SSOTs with cross-ref headers; inventory grew 18 → 27. Zero contradictions vs parents. |
