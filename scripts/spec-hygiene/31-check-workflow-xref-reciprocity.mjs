@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * G-31 — Cross-Reference Reciprocity Gate (v2.4.0)
+ * G-31 — Cross-Reference Reciprocity Gate (v2.5.0)
  *
  * Asserts that every cross-sibling Related-section link in a scoped
  * folder is reciprocated by a back-link in the target's own
@@ -31,6 +31,16 @@
  *                                       ships green; the gate locks the
  *                                       convention before any exemption
  *                                       is added (F-future-G31b).
+ *   G-31.6 (islands,   WARN,  v2.5.0)  — files with **zero in + zero out**
+ *                                       cross-sibling Related-section
+ *                                       references are flagged as
+ *                                       documentation islands. Per-scope
+ *                                       `*_ISLAND_EXEMPT` Sets opt out
+ *                                       genuine leaves (G-31.5-enforced
+ *                                       rationale required). WARN-only:
+ *                                       does not fail CI; cleanup happens
+ *                                       by authoring a peer link or
+ *                                       allow-listing (F-future-G31c).
  *
  * Mode semantics:
  *   - ERROR scopes contribute to exit code 1 on any asymmetry.
@@ -52,12 +62,14 @@
  *                  workflows use "## Related"; db-diagram uses
  *                  "## Cross-References"; we accept either when present)
  *   mode         — "error" | "warn"
- *   exemptions   — Set<`${from} → ${to}`> intentionally one-way pairs
+ *   exemptions       — Set<`${from} → ${to}`> intentionally one-way pairs
+ *   islandExemptions — Set<bareFilename> opting a leaf out of G-31.6
  *
  * Exit codes:
- *   0  No asymmetries in any ERROR scope (WARN scope drift is reported
- *      but does not fail)
- *   1  At least one ERROR-scope asymmetry detected
+ *   0  No asymmetries in any ERROR scope and no unrationaled exemption
+ *      entries (WARN-scope drift and island advisories are reported but
+ *      do not fail)
+ *   1  At least one ERROR-scope asymmetry OR unrationaled exemption
  *   2  Runner error (missing dir, malformed file, etc.)
  *
  * Algorithm SSOT: spec/31-app/05-conventions/24-g31-workflow-xref-reciprocity-gate.md
@@ -94,6 +106,25 @@
  *        can't sneak in silent suppressions. Sample template entries
  *        (lines starting with `// "…"`) are skipped — they are not
  *        active entries, just stylistic hints for future authors.
+ * v2.5.0 (F-future-G31c) added the **G-31.6 island-detection sub-check**
+ *        (WARN advisory). For each scope, files with zero outgoing AND
+ *        zero incoming cross-sibling Related-section references are
+ *        flagged as documentation islands. New helper `findIslands()`
+ *        derives an incoming-link tally from the existing outgoing
+ *        matrix in O(N²), then filters files where both tallies are 0
+ *        and the bare filename is not in the per-scope `*_ISLAND_EXEMPT`
+ *        Set. New helper `printIslandReport()` emits a per-scope ⚠️
+ *        block with the cleanup hint. Added 4 new exemption Sets
+ *        (`WORKFLOWS_ISLAND_EXEMPT` / `FEATURES_ISLAND_EXEMPT` /
+ *        `ENDPOINTS_ISLAND_EXEMPT` / `DB_DIAGRAM_ISLAND_EXEMPT`, all
+ *        empty at v2.5.0) and registered them in `ALLOWLIST_NAMES` so
+ *        G-31.5 enforces rationale comments on island opt-outs too.
+ *        Each scope entry gained an `islandExemptions` field. Initial
+ *        probe found: workflows 0, features 5, endpoints 9, db-diagram 0
+ *        (14 total). Exit semantics unchanged: islands are advisory and
+ *        do NOT influence the exit code; only ERROR-asymmetries and
+ *        unrationaled exemptions fail. Cleanup deferred — surfaced for
+ *        author triage.
  */
 
 import { readFileSync, readdirSync, statSync } from "node:fs";
@@ -124,6 +155,31 @@ const DB_DIAGRAM_EXEMPT = new Set([
 ]);
 
 // =====================================================================
+// Per-scope ISLAND allow-lists (G-31.6, v2.5.0+). Format: bare filename.
+// An "island" is a sibling file with neither incoming nor outgoing
+// cross-sibling Related-section references. Allow-list opts a file out
+// of the WARN advisory when it is genuinely a leaf (e.g. a self-contained
+// reference page with no semantic peers). Each entry MUST carry a
+// rationale (machine-enforced by G-31.5).
+// =====================================================================
+
+const WORKFLOWS_ISLAND_EXEMPT = new Set([
+  // (empty at v2.5.0 — workflows scope has 0 islands)
+]);
+
+const FEATURES_ISLAND_EXEMPT = new Set([
+  // (empty at v2.5.0 — 5 islands surfaced as advisory; cleanup deferred)
+]);
+
+const ENDPOINTS_ISLAND_EXEMPT = new Set([
+  // (empty at v2.5.0 — 9 islands surfaced as advisory; cleanup deferred)
+]);
+
+const DB_DIAGRAM_ISLAND_EXEMPT = new Set([
+  // (empty at v2.5.0 — db-diagram scope has 0 islands)
+]);
+
+// =====================================================================
 // Scope registry. Order = output order.
 // =====================================================================
 
@@ -137,6 +193,7 @@ const SCOPES = [
     relatedHeads: ["## Related"],
     mode: "error",
     exemptions: WORKFLOWS_EXEMPT,
+    islandExemptions: WORKFLOWS_ISLAND_EXEMPT,
   },
   {
     id: "G-31.2",
@@ -148,6 +205,7 @@ const SCOPES = [
     relatedHeads: ["## Related", "## Cross-References", "## See also"],
     mode: "error",
     exemptions: FEATURES_EXEMPT,
+    islandExemptions: FEATURES_ISLAND_EXEMPT,
   },
   {
     id: "G-31.3",
@@ -158,6 +216,7 @@ const SCOPES = [
     relatedHeads: ["## Related", "## Cross-References", "## See also"],
     mode: "error",
     exemptions: ENDPOINTS_EXEMPT,
+    islandExemptions: ENDPOINTS_ISLAND_EXEMPT,
   },
   {
     id: "G-31.4",
@@ -170,6 +229,7 @@ const SCOPES = [
     relatedHeads: ["## Cross-References", "## Related", "## See also"],
     mode: "error",
     exemptions: DB_DIAGRAM_EXEMPT,
+    islandExemptions: DB_DIAGRAM_ISLAND_EXEMPT,
   },
 ];
 
@@ -297,6 +357,10 @@ const ALLOWLIST_NAMES = [
   "FEATURES_EXEMPT",
   "ENDPOINTS_EXEMPT",
   "DB_DIAGRAM_EXEMPT",
+  "WORKFLOWS_ISLAND_EXEMPT",
+  "FEATURES_ISLAND_EXEMPT",
+  "ENDPOINTS_ISLAND_EXEMPT",
+  "DB_DIAGRAM_ISLAND_EXEMPT",
 ];
 
 const SELF_PATH = "scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs";
@@ -390,9 +454,60 @@ function printRationaleReport(violations) {
   console.log(`  (b) a \`// …\` comment line immediately above (no blank line in between).`);
 }
 
+// =====================================================================
+// G-31.6 — Documentation-island detection (WARN advisory). For each
+// scope, a sibling file with **zero outgoing AND zero incoming**
+// cross-sibling Related-section references is flagged as an island.
+// Surfaces likely-orphaned spec pages without failing CI; cleanup
+// happens via authoring back-links or opting in via the per-scope
+// `*_ISLAND_EXEMPT` Set with a rationale (G-31.5-enforced).
+// =====================================================================
+
+function findIslands(scope, files, matrix) {
+  // Build incoming-link counts from outgoing matrix.
+  const incoming = {};
+  for (const f of files) incoming[f] = 0;
+  for (const f of files) {
+    for (const target of matrix[f]) {
+      incoming[target] = (incoming[target] || 0) + 1;
+    }
+  }
+  return files.filter((f) => {
+    if (matrix[f].size > 0) return false;
+    if (incoming[f] > 0) return false;
+    if (scope.islandExemptions.has(f)) return false;
+    return true;
+  });
+}
+
+function printIslandReport(scope, files, islands) {
+  console.log("");
+  console.log(`G-31.6 (${scope.label}, WARN) documentation-island advisory:`);
+  console.log(`  scope:                              ${scope.dir}`);
+  console.log(`  files scanned:                      ${files.length}`);
+  console.log(`  island-exempt (allow-list):         ${scope.islandExemptions.size}`);
+  console.log(`  islands (zero in + zero out):       ${islands.length}`);
+
+  if (islands.length === 0) {
+    console.log(`  ✅ no documentation islands in this scope`);
+    return;
+  }
+
+  console.log("");
+  console.log(`  ⚠️  ${islands.length} island file(s) — neither linked-from nor linking-to any sibling:`);
+  for (const f of islands) {
+    console.log(`    ${f}`);
+  }
+  console.log("");
+  console.log(`  (WARN advisory — does not fail the gate. Either author a peer`);
+  console.log(`   cross-reference, or add the bare filename to this scope's`);
+  console.log(`   *_ISLAND_EXEMPT Set with a one-line rationale.)`);
+}
+
 // --- main ---
 let totalErrorAsym = 0;
 let totalWarnAsym = 0;
+let totalIslands = 0;
 
 for (const scope of SCOPES) {
   let dirStat;
@@ -414,6 +529,10 @@ for (const scope of SCOPES) {
   const asym = findAsymmetries(scope, files, matrix);
   printScopeReport(scope, files, matrix, asym);
 
+  const islands = findIslands(scope, files, matrix);
+  printIslandReport(scope, files, islands);
+  totalIslands += islands.length;
+
   if (scope.mode === "error") totalErrorAsym += asym.length;
   else totalWarnAsym += asym.length;
 }
@@ -422,7 +541,7 @@ const unrationaled = findUnrationaledEntries();
 printRationaleReport(unrationaled);
 
 console.log("");
-console.log(`G-31 summary: ${SCOPES.length} scope(s) scanned — ${totalErrorAsym} ERROR-scope asymmetries, ${totalWarnAsym} WARN-scope asymmetries, ${unrationaled.length} unrationaled exemption entry/entries.`);
+console.log(`G-31 summary: ${SCOPES.length} scope(s) scanned — ${totalErrorAsym} ERROR-scope asymmetries, ${totalWarnAsym} WARN-scope asymmetries, ${totalIslands} island advisory(ies), ${unrationaled.length} unrationaled exemption entry/entries.`);
 
 const failed = totalErrorAsym > 0 || unrationaled.length > 0;
 process.exit(failed ? 1 : 0);

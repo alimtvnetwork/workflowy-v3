@@ -38,7 +38,7 @@
 | 23 | [`22-wp-plugin-folder-skeleton.md`](./22-wp-plugin-folder-skeleton.md) | WP-Plugin Folder Skeleton — SSOT | 290 |
 | 24 | [`23-g30-at-citation-validity-gate.md`](./23-g30-at-citation-validity-gate.md) | G-30 — AT Citation Validity Gate | 267 |
 | 25 | [`23-sse-php-implementation.md`](./23-sse-php-implementation.md) | Convention 23 — PHP SSE Implementation Pattern | 343 |
-| 26 | [`24-g31-workflow-xref-reciprocity-gate.md`](./24-g31-workflow-xref-reciprocity-gate.md) | G-31 — Cross-Reference Reciprocity Gate | 207 |
+| 26 | [`24-g31-workflow-xref-reciprocity-gate.md`](./24-g31-workflow-xref-reciprocity-gate.md) | G-31 — Cross-Reference Reciprocity Gate | 212 |
 | 27 | [`24-state-management-architecture.md`](./24-state-management-architecture.md) | State Management Architecture | 277 |
 | 28 | [`25-g32-ddl-unique-coverage-gate.md`](./25-g32-ddl-unique-coverage-gate.md) | G-32 — DDL ↔ Doc Index Coverage Gate | 259 |
 
