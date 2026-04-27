@@ -222,19 +222,15 @@ connectivity" choice.
 
 ## Future-promotion ladder (not scoped to this gate)
 
-Three further enhancements remain available for future tasks:
+Two further enhancements remain available for future tasks:
 
-1. **F-future-G32a**: Add G-32.2 reverse-drift sub-check — enumerate all
-   `Idx*` and `sqlite_autoindex_*` identifiers mentioned in
-   `06-indexes.md` and verify each maps back to a real DDL declaration.
-   Would have caught F26's fabricated-column bug at gate level.
-2. **F-future-G32b**: Extend scope to non-UNIQUE indexes (`CREATE INDEX`
+1. **F-future-G32b**: Extend scope to non-UNIQUE indexes (`CREATE INDEX`
    without UNIQUE). Would require deciding how to handle partial
    indexes and expression indexes whose names don't follow
    `Idx{Table}_{Cols}` convention.
-3. **F-future-G32c**: Add G-32.3 enforcing every `COVERAGE_EXEMPT` entry
-   has a corresponding rationale comment in the runner source
-   (machine-checkable; mirrors the G-30.3 and G-31.2 plans).
+2. **F-future-G32c**: Add G-32.3 enforcing every `COVERAGE_EXEMPT` /
+   `REVERSE_EXEMPT` entry has a corresponding rationale comment in the
+   runner source (machine-checkable; mirrors the G-30.3 and G-31.2 plans).
 
 Logging here so they're discoverable when "check memory for remaining
 tasks" runs in a later loop.
@@ -246,3 +242,4 @@ tasks" runs in a later loop.
 | Version | Date | Change |
 |---------|------|--------|
 | 1.0.0 | 2026-04-27 | F30 — initial implementation; promoted from F26 prototype `/tmp/audit_unique.mjs`; allow-list empty; current state ✅ 13/13 UNIQUE declarations documented across 2 schema files (7 column-level + 4 table-level + 2 explicit) |
+| 2.0.0 | 2026-04-27 | F-future-G32a — added **G-32.2 reverse-drift sub-check**. Parses every backticked `Idx*`/`sqlite_autoindex_*` identifier in `06-indexes.md`, builds DDL universe from explicit `CREATE INDEX` across 3 SQL files + UNIQUE-implied autoindexes + alias rows from `sql/00-overview.md` §Index-name aliases. New `REVERSE_EXEMPT` allow-list (8 entries: 2 logical-tag aliases for autoindex shorthands, 3 prose-rejected names from §"Indexes intentionally NOT created", 3 v2-deprecated names retained for traceability). Negative-tested by injecting `IdxFabricated_Foo` (correctly exits 1). Current state ✅ 37 doc identifiers / 42 DDL identifiers / 0 fabricated. |
