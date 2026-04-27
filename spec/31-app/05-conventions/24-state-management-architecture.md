@@ -270,7 +270,7 @@ src/
 | Universal envelope | [`../../04-database-conventions/06-rest-api-format/`](../../04-database-conventions/06-rest-api-format/00-overview.md) |
 | SSE PHP reference | [`../05-conventions/23-sse-php-implementation.md`](../05-conventions/23-sse-php-implementation.md) |
 | Endpoint↔AT matrix | [`../06-endpoints/16-endpoint-at-matrix.md`](../06-endpoints/16-endpoint-at-matrix.md) |
-| Concurrency & sync | [`./14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) |
-| Mirror semantics | [`./09-mirrors.md`](./09-mirrors.md), [`./09a-mirror-cycle-detection.md`](./09a-mirror-cycle-detection.md) |
+| Concurrency & sync | [`./14-concurrency-and-sync.md`](../01-features/14-concurrency-and-sync.md) |
+| Mirror semantics | [`./09-mirrors.md`](../01-features/09-mirrors.md), [`./09a-mirror-cycle-detection.md`](../01-features/09a-mirror-cycle-detection.md) |
 | Coding guidelines | `mem://constraints/coding-guidelines` |
 | Audit finding | [`../../18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md`](../../18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md) §AUDIT-AI-06 |
