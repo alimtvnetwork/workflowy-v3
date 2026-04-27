@@ -115,8 +115,8 @@ const SCOPES = [
     filenameRx: /^\d{2}[a-z]?-.+\.md$/i,
     excludeRx: /^(00-overview|16-endpoint-at-matrix|97-acceptance-criteria|99-consistency-report)\.md$/,
     relatedHeads: ["## Related", "## Cross-References", "## See also"],
-    mode: "warn",
-    exemptions: ENDPOINTS_EXEMPT,
+    mode: "error",
+    exemptions: ENDPOINTS_EXEMP​T,
   },
   {
     id: "G-31.4",
