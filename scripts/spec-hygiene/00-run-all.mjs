@@ -26,6 +26,7 @@ const checks = [
   "scripts/spec-hygiene/30-check-at-citation-validity.mjs",
   "scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs",
   "scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs",
+  "scripts/spec-hygiene/35-allow-list-inventory.mjs --check",
   "scripts/spec-hygiene/04-generate-index.mjs",
 ];
 
