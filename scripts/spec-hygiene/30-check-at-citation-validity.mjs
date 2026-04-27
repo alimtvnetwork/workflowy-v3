@@ -78,7 +78,8 @@ function padToWidth(numStr, width) {
 
 function collectRegistered() {
   if (!existsSync(APP_ROOT)) fail(`app spec dir missing: ${APP_ROOT}`);
-  const registered = new Map(); // id -> first declaring file (relative)
+  const ids = new Map();          // id -> first declaring file (relative)
+  const openPrefixes = new Map(); // prefix (e.g. "AT-INFO-") -> file
   for (const file of walkMd(APP_ROOT)) {
     const content = readFileSync(file, "utf8");
     const relFile = relative(REPO_ROOT, file);
@@ -86,12 +87,12 @@ function collectRegistered() {
     // Single-ID declarations.
     for (const m of content.matchAll(RX_DECL_SINGLE)) {
       const id = m[1];
-      if (!registered.has(id)) registered.set(id, relFile);
+      if (!ids.has(id)) ids.set(id, relFile);
     }
 
-    // Range declarations — `AT-APP-58..67` → AT-APP-58, …, AT-APP-67.
+    // Range declarations — `AT-APP-58..67` enumerated.
     for (const m of content.matchAll(RX_DECL_RANGE)) {
-      const prefix = m[1]; // e.g. "AT-APPF-"
+      const prefix = m[1];
       const start = parseInt(m[2], 10);
       const end = parseInt(m[3], 10);
       const width = Math.max(m[2].length, m[3].length);
@@ -100,11 +101,27 @@ function collectRegistered() {
       }
       for (let n = start; n <= end; n++) {
         const id = `${prefix}${padToWidth(String(n), width)}`;
-        if (!registered.has(id)) registered.set(id, relFile);
+        if (!ids.has(id)) ids.set(id, relFile);
       }
     }
+
+    // Open-prefix declarations — `AT-INFO-NN` licenses the entire series.
+    for (const m of content.matchAll(RX_DECL_OPEN)) {
+      const prefix = m[1];
+      if (!openPrefixes.has(prefix)) openPrefixes.set(prefix, relFile);
+    }
   }
-  return registered;
+  return { ids, openPrefixes };
+}
+
+function isRegistered(id, registered) {
+  if (registered.ids.has(id)) return true;
+  for (const prefix of registered.openPrefixes.keys()) {
+    if (id.startsWith(prefix) && /^\d+$/.test(id.slice(prefix.length))) {
+      return true;
+    }
+  }
+  return false;
 }
 
 function collectCitations() {
