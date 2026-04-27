@@ -1,7 +1,7 @@
 # 04 — Feature Slices (One ERD per Feature)
 
-> **Version:** 1.0.0
-> **Updated:** 2026-04-26 (UTC+8)
+> **Version:** 2.0.0
+> **Updated:** 2026-04-27 (UTC+8) — v2.0.0 replaces §4.2 with the v2 Mirror Peer-Group model (legacy `Mirror` table marked deprecated); adds `ReaperRuns` to §4.6 Trash; adds new §4.10 (Search) and §4.11 (Sync Replay) slices.
 > **Parent:** [`./00-overview.md`](./00-overview.md)
 
 ---
