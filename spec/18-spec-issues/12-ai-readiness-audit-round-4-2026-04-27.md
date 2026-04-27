@@ -62,11 +62,11 @@ A mediocre AI implementer will crash and burn trying to build from this spec, de
 | Effort | small_1-4h |
 | Blocks | Phase 3.x (Realtime Features) |
 | Evidence | Probe 7 (0 ```php code blocks in spec/31-app/01-features/14-concurrency-and-sync.md) |
-| Resolution | [`../31-app/05-conventions/23-sse-php-implementation.md`](../31-app/05-conventions/23-sse-php-implementation.md) v1.0.0 — 4 reference ```php blocks (headers-before-output, GC-bounded loop, emit helpers, 5-stream concurrency cap), SQLite event-log DDL, long-poll fallback for restricted hosts, 10 ATs (`AT-SSE-PHP-01..10`). |
+| Resolution | [`../31-app/05-conventions/32-sse-php-implementation.md`](../31-app/05-conventions/32-sse-php-implementation.md) v1.0.0 — 4 reference ```php blocks (headers-before-output, GC-bounded loop, emit helpers, 5-stream concurrency cap), SQLite event-log DDL, long-poll fallback for restricted hosts, 10 ATs (`AT-SSE-PHP-01..10`). |
 
 **Why it can fail (historical):** PHP SSE loops require explicitly wiping out `output_buffering`, overriding max execution times, and handling client aborts via `connection_status()`. A mediocre AI will write generic `while(true) { echo... }` that memory leaks or locks the session.
 
-**How it was fixed:** Authored `spec/31-app/05-conventions/23-sse-php-implementation.md` — header order strictly defined (BEFORE any echo), bounded loop with `gc_collect_cycles()` every 100 events, 30-min wall-clock cutoff, 9-name event whitelist enforced, 5-tab-per-user concurrency cap via WP transients, fallback to long-poll when `set_time_limit(0)` is denied, RSS stability load test (AT-SSE-PHP-10).
+**How it was fixed:** Authored `spec/31-app/05-conventions/32-sse-php-implementation.md` — header order strictly defined (BEFORE any echo), bounded loop with `gc_collect_cycles()` every 100 events, 30-min wall-clock cutoff, 9-name event whitelist enforced, 5-tab-per-user concurrency cap via WP transients, fallback to long-poll when `set_time_limit(0)` is denied, RSS stability load test (AT-SSE-PHP-10).
 
 ### 🟠 AUDIT-AI-03 — Missing Concrete SQLite DDL Schemas
 
@@ -126,7 +126,7 @@ A mediocre AI implementer will crash and burn trying to build from this spec, de
 
 **Why it can fail:** The AI will hallucinate massive React prop drilling to satisfy deeply nested aspirational components instead of creating unified architectural Contexts, leading to brittle refactors.
 
-**How to fix:** Create `spec/31-app/05-conventions/24-state-management-architecture.md` dictating which contexts wrap the aspirational components and what state is lifted.
+**How to fix:** Create `spec/31-app/05-conventions/33-state-management-architecture.md` dictating which contexts wrap the aspirational components and what state is lifted.
 
 ### ✅ AUDIT-AI-07 — A-01 Spec-Code Enum Drift — **CLOSED 2026-04-27**
 
@@ -218,7 +218,7 @@ These are independent of the audit's 10-dimension scoring rubric and do not trig
 | Version | Date | Change |
 |---------|------|--------|
 | 1.0.0 | 2026-04-27 | Initial AI-driven audit. Gemini 3 Pro structured output. 78/100 composite, 7 findings (2 critical, 2 high, 2 medium, 1 low). Challenges prior 100/100 internal verdict on grounds of dev-harness, PHP SSE fixtures, DDL ground-truth, item-tree JSON fixtures, endpoint cross-refs, and state architecture. |
-| 1.1.0 | 2026-04-27 | Closed AUDIT-AI-01 (`24-local-dev-harness.md`, +6 pts) and AUDIT-AI-02 (`23-sse-php-implementation.md`, +5 pts). Composite 78 → **89/100**. 5 findings remain (2 HIGH, 2 MEDIUM, 1 LOW). |
+| 1.1.0 | 2026-04-27 | Closed AUDIT-AI-01 (`24-local-dev-harness.md`, +6 pts) and AUDIT-AI-02 (`32-sse-php-implementation.md`, +5 pts). Composite 78 → **89/100**. 5 findings remain (2 HIGH, 2 MEDIUM, 1 LOW). |
 | 1.2.0 | 2026-04-27 | Closed AUDIT-AI-03 (DDL files), AUDIT-AI-04 (217-item fixture), AUDIT-AI-05 (endpoint↔AT matrix), AUDIT-AI-06 (state-management architecture). Composite 89 → **99/100**. Only AUDIT-AI-07 (LOW, gated by spec-only) remained. |
 | 1.3.0 | 2026-04-27 | Closed AUDIT-AI-07 via Path B+ — user clarified Workflowy mirror semantics, authored `09b-mirror-peer-group-model.md`, patched DDL v1→v2, added auto-dissolve trigger, migration script, and memory rule. Composite 99 → **100/100**. AI-readiness ceiling reached. |
 | 1.4.0 | 2026-04-27 | Added §8 footnote linking 7 post-100 product-clarification SSOTs (B1–B4). No score change. |

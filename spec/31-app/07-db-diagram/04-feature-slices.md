@@ -301,7 +301,7 @@ One row per user. Advanced by `EP-SYNC-ACK`. Used by `EP-SYNC-STREAM` (resume) a
 
 ---
 
-## 4.10 — Search (mirrors `15-search.md` + `02-workflows/06-search-query-flow.md`)
+## 4.10 — Search (mirrors `15b-search.md` + `02-workflows/06-search-query-flow.md`)
 
 > **No new tables in v2.0.** Search is a query over `Item` filtered by the workspace permission view. The FTS5 virtual table (`FtsItem`) is reserved as **M-120** in [`./07-migrations.md`](./07-migrations.md) — until then, search uses `LIKE` + tier-scoring in app code.
 

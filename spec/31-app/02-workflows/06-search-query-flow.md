@@ -5,7 +5,7 @@
 > **Status:** Canonical — cross-feature flow
 > **Parent:** [`00-overview.md`](./00-overview.md)
 > **SSOT for the underlying feature:** [`spec/31-app/01-features/16-search-ranking.md`](../01-features/16-search-ranking.md)
-> **Endpoint contract:** [`spec/31-app/06-endpoints/15-search.md`](../06-endpoints/15-search.md)
+> **Endpoint contract:** [`spec/31-app/06-endpoints/15b-search.md`](../06-endpoints/15b-search.md)
 
 ---
 
@@ -139,5 +139,5 @@ This file pins the sequence. Each step cites the SSOT that governs its rule.
 - [`05-trash-reaper-flow.md`](./05-trash-reaper-flow.md) — reaper removes rows; search excludes `DeletedAt IS NOT NULL` independently
 - [`../01-features/16-search-ranking.md`](../01-features/16-search-ranking.md) — feature-level SSOT
 - [`../01-features/15-roles-and-permissions.md`](../01-features/15-roles-and-permissions.md) — `Auth::hasRole()` and `resolveViewableItemIds()` contract
-- [`../06-endpoints/15-search.md`](../06-endpoints/15-search.md) — endpoint contract (EP-SEARCH-QUERY)
+- [`../06-endpoints/15b-search.md`](../06-endpoints/15b-search.md) — endpoint contract (EP-SEARCH-QUERY)
 - [`../07-db-diagram/sql/03-app-indexes.sql`](../07-db-diagram/sql/03-app-indexes.sql) — `IdxItem_LiveByUpdatedAt` partial index for tie-breaks; commented FTS5 template

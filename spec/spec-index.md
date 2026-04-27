@@ -1310,17 +1310,17 @@
 | [`31-app/05-conventions/20-g27-export-coverage-gate.md`](./31-app/05-conventions/20-g27-export-coverage-gate.md) | G-27 Data-Export Policy Drift Gate — Algorithm Spec | 1.0.0 | — |
 | [`31-app/05-conventions/21-g28-backup-coverage-gate.md`](./31-app/05-conventions/21-g28-backup-coverage-gate.md) | G-28 Backup & DR Policy Drift Gate — Algorithm Spec | 1.0.0 | — |
 | [`31-app/05-conventions/22-g29-endpoint-matrix-coverage-gate.md`](./31-app/05-conventions/22-g29-endpoint-matrix-coverage-gate.md) | G-29 Endpoint ↔ Matrix Coverage Gate — Algorithm Spec | 1.0.0 | — |
-| [`31-app/05-conventions/22-wp-plugin-folder-skeleton.md`](./31-app/05-conventions/22-wp-plugin-folder-skeleton.md) | WP-Plugin Folder Skeleton — SSOT | 1.0.0 | Spec |
 | [`31-app/05-conventions/23-g30-at-citation-validity-gate.md`](./31-app/05-conventions/23-g30-at-citation-validity-gate.md) | G-30 — AT Citation Validity Gate | 1.6.0 | WARN |
-| [`31-app/05-conventions/23-sse-php-implementation.md`](./31-app/05-conventions/23-sse-php-implementation.md) | Convention 23 — PHP SSE Implementation Pattern | 1.0.0 | Active |
 | [`31-app/05-conventions/24-g31-workflow-xref-reciprocity-gate.md`](./31-app/05-conventions/24-g31-workflow-xref-reciprocity-gate.md) | G-31 — Cross-Reference Reciprocity Gate | 2.7.0 | — |
-| [`31-app/05-conventions/24-state-management-architecture.md`](./31-app/05-conventions/24-state-management-architecture.md) | State Management Architecture | 1.0.0 | — |
 | [`31-app/05-conventions/25-g32-ddl-unique-coverage-gate.md`](./31-app/05-conventions/25-g32-ddl-unique-coverage-gate.md) | G-32 — DDL ↔ Doc Index Coverage Gate | 5.0.0 | — |
 | [`31-app/05-conventions/26-allow-list-inventory.md`](./31-app/05-conventions/26-allow-list-inventory.md) | Allow-List Inventory | — | — |
 | [`31-app/05-conventions/27-g33-cross-runner-duplicate-gate.md`](./31-app/05-conventions/27-g33-cross-runner-duplicate-gate.md) | G-33 — Cross-Runner Allow-List Duplicate Detector | — | — |
 | [`31-app/05-conventions/28-g34-allow-list-age-gate.md`](./31-app/05-conventions/28-g34-allow-list-age-gate.md) | G-34 — Allow-List Entry Age Gate (Algorithm SSOT) | 1.0.0 | — |
 | [`31-app/05-conventions/29-g36-cross-scope-island-gate.md`](./31-app/05-conventions/29-g36-cross-scope-island-gate.md) | G-36 — Cross-Scope Island Detector (Algorithm SSOT) | 1.0.0 | — |
 | [`31-app/05-conventions/30-g37-stale-relative-link-gate.md`](./31-app/05-conventions/30-g37-stale-relative-link-gate.md) | G-37 — Stale Relative-Link Gate (Algorithm SSOT) | 1.0.0 | — |
+| [`31-app/05-conventions/31-wp-plugin-folder-skeleton.md`](./31-app/05-conventions/31-wp-plugin-folder-skeleton.md) | WP-Plugin Folder Skeleton — SSOT | 1.0.0 | Spec |
+| [`31-app/05-conventions/32-sse-php-implementation.md`](./31-app/05-conventions/32-sse-php-implementation.md) | Convention 23 — PHP SSE Implementation Pattern | 1.0.0 | Active |
+| [`31-app/05-conventions/33-state-management-architecture.md`](./31-app/05-conventions/33-state-management-architecture.md) | State Management Architecture | 1.0.0 | — |
 | [`31-app/05-conventions/97-acceptance-criteria.md`](./31-app/05-conventions/97-acceptance-criteria.md) | Conventions — Acceptance Criteria | 1.0.0 | — |
 | [`31-app/05-conventions/99-consistency-report.md`](./31-app/05-conventions/99-consistency-report.md) | Consistency Report — 05-conventions | 1.0.1 | — |
 | [`31-app/06-endpoints/00-overview.md`](./31-app/06-endpoints/00-overview.md) | Endpoints — Master Index | 1.0.0 | — |
@@ -1342,7 +1342,7 @@
 | [`31-app/06-endpoints/14-concurrency-and-sync.md`](./31-app/06-endpoints/14-concurrency-and-sync.md) | Endpoints — 14 Concurrency & Sync (Realtime Transport) | 1.2.0 | — |
 | [`31-app/06-endpoints/14b-sync-replay.md`](./31-app/06-endpoints/14b-sync-replay.md) | Endpoints — 14b Sync Replay (Offline Queue) | 1.0.0 | — |
 | [`31-app/06-endpoints/15-roles-and-permissions.md`](./31-app/06-endpoints/15-roles-and-permissions.md) | Endpoints — 15 Roles & Permissions | 1.0.0 | — |
-| [`31-app/06-endpoints/15-search.md`](./31-app/06-endpoints/15-search.md) | Endpoints — 15 Search | 1.0.0 | — |
+| [`31-app/06-endpoints/15b-search.md`](./31-app/06-endpoints/15b-search.md) | Endpoints — 15 Search | 1.0.0 | — |
 | [`31-app/06-endpoints/16-endpoint-at-matrix.md`](./31-app/06-endpoints/16-endpoint-at-matrix.md) | Endpoint ↔ Acceptance-Test Cross-Reference Matrix | 1.1.0 | — |
 | [`31-app/06-endpoints/97-acceptance-criteria.md`](./31-app/06-endpoints/97-acceptance-criteria.md) | Endpoints — Acceptance Criteria | 1.0.0 | — |
 | [`31-app/06-endpoints/99-consistency-report.md`](./31-app/06-endpoints/99-consistency-report.md) | Consistency Report — 06-endpoints | 1.0.0 | — |

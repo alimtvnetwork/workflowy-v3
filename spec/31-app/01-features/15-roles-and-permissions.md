@@ -256,7 +256,7 @@ wp-plugin/
     └── Auth.php          ← class Auth { public static function hasRole(...) }
 ```
 
-Path canonicalised per [`spec/31-app/05-conventions/22-wp-plugin-folder-skeleton.md`](../05-conventions/22-wp-plugin-folder-skeleton.md) §1 (Flat-PSR layout — no `src/` indirection). The class is **always static** — never instantiated. It lives in namespace `WorkFlowy\Auth`.
+Path canonicalised per [`spec/31-app/05-conventions/31-wp-plugin-folder-skeleton.md`](../05-conventions/31-wp-plugin-folder-skeleton.md) §1 (Flat-PSR layout — no `src/` indirection). The class is **always static** — never instantiated. It lives in namespace `WorkFlowy\Auth`.
 
 ### Signature
 

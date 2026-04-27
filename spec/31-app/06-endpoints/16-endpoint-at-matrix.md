@@ -63,7 +63,7 @@ A single matrix mapping every one of the **41 REST endpoints** in this folder to
 | 41 | `EP-ROLES-REVOKE` | DELETE | `/workspaces/{id}/roles/{userId}` | `15-roles-and-permissions.md` | `AT-ROLES-09`, `AT-ROLES-10` |
 | 42 | `EP-REAPER-RUN` | POST | `/admin/trash/reaper/run` | `11b-trash-reaper.md` | `AT-APP-81`, `AT-APP-82`, `AT-APP-83`, `AT-APP-84` |
 | 43 | `EP-REAPER-RUNS-LIST` | GET | `/admin/trash/reaper/runs` | `11b-trash-reaper.md` | `AT-APP-85` |
-| 44 | `EP-SEARCH-QUERY` | GET | `/search` | `15-search.md` (endpoints) · `mem://features/search-functionality` | `AT-APP-103`, `AT-APP-104`, `AT-APP-105`, `AT-APP-106`, `AT-APP-107` |
+| 44 | `EP-SEARCH-QUERY` | GET | `/search` | `15b-search.md` (endpoints) · `mem://features/search-functionality` | `AT-APP-103`, `AT-APP-104`, `AT-APP-105`, `AT-APP-106`, `AT-APP-107` |
 | 45 | `EP-SYNC-REPLAY` | POST | `/sync/replay` | `14b-sync-replay.md` · `mem://features/offline-resilience` | `AT-APP-97`, `AT-APP-98`, `AT-APP-99`, `AT-APP-100`, `AT-APP-101`, `AT-APP-102` |
 | 46 | `EP-MIRRORS-GROUP-GET` | GET | `/items/{id}/mirror-group` | `09b-mirror-peer-group.md` | `AT-APP-58`, `AT-APP-60`, `AT-APP-65` |
 | 47 | `EP-MIRRORS-DETACH` | POST | `/items/{id}/mirror-detach` | `09b-mirror-peer-group.md` | `AT-APP-61`, `AT-APP-63`, `AT-APP-64` |
@@ -108,6 +108,6 @@ These are not repeated per row but every endpoint must pass them:
 | Endpoint-level acceptance criteria | [`./97-acceptance-criteria.md`](./97-acceptance-criteria.md) |
 | Feature acceptance criteria | [`../01-features/97-acceptance-criteria.md`](../01-features/97-acceptance-criteria.md) |
 | API envelope rules | [`../../04-database-conventions/06-rest-api-format/`](../../04-database-conventions/06-rest-api-format/00-overview.md) |
-| SSE PHP fixtures | [`../05-conventions/23-sse-php-implementation.md`](../05-conventions/23-sse-php-implementation.md) |
+| SSE PHP fixtures | [`../05-conventions/32-sse-php-implementation.md`](../05-conventions/32-sse-php-implementation.md) |
 | SQL DDL | [`../07-db-diagram/sql/`](../07-db-diagram/sql/00-overview.md) |
 | Audit finding | [`../../18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md`](../../18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md) §AUDIT-AI-05 |

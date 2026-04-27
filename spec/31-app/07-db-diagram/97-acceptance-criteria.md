@@ -85,7 +85,7 @@ ID range: `AT-DBDIAGRAM-NN`. **Total criteria: 21** (3 per source file).
 
 | ID | Given | When | Then | testid |
 |----|-------|------|------|--------|
-| AT-DBDIAGRAM-19 | A migration listed in the roadmap | File scan runs | A matching `Migrations/NNNN_*.sql` file exists per `22-wp-plugin-folder-skeleton.md` §1 naming rule | `migrations-roadmap-parity` |
+| AT-DBDIAGRAM-19 | A migration listed in the roadmap | File scan runs | A matching `Migrations/NNNN_*.sql` file exists per `31-wp-plugin-folder-skeleton.md` §1 naming rule | `migrations-roadmap-parity` |
 | AT-DBDIAGRAM-20 | Migration order in this file | Numeric scan | Strictly monotonic 4-digit prefixes (`0001`, `0002`, …) with no gaps and no duplicates | `migrations-monotonic` |
 | AT-DBDIAGRAM-21 | A merged migration | Edit check | Never edited after merge (forward-only); changes go to a new migration | `migrations-forward-only` |
 
@@ -113,7 +113,7 @@ node scripts/spec-hygiene/00-run-all.mjs
 | Parent overview | [`00-overview.md`](./00-overview.md) |
 | Top-level app rollup | [`../97-acceptance-criteria.md`](../97-acceptance-criteria.md) |
 | Conventions rollup | [`../05-conventions/97-acceptance-criteria.md`](../05-conventions/97-acceptance-criteria.md) |
-| WP-plugin folder skeleton (Migrations/ naming) | [`../05-conventions/22-wp-plugin-folder-skeleton.md`](../05-conventions/22-wp-plugin-folder-skeleton.md) |
+| WP-plugin folder skeleton (Migrations/ naming) | [`../05-conventions/31-wp-plugin-folder-skeleton.md`](../05-conventions/31-wp-plugin-folder-skeleton.md) |
 | Audit-log policy (lifecycle audit pairing) | [`../05-conventions/09-audit-log-policy.md`](../05-conventions/09-audit-log-policy.md) |
 | Concurrency + LWW (Mirrors.BrokenAt) | [`../01-features/14-concurrency-and-sync.md`](../01-features/14-concurrency-and-sync.md) |
 | Glossary | [`spec/19-glossary.md`](../../19-glossary.md) |

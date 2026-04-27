@@ -16,7 +16,7 @@ Task #6 ambiguity flagged a speculative `AT-TRASH-07` citation that turned out t
 | `11b-trash-reaper.md` EP-REAPER-RUN | `AT-APP-78,79,80` | `AT-APP-81,82,83,84` (78–80 actually belong to Sharing×Mirror) |
 | `11b-trash-reaper.md` EP-REAPER-RUNS-LIST | `AT-APP-81` | `AT-APP-85` |
 | `14b-sync-replay.md` EP-SYNC-REPLAY | `AT-APP-90..94` | `AT-APP-97..102` (90–94 belong to Multi-select Zoom) |
-| `15-search.md` EP-SEARCH-QUERY | `AT-APP-100..103` | `AT-APP-103..107` |
+| `15b-search.md` EP-SEARCH-QUERY | `AT-APP-100..103` | `AT-APP-103..107` |
 | `09b-mirror-peer-group.md` EP-MIRRORS-GROUP-GET | `AT-MGP-58,59` (invented) | `AT-APP-58,60,65` |
 | `09b-mirror-peer-group.md` EP-MIRRORS-DETACH | `AT-MGP-60,61,62` (invented) | `AT-APP-61,63,64` |
 | Matrix EP-TRASH-PURGE-ALL | `AT-APP-24, AT-TRASH-07` (wrong: 24=mirror canonical; 07=cancel-dialog) | `AT-APP-19, AT-TRASH-08, AT-TRASH-09` |

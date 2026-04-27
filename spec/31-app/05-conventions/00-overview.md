@@ -35,17 +35,17 @@
 | 20 | [`20-g27-export-coverage-gate.md`](./20-g27-export-coverage-gate.md) | G-27 Data-Export Policy Drift Gate — Algorithm Spec | 297 |
 | 21 | [`21-g28-backup-coverage-gate.md`](./21-g28-backup-coverage-gate.md) | G-28 Backup & DR Policy Drift Gate — Algorithm Spec | 346 |
 | 22 | [`22-g29-endpoint-matrix-coverage-gate.md`](./22-g29-endpoint-matrix-coverage-gate.md) | G-29 Endpoint ↔ Matrix Coverage Gate — Algorithm Spec | 144 |
-| 23 | [`22-wp-plugin-folder-skeleton.md`](./22-wp-plugin-folder-skeleton.md) | WP-Plugin Folder Skeleton — SSOT | 290 |
-| 24 | [`23-g30-at-citation-validity-gate.md`](./23-g30-at-citation-validity-gate.md) | G-30 — AT Citation Validity Gate | 267 |
-| 25 | [`23-sse-php-implementation.md`](./23-sse-php-implementation.md) | Convention 23 — PHP SSE Implementation Pattern | 343 |
-| 26 | [`24-g31-workflow-xref-reciprocity-gate.md`](./24-g31-workflow-xref-reciprocity-gate.md) | G-31 — Cross-Reference Reciprocity Gate | 213 |
-| 27 | [`24-state-management-architecture.md`](./24-state-management-architecture.md) | State Management Architecture | 277 |
-| 28 | [`25-g32-ddl-unique-coverage-gate.md`](./25-g32-ddl-unique-coverage-gate.md) | G-32 — DDL ↔ Doc Index Coverage Gate | 259 |
-| 29 | [`26-allow-list-inventory.md`](./26-allow-list-inventory.md) | Allow-List Inventory | 269 |
-| 30 | [`27-g33-cross-runner-duplicate-gate.md`](./27-g33-cross-runner-duplicate-gate.md) | G-33 — Cross-Runner Allow-List Duplicate Detector | 144 |
-| 31 | [`28-g34-allow-list-age-gate.md`](./28-g34-allow-list-age-gate.md) | G-34 — Allow-List Entry Age Gate (Algorithm SSOT) | 106 |
-| 32 | [`29-g36-cross-scope-island-gate.md`](./29-g36-cross-scope-island-gate.md) | G-36 — Cross-Scope Island Detector (Algorithm SSOT) | 92 |
-| 33 | [`30-g37-stale-relative-link-gate.md`](./30-g37-stale-relative-link-gate.md) | G-37 — Stale Relative-Link Gate (Algorithm SSOT) | 107 |
+| 23 | [`23-g30-at-citation-validity-gate.md`](./23-g30-at-citation-validity-gate.md) | G-30 — AT Citation Validity Gate | 267 |
+| 24 | [`24-g31-workflow-xref-reciprocity-gate.md`](./24-g31-workflow-xref-reciprocity-gate.md) | G-31 — Cross-Reference Reciprocity Gate | 213 |
+| 25 | [`25-g32-ddl-unique-coverage-gate.md`](./25-g32-ddl-unique-coverage-gate.md) | G-32 — DDL ↔ Doc Index Coverage Gate | 259 |
+| 26 | [`26-allow-list-inventory.md`](./26-allow-list-inventory.md) | Allow-List Inventory | 269 |
+| 27 | [`27-g33-cross-runner-duplicate-gate.md`](./27-g33-cross-runner-duplicate-gate.md) | G-33 — Cross-Runner Allow-List Duplicate Detector | 144 |
+| 28 | [`28-g34-allow-list-age-gate.md`](./28-g34-allow-list-age-gate.md) | G-34 — Allow-List Entry Age Gate (Algorithm SSOT) | 106 |
+| 29 | [`29-g36-cross-scope-island-gate.md`](./29-g36-cross-scope-island-gate.md) | G-36 — Cross-Scope Island Detector (Algorithm SSOT) | 92 |
+| 30 | [`30-g37-stale-relative-link-gate.md`](./30-g37-stale-relative-link-gate.md) | G-37 — Stale Relative-Link Gate (Algorithm SSOT) | 107 |
+| 31 | [`31-wp-plugin-folder-skeleton.md`](./31-wp-plugin-folder-skeleton.md) | WP-Plugin Folder Skeleton — SSOT | 290 |
+| 32 | [`32-sse-php-implementation.md`](./32-sse-php-implementation.md) | Convention 23 — PHP SSE Implementation Pattern | 343 |
+| 33 | [`33-state-management-architecture.md`](./33-state-management-architecture.md) | State Management Architecture | 277 |
 
 <!-- AUTO-TOC:END -->
 
@@ -103,7 +103,7 @@ Conventions specification module. See files below.
 | 19 | [19-g26-mfa-coverage-gate.md](19-g26-mfa-coverage-gate.md) | G-26 hygiene-gate algorithm: five-axis MFA check — forbidden-literal prohibition (`'sms'`/`'email_otp'`/`'voice'`/`'remember_mfa'`/`MFA_DISABLED`/`bypass_mfa`), mutation-route freshness declaration, step-up-map bidirectional parity (spec ↔ runtime), factor-registry static containment (TOTP/WebAuthn/Recovery only), recovery-code argon2id hash strength |
 | 20 | [20-g27-export-coverage-gate.md](20-g27-export-coverage-gate.md) | G-27 hygiene-gate algorithm: six-axis export check — `/export/*` route MFA(300) + rate-limit hardening, `workflowy-exports/` writes paired with `Crypto::aesGcmEncrypt()` within 30 lines, serializer redactor-precedence over `Owner`/`SharedWith`/etc., `FormatRegistry::ALLOWED` mutations contained to canonical file, install-hook `.htaccess` deny-directive presence, signed-URL leak prevention (Email is only sink) |
 | 21 | [21-g28-backup-coverage-gate.md](21-g28-backup-coverage-gate.md) | G-28 hygiene-gate algorithm: seven-axis backup/DR check — SQLite `\SQLite3::backup()`-only (no `cp`/`copy()`/`rsync` of `*.sqlite`), tarball `Crypto::aesGcmEncrypt()` before object-storage upload, S3Client config hardening (`'encryption' => 'AES256'` + `'acl' => 'private'` + `https://` endpoint), sensitive-file exclusion (no `wp-config.php`/`auth_key`/`secret`/`password`), restore integrity verification (`PRAGMA integrity_check` AND `AuditChain::reWalk` within 50 lines of `Restore\Engine::swap`), drill-scheduler 90-day cadence presence, bidirectional schedule↔cron parity |
-| 22 | [22-wp-plugin-folder-skeleton.md](22-wp-plugin-folder-skeleton.md) | WP-plugin folder skeleton: canonical Flat-PSR layout (`wp-plugin/Auth|Backup|Export|Lifecycle|Routes|Middleware|Repository|Migrations|Audit|Support/`), retires legacy `wp-plugin/src/` prefix, PSR-4 autoload `Workflowy\\` → `wp-plugin/`, 24-path inventory reconciliation (5 migrations queued in 2 specs), naming rules for Routes/Migrations/Repository SQL — P1.5 prerequisite |
+| 22 | [31-wp-plugin-folder-skeleton.md](31-wp-plugin-folder-skeleton.md) | WP-plugin folder skeleton: canonical Flat-PSR layout (`wp-plugin/Auth|Backup|Export|Lifecycle|Routes|Middleware|Repository|Migrations|Audit|Support/`), retires legacy `wp-plugin/src/` prefix, PSR-4 autoload `Workflowy\\` → `wp-plugin/`, 24-path inventory reconciliation (5 migrations queued in 2 specs), naming rules for Routes/Migrations/Repository SQL — P1.5 prerequisite |
 
 ---
 
@@ -140,7 +140,7 @@ Conventions specification module. See files below.
 - [`19-g26-mfa-coverage-gate.md`](./19-g26-mfa-coverage-gate.md) — G-26 MFA policy drift gate (5-axis MFA hygiene)
 - [`20-g27-export-coverage-gate.md`](./20-g27-export-coverage-gate.md) — G-27 data-export policy drift gate (6-axis export hygiene)
 - [`21-g28-backup-coverage-gate.md`](./21-g28-backup-coverage-gate.md) — G-28 backup/DR policy drift gate (7-axis backup hygiene) — **completes orphan-gate cluster**
-- [`22-wp-plugin-folder-skeleton.md`](./22-wp-plugin-folder-skeleton.md) — WP-plugin folder skeleton (Flat-PSR canonical layout, P1.5 prerequisite)
+- [`31-wp-plugin-folder-skeleton.md`](./31-wp-plugin-folder-skeleton.md) — WP-plugin folder skeleton (Flat-PSR canonical layout, P1.5 prerequisite)
 
 **See also:**
 
