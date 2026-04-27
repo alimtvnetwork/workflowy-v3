@@ -547,31 +547,4 @@ function printG30RationaleReport(violations) {
   console.error(`  (b) a \`// …\` comment line immediately above (no blank line in between).`);
 }
 
-
-  console.error("G-30 AT citation validity FAILED:");
-  console.error("");
-  console.error(
-    `  ❌ ${unregistered.length} unregistered AT citation(s) across consumer scopes:`,
-  );
-  console.error("");
-  for (const v of unregistered) {
-    console.error(`    [${v.scope}] ${v.file}:${v.line}  ${v.id}`);
-  }
-  console.error("");
-  console.error("  Resolution:");
-  console.error(
-    "    1) If the citation is a typo: fix the number to match a registered ID.",
-  );
-  console.error(
-    "    2) If the AT is genuinely new: register it in the appropriate",
-  );
-  console.error(
-    "       97-acceptance-criteria.md as `AT-APP-NN` (canonical) before citing.",
-  );
-  console.error(
-    "    3) Never invent ad-hoc prefixes like AT-MGP-* — see APP-FIX-14.",
-  );
-  process.exit(1);
-}
-
 main();
