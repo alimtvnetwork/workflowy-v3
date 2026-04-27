@@ -326,6 +326,10 @@ const ALLOWLIST_NAMES = [
   "FEATURES_EXEMPT",
   "ENDPOINTS_EXEMPT",
   "DB_DIAGRAM_EXEMPT",
+  "WORKFLOWS_ISLAND_EXEMPT",
+  "FEATURES_ISLAND_EXEMPT",
+  "ENDPOINTS_ISLAND_EXEMPT",
+  "DB_DIAGRAM_ISLAND_EXEMPT",
 ];
 
 const SELF_PATH = "scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs";
@@ -419,9 +423,60 @@ function printRationaleReport(violations) {
   console.log(`  (b) a \`// …\` comment line immediately above (no blank line in between).`);
 }
 
+// =====================================================================
+// G-31.6 — Documentation-island detection (WARN advisory). For each
+// scope, a sibling file with **zero outgoing AND zero incoming**
+// cross-sibling Related-section references is flagged as an island.
+// Surfaces likely-orphaned spec pages without failing CI; cleanup
+// happens via authoring back-links or opting in via the per-scope
+// `*_ISLAND_EXEMPT` Set with a rationale (G-31.5-enforced).
+// =====================================================================
+
+function findIslands(scope, files, matrix) {
+  // Build incoming-link counts from outgoing matrix.
+  const incoming = {};
+  for (const f of files) incoming[f] = 0;
+  for (const f of files) {
+    for (const target of matrix[f]) {
+      incoming[target] = (incoming[target] || 0) + 1;
+    }
+  }
+  return files.filter((f) => {
+    if (matrix[f].size > 0) return false;
+    if (incoming[f] > 0) return false;
+    if (scope.islandExemptions.has(f)) return false;
+    return true;
+  });
+}
+
+function printIslandReport(scope, files, islands) {
+  console.log("");
+  console.log(`G-31.6 (${scope.label}, WARN) documentation-island advisory:`);
+  console.log(`  scope:                              ${scope.dir}`);
+  console.log(`  files scanned:                      ${files.length}`);
+  console.log(`  island-exempt (allow-list):         ${scope.islandExemptions.size}`);
+  console.log(`  islands (zero in + zero out):       ${islands.length}`);
+
+  if (islands.length === 0) {
+    console.log(`  ✅ no documentation islands in this scope`);
+    return;
+  }
+
+  console.log("");
+  console.log(`  ⚠️  ${islands.length} island file(s) — neither linked-from nor linking-to any sibling:`);
+  for (const f of islands) {
+    console.log(`    ${f}`);
+  }
+  console.log("");
+  console.log(`  (WARN advisory — does not fail the gate. Either author a peer`);
+  console.log(`   cross-reference, or add the bare filename to this scope's`);
+  console.log(`   *_ISLAND_EXEMPT Set with a one-line rationale.)`);
+}
+
 // --- main ---
 let totalErrorAsym = 0;
 let totalWarnAsym = 0;
+let totalIslands = 0;
 
 for (const scope of SCOPES) {
   let dirStat;
@@ -443,6 +498,10 @@ for (const scope of SCOPES) {
   const asym = findAsymmetries(scope, files, matrix);
   printScopeReport(scope, files, matrix, asym);
 
+  const islands = findIslands(scope, files, matrix);
+  printIslandReport(scope, files, islands);
+  totalIslands += islands.length;
+
   if (scope.mode === "error") totalErrorAsym += asym.length;
   else totalWarnAsym += asym.length;
 }
@@ -451,7 +510,7 @@ const unrationaled = findUnrationaledEntries();
 printRationaleReport(unrationaled);
 
 console.log("");
-console.log(`G-31 summary: ${SCOPES.length} scope(s) scanned — ${totalErrorAsym} ERROR-scope asymmetries, ${totalWarnAsym} WARN-scope asymmetries, ${unrationaled.length} unrationaled exemption entry/entries.`);
+console.log(`G-31 summary: ${SCOPES.length} scope(s) scanned — ${totalErrorAsym} ERROR-scope asymmetries, ${totalWarnAsym} WARN-scope asymmetries, ${totalIslands} island advisory(ies), ${unrationaled.length} unrationaled exemption entry/entries.`);
 
 const failed = totalErrorAsym > 0 || unrationaled.length > 0;
 process.exit(failed ? 1 : 0);
