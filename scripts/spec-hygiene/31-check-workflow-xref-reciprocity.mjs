@@ -82,7 +82,6 @@
  *        target's native bullet-vs-table format); promoted G-31.2 from
  *        WARN to ERROR. All 4 G-31 sub-checks now ERROR-mode at 0
  *        asymmetries — staged WARN-then-ERROR rollout complete.
- */
  * v2.4.0 (F-future-G31b) added the **G-31.5 meta sub-check** enforcing
  *        that every entry in `WORKFLOWS_EXEMPT`, `FEATURES_EXEMPT`,
  *        `ENDPOINTS_EXEMPT`, and `DB_DIAGRAM_EXEMPT` carries a rationale
@@ -102,8 +101,9 @@ import { join } from "node:path";
 
 // =====================================================================
 // Per-scope allow-lists. Format: `${from} → ${to}` (bare filenames).
-// Each entry needs a one-line rationale comment (informational; not yet
-// machine-enforced — see F-future-G31b for rationale-comment gate).
+// Each entry MUST carry a one-line rationale (trailing inline `// …` OR
+// a `// …` line directly above with no blank-line gap). Machine-enforced
+// by G-31.5 since v2.4.0 (mirrors G-32.4 in `32-check-ddl-unique-coverage.mjs`).
 // =====================================================================
 
 const WORKFLOWS_EXEMPT = new Set([
