@@ -226,10 +226,11 @@ connectivity" choice.
 
 One further enhancement remains available for future tasks:
 
-1. **F-future-G32c**: Add G-32.4 enforcing every `COVERAGE_EXEMPT` /
-   `REVERSE_EXEMPT` / `NONUNIQUE_EXEMPT` entry has a corresponding
-   rationale comment in the runner source (machine-checkable; mirrors
-   the G-30.3 and G-31.2 plans).
+1. **F-future-G32d**: G-32.5 column / predicate parity — verify that
+   `(cols)` lists and `WHERE …` partial-index predicates documented in
+   `06-indexes.md` cells match the DDL exactly. Requires a real SQL
+   parser (current line-regex cannot tokenise predicate ASTs); deferred
+   as logged in ambiguity #28.
 
 Note on partial / expression indexes: G-32.3 matches by **DDL index
 name** alone, not by `(cols)` or `WHERE …` predicate. So
