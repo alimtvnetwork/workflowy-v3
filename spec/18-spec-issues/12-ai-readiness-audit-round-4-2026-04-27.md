@@ -1,7 +1,7 @@
 # AI Readiness Audit — Spec Corpus (Round 4)
 
-> **Version:** 1.3.0
-> **Created:** 2026-04-27 (UTC+8) · **Updated:** 2026-04-27 (UTC+8) — v1.3.0 closed AUDIT-AI-07 via Path B+ (mirror peer-group model authored from user's Workflowy parity clarification; +1 pt → composite **100/100**). v1.2.0 closed AUDIT-AI-03/04/05/06 (+10). v1.1.0 closed AUDIT-AI-01 + AUDIT-AI-02 (+11).
+> **Version:** 1.4.0
+> **Created:** 2026-04-27 (UTC+8) · **Updated:** 2026-04-27 (UTC+8) — v1.4.0 added §8 footnote linking 7 post-100 product-clarification SSOTs (B1–B4); no score change. v1.3.0 closed AUDIT-AI-07 via Path B+ (mirror peer-group model authored from user's Workflowy parity clarification; +1 pt → composite **100/100**). v1.2.0 closed AUDIT-AI-03/04/05/06 (+10). v1.1.0 closed AUDIT-AI-01 + AUDIT-AI-02 (+11).
 > **Auditor:** Gemini 3 Pro (via Lovable AI Gateway, structured-output mode)
 > **Scope:** Whether a *mediocre* AI can implement WorkFlowy end-to-end at 100% confidence using only the spec.
 > **Composite score:** **100/100** (was 99 → 89 → 78) — Confidence for mediocre AI: **HIGH**
