@@ -52,6 +52,28 @@ const COVERAGE_EXEMPT = new Set([
   // "01-root-schema.sql:User(Email):docs-in-auth-spec",
 ]);
 
+// G-32.2 allow-list — index identifiers that legitimately appear in
+// `06-indexes.md` prose without a literal DDL match. Use sparingly; the
+// preferred fix is to register the alias in `sql/00-overview.md` §Index-name
+// aliases (which the runner reads automatically) rather than adding entries
+// here. Format: bare identifier (e.g. `IdxItem_Foo`).
+const REVERSE_EXEMPT = new Set([
+  // Conceptual / "logical" tags used in §Implicit Indexes prose. The actual
+  // index is the autoindex; the Idx* name is doc-only shorthand.
+  "IdxUser_Email",         // logical tag for sqlite_autoindex_User_*
+  "IdxWorkspace_AppDbPath", // logical tag for sqlite_autoindex_Workspace_*
+  // Historic / explicitly-rejected names mentioned in §"Indexes intentionally
+  // NOT created" — the runner cannot tell prose-rejected from prose-claimed
+  // without parsing section headings, so we suppress these by name.
+  "IdxItem_Content",
+  "IdxItem_CreatedAt",
+  "IdxComment_AuthorUserId",
+  // v2-deprecated names mentioned in the v1.3.0 deprecation note for traceability.
+  "IdxItem_MirrorOfItemId",
+  "IdxMirror_SourceItemId",
+  "IdxMirror_MirrorItemId",
+]);
+
 function fail(msg, code = 2) {
   console.error(`G-32 runner error: ${msg}`);
   process.exit(code);
