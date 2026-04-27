@@ -30,7 +30,7 @@
 
 | DDL identifier (`03-app-indexes.sql`) | Spec prose alias (`06-indexes.md`) | Notes |
 |----------------------------------------|------------------------------------|-------|
-| `IdxMirrorMember_ItemId` (UNIQUE partial) | `IdxMirrorPeerGroupMember_ItemId` | Same index, same `WHERE DetachedAt IS NULL` predicate. |
+| `IdxMirrorMember_ItemId` (UNIQUE, full-table) | `IdxMirrorPeerGroupMember_ItemId` | Same index. **Full-table UNIQUE** — there is no `DetachedAt` column; detach is performed by row DELETE per `02-workflows/08-mirror-detach-flow.md` step 3c (corrected in F26 / `06-indexes.md` v1.4.0). |
 | `IdxMirrorMember_MirrorGroupId` | `IdxMirrorPeerGroupMember_GroupId` | Same FK fan-out index. |
 | `IdxMirrorGroup_CanonicalItemId` | `IdxMirrorPeerGroup_CanonicalItemId` | Same canonical-lookup index. |
 

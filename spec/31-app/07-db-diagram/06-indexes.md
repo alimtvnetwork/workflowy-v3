@@ -1,7 +1,7 @@
 # 06 — Indexes
 
-> **Version:** 1.3.0
-> **Updated:** 2026-04-27 (UTC+8) — v1.3.0 (F22) audited DDL drift: removed 3 deprecated index rows (`IdxItem_MirrorOfItemId`, `IdxMirror_SourceItemId`, `IdxMirror_MirrorItemId`) that referenced columns/tables dropped in v2 migration M-117; demoted `IdxUser_Email` from "Required" to new §"Implicit Indexes" (it's only an `UNIQUE`-implied index, no explicit `CREATE INDEX`); cleaned up the Index → Query Map flowchart to remove dropped nodes I4/I5 and rewire `EP-MIRRORS-LIST` → `IdxMirrorPeerGroupMember_GroupId`. v1.2.0 added §Naming bridge footnote pointing to [`./sql/00-overview.md`](./sql/00-overview.md) §Naming Bridge for index-name aliases (`IdxMirrorPeerGroupMember_*` ↔ `IdxMirrorMember_*`, `IdxMirrorPeerGroup_CanonicalItemId` ↔ `IdxMirrorGroup_CanonicalItemId`). v1.1.0 added 4 indexes (`IdxItem_UpdatedAt`, `IdxItem_LiveByUpdatedAt`, `IdxReaperRuns_RanAt`, `IdxMirrorPeerGroupMember_ItemId`) for B1–B4; reversed prior "NOT needed" stance on `IdxItem_UpdatedAt` (now required by offline-replay LWW + search tie-break).
+> **Version:** 1.4.0
+> **Updated:** 2026-04-27 (UTC+8) — v1.4.0 (F26) closed three audit findings: (1) corrected `IdxMirrorPeerGroupMember_ItemId` from "UNIQUE partial WHERE DetachedAt IS NULL" → "UNIQUE full-table" (no `DetachedAt` column exists in DDL; detach is row DELETE per `02-workflows/08-mirror-detach-flow.md` step 3c — confirmed by `02-app-schema.sql` line 85 + `03-app-indexes.sql` line 38); (2) added missing row for `IdxUserRole_User_Role` (Root DB UNIQUE composite, declared in `01-root-schema.sql` line 97 but never documented); (3) extended §Implicit Indexes from 1 entry to 6 — added `WorkspaceRoleType.Name`, `RoleType.Name`, `Workspace.AppDbPath`, `ItemType.Name`, `ShareRoleType.Name` enum/lookup UNIQUE side-effects. v1.3.0 (F22) audited DDL drift: removed 3 deprecated index rows referencing M-117-dropped columns/tables; demoted `IdxUser_Email` from "Required" to §"Implicit Indexes". v1.2.0 added §Naming bridge footnote. v1.1.0 added 4 indexes (`IdxItem_UpdatedAt`, `IdxItem_LiveByUpdatedAt`, `IdxReaperRuns_RanAt`, `IdxMirrorPeerGroupMember_ItemId`) for B1–B4.
 > **Parent:** [`./00-overview.md`](./00-overview.md)
 
 ---
@@ -107,7 +107,7 @@ flowchart LR
 | `IdxItem_UpdatedAt` | `(UpdatedAt)` | `EP-SYNC-REPLAY` LWW comparison | Per-mutation `ServerItem.UpdatedAt > ClientUpdatedAt` lookup (`mem://features/offline-resilience`) |
 | `IdxItem_LiveByUpdatedAt` | `(UpdatedAt DESC)` partial `WHERE DeletedAt IS NULL` | `EP-SEARCH-QUERY` tie-break | Recency tie-break after MatchKind×FieldWeight scoring (`mem://features/search-functionality`) |
 | `IdxReaperRuns_RanAt` | `(RanAt DESC)` | `EP-REAPER-RUNS-LIST` | Newest-first audit listing |
-| `IdxMirrorPeerGroupMember_ItemId` | `(ItemId)` UNIQUE partial `WHERE DetachedAt IS NULL` | `EP-MIRRORS-GROUP-GET`, `EP-MIRRORS-DETACH` | Item → active peer group lookup; enforces "Item in ≤1 active group" invariant |
+| `IdxMirrorPeerGroupMember_ItemId` | `(ItemId)` UNIQUE (full-table) | `EP-MIRRORS-GROUP-GET`, `EP-MIRRORS-DETACH` | Item → peer group lookup; enforces "Item in ≤1 group" invariant. **Full-table UNIQUE, not partial** — detach is performed by row DELETE per `02-workflows/08-mirror-detach-flow.md` step 3c, so a "soft-detach" `DetachedAt` column would be redundant and does not exist (corrected in v1.4.0 / F26) |
 | `IdxMirrorPeerGroupMember_GroupId` | `(MirrorPeerGroupId)` | List peers in a group | FK index for fan-out reads |
 
 ---
@@ -124,16 +124,32 @@ flowchart LR
 | `IdxWorkspaceMember_WorkspaceId` | `(WorkspaceId)` | "Who is in this workspace?" | FK index, used by `EP-ROLES-LIST` |
 | `IdxWorkspaceMember_User_Workspace` | `(UserId, WorkspaceId)` UNIQUE | C7 — one membership row per pair | Enforces uniqueness |
 | `IdxUserRole_UserId` | `(UserId)` | `Auth::hasRole()` system-role check | FK index |
+| `IdxUserRole_User_Role` | `(UserId, RoleTypeId)` UNIQUE | One role assignment per user-role pair | Declared by `01-root-schema.sql` line 97; prevents duplicate role grants (added v1.4.0 / F26) |
 
 ---
 
 ## Implicit Indexes (UNIQUE-implied — no explicit `CREATE INDEX`)
 
-> SQLite automatically creates a B-tree index for every `UNIQUE` column or `UNIQUE` constraint. The entries below were previously listed under "Required Indexes" but are not present in `sql/01-root-schema.sql` or `sql/03-app-indexes.sql` as `CREATE INDEX` statements — they are emitted by the engine as a side-effect of the column-level `UNIQUE` constraint.
+> SQLite automatically creates a B-tree index for every `UNIQUE` column or `UNIQUE` constraint. The entries below are emitted by the engine as a side-effect; they are not listed under "Required Indexes" because no `CREATE INDEX` statement exists in the SQL files. The `sqlite_autoindex_*` naming follows SQLite's internal convention. Listed here so query planners and ops engineers can reason about every index that physically exists at runtime.
+
+### Root DB
 
 | Implicit index | Source `UNIQUE` declaration | Effective query |
 |----------------|------------------------------|-----------------|
-| `sqlite_autoindex_User_*` (logical name `IdxUser_Email`) | `Email TEXT NOT NULL UNIQUE` in `sql/01-root-schema.sql` | Login by email |
+| `sqlite_autoindex_User_*` (logical `IdxUser_Email`) | `Email TEXT NOT NULL UNIQUE` (`01-root-schema.sql:38`) | Login by email |
+| `sqlite_autoindex_WorkspaceRoleType_*` | `Name TEXT NOT NULL UNIQUE` (`01-root-schema.sql:22`) | Enum lookup by role-type name during seeding/role checks |
+| `sqlite_autoindex_RoleType_*` | `Name TEXT NOT NULL UNIQUE` (`01-root-schema.sql:30`) | Enum lookup by system-role name |
+| `sqlite_autoindex_Workspace_*` (logical `IdxWorkspace_AppDbPath`) | `AppDbPath TEXT NOT NULL UNIQUE` (`01-root-schema.sql:54`) | Bootstrap path → workspace lookup; collision detection on workspace-create |
+
+### App DB
+
+| Implicit index | Source `UNIQUE` declaration | Effective query |
+|----------------|------------------------------|-----------------|
+| `sqlite_autoindex_ItemType_*` | `Name TEXT NOT NULL UNIQUE` (`02-app-schema.sql:29`) | Enum lookup by item-type name |
+| `sqlite_autoindex_ShareRoleType_*` | `Name TEXT NOT NULL UNIQUE` (`02-app-schema.sql:37`) | Enum lookup by share-role name |
+| `sqlite_autoindex_MirrorMember_*` (composite) | `UNIQUE (MirrorGroupId, ItemId)` (`02-app-schema.sql:84`) | Belt-and-braces dedup; the explicit `IdxMirrorMember_ItemId` (UNIQUE on `ItemId` alone) covers the hot lookup path |
+| `sqlite_autoindex_Tag_*` | `UNIQUE (OwnerUserId, Name)` (`02-app-schema.sql:96`) | Tag-name uniqueness per user; "find tag by name" lookup during type-ahead |
+| `sqlite_autoindex_Favorite_*` | `UNIQUE (UserId, ItemId)` (`02-app-schema.sql:173`) | Favorite-toggle dedup; "is this item favorited?" lookup. Distinct from the explicit `IdxFavorite_UserId_FractionalIndex` which serves sidebar-render sort order |
 
 ---
 
