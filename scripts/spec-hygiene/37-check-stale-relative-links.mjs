@@ -16,7 +16,7 @@
  *
  *   G-37.1 (stale-rename detection, WARN advisory)
  *     - Severity: WARN — does not influence exit code.
- *     - For each broken relative `[label](./x.md)` link in spec/**/*.md,
+ *     - For each broken relative `[label](./x.md)` link in spec markdown,
  *       look up the basename in a global filename index. If exactly one
  *       match exists elsewhere in the repo (under spec/ or src/), report
  *       as STALE-RENAME with the suggested new path. Multiple matches
