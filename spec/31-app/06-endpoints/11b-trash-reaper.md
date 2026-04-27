@@ -41,7 +41,7 @@
 - **Success (200)** `Results`: `{ Runs: ReaperRun[], NextCursor?: string }` — newest first by `RanAt` (uses `IdxReaperRuns_RanAt`).
 - **Errors**: `ERR_FORBIDDEN`.
 - **Side effects**: none.
-- **AC refs**: `AT-APP-81`.
+- **AC refs**: `AT-APP-85`.
 
 ---
 
