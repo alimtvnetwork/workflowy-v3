@@ -43,7 +43,7 @@
 | 8 | [`09-app-folder-re-audit-2026-04-26.md`](./09-app-folder-re-audit-2026-04-26.md) | App Folder Re-Audit — 2026-04-26 (post-fix) | 103 |
 | 9 | [`10-content-audit-endpoints-and-db-diagram.md`](./10-content-audit-endpoints-and-db-diagram.md) | Content Audit — `06-endpoints/` + `07-db-diagram/` (2026-04-26) | 109 |
 | 10 | [`11-content-audit-at-app-coverage.md`](./11-content-audit-at-app-coverage.md) | Content Audit — `AT-APP-NN` Coverage Completeness (2026-04-26) | 132 |
-| 11 | [`12-ai-readiness-audit-round-4-2026-04-27.md`](./12-ai-readiness-audit-round-4-2026-04-27.md) | AI Readiness Audit — Spec Corpus (Round 4) | 199 |
+| 11 | [`12-ai-readiness-audit-round-4-2026-04-27.md`](./12-ai-readiness-audit-round-4-2026-04-27.md) | AI Readiness Audit — Spec Corpus (Round 4) | 202 |
 
 <!-- AUTO-TOC:END -->
 
