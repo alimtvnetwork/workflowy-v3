@@ -160,9 +160,10 @@ G-30 AT citation validity FAILED:
 
 ---
 
-## Out of scope (v1.0.0)
+## Out of scope (v1.1.0)
 
-- Workflow files (`02-workflows/`) consumer-side checks → G-30.1 follow-up
+- Other `07-db-diagram/*.md` files (only `04-feature-slices.md` is in scope;
+  the master ERD and migration plan use prose-style refs, not citation density)
 - Reverse-direction check ("registered but never cited") → not a defect
   per current policy; ATs may be declared ahead of consumers
 - Cross-domain AT IDs (e.g. `spec/16-generic-cli/`) → out of App-domain scope
@@ -173,4 +174,5 @@ G-30 AT citation validity FAILED:
 
 | Version | Date | Change |
 |---------|------|--------|
+| 1.1.0 | 2026-04-27 | F14 — extended consumer scope to `02-workflows/` and `07-db-diagram/04-feature-slices.md`; output now reports per-scope provenance on failure |
 | 1.0.0 | 2026-04-27 | Initial — created in response to F9 drift discovery |
