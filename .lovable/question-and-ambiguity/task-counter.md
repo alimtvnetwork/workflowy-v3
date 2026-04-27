@@ -2,7 +2,7 @@
 
 **Status:** 🟢 ACTIVE
 **Activated:** 2026-04-27
-**Tasks completed: 6 / 40**
+**Tasks completed: 7 / 40**
 
 ---
 
@@ -16,6 +16,7 @@
 | 04 | 2026-04-27 | F6 endpoint contracts: created 4 endpoint files — `11b-trash-reaper.md` (EP-REAPER-RUN, EP-REAPER-RUNS-LIST), `15-search.md` (EP-SEARCH-QUERY), `14b-sync-replay.md` (EP-SYNC-REPLAY), `09b-mirror-peer-group.md` (EP-MIRRORS-GROUP-GET, EP-MIRRORS-DETACH). Bumped `16-endpoint-at-matrix.md` v1.0.0→v1.1.0 (41→47 endpoints, 6 new rows, coverage counts updated). Added addendum-files note to `00-overview.md`. | 1 (`04-at-prefix-for-new-endpoints.md`) |
 | 05 | 2026-04-27 | F7 ERD refresh: bumped `03-app-db-erd.md` v1.0.0→v1.1.0 — added `MirrorPeerGroup`, `MirrorPeerGroupMember`, `ReaperRuns` entities + relationships; deprecated legacy `Mirror` (kept for back-compat). Bumped `06-indexes.md` v1.0.0→v1.1.0 — added 4 new indexes (`IdxItem_UpdatedAt`, `IdxItem_LiveByUpdatedAt` partial, `IdxReaperRuns_RanAt`, `IdxMirrorPeerGroupMember_ItemId` UNIQUE partial, `IdxMirrorPeerGroupMember_GroupId`); added 4 endpoints + edges to flowchart; reversed prior "NOT needed" stance on `IdxItem_UpdatedAt`. | 1 (`05-mirror-table-deprecation.md`) |
 | 06 | 2026-04-27 | F8 G-29 gate: created algorithm SSOT `22-g29-endpoint-matrix-coverage-gate.md` v1.0.0; shipped runner `scripts/spec-hygiene/29-check-endpoint-matrix-coverage.mjs` (148 lines, exit 0/1/2, 4-axis check: orphan-endpoint, phantom-row, missing-at-citation, duplicate-row); registered G-29 in `02-ci-quality-gates.md` and `scripts/spec-hygiene/00-run-all.mjs`. Gate caught + fixed pre-existing matrix drift (3 ID renames + 1 missing `EP-TRASH-PURGE-ALL` row). Final state: ✅ 48 declared, 48 matrixed, all paired with ≥1 AT. | 1 (`06-matrix-prexisting-drift.md`) |
+| 07 | 2026-04-27 | F9 AT citation fix: discovered + fixed 7 wrong AT-APP citations in 4 endpoint files created in F6 (numbers off by 3–10 from canonical registry). Fixed `11b-trash-reaper.md` (78→81..84, 81→85), `14b-sync-replay.md` (90..94→97..102), `15-search.md` (100..103→103..107), `09b-mirror-peer-group.md` (`AT-MGP-58..62` invented → `AT-APP-58,60,65` + `AT-APP-61,63,64`). Replaced bad `AT-APP-24, AT-TRASH-07` for `EP-TRASH-PURGE-ALL` with correct `AT-APP-19, AT-TRASH-08, AT-TRASH-09`. G-29 still ✅ green. | 1 (`07-at-citation-drift.md`) |
 
 ---
 
