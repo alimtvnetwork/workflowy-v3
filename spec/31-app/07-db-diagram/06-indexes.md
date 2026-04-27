@@ -89,10 +89,7 @@ flowchart LR
 | `IdxItem_ParentItemId_FractionalIndex` | `(ParentItemId, FractionalIndex)` | `EP-ITEMS-LIST`, `EP-ITEMS-MOVE`, every tree walk | Children-of-parent in display order — the single most-run query |
 | `IdxItem_DueDate` | `(DueDate)` partial `WHERE DueDate IS NOT NULL` | `EP-VIEWS-TODAY` | Today view scans only items with due dates |
 | `IdxItem_DeletedAt` | `(DeletedAt)` partial `WHERE DeletedAt IS NOT NULL` | `EP-TRASH-LIST`, daily reaper | Trash list + reaper cutoff |
-| `IdxItem_MirrorOfItemId` | `(MirrorOfItemId)` partial `WHERE MirrorOfItemId IS NOT NULL` | `EP-MIRRORS-LIST` (find all mirrors of a source) | Reverse mirror lookup |
 | `IdxItem_OwnerUserId` | `(OwnerUserId)` | Per-user item count, role checks | Optional but cheap |
-| `IdxMirror_SourceItemId` | `(SourceItemId)` | `EP-MIRRORS-LIST`, broken-mirror cascade | Reverse lookup for source-edit fan-out |
-| `IdxMirror_MirrorItemId` | `(MirrorItemId)` UNIQUE | One Mirror per placeholder Item | Enforces 1:1 between `Item.MirrorOfItemId` and `Mirror` |
 | `IdxShare_ItemId` | `(ItemId)` | `EP-SHARES-LIST` | List grants per item |
 | `IdxShare_GranteeUserId` | `(GranteeUserId)` partial `WHERE GranteeUserId IS NOT NULL` | "Items shared with me" view | Reverse share lookup |
 | `IdxShare_PublicSlug` | `(PublicSlug)` UNIQUE partial `WHERE PublicSlug IS NOT NULL` | Public link resolver | Slug → item lookup |
@@ -115,15 +112,28 @@ flowchart LR
 
 ---
 
+> **v2 deprecation note (v1.3.0)**: This table previously listed `IdxItem_MirrorOfItemId`, `IdxMirror_SourceItemId`, and `IdxMirror_MirrorItemId`. All three were dropped by migration **M-117** when the legacy `Mirror` table and `Item.MirrorOfItemId` column were removed in favour of the peer-group model (per [`./07-migrations.md`](./07-migrations.md) §v1→v2 Mirror Peer-Group Migration). They are replaced by the `IdxMirrorPeerGroupMember_*` rows above.
+
+---
+
 ## Root DB — Required Indexes
 
 | Index | Columns | Serves | Why |
 |-------|---------|--------|-----|
-| `IdxUser_Email` | `(Email)` UNIQUE | Login by email | Already implied by `UNIQUE` constraint on `User.Email` |
 | `IdxWorkspaceMember_UserId` | `(UserId)` | "What workspaces am I in?" | FK index, hot on every login |
 | `IdxWorkspaceMember_WorkspaceId` | `(WorkspaceId)` | "Who is in this workspace?" | FK index, used by `EP-ROLES-LIST` |
 | `IdxWorkspaceMember_User_Workspace` | `(UserId, WorkspaceId)` UNIQUE | C7 — one membership row per pair | Enforces uniqueness |
 | `IdxUserRole_UserId` | `(UserId)` | `Auth::hasRole()` system-role check | FK index |
+
+---
+
+## Implicit Indexes (UNIQUE-implied — no explicit `CREATE INDEX`)
+
+> SQLite automatically creates a B-tree index for every `UNIQUE` column or `UNIQUE` constraint. The entries below were previously listed under "Required Indexes" but are not present in `sql/01-root-schema.sql` or `sql/03-app-indexes.sql` as `CREATE INDEX` statements — they are emitted by the engine as a side-effect of the column-level `UNIQUE` constraint.
+
+| Implicit index | Source `UNIQUE` declaration | Effective query |
+|----------------|------------------------------|-----------------|
+| `sqlite_autoindex_User_*` (logical name `IdxUser_Email`) | `Email TEXT NOT NULL UNIQUE` in `sql/01-root-schema.sql` | Login by email |
 
 ---
 
