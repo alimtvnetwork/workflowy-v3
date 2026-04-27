@@ -39,6 +39,12 @@ const RX_DECL_SINGLE = /^\|\s*`?(AT-[A-Z][A-Z0-9-]*-?\d+)`?\s*\|/gm;
 // so it never swallows leading digits.
 const RX_DECL_RANGE = /`(AT-[A-Z][A-Z0-9]*(?:-[A-Z][A-Z0-9]*)*-)(\d+)\.\.(\d+)`/g;
 
+// Open-prefix declarations like `AT-INFO-NN`, `AT-MIRROR-NN` license the
+// entire numeric series under that prefix. Documented in
+// `01-features/97-acceptance-criteria.md` as the "inline-prefix"
+// convention (per APP-FIX-14 reconciliation).
+const RX_DECL_OPEN = /`(AT-[A-Z][A-Z0-9]*(?:-[A-Z][A-Z0-9]*)*-)NN`/g;
+
 // Citation: any backticked AT-* ID in prose, tables, or lists.
 const RX_CITE = /`(AT-[A-Z][A-Z0-9-]*-?\d+)`/g;
 
