@@ -1,6 +1,14 @@
 #!/usr/bin/env node
 /**
- * G-30 — AT Citation Validity Gate (v1.5.0)
+ * G-30 — AT Citation Validity Gate (v1.6.0)
+ *
+ * v1.6.0 (F-future-G30-B) — Added **G-30.3 meta sub-check** (ERROR):
+ *   every entry in `REDUNDANCY_ALLOWLIST` MUST carry a rationale comment
+ *   (trailing inline `// …` or contiguous `// …` lines immediately above).
+ *   Algorithm ported verbatim from G-31.5 / G-32.4. Closes the meta gap
+ *   in the G-30 family — allow-list bloat is now machine-detectable.
+ *   Initial run: 41 entries, 0 unrationaled (all hand-curated with intent
+ *   categories during F27/F28). Negative-tested.
  *
  * v1.5.0 (F-future-G30-A) — Promoted G-30.2 redundancy from WARN→ERROR.
  *   Safe to flip because the queue has been at 0 candidates since v1.4.0
