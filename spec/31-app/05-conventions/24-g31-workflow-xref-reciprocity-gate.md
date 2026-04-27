@@ -25,12 +25,13 @@ gate_id: G-31
 | G-31.2   | features         | ERROR | `spec/31-app/01-features/`   | 23              | 0 asymmetries ✅      | v2.0.0 (WARN) → v2.3.0 (ERROR) |
 | G-31.3   | endpoints        | ERROR | `spec/31-app/06-endpoints/`  | 19              | 0 asymmetries ✅      | v2.0.0 (WARN) → v2.1.0 (ERROR) |
 | G-31.4   | db-diagram       | ERROR | `spec/31-app/07-db-diagram/` | 7               | 0 asymmetries ✅      | v2.0.0 (WARN) → v2.2.0 (ERROR) |
-| G-31.5   | meta (rationale) | ERROR | (runner self)                | 8 Sets, 0 entries | 0 unrationaled ✅    | v2.4.0   |
+| G-31.5   | meta (rationale) | ERROR | (runner self)                | 12 Sets, 0 entries | 0 unrationaled ✅    | v2.4.0   |
 | G-31.6   | islands (advisory) | WARN | all 4 scopes               | 58 (sum)        | 14 islands ⚠️         | v2.5.0   |
+| G-31.7   | heading (advisory) | WARN | all 4 scopes               | 58 (sum)        | 3 heading-drift ⚠️    | v2.6.0   |
 
 **Mode semantics:**
 - **ERROR** — any asymmetry, or any unrationaled exemption entry (G-31.5), contributes to exit code 1; CI fails.
-- **WARN** — violations are reported in stdout but exit code stays 0. G-31.6 is permanent-WARN by design (not a staged rollout) — islands are a smell, not always a bug. The historical staged-rollout pattern was for the 4 reciprocity scopes (G-31.2 / G-31.3 / G-31.4) and is now complete.
+- **WARN** — violations are reported in stdout but exit code stays 0. G-31.6 (islands) and G-31.7 (heading drift) are permanent-WARN by design (not staged rollouts) — both are smells, not always bugs (a heading variant may be intentional for cross-domain pages; a leaf may legitimately have no peers). The historical staged-rollout pattern was for the 4 reciprocity scopes (G-31.2 / G-31.3 / G-31.4) and is now complete.
 
 A scope is promoted to ERROR by changing the literal `mode: "warn"` to `mode: "error"` on its entry in the runner's `SCOPES` array. No other code changes are needed.
 
