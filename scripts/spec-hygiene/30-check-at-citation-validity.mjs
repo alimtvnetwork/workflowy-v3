@@ -1,6 +1,17 @@
 #!/usr/bin/env node
 /**
- * G-30 — AT Citation Validity Gate (v1.4.0)
+ * G-30 — AT Citation Validity Gate (v1.5.0)
+ *
+ * v1.5.0 (F-future-G30-A) — Promoted G-30.2 redundancy from WARN→ERROR.
+ *   Safe to flip because the queue has been at 0 candidates since v1.4.0
+ *   default-on rollout; allow-list is stable at 41 documented entries
+ *   across 3 intent-categories. Any new redundant open-prefix declaration
+ *   now FAILS CI immediately (exit 1) instead of accumulating silently.
+ *   The previous WARN behaviour can be restored for one-off audits via
+ *   `--warn-redundant-only` flag (does not affect exit code).
+ *   Opt-out (emergency CI bypass): `G30_REDUNDANT_ENFORCE=0` env var
+ *   reverts to v1.4.0 WARN-only behaviour. Intended for short-lived
+ *   regression-recovery windows; remove ASAP.
  *
  * v1.4.0 (F28) — Promoted G-30.2 redundancy advisory to DEFAULT-ON.
  *   Safe to flip because F27 drained the queue to 0 candidates via
@@ -165,6 +176,12 @@ const WARN_REDUNDANT = !(
   || process.env.G30_WARN_REDUNDANT === "0"
 );
 
+// G-30.2 enforcement (v1.5.0+): redundant open prefixes now FAIL CI by
+// default. Set `G30_REDUNDANT_ENFORCE=0` to revert to v1.4.0 WARN-only
+// behaviour during regression-recovery windows.
+const ENFORCE_REDUNDANT = process.env.G30_REDUNDANT_ENFORCE !== "0";
+const WARN_ONLY_FLAG = process.argv.includes("--warn-redundant-only");
+
 // Declaration — first table cell holds an AT-* ID, optionally backticked.
 // Examples that match:
 //   | `AT-APP-01` | something | source |
@@ -317,31 +334,40 @@ function findRedundantOpenPrefixes(registered, citations) {
   return out;
 }
 
-function printRedundancyAdvisory(redundant) {
+function printRedundancyAdvisory(redundant, mode) {
   if (redundant.length === 0) {
     console.log("");
-    console.log("  G-30.2 redundancy advisory: no cleanup candidates 🎉");
+    console.log(`  G-30.2 redundancy (${mode}): no cleanup candidates 🎉`);
     return;
   }
-  console.log("");
-  console.log(
-    `  G-30.2 redundancy advisory (WARN-only): ${redundant.length} open prefix(es) may be safe to remove`,
+  const stream = mode === "ERROR" ? console.error : console.log;
+  stream("");
+  stream(
+    `  G-30.2 redundancy (${mode}): ${redundant.length} open prefix(es) ${
+      mode === "ERROR" ? "MUST be removed" : "may be safe to remove"
+    }`,
   );
-  console.log("    (citations 100% covered by closed declarations OR zero usage)");
-  console.log("");
+  stream("    (citations 100% covered by closed declarations OR zero usage)");
+  stream("");
   for (const r of redundant) {
     const tag = r.reason === "zero-citations"
       ? "  zero citations    "
       : `  ${String(r.citedCount).padStart(2)} cited / all closed`;
-    console.log(`    ${r.prefix.padEnd(20)} ${tag}  ${r.file}`);
+    stream(`    ${r.prefix.padEnd(20)} ${tag}  ${r.file}`);
   }
-  console.log("");
-  console.log(
-    "    To suppress: add the prefix to REDUNDANCY_ALLOWLIST in this runner",
+  stream("");
+  stream(
+    "    Resolution: delete the open `AT-FOO-NN` declaration row, OR add",
   );
-  console.log(
-    "    (intentional future-licensing) or delete the open declaration row.",
+  stream(
+    "    the prefix to REDUNDANCY_ALLOWLIST in this runner with a one-line",
   );
+  stream(
+    "    rationale (intentional future-licensing / convention-doc / placeholder).",
+  );
+  if (mode === "ERROR") {
+    stream("    Bypass (emergency only): G30_REDUNDANT_ENFORCE=0");
+  }
 }
 
 function main() {
@@ -359,12 +385,24 @@ function main() {
     console.log(`  unique cited IDs:                   ${uniqueCited.size}`);
     console.log(`  unregistered citations:             0`);
     console.log("  ✅ all citations resolve");
+    const redundant = WARN_REDUNDANT
+      ? findRedundantOpenPrefixes(registered, citations)
+      : [];
+    const enforce = ENFORCE_REDUNDANT && !WARN_ONLY_FLAG;
+    const mode = enforce ? "ERROR" : "WARN";
     if (WARN_REDUNDANT) {
-      const redundant = findRedundantOpenPrefixes(registered, citations);
-      printRedundancyAdvisory(redundant);
+      printRedundancyAdvisory(redundant, mode);
+    }
+    if (enforce && redundant.length > 0) {
+      console.error("");
+      console.error(
+        `G-30.2 FAILED: ${redundant.length} redundant open-prefix declaration(s) — see above.`,
+      );
+      process.exit(1);
     }
     process.exit(0);
   }
+
 
   console.error("G-30 AT citation validity FAILED:");
   console.error("");

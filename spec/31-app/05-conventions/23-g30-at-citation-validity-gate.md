@@ -1,6 +1,6 @@
 ---
 slug: g30-at-citation-validity-gate
-version: 1.4.0
+version: 1.5.0
 updated: 2026-04-27
 parent: ../../05-conventions/02-ci-quality-gates.md
 status: canonical
@@ -9,8 +9,8 @@ gate_id: G-30
 
 # G-30 — AT Citation Validity Gate
 
-> **Version:** 1.4.0
-> **Updated:** 2026-04-27 (UTC+8)
+> **Version:** 1.5.0
+> **Updated:** 2026-04-27 (UTC+8) — v1.5.0 (F-future-G30-A) promoted G-30.2 redundancy advisory **WARN → ERROR**. Safe to flip because the queue has been at 0 candidates since v1.4.0 default-on rollout (F28); allow-list stable at 41 documented entries across 3 intent-categories (future-licensing, convention-documentation, namespace-placeholder). Any new redundant open-prefix declaration now FAILS CI immediately (exit 1). Negative-tested by removing `AT-FOO-` from `REDUNDANCY_ALLOWLIST` → runner correctly exited 1 with diagnostic output. Emergency CI bypass: `G30_REDUNDANT_ENFORCE=0` env var (reverts to v1.4.0 WARN-only); `--warn-redundant-only` flag also restores WARN-only for one-off audits. Earlier: v1.4.0 advisory default-on; v1.3.0 drained queue 5→0; v1.2.0 added G-30.2 advisory; v1.1.0 extended consumer scopes; v1.0.0 initial gate.
 > **Parent:** [`02-ci-quality-gates.md`](./02-ci-quality-gates.md)
 > **Sibling:** [`22-g29-endpoint-matrix-coverage-gate.md`](./22-g29-endpoint-matrix-coverage-gate.md)
 > **Runner:** [`scripts/spec-hygiene/30-check-at-citation-validity.mjs`](../../../scripts/spec-hygiene/30-check-at-citation-validity.mjs)
