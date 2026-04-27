@@ -1,6 +1,6 @@
 ---
 slug: g30-at-citation-validity-gate
-version: 1.3.0
+version: 1.4.0
 updated: 2026-04-27
 parent: ../../05-conventions/02-ci-quality-gates.md
 status: canonical
@@ -9,7 +9,7 @@ gate_id: G-30
 
 # G-30 — AT Citation Validity Gate
 
-> **Version:** 1.3.0
+> **Version:** 1.4.0
 > **Updated:** 2026-04-27 (UTC+8)
 > **Parent:** [`02-ci-quality-gates.md`](./02-ci-quality-gates.md)
 > **Sibling:** [`22-g29-endpoint-matrix-coverage-gate.md`](./22-g29-endpoint-matrix-coverage-gate.md)
@@ -170,9 +170,9 @@ G-30 AT citation validity FAILED:
 
 ---
 
-## G-30.2 — Open-prefix redundancy advisory (v1.2.0)
+## G-30.2 — Open-prefix redundancy advisory (v1.4.0 default-on)
 
-**Status:** WARN-only — never changes exit code.
+**Status:** WARN-only — never changes exit code. **DEFAULT-ON as of v1.4.0 (F28).**
 
 **Problem this addresses.** Now that F15 + F20 closed 25 alias prefixes into
 explicit registration tables (908 closed IDs as of 2026-04-27), most of the
@@ -181,16 +181,18 @@ under their prefix already has a closed-table row. They were originally
 needed to license citations before per-ID rows existed; they now linger as
 historical baggage.
 
-**What it reports.** When invoked with `--warn-redundant` (or env
-`G30_WARN_REDUNDANT=1`), the runner enumerates open prefixes whose:
+**What it reports.** On every run (no flag needed), the runner enumerates
+open prefixes whose:
 
 - citations are 100% covered by closed declarations (e.g. `AT-MIRROR-NN`
   declared but `AT-MIRROR-01..06` all live in closed alias-enumeration table), OR
 - have zero matching citations across all 3 consumer scopes (e.g.
   `AT-MULTISELECT-NN` — declared but no consumer cites it).
 
-**Allow-list (v1.3.0 — drained by F27).** The allow-list now contains 41
-entries grouped into three documented intent-categories. After F27 the
+…and emits a one-line advisory per candidate. **No flag required.**
+
+**Allow-list (v1.3.0 — drained by F27).** The allow-list contains 41
+entries grouped into three documented intent-categories. As of v1.3.0 the
 runner reports **zero** cleanup candidates while preserving every Coverage
 Map row for naming-scheme documentation:
 
@@ -201,38 +203,55 @@ Map row for naming-scheme documentation:
 | (c) Namespace-placeholder | 22 | `AT-MGP-`, `AT-DV-`, `AT-OQ-`, `AT-SR-`, `AT-WF-CREATE-`, `AT-WF-MIGRATE-`, …, `AT-APP-`, `AT-APPF-` | Feature/workflow files where citations live under canonical `AT-APP-NN`; the prefix row documents the source-file inline scheme (and for `AT-WF-*`, the canonical-map convention) |
 
 To **revisit** a specific entry (e.g. you intend to delete the prose row),
-remove it from `REDUNDANCY_ALLOWLIST` in the runner and rerun
-`--warn-redundant`. To suppress newly-introduced redundancy in the future,
-add the prefix with a one-line rationale in the appropriate category.
+remove it from `REDUNDANCY_ALLOWLIST` in the runner and rerun the runner.
+To suppress newly-introduced redundancy in the future, add the prefix with
+a one-line rationale in the appropriate category.
 
 **Why WARN-only.** Some closed ID coverage is provisional (e.g. an alias
 table may be removed in a v3.0.0 sweep). Failing CI on redundancy would
-incentivise re-adding open declarations defensively. Advisory output lets
-F-series cleanup tasks (e.g. F-future) prune in batches without churn.
+incentivise re-adding open declarations defensively. Advisory output
+surfaces drift early without breaking PR pipelines.
 
-**Sample output.**
+**Why default-on (v1.4.0).** F27 drained the queue to 0 candidates. With
+no signal noise, default-on means any **new** redundant declaration shows
+up in CI logs immediately rather than accumulating until a future audit.
+Authors of new feature/workflow files now have two correct paths: (a)
+close their citations into a registration table, or (b) add an allow-list
+entry with a written justification — both healthier than silent growth.
+
+**Sample output (clean state).**
 ```
-G-30.2 redundancy advisory (WARN-only): 36 open prefix(es) may be safe to remove
+G-30 AT citation validity:
+  ✅ all citations resolve
+
+  G-30.2 redundancy advisory: no cleanup candidates 🎉
+```
+
+**Sample output (drift detected).**
+```
+G-30.2 redundancy advisory (WARN-only): 1 open prefix(es) may be safe to remove
   (citations 100% covered by closed declarations OR zero usage)
 
-  AT-ROLES-              10 cited / all closed  spec/31-app/01-features/15-roles-and-permissions.md
-  AT-MULTISELECT-       zero citations          spec/31-app/01-features/97-acceptance-criteria.md
-  AT-WF-CREATE-          5 cited / all closed   spec/31-app/02-workflows/00-overview.md
-  ...
+  AT-NEWFEATURE-         zero citations      spec/31-app/01-features/22-newfeature.md
+
   To suppress: add the prefix to REDUNDANCY_ALLOWLIST in this runner
   (intentional future-licensing) or delete the open declaration row.
 ```
 
 **Invocation.**
 ```sh
-node scripts/spec-hygiene/30-check-at-citation-validity.mjs --warn-redundant
+# Default — advisory always runs
+node scripts/spec-hygiene/30-check-at-citation-validity.mjs
+
+# Opt-out (rarely needed) — suppress advisory output
+node scripts/spec-hygiene/30-check-at-citation-validity.mjs --no-warn-redundant
 # or
-G30_WARN_REDUNDANT=1 node scripts/spec-hygiene/00-run-all.mjs
+G30_WARN_REDUNDANT=0 node scripts/spec-hygiene/00-run-all.mjs
 ```
 
-The master runner (`00-run-all.mjs`) does NOT pass the flag by default —
-opt-in only. Promotion to default-on is reserved for a future loop after
-the redundancy queue is drained.
+The legacy `--warn-redundant` flag and `G30_WARN_REDUNDANT=1` env var are
+still accepted as no-ops for backward compatibility with any saved CI
+configurations from the v1.2.0–v1.3.0 era.
 
 ---
 
@@ -240,6 +259,7 @@ the redundancy queue is drained.
 
 | Version | Date | Change |
 |---------|------|--------|
+| 1.4.0 | 2026-04-27 | F28 — promoted G-30.2 advisory to **DEFAULT-ON**; safe because F27 drained queue to 0; opt-out via `--no-warn-redundant` flag or `G30_WARN_REDUNDANT=0` env var; legacy `--warn-redundant` flag preserved as no-op for back-compat |
 | 1.3.0 | 2026-04-27 | F27 — drained G-30.2 redundancy queue 36→0 by expanding `REDUNDANCY_ALLOWLIST` 5→41 entries across three documented intent-categories (future-licensing / convention-documentation / namespace-placeholder); preserves every Coverage Map row for naming-scheme docs |
 | 1.2.0 | 2026-04-27 | F24 — added G-30.2 open-prefix redundancy advisory (`--warn-redundant`, WARN-only); initial allow-list of 5 future-licensing prefixes; advisory then surfaced 36 cleanup candidates |
 | 1.1.0 | 2026-04-27 | F14 — extended consumer scope to `02-workflows/` and `07-db-diagram/04-feature-slices.md`; output now reports per-scope provenance on failure |

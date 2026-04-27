@@ -1,6 +1,14 @@
 #!/usr/bin/env node
 /**
- * G-30 — AT Citation Validity Gate (v1.3.0)
+ * G-30 — AT Citation Validity Gate (v1.4.0)
+ *
+ * v1.4.0 (F28) — Promoted G-30.2 redundancy advisory to DEFAULT-ON.
+ *   Safe to flip because F27 drained the queue to 0 candidates via
+ *   REDUNDANCY_ALLOWLIST expansion (5→41 entries, 3 intent-categories).
+ *   Default-on surfaces ANY new redundant declaration in CI immediately
+ *   instead of letting allow-list bloat accumulate silently. Still
+ *   WARN-only — never affects exit code. Opt-out via
+ *   `--no-warn-redundant` flag or `G30_WARN_REDUNDANT=0` env var.
  *
  * v1.3.0 (F27) — Drained the G-30.2 open-prefix redundancy queue by
  *   expanding REDUNDANCY_ALLOWLIST from 5 → 41 entries, grouped into
@@ -142,8 +150,20 @@ const REDUNDANCY_ALLOWLIST = new Set([
   "AT-APPF-",         // FROZEN legacy dispatch column (APP-FIX-14)
 ]);
 
-const WARN_REDUNDANT = process.argv.includes("--warn-redundant")
-  || process.env.G30_WARN_REDUNDANT === "1";
+// G-30.2 advisory is DEFAULT-ON as of v1.4.0 (F28). The redundancy queue
+// was drained to 0 in F27 via REDUNDANCY_ALLOWLIST expansion, so default-on
+// surfaces ANY new redundant declaration immediately rather than letting
+// it accumulate silently. Still WARN-only — never affects exit code.
+//
+// Escape hatches (rarely needed):
+//   --no-warn-redundant            CLI flag suppresses advisory output
+//   G30_WARN_REDUNDANT=0           env var suppresses advisory output
+//   --warn-redundant               CLI flag (legacy, no-op now; default-on)
+//   G30_WARN_REDUNDANT=1           env var (legacy, no-op now; default-on)
+const WARN_REDUNDANT = !(
+  process.argv.includes("--no-warn-redundant")
+  || process.env.G30_WARN_REDUNDANT === "0"
+);
 
 // Declaration — first table cell holds an AT-* ID, optionally backticked.
 // Examples that match:
