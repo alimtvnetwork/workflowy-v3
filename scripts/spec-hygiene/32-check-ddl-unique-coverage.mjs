@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * G-32 — DDL ↔ Doc Index Coverage Gate (v4.0.0)
+ * G-32 — DDL ↔ Doc Index Coverage Gate (v5.0.0)
  *
- * Four sub-checks:
+ * Five sub-checks:
  *   G-32.1 (forward, v1.0.0)  — every UNIQUE declaration in DDL is
  *                              documented in 06-indexes.md.
  *   G-32.2 (reverse, v2.0.0)  — every Idx{Name} / sqlite_autoindex_{T} name
@@ -20,6 +20,19 @@
  *                              or a `// …` line within the array block
  *                              immediately above the entry (no blank
  *                              line between).
+ *   G-32.5 (parity,  v5.0.0)  — for every CREATE [UNIQUE] INDEX, the
+ *                              doc row in 06-indexes.md must mention:
+ *                              (a) every column from the DDL `(cols)`
+ *                                  list (case-sensitive identifier
+ *                                  match in backticked content),
+ *                              (b) the literal `UNIQUE` token if the
+ *                                  DDL declares UNIQUE,
+ *                              (c) the word `partial` and the WHERE
+ *                                  predicate (normalised) if DDL has
+ *                                  a `WHERE …` clause.
+ *                              Name-only matching (G-32.3) ensures a
+ *                              row exists; G-32.5 ensures the row
+ *                              describes that index correctly.
  *
  * Asserts that every `UNIQUE` declaration in the SQLite DDL files
  * (`spec/31-app/07-db-diagram/sql/01-root-schema.sql` and
