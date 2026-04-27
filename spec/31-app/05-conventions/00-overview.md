@@ -41,6 +41,7 @@
 | 26 | [`24-g31-workflow-xref-reciprocity-gate.md`](./24-g31-workflow-xref-reciprocity-gate.md) | G-31 — Cross-Reference Reciprocity Gate | 213 |
 | 27 | [`24-state-management-architecture.md`](./24-state-management-architecture.md) | State Management Architecture | 277 |
 | 28 | [`25-g32-ddl-unique-coverage-gate.md`](./25-g32-ddl-unique-coverage-gate.md) | G-32 — DDL ↔ Doc Index Coverage Gate | 259 |
+| 29 | [`26-allow-list-inventory.md`](./26-allow-list-inventory.md) | Allow-List Inventory | 267 |
 
 <!-- AUTO-TOC:END -->
 
