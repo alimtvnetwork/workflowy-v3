@@ -86,7 +86,14 @@ const REVERSE_EXEMPT = new Set([
   "IdxMirror_MirrorItemId",
 ]);
 
-function fail(msg, code = 2) {
+// G-32.3 allow-list — DDL CREATE INDEX names whose documentation is
+// intentionally absent from `06-indexes.md`. Empty as of v3.0.0 — every
+// CREATE INDEX in DDL is currently documented (DDL alias resolution via
+// sql/00-overview.md handles the `IdxMirrorMember_*`/`IdxMirrorGroup_*`
+// → `IdxMirrorPeerGroup*` rename automatically).
+const NONUNIQUE_EXEMPT = new Set([
+  // "IdxFoo_BarBaz",  // rationale: ...
+]);
   console.error(`G-32 runner error: ${msg}`);
   process.exit(code);
 }
