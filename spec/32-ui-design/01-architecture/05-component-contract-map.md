@@ -15,7 +15,7 @@ This file is the single global bridge from feature spec → component path → `
 - Find which acceptance tests cover a given component.
 - Find which `data-testid` to grep when wiring tests.
 
-Total surfaces mapped: **202** across **18** feature file(s).
+Total surfaces mapped: **217** across **25** feature file(s).
 
 ---
 
@@ -152,6 +152,14 @@ Total surfaces mapped: **202** across **18** feature file(s).
 | Quota toast | ``src/components/feedback/QuotaToast.tsx`` | `quota-toast` | AT-BOARD-14 |
 | Drop indicator | ``src/components/board/DropIndicator.tsx`` | `board-drop-indicator` | AT-BOARD-06..07 |
 
+### `07b-dashboard-view.md`
+
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| Dashboard container | ``src/components/dashboard/DashboardContainer.tsx`` | `dashboard-container` | AT-DV-01, AT-DV-02 |
+| Dashboard card | ``src/components/dashboard/DashboardCard.tsx`` | `dashboard-card`, `dashboard-card-title`, `dashboard-card-checkbox` | AT-DV-03, AT-DV-04, AT-DV-05 |
+| Convert action | ``src/components/contextmenu/TurnIntoDashboard.tsx`` | `turn-into-dashboard` | AT-DV-06, AT-DV-07, AT-DV-08 |
+
 ### `08-share-dialog.md`
 
 | Surface | Component path | `data-testid` | Acceptance tests |
@@ -167,6 +175,13 @@ Total surfaces mapped: **202** across **18** feature file(s).
 | Cascade notice | ``src/components/share/CascadeNotice.tsx`` | `cascade-notice` | AT-SHARE-01 |
 | Quota toast | ``src/components/feedback/QuotaToast.tsx`` | `share-quota-toast` | AT-SHARE-13 |
 | Item-deleted toast | ``src/components/feedback/InfoToast.tsx`` | `share-dialog-closed-toast` | AT-SHARE-15 |
+
+### `08b-sharing-mirror-interaction.md`
+
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| Share dialog (per-instance) | ``src/components/share/ShareDialog.tsx`` | `share-dialog`, `share-grant`, `share-revoke` | AT-SM-01, AT-SM-02, AT-SM-03 |
+| Mirror peer-group propagator | ``src/lib/sync/peerGroupPropagator.ts`` | `n/a (pure module)` | AT-SM-04, AT-SM-05 |
 
 ### `09-mirrors.md`
 
@@ -238,6 +253,13 @@ Total surfaces mapped: **202** across **18** feature file(s).
 | Empty-trash progress toast | ``src/components/feedback/ProgressToast.tsx`` | `trash-empty-progress` | AT-TRASH-15 |
 | Pending-restore badge | ``src/components/trash/PendingBadge.tsx`` | `trash-pending-state` | AT-TRASH-14 |
 
+### `11b-trash-reaper.md`
+
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| Reaper edge function | ``wp-plugin/src/Cron/ReapTrash.php`` | `n/a (server-side)` | AT-TR-01, AT-TR-02, AT-TR-03 |
+| Reaper audit log surface | ``wp-plugin/src/Cron/ReaperRunsLogger.php`` | `n/a (server-side)` | AT-TR-04, AT-TR-05 |
+
 ### `12-multi-select.md`
 
 | Surface | Component path | `data-testid` | Acceptance tests |
@@ -254,6 +276,13 @@ Total surfaces mapped: **202** across **18** feature file(s).
 | Permission-disabled tooltip | ``src/components/multiselect/PermissionDisabledTooltip.tsx`` | `bulk-permission-disabled` | AT-MULTISELECT-12 |
 | Drag-block toast | ``src/components/feedback/InfoToast.tsx`` | `multiselect-drag-block-toast` | AT-MULTISELECT-13 |
 | Selection-cleared toast | ``src/components/feedback/InfoToast.tsx`` | `multiselect-cleared-toast` | AT-MULTISELECT-14 |
+
+### `12b-multi-select-zoom.md`
+
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| Virtual zoom scope store | ``src/stores/useZoomStore.ts`` | `n/a (pure store)` | AT-MZ-01, AT-MZ-02, AT-MZ-03 |
+| Zoom breadcrumb (virtual) | ``src/components/zoom/ZoomBreadcrumb.tsx`` | `zoom-breadcrumb-virtual` | AT-MZ-04, AT-MZ-05, AT-MZ-06 |
 
 ### `13-templates.md`
 
@@ -274,6 +303,13 @@ Total surfaces mapped: **202** across **18** feature file(s).
 | Apply progress toast | ``src/components/feedback/ProgressToast.tsx`` | `template-apply-progress` | AT-TEMPLATES-16 |
 | Pending badge | ``src/components/items/PendingBadge.tsx`` | `template-pending-badge` | AT-TEMPLATES-17 |
 | Apply-blocked toast | ``src/components/feedback/InfoToast.tsx`` | `template-apply-blocked-toast` | AT-TEMPLATES-18 |
+
+### `13b-templates-snapshot-semantics.md`
+
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| Template instantiation procedure | ``wp-plugin/src/Templates/Instantiate.php`` | `n/a (server-side)` | AT-TPL-01, AT-TPL-02, AT-TPL-03 |
+| Template payload storage | ``wp-plugin/src/Templates/PayloadRepository.php`` | `n/a (server-side)` | AT-TPL-04, AT-TPL-05 |
 
 ### `14-concurrency-and-sync.md`
 
@@ -299,6 +335,13 @@ Total surfaces mapped: **202** across **18** feature file(s).
 | Transactional emit hook | ``wp-plugin/Sync/TransactionalEmitter.php`` | `sse-emission-atomic` | AT-CONCURRENCY-21 |
 | Forbidden-transport guard (CI) | ``scripts/spec-hygiene/forbidden-transports.mjs`` | `sse-forbidden-transports` | AT-CONCURRENCY-22 |
 
+### `14b-offline-queue.md`
+
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| Offline queue store | ``src/stores/useOfflineQueueStore.ts`` | `n/a (pure store)` | AT-OQ-01, AT-OQ-02, AT-OQ-03 |
+| SaveStatus indicator | ``src/components/sync/SaveStatusBadge.tsx`` | `save-status-badge` | AT-OQ-04, AT-OQ-05, AT-OQ-06 |
+
 ### `15-roles-and-permissions.md`
 
 | Surface | Component path | `data-testid` | Acceptance tests |
@@ -312,6 +355,13 @@ Total surfaces mapped: **202** across **18** feature file(s).
 | Transfer-ownership button | ``src/components/share/TransferOwnershipButton.tsx`` | `transfer-ownership-button` | `AT-ROLES-07` |
 | Workspace invite button | ``src/components/workspace/WorkspaceInviteButton.tsx`` | `workspace-invite-button` | `AT-ROLES-08` |
 | Removed-user badge | ``src/components/items/RemovedUserBadge.tsx`` | `removed-user-badge` | `AT-ROLES-09` |
+
+### `16-search-ranking.md`
+
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| Server-side ranker | ``wp-plugin/src/Search/Ranker.php`` | `n/a (server-side)` | AT-SR-01, AT-SR-02, AT-SR-03 |
+| Coarse-grain bucket strategy | ``wp-plugin/src/Search/BucketStrategy.php`` | `n/a (server-side)` | AT-SR-04, AT-SR-05 |
 
 ---
 
@@ -335,6 +385,9 @@ Sorted alphabetically. Each row is one planned/implemented component file.
 | ``src/components/comments/CommentButton.tsx`` | `comment-button` |
 | ``src/components/concurrency/RemoteChangeBanner.tsx`` | `concurrency-banner` |
 | ``src/components/concurrency/UndoRemoteChangeButton.tsx`` | `concurrency-undo` |
+| ``src/components/contextmenu/TurnIntoDashboard.tsx`` | `turn-into-dashboard` |
+| ``src/components/dashboard/DashboardCard.tsx`` | `dashboard-card`, `dashboard-card-checkbox`, `dashboard-card-title` |
+| ``src/components/dashboard/DashboardContainer.tsx`` | `dashboard-container` |
 | ``src/components/editor/ColorPicker.tsx`` | `color-picker` |
 | ``src/components/editor/FormatButtons.tsx`` | `format-bold`, `format-italic`, `format-underline` |
 | ``src/components/editor/FormatToolbar.tsx`` | `format-toolbar` |
@@ -419,7 +472,7 @@ Sorted alphabetically. Each row is one planned/implemented component file.
 | ``src/components/share/CopyLinkButton.tsx`` | `copy-link-button` |
 | ``src/components/share/PublicLinkToggle.tsx`` | `public-link-toggle` |
 | ``src/components/share/PublicViewBanner.tsx`` | `public-view-banner` |
-| ``src/components/share/ShareDialog.tsx`` | `share-dialog` |
+| ``src/components/share/ShareDialog.tsx`` | `share-dialog`, `share-grant`, `share-revoke` |
 | ``src/components/share/ShareDialogTrigger.tsx`` | `share-dialog-trigger` |
 | ``src/components/share/ShareEmailInput.tsx`` | `share-email-error`, `share-email-input` |
 | ``src/components/share/ShareInviteButton.tsx`` | `share-invite-button` |
@@ -429,6 +482,7 @@ Sorted alphabetically. Each row is one planned/implemented component file.
 | ``src/components/share/SharedUsersList.tsx`` | `share-search`, `share-user-row` |
 | ``src/components/share/TransferOwnershipButton.tsx`` | `transfer-ownership-button` |
 | ``src/components/shared/LoadMoreSentinel.tsx`` | `today-load-more` |
+| ``src/components/sync/SaveStatusBadge.tsx`` | `save-status-badge` |
 | ``src/components/tags/TagChip.tsx`` | `tag-chip` |
 | ``src/components/templates/TemplateDeleteDialog.tsx`` | `template-delete-confirm` |
 | ``src/components/templates/TemplateDuplicateButton.tsx`` | `template-duplicate-button` |
@@ -459,6 +513,7 @@ Sorted alphabetically. Each row is one planned/implemented component file.
 | ``src/components/tree/ItemRow.tsx`` | `item-row` |
 | ``src/components/tree/RootContainer.tsx`` | `root-item` |
 | ``src/components/workspace/WorkspaceInviteButton.tsx`` | `workspace-invite-button` |
+| ``src/components/zoom/ZoomBreadcrumb.tsx`` | `zoom-breadcrumb-virtual` |
 | ``src/hooks/useKeyboardActions.ts`` | `keyboard-action-coverage` |
 | ``src/lib/hotkeys.ts`` | `— (module)` |
 | ``src/lib/interactions/useBeforeUnload.ts`` | `unsaved-warning` |
@@ -468,6 +523,7 @@ Sorted alphabetically. Each row is one planned/implemented component file.
 | ``src/lib/sync/MirrorSyncBroadcaster.ts`` | `concurrency-mirror-sync` |
 | ``src/lib/sync/OfflineReplayQueue.ts`` | `concurrency-offline-replay` |
 | ``src/lib/sync/StaleTabDetector.ts`` | `concurrency-stale-tab` |
+| ``src/lib/sync/peerGroupPropagator.ts`` | `n/a (pure module)` |
 | ``src/pages/SettingsTemplates.tsx`` | `templates-settings-list` |
 | ``src/pages/Today.tsx`` | `today-view-root` |
 | ``src/pages/Trash.tsx`` | `trash-view-root` |
@@ -482,6 +538,8 @@ Sorted alphabetically. Each row is one planned/implemented component file.
 | ``src/state/mirrorDetachSaga.ts`` | `mirror-detach-survivors` |
 | ``src/state/mirrorDissolveSaga.ts`` | `mirror-singleton-dissolve` |
 | ``src/state/mirrorGroupStore.ts`` | `mirror-content-sync` |
+| ``src/stores/useOfflineQueueStore.ts`` | `n/a (pure store)` |
+| ``src/stores/useZoomStore.ts`` | `n/a (pure store)` |
 | ``wp-plugin/Repository/CycleCheck.php`` | `cycle-mirror-rejected`, `cycle-move-rejected` |
 | ``wp-plugin/Repository/sql/cycle-check.sql`` | `cycle-hygiene-drift` |
 | ``wp-plugin/Sync/BackpressureGuard.php`` | `sse-cursor-overflow` |
@@ -490,6 +548,12 @@ Sorted alphabetically. Each row is one planned/implemented component file.
 | ``wp-plugin/Sync/ResumeBuffer.php`` | `sse-resume-replay` |
 | ``wp-plugin/Sync/SseEndpoint.php`` | `sse-endpoint-handshake` |
 | ``wp-plugin/Sync/TransactionalEmitter.php`` | `sse-emission-atomic` |
+| ``wp-plugin/src/Cron/ReapTrash.php`` | `n/a (server-side)` |
+| ``wp-plugin/src/Cron/ReaperRunsLogger.php`` | `n/a (server-side)` |
+| ``wp-plugin/src/Search/BucketStrategy.php`` | `n/a (server-side)` |
+| ``wp-plugin/src/Search/Ranker.php`` | `n/a (server-side)` |
+| ``wp-plugin/src/Templates/Instantiate.php`` | `n/a (server-side)` |
+| ``wp-plugin/src/Templates/PayloadRepository.php`` | `n/a (server-side)` |
 
 ---
 
