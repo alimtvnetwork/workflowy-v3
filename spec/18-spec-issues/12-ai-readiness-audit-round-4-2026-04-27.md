@@ -194,6 +194,25 @@ After v1.3.0 closure of AUDIT-AI-07, all seven findings are resolved:
 
 ---
 
+## 8. Related spec-completeness work (post-100)
+
+After the audit closed at 100/100, four product-clarification batches (B1–B4) ran 2026-04-27 to lock down 10 ambiguities the user surfaced separately from this audit's rubric. They produced 7 new addendum SSOTs without changing the composite score:
+
+| Batch | Addendum / SSOT | Topic |
+|-------|-----------------|-------|
+| B1 | [`09b-mirror-peer-group-model.md`](../31-app/01-features/09b-mirror-peer-group-model.md) | Mirror peer-group identity (also closed AUDIT-AI-07) |
+| B2 | [`07b-dashboard-view.md`](../31-app/01-features/07b-dashboard-view.md) | Depth-1 inline-editable card grid |
+| B3 | [`14b-offline-queue.md`](../31-app/01-features/14b-offline-queue.md) | Full local mirror + FIFO replay + LWW |
+| B3 | [`16-search-ranking.md`](../31-app/01-features/16-search-ranking.md) | Hybrid relevance + recency |
+| B4 | [`13b-templates-snapshot-semantics.md`](../31-app/01-features/13b-templates-snapshot-semantics.md) | One-shot snapshot copy |
+| B4 | [`08b-sharing-mirror-interaction.md`](../31-app/01-features/08b-sharing-mirror-interaction.md) | Per-instance ACL on peers |
+| B4 | [`11b-trash-reaper.md`](../31-app/01-features/11b-trash-reaper.md) | 30-day cron hard-delete |
+| B4 | [`12b-multi-select-zoom.md`](../31-app/01-features/12b-multi-select-zoom.md) | Virtual-scope zoom |
+
+These are independent of the audit's 10-dimension scoring rubric and do not trigger a re-score. See `spec/31-app/01-features/99-consistency-report.md` v2.2.0 for the registered inventory.
+
+---
+
 ## Changelog
 
 | Version | Date | Change |
@@ -202,3 +221,4 @@ After v1.3.0 closure of AUDIT-AI-07, all seven findings are resolved:
 | 1.1.0 | 2026-04-27 | Closed AUDIT-AI-01 (`24-local-dev-harness.md`, +6 pts) and AUDIT-AI-02 (`23-sse-php-implementation.md`, +5 pts). Composite 78 → **89/100**. 5 findings remain (2 HIGH, 2 MEDIUM, 1 LOW). |
 | 1.2.0 | 2026-04-27 | Closed AUDIT-AI-03 (DDL files), AUDIT-AI-04 (217-item fixture), AUDIT-AI-05 (endpoint↔AT matrix), AUDIT-AI-06 (state-management architecture). Composite 89 → **99/100**. Only AUDIT-AI-07 (LOW, gated by spec-only) remained. |
 | 1.3.0 | 2026-04-27 | Closed AUDIT-AI-07 via Path B+ — user clarified Workflowy mirror semantics, authored `09b-mirror-peer-group-model.md`, patched DDL v1→v2, added auto-dissolve trigger, migration script, and memory rule. Composite 99 → **100/100**. AI-readiness ceiling reached. |
+| 1.4.0 | 2026-04-27 | Added §8 footnote linking 7 post-100 product-clarification SSOTs (B1–B4). No score change. |
