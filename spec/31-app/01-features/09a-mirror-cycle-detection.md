@@ -1,7 +1,7 @@
 # Mirror Cycle Detection — Algorithm Spec
 
-> **Version:** 1.0.0
-> **Updated:** 2026-04-26 (UTC+8)
+> **Version:** 1.1.0
+> **Updated:** 2026-04-27 (UTC+8) — Reshaped Component Contract to canonical `Surface | Component path | data-testid | Acceptance tests` schema (was `Concern | Path | Function`); each row now wires `mirror-cycle-error` testid to AT-MIRRORS-08. Closes hygiene check `07-extract-contract-map.mjs`. Algorithm signatures preserved as a §Note below the table. Prior: 2026-04-26 (UTC+8) — initial spec.
 > **Parent:** [09-mirrors.md](./09-mirrors.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 > **Closes:** A-38 (cycle-detection algorithmic SSOT — gap identified during A-28 mirror-drift sweep)
