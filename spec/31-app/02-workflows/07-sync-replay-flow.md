@@ -1,7 +1,7 @@
 # Sync Replay Flow
 
-> **Version:** 1.0.0
-> **Created:** 2026-04-27 (UTC+8) — F11 (No-Questions Mode)
+> **Version:** 1.1.0
+> **Created:** 2026-04-27 (UTC+8) — F11 (No-Questions Mode); v1.1.0 added back-link to `09-mirror-create-flow.md` (F25)
 > **Status:** Canonical — cross-feature flow
 > **Parent:** [`00-overview.md`](./00-overview.md)
 > **SSOT for the underlying feature:** [`spec/31-app/01-features/14b-offline-queue.md`](../01-features/14b-offline-queue.md)
@@ -149,9 +149,10 @@ This file pins the sequence. Each step cites the SSOT that governs its rule.
 
 ## Related
 
-- [`08-mirror-detach-flow.md`](./08-mirror-detach-flow.md) — detach mutations also drain through this flow
 - [`05-trash-reaper-flow.md`](./05-trash-reaper-flow.md) — reaper-deleted items return 410 to in-flight queued mutations
 - [`06-search-query-flow.md`](./06-search-query-flow.md) — search served from local mirror while offline
+- [`08-mirror-detach-flow.md`](./08-mirror-detach-flow.md) — detach mutations also drain through this flow
+- [`09-mirror-create-flow.md`](./09-mirror-create-flow.md) — offline mirror-create mutations queue here and replay through the same FIFO drain on reconnect
 - [`../01-features/14b-offline-queue.md`](../01-features/14b-offline-queue.md) — feature-level SSOT
 - [`../01-features/14-concurrency-and-sync.md`](../01-features/14-concurrency-and-sync.md) — LWW formal model
 - [`../06-endpoints/14b-sync-replay.md`](../06-endpoints/14b-sync-replay.md) — endpoint contract (EP-SYNC-REPLAY)

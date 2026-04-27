@@ -1,7 +1,7 @@
 # Trash Reaper Flow
 
-> **Version:** 1.0.0
-> **Created:** 2026-04-27 (UTC+8) — F11 (No-Questions Mode)
+> **Version:** 1.1.0
+> **Created:** 2026-04-27 (UTC+8) — F11 (No-Questions Mode); v1.1.0 fixed cross-flow link asymmetries (F25)
 > **Status:** Canonical — cross-feature flow
 > **Parent:** [`00-overview.md`](./00-overview.md)
 > **SSOT for the underlying feature:** [`spec/31-app/01-features/11b-trash-reaper.md`](../01-features/11b-trash-reaper.md)
@@ -132,9 +132,11 @@ If the same `runId` were ever re-inserted into `ReaperRuns`, the PRIMARY KEY con
 
 ## Related
 
-- [`02-template-application-flow.md`](./02-template-application-flow.md) — sister cross-feature flow
-- [`04-trash-restore-flow.md`](./04-trash-restore-flow.md) — restore is the inverse of soft-delete; reaper runs on already-soft-deleted rows
+- [`04-trash-restore-flow.md`](./04-trash-restore-flow.md) — **inverse window**: restore re-surfaces a soft-deleted row before reaper claims it; reaper finalises rows that were never restored within 30 days
 - [`06-search-query-flow.md`](./06-search-query-flow.md) — search excludes `DeletedAt IS NOT NULL` items, so reaper output is invisible to queries
+- [`07-sync-replay-flow.md`](./07-sync-replay-flow.md) — replay returns HTTP 410 when an in-flight queued mutation targets a row this reaper has already hard-deleted
+- [`08-mirror-detach-flow.md`](./08-mirror-detach-flow.md) — reaper-side hard-delete cascades into peer-group membership; auto-dissolve on size→1 reuses the detach-flow's trigger path
+- [`10-migration-execution-flow.md`](./10-migration-execution-flow.md) — bootstrap-time singleton-sweep (M-117) is a one-shot mimic of this reaper's auto-dissolve cascade
 - [`../01-features/11b-trash-reaper.md`](../01-features/11b-trash-reaper.md) — feature-level SSOT
 - [`../01-features/09b-mirror-peer-group-model.md`](../01-features/09b-mirror-peer-group-model.md) §AT-APP-64 — peer-group auto-dissolve on size→1
 - [`../06-endpoints/11b-trash-reaper.md`](../06-endpoints/11b-trash-reaper.md) — endpoint contract (EP-REAPER-RUN, EP-REAPER-RUNS-LIST)
