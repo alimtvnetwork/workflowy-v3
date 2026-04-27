@@ -168,7 +168,7 @@ WHERE  mm.MirrorGroupId = (SELECT MirrorGroupId FROM MirrorMember WHERE ItemId =
 
 ---
 
-## 7. Acceptance Tests
+## 7. Acceptance Tests (canonical AT table)
 
 | ID | Given | When | Then | testid |
 |---|---|---|---|---|
@@ -248,7 +248,19 @@ This migration is in [`07-db-diagram/sql/07-migration-v2-mirror-peer-groups.sql`
 
 ## Acceptance Tests
 
-(See §7 above for the canonical AT table — `AT-MGP-01..10`.)
+| ID | Given | When | Then | testid |
+|----|-------|------|------|--------|
+| AT-MGP-01 | Item X is regular (not a mirror) | User runs `/mirror to` and picks parent P | Both X and the new peer have `MirrorMember` rows; both render diamond ◇ | `mirror-badge` |
+| AT-MGP-02 | X has 3 mirror peers | User edits the title on peer #2 | All 4 peers render the new title within 100 ms via SSE | `mirror-content-sync` |
+| AT-MGP-03 | X has 3 peers in different parents | User drags peer #2 to a new position | Only peer #2's `FractionalIndex` changes | `mirror-position-isolation` |
+| AT-MGP-04 | Group has 2 members | User detaches one | Group dissolves; remaining item has NO diamond | `mirror-singleton-dissolve` |
+| AT-MGP-05 | Group has 3 members | User detaches one | Remaining 2 stay mirrored, group still exists | `mirror-detach-survivors` |
+| AT-MGP-06 | User opens context menu on a mirror | Clicks "See them" | List of all peers with parent titles opens | `mirror-see-them` |
+| AT-MGP-07 | Peer #2 collapsed, peer #1 expanded | Render | Each peer renders its own collapse state | `mirror-collapse-isolation` |
+| AT-MGP-08 | Canonical peer is deleted | After delete | `MirrorGroup.CanonicalItemId` is re-pointed to next-lowest `ItemId` | `mirror-canonical-promotion` |
+| AT-MGP-09 | Two devices edit canonical content offline | Both reconnect | Later `UpdatedAt` wins; tie → lower `OwnerUserId` wins | `mirror-lww-tiebreak` |
+| AT-MGP-10 | User picks own subtree as mirror target | Submit | Block with `ERR_CYCLE` toast | `mirror-cycle-error` |
+
 
 ## Component Contract
 
