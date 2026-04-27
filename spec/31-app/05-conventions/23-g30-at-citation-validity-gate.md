@@ -1,6 +1,6 @@
 ---
 slug: g30-at-citation-validity-gate
-version: 1.2.0
+version: 1.3.0
 updated: 2026-04-27
 parent: ../../05-conventions/02-ci-quality-gates.md
 status: canonical
@@ -9,7 +9,7 @@ gate_id: G-30
 
 # G-30 — AT Citation Validity Gate
 
-> **Version:** 1.2.0
+> **Version:** 1.3.0
 > **Updated:** 2026-04-27 (UTC+8)
 > **Parent:** [`02-ci-quality-gates.md`](./02-ci-quality-gates.md)
 > **Sibling:** [`22-g29-endpoint-matrix-coverage-gate.md`](./22-g29-endpoint-matrix-coverage-gate.md)
@@ -189,18 +189,21 @@ historical baggage.
 - have zero matching citations across all 3 consumer scopes (e.g.
   `AT-MULTISELECT-NN` — declared but no consumer cites it).
 
-**Allow-list.** Five prefixes are excluded from the advisory because they
-are intentional future-licensing slots, not cleanup candidates:
+**Allow-list (v1.3.0 — drained by F27).** The allow-list now contains 41
+entries grouped into three documented intent-categories. After F27 the
+runner reports **zero** cleanup candidates while preserving every Coverage
+Map row for naming-scheme documentation:
 
-| Prefix | Why excluded |
-|--------|-------------|
-| `AT-FOO-` | Doc-example placeholder in `02-ci-quality-gates.md` |
-| `AT-WORKFLOWS-` | Reserves namespace for future per-workflow ATs |
-| `AT-ROADMAP-` | Reserves roadmap AT space |
-| `AT-ENDPOINTS-` | Reserves endpoints AT space |
-| `AT-DBDIAGRAM-` | Reserves DB-diagram AT space |
+| Category | Count | Examples | Why excluded |
+|----------|-------|----------|--------------|
+| (a) Future-licensing | 5 | `AT-FOO-`, `AT-WORKFLOWS-`, `AT-ROADMAP-`, `AT-ENDPOINTS-`, `AT-DBDIAGRAM-` | Reserve namespace for not-yet-authored canonical index files |
+| (b) Convention-documentation | 14 | `AT-INFO-`, `AT-MIRROR-`, `AT-MULTI-`, `AT-BOARD-`, `AT-LAYOUT-`, `AT-ROLES-`, `AT-TRASH-`, … | Coverage-Map rows kept on purpose after F15/F20 closure work; they document the inline-prefix naming convention even though every cited ID resolves through closed alias rows |
+| (c) Namespace-placeholder | 22 | `AT-MGP-`, `AT-DV-`, `AT-OQ-`, `AT-SR-`, `AT-WF-CREATE-`, `AT-WF-MIGRATE-`, …, `AT-APP-`, `AT-APPF-` | Feature/workflow files where citations live under canonical `AT-APP-NN`; the prefix row documents the source-file inline scheme (and for `AT-WF-*`, the canonical-map convention) |
 
-To suppress additional prefixes, edit `REDUNDANCY_ALLOWLIST` in the runner.
+To **revisit** a specific entry (e.g. you intend to delete the prose row),
+remove it from `REDUNDANCY_ALLOWLIST` in the runner and rerun
+`--warn-redundant`. To suppress newly-introduced redundancy in the future,
+add the prefix with a one-line rationale in the appropriate category.
 
 **Why WARN-only.** Some closed ID coverage is provisional (e.g. an alias
 table may be removed in a v3.0.0 sweep). Failing CI on redundancy would
@@ -237,6 +240,7 @@ the redundancy queue is drained.
 
 | Version | Date | Change |
 |---------|------|--------|
-| 1.2.0 | 2026-04-27 | F24 — added G-30.2 open-prefix redundancy advisory (`--warn-redundant`, WARN-only); allow-list of 5 future-licensing prefixes; current advisory surfaces 36 cleanup candidates |
+| 1.3.0 | 2026-04-27 | F27 — drained G-30.2 redundancy queue 36→0 by expanding `REDUNDANCY_ALLOWLIST` 5→41 entries across three documented intent-categories (future-licensing / convention-documentation / namespace-placeholder); preserves every Coverage Map row for naming-scheme docs |
+| 1.2.0 | 2026-04-27 | F24 — added G-30.2 open-prefix redundancy advisory (`--warn-redundant`, WARN-only); initial allow-list of 5 future-licensing prefixes; advisory then surfaced 36 cleanup candidates |
 | 1.1.0 | 2026-04-27 | F14 — extended consumer scope to `02-workflows/` and `07-db-diagram/04-feature-slices.md`; output now reports per-scope provenance on failure |
 | 1.0.0 | 2026-04-27 | Initial — created in response to F9 drift discovery |
