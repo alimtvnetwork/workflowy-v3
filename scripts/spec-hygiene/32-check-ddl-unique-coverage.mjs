@@ -115,6 +115,13 @@ const NONUNIQUE_EXEMPT = new Set([
   // "IdxFoo_BarBaz",  // rationale: ...
 ]);
 
+// G-32.5 allow-list — DDL index names whose doc row legitimately diverges
+// from the DDL signature (columns / UNIQUE / WHERE). Use sparingly. Format:
+// `${ddlName}:${aspect}` where aspect ∈ {columns, unique, predicate}. Each
+// entry suppresses one aspect of the parity check, not the whole row.
+const PARITY_EXEMPT = new Set([
+  // "IdxFoo_Bar:predicate",  // rationale: doc paraphrases predicate for clarity
+]);
 function fail(msg, code = 2) {
   console.error(`G-32 runner error: ${msg}`);
   process.exit(code);
