@@ -75,6 +75,7 @@ If only #1 holds, the flow belongs inside the relevant feature file's Edge Cases
 | 06 | [`06-search-query-flow.md`](./06-search-query-flow.md) | Debounced query → permission-filtered SQL → 5-tier scoring → `UpdatedAt` tie-break → paged results | F11 (B3) |
 | 07 | [`07-sync-replay-flow.md`](./07-sync-replay-flow.md) | `online` event → FIFO drain → server stamp `ServerTs` → LWW resolution → SSE fan-out | F11 (B3) |
 | 08 | [`08-mirror-detach-flow.md`](./08-mirror-detach-flow.md) | Detach click → membership delete → auto-dissolve trigger on size→1 → SSE | F11 (B1) |
+| 09 | [`09-mirror-create-flow.md`](./09-mirror-create-flow.md) | Picker submit → auth → cycle CTE → group lookup-or-create → dual member insert → SSE fan-out | F16 (B1) |
 
 ---
 
