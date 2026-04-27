@@ -94,6 +94,8 @@ const REVERSE_EXEMPT = new Set([
 const NONUNIQUE_EXEMPT = new Set([
   // "IdxFoo_BarBaz",  // rationale: ...
 ]);
+
+function fail(msg, code = 2) {
   console.error(`G-32 runner error: ${msg}`);
   process.exit(code);
 }
