@@ -41,6 +41,18 @@
  *                                       does not fail CI; cleanup happens
  *                                       by authoring a peer link or
  *                                       allow-listing (F-future-G31c).
+ *   G-31.7 (heading,   WARN,  v2.6.0)  — files using a non-canonical
+ *                                       related-section heading variant
+ *                                       (e.g. "## Cross-References" in
+ *                                       a scope whose canonical is
+ *                                       "## Related") are flagged so
+ *                                       authors can normalise prose.
+ *                                       Per-scope `*_HEAD_EXEMPT` Sets
+ *                                       opt out legitimate variants
+ *                                       (G-31.5-enforced rationale).
+ *                                       WARN-only: does not fail CI.
+ *                                       Reciprocity still accepts all
+ *                                       variants (F-future-G31d).
  *
  * Mode semantics:
  *   - ERROR scopes contribute to exit code 1 on any asymmetry.
