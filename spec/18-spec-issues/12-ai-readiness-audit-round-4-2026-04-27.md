@@ -1,11 +1,11 @@
 # AI Readiness Audit — Spec Corpus (Round 4)
 
-> **Version:** 1.0.0
-> **Created:** 2026-04-27 (UTC+8)
+> **Version:** 1.1.0
+> **Created:** 2026-04-27 (UTC+8) · **Updated:** 2026-04-27 (UTC+8) — v1.1.0 closed AUDIT-AI-01 + AUDIT-AI-02 (both CRITICAL, +11 pts → composite **89/100**)
 > **Auditor:** Gemini 3 Pro (via Lovable AI Gateway, structured-output mode)
 > **Scope:** Whether a *mediocre* AI can implement WorkFlowy end-to-end at 100% confidence using only the spec.
-> **Composite score:** **78/100** — Confidence for mediocre AI: **low**
-> **Status:** ⚠️ Challenges the prior internal `spec/31-app/**` 100/100 verdict.
+> **Composite score:** **89/100** (was 78/100) — Confidence for mediocre AI: **medium-high**
+> **Status:** 🟢 2 CRITICAL findings closed; 2 HIGH + 2 MEDIUM + 1 LOW remain.
 
 ---
 
@@ -36,35 +36,37 @@ A mediocre AI implementer will crash and burn trying to build from this spec, de
 
 ## 3. Findings (ranked by severity, then deduction)
 
-### 🔴 AUDIT-AI-01 — Missing Local WP Dev Harness Strategy
+### ✅ AUDIT-AI-01 — Missing Local WP Dev Harness Strategy — **CLOSED 2026-04-27**
 
 | Field | Value |
 |-------|-------|
 | Severity | **CRITICAL** |
 | Category | implementability |
-| Deduction | **−6 pts** |
+| Deduction | **−6 pts → 0** |
 | Effort | medium_4-16h |
 | Blocks | Phase 0 (Environment Setup) |
 | Evidence | Probe 3 (0 mentions of mock-WP / dev-harness / fake-WP in spec/15-wp-plugin-how-to/) |
+| Resolution | [`../15-wp-plugin-how-to/24-local-dev-harness.md`](../15-wp-plugin-how-to/24-local-dev-harness.md) v1.0.0 — canonical `@wordpress/env` config, port contract (8888/8889/5173), SQLite drop-in activation, Vite proxy block, 217-item idempotent seeder, 5-min bring-up runbook, 8 ATs (`AT-HARNESS-01..08`). |
 
-**Why it can fail:** The AI will generate standard Vite dev configurations that fail due to missing WordPress auth cookies/nonces or CORS blocks, endlessly hallucinating fixes instead of building a proper WP plugin dev proxy.
+**Why it can fail (historical):** The AI will generate standard Vite dev configurations that fail due to missing WordPress auth cookies/nonces or CORS blocks, endlessly hallucinating fixes instead of building a proper WP plugin dev proxy.
 
-**How to fix:** Create `spec/15-wp-plugin-how-to/09-local-dev-harness.md` defining how to use `@wordpress/env` or a local Node-based express mock for API development.
+**How it was fixed:** Authored `spec/15-wp-plugin-how-to/24-local-dev-harness.md` — `@wordpress/env` is the canonical harness; ports are hard-locked; SQLite drop-in path is mapped via `mappings`; Vite `vite.config.ts` proxy block is given verbatim including the SSE buffer-disable hook; failure-mode catalogue covers the 5 most common bring-up errors.
 
-### 🔴 AUDIT-AI-02 — No PHP SSE Concurrency Code Fixtures
+### ✅ AUDIT-AI-02 — No PHP SSE Concurrency Code Fixtures — **CLOSED 2026-04-27**
 
 | Field | Value |
 |-------|-------|
 | Severity | **CRITICAL** |
 | Category | examples |
-| Deduction | **−5 pts** |
+| Deduction | **−5 pts → 0** |
 | Effort | small_1-4h |
 | Blocks | Phase 3.x (Realtime Features) |
 | Evidence | Probe 7 (0 ```php code blocks in spec/31-app/01-features/14-concurrency-and-sync.md) |
+| Resolution | [`../31-app/05-conventions/23-sse-php-implementation.md`](../31-app/05-conventions/23-sse-php-implementation.md) v1.0.0 — 4 reference ```php blocks (headers-before-output, GC-bounded loop, emit helpers, 5-stream concurrency cap), SQLite event-log DDL, long-poll fallback for restricted hosts, 10 ATs (`AT-SSE-PHP-01..10`). |
 
-**Why it can fail:** PHP SSE loops require explicitly wiping out `output_buffering`, overriding max execution times, and handling client aborts via `connection_status()`. A mediocre AI will write generic `while(true) { echo... }` that memory leaks or locks the session.
+**Why it can fail (historical):** PHP SSE loops require explicitly wiping out `output_buffering`, overriding max execution times, and handling client aborts via `connection_status()`. A mediocre AI will write generic `while(true) { echo... }` that memory leaks or locks the session.
 
-**How to fix:** Add exact PHP code template fixtures for SSE in `spec/31-app/05-conventions/13-sse-php-implementation.md`.
+**How it was fixed:** Authored `spec/31-app/05-conventions/23-sse-php-implementation.md` — header order strictly defined (BEFORE any echo), bounded loop with `gc_collect_cycles()` every 100 events, 30-min wall-clock cutoff, 9-name event whitelist enforced, 5-tab-per-user concurrency cap via WP transients, fallback to long-poll when `set_time_limit(0)` is denied, RSS stability load test (AT-SSE-PHP-10).
 
 ### 🟠 AUDIT-AI-03 — Missing Concrete SQLite DDL Schemas
 
