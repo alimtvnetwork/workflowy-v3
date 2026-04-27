@@ -154,7 +154,7 @@ If the query returns a row → reject with `ERR_CYCLE`.
 | AT-CYCLE-07 | EP-ITEMS-MOVE called with cycle-creating params | Server runs CTE | Responds `400 ERR_CYCLE`; no row mutated | `cycle-move-rejected` |
 | AT-CYCLE-08 | Mirror-create called with cycle-creating params | Server runs CTE | Responds `400 ERR_CYCLE`; toast `mirror-cycle-error` shown | `cycle-mirror-rejected` |
 | AT-CYCLE-09 | Pre-existing corrupt cycle in DB | Algorithm runs against any node in the cycle | Terminates (no infinite loop); returns `true` | `cycle-corrupt-graph-safe` |
-| AT-CYCLE-10 | Hygiene script `scripts/spec-hygiene/18-check-cycle-algo.mjs` runs | Compares this spec's CTE to `wp-plugin/src/Repository/CycleCheck.php` | Exits 0 only when the CTE strings are byte-identical (whitespace-normalized) | `cycle-hygiene-drift` |
+| AT-CYCLE-10 | Hygiene script `scripts/spec-hygiene/18-check-cycle-algo.mjs` runs | Compares this spec's CTE to `wp-plugin/Repository/CycleCheck.php` | Exits 0 only when the CTE strings are byte-identical (whitespace-normalized) | `cycle-hygiene-drift` |
 
 ---
 
