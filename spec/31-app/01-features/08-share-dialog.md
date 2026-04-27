@@ -1,9 +1,10 @@
 # Share Dialog Specification
 
-> **Version:** 2.3.0
-> **Updated:** 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
+> **Version:** 2.4.0
+> **Updated:** 2026-04-27 — Linked addendum `08b-sharing-mirror-interaction.md` (per-instance ACL on mirror peers). Prior: 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
+> **Addendum:** [`08b-sharing-mirror-interaction.md`](./08b-sharing-mirror-interaction.md) — Sharing × Mirror interaction (Permissions keyed by `ItemId`, not `PeerGroupId`; per-peer ACL).
 
 ---
 
