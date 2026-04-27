@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * G-32 — DDL ↔ Doc Index Coverage Gate (v4.0.0)
+ * G-32 — DDL ↔ Doc Index Coverage Gate (v5.0.0)
  *
- * Four sub-checks:
+ * Five sub-checks:
  *   G-32.1 (forward, v1.0.0)  — every UNIQUE declaration in DDL is
  *                              documented in 06-indexes.md.
  *   G-32.2 (reverse, v2.0.0)  — every Idx{Name} / sqlite_autoindex_{T} name
@@ -20,6 +20,19 @@
  *                              or a `// …` line within the array block
  *                              immediately above the entry (no blank
  *                              line between).
+ *   G-32.5 (parity,  v5.0.0)  — for every CREATE [UNIQUE] INDEX, the
+ *                              doc row in 06-indexes.md must mention:
+ *                              (a) every column from the DDL `(cols)`
+ *                                  list (case-sensitive identifier
+ *                                  match in backticked content),
+ *                              (b) the literal `UNIQUE` token if the
+ *                                  DDL declares UNIQUE,
+ *                              (c) the word `partial` and the WHERE
+ *                                  predicate (normalised) if DDL has
+ *                                  a `WHERE …` clause.
+ *                              Name-only matching (G-32.3) ensures a
+ *                              row exists; G-32.5 ensures the row
+ *                              describes that index correctly.
  *
  * Asserts that every `UNIQUE` declaration in the SQLite DDL files
  * (`spec/31-app/07-db-diagram/sql/01-root-schema.sql` and
@@ -102,6 +115,13 @@ const NONUNIQUE_EXEMPT = new Set([
   // "IdxFoo_BarBaz",  // rationale: ...
 ]);
 
+// G-32.5 allow-list — DDL index names whose doc row legitimately diverges
+// from the DDL signature (columns / UNIQUE / WHERE). Use sparingly. Format:
+// `${ddlName}:${aspect}` where aspect ∈ {columns, unique, predicate}. Each
+// entry suppresses one aspect of the parity check, not the whole row.
+const PARITY_EXEMPT = new Set([
+  // "IdxFoo_Bar:predicate",  // rationale: doc paraphrases predicate for clarity
+]);
 function fail(msg, code = 2) {
   console.error(`G-32 runner error: ${msg}`);
   process.exit(code);
@@ -537,6 +557,175 @@ function printRationaleReport(violations) {
   console.log("  (b) a `// …` comment line immediately above (no blank line in between).");
 }
 
+// =====================================================================
+// G-32.5 — Column / predicate parity: every CREATE [UNIQUE] INDEX must
+// have a doc row in 06-indexes.md whose backticked content mentions all
+// declared columns, the UNIQUE token (if applicable), and the WHERE
+// predicate (if applicable). Catches drift where a row names the right
+// index but describes the wrong columns or omits a partial-predicate.
+// =====================================================================
+
+/**
+ * Parse every CREATE [UNIQUE] INDEX block (multi-line aware). Returns
+ *   {name, unique, table, columns:[…], where:string|null, file, line}
+ * `columns` preserves order and qualifiers (e.g. "CreatedAt DESC").
+ * `where` is the raw text after `WHERE`, trimmed; trailing `;` removed.
+ */
+function parseCreateIndexBlocks() {
+  const sqlFiles = [...SCHEMA_FILES, APP_INDEXES_FILE];
+  const out = [];
+  const blockRe =
+    /CREATE\s+(UNIQUE\s+)?INDEX\s+(?:IF\s+NOT\s+EXISTS\s+)?(\w+)\s+ON\s+(\w+)\s*\(([^)]+)\)([^;]*);/gi;
+  for (const f of sqlFiles) {
+    const text = readOrFail(f);
+    const fileBase = f.split("/").pop();
+    let m;
+    while ((m = blockRe.exec(text)) !== null) {
+      const [, uniqueTok, name, table, colsRaw, tail] = m;
+      const columns = colsRaw
+        .split(",")
+        .map((s) => s.trim().replace(/\s+/g, " "));
+      const whereMatch = tail.match(/WHERE\s+([\s\S]+?)\s*$/i);
+      const where = whereMatch ? whereMatch[1].trim().replace(/\s+/g, " ") : null;
+      const line = text.slice(0, m.index).split("\n").length;
+      out.push({
+        name,
+        unique: !!uniqueTok,
+        table,
+        columns,
+        where,
+        file: fileBase,
+        filePath: f,
+        line,
+      });
+    }
+  }
+  return out;
+}
+
+/**
+ * Build a DDL→prose column-alias map from `sql/00-overview.md` §Naming
+ * Bridge tables. Returns Map<ddlBareCol, proseBareCol>. Bridge rows look
+ * like `\`MirrorMember.MirrorGroupId\` (FK) | \`MirrorPeerGroupMembers.MirrorPeerGroupId\``.
+ * We only register entries where the bare column name (after the dot)
+ * differs between sides.
+ */
+function collectColumnAliasMap() {
+  const text = readOrFail(NAMING_BRIDGE);
+  const map = new Map();
+  // Capture two backticked `Table.Col` cells in the same row; tolerate trailing
+  // qualifier text like `(PK)` or `(FK)` between the backtick and `|`.
+  const rowRe = /\|\s*`([A-Z]\w+)\.(\w+)`[^|]*\|\s*`([A-Z]\w+)\.(\w+)`/g;
+  let m;
+  while ((m = rowRe.exec(text)) !== null) {
+    const ddlCol = m[2];
+    const proseCol = m[4];
+    if (ddlCol !== proseCol) map.set(ddlCol, proseCol);
+  }
+  return map;
+}
+
+function findDocRow(indexesText, name, alias) {
+  const lines = indexesText.split("\n");
+  const probes = alias ? [name, alias] : [name];
+  for (const line of lines) {
+    if (!line.startsWith("|")) continue;
+    for (const p of probes) {
+      if (new RegExp("`" + p + "`").test(line)) return line;
+    }
+  }
+  return null;
+}
+
+function bareColName(col) {
+  return col.replace(/\s+(?:ASC|DESC)\b/gi, "").trim();
+}
+
+function normalisePredicate(s) {
+  return s.replace(/\s+/g, " ").trim();
+}
+
+function checkParity(blocks, aliasMap, colAliasMap, indexesText) {
+  const violations = [];
+  for (const b of blocks) {
+    const alias = aliasMap.get(b.name);
+    const row = findDocRow(indexesText, b.name, alias);
+    if (!row) continue; // G-32.3 already reports missing rows
+    const rowNorm = normalisePredicate(row);
+
+    if (!PARITY_EXEMPT.has(`${b.name}:columns`)) {
+      const missingCols = b.columns.map(bareColName).filter((c) => {
+        const proseAlias = colAliasMap.get(c);
+        const probes = proseAlias ? [c, proseAlias] : [c];
+        // Pass if ANY probe identifier appears inside backticks on the row.
+        return !probes.some((p) =>
+          new RegExp("`[^`]*\\b" + p + "\\b[^`]*`").test(row)
+        );
+      });
+      if (missingCols.length > 0) {
+        violations.push({
+          block: b,
+          aspect: "columns",
+          detail: `missing column reference(s): ${missingCols.join(", ")}`,
+        });
+      }
+    }
+
+    if (b.unique && !PARITY_EXEMPT.has(`${b.name}:unique`)) {
+      if (!/\bUNIQUE\b/.test(row)) {
+        violations.push({
+          block: b,
+          aspect: "unique",
+          detail: "DDL declares UNIQUE but doc row omits the token",
+        });
+      }
+    }
+
+    if (b.where && !PARITY_EXEMPT.has(`${b.name}:predicate`)) {
+      const wherePart = normalisePredicate(b.where);
+      const hasPartial = /\bpartial\b/i.test(rowNorm);
+      const hasPredicate = rowNorm.includes(wherePart);
+      if (!hasPartial || !hasPredicate) {
+        violations.push({
+          block: b,
+          aspect: "predicate",
+          detail:
+            (!hasPartial ? "missing word `partial`; " : "") +
+            (!hasPredicate ? `missing predicate "WHERE ${wherePart}"` : ""),
+        });
+      }
+    }
+  }
+  return violations;
+}
+
+function printParityReport(blocks, violations) {
+  console.log("");
+  console.log("G-32.5 column / predicate parity (DDL ↔ doc row):");
+  console.log(`  CREATE INDEX blocks parsed:         ${blocks.length}`);
+  console.log(`  parity-exempt (allow-list):         ${PARITY_EXEMPT.size}`);
+  console.log(`  parity violations:                  ${violations.length}`);
+
+  if (violations.length === 0) {
+    console.log("  ✅ every doc row matches its DDL columns / UNIQUE / WHERE");
+    return;
+  }
+
+  console.log("");
+  console.log(`  ❌ ${violations.length} parity violation(s):`);
+  console.log("");
+  for (const v of violations) {
+    console.log(`    ${v.block.name} [${v.aspect}]`);
+    console.log(`      source:    ${v.block.filePath}:${v.block.line}`);
+    console.log(`      ddl:       ${v.block.unique ? "UNIQUE " : ""}(${v.block.columns.join(", ")})${v.block.where ? " WHERE " + v.block.where : ""}`);
+    console.log(`      problem:   ${v.detail}`);
+  }
+  console.log("");
+  console.log("  To fix: edit the doc row in 06-indexes.md to mention every column,");
+  console.log("  the UNIQUE token, and the partial WHERE predicate verbatim.");
+  console.log("  Last-resort: add `<name>:<aspect>` to PARITY_EXEMPT with rationale.");
+}
+
 // --- main ---
 const indexesText = readOrFail(INDEXES_DOC);
 
@@ -568,9 +757,18 @@ printCreateIndexReport(allCreates, aliasMap, undocCreates);
 const unrationaled = findUnrationaledEntries();
 printRationaleReport(unrationaled);
 
+const blocks = parseCreateIndexBlocks();
+if (blocks.length === 0) {
+  fail("no CREATE INDEX blocks parseable — regex failure?");
+}
+const colAliasMap = collectColumnAliasMap();
+const parityViolations = checkParity(blocks, aliasMap, colAliasMap, indexesText);
+printParityReport(blocks, parityViolations);
+
 const failed =
   violations.length > 0 ||
   fabricated.length > 0 ||
   undocCreates.length > 0 ||
-  unrationaled.length > 0;
+  unrationaled.length > 0 ||
+  parityViolations.length > 0;
 process.exit(failed ? 1 : 0);
