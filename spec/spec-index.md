@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-27  
-**Total Files:** 1328  
+**Total Files:** 1329  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -29,7 +29,7 @@
 - [12-consolidated-guidelines](#12-consolidated-guidelines) — 26 file(s)
 - [13-cicd-pipeline-workflows](#13-cicd-pipeline-workflows) — 36 file(s)
 - [14-self-update-app-update](#14-self-update-app-update) — 32 file(s)
-- [15-wp-plugin-how-to](#15-wp-plugin-how-to) — 218 file(s)
+- [15-wp-plugin-how-to](#15-wp-plugin-how-to) — 219 file(s)
 - [16-generic-cli](#16-generic-cli) — 43 file(s)
 - [17-generic-update](#17-generic-update) — 11 file(s)
 - [18-spec-issues](#18-spec-issues) — 13 file(s)
@@ -1137,8 +1137,9 @@
 | [`15-wp-plugin-how-to/20-end-to-end-walkthrough/97-acceptance-criteria.md`](./15-wp-plugin-how-to/20-end-to-end-walkthrough/97-acceptance-criteria.md) | End-To-End Walkthrough — Acceptance Criteria | 1.0.0 | Curated |
 | [`15-wp-plugin-how-to/21-ping-endpoint.md`](./15-wp-plugin-how-to/21-ping-endpoint.md) | Phase 21 — Ping Endpoint | 1.0.0 | — |
 | [`15-wp-plugin-how-to/22-quick-start.md`](./15-wp-plugin-how-to/22-quick-start.md) | Phase 00 — Quick Start Guide | — | — |
-| [`15-wp-plugin-how-to/23-operator-runbooks/00-overview.md`](./15-wp-plugin-how-to/23-operator-runbooks/00-overview.md) | 16 — Operator Runbooks | 1.0.0 | Active |
+| [`15-wp-plugin-how-to/23-operator-runbooks/00-overview.md`](./15-wp-plugin-how-to/23-operator-runbooks/00-overview.md) | 16 — Operator Runbooks | 1.1.0 | Active |
 | [`15-wp-plugin-how-to/23-operator-runbooks/01-disaster-recovery-restore.md`](./15-wp-plugin-how-to/23-operator-runbooks/01-disaster-recovery-restore.md) | Runbook: Disaster-Recovery Restore | 1.0.0 | Active |
+| [`15-wp-plugin-how-to/23-operator-runbooks/02-backup-key-rotation.md`](./15-wp-plugin-how-to/23-operator-runbooks/02-backup-key-rotation.md) | Runbook: Backup KEK Rotation | 1.0.0 | Active |
 | [`15-wp-plugin-how-to/97-acceptance-criteria.md`](./15-wp-plugin-how-to/97-acceptance-criteria.md) | WP Plugin How-To — Acceptance Criteria (Roll-up) | 2.0.0 | Curated |
 | [`15-wp-plugin-how-to/99-consistency-report.md`](./15-wp-plugin-how-to/99-consistency-report.md) | Consistency Report — spec/15-wp-plugin-how-to/ | 1.1.0 | — |
 | [`15-wp-plugin-how-to/changelog.md`](./15-wp-plugin-how-to/changelog.md) | Gold Standard Spec — Changelog | — | — |
@@ -1498,4 +1499,4 @@
 
 ---
 
-*Auto-generated index — 1328 files across 25 top-level folders.*
+*Auto-generated index — 1329 files across 25 top-level folders.*
