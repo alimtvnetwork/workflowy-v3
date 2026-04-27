@@ -28,6 +28,7 @@
 | 13 | [`13-data-export-policy.md`](./13-data-export-policy.md) | Data-Export Policy — SSOT | 280 |
 | 14 | [`14-backup-and-dr-policy.md`](./14-backup-and-dr-policy.md) | Backup & DR Policy — SSOT | 290 |
 | 15 | [`15-g22-error-code-catalogue-gate.md`](./15-g22-error-code-catalogue-gate.md) | G-22 Error-Code Catalogue Drift Gate — Algorithm Spec | 195 |
+| 16 | [`16-g23-audit-log-coverage-gate.md`](./16-g23-audit-log-coverage-gate.md) | G-23 Audit-Log Drift Gate — Algorithm Spec | 235 |
 
 <!-- AUTO-TOC:END -->
 
@@ -79,6 +80,7 @@ Conventions specification module. See files below.
 | 13 | [13-data-export-policy.md](13-data-export-policy.md) | Data-export policy: 4 scopes, 5 formats, async jobs, MFA-gated, signed URLs, redaction matrix, G-27 gate |
 | 14 | [14-backup-and-dr-policy.md](14-backup-and-dr-policy.md) | Backup & DR policy: RPO/RTO tiers, `.backup()` API, AES-256-GCM off-site, two-region WORM, mandatory quarterly drill, G-28 gate |
 | 15 | [15-g22-error-code-catalogue-gate.md](15-g22-error-code-catalogue-gate.md) | G-22 hygiene-gate algorithm: detects drift between `ERR_*` literals in code and the error-code catalogue; verifies HttpStatus parity per emitter |
+| 16 | [16-g23-audit-log-coverage-gate.md](16-g23-audit-log-coverage-gate.md) | G-23 hygiene-gate algorithm: two-axis check — every `Audit::action()` shorthand resolves to a taxonomy row, AND every `Auth/Sharing/Admin` mutation method emits at least one `AuditLog::write` per non-error return path |
 
 ---
 
@@ -109,6 +111,7 @@ Conventions specification module. See files below.
 - [`13-data-export-policy.md`](./13-data-export-policy.md) — Data-export policy
 - [`14-backup-and-dr-policy.md`](./14-backup-and-dr-policy.md) — Backup & DR policy
 - [`15-g22-error-code-catalogue-gate.md`](./15-g22-error-code-catalogue-gate.md) — G-22 error-code catalogue drift gate
+- [`16-g23-audit-log-coverage-gate.md`](./16-g23-audit-log-coverage-gate.md) — G-23 audit-log drift gate (action registry + handler coverage)
 
 **See also:**
 
