@@ -162,15 +162,16 @@ Every feature in `spec/31-app/01-features/` MUST: (1) write boolean checks as **
 | 4 | [`04-page-content-area.md`](./04-page-content-area.md) | Page / Content Area | 212 |
 | 5 | [`05-interactions.md`](./05-interactions.md) | Interaction Behaviors | 172 |
 | 6 | [`06-item-context-menu.md`](./06-item-context-menu.md) | Item Context Menu (⋮) | 212 |
-| 7 | [`07-board-view.md`](./07-board-view.md) | Board View Specification | 212 |
-| 8 | [`08-share-dialog.md`](./08-share-dialog.md) | Share Dialog Specification | 153 |
-| 9 | [`09-mirrors.md`](./09-mirrors.md) | Mirror Specification | 212 |
+| 7 | [`07-board-view.md`](./07-board-view.md) | Board View Specification | 213 |
+| 8 | [`08-share-dialog.md`](./08-share-dialog.md) | Share Dialog Specification | 154 |
+| 9 | [`09-mirrors.md`](./09-mirrors.md) | Mirror Specification | 214 |
 | 10 | [`10-today-view.md`](./10-today-view.md) | Today View Specification | 124 |
-| 11 | [`11-trash-view.md`](./11-trash-view.md) | Trash View Specification | 154 |
-| 12 | [`12-multi-select.md`](./12-multi-select.md) | Multi-Select Behavior | 170 |
-| 13 | [`13-templates.md`](./13-templates.md) | Template Application Flow | 180 |
-| 14 | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | Concurrency & Sync | 310 |
+| 11 | [`11-trash-view.md`](./11-trash-view.md) | Trash View Specification | 155 |
+| 12 | [`12-multi-select.md`](./12-multi-select.md) | Multi-Select Behavior | 171 |
+| 13 | [`13-templates.md`](./13-templates.md) | Template Application Flow | 181 |
+| 14 | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | Concurrency & Sync | 311 |
 | 15 | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | Roles & Permissions | 391 |
+| 16 | [`16-search-ranking.md`](./16-search-ranking.md) | Search Ranking | 97 |
 
 <!-- AUTO-TOC:END -->
 

@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-27  
-**Total Files:** 1338  
+**Total Files:** 1351  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -33,7 +33,7 @@
 - [16-generic-cli](#16-generic-cli) — 43 file(s)
 - [17-generic-update](#17-generic-update) — 11 file(s)
 - [18-spec-issues](#18-spec-issues) — 14 file(s)
-- [31-app](#31-app) — 100 file(s)
+- [31-app](#31-app) — 113 file(s)
 - [32-ui-design](#32-ui-design) — 120 file(s)
 - [33-feedback-report](#33-feedback-report) — 3 file(s)
 - [34-activity-feed](#34-activity-feed) — 3 file(s)
@@ -1225,7 +1225,7 @@
 | [`18-spec-issues/09-app-folder-re-audit-2026-04-26.md`](./18-spec-issues/09-app-folder-re-audit-2026-04-26.md) | App Folder Re-Audit — 2026-04-26 (post-fix) | 1.0.0 | — |
 | [`18-spec-issues/10-content-audit-endpoints-and-db-diagram.md`](./18-spec-issues/10-content-audit-endpoints-and-db-diagram.md) | Content Audit — `06-endpoints/` + `07-db-diagram/` (2026-04-26) | 1.0.0 | — |
 | [`18-spec-issues/11-content-audit-at-app-coverage.md`](./18-spec-issues/11-content-audit-at-app-coverage.md) | Content Audit — `AT-APP-NN` Coverage Completeness (2026-04-26) | 1.0.0 | — |
-| [`18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md`](./18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md) | AI Readiness Audit — Spec Corpus (Round 4) | 1.3.0 | — |
+| [`18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md`](./18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md) | AI Readiness Audit — Spec Corpus (Round 4) | 1.4.0 | — |
 | [`18-spec-issues/97-acceptance-criteria.md`](./18-spec-issues/97-acceptance-criteria.md) | Spec Issues — Acceptance Criteria | 1.3.0 | Dispatch |
 | [`18-spec-issues/99-consistency-report.md`](./18-spec-issues/99-consistency-report.md) | Consistency Report — Spec Issues | 1.0.0 | — |
 
@@ -1243,25 +1243,25 @@
 | [`31-app/01-features/05a-hotkey-table.md`](./31-app/01-features/05a-hotkey-table.md) | Hotkey Table — Machine-Readable SSOT | 1.0.0 | Active |
 | [`31-app/01-features/06-item-context-menu.md`](./31-app/01-features/06-item-context-menu.md) | Item Context Menu (⋮) | 2.5.1 | — |
 | [`31-app/01-features/07-board-view.md`](./31-app/01-features/07-board-view.md) | Board View Specification | 2.6.0 | — |
-| [`31-app/01-features/07b-dashboard-view.md`](./31-app/01-features/07b-dashboard-view.md) | Dashboard View — SSOT | 1.0.0 | Active |
+| [`31-app/01-features/07b-dashboard-view.md`](./31-app/01-features/07b-dashboard-view.md) | Dashboard View Specification | 1.0.0 | — |
 | [`31-app/01-features/08-share-dialog.md`](./31-app/01-features/08-share-dialog.md) | Share Dialog Specification | 2.4.0 | — |
-| [`31-app/01-features/08b-sharing-mirror-interaction.md`](./31-app/01-features/08b-sharing-mirror-interaction.md) | Sharing × Mirror Interaction — Clarification | 1.0.0 | Active |
+| [`31-app/01-features/08b-sharing-mirror-interaction.md`](./31-app/01-features/08b-sharing-mirror-interaction.md) | 08b — Sharing × Mirror Interaction (Clarification) | 1.0.0 | Approved |
 | [`31-app/01-features/09-mirrors.md`](./31-app/01-features/09-mirrors.md) | Mirror Specification | 2.5.0 | — |
 | [`31-app/01-features/09a-mirror-cycle-detection.md`](./31-app/01-features/09a-mirror-cycle-detection.md) | Mirror Cycle Detection — Algorithm Spec | 1.1.0 | — |
-| [`31-app/01-features/09b-mirror-peer-group-model.md`](./31-app/01-features/09b-mirror-peer-group-model.md) | Mirror Peer-Group Model — SSOT | 1.0.0 | Active |
+| [`31-app/01-features/09b-mirror-peer-group-model.md`](./31-app/01-features/09b-mirror-peer-group-model.md) | Mirror Peer-Group Model — SSOT | 1.0.0 | — |
 | [`31-app/01-features/10-today-view.md`](./31-app/01-features/10-today-view.md) | Today View Specification | 2.1.0 | — |
 | [`31-app/01-features/11-trash-view.md`](./31-app/01-features/11-trash-view.md) | Trash View Specification | 2.5.0 | — |
-| [`31-app/01-features/11b-trash-reaper.md`](./31-app/01-features/11b-trash-reaper.md) | Trash Reaper — 30-Day Hard Delete | 1.0.0 | Active |
+| [`31-app/01-features/11b-trash-reaper.md`](./31-app/01-features/11b-trash-reaper.md) | 11b — Trash Reaper: 30-Day Hard Delete (Clarification) | 1.0.0 | Approved |
 | [`31-app/01-features/12-multi-select.md`](./31-app/01-features/12-multi-select.md) | Multi-Select Behavior | 2.4.0 | — |
-| [`31-app/01-features/12b-multi-select-zoom.md`](./31-app/01-features/12b-multi-select-zoom.md) | Multi-Select Zoom — Virtual Scope | 1.0.0 | Active |
+| [`31-app/01-features/12b-multi-select-zoom.md`](./31-app/01-features/12b-multi-select-zoom.md) | 12b — Multi-Select Zoom: Virtual Scope (Clarification) | 1.0.0 | Approved |
 | [`31-app/01-features/13-templates.md`](./31-app/01-features/13-templates.md) | Template Application Flow | 2.4.0 | — |
-| [`31-app/01-features/13b-templates-snapshot-semantics.md`](./31-app/01-features/13b-templates-snapshot-semantics.md) | Templates — Snapshot Semantics | 1.0.0 | Active |
+| [`31-app/01-features/13b-templates-snapshot-semantics.md`](./31-app/01-features/13b-templates-snapshot-semantics.md) | 13b — Templates: Snapshot Semantics (Clarification) | 1.0.0 | Approved |
 | [`31-app/01-features/14-concurrency-and-sync.md`](./31-app/01-features/14-concurrency-and-sync.md) | Concurrency & Sync | 1.8.0 | — |
-| [`31-app/01-features/14b-offline-queue.md`](./31-app/01-features/14b-offline-queue.md) | Offline Queue — Full Local Mirror + LWW | 1.0.0 | Active |
+| [`31-app/01-features/14b-offline-queue.md`](./31-app/01-features/14b-offline-queue.md) | Offline Queue & Local Mirror | 1.0.0 | — |
 | [`31-app/01-features/15-roles-and-permissions.md`](./31-app/01-features/15-roles-and-permissions.md) | Roles & Permissions | 1.6.0 | Active |
-| [`31-app/01-features/16-search-ranking.md`](./31-app/01-features/16-search-ranking.md) | Search Ranking — Hybrid Relevance + Recency | 1.0.0 | Active |
-| [`31-app/01-features/97-acceptance-criteria.md`](./31-app/01-features/97-acceptance-criteria.md) | App Features — Acceptance Criteria | 2.1.0 | Active |
-| [`31-app/01-features/99-consistency-report.md`](./31-app/01-features/99-consistency-report.md) | Consistency Report — 01-features | 2.1.0 | — |
+| [`31-app/01-features/16-search-ranking.md`](./31-app/01-features/16-search-ranking.md) | Search Ranking | 1.0.0 | — |
+| [`31-app/01-features/97-acceptance-criteria.md`](./31-app/01-features/97-acceptance-criteria.md) | App Features — Acceptance Criteria | 2.2.0 | Active |
+| [`31-app/01-features/99-consistency-report.md`](./31-app/01-features/99-consistency-report.md) | Consistency Report — 01-features | 2.2.0 | — |
 | [`31-app/02-workflows/00-overview.md`](./31-app/02-workflows/00-overview.md) | Workflows | 2.1.0 | — |
 | [`31-app/02-workflows/01-keyboard-shortcuts.md`](./31-app/02-workflows/01-keyboard-shortcuts.md) | Keyboard Shortcuts — Complete Reference | 1.1.0 | — |
 | [`31-app/02-workflows/02-template-application-flow.md`](./31-app/02-workflows/02-template-application-flow.md) | Template Application Flow | 1.1.0 | Canonical |
@@ -1303,7 +1303,9 @@
 | [`31-app/05-conventions/19-g26-mfa-coverage-gate.md`](./31-app/05-conventions/19-g26-mfa-coverage-gate.md) | G-26 MFA Policy Drift Gate — Algorithm Spec | 1.0.0 | — |
 | [`31-app/05-conventions/20-g27-export-coverage-gate.md`](./31-app/05-conventions/20-g27-export-coverage-gate.md) | G-27 Data-Export Policy Drift Gate — Algorithm Spec | 1.0.0 | — |
 | [`31-app/05-conventions/21-g28-backup-coverage-gate.md`](./31-app/05-conventions/21-g28-backup-coverage-gate.md) | G-28 Backup & DR Policy Drift Gate — Algorithm Spec | 1.0.0 | — |
+| [`31-app/05-conventions/22-g29-endpoint-matrix-coverage-gate.md`](./31-app/05-conventions/22-g29-endpoint-matrix-coverage-gate.md) | G-29 Endpoint ↔ Matrix Coverage Gate — Algorithm Spec | 1.0.0 | — |
 | [`31-app/05-conventions/22-wp-plugin-folder-skeleton.md`](./31-app/05-conventions/22-wp-plugin-folder-skeleton.md) | WP-Plugin Folder Skeleton — SSOT | 1.0.0 | Spec |
+| [`31-app/05-conventions/23-g30-at-citation-validity-gate.md`](./31-app/05-conventions/23-g30-at-citation-validity-gate.md) | G-30 — AT Citation Validity Gate | 1.0.0 | — |
 | [`31-app/05-conventions/23-sse-php-implementation.md`](./31-app/05-conventions/23-sse-php-implementation.md) | Convention 23 — PHP SSE Implementation Pattern | 1.0.0 | Active |
 | [`31-app/05-conventions/24-state-management-architecture.md`](./31-app/05-conventions/24-state-management-architecture.md) | State Management Architecture | 1.0.0 | — |
 | [`31-app/05-conventions/97-acceptance-criteria.md`](./31-app/05-conventions/97-acceptance-criteria.md) | Conventions — Acceptance Criteria | 1.0.0 | — |
@@ -1318,27 +1320,31 @@
 | [`31-app/06-endpoints/07-board-view.md`](./31-app/06-endpoints/07-board-view.md) | Endpoints — 07 Board View | 1.0.0 | — |
 | [`31-app/06-endpoints/08-share-dialog.md`](./31-app/06-endpoints/08-share-dialog.md) | Endpoints — 08 Share Dialog | 1.0.0 | — |
 | [`31-app/06-endpoints/09-mirrors.md`](./31-app/06-endpoints/09-mirrors.md) | Endpoints — 09 Mirrors | 1.0.0 | — |
+| [`31-app/06-endpoints/09b-mirror-peer-group.md`](./31-app/06-endpoints/09b-mirror-peer-group.md) | Endpoints — 09b Mirror Peer-Group (Detach + Group Ops) | 1.0.0 | — |
 | [`31-app/06-endpoints/10-today-view.md`](./31-app/06-endpoints/10-today-view.md) | Endpoints — 10 Today View | 1.0.0 | — |
 | [`31-app/06-endpoints/11-trash-view.md`](./31-app/06-endpoints/11-trash-view.md) | Endpoints — 11 Trash View | 1.0.0 | — |
+| [`31-app/06-endpoints/11b-trash-reaper.md`](./31-app/06-endpoints/11b-trash-reaper.md) | Endpoints — 11b Trash Reaper (Server Cron) | 1.0.0 | — |
 | [`31-app/06-endpoints/12-multi-select.md`](./31-app/06-endpoints/12-multi-select.md) | Endpoints — 12 Multi-Select (Bulk Operations) | 1.0.0 | — |
 | [`31-app/06-endpoints/13-templates.md`](./31-app/06-endpoints/13-templates.md) | Endpoints — 13 Templates | 1.0.0 | — |
 | [`31-app/06-endpoints/14-concurrency-and-sync.md`](./31-app/06-endpoints/14-concurrency-and-sync.md) | Endpoints — 14 Concurrency & Sync (Realtime Transport) | 1.2.0 | — |
+| [`31-app/06-endpoints/14b-sync-replay.md`](./31-app/06-endpoints/14b-sync-replay.md) | Endpoints — 14b Sync Replay (Offline Queue) | 1.0.0 | — |
 | [`31-app/06-endpoints/15-roles-and-permissions.md`](./31-app/06-endpoints/15-roles-and-permissions.md) | Endpoints — 15 Roles & Permissions | 1.0.0 | — |
-| [`31-app/06-endpoints/16-endpoint-at-matrix.md`](./31-app/06-endpoints/16-endpoint-at-matrix.md) | Endpoint ↔ Acceptance-Test Cross-Reference Matrix | 1.0.0 | — |
+| [`31-app/06-endpoints/15-search.md`](./31-app/06-endpoints/15-search.md) | Endpoints — 15 Search | 1.0.0 | — |
+| [`31-app/06-endpoints/16-endpoint-at-matrix.md`](./31-app/06-endpoints/16-endpoint-at-matrix.md) | Endpoint ↔ Acceptance-Test Cross-Reference Matrix | 1.1.0 | — |
 | [`31-app/06-endpoints/97-acceptance-criteria.md`](./31-app/06-endpoints/97-acceptance-criteria.md) | Endpoints — Acceptance Criteria | 1.0.0 | — |
 | [`31-app/06-endpoints/99-consistency-report.md`](./31-app/06-endpoints/99-consistency-report.md) | Consistency Report — 06-endpoints | 1.0.0 | — |
 | [`31-app/07-db-diagram/00-overview.md`](./31-app/07-db-diagram/00-overview.md) | DB Diagram — Database Design SSOT (Visual) | 1.1.0 | — |
 | [`31-app/07-db-diagram/01-master-erd.md`](./31-app/07-db-diagram/01-master-erd.md) | 01 — Master ERD (All Tables, Both DBs) | 1.0.0 | — |
 | [`31-app/07-db-diagram/02-root-db-erd.md`](./31-app/07-db-diagram/02-root-db-erd.md) | 02 — Root DB ERD | 1.0.0 | — |
-| [`31-app/07-db-diagram/03-app-db-erd.md`](./31-app/07-db-diagram/03-app-db-erd.md) | 03 — App DB ERD (per Workspace) | 1.0.0 | — |
+| [`31-app/07-db-diagram/03-app-db-erd.md`](./31-app/07-db-diagram/03-app-db-erd.md) | 03 — App DB ERD (per Workspace) | 1.1.0 | — |
 | [`31-app/07-db-diagram/04-feature-slices.md`](./31-app/07-db-diagram/04-feature-slices.md) | 04 — Feature Slices (One ERD per Feature) | 1.0.0 | — |
 | [`31-app/07-db-diagram/05-lifecycle-flows.md`](./31-app/07-db-diagram/05-lifecycle-flows.md) | 05 — Lifecycle Flows | 1.0.0 | — |
-| [`31-app/07-db-diagram/06-indexes.md`](./31-app/07-db-diagram/06-indexes.md) | 06 — Indexes | 1.0.0 | — |
+| [`31-app/07-db-diagram/06-indexes.md`](./31-app/07-db-diagram/06-indexes.md) | 06 — Indexes | 1.1.0 | — |
 | [`31-app/07-db-diagram/07-migrations.md`](./31-app/07-db-diagram/07-migrations.md) | 07 — Migrations Roadmap | 1.0.0 | — |
 | [`31-app/07-db-diagram/97-acceptance-criteria.md`](./31-app/07-db-diagram/97-acceptance-criteria.md) | DB Diagram — Acceptance Criteria | 1.0.1 | — |
 | [`31-app/07-db-diagram/99-consistency-report.md`](./31-app/07-db-diagram/99-consistency-report.md) | Consistency Report — 07-db-diagram | 1.0.0 | — |
-| [`31-app/07-db-diagram/sql/00-overview.md`](./31-app/07-db-diagram/sql/00-overview.md) | SQLite DDL — Reference Implementation | 2.0.0 | — |
-| [`31-app/97-acceptance-criteria.md`](./31-app/97-acceptance-criteria.md) | App — Acceptance Criteria | 2.5.0 | — |
+| [`31-app/07-db-diagram/sql/00-overview.md`](./31-app/07-db-diagram/sql/00-overview.md) | SQLite DDL — Reference Implementation | 2.1.0 | — |
+| [`31-app/97-acceptance-criteria.md`](./31-app/97-acceptance-criteria.md) | App — Acceptance Criteria | 2.6.0 | — |
 | [`31-app/99-consistency-report.md`](./31-app/99-consistency-report.md) | Consistency Report — App | 1.3.0 | — |
 
 ## 32-ui-design
@@ -1515,4 +1521,4 @@
 
 ---
 
-*Auto-generated index — 1338 files across 25 top-level folders.*
+*Auto-generated index — 1351 files across 25 top-level folders.*
