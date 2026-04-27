@@ -37,6 +37,8 @@ const SCHEMA_FILES = [
   "spec/31-app/07-db-diagram/sql/01-root-schema.sql",
   "spec/31-app/07-db-diagram/sql/02-app-schema.sql",
 ];
+const APP_INDEXES_FILE = "spec/31-app/07-db-diagram/sql/03-app-indexes.sql";
+const NAMING_BRIDGE = "spec/31-app/07-db-diagram/sql/00-overview.md";
 const INDEXES_DOC = "spec/31-app/07-db-diagram/06-indexes.md";
 
 // Allow-list — UNIQUE declarations whose documentation is intentionally
