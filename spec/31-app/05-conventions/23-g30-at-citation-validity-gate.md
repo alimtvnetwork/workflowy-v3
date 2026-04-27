@@ -1,6 +1,6 @@
 ---
 slug: g30-at-citation-validity-gate
-version: 1.0.0
+version: 1.1.0
 updated: 2026-04-27
 parent: ../../05-conventions/02-ci-quality-gates.md
 status: canonical
@@ -9,7 +9,7 @@ gate_id: G-30
 
 # G-30 — AT Citation Validity Gate
 
-> **Version:** 1.0.0
+> **Version:** 1.1.0
 > **Updated:** 2026-04-27 (UTC+8)
 > **Parent:** [`02-ci-quality-gates.md`](./02-ci-quality-gates.md)
 > **Sibling:** [`22-g29-endpoint-matrix-coverage-gate.md`](./22-g29-endpoint-matrix-coverage-gate.md)
