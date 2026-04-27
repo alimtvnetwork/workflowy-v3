@@ -113,6 +113,6 @@ SELECT name FROM sqlite_master WHERE type='index' AND name LIKE 'Idx%' ORDER BY 
 | Logical ERDs | [`../02-root-db-erd.md`](../02-root-db-erd.md), [`../03-app-db-erd.md`](../03-app-db-erd.md) |
 | Index catalogue | [`../06-indexes.md`](../06-indexes.md) |
 | Migrations | [`../07-migrations.md`](../07-migrations.md) |
-| WP plugin install hook | [`../../../15-wp-plugin-how-to/02-bootstrap-files.md`](../../../15-wp-plugin-how-to/02-bootstrap-files.md) |
+| WP plugin foundation | [`../../../15-wp-plugin-how-to/01-foundation-and-architecture.md`](../../../15-wp-plugin-how-to/01-foundation-and-architecture.md) |
 | Local dev harness | [`../../../15-wp-plugin-how-to/24-local-dev-harness.md`](../../../15-wp-plugin-how-to/24-local-dev-harness.md) |
 | Naming conventions | [`../../../04-database-conventions/01-naming-conventions.md`](../../../04-database-conventions/01-naming-conventions.md) |
