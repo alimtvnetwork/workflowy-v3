@@ -409,7 +409,110 @@ function main() {
       process.exit(1);
     }
     process.exit(0);
+}
+
+// =====================================================================
+// G-30.3 — Meta: every entry in REDUNDANCY_ALLOWLIST MUST carry a
+// rationale comment. Parses the runner's own source; for the named
+// allow-list, extracts every active string-literal entry and verifies
+// rationale presence:
+//   * trailing inline `// …` on the same line (preferred), OR
+//   * one or more `// …` lines immediately above (no blank-line gap).
+// Sample/template lines (`// "Foo → Bar"`) are skipped — those are not
+// active entries, just hints for future authors.
+//
+// Algorithm ported verbatim from G-31.5 in
+// scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs (v2.4.0)
+// which was itself ported from G-32.4 in
+// scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs (v4.0.0).
+// =====================================================================
+
+const G30_ALLOWLIST_NAMES = ["REDUNDANCY_ALLOWLIST"];
+const G30_SELF_PATH = "scripts/spec-hygiene/30-check-at-citation-validity.mjs";
+
+function findUnrationaledG30Entries() {
+  let lines;
+  try {
+    lines = readFileSync(G30_SELF_PATH, "utf8").split("\n");
+  } catch (e) {
+    console.error(`G-30.3: cannot read self at ${G30_SELF_PATH}: ${e.message}`);
+    process.exit(2);
   }
+  const violations = [];
+
+  for (const listName of G30_ALLOWLIST_NAMES) {
+    const startRe = new RegExp(`^const\\s+${listName}\\s*=\\s*new\\s+Set\\(\\[`);
+    let i = lines.findIndex((l) => startRe.test(l));
+    if (i < 0) {
+      console.error(`G-30.3: cannot find allow-list \`${listName}\` in ${G30_SELF_PATH}`);
+      process.exit(2);
+    }
+    i += 1;
+
+    while (i < lines.length) {
+      const raw = lines[i];
+      const trimmed = raw.trim();
+      if (trimmed.startsWith("]")) break;
+
+      const entryMatch = raw.match(/^\s*"([^"]+)"\s*,?\s*(\/\/.*)?$/);
+      if (entryMatch) {
+        const entry = entryMatch[1];
+        const inlineComment = entryMatch[2];
+
+        if (inlineComment) {
+          i += 1;
+          continue;
+        }
+
+        let j = i - 1;
+        let hasAbove = false;
+        while (j >= 0) {
+          const t = lines[j].trim();
+          if (t === "") break;
+          if (t.startsWith("//")) {
+            if (/^\/\/\s*[-=*_]{3,}\s*$/.test(t)) {
+              j -= 1;
+              continue;
+            }
+            hasAbove = true;
+            break;
+          }
+          break;
+        }
+
+        if (!hasAbove) {
+          violations.push({ listName, entry, line: i + 1 });
+        }
+      }
+
+      i += 1;
+    }
+  }
+
+  return violations;
+}
+
+function printG30RationaleReport(violations) {
+  console.log("");
+  console.log(`G-30.3 (meta, ERROR) allow-list rationale-comment coverage:`);
+  console.log(`  allow-lists scanned:                ${G30_ALLOWLIST_NAMES.length} (${G30_ALLOWLIST_NAMES.join(", ")})`);
+  console.log(`  entries missing rationale:          ${violations.length}`);
+
+  if (violations.length === 0) {
+    console.log(`  ✅ every allow-list entry carries a rationale (inline or above)`);
+    return;
+  }
+
+  console.error("");
+  console.error(`  ❌ ${violations.length} unrationaled entry/entries:`);
+  for (const v of violations) {
+    console.error(`    [${v.listName}] "${v.entry}"`);
+    console.error(`      source:    ${G30_SELF_PATH}:${v.line}`);
+  }
+  console.error("");
+  console.error(`  To fix: add either (a) a trailing \`// rationale\` on the same line, or`);
+  console.error(`  (b) a \`// …\` comment line immediately above (no blank line in between).`);
+}
 
 
   console.error("G-30 AT citation validity FAILED:");
