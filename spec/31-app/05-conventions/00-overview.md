@@ -45,6 +45,7 @@
 | 30 | [`27-g33-cross-runner-duplicate-gate.md`](./27-g33-cross-runner-duplicate-gate.md) | G-33 — Cross-Runner Allow-List Duplicate Detector | 144 |
 | 31 | [`28-g34-allow-list-age-gate.md`](./28-g34-allow-list-age-gate.md) | G-34 — Allow-List Entry Age Gate (Algorithm SSOT) | 106 |
 | 32 | [`29-g36-cross-scope-island-gate.md`](./29-g36-cross-scope-island-gate.md) | G-36 — Cross-Scope Island Detector (Algorithm SSOT) | 92 |
+| 33 | [`30-g37-stale-relative-link-gate.md`](./30-g37-stale-relative-link-gate.md) | G-37 — Stale Relative-Link Gate (Algorithm SSOT) | 110 |
 
 <!-- AUTO-TOC:END -->
 
