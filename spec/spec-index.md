@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-27  
-**Total Files:** 1363  
+**Total Files:** 1364  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -33,7 +33,7 @@
 - [16-generic-cli](#16-generic-cli) — 43 file(s)
 - [17-generic-update](#17-generic-update) — 11 file(s)
 - [18-spec-issues](#18-spec-issues) — 14 file(s)
-- [31-app](#31-app) — 125 file(s)
+- [31-app](#31-app) — 126 file(s)
 - [32-ui-design](#32-ui-design) — 120 file(s)
 - [33-feedback-report](#33-feedback-report) — 3 file(s)
 - [34-activity-feed](#34-activity-feed) — 3 file(s)
@@ -1320,6 +1320,7 @@
 | [`31-app/05-conventions/27-g33-cross-runner-duplicate-gate.md`](./31-app/05-conventions/27-g33-cross-runner-duplicate-gate.md) | G-33 — Cross-Runner Allow-List Duplicate Detector | — | — |
 | [`31-app/05-conventions/28-g34-allow-list-age-gate.md`](./31-app/05-conventions/28-g34-allow-list-age-gate.md) | G-34 — Allow-List Entry Age Gate (Algorithm SSOT) | 1.0.0 | — |
 | [`31-app/05-conventions/29-g36-cross-scope-island-gate.md`](./31-app/05-conventions/29-g36-cross-scope-island-gate.md) | G-36 — Cross-Scope Island Detector (Algorithm SSOT) | 1.0.0 | — |
+| [`31-app/05-conventions/30-g37-stale-relative-link-gate.md`](./31-app/05-conventions/30-g37-stale-relative-link-gate.md) | G-37 — Stale Relative-Link Gate (Algorithm SSOT) | 1.0.0 | — |
 | [`31-app/05-conventions/97-acceptance-criteria.md`](./31-app/05-conventions/97-acceptance-criteria.md) | Conventions — Acceptance Criteria | 1.0.0 | — |
 | [`31-app/05-conventions/99-consistency-report.md`](./31-app/05-conventions/99-consistency-report.md) | Consistency Report — 05-conventions | 1.0.1 | — |
 | [`31-app/06-endpoints/00-overview.md`](./31-app/06-endpoints/00-overview.md) | Endpoints — Master Index | 1.0.0 | — |
@@ -1533,4 +1534,4 @@
 
 ---
 
-*Auto-generated index — 1363 files across 25 top-level folders.*
+*Auto-generated index — 1364 files across 25 top-level folders.*
