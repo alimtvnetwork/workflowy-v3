@@ -24,6 +24,7 @@ const checks = [
   "scripts/spec-hygiene/19-check-runbook-staleness.mjs",
   "scripts/spec-hygiene/29-check-endpoint-matrix-coverage.mjs",
   "scripts/spec-hygiene/30-check-at-citation-validity.mjs",
+  "scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs",
   "scripts/spec-hygiene/04-generate-index.mjs",
 ];
 
