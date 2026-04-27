@@ -109,7 +109,7 @@ git diff --exit-code spec/31-app/04-fixtures/item-tree-217.json
 
 ---
 
-## Cross-References
+## Related
 
 | Topic | Link |
 |-------|------|
