@@ -242,7 +242,7 @@ Export artifacts live in `wp-content/workflowy-exports/{JobId}/payload.{ext}`. T
 | Property | Value |
 |----------|-------|
 | Gate ID | `G-27` |
-| Script | `scripts/spec-hygiene/17-export-policy-coverage-audit.mjs` |
+| Script | `scripts/spec-hygiene/27-check-export-policy-coverage.mjs` *(numeric prefix matches gate ID; original `17-` slot reserved for `check-cross-references.mjs` G-17)* — algorithm SSOT: [`20-g27-export-coverage-gate.md`](./20-g27-export-coverage-gate.md) |
 | Trigger | Pre-commit + CI |
 
 **Checks:**
