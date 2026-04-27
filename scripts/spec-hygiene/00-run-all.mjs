@@ -29,6 +29,7 @@ const checks = [
   "scripts/spec-hygiene/33-check-cross-runner-duplicates.mjs",
   "scripts/spec-hygiene/34-check-allow-list-age.mjs",
   "scripts/spec-hygiene/35-allow-list-inventory.mjs --check",
+  "scripts/spec-hygiene/36-check-cross-scope-islands.mjs",
   "scripts/spec-hygiene/04-generate-index.mjs",
 ];
 
