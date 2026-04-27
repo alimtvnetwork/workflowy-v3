@@ -1,6 +1,6 @@
 # 06 — Indexes
 
-> **Version:** 1.4.0
+> **Version:** 1.5.0
 > **Updated:** 2026-04-27 (UTC+8) — v1.5.0 (F-future-G32b) added missing `IdxMirrorPeerGroup_CanonicalItemId` row to Required-Indexes table — DDL emits it as `IdxMirrorGroup_CanonicalItemId` (`03-app-indexes.sql:42`); only the deprecation note mentioned the prose alias before, so neither name appeared in any backticked Required-Indexes cell. Caught by gate G-32.3 (CREATE INDEX coverage, UNIQUE + plain) on first run. v1.4.0 (F26) closed three audit findings: (1) corrected `IdxMirrorPeerGroupMember_ItemId` from "UNIQUE partial WHERE DetachedAt IS NULL" → "UNIQUE full-table" (no `DetachedAt` column exists in DDL; detach is row DELETE per `02-workflows/08-mirror-detach-flow.md` step 3c — confirmed by `02-app-schema.sql` line 85 + `03-app-indexes.sql` line 38); (2) added missing row for `IdxUserRole_User_Role` (Root DB UNIQUE composite, declared in `01-root-schema.sql` line 97 but never documented); (3) extended §Implicit Indexes from 1 entry to 6 — added `WorkspaceRoleType.Name`, `RoleType.Name`, `Workspace.AppDbPath`, `ItemType.Name`, `ShareRoleType.Name` enum/lookup UNIQUE side-effects. v1.3.0 (F22) audited DDL drift: removed 3 deprecated index rows referencing M-117-dropped columns/tables; demoted `IdxUser_Email` from "Required" to §"Implicit Indexes". v1.2.0 added §Naming bridge footnote. v1.1.0 added 4 indexes (`IdxItem_UpdatedAt`, `IdxItem_LiveByUpdatedAt`, `IdxReaperRuns_RanAt`, `IdxMirrorPeerGroupMember_ItemId`) for B1–B4.
 > **Parent:** [`./00-overview.md`](./00-overview.md)
 
