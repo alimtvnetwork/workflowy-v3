@@ -2,8 +2,10 @@
 -- WorkFlowy — App DB Indexes
 -- File: 03-app-indexes.sql
 -- Target: workflowy_app_{WorkspaceId}.db
--- Version: 1.0.0
--- Updated: 2026-04-27 (UTC+8)
+-- Version: 2.0.0
+-- Updated: 2026-04-27 (UTC+8) — v2.0.0 replaces Item.MirrorOfItemId / Mirror table
+--                                indexes with MirrorGroup + MirrorMember indexes
+--                                (closes AUDIT-AI-07).
 -- Authority: spec/31-app/07-db-diagram/06-indexes.md
 --
 -- Run order: AFTER 02-app-schema.sql.
@@ -24,22 +26,21 @@ CREATE INDEX IF NOT EXISTS IdxItem_DeletedAt
     ON Item (DeletedAt)
     WHERE DeletedAt IS NOT NULL;
 
--- Item: reverse mirror lookup (partial — only mirror placeholders)
-CREATE INDEX IF NOT EXISTS IdxItem_MirrorOfItemId
-    ON Item (MirrorOfItemId)
-    WHERE MirrorOfItemId IS NOT NULL;
+-- MirrorMember: list peers of a group (hot path on every render of a mirror)
+CREATE INDEX IF NOT EXISTS IdxMirrorMember_MirrorGroupId
+    ON MirrorMember (MirrorGroupId);
+
+-- MirrorMember: lookup "is this Item a mirror peer?" — UNIQUE enforces 1-group-per-Item
+CREATE UNIQUE INDEX IF NOT EXISTS IdxMirrorMember_ItemId
+    ON MirrorMember (ItemId);
+
+-- MirrorGroup: canonical lookup
+CREATE INDEX IF NOT EXISTS IdxMirrorGroup_CanonicalItemId
+    ON MirrorGroup (CanonicalItemId);
 
 -- Item: per-owner item count + role checks (cheap, optional)
 CREATE INDEX IF NOT EXISTS IdxItem_OwnerUserId
     ON Item (OwnerUserId);
-
--- Mirror: source -> mirrors fan-out
-CREATE INDEX IF NOT EXISTS IdxMirror_SourceItemId
-    ON Mirror (SourceItemId);
-
--- Mirror: 1:1 enforcement between Item.MirrorOfItemId and Mirror row
-CREATE UNIQUE INDEX IF NOT EXISTS IdxMirror_MirrorItemId
-    ON Mirror (MirrorItemId);
 
 -- Share: list grants per item
 CREATE INDEX IF NOT EXISTS IdxShare_ItemId

@@ -2,12 +2,13 @@
 -- WorkFlowy — App DB Triggers
 -- File: 04-app-triggers.sql
 -- Target: workflowy_app_{WorkspaceId}.db
--- Version: 1.0.0
--- Updated: 2026-04-27 (UTC+8)
+-- Version: 2.0.0
+-- Updated: 2026-04-27 (UTC+8) — v2.0.0 adds MirrorGroup auto-dissolve trigger
+--                                (closes AUDIT-AI-07).
 --
 -- Run order: AFTER 03-app-indexes.sql.
 -- Purpose: auto-touch UpdatedAt on every UPDATE; trash-cascade for child items
--- on parent soft-delete.
+-- on parent soft-delete; auto-dissolve MirrorGroup when membership drops to 1.
 -- ============================================================================
 
 -- ----------------------------------------------------------------------------
@@ -56,6 +57,25 @@ BEGIN
        SET DeletedAt = NULL
      WHERE ParentItemId = NEW.ItemId
        AND DeletedAt = OLD.DeletedAt;
+END;
+
+
+-- ----------------------------------------------------------------------------
+-- MirrorGroup auto-dissolve: when a group's membership drops to 1, the lone
+-- remaining peer is no longer a mirror by definition (per the Workflowy
+-- detach rule). Delete the group; ON DELETE CASCADE on MirrorMember removes
+-- the surviving member row, and the underlying Item naturally has no
+-- MirrorMember → no diamond badge.
+--
+-- See spec/31-app/01-features/09b-mirror-peer-group-model.md §R-3.
+-- ----------------------------------------------------------------------------
+DROP TRIGGER IF EXISTS TrgMirrorMember_DissolveOnSingleton;
+CREATE TRIGGER TrgMirrorMember_DissolveOnSingleton
+AFTER DELETE ON MirrorMember
+FOR EACH ROW
+WHEN (SELECT COUNT(*) FROM MirrorMember WHERE MirrorGroupId = OLD.MirrorGroupId) = 1
+BEGIN
+    DELETE FROM MirrorGroup WHERE MirrorGroupId = OLD.MirrorGroupId;
 END;
 
 -- End of 04-app-triggers.sql
