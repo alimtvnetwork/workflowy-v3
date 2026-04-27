@@ -106,7 +106,7 @@ SELECT name FROM sqlite_master WHERE type='index' AND name LIKE 'Idx%' ORDER BY 
 
 ---
 
-## Cross-References
+## Related
 
 | Topic | Link |
 |-------|------|
