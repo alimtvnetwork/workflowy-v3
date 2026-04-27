@@ -37,6 +37,7 @@ wp-plugin/
 ├── uninstall.php                    # WP uninstall hook — calls Lifecycle\Uninstall::run()
 │
 ├── Auth/                            # Authentication, MFA, escalation, token lifecycle
+│   ├── Auth.php                     # static class Auth::hasRole() — sole authorization helper (per 15-roles-and-permissions, namespace WorkFlowy\Auth)
 │   ├── SignIn.php
 │   ├── SignOut.php
 │   ├── TokenStore.php               # short/long/refresh/MFA tokens (per 11-session-token-lifecycle)
