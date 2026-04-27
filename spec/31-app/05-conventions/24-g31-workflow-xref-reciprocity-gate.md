@@ -1,6 +1,6 @@
 ---
 slug: g31-workflow-xref-reciprocity-gate
-version: 2.0.0
+version: 2.4.0
 updated: 2026-04-27
 parent: ../../05-conventions/02-ci-quality-gates.md
 status: canonical
@@ -9,8 +9,8 @@ gate_id: G-31
 
 # G-31 — Cross-Reference Reciprocity Gate
 
-> **Version:** 2.0.0
-> **Updated:** 2026-04-27 (UTC+8) — v2.3.0 (F-future-G31a-promote-features) drained the G-31.2 features scope (30 → 0) by programmatically appending back-link rows across 12 target files (preserving each target's native bullet-vs-table format); promoted G-31.2 from WARN to ERROR. **All four G-31 sub-checks are now ERROR-mode at 0 asymmetries — staged WARN-then-ERROR rollout complete.** Earlier: v2.2.0 drained db-diagram (6 → 0); v2.1.0 drained endpoints (8 → 0); v2.0.0 generalised to N parameterised scopes; v1.0.0 originated as the F25 prototype `/tmp/audit_xrefs.mjs` covering only workflows.
+> **Version:** 2.4.0
+> **Updated:** 2026-04-27 (UTC+8) — v2.4.0 (F-future-G31b) added the **G-31.5 meta sub-check** enforcing rationale comments on every entry of the 4 per-scope exemption Sets (`WORKFLOWS_EXEMPT` / `FEATURES_EXEMPT` / `ENDPOINTS_EXEMPT` / `DB_DIAGRAM_EXEMPT`). Algorithm ported verbatim from G-32.4 (`32-check-ddl-unique-coverage.mjs` v4.0.0): trailing inline `// …` OR contiguous `// …` line(s) directly above with no blank-line gap; sample/template `// "…"` lines are skipped. All 4 Sets are currently empty so the gate ships green; this locks the convention before the first exemption is added so authors can't sneak in silent suppressions. Earlier: v2.3.0 drained features (30 → 0); v2.2.0 drained db-diagram (6 → 0); v2.1.0 drained endpoints (8 → 0); v2.0.0 generalised to N parameterised scopes; v1.0.0 originated as the F25 prototype `/tmp/audit_xrefs.mjs` covering only workflows.
 > **Parent:** [`02-ci-quality-gates.md`](./02-ci-quality-gates.md)
 > **Sibling:** [`23-g30-at-citation-validity-gate.md`](./23-g30-at-citation-validity-gate.md), [`25-g32-ddl-unique-coverage-gate.md`](./25-g32-ddl-unique-coverage-gate.md)
 > **Runner:** [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs)
@@ -25,12 +25,14 @@ gate_id: G-31
 | G-31.2   | features         | ERROR | `spec/31-app/01-features/`   | 23              | 0 ✅                  | v2.0.0 (WARN) → v2.3.0 (ERROR) |
 | G-31.3   | endpoints        | ERROR | `spec/31-app/06-endpoints/`  | 19              | 0 ✅                  | v2.0.0 (WARN) → v2.1.0 (ERROR) |
 | G-31.4   | db-diagram       | ERROR | `spec/31-app/07-db-diagram/` | 7               | 0 ✅                  | v2.0.0 (WARN) → v2.2.0 (ERROR) |
+| G-31.5   | meta (rationale) | ERROR | (runner self)                | 4 Sets, 0 entries | 0 ✅                | v2.4.0   |
 
 **Mode semantics:**
-- **ERROR** — any asymmetry contributes to exit code 1; CI fails.
+- **ERROR** — any asymmetry (or, for G-31.5, any unrationaled exemption entry) contributes to exit code 1; CI fails.
 - **WARN** — asymmetries are reported in stdout but exit code stays 0. Used as a staged-rollout pattern (mirrors F24/F27/F28 G-30.2 rollout): introduce the check, surface drift, drain via follow-up tasks, then promote to ERROR.
 
 A scope is promoted to ERROR by changing the literal `mode: "warn"` to `mode: "error"` on its entry in the runner's `SCOPES` array. No other code changes are needed.
+
 
 
 ---
@@ -186,11 +188,10 @@ Reciprocity catches the F25 drift class without overreach.
 
 ## Future-promotion ladder (not scoped to this gate)
 
-Three further enhancements remain:
+Two further enhancements remain (F-future-G31a and F-future-G31b are both complete):
 
-1. **F-future-G31a-promote**: Promote the WARN scopes (G-31.2 / G-31.3 / G-31.4) to ERROR by draining their reciprocity queues. Each scope can be promoted independently — change `mode: "warn"` → `mode: "error"` on its registry entry once `unreciprocated forward-links` reaches 0 (or matches an exemption Set).
-2. **F-future-G31b**: Add a meta sub-check enforcing that every per-scope exemption Set entry carries a rationale comment in the runner source (machine-checkable, mirrors G-32.4).
-3. **F-future-G31c**: Detect "unreferenced" sibling files (a file that no other sibling links to AND that links to no other sibling). These are documentation islands — likely a smell, but not always a bug.
+1. **F-future-G31c**: Detect "unreferenced" sibling files (a file that no other sibling links to AND that links to no other sibling). These are documentation islands — likely a smell, but not always a bug.
+2. **F-future-G31d** (newly logged): A heading-name normalisation sweep — pick one of `## Related` / `## Cross-References` / `## See also` per scope and rename the others. Currently the runner accepts all three (in scope-priority order) for back-compat; once drained, this flexibility is dead weight.
 
 Logging here so they're discoverable when "check memory for remaining tasks" runs in a later loop.
 
@@ -204,3 +205,5 @@ Logging here so they're discoverable when "check memory for remaining tasks" run
 | 2.0.0 | 2026-04-27 | F-future-G31a — generalised the runner from a single workflows scope to **N parameterised scopes** with per-scope `mode: "error" \| "warn"`. New `SCOPES` registry array (each entry: `id`, `label`, `dir`, `filenameRx`, `excludeRx`, `relatedHeads[]`, `mode`, `exemptions`). New helpers: per-scope `listSiblingFiles()`, `extractRelatedSection()` accepts multiple heading variants in priority order and stops at next H2 that isn't another related-head, `printScopeReport()` emits per-scope `❌`/`⚠️` verdict + (WARN-only) drain-and-promote hint, `findAsymmetries()` consults per-scope exemption Set. Final exit = `totalErrorAsym === 0 ? 0 : 1` (WARN drift never fails). 4 separate exemption Sets: `WORKFLOWS_EXEMPT`, `FEATURES_EXEMPT`, `ENDPOINTS_EXEMPT`, `DB_DIAGRAM_EXEMPT` (all empty at v2.0.0). Added 3 new sub-checks: G-31.2 features (23 files, 64 cross-links, 30 asymmetries WARN), G-31.3 endpoints (19 files, 8 cross-links, 8 asymmetries WARN), G-31.4 db-diagram (7 files, 8 cross-links, 6 asymmetries WARN). Negative-tested: ERROR-scope drift in `02-workflows/04-trash-restore-flow.md` (sed-rewrote one filename) → exit 1; restored → exit 0. WARN-scope drift surfaces in stdout but stays exit 0. Master runner unchanged. Promotion path (per-scope `mode` flip) is documented in §Sub-checks. |
 | 2.1.0 | 2026-04-27 | F-future-G31a-promote-endpoints — drained the G-31.3 endpoints WARN scope from 8 unreciprocated forward-links to 0 by adding back-link rows to three target files' `## Cross-References` tables: `14-concurrency-and-sync.md` (×5: from `01-information-model`, `09-mirrors`, `09b-mirror-peer-group`, `11-trash-view`, `14b-sync-replay`), `15-roles-and-permissions.md` (×2: from `02-personas`, `08-share-dialog`), and `11-trash-view.md` (×1: from `11b-trash-reaper`). Each new row is prefixed with `← <topic> (forward link from)` to make the back-link's purpose self-documenting. Cross-References link count rose from 8 to 16 (matched 8↔8). Promoted `G-31.3` from `mode: "warn"` to `mode: "error"` in the runner's `SCOPES` registry. Negative-tested: removing one of the new rows → exit 1; restored → exit 0. Decision rationale (cargo-cult avoidance): each new row names the originating endpoint explicitly so reviewers can trace the reason for the link rather than seeing formulaic boilerplate (per ambiguity log #30 §"Why not auto-drain"). |
 | 2.2.0 | 2026-04-27 | F-future-G31a-promote-db-diagram — drained the G-31.4 db-diagram WARN scope from 6 unreciprocated forward-links to 0 by adding back-link rows to five target files' `## Cross-References` tables: `02-root-db-erd.md` (×1: from `01-master-erd`), `03-app-db-erd.md` (×2: from `01-master-erd`, `04-feature-slices`), `06-indexes.md` (×2: from `01-master-erd`, `07-migrations`), `04-feature-slices.md` (×1: from `03-app-db-erd`), and `05-lifecycle-flows.md` (×1: from `04-feature-slices`). Reused the `← <topic> (forward link from)` row-prose convention established in v2.1.0 (per ambiguity #31). Cross-References link count rose from 8 to 14 (matched 7↔7 — the 8th original forward-link was an already-symmetric pair). Promoted `G-31.4` from `mode: "warn"` to `mode: "error"` in the runner's `SCOPES` registry. Final state: G-31.1 (workflows) ✅, G-31.3 (endpoints) ✅, G-31.4 (db-diagram) ✅ all ERROR-mode at 0; only G-31.2 (features, 30 asymmetries) remains in WARN. `node 31-check-...mjs` exits 0. |
+| 2.3.0 | 2026-04-27 | F-future-G31a-promote-features — drained the G-31.2 features WARN scope from 30 unreciprocated forward-links to 0 by programmatically appending back-link rows across 12 target files via `/tmp/drain_g312.py` (insertion under existing `## Related` / `## Cross-References` sections, preserving each target's native bullet-vs-table format; reused the `← <topic> (forward link from)` row-prose convention from v2.1.0/v2.2.0). Cross-sibling link count rose from 64 to 94 (matched 47↔47). Promoted `G-31.2` from `mode: "warn"` to `mode: "error"`. **All 4 G-31 sub-checks now ERROR-mode at 0 asymmetries — staged WARN-then-ERROR rollout complete.** |
+| 2.4.0 | 2026-04-27 | F-future-G31b — added the **G-31.5 meta sub-check** enforcing rationale comments on every entry of the 4 per-scope exemption Sets (`WORKFLOWS_EXEMPT` / `FEATURES_EXEMPT` / `ENDPOINTS_EXEMPT` / `DB_DIAGRAM_EXEMPT`). New helpers `findUnrationaledEntries()` + `printRationaleReport()` ported verbatim from G-32.4 (`32-check-ddl-unique-coverage.mjs` v4.0.0 `findUnrationaledEntries()`), parameterised on a 4-name `ALLOWLIST_NAMES` array and a `SELF_PATH` constant. Algorithm: for each named Set, parse the runner's own source between the `const NAME = new Set([` opener and the next `]`; for every active entry line (matches `/^\s*"…"…/`, sample lines `// "…"` skipped) accept either (a) trailing inline `// …` on the same line or (b) at least one contiguous `// …` line directly above with no blank-line gap (pure separator comments like `// ====` are skipped). Final exit changed from `totalErrorAsym === 0 ? 0 : 1` to `failed = totalErrorAsym > 0 \|\| unrationaled.length > 0` so unrationaled entries fail the gate. Updated comment block above the 4 Set declarations: removed the stale "informational; not yet machine-enforced" note, replaced with "machine-enforced by G-31.5 since v2.4.0". All 4 Sets are currently empty so the gate ships green; this locks in the convention before any exemption is added. Negative-tested: injecting `"foo.md → bar.md"` (no rationale) into `FEATURES_EXEMPT` → exit 1 with `[FEATURES_EXEMPT]` violation row; restored → exit 0. Positive-tested both rationale styles (trailing `// rationale: …` AND `// rationale: …` line above) → exit 0. Master runner output enriched with a 5th sub-check section + summary now reports unrationaled-entry count alongside ERROR/WARN asymmetries. |

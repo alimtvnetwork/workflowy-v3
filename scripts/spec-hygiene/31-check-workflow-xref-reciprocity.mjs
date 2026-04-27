@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 /**
- * G-31 — Cross-Reference Reciprocity Gate (v2.3.0)
+ * G-31 — Cross-Reference Reciprocity Gate (v2.4.0)
  *
  * Asserts that every cross-sibling Related-section link in a scoped
  * folder is reciprocated by a back-link in the target's own
  * Related/Cross-References section.
  *
- * Sub-checks (one per registered scope):
+ * Sub-checks (one per registered scope, plus a meta sub-check):
  *
  *   G-31.1 (workflows, ERROR, v1.0.0)  — 02-workflows/NN-*-flow.md
  *                                       reciprocity. Drained queue from
@@ -20,6 +20,17 @@
  *   G-31.4 (db-diagram,ERROR, v2.2.0)  — 07-db-diagram/NN-*.md
  *                                       reciprocity. Drained 2026-04-27
  *                                       (6 → 0) and promoted to ERROR.
+ *   G-31.5 (meta,      ERROR, v2.4.0)  — every entry in each per-scope
+ *                                       exemption Set MUST carry a
+ *                                       rationale comment (trailing
+ *                                       inline `// …` OR a contiguous
+ *                                       `// …` line directly above with
+ *                                       no blank-line gap). Mirrors the
+ *                                       G-32.4 pattern verbatim. All 4
+ *                                       Sets currently empty so this
+ *                                       ships green; the gate locks the
+ *                                       convention before any exemption
+ *                                       is added (F-future-G31b).
  *
  * Mode semantics:
  *   - ERROR scopes contribute to exit code 1 on any asymmetry.
@@ -71,6 +82,18 @@
  *        target's native bullet-vs-table format); promoted G-31.2 from
  *        WARN to ERROR. All 4 G-31 sub-checks now ERROR-mode at 0
  *        asymmetries — staged WARN-then-ERROR rollout complete.
+ * v2.4.0 (F-future-G31b) added the **G-31.5 meta sub-check** enforcing
+ *        that every entry in `WORKFLOWS_EXEMPT`, `FEATURES_EXEMPT`,
+ *        `ENDPOINTS_EXEMPT`, and `DB_DIAGRAM_EXEMPT` carries a rationale
+ *        comment (trailing inline `// …` OR contiguous `// …` line(s)
+ *        directly above with no blank-line gap). Algorithm ported
+ *        verbatim from G-32.4 (`32-check-ddl-unique-coverage.mjs`),
+ *        swapping the self-path and allow-list names. All 4 Sets are
+ *        currently empty so the gate ships green; this locks in the
+ *        convention before the first exemption is added so authors
+ *        can't sneak in silent suppressions. Sample template entries
+ *        (lines starting with `// "…"`) are skipped — they are not
+ *        active entries, just stylistic hints for future authors.
  */
 
 import { readFileSync, readdirSync, statSync } from "node:fs";
@@ -78,8 +101,9 @@ import { join } from "node:path";
 
 // =====================================================================
 // Per-scope allow-lists. Format: `${from} → ${to}` (bare filenames).
-// Each entry needs a one-line rationale comment (informational; not yet
-// machine-enforced — see F-future-G31b for rationale-comment gate).
+// Each entry MUST carry a one-line rationale (trailing inline `// …` OR
+// a `// …` line directly above with no blank-line gap). Machine-enforced
+// by G-31.5 since v2.4.0 (mirrors G-32.4 in `32-check-ddl-unique-coverage.mjs`).
 // =====================================================================
 
 const WORKFLOWS_EXEMPT = new Set([
@@ -254,6 +278,118 @@ function printScopeReport(scope, files, matrix, asymmetries) {
   }
 }
 
+// =====================================================================
+// G-31.5 — Meta: every per-scope exemption Set entry MUST carry a
+// rationale comment. Parses the runner's own source; for each named
+// exemption Set, extracts every active string-literal entry and verifies
+// rationale presence:
+//   * trailing inline `// …` on the same line (preferred), OR
+//   * one or more `// …` lines immediately above (no blank-line gap).
+// Sample/template lines (`// "Foo → Bar"`) are skipped — those are not
+// active entries, just hints for future authors.
+//
+// Algorithm ported verbatim from G-32.4 in
+// scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs (v4.0.0).
+// =====================================================================
+
+const ALLOWLIST_NAMES = [
+  "WORKFLOWS_EXEMPT",
+  "FEATURES_EXEMPT",
+  "ENDPOINTS_EXEMPT",
+  "DB_DIAGRAM_EXEMPT",
+];
+
+const SELF_PATH = "scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs";
+
+function findUnrationaledEntries() {
+  let lines;
+  try {
+    lines = readFileSync(SELF_PATH, "utf8").split("\n");
+  } catch (e) {
+    fail(`G-31.5: cannot read self at ${SELF_PATH}: ${e.message}`);
+  }
+  const violations = []; // [{listName, entry, line}]
+
+  for (const listName of ALLOWLIST_NAMES) {
+    const startRe = new RegExp(`^const\\s+${listName}\\s*=\\s*new\\s+Set\\(\\[`);
+    let i = lines.findIndex((l) => startRe.test(l));
+    if (i < 0) {
+      fail(`G-31.5: cannot find allow-list \`${listName}\` in ${SELF_PATH}`);
+    }
+    i += 1; // first line inside the array literal
+
+    while (i < lines.length) {
+      const raw = lines[i];
+      const trimmed = raw.trim();
+
+      // End of array literal.
+      if (trimmed.startsWith("]")) break;
+
+      // Active entry: starts with `"` (after optional whitespace).
+      // We deliberately ignore `// "..."` sample-template lines.
+      const entryMatch = raw.match(/^\s*"([^"]+)"\s*,?\s*(\/\/.*)?$/);
+      if (entryMatch) {
+        const entry = entryMatch[1];
+        const inlineComment = entryMatch[2];
+
+        // Trailing inline rationale satisfies the rule.
+        if (inlineComment) {
+          i += 1;
+          continue;
+        }
+
+        // Otherwise scan upwards for contiguous `// …` lines (no blank gap).
+        let j = i - 1;
+        let hasAbove = false;
+        while (j >= 0) {
+          const t = lines[j].trim();
+          if (t === "") break; // blank line breaks the block
+          if (t.startsWith("//")) {
+            // Skip pure section separators like `// ----` or `// ===`.
+            if (/^\/\/\s*[-=*_]{3,}\s*$/.test(t)) {
+              j -= 1;
+              continue;
+            }
+            hasAbove = true;
+            break;
+          }
+          break; // anything non-blank, non-comment ends the search
+        }
+
+        if (!hasAbove) {
+          violations.push({ listName, entry, line: i + 1 });
+        }
+      }
+
+      i += 1;
+    }
+  }
+
+  return violations;
+}
+
+function printRationaleReport(violations) {
+  console.log("");
+  console.log(`G-31.5 (meta, ERROR) exemption-Set rationale-comment coverage:`);
+  console.log(`  allow-lists scanned:                ${ALLOWLIST_NAMES.length} (${ALLOWLIST_NAMES.join(", ")})`);
+  console.log(`  entries missing rationale:          ${violations.length}`);
+
+  if (violations.length === 0) {
+    console.log(`  ✅ every exemption-Set entry carries a rationale (inline or above)`);
+    return;
+  }
+
+  console.log("");
+  console.log(`  ❌ ${violations.length} unrationaled entry/entries:`);
+  for (const v of violations) {
+    console.log(`    [${v.listName}] "${v.entry}"`);
+    console.log(`      source:    ${SELF_PATH}:${v.line}`);
+  }
+  console.log("");
+  console.log(`  To fix: add either (a) a trailing \`// rationale\` on the same line, or`);
+  console.log(`  (b) a \`// …\` comment line immediately above (no blank line in between).`);
+}
+
 // --- main ---
 let totalErrorAsym = 0;
 let totalWarnAsym = 0;
@@ -282,7 +418,11 @@ for (const scope of SCOPES) {
   else totalWarnAsym += asym.length;
 }
 
-console.log("");
-console.log(`G-31 summary: ${SCOPES.length} scope(s) scanned — ${totalErrorAsym} ERROR-scope asymmetries, ${totalWarnAsym} WARN-scope asymmetries.`);
+const unrationaled = findUnrationaledEntries();
+printRationaleReport(unrationaled);
 
-process.exit(totalErrorAsym === 0 ? 0 : 1);
+console.log("");
+console.log(`G-31 summary: ${SCOPES.length} scope(s) scanned — ${totalErrorAsym} ERROR-scope asymmetries, ${totalWarnAsym} WARN-scope asymmetries, ${unrationaled.length} unrationaled exemption entry/entries.`);
+
+const failed = totalErrorAsym > 0 || unrationaled.length > 0;
+process.exit(failed ? 1 : 0);
