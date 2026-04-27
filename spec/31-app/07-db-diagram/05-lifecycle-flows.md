@@ -189,3 +189,4 @@ stateDiagram-v2
 | Conflict resolution rules | [`../01-features/14-concurrency-and-sync.md`](../01-features/14-concurrency-and-sync.md) §14.4 |
 | Trash retention | `mem://features/trash-logic` |
 | Mirror semantics | [`../01-features/09-mirrors.md`](../01-features/09-mirrors.md) |
+| ← Per-feature slices reference these lifecycles (forward link from) | [`./04-feature-slices.md`](./04-feature-slices.md) |

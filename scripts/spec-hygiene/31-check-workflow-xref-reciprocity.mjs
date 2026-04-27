@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * G-31 — Cross-Reference Reciprocity Gate (v2.1.0)
+ * G-31 — Cross-Reference Reciprocity Gate (v2.2.0)
  *
  * Asserts that every cross-sibling Related-section link in a scoped
  * folder is reciprocated by a back-link in the target's own
@@ -17,9 +17,9 @@
  *   G-31.3 (endpoints, ERROR, v2.1.0)  — 06-endpoints/NN[a-z]?-*.md
  *                                       reciprocity. Drained 2026-04-27
  *                                       (8 → 0) and promoted to ERROR.
- *   G-31.4 (db-diagram,WARN,  v2.0.0)  — 07-db-diagram/NN-*.md
- *                                       reciprocity. Pre-existing drift
- *                                       at intro: 6 asymmetries.
+ *   G-31.4 (db-diagram,ERROR, v2.2.0)  — 07-db-diagram/NN-*.md
+ *                                       reciprocity. Drained 2026-04-27
+ *                                       (6 → 0) and promoted to ERROR.
  *
  * Mode semantics:
  *   - ERROR scopes contribute to exit code 1 on any asymmetry.
@@ -58,6 +58,12 @@
  *        by adding back-link rows to the Cross-References tables of
  *        14-concurrency-and-sync.md (×5), 15-roles-and-permissions.md (×2),
  *        and 11-trash-view.md (×1); promoted G-31.3 from WARN to ERROR.
+ * v2.2.0 (F-future-G31a-promote-db-diagram) drained 6 db-diagram
+ *        asymmetries by adding back-link rows to 02-root-db-erd.md (×1),
+ *        03-app-db-erd.md (×2), 06-indexes.md (×2), 04-feature-slices.md
+ *        (×1), and 05-lifecycle-flows.md (×1); promoted G-31.4 from
+ *        WARN to ERROR. Only G-31.2 (features, 30 asymmetries) remains
+ *        in WARN mode.
  */
 
 import { readFileSync, readdirSync, statSync } from "node:fs";
@@ -131,7 +137,7 @@ const SCOPES = [
     filenameRx: /^\d{2}-.+\.md$/,
     excludeRx: /^(00-overview|97-acceptance-criteria|99-consistency-report)\.md$/,
     relatedHeads: ["## Cross-References", "## Related", "## See also"],
-    mode: "warn",
+    mode: "error",
     exemptions: DB_DIAGRAM_EXEMPT,
   },
 ];

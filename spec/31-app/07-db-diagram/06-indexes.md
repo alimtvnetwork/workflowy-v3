@@ -182,3 +182,5 @@ Example: `EP-ITEMS-LIST` runs `WHERE ParentItemId = ? ORDER BY FractionalIndex`.
 | Naming convention | [`../../04-database-conventions/01-naming-conventions.md`](../../04-database-conventions/01-naming-conventions.md) |
 | Endpoint catalogue | [`../06-endpoints/00-overview.md`](../06-endpoints/00-overview.md) |
 | ORM / view rules | [`../../04-database-conventions/03-orm-and-views.md`](../../04-database-conventions/03-orm-and-views.md) |
+| ← Master ERD aggregator (forward link from) | [`./01-master-erd.md`](./01-master-erd.md) |
+| ← Migration plan allocates new indexes (forward link from) | [`./07-migrations.md`](./07-migrations.md) |

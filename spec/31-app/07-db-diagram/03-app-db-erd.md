@@ -230,3 +230,5 @@ flowchart TD
 | Item interface contract | `mem://architecture/data-model` |
 | 12 item types | [`../../20-enums-index.md`](../../20-enums-index.md) §2 |
 | Per-feature slices | [`./04-feature-slices.md`](./04-feature-slices.md) |
+| ← Master ERD aggregator (forward link from) | [`./01-master-erd.md`](./01-master-erd.md) |
+| ← Per-feature slice ERDs derive from this schema (forward link from) | [`./04-feature-slices.md`](./04-feature-slices.md) |
