@@ -35,17 +35,17 @@
 | 20 | [`20-g27-export-coverage-gate.md`](./20-g27-export-coverage-gate.md) | G-27 Data-Export Policy Drift Gate — Algorithm Spec | 297 |
 | 21 | [`21-g28-backup-coverage-gate.md`](./21-g28-backup-coverage-gate.md) | G-28 Backup & DR Policy Drift Gate — Algorithm Spec | 346 |
 | 22 | [`22-g29-endpoint-matrix-coverage-gate.md`](./22-g29-endpoint-matrix-coverage-gate.md) | G-29 Endpoint ↔ Matrix Coverage Gate — Algorithm Spec | 144 |
-| 23 | [`31-wp-plugin-folder-skeleton.md`](./31-wp-plugin-folder-skeleton.md) | WP-Plugin Folder Skeleton — SSOT | 290 |
-| 24 | [`23-g30-at-citation-validity-gate.md`](./23-g30-at-citation-validity-gate.md) | G-30 — AT Citation Validity Gate | 267 |
-| 25 | [`32-sse-php-implementation.md`](./32-sse-php-implementation.md) | Convention 23 — PHP SSE Implementation Pattern | 343 |
-| 26 | [`24-g31-workflow-xref-reciprocity-gate.md`](./24-g31-workflow-xref-reciprocity-gate.md) | G-31 — Cross-Reference Reciprocity Gate | 213 |
-| 27 | [`33-state-management-architecture.md`](./33-state-management-architecture.md) | State Management Architecture | 277 |
-| 28 | [`25-g32-ddl-unique-coverage-gate.md`](./25-g32-ddl-unique-coverage-gate.md) | G-32 — DDL ↔ Doc Index Coverage Gate | 259 |
-| 29 | [`26-allow-list-inventory.md`](./26-allow-list-inventory.md) | Allow-List Inventory | 269 |
-| 30 | [`27-g33-cross-runner-duplicate-gate.md`](./27-g33-cross-runner-duplicate-gate.md) | G-33 — Cross-Runner Allow-List Duplicate Detector | 144 |
-| 31 | [`28-g34-allow-list-age-gate.md`](./28-g34-allow-list-age-gate.md) | G-34 — Allow-List Entry Age Gate (Algorithm SSOT) | 106 |
-| 32 | [`29-g36-cross-scope-island-gate.md`](./29-g36-cross-scope-island-gate.md) | G-36 — Cross-Scope Island Detector (Algorithm SSOT) | 92 |
-| 33 | [`30-g37-stale-relative-link-gate.md`](./30-g37-stale-relative-link-gate.md) | G-37 — Stale Relative-Link Gate (Algorithm SSOT) | 107 |
+| 23 | [`23-g30-at-citation-validity-gate.md`](./23-g30-at-citation-validity-gate.md) | G-30 — AT Citation Validity Gate | 267 |
+| 24 | [`24-g31-workflow-xref-reciprocity-gate.md`](./24-g31-workflow-xref-reciprocity-gate.md) | G-31 — Cross-Reference Reciprocity Gate | 213 |
+| 25 | [`25-g32-ddl-unique-coverage-gate.md`](./25-g32-ddl-unique-coverage-gate.md) | G-32 — DDL ↔ Doc Index Coverage Gate | 259 |
+| 26 | [`26-allow-list-inventory.md`](./26-allow-list-inventory.md) | Allow-List Inventory | 269 |
+| 27 | [`27-g33-cross-runner-duplicate-gate.md`](./27-g33-cross-runner-duplicate-gate.md) | G-33 — Cross-Runner Allow-List Duplicate Detector | 144 |
+| 28 | [`28-g34-allow-list-age-gate.md`](./28-g34-allow-list-age-gate.md) | G-34 — Allow-List Entry Age Gate (Algorithm SSOT) | 106 |
+| 29 | [`29-g36-cross-scope-island-gate.md`](./29-g36-cross-scope-island-gate.md) | G-36 — Cross-Scope Island Detector (Algorithm SSOT) | 92 |
+| 30 | [`30-g37-stale-relative-link-gate.md`](./30-g37-stale-relative-link-gate.md) | G-37 — Stale Relative-Link Gate (Algorithm SSOT) | 107 |
+| 31 | [`31-wp-plugin-folder-skeleton.md`](./31-wp-plugin-folder-skeleton.md) | WP-Plugin Folder Skeleton — SSOT | 290 |
+| 32 | [`32-sse-php-implementation.md`](./32-sse-php-implementation.md) | Convention 23 — PHP SSE Implementation Pattern | 343 |
+| 33 | [`33-state-management-architecture.md`](./33-state-management-architecture.md) | State Management Architecture | 277 |
 
 <!-- AUTO-TOC:END -->
 
