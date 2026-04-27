@@ -71,7 +71,8 @@ fn instantiate(template_id, target_parent_id, owner_id):
 
 ---
 
-## 5. Cross-references
+## Related
 
-- `spec/31-app/01-features/13-templates.md` (parent SSOT)
-- `spec/31-app/01-features/09b-mirror-peer-group-model.md` (why mirrors don't survive snapshot)
+- [`./13-templates.md`](./13-templates.md) (parent SSOT)
+- [`./11b-trash-reaper.md`](./11b-trash-reaper.md) — sister addendum: trash reaper cron (templates unaffected)
+- [`./09b-mirror-peer-group-model.md`](./09b-mirror-peer-group-model.md) — why mirrors don't survive snapshot

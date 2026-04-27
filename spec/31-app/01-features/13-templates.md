@@ -178,3 +178,4 @@ User clicks "Make template" in the item context menu → a dialog opens to name 
 - [09-mirrors.md](./09-mirrors.md) — mirrors are flattened on template apply
 - [11-trash-view.md](./11-trash-view.md) — apply blocked inside trash
 - `mem://features/templates` — serialized snapshot rules
+- [13b-templates-snapshot-semantics.md](./13b-templates-snapshot-semantics.md) — addendum: snapshot-vs-link semantics + mirror-flattening rules

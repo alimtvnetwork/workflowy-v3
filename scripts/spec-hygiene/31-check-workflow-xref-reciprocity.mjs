@@ -169,7 +169,18 @@ const WORKFLOWS_EXEMPT = new Set([
 ]);
 
 const FEATURES_EXEMPT = new Set([
-  // (empty at v2.0.0 — drift is genuine and surfaced in WARN mode)
+  // 7 entries below are addendum (`*b`) → cross-domain-peer references.
+  // Each addendum cites a peer for context (e.g. mirror-peer-group rules,
+  // ACL model, base interaction). The peer page would bloat unmanageably
+  // if every addendum that touches it had to be back-linked. Asymmetric
+  // by design. Drained from G-31.6 island-exempt 2026-04-27 (F-future-G31e).
+  "07b-dashboard-view.md → 04-page-content-area.md",          // sister-list-view context cite
+  "08b-sharing-mirror-interaction.md → 09b-mirror-peer-group-model.md", // peer-group identity cite
+  "08b-sharing-mirror-interaction.md → 15-roles-and-permissions.md",    // ACL model cite
+  "11b-trash-reaper.md → 09b-mirror-peer-group-model.md",     // peer-group dissolve rule cite
+  "12b-multi-select-zoom.md → 05-interactions.md",            // base zoom-hotkey cite
+  "12b-multi-select-zoom.md → 09b-mirror-peer-group-model.md", // peer sync inside scope cite
+  "13b-templates-snapshot-semantics.md → 09b-mirror-peer-group-model.md", // mirrors-not-snapshotted cite
 ]);
 
 const ENDPOINTS_EXEMPT = new Set([
@@ -194,14 +205,13 @@ const WORKFLOWS_ISLAND_EXEMPT = new Set([
 ]);
 
 const FEATURES_ISLAND_EXEMPT = new Set([
-  // All 5 entries below are addendum slices (`*b`) of a parent feature
-  // page (`*` or `*a`). Their semantic peer is the parent in the same
-  // scope; cross-sibling links would be redundant. Drained 2026-04-27.
-  "07b-dashboard-view.md",          // addendum to 07-board-view / 07a-dashboard-view
-  "08b-sharing-mirror-interaction.md", // addendum to 08-share-dialog / 09-mirrors
-  "11b-trash-reaper.md",            // addendum to 11-trash-view (reaper cron detail)
-  "12b-multi-select-zoom.md",       // addendum to 12-multi-select (zoom interaction)
-  "13b-templates-snapshot-semantics.md", // addendum to 13-templates (snapshot rules)
+  // (empty at v2.7.0 — F-future-G31e drained the 5 prior entries by
+  // renaming each addendum's `## N. Cross-references` heading to the
+  // canonical `## Related`. Once the heading was canonicalised, each
+  // *b addendum naturally has both inbound (parent feature already
+  // cites it in prose) and outbound (its own related-block cites the
+  // parent) links — so no exemption is needed. See drain audit at
+  // `.lovable/question-and-ambiguity/42-features-island-drain.md`.)
 ]);
 
 const ENDPOINTS_ISLAND_EXEMPT = new Set([

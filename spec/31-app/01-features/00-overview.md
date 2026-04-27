@@ -162,13 +162,13 @@ Every feature in `spec/31-app/01-features/` MUST: (1) write boolean checks as **
 | 4 | [`04-page-content-area.md`](./04-page-content-area.md) | Page / Content Area | 214 |
 | 5 | [`05-interactions.md`](./05-interactions.md) | Interaction Behaviors | 173 |
 | 6 | [`06-item-context-menu.md`](./06-item-context-menu.md) | Item Context Menu (⋮) | 214 |
-| 7 | [`07-board-view.md`](./07-board-view.md) | Board View Specification | 213 |
-| 8 | [`08-share-dialog.md`](./08-share-dialog.md) | Share Dialog Specification | 156 |
+| 7 | [`07-board-view.md`](./07-board-view.md) | Board View Specification | 214 |
+| 8 | [`08-share-dialog.md`](./08-share-dialog.md) | Share Dialog Specification | 157 |
 | 9 | [`09-mirrors.md`](./09-mirrors.md) | Mirror Specification | 221 |
 | 10 | [`10-today-view.md`](./10-today-view.md) | Today View Specification | 124 |
-| 11 | [`11-trash-view.md`](./11-trash-view.md) | Trash View Specification | 158 |
-| 12 | [`12-multi-select.md`](./12-multi-select.md) | Multi-Select Behavior | 172 |
-| 13 | [`13-templates.md`](./13-templates.md) | Template Application Flow | 181 |
+| 11 | [`11-trash-view.md`](./11-trash-view.md) | Trash View Specification | 159 |
+| 12 | [`12-multi-select.md`](./12-multi-select.md) | Multi-Select Behavior | 173 |
+| 13 | [`13-templates.md`](./13-templates.md) | Template Application Flow | 182 |
 | 14 | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | Concurrency & Sync | 313 |
 | 15 | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | Roles & Permissions | 391 |
 | 16 | [`16-search-ranking.md`](./16-search-ranking.md) | Search Ranking | 97 |

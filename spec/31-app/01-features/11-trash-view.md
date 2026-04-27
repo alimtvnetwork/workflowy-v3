@@ -155,3 +155,4 @@ As a user who occasionally deletes the wrong item, I want a 30-day grace period 
 - [`./12-multi-select.md`](./12-multi-select.md) — ← Multi-select bulk ops (forward link from)
 - [`./13-templates.md`](./13-templates.md) — ← Templates (forward link from)
 - [`./16-search-ranking.md`](./16-search-ranking.md) — ← Search ranking (forward link from)
+- [11b-trash-reaper.md](./11b-trash-reaper.md) — addendum: reaper cron + 30-day hard-delete sweep detail
