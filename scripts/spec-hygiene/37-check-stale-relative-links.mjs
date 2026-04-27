@@ -60,7 +60,6 @@ const REPO_ROOT = resolve(__dirname, "..", "..");
 // Each line MUST carry a rationale comment (G-37.2 enforces this).
 // =====================================================================
 const STALE_LINK_EXEMPT = new Set([
-  "fake/file.md::./missing.md",
   // (none yet — populate after first run reveals legitimate stale links
   // that the author intentionally wants to defer fixing)
 ]);
