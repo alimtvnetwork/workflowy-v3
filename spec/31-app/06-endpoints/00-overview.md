@@ -24,11 +24,11 @@
 | 8 | [`08-share-dialog.md`](./08-share-dialog.md) | Endpoints — 08 Share Dialog | 78 |
 | 9 | [`09-mirrors.md`](./09-mirrors.md) | Endpoints — 09 Mirrors | 57 |
 | 10 | [`10-today-view.md`](./10-today-view.md) | Endpoints — 10 Today View | 45 |
-| 11 | [`11-trash-view.md`](./11-trash-view.md) | Endpoints — 11 Trash View | 68 |
+| 11 | [`11-trash-view.md`](./11-trash-view.md) | Endpoints — 11 Trash View | 69 |
 | 12 | [`12-multi-select.md`](./12-multi-select.md) | Endpoints — 12 Multi-Select (Bulk Operations) | 71 |
 | 13 | [`13-templates.md`](./13-templates.md) | Endpoints — 13 Templates | 78 |
-| 14 | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | Endpoints — 14 Concurrency & Sync (Realtime Transport) | 70 |
-| 15 | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | Endpoints — 15 Roles & Permissions | 59 |
+| 14 | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | Endpoints — 14 Concurrency & Sync (Realtime Transport) | 75 |
+| 15 | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | Endpoints — 15 Roles & Permissions | 61 |
 | 16 | [`15-search.md`](./15-search.md) | Endpoints — 15 Search | 61 |
 | 17 | [`16-endpoint-at-matrix.md`](./16-endpoint-at-matrix.md) | Endpoint ↔ Acceptance-Test Cross-Reference Matrix | 114 |
 
