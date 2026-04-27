@@ -1,10 +1,11 @@
 # 08b — Sharing × Mirror Interaction (Clarification)
 
-**Version:** 1.0.0
-**Status:** Approved — 2026-04-27
-**Supersedes:** Ambiguity in `08-share-dialog.md` §Mirror interaction
-**Owner:** Product
-**Decision context:** Batch 4 clarifications, AI-readiness round 4
+> **Version:** 1.0.0
+> **Updated:** 2026-04-27 (UTC+8)
+> **Status:** Approved — 2026-04-27
+> **Supersedes:** Ambiguity in `08-share-dialog.md` §Mirror interaction
+> **Owner:** Product
+> **Decision context:** Batch 4 clarifications, AI-readiness round 4
 
 ---
 
