@@ -1290,6 +1290,7 @@
 | [`31-app/05-conventions/19-g26-mfa-coverage-gate.md`](./31-app/05-conventions/19-g26-mfa-coverage-gate.md) | G-26 MFA Policy Drift Gate — Algorithm Spec | 1.0.0 | Active |
 | [`31-app/05-conventions/20-g27-export-coverage-gate.md`](./31-app/05-conventions/20-g27-export-coverage-gate.md) | G-27 Data-Export Policy Drift Gate — Algorithm Spec | 1.0.0 | Active |
 | [`31-app/05-conventions/21-g28-backup-coverage-gate.md`](./31-app/05-conventions/21-g28-backup-coverage-gate.md) | G-28 Backup & DR Policy Drift Gate — Algorithm Spec | 1.0.0 | Active |
+| [`31-app/05-conventions/22-wp-plugin-folder-skeleton.md`](./31-app/05-conventions/22-wp-plugin-folder-skeleton.md) | WP-Plugin Folder Skeleton — SSOT | 1.0.0 | Active |
 | [`31-app/05-conventions/97-acceptance-criteria.md`](./31-app/05-conventions/97-acceptance-criteria.md) | Conventions — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`31-app/05-conventions/99-consistency-report.md`](./31-app/05-conventions/99-consistency-report.md) | Consistency Report — 05-conventions | 1.0.1 | — |
 | [`31-app/06-endpoints/00-overview.md`](./31-app/06-endpoints/00-overview.md) | Endpoints — Master Index | 1.0.0 | — |
