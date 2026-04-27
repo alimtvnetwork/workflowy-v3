@@ -123,6 +123,7 @@ Conventions specification module. See files below.
 - [`17-g24-role-escalation-coverage-gate.md`](./17-g24-role-escalation-coverage-gate.md) — G-24 role-escalation drift gate (4-axis privilege gating)
 - [`18-g25-token-lifecycle-coverage-gate.md`](./18-g25-token-lifecycle-coverage-gate.md) — G-25 session/token-lifecycle drift gate (5-axis token hygiene)
 - [`19-g26-mfa-coverage-gate.md`](./19-g26-mfa-coverage-gate.md) — G-26 MFA policy drift gate (5-axis MFA hygiene)
+- [`20-g27-export-coverage-gate.md`](./20-g27-export-coverage-gate.md) — G-27 data-export policy drift gate (6-axis export hygiene)
 
 **See also:**
 
