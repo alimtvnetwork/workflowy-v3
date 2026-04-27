@@ -1,6 +1,14 @@
 #!/usr/bin/env node
 /**
- * G-30 — AT Citation Validity Gate (v1.5.0)
+ * G-30 — AT Citation Validity Gate (v1.6.0)
+ *
+ * v1.6.0 (F-future-G30-B) — Added **G-30.3 meta sub-check** (ERROR):
+ *   every entry in `REDUNDANCY_ALLOWLIST` MUST carry a rationale comment
+ *   (trailing inline `// …` or contiguous `// …` lines immediately above).
+ *   Algorithm ported verbatim from G-31.5 / G-32.4. Closes the meta gap
+ *   in the G-30 family — allow-list bloat is now machine-detectable.
+ *   Initial run: 41 entries, 0 unrationaled (all hand-curated with intent
+ *   categories during F27/F28). Negative-tested.
  *
  * v1.5.0 (F-future-G30-A) — Promoted G-30.2 redundancy from WARN→ERROR.
  *   Safe to flip because the queue has been at 0 candidates since v1.4.0
@@ -376,58 +384,167 @@ function main() {
   const uniqueCited = new Set(citations.map((c) => c.id));
   const unregistered = citations.filter((c) => !isRegistered(c.id, registered));
 
-  if (unregistered.length === 0) {
-    console.log("G-30 AT citation validity:");
-    console.log(`  registered AT IDs (closed):         ${registered.ids.size}`);
-    console.log(`  registered open prefixes:           ${registered.openPrefixes.size}`);
-    console.log(`  consumer scopes scanned:            ${CONSUMER_SCOPES.length}`);
-    console.log(`  citations scanned:                  ${citations.length}`);
-    console.log(`  unique cited IDs:                   ${uniqueCited.size}`);
-    console.log(`  unregistered citations:             0`);
-    console.log("  ✅ all citations resolve");
-    const redundant = WARN_REDUNDANT
-      ? findRedundantOpenPrefixes(registered, citations)
-      : [];
-    const enforce = ENFORCE_REDUNDANT && !WARN_ONLY_FLAG;
-    const mode = enforce ? "ERROR" : "WARN";
-    if (WARN_REDUNDANT) {
-      printRedundancyAdvisory(redundant, mode);
+  // G-30.1 — citation validity (ERROR; primary check).
+  if (unregistered.length > 0) {
+    console.error("G-30 AT citation validity FAILED:");
+    console.error("");
+    console.error(
+      `  ❌ ${unregistered.length} unregistered AT citation(s) across consumer scopes:`,
+    );
+    console.error("");
+    for (const v of unregistered) {
+      console.error(`    [${v.scope}] ${v.file}:${v.line}  ${v.id}`);
     }
-    if (enforce && redundant.length > 0) {
-      console.error("");
-      console.error(
-        `G-30.2 FAILED: ${redundant.length} redundant open-prefix declaration(s) — see above.`,
-      );
-      process.exit(1);
-    }
-    process.exit(0);
+    console.error("");
+    console.error("  Resolution:");
+    console.error("    1) If the citation is a typo: fix the number to match a registered ID.");
+    console.error("    2) If the AT is genuinely new: register it in the appropriate");
+    console.error("       97-acceptance-criteria.md as `AT-APP-NN` (canonical) before citing.");
+    console.error("    3) Never invent ad-hoc prefixes like AT-MGP-* — see APP-FIX-14.");
+    process.exit(1);
   }
 
+  console.log("G-30 AT citation validity:");
+  console.log(`  registered AT IDs (closed):         ${registered.ids.size}`);
+  console.log(`  registered open prefixes:           ${registered.openPrefixes.size}`);
+  console.log(`  consumer scopes scanned:            ${CONSUMER_SCOPES.length}`);
+  console.log(`  citations scanned:                  ${citations.length}`);
+  console.log(`  unique cited IDs:                   ${uniqueCited.size}`);
+  console.log(`  unregistered citations:             0`);
+  console.log("  ✅ all citations resolve");
 
-  console.error("G-30 AT citation validity FAILED:");
+  // G-30.2 — open-prefix redundancy (ERROR since v1.5.0; bypassable).
+  const enforce = ENFORCE_REDUNDANT && !WARN_ONLY_FLAG;
+  const mode = enforce ? "ERROR" : "WARN";
+  let g302Violations = 0;
+  if (WARN_REDUNDANT) {
+    const redundant = findRedundantOpenPrefixes(registered, citations);
+    printRedundancyAdvisory(redundant, mode);
+    g302Violations = redundant.length;
+  }
+
+  // G-30.3 — allow-list rationale coverage (ERROR; meta sub-check, v1.6.0+).
+  const unrationaled = findUnrationaledG30Entries();
+  printG30RationaleReport(unrationaled);
+
+  // Aggregate exit decision.
+  const failures = [];
+  if (enforce && g302Violations > 0) {
+    failures.push(`G-30.2: ${g302Violations} redundant open-prefix declaration(s)`);
+  }
+  if (unrationaled.length > 0) {
+    failures.push(`G-30.3: ${unrationaled.length} unrationaled allow-list entry/entries`);
+  }
+  if (failures.length > 0) {
+    console.error("");
+    console.error(`G-30 FAILED:`);
+    for (const f of failures) console.error(`  ${f}`);
+    process.exit(1);
+  }
+  process.exit(0);
+}
+
+// =====================================================================
+// G-30.3 — Meta: every entry in REDUNDANCY_ALLOWLIST MUST carry a
+// rationale comment. Parses the runner's own source; for the named
+// allow-list, extracts every active string-literal entry and verifies
+// rationale presence:
+//   * trailing inline `// …` on the same line (preferred), OR
+//   * one or more `// …` lines immediately above (no blank-line gap).
+// Sample/template lines (`// "Foo → Bar"`) are skipped — those are not
+// active entries, just hints for future authors.
+//
+// Algorithm ported verbatim from G-31.5 in
+// scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs (v2.4.0)
+// which was itself ported from G-32.4 in
+// scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs (v4.0.0).
+// =====================================================================
+
+const G30_ALLOWLIST_NAMES = ["REDUNDANCY_ALLOWLIST"];
+const G30_SELF_PATH = "scripts/spec-hygiene/30-check-at-citation-validity.mjs";
+
+function findUnrationaledG30Entries() {
+  let lines;
+  try {
+    lines = readFileSync(G30_SELF_PATH, "utf8").split("\n");
+  } catch (e) {
+    console.error(`G-30.3: cannot read self at ${G30_SELF_PATH}: ${e.message}`);
+    process.exit(2);
+  }
+  const violations = [];
+
+  for (const listName of G30_ALLOWLIST_NAMES) {
+    const startRe = new RegExp(`^const\\s+${listName}\\s*=\\s*new\\s+Set\\(\\[`);
+    let i = lines.findIndex((l) => startRe.test(l));
+    if (i < 0) {
+      console.error(`G-30.3: cannot find allow-list \`${listName}\` in ${G30_SELF_PATH}`);
+      process.exit(2);
+    }
+    i += 1;
+
+    while (i < lines.length) {
+      const raw = lines[i];
+      const trimmed = raw.trim();
+      if (trimmed.startsWith("]")) break;
+
+      const entryMatch = raw.match(/^\s*"([^"]+)"\s*,?\s*(\/\/.*)?$/);
+      if (entryMatch) {
+        const entry = entryMatch[1];
+        const inlineComment = entryMatch[2];
+
+        if (inlineComment) {
+          i += 1;
+          continue;
+        }
+
+        let j = i - 1;
+        let hasAbove = false;
+        while (j >= 0) {
+          const t = lines[j].trim();
+          if (t === "") break;
+          if (t.startsWith("//")) {
+            if (/^\/\/\s*[-=*_]{3,}\s*$/.test(t)) {
+              j -= 1;
+              continue;
+            }
+            hasAbove = true;
+            break;
+          }
+          break;
+        }
+
+        if (!hasAbove) {
+          violations.push({ listName, entry, line: i + 1 });
+        }
+      }
+
+      i += 1;
+    }
+  }
+
+  return violations;
+}
+
+function printG30RationaleReport(violations) {
+  console.log("");
+  console.log(`G-30.3 (meta, ERROR) allow-list rationale-comment coverage:`);
+  console.log(`  allow-lists scanned:                ${G30_ALLOWLIST_NAMES.length} (${G30_ALLOWLIST_NAMES.join(", ")})`);
+  console.log(`  entries missing rationale:          ${violations.length}`);
+
+  if (violations.length === 0) {
+    console.log(`  ✅ every allow-list entry carries a rationale (inline or above)`);
+    return;
+  }
+
   console.error("");
-  console.error(
-    `  ❌ ${unregistered.length} unregistered AT citation(s) across consumer scopes:`,
-  );
-  console.error("");
-  for (const v of unregistered) {
-    console.error(`    [${v.scope}] ${v.file}:${v.line}  ${v.id}`);
+  console.error(`  ❌ ${violations.length} unrationaled entry/entries:`);
+  for (const v of violations) {
+    console.error(`    [${v.listName}] "${v.entry}"`);
+    console.error(`      source:    ${G30_SELF_PATH}:${v.line}`);
   }
   console.error("");
-  console.error("  Resolution:");
-  console.error(
-    "    1) If the citation is a typo: fix the number to match a registered ID.",
-  );
-  console.error(
-    "    2) If the AT is genuinely new: register it in the appropriate",
-  );
-  console.error(
-    "       97-acceptance-criteria.md as `AT-APP-NN` (canonical) before citing.",
-  );
-  console.error(
-    "    3) Never invent ad-hoc prefixes like AT-MGP-* — see APP-FIX-14.",
-  );
-  process.exit(1);
+  console.error(`  To fix: add either (a) a trailing \`// rationale\` on the same line, or`);
+  console.error(`  (b) a \`// …\` comment line immediately above (no blank line in between).`);
 }
 
 main();
