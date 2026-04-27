@@ -1313,7 +1313,7 @@
 | [`31-app/05-conventions/22-wp-plugin-folder-skeleton.md`](./31-app/05-conventions/22-wp-plugin-folder-skeleton.md) | WP-Plugin Folder Skeleton — SSOT | 1.0.0 | Spec |
 | [`31-app/05-conventions/23-g30-at-citation-validity-gate.md`](./31-app/05-conventions/23-g30-at-citation-validity-gate.md) | G-30 — AT Citation Validity Gate | 1.4.0 | WARN |
 | [`31-app/05-conventions/23-sse-php-implementation.md`](./31-app/05-conventions/23-sse-php-implementation.md) | Convention 23 — PHP SSE Implementation Pattern | 1.0.0 | Active |
-| [`31-app/05-conventions/24-g31-workflow-xref-reciprocity-gate.md`](./31-app/05-conventions/24-g31-workflow-xref-reciprocity-gate.md) | G-31 — Cross-Reference Reciprocity Gate | 2.5.0 | — |
+| [`31-app/05-conventions/24-g31-workflow-xref-reciprocity-gate.md`](./31-app/05-conventions/24-g31-workflow-xref-reciprocity-gate.md) | G-31 — Cross-Reference Reciprocity Gate | 2.7.0 | — |
 | [`31-app/05-conventions/24-state-management-architecture.md`](./31-app/05-conventions/24-state-management-architecture.md) | State Management Architecture | 1.0.0 | — |
 | [`31-app/05-conventions/25-g32-ddl-unique-coverage-gate.md`](./31-app/05-conventions/25-g32-ddl-unique-coverage-gate.md) | G-32 — DDL ↔ Doc Index Coverage Gate | 5.0.0 | — |
 | [`31-app/05-conventions/97-acceptance-criteria.md`](./31-app/05-conventions/97-acceptance-criteria.md) | Conventions — Acceptance Criteria | 1.0.0 | — |
