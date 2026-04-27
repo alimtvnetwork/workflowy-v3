@@ -1,7 +1,7 @@
 # 03 — App DB ERD (per Workspace)
 
-> **Version:** 1.2.0
-> **Updated:** 2026-04-27 (UTC+8) — v1.2.0 added §Naming bridge footnote pointing to [`./sql/00-overview.md`](./sql/00-overview.md) §Naming Bridge for the DDL↔prose alias table (`MirrorGroup`/`MirrorMember` ↔ `MirrorPeerGroup`/`MirrorPeerGroupMember`, plus column + index aliases). v1.1.0 added `ReaperRuns` (B4) and `MirrorPeerGroup` + `MirrorPeerGroupMember` (B1) entities; deprecated `Mirror` source/copy table in favour of peer-group model per `mem://features/mirroring`.
+> **Version:** 1.3.0
+> **Updated:** 2026-04-27 (UTC+8) — v1.3.0 (F26) removed two **fabricated soft-delete columns** from the ERD that have no DDL backing: `MirrorPeerGroup.DissolvedAt` and `MirrorPeerGroupMember.DetachedAt`. Per `02-app-schema.sql` lines 66–86, dissolve is performed by **row DELETE via the auto-dissolve trigger** (singleton sweep), not by setting a soft-delete flag. Per `02-workflows/08-mirror-detach-flow.md` step 3c, detach is performed by **DELETE FROM MirrorMember**, not by stamping `DetachedAt`. v1.2.0 added §Naming bridge footnote pointing to [`./sql/00-overview.md`](./sql/00-overview.md) §Naming Bridge for the DDL↔prose alias table (`MirrorGroup`/`MirrorMember` ↔ `MirrorPeerGroup`/`MirrorPeerGroupMember`, plus column + index aliases). v1.1.0 added `ReaperRuns` (B4) and `MirrorPeerGroup` + `MirrorPeerGroupMember` (B1) entities; deprecated `Mirror` source/copy table in favour of peer-group model per `mem://features/mirroring`.
 > **Parent:** [`./00-overview.md`](./00-overview.md)
 > **DB file:** `workflowy_app_{WorkspaceId}.db` (one per workspace)
 
@@ -162,16 +162,15 @@ erDiagram
 
     MirrorPeerGroup {
         INTEGER MirrorPeerGroupId PK
+        INTEGER CanonicalItemId FK "Peer that owns content rows; convention: lowest ItemId"
         TEXT CreatedAt
-        TEXT DissolvedAt "NULL = active; set on singleton dissolution"
     }
 
     MirrorPeerGroupMember {
         INTEGER MirrorPeerGroupMemberId PK
         INTEGER MirrorPeerGroupId FK
-        INTEGER ItemId FK "Each Item appears in at most one group"
+        INTEGER ItemId FK "UNIQUE — each Item belongs to at most one group"
         TEXT JoinedAt
-        TEXT DetachedAt "NULL = still a peer"
     }
 
     ReaperRuns {
