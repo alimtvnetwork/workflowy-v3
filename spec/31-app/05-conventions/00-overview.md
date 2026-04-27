@@ -86,6 +86,7 @@ Conventions specification module. See files below.
 | 16 | [16-g23-audit-log-coverage-gate.md](16-g23-audit-log-coverage-gate.md) | G-23 hygiene-gate algorithm: two-axis check — every `Audit::action()` shorthand resolves to a taxonomy row, AND every `Auth/Sharing/Admin` mutation method emits at least one `AuditLog::write` per non-error return path |
 | 17 | [17-g24-role-escalation-coverage-gate.md](17-g24-role-escalation-coverage-gate.md) | G-24 hygiene-gate algorithm: four-axis privilege check — role-mutation gating (30-line window), break-glass containment (single file), 24h ExpiresAt static bound, test-file parity for `Auth/Escalation/` source files |
 | 18 | [18-g25-token-lifecycle-coverage-gate.md](18-g25-token-lifecycle-coverage-gate.md) | G-25 hygiene-gate algorithm: five-axis token check — browser-storage prohibition (no `localStorage`/`sessionStorage`/`IndexedDB` token writes), issuance/revocation audit pairing, refresh-cookie path-scoping + `HttpOnly`/`Secure`/`SameSite=Strict` hardening |
+| 19 | [19-g26-mfa-coverage-gate.md](19-g26-mfa-coverage-gate.md) | G-26 hygiene-gate algorithm: five-axis MFA check — forbidden-literal prohibition (`'sms'`/`'email_otp'`/`'voice'`/`'remember_mfa'`/`MFA_DISABLED`/`bypass_mfa`), mutation-route freshness declaration, step-up-map bidirectional parity (spec ↔ runtime), factor-registry static containment (TOTP/WebAuthn/Recovery only), recovery-code argon2id hash strength |
 
 ---
 
