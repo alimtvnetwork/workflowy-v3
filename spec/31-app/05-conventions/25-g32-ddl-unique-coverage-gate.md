@@ -9,7 +9,7 @@ gate_id: G-32
 
 # G-32 — DDL ↔ Doc Index Coverage Gate
 
-> **Version:** 3.0.0
+> **Version:** 4.0.0
 > **Updated:** 2026-04-27 (UTC+8)
 > **Parent:** [`02-ci-quality-gates.md`](./02-ci-quality-gates.md)
 > **Sibling:** [`24-g31-workflow-xref-reciprocity-gate.md`](./24-g31-workflow-xref-reciprocity-gate.md)
