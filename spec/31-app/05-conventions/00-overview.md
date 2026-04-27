@@ -33,6 +33,7 @@
 | 18 | [`18-g25-token-lifecycle-coverage-gate.md`](./18-g25-token-lifecycle-coverage-gate.md) | G-25 Session & Token Lifecycle Drift Gate — Algorithm Spec | 240 |
 | 19 | [`19-g26-mfa-coverage-gate.md`](./19-g26-mfa-coverage-gate.md) | G-26 MFA Policy Drift Gate — Algorithm Spec | 250 |
 | 20 | [`20-g27-export-coverage-gate.md`](./20-g27-export-coverage-gate.md) | G-27 Data-Export Policy Drift Gate — Algorithm Spec | 260 |
+| 21 | [`21-g28-backup-coverage-gate.md`](./21-g28-backup-coverage-gate.md) | G-28 Backup & DR Policy Drift Gate — Algorithm Spec | 280 |
 
 <!-- AUTO-TOC:END -->
 
