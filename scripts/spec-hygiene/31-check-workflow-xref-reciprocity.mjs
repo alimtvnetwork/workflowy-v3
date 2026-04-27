@@ -169,7 +169,18 @@ const WORKFLOWS_EXEMPT = new Set([
 ]);
 
 const FEATURES_EXEMPT = new Set([
-  // (empty at v2.0.0 — drift is genuine and surfaced in WARN mode)
+  // 7 entries below are addendum (`*b`) → cross-domain-peer references.
+  // Each addendum cites a peer for context (e.g. mirror-peer-group rules,
+  // ACL model, base interaction). The peer page would bloat unmanageably
+  // if every addendum that touches it had to be back-linked. Asymmetric
+  // by design. Drained from G-31.6 island-exempt 2026-04-27 (F-future-G31e).
+  "07b-dashboard-view.md → 04-page-content-area.md",          // sister-list-view context cite
+  "08b-sharing-mirror-interaction.md → 09b-mirror-peer-group-model.md", // peer-group identity cite
+  "08b-sharing-mirror-interaction.md → 15-roles-and-permissions.md",    // ACL model cite
+  "11b-trash-reaper.md → 09b-mirror-peer-group-model.md",     // peer-group dissolve rule cite
+  "12b-multi-select-zoom.md → 05-interactions.md",            // base zoom-hotkey cite
+  "12b-multi-select-zoom.md → 09b-mirror-peer-group-model.md", // peer sync inside scope cite
+  "13b-templates-snapshot-semantics.md → 09b-mirror-peer-group-model.md", // mirrors-not-snapshotted cite
 ]);
 
 const ENDPOINTS_EXEMPT = new Set([
