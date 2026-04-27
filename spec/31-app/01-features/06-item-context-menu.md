@@ -209,3 +209,5 @@ Displayed in very small, muted text.
 - [11-trash-view.md](./11-trash-view.md) — destination of Delete
 - [13-templates.md](./13-templates.md) — destination of Make Template
 - [03-edge-cases/01-edge-cases.md](../03-edge-cases/01-edge-cases.md) — global edge-case index
+- [`./07-board-view.md`](./07-board-view.md) — ← Board view (forward link from)
+- [`./12-multi-select.md`](./12-multi-select.md) — ← Multi-select bulk ops (forward link from)

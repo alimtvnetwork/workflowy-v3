@@ -157,3 +157,9 @@ This table describes how every core data entity relates to others in the system.
 - [09-mirrors.md](./09-mirrors.md) — how mirrors reference source `id`
 - [11-trash-view.md](./11-trash-view.md) — soft-delete + restore flow
 - [03-edge-cases/01-edge-cases.md](../03-edge-cases/01-edge-cases.md) — global edge-case index
+- [`./04-page-content-area.md`](./04-page-content-area.md) — ← Page content-area renderer (forward link from)
+- [`./05-interactions.md`](./05-interactions.md) — ← Keyboard / pointer interactions (forward link from)
+- [`./07-board-view.md`](./07-board-view.md) — ← Board view (forward link from)
+- [`./08-share-dialog.md`](./08-share-dialog.md) — ← Share dialog (forward link from)
+- [`./09a-mirror-cycle-detection.md`](./09a-mirror-cycle-detection.md) — ← Mirror cycle-detection algorithm (forward link from)
+- [`./14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) — ← Concurrency + sync rules (forward link from)

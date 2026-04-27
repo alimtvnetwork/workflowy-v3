@@ -168,3 +168,4 @@ When multiple items are selected, a **bulk action bar** appears at the bottom of
 - [09-mirrors.md](./09-mirrors.md) — bulk actions resolve to canonical source
 - [11-trash-view.md](./11-trash-view.md) — Bulk Delete sends here
 - `mem://features/multi-select` — Shift/Cmd-click bulk-operation rules
+- [`./14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) — ← Concurrency + sync rules (forward link from)

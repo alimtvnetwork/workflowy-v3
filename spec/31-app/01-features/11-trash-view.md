@@ -152,3 +152,6 @@ As a user who occasionally deletes the wrong item, I want a 30-day grace period 
 - [09-mirrors.md](./09-mirrors.md) — restoring a mirror requires the source still exists
 - [03-edge-cases/01-edge-cases.md](../03-edge-cases/01-edge-cases.md) — orphaned-parent restore cases
 - `mem://features/trash-logic` — 30-day retention policy
+- [`./12-multi-select.md`](./12-multi-select.md) — ← Multi-select bulk ops (forward link from)
+- [`./13-templates.md`](./13-templates.md) — ← Templates (forward link from)
+- [`./16-search-ranking.md`](./16-search-ranking.md) — ← Search ranking (forward link from)

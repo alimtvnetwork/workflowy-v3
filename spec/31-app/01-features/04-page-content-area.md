@@ -209,3 +209,5 @@ Each swatch: small circle. Currently selected color has a ring border. Hover: sl
 - [06-item-context-menu.md](./06-item-context-menu.md) — what ⋮ opens
 - [09-mirrors.md](./09-mirrors.md) — mirror badge semantics
 - [03-edge-cases/01-edge-cases.md](../03-edge-cases/01-edge-cases.md) — paste / nesting / network rows
+- [`./07-board-view.md`](./07-board-view.md) — ← Board view (forward link from)
+- [`./10-today-view.md`](./10-today-view.md) — ← Today view (forward link from)

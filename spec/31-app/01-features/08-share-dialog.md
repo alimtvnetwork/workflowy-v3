@@ -151,3 +151,5 @@ As an owner, I want to share an outline branch with specific people at the right
 - [09-mirrors.md](./09-mirrors.md) — share grants follow the source, not the mirror
 - [03-edge-cases/01-edge-cases.md](../03-edge-cases/01-edge-cases.md) — sharing-cascade edge case
 - `mem://features/sharing-model` — public + invited-user permission rules
+- [`./14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) — ← Concurrency + sync rules (forward link from)
+- [`./15-roles-and-permissions.md`](./15-roles-and-permissions.md) — ← Roles + permissions (forward link from)
