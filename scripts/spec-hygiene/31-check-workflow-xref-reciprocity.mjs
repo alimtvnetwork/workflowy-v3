@@ -194,14 +194,13 @@ const WORKFLOWS_ISLAND_EXEMPT = new Set([
 ]);
 
 const FEATURES_ISLAND_EXEMPT = new Set([
-  // All 5 entries below are addendum slices (`*b`) of a parent feature
-  // page (`*` or `*a`). Their semantic peer is the parent in the same
-  // scope; cross-sibling links would be redundant. Drained 2026-04-27.
-  "07b-dashboard-view.md",          // addendum to 07-board-view / 07a-dashboard-view
-  "08b-sharing-mirror-interaction.md", // addendum to 08-share-dialog / 09-mirrors
-  "11b-trash-reaper.md",            // addendum to 11-trash-view (reaper cron detail)
-  "12b-multi-select-zoom.md",       // addendum to 12-multi-select (zoom interaction)
-  "13b-templates-snapshot-semantics.md", // addendum to 13-templates (snapshot rules)
+  // (empty at v2.7.0 — F-future-G31e drained the 5 prior entries by
+  // renaming each addendum's `## N. Cross-references` heading to the
+  // canonical `## Related`. Once the heading was canonicalised, each
+  // *b addendum naturally has both inbound (parent feature already
+  // cites it in prose) and outbound (its own related-block cites the
+  // parent) links — so no exemption is needed. See drain audit at
+  // `.lovable/question-and-ambiguity/42-features-island-drain.md`.)
 ]);
 
 const ENDPOINTS_ISLAND_EXEMPT = new Set([
