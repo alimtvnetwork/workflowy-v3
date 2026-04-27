@@ -44,7 +44,7 @@ These are the failure modes the AI must NOT introduce:
 
 ```php
 // wp-content/plugins/workflowy/includes/Schema/Installer.php
-// Pseudocode — see 15-wp-plugin-how-to/02-bootstrap-files.md for full impl
+// Pseudocode — see 15-wp-plugin-how-to/01-foundation-and-architecture.md for full impl
 
 public static function install(\PDO $pdo, string $kind): void {
     $pdo->exec('PRAGMA foreign_keys = ON;');
