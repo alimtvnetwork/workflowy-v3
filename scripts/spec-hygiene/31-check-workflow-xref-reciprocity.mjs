@@ -106,6 +106,25 @@
  *        can't sneak in silent suppressions. Sample template entries
  *        (lines starting with `// "…"`) are skipped — they are not
  *        active entries, just stylistic hints for future authors.
+ * v2.5.0 (F-future-G31c) added the **G-31.6 island-detection sub-check**
+ *        (WARN advisory). For each scope, files with zero outgoing AND
+ *        zero incoming cross-sibling Related-section references are
+ *        flagged as documentation islands. New helper `findIslands()`
+ *        derives an incoming-link tally from the existing outgoing
+ *        matrix in O(N²), then filters files where both tallies are 0
+ *        and the bare filename is not in the per-scope `*_ISLAND_EXEMPT`
+ *        Set. New helper `printIslandReport()` emits a per-scope ⚠️
+ *        block with the cleanup hint. Added 4 new exemption Sets
+ *        (`WORKFLOWS_ISLAND_EXEMPT` / `FEATURES_ISLAND_EXEMPT` /
+ *        `ENDPOINTS_ISLAND_EXEMPT` / `DB_DIAGRAM_ISLAND_EXEMPT`, all
+ *        empty at v2.5.0) and registered them in `ALLOWLIST_NAMES` so
+ *        G-31.5 enforces rationale comments on island opt-outs too.
+ *        Each scope entry gained an `islandExemptions` field. Initial
+ *        probe found: workflows 0, features 5, endpoints 9, db-diagram 0
+ *        (14 total). Exit semantics unchanged: islands are advisory and
+ *        do NOT influence the exit code; only ERROR-asymmetries and
+ *        unrationaled exemptions fail. Cleanup deferred — surfaced for
+ *        author triage.
  */
 
 import { readFileSync, readdirSync, statSync } from "node:fs";
