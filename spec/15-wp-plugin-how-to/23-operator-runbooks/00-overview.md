@@ -1,6 +1,6 @@
 # 16 — Operator Runbooks
 
-> **Version:** 1.0.0
+> **Version:** 1.1.0
 > **Created:** 2026-04-26 (UTC+8)
 > **Status:** Active
 > **Parent:** [`spec/15-wp-plugin-how-to/00-overview.md`](../00-overview.md)
