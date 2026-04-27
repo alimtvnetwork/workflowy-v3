@@ -384,31 +384,64 @@ function main() {
   const uniqueCited = new Set(citations.map((c) => c.id));
   const unregistered = citations.filter((c) => !isRegistered(c.id, registered));
 
-  if (unregistered.length === 0) {
-    console.log("G-30 AT citation validity:");
-    console.log(`  registered AT IDs (closed):         ${registered.ids.size}`);
-    console.log(`  registered open prefixes:           ${registered.openPrefixes.size}`);
-    console.log(`  consumer scopes scanned:            ${CONSUMER_SCOPES.length}`);
-    console.log(`  citations scanned:                  ${citations.length}`);
-    console.log(`  unique cited IDs:                   ${uniqueCited.size}`);
-    console.log(`  unregistered citations:             0`);
-    console.log("  ✅ all citations resolve");
-    const redundant = WARN_REDUNDANT
-      ? findRedundantOpenPrefixes(registered, citations)
-      : [];
-    const enforce = ENFORCE_REDUNDANT && !WARN_ONLY_FLAG;
-    const mode = enforce ? "ERROR" : "WARN";
-    if (WARN_REDUNDANT) {
-      printRedundancyAdvisory(redundant, mode);
+  // G-30.1 — citation validity (ERROR; primary check).
+  if (unregistered.length > 0) {
+    console.error("G-30 AT citation validity FAILED:");
+    console.error("");
+    console.error(
+      `  ❌ ${unregistered.length} unregistered AT citation(s) across consumer scopes:`,
+    );
+    console.error("");
+    for (const v of unregistered) {
+      console.error(`    [${v.scope}] ${v.file}:${v.line}  ${v.id}`);
     }
-    if (enforce && redundant.length > 0) {
-      console.error("");
-      console.error(
-        `G-30.2 FAILED: ${redundant.length} redundant open-prefix declaration(s) — see above.`,
-      );
-      process.exit(1);
-    }
-    process.exit(0);
+    console.error("");
+    console.error("  Resolution:");
+    console.error("    1) If the citation is a typo: fix the number to match a registered ID.");
+    console.error("    2) If the AT is genuinely new: register it in the appropriate");
+    console.error("       97-acceptance-criteria.md as `AT-APP-NN` (canonical) before citing.");
+    console.error("    3) Never invent ad-hoc prefixes like AT-MGP-* — see APP-FIX-14.");
+    process.exit(1);
+  }
+
+  console.log("G-30 AT citation validity:");
+  console.log(`  registered AT IDs (closed):         ${registered.ids.size}`);
+  console.log(`  registered open prefixes:           ${registered.openPrefixes.size}`);
+  console.log(`  consumer scopes scanned:            ${CONSUMER_SCOPES.length}`);
+  console.log(`  citations scanned:                  ${citations.length}`);
+  console.log(`  unique cited IDs:                   ${uniqueCited.size}`);
+  console.log(`  unregistered citations:             0`);
+  console.log("  ✅ all citations resolve");
+
+  // G-30.2 — open-prefix redundancy (ERROR since v1.5.0; bypassable).
+  const enforce = ENFORCE_REDUNDANT && !WARN_ONLY_FLAG;
+  const mode = enforce ? "ERROR" : "WARN";
+  let g302Violations = 0;
+  if (WARN_REDUNDANT) {
+    const redundant = findRedundantOpenPrefixes(registered, citations);
+    printRedundancyAdvisory(redundant, mode);
+    g302Violations = redundant.length;
+  }
+
+  // G-30.3 — allow-list rationale coverage (ERROR; meta sub-check, v1.6.0+).
+  const unrationaled = findUnrationaledG30Entries();
+  printG30RationaleReport(unrationaled);
+
+  // Aggregate exit decision.
+  const failures = [];
+  if (enforce && g302Violations > 0) {
+    failures.push(`G-30.2: ${g302Violations} redundant open-prefix declaration(s)`);
+  }
+  if (unrationaled.length > 0) {
+    failures.push(`G-30.3: ${unrationaled.length} unrationaled allow-list entry/entries`);
+  }
+  if (failures.length > 0) {
+    console.error("");
+    console.error(`G-30 FAILED:`);
+    for (const f of failures) console.error(`  ${f}`);
+    process.exit(1);
+  }
+  process.exit(0);
 }
 
 // =====================================================================
