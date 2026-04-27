@@ -30,6 +30,7 @@
 | 15 | [`15-g22-error-code-catalogue-gate.md`](./15-g22-error-code-catalogue-gate.md) | G-22 Error-Code Catalogue Drift Gate — Algorithm Spec | 195 |
 | 16 | [`16-g23-audit-log-coverage-gate.md`](./16-g23-audit-log-coverage-gate.md) | G-23 Audit-Log Drift Gate — Algorithm Spec | 235 |
 | 17 | [`17-g24-role-escalation-coverage-gate.md`](./17-g24-role-escalation-coverage-gate.md) | G-24 Role-Escalation Drift Gate — Algorithm Spec | 230 |
+| 18 | [`18-g25-token-lifecycle-coverage-gate.md`](./18-g25-token-lifecycle-coverage-gate.md) | G-25 Session & Token Lifecycle Drift Gate — Algorithm Spec | 240 |
 
 <!-- AUTO-TOC:END -->
 
@@ -83,6 +84,7 @@ Conventions specification module. See files below.
 | 15 | [15-g22-error-code-catalogue-gate.md](15-g22-error-code-catalogue-gate.md) | G-22 hygiene-gate algorithm: detects drift between `ERR_*` literals in code and the error-code catalogue; verifies HttpStatus parity per emitter |
 | 16 | [16-g23-audit-log-coverage-gate.md](16-g23-audit-log-coverage-gate.md) | G-23 hygiene-gate algorithm: two-axis check — every `Audit::action()` shorthand resolves to a taxonomy row, AND every `Auth/Sharing/Admin` mutation method emits at least one `AuditLog::write` per non-error return path |
 | 17 | [17-g24-role-escalation-coverage-gate.md](17-g24-role-escalation-coverage-gate.md) | G-24 hygiene-gate algorithm: four-axis privilege check — role-mutation gating (30-line window), break-glass containment (single file), 24h ExpiresAt static bound, test-file parity for `Auth/Escalation/` source files |
+| 18 | [18-g25-token-lifecycle-coverage-gate.md](18-g25-token-lifecycle-coverage-gate.md) | G-25 hygiene-gate algorithm: five-axis token check — browser-storage prohibition (no `localStorage`/`sessionStorage`/`IndexedDB` token writes), issuance/revocation audit pairing, refresh-cookie path-scoping + `HttpOnly`/`Secure`/`SameSite=Strict` hardening |
 
 ---
 
@@ -115,6 +117,7 @@ Conventions specification module. See files below.
 - [`15-g22-error-code-catalogue-gate.md`](./15-g22-error-code-catalogue-gate.md) — G-22 error-code catalogue drift gate
 - [`16-g23-audit-log-coverage-gate.md`](./16-g23-audit-log-coverage-gate.md) — G-23 audit-log drift gate (action registry + handler coverage)
 - [`17-g24-role-escalation-coverage-gate.md`](./17-g24-role-escalation-coverage-gate.md) — G-24 role-escalation drift gate (4-axis privilege gating)
+- [`18-g25-token-lifecycle-coverage-gate.md`](./18-g25-token-lifecycle-coverage-gate.md) — G-25 session/token-lifecycle drift gate (5-axis token hygiene)
 
 **See also:**
 

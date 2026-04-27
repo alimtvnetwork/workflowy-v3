@@ -222,7 +222,7 @@ EventSource cannot send `Authorization` headers. Flow:
 | Property | Value |
 |----------|-------|
 | Gate ID | `G-25` |
-| Script | `scripts/spec-hygiene/15-token-lifecycle-coverage-audit.mjs` |
+| Script | `scripts/spec-hygiene/25-check-token-lifecycle-coverage.mjs` *(numeric prefix matches gate ID; original `15-` slot taken by `check-enums-in-sync.mjs`)* — algorithm SSOT: [`18-g25-token-lifecycle-coverage-gate.md`](./18-g25-token-lifecycle-coverage-gate.md) |
 | Trigger | Pre-commit + CI |
 | Exit codes | `0` ok · `1` violation · `2` runner error |
 
@@ -281,3 +281,4 @@ EventSource cannot send `Authorization` headers. Flow:
 | Version | Date | Change |
 |---------|------|--------|
 | 1.0.0 | 2026-04-26 | Initial SSOT — closes A-41. 5 token kinds, mandatory rotation + reuse detection, idle/absolute timeouts, TRL contract with 60s propagation, SSE-ticket flow, 9 new audit codes, G-25 gate, 14 ATs `AT-TOKEN-01..14`. |
+| 1.0.1 | 2026-04-27 | §10 path correction — implementation slot moved from `15-` (collision with `check-enums-in-sync`) to `25-` (matches gate ID). Algorithm SSOT linked: [`18-g25-token-lifecycle-coverage-gate.md`](./18-g25-token-lifecycle-coverage-gate.md). |
