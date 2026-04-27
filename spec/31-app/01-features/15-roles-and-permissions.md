@@ -251,13 +251,12 @@ The backend MUST expose a server-side function `hasRole(userId, scope, scopeId, 
 ### Location
 
 ```
-plugin-root/
-└── src/
-    └── Auth/
-        └── Auth.php          ← class Auth { public static function hasRole(...) }
+wp-plugin/
+└── Auth/
+    └── Auth.php          ← class Auth { public static function hasRole(...) }
 ```
 
-The class is **always static** — never instantiated. It lives in namespace `WorkFlowy\Auth`.
+Path canonicalised per [`spec/31-app/05-conventions/22-wp-plugin-folder-skeleton.md`](../05-conventions/22-wp-plugin-folder-skeleton.md) §1 (Flat-PSR layout — no `src/` indirection). The class is **always static** — never instantiated. It lives in namespace `WorkFlowy\Auth`.
 
 ### Signature
 
