@@ -4,7 +4,7 @@
 > **Updated:** 2026-04-27 (UTC+8)
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
-> **Companion:** [`mem://features/search-functionality`](../../../.lovable/memory/features/search-functionality.md) (syntax + perf)
+> **Companion:** `mem://features/search-functionality` (syntax + perf)
 
 ---
 
@@ -91,6 +91,6 @@ concatenation of buckets from highest to lowest.
 
 | Topic | Link |
 |-------|------|
-| Search syntax + perf SLA | [`mem://features/search-functionality`](../../../.lovable/memory/features/search-functionality.md) |
+| Search syntax + perf SLA | `mem://features/search-functionality` |
 | Mirror peer groups | [09b-mirror-peer-group-model.md](./09b-mirror-peer-group-model.md) |
 | Trash exclusion | [11-trash-view.md](./11-trash-view.md) |
