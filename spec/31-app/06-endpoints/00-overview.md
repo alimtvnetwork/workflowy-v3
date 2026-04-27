@@ -29,9 +29,16 @@
 | 13 | [`13-templates.md`](./13-templates.md) | Endpoints — 13 Templates | 78 |
 | 14 | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | Endpoints — 14 Concurrency & Sync (Realtime Transport) | 70 |
 | 15 | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | Endpoints — 15 Roles & Permissions | 59 |
-| 16 | [`16-endpoint-at-matrix.md`](./16-endpoint-at-matrix.md) | Endpoint ↔ Acceptance-Test Cross-Reference Matrix | 107 |
+| 16 | [`16-endpoint-at-matrix.md`](./16-endpoint-at-matrix.md) | Endpoint ↔ Acceptance-Test Cross-Reference Matrix | 113 |
 
 <!-- AUTO-TOC:END -->
+
+> **Addendum endpoint files** (B1–B4, 2026-04-27 — not yet picked up by AUTO-TOC; will be regenerated on next hygiene run):
+>
+> - [`09b-mirror-peer-group.md`](./09b-mirror-peer-group.md) — `EP-MIRRORS-GROUP-GET`, `EP-MIRRORS-DETACH`
+> - [`11b-trash-reaper.md`](./11b-trash-reaper.md) — `EP-REAPER-RUN`, `EP-REAPER-RUNS-LIST`
+> - [`14b-sync-replay.md`](./14b-sync-replay.md) — `EP-SYNC-REPLAY`
+> - [`15-search.md`](./15-search.md) — `EP-SEARCH-QUERY`
 
 ---
 

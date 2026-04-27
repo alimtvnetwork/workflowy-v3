@@ -1,7 +1,7 @@
 # Endpoint ↔ Acceptance-Test Cross-Reference Matrix
 
-> **Version:** 1.0.0  
-> **Updated:** 2026-04-27 (UTC+8)  
+> **Version:** 1.1.0  
+> **Updated:** 2026-04-27 (UTC+8) — v1.1.0 added 5 endpoints from B1–B4 addendums (`EP-REAPER-RUN`, `EP-REAPER-RUNS-LIST`, `EP-SEARCH-QUERY`, `EP-SYNC-REPLAY`, `EP-MIRRORS-GROUP-GET`, `EP-MIRRORS-DETACH`). Total 41→46.  
 > **Status:** ✅ SSOT for endpoint→AT traceability (AUDIT-AI-05 closure)  
 > **Parent:** [`./00-overview.md`](./00-overview.md)
 
@@ -60,6 +60,12 @@ A single matrix mapping every one of the **41 REST endpoints** in this folder to
 | 39 | `EP-ROLES-LIST` | GET | `/workspaces/{id}/roles` | `15-roles-and-permissions.md` | `AT-ROLES-05`, `AT-ROLES-06` |
 | 40 | `EP-ROLES-ASSIGN` | POST | `/workspaces/{id}/roles` | `15-roles-and-permissions.md` | `AT-ROLES-07`, `AT-ROLES-08` |
 | 41 | `EP-ROLES-REVOKE` | DELETE | `/workspaces/{id}/roles/{userId}` | `15-roles-and-permissions.md` | `AT-ROLES-09`, `AT-ROLES-10` |
+| 42 | `EP-REAPER-RUN` | POST | `/admin/trash/reaper/run` | `11b-trash-reaper.md` | `AT-APP-78`, `AT-APP-79`, `AT-APP-80` |
+| 43 | `EP-REAPER-RUNS-LIST` | GET | `/admin/trash/reaper/runs` | `11b-trash-reaper.md` | `AT-APP-81` |
+| 44 | `EP-SEARCH-QUERY` | GET | `/search` | `15-search.md` (endpoints) · `mem://features/search-functionality` | `AT-APP-100`, `AT-APP-101`, `AT-APP-102`, `AT-APP-103` |
+| 45 | `EP-SYNC-REPLAY` | POST | `/sync/replay` | `14b-sync-replay.md` · `mem://features/offline-resilience` | `AT-APP-90`, `AT-APP-91`, `AT-APP-92`, `AT-APP-93`, `AT-APP-94` |
+| 46 | `EP-MIRRORS-GROUP-GET` | GET | `/items/{id}/mirror-group` | `09b-mirror-peer-group.md` | `AT-MGP-58`, `AT-MGP-59` |
+| 47 | `EP-MIRRORS-DETACH` | POST | `/items/{id}/mirror-detach` | `09b-mirror-peer-group.md` | `AT-MGP-60`, `AT-MGP-61`, `AT-MGP-62` |
 
 ---
 
@@ -83,11 +89,11 @@ These are not repeated per row but every endpoint must pass them:
 
 | Metric | Count |
 |--------|------:|
-| Total endpoints | **41** |
-| Endpoints with ≥3 specific ATs | **34** |
-| Endpoints with ≥1 specific AT | **41** |
-| Endpoints inheriting universal-envelope ATs | **41** (all) |
-| Total unique AT references in this file | **120+** |
+| Total endpoints | **47** |
+| Endpoints with ≥3 specific ATs | **38** |
+| Endpoints with ≥1 specific AT | **47** |
+| Endpoints inheriting universal-envelope ATs | **47** (all) |
+| Total unique AT references in this file | **140+** |
 
 > If you add a new endpoint, this matrix MUST be updated in the same PR. CI gate (planned) `G29` will fail any PR that adds an `EP-*` symbol without a matching row here.
 
