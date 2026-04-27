@@ -215,7 +215,7 @@ The drill is a **policy gate**, not a nice-to-have. Operators that miss two cons
 | Property | Value |
 |----------|-------|
 | Gate ID | `G-28` |
-| Script | `scripts/spec-hygiene/18-backup-policy-coverage-audit.mjs` |
+| Script | `scripts/spec-hygiene/28-check-backup-policy-coverage.mjs` *(numeric prefix matches gate ID; original `18-` slot reserved for G-18 cycle-algorithm SQL drift check)* — algorithm SSOT: [`21-g28-backup-coverage-gate.md`](./21-g28-backup-coverage-gate.md) |
 | Trigger | Pre-commit + CI |
 
 **Checks:**
