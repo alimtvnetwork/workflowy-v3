@@ -260,7 +260,7 @@ When the user has only **2 unused codes left**, the next login displays a banner
 | Property | Value |
 |----------|-------|
 | Gate ID | `G-26` |
-| Script | `scripts/spec-hygiene/16-mfa-policy-coverage-audit.mjs` |
+| Script | `scripts/spec-hygiene/26-check-mfa-policy-coverage.mjs` *(numeric prefix matches gate ID; original `16-` slot taken by `check-rest-envelope-format.mjs`)* — algorithm SSOT: [`19-g26-mfa-coverage-gate.md`](./19-g26-mfa-coverage-gate.md) |
 | Trigger | Pre-commit + CI |
 | Exit codes | `0` ok · `1` violation · `2` runner error |
 
@@ -341,3 +341,4 @@ When the user has only **2 unused codes left**, the next login displays a banner
 | Version | Date | Change |
 |---------|------|--------|
 | 1.0.0 | 2026-04-26 | Initial SSOT — closes A-42. 3 allowed factors (TOTP/WebAuthn/Recovery), explicit SMS/email-OTP/voice ban, mandatory enrollment, 5-tier step-up freshness ladder (5 min → 12 h → ∞), AES-256-GCM TOTP storage + argon2id recovery codes, recovery flow with forced re-enrollment, anti-bypass rules, G-26 gate, 16 ATs `AT-MFA-01..16`, migration `M-015`, 11 new audit codes for v1.2.0 batch. |
+| 1.0.1 | 2026-04-27 | §9 path correction — implementation slot moved from `16-` (collision with `check-rest-envelope-format`) to `26-` (matches gate ID). Algorithm SSOT linked: [`19-g26-mfa-coverage-gate.md`](./19-g26-mfa-coverage-gate.md). |
