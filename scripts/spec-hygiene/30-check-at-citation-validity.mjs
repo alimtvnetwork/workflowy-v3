@@ -184,11 +184,11 @@ function main() {
   console.error("G-30 AT citation validity FAILED:");
   console.error("");
   console.error(
-    `  ❌ ${unregistered.length} unregistered AT citation(s) in spec/31-app/06-endpoints/:`,
+    `  ❌ ${unregistered.length} unregistered AT citation(s) across consumer scopes:`,
   );
   console.error("");
   for (const v of unregistered) {
-    console.error(`    ${v.file}:${v.line}  ${v.id}`);
+    console.error(`    [${v.scope}] ${v.file}:${v.line}  ${v.id}`);
   }
   console.error("");
   console.error("  Resolution:");
