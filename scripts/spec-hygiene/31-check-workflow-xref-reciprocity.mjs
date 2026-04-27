@@ -116,7 +116,7 @@ const SCOPES = [
     excludeRx: /^(00-overview|16-endpoint-at-matrix|97-acceptance-criteria|99-consistency-report)\.md$/,
     relatedHeads: ["## Related", "## Cross-References", "## See also"],
     mode: "error",
-    exemptions: ENDPOINTS_EXEMP​T,
+    exemptions: ENDPOINTS_EXEMPT,
   },
   {
     id: "G-31.4",
