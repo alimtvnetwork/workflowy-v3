@@ -171,7 +171,7 @@ Every feature in `spec/31-app/01-features/` MUST: (1) write boolean checks as **
 | 13 | [`13-templates.md`](./13-templates.md) | Template Application Flow | 182 |
 | 14 | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | Concurrency & Sync | 313 |
 | 15 | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | Roles & Permissions | 391 |
-| 16 | [`16-search-ranking.md`](./16-search-ranking.md) | Search Ranking | 97 |
+| 16 | [`16-search-ranking.md`](./16-search-ranking.md) | Search Ranking | 123 |
 
 <!-- AUTO-TOC:END -->
 
