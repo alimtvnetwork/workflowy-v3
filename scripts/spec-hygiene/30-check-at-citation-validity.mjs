@@ -1,6 +1,14 @@
 #!/usr/bin/env node
 /**
- * G-30 — AT Citation Validity Gate (v1.2.0)
+ * G-30 — AT Citation Validity Gate (v1.3.0)
+ *
+ * v1.3.0 (F27) — Drained the G-30.2 open-prefix redundancy queue by
+ *   expanding REDUNDANCY_ALLOWLIST from 5 → 41 entries, grouped into
+ *   three documented intent-categories (future-licensing, convention-
+ *   documentation, namespace-placeholder). Now `--warn-redundant`
+ *   reports zero candidates while preserving every Coverage Map row
+ *   for naming-scheme documentation. To revisit a specific entry,
+ *   delete it from the allow-list and rerun the runner.
  *
  * Asserts every `AT-*` ID cited under three consumer scopes is declared
  * in at least one markdown-table registry row across spec/31-app/**:
