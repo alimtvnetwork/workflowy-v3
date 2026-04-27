@@ -164,8 +164,8 @@ If the query returns a row → reject with `ERR_CYCLE`.
 
 | Concern | Path | Function |
 |---------|------|----------|
-| Server algorithm | `wp-plugin/src/Repository/CycleCheck.php` | `public static function hasCycle(string $SourceId, string $TargetParentId): bool` |
-| Recursive CTE constant | `wp-plugin/src/Repository/sql/cycle-check.sql` | Verbatim copy of the SQL above |
+| Server algorithm | `wp-plugin/Repository/CycleCheck.php` | `public static function hasCycle(string $SourceId, string $TargetParentId): bool` |
+| Recursive CTE constant | `wp-plugin/Repository/sql/cycle-check.sql` | Verbatim copy of the SQL above |
 | Client optimistic check | `src/lib/mirror-cycle.ts` | `hasCycle(sourceId, targetParentId, store): boolean` (in-memory mirror of the SQL) |
 | Cycle toast | `src/components/feedback/MirrorErrorToast.tsx` | Reads `mirror-cycle-error` testid (already exists per 09-mirrors.md L191) |
 | Hygiene drift check | `scripts/spec-hygiene/18-check-cycle-algo.mjs` | Asserts byte-equality between SQL block here and `cycle-check.sql` |
