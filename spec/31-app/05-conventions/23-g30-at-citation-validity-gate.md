@@ -259,6 +259,7 @@ configurations from the v1.2.0–v1.3.0 era.
 
 | Version | Date | Change |
 |---------|------|--------|
+| 1.4.0 | 2026-04-27 | F28 — promoted G-30.2 advisory to **DEFAULT-ON**; safe because F27 drained queue to 0; opt-out via `--no-warn-redundant` flag or `G30_WARN_REDUNDANT=0` env var; legacy `--warn-redundant` flag preserved as no-op for back-compat |
 | 1.3.0 | 2026-04-27 | F27 — drained G-30.2 redundancy queue 36→0 by expanding `REDUNDANCY_ALLOWLIST` 5→41 entries across three documented intent-categories (future-licensing / convention-documentation / namespace-placeholder); preserves every Coverage Map row for naming-scheme docs |
 | 1.2.0 | 2026-04-27 | F24 — added G-30.2 open-prefix redundancy advisory (`--warn-redundant`, WARN-only); initial allow-list of 5 future-licensing prefixes; advisory then surfaced 36 cleanup candidates |
 | 1.1.0 | 2026-04-27 | F14 — extended consumer scope to `02-workflows/` and `07-db-diagram/04-feature-slices.md`; output now reports per-scope provenance on failure |
