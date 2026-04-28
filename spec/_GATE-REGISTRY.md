@@ -18,14 +18,19 @@
 
 ## 2. Summary
 
-- **Total named gates:** 266
-- **CI:** 10
-- **TEST:** 8
-- **DOC-NORM:** 48
-- **DOC:** 200
-- **Areas covered:** 35 (one per ADR or domain prefix)
+- **Total named gates:** 286 (was 266 — 20 added; 2 marked superseded but retained for traceability)
+- **CI:** 23 (was 10 — +13 from ADR-0012(3), 0027(4), 0028(6))
+- **TEST:** 13 (was 8 — +5 from ADR-0027(3), 0028(4); −2 superseded)
+- **DOC-NORM:** 49 (was 48 — +1 net)
+- **DOC:** 201 (was 200 — +1 from ADR-0027 monotonic)
+- **Areas covered:** 36 (was 35 — added ADR-0012)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
+
+> 🆕 **2026-04-28 batch (20 new gates):**
+> • **ADR-0012 §D7** logical-utility mandate: `G-12-LOGICAL-MARGINS-PADDING` / `G-12-LOGICAL-TEXT-ALIGN` / `G-12-LOGICAL-INSET` (all CI).
+> • **ADR-0027** SSE shared ring: `G-27-RING-IS-SQLITE-WAL` / `G-27-PRODUCER-COMPLETENESS` / `G-27-NO-INPROCESS-PUBSUB` / `G-27-NO-EXTERNAL-BROKER` (CI), `G-27-RING-TTL-300S` / `G-27-COLD-GAP-RESYNC` / `G-27-MULTIWORKER-REPLAY` (TEST), `G-27-SERVERSEQ-MONOTONIC` (DOC-NORM).
+> • **ADR-0028** i18n: `G-28-LIBRARY-IS-I18NEXT` / `G-28-NO-HTML-IN-JSON` / `G-28-INTL-EXPLICIT-LOCALE` / `G-28-TYPED-KEYS` (CI), `G-28-MISSING-KEY-LOGGED` / `G-28-FALLBACK-CHAIN` / `G-28-RTL-DIR-ATTR` / `G-28-DETECTION-ORDER` (TEST), `G-28-LOCALE-WRITE-VIA-QUEUE` (DOC-NORM). Plus 2 superseded: `G-28-NO-PHYSICAL-MARGINS` and `G-28-NO-PHYSICAL-ALIGN` (folded into the canonical `G-12-LOGICAL-*` gates).
 
 ---
 
