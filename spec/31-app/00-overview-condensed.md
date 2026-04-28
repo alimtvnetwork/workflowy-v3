@@ -197,3 +197,107 @@ Testable acceptance criteria for the App domain. Each criterion is independently
 | `AT-APP-49` | Sharing with a non-existent email returns **HTTP 201** and inserts a `PendingInvites` row in the Root DB with `
 
 _… truncated at 17000 chars to fit AI auditor cap …_
+
+<!-- P23-FIXTURE-INDEX -->
+## Acceptance-Criteria I/O Fixtures (auto-attached by P23)
+
+### Fixtures included from `spec/31-app/97a-acceptance-criteria-fixtures.md`
+
+# App — Acceptance-Criteria I/O Fixtures
+
+> **Version:** 1.0.0
+> **Created:** 2026-04-28 (UTC+8)
+> **Status:** Active — companion to [`97-acceptance-criteria.md`](./97-acceptance-criteria.md)
+> **Format:** [`spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](../01-spec-authoring-guide/19-acceptance-criteria-io-table.md)
+> **Coverage:** P2a sub-task — `AT-APP-01..14` (Information model, Layout shell, Page content + interactions). `AT-APP-15..107` land in subsequent `next` calls (P2a continuation).
+
+---
+
+## How to use
+
+For every `AT-APP-NN` row in the canonical file, find the matching block below to get the literal Given / When / Then + JSON request/response fixture an implementer or AI test-author can run verbatim. Conventions:
+
+- **Item IDs** use the prefix `itm_` followed by 26 chars (ULID-shaped), example: `itm_01HXYZ0000000000000000A1`. Treat as opaque.
+- **User IDs** use prefix `usr_`. Default test user `usr_alice`.
+- **REST namespace** is `/wp-json/workflowy/v1` (per `mem://constraints/backend-runtime-deferred`).
+- **Envelope** keys are PascalCase; mandatory `Status` / `Attributes` / `Results` per `spec/04-database-conventions/06-rest-api-format/`.
+
+---
+
+## Information model
+
+### `AT-APP-01` — Root item is auto-created and undeletable
+
+> | Slot | Value |
+> |------|-------|
+> | **Given** | New signup `usr_alice` just completed `POST /auth/signup` (`Status:201`); no items exist for that user. |
+> | **When** | `GET /wp-json/workflowy/v1/items/root` |
+> | **Then** | Response carries exactly one `Item` whose `ParentId` is `null` and `IsRoot:true`; that row exists in `Item` table with `UserId=usr_alice`. |
+> | **Response envelope** | `{ "Status":200, "Attributes":{ "ItemKind":"root" }, "Results":[ { "Id":"itm_01HX…ROOT", "ParentId":null, "ItemType":"Bullet", "Content":"", "IsRoot":true, "FractionalIndex":"a0" } ] }` |
+> | **Side effects** | `Item` row inserted with `UserId=usr_alice`, `IsRoot=1`; `AuditLog` row `event="root.created"`. |
+> | **Negative assertion** | `DELETE /items/itm_01HX…ROOT` MUST return `Status:409` with `Errors:[{Code:"E_ROOT_UNDELETABLE"}]`; no Trash row created. |
+
+### `AT-APP-02` — Item.id is immutable across mutations
+
+> | Slot | Value |
+> |------|-------|
+> | **Given** | Item `itm_X` exists under root. |
+> | **When** | Run, in order: `PATCH /items/itm_X/move` (new parent), `POST /mirrors {SourceId:itm_X,…}`, `POST /share/itm_X`, `DELETE /items/itm_X`, `POST /trash/itm_X/restore`. |
+> | **Then** | After every step, `GET /items/itm_X` returns the same `Id:"itm_X"`; `Mirror` rows reference `SourceId:"itm_X"` unchanged. |
+> | **Side effects** | Each step writes its own `AuditLog` row but `Item.Id` column is never updated (verify via `SELECT COUNT(*) FROM AuditLog WHERE event LIKE 'item.id_%'` → 0). |
+> | **Negative assertion** | No row in any table contains a foreign-key reference to a *different* `itm_*` value for this item. |
+
+### `AT-APP-03` — Single unified Item type discriminated by ItemType
+
+> | Slot | Value |
+> |------|-------|
+> | **Given** | Schema migrations applied. |
+> | **When** | `SELECT name FROM sqlite_master WHERE type='table' AND name IN ('Project','Note','Task','Bookmark')` |
+> | **Then** | Zero rows returned; only `Item` table exists for tree storage. |
+> | **Side effects** | none |
+> | **Negative assertion** | Any new migration that creates `Project` / `Note` / `Task` / `Bookmark` MUST fail the hygiene script (`scripts/spec-hygiene/`); no PHP class under `wp-plugin/src/Models/` named `Project`, `Note`, `Task`, `Bookmark`. |
+
+### `AT-APP-04` — Children ordered by fractional-index strings
+
+> | Slot | Value |
+> |------|-------|
+> | **Given** | Parent `itm_P` has children `itm_A (FractionalIndex="a0")`, `itm_C (FractionalIndex="a2")`. |
+> | **When** | `POST /items` body `{ "ParentId":"itm_P", "AfterSiblingId":"itm_A", "BeforeSiblingId":"itm_C", "Content":"middle" }` |
+> | **Request body** | `{ "ParentId":"itm_P", "AfterSiblingId":"itm_A", "BeforeSiblingId":"itm_C", "Content":"middle" }` |
+> | **Then** | New item `itm_B` created with `FractionalIndex="a1"` (or any string strictly between `"a0"` and `"a2"` per the project's fractional-index algo). |
+> | **Response envelope** | `{ "Status":201, "Attributes":{}, "Results":[ { "Id":"itm_B", "ParentId":"itm_P", "FractionalIndex":"a1", "Content":"middle" } ] }` |
+> | **Side effects** | `Item` row inserted; sibling rows `itm_A` / `itm_C` have `FractionalIndex` UNCHANGED. |
+> | **Negative assertion** | No `UPDATE` issued against `itm_A` or `itm_C`; insertion does NOT renumber existing siblings. |
+
+### `AT-APP-05` — Virtualization above 250 items
+
+> | Slot | Value |
+> |------|-------|
+> | **Given** | Parent `itm_P` has 251 children. |
+> | **When** | UI renders `<ItemList parentId="itm_P">`. |
+> | **Then** | The DOM contains ≤ ~50 `<ItemRow>` elements (the virtual window) at any time, not 251. |
+> | **Side effects** | The list registers an `IntersectionObserver` (or equivalent) and the network layer issues `GET /items?parentId=itm_P&offset=0&limit=100` paginated calls. |
+> | **Negative assertion** | `document.querySelectorAll('[data-itemrow]').length` MUST NOT exceed 100 even after scrolling to the bottom (window slides; old rows are unmounted). |
+
+---
+
+## Layout shell
+
+### `AT-APP-06` — Two-zone layout
+
+> | Slot | Value |
+> |------|-------|
+> | **Given** | Authenticated user lands on `/`. |
+> | **When** | `document.querySelector('[data-shell]').children` |
+> | **Then** | Exactly two children with `data-zone="navbar"` (position:fixed, top:0) and `data-zone="page"` (overflow-y:auto). |
+> | **Side effects** | none |
+> | **Negative assertion** | No third sibling zone (no global footer, no global toolbar) at the shell level — those, if present, MUST live INSIDE `[data-zone="page"]`. |
+
+### `AT-APP-07` — Sidebar open/close
+
+> | Slot | Value |
+> |------|-------|
+> | **Given** | Sidebar is closed (`[data-sidebar-state="closed"]`). |
+> | **When** | UI gesture: click `[data-testid="navbar-menu-button"]`. 
+…(truncated for audit; full file: spec/31-app/97a-acceptance-criteria-fixtures.md)
+

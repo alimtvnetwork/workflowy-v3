@@ -392,7 +392,7 @@
 
 | File | Title | Version | Status |
 |------|-------|---------|--------|
-| [`03-error-manage/00-overview-condensed.md`](./03-error-manage/00-overview-condensed.md) | Condensed Overview — `spec/03-error-manage/` (P11) | 3.1.0 | — |
+| [`03-error-manage/00-overview-condensed.md`](./03-error-manage/00-overview-condensed.md) | Condensed Overview — `spec/03-error-manage/` (P11) | 3.1.0 | Concrete |
 | [`03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Error Management Specification | 3.1.0 | — |
 | [`03-error-manage/01-error-resolution/00-overview.md`](./03-error-manage/01-error-resolution/00-overview.md) | Error Resolution | 3.1.0 | — |
 | [`03-error-manage/01-error-resolution/01-cross-reference-diagram.md`](./03-error-manage/01-error-resolution/01-cross-reference-diagram.md) | Error Resolution Cross-Reference Diagram | 3.1.0 | Complete |
@@ -1255,7 +1255,7 @@
 
 | File | Title | Version | Status |
 |------|-------|---------|--------|
-| [`31-app/00-overview-condensed.md`](./31-app/00-overview-condensed.md) | Condensed Overview — `spec/31-app/` (P11) | 2.6.0 | — |
+| [`31-app/00-overview-condensed.md`](./31-app/00-overview-condensed.md) | Condensed Overview — `spec/31-app/` (P11) | 2.6.0 | Active |
 | [`31-app/00-overview.md`](./31-app/00-overview.md) | App | 2.1.0 | — |
 | [`31-app/01-features/00-overview.md`](./31-app/01-features/00-overview.md) | Features | 2.3.0 | — |
 | [`31-app/01-features/01-information-model.md`](./31-app/01-features/01-information-model.md) | Information Model Foundations | 2.3.0 | — |
@@ -1394,7 +1394,7 @@
 
 | File | Title | Version | Status |
 |------|-------|---------|--------|
-| [`32-ui-design/00-overview-condensed.md`](./32-ui-design/00-overview-condensed.md) | Condensed Overview — `spec/32-ui-design/` (P11) | 2.0.0 | — |
+| [`32-ui-design/00-overview-condensed.md`](./32-ui-design/00-overview-condensed.md) | Condensed Overview — `spec/32-ui-design/` (P11) | 2.0.0 | Normative |
 | [`32-ui-design/00-overview.md`](./32-ui-design/00-overview.md) | UI Design | 2.0.0 | — |
 | [`32-ui-design/01-architecture/00-overview.md`](./32-ui-design/01-architecture/00-overview.md) | Architecture | 1.0.0 | — |
 | [`32-ui-design/01-architecture/01-tech-stack.md`](./32-ui-design/01-architecture/01-tech-stack.md) | Tech Stack | 1.1.0 | — |

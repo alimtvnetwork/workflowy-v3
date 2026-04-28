@@ -137,7 +137,7 @@ For UI rendering decisions (colors, fonts, spacing, animations), the SSOT is [`.
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`00-overview-condensed.md`](./00-overview-condensed.md) | Condensed Overview — `spec/31-app/` (P11) | 304 |
+| 1 | [`00-overview-condensed.md`](./00-overview-condensed.md) | Condensed Overview — `spec/31-app/` (P11) | 200 |
 | 2 | [`01-features/`](./01-features/00-overview.md) | Features | subfolder |
 | 3 | [`02-workflows/`](./02-workflows/00-overview.md) | Workflows | subfolder |
 | 4 | [`03-edge-cases/`](./03-edge-cases/00-overview.md) | Edge Cases | subfolder |
