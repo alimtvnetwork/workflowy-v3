@@ -229,12 +229,15 @@ This rule lives in ADR-0012 (not ADR-0028) because it is a **styling-system inva
 - `G-32-DARK-MODE-PARITY` — enforces D6 (every new light-mode token
   has a dark-mode counterpart in the same change). **Strengthened**
   from ADR-0003.
+- `G-12-LOGICAL-MARGINS-PADDING` — **CI** — enforces D7. ESLint rule (custom or `eslint-plugin-tailwindcss` `classnames-order` extension) bans `pl-*`, `pr-*`, `ml-*`, `mr-*`, `border-l-*`, `border-r-*`, `rounded-l-*`, `rounded-r-*` in `src/**/*.{ts,tsx}` outside `src/components/ui/` (grandfathered) unless the line is preceded by `/* a11y-rtl-exempt: <reason> */`.
+- `G-12-LOGICAL-TEXT-ALIGN` — **CI** — enforces D7. ESLint bans `text-left` and `text-right`; require `text-start` / `text-end`. Same exemption-comment escape hatch.
+- `G-12-LOGICAL-INSET` — **CI** — enforces D7. ESLint bans `left-*` and `right-*` positional utilities; require `start-*` / `end-*`. Same exemption-comment escape hatch.
 
-All seven gates are formally **anchored** by this ADR. Their
-enforcement contracts live in
+All ten gates (`G-32-*` × 7 + `G-12-LOGICAL-*` × 3) are formally **anchored** by this ADR. Their enforcement contracts live in
 `spec/32-ui-design/03-design-system/`,
 `spec/02-coding-guidelines/01-cross-language/30-pinned-dependency-matrix.md`,
 and `spec/35-enforcement-rules/`.
+
 
 ## Supersedes / Superseded-By
 
