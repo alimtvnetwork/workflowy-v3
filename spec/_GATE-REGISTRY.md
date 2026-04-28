@@ -19,8 +19,8 @@
 ## 2. Summary
 
 - **Total named gates:** 287 (was 286 — +1 `G-26-WIRE-OWNERID-ONLY`)
-- **CI:** 24 (was 23 — +1)
-- **TEST:** 13 (unchanged)
+- **CI:** 24 (one gate `G-26-WIRE-OWNERID-ONLY` is now dual-tier: counted under both CI and TEST)
+- **TEST:** 14 (was 13 — +1 `G-26-WIRE-OWNERID-ONLY` runtime half via `AT-WIRE-EGRESS-01`)
 - **DOC-NORM:** 49 (was 48 — +1 net)
 - **DOC:** 201 (was 200 — +1 from ADR-0027 monotonic)
 - **Areas covered:** 36 (was 35 — added ADR-0012)
