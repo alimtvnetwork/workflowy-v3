@@ -93,7 +93,7 @@ function publishItemBad(item, ctx, opts, retry) {
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`00-overview-condensed.md`](./00-overview-condensed.md) | Condensed Overview — `spec/02-coding-guidelines/` (P11) | 149 |
+| 1 | [`00-overview-condensed.md`](./00-overview-condensed.md) | Condensed Overview — `spec/02-coding-guidelines/` (P11) | 281 |
 | 2 | [`01-cross-language/`](./01-cross-language/00-overview.md) | Cross-Language Coding Guidelines | subfolder |
 | 3 | [`02-typescript/`](./02-typescript/00-overview.md) | TypeScript Standards | subfolder |
 | 4 | [`03-golang/`](./03-golang/00-overview.md) | Golang Standards | subfolder |

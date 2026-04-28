@@ -130,7 +130,7 @@ Then components only ever reference semantic classes. No exceptions.
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`00-overview-condensed.md`](./00-overview-condensed.md) | Condensed Overview — `spec/32-ui-design/` (P11) | 157 |
+| 1 | [`00-overview-condensed.md`](./00-overview-condensed.md) | Condensed Overview — `spec/32-ui-design/` (P11) | 303 |
 | 2 | [`01-architecture/`](./01-architecture/00-overview.md) | Architecture | subfolder |
 | 3 | [`02-state-and-data/`](./02-state-and-data/00-overview.md) | State & Data | subfolder |
 | 4 | [`03-design-system/`](./03-design-system/00-overview.md) | Design System | subfolder |
