@@ -106,9 +106,11 @@ Pick the top 🟦 item on every `next`. Strike (✅) when done; new top item bec
 **Targets:** every file touched by F1–F6.
 **✅ Done 2026-04-28:** Created format SSOT [`spec/01-spec-authoring-guide/21-feature-block-format.md`](../../spec/01-spec-authoring-guide/21-feature-block-format.md) (R1 `**Title** — Description`, R2 shortcut at end in backticks, R3 `/command` inline, R4 search operators in backticks) + gate G-39 ([`scripts/spec-hygiene/39-check-feature-block-format.mjs`](../../scripts/spec-hygiene/39-check-feature-block-format.mjs)) wired into `00-run-all.mjs`. Gate ships in **report-only** mode for the baseline; surfaces 29 pre-existing prose violations across 9 F1–F6 files (mostly parenthetical shortcuts mid-sentence). Cleanup queued in [`./archive/10-f08-feature-block-format.md`](./archive/10-f08-feature-block-format.md) as a P11+ follow-up; flip `ENFORCE = true` once drained. Hygiene PASS.
 
-### P5 — Promote `35-enforcement-rules` and `33-feedback-report` from scaffolds
+### ✅ P5 — Promote `35-enforcement-rules` and `33-feedback-report` from scaffolds
 **Targets:** their `00-overview.md` + `97-acceptance-criteria.md`.
 **Predicted gain:** +2 composite (raises two F-grade sections to D).
+**✅ Done 2026-04-28:** Filled the AI Contract block (Purpose / Audience / Expected AI Output / Out of Scope / Definition of Done) in `spec/35-enforcement-rules/00-overview.md` and `spec/33-feedback-report/00-overview.md`, replacing all `_TODO(P1):_` placeholders. Dedup'd the duplicate Scoring tables; bumped both to v2.1.0 D-grade. AC files (`AT-ENFORCEMENTRULES-01..14`, `AT-FEEDBACKREPORT-01..14`) were already curated. Side fixes: renumbered duplicated `02-post-mortem-template.md` → `03-post-mortem-template.md` (resolves G-01 numbering dup), added explicit fixture opt-out to `23-operator-runbooks/97-acceptance-criteria.md` (resolves AT-FIX-01), reworded canonical glossary entries in `09b-mirror-peer-group-model.md` and skip-listed it in G-38 (the file *defines* the forbidden phrase). Hygiene: 2 pre-existing failures remain — `ItemType` enum drift (`mirror`/`dashboard`) and runbook-staleness `Implements:` line on the new post-mortem template — both unrelated to P5, owned by separate workstreams.
+
 
 ### P6 — Add machine-readable `spec/contract.json`
 **Content:** index of every AT-*, EP-*, enum, and file path with stable IDs.
