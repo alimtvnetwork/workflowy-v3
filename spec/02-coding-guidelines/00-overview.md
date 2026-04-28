@@ -54,36 +54,214 @@
 
 
 
-## Anti-Patterns
+## Hard Rules — Enforcement Matrix
 
-The AI MUST NOT:
-- Adding a rule without a paired ESLint / PHPStan / phpcs check that enforces it.
-- Citing a rule without exactly one compliant **and** one non-compliant code example side by side.
-- Allowing TypeScript `any`, nested `if`s, > 3 params, > 15-line logic blocks, or `else` branches — all are gate-enforced.
+Every rule below is **gate-enforced**. The AI MUST NOT propose code that violates any of them.
 
-## Worked Example (skeleton)
+| # | Rule | Gate | Severity |
+|---|---|---|---|
+| R1 | Zero `any` (TS) and zero `mixed` without justification (PHP). | `@typescript-eslint/no-explicit-any` + PHPStan level 9. | Error. |
+| R2 | Functions take **at most 3 positional parameters**. Use an options object beyond that. | `max-params: ["error", 3]` + `phpstan-strict-rules`. | Error. |
+| R3 | No nested `if` — flatten via guard clauses or extract a helper. | `sonarjs/no-nested-conditional` + custom PHP rule. | Error. |
+| R4 | No `else` / `else if` — return early instead. | `no-else-return` (with custom extension to ban `else if`). | Error. |
+| R5 | A function's logic body MUST be ≤ **15 lines** (excluding signature, braces, blank lines). | Custom ESLint rule `local/max-logic-lines`. | Error. |
+| R6 | Guard clauses MUST be **positive** — `if (!x) return` not `if (x) { … } else …`. | Custom ESLint rule `local/positive-guards`. | Error. |
+| R7 | No `switch` statements — use a dispatch object/`Map<key, handler>`. | `no-restricted-syntax: SwitchStatement`. | Error. |
+| R8 | Every exported function has an explicit return type. | `@typescript-eslint/explicit-function-return-type`. | Error. |
+| R9 | SQLite tables, columns, and indexes are **PascalCase**. Tables singular (`Item`, not `Items_tbl`). | Migration linter `G-04-NAMING`. | Error. |
+| R10 | No `console.log` in committed code (use `Log.debug/info/warn/error`). | `no-console`. | Error. |
 
-A canonical, copy-pasteable shape for this section's primary output:
+## Bad / Good Code Pairs
+
+Each pair below is the canonical example for the cited rule. Fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these snippets verbatim.
+
+### R1 — No `any`
 
 ```ts
-// ✅ Compliant — guard clause, max-3-params, no nested if, no else
-function publishItem(item: Item, ctx: PublishCtx): PublishResult {
-  if (!ctx.isAuthenticated) return { status: 'error', reason: 'unauth' };
-  if (item.isArchived) return { status: 'error', reason: 'archived' };
-  return repo.publish(item.id);
+// ❌ Bad
+function parse(input: any): any {
+  return JSON.parse(input);
 }
 
-// ❌ Non-compliant — nested if + else + 4 params
-function publishItemBad(item, ctx, opts, retry) {
-  if (ctx.isAuthenticated) {
-    if (!item.isArchived) {
-      return repo.publish(item.id, opts, retry);
-    } else { return null; }
-  }
+// ✅ Good
+function parse<T>(input: string, schema: ZodSchema<T>): T {
+  return schema.parse(JSON.parse(input));
 }
 ```
 
-*This is a structural skeleton. Real values come from the section's `97-acceptance-criteria.md` row that the AI is implementing.*
+### R2 — Max 3 params
+
+```ts
+// ❌ Bad — 5 positional params
+function createItem(parentId: string, content: string, type: ItemType, sortKey: string, ownerId: string) { /* … */ }
+
+// ✅ Good — options object
+type CreateItemInput = {
+  parentId: string; content: string; type: ItemType; sortKey: string; ownerId: string;
+};
+function createItem(input: CreateItemInput): Item { /* … */ }
+```
+
+### R3 + R4 — No nested `if`, no `else`
+
+```ts
+// ❌ Bad — nested + else
+function publishItem(item: Item, ctx: Ctx): Result {
+  if (ctx.isAuthenticated) {
+    if (!item.isArchived) {
+      return repo.publish(item.id);
+    } else {
+      return { status: 'error', reason: 'archived' };
+    }
+  } else {
+    return { status: 'error', reason: 'unauth' };
+  }
+}
+
+// ✅ Good — flat guard clauses, no else
+function publishItem(item: Item, ctx: Ctx): Result {
+  if (!ctx.isAuthenticated) return { status: 'error', reason: 'unauth' };
+  if (item.isArchived)      return { status: 'error', reason: 'archived' };
+  return repo.publish(item.id);
+}
+```
+
+### R5 — Max 15-line logic body
+
+```ts
+// ❌ Bad — 22 logic lines, mixed concerns
+function syncItem(item: Item): SyncResult {
+  const local = repo.find(item.id);
+  if (!local) return { status: 'created' };
+  const conflict = detectConflict(local, item);
+  if (conflict) {
+    const merged = merge(local, item);
+    repo.save(merged);
+    log.info('merged', { id: item.id });
+    metrics.inc('sync.merged');
+    queue.enqueue({ kind: 'notify', id: item.id });
+    return { status: 'merged' };
+  }
+  repo.save(item);
+  log.info('updated', { id: item.id });
+  metrics.inc('sync.updated');
+  queue.enqueue({ kind: 'notify', id: item.id });
+  return { status: 'updated' };
+}
+
+// ✅ Good — extract helpers
+function syncItem(item: Item): SyncResult {
+  const local = repo.find(item.id);
+  if (!local) return { status: 'created' };
+  if (detectConflict(local, item)) return mergeAndPersist(local, item);
+  return updateAndPersist(item);
+}
+```
+
+### R6 — Positive guards
+
+```ts
+// ❌ Bad — negated double-check
+function send(req: Req): void {
+  if (req.body) {
+    if (req.body.length > 0) transport.send(req);
+  }
+}
+
+// ✅ Good — single positive guard
+function send(req: Req): void {
+  if (!req.body?.length) return;
+  transport.send(req);
+}
+```
+
+### R7 — No `switch`
+
+```ts
+// ❌ Bad
+function renderNode(n: Node): JSX.Element {
+  switch (n.itemType) {
+    case 'task':    return <Task n={n} />;
+    case 'note':    return <Note n={n} />;
+    case 'mirror':  return <Mirror n={n} />;
+    default:        return <Unknown n={n} />;
+  }
+}
+
+// ✅ Good — dispatch table
+const RENDERERS: Record<ItemType, (n: Node) => JSX.Element> = {
+  task:   (n) => <Task n={n} />,
+  note:   (n) => <Note n={n} />,
+  mirror: (n) => <Mirror n={n} />,
+};
+function renderNode(n: Node): JSX.Element {
+  return RENDERERS[n.itemType]?.(n) ?? <Unknown n={n} />;
+}
+```
+
+### R8 — Explicit return types
+
+```ts
+// ❌ Bad — return type inferred (drift risk)
+export function getActiveItems(parentId: string) {
+  return repo.list(parentId).filter(i => !i.archivedAt);
+}
+
+// ✅ Good
+export function getActiveItems(parentId: string): readonly Item[] {
+  return repo.list(parentId).filter(i => !i.archivedAt);
+}
+```
+
+### R9 — SQLite naming
+
+```sql
+-- ❌ Bad
+CREATE TABLE items_tbl (
+  item_id TEXT PRIMARY KEY,
+  parent_id TEXT,
+  created_at_ts INTEGER
+);
+
+-- ✅ Good
+CREATE TABLE Item (
+  Id        TEXT PRIMARY KEY,
+  ParentId  TEXT REFERENCES Item(Id) ON DELETE CASCADE,
+  CreatedAt INTEGER NOT NULL
+);
+CREATE INDEX IX_Item_ParentId ON Item(ParentId);
+```
+
+### R10 — No `console.log`
+
+```ts
+// ❌ Bad
+export function onSave(item: Item): void {
+  console.log('saving', item);
+  repo.save(item);
+}
+
+// ✅ Good
+import { Log } from '@/lib/log';
+export function onSave(item: Item): void {
+  Log.debug('saving', { id: item.id });
+  repo.save(item);
+}
+```
+
+## Anti-Patterns
+
+The AI MUST NOT:
+
+| # | Anti-pattern | Why it fails | Gate that catches it |
+|---|---|---|---|
+| 1 | Add a coding rule without a paired automated check | Rule rots — humans won't enforce by review alone. | `G-02-RULE-HAS-GATE` (cross-checks every rule id against ESLint/PHPStan config). |
+| 2 | Cite a rule without **both** a bad and a good snippet | AI consumers can't disambiguate intent. | `G-02-PAIRED-EXAMPLES` (markdown lint: every R# heading needs a `❌` block then a `✅` block). |
+| 3 | Use `// eslint-disable-next-line` to silence a hard rule | Defeats the gate; bug ships. | `G-02-NO-DISABLE` (CI blocks `eslint-disable` of rules in this section). |
+| 4 | Introduce a `switch` "for performance" | Premature optimization; dispatch tables are O(1) too. | `no-restricted-syntax: SwitchStatement` (R7). |
+| 5 | Replace a guard with a ternary that hides early-return intent | Reduces readability; breaks line-counter heuristics. | Code review checklist (`G-02-NO-RETURN-TERNARY`). |
+
+*All R# ids are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite them by `R<N>`.*
 
 <!-- AUTO-TOC:START -->
 
