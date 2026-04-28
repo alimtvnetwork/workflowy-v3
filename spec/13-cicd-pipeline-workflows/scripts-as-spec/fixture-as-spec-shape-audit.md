@@ -119,14 +119,18 @@ def audit_file(path: pathlib.Path, known_gates: set[str],
         if gid not in known_gates:
             errors.append(f'banner cites unregistered `{gid}`')
             continue
-        # Phase 4: the registry row for this gate MUST link to THIS file.
+        # Phase 4: registry row for this gate MUST link back to THIS
+        # file, UNLESS the gate is in the BACKLINK_EXEMPT carve-out
+        # (authoritative spec lives elsewhere).
+        if gid in BACKLINK_EXEMPT:
+            continue
         row_path = rows.get(gid, "")
         if path.name not in row_path:
             errors.append(
                 f'registry row for `{gid}` links to "{row_path}", '
                 f'expected back-link to "{path.name}" '
-                f'(asymmetric: fixture cites gate but registry does not '
-                f'cite fixture)')
+                f'(asymmetric: add `{gid}` to BACKLINK_EXEMPT or '
+                f'point its registry row at this fixture)')
     return [f"{path}: {e}" for e in errors]
 
 def main() -> int:
