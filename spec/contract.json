@@ -4,8 +4,8 @@
   "generator": "scripts/spec-hygiene/40-generate-contract-json.mjs",
   "do_not_edit": true,
   "counts": {
-    "acceptance_tests_defined": 2217,
-    "acceptance_tests_orphan_citations": 59,
+    "acceptance_tests_defined": 2227,
+    "acceptance_tests_orphan_citations": 30,
     "endpoints": 48,
     "enums": 23,
     "sections": 24
@@ -5097,6 +5097,91 @@
       "definition": "The CI spec provides **both GitHub Actions and GitLab CI** templates copy-pastable into a fresh repo.",
       "defined_in": "spec/02-coding-guidelines/01-cross-language/16-static-analysis/97-acceptance-criteria.md",
       "defined_line": 23,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CICD-01",
+      "definition": "Tag-driven releases only",
+      "defined_in": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
+      "defined_line": 30,
+      "cited_in": [
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
+          "line": 19
+        }
+      ]
+    },
+    {
+      "id": "AT-CICD-02",
+      "definition": "Concurrency group per ref",
+      "defined_in": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
+      "defined_line": 34,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CICD-03",
+      "definition": "Version SSOT per archetype",
+      "defined_in": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
+      "defined_line": 37,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CICD-04",
+      "definition": "Asset checksum sidecar",
+      "defined_in": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
+      "defined_line": 40,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CICD-05",
+      "definition": "Permissions least-privilege",
+      "defined_in": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
+      "defined_line": 43,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CICD-06",
+      "definition": "Release body from CHANGELOG",
+      "defined_in": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
+      "defined_line": 46,
+      "cited_in": [
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
+          "line": 20
+        }
+      ]
+    },
+    {
+      "id": "AT-CICD-07",
+      "definition": "Pre-release detection",
+      "defined_in": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
+      "defined_line": 50,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CICD-08",
+      "definition": "Reproducible asset names",
+      "defined_in": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
+      "defined_line": 53,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CICD-09",
+      "definition": "Vulnerability scan blocks release",
+      "defined_in": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
+      "defined_line": 56,
+      "cited_in": [
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
+          "line": 21
+        }
+      ]
+    },
+    {
+      "id": "AT-CICD-10",
+      "definition": "Audit reports retained",
+      "defined_in": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
+      "defined_line": 60,
       "cited_in": []
     },
     {
@@ -14904,9 +14989,9 @@
     },
     {
       "id": "AT-POWERSHELLINTEGRATION-01",
-      "definition": "Boundary file present",
+      "definition": "Boundary file exists",
       "defined_in": "spec/10-powershell-integration/97-acceptance-criteria.md",
-      "defined_line": 21,
+      "defined_line": 36,
       "cited_in": [
         {
           "file": "spec/10-powershell-integration/08-wp-plugin-boundary.md",
@@ -14920,65 +15005,65 @@
     },
     {
       "id": "AT-POWERSHELLINTEGRATION-02",
-      "definition": "PowerShell excluded from plugin ZIP",
+      "definition": "PowerShell artifacts excluded from ZIP",
       "defined_in": "spec/10-powershell-integration/97-acceptance-criteria.md",
-      "defined_line": 22,
+      "defined_line": 41,
       "cited_in": []
     },
     {
       "id": "AT-POWERSHELLINTEGRATION-03",
-      "definition": "No `shell_exec('powershell')` in PHP",
+      "definition": "No PHP-to-PowerShell shell-out",
       "defined_in": "spec/10-powershell-integration/97-acceptance-criteria.md",
-      "defined_line": 23,
+      "defined_line": 48,
       "cited_in": []
     },
     {
       "id": "AT-POWERSHELLINTEGRATION-04",
-      "definition": "Cross-platform parity enforced",
+      "definition": "Cross-platform parity",
       "defined_in": "spec/10-powershell-integration/97-acceptance-criteria.md",
-      "defined_line": 24,
+      "defined_line": 54,
       "cited_in": []
     },
     {
       "id": "AT-POWERSHELLINTEGRATION-05",
-      "definition": "PowerShell scope limited to dev tooling",
+      "definition": "Scope limited to dev tooling",
       "defined_in": "spec/10-powershell-integration/97-acceptance-criteria.md",
-      "defined_line": 25,
+      "defined_line": 63,
       "cited_in": []
     },
     {
       "id": "AT-POWERSHELLINTEGRATION-06",
       "definition": "Historical Go content flagged",
       "defined_in": "spec/10-powershell-integration/97-acceptance-criteria.md",
-      "defined_line": 26,
+      "defined_line": 66,
       "cited_in": []
     },
     {
       "id": "AT-POWERSHELLINTEGRATION-07",
       "definition": "Windows-only scripts segregated",
       "defined_in": "spec/10-powershell-integration/97-acceptance-criteria.md",
-      "defined_line": 27,
+      "defined_line": 73,
       "cited_in": []
     },
     {
       "id": "AT-POWERSHELLINTEGRATION-08",
       "definition": "Out-of-scope items documented",
       "defined_in": "spec/10-powershell-integration/97-acceptance-criteria.md",
-      "defined_line": 28,
+      "defined_line": 76,
       "cited_in": []
     },
     {
       "id": "AT-POWERSHELLINTEGRATION-09",
       "definition": "Decision matrix unambiguous",
       "defined_in": "spec/10-powershell-integration/97-acceptance-criteria.md",
-      "defined_line": 29,
+      "defined_line": 79,
       "cited_in": []
     },
     {
       "id": "AT-POWERSHELLINTEGRATION-10",
-      "definition": "Boundary doc cross-references CI archetype",
+      "definition": "Cross-references CI archetype",
       "defined_in": "spec/10-powershell-integration/97-acceptance-criteria.md",
-      "defined_line": 30,
+      "defined_line": 82,
       "cited_in": []
     },
     {
@@ -22046,9 +22131,9 @@
     },
     {
       "id": "AT-WPPLUGINDEPLOY-01",
-      "definition": "Pipeline trigger",
+      "definition": "Tag-driven trigger",
       "defined_in": "spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md",
-      "defined_line": 20,
+      "defined_line": 40,
       "cited_in": [
         {
           "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
@@ -22078,100 +22163,100 @@
     },
     {
       "id": "AT-WPPLUGINDEPLOY-02",
-      "definition": "Pipeline stage order",
+      "definition": "Stage order enforced",
       "defined_in": "spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md",
-      "defined_line": 21,
+      "defined_line": 52,
       "cited_in": []
     },
     {
       "id": "AT-WPPLUGINDEPLOY-03",
-      "definition": "`.distignore` shipped",
+      "definition": "`.distignore` present",
       "defined_in": "spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md",
-      "defined_line": 22,
+      "defined_line": 63,
       "cited_in": []
     },
     {
       "id": "AT-WPPLUGINDEPLOY-04",
-      "definition": "ZIP single top-level folder",
+      "definition": "Single top-level folder",
       "defined_in": "spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md",
-      "defined_line": 23,
+      "defined_line": 73,
       "cited_in": []
     },
     {
       "id": "AT-WPPLUGINDEPLOY-05",
-      "definition": "Vite bundle in `assets/dist/`",
+      "definition": "Vite bundle present at `assets/dist/`",
       "defined_in": "spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md",
-      "defined_line": 24,
+      "defined_line": 81,
       "cited_in": []
     },
     {
       "id": "AT-WPPLUGINDEPLOY-06",
       "definition": "No source files in ZIP",
       "defined_in": "spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md",
-      "defined_line": 25,
+      "defined_line": 89,
       "cited_in": []
     },
     {
       "id": "AT-WPPLUGINDEPLOY-07",
-      "definition": "Vendor autoloader present",
+      "definition": "Composer autoloader present",
       "defined_in": "spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md",
-      "defined_line": 26,
+      "defined_line": 97,
       "cited_in": []
     },
     {
       "id": "AT-WPPLUGINDEPLOY-08",
       "definition": "No dev deps in vendor/",
       "defined_in": "spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md",
-      "defined_line": 27,
+      "defined_line": 105,
       "cited_in": []
     },
     {
       "id": "AT-WPPLUGINDEPLOY-09",
-      "definition": "SHA-256 sidecar published",
+      "definition": "SHA-256 sidecar",
       "defined_in": "spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md",
-      "defined_line": 28,
+      "defined_line": 113,
       "cited_in": []
     },
     {
       "id": "AT-WPPLUGINDEPLOY-10",
-      "definition": "Workflow file present at canonical path",
+      "definition": "Workflow at canonical path",
       "defined_in": "spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md",
-      "defined_line": 29,
+      "defined_line": 121,
       "cited_in": []
     },
     {
       "id": "AT-WPPLUGINDEPLOY-11",
-      "definition": "CI gates job blocks the package job",
+      "definition": "CI gates block package",
       "defined_in": "spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md",
-      "defined_line": 30,
+      "defined_line": 129,
       "cited_in": []
     },
     {
       "id": "AT-WPPLUGINDEPLOY-12",
-      "definition": "`info.json` shape matches schema",
+      "definition": "`info.json` schema",
       "defined_in": "spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md",
-      "defined_line": 31,
+      "defined_line": 135,
       "cited_in": []
     },
     {
       "id": "AT-WPPLUGINDEPLOY-13",
-      "definition": "Update manifest checksum URL resolves",
+      "definition": "Manifest checksum verifies download",
       "defined_in": "spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md",
-      "defined_line": 32,
+      "defined_line": 145,
       "cited_in": []
     },
     {
       "id": "AT-WPPLUGINDEPLOY-14",
-      "definition": "Version sync drift detection in CI",
+      "definition": "Drift detection in CI",
       "defined_in": "spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md",
-      "defined_line": 33,
+      "defined_line": 157,
       "cited_in": []
     },
     {
       "id": "AT-WPPLUGINDEPLOY-15",
-      "definition": "`package.json` is the only human-edited version source",
+      "definition": "Single human-editable version",
       "defined_in": "spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md",
-      "defined_line": 34,
+      "defined_line": 163,
       "cited_in": []
     },
     {
@@ -22288,342 +22373,11 @@
   ],
   "orphan_at_citations": [
     {
-      "id": "AT-APP-200",
-      "citedIn": [
-        {
-          "file": "spec/31-app/05-conventions/23-g30-at-citation-validity-gate.md",
-          "line": 132
-        }
-      ]
-    },
-    {
-      "id": "AT-APPF-0",
-      "citedIn": [
-        {
-          "file": "spec/31-app/05-conventions/23-g30-at-citation-validity-gate.md",
-          "line": 100
-        }
-      ]
-    },
-    {
-      "id": "AT-APPF-01",
-      "citedIn": [
-        {
-          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
-          "line": 27
-        },
-        {
-          "file": "spec/31-app/05-conventions/23-g30-at-citation-validity-gate.md",
-          "line": 94
-        },
-        {
-          "file": "spec/31-app/05-conventions/23-g30-at-citation-validity-gate.md",
-          "line": 99
-        },
-        {
-          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 22
-        }
-      ]
-    },
-    {
-      "id": "AT-APPF-06",
-      "citedIn": [
-        {
-          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
-          "line": 28
-        },
-        {
-          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 23
-        }
-      ]
-    },
-    {
-      "id": "AT-APPF-11",
-      "citedIn": [
-        {
-          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
-          "line": 29
-        },
-        {
-          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 25
-        }
-      ]
-    },
-    {
-      "id": "AT-APPF-16",
-      "citedIn": [
-        {
-          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
-          "line": 30
-        },
-        {
-          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 26
-        }
-      ]
-    },
-    {
-      "id": "AT-APPF-21",
-      "citedIn": [
-        {
-          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
-          "line": 31
-        },
-        {
-          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 27
-        }
-      ]
-    },
-    {
-      "id": "AT-APPF-31",
-      "citedIn": [
-        {
-          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
-          "line": 32
-        },
-        {
-          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 28
-        }
-      ]
-    },
-    {
-      "id": "AT-APPF-36",
-      "citedIn": [
-        {
-          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
-          "line": 33
-        },
-        {
-          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 29
-        }
-      ]
-    },
-    {
-      "id": "AT-APPF-41",
-      "citedIn": [
-        {
-          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
-          "line": 35
-        },
-        {
-          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 31
-        }
-      ]
-    },
-    {
-      "id": "AT-APPF-46",
-      "citedIn": [
-        {
-          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
-          "line": 37
-        },
-        {
-          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 32
-        }
-      ]
-    },
-    {
-      "id": "AT-APPF-51",
-      "citedIn": [
-        {
-          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
-          "line": 39
-        },
-        {
-          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 33
-        }
-      ]
-    },
-    {
-      "id": "AT-APPF-56",
-      "citedIn": [
-        {
-          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
-          "line": 40
-        },
-        {
-          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 34
-        }
-      ]
-    },
-    {
-      "id": "AT-APPF-61",
-      "citedIn": [
-        {
-          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
-          "line": 42
-        },
-        {
-          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 36
-        }
-      ]
-    },
-    {
-      "id": "AT-APPF-66",
-      "citedIn": [
-        {
-          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
-          "line": 44
-        },
-        {
-          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 38
-        }
-      ]
-    },
-    {
-      "id": "AT-APPF-71",
-      "citedIn": [
-        {
-          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
-          "line": 46
-        },
-        {
-          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 40
-        }
-      ]
-    },
-    {
-      "id": "AT-APPF-76",
-      "citedIn": [
-        {
-          "file": "spec/31-app/01-features/15-roles-and-permissions.md",
-          "line": 5
-        },
-        {
-          "file": "spec/31-app/01-features/15-roles-and-permissions.md",
-          "line": 164
-        },
-        {
-          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
-          "line": 48
-        },
-        {
-          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 41
-        }
-      ]
-    },
-    {
       "id": "AT-BOARD-99",
       "citedIn": [
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 166
-        }
-      ]
-    },
-    {
-      "id": "AT-CICD-01",
-      "citedIn": [
-        {
-          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
-          "line": 19
-        },
-        {
-          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
-          "line": 30
-        }
-      ]
-    },
-    {
-      "id": "AT-CICD-02",
-      "citedIn": [
-        {
-          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
-          "line": 34
-        }
-      ]
-    },
-    {
-      "id": "AT-CICD-03",
-      "citedIn": [
-        {
-          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
-          "line": 37
-        }
-      ]
-    },
-    {
-      "id": "AT-CICD-04",
-      "citedIn": [
-        {
-          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
-          "line": 40
-        }
-      ]
-    },
-    {
-      "id": "AT-CICD-05",
-      "citedIn": [
-        {
-          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
-          "line": 43
-        }
-      ]
-    },
-    {
-      "id": "AT-CICD-06",
-      "citedIn": [
-        {
-          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
-          "line": 20
-        },
-        {
-          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
-          "line": 46
-        }
-      ]
-    },
-    {
-      "id": "AT-CICD-07",
-      "citedIn": [
-        {
-          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
-          "line": 50
-        }
-      ]
-    },
-    {
-      "id": "AT-CICD-08",
-      "citedIn": [
-        {
-          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
-          "line": 53
-        }
-      ]
-    },
-    {
-      "id": "AT-CICD-09",
-      "citedIn": [
-        {
-          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
-          "line": 21
-        },
-        {
-          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
-          "line": 56
-        }
-      ]
-    },
-    {
-      "id": "AT-CICD-10",
-      "citedIn": [
-        {
-          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
-          "line": 60
         }
       ]
     },
@@ -22780,15 +22534,6 @@
       ]
     },
     {
-      "id": "AT-FIX-01",
-      "citedIn": [
-        {
-          "file": "spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md",
-          "line": 101
-        }
-      ]
-    },
-    {
       "id": "AT-INFO-08",
       "citedIn": [
         {
@@ -22821,19 +22566,6 @@
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 84
-        }
-      ]
-    },
-    {
-      "id": "AT-MPG-58",
-      "citedIn": [
-        {
-          "file": "spec/31-app/05-conventions/23-g30-at-citation-validity-gate.md",
-          "line": 133
-        },
-        {
-          "file": "spec/31-app/05-conventions/23-g30-at-citation-validity-gate.md",
-          "line": 134
         }
       ]
     },
