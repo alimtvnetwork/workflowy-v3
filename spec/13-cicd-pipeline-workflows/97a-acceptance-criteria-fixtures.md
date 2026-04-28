@@ -1,126 +1,88 @@
-# Cicd Pipeline Workflows — Acceptance Criteria I/O Fixtures
+# CICD Pipeline Workflows — Acceptance Criteria I/O Fixtures
 
-> **Version:** 0.1.0 (P20 stub seed)
+> **Version:** 1.0.0
 > **Created:** 2026-04-28 (UTC+8)
-> **Status:** Stub seed — companion to [`97-acceptance-criteria.md`](./97-acceptance-criteria.md).
+> **Status:** Concrete companion to [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). Replaces P20 stub seed.
 > **Format spec:** [`spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](../01-spec-authoring-guide/19-acceptance-criteria-io-table.md)
-> **Spawned by:** `.lovable/plans/00-active.md` § P20.
-
-Each row below references one `AT-*` id from the source acceptance file and
-restates the binding I/O contract in the SSOT table format. Stubs have a 🟡
-marker; replace with concrete fixtures during the next P2 sweep.
+> **Spawned by:** `.lovable/plans/00-active.md` § P21.
 
 ---
 
-## `AT-CICD-01` — Stub fixture (P20)
+## `AT-CICD-01` — Tag-driven releases only
 
-| Given | Conditions described in the prose definition of `AT-CICD-01` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Given | A push event whose ref does **not** match `refs/tags/v*`. |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-CICD-01` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_cicd_01` |
+| **When** | Workflow `release.yml` triggers. |
+| **Then** | The job named `release` MUST be skipped (`status=skipped`); only `lint` + `test` run. |
+| **Negative** | A `push` to `main` that produces a GitHub Release MUST fail the gate. |
+| **Test name** | `at_cicd_01_tag_driven_releases_only` |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-CICD-02` — Concurrency group per ref
 
-## `AT-CICD-02` — Stub fixture (P20)
-
-| Given | Conditions described in the prose definition of `AT-CICD-02` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Linter command | `rg -nP "concurrency:\s*\n\s*group:\s*\$\{\{\s*github\.ref\s*\}\}" .github/workflows/release.yml` |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-CICD-02` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_cicd_02` |
+| **Expected exit code** | `0`. |
+| **Negative** | Workflow without `concurrency.group: ${{ github.ref }}` MUST fail; a single ref MUST never have two concurrent release runs. |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-CICD-03` — Version SSOT per archetype
 
-## `AT-CICD-03` — Stub fixture (P20)
-
-| Given | Conditions described in the prose definition of `AT-CICD-03` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Given | Browser-extension archetype with `manifest.json` `"version": "1.4.0"`. |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-CICD-03` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_cicd_03` |
+| **When** | Workflow reads version. |
+| **Then** | Read step uses `manifest.json` (NOT a duplicate `package.json` `version`); workflow output `Version=1.4.0`. |
+| **Negative** | Two version sources for one archetype MUST fail the SSOT gate. |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-CICD-04` — Asset checksum sidecar
 
-## `AT-CICD-04` — Stub fixture (P20)
-
-| Given | Conditions described in the prose definition of `AT-CICD-04` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| When | Release pipeline uploads `app-v1.4.0-linux-amd64.tar.gz`. |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-CICD-04` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_cicd_04` |
+| **Then** | A sibling file `app-v1.4.0-linux-amd64.tar.gz.sha256` is uploaded; sha256 inside matches the asset; sidecar mode `0644`. |
+| **Negative** | Missing `.sha256` sidecar MUST fail the asset-completeness check. |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-CICD-05` — Permissions least-privilege
 
-## `AT-CICD-05` — Stub fixture (P20)
-
-| Given | Conditions described in the prose definition of `AT-CICD-05` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Linter command | `rg -nP "^permissions:\s*$" .github/workflows/*.yml -A 5 \| rg -P "(contents|packages|id-token):\s*write"` |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-CICD-05` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_cicd_05` |
+| **Expected** | Only `contents: write` (release upload) and `id-token: write` (OIDC) appear; `packages: write` only in publish workflows. No top-level `permissions: write-all`. |
+| **Negative** | `permissions: write-all` anywhere MUST fail. |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-CICD-06` — Release body from CHANGELOG
 
-## `AT-CICD-06` — Stub fixture (P20)
-
-| Given | Conditions described in the prose definition of `AT-CICD-06` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Given | `CHANGELOG.md` contains a `## [1.4.0] — 2026-04-28` section. |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-CICD-06` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_cicd_06` |
+| **When** | Release `v1.4.0` is created. |
+| **Then** | GitHub Release body equals the markdown between that heading and the next `## [` heading; trailing whitespace trimmed. |
+| **Negative** | Release body equal to the auto-generated GitHub commit list MUST fail. |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-CICD-07` — Pre-release detection
 
-## `AT-CICD-07` — Stub fixture (P20)
-
-| Given | Conditions described in the prose definition of `AT-CICD-07` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Given | Tag `v1.4.0-rc.1` is pushed. |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-CICD-07` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_cicd_07` |
+| **When** | Release pipeline runs. |
+| **Then** | `gh release create` is called with `--prerelease`; release `prerelease` field = `true`. |
+| **Negative** | A `-rc.N` / `-beta.N` / `-alpha.N` tag promoted as a stable release MUST fail. |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-CICD-08` — Reproducible asset names
 
-## `AT-CICD-08` — Stub fixture (P20)
-
-| Given | Conditions described in the prose definition of `AT-CICD-08` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Linter command | `gh release view v1.4.0 --json assets -q '.assets[].name' \| rg -vP '^[a-z0-9-]+-v\d+\.\d+\.\d+(-[a-z0-9.]+)?-(linux\|darwin\|windows)-(amd64\|arm64)\.(tar\.gz\|zip)(\.sha256)?$'` |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-CICD-08` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_cicd_08` |
+| **Expected exit code** | `1` (no non-conforming names). |
+| **Negative** | An asset named `app.zip` (no version, no platform) MUST fail. |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-CICD-09` — Vulnerability scan blocks release
 
-## `AT-CICD-09` — Stub fixture (P20)
-
-| Given | Conditions described in the prose definition of `AT-CICD-09` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Given | `trivy` finds at least one `CRITICAL` vulnerability in the built image. |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-CICD-09` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_cicd_09` |
+| **When** | The `vuln-scan` job runs in the release workflow. |
+| **Then** | Job exits non-zero; downstream `release` job is skipped (`needs: vuln-scan`). |
+| **Negative** | Tag promotion in the presence of an unwaived `CRITICAL` finding MUST fail. |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-CICD-10` — Audit reports retained
 
-## `AT-CICD-10` — Stub fixture (P20)
-
-| Given | Conditions described in the prose definition of `AT-CICD-10` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| When | Vulnerability scan completes (pass or fail). |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-CICD-10` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_cicd_10` |
-
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+| **Then** | Workflow uploads `trivy-report.sarif` and `trivy-report.json` as artifacts; retention `≥ 90 days`; SARIF also uploaded to GitHub Code Scanning (`github/codeql-action/upload-sarif`). |
+| **Negative** | Scan run with no artifact upload MUST fail the auditability gate. |
 
 ---
 
@@ -128,10 +90,13 @@ marker; replace with concrete fixtures during the next P2 sweep.
 
 ```bash
 grep -c "^## \`AT-CICD-" spec/13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md
+# expected: 10
 node scripts/spec-hygiene/00-run-all.mjs
 ```
 
 ## Related
 
 - [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) — Source AT prose
-- [`spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](../01-spec-authoring-guide/19-acceptance-criteria-io-table.md) — Format SSOT
+- [`16-shared-conventions.md`](./16-shared-conventions.md) — Shared CI/CD conventions
+- [`17-github-release-standard.md`](./17-github-release-standard.md) — Release standard
+- [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/00-overview.md) — Envelope SSOT
