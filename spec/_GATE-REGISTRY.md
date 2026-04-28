@@ -536,3 +536,18 @@
 - Heuristic classifier may mis-tier some gates; the 200 DOC-tier rows from the v1.0.0 inventory are still **unaudited** — many likely belong in CI/TEST tiers (e.g. `G-26-LWW-CANONICAL-COMPARATOR` is currently DOC but is enforced in practice). Per-area manual sweep is the largest remaining quality task.
 - ~63 placeholder `97-acceptance-criteria.md` files (AUDIT-03) still empty — their TEST-tier gates show file path but lack runnable fixtures. **As of 2026-04-28 this also affects the 7 new TEST-tier gates from ADR-0027 / 0028** (`G-27-RING-TTL-300S`, `G-27-COLD-GAP-RESYNC`, `G-27-MULTIWORKER-REPLAY`, `G-28-MISSING-KEY-LOGGED`, `G-28-FALLBACK-CHAIN`, `G-28-RTL-DIR-ATTR`, `G-28-DETECTION-ORDER`) — they are well-specified but won't run until the AC backfill lands.
 - Two `G-28-*` rows are intentionally retained as **superseded** (strikethrough) — never delete history per §4 rule 3.
+
+### 5.1 Citation-vs-row Reconciliation (audited 2026-04-28)
+
+A naive `rg -o '\`G-[A-Z0-9-]+\`' spec/_GATE-REGISTRY.md | sort -u` returns **295** unique tokens, which superficially appears inconsistent with the **290** active-row count in §2. The reconciliation is:
+
+| Bucket | Count | Source |
+|--------|------:|--------|
+| Active gate rows (counted in §2) | 290 | Non-strikethrough table rows |
+| Superseded gate rows (strikethrough, retained per §4 rule 3) | 2 | `G-28-NO-PHYSICAL-MARGINS`, `G-28-NO-PHYSICAL-ALIGN` (folded into `G-12-LOGICAL-*`) |
+| **Real gate IDs total** | **292** | |
+| Documentation placeholders in §4 naming-rule prose (NOT gates) | 3 | `G-NN`, `G-NN-NAME`, `G-DOMAIN-NN` (see §4 rule 5) |
+| **Unique tokens matching `\`G-…\`` regex** | **295** | |
+
+**Implication for fixture-as-spec audits:** any tool that parses gate IDs from this file MUST exclude the 3 documentation-placeholder tokens (`{"G-NN", "G-NN-NAME", "G-DOMAIN-NN"}`) and SHOULD treat strikethrough rows as registered (regex must allow optional `~~` around the backticked ID). The reference implementation in [`spec/13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md`](./13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md) does both as of v1.0.1 (Phase-4 hardening).
+
