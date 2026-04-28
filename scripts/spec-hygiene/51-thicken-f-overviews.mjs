@@ -47,7 +47,7 @@ function extractATIds(fixturePath) {
   if (!fs.existsSync(fixturePath)) return [];
   const body = fs.readFileSync(fixturePath, 'utf8');
   const ids = new Set();
-  const re = /^## `(AT-[A-Z0-9]+-\d+)`/gm;
+  const re = /^#{2,3}\s+`(AT-[A-Z0-9]+-\d+)`/gm;
   let m;
   while ((m = re.exec(body)) !== null) ids.add(m[1]);
   return [...ids];
