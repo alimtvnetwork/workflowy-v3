@@ -22,7 +22,7 @@
 **Definition of Done** —
 - Every update is atomic — failure rolls back to the previous version with zero data loss
 - Update server URL is config-driven, never hardcoded
-- `AT-SELFUPDATE-01` through `AT-SELFUPDATE-NN` from `97-acceptance-criteria.md` pass
+- `AT-SELFUPDATEAPPUPDATE-01` through `AT-SELFUPDATEAPPUPDATE-NN` from `97-acceptance-criteria.md` pass
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

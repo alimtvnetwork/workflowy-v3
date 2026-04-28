@@ -24,7 +24,7 @@
 **Definition of Done** —
 - Every config key has a default value, a type, and a validator
 - Re-running the seeder is idempotent — no duplicate rows, no overwritten user values
-- `AT-SEEDABLECONFIG-01` through `AT-SEEDABLECONFIG-NN` from `97-acceptance-criteria.md` pass
+- _AT rows pending — see this section's  once authored_
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

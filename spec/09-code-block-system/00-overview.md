@@ -20,7 +20,7 @@
 **Definition of Done** —
 - Highlighter loads lazily; no chunk added to the initial bundle
 - Copy button announces success via aria-live region
-- `AT-CODEBLOCK-01` through `AT-CODEBLOCK-NN` from `97-acceptance-criteria.md` pass
+- `AT-CODEBLOCKSYSTEM-01` through `AT-CODEBLOCKSYSTEM-NN` from `97-acceptance-criteria.md` pass
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

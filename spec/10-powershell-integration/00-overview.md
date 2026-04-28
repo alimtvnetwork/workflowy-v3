@@ -23,7 +23,7 @@
 **Definition of Done** —
 - Every `.ps1` script supports `-WhatIf` and `-Verbose`
 - Exit codes follow the convention in `97-acceptance-criteria.md`
-- `AT-POWERSHELL-01` through `AT-POWERSHELL-NN` from `97-acceptance-criteria.md` pass
+- `AT-POWERSHELLINTEGRATION-01` through `AT-POWERSHELLINTEGRATION-NN` from `97-acceptance-criteria.md` pass
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

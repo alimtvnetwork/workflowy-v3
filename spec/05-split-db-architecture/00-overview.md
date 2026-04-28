@@ -24,7 +24,7 @@
 **Definition of Done** —
 - Every cross-DB join is documented and goes through a repo, not raw SQL
 - Split decision matrix in `07-split-db-pattern.md` is reachable from each domain folder
-- `AT-SPLITDB-01` through `AT-SPLITDB-NN` from `97-acceptance-criteria.md` pass
+- _AT rows pending — see this section's  once authored_
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

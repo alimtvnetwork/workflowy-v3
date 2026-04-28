@@ -5,7 +5,7 @@
   "do_not_edit": true,
   "counts": {
     "acceptance_tests_defined": 2257,
-    "acceptance_tests_orphan_citations": 11,
+    "acceptance_tests_orphan_citations": 2,
     "endpoints": 48,
     "enums": 23,
     "sections": 24
@@ -2203,6 +2203,10 @@
       "defined_in": "spec/31-app/97-acceptance-criteria.md",
       "defined_line": 119,
       "cited_in": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 21
+        },
         {
           "file": "spec/18-spec-issues/10-content-audit-endpoints-and-db-diagram.md",
           "line": 31
@@ -5620,6 +5624,10 @@
       "defined_line": 23,
       "cited_in": [
         {
+          "file": "spec/09-code-block-system/00-overview.md",
+          "line": 23
+        },
+        {
           "file": "spec/09-code-block-system/11-highlighter-dependency-pin.md",
           "line": 183
         },
@@ -6386,6 +6394,10 @@
       "defined_in": "spec/12-consolidated-guidelines/97-acceptance-criteria.md",
       "defined_line": 28,
       "cited_in": [
+        {
+          "file": "spec/12-consolidated-guidelines/00-overview.md",
+          "line": 22
+        },
         {
           "file": "spec/12-consolidated-guidelines/97-acceptance-criteria.md",
           "line": 18
@@ -7901,6 +7913,10 @@
       "defined_in": "spec/08-docs-viewer-ui/97-acceptance-criteria.md",
       "defined_line": 24,
       "cited_in": [
+        {
+          "file": "spec/08-docs-viewer-ui/00-overview.md",
+          "line": 20
+        },
         {
           "file": "spec/08-docs-viewer-ui/97-acceptance-criteria.md",
           "line": 12
@@ -11529,6 +11545,10 @@
       "defined_in": "spec/16-generic-cli/97-acceptance-criteria.md",
       "defined_line": 23,
       "cited_in": [
+        {
+          "file": "spec/16-generic-cli/00-overview.md",
+          "line": 18
+        },
         {
           "file": "spec/16-generic-cli/97-acceptance-criteria.md",
           "line": 13
@@ -15338,6 +15358,10 @@
       "defined_line": 36,
       "cited_in": [
         {
+          "file": "spec/10-powershell-integration/00-overview.md",
+          "line": 26
+        },
+        {
           "file": "spec/10-powershell-integration/08-wp-plugin-boundary.md",
           "line": 100
         },
@@ -17585,6 +17609,10 @@
       "defined_in": "spec/14-self-update-app-update/97-acceptance-criteria.md",
       "defined_line": 23,
       "cited_in": [
+        {
+          "file": "spec/14-self-update-app-update/00-overview.md",
+          "line": 25
+        },
         {
           "file": "spec/14-self-update-app-update/97-acceptance-criteria.md",
           "line": 13
@@ -22870,92 +22898,11 @@
       ]
     },
     {
-      "id": "AT-CLI-01",
-      "citedIn": [
-        {
-          "file": "spec/16-generic-cli/00-overview.md",
-          "line": 18
-        }
-      ]
-    },
-    {
-      "id": "AT-CODEBLOCK-01",
-      "citedIn": [
-        {
-          "file": "spec/09-code-block-system/00-overview.md",
-          "line": 23
-        }
-      ]
-    },
-    {
-      "id": "AT-CONSOLIDATED-01",
-      "citedIn": [
-        {
-          "file": "spec/12-consolidated-guidelines/00-overview.md",
-          "line": 22
-        }
-      ]
-    },
-    {
-      "id": "AT-DOCSVIEWER-01",
-      "citedIn": [
-        {
-          "file": "spec/08-docs-viewer-ui/00-overview.md",
-          "line": 20
-        }
-      ]
-    },
-    {
-      "id": "AT-POWERSHELL-01",
-      "citedIn": [
-        {
-          "file": "spec/10-powershell-integration/00-overview.md",
-          "line": 26
-        }
-      ]
-    },
-    {
       "id": "AT-RESEARCH-01",
       "citedIn": [
         {
           "file": "spec/11-research/00-overview.md",
           "line": 24
-        }
-      ]
-    },
-    {
-      "id": "AT-SEEDABLECONFIG-01",
-      "citedIn": [
-        {
-          "file": "spec/06-seedable-config-architecture/00-overview.md",
-          "line": 27
-        }
-      ]
-    },
-    {
-      "id": "AT-SELFUPDATE-01",
-      "citedIn": [
-        {
-          "file": "spec/14-self-update-app-update/00-overview.md",
-          "line": 25
-        }
-      ]
-    },
-    {
-      "id": "AT-SPECISSUES-01",
-      "citedIn": [
-        {
-          "file": "spec/18-spec-issues/00-overview.md",
-          "line": 21
-        }
-      ]
-    },
-    {
-      "id": "AT-SPLITDB-01",
-      "citedIn": [
-        {
-          "file": "spec/05-split-db-architecture/00-overview.md",
-          "line": 27
         }
       ]
     }

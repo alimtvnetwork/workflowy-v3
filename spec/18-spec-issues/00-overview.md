@@ -18,7 +18,7 @@
 
 **Definition of Done** —
 - Every audit file ends with a "Resolution" section pointing to the spec change that closed it
-- `AT-SPECISSUES-01` through `AT-SPECISSUES-NN` from `97-acceptance-criteria.md` pass
+- `AT-APP-37` through `AT-APP-NN` from `97-acceptance-criteria.md` pass
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

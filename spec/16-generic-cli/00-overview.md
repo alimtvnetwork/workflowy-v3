@@ -15,7 +15,7 @@
 **Definition of Done** —
 - Every script supports `--help`, `--json`, and `--verbose`
 - Every script returns 0 on success, non-zero on failure, with documented codes
-- `AT-CLI-01` through `AT-CLI-NN` from `97-acceptance-criteria.md` pass
+- `AT-GENERICCLI-01` through `AT-GENERICCLI-NN` from `97-acceptance-criteria.md` pass
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
