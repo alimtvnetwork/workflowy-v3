@@ -62,12 +62,13 @@ Pick the top 🟦 item on every `next`. Strike (✅) when done; new top item bec
 **Verify:** hygiene; re-score `31-app`.
 **✅ Done 2026-04-28:** Inserted F3 appendices into `06-item-context-menu.md` (full ⋮ inventory + canonical slash-command table + Internal/External/Backlinks), `09-mirrors.md` (Mirror/Mirror-To/Mirror-Here/Detach/See-Mirrors UX with bidirectional rules), `09b-mirror-peer-group-model.md` (Workflowy ↔ peer-group reconciliation map across all 10 AT-MPG-* IDs + vocabulary policy), and `12-multi-select.md` (Bulk Move/Mirror/Delete/Complete/Tag/Export/Templates/Zoom). Three new F7 reconciliation flags: slash→handler binding linter, "mirror copy" forbidden-phrase scan, mirror peer-group founder semantics. Hygiene PASS for F3; only pre-existing `ItemType` enum drift carried over. Projected composite 65 → 67.
 
-### 🟦 F4 — Merge Workflowy feature reference (Part 4: views, sharing, templates)
+### ✅ F4 — Merge Workflowy feature reference (Part 4: views, sharing, templates)
 **Targets:** `07-board-view.md`, `08-share-dialog.md`, `13-templates.md`, `11-trash-view.md`.
 **Map:** Fractal Board, Add Card/Column to Board, Move Cards/Columns, Share, Templates (button + `#template`), Export, Export All, Print, Presentation Mode, Fractal Comments.
 **Verify:** hygiene; re-score `31-app`.
+**✅ Done 2026-04-28:** Inserted F4 appendices into `07-board-view.md` (Fractal Board, Add Card/Column, Move, Convert, Hide Completed), `08-share-dialog.md` (Public Link, Invite People, Permission Levels, Stop Sharing, per-instance ACL on mirrors, Shared-with-me), `13-templates.md` (Templates Button, `#template` tag, Use Template, Templates Panel, Export, Export All, Print, Presentation Mode, Fractal Comments + Mention + Unread + Drafts), and `11-trash-view.md` (Delete, Bulk Delete, Trash View, Restore, Empty Trash, 30-day cron, restore pre-empts purge). Four new F7 reconciliation flags: card-drop-zone uses same fractional-sort patch as list, public-link URL pattern → WP REST `/s/<token>`, `comment_root_id` FK in unified Node interface, WP cron via `wp_schedule_event`. Hygiene PASS for F4; only pre-existing `ItemType` enum drift carried over. Projected composite 67 → 69.
 
-### F5 — Merge Workflowy feature reference (Part 5: account & settings)
+### 🟦 F5 — Merge Workflowy feature reference (Part 5: account & settings)
 **Targets:** new `spec/36-user-management/01-features/*` topic files (currently `.gitkeep`).
 **Map:** Settings Panel, Set Password, Change Email, Restore from Backup, Referrals, Theme, Daily Email Summary, Workflowy Labs, Delete Account, Multi-Factor Authentication, Help, Report a Bug, Handbook Panel.
 **Verify:** hygiene; first AI score for `36-user-management`.

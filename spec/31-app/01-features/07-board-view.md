@@ -202,6 +202,24 @@ No special admin logic required — the tree model handles everything naturally.
 
 ---
 
+## Workflowy Feature Reference (F4) — Fractal Board UX
+
+> **Source:** Workflowy product feature list, merged 2026-04-28 (lossless, additive). Reproduced verbatim; cross-linked to existing AT-BOARD-* rows above and to the structural-sync rules in `mem://features/board-view`.
+
+- **Fractal Board** — Convert any item into a Kanban-style board. Direct children render as **columns**; each column's children render as **cards**. The board is "fractal" because zooming into any card opens it as a board if it has the `board` ItemType, or as a list otherwise — the same data tree is just visualised differently. (slash: `/board`, item-menu: *Convert to Board*)
+- **Add Column to Board** — The `+ Column` button on the right edge appends a new direct child to the board item; that child is the new column. (component: `board-add-column`)
+- **Add Card to Column** — The `+ Card` button at the bottom of any column appends a new child to that column. New cards inherit the default `bullet` ItemType. (component: `board-add-card`)
+- **Move Cards** — Drag a card across columns to re-parent it; drop targets render `card-drop-zone` overlays. Move within a column reorders via fractional sort keys (per `mem://features/editor-core`).
+- **Move Columns** — Drag a column header horizontally to reorder; reorders via fractional sort key on the board's direct-child sequence.
+- **Card Click** — Single click opens an inline card editor; double-click (or click the bullet) zooms into the card as a full page. (interaction: `card-row`)
+- **Column Header Edit** — The column header is the column item's content field; clicking it switches to an inline editor (same `item-row` text component).
+- **Hide Completed (per board)** — Boards honour the global Show/Hide Completed toggle (see [`./06-item-context-menu.md`](./06-item-context-menu.md) F3 appendix); completed cards are dimmed or hidden depending on toggle state.
+- **Convert Board → List** — Item-menu *Convert to Bullet* (or any non-board type) reverts the visualisation to the list renderer. The underlying tree is unchanged. (item-menu)
+
+> **Structural sync:** every board action MUST mutate through the same item CRUD path used by the list renderer — boards are a view, not a separate store. See `mem://features/board-view` for the sync invariant. F7 reconciliation candidate: confirm `card-drop-zone` reorder dispatches the same fractional-sort patch as the list renderer's drag handler.
+
+---
+
 ## Related
 
 - [01-information-model.md](./01-information-model.md) — board view is presentation only; data model unchanged

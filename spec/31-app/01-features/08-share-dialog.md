@@ -143,6 +143,23 @@ As an owner, I want to share an outline branch with specific people at the right
 
 ---
 
+## Workflowy Feature Reference (F4) — Sharing UX
+
+> **Source:** Workflowy product feature list, merged 2026-04-28 (lossless, additive). Reproduced verbatim; cross-linked to existing AT-SHARE-* rows above and to the permission model in `mem://features/sharing-model`.
+
+- **Share** — Open the share dialog from the item-menu (or shortcut ⌘+Shift+S). The dialog has two tabs: *Public link* and *Invite people*.
+- **Public Link** — Toggle generates a `https://workflowy.app/s/<token>` URL. Anyone with the link can view (default) or edit (if "Allow editing" is on). Revoke regenerates the token, invalidating the old link. (component: `share-public-link-tab`)
+- **Invite People** — Add named users by email. Each invitee gets `view` or `edit` permission independently of the public-link state. Invitees see the item appear under a *Shared with me* sidebar group on next sync. (component: `share-invite-tab`)
+- **Permission Levels** — `view` (read-only render, no toolbar / item-menu mutations), `edit` (full CRUD on the shared subtree, but cannot re-share or delete the share root), `owner` (the user who initiated the share; can delete the share root and revoke any invite).
+- **Stop Sharing** — Removes the public token AND all invitee ACLs in one action. (component: `share-stop-button`)
+- **Per-instance ACL on Mirrors** — Sharing applies to the **specific peer**, not the whole mirror peer group. Sharing peer A does not share peer B (per `mem://features/sharing-model` and [`./08b-sharing-mirror-interaction.md`](./08b-sharing-mirror-interaction.md)).
+- **Share Status Pill** — Items with any active share render a `share-status-pill` on the row (see [`./01-information-model.md`](./01-information-model.md)).
+- **Shared with Me** — Sidebar group listing every item the current user has been invited to. Click to navigate; the breadcrumb shows the share-root only (ancestors above are hidden because the user has no permission to see them).
+
+> **Reconciliation note (F7 candidate):** the public-link URL pattern (`https://workflowy.app/s/<token>`) is taken verbatim from the Workflowy spec for parity. WorkFlowy's WP-plugin backend MUST host the equivalent at `/wp-json/workflowy/v1/s/<token>` and serve a server-rendered viewer for unauthenticated visitors. Tracked under `.lovable/question-and-ambiguity/`.
+
+---
+
 ## Related
 
 - [01-information-model.md](./01-information-model.md) — Item ↔ Share relationship and cascade rules

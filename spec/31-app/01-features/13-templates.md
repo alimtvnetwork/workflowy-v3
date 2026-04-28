@@ -172,6 +172,36 @@ User clicks "Make template" in the item context menu → a dialog opens to name 
 
 ---
 
+## Workflowy Feature Reference (F4) — Templates, Export, Print, Presentation, Comments
+
+> **Source:** Workflowy product feature list, merged 2026-04-28 (lossless, additive). Reproduced verbatim; cross-linked to existing AT-TPL-* rows above and to `mem://features/templates`.
+
+### Templates
+
+- **Templates Button** — A *Templates* affordance in the item-menu and the slash-command list (`/template`). Marks the item's subtree as a reusable template. Equivalent to applying the `#template` tag (the tag form is canonical and survives export/import). (item-menu, slash: `/template`)
+- **`#template` Tag** — Adding `#template` to any item registers its subtree in the user's Templates panel. Removing the tag de-registers it. The tag is a literal token, searchable via standard `#tag` search.
+- **Use Template** — From any item's `+` insertion point, choose *Insert from template*; pick a registered template; a fresh copy of its subtree is inserted as a child. The copy is a **one-shot snapshot** (per `mem://features/templates`): no link is retained from the new instance back to the template, and later edits to the template do NOT propagate.
+- **Templates Panel** — Sidebar entry listing all `#template`-tagged items, grouped by top-level page. Click a template to preview its tree; click *Insert* to drop a copy at the current cursor.
+
+### Export / Print / Presentation
+
+- **Export** — Export the current item subtree as Markdown, OPML, or plain text. Multi-select export combines selected items into a single document with each root as a top-level section. (item-menu, slash: `/export`)
+- **Export All** — Export the user's entire root tree as a single archive (Markdown + OPML + attachments manifest). Available from Settings → *Backup & Export*. (settings entry → see [`spec/36-user-management/`](../../36-user-management/00-overview.md) F5 appendix)
+- **Print** — Open the browser print dialog scoped to the current item subtree. The renderer applies the `@media print` styles defined in [`spec/07-design-system/`](../../07-design-system/00-overview.md) (no chrome, full-width text, no infinite-scroll virtualisation).
+- **Presentation Mode** — A full-screen item-by-item slideshow of the current subtree. Each top-level child becomes one slide; descendants render as bullets within. Navigate with ←/→. (item-menu: *Present*, shortcut: ⌘+Shift+P)
+
+### Fractal Comments
+
+- **Fractal Comments** — Threaded comment system where each comment is itself a tree (replies can have replies indefinitely). A comment thread is anchored to a specific item; the thread root renders in a side panel. (component: `comments-panel`, shortcut: ⌃M)
+- **Comment Drafts** — Comments are saved as drafts locally until the user clicks *Post*; drafts survive page navigation and offline disconnects.
+- **Mention** — Typing `@username` in a comment inserts a mention pill that notifies the named user. (autocomplete from invited / shared users on the item)
+- **Unread Indicator** — A blue dot appears on the menu-bar comments icon when the user has unread comments anywhere in their tree.
+- **Rich Comment Body** — Comments support the same item types and slash commands as the main editor (image upload, code block, sub-bullets, layout change inside a comment). Per Workflowy: "you can zoom in, nest items, add images, and change layout inside a comment".
+
+> **Reconciliation note (F7 candidate):** Fractal Comments imply a second item-tree namespace anchored to a host item. Confirm the data model in [`./01-information-model.md`](./01-information-model.md) accommodates `comment_root_id` foreign keys without breaking the unified `Node` interface. Tracked under `.lovable/question-and-ambiguity/`.
+
+---
+
 ## Related
 
 - [06-item-context-menu.md](./06-item-context-menu.md) — "Make template" and "Update template" entry points
