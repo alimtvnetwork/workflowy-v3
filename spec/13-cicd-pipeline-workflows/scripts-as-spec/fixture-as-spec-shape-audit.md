@@ -79,8 +79,16 @@ REGISTRY_ROW = re.compile(
     re.M,
 )
 # Phase-4 carve-out: gates whose authoritative spec lives outside
-# scripts-as-spec/ (registry row links there, not to the fixture).
-BACKLINK_EXEMPT = {"G-00-ADR-XLINK-SYMMETRY"}
+# scripts-as-spec/ are loaded from the ledger file (append-only, audited).
+EXEMPT_LEDGER = pathlib.Path("spec/_LEDGER-G-13-BACKLINK-EXEMPT.md")
+EXEMPT_ROW = re.compile(r"^\|\s*\d+\s*\|\s*`(G-[A-Z0-9][A-Z0-9-]+)`",
+                        re.M)
+
+def load_backlink_exempt() -> set[str]:
+    if not EXEMPT_LEDGER.exists():
+        return set()
+    return set(EXEMPT_ROW.findall(
+        EXEMPT_LEDGER.read_text(encoding="utf-8")))
 
 def registry_gate_ids() -> set[str]:
     return set(GATE_ID.findall(REGISTRY.read_text(encoding="utf-8")))
