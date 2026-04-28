@@ -437,6 +437,7 @@ AI INSTRUCTION:
 
 - [`scripts-as-spec/README.md`](./scripts-as-spec/README.md) — Convention for fixture-as-spec files (frozen reference algorithms cited by gate definitions)
 - [`scripts-as-spec/xlink-symmetry-audit.md`](./scripts-as-spec/xlink-symmetry-audit.md) — Reference Python algorithm for `G-00-ADR-XLINK-SYMMETRY` (auditing reciprocal back-links from ADR `## Decision` sections to non-ADR files)
+- [`scripts-as-spec/fixture-as-spec-shape-audit.md`](./scripts-as-spec/fixture-as-spec-shape-audit.md) — Reference Python algorithm for `G-13-FIXTURE-AS-SPEC-SHAPE` (meta-audit: enforces the 6-section template across the directory, including itself)
 
 **See also:**
 
