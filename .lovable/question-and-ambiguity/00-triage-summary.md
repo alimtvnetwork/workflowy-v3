@@ -1,10 +1,11 @@
 # Ambiguity Triage Summary — 2026-04-27 (updated 2026-04-28)
 
-> **2026-04-28 status update (P37):** All 3 soft-confirm rulings have been promoted into spec text and are now load-bearing — they are no longer "soft":
-> - **#01** (audit dimension scope): footnote-only resolution stands; recorded here.
-> - **#03** (DDL singular vs spec plural): canonicalised in `spec/04-database-conventions/00-overview.md` → "Spec↔DDL Alias Bridge" + Golden Rule #7.
-> - **#17** (Favorites endpoint vs table): canonicalised in `spec/31-app/06-endpoints/03-layout-structure.md` → "Favorites canonical placement" bullet.
+> **2026-04-28 status update (P72):** All 3 soft-confirms are now **✅ Ratified by ADR-0024** — no longer "default-accept", reversal requires a superseding ADR:
+> - **#01** (audit dimension scope) → `G-24-AUDIT-SCORE-FROZEN`
+> - **#03** (DDL singular vs spec plural) → `G-24-DDL-SINGULAR-LOCKED` (triple-locked with ADR-0001 + ADR-0006)
+> - **#17** (Favorites endpoint vs table) → `G-24-FAVORITES-TABLE-ONLY`
 >
+> P37 had promoted them into spec text; P72/ADR-0024 makes them load-bearing.
 > The hard-confirm (#02, AT-MGP-/AT-MPG-) was previously resolved → `AT-MPG-`.
 
 
