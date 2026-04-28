@@ -33,7 +33,8 @@
 | 17 | [`17-generic-update/`](./17-generic-update/00-overview.md) | Generic Update | subfolder |
 | 18 | [`18-spec-issues/`](./18-spec-issues/00-overview.md) | Spec Issues | subfolder |
 | 19 | [`19-glossary.md`](./19-glossary.md) | Glossary — Cross-Spec Terminology SSOT | 118 |
-| 20 | [`20-enums-index.md`](./20-enums-index.md) | Enums Index — Cross-Language Registry | 177 |
+| 20 | [`20-enums-index.md`](./20-enums-index.md) | Enums Index — Cross-Language Registry | 178 |
+| 20a | [`_GATE-REGISTRY.md`](./_GATE-REGISTRY.md) | **Gate Registry** — master index of all 266 named `G-*` compliance gates, classified by enforcement tier (CI / TEST / DOC-NORM / DOC) | 491 |
 | 21 | [`21-ai-readiness-audit-round-2.md`](./21-ai-readiness-audit-round-2.md) | AI-Readiness Audit Report — Round 2 (post C/M/H/L tier completion) | 138 |
 | 22 | [`22-contract-json.md`](./22-contract-json.md) | `spec/contract.json` — Machine-Readable Spec Contract | 104 |
 | 23 | [`23-ai-build-walkthrough.md`](./23-ai-build-walkthrough.md) | AI Build Walkthrough — End-to-End Smoke Test (P9) | 240 |
@@ -240,6 +241,7 @@ See [`spec/18-spec-issues/03-ai-readiness-audit-2026-04-19.md`](./18-spec-issues
 
 - [`19-glossary.md`](./19-glossary.md) — **Cross-spec terminology SSOT** (NEW — H-5.1)
 - [`20-enums-index.md`](./20-enums-index.md) — **Cross-language enum registry** (NEW — H-5.2)
+- [`_GATE-REGISTRY.md`](./_GATE-REGISTRY.md) — **Gate Registry** — master index of 266 `G-*` compliance gates by enforcement tier (NEW — P76 / AUDIT-08)
 - [`folder-structure-root.md`](./folder-structure-root.md) — Canonical folder layout policy
 - [`spec-index.md`](./spec-index.md) — Auto-generated file index (⚠️ currently stale — AUD-D-01)
 - [`readme.md`](./readme.md) — Human-friendly index of folders

@@ -1,0 +1,491 @@
+# Gate Registry — Master Index of `G-*` Compliance Gates
+
+> **Version:** 1.0.0  
+> **Updated:** 2026-04-28 — P76 / AUDIT-08 fix: first complete inventory.  
+> **Status:** Active  
+> **Purpose:** Single registry of every `G-*` compliance gate referenced anywhere in `spec/`. Each gate is classified by enforcement tier so AI implementers can tell at a glance which gates a CI pipeline must mechanically enforce vs. which are normative documentation invariants vs. which require test fixtures.
+
+---
+
+## 1. Enforcement Tiers
+
+| Tier | Code | Meaning | Implementer obligation |
+|------|------|---------|------------------------|
+| **CI** | `CI` | Gate explicitly says it must fail the CI pipeline (lint, tsc, phpstan, pre-commit, build). | Wire a mechanical check into `.github/workflows/` or equivalent. |
+| **TEST** | `TEST` | Gate is enforced by a test fixture or acceptance criterion (`AT-*`/`AC-*`). | Author the test under `spec/**/97-acceptance-criteria.md` or `tests/`. |
+| **DOC-NORM** | `DOC-NORM` | Gate is a normative MUST/SHALL invariant in the spec but has no automated enforcement specified yet. | Treat as a code-review checklist item; promote to CI/TEST when feasible. |
+| **DOC** | `DOC` | Informational gate (descriptive cross-reference). | None — exists for traceability. |
+
+## 2. Summary
+
+- **Total named gates:** 266
+- **CI:** 10
+- **TEST:** 8
+- **DOC-NORM:** 48
+- **DOC:** 200
+- **Areas covered:** 35 (one per ADR or domain prefix)
+
+> ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
+
+---
+
+## 3. Gate Registry by Area
+
+### ADR-0002
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-02-CHAIN-MULTILINE` | **DOC** | [`spec/00-adrs/0007-strict-typescript-rules.md`](./00-adrs/0007-strict-typescript-rules.md) | - G-02-CHAIN-MULTILINE — enforces R7. |
+| `G-02-MAX-2-BOOL-OPERANDS` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0007](./00-adrs/0007-strict-typescript-rules.md) Strict TypeScript coding rules (R1–R7) Accepted 2026-04-28 G-02-NO-AN |
+| `G-02-MAX-3-PARAMS` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0007](./00-adrs/0007-strict-typescript-rules.md) Strict TypeScript coding rules (R1–R7) Accepted 2026-04-28 G-02-NO-AN |
+| `G-02-NO-ANY` | **DOC** | [`spec/00-adrs/0007-strict-typescript-rules.md`](./00-adrs/0007-strict-typescript-rules.md) | - G-02-NO-ANY — enforces R1. |
+| `G-02-NO-DISABLE` | **CI** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | 3 Use // eslint-disable-next-line to silence a hard rule Defeats the gate; bug ships. G-02-NO-DISABLE (CI blocks eslint |
+| `G-02-NO-NESTED-IF` | **DOC** | [`spec/00-adrs/0007-strict-typescript-rules.md`](./00-adrs/0007-strict-typescript-rules.md) | G-02-NO-NESTED-IF) have no decision to cite. |
+| `G-02-NO-RETURN-TERNARY` | **DOC** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | 5 Replace a guard with a ternary that hides early-return intent Reduces readability; breaks line-counter heuristics. Co |
+| `G-02-PAIRED-EXAMPLES` | **DOC** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | 2 Cite a rule without both a bad and a good snippet AI consumers can't disambiguate intent. G-02-PAIRED-EXAMPLES (markd |
+| `G-02-POSITIVE-GUARDS` | **DOC** | [`spec/00-adrs/0007-strict-typescript-rules.md`](./00-adrs/0007-strict-typescript-rules.md) | - G-02-POSITIVE-GUARDS — enforces R5. |
+| `G-02-RULE-HAS-GATE` | **DOC** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | 1 Add a coding rule without a paired automated check Rule rots — humans won't enforce by review alone. G-02-RULE-HAS-GA |
+
+### ADR-0003
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-03-CODE-ASCII` | **DOC** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | 5 Localize the Code field Codes are machine identifiers; localization belongs in Message. G-03-CODE-ASCII (regex blocks |
+| `G-03-CODE-FORMAT` | **DOC** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Codes are UPPER_SNAKE_CASE, ≤ 40 chars. Gate G-03-CODE-FORMAT (regex ^[A-Z][A-Z0-9_]{0,39}$). |
+| `G-03-CODE-UNIQUE` | **DOC** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Codes are unique across the entire codebase. Gate G-03-CODE-UNIQUE (grep). |
+| `G-03-ENVELOPE-ONLY` | **TEST** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | 2 Return a non-envelope body on error (raw string, plain object) Frontend error handler cannot parse uniformly. G-03-EN |
+| `G-03-FIELD-CONDITIONAL` | **DOC-NORM** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Field is required when the error references a specific input field; forbidden otherwise. Gate G-03-FIELD-CONDITIONAL. |
+| `G-03-MESSAGE-PRESENT` | **DOC-NORM** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Each code MUST have a one-line human message template in errors.messages.<code>. Gate G-03-MESSAGE-PRESENT. |
+| `G-03-NO-BARE-THROW` | **CI** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | 1 Throw a bare xception / Error without errorCode Caller cannot branch on cause; observability cannot bucket. G-03-NO- |
+| `G-03-NO-LEAK` | **DOC** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | 6 Leak stack traces or SQL into Message Information disclosure; violates security review. G-03-NO-LEAK (regex blocks at |
+| `G-03-STATUS-CONSISTENT` | **DOC** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | 4 Set Status: "Success" while the Errors array is non-empty Self-contradicting envelope; clients double-render. G-03-ST |
+
+### ADR-0004
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-04-ALIAS-DDL-CANONICAL` | **DOC-NORM** | [`spec/00-adrs/0001-singular-ddl-vs-plural-prose.md`](./00-adrs/0001-singular-ddl-vs-plural-prose.md) | and G-04-ALIAS-DDL-CANONICAL (every alias must map to a real DDL |
+| `G-04-ENVELOPE-DEBUG-FLAG` | **DOC** | [`spec/00-adrs/0004-rest-envelope-pascalcase.md`](./00-adrs/0004-rest-envelope-pascalcase.md) | - G-04-ENVELOPE-DEBUG-FLAG — MethodsStack present iff |
+| `G-04-ENVELOPE-NO-EMPTY-ERRORS` | **DOC** | [`spec/00-adrs/0004-rest-envelope-pascalcase.md`](./00-adrs/0004-rest-envelope-pascalcase.md) | - G-04-ENVELOPE-NO-EMPTY-ERRORS — Errors key absent on success. |
+| `G-04-ENVELOPE-SHAPE` | **DOC** | [`spec/00-adrs/0004-rest-envelope-pascalcase.md`](./00-adrs/0004-rest-envelope-pascalcase.md) | - Anchors gate G-04-ENVELOPE-SHAPE (already drafted in |
+| `G-04-ENVELOPE-STATUS-ENUM` | **DOC** | [`spec/00-adrs/0004-rest-envelope-pascalcase.md`](./00-adrs/0004-rest-envelope-pascalcase.md) | - G-04-ENVELOPE-STATUS-ENUM — Status value drawn from the |
+| `G-04-ENVELOPE-VALIDATOR` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0019](./00-adrs/0019-rest-envelope-optional-keys.md) REST envelope optional keys — omit-never-null, page-based paginat |
+| `G-04-ERRORS-FOUR-KEYS-REQUIRED` | **DOC-NORM** | [`spec/00-adrs/0019-rest-envelope-optional-keys.md`](./00-adrs/0019-rest-envelope-optional-keys.md) | - G-04-ERRORS-FOUR-KEYS-REQUIRED — enforces D5 (when present, |
+| `G-04-ERRORS-LOCKSTEP` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0019](./00-adrs/0019-rest-envelope-optional-keys.md) REST envelope optional keys — omit-never-null, page-based paginat |
+| `G-04-FAVORITE-TABLE` | **DOC** | [`spec/00-adrs/00-overview.md`](./00-adrs/00-overview.md) | add new gate G-04-FAVORITE-TABLE, add EP-FAVORITES- endpoints. |
+| `G-04-METHODSSTACK-DEBUG-ONLY` | **DOC** | [`spec/00-adrs/0019-rest-envelope-optional-keys.md`](./00-adrs/0019-rest-envelope-optional-keys.md) | - G-04-METHODSSTACK-DEBUG-ONLY — enforces D6/D7 (omitted in |
+| `G-04-NAMING` | **DOC** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | R9 SQLite tables, columns, and indexes are PascalCase. Tables singular (Item, not Items_tbl). Migration linter G-04-NAM |
+| `G-04-NAVIGATION-PAGE-BASED` | **DOC** | [`spec/00-adrs/0019-rest-envelope-optional-keys.md`](./00-adrs/0019-rest-envelope-optional-keys.md) | - G-04-NAVIGATION-PAGE-BASED — enforces D3 (no ?cursor=, |
+| `G-04-NAVIGATION-PRESENCE` | **DOC** | [`spec/00-adrs/0019-rest-envelope-optional-keys.md`](./00-adrs/0019-rest-envelope-optional-keys.md) | - G-04-NAVIGATION-PRESENCE — enforces D2 (presence iff |
+| `G-04-NESTED-ARRAY-NEVER-NULL` | **DOC** | [`spec/00-adrs/0019-rest-envelope-optional-keys.md`](./00-adrs/0019-rest-envelope-optional-keys.md) | - G-04-NESTED-ARRAY-NEVER-NULL — enforces D9 (any declared |
+| `G-04-NESTED-DECLARED-FIELD-PRESENT` | **DOC** | [`spec/00-adrs/0019-rest-envelope-optional-keys.md`](./00-adrs/0019-rest-envelope-optional-keys.md) | - G-04-NESTED-DECLARED-FIELD-PRESENT — enforces D9 (declared |
+| `G-04-NO-DDL-PLURALS` | **DOC** | [`spec/00-adrs/0006-migrate-spec-sql-to-singular-ddl.md`](./00-adrs/0006-migrate-spec-sql-to-singular-ddl.md) | 5. Gate G-04-NO-DDL-PLURALS is hereby promoted from |
+| `G-04-OPTIONAL-OMIT-NEVER-NULL` | **DOC** | [`spec/00-adrs/0019-rest-envelope-optional-keys.md`](./00-adrs/0019-rest-envelope-optional-keys.md) | - G-04-OPTIONAL-OMIT-NEVER-NULL — enforces D1 (no |
+| `G-04-WIRE-PASCALCASE` | **DOC** | [`spec/00-adrs/0019-rest-envelope-optional-keys.md`](./00-adrs/0019-rest-envelope-optional-keys.md) | - Modified gates: G-04-WIRE-PASCALCASE (ADR-0004) clarified |
+
+### ADR-0005
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-05-ATTACH-ORDER` | **TEST** | [`spec/05-split-db-architecture/00-overview.md`](./05-split-db-architecture/00-overview.md) | - The order is fixed; reordering is a spec violation caught by gate G-05-ATTACH-ORDER (PHPUnit asserts sqlite_master que |
+| `G-05-AUDIT-NONBLOCKING` | **DOC-NORM** | [`spec/05-split-db-architecture/00-overview.md`](./05-split-db-architecture/00-overview.md) | audit writes are fire-and-forget — they MUST NOT roll back the parent transaction on failure. Gate G-05-AUDIT-NONBLOCKI |
+| `G-05-MIN-TABLES` | **DOC** | [`spec/05-split-db-architecture/00-overview.md`](./05-split-db-architecture/00-overview.md) | 2 Split a domain that owns < 3 tables Overhead (extra ATTACH, extra backup target) exceeds isolation benefit. G-05-MIN- |
+| `G-05-NO-ADHOC-PDO` | **CI** | [`spec/05-split-db-architecture/00-overview.md`](./05-split-db-architecture/00-overview.md) | 5 Open ad-hoc new PDO(...) instead of using DbConnectionPool::for($name) Bypasses pragmas, attach order, and pooling. G |
+| `G-05-NO-RAW-CROSS-JOIN` | **DOC-NORM** | [`spec/05-split-db-architecture/00-overview.md`](./05-split-db-architecture/00-overview.md) | Raw SQL joins across attached schemas are forbidden in handler code. Gate G-05-NO-RAW-CROSS-JOIN (grep: JOIN\s+(usersau |
+| `G-05-REGISTRY-COMPLETE` | **DOC** | [`spec/05-split-db-architecture/00-overview.md`](./05-split-db-architecture/00-overview.md) | 3 Omit a new file from wp-plugin/config/db-split.json Orchestrator never attaches it; queries silently target the wrong |
+| `G-05-REPO-COMPOSE` | **DOC-NORM** | [`spec/05-split-db-architecture/00-overview.md`](./05-split-db-architecture/00-overview.md) | Cross-DB reads MUST go through a repository method that performs two queries and joins in PHP. Gate G-05-REPO-COMPOSE. |
+
+### ADR-0006
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-06-CACHE-INVALIDATE` | **DOC-NORM** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | 4 Cache config without invalidation hook Settings UI changes don't take effect until restart. G-06-CACHE-INVALIDATE (ac |
+| `G-06-ENV-VIA-REGISTRY` | **DOC** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | 6 Use ENV at runtime via getenv() outside ConfigRegistry Two competing sources of truth. G-06-ENV-VIA-REGISTRY. |
+| `G-06-IDEMPOTENT` | **TEST** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | Never overwrite a key already present in WorkflowyConfigOverride or WorkflowyConfigUserOverride. Gate G-06-IDEMPOTENT ( |
+| `G-06-LOG-INSERT` | **DOC-NORM** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | Inserting a new key from seed MUST log seed.inserted with key + value. Gate G-06-LOG-INSERT. |
+| `G-06-NO-IMPLICIT-DELETE` | **DOC-NORM** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | Removing a key from seed/config.json does not remove it from the DB — operators must run wp workflowy config prune. Gat |
+| `G-06-NO-SECRETS-IN-SEED` | **DOC** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | 1 Put secrets in seed/config.json Seed file ships in the plugin zip — secrets leak to every install. G-06-NO-SECRETS-IN |
+| `G-06-NO-TYPE-DRIFT` | **DOC-NORM** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | Type widening (e.g. int → enum) requires a versioned migration; the seeder MUST refuse to apply it. Gate G-06-NO-TYPE-D |
+| `G-06-SCHEMA-PARITY` | **DOC** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | 5 Define a key in seed without a matching ConfigSchema entry Validator silently accepts garbage. G-06-SCHEMA-PARITY (di |
+| `G-06-VIA-REGISTRY` | **CI** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | 3 Read config directly from DB in hot paths Bypasses validator + cache; type drift not caught. G-06-VIA-REGISTRY (PHPSt |
+
+### ADR-0010
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-10-CMDLET-BINDING` | **DOC** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | 2 Omit [CmdletBinding(SupportsShouldProcess)] No -WhatIf support; mutations cannot be dry-run. G-10-CMDLET-BINDING (AST |
+| `G-10-ERROR-STOP` | **DOC-NORM** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | 5 Omit $ErrorActionPreference = 'Stop' Non-terminating errors → exit 0 despite failure. G-10-ERROR-STOP (AST: must appe |
+| `G-10-NO-HARDCODE-PATH` | **DOC** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | 3 Hardcode C:\Program Files\… paths Breaks portable installs; fails on non-default WP layouts. G-10-NO-HARDCODE-PATH (r |
+| `G-10-NO-IEX` | **DOC** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | 7 Use Invoke-Expression on any input Arbitrary code execution. G-10-NO-IEX (regex). |
+| `G-10-NO-WRITE-HOST` | **DOC** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | 1 Use Write-Host for script output Bypasses stdout — PHP captures nothing, JSON parse fails. G-10-NO-WRITE-HOST (regex) |
+| `G-10-STDOUT-PURE` | **DOC** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | Mixing JSON and free text on stdout is a hard error caught by G-10-STDOUT-PURE. |
+| `G-10-USE-FILE-FLAG` | **CI** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | 4 Build the command line as a string in PHP and pass via -Command PowerShell injection via unescaped item titles. G-10- |
+
+### ADR-0011
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-11-REAPER-AUDIT-ROW` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0009](./00-adrs/0009-trash-30-day-retention.md) Trash — 30-day retention, soft-delete, daily reaper at 03:00 UTC, batc |
+| `G-11-REAPER-BATCH-1000` | **DOC** | [`spec/00-adrs/0009-trash-30-day-retention.md`](./00-adrs/0009-trash-30-day-retention.md) | - G-11-REAPER-BATCH-1000 — enforces D4 (batch size 1000, |
+| `G-11-REAPER-CASCADE-SCOPE` | **DOC** | [`spec/00-adrs/0009-trash-30-day-retention.md`](./00-adrs/0009-trash-30-day-retention.md) | - G-11-REAPER-CASCADE-SCOPE — enforces D5 (descendants + |
+| `G-11-REAPER-DAILY-03-UTC` | **DOC** | [`spec/00-adrs/0009-trash-30-day-retention.md`](./00-adrs/0009-trash-30-day-retention.md) | - G-11-REAPER-DAILY-03-UTC — enforces D3 (single deterministic |
+| `G-11-TRASH-30-DAY-WINDOW` | **DOC** | [`spec/00-adrs/0009-trash-30-day-retention.md`](./00-adrs/0009-trash-30-day-retention.md) | - G-11-TRASH-30-DAY-WINDOW — enforces D2 (cutoff is exactly |
+| `G-11-TRASH-SOFT-DELETE-ONLY` | **DOC** | [`spec/00-adrs/0009-trash-30-day-retention.md`](./00-adrs/0009-trash-30-day-retention.md) | - G-11-TRASH-SOFT-DELETE-ONLY — enforces D1 (no user path issues |
+
+### ADR-0013
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-13-ACTION-VERSIONS` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | 7 Use actions/checkout@v3 or older Known supply-chain CVE; loses sparse-checkout. G-13-ACTION-VERSIONS (lint: pin major |
+| `G-13-ARCHETYPE-DECLARED` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | 1 Add a new repo without picking one of the documented archetypes Pipeline drift — each repo invents its own gates. G-1 |
+| `G-13-CACHE-KEY` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0002](./00-adrs/0002-wp-plugin-php-sqlite-backend.md) WordPress plugin + PHP 8.1+ + SQLite Accepted 2026-04-28 G-13-CA |
+| `G-13-CONCURRENCY` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | concurrency: { group: ${{ github.workflow }}-${{ github.ref }}, cancel-in-progress: true } on every PR workflow. Gate G |
+| `G-13-DAG-PARALLEL` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | 5 Run jobs in series when DAG allows parallel Wastes CI minutes; balloons feedback time. G-13-DAG-PARALLEL (lint: lint- |
+| `G-13-HYGIENE-PRESENT` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | 2 Skip the spec-hygiene step Spec rot ships unchecked. G-13-HYGIENE-PRESENT (workflow lint). |
+| `G-13-NO-CANCEL-TAG` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | Tag workflows MUST set cancel-in-progress: false — releases are never cancelled mid-flight. Gate G-13-NO-CANCEL-TAG. |
+| `G-13-NO-SECRET-ECHO` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | Secrets accessed only via ${{ secrets. }}; never echoed to logs. Gate G-13-NO-SECRET-ECHO (regex over workflow). |
+| `G-13-NO-SECRET-LITERAL` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | 3 Hardcode secrets / registry URLs in workflow YAML Token leak; rotation impossible. G-13-NO-SECRET-LITERAL (regex). |
+| `G-13-PROTECTION-MATCH` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | 4 Mark scan-security as required Slows merges on third-party CVE noise. Branch-protection JSON checked into repo, valid |
+| `G-13-PUBLISH-NEEDS-SIGN` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | 6 Publish from a job that didn't depend on sign-artifact Unsigned release reaches users. G-13-PUBLISH-NEEDS-SIGN. |
+
+### ADR-0014
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-14-BACKUP-RETAIN` | **DOC-NORM** | [`spec/14-self-update-app-update/00-overview.md`](./14-self-update-app-update/00-overview.md) | 5 Delete the SQLite backup before phase 7 commits Loses the only rollback target. G-14-BACKUP-RETAIN (runtime: BackupRe |
+| `G-14-CONFLICT-UX-SILENT` | **DOC** | [`spec/00-adrs/0010-offline-fifo-replay-queue.md`](./00-adrs/0010-offline-fifo-replay-queue.md) | - G-14-CONFLICT-UX-SILENT — enforces D5 (no prompts; "restored |
+| `G-14-LWW-SERVERTS-CANONICAL` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0010](./00-adrs/0010-offline-fifo-replay-queue.md) Offline FIFO replay queue (IndexedDB) + server-stamped LWW reconcil |
+| `G-14-NO-HARDCODE-URL` | **DOC-NORM** | [`spec/14-self-update-app-update/00-overview.md`](./14-self-update-app-update/00-overview.md) | 2 Hardcode the update-server URL in PHP Breaks air-gapped/self-hosted deployments. G-14-NO-HARDCODE-URL (grep: https?:/ |
+| `G-14-NO-SWALLOW` | **CI** | [`spec/14-self-update-app-update/00-overview.md`](./14-self-update-app-update/00-overview.md) | 4 Catch Throwable in apply() and return success Hides corruption; later phases run on broken state. G-14-NO-SWALLOW (PH |
+| `G-14-PHASE-ORDER` | **TEST** | [`spec/14-self-update-app-update/00-overview.md`](./14-self-update-app-update/00-overview.md) | 1 Run ExtractFiles before BackupSqlite succeeded No rollback target — partial extraction corrupts plugin. G-14-PHASE-OR |
+| `G-14-QUEUE-FIFO-LOCALSEQ` | **DOC** | [`spec/00-adrs/0010-offline-fifo-replay-queue.md`](./00-adrs/0010-offline-fifo-replay-queue.md) | - G-14-QUEUE-FIFO-LOCALSEQ — enforces D1 (strict LocalSeq order, |
+| `G-14-QUEUE-INDEPENDENT-OF-VIEW-CAP` | **DOC** | [`spec/00-adrs/0010-offline-fifo-replay-queue.md`](./00-adrs/0010-offline-fifo-replay-queue.md) | - G-14-QUEUE-INDEPENDENT-OF-VIEW-CAP — enforces D6 (queue + local |
+| `G-14-QUEUE-INDEXEDDB-ONLY` | **DOC** | [`spec/00-adrs/0010-offline-fifo-replay-queue.md`](./00-adrs/0010-offline-fifo-replay-queue.md) | - G-14-QUEUE-INDEXEDDB-ONLY — enforces D2 (no localStorage / |
+| `G-14-REPLAY-IDEMPOTENT-CMID` | **DOC** | [`spec/00-adrs/0010-offline-fifo-replay-queue.md`](./00-adrs/0010-offline-fifo-replay-queue.md) | - G-14-REPLAY-IDEMPOTENT-CMID — enforces D4 (ClientMutationId + |
+| `G-14-SIG-REQUIRED` | **CI** | [`spec/14-self-update-app-update/00-overview.md`](./14-self-update-app-update/00-overview.md) | 3 Skip Ed25519 signature verification Allows arbitrary RCE via spoofed update server. G-14-SIG-REQUIRED (PHPStan: Extra |
+| `G-14-STAGING-ONLY` | **DOC** | [`spec/14-self-update-app-update/00-overview.md`](./14-self-update-app-update/00-overview.md) | 6 Mutate the live plugin/ dir instead of plugin/.staging/ A crash mid-extract leaves users with a half-installed plugin |
+
+### ADR-0015
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-15-CASCADE-AND-WIN-RULES` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0014](./00-adrs/0014-sharing-public-vs-invited-permission-model.md) Sharing — public + invited, 5-role item ACL, separ |
+| `G-15-DEFAULT-PRIVATE` | **DOC** | [`spec/00-adrs/0014-sharing-public-vs-invited-permission-model.md`](./00-adrs/0014-sharing-public-vs-invited-permission-model.md) | - G-15-DEFAULT-PRIVATE — enforces D9 (no implicit grants beyond |
+| `G-15-ITEMTYPE-LOWERCASE` | **DOC** | [`spec/20-enums-index.md`](./20-enums-index.md) | > Updated: 2026-04-28 — AUDIT-05 fix: added Universal Rule #10 codifying the ItemType lowercase exception (cross-languag |
+| `G-15-MIRROR-ACL-PER-INSTANCE` | **DOC** | [`spec/00-adrs/0014-sharing-public-vs-invited-permission-model.md`](./00-adrs/0014-sharing-public-vs-invited-permission-model.md) | - G-15-MIRROR-ACL-PER-INSTANCE — enforces D7 (ItemShare keyed |
+| `G-15-NO-CROSS-DB-AUTH-JOIN` | **DOC** | [`spec/00-adrs/0014-sharing-public-vs-invited-permission-model.md`](./00-adrs/0014-sharing-public-vs-invited-permission-model.md) | - G-15-NO-CROSS-DB-AUTH-JOIN — enforces D5 (Root DB and App DB |
+| `G-15-RESOLVER-SOLE-ENTRY` | **DOC** | [`spec/00-adrs/0014-sharing-public-vs-invited-permission-model.md`](./00-adrs/0014-sharing-public-vs-invited-permission-model.md) | violation of G-15-RESOLVER-SOLE-ENTRY. |
+| `G-15-REVOKE-60S-SLA` | **DOC** | [`spec/00-adrs/0014-sharing-public-vs-invited-permission-model.md`](./00-adrs/0014-sharing-public-vs-invited-permission-model.md) | - G-15-REVOKE-60S-SLA — enforces D8 (revocation propagates within |
+| `G-15-ROLE-ENUM-CLOSED` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0014](./00-adrs/0014-sharing-public-vs-invited-permission-model.md) Sharing — public + invited, 5-role item ACL, separ |
+| `G-15-ROLES-SEPARATE-TABLE` | **DOC** | [`spec/00-adrs/0014-sharing-public-vs-invited-permission-model.md`](./00-adrs/0014-sharing-public-vs-invited-permission-model.md) | - G-15-ROLES-SEPARATE-TABLE — enforces D4 (no role / |
+
+### ADR-0016
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-16-CONFIG-VIA-FLAG` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | 4 Read config file paths from positional args Confuses <file> semantics with config plumbing. G-16-CONFIG-VIA-FLAG (lin |
+| `G-16-EMPTY-QUERY-NO-FALLBACK` | **DOC** | [`spec/00-adrs/0013-search-relevance-then-recency-ranking.md`](./00-adrs/0013-search-relevance-then-recency-ranking.md) | - G-16-EMPTY-QUERY-NO-FALLBACK — enforces D6 (zero results, never |
+| `G-16-EXIT-DOCUMENTED` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | - The hygiene gate G-16-EXIT-DOCUMENTED rejects help text that lists an undocumented code. |
+| `G-16-EXIT-NONZERO-ON-FAIL` | **TEST** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | 2 Return exit 0 on partial failure Hides errors from CI; cron jobs miss alerts. G-16-EXIT-NONZERO-ON-FAIL (integration |
+| `G-16-FIELD-WEIGHTS-CONTENT-NOTE` | **DOC** | [`spec/00-adrs/0013-search-relevance-then-recency-ranking.md`](./00-adrs/0013-search-relevance-then-recency-ranking.md) | - G-16-FIELD-WEIGHTS-CONTENT-NOTE — enforces D3 (max(Content×1.5, |
+| `G-16-FLAG-STYLE` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | 3 Use -flagName (single dash + camelCase) Conflicts with POSIX short-flag bundling (-abc = -a -b -c). G-16-FLAG-STYLE ( |
+| `G-16-JSON-PURE` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | 1 Print free-form text to stdout when --json is set Breaks downstream jq pipelines; unparseable. G-16-JSON-PURE (test: |
+| `G-16-MATCH-TIER-TABLE` | **DOC** | [`spec/00-adrs/0013-search-relevance-then-recency-ranking.md`](./00-adrs/0013-search-relevance-then-recency-ranking.md) | - G-16-MATCH-TIER-TABLE — enforces D2 (the five tier values |
+| `G-16-MIRROR-PEERS-INDEPENDENT` | **DOC** | [`spec/00-adrs/0013-search-relevance-then-recency-ranking.md`](./00-adrs/0013-search-relevance-then-recency-ranking.md) | - G-16-MIRROR-PEERS-INDEPENDENT — enforces D8 (no dedup of peer |
+| `G-16-OPERATORS-AS-PREDICATE` | **DOC** | [`spec/00-adrs/0013-search-relevance-then-recency-ranking.md`](./00-adrs/0013-search-relevance-then-recency-ranking.md) | - G-16-OPERATORS-AS-PREDICATE — enforces D4 (operators narrow |
+| `G-16-RANKING-HYBRID-BUCKETED` | **DOC** | [`spec/00-adrs/0013-search-relevance-then-recency-ranking.md`](./00-adrs/0013-search-relevance-then-recency-ranking.md) | - G-16-RANKING-HYBRID-BUCKETED — enforces D1 (5 buckets of |
+| `G-16-SEARCH-300MS-SLA` | **DOC** | [`spec/00-adrs/0013-search-relevance-then-recency-ranking.md`](./00-adrs/0013-search-relevance-then-recency-ranking.md) | - G-16-SEARCH-300MS-SLA — enforces D5 (< 300 ms on ≥ 5 000-item |
+| `G-16-STRICT-FLAGS` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | 6 Silently ignore unknown flags Typos pass undetected; users blame the tool. G-16-STRICT-FLAGS (parser MUST exit 2 on u |
+| `G-16-TTY-DETECT` | **TEST** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | 5 Emit ANSI color codes when stdout is not a TTY Garbles logs and CI output. G-16-TTY-DETECT (test: pipe stdout, assert |
+
+### ADR-0017
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-17-CHANGELOG-MATCH` | **DOC** | [`spec/17-generic-update/00-overview.md`](./17-generic-update/00-overview.md) | 3 Skip the CHANGELOG.md row for the new targetVersion() Downstream installers cannot present release notes; semver prov |
+| `G-17-NO-SWALLOW` | **CI** | [`spec/17-generic-update/00-overview.md`](./17-generic-update/00-overview.md) | 4 Catch Throwable in apply() and return UpdateResult::success() Hides corruption; rollback never triggered. G-17-NO-SWA |
+| `G-17-ROLLBACK-DECLARED` | **DOC** | [`spec/17-generic-update/00-overview.md`](./17-generic-update/00-overview.md) | 1 Implement an updater without declaring rollbackStrategy() Operators cannot reason about recovery; CI cannot route to |
+| `G-17-SINGLE-CONCERN` | **DOC** | [`spec/17-generic-update/00-overview.md`](./17-generic-update/00-overview.md) | 2 Mix a schema bump and a data migration in one updater Partial failure leaves DB in a state that matches no targetVers |
+| `G-17-SINGLE-VERSION` | **DOC-NORM** | [`spec/17-generic-update/00-overview.md`](./17-generic-update/00-overview.md) | 5 Hard-code the version string in two places Drift between class constant and changelog. G-17-SINGLE-VERSION (grep: tar |
+| `G-17-TXN-WRAP` | **TEST** | [`spec/17-generic-update/00-overview.md`](./17-generic-update/00-overview.md) | 6 Run apply() outside a transaction on a writable DB Crash mid-statement leaves half-applied schema. G-17-TXN-WRAP (run |
+
+### ADR-0018
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-18-FROZEN` | **DOC** | [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | 1 Edit a closed audit in place Erases the historical record; future readers can't reconstruct what changed. G-18-FROZEN |
+| `G-18-ONE-FINDING` | **DOC-NORM** | [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | 6 Mix multiple findings in one audit file Cannot be partially closed; blocks unrelated fixes. G-18-ONE-FINDING (lint: f |
+| `G-18-OWNER-LINK` | **DOC-NORM** | [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | 3 Open an audit without an owning section link Resolver cannot find what to fix. G-18-OWNER-LINK (regex: Owning section |
+| `G-18-RESOLUTION-TRIPLE` | **DOC-NORM** | [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | 4 Resolve an audit without citing the spec edit + gate + AT Future regression cannot be detected. G-18-RESOLUTION-TRIPL |
+| `G-18-SEVERITY-ROUTING` | **DOC** | [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | 5 Use severity Critical without paging the on-call channel Severity becomes meaningless inflation. G-18-SEVERITY-ROUTIN |
+| `G-18-VERBATIM-QUOTE` | **DOC** | [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | 2 Re-use an active rule wording inside an audit body Audits document the past state verbatim; mirroring active wording |
+
+### ADR-0019
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-19-WORKFLOW-CONTRACT` | **DOC** | [`spec/00-adrs/0002-wp-plugin-php-sqlite-backend.md`](./00-adrs/0002-wp-plugin-php-sqlite-backend.md) | G-04-NO-DDL-PLURALS (SQLite-flavoured DDL), G-19-WORKFLOW-CONTRACT |
+
+### ADR-0020
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-20-DASHBOARD-BOARD-CHILD-RENDER` | **DOC** | [`spec/00-adrs/0015-twelve-itemtypes-enum.md`](./00-adrs/0015-twelve-itemtypes-enum.md) | - G-20-DASHBOARD-BOARD-CHILD-RENDER — enforces D4 (any code path |
+| `G-20-ITEMTYPE-CLOSED-12` | **DOC** | [`spec/00-adrs/0015-twelve-itemtypes-enum.md`](./00-adrs/0015-twelve-itemtypes-enum.md) | - G-20-ITEMTYPE-CLOSED-12 — enforces D1 + D5 (exactly the twelve |
+| `G-20-ITEMTYPE-LOWERCASE` | **DOC** | [`spec/00-adrs/0015-twelve-itemtypes-enum.md`](./00-adrs/0015-twelve-itemtypes-enum.md) | - G-20-ITEMTYPE-LOWERCASE — enforces D2 (lowercase only in code, |
+| `G-20-ITEMTYPE-TRI-SSOT-LOCKSTEP` | **DOC** | [`spec/00-adrs/0015-twelve-itemtypes-enum.md`](./00-adrs/0015-twelve-itemtypes-enum.md) | - G-20-ITEMTYPE-TRI-SSOT-LOCKSTEP — enforces D6 (CI compares the |
+| `G-20-NO-MIRROR-ITEMTYPE` | **DOC-NORM** | [`spec/00-adrs/0015-twelve-itemtypes-enum.md`](./00-adrs/0015-twelve-itemtypes-enum.md) | - G-20-NO-MIRROR-ITEMTYPE — enforces D3 (mirror MUST NOT appear |
+| `G-20-PRECOMMIT-CONTRACT` | **CI** | [`spec/00-adrs/0011-axios-only-http-client.md`](./00-adrs/0011-axios-only-http-client.md) | - Pre-commit hook (per G-20-PRECOMMIT-CONTRACT). |
+
+### ADR-0021
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-21-INSERT-NO-SIBLING-MUTATION` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0016](./00-adrs/0016-fractional-index-sortorder.md) SortOrder — lexicographic base-62 string, midpoint split, per-pare |
+| `G-21-LWW-ID-TIEBREAK` | **DOC** | [`spec/00-adrs/0026-lww-canonical-tiebreak.md`](./00-adrs/0026-lww-canonical-tiebreak.md) | ADR-0016 (G-21-LWW-ID-TIEBREAK) implied ItemId gate name only |
+| `G-21-NO-NUMERIC-MIDPOINT` | **DOC** | [`spec/00-adrs/0016-fractional-index-sortorder.md`](./00-adrs/0016-fractional-index-sortorder.md) | - G-21-NO-NUMERIC-MIDPOINT — explicitly forbids (A+B)/2, |
+| `G-21-REBALANCE-PER-PARENT` | **DOC** | [`spec/00-adrs/0016-fractional-index-sortorder.md`](./00-adrs/0016-fractional-index-sortorder.md) | - G-21-REBALANCE-PER-PARENT — enforces D5 scope (rebalance |
+| `G-21-REBALANCE-TRIGGER-64B` | **DOC** | [`spec/00-adrs/0016-fractional-index-sortorder.md`](./00-adrs/0016-fractional-index-sortorder.md) | - G-21-REBALANCE-TRIGGER-64B — enforces D5 trigger (64-byte key |
+| `G-21-SORTORDER-BASE62-ALPHABET` | **DOC** | [`spec/00-adrs/0016-fractional-index-sortorder.md`](./00-adrs/0016-fractional-index-sortorder.md) | - G-21-SORTORDER-BASE62-ALPHABET — enforces D2 (0-9A-Za-z |
+| `G-21-SORTORDER-STRING-ONLY` | **DOC** | [`spec/00-adrs/0016-fractional-index-sortorder.md`](./00-adrs/0016-fractional-index-sortorder.md) | - G-21-SORTORDER-STRING-ONLY — enforces D1 (Item.SortOrder is |
+
+### ADR-0022
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-22-BOUNDARY-ISOLATION` | **DOC** | [`spec/00-adrs/0017-eight-error-boundaries-ui-virtualization.md`](./00-adrs/0017-eight-error-boundaries-ui-virtualization.md) | - G-22-BOUNDARY-ISOLATION — enforces D2 (no |
+| `G-22-BOUNDARY-NAMES-CLOSED` | **DOC** | [`spec/00-adrs/0017-eight-error-boundaries-ui-virtualization.md`](./00-adrs/0017-eight-error-boundaries-ui-virtualization.md) | - G-22-BOUNDARY-NAMES-CLOSED — enforces D1's name list |
+| `G-22-ERROR-BOUNDARIES-EXACTLY-8` | **DOC** | [`spec/00-adrs/0017-eight-error-boundaries-ui-virtualization.md`](./00-adrs/0017-eight-error-boundaries-ui-virtualization.md) | - G-22-ERROR-BOUNDARIES-EXACTLY-8 — enforces D1 (CI counts |
+| `G-22-FALLBACK-CONTRACT` | **DOC** | [`spec/00-adrs/0017-eight-error-boundaries-ui-virtualization.md`](./00-adrs/0017-eight-error-boundaries-ui-virtualization.md) | - G-22-FALLBACK-CONTRACT — enforces D3 (every fallback must |
+| `G-22-NO-SILENT-FALLBACK` | **DOC** | [`spec/00-adrs/0017-eight-error-boundaries-ui-virtualization.md`](./00-adrs/0017-eight-error-boundaries-ui-virtualization.md) | - G-22-NO-SILENT-FALLBACK — enforces D6 (boundary fallbacks |
+| `G-22-REGISTRY-LOCKSTEP` | **DOC** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | 3 Add an error code outside the two registry files PHP↔TS drift; Code becomes meaningless string. G-22-REGISTRY-LOCKSTE |
+| `G-22-VIRTUALIZATION-1000` | **DOC** | [`spec/00-adrs/0017-eight-error-boundaries-ui-virtualization.md`](./00-adrs/0017-eight-error-boundaries-ui-virtualization.md) | - G-22-VIRTUALIZATION-1000 — enforces D4 (any list/tree/grid |
+| `G-22-VIRTUALIZER-TANSTACK-ONLY` | **DOC** | [`spec/00-adrs/0017-eight-error-boundaries-ui-virtualization.md`](./00-adrs/0017-eight-error-boundaries-ui-virtualization.md) | - G-22-VIRTUALIZER-TANSTACK-ONLY — enforces D5 (only |
+
+### ADR-0023
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-23-ACTION-ENQUEUE-ONLY` | **DOC** | [`spec/00-adrs/0023-route-loaders-offline-queue-interaction.md`](./00-adrs/0023-route-loaders-offline-queue-interaction.md) | - G-23-ACTION-ENQUEUE-ONLY — every action writes mirror + queue in |
+| `G-23-ACTION-NO-THROW` | **DOC** | [`spec/00-adrs/0023-route-loaders-offline-queue-interaction.md`](./00-adrs/0023-route-loaders-offline-queue-interaction.md) | - G-23-ACTION-NO-THROW — actions resolve with Status envelope; never |
+| `G-23-COLD-OFFLINE-SHELL` | **DOC** | [`spec/00-adrs/0023-route-loaders-offline-queue-interaction.md`](./00-adrs/0023-route-loaders-offline-queue-interaction.md) | - G-23-COLD-OFFLINE-SHELL — root loader returns |
+| `G-23-DATA-ROUTER-API` | **DOC-NORM** | [`spec/00-adrs/0018-react-router-v7-data-router-and-lucide-react-only.md`](./00-adrs/0018-react-router-v7-data-router-and-lucide-react-only.md) | - G-23-DATA-ROUTER-API — enforces D1 (root must use |
+| `G-23-FETCHER-SAME-PATH` | **DOC** | [`spec/00-adrs/0023-route-loaders-offline-queue-interaction.md`](./00-adrs/0023-route-loaders-offline-queue-interaction.md) | - G-23-FETCHER-SAME-PATH — useFetcher().submit() routes through the |
+| `G-23-ICONS-CURRENTCOLOR` | **DOC** | [`spec/00-adrs/0018-react-router-v7-data-router-and-lucide-react-only.md`](./00-adrs/0018-react-router-v7-data-router-and-lucide-react-only.md) | - G-23-ICONS-CURRENTCOLOR — enforces D4 (no color="#..." |
+| `G-23-ICONS-LUCIDE-ONLY` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0018](./00-adrs/0018-react-router-v7-data-router-and-lucide-react-only.md) Router v7 data-router API + lucide-react on |
+| `G-23-ICONS-NAMED-IMPORTS` | **DOC** | [`spec/00-adrs/0018-react-router-v7-data-router-and-lucide-react-only.md`](./00-adrs/0018-react-router-v7-data-router-and-lucide-react-only.md) | - G-23-ICONS-NAMED-IMPORTS — enforces D4 (import { X } from |
+| `G-23-LOADER-MIRROR-FIRST` | **DOC** | [`spec/00-adrs/0023-route-loaders-offline-queue-interaction.md`](./00-adrs/0023-route-loaders-offline-queue-interaction.md) | - G-23-LOADER-MIRROR-FIRST — every loader reads IndexedDB mirror |
+| `G-23-LOADER-NO-MUTATE` | **DOC-NORM** | [`spec/00-adrs/0023-route-loaders-offline-queue-interaction.md`](./00-adrs/0023-route-loaders-offline-queue-interaction.md) | - G-23-LOADER-NO-MUTATE — loaders MUST NOT call queue API or write |
+| `G-23-NO-EMOJI-AS-ICON` | **DOC** | [`spec/00-adrs/0018-react-router-v7-data-router-and-lucide-react-only.md`](./00-adrs/0018-react-router-v7-data-router-and-lucide-react-only.md) | - G-23-NO-EMOJI-AS-ICON — enforces D5 (no emoji codepoints in |
+| `G-23-RECONNECT-LOCK` | **DOC** | [`spec/00-adrs/0023-route-loaders-offline-queue-interaction.md`](./00-adrs/0023-route-loaders-offline-queue-interaction.md) | - G-23-RECONNECT-LOCK — queue worker holds exclusive lock during |
+| `G-23-ROUTER-ERRORELEMENT` | **DOC** | [`spec/00-adrs/0018-react-router-v7-data-router-and-lucide-react-only.md`](./00-adrs/0018-react-router-v7-data-router-and-lucide-react-only.md) | - G-23-ROUTER-ERRORELEMENT — enforces D1 + ADR-0017 |
+| `G-23-ROUTER-V7-ONLY` | **DOC** | [`spec/00-adrs/0018-react-router-v7-data-router-and-lucide-react-only.md`](./00-adrs/0018-react-router-v7-data-router-and-lucide-react-only.md) | - G-23-ROUTER-V7-ONLY — enforces D1 (no react-router-dom@^6 |
+| `G-23-WARM-LOADER-16MS` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0023](./00-adrs/0023-route-loaders-offline-queue-interaction.md) Route loaders ↔ offline FIFO queue — mirror-first rea |
+
+### ADR-0024
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-24-AUDIT-SCORE-FROZEN` | **DOC-NORM** | [`spec/00-adrs/0024-ratify-soft-confirm-triage-rulings.md`](./00-adrs/0024-ratify-soft-confirm-triage-rulings.md) | - G-24-AUDIT-SCORE-FROZEN — 100/100 audit score MUST NOT be |
+| `G-24-DDL-SINGULAR-LOCKED` | **DOC-NORM** | [`spec/00-adrs/0024-ratify-soft-confirm-triage-rulings.md`](./00-adrs/0024-ratify-soft-confirm-triage-rulings.md) | - G-24-DDL-SINGULAR-LOCKED — DDL identifiers MUST be singular; |
+| `G-24-FAVORITES-TABLE-ONLY` | **DOC-NORM** | [`spec/00-adrs/0024-ratify-soft-confirm-triage-rulings.md`](./00-adrs/0024-ratify-soft-confirm-triage-rulings.md) | - G-24-FAVORITES-TABLE-ONLY — Favorites MUST be table-level; no |
+| `G-24-ID-CONSTRUCTORS-VALIDATE` | **DOC** | [`spec/00-adrs/0020-branded-itemid-ownerid.md`](./00-adrs/0020-branded-itemid-ownerid.md) | - G-24-ID-CONSTRUCTORS-VALIDATE — enforces D4 (helper |
+| `G-24-ID-WIRE-REGEX` | **DOC** | [`spec/00-adrs/0020-branded-itemid-ownerid.md`](./00-adrs/0020-branded-itemid-ownerid.md) | - G-24-ID-WIRE-REGEX — enforces D3 (REST handlers and the |
+| `G-24-IDS-MUST-BE-BRANDED` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0020](./00-adrs/0020-branded-itemid-ownerid.md) Branded ItemId/OwnerId — opaque-string brands, as<Brand>() constructor |
+| `G-24-NO-INLINE-AS-BRAND` | **DOC** | [`spec/00-adrs/0020-branded-itemid-ownerid.md`](./00-adrs/0020-branded-itemid-ownerid.md) | - G-24-NO-INLINE-AS-BRAND — enforces D2 (as ItemId, |
+
+### ADR-0025
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-25-QUEUE-INDEXEDDB-ONLY` | **DOC** | [`spec/00-adrs/0021-undo-100-offline-queue-unbounded.md`](./00-adrs/0021-undo-100-offline-queue-unbounded.md) | - G-25-QUEUE-INDEXEDDB-ONLY — enforces D2 (no |
+| `G-25-QUEUE-NO-SILENT-DROP` | **DOC** | [`spec/00-adrs/0021-undo-100-offline-queue-unbounded.md`](./00-adrs/0021-undo-100-offline-queue-unbounded.md) | - G-25-QUEUE-NO-SILENT-DROP — enforces D2 (quota errors |
+| `G-25-QUEUE-UNBOUNDED` | **DOC** | [`spec/00-adrs/0021-undo-100-offline-queue-unbounded.md`](./00-adrs/0021-undo-100-offline-queue-unbounded.md) | - G-25-QUEUE-UNBOUNDED — enforces D2 (no constant named |
+| `G-25-SSE-ENDPOINT-CLOSED` | **DOC** | [`spec/00-adrs/0025-sse-realtime-transport.md`](./00-adrs/0025-sse-realtime-transport.md) | - G-25-SSE-ENDPOINT-CLOSED — only /stream/page/{id} and |
+| `G-25-SSE-EVENT-NAMES-CLOSED` | **DOC** | [`spec/00-adrs/0025-sse-realtime-transport.md`](./00-adrs/0025-sse-realtime-transport.md) | - G-25-SSE-EVENT-NAMES-CLOSED — event names ∈ {item.created, |
+| `G-25-SSE-FRAME-ENVELOPE` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0025](./00-adrs/0025-sse-realtime-transport.md) SSE sole realtime transport — /stream/page + /stream/user, PascalCase |
+| `G-25-SSE-HEARTBEAT-15S` | **TEST** | [`spec/00-adrs/0025-sse-realtime-transport.md`](./00-adrs/0025-sse-realtime-transport.md) | - G-25-SSE-HEARTBEAT-15S — server emits : ping every 15 s. |
+| `G-25-SSE-LAST-EVENT-ID` | **DOC** | [`spec/00-adrs/0025-sse-realtime-transport.md`](./00-adrs/0025-sse-realtime-transport.md) | - G-25-SSE-LAST-EVENT-ID — server honours Last-Event-ID with |
+| `G-25-SSE-READ-ONLY-SIGNAL` | **DOC-NORM** | [`spec/00-adrs/0025-sse-realtime-transport.md`](./00-adrs/0025-sse-realtime-transport.md) | - G-25-SSE-READ-ONLY-SIGNAL — SSE frames MUST NOT enqueue to FIFO |
+| `G-25-SSE-WORKER-CAP` | **DOC** | [`spec/00-adrs/0025-sse-realtime-transport.md`](./00-adrs/0025-sse-realtime-transport.md) | - G-25-SSE-WORKER-CAP — concurrent SSE connections capped per D8; |
+| `G-25-TRANSPORT-SSE-ONLY` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0025](./00-adrs/0025-sse-realtime-transport.md) SSE sole realtime transport — /stream/page + /stream/user, PascalCase |
+| `G-25-UNDO-CAP-100` | **DOC** | [`spec/00-adrs/0021-undo-100-offline-queue-unbounded.md`](./00-adrs/0021-undo-100-offline-queue-unbounded.md) | - G-25-UNDO-CAP-100 — enforces D1 (undo + redo stacks each |
+| `G-25-UNDO-COMPENSATING-ENQUEUE` | **DOC** | [`spec/00-adrs/0021-undo-100-offline-queue-unbounded.md`](./00-adrs/0021-undo-100-offline-queue-unbounded.md) | - G-25-UNDO-COMPENSATING-ENQUEUE — enforces D3 (every |
+| `G-25-UNDO-IN-MEMORY-ONLY` | **DOC** | [`spec/00-adrs/0021-undo-100-offline-queue-unbounded.md`](./00-adrs/0021-undo-100-offline-queue-unbounded.md) | - G-25-UNDO-IN-MEMORY-ONLY — enforces D1/D4 (no |
+| `G-25-UNDO-PER-TAB` | **DOC** | [`spec/00-adrs/0021-undo-100-offline-queue-unbounded.md`](./00-adrs/0021-undo-100-offline-queue-unbounded.md) | - G-25-UNDO-PER-TAB — enforces D1 (no BroadcastChannel, |
+
+### ADR-0026
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-26-COMPONENT-BASE-SHADCN-RADIX` | **DOC** | [`spec/00-adrs/0022-shadcn-radix-component-base.md`](./00-adrs/0022-shadcn-radix-component-base.md) | - G-26-COMPONENT-BASE-SHADCN-RADIX — enforces D1 |
+| `G-26-LWW-CANONICAL-COMPARATOR` | **DOC** | [`spec/00-adrs/0026-lww-canonical-tiebreak.md`](./00-adrs/0026-lww-canonical-tiebreak.md) | - G-26-LWW-CANONICAL-COMPARATOR — exactly one resolveLWW function |
+| `G-26-LWW-NO-CLIENT-TS` | **DOC-NORM** | [`spec/00-adrs/0026-lww-canonical-tiebreak.md`](./00-adrs/0026-lww-canonical-tiebreak.md) | - G-26-LWW-NO-CLIENT-TS — clientTs MUST NOT appear in any |
+| `G-26-LWW-STRICT-ORDERING` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0026](./00-adrs/0026-lww-canonical-tiebreak.md) Canonical LWW tie-break — single 3-tier (ServerTs DESC, OwnerId ASC, I |
+| `G-26-NO-MIXED-COMPONENT-BASES` | **DOC** | [`spec/00-adrs/0022-shadcn-radix-component-base.md`](./00-adrs/0022-shadcn-radix-component-base.md) | - G-26-NO-MIXED-COMPONENT-BASES — enforces D6 (no second |
+| `G-26-NO-SHADCN-RUNTIME-DEP` | **DOC-NORM** | [`spec/00-overview.md`](./00-overview.md) | [0022](./00-adrs/0022-shadcn-radix-component-base.md) shadcn/ui (CLI-vendored) + Radix sole base; MUI/Mantine/Ant/Headl |
+| `G-26-OWNER-ID-CANONICAL` | **DOC** | [`spec/00-adrs/0026-lww-canonical-tiebreak.md`](./00-adrs/0026-lww-canonical-tiebreak.md) | - G-26-OWNER-ID-CANONICAL — OwnerId is the canonical brand; |
+| `G-26-RADIX-MATRIX-PINNED` | **DOC-NORM** | [`spec/00-overview.md`](./00-overview.md) | [0022](./00-adrs/0022-shadcn-radix-component-base.md) shadcn/ui (CLI-vendored) + Radix sole base; MUI/Mantine/Ant/Headl |
+| `G-26-SHADCN-PATCHES-TRACKED` | **DOC** | [`spec/00-adrs/0022-shadcn-radix-component-base.md`](./00-adrs/0022-shadcn-radix-component-base.md) | - G-26-SHADCN-PATCHES-TRACKED — enforces D4 (any diff |
+
+### ADR-0031
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-31-NO-MIRROR-ENUM` | **DOC** | [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | - Added gate G-31-NO-MIRROR-ENUM in CI that fails on any reintroduction. |
+| `G-31-NO-PARALLEL-NODE` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0008](./00-adrs/0008-unified-item-node-interface.md) Unified Node interface + 250-item per-view limit Accepted 2026-04 |
+| `G-31-NODE-ID-PERSISTENT` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0008](./00-adrs/0008-unified-item-node-interface.md) Unified Node interface + 250-item per-view limit Accepted 2026-04 |
+| `G-31-NODE-INTERFACE-CANONICAL` | **DOC-NORM** | [`spec/00-adrs/0008-unified-item-node-interface.md`](./00-adrs/0008-unified-item-node-interface.md) | - G-31-NODE-INTERFACE-CANONICAL — enforces D1 (mandatory fields, |
+| `G-31-ROOT-SINGLETON` | **DOC** | [`spec/00-adrs/0008-unified-item-node-interface.md`](./00-adrs/0008-unified-item-node-interface.md) | - G-31-ROOT-SINGLETON — enforces D3 (exactly one parentId === null, |
+| `G-31-VIEW-250-CAP` | **DOC** | [`spec/00-adrs/0008-unified-item-node-interface.md`](./00-adrs/0008-unified-item-node-interface.md) | - G-31-VIEW-250-CAP — enforces D4 (no default view renders > 250 |
+
+### ADR-0032
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-32-A11Y-CONTRAST` | **DOC** | [`spec/32-ui-design/00-overview.md`](./32-ui-design/00-overview.md) | 4. Verify contrast ratio ≥ 4.5:1 in both modes (gate G-32-A11Y-CONTRAST). |
+| `G-32-AXIOS-EXACT-PIN` | **DOC-NORM** | [`spec/00-adrs/0011-axios-only-http-client.md`](./00-adrs/0011-axios-only-http-client.md) | - G-32-AXIOS-EXACT-PIN — enforces D3 (package.json value MUST be |
+| `G-32-AXIOS-ONLY` | **DOC** | [`spec/00-adrs/0011-axios-only-http-client.md`](./00-adrs/0011-axios-only-http-client.md) | - G-32-AXIOS-ONLY — enforces D1 (no fetch / XHR / alternative |
+| `G-32-AXIOS-SINGLETON` | **DOC** | [`spec/00-adrs/0011-axios-only-http-client.md`](./00-adrs/0011-axios-only-http-client.md) | - G-32-AXIOS-SINGLETON — enforces D2 (one instance, canonical path |
+| `G-32-DARK-MODE-PARITY` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0003](./00-adrs/0003-react-19-ts-strict-frontend.md) Vite 5.4 + React 19 + TS 5.6 (strict) + Tailwind v4 frontend Acce |
+| `G-32-HSL-ONLY-TOKENS` | **DOC** | [`spec/00-adrs/0012-tailwind-v4-theme-block-token-registry.md`](./00-adrs/0012-tailwind-v4-theme-block-token-registry.md) | - G-32-HSL-ONLY-TOKENS — enforces D3 (no hsl() wrapper, no hex, |
+| `G-32-NO-CLIENT-WRAPPER-FACADE` | **DOC** | [`spec/00-adrs/0011-axios-only-http-client.md`](./00-adrs/0011-axios-only-http-client.md) | - G-32-NO-CLIENT-WRAPPER-FACADE — enforces D5 (no fetch-shaped |
+| `G-32-NO-INLINE-STYLE` | **DOC** | [`spec/00-adrs/0003-react-19-ts-strict-frontend.md`](./00-adrs/0003-react-19-ts-strict-frontend.md) | - G-32-NO-INLINE-STYLE (no inline style={{…}} for token values) |
+| `G-32-NO-RAW-COLORS` | **DOC** | [`spec/00-adrs/0003-react-19-ts-strict-frontend.md`](./00-adrs/0003-react-19-ts-strict-frontend.md) | - G-32-NO-RAW-COLORS (Tailwind v4 @theme token enforcement; see |
+| `G-32-NO-SECOND-STYLING-SYSTEM` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0012](./00-adrs/0012-tailwind-v4-theme-block-token-registry.md) Tailwind v4 @theme block sole token registry; HSL-only |
+| `G-32-NO-TAILWIND-CONFIG` | **DOC** | [`spec/00-adrs/0012-tailwind-v4-theme-block-token-registry.md`](./00-adrs/0012-tailwind-v4-theme-block-token-registry.md) | violation of G-32-NO-TAILWIND-CONFIG. |
+| `G-32-SEMANTIC-NAMING` | **DOC** | [`spec/00-adrs/0003-react-19-ts-strict-frontend.md`](./00-adrs/0003-react-19-ts-strict-frontend.md) | - G-32-SEMANTIC-NAMING (token names describe purpose, not hue) |
+| `G-32-TOKEN-REGISTRY` | **DOC** | [`spec/00-adrs/0012-tailwind-v4-theme-block-token-registry.md`](./00-adrs/0012-tailwind-v4-theme-block-token-registry.md) | - G-32-TOKEN-REGISTRY — enforces D2 (single @theme block in |
+| `G-32-VARIANT-SEMANTIC-ONLY` | **DOC** | [`spec/00-adrs/0012-tailwind-v4-theme-block-token-registry.md`](./00-adrs/0012-tailwind-v4-theme-block-token-registry.md) | color is a hard violation of G-32-VARIANT-SEMANTIC-ONLY. |
+
+### ADR-0033
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-33-CATEGORY-ENUM` | **DOC** | [`spec/33-feedback-report/00-overview.md`](./33-feedback-report/00-overview.md) | pre-selected (gate G-33-CATEGORY-ENUM). |
+| `G-33-NO-CONTENT-BODY` | **DOC** | [`spec/33-feedback-report/00-overview.md`](./33-feedback-report/00-overview.md) | Content body (gate G-33-NO-PII, G-33-NO-CONTENT-BODY). |
+| `G-33-NO-PII` | **DOC** | [`spec/33-feedback-report/00-overview.md`](./33-feedback-report/00-overview.md) | Content body (gate G-33-NO-PII, G-33-NO-CONTENT-BODY). |
+| `G-33-RATE-LIMIT` | **DOC** | [`spec/33-feedback-report/00-overview.md`](./33-feedback-report/00-overview.md) | Skipping rate limit → unlimited reports per minute Spam vector; DoS on maintainers G-33-RATE-LIMIT |
+| `G-33-RECEIPT` | **DOC** | [`spec/33-feedback-report/00-overview.md`](./33-feedback-report/00-overview.md) | 5. UI shows toast with ReportId for follow-up (gate G-33-RECEIPT). |
+
+### ADR-0034
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-34-FANOUT-RESPECTS-ACL` | **DOC** | [`spec/34-activity-feed/00-overview.md`](./34-activity-feed/00-overview.md) | receives the event in their feed query (gate G-34-FANOUT-RESPECTS-ACL). |
+| `G-34-IDEMPOTENT` | **DOC** | [`spec/34-activity-feed/00-overview.md`](./34-activity-feed/00-overview.md) | event (gate G-34-IDEMPOTENT). |
+| `G-34-RETENTION-90D` | **DOC** | [`spec/34-activity-feed/00-overview.md`](./34-activity-feed/00-overview.md) | (gate G-34-RETENTION-90D). |
+| `G-34-SERVER-TIME` | **DOC** | [`spec/34-activity-feed/00-overview.md`](./34-activity-feed/00-overview.md) | Using local clock for OccurredAtUtc Clock skew ⇒ out-of-order feed G-34-SERVER-TIME |
+| `G-34-VERB-DICTIONARY` | **DOC** | [`spec/34-activity-feed/00-overview.md`](./34-activity-feed/00-overview.md) | to localize text — never inline strings (gate G-34-VERB-DICTIONARY). |
+
+### ADR-0035
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-35-AUDIT-TRAIL` | **DOC** | [`spec/35-enforcement-rules/00-overview.md`](./35-enforcement-rules/00-overview.md) | (gate G-35-AUDIT-TRAIL). |
+| `G-35-ERR-CODE-ENUM` | **DOC** | [`spec/35-enforcement-rules/00-overview.md`](./35-enforcement-rules/00-overview.md) | (gate G-35-ERR-CODE-ENUM). |
+| `G-35-EXPECTED-ERRORS` | **DOC** | [`spec/35-enforcement-rules/00-overview.md`](./35-enforcement-rules/00-overview.md) | Hard 500 with stack trace Unhandled = bug, not enforcement G-35-EXPECTED-ERRORS |
+| `G-35-NO-SILENT-TRUNCATION` | **DOC** | [`spec/35-enforcement-rules/00-overview.md`](./35-enforcement-rules/00-overview.md) | Returning 200 with truncated 250 items, no warning Silent data loss; user thinks tree is shorter than it is G-35-NO-SIL |
+| `G-35-PROVIDE-ESCAPE-HATCH` | **DOC** | [`spec/35-enforcement-rules/00-overview.md`](./35-enforcement-rules/00-overview.md) | or open the Board view (which paginates) — gate G-35-PROVIDE-ESCAPE-HATCH. |
+| `G-35-SINGLE-SOURCE` | **DOC** | [`spec/35-enforcement-rules/00-overview.md`](./35-enforcement-rules/00-overview.md) | (gate G-35-SINGLE-SOURCE). |
+| `G-35-USER-MESSAGE` | **DOC** | [`spec/35-enforcement-rules/00-overview.md`](./35-enforcement-rules/00-overview.md) | "Too many items to display — refine with search" (gate G-35-USER-MESSAGE). |
+
+### ADR-0036
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-36-CLIENT-NO-ROLE` | **DOC-NORM** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | Admin status MUST NOT be read from client-side storage (localStorage, sessionStorage, cookies). Gate G-36-CLIENT-NO-ROL |
+| `G-36-HAS-ROLE-DEFINER` | **DOC** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | 5 Implement Auth::hasRole as a plain SQL view (not SECURITY DEFINER) RLS recursion — query inside the policy queries th |
+| `G-36-NO-HARDCODE-ADMIN` | **DOC** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | 7 Hardcode an admin email/UUID in PHP Cannot be rotated; lost-key disaster. G-36-NO-HARDCODE-ADMIN (regex). |
+| `G-36-NO-ROLE-COLUMN` | **DOC-NORM** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | Roles live only in UserRole (separate table). NEVER on User or UserProfile. Gate G-36-NO-ROLE-COLUMN (DDL lint rejects |
+| `G-36-NO-SELF-ROLE` | **DOC-NORM** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | 6 Self-assign a role via POST /users/{me}/roles Privilege escalation by the user themselves. G-36-NO-SELF-ROLE (handler |
+| `G-36-PASSWORD-WRITE-ONLY` | **DOC-NORM** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | Passwords are write-only — never appear in any response envelope. Gate G-36-PASSWORD-WRITE-ONLY (response-schema test: |
+| `G-36-SESSION-MIN` | **DOC-NORM** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | Sessions store opaque tokens only — no role is baked into JWT/session payloads (must re-check). Gate G-36-SESSION-MIN. |
+| `G-36-VIA-HAS-ROLE` | **CI** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | Role checks go through Auth::hasRole(int $userId, AppRole $role): bool — a SECURITY DEFINER SQL function. Gate G-36-VIA |
+
+### Domain-API
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-API-01` | **DOC** | [`spec/17-generic-update/99a-worked-example-fixtures.md`](./17-generic-update/99a-worked-example-fixtures.md) | Manifest with non-PascalCase keys gate G-API-01 |
+
+### Domain-CLI
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-CLI-01` | **DOC** | [`spec/16-generic-cli/99a-worked-example-fixtures.md`](./16-generic-cli/99a-worked-example-fixtures.md) | Help text duplicated between --help output and README gate G-CLI-01 (auto-gen check) |
+| `G-CLI-02` | **DOC** | [`spec/16-generic-cli/99a-worked-example-fixtures.md`](./16-generic-cli/99a-worked-example-fixtures.md) | Multiple flag libraries imported (e.g., commander + yargs) gate G-CLI-02 (single SSOT) |
+| `G-CLI-03` | **DOC** | [`spec/16-generic-cli/99a-worked-example-fixtures.md`](./16-generic-cli/99a-worked-example-fixtures.md) | Error envelope on stdout instead of stderr gate G-CLI-03 (stdout/stderr separation) |
+| `G-CLI-04` | **DOC** | [`spec/16-generic-cli/99a-worked-example-fixtures.md`](./16-generic-cli/99a-worked-example-fixtures.md) | console.log in non---format=text mode gate G-CLI-04 |
+
+### Domain-DB
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-DB-01` | **DOC** | [`spec/05-split-db-architecture/99a-worked-example-fixtures.md`](./05-split-db-architecture/99a-worked-example-fixtures.md) | Anti-pattern: raw cross-DB JOIN written outside a Repository class. Detected by gate G-DB-01 (AST grep for FROM items\. |
+
+### Domain-ERR
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-ERR-01` | **DOC** | [`spec/03-error-manage/99a-worked-example-fixtures.md`](./03-error-manage/99a-worked-example-fixtures.md) | {"error": "..."} flat string breaks parser, no Code/TraceId gate G-ERR-01 (envelope schema) |
+| `G-ERR-02` | **DOC-NORM** | [`spec/03-error-manage/99a-worked-example-fixtures.md`](./03-error-manage/99a-worked-example-fixtures.md) | Throwing new Error(JSON.stringify(envelope)) in frontend loses prototype, breaks instanceof gate G-ERR-02 (custom AppEr |
+| `G-ERR-03` | **DOC** | [`spec/03-error-manage/99a-worked-example-fixtures.md`](./03-error-manage/99a-worked-example-fixtures.md) | Logging Stack in production leaks code paths to attackers gate G-ERR-03 (NODE_ENV check) |
+| `G-ERR-04` | **DOC** | [`spec/03-error-manage/99a-worked-example-fixtures.md`](./03-error-manage/99a-worked-example-fixtures.md) | Email un-redacted in Details.Email PII leak gate G-ERR-04 (regex scan in CI logs) |
+| `G-ERR-05` | **DOC** | [`spec/03-error-manage/99a-worked-example-fixtures.md`](./03-error-manage/99a-worked-example-fixtures.md) | Reusing a Code across two domains violates registry uniqueness gate G-ERR-05 (registry build-time check) |
+
+### Domain-MIRROR
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-MIRROR-CYCLE-PRECHECK` | **DOC** | [`spec/00-adrs/0005-mirror-as-peer-group.md`](./00-adrs/0005-mirror-as-peer-group.md) | - G-MIRROR-CYCLE-PRECHECK — every structural mutation that |
+| `G-MIRROR-DISSOLVE-SINGLETON` | **DOC** | [`spec/00-adrs/0005-mirror-as-peer-group.md`](./00-adrs/0005-mirror-as-peer-group.md) | - G-MIRROR-DISSOLVE-SINGLETON — every detach workflow MUST |
+| `G-MIRROR-LWW-TIEBREAK` | **DOC** | [`spec/00-adrs/0005-mirror-as-peer-group.md`](./00-adrs/0005-mirror-as-peer-group.md) | - G-MIRROR-LWW-TIEBREAK — every conflict-resolution code path |
+| `G-MIRROR-NO-ITEMTYPE` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0005](./00-adrs/0005-mirror-as-peer-group.md) Mirror is a peer-group relation (not an ItemType) Accepted 2026-04-28 G- |
+| `G-MIRROR-PEER-COLUMN` | **DOC** | [`spec/00-adrs/0005-mirror-as-peer-group.md`](./00-adrs/0005-mirror-as-peer-group.md) | - G-MIRROR-PEER-COLUMN — Item.PeerGroupId is the only |
+
+### Domain-SPLIT
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-SPLIT-01` | **DOC** | [`spec/05-split-db-architecture/99a-worked-example-fixtures.md`](./05-split-db-architecture/99a-worked-example-fixtures.md) | Splitting before threshold (premature optimisation) gate G-SPLIT-01 (decision matrix lint) |
+| `G-SPLIT-02` | **DOC** | [`spec/05-split-db-architecture/99a-worked-example-fixtures.md`](./05-split-db-architecture/99a-worked-example-fixtures.md) | ATTACH issued lazily (per-query) instead of once at connection open gate G-SPLIT-02 (ATTACH count per request = 0) |
+| `G-SPLIT-03` | **DOC** | [`spec/05-split-db-architecture/99a-worked-example-fixtures.md`](./05-split-db-architecture/99a-worked-example-fixtures.md) | Editing db-split.json without atomic rename gate G-SPLIT-03 (file-watch test) |
+| `G-SPLIT-04` | **DOC** | [`spec/05-split-db-architecture/99a-worked-example-fixtures.md`](./05-split-db-architecture/99a-worked-example-fixtures.md) | DETACH while transaction is open SQLite native error → gate G-SPLIT-04 |
+
+### Domain-UPD
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-UPD-01` | **DOC** | [`spec/14-self-update-app-update/99a-worked-example-fixtures.md`](./14-self-update-app-update/99a-worked-example-fixtures.md) | cp -r instead of atomic mv -T torn write if process is killed mid-copy gate G-UPD-01 (grep for non-atomic copy in insta |
+| `G-UPD-02` | **DOC** | [`spec/14-self-update-app-update/99a-worked-example-fixtures.md`](./14-self-update-app-update/99a-worked-example-fixtures.md) | Healthcheck without --max-time hangs indefinitely; never rolls back gate G-UPD-02 |
+| `G-UPD-03` | **DOC** | [`spec/14-self-update-app-update/99a-worked-example-fixtures.md`](./14-self-update-app-update/99a-worked-example-fixtures.md) | sha256 check after swap system already running unverified code gate G-UPD-03 (order check in update.sh AST) |
+| `G-UPD-04` | **DOC** | [`spec/17-generic-update/99a-worked-example-fixtures.md`](./17-generic-update/99a-worked-example-fixtures.md) | sha256 stored in URL fragment instead of Sha256 field gate G-UPD-04 (regex #sha256=) |
+
+### Meta-00
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-00-ADR-INDEX-FRESH` | **DOC** | [`spec/00-adrs/_INDEX_AUTOMATION.md`](./00-adrs/_INDEX_AUTOMATION.md) | > G-00-ADR-INDEX-FRESH is implemented. |
+| `G-00-ADR-NUMBERING` | **DOC-NORM** | [`spec/00-adrs/_INDEX_AUTOMATION.md`](./00-adrs/_INDEX_AUTOMATION.md) | Reusing a Rejected ADR's number for a new ADR Breaks ADR-NNNN citation stability across history G-00-ADR-NUMBERING |
+| `G-00-ADR-SHAPE` | **DOC** | [`spec/00-adrs/_INDEX_AUTOMATION.md`](./00-adrs/_INDEX_AUTOMATION.md) | Deleting a Superseded row from the index Erases decision history; future readers can't trace why something was overturn |
+| `G-00-ADR-STATUS` | **DOC-NORM** | [`spec/00-adrs/00-overview.md`](./00-adrs/00-overview.md) | G-00-ADR-STATUS Status MUST be one of the 5 enum values; Accepted required for any G- reference. |
+| `G-00-ADR-SUPERSEDE` | **DOC-NORM** | [`spec/00-adrs/00-overview.md`](./00-adrs/00-overview.md) | G-00-ADR-SUPERSEDE A new ADR that supersedes another MUST update the older ADR's status in the same change. |
+
+---
+
+## 4. Maintenance Rules
+
+1. **Adding a new gate:** define it in its source ADR/spec file, then append a row to the appropriate Area table here in the same PR.
+2. **Promoting a gate:** when a DOC-NORM gate gets a CI check or test fixture, update its `Tier` column and add a link to the workflow/test file.
+3. **Removing a gate:** mark with `~~strikethrough~~` and add a `Superseded-by:` cross-reference; never delete history.
+4. **Audit cadence:** regenerate via `rg -o 'G-[A-Z0-9-]+' spec/ | sort -u` quarterly to detect orphan or duplicate gate IDs.
+5. **Naming:** new gates MUST use either `G-NN-NAME` (ADR-scoped, NN = ADR number) or `G-DOMAIN-NN` (cross-cutting, e.g. `G-MIRROR-*`, `G-ERR-*`). Bare numeric `G-NN` references are deprecated and excluded from this registry.
+
+---
+
+## 5. Known Gaps
+
+- 44 bare `G-NN` references in spec are section pointers, not real gates — excluded from this registry.
+- Heuristic classifier may mis-tier some gates; manual review pending per Area.
+- ~63 placeholder `97-acceptance-criteria.md` files (AUDIT-03) still empty — their TEST-tier gates show file path but lack runnable fixtures.
