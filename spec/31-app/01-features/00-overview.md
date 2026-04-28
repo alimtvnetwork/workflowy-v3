@@ -186,6 +186,7 @@ Every feature in `spec/31-app/01-features/` MUST: (1) write boolean checks as **
 | Workflowy UI phases (visual SSOT) | [`../../32-ui-design/06-workflowy-ui/00-overview.md`](../../32-ui-design/06-workflowy-ui/00-overview.md) |
 | Glossary | [`../../19-glossary.md`](../../19-glossary.md) |
 | Enums | [`../../20-enums-index.md`](../../20-enums-index.md) |
+| Integrations (Zapier, Apple Shortcuts) — F6 | [`./18-integrations.md`](./18-integrations.md) |
 
 ---
 
