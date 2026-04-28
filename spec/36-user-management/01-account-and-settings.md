@@ -39,7 +39,7 @@ This file is a **feature-reference appendix** to [`./00-overview.md`](./00-overv
 
 ### 1. Settings Panel (root surface)
 
-- **Settings Panel** — A single dialog (or full-screen view on narrow viewports) reached from the sidebar account chrome (avatar → *Settings*). The panel is organised as a left sub-nav with the categories listed below; each row links to a sub-panel rendered to the right. (component: `settings-panel`, shortcut: ⌘,)
+- **Settings Panel** — A single dialog (or full-screen view on narrow viewports) reached from the sidebar account chrome (avatar → *Settings*). The panel is organised as a left sub-nav with the categories listed below; each row links to a sub-panel rendered to the right. `⌘,`
 - **Save Behaviour** — Every setting auto-saves on blur / toggle change; there is no global *Save* button. A transient `settings-save-toast` confirms each write.
 - **Backend Contract** — All settings are stored in the `UserSetting` table (`UserId` + `Key` PK, `Value` TEXT JSON), exposed via `GET/PATCH /wp-json/workflowy/v1/me/settings` with the standard PascalCase envelope (`Status`, `Attributes`, `Results`).
 

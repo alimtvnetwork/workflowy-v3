@@ -119,9 +119,9 @@ As a daily planner, I want a single screen that shows everything due today plus 
 > **Source:** Workflowy product feature list, merged 2026-04-28 (lossless, additive). Reproduced verbatim; cross-linked to existing AT-TODAY-* rows above.
 
 - **Today View** — A virtual page listing every item whose date chip resolves to the current calendar day (user's local TZ). Reached via the `📅 Today` chrome button (see [`./03-layout-structure.md`](./03-layout-structure.md) F2 appendix) or the sidebar Today shortcut.
-- **Add Date** — Insert a date chip into any item's content. Date chips power Today view, date-keyword search, and the `has:date` operator. (slash: `/date`, shortcut: ⌘+Shift+. on macOS / Ctrl+Shift+. on Windows)
+- **Add Date** — Insert a date chip into any item's content. Date chips power Today view, date-keyword search, and the `has:date` operator. `⌘+Shift+. on macOS / Ctrl+Shift+. on Windows`
 - **Date Search** — Find items by date using keywords (`today`, `yesterday`, `this-week`, `last-week`, `next-week`) or absolute dates (`MM/DD/YYYY`, `YYYY-MM-DD`). Combine with `has:date` for explicit chip-only filtering. See [`./16-search-ranking.md`](./16-search-ranking.md) F2 appendix for the operator table.
-- **Jump To Today** — Pressing `T` while focused in Jump-To overlay (⌘P) snaps the cursor to the Today entry. (shortcut: ⌘P then `today` ↵)
+- **Jump To Today** — Pressing `T` while focused in Jump-To overlay (⌘P) snaps the cursor to the Today entry. `⌘P then `today` ↵`
 - **Recurring Dates (out of scope, v1)** — Workflowy supports recurring date chips. WorkFlowy v1 does NOT; deferred to a post-v1 ambiguity entry. Tracked under `.lovable/question-and-ambiguity/` (F7 reconciliation candidate).
 
 > Cross-link: full operator list and ranking → [`./16-search-ranking.md`](./16-search-ranking.md). Chrome `📅 Today` button → [`./03-layout-structure.md`](./03-layout-structure.md).

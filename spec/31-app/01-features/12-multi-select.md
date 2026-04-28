@@ -167,16 +167,16 @@ When multiple items are selected, a **bulk action bar** appears at the bottom of
 
 When N ≥ 2 items are selected via Shift/Cmd-click (or keyboard range), the floating multi-select toolbar exposes:
 
-- **Bulk Move To** — Open the move-target picker; selected items (and their subtrees) are moved as a contiguous block under the chosen destination, preserving sibling order. Cycle-protected. (toolbar, shortcut: ⌘+Shift+M)
-- **Bulk Mirror To** — Create a mirror peer for **each** selected item at the chosen destination. Each mirror joins the corresponding source's peer group (or creates a new singleton-then-pair group). (toolbar, shortcut: ⌘+Shift+L)
+- **Bulk Move To** — Open the move-target picker; selected items (and their subtrees) are moved as a contiguous block under the chosen destination, preserving sibling order. Cycle-protected. `⌘+Shift+M`
+- **Bulk Mirror To** — Create a mirror peer for **each** selected item at the chosen destination. Each mirror joins the corresponding source's peer group (or creates a new singleton-then-pair group). `⌘+Shift+L`
 - **Move Here / Mirror Here** — When dragging the selection, drop targets show inline `Move Here` / `Mirror Here` chips; choose at drop time. (drag chrome)
-- **Bulk Delete** — Soft-delete every selected item; all subtrees go to Trash. Single confirmation toast covers the whole batch with an Undo affordance (`global-undo-toast`). (toolbar, shortcut: ⌘⌫)
-- **Bulk Complete / Uncomplete** — On a selection of `todo` rows, toggle `completed` for every row in one action. Rows of other types in the selection are ignored (no error). (toolbar, shortcut: ⌘↵)
+- **Bulk Delete** — Soft-delete every selected item; all subtrees go to Trash. Single confirmation toast covers the whole batch with an Undo affordance (`global-undo-toast`). `⌘⌫`
+- **Bulk Complete / Uncomplete** — On a selection of `todo` rows, toggle `completed` for every row in one action. Rows of other types in the selection are ignored (no error). `⌘↵`
 - **Bulk Tag / Untag** — Apply or remove a `#tag` across the entire selection. (toolbar)
 - **Bulk Export** — Export the selection (and subtrees) as a single Markdown / OPML / plain-text document. → [`./13-templates.md`](./13-templates.md) F4 appendix.
 - **Bulk Add to Templates** — Snapshot the selection as a multi-root template. → [`./13-templates.md`](./13-templates.md) F4 appendix.
-- **Zoom Selection** — When N ≥ 2 selected, ⌘. opens the **virtual scope** ephemeral page containing only the selection (per `mem://features/multi-select`). (shortcut: ⌘.)
-- **Clear Selection** — Esc clears the selection and dismisses the toolbar. (shortcut: Esc)
+- **Zoom Selection** — When N ≥ 2 selected, ⌘. opens the **virtual scope** ephemeral page containing only the selection (per `mem://features/multi-select`). `⌘`
+- **Clear Selection** — Esc clears the selection and dismisses the toolbar. `Esc`
 
 ### Selection rules (already canonical)
 

@@ -207,7 +207,7 @@ For cleaner UX, use only **"Mirror To…"** in the context menu (one unified act
 > **Source:** Workflowy product feature list, merged 2026-04-28 (lossless, additive). Reproduced verbatim. WorkFlowy's underlying model is **peer group**, not source/copy — see [`./09b-mirror-peer-group-model.md`](./09b-mirror-peer-group-model.md). The user-facing affordances below match Workflowy's vocabulary while the model interpretation stays canonical.
 
 - **Mirror** — Create an additional reference to the item elsewhere in the tree. The new entry shows the same content, children, and metadata as the original; editing any peer updates them all. (item-menu / slash: `/mirror`)
-- **Mirror To** — Open a target picker; the new mirror peer is placed at the chosen destination. (item-menu, shortcut: ⌘+Shift+L)
+- **Mirror To** — Open a target picker; the new mirror peer is placed at the chosen destination. `⌘+Shift+L`
 - **Mirror Here** — During a multi-select drag, drop the selection as a mirror peer at the current anchor (rather than a move). (multi-select chrome)
 - **Detach Mirror** — Remove the current item from its peer group. The other peers remain linked. If detaching reduces the group to a singleton, the group is dissolved entirely (per `mem://features/mirroring`). (item-menu, _conditional:_ peer-group size ≥ 2)
 - **See Mirrors** — Open a panel listing every other peer of this item with its breadcrumb path; clicking a row jumps to that location. (item-menu, _conditional:_ peer-group size ≥ 2; component: `mirror-peers-panel`)

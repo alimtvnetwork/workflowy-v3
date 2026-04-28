@@ -188,11 +188,11 @@ User clicks "Make template" in the item context menu → a dialog opens to name 
 - **Export** — Export the current item subtree as Markdown, OPML, or plain text. Multi-select export combines selected items into a single document with each root as a top-level section. (item-menu, slash: `/export`)
 - **Export All** — Export the user's entire root tree as a single archive (Markdown + OPML + attachments manifest). Available from Settings → *Backup & Export*. (settings entry → see [`spec/36-user-management/`](../../36-user-management/00-overview.md) F5 appendix)
 - **Print** — Open the browser print dialog scoped to the current item subtree. The renderer applies the `@media print` styles defined in [`spec/07-design-system/`](../../07-design-system/00-overview.md) (no chrome, full-width text, no infinite-scroll virtualisation).
-- **Presentation Mode** — A full-screen item-by-item slideshow of the current subtree. Each top-level child becomes one slide; descendants render as bullets within. Navigate with ←/→. (item-menu: *Present*, shortcut: ⌘+Shift+P)
+- **Presentation Mode** — A full-screen item-by-item slideshow of the current subtree. Each top-level child becomes one slide; descendants render as bullets within. Navigate with ←/→. `⌘+Shift+P`
 
 ### Fractal Comments
 
-- **Fractal Comments** — Threaded comment system where each comment is itself a tree (replies can have replies indefinitely). A comment thread is anchored to a specific item; the thread root renders in a side panel. (component: `comments-panel`, shortcut: ⌃M)
+- **Fractal Comments** — Threaded comment system where each comment is itself a tree (replies can have replies indefinitely). A comment thread is anchored to a specific item; the thread root renders in a side panel. `⌃M`
 - **Comment Drafts** — Comments are saved as drafts locally until the user clicks *Post*; drafts survive page navigation and offline disconnects.
 - **Mention** — Typing `@username` in a comment inserts a mention pill that notifies the named user. (autocomplete from invited / shared users on the item)
 - **Unread Indicator** — A blue dot appears on the menu-bar comments icon when the user has unread comments anywhere in their tree.
