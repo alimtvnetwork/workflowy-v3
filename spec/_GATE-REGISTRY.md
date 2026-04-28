@@ -160,6 +160,7 @@
 | `G-13-NO-SECRET-LITERAL` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | Hardcode secrets / registry URLs in workflow YAML Token leak; rotation impossible. |
 | `G-13-PROTECTION-MATCH` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | Mark scan-security as required Slows merges on third-party CVE noise. Branch-protection JSON checked into repo, valid. |
 | `G-13-PUBLISH-NEEDS-SIGN` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | Publish from a job that didn't depend on sign-artifact Unsigned release reaches users. |
+| `G-13-FIXTURE-AS-SPEC-SHAPE` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md`](./13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md) | Every file in `scripts-as-spec/` (except `README.md`) MUST contain the 6 required H2 sections (Purpose / Inputs / Outputs / Algorithm / Exemptions / Strictness-roadmap-or-Test-fixtures), and the Algorithm section MUST contain a fenced code block. Frozen reference algorithm self-audits this directory. |
 
 ### ADR-0014
 
