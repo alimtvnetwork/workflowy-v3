@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-28  
-**Total Files:** 1373  
+**Total Files:** 1383  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -16,12 +16,12 @@
 ## Table of Contents
 
 - [01-spec-authoring-guide](#01-spec-authoring-guide) — 23 file(s)
-- [02-coding-guidelines](#02-coding-guidelines) — 308 file(s)
+- [02-coding-guidelines](#02-coding-guidelines) — 309 file(s)
 - [03-error-manage](#03-error-manage) — 188 file(s)
-- [04-database-conventions](#04-database-conventions) — 16 file(s)
+- [04-database-conventions](#04-database-conventions) — 17 file(s)
 - [05-split-db-architecture](#05-split-db-architecture) — 45 file(s)
 - [06-seedable-config-architecture](#06-seedable-config-architecture) — 50 file(s)
-- [07-design-system](#07-design-system) — 16 file(s)
+- [07-design-system](#07-design-system) — 17 file(s)
 - [08-docs-viewer-ui](#08-docs-viewer-ui) — 29 file(s)
 - [09-code-block-system](#09-code-block-system) — 14 file(s)
 - [10-powershell-integration](#10-powershell-integration) — 25 file(s)
@@ -33,13 +33,13 @@
 - [16-generic-cli](#16-generic-cli) — 43 file(s)
 - [17-generic-update](#17-generic-update) — 11 file(s)
 - [18-spec-issues](#18-spec-issues) — 14 file(s)
-- [31-app](#31-app) — 132 file(s)
-- [32-ui-design](#32-ui-design) — 120 file(s)
-- [33-feedback-report](#33-feedback-report) — 3 file(s)
-- [34-activity-feed](#34-activity-feed) — 3 file(s)
-- [35-enforcement-rules](#35-enforcement-rules) — 3 file(s)
-- [36-user-management](#36-user-management) — 4 file(s)
-- [root](#root) — 10 file(s)
+- [31-app](#31-app) — 133 file(s)
+- [32-ui-design](#32-ui-design) — 121 file(s)
+- [33-feedback-report](#33-feedback-report) — 4 file(s)
+- [34-activity-feed](#34-activity-feed) — 4 file(s)
+- [35-enforcement-rules](#35-enforcement-rules) — 4 file(s)
+- [36-user-management](#36-user-management) — 5 file(s)
+- [root](#root) — 11 file(s)
 
 ---
 
@@ -364,6 +364,7 @@
 | [`02-coding-guidelines/22-app-issues/01-code-line-alignment.md`](./02-coding-guidelines/22-app-issues/01-code-line-alignment.md) | Code Line Alignment Mismatch | — | Active |
 | [`02-coding-guidelines/22-app-issues/99-consistency-report.md`](./02-coding-guidelines/22-app-issues/99-consistency-report.md) | Consistency Report — App Issues | 1.1.0 | — |
 | [`02-coding-guidelines/97-acceptance-criteria.md`](./02-coding-guidelines/97-acceptance-criteria.md) | Coding Guidelines — Acceptance Criteria | 3.1.0 | — |
+| [`02-coding-guidelines/97a-acceptance-criteria-fixtures.md`](./02-coding-guidelines/97a-acceptance-criteria-fixtures.md) | Coding Guidelines — Acceptance Criteria I/O Fixtures (Template) | 1.0.0 | Normative |
 | [`02-coding-guidelines/99-consistency-report.md`](./02-coding-guidelines/99-consistency-report.md) | Consistency Report — Coding Guidelines | 3.1.0 | — |
 | [`02-coding-guidelines/consolidated-review-guide-condensed.md`](./02-coding-guidelines/consolidated-review-guide-condensed.md) | Consolidated Review Guide — Condensed | — | — |
 | [`02-coding-guidelines/consolidated-review-guide/00-overview.md`](./02-coding-guidelines/consolidated-review-guide/00-overview.md) | Consolidated Code Review Guide (Overview) | 3.3.0 | — |
@@ -596,6 +597,7 @@
 | [`04-database-conventions/06-rest-api-format/97-acceptance-criteria.md`](./04-database-conventions/06-rest-api-format/97-acceptance-criteria.md) | REST API Format — Acceptance Criteria | 2.0.0 | Curated |
 | [`04-database-conventions/07-split-db-pattern.md`](./04-database-conventions/07-split-db-pattern.md) | Split DB Pattern | 3.1.0 | — |
 | [`04-database-conventions/97-acceptance-criteria.md`](./04-database-conventions/97-acceptance-criteria.md) | Database Conventions — Acceptance Criteria | 2.0.0 | Curated |
+| [`04-database-conventions/97a-acceptance-criteria-fixtures.md`](./04-database-conventions/97a-acceptance-criteria-fixtures.md) | Database Conventions — Acceptance Criteria I/O Fixtures | 1.0.0 | Normative |
 | [`04-database-conventions/99-consistency-report.md`](./04-database-conventions/99-consistency-report.md) | Consistency Report — Database Conventions | 3.1.0 | — |
 
 ## 05-split-db-architecture
@@ -722,6 +724,7 @@
 | [`07-design-system/12-page-creation-rules.md`](./07-design-system/12-page-creation-rules.md) | Page Creation Rules | 3.1.0 | — |
 | [`07-design-system/13-wordpress-migration.md`](./07-design-system/13-wordpress-migration.md) | WordPress Migration Compatibility | 3.1.0 | — |
 | [`07-design-system/97-acceptance-criteria.md`](./07-design-system/97-acceptance-criteria.md) | Acceptance Criteria | 3.1.0 | — |
+| [`07-design-system/97a-acceptance-criteria-fixtures.md`](./07-design-system/97a-acceptance-criteria-fixtures.md) | Design System — Acceptance Criteria I/O Fixtures | 1.0.0 | Normative |
 | [`07-design-system/99-consistency-report.md`](./07-design-system/99-consistency-report.md) | Consistency Report | 3.1.0 | — |
 
 ## 08-docs-viewer-ui
@@ -1348,6 +1351,7 @@
 | [`31-app/06-endpoints/15b-search.md`](./31-app/06-endpoints/15b-search.md) | Endpoints — 15 Search | 1.0.0 | — |
 | [`31-app/06-endpoints/16-endpoint-at-matrix.md`](./31-app/06-endpoints/16-endpoint-at-matrix.md) | Endpoint ↔ Acceptance-Test Cross-Reference Matrix | 1.1.0 | — |
 | [`31-app/06-endpoints/97-acceptance-criteria.md`](./31-app/06-endpoints/97-acceptance-criteria.md) | Endpoints — Acceptance Criteria | 1.0.0 | — |
+| [`31-app/06-endpoints/97b-endpoint-envelope-fixtures.md`](./31-app/06-endpoints/97b-endpoint-envelope-fixtures.md) | Per-Endpoint Universal-Envelope JSON Fixtures | 1.0.0 | — |
 | [`31-app/06-endpoints/99-consistency-report.md`](./31-app/06-endpoints/99-consistency-report.md) | Consistency Report — 06-endpoints | 1.0.0 | — |
 | [`31-app/07-db-diagram/00-overview.md`](./31-app/07-db-diagram/00-overview.md) | DB Diagram — Database Design SSOT (Visual) | 1.1.0 | — |
 | [`31-app/07-db-diagram/01-master-erd.md`](./31-app/07-db-diagram/01-master-erd.md) | 01 — Master ERD (All Tables, Both DBs) | 1.0.0 | — |
@@ -1491,6 +1495,7 @@
 | [`32-ui-design/06-workflowy-ui/97-acceptance-criteria.md`](./32-ui-design/06-workflowy-ui/97-acceptance-criteria.md) | WorkFlowy UI — Acceptance Criteria (Roll-up) | 1.0.0 | Curated |
 | [`32-ui-design/06-workflowy-ui/99-consistency-report.md`](./32-ui-design/06-workflowy-ui/99-consistency-report.md) | Consistency Report — WorkFlowy UI | 1.1.0 | — |
 | [`32-ui-design/97-acceptance-criteria.md`](./32-ui-design/97-acceptance-criteria.md) | UI Design — Acceptance Criteria | 2.0.0 | — |
+| [`32-ui-design/97a-acceptance-criteria-fixtures.md`](./32-ui-design/97a-acceptance-criteria-fixtures.md) | UI Design — Acceptance Criteria I/O Fixtures | 1.0.0 | Normative |
 | [`32-ui-design/99-consistency-report.md`](./32-ui-design/99-consistency-report.md) | Consistency Report — Ui Design | 1.3.0 | — |
 
 ## 33-feedback-report
@@ -1499,6 +1504,7 @@
 |------|-------|---------|--------|
 | [`33-feedback-report/00-overview.md`](./33-feedback-report/00-overview.md) | Feedback Report — Feature Spec | 2.0.0 | Planned |
 | [`33-feedback-report/97-acceptance-criteria.md`](./33-feedback-report/97-acceptance-criteria.md) | Feedback Report — Acceptance Criteria | 1.0.0 | Curated |
+| [`33-feedback-report/97a-acceptance-criteria-fixtures.md`](./33-feedback-report/97a-acceptance-criteria-fixtures.md) | Feedback Report — Acceptance Criteria I/O Fixtures | 1.0.0 | Normative |
 | [`33-feedback-report/99-consistency-report.md`](./33-feedback-report/99-consistency-report.md) | Consistency Report — Feedback Report Feature | 1.1.0 | — |
 
 ## 34-activity-feed
@@ -1507,6 +1513,7 @@
 |------|-------|---------|--------|
 | [`34-activity-feed/00-overview.md`](./34-activity-feed/00-overview.md) | Activity Feed — Feature Spec | 2.0.0 | Planned |
 | [`34-activity-feed/97-acceptance-criteria.md`](./34-activity-feed/97-acceptance-criteria.md) | Activity Feed — Acceptance Criteria | 1.0.0 | Curated |
+| [`34-activity-feed/97a-acceptance-criteria-fixtures.md`](./34-activity-feed/97a-acceptance-criteria-fixtures.md) | Activity Feed — Acceptance Criteria I/O Fixtures | 1.0.0 | Normative |
 | [`34-activity-feed/99-consistency-report.md`](./34-activity-feed/99-consistency-report.md) | Consistency Report — E2 Activity Feed | 1.1.0 | — |
 
 ## 35-enforcement-rules
@@ -1515,6 +1522,7 @@
 |------|-------|---------|--------|
 | [`35-enforcement-rules/00-overview.md`](./35-enforcement-rules/00-overview.md) | Enforcement Rules — Spec | 2.0.0 | Planned |
 | [`35-enforcement-rules/97-acceptance-criteria.md`](./35-enforcement-rules/97-acceptance-criteria.md) | Enforcement Rules — Acceptance Criteria | 1.0.0 | Curated |
+| [`35-enforcement-rules/97a-acceptance-criteria-fixtures.md`](./35-enforcement-rules/97a-acceptance-criteria-fixtures.md) | Enforcement Rules — Acceptance Criteria I/O Fixtures | 1.0.0 | Normative |
 | [`35-enforcement-rules/99-consistency-report.md`](./35-enforcement-rules/99-consistency-report.md) | Consistency Report — Generic Enforce | 1.1.0 | — |
 
 ## 36-user-management
@@ -1524,6 +1532,7 @@
 | [`36-user-management/00-overview.md`](./36-user-management/00-overview.md) | User Management — Feature Spec | 2.0.0 | Planned |
 | [`36-user-management/01-account-and-settings.md`](./36-user-management/01-account-and-settings.md) | Account & Settings — Feature Reference (F5) | 1.0.0 | Active |
 | [`36-user-management/97-acceptance-criteria.md`](./36-user-management/97-acceptance-criteria.md) | User Management — Acceptance Criteria | 1.0.0 | Curated |
+| [`36-user-management/97a-acceptance-criteria-fixtures.md`](./36-user-management/97a-acceptance-criteria-fixtures.md) | User Management — Acceptance Criteria I/O Fixtures | 1.0.0 | Normative |
 | [`36-user-management/99-consistency-report.md`](./36-user-management/99-consistency-report.md) | Consistency Report — User Management | 1.1.0 | — |
 
 ## root
@@ -1534,6 +1543,7 @@
 | [`19-glossary.md`](./19-glossary.md) | Glossary — Cross-Spec Terminology SSOT | 1.1.0 | Active |
 | [`20-enums-index.md`](./20-enums-index.md) | Enums Index — Cross-Language Registry | 1.1.0 | Active |
 | [`21-ai-readiness-audit-round-2.md`](./21-ai-readiness-audit-round-2.md) | AI-Readiness Audit Report — Round 2 (post C/M/H/L tier completion) | 2.0.0 | — |
+| [`97a-acceptance-criteria-fixtures.md`](./97a-acceptance-criteria-fixtures.md) | Spec — P2g Remainder Acceptance Criteria I/O Fixtures (Sweep) | 1.0.0 | Normative |
 | [`99-consistency-report.md`](./99-consistency-report.md) | Consistency Report: Spec Root | 3.1.0 | — |
 | [`folder-structure-root.md`](./folder-structure-root.md) | Folder Structure Root — Redirect | — | — |
 | [`health-dashboard.md`](./health-dashboard.md) | Project-Wide Spec Health Dashboard | — | — |
@@ -1543,4 +1553,4 @@
 
 ---
 
-*Auto-generated index — 1373 files across 25 top-level folders.*
+*Auto-generated index — 1383 files across 25 top-level folders.*
