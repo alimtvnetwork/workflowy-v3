@@ -82,3 +82,10 @@
 - Sole failure: **G-15 enum-sync** — `ItemType` drift (`mirror` still present in `src/types/index.ts:43`, removed from spec SSOT per mirror peer-group decision).
 - Confirms: G-15 is the only blocker, and it requires `exit spec-only` to fix (Code-1).
 - No other regressions across G-30/G-31/G-32/G-33/G-34/G-35/G-36/G-37, link checker, header normaliser, or AT coverage.
+
+## Task #61 — 2026-04-28 — F-future-G31e residual re-audit
+- Stale claim: "14 G-31.6 island advisories" — corrected.
+- Actual current state: 9 island-exempt entries (all in `endpoints` scope), 0 active advisories.
+- Verified each of the 9 files: 0 peer-endpoint inbound refs (rg scan across `spec/31-app/06-endpoints/**`).
+- Conclusion: every exemption still justified by 2026-04-27 drainage rationale; nothing further to drain.
+- F-future-G31e is now **closed** (was already maximally drained; only re-audit was outstanding).
