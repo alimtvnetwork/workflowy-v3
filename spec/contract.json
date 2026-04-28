@@ -10285,6 +10285,14 @@
         {
           "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
           "line": 11
+        },
+        {
+          "file": "spec/03-error-manage/99-worked-example-fixtures.md",
+          "line": 3
+        },
+        {
+          "file": "spec/03-error-manage/99-worked-example-fixtures.md",
+          "line": 124
         }
       ]
     },
@@ -10301,6 +10309,10 @@
         {
           "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
           "line": 19
+        },
+        {
+          "file": "spec/03-error-manage/99-worked-example-fixtures.md",
+          "line": 125
         }
       ]
     },
@@ -10317,6 +10329,10 @@
         {
           "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
           "line": 27
+        },
+        {
+          "file": "spec/03-error-manage/99-worked-example-fixtures.md",
+          "line": 126
         }
       ]
     },
@@ -10333,6 +10349,10 @@
         {
           "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
           "line": 34
+        },
+        {
+          "file": "spec/03-error-manage/99-worked-example-fixtures.md",
+          "line": 127
         }
       ]
     },
@@ -10349,6 +10369,10 @@
         {
           "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
           "line": 42
+        },
+        {
+          "file": "spec/03-error-manage/99-worked-example-fixtures.md",
+          "line": 128
         }
       ]
     },
@@ -10365,6 +10389,10 @@
         {
           "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
           "line": 49
+        },
+        {
+          "file": "spec/03-error-manage/99-worked-example-fixtures.md",
+          "line": 129
         }
       ]
     },
@@ -10381,6 +10409,10 @@
         {
           "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
           "line": 57
+        },
+        {
+          "file": "spec/03-error-manage/99-worked-example-fixtures.md",
+          "line": 130
         }
       ]
     },
@@ -10397,6 +10429,10 @@
         {
           "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
           "line": 64
+        },
+        {
+          "file": "spec/03-error-manage/99-worked-example-fixtures.md",
+          "line": 131
         }
       ]
     },
@@ -10413,6 +10449,10 @@
         {
           "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
           "line": 72
+        },
+        {
+          "file": "spec/03-error-manage/99-worked-example-fixtures.md",
+          "line": 132
         }
       ]
     },
@@ -10429,6 +10469,10 @@
         {
           "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
           "line": 80
+        },
+        {
+          "file": "spec/03-error-manage/99-worked-example-fixtures.md",
+          "line": 133
         }
       ]
     },
@@ -12409,6 +12453,14 @@
         {
           "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
           "line": 11
+        },
+        {
+          "file": "spec/16-generic-cli/99-worked-example-fixtures.md",
+          "line": 3
+        },
+        {
+          "file": "spec/16-generic-cli/99-worked-example-fixtures.md",
+          "line": 123
         }
       ]
     },
@@ -12425,6 +12477,10 @@
         {
           "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
           "line": 19
+        },
+        {
+          "file": "spec/16-generic-cli/99-worked-example-fixtures.md",
+          "line": 124
         }
       ]
     },
@@ -12441,6 +12497,10 @@
         {
           "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
           "line": 26
+        },
+        {
+          "file": "spec/16-generic-cli/99-worked-example-fixtures.md",
+          "line": 125
         }
       ]
     },
@@ -12457,6 +12517,10 @@
         {
           "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
           "line": 33
+        },
+        {
+          "file": "spec/16-generic-cli/99-worked-example-fixtures.md",
+          "line": 126
         }
       ]
     },
@@ -12473,6 +12537,10 @@
         {
           "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
           "line": 41
+        },
+        {
+          "file": "spec/16-generic-cli/99-worked-example-fixtures.md",
+          "line": 127
         }
       ]
     },
@@ -12489,6 +12557,10 @@
         {
           "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
           "line": 49
+        },
+        {
+          "file": "spec/16-generic-cli/99-worked-example-fixtures.md",
+          "line": 128
         }
       ]
     },
@@ -12505,6 +12577,10 @@
         {
           "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
           "line": 57
+        },
+        {
+          "file": "spec/16-generic-cli/99-worked-example-fixtures.md",
+          "line": 129
         }
       ]
     },
@@ -12521,6 +12597,10 @@
         {
           "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
           "line": 64
+        },
+        {
+          "file": "spec/16-generic-cli/99-worked-example-fixtures.md",
+          "line": 130
         }
       ]
     },
@@ -12537,6 +12617,10 @@
         {
           "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
           "line": 71
+        },
+        {
+          "file": "spec/16-generic-cli/99-worked-example-fixtures.md",
+          "line": 131
         }
       ]
     },
@@ -12553,6 +12637,10 @@
         {
           "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
           "line": 78
+        },
+        {
+          "file": "spec/16-generic-cli/99-worked-example-fixtures.md",
+          "line": 132
         }
       ]
     },
@@ -12614,6 +12702,14 @@
         {
           "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
           "line": 13
+        },
+        {
+          "file": "spec/17-generic-update/99-worked-example-fixtures.md",
+          "line": 3
+        },
+        {
+          "file": "spec/17-generic-update/99-worked-example-fixtures.md",
+          "line": 161
         }
       ]
     },
@@ -12630,6 +12726,10 @@
         {
           "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
           "line": 22
+        },
+        {
+          "file": "spec/17-generic-update/99-worked-example-fixtures.md",
+          "line": 162
         }
       ]
     },
@@ -12646,6 +12746,14 @@
         {
           "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
           "line": 29
+        },
+        {
+          "file": "spec/17-generic-update/99-worked-example-fixtures.md",
+          "line": 94
+        },
+        {
+          "file": "spec/17-generic-update/99-worked-example-fixtures.md",
+          "line": 163
         }
       ]
     },
@@ -12662,6 +12770,14 @@
         {
           "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
           "line": 36
+        },
+        {
+          "file": "spec/17-generic-update/99-worked-example-fixtures.md",
+          "line": 128
+        },
+        {
+          "file": "spec/17-generic-update/99-worked-example-fixtures.md",
+          "line": 164
         }
       ]
     },
@@ -12678,6 +12794,10 @@
         {
           "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
           "line": 44
+        },
+        {
+          "file": "spec/17-generic-update/99-worked-example-fixtures.md",
+          "line": 165
         }
       ]
     },
@@ -12694,6 +12814,10 @@
         {
           "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
           "line": 52
+        },
+        {
+          "file": "spec/17-generic-update/99-worked-example-fixtures.md",
+          "line": 166
         }
       ]
     },
@@ -12710,6 +12834,10 @@
         {
           "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
           "line": 60
+        },
+        {
+          "file": "spec/17-generic-update/99-worked-example-fixtures.md",
+          "line": 167
         }
       ]
     },
@@ -12726,6 +12854,10 @@
         {
           "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
           "line": 68
+        },
+        {
+          "file": "spec/17-generic-update/99-worked-example-fixtures.md",
+          "line": 168
         }
       ]
     },
@@ -12746,6 +12878,10 @@
         {
           "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
           "line": 75
+        },
+        {
+          "file": "spec/17-generic-update/99-worked-example-fixtures.md",
+          "line": 169
         }
       ]
     },
@@ -18953,6 +19089,14 @@
         {
           "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
           "line": 11
+        },
+        {
+          "file": "spec/14-self-update-app-update/99-worked-example-fixtures.md",
+          "line": 3
+        },
+        {
+          "file": "spec/14-self-update-app-update/99-worked-example-fixtures.md",
+          "line": 109
         }
       ]
     },
@@ -18969,6 +19113,10 @@
         {
           "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
           "line": 20
+        },
+        {
+          "file": "spec/14-self-update-app-update/99-worked-example-fixtures.md",
+          "line": 110
         },
         {
           "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
@@ -18991,6 +19139,10 @@
           "line": 28
         },
         {
+          "file": "spec/14-self-update-app-update/99-worked-example-fixtures.md",
+          "line": 111
+        },
+        {
           "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
           "line": 31
         }
@@ -19009,6 +19161,10 @@
         {
           "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
           "line": 36
+        },
+        {
+          "file": "spec/14-self-update-app-update/99-worked-example-fixtures.md",
+          "line": 112
         }
       ]
     },
@@ -19025,6 +19181,10 @@
         {
           "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
           "line": 44
+        },
+        {
+          "file": "spec/14-self-update-app-update/99-worked-example-fixtures.md",
+          "line": 113
         }
       ]
     },
@@ -19041,6 +19201,10 @@
         {
           "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
           "line": 52
+        },
+        {
+          "file": "spec/14-self-update-app-update/99-worked-example-fixtures.md",
+          "line": 114
         }
       ]
     },
@@ -19057,6 +19221,10 @@
         {
           "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
           "line": 60
+        },
+        {
+          "file": "spec/14-self-update-app-update/99-worked-example-fixtures.md",
+          "line": 115
         }
       ]
     },
@@ -19077,6 +19245,10 @@
         {
           "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
           "line": 68
+        },
+        {
+          "file": "spec/14-self-update-app-update/99-worked-example-fixtures.md",
+          "line": 116
         }
       ]
     },
@@ -19093,6 +19265,10 @@
         {
           "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
           "line": 75
+        },
+        {
+          "file": "spec/14-self-update-app-update/99-worked-example-fixtures.md",
+          "line": 117
         }
       ]
     },
@@ -19109,6 +19285,10 @@
         {
           "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
           "line": 83
+        },
+        {
+          "file": "spec/14-self-update-app-update/99-worked-example-fixtures.md",
+          "line": 118
         }
       ]
     },
@@ -19854,6 +20034,14 @@
         {
           "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
           "line": 13
+        },
+        {
+          "file": "spec/05-split-db-architecture/99-worked-example-fixtures.md",
+          "line": 3
+        },
+        {
+          "file": "spec/05-split-db-architecture/99-worked-example-fixtures.md",
+          "line": 163
         }
       ]
     },
@@ -19870,6 +20058,10 @@
         {
           "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
           "line": 22
+        },
+        {
+          "file": "spec/05-split-db-architecture/99-worked-example-fixtures.md",
+          "line": 164
         }
       ]
     },
@@ -19886,6 +20078,10 @@
         {
           "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
           "line": 29
+        },
+        {
+          "file": "spec/05-split-db-architecture/99-worked-example-fixtures.md",
+          "line": 165
         }
       ]
     },
@@ -19902,6 +20098,10 @@
         {
           "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
           "line": 37
+        },
+        {
+          "file": "spec/05-split-db-architecture/99-worked-example-fixtures.md",
+          "line": 166
         }
       ]
     },
@@ -19918,6 +20118,10 @@
         {
           "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
           "line": 44
+        },
+        {
+          "file": "spec/05-split-db-architecture/99-worked-example-fixtures.md",
+          "line": 167
         }
       ]
     },
@@ -19934,6 +20138,10 @@
         {
           "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
           "line": 52
+        },
+        {
+          "file": "spec/05-split-db-architecture/99-worked-example-fixtures.md",
+          "line": 168
         }
       ]
     },
@@ -19950,6 +20158,10 @@
         {
           "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
           "line": 60
+        },
+        {
+          "file": "spec/05-split-db-architecture/99-worked-example-fixtures.md",
+          "line": 169
         }
       ]
     },
@@ -19966,6 +20178,10 @@
         {
           "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
           "line": 67
+        },
+        {
+          "file": "spec/05-split-db-architecture/99-worked-example-fixtures.md",
+          "line": 170
         }
       ]
     },
@@ -19982,6 +20198,10 @@
         {
           "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
           "line": 74
+        },
+        {
+          "file": "spec/05-split-db-architecture/99-worked-example-fixtures.md",
+          "line": 171
         }
       ]
     },
@@ -19998,6 +20218,10 @@
         {
           "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
           "line": 81
+        },
+        {
+          "file": "spec/05-split-db-architecture/99-worked-example-fixtures.md",
+          "line": 172
         }
       ]
     },
