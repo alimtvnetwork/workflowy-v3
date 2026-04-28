@@ -40,9 +40,10 @@
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`01-error-resolution/`](./01-error-resolution/00-overview.md) | Error Resolution | subfolder |
-| 2 | [`02-error-architecture/`](./02-error-architecture/00-overview.md) | Error Architecture | subfolder |
-| 3 | [`03-error-code-registry/`](./03-error-code-registry/00-overview.md) | Error Code Registry | subfolder |
+| 1 | [`00-overview-condensed.md`](./00-overview-condensed.md) | Condensed Overview — `spec/03-error-manage/` (P11) | 131 |
+| 2 | [`01-error-resolution/`](./01-error-resolution/00-overview.md) | Error Resolution | subfolder |
+| 3 | [`02-error-architecture/`](./02-error-architecture/00-overview.md) | Error Architecture | subfolder |
+| 4 | [`03-error-code-registry/`](./03-error-code-registry/00-overview.md) | Error Code Registry | subfolder |
 
 <!-- AUTO-TOC:END -->
 

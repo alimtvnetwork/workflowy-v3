@@ -137,13 +137,14 @@ For UI rendering decisions (colors, fonts, spacing, animations), the SSOT is [`.
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`01-features/`](./01-features/00-overview.md) | Features | subfolder |
-| 2 | [`02-workflows/`](./02-workflows/00-overview.md) | Workflows | subfolder |
-| 3 | [`03-edge-cases/`](./03-edge-cases/00-overview.md) | Edge Cases | subfolder |
-| 4 | [`04-roadmap/`](./04-roadmap/00-overview.md) | Roadmap | subfolder |
-| 5 | [`05-conventions/`](./05-conventions/00-overview.md) | Conventions | subfolder |
-| 6 | [`06-endpoints/`](./06-endpoints/00-overview.md) | Endpoints — Master Index | subfolder |
-| 7 | [`07-db-diagram/`](./07-db-diagram/00-overview.md) | DB Diagram — Database Design SSOT (Visual) | subfolder |
+| 1 | [`00-overview-condensed.md`](./00-overview-condensed.md) | Condensed Overview — `spec/31-app/` (P11) | 200 |
+| 2 | [`01-features/`](./01-features/00-overview.md) | Features | subfolder |
+| 3 | [`02-workflows/`](./02-workflows/00-overview.md) | Workflows | subfolder |
+| 4 | [`03-edge-cases/`](./03-edge-cases/00-overview.md) | Edge Cases | subfolder |
+| 5 | [`04-roadmap/`](./04-roadmap/00-overview.md) | Roadmap | subfolder |
+| 6 | [`05-conventions/`](./05-conventions/00-overview.md) | Conventions | subfolder |
+| 7 | [`06-endpoints/`](./06-endpoints/00-overview.md) | Endpoints — Master Index | subfolder |
+| 8 | [`07-db-diagram/`](./07-db-diagram/00-overview.md) | DB Diagram — Database Design SSOT (Visual) | subfolder |
 
 <!-- AUTO-TOC:END -->
 

@@ -861,6 +861,10 @@
       "defined_line": 22,
       "cited_in": [
         {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 110
+        },
+        {
           "file": "spec/15-wp-plugin-how-to/13-admin-ui-patterns/97-acceptance-criteria.md",
           "line": 12
         },
@@ -1096,6 +1100,10 @@
           "line": 8
         },
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 149
+        },
+        {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 5
         },
@@ -1144,6 +1152,10 @@
           "line": 55
         },
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 150
+        },
+        {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 94
         },
@@ -1159,6 +1171,10 @@
       "defined_in": "spec/18-spec-issues/11-content-audit-at-app-coverage.md",
       "defined_line": 75,
       "cited_in": [
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 151
+        },
         {
           "file": "spec/31-app/06-endpoints/15-roles-and-permissions.md",
           "line": 48
@@ -1179,6 +1195,14 @@
       "defined_in": "spec/18-spec-issues/11-content-audit-at-app-coverage.md",
       "defined_line": 86,
       "cited_in": [
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 72
+        },
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 166
+        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 46
@@ -1236,6 +1260,10 @@
       "defined_line": 87,
       "cited_in": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 167
+        },
+        {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 111
         },
@@ -1264,6 +1292,10 @@
       "defined_line": 88,
       "cited_in": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 168
+        },
+        {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 112
         },
@@ -1282,6 +1314,10 @@
         {
           "file": "spec/18-spec-issues/10-content-audit-endpoints-and-db-diagram.md",
           "line": 55
+        },
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 174
         },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
@@ -1356,6 +1392,14 @@
           "line": 32
         },
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 60
+        },
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 175
+        },
+        {
           "file": "spec/31-app/06-endpoints/14-concurrency-and-sync.md",
           "line": 38
         },
@@ -1380,6 +1424,10 @@
       "defined_line": 95,
       "cited_in": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 176
+        },
+        {
           "file": "spec/31-app/06-endpoints/14-concurrency-and-sync.md",
           "line": 38
         },
@@ -1400,6 +1448,10 @@
       "defined_line": 96,
       "cited_in": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 177
+        },
+        {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 121
         },
@@ -1415,6 +1467,10 @@
       "defined_in": "spec/18-spec-issues/11-content-audit-at-app-coverage.md",
       "defined_line": 97,
       "cited_in": [
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 178
+        },
         {
           "file": "spec/31-app/06-endpoints/14-concurrency-and-sync.md",
           "line": 38
@@ -1435,6 +1491,14 @@
       "defined_in": "spec/18-spec-issues/11-content-audit-at-app-coverage.md",
       "defined_line": 98,
       "cited_in": [
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 175
+        },
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 179
+        },
         {
           "file": "spec/31-app/06-endpoints/14-concurrency-and-sync.md",
           "line": 35
@@ -1467,6 +1531,10 @@
       "defined_in": "spec/18-spec-issues/11-content-audit-at-app-coverage.md",
       "defined_line": 99,
       "cited_in": [
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 180
+        },
         {
           "file": "spec/31-app/06-endpoints/14-concurrency-and-sync.md",
           "line": 38
@@ -4962,6 +5030,10 @@
       "defined_line": 22,
       "cited_in": [
         {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 107
+        },
+        {
           "file": "spec/15-wp-plugin-how-to/10-deployment-patterns/97-acceptance-criteria.md",
           "line": 12
         },
@@ -5087,6 +5159,10 @@
       "defined_in": "spec/15-wp-plugin-how-to/12-design-system/97-acceptance-criteria.md",
       "defined_line": 22,
       "cited_in": [
+        {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 109
+        },
         {
           "file": "spec/15-wp-plugin-how-to/12-design-system/97-acceptance-criteria.md",
           "line": 12
@@ -5381,6 +5457,10 @@
       "defined_in": "spec/15-wp-plugin-how-to/20-end-to-end-walkthrough/97-acceptance-criteria.md",
       "defined_line": 24,
       "cited_in": [
+        {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 115
+        },
         {
           "file": "spec/15-wp-plugin-how-to/20-end-to-end-walkthrough/97-acceptance-criteria.md",
           "line": 12
@@ -5805,6 +5885,10 @@
       "defined_line": 22,
       "cited_in": [
         {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 101
+        },
+        {
           "file": "spec/15-wp-plugin-how-to/02-enums-and-coding-style/97-acceptance-criteria.md",
           "line": 12
         },
@@ -6151,6 +6235,10 @@
       "defined_in": "spec/15-wp-plugin-how-to/16-error-handling-extraction/97-acceptance-criteria.md",
       "defined_line": 22,
       "cited_in": [
+        {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 113
+        },
         {
           "file": "spec/15-wp-plugin-how-to/16-error-handling-extraction/97-acceptance-criteria.md",
           "line": 12
@@ -7060,6 +7148,10 @@
       "defined_in": "spec/15-wp-plugin-how-to/11-frontend-and-template-patterns/97-acceptance-criteria.md",
       "defined_line": 22,
       "cited_in": [
+        {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 108
+        },
         {
           "file": "spec/15-wp-plugin-how-to/11-frontend-and-template-patterns/97-acceptance-criteria.md",
           "line": 12
@@ -8436,6 +8528,10 @@
       "defined_line": 22,
       "cited_in": [
         {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 103
+        },
+        {
           "file": "spec/15-wp-plugin-how-to/05-helpers-responses-and-integration/97-acceptance-criteria.md",
           "line": 12
         },
@@ -9577,6 +9673,10 @@
       "defined_line": 22,
       "cited_in": [
         {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 102
+        },
+        {
           "file": "spec/15-wp-plugin-how-to/04-logging-and-error-handling/97-acceptance-criteria.md",
           "line": 12
         },
@@ -9817,6 +9917,10 @@
       "defined_in": "spec/15-wp-plugin-how-to/19-micro-orm-and-root-db/97-acceptance-criteria.md",
       "defined_line": 22,
       "cited_in": [
+        {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 114
+        },
         {
           "file": "spec/15-wp-plugin-how-to/19-micro-orm-and-root-db/97-acceptance-criteria.md",
           "line": 12
@@ -12102,6 +12206,10 @@
       "defined_line": 24,
       "cited_in": [
         {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 104
+        },
+        {
           "file": "spec/15-wp-plugin-how-to/07-reference-implementations/97-acceptance-criteria.md",
           "line": 12
         },
@@ -12498,6 +12606,10 @@
       "defined_in": "spec/15-wp-plugin-how-to/14-rest-api-conventions/97-acceptance-criteria.md",
       "defined_line": 22,
       "cited_in": [
+        {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 111
+        },
         {
           "file": "spec/15-wp-plugin-how-to/14-rest-api-conventions/97-acceptance-criteria.md",
           "line": 12
@@ -13353,6 +13465,10 @@
       "defined_in": "spec/15-wp-plugin-how-to/15-settings-architecture/97-acceptance-criteria.md",
       "defined_line": 22,
       "cited_in": [
+        {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 112
+        },
         {
           "file": "spec/15-wp-plugin-how-to/15-settings-architecture/97-acceptance-criteria.md",
           "line": 12
@@ -14536,6 +14652,10 @@
       "defined_in": "spec/15-wp-plugin-how-to/09-testing-patterns/97-acceptance-criteria.md",
       "defined_line": 22,
       "cited_in": [
+        {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 106
+        },
         {
           "file": "spec/15-wp-plugin-how-to/09-testing-patterns/97-acceptance-criteria.md",
           "line": 12
@@ -17701,6 +17821,10 @@
       "defined_line": 22,
       "cited_in": [
         {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 105
+        },
+        {
           "file": "spec/15-wp-plugin-how-to/08-wordpress-integration-patterns/97-acceptance-criteria.md",
           "line": 12
         },
@@ -18018,8 +18142,16 @@
       "defined_line": 53,
       "cited_in": [
         {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 93
+        },
+        {
           "file": "spec/15-wp-plugin-how-to/97-acceptance-criteria.md",
           "line": 20
+        },
+        {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 126
         }
       ]
     },
@@ -18028,35 +18160,60 @@
       "definition": "Every PHP enum referenced anywhere in this how-to MUST appear in `spec/20-enums-index.md`; missing registration is a Code-Red consistency bug.",
       "defined_in": "spec/15-wp-plugin-how-to/97-acceptance-criteria.md",
       "defined_line": 59,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 132
+        }
+      ]
     },
     {
       "id": "AT-WPROOT-03",
       "definition": "Every response-payload key across §05 / §13 / §14 / §15 MUST come from the `ResponseKeyType` enum; string-literal keys ANYWHERE in PHP response builders are Code-Red.",
       "defined_in": "spec/15-wp-plugin-how-to/97-acceptance-criteria.md",
       "defined_line": 60,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 133
+        }
+      ]
     },
     {
       "id": "AT-WPROOT-04",
       "definition": "Every code path that calls into WordPress core, the DB layer, or the network MUST be wrapped by `SafeExecute::run(...)` (per §04 AT-LOGGINGANDERRORHANDLING-11) OR explicitly justify-and-link a §16 extraction reason; bare try/catch+log is forbidden.",
       "defined_in": "spec/15-wp-plugin-how-to/97-acceptance-criteria.md",
       "defined_line": 66,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 139
+        }
+      ]
     },
     {
       "id": "AT-WPROOT-05",
       "definition": "The Tier-1 delegated-server contract from `03-error-manage` MUST be honoured by every API error path: error envelope includes `code`, `message`, `statusCode`, `requestId`, `stacktraceId` (when debug-mode on); divergence is a Code-Red cross-stack bug.",
       "defined_in": "spec/15-wp-plugin-how-to/97-acceptance-criteria.md",
       "defined_line": 67,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 140
+        }
+      ]
     },
     {
       "id": "AT-WPROOT-06",
       "definition": "Every plugin setting whose default appears in §15 MUST also appear in the seedable-config layer with the same default; the two SSOTs MUST agree byte-for-byte (per `06-seedable-config-architecture/01-fundamentals`).",
       "defined_in": "spec/15-wp-plugin-how-to/97-acceptance-criteria.md",
       "defined_line": 73,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 146
+        }
+      ]
     },
     {
       "id": "AT-WPROOT-07",
@@ -18064,6 +18221,10 @@
       "defined_in": "spec/15-wp-plugin-how-to/97-acceptance-criteria.md",
       "defined_line": 79,
       "cited_in": [
+        {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 152
+        },
         {
           "file": "spec/31-app/06-endpoints/00-overview.md",
           "line": 85
@@ -18087,28 +18248,48 @@
       "definition": "The admin-UI design system (§12) MUST consume the same color, spacing, and typography tokens as the front-end design system (`32-ui-design/03-design-system`); divergence is a brand-consistency bug.",
       "defined_in": "spec/15-wp-plugin-how-to/97-acceptance-criteria.md",
       "defined_line": 80,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 153
+        }
+      ]
     },
     {
       "id": "AT-WPROOT-09",
       "definition": "Every public PHP class added under §07 / §08 / §11 / §13 / §14 / §15 / §19 MUST have at least one unit OR integration test in §09; uncovered public classes fail the §09 coverage gate.",
       "defined_in": "spec/15-wp-plugin-how-to/97-acceptance-criteria.md",
       "defined_line": 86,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 159
+        }
+      ]
     },
     {
       "id": "AT-WPROOT-10",
       "definition": "The §10 deployment pipeline MUST run the §09 test suite + the spec-hygiene suite + a static analysis pass before producing a release artefact; skipping any gate is a Code-Red CI bug.",
       "defined_in": "spec/15-wp-plugin-how-to/97-acceptance-criteria.md",
       "defined_line": 87,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 160
+        }
+      ]
     },
     {
       "id": "AT-WPROOT-11",
       "definition": "The §20 end-to-end walkthrough MUST exercise at least one criterion from EACH of §02, §04, §05, §08, §13, §14, §15; gaps fail the §20 coverage gate.",
       "defined_in": "spec/15-wp-plugin-how-to/97-acceptance-criteria.md",
       "defined_line": 93,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 166
+        }
+      ]
     },
     {
       "id": "AT-WPROOT-12",
@@ -18117,8 +18298,16 @@
       "defined_line": 94,
       "cited_in": [
         {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 93
+        },
+        {
           "file": "spec/15-wp-plugin-how-to/97-acceptance-criteria.md",
           "line": 20
+        },
+        {
+          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
+          "line": 167
         }
       ]
     }
@@ -18128,8 +18317,16 @@
       "id": "AT-APP-01",
       "citedIn": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 72
+        },
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 84
+        },
+        {
           "file": "spec/31-app/00-overview.md",
-          "line": 62
+          "line": 70
         },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
@@ -18169,6 +18366,14 @@
       "id": "AT-APP-02",
       "citedIn": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 85
+        },
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 128
+        },
+        {
           "file": "spec/31-app/06-endpoints/01-information-model.md",
           "line": 44
         },
@@ -18186,6 +18391,10 @@
       "id": "AT-APP-03",
       "citedIn": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 86
+        },
+        {
           "file": "spec/31-app/06-endpoints/01-information-model.md",
           "line": 60
         },
@@ -18199,6 +18408,10 @@
       "id": "AT-APP-04",
       "citedIn": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 87
+        },
+        {
           "file": "spec/31-app/06-endpoints/01-information-model.md",
           "line": 32
         },
@@ -18211,6 +18424,10 @@
     {
       "id": "AT-APP-05",
       "citedIn": [
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 88
+        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 186
@@ -18241,6 +18458,10 @@
       "id": "AT-APP-06",
       "citedIn": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 94
+        },
+        {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 29
         },
@@ -18262,6 +18483,10 @@
       "id": "AT-APP-07",
       "citedIn": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 95
+        },
+        {
           "file": "spec/31-app/06-endpoints/01-information-model.md",
           "line": 86
         },
@@ -18274,6 +18499,10 @@
     {
       "id": "AT-APP-08",
       "citedIn": [
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 96
+        },
         {
           "file": "spec/31-app/06-endpoints/01-information-model.md",
           "line": 108
@@ -18288,6 +18517,10 @@
       "id": "AT-APP-09",
       "citedIn": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 97
+        },
+        {
           "file": "spec/31-app/06-endpoints/02-personas.md",
           "line": 32
         },
@@ -18300,6 +18533,10 @@
     {
       "id": "AT-APP-10",
       "citedIn": [
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 98
+        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 33
@@ -18416,6 +18653,10 @@
     {
       "id": "AT-APP-103",
       "citedIn": [
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 60
+        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 49
@@ -18622,6 +18863,10 @@
       "id": "AT-APP-11",
       "citedIn": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 104
+        },
+        {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 30
         },
@@ -18651,6 +18896,10 @@
           "line": 68
         },
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 105
+        },
+        {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 31
         },
@@ -18672,6 +18921,10 @@
       "id": "AT-APP-13",
       "citedIn": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 106
+        },
+        {
           "file": "spec/31-app/06-endpoints/06-item-context-menu.md",
           "line": 65
         },
@@ -18685,6 +18938,10 @@
       "id": "AT-APP-14",
       "citedIn": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 107
+        },
+        {
           "file": "spec/31-app/06-endpoints/07-board-view.md",
           "line": 27
         },
@@ -18697,6 +18954,14 @@
     {
       "id": "AT-APP-15",
       "citedIn": [
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 72
+        },
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 113
+        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 32
@@ -18731,6 +18996,10 @@
       "id": "AT-APP-16",
       "citedIn": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 114
+        },
+        {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 40
         },
@@ -18759,6 +19028,10 @@
     {
       "id": "AT-APP-17",
       "citedIn": [
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 120
+        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 42
@@ -18789,6 +19062,10 @@
       "id": "AT-APP-18",
       "citedIn": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 121
+        },
+        {
           "file": "spec/31-app/06-endpoints/01-information-model.md",
           "line": 97
         },
@@ -18805,6 +19082,10 @@
     {
       "id": "AT-APP-19",
       "citedIn": [
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 127
+        },
         {
           "file": "spec/31-app/06-endpoints/09-mirrors.md",
           "line": 28
@@ -18835,6 +19116,10 @@
       "id": "AT-APP-20",
       "citedIn": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 128
+        },
+        {
           "file": "spec/31-app/06-endpoints/09-mirrors.md",
           "line": 47
         },
@@ -18860,6 +19145,10 @@
     {
       "id": "AT-APP-21",
       "citedIn": [
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 134
+        },
         {
           "file": "spec/31-app/01-features/15-roles-and-permissions.md",
           "line": 5
@@ -18914,6 +19203,10 @@
           "line": 116
         },
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 135
+        },
+        {
           "file": "spec/31-app/01-features/15-roles-and-permissions.md",
           "line": 172
         },
@@ -18959,6 +19252,10 @@
       "id": "AT-APP-23",
       "citedIn": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 136
+        },
+        {
           "file": "spec/31-app/01-features/15-roles-and-permissions.md",
           "line": 175
         },
@@ -18996,6 +19293,10 @@
       "id": "AT-APP-24",
       "citedIn": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 142
+        },
+        {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 37
         },
@@ -19028,6 +19329,10 @@
     {
       "id": "AT-APP-25",
       "citedIn": [
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 143
+        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 35
@@ -19070,6 +19375,10 @@
           "line": 80
         },
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 157
+        },
+        {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 44
         },
@@ -19103,6 +19412,10 @@
       "id": "AT-APP-30",
       "citedIn": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 158
+        },
+        {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 102
         },
@@ -19116,6 +19429,10 @@
       "id": "AT-APP-31",
       "citedIn": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 159
+        },
+        {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 103
         },
@@ -19128,6 +19445,10 @@
     {
       "id": "AT-APP-32",
       "citedIn": [
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 160
+        },
         {
           "file": "spec/31-app/04-roadmap/03-implementation-checklist.md",
           "line": 119
@@ -19152,6 +19473,10 @@
         {
           "file": "spec/18-spec-issues/11-content-audit-at-app-coverage.md",
           "line": 81
+        },
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 186
         },
         {
           "file": "spec/31-app/02-workflows/00-overview.md",
@@ -19207,6 +19532,10 @@
           "line": 60
         },
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 187
+        },
+        {
           "file": "spec/31-app/02-workflows/02-template-application-flow.md",
           "line": 103
         },
@@ -19223,6 +19552,10 @@
     {
       "id": "AT-APP-45",
       "citedIn": [
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 188
+        },
         {
           "file": "spec/31-app/02-workflows/02-template-application-flow.md",
           "line": 104
@@ -19241,6 +19574,10 @@
       "id": "AT-APP-46",
       "citedIn": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 189
+        },
+        {
           "file": "spec/31-app/02-workflows/02-template-application-flow.md",
           "line": 105
         },
@@ -19257,6 +19594,10 @@
     {
       "id": "AT-APP-47",
       "citedIn": [
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 195
+        },
         {
           "file": "spec/31-app/02-workflows/00-overview.md",
           "line": 108
@@ -19291,6 +19632,10 @@
       "id": "AT-APP-48",
       "citedIn": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 196
+        },
+        {
           "file": "spec/31-app/02-workflows/03-share-invite-flow.md",
           "line": 114
         },
@@ -19307,6 +19652,10 @@
     {
       "id": "AT-APP-49",
       "citedIn": [
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 197
+        },
         {
           "file": "spec/31-app/02-workflows/03-share-invite-flow.md",
           "line": 115
@@ -19496,6 +19845,10 @@
     {
       "id": "AT-APP-58",
       "citedIn": [
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 60
+        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 5
@@ -19887,6 +20240,14 @@
       "id": "AT-APP-68",
       "citedIn": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 60
+        },
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 72
+        },
+        {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 34
         },
@@ -20023,6 +20384,10 @@
       "id": "AT-APP-76",
       "citedIn": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 60
+        },
+        {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 36
         },
@@ -20107,6 +20472,10 @@
     {
       "id": "AT-APP-81",
       "citedIn": [
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 60
+        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 41
@@ -20277,6 +20646,10 @@
       "id": "AT-APP-86",
       "citedIn": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 60
+        },
+        {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 43
         },
@@ -20371,6 +20744,10 @@
       "id": "AT-APP-92",
       "citedIn": [
         {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 60
+        },
+        {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 45
         },
@@ -20451,6 +20828,10 @@
     {
       "id": "AT-APP-97",
       "citedIn": [
+        {
+          "file": "spec/31-app/00-overview-condensed.md",
+          "line": 60
+        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 47
@@ -23979,8 +24360,16 @@
       "id": "AT-UIDESIGN-01",
       "citedIn": [
         {
+          "file": "spec/32-ui-design/00-overview-condensed.md",
+          "line": 79
+        },
+        {
+          "file": "spec/32-ui-design/00-overview-condensed.md",
+          "line": 134
+        },
+        {
           "file": "spec/32-ui-design/00-overview.md",
-          "line": 64
+          "line": 72
         },
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
@@ -23996,6 +24385,10 @@
       "id": "AT-UIDESIGN-02",
       "citedIn": [
         {
+          "file": "spec/32-ui-design/00-overview-condensed.md",
+          "line": 80
+        },
+        {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 25
         }
@@ -24004,6 +24397,10 @@
     {
       "id": "AT-UIDESIGN-03",
       "citedIn": [
+        {
+          "file": "spec/32-ui-design/00-overview-condensed.md",
+          "line": 81
+        },
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 26
@@ -24014,6 +24411,10 @@
       "id": "AT-UIDESIGN-04",
       "citedIn": [
         {
+          "file": "spec/32-ui-design/00-overview-condensed.md",
+          "line": 82
+        },
+        {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 27
         }
@@ -24022,6 +24423,10 @@
     {
       "id": "AT-UIDESIGN-05",
       "citedIn": [
+        {
+          "file": "spec/32-ui-design/00-overview-condensed.md",
+          "line": 83
+        },
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 28
@@ -24032,6 +24437,10 @@
       "id": "AT-UIDESIGN-06",
       "citedIn": [
         {
+          "file": "spec/32-ui-design/00-overview-condensed.md",
+          "line": 89
+        },
+        {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 34
         }
@@ -24040,6 +24449,10 @@
     {
       "id": "AT-UIDESIGN-07",
       "citedIn": [
+        {
+          "file": "spec/32-ui-design/00-overview-condensed.md",
+          "line": 90
+        },
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 35
@@ -24050,6 +24463,10 @@
       "id": "AT-UIDESIGN-08",
       "citedIn": [
         {
+          "file": "spec/32-ui-design/00-overview-condensed.md",
+          "line": 91
+        },
+        {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 36
         }
@@ -24058,6 +24475,10 @@
     {
       "id": "AT-UIDESIGN-09",
       "citedIn": [
+        {
+          "file": "spec/32-ui-design/00-overview-condensed.md",
+          "line": 92
+        },
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 37
@@ -24068,6 +24489,10 @@
       "id": "AT-UIDESIGN-10",
       "citedIn": [
         {
+          "file": "spec/32-ui-design/00-overview-condensed.md",
+          "line": 98
+        },
+        {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 43
         }
@@ -24076,6 +24501,10 @@
     {
       "id": "AT-UIDESIGN-11",
       "citedIn": [
+        {
+          "file": "spec/32-ui-design/00-overview-condensed.md",
+          "line": 99
+        },
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 44
@@ -24086,6 +24515,10 @@
       "id": "AT-UIDESIGN-12",
       "citedIn": [
         {
+          "file": "spec/32-ui-design/00-overview-condensed.md",
+          "line": 100
+        },
+        {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 45
         }
@@ -24094,6 +24527,10 @@
     {
       "id": "AT-UIDESIGN-13",
       "citedIn": [
+        {
+          "file": "spec/32-ui-design/00-overview-condensed.md",
+          "line": 101
+        },
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 46
@@ -24104,6 +24541,10 @@
       "id": "AT-UIDESIGN-14",
       "citedIn": [
         {
+          "file": "spec/32-ui-design/00-overview-condensed.md",
+          "line": 107
+        },
+        {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 52
         }
@@ -24112,6 +24553,10 @@
     {
       "id": "AT-UIDESIGN-15",
       "citedIn": [
+        {
+          "file": "spec/32-ui-design/00-overview-condensed.md",
+          "line": 108
+        },
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 53
@@ -24122,6 +24567,10 @@
       "id": "AT-UIDESIGN-16",
       "citedIn": [
         {
+          "file": "spec/32-ui-design/00-overview-condensed.md",
+          "line": 109
+        },
+        {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 54
         }
@@ -24130,6 +24579,10 @@
     {
       "id": "AT-UIDESIGN-17",
       "citedIn": [
+        {
+          "file": "spec/32-ui-design/00-overview-condensed.md",
+          "line": 110
+        },
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 55
@@ -24140,6 +24593,10 @@
       "id": "AT-UIDESIGN-18",
       "citedIn": [
         {
+          "file": "spec/32-ui-design/00-overview-condensed.md",
+          "line": 116
+        },
+        {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 61
         }
@@ -24148,6 +24605,10 @@
     {
       "id": "AT-UIDESIGN-19",
       "citedIn": [
+        {
+          "file": "spec/32-ui-design/00-overview-condensed.md",
+          "line": 117
+        },
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 62
@@ -24158,6 +24619,10 @@
       "id": "AT-UIDESIGN-20",
       "citedIn": [
         {
+          "file": "spec/32-ui-design/00-overview-condensed.md",
+          "line": 118
+        },
+        {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 63
         }
@@ -24166,6 +24631,10 @@
     {
       "id": "AT-UIDESIGN-21",
       "citedIn": [
+        {
+          "file": "spec/32-ui-design/00-overview-condensed.md",
+          "line": 124
+        },
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 69
@@ -24176,6 +24645,10 @@
       "id": "AT-UIDESIGN-22",
       "citedIn": [
         {
+          "file": "spec/32-ui-design/00-overview-condensed.md",
+          "line": 125
+        },
+        {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 70
         }
@@ -24184,6 +24657,10 @@
     {
       "id": "AT-UIDESIGN-23",
       "citedIn": [
+        {
+          "file": "spec/32-ui-design/00-overview-condensed.md",
+          "line": 126
+        },
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 71
@@ -24194,6 +24671,10 @@
       "id": "AT-UIDESIGN-24",
       "citedIn": [
         {
+          "file": "spec/32-ui-design/00-overview-condensed.md",
+          "line": 127
+        },
+        {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 72
         }
@@ -24202,6 +24683,10 @@
     {
       "id": "AT-UIDESIGN-25",
       "citedIn": [
+        {
+          "file": "spec/32-ui-design/00-overview-condensed.md",
+          "line": 128
+        },
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 73
