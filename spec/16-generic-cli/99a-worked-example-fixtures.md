@@ -118,8 +118,8 @@
 
 ## 7. Test-name slugs
 
-| AT id | Vitest slug |
-|---|---|
+| Bind | AT id (cited) | Vitest slug |
+|---|---|---|
 | `AT-GENERICCLI-01` | `at_genericcli_01_internal_isolation_govet` |
 | `AT-GENERICCLI-02` | `at_genericcli_02_one_file_per_subcommand` |
 | `AT-GENERICCLI-03` | `at_genericcli_03_single_flag_library_ssot` |

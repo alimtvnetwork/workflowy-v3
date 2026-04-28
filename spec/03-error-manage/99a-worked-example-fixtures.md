@@ -119,8 +119,8 @@ export interface ErrorModalProps {
 
 ## 6. Test-name slugs
 
-| AT id | Vitest slug |
-|---|---|
+| Bind | AT id (cited) | Vitest slug |
+|---|---|---|
 | `AT-ERRORRESOLUTION-01` | `at_errorresolution_01_envelope_pascalcase_shape` |
 | `AT-ERRORRESOLUTION-02` | `at_errorresolution_02_code_regex_namespace` |
 | `AT-ERRORRESOLUTION-03` | `at_errorresolution_03_severity_enum_closed` |

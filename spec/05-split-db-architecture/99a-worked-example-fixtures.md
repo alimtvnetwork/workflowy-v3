@@ -158,8 +158,8 @@ COMMIT;
 
 ## 7. Test-name slugs
 
-| AT id | Vitest/PHPUnit slug |
-|---|---|
+| Bind | AT id (cited) | Vitest/PHPUnit slug |
+|---|---|---|
 | `AT-SPLITDBFUNDAMENTALS-01` | `at_splitdb_01_decision_matrix_thresholds` |
 | `AT-SPLITDBFUNDAMENTALS-02` | `at_splitdb_02_db_split_json_schema_valid` |
 | `AT-SPLITDBFUNDAMENTALS-03` | `at_splitdb_03_attach_at_connection_open` |

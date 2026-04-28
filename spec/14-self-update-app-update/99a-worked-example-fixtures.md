@@ -104,8 +104,8 @@ mv -T /var/lib/workflowy/current.rollback /var/lib/workflowy/current
 
 ## 5. Test-name slugs (Vitest/PHPUnit must use these)
 
-| AT id | Vitest slug |
-|---|---|
+| Bind | AT id (cited) | Vitest slug |
+|---|---|---|
 | `AT-SELFUPDATEAPPUPDATE-01` | `at_selfupdate_01_check_emits_pascalcase_state` |
 | `AT-SELFUPDATEAPPUPDATE-02` | `at_selfupdate_02_verify_rejects_bad_sha256` |
 | `AT-SELFUPDATEAPPUPDATE-03` | `at_selfupdate_03_swap_is_atomic_rename` |

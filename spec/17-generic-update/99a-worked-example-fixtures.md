@@ -156,8 +156,8 @@ diff build-1.sha256 build-2.sha256   # exit 0 = pass
 
 ## 8. Test-name slugs
 
-| AT id | Vitest slug |
-|---|---|
+| Bind | AT id (cited) | Vitest slug |
+|---|---|---|
 | `AT-GENERICUPDATE-01` | `at_genericupdate_01_manifest_envelope_pascalcase` |
 | `AT-GENERICUPDATE-02` | `at_genericupdate_02_ajv_validates_schema` |
 | `AT-GENERICUPDATE-03` | `at_genericupdate_03_atomic_renameat2_trace` |

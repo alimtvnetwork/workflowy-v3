@@ -581,7 +581,7 @@
 | [`03-error-manage/97a-acceptance-criteria-fixtures.md`](./03-error-manage/97a-acceptance-criteria-fixtures.md) | Error Resolution — Acceptance Criteria I/O Fixtures | 1.0.0 | Concrete |
 | [`03-error-manage/98-changelog.md`](./03-error-manage/98-changelog.md) | Error Management — Changelog | 3.1.0 | — |
 | [`03-error-manage/99-consistency-report.md`](./03-error-manage/99-consistency-report.md) | Consistency Report: Error Management | 3.1.0 | — |
-| [`03-error-manage/99-worked-example-fixtures.md`](./03-error-manage/99-worked-example-fixtures.md) | Worked Example Fixtures — Canonical Error Envelope (P27) | — | — |
+| [`03-error-manage/99a-worked-example-fixtures.md`](./03-error-manage/99a-worked-example-fixtures.md) | Worked Example Fixtures — Canonical Error Envelope (P27) | — | — |
 | [`03-error-manage/structure.md`](./03-error-manage/structure.md) | 04-error-manage — Structure Summary | 3.1.0 | — |
 
 ## 04-database-conventions
@@ -656,7 +656,7 @@
 | [`05-split-db-architecture/97a-acceptance-criteria-fixtures.md`](./05-split-db-architecture/97a-acceptance-criteria-fixtures.md) | Split DB Architecture — Acceptance Criteria I/O Fixtures | 1.0.0 | Normative |
 | [`05-split-db-architecture/98-acceptance-criteria.md`](./05-split-db-architecture/98-acceptance-criteria.md) | Split DB Architecture: Acceptance Criteria | 3.1.0 | Active |
 | [`05-split-db-architecture/99-consistency-report.md`](./05-split-db-architecture/99-consistency-report.md) | Consistency Report: Split DB Architecture | 3.1.0 | — |
-| [`05-split-db-architecture/99-worked-example-fixtures.md`](./05-split-db-architecture/99-worked-example-fixtures.md) | Worked Example Fixtures — DB Split Decision Matrix + ATTACH (P27) | — | — |
+| [`05-split-db-architecture/99a-worked-example-fixtures.md`](./05-split-db-architecture/99a-worked-example-fixtures.md) | Worked Example Fixtures — DB Split Decision Matrix + ATTACH (P27) | — | — |
 
 ## 06-seedable-config-architecture
 
@@ -935,7 +935,7 @@
 | [`14-self-update-app-update/97-acceptance-criteria.md`](./14-self-update-app-update/97-acceptance-criteria.md) | Self-Update / App-Update — Acceptance Criteria (rollup) | 2.0.0 | Curated |
 | [`14-self-update-app-update/97a-acceptance-criteria-fixtures.md`](./14-self-update-app-update/97a-acceptance-criteria-fixtures.md) | Self-Update / App-Update — Acceptance Criteria I/O Fixtures | 1.0.0 | Concrete |
 | [`14-self-update-app-update/99-consistency-report.md`](./14-self-update-app-update/99-consistency-report.md) | Consistency Report — Self-Update & App Update | 3.1.0 | — |
-| [`14-self-update-app-update/99-worked-example-fixtures.md`](./14-self-update-app-update/99-worked-example-fixtures.md) | Worked Example Fixtures — Self-Update Algorithm (P27) | — | — |
+| [`14-self-update-app-update/99a-worked-example-fixtures.md`](./14-self-update-app-update/99a-worked-example-fixtures.md) | Worked Example Fixtures — Self-Update Algorithm (P27) | — | — |
 | [`14-self-update-app-update/diagrams/00-overview.md`](./14-self-update-app-update/diagrams/00-overview.md) | Diagrams — Self-Update & App Update | 3.1.0 | — |
 | [`14-self-update-app-update/diagrams/99-consistency-report.md`](./14-self-update-app-update/diagrams/99-consistency-report.md) | Consistency Report — Diagrams | 1.0.0 | — |
 
@@ -1216,7 +1216,7 @@
 | [`16-generic-cli/97-acceptance-criteria.md`](./16-generic-cli/97-acceptance-criteria.md) | Generic CLI — Acceptance Criteria (rollup) | 2.0.0 | Curated |
 | [`16-generic-cli/97a-acceptance-criteria-fixtures.md`](./16-generic-cli/97a-acceptance-criteria-fixtures.md) | Generic CLI — Acceptance Criteria I/O Fixtures | 1.0.0 | Concrete |
 | [`16-generic-cli/99-consistency-report.md`](./16-generic-cli/99-consistency-report.md) | Consistency Report — Generic Cli | 1.0.0 | — |
-| [`16-generic-cli/99-worked-example-fixtures.md`](./16-generic-cli/99-worked-example-fixtures.md) | Worked Example Fixtures — Generic CLI Envelopes (P27) | — | — |
+| [`16-generic-cli/99a-worked-example-fixtures.md`](./16-generic-cli/99a-worked-example-fixtures.md) | Worked Example Fixtures — Generic CLI Envelopes (P27) | — | — |
 
 ## 17-generic-update
 
@@ -1233,7 +1233,7 @@
 | [`17-generic-update/97-acceptance-criteria.md`](./17-generic-update/97-acceptance-criteria.md) | Generic Update — Acceptance Criteria | 2.0.0 | Curated |
 | [`17-generic-update/97a-acceptance-criteria-fixtures.md`](./17-generic-update/97a-acceptance-criteria-fixtures.md) | Generic Update — Acceptance Criteria I/O Fixtures | 1.0.0 | Concrete |
 | [`17-generic-update/99-consistency-report.md`](./17-generic-update/99-consistency-report.md) | Consistency Report — Generic Update | 1.0.0 | — |
-| [`17-generic-update/99-worked-example-fixtures.md`](./17-generic-update/99-worked-example-fixtures.md) | Worked Example Fixtures — Generic Update Manifest (P27) | — | — |
+| [`17-generic-update/99a-worked-example-fixtures.md`](./17-generic-update/99a-worked-example-fixtures.md) | Worked Example Fixtures — Generic Update Manifest (P27) | — | — |
 | [`17-generic-update/README.md`](./17-generic-update/README.md) | 08 — Generic Self-Update Specification | — | — |
 
 ## 18-spec-issues
