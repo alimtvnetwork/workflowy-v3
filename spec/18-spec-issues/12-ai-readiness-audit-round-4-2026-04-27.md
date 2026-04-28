@@ -68,7 +68,7 @@ A mediocre AI implementer will crash and burn trying to build from this spec, de
 
 **How it was fixed:** Authored `spec/31-app/05-conventions/32-sse-php-implementation.md` — header order strictly defined (BEFORE any echo), bounded loop with `gc_collect_cycles()` every 100 events, 30-min wall-clock cutoff, 9-name event whitelist enforced, 5-tab-per-user concurrency cap via WP transients, fallback to long-poll when `set_time_limit(0)` is denied, RSS stability load test (AT-SSE-PHP-10).
 
-### 🟠 AUDIT-AI-03 — Missing Concrete SQLite DDL Schemas
+### ✅ AUDIT-AI-03 — Missing Concrete SQLite DDL Schemas — **CLOSED 2026-04-27**
 
 | Field | Value |
 |-------|-------|
@@ -83,7 +83,7 @@ A mediocre AI implementer will crash and burn trying to build from this spec, de
 
 **How to fix:** Inject `schema-seed-sqlite.sql` files with concrete SQLite types mapped directly from the prose ERD into the `07-db-diagram` folder.
 
-### 🟠 AUDIT-AI-04 — No Complex Item-Tree JSON Fixtures
+### ✅ AUDIT-AI-04 — No Complex Item-Tree JSON Fixtures — **CLOSED 2026-04-27**
 
 | Field | Value |
 |-------|-------|
@@ -98,7 +98,7 @@ A mediocre AI implementer will crash and burn trying to build from this spec, de
 
 **How to fix:** Create `spec/06-seedable-config-architecture/02-features/05-validation-data-seeding/03-complex-item-graph.json` with a 300+ item deeply nested tree.
 
-### 🟡 AUDIT-AI-05 — Sparse Endpoint-to-AT Cross-referencing
+### ✅ AUDIT-AI-05 — Sparse Endpoint-to-AT Cross-referencing — **CLOSED 2026-04-27**
 
 | Field | Value |
 |-------|-------|
@@ -113,7 +113,7 @@ A mediocre AI implementer will crash and burn trying to build from this spec, de
 
 **How to fix:** Update endpoints in `spec/31-app/06-endpoints/` to exhaustively cross-reference applicable ATs from the 16 feature files.
 
-### 🟡 AUDIT-AI-06 — Aspirational Components Lack State Strategy
+### ✅ AUDIT-AI-06 — Aspirational Components Lack State Strategy — **CLOSED 2026-04-27**
 
 | Field | Value |
 |-------|-------|
