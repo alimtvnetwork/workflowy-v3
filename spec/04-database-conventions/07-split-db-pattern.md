@@ -281,7 +281,7 @@ Split DB is the **default**, but consolidate into fewer databases when:
 | Scenario | Action |
 |----------|--------|
 | Two domains always transact together | Merge into one DB |
-| Domain has only 1-2 tables | Consider merging with a related domain |
+| Domain has only 1-2 tables | SHOULD merge with a related domain (reviewer judgement) |
 | Team explicitly needs cross-domain FK integrity | Merge or use MySQL |
 | Write concurrency exceeds SQLite limits | Move affected domain to MySQL |
 
