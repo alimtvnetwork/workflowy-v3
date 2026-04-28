@@ -241,6 +241,7 @@ See [`spec/18-spec-issues/03-ai-readiness-audit-2026-04-19.md`](./18-spec-issues
 
 - [`19-glossary.md`](./19-glossary.md) — **Cross-spec terminology SSOT** (NEW — H-5.1)
 - [`20-enums-index.md`](./20-enums-index.md) — **Cross-language enum registry** (NEW — H-5.2)
+- [`_GATE-REGISTRY.md`](./_GATE-REGISTRY.md) — **Gate Registry** — master index of 266 `G-*` compliance gates by enforcement tier (NEW — P76 / AUDIT-08)
 - [`folder-structure-root.md`](./folder-structure-root.md) — Canonical folder layout policy
 - [`spec-index.md`](./spec-index.md) — Auto-generated file index (⚠️ currently stale — AUD-D-01)
 - [`readme.md`](./readme.md) — Human-friendly index of folders
