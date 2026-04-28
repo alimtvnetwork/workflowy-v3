@@ -15,7 +15,7 @@ This file is the single global bridge from feature spec → component path → `
 - Find which acceptance tests cover a given component.
 - Find which `data-testid` to grep when wiring tests.
 
-Total surfaces mapped: **217** across **25** feature file(s).
+Total surfaces mapped: **227** across **26** feature file(s).
 
 ---
 
@@ -363,6 +363,21 @@ Total surfaces mapped: **217** across **25** feature file(s).
 | Server-side ranker | ``wp-plugin/src/Search/Ranker.php`` | `n/a (server-side)` | AT-SR-01, AT-SR-02, AT-SR-03 |
 | Coarse-grain bucket strategy | ``wp-plugin/src/Search/BucketStrategy.php`` | `n/a (server-side)` | AT-SR-04, AT-SR-05 |
 
+### `18-integrations.md`
+
+| Surface | Component path | `data-testid` | Acceptance tests |
+|---------|---------------|---------------|------------------|
+| PAT manager (list) | ``src/components/settings/PatListPanel.tsx`` | `pat-list-panel` | AT-INT-02 |
+| PAT create dialog | ``src/components/settings/PatCreateDialog.tsx`` | `pat-create-dialog` | AT-INT-01 |
+| PAT revoke button | ``src/components/settings/PatRevokeButton.tsx`` | `pat-revoke-button` | AT-INT-02 |
+| Zapier integrations REST controller | ``wp-plugin/src/Rest/Integrations/ItemsController.php`` | `—` | AT-INT-04..06, AT-INT-08..12 |
+| Zapier comments controller | ``wp-plugin/src/Rest/Integrations/CommentsController.php`` | `—` | AT-INT-07, AT-INT-13 |
+| PAT auth middleware | ``wp-plugin/src/Auth/PersonalAccessTokenAuth.php`` | `—` | AT-INT-01..03 |
+| Rate-limit middleware | ``wp-plugin/src/Middleware/RateLimitPerPat.php`` | `—` | AT-INT-19 |
+| Idempotency middleware | ``wp-plugin/src/Middleware/IdempotencyKey.php`` | `—` | AT-INT-20 |
+| Activity-feed sink | ``wp-plugin/src/ActivityFeed/IntegrationSink.php`` | `—` | AT-INT-21 |
+| Apple Shortcuts gallery (link surface only) | ``src/components/settings/ShortcutsGalleryLink.tsx`` | `shortcuts-gallery-link` | AT-INT-14..18 |
+
 ---
 
 ## Component-Path Index
@@ -468,6 +483,10 @@ Sorted alphabetically. Each row is one planned/implemented component file.
 | ``src/components/search/SearchOverlay.tsx`` | `search-overlay` |
 | ``src/components/search/SearchRecent.tsx`` | `search-recent` |
 | ``src/components/search/SearchResults.tsx`` | `search-result-row`, `search-results` |
+| ``src/components/settings/PatCreateDialog.tsx`` | `pat-create-dialog` |
+| ``src/components/settings/PatListPanel.tsx`` | `pat-list-panel` |
+| ``src/components/settings/PatRevokeButton.tsx`` | `pat-revoke-button` |
+| ``src/components/settings/ShortcutsGalleryLink.tsx`` | `shortcuts-gallery-link` |
 | ``src/components/share/CascadeNotice.tsx`` | `cascade-notice` |
 | ``src/components/share/CopyLinkButton.tsx`` | `copy-link-button` |
 | ``src/components/share/PublicLinkToggle.tsx`` | `public-link-toggle` |
@@ -548,8 +567,14 @@ Sorted alphabetically. Each row is one planned/implemented component file.
 | ``wp-plugin/Sync/ResumeBuffer.php`` | `sse-resume-replay` |
 | ``wp-plugin/Sync/SseEndpoint.php`` | `sse-endpoint-handshake` |
 | ``wp-plugin/Sync/TransactionalEmitter.php`` | `sse-emission-atomic` |
+| ``wp-plugin/src/ActivityFeed/IntegrationSink.php`` | `—` |
+| ``wp-plugin/src/Auth/PersonalAccessTokenAuth.php`` | `—` |
 | ``wp-plugin/src/Cron/ReapTrash.php`` | `n/a (server-side)` |
 | ``wp-plugin/src/Cron/ReaperRunsLogger.php`` | `n/a (server-side)` |
+| ``wp-plugin/src/Middleware/IdempotencyKey.php`` | `—` |
+| ``wp-plugin/src/Middleware/RateLimitPerPat.php`` | `—` |
+| ``wp-plugin/src/Rest/Integrations/CommentsController.php`` | `—` |
+| ``wp-plugin/src/Rest/Integrations/ItemsController.php`` | `—` |
 | ``wp-plugin/src/Search/BucketStrategy.php`` | `n/a (server-side)` |
 | ``wp-plugin/src/Search/Ranker.php`` | `n/a (server-side)` |
 | ``wp-plugin/src/Templates/Instantiate.php`` | `n/a (server-side)` |

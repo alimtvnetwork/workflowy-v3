@@ -165,7 +165,7 @@ Zapier polls every 5 minutes by default (Zapier-controlled). The `since` query p
 
 > No browser components — this feature lives entirely in PHP REST controllers + the iOS Shortcuts app. The "components" below are the planned PHP controller classes and the in-app PAT manager UI from F5.
 
-| Surface | Component / class path | `data-testid` | Acceptance tests |
+| Surface | Component path | `data-testid` | Acceptance tests |
 |---------|------------------------|---------------|------------------|
 | PAT manager (list) | `src/components/settings/PatListPanel.tsx` | `pat-list-panel` | AT-INT-02 |
 | PAT create dialog | `src/components/settings/PatCreateDialog.tsx` | `pat-create-dialog` | AT-INT-01 |
