@@ -311,7 +311,7 @@ sequenceDiagram
     participant DB as SQLite
 
     Client->>API: GET /items (initial fetch)
-    API->>DB: SELECT * FROM Items WHERE UpdatedAt > ?
+    API->>DB: SELECT * FROM Item WHERE UpdatedAt > ?
     DB-->>API: rows + max(UpdatedAt)
     API-->>Client: { Results, Attributes.Cursor }
 

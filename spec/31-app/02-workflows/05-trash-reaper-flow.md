@@ -51,14 +51,14 @@ This file pins the sequence. Each step cites the SSOT that governs its rule.
      e. LOOP (batch size = 1000):
           BEGIN TRANSACTION.
             SELECT ItemId
-              FROM Items
+              FROM Item
              WHERE DeletedAt IS NOT NULL
                AND DeletedAt < cutoff
              ORDER BY DeletedAt ASC
              LIMIT 1000
              FOR UPDATE SKIP LOCKED.
             If 0 rows → COMMIT and break out of loop.
-            DELETE FROM Items WHERE ItemId = ANY($batch).
+            DELETE FROM Item WHERE ItemId = ANY($batch).
             (FK ON DELETE CASCADE removes:
                - child Items rows (recursive cascade per AT-APP-83)
                - MirrorPeerGroupMembers rows

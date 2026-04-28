@@ -290,7 +290,7 @@ SELECT
     u.IsVerified,
     u.HasLicense,
     r.Name       AS RoleName
-FROM Users u
+FROM User u
 INNER JOIN UserRole ur ON u.UserId = ur.UserId
 INNER JOIN Role r      ON ur.RoleId = r.RoleId;
 

@@ -63,7 +63,7 @@ This file pins the sequence. Each step cites the SSOT that governs its rule.
           iii. BEGIN TRANSACTION.
           iv.  Apply mutation per op kind:
                  - item.update:
-                     UPDATE Items
+                     UPDATE Item
                         SET <field> = $payload.<field>,
                             <field>UpdatedAt = serverNow,
                             <field>UpdatedBy = $userId
@@ -74,7 +74,7 @@ This file pins the sequence. Each step cites the SSOT that governs its rule.
                  - item.create:
                      INSERT ... RETURNING ServerTs.
                  - item.delete:
-                     UPDATE Items SET DeletedAt = serverNow ... (LWW guarded).
+                     UPDATE Item SET DeletedAt = serverNow ... (LWW guarded).
           v.   INSERT INTO ProcessedMutations (ClientMutationId, ResponseJson, ServerTs).
           vi.  COMMIT.
           vii. Emit SSE on workspace channel: `item-updated` | `item-created` | etc.

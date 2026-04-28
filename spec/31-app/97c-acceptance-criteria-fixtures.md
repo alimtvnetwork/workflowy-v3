@@ -126,7 +126,7 @@
 > | **Then** | Response `Status:403`. |
 > | **Response envelope** | `{ "Status":403, "Attributes":{}, "Results":[], "Errors":[ { "Code":"E_INSUFFICIENT_ROLE", "Required":"Edit" } ] }` |
 > | **Side effects** | Zero `Items` rows inserted; zero SSE frames. |
-> | **Negative assertion** | `SELECT COUNT(*) FROM Items WHERE ParentId='itm_P' AND CreatedAt >= <test_start>` → 0. |
+> | **Negative assertion** | `SELECT COUNT(*) FROM Item WHERE ParentId='itm_P' AND CreatedAt >= <test_start>` → 0. |
 
 ### `AT-APP-44` — Successful apply visible immediately + SSE within 1 s
 
@@ -307,7 +307,7 @@
 > | **Given** | Peer-group `g_01` has 3 members `{itm_X, itm_P2, itm_P3}`. |
 > | **When** | `PATCH /items/itm_P2 {Title:"updated"}`. |
 > | **Then** | Canonical content row updated; SSE `item-updated` fans out to subscribers of all 3 peers within 1 s. |
-> | **Side effects** | One `UPDATE Items` row; ≥2 SSE frames. |
+> | **Side effects** | One `UPDATE Item` row; ≥2 SSE frames. |
 > | **Negative assertion** | Title is NOT duplicated per peer — single canonical content row. |
 
 ### `AT-APP-60` — Per-peer ParentId, SortOrder, Permissions
@@ -368,7 +368,7 @@
 > | **Given** | Two concurrent updates on shared content field at same `ServerTs=500` from owners of different peers. |
 > | **When** | Server applies. |
 > | **Then** | Lexicographic `OwnerId` ASC wins. |
-> | **Side effects** | Single `UPDATE Items` row; one SSE fan-out. |
+> | **Side effects** | Single `UPDATE Item` row; one SSE fan-out. |
 > | **Negative assertion** | Random / non-deterministic tiebreak MUST NOT be used. |
 
 ### `AT-APP-66` — v1→v2 migration is idempotent

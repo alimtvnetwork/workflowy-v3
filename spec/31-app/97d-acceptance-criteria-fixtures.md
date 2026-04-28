@@ -154,7 +154,7 @@
 > |------|-------|
 > | **Given** | `wp_schedule_event` registered for `workflowy_reaper` at `03:00:00 UTC`. |
 > | **When** | Scheduled run fires. |
-> | **Then** | Server runs `DELETE FROM Items WHERE DeletedAt < NOW() - INTERVAL 30 DAY` in batches of 1000. |
+> | **Then** | Server runs `DELETE FROM Item WHERE DeletedAt < NOW() - INTERVAL 30 DAY` in batches of 1000. |
 > | **Side effects** | One `ReaperRuns` row inserted; FK cascades trigger. |
 > | **Negative assertion** | Job MUST NOT run at any other time without admin trigger. |
 
@@ -176,7 +176,7 @@
 > | **When** | Reaper hard-deletes `itm_old`. |
 > | **Then** | All FK-referencing rows cascade-deleted via `ON DELETE CASCADE`. |
 > | **Side effects** | One transaction wraps all cascades. |
-> | **Negative assertion** | No orphan rows: `SELECT COUNT(*) FROM Permissions WHERE ItemId NOT IN (SELECT Id FROM Items)` → 0. |
+> | **Negative assertion** | No orphan rows: `SELECT COUNT(*) FROM Permission WHERE ItemId NOT IN (SELECT Id FROM Item)` → 0. |
 
 ### `AT-APP-84` — Reap dropping group to size 1 → auto-dissolve
 
@@ -283,7 +283,7 @@
 > | **Given** | Template `tpl_T` instantiated yesterday → `itm_INST`. Today, `tpl_T.PayloadJson` updated. |
 > | **When** | Verify `itm_INST` content. |
 > | **Then** | Unchanged. |
-> | **Side effects** | Zero `UPDATE Items` rows from the template edit. |
+> | **Side effects** | Zero `UPDATE Item` rows from the template edit. |
 > | **Negative assertion** | No back-link/sync mechanism MUST exist between template payload and instances. |
 
 ### `AT-APP-94` — Instance edit doesn't mutate template payload

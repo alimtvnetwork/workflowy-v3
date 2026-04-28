@@ -62,14 +62,14 @@ This file pins the sequence. Each step cites the SSOT that governs its rule.
              SELECT ItemId INTO survivorId
                FROM MirrorPeerGroupMembers
               WHERE PeerGroupId = groupId;
-             UPDATE Items SET PeerGroupId = NULL WHERE ItemId = survivorId;
+             UPDATE Item SET PeerGroupId = NULL WHERE ItemId = survivorId;
              DELETE FROM MirrorPeerGroups WHERE PeerGroupId = groupId;
              RAISE NOTICE 'group-dissolved' USING DETAIL = groupId::text;
            END IF;
            IF survivingCount = 0 THEN
              DELETE FROM MirrorPeerGroups WHERE PeerGroupId = groupId;
            END IF;)
-     e. UPDATE Items SET PeerGroupId = NULL WHERE ItemId = I.ItemId.
+     e. UPDATE Item SET PeerGroupId = NULL WHERE ItemId = I.ItemId.
         (The detached item is no longer in any group.)
      f. Capture trigger NOTICE messages → groupDissolved = (count > 0).
      g. COMMIT.

@@ -46,24 +46,24 @@ This file pins the sequence. Each step cites the SSOT that governs its rule.
      a. Auth::hasRole($userId, 'Edit', 'Item', I.ItemId) → must be true.
      b. Open App DB for I.WorkspaceId.
      c. BEGIN TRANSACTION.
-     d. SELECT * FROM Items WHERE ItemId = I.ItemId.
+     d. SELECT * FROM Item WHERE ItemId = I.ItemId.
         If DeletedAt IS NULL → 409 (already healthy).
         If row missing → 410 (reaped — cannot restore).
      e. Walk ancestors via ParentId until root or until an ancestor with DeletedAt IS NOT NULL is found.
         IF a still-trashed ancestor exists → 422 with body { blockingAncestorId }.
         Client surfaces "Restore parent first?" CTA.
-     f. UPDATE Items SET DeletedAt = NULL,
+     f. UPDATE Item SET DeletedAt = NULL,
                           DeletedAtUpdatedAt = serverNow,
                           DeletedAtUpdatedBy = $userId
         WHERE ItemId = I.ItemId AND DeletedAtUpdatedAt < serverNow.
         (LWW guard — see 14-concurrency §14.2; a concurrent re-delete with newer ts wins.)
         If 0 rows affected → 409 (lost LWW race).
      g. Find broken mirrors of I and its descendants:
-           SELECT MirrorId, BrokenAtUpdatedAt FROM Mirrors
+           SELECT MirrorId, BrokenAtUpdatedAt FROM Mirror
             WHERE SourceId IN (descendant set of I)
               AND BrokenAt IS NOT NULL.
         For each:
-           UPDATE Mirrors SET BrokenAt = NULL,
+           UPDATE Mirror SET BrokenAt = NULL,
                               BrokenAtUpdatedAt = serverNow,
                               BrokenAtUpdatedBy = $userId
             WHERE MirrorId = ? AND BrokenAtUpdatedAt < serverNow.
