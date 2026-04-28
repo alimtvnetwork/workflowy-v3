@@ -5,6 +5,7 @@
 > **Owner:** Operator on call
 > **Trigger:** `SYSTEM.RESTORE_INITIATED` audit-row creation (see [`./01-disaster-recovery-restore.md`](./01-disaster-recovery-restore.md) §"Within 7 days")
 > **Deadline:** 7 calendar days from restore completion
+> **Implements:** [`spec/31-app/05-conventions/14-backup-and-dr-policy.md`](../../31-app/05-conventions/14-backup-and-dr-policy.md) §8 _(matches A-44 v1.0.0)_
 
 ---
 

@@ -31,12 +31,17 @@ function scan(dir) {
     const goodMatch = name.match(PREFIX_RE);
     const badMatch = name.match(BAD_PREFIX_RE);
 
+    // Generated companion files (e.g. 00-overview-condensed.md) intentionally
+    // share the prefix of their canonical sibling. Skip duplicate detection
+    // for these — they're a 1:1 paired artefact produced by gate G-43.
+    const isCondensedCompanion = /-condensed\.md$/.test(name);
+
     if (goodMatch) {
       const prefix = goodMatch[1];
-      if (seen.has(prefix)) {
+      if (seen.has(prefix) && !isCondensedCompanion) {
         errors.push(`Duplicate prefix ${prefix} in ${dir}: ${seen.get(prefix)} & ${name}`);
       }
-      seen.set(prefix, name);
+      if (!isCondensedCompanion) seen.set(prefix, name);
     } else if (badMatch && badMatch[1].length !== 2) {
       errors.push(`Malformed prefix in ${rel} (must be two digits)`);
     }

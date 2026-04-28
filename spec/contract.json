@@ -4163,10 +4163,14 @@
     },
     {
       "id": "AT-AUTH-01",
-      "definition": "`05-conventions/10-role-escalation-policy.md`",
-      "defined_in": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-      "defined_line": 84,
+      "definition": "Every authenticated route calls Auth::hasRole server-side",
+      "defined_in": "spec/31-app/05-conventions/97-acceptance-criteria.md",
+      "defined_line": 141,
       "cited_in": [
+        {
+          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
+          "line": 84
+        },
         {
           "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
           "line": 81
@@ -8947,10 +8951,14 @@
     },
     {
       "id": "AT-ENV-01",
-      "definition": "`04-database-conventions/06-rest-api-format/97-acceptance-criteria.md`",
-      "defined_in": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-      "defined_line": 79,
+      "definition": "Response uses universal envelope with PascalCase keys",
+      "defined_in": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
+      "defined_line": 90,
       "cited_in": [
+        {
+          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
+          "line": 79
+        },
         {
           "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
           "line": 81
@@ -8967,10 +8975,14 @@
     },
     {
       "id": "AT-ENV-02",
-      "definition": "same",
-      "defined_in": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-      "defined_line": 80,
+      "definition": "`Status` is one of `success` / `error` only",
+      "defined_in": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
+      "defined_line": 97,
       "cited_in": [
+        {
+          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
+          "line": 80
+        },
         {
           "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
           "line": 81
@@ -10451,6 +10463,10 @@
           "line": 27
         },
         {
+          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
+          "line": 81
+        },
+        {
           "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
           "line": 81
         },
@@ -10682,6 +10698,10 @@
         {
           "file": "spec/31-app/05-conventions/97-acceptance-criteria.md",
           "line": 38
+        },
+        {
+          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
+          "line": 82
         },
         {
           "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
@@ -15683,10 +15703,14 @@
     },
     {
       "id": "AT-RATE-01",
-      "definition": "`05-conventions/08-api-rate-limiting.md`",
-      "defined_in": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-      "defined_line": 85,
+      "definition": "Endpoint respects per-tier rate limits (returns 429 on breach)",
+      "defined_in": "spec/31-app/05-conventions/97-acceptance-criteria.md",
+      "defined_line": 148,
       "cited_in": [
+        {
+          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
+          "line": 85
+        },
         {
           "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
           "line": 81

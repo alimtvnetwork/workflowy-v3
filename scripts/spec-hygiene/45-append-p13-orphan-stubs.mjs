@@ -48,23 +48,40 @@ const STUBS = [
     { id: 'AT-MIRROR-07', title: 'Mirror peer-group edge case (P13-stub)' },
     { id: 'AT-BOARD-99', title: 'Board view placeholder (P13-stub)' },
   ]},
+  { file: 'spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md', items: [
+    { id: 'AT-ENV-01', title: 'Response uses universal envelope with PascalCase keys' },
+    { id: 'AT-ENV-02', title: '`Status` is one of `success` / `error` only' },
+  ]},
+  { file: 'spec/31-app/05-conventions/97-acceptance-criteria.md', items: [
+    { id: 'AT-AUTH-01', title: 'Every authenticated route calls Auth::hasRole server-side' },
+    { id: 'AT-RATE-01', title: 'Endpoint respects per-tier rate limits (returns 429 on breach)' },
+  ]},
 ];
 
-const STAMP = `\n\n---\n\n## P13 stub rows\n\n> Auto-appended by [\`scripts/spec-hygiene/45-append-p13-orphan-stubs.mjs\`](../../../scripts/spec-hygiene/45-append-p13-orphan-stubs.mjs) on 2026-04-28 to close orphan AT citations surfaced by [\`40-generate-contract-json.mjs\`](../../../scripts/spec-hygiene/40-generate-contract-json.mjs). Each row is a **placeholder definition** — replace the body with concrete Given/When/Then + JSON fixture during P2 (I/O table conversion). Do **not** delete a row without first removing every citation of its ID elsewhere in spec/.\n`;
+// Build relative-path prefixes from the target file's depth so the auto-stamp
+// links resolve correctly regardless of nesting.
+function relToRoot(file) {
+  const parts = file.split('/').slice(0, -1); // drop filename
+  return '../'.repeat(parts.length);
+}
+function relToSpec(file) {
+  const parts = file.split('/').slice(0, -1);
+  return '../'.repeat(Math.max(parts.length - 1, 0));
+}
 
 let total = 0;
 for (const { file, items } of STUBS) {
   if (!fs.existsSync(file)) {
-    // create the missing file with a minimal scaffold
     fs.writeFileSync(file, `# Acceptance Criteria\n\n> Scaffold file created by P13 to host stub rows. Real criteria land here during P2.\n`);
   }
   let body = fs.readFileSync(file, 'utf8');
   if (body.includes('## P13 stub rows')) continue; // idempotent
-  body += STAMP;
+  const upRoot = relToRoot(file);
+  const upSpec = relToSpec(file);
+  body += `\n\n---\n\n## P13 stub rows\n\n> Auto-appended by [\`scripts/spec-hygiene/45-append-p13-orphan-stubs.mjs\`](${upRoot}scripts/spec-hygiene/45-append-p13-orphan-stubs.mjs) on 2026-04-28 to close orphan AT citations surfaced by [\`40-generate-contract-json.mjs\`](${upRoot}scripts/spec-hygiene/40-generate-contract-json.mjs). Each row is a **placeholder definition** — replace the body with concrete Given/When/Then + JSON fixture during P2 (I/O table conversion). Do **not** delete a row without first removing every citation of its ID elsewhere in spec/.\n`;
   for (const { id, title } of items) {
-    // skip if already defined elsewhere in this file
     if (new RegExp(`^### ${id} `, 'm').test(body)) continue;
-    body += `\n### ${id} — ${title}\n\n📝 **P13-stub.** Definition pending. Replace this block with:\n- Given/When/Then prose\n- JSON request + envelope-shaped response (PascalCase \`Status\`/\`Attributes\`/\`Results\`) per [\`spec/04-database-conventions/06-rest-api-format/\`](../../04-database-conventions/06-rest-api-format/).\n- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.\n`;
+    body += `\n### ${id} — ${title}\n\n📝 **P13-stub.** Definition pending. Replace this block with:\n- Given/When/Then prose\n- JSON request + envelope-shaped response (PascalCase \`Status\`/\`Attributes\`/\`Results\`) per [\`spec/04-database-conventions/06-rest-api-format/\`](${upSpec}04-database-conventions/06-rest-api-format/).\n- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.\n`;
     total++;
   }
   fs.writeFileSync(file, body);

@@ -104,18 +104,18 @@ Fixtures for every AT row in this file are covered by the global P2g sweep — s
 
 ## P13 stub rows
 
-> Auto-appended by [`scripts/spec-hygiene/45-append-p13-orphan-stubs.mjs`](../../../scripts/spec-hygiene/45-append-p13-orphan-stubs.mjs) on 2026-04-28 to close orphan AT citations surfaced by [`40-generate-contract-json.mjs`](../../../scripts/spec-hygiene/40-generate-contract-json.mjs). Each row is a **placeholder definition** — replace the body with concrete Given/When/Then + JSON fixture during P2 (I/O table conversion). Do **not** delete a row without first removing every citation of its ID elsewhere in spec/.
+> Auto-appended by [`scripts/spec-hygiene/45-append-p13-orphan-stubs.mjs`](../../scripts/spec-hygiene/45-append-p13-orphan-stubs.mjs) on 2026-04-28 to close orphan AT citations surfaced by [`40-generate-contract-json.mjs`](../../scripts/spec-hygiene/40-generate-contract-json.mjs). Each row is a **placeholder definition** — replace the body with concrete Given/When/Then + JSON fixture during P2 (I/O table conversion). Do **not** delete a row without first removing every citation of its ID elsewhere in spec/.
 
 ### AT-CICD-11 — Browser-Extension archetype reference
 
 📝 **P13-stub.** Definition pending. Replace this block with:
 - Given/When/Then prose
-- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../../04-database-conventions/06-rest-api-format/).
+- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/).
 - A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
 
 ### AT-CICD-14 — Go-Binary archetype reference
 
 📝 **P13-stub.** Definition pending. Replace this block with:
 - Given/When/Then prose
-- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../../04-database-conventions/06-rest-api-format/).
+- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/).
 - A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.

@@ -138,8 +138,10 @@ walk(ROOT, (file) => {
 
     const at = AT_TABLE_ROW.exec(line);
     const ah = !at && AT_HEADING.exec(line);
-    if (at) {
+    if (at && !CITE_ONLY) {
       recordAT(at[1], at[2].trim(), rel, i + 1);
+    } else if (at && CITE_ONLY) {
+      citeAT(at[1], rel, i + 1);
     } else if (ah && !CITE_ONLY) {
       recordAT(ah[1], ah[2].trim(), rel, i + 1);
     } else if (ah && CITE_ONLY) {
