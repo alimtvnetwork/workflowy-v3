@@ -144,8 +144,9 @@ This file is the **canonical entrypoint** to the entire `spec/` tree. Every AI a
 
 - **Name:** WorkFlowy (always capitalize as `WorkFlowy`)
 - **Type:** Single-page web application — outliner / hierarchical task manager
-- **Stack:** Vite + React 18 + TypeScript 5 + Tailwind CSS v4 + SQLite (Split DB pattern)
-- **Forbidden stack:** Go, PHP, Postgres, Supabase, Next.js, Vue, Svelte, Angular
+- **Frontend stack:** Vite 5.4 + React 19 + TypeScript 5.6 (strict) + Tailwind CSS v4 (per ADR-0003, ADR-0007, ADR-0012)
+- **Backend stack:** WordPress plugin running PHP 8.1+ + SQLite via PDO + REST namespace `workflowy/v1` (per ADR-0002)
+- **Forbidden stack:** Go, **standalone PHP outside the WP plugin**, Postgres, MySQL, Supabase, Lovable Cloud, sql.js, IndexedDB-as-primary, Cloudflare D1, standalone Node, Next.js, Vue, Svelte, Angular
 
 ---
 
@@ -160,7 +161,7 @@ This file is the **canonical entrypoint** to the entire `spec/` tree. Every AI a
 | 5 | **Unified `Item` interface** for every node (id, parentId, content, itemType) | [`31-app/`](./31-app/00-overview.md) |
 | 6 | **250-item limit** per visible view (performance budget) | [`31-app/`](./31-app/00-overview.md) |
 | 7 | **Tailwind CSS v4 only** via `@tailwindcss/vite` in `src/index.css @theme` block | [`32-ui-design/`](./32-ui-design/00-overview.md) |
-| 8 | **No Go, PHP, Postgres, or Supabase** in any code path | This file |
+| 8 | **No Go, no standalone PHP, no Postgres, no Supabase** in any code path. PHP is allowed **only** inside the WordPress plugin per ADR-0002. | This file + ADR-0002 |
 | 9 | **Spec hygiene runs clean** — `node scripts/spec-hygiene/00-run-all.mjs` must exit 0 | [`18-spec-issues/`](./18-spec-issues/00-overview.md) |
 | 10 | **No `any`-typed values cross any boundary** — enforced by ESLint | [`02-coding-guidelines/02-typescript/11-eslint-enforcement.md`](./02-coding-guidelines/02-typescript/11-eslint-enforcement.md) |
 
