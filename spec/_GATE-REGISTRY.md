@@ -104,7 +104,7 @@
 
 | Gate | Tier | Primary File | Brief |
 |------|------|--------------|-------|
-| `G-06-CACHE-INVALIDATE` | **DOC-NORM** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | 4 Cache config without invalidation hook Settings UI changes don't take effect until restart. G-06-CACHE-INVALIDATE (ac |
+| `G-06-CACHE-INVALIDATE` | **DOC-NORM** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | Cache config without invalidation hook Settings UI changes don't take effect until restart. |
 | `G-06-ENV-VIA-REGISTRY` | **DOC** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | Use ENV at runtime via getenv() outside ConfigRegistry Two competing sources of truth. |
 | `G-06-IDEMPOTENT` | **TEST** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | Never overwrite a key already present in WorkflowyConfigOverride or WorkflowyConfigUserOverride. Gate G-06-IDEMPOTENT ( |
 | `G-06-LOG-INSERT` | **DOC-NORM** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | Inserting a new key from seed MUST log seed.inserted with key + value. Gate G-06-LOG-INSERT. |
@@ -119,7 +119,7 @@
 | Gate | Tier | Primary File | Brief |
 |------|------|--------------|-------|
 | `G-10-CMDLET-BINDING` | **DOC** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | Omit [CmdletBinding(SupportsShouldProcess)] No -WhatIf support; mutations cannot be dry-run. |
-| `G-10-ERROR-STOP` | **DOC-NORM** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | 5 Omit $ErrorActionPreference = 'Stop' Non-terminating errors → exit 0 despite failure. G-10-ERROR-STOP (AST: must appe |
+| `G-10-ERROR-STOP` | **DOC-NORM** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | Omit $ErrorActionPreference = 'Stop' Non-terminating errors → exit 0 despite failure. |
 | `G-10-NO-HARDCODE-PATH` | **DOC** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | Hardcode C:\Program Files\… paths Breaks portable installs; fails on non-default WP layouts. |
 | `G-10-NO-IEX` | **DOC** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | Use Invoke-Expression on any input Arbitrary code execution. |
 | `G-10-NO-WRITE-HOST` | **DOC** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | Use Write-Host for script output Bypasses stdout — PHP captures nothing, JSON parse fails. |
@@ -150,25 +150,25 @@
 | Gate | Tier | Primary File | Brief |
 |------|------|--------------|-------|
 | `G-13-ACTION-VERSIONS` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | Use actions/checkout@v3 or older Known supply-chain CVE; loses sparse-checkout. |
-| `G-13-ARCHETYPE-DECLARED` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | 1 Add a new repo without picking one of the documented archetypes Pipeline drift — each repo invents its own gates. G-1 |
+| `G-13-ARCHETYPE-DECLARED` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | Add a new repo without picking one of the documented archetypes Pipeline drift — each repo invents its own gates. |
 | `G-13-CACHE-KEY` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | Enforces ADR-0002 — WordPress plugin + PHP 8.1+ + SQLite. |
 | `G-13-CONCURRENCY` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | concurrency: { group: ${{ github.workflow }}-${{ github.ref }}, cancel-in-progress: true } on every PR workflow. Gate G |
-| `G-13-DAG-PARALLEL` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | 5 Run jobs in series when DAG allows parallel Wastes CI minutes; balloons feedback time. G-13-DAG-PARALLEL (lint: lint- |
+| `G-13-DAG-PARALLEL` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | Run jobs in series when DAG allows parallel Wastes CI minutes; balloons feedback time. |
 | `G-13-HYGIENE-PRESENT` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | Skip the spec-hygiene step Spec rot ships unchecked. |
 | `G-13-NO-CANCEL-TAG` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | Tag workflows MUST set cancel-in-progress: false — releases are never cancelled mid-flight. Gate G-13-NO-CANCEL-TAG. |
 | `G-13-NO-SECRET-ECHO` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | Secrets accessed only via ${{ secrets. }}; never echoed to logs. Gate G-13-NO-SECRET-ECHO (regex over workflow). |
 | `G-13-NO-SECRET-LITERAL` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | Hardcode secrets / registry URLs in workflow YAML Token leak; rotation impossible. |
-| `G-13-PROTECTION-MATCH` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | 4 Mark scan-security as required Slows merges on third-party CVE noise. Branch-protection JSON checked into repo, valid |
+| `G-13-PROTECTION-MATCH` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | Mark scan-security as required Slows merges on third-party CVE noise. Branch-protection JSON checked into repo, valid. |
 | `G-13-PUBLISH-NEEDS-SIGN` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | Publish from a job that didn't depend on sign-artifact Unsigned release reaches users. |
 
 ### ADR-0014
 
 | Gate | Tier | Primary File | Brief |
 |------|------|--------------|-------|
-| `G-14-BACKUP-RETAIN` | **DOC-NORM** | [`spec/14-self-update-app-update/00-overview.md`](./14-self-update-app-update/00-overview.md) | 5 Delete the SQLite backup before phase 7 commits Loses the only rollback target. G-14-BACKUP-RETAIN (runtime: BackupRe |
+| `G-14-BACKUP-RETAIN` | **DOC-NORM** | [`spec/14-self-update-app-update/00-overview.md`](./14-self-update-app-update/00-overview.md) | Delete the SQLite backup before phase 7 commits Loses the only rollback target. |
 | `G-14-CONFLICT-UX-SILENT` | **DOC** | [`spec/00-adrs/0010-offline-fifo-replay-queue.md`](./00-adrs/0010-offline-fifo-replay-queue.md) | - G-14-CONFLICT-UX-SILENT — enforces D5 (no prompts; "restored |
 | `G-14-LWW-SERVERTS-CANONICAL` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0010](./00-adrs/0010-offline-fifo-replay-queue.md) Offline FIFO replay queue (IndexedDB) + server-stamped LWW reconcil |
-| `G-14-NO-HARDCODE-URL` | **DOC-NORM** | [`spec/14-self-update-app-update/00-overview.md`](./14-self-update-app-update/00-overview.md) | 2 Hardcode the update-server URL in PHP Breaks air-gapped/self-hosted deployments. G-14-NO-HARDCODE-URL (grep: https?:/ |
+| `G-14-NO-HARDCODE-URL` | **DOC-NORM** | [`spec/14-self-update-app-update/00-overview.md`](./14-self-update-app-update/00-overview.md) | Hardcode the update-server URL in PHP Breaks air-gapped/self-hosted deployments. |
 | `G-14-NO-SWALLOW` | **CI** | [`spec/14-self-update-app-update/00-overview.md`](./14-self-update-app-update/00-overview.md) | Catch Throwable in apply() and return success Hides corruption; later phases run on broken state. |
 | `G-14-PHASE-ORDER` | **TEST** | [`spec/14-self-update-app-update/00-overview.md`](./14-self-update-app-update/00-overview.md) | Run ExtractFiles before BackupSqlite succeeded No rollback target — partial extraction corrupts plugin. |
 | `G-14-QUEUE-FIFO-LOCALSEQ` | **DOC** | [`spec/00-adrs/0010-offline-fifo-replay-queue.md`](./00-adrs/0010-offline-fifo-replay-queue.md) | - G-14-QUEUE-FIFO-LOCALSEQ — enforces D1 (strict LocalSeq order, |
@@ -196,19 +196,19 @@
 
 | Gate | Tier | Primary File | Brief |
 |------|------|--------------|-------|
-| `G-16-CONFIG-VIA-FLAG` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | 4 Read config file paths from positional args Confuses <file> semantics with config plumbing. G-16-CONFIG-VIA-FLAG (lin |
+| `G-16-CONFIG-VIA-FLAG` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | Read config file paths from positional args Confuses <file> semantics with config plumbing. |
 | `G-16-EMPTY-QUERY-NO-FALLBACK` | **DOC** | [`spec/00-adrs/0013-search-relevance-then-recency-ranking.md`](./00-adrs/0013-search-relevance-then-recency-ranking.md) | - G-16-EMPTY-QUERY-NO-FALLBACK — enforces D6 (zero results, never |
 | `G-16-EXIT-DOCUMENTED` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | - The hygiene gate G-16-EXIT-DOCUMENTED rejects help text that lists an undocumented code. |
 | `G-16-EXIT-NONZERO-ON-FAIL` | **TEST** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | Return exit 0 on partial failure Hides errors from CI; cron jobs miss alerts. |
 | `G-16-FIELD-WEIGHTS-CONTENT-NOTE` | **DOC** | [`spec/00-adrs/0013-search-relevance-then-recency-ranking.md`](./00-adrs/0013-search-relevance-then-recency-ranking.md) | - G-16-FIELD-WEIGHTS-CONTENT-NOTE — enforces D3 (max(Content×1.5, |
-| `G-16-FLAG-STYLE` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | 3 Use -flagName (single dash + camelCase) Conflicts with POSIX short-flag bundling (-abc = -a -b -c). G-16-FLAG-STYLE ( |
-| `G-16-JSON-PURE` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | 1 Print free-form text to stdout when --json is set Breaks downstream jq pipelines; unparseable. G-16-JSON-PURE (test: |
+| `G-16-FLAG-STYLE` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | Use -flagName (single dash + camelCase) Conflicts with POSIX short-flag bundling (-abc = -a -b -c). |
+| `G-16-JSON-PURE` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | Print free-form text to stdout when --json is set Breaks downstream jq pipelines; unparseable. |
 | `G-16-MATCH-TIER-TABLE` | **DOC** | [`spec/00-adrs/0013-search-relevance-then-recency-ranking.md`](./00-adrs/0013-search-relevance-then-recency-ranking.md) | - G-16-MATCH-TIER-TABLE — enforces D2 (the five tier values |
 | `G-16-MIRROR-PEERS-INDEPENDENT` | **DOC** | [`spec/00-adrs/0013-search-relevance-then-recency-ranking.md`](./00-adrs/0013-search-relevance-then-recency-ranking.md) | - G-16-MIRROR-PEERS-INDEPENDENT — enforces D8 (no dedup of peer |
 | `G-16-OPERATORS-AS-PREDICATE` | **DOC** | [`spec/00-adrs/0013-search-relevance-then-recency-ranking.md`](./00-adrs/0013-search-relevance-then-recency-ranking.md) | - G-16-OPERATORS-AS-PREDICATE — enforces D4 (operators narrow |
 | `G-16-RANKING-HYBRID-BUCKETED` | **DOC** | [`spec/00-adrs/0013-search-relevance-then-recency-ranking.md`](./00-adrs/0013-search-relevance-then-recency-ranking.md) | - G-16-RANKING-HYBRID-BUCKETED — enforces D1 (5 buckets of |
 | `G-16-SEARCH-300MS-SLA` | **DOC** | [`spec/00-adrs/0013-search-relevance-then-recency-ranking.md`](./00-adrs/0013-search-relevance-then-recency-ranking.md) | - G-16-SEARCH-300MS-SLA — enforces D5 (< 300 ms on ≥ 5 000-item |
-| `G-16-STRICT-FLAGS` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | 6 Silently ignore unknown flags Typos pass undetected; users blame the tool. G-16-STRICT-FLAGS (parser MUST exit 2 on u |
+| `G-16-STRICT-FLAGS` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | Silently ignore unknown flags Typos pass undetected; users blame the tool. |
 | `G-16-TTY-DETECT` | **TEST** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | Emit ANSI color codes when stdout is not a TTY Garbles logs and CI output. |
 
 ### ADR-0017
@@ -219,7 +219,7 @@
 | `G-17-NO-SWALLOW` | **CI** | [`spec/17-generic-update/00-overview.md`](./17-generic-update/00-overview.md) | Catch Throwable in apply() and return UpdateResult::success() Hides corruption; rollback never triggered. |
 | `G-17-ROLLBACK-DECLARED` | **DOC** | [`spec/17-generic-update/00-overview.md`](./17-generic-update/00-overview.md) | Implement an updater without declaring rollbackStrategy() Operators cannot reason about recovery; CI cannot route to. |
 | `G-17-SINGLE-CONCERN` | **DOC** | [`spec/17-generic-update/00-overview.md`](./17-generic-update/00-overview.md) | Mix a schema bump and a data migration in one updater Partial failure leaves DB in a state that matches no targetVers. |
-| `G-17-SINGLE-VERSION` | **DOC-NORM** | [`spec/17-generic-update/00-overview.md`](./17-generic-update/00-overview.md) | 5 Hard-code the version string in two places Drift between class constant and changelog. G-17-SINGLE-VERSION (grep: tar |
+| `G-17-SINGLE-VERSION` | **DOC-NORM** | [`spec/17-generic-update/00-overview.md`](./17-generic-update/00-overview.md) | Hard-code the version string in two places Drift between class constant and changelog. |
 | `G-17-TXN-WRAP` | **TEST** | [`spec/17-generic-update/00-overview.md`](./17-generic-update/00-overview.md) | Run apply() outside a transaction on a writable DB Crash mid-statement leaves half-applied schema. |
 
 ### ADR-0018
@@ -227,9 +227,9 @@
 | Gate | Tier | Primary File | Brief |
 |------|------|--------------|-------|
 | `G-18-FROZEN` | **DOC** | [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | Edit a closed audit in place Erases the historical record; future readers can't reconstruct what changed. |
-| `G-18-ONE-FINDING` | **DOC-NORM** | [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | 6 Mix multiple findings in one audit file Cannot be partially closed; blocks unrelated fixes. G-18-ONE-FINDING (lint: f |
-| `G-18-OWNER-LINK` | **DOC-NORM** | [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | 3 Open an audit without an owning section link Resolver cannot find what to fix. G-18-OWNER-LINK (regex: Owning section |
-| `G-18-RESOLUTION-TRIPLE` | **DOC-NORM** | [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | 4 Resolve an audit without citing the spec edit + gate + AT Future regression cannot be detected. G-18-RESOLUTION-TRIPL |
+| `G-18-ONE-FINDING` | **DOC-NORM** | [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | Mix multiple findings in one audit file Cannot be partially closed; blocks unrelated fixes. |
+| `G-18-OWNER-LINK` | **DOC-NORM** | [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | Open an audit without an owning section link Resolver cannot find what to fix. |
+| `G-18-RESOLUTION-TRIPLE` | **DOC-NORM** | [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | Resolve an audit without citing the spec edit + gate + AT Future regression cannot be detected. |
 | `G-18-SEVERITY-ROUTING` | **DOC** | [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | Use severity Critical without paging the on-call channel Severity becomes meaningless inflation. |
 | `G-18-VERBATIM-QUOTE` | **DOC** | [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | Re-use an active rule wording inside an audit body Audits document the past state verbatim; mirroring active wording. |
 
@@ -441,7 +441,7 @@
 | `G-36-HAS-ROLE-DEFINER` | **DOC** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | Implement Auth::hasRole as a plain SQL view (not SECURITY DEFINER) RLS recursion — query inside the policy queries th. |
 | `G-36-NO-HARDCODE-ADMIN` | **DOC** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | Hardcode an admin email/UUID in PHP Cannot be rotated; lost-key disaster. |
 | `G-36-NO-ROLE-COLUMN` | **DOC-NORM** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | Roles live only in UserRole (separate table). NEVER on User or UserProfile. Gate G-36-NO-ROLE-COLUMN (DDL lint rejects |
-| `G-36-NO-SELF-ROLE` | **DOC-NORM** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | 6 Self-assign a role via POST /users/{me}/roles Privilege escalation by the user themselves. G-36-NO-SELF-ROLE (handler |
+| `G-36-NO-SELF-ROLE` | **DOC-NORM** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | Self-assign a role via POST /users/{me}/roles Privilege escalation by the user themselves. |
 | `G-36-PASSWORD-WRITE-ONLY` | **DOC-NORM** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | Passwords are write-only — never appear in any response envelope. Gate G-36-PASSWORD-WRITE-ONLY (response-schema test: |
 | `G-36-SESSION-MIN` | **DOC-NORM** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | Sessions store opaque tokens only — no role is baked into JWT/session payloads (must re-check). Gate G-36-SESSION-MIN. |
 | `G-36-VIA-HAS-ROLE` | **CI** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | Role checks go through Auth::hasRole(int $userId, AppRole $role): bool — a SECURITY DEFINER SQL function. Gate G-36-VIA |
