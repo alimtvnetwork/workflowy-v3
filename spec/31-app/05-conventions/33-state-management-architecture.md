@@ -259,8 +259,8 @@ src/
 | `AT-STATE-04` | The SSE `EventSource` is constructed in exactly one file (`RealtimeProvider.tsx`); a grep for `new EventSource(` returns exactly one match in `src/`. (R5) |
 | `AT-STATE-05` | Every `useMutation` with `onMutate` for optimistic updates has a matching `onError` rollback that calls `queryClient.setQueryData` with the snapshot. (R6) |
 | `AT-STATE-06` | `useUndoStore` is keyed by `zoomedItemId` — switching zoom and pressing Cmd-Z does not affect the previous zoom's history. (R7) |
-| `AT-STATE-07` | When two tabs edit the same Mirror within 50 ms, the resulting `Item.Content` matches the row with the latest `(UpdatedAt, OwnerUserId ASC)` lex tuple. (D6) |
-| `AT-STATE-08` | After 24 h offline, the `useOfflineQueueStore` survives reload via `localStorage`, and replays in FIFO order on the next `online` event. (D9) |
+| `AT-STATE-07` | When two tabs edit the same Mirror within 50 ms, the resulting `Item.Content` matches the row chosen by the canonical 3-tier comparator `(ServerTs DESC, OwnerId ASC, ItemId ASC)` per ADR-0026 §D1. (D6) |
+| `AT-STATE-08` | After 24 h offline, the `useOfflineQueueStore` survives reload via **IndexedDB** (per ADR-0021 — localStorage is forbidden), and replays in FIFO order on the next `online` event. (D9) |
 
 ---
 
