@@ -48,6 +48,39 @@
 
 ---
 
+## 🏛️ Architecture Decision Records (ADRs)
+
+ADRs live at [`spec/00-adrs/`](./00-adrs/00-overview.md) and capture every
+load-bearing scope/architecture decision that constrains the rest of `spec/`.
+They are deliberately listed **outside** the auto-TOC because the directory
+prefix `00-` reserves it as the architectural anchor for the whole spec tree.
+
+> **Golden Rule:** any spec page that says *"MUST first amend via ADR"* is
+> only enforceable because this directory exists. Removing or renaming an
+> ADR file is itself a breaking change.
+
+| ADR | Title | Status | Anchors (selected) |
+|---|---|---|---|
+| [`0001`](./00-adrs/0001-singular-ddl-vs-plural-prose.md) | Singular DDL vs plural prose | `Accepted` 2026-04-28 | `G-04-ALIAS-DDL-CANONICAL`, `G-04-NO-DDL-PLURALS`, forbidden `EP-FAVORITES-*` / `EP-CONTENT-*` families |
+| [`0002`](./00-adrs/0002-wp-plugin-php-sqlite-backend.md) | WordPress plugin + PHP 8.1+ + SQLite | `Accepted` 2026-04-28 | `G-13-CACHE-KEY`, `G-19-WORKFLOW-CONTRACT`, `G-20-PRECOMMIT-CONTRACT`, all `EP-*` runtime |
+
+**When to consult ADRs first** (before editing any spec section):
+
+1. You're about to add a new endpoint family, DDL table, or column.
+2. You're about to relax a strict-TS / SQLite naming / WP-plugin folder rule.
+3. You're about to introduce a second backend runtime, a new language, or a
+   managed-cloud dependency.
+4. A spec page footer says **"see ADR-NNNN"** — read that ADR first; do not
+   amend the page in conflict with it.
+
+To **propose** a change to a ratified rule, copy
+[`spec/00-adrs/_TEMPLATE.md`](./00-adrs/_TEMPLATE.md) to the next free
+`NNNN-kebab-case-title.md` and follow the lifecycle in
+[`spec/00-adrs/00-overview.md`](./00-adrs/00-overview.md).
+
+---
+
+
 ## Keywords
 
 `spec-root` · `ai-entrypoint` · `navigation` · `golden-rules` · `single-source-of-truth` · `workflowy`
