@@ -2,9 +2,10 @@
 
 > **Type:** Audit ledger (informational, not an ADR).
 > **Source gate:** [`G-00-ADR-XLINK-SYMMETRY`](./_INDEX_AUTOMATION.md#g-00-adr-xlink-symmetry-planned)
-> **Audit script:** `python3 /tmp/xlink_audit.py` (workflow archived in this
-> ledger; CI implementation pending under
-> `spec/13-cicd-pipeline-workflows/`).
+> **Audit script:** [`spec/13-cicd-pipeline-workflows/scripts-as-spec/xlink-symmetry-audit.md`](../13-cicd-pipeline-workflows/scripts-as-spec/xlink-symmetry-audit.md)
+> (frozen 2026-04-28). The fixture-as-spec is the load-bearing
+> algorithm; CI implementation pending under
+> `spec/13-cicd-pipeline-workflows/`.
 
 ## Purpose
 
