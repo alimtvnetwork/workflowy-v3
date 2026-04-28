@@ -9,14 +9,17 @@ import path from 'node:path';
 const SPEC_DIR = 'spec';
 const MODEL = 'google/gemini-2.5-flash'; // mediocre-AI baseline per rubric
 const MAX_CHARS_PER_SECTION = 18000; // cap input
-const OUT_MD = '/mnt/documents/spec_ai_audit_FINAL.md';
-const OUT_JSON = '/mnt/documents/spec_ai_audit_FINAL.json';
+const OUT_MD = process.env.AUDIT_OUT_MD || '/mnt/documents/spec_ai_audit_FINAL.md';
+const OUT_JSON = process.env.AUDIT_OUT_JSON || '/mnt/documents/spec_ai_audit_FINAL.json';
 const API_KEY = process.env.LOVABLE_API_KEY;
 if (!API_KEY) { console.error('LOVABLE_API_KEY missing'); process.exit(1); }
 
+const ONLY = (process.env.AUDIT_ONLY || '').split(',').map(s => s.trim()).filter(Boolean);
 const SECTIONS = fs.readdirSync(SPEC_DIR, { withFileTypes: true })
   .filter(d => d.isDirectory() && /^\d/.test(d.name))
-  .map(d => d.name).sort();
+  .map(d => d.name)
+  .filter(n => !ONLY.length || ONLY.includes(n))
+  .sort();
 
 function walk(dir) {
   const out = [];
@@ -32,6 +35,13 @@ function loadSection(section) {
   const dir = path.join(SPEC_DIR, section);
   const files = walk(dir);
   let total = 0, lines = 0;
+  for (const f of files) { lines += fs.readFileSync(f, 'utf8').split('\n').length; total++; }
+  // P11: prefer condensed overview when present (mega-sections)
+  const condensed = path.join(dir, '00-overview-condensed.md');
+  if (fs.existsSync(condensed)) {
+    const c = fs.readFileSync(condensed, 'utf8');
+    return { section, fileCount: total, lineCount: lines, content: `=== FILE: ${condensed} (CONDENSED, P11) ===\n` + c, condensed: true };
+  }
   // prioritise overview + acceptance-criteria
   files.sort((a, b) => {
     const score = (p) => /00-overview/.test(p) ? 0 : /9[78]-acceptance/.test(p) ? 1 : /\.md$/.test(p) ? 2 : 3;
@@ -39,15 +49,12 @@ function loadSection(section) {
   });
   let buf = '';
   for (const f of files) {
+    if (buf.length >= MAX_CHARS_PER_SECTION) break;
     const c = fs.readFileSync(f, 'utf8');
-    lines += c.split('\n').length;
-    if (buf.length < MAX_CHARS_PER_SECTION) {
-      const remaining = MAX_CHARS_PER_SECTION - buf.length;
-      buf += `\n\n=== FILE: ${f} ===\n` + c.slice(0, remaining);
-    }
-    total++;
+    const remaining = MAX_CHARS_PER_SECTION - buf.length;
+    buf += `\n\n=== FILE: ${f} ===\n` + c.slice(0, remaining);
   }
-  return { section, fileCount: total, lineCount: lines, content: buf };
+  return { section, fileCount: total, lineCount: lines, content: buf, condensed: false };
 }
 
 const TOOL = {
