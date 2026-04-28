@@ -121,7 +121,7 @@ export const RTL_LOCALES: readonly SupportedLocale[] = ['ar'] as const;
 When the active locale is in `RTL_LOCALES`:
 
 1. **`<html dir="rtl" lang="ar">`** is set by the i18n `languageChanged` listener — single source of truth for direction.
-2. **Tailwind v4 logical properties** (`ms-*`/`me-*`/`ps-*`/`pe-*`) are mandatory in any new component (ADR-0012 amendment). The `pl-*`/`pr-*`/`ml-*`/`mr-*` classes are **forbidden** in component code; gate `G-28-NO-PHYSICAL-MARGINS` runs `eslint-plugin-tailwindcss` to flag them.
+2. **Tailwind v4 logical properties** (`ms-*`/`me-*`/`ps-*`/`pe-*`/`start-*`/`end-*`) are mandatory in any new component. The `pl-*`/`pr-*`/`ml-*`/`mr-*`/`left-*`/`right-*` classes are **forbidden** in component code. **The full rule, exemption mechanism, and grandfathering policy live in [ADR-0012 §D7](./0012-tailwind-v4-theme-block-token-registry.md#d7--logical-properties-are-mandatory-physical-directional-utilities-are-forbidden)** and are enforced by gates `G-12-LOGICAL-MARGINS-PADDING`, `G-12-LOGICAL-INSET`. This ADR cites them; it does not duplicate them.
 3. **Editor content (TipTap-style rich text per ADR-0023) preserves its own intrinsic direction** via the Unicode bidi algorithm — the i18n direction toggles only the **chrome**, not user content. A user in `ar` chrome can still type LTR English in a node, and vice versa.
 4. **Icons that imply direction** (chevron-right, undo arrows, `Caret*`) are mirrored via `rtl:rotate-180` (lucide-react icons per ADR-0017's icon rule). Decorative icons (logo, status dots) are NOT mirrored — judgment call documented per icon in `src/components/icons/README.md`.
 5. **Logical text alignment**: use `text-start`/`text-end`, never `text-left`/`text-right` (`G-28-NO-PHYSICAL-ALIGN`).
