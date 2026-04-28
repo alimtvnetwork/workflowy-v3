@@ -158,20 +158,20 @@ Every feature in `spec/31-app/01-features/` MUST: (1) write boolean checks as **
 |---|------|-------|-------|
 | 1 | [`01-information-model.md`](./01-information-model.md) | Information Model Foundations | 201 |
 | 2 | [`02-personas.md`](./02-personas.md) | Target User Personas | 119 |
-| 3 | [`03-layout-structure.md`](./03-layout-structure.md) | Layout Structure | 264 |
+| 3 | [`03-layout-structure.md`](./03-layout-structure.md) | Layout Structure | 280 |
 | 4 | [`04-page-content-area.md`](./04-page-content-area.md) | Page / Content Area | 233 |
 | 5 | [`05-interactions.md`](./05-interactions.md) | Interaction Behaviors | 194 |
 | 6 | [`06-item-context-menu.md`](./06-item-context-menu.md) | Item Context Menu (⋮) | 214 |
 | 7 | [`07-board-view.md`](./07-board-view.md) | Board View Specification | 214 |
 | 8 | [`08-share-dialog.md`](./08-share-dialog.md) | Share Dialog Specification | 157 |
 | 9 | [`09-mirrors.md`](./09-mirrors.md) | Mirror Specification | 221 |
-| 10 | [`10-today-view.md`](./10-today-view.md) | Today View Specification | 124 |
+| 10 | [`10-today-view.md`](./10-today-view.md) | Today View Specification | 138 |
 | 11 | [`11-trash-view.md`](./11-trash-view.md) | Trash View Specification | 159 |
 | 12 | [`12-multi-select.md`](./12-multi-select.md) | Multi-Select Behavior | 173 |
 | 13 | [`13-templates.md`](./13-templates.md) | Template Application Flow | 182 |
 | 14 | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | Concurrency & Sync | 313 |
 | 15 | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | Roles & Permissions | 391 |
-| 16 | [`16-search-ranking.md`](./16-search-ranking.md) | Search Ranking | 138 |
+| 16 | [`16-search-ranking.md`](./16-search-ranking.md) | Search Ranking | 179 |
 
 <!-- AUTO-TOC:END -->
 
@@ -186,6 +186,24 @@ Every feature in `spec/31-app/01-features/` MUST: (1) write boolean checks as **
 | Workflowy UI phases (visual SSOT) | [`../../32-ui-design/06-workflowy-ui/00-overview.md`](../../32-ui-design/06-workflowy-ui/00-overview.md) |
 | Glossary | [`../../19-glossary.md`](../../19-glossary.md) |
 | Enums | [`../../20-enums-index.md`](../../20-enums-index.md) |
+
+---
+
+## Workflowy Feature Reference (F2) — Sidebar Inventory (overview index)
+
+> **Source:** Workflowy product feature list, merged 2026-04-28 (lossless, additive). The sidebar is rendered by chrome documented in [`./03-layout-structure.md`](./03-layout-structure.md) F2 appendix; this overview index is the sidebar's logical content map.
+
+The sidebar contains, top to bottom:
+
+1. **Home** — Root navigation (clears zoom). → [`./03-layout-structure.md`](./03-layout-structure.md) F2.
+2. **Search** — Trigger for the global Search overlay. → [`./16-search-ranking.md`](./16-search-ranking.md) F2.
+3. **Jump To** — Fuzzy quick-switcher (⌘P). → [`./03-layout-structure.md`](./03-layout-structure.md) F2.
+4. **📅 Today** — Anchor to Today view. → [`./10-today-view.md`](./10-today-view.md) F2.
+5. **Starred** — User-pinned items group. → [`./03-layout-structure.md`](./03-layout-structure.md) F2 (Star / Bookmark).
+6. **Top-level pages** — The first depth of the user's tree, lazily loaded.
+7. **Account chrome** — Settings, Help, theme toggle. → consumed by [`spec/36-user-management/`](../../36-user-management/00-overview.md) (F5).
+
+> **Sidebar collapse:** the entire rail collapses to icon-only mode (⌘\). All of the above remain reachable via icon + tooltip in collapsed state.
 
 ---
 

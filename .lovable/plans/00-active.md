@@ -49,12 +49,13 @@ Pick the top 🟦 item on every `next`. Strike (✅) when done; new top item bec
 **Verify:** hygiene; re-score `31-app`.
 **✅ Done 2026-04-28:** Inserted "Workflowy Feature Reference (F1)" appendix into all four target files (additive, before existing `## Related`). Mirror reconciliation note ties Workflowy item-level "Mirror" → WorkFlowy peer-group relation per `mem://features/mirroring`. F1 hotkey appendix flags an F7 reconciliation candidate (every appendix row must appear in the canonical AT-HK-* table). Hygiene PASS for F1 changes; only pre-existing `ItemType` enum drift carried over (unrelated). Projected composite 61 → 63.
 
-### 🟦 F2 — Merge Workflowy feature reference (Part 2: navigation, search, sidebar)
+### ✅ F2 — Merge Workflowy feature reference (Part 2: navigation, search, sidebar)
 **Targets:** `00-overview.md` (sidebar), new `17-search.md` (or extend `16-search-ranking.md`), `10-today-view.md` (Jump-to anchor).
 **Map:** Sidebar, Home/Back/Forward Navigation, Jump To, Star/Bookmark, Search, Search Operators (`is:`, `has:`, `text:`, `highlight:`, `-`, `OR`, `>`), Date Search, Nested Search.
 **Verify:** hygiene; re-score `31-app`.
+**✅ Done 2026-04-28:** Inserted F2 appendices into `01-features/00-overview.md` (sidebar inventory index), `03-layout-structure.md` (Sidebar / Home / Back-Forward / Jump-To / Star / Breadcrumbs), `16-search-ranking.md` (full operator table + Recent / Nested Search), and `10-today-view.md` (Add Date / Date Search / Jump-to-Today / recurring-dates F7 flag). Extended `16-search-ranking.md` instead of creating new `17-search.md` to avoid splitting search semantics. Two F7 reconciliation candidates flagged: `is:mirror` operator semantics + recurring date chips (v1 out-of-scope). Hygiene PASS for F2; only pre-existing `ItemType` enum drift carried over. Projected composite 63 → 65.
 
-### F3 — Merge Workflowy feature reference (Part 3: structural ops & mirrors)
+### 🟦 F3 — Merge Workflowy feature reference (Part 3: structural ops & mirrors)
 **Targets:** `06-item-context-menu.md`, `09-mirrors.md`, `09b-mirror-peer-group-model.md`, `12-multi-select.md`.
 **Map:** Duplicate, Copy Internal Link, Delete, Show/Hide Completed, Expand All, Collapse All, Move To, Move Here, Mirror, Mirror To, Mirror Here, Detach Mirror, See Mirrors, Internal Links, Backlinks, External Links, Remove Link, Slash Commands.
 **Reconciliation note:** confirm Workflowy "Mirror = peer group" matches `mem://features/mirroring`.

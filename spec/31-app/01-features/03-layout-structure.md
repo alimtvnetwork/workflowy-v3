@@ -252,6 +252,22 @@ This indicator is hidden for Pro/unlimited users.
 
 ---
 
+## Workflowy Feature Reference (F2) — Navigation & Sidebar Chrome
+
+> **Source:** Workflowy product feature list, merged 2026-04-28 (lossless, additive). Reproduced verbatim; cross-linked to existing layout/chrome rows above. Search-specific features merge into [`./16-search-ranking.md`](./16-search-ranking.md) F2 appendix; the `📅 Today` anchor is detailed in [`./10-today-view.md`](./10-today-view.md) F2 appendix.
+
+- **Sidebar** — Persistent left rail listing top-level pages, starred items, search shortcuts, and account chrome. Collapsible to icon-only mode. (shortcut: ⌘\ to toggle)
+- **Home** — Returns the page-content area to the user's root list. Clears any active zoom. (shortcut: ⌘+Shift+H, or click the Home item in sidebar)
+- **Back / Forward Navigation** — Browser-style history navigation across zoom and page-open transitions. Renders as `nav-back` / `nav-forward` chrome buttons. (shortcuts: ⌘[ back, ⌘] forward)
+- **Jump To** — Quick-switcher overlay (à la VS Code's "Go to file") that lets the user fuzzy-match any item in the tree by content and jump straight to it. Distinct from full Search (which returns a result list). (shortcut: ⌘P)
+- **Star / Bookmark** — Pin an item to the sidebar's "Starred" group for one-click access. Stars are per-user, not shared. (slash: `/star`, item-menu: *Star*)
+- **Breadcrumbs** — Above the page-content area, render the ancestor chain from root → current zoom target. Each segment is clickable to zoom one level out. (component: `breadcrumbs`)
+- **Page Title Header** — The current zoom target rendered as the page H1; editing it edits the underlying item content.
+
+> Cross-link: search trigger and overlay live in [`./05-interactions.md`](./05-interactions.md) F1 appendix; full search semantics + operators in [`./16-search-ranking.md`](./16-search-ranking.md) F2 appendix; Today anchor in [`./10-today-view.md`](./10-today-view.md) F2 appendix.
+
+---
+
 ## Related
 
 - [01-information-model.md](./01-information-model.md) — items the layout navigates
