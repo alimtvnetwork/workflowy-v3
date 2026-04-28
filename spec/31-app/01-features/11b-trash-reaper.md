@@ -72,6 +72,41 @@ When `Items.Id = X` is hard-deleted:
 
 ---
 
+## Diagram — Trash Reaper Lifecycle (P8)
+
+```mermaid
+flowchart TD
+    A[User deletes Item] --> B[Soft-delete: set DeletedAt = now, IsTrashed = 1]
+    B --> C[Item hidden from default views]
+    C --> D{User action?}
+    D -->|Restore| E[Clear DeletedAt + IsTrashed; re-attach to original parent if alive,<br/>else fall back to root]
+    D -->|Permanent delete| F[Hard DELETE row; cascade to children]
+    D -->|No action| G[Wait]
+
+    G --> H{Daily reaper job<br/>runs at 03:00 UTC}
+    H --> I{DeletedAt < now − 30 days?}
+    I -->|No| G
+    I -->|Yes| J[Hard DELETE row + descendants]
+    J --> K{Was item part of a<br/>mirror peer group?}
+    K -->|Yes| L[Remove peer; if group ≤ 1<br/>after removal, dissolve group<br/>see 09b-mirror-peer-group-model.md]
+    K -->|No| M[Done]
+    L --> M
+    F --> K
+
+    E --> N[Item visible again]
+
+    classDef softState fill:#fff7e6,stroke:#d68910;
+    classDef hardState fill:#ffe6e6,stroke:#c0392b;
+    classDef reaper fill:#e6f4ea,stroke:#196f3d;
+    class B,C,G softState;
+    class F,J,L hardState;
+    class H,I,J reaper;
+```
+
+> 30-day retention is canonical (`mem://features/trash-logic`). Reaper job is idempotent — interrupted runs replayed safely on next tick.
+
+---
+
 ## Related
 
 - `spec/31-app/01-features/11-trash-view.md` (parent SSOT)

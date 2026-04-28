@@ -307,6 +307,43 @@ This migration is in [`07-db-diagram/sql/07-migration-v2-mirror-peer-groups.sql`
 
 ---
 
+## Diagram — Peer-Group Lifecycle (P8)
+
+```mermaid
+stateDiagram-v2
+    [*] --> StandaloneA: createItem(A)
+    [*] --> StandaloneB: createItem(B)
+
+    StandaloneA --> Group_AB: createMirror(A, B)
+    StandaloneB --> Group_AB: createMirror(A, B)
+
+    state Group_AB {
+        direction LR
+        [*] --> A_peer
+        [*] --> B_peer
+        A_peer: A (founder by created_at ASC, id ASC)
+        B_peer: B (peer)
+        note right of A_peer
+            All CRUD on any peer broadcasts
+            to every other peer (LWW tiebreak:
+            updated_at DESC, id ASC).
+        end note
+    }
+
+    Group_AB --> Group_ABC: createMirror(B, C)
+    Group_ABC --> Group_AB: detachMirror(C) <br/> group still ≥ 2 → keep
+    Group_AB --> Dissolved: detachMirror(B) <br/> group ≤ 1 → dissolve
+    Dissolved --> StandaloneA: A becomes standalone again
+    Dissolved --> StandaloneB: B becomes standalone again
+
+    Group_AB --> CycleRejected: createMirror(A, descendantOfA)
+    CycleRejected --> Group_AB: insert hard-rejected (AT-MPG-10)
+```
+
+> Founder rule, detach-dissolves-singleton rule, and LWW tiebreak are SSOT-defined in this file's [Vocabulary policy](#vocabulary-policy) and [`AT-MPG-01..10`](./97-acceptance-criteria.md). UI MUST NOT label any peer as "the original" (per AT-MPG-03).
+
+---
+
 ## Related
 
 - [09-mirrors.md](./09-mirrors.md) — UX and feature contract (will be folded into this model in v3.0.0)

@@ -169,7 +169,7 @@ Every feature in `spec/31-app/01-features/` MUST: (1) write boolean checks as **
 | 11 | [`11-trash-view.md`](./11-trash-view.md) | Trash View Specification | 175 |
 | 12 | [`12-multi-select.md`](./12-multi-select.md) | Multi-Select Behavior | 200 |
 | 13 | [`13-templates.md`](./13-templates.md) | Template Application Flow | 212 |
-| 14 | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | Concurrency & Sync | 313 |
+| 14 | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | Concurrency & Sync | 360 |
 | 15 | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | Roles & Permissions | 393 |
 | 16 | [`16-search-ranking.md`](./16-search-ranking.md) | Search Ranking | 179 |
 | 17 | [`18-integrations.md`](./18-integrations.md) | Integrations — Zapier & Apple Shortcuts (F6) | 217 |

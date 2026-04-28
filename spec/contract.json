@@ -14906,7 +14906,7 @@
       "id": "AT-TR-01",
       "definition": "Day-30 hard delete fires once",
       "defined_in": "spec/31-app/01-features/11b-trash-reaper.md",
-      "defined_line": 105,
+      "defined_line": 140,
       "cited_in": [
         {
           "file": "spec/31-app/01-features/11-trash-view.md",
@@ -14926,7 +14926,7 @@
       "id": "AT-TR-02",
       "definition": "Crash mid-batch resumes idempotently",
       "defined_in": "spec/31-app/01-features/11b-trash-reaper.md",
-      "defined_line": 106,
+      "defined_line": 141,
       "cited_in": [
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
@@ -14942,7 +14942,7 @@
       "id": "AT-TR-03",
       "definition": "Peer-group dissolve on last-peer reap",
       "defined_in": "spec/31-app/01-features/11b-trash-reaper.md",
-      "defined_line": 107,
+      "defined_line": 142,
       "cited_in": [
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
@@ -14958,7 +14958,7 @@
       "id": "AT-TR-04",
       "definition": "29-day boundary preserves item",
       "defined_in": "spec/31-app/01-features/11b-trash-reaper.md",
-      "defined_line": 108,
+      "defined_line": 143,
       "cited_in": [
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
@@ -14974,7 +14974,7 @@
       "id": "AT-TR-05",
       "definition": "ReaperRuns audit row written per batch",
       "defined_in": "spec/31-app/01-features/11b-trash-reaper.md",
-      "defined_line": 109,
+      "defined_line": 144,
       "cited_in": [
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
