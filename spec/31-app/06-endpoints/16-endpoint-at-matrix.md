@@ -17,6 +17,8 @@ A single matrix mapping every one of the **41 REST endpoints** in this folder to
 
 ## Matrix
 
+> **Column key — `Owner`:** `yes` = the response payload contains at least one object whose backing DDL row has an `OwnerUserId` column (Items, Templates, Shares, Tags, Mirrors, etc.); the PHP serializer MUST translate it to the wire-canonical `OwnerId` per ADR-0026 §D6. `no` = response is an ack, an empty body, an admin-meta envelope, or otherwise carries no owner-bearing object. **This column is the SSOT consumed by `AT-WIRE-EGRESS-01` assertion A6** (coverage-parity drift-guard) — adding any new owner-bearing endpoint without setting `Owner: yes` here MUST fail the PHPUnit egress test.
+
 | # | Endpoint ID | Method | Path | Owning Feature File | Owner | Required Acceptance Tests |
 |--:|-------------|--------|------|---------------------|:-----:|---------------------------|
 | 1 | `EP-ITEMS-LIST` | GET | `/items?parent={id}` | `01-information-model.md` | yes | `AT-INFO-01`, `AT-INFO-02`, `AT-PAGE-01`, `AT-APP-01`, `AT-APPF-01` |
