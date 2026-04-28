@@ -67,6 +67,12 @@ ID format: `AT-DATABASECONVENTIONS-NN`.
 
 ---
 
+## Fixtures
+
+I/O fixtures (Given/When/Then + literal payloads) for every row above live in the companion file [`97a-acceptance-criteria-fixtures.md`](./97a-acceptance-criteria-fixtures.md) — see [`spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](../01-spec-authoring-guide/19-acceptance-criteria-io-table.md) for the format SSOT.
+
+---
+
 ## Verification
 
 ```bash

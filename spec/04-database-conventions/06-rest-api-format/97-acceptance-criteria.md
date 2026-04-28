@@ -55,6 +55,12 @@ ID format: `AT-RESTAPIFORMAT-NN`.
 
 ---
 
+## Fixtures
+
+I/O fixtures for `AT-RESTAPIFORMAT-01..11` live in [`../97a-acceptance-criteria-fixtures.md`](../97a-acceptance-criteria-fixtures.md) (Section B) per the format SSOT in [`spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](../../01-spec-authoring-guide/19-acceptance-criteria-io-table.md).
+
+---
+
 ## Verification
 
 ```bash
