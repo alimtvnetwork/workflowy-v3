@@ -166,6 +166,7 @@ Suppose someone wants to add a real `Favorite` table (currently forbidden by
 | [`0004`](./0004-rest-envelope-pascalcase.md) | REST envelope — PascalCase keys, three mandatory + three optional | `Accepted` | 2026-04-28 |
 | [`0005`](./0005-mirror-as-peer-group.md) | Mirror is a peer-group relation, not an ItemType | `Accepted` | 2026-04-28 |
 | [`0006`](./0006-migrate-spec-sql-to-singular-ddl.md) | Migrate spec SQL fragments to singular DDL identifiers | `Accepted` | 2026-04-28 |
+| [`0007`](./0007-strict-typescript-rules.md) | Strict TypeScript coding rules (zero `any`, max 3 params, no nested `if`s, 15-line logic limit, positive guards) | `Accepted` | 2026-04-28 |
 
 > **Maintenance rule (summary — full protocol in [`_INDEX_AUTOMATION.md`](./_INDEX_AUTOMATION.md)):**
 > when adding/superseding an ADR, update **both** index tables (this one
