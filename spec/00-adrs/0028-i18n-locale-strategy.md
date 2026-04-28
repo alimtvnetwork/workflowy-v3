@@ -121,10 +121,10 @@ export const RTL_LOCALES: readonly SupportedLocale[] = ['ar'] as const;
 When the active locale is in `RTL_LOCALES`:
 
 1. **`<html dir="rtl" lang="ar">`** is set by the i18n `languageChanged` listener — single source of truth for direction.
-2. **Tailwind v4 logical properties** (`ms-*`/`me-*`/`ps-*`/`pe-*`) are mandatory in any new component (ADR-0012 amendment). The `pl-*`/`pr-*`/`ml-*`/`mr-*` classes are **forbidden** in component code; gate `G-28-NO-PHYSICAL-MARGINS` runs `eslint-plugin-tailwindcss` to flag them.
+2. **Tailwind v4 logical properties** (`ms-*`/`me-*`/`ps-*`/`pe-*`/`start-*`/`end-*`) are mandatory in any new component. The `pl-*`/`pr-*`/`ml-*`/`mr-*`/`left-*`/`right-*` classes are **forbidden** in component code. **The full rule, exemption mechanism, and grandfathering policy live in [ADR-0012 §D7](./0012-tailwind-v4-theme-block-token-registry.md#d7--logical-properties-are-mandatory-physical-directional-utilities-are-forbidden)** and are enforced by gates `G-12-LOGICAL-MARGINS-PADDING`, `G-12-LOGICAL-INSET`. This ADR cites them; it does not duplicate them.
 3. **Editor content (TipTap-style rich text per ADR-0023) preserves its own intrinsic direction** via the Unicode bidi algorithm — the i18n direction toggles only the **chrome**, not user content. A user in `ar` chrome can still type LTR English in a node, and vice versa.
 4. **Icons that imply direction** (chevron-right, undo arrows, `Caret*`) are mirrored via `rtl:rotate-180` (lucide-react icons per ADR-0017's icon rule). Decorative icons (logo, status dots) are NOT mirrored — judgment call documented per icon in `src/components/icons/README.md`.
-5. **Logical text alignment**: use `text-start`/`text-end`, never `text-left`/`text-right` (`G-28-NO-PHYSICAL-ALIGN`).
+5. **Logical text alignment**: use `text-start`/`text-end`, never `text-left`/`text-right`. Authoritative gate: `G-12-LOGICAL-TEXT-ALIGN` (ADR-0012 §D7).
 
 ### D7 — Number, date, currency formatting
 
@@ -209,8 +209,8 @@ This uses the same write path as every other mutation — no special-case egress
 | Gate ID | Severity | Description |
 |---|---|---|
 | `G-28-LIBRARY-IS-I18NEXT` | **CI** | `package.json` MUST list `react-i18next` and `i18next`. CI denies any other i18n library in `package.json` or imports of `react-intl`/`lingui`/`@formatjs/*`. |
-| `G-28-NO-PHYSICAL-MARGINS` | **CI** | `eslint-plugin-tailwindcss` rule forbids `pl-*`, `pr-*`, `ml-*`, `mr-*`, `left-*`, `right-*` in `src/`. Use `ps-*`/`pe-*`/`ms-*`/`me-*`/`start-*`/`end-*`. |
-| `G-28-NO-PHYSICAL-ALIGN` | **CI** | ESLint custom rule forbids `text-left` and `text-right`; enforce `text-start`/`text-end`. |
+| ~~`G-28-NO-PHYSICAL-MARGINS`~~ | — | **Superseded by `G-12-LOGICAL-MARGINS-PADDING` + `G-12-LOGICAL-INSET`** (ADR-0012 §D7) — the styling-system invariant belongs at its authority, not duplicated here. |
+| ~~`G-28-NO-PHYSICAL-ALIGN`~~ | — | **Superseded by `G-12-LOGICAL-TEXT-ALIGN`** (ADR-0012 §D7). |
 | `G-28-NO-HTML-IN-JSON` | **CI** | Pre-commit hook greps every `locales/**/*.json` for `<` / `>` / `&[a-z]+;` and fails. |
 | `G-28-INTL-EXPLICIT-LOCALE` | **CI** | ESLint rule: `.toLocaleString()` and `.toLocaleDateString()` calls without an explicit first arg fail. |
 | `G-28-TYPED-KEYS` | **CI** | `tsc --noEmit` MUST fail if `t('foo.bar')` references an unknown key (relies on D8 module augmentation). |
