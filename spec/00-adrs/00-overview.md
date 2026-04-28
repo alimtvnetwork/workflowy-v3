@@ -150,16 +150,24 @@ Suppose someone wants to add a real `Favorite` table (currently forbidden by
 
 ---
 
-## Index (auto-maintained)
+## Index (manually maintained — see protocol)
+
+> **Status note:** "auto-maintained" is aspirational. Until CI gate
+> `G-00-ADR-INDEX-FRESH` ships, this index is **manually maintained on
+> every ADR-touching commit** per the binding protocol in
+> [`_INDEX_AUTOMATION.md`](./_INDEX_AUTOMATION.md). If this table
+> disagrees with the files on disk, **the files win**.
 
 | ADR | Title | Status | Date |
 |---|---|---|---|
 | [`0001`](./0001-singular-ddl-vs-plural-prose.md) | Singular DDL vs plural prose | `Accepted` | 2026-04-28 |
 | [`0002`](./0002-wp-plugin-php-sqlite-backend.md) | WordPress plugin + PHP 8.1+ + SQLite as the sole backend runtime | `Accepted` | 2026-04-28 |
 
-> **Maintenance rule:** when adding/superseding an ADR, update this index
-> in the **same commit** as the ADR file change. The template
-> (`_TEMPLATE.md`) is **excluded** from numbering and from the index.
+> **Maintenance rule (summary — full protocol in [`_INDEX_AUTOMATION.md`](./_INDEX_AUTOMATION.md)):**
+> when adding/superseding an ADR, update **both** index tables (this one
+> **and** the table in [`spec/00-overview.md`](../00-overview.md)) in the
+> **same commit** as the ADR file change. `_TEMPLATE.md` and `_LEDGER-*.md`
+> files are **excluded** from numbering and from the index.
 
 ---
 
