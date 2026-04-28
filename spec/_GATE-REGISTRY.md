@@ -18,11 +18,11 @@
 
 ## 2. Summary
 
-- **Total named gates:** 288 (was 287 — +1 `G-00-ADR-XLINK-SYMMETRY`)
+- **Total named gates:** 289 (was 288 — +1 `G-00-ADR-CONSEQUENCES-XLINK`)
 - **CI:** 24 (one gate `G-26-WIRE-OWNERID-ONLY` is now dual-tier: counted under both CI and TEST)
 - **TEST:** 14 (was 13 — +1 `G-26-WIRE-OWNERID-ONLY` runtime half via `AT-WIRE-EGRESS-01`)
-- **DOC-NORM:** 50 (was 49 — +1 `G-00-ADR-XLINK-SYMMETRY`)
-- **DOC:** 201 (was 200 — +1 from ADR-0027 monotonic)
+- **DOC-NORM:** 50 (unchanged — sibling `G-00-ADR-CONSEQUENCES-XLINK` is intentionally advisory-only DOC)
+- **DOC:** 202 (was 201 — +1 `G-00-ADR-CONSEQUENCES-XLINK` advisory)
 - **Areas covered:** 36 (was 35 — added ADR-0012)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
@@ -515,6 +515,7 @@
 | `G-00-ADR-STATUS` | **DOC-NORM** | [`spec/00-adrs/00-overview.md`](./00-adrs/00-overview.md) | G-00-ADR-STATUS Status MUST be one of the 5 enum values; Accepted required for any G- reference. |
 | `G-00-ADR-SUPERSEDE` | **DOC-NORM** | [`spec/00-adrs/00-overview.md`](./00-adrs/00-overview.md) | G-00-ADR-SUPERSEDE A new ADR that supersedes another MUST update the older ADR's status in the same change. |
 | `G-00-ADR-XLINK-SYMMETRY` | **DOC-NORM** | [`spec/00-adrs/_INDEX_AUTOMATION.md`](./00-adrs/_INDEX_AUTOMATION.md) | Outbound links from an Accepted ADR's `## Decision` section to non-ADR repo files MUST have a reciprocal back-link at the linked anchor. Reference precedent: ADR-0024 §D1/D2/D3 ↔ triage `### #01/#03/#17`. |
+| `G-00-ADR-CONSEQUENCES-XLINK` | **DOC** | [`spec/00-adrs/_INDEX_AUTOMATION.md`](./00-adrs/_INDEX_AUTOMATION.md) | Sibling-advisory to `G-00-ADR-XLINK-SYMMETRY`. Outbound links from an Accepted ADR's `## Consequences` section that contain an action verb (must/requires/add/update/migrate/backfill/rename/remove) SHOULD have a reciprocal back-link. WARN-only; promotes to DOC-NORM at ≥10 baseline pairs. |
 
 ---
 

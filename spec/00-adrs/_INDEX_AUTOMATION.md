@@ -216,6 +216,51 @@ the same PR.
 
 ---
 
+### `G-00-ADR-CONSEQUENCES-XLINK` (planned, Tier: DOC)
+
+**Decision recorded 2026-04-28 (gate-scope follow-up).**
+
+**Tier:** DOC (advisory only — *not* DOC-NORM).
+
+**Why a sibling instead of expanding the parent gate.**
+`G-00-ADR-XLINK-SYMMETRY` exists because Decision-section links are
+**load-bearing**: they encode the binding ruling that downstream files
+must honor (e.g. ADR-0024 §D1 ↔ triage `### #01`). The `## Consequences`
+and `## Context` sections, by contrast, are **explanatory citations** —
+they describe ripple effects and prior art, not binding rulings.
+Expanding the parent gate would (a) dilute the "binding ruling"
+semantics that make the precedent enforceable and (b) over-constrain
+ADR authors who legitimately cite many tangential files in
+Consequences. Therefore the parent gate's exemption clause for
+`## Context` and `## Consequences` (line 190 above) is **preserved
+unchanged**, and this sibling gate stands as a *soft* recommendation.
+
+**Scope.** Outbound links from an `Accepted` ADR's `## Consequences`
+section to non-ADR repo files SHOULD have a back-reference, but ONLY
+when the consequence describes an *action the linked file must take*
+(e.g. "consequence: `spec/04-database-conventions/03-orm-and-views.md`
+must add a `Migration: ADR-NNNN` row"). Pure citations
+("see [`some-file`] for background") are exempt.
+
+**Algorithm.** Identical to `G-00-ADR-XLINK-SYMMETRY` but:
+- Walk `## Consequences` instead of `## Decision`.
+- Filter to links whose surrounding sentence contains an action verb
+  from the canonical set: `must`, `MUST`, `requires`, `add`, `update`,
+  `migrate`, `backfill`, `rename`, `remove`.
+- Emit **WARN** (not FAIL) on missing reciprocity.
+
+**Promotion path.** If the ledger ever records ≥10 action-verb
+consequence-links across the ADR corpus, this gate SHOULD be promoted
+to DOC-NORM and folded into the parent gate's algorithm with a
+`scope: "decision" | "consequences-action"` discriminator. Until then
+it remains advisory.
+
+**Baseline.** No symmetric pairs to record yet (no Accepted ADR's
+Consequences section currently contains action-verb back-references).
+The gate begins life with an empty ledger to avoid generating
+retro-active churn.
+
+
 ## See also
 
 - [`spec/00-adrs/00-overview.md`](./00-overview.md) — registry SSOT,
