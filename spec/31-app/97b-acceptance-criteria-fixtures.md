@@ -28,7 +28,7 @@
 > | **Then** | `Items.DeletedAt` set to server now; row hidden from tree view; visible in Trash view. |
 > | **Response envelope** | `{ "Status":200, "Attributes":{ "Soft":true }, "Results":[ { "Id":"itm_A", "DeletedAt":"2026-04-28T12:00:00Z" } ] }` |
 > | **Side effects** | SSE `item-deleted` frame `{ "Id":"itm_A" }`; `AuditLog` row `event="item.deleted"`. |
-> | **Negative assertion** | Row `itm_A` MUST still exist in `Items` table (`SELECT COUNT(*) FROM Items WHERE Id='itm_A'` → 1); no `DROP` / hard `DELETE FROM Items` issued. |
+> | **Negative assertion** | Row `itm_A` MUST still exist in `Items` table (`SELECT COUNT(*) FROM Item WHERE Id='itm_A'` → 1); no `DROP` / hard `DELETE FROM Item` issued. |
 
 ---
 
@@ -190,7 +190,7 @@
 > | **Given** | Subtree `itm_A` (with descendant `itm_A1` content `"original"`) saved as template `tpl_T1` via `POST /templates {RootId:"itm_A"}`. |
 > | **When** | Edit `itm_A1.Content = "modified"` via `PATCH /items/itm_A1`. |
 > | **Then** | `Templates.PayloadJson` for `tpl_T1` still contains the descendant snapshot with `"Content":"original"`. |
-> | **Side effects** | One `UPDATE Items` row; zero `UPDATE Templates` rows. |
+> | **Side effects** | One `UPDATE Item` row; zero `UPDATE Template` rows. |
 > | **Negative assertion** | `tpl_T1.PayloadJson` MUST NOT mutate when source items mutate. |
 
 ### `AT-APP-30` — Apply mints fresh IDs and recomputes fractional indices

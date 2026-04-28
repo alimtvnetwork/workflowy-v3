@@ -153,7 +153,7 @@ let activity = sqlx::query_as::<_, BrowserActivity>(
 -- ✅ Correct — PascalCase with Vw prefix
 CREATE VIEW VwActiveSessionSummary AS
 SELECT s.SessionsId, s.StartedAt, COUNT(a.BrowserActivitiesId) AS ActivityCount
-FROM Sessions s
+FROM Session s
 LEFT JOIN BrowserActivities a ON s.SessionsId = a.SessionId
 GROUP BY s.SessionsId;
 ```

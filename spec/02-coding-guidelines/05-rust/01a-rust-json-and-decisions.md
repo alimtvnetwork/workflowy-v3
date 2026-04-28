@@ -160,7 +160,7 @@ Use this table to instantly decide which casing to apply:
 | Database column name | `PascalCase` | `DwellSeconds` |
 | Database view name | `PascalCase` with `Vw` prefix | `VwActiveSessionSummary` |
 | Database primary key | `PascalCase` `{Table}Id` | `BrowserActivitiesId` |
-| SQL in Rust string | `PascalCase` identifiers | `"SELECT SessionId FROM Sessions"` |
+| SQL in Rust string | `PascalCase` identifiers | `"SELECT SessionId FROM Session"` |
 
 ---
 

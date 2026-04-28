@@ -149,7 +149,7 @@ $pdo->exec('PRAGMA foreign_keys=ON');                              // step 4
 // ❌ FORBIDDEN in handler/service files
 $rows = $pdo->query("
     SELECT i.id, i.content, u.displayName
-    FROM Items i
+    FROM Item i
     JOIN users.Users u ON u.id = i.ownerId
     WHERE i.parentId = :p
 ");
@@ -161,9 +161,9 @@ $rows = $pdo->query("
 <?php
 final class ItemWithOwnerRepository {
     public function listChildren(string $parentId): array {
-        $items   = $this->itemsDb->select('SELECT id, content, ownerId FROM Items WHERE parentId = ?', [$parentId]);
+        $items   = $this->itemsDb->select('SELECT id, content, ownerId FROM Item WHERE parentId = ?', [$parentId]);
         $ownerIds = array_unique(array_column($items, 'ownerId'));
-        $owners  = $this->usersDb->selectIn('SELECT id, displayName FROM Users WHERE id IN (?)', $ownerIds);
+        $owners  = $this->usersDb->selectIn('SELECT id, displayName FROM User WHERE id IN (?)', $ownerIds);
         $byId    = array_column($owners, null, 'id');
         return array_map(fn($i) => $i + ['displayName' => $byId[$i['ownerId']]['displayName'] ?? null], $items);
     }
@@ -189,8 +189,8 @@ final class ItemWithOwnerRepository {
 <?php
 $tx = MultiDbTransaction::begin(['items', 'users']);   // BEGIN on both
 try {
-    $tx->items->exec('UPDATE Items SET ownerId = ? WHERE id = ?', [$newOwner, $id]);
-    $tx->users->exec('UPDATE Users SET itemCount = itemCount + 1 WHERE id = ?', [$newOwner]);
+    $tx->items->exec('UPDATE Item SET ownerId = ? WHERE id = ?', [$newOwner, $id]);
+    $tx->users->exec('UPDATE User SET itemCount = itemCount + 1 WHERE id = ?', [$newOwner]);
     $tx->commit();                                     // COMMIT items, then users
     AuditLog::write('item.reowned', ['id' => $id]);   // fire-and-forget; never blocks
 } catch (\Throwable $e) {

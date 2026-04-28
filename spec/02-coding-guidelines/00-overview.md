@@ -345,7 +345,7 @@ WHEN GENERATING RUST CODE:
 - Variables → snake_case:        let session_id = 42;
 - Constants → SCREAMING_SNAKE:   const MAX_RETRIES: u32 = 3;
 - Types/Enums → PascalCase:      struct BrowserActivity (Rust standard)
-- DB columns → PascalCase:       "SELECT SessionId FROM Sessions"
+- DB columns → PascalCase:       "SELECT SessionId FROM Session"
 - Enum strings → PascalCase:     "TabChange" (serde default for PascalCase variants)
 - JSON keys → PascalCase:        #[serde(rename_all = "PascalCase")]
 

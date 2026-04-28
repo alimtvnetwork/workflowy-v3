@@ -100,12 +100,12 @@ WITH RECURSIVE Ancestors(NodeId) AS (
     SELECT :TargetParentId
     UNION
     SELECT i.ParentId
-      FROM Items i
+      FROM Item i
       JOIN Ancestors a ON a.NodeId = i.Id
      WHERE i.ParentId IS NOT NULL
     UNION
     SELECT m.ParentId
-      FROM Mirrors m
+      FROM Mirror m
       JOIN Ancestors a ON a.NodeId = m.SourceId
 )
 SELECT 1

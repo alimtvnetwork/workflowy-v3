@@ -52,7 +52,7 @@ This file pins the sequence. Each step cites the SSOT that governs its rule.
         If visibilitySet is empty → return { items: [], nextCursor: null } (200).
      d. Build candidate set with permission filter applied AT THE DB LEVEL:
           SELECT ItemId, Title, Note, ParentId, UpdatedAt
-            FROM Items
+            FROM Item
            WHERE WorkspaceId = $workspaceId
              AND DeletedAt IS NULL                      -- AT-APP-106
              AND ItemId = ANY($visibilitySet)           -- AT-APP-107

@@ -55,13 +55,13 @@ This file pins the sequence. Each step cites the SSOT that governs its rule.
 4. PHP handler:
      a. Auth::hasRole($userId, 'Edit', 'Item', X) → 403 if false.
      b. Auth::hasRole($userId, 'Edit', 'Item', P) → 403 if false.
-     c. SELECT 1 FROM Items WHERE ItemId = X AND DeletedAt IS NULL  → 409 if none.
-        SELECT 1 FROM Items WHERE ItemId = P AND DeletedAt IS NULL  → 409 if none.
+     c. SELECT 1 FROM Item WHERE ItemId = X AND DeletedAt IS NULL  → 409 if none.
+        SELECT 1 FROM Item WHERE ItemId = P AND DeletedAt IS NULL  → 409 if none.
      d. Cycle check (recursive CTE per 09a-mirror-cycle-detection.md):
           WITH RECURSIVE descendants AS (
-            SELECT ItemId FROM Items WHERE ItemId = X
+            SELECT ItemId FROM Item WHERE ItemId = X
             UNION ALL
-            SELECT i.ItemId FROM Items i
+            SELECT i.ItemId FROM Item i
               JOIN descendants d ON i.ParentItemId = d.ItemId
           )
           SELECT 1 FROM descendants WHERE ItemId = P;
@@ -80,13 +80,13 @@ This file pins the sequence. Each step cites the SSOT that governs its rule.
           createdGroup = true
           INSERT INTO MirrorPeerGroupMembers (MemberId, PeerGroupId, ItemId)
             VALUES (gen_uuid(), groupId, X);
-          UPDATE Items SET PeerGroupId = groupId WHERE ItemId = X;
+          UPDATE Item SET PeerGroupId = groupId WHERE ItemId = X;
      g. INSERT new peer Item P₂ as a child of P:
-          INSERT INTO Items (ItemId, ParentItemId, Title, Content, FractionalIndex,
+          INSERT INTO Item (ItemId, ParentItemId, Title, Content, FractionalIndex,
                              PeerGroupId, CreatedAt, UpdatedAt, ServerTs, OwnerUserId)
             SELECT gen_uuid(), P, X.Title, X.Content,
                    next_fractional_index(P), groupId, now(), now(), now(), $userId
-            FROM   Items WHERE ItemId = X;
+            FROM   Item WHERE ItemId = X;
           newItemId = inserted ItemId
      h. INSERT INTO MirrorPeerGroupMembers (MemberId, PeerGroupId, ItemId)
           VALUES (gen_uuid(), groupId, newItemId);
