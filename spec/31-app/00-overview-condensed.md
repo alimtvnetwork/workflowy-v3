@@ -8,19 +8,27 @@
 
 ## AI Contract
 
-**Purpose** — _TODO(P1): one sentence describing what `App` solves._
+**Purpose** — Specify every product-facing behavior of the WorkFlowy app (data model, layout, 18 features, edge cases, REST surface, DB shape) so a mediocre AI can build the entire frontend + backend slice without inferring product decisions. The acceptance criteria here (`AT-APP-*`, `AT-<FEATURE>-*`) are the binding contract.
 
-**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+**Audience** — Frontend dev (React components + state), backend dev (REST handlers + SQLite schema), reviewer (cross-cutting consistency).
 
 **Expected AI Output** —
-- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+- Frontend: `src/components/<feature>/*.tsx`, `src/state/<feature>Store.ts`, `src/api/<feature>.ts` (typed Axios calls from `spec/32-ui-design/skeletons/ts/api-client.generated.ts`).
+- Backend: `wp-plugin/src/Rest/<Feature>Controller.php` (signatures from `spec/15-wp-plugin-how-to/skeletons/php/RestRoutes.generated.php`), `wp-plugin/src/Domain/<Feature>/*`, `wp-plugin/migrations/NNN-<feature>.sql`.
+- Tests: one Vitest + one PHPUnit test per `AT-*` row in `97-acceptance-criteria.md` and per-feature `97-acceptance-criteria.md` files; test names MUST start with the AT id.
+- Fixtures: one JSON envelope per endpoint listed in `06-endpoints/` under `04a-fixtures/`.
 
 **Out of Scope** —
-- _TODO(P1): bullet adjacent concerns and link to owning section._
+- Visual styling tokens → `07-design-system/` and `32-ui-design/03-design-system/`.
+- WP-plugin scaffolding (composer, autoload) → `15-wp-plugin-how-to/`.
+- REST envelope rules → `04-database-conventions/06-rest-api-format/`.
+- Coding-rule enforcement → `02-coding-guidelines/`.
 
 **Definition of Done** —
-- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
-- `node scripts/spec-hygiene/00-run-all.mjs` exits 0
+- Every endpoint in `06-endpoints/` has a controller + a TS client method + a fixture + an `AT-*` test.
+- Every feature in `01-features/` honors the unified Node interface (`mem://architecture/data-model`) and the 250-item-per-view cap.
+- Mirror-related code follows `mem://features/mirroring` (peer-group, NOT an ItemType).
+- `node scripts/spec-hygiene/00-run-all.mjs` exits 0.
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
 
@@ -186,16 +194,6 @@ Testable acceptance criteria for the App domain. Each criterion is independently
 |----|-----------|--------|
 | `AT-APP-47` | An inviter without `Admin` on the target item attempting to grant access receives **HTTP 403** and no rows are written to `ItemGrants` or `PendingInvites`. | `02-workflows/03-share-invite-flow.md` (was `AT-WF-SHARE-01`) |
 | `AT-APP-48` | Sharing with an existing account at role `Edit` returns **HTTP 201**, inserts an `ItemGrants` row with `AcceptedAt = NULL`, and delivers an SSE `share-granted` event to the inviter within **1 s**. | `02-workflows/03-share-invite-flow.md` (was `AT-WF-SHARE-02`) |
-| `AT-APP-49` | Sharing with a non-existent email returns **HTTP 201** and inserts a `PendingInvites` row in the Root DB with `ExpiresAt = serverNow + 14 days`. | `02-workflows/03-share-invite-flow.md` (was `AT-WF-SHARE-03`) |
-| `AT-APP-50` | When an invitee clicks the accept link the server returns **HTTP 200**, sets `AcceptedAt = serverNow`, emits SSE `share-granted` (accepted variant) to both parties, and `Auth::hasRole($invitee, 'Edit')` on any descendant of the shared item returns true. | `02-workflows/03-share-invite-flow.md` (was `AT-WF-SHARE-04`) |
-| `AT-APP-51` | Replayed POST with the same `X-WorkFlowy-Idempotency-Key` returns **HTTP 201** with the original `GrantId` and inserts no duplicate row. | `02-workflows/03-share-invite-flow.md` (was `AT-WF-SHARE-05`) |
-
-### Workflows — Trash restore (mirrors `AT-WF-RESTORE-*`)
-
-| ID | Criterion | Source |
-|----|-----------|--------|
-| `AT-APP-52` | Restoring an item whose parent is also trashed returns **HTTP 422** with `blockingAncestorId` populated and writes nothing to the DB. | `02-workflows/04-trash-restore-flow.md` (was `AT-WF-RESTORE-01`) |
-| `AT-APP-53` | Restoring a healthy ancestor first and then a descendant succeeds for both, emitting an SSE `item-restored` event for each. | `02-workflows/04-trash-restore-flow.md` (was `AT-WF-RESTORE-02`) |
-| `AT-APP-54` | Restoring an 
+| `AT-APP-49` | Sharing with a non-existent email returns **HTTP 201** and inserts a `PendingInvites` row in the Root DB with `
 
 _… truncated at 17000 chars to fit AI auditor cap …_
