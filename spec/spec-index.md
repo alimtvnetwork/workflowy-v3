@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-28  
-**Total Files:** 1396  
+**Total Files:** 1405  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -17,22 +17,22 @@
 
 - [01-spec-authoring-guide](#01-spec-authoring-guide) — 25 file(s)
 - [02-coding-guidelines](#02-coding-guidelines) — 310 file(s)
-- [03-error-manage](#03-error-manage) — 189 file(s)
+- [03-error-manage](#03-error-manage) — 190 file(s)
 - [04-database-conventions](#04-database-conventions) — 17 file(s)
-- [05-split-db-architecture](#05-split-db-architecture) — 45 file(s)
-- [06-seedable-config-architecture](#06-seedable-config-architecture) — 50 file(s)
+- [05-split-db-architecture](#05-split-db-architecture) — 46 file(s)
+- [06-seedable-config-architecture](#06-seedable-config-architecture) — 51 file(s)
 - [07-design-system](#07-design-system) — 17 file(s)
 - [08-docs-viewer-ui](#08-docs-viewer-ui) — 29 file(s)
 - [09-code-block-system](#09-code-block-system) — 14 file(s)
-- [10-powershell-integration](#10-powershell-integration) — 25 file(s)
+- [10-powershell-integration](#10-powershell-integration) — 26 file(s)
 - [11-research](#11-research) — 2 file(s)
 - [12-consolidated-guidelines](#12-consolidated-guidelines) — 26 file(s)
-- [13-cicd-pipeline-workflows](#13-cicd-pipeline-workflows) — 36 file(s)
-- [14-self-update-app-update](#14-self-update-app-update) — 32 file(s)
+- [13-cicd-pipeline-workflows](#13-cicd-pipeline-workflows) — 37 file(s)
+- [14-self-update-app-update](#14-self-update-app-update) — 33 file(s)
 - [15-wp-plugin-how-to](#15-wp-plugin-how-to) — 224 file(s)
-- [16-generic-cli](#16-generic-cli) — 43 file(s)
-- [17-generic-update](#17-generic-update) — 11 file(s)
-- [18-spec-issues](#18-spec-issues) — 14 file(s)
+- [16-generic-cli](#16-generic-cli) — 44 file(s)
+- [17-generic-update](#17-generic-update) — 12 file(s)
+- [18-spec-issues](#18-spec-issues) — 15 file(s)
 - [31-app](#31-app) — 134 file(s)
 - [32-ui-design](#32-ui-design) — 123 file(s)
 - [33-feedback-report](#33-feedback-report) — 4 file(s)
@@ -578,6 +578,7 @@
 | [`03-error-manage/03-error-code-registry/97-acceptance-criteria.md`](./03-error-manage/03-error-code-registry/97-acceptance-criteria.md) | Error Code Registry — Acceptance Criteria | 2.0.0 | Curated |
 | [`03-error-manage/03-error-code-registry/99-consistency-report.md`](./03-error-manage/03-error-code-registry/99-consistency-report.md) | Consistency Report: Error Code Registry | 3.1.0 | — |
 | [`03-error-manage/97-acceptance-criteria.md`](./03-error-manage/97-acceptance-criteria.md) | Error Management — Acceptance Criteria | 3.1.0 | — |
+| [`03-error-manage/97a-acceptance-criteria-fixtures.md`](./03-error-manage/97a-acceptance-criteria-fixtures.md) | Error Manage — Acceptance Criteria I/O Fixtures | 0.1.0 | Stub |
 | [`03-error-manage/98-changelog.md`](./03-error-manage/98-changelog.md) | Error Management — Changelog | 3.1.0 | — |
 | [`03-error-manage/99-consistency-report.md`](./03-error-manage/99-consistency-report.md) | Consistency Report: Error Management | 3.1.0 | — |
 | [`03-error-manage/structure.md`](./03-error-manage/structure.md) | 04-error-manage — Structure Summary | 3.1.0 | — |
@@ -651,6 +652,7 @@
 | [`05-split-db-architecture/02-features/05-user-scoped-isolation/97-acceptance-criteria.md`](./05-split-db-architecture/02-features/05-user-scoped-isolation/97-acceptance-criteria.md) | User-Scoped Isolation — Acceptance Criteria | 1.0.0 | Curated |
 | [`05-split-db-architecture/02-features/99-consistency-report.md`](./05-split-db-architecture/02-features/99-consistency-report.md) | Consistency Report: Split DB Features | 3.1.0 | — |
 | [`05-split-db-architecture/97-changelog.md`](./05-split-db-architecture/97-changelog.md) | Split DB Architecture — Changelog | 3.1.0 | — |
+| [`05-split-db-architecture/97a-acceptance-criteria-fixtures.md`](./05-split-db-architecture/97a-acceptance-criteria-fixtures.md) | Split DB Architecture — Acceptance Criteria I/O Fixtures | 1.0.0 | Normative |
 | [`05-split-db-architecture/98-acceptance-criteria.md`](./05-split-db-architecture/98-acceptance-criteria.md) | Split DB Architecture: Acceptance Criteria | 3.1.0 | Active |
 | [`05-split-db-architecture/99-consistency-report.md`](./05-split-db-architecture/99-consistency-report.md) | Consistency Report: Split DB Architecture | 3.1.0 | — |
 
@@ -706,6 +708,7 @@
 | [`06-seedable-config-architecture/02-features/05-validation-data-seeding/97-acceptance-criteria.md`](./06-seedable-config-architecture/02-features/05-validation-data-seeding/97-acceptance-criteria.md) | Validation Data Seeding — Acceptance Criteria | 1.0.0 | Curated |
 | [`06-seedable-config-architecture/02-features/99-consistency-report.md`](./06-seedable-config-architecture/02-features/99-consistency-report.md) | Consistency Report: Seedable Config Features | 3.1.0 | — |
 | [`06-seedable-config-architecture/97-changelog.md`](./06-seedable-config-architecture/97-changelog.md) | Seedable Config Architecture — Changelog | 3.1.0 | — |
+| [`06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md`](./06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md) | Seedable Config Architecture — Acceptance Criteria I/O Fixtures | 0.1.0 | Stub |
 | [`06-seedable-config-architecture/98-acceptance-criteria.md`](./06-seedable-config-architecture/98-acceptance-criteria.md) | Seedable Config Architecture: Acceptance Criteria | 3.1.0 | Active |
 | [`06-seedable-config-architecture/99-consistency-report.md`](./06-seedable-config-architecture/99-consistency-report.md) | Consistency Report: Seedable Config Architecture | 3.1.0 | — |
 
@@ -809,6 +812,7 @@
 | [`10-powershell-integration/09-runner-features.md`](./10-powershell-integration/09-runner-features.md) | PowerShell Runner — Features & Configuration Examples | — | Active |
 | [`10-powershell-integration/25-multi-site-deployment.md`](./10-powershell-integration/25-multi-site-deployment.md) | Multi-Site Deployment | — | — |
 | [`10-powershell-integration/97-acceptance-criteria.md`](./10-powershell-integration/97-acceptance-criteria.md) | PowerShell Integration — Acceptance Criteria | 2.0.0 | — |
+| [`10-powershell-integration/97a-acceptance-criteria-fixtures.md`](./10-powershell-integration/97a-acceptance-criteria-fixtures.md) | PowerShell Integration — Acceptance Criteria I/O Fixtures | 1.0.0 | Normative |
 | [`10-powershell-integration/99-consistency-report.md`](./10-powershell-integration/99-consistency-report.md) | Consistency Report — PowerShell Integration | 3.1.0 | — |
 | [`10-powershell-integration/changelog.md`](./10-powershell-integration/changelog.md) | PowerShell Script Changelog | — | — |
 | [`10-powershell-integration/parallel-work-sync-output.md`](./10-powershell-integration/parallel-work-sync-output.md) | Parallel Work Sync Output | — | — |
@@ -890,6 +894,7 @@
 | [`13-cicd-pipeline-workflows/18-wp-plugin-deploy/04-version-sync.md`](./13-cicd-pipeline-workflows/18-wp-plugin-deploy/04-version-sync.md) | 03.04 — Version Synchronization (`package.json` → PHP) | 1.0.0 | — |
 | [`13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md`](./13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md) | WP-Plugin Deploy — Acceptance Criteria | 1.0.0 | — |
 | [`13-cicd-pipeline-workflows/97-acceptance-criteria.md`](./13-cicd-pipeline-workflows/97-acceptance-criteria.md) | CI/CD Pipeline Workflows — Acceptance Criteria | 2.0.0 | — |
+| [`13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md`](./13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md) | Cicd Pipeline Workflows — Acceptance Criteria I/O Fixtures | 0.1.0 | Stub |
 | [`13-cicd-pipeline-workflows/99-consistency-report.md`](./13-cicd-pipeline-workflows/99-consistency-report.md) | Consistency Report — CI/CD Pipeline Workflows | 3.1.0 | — |
 | [`13-cicd-pipeline-workflows/README.md`](./13-cicd-pipeline-workflows/README.md) | 09 — Pipeline Specifications | — | — |
 
@@ -926,6 +931,7 @@
 | [`14-self-update-app-update/15-config-file.md`](./14-self-update-app-update/15-config-file.md) | Configuration File | 3.1.0 | — |
 | [`14-self-update-app-update/16-update-command-workflow.md`](./14-self-update-app-update/16-update-command-workflow.md) | Update Command — Step-by-Step Workflow | 3.1.0 | — |
 | [`14-self-update-app-update/97-acceptance-criteria.md`](./14-self-update-app-update/97-acceptance-criteria.md) | Self-Update / App-Update — Acceptance Criteria (rollup) | 2.0.0 | Curated |
+| [`14-self-update-app-update/97a-acceptance-criteria-fixtures.md`](./14-self-update-app-update/97a-acceptance-criteria-fixtures.md) | Self Update App Update — Acceptance Criteria I/O Fixtures | 0.1.0 | Stub |
 | [`14-self-update-app-update/99-consistency-report.md`](./14-self-update-app-update/99-consistency-report.md) | Consistency Report — Self-Update & App Update | 3.1.0 | — |
 | [`14-self-update-app-update/diagrams/00-overview.md`](./14-self-update-app-update/diagrams/00-overview.md) | Diagrams — Self-Update & App Update | 3.1.0 | — |
 | [`14-self-update-app-update/diagrams/99-consistency-report.md`](./14-self-update-app-update/diagrams/99-consistency-report.md) | Consistency Report — Diagrams | 1.0.0 | — |
@@ -1205,6 +1211,7 @@
 | [`16-generic-cli/20-terminal-output-design/12-implementation-checklist.md`](./16-generic-cli/20-terminal-output-design/12-implementation-checklist.md) | Implementation Checklist | — | — |
 | [`16-generic-cli/20-terminal-output-design/97-acceptance-criteria.md`](./16-generic-cli/20-terminal-output-design/97-acceptance-criteria.md) | Terminal Output Design — Acceptance Criteria | 1.0.0 | Curated |
 | [`16-generic-cli/97-acceptance-criteria.md`](./16-generic-cli/97-acceptance-criteria.md) | Generic CLI — Acceptance Criteria (rollup) | 2.0.0 | Curated |
+| [`16-generic-cli/97a-acceptance-criteria-fixtures.md`](./16-generic-cli/97a-acceptance-criteria-fixtures.md) | Generic Cli — Acceptance Criteria I/O Fixtures | 0.1.0 | Stub |
 | [`16-generic-cli/99-consistency-report.md`](./16-generic-cli/99-consistency-report.md) | Consistency Report — Generic Cli | 1.0.0 | — |
 
 ## 17-generic-update
@@ -1220,6 +1227,7 @@
 | [`17-generic-update/06-cleanup.md`](./17-generic-update/06-cleanup.md) | 06 — Cleanup | — | — |
 | [`17-generic-update/07-console-safe-handoff.md`](./17-generic-update/07-console-safe-handoff.md) | 07 — Console-Safe Handoff | — | — |
 | [`17-generic-update/97-acceptance-criteria.md`](./17-generic-update/97-acceptance-criteria.md) | Generic Update — Acceptance Criteria | 2.0.0 | Curated |
+| [`17-generic-update/97a-acceptance-criteria-fixtures.md`](./17-generic-update/97a-acceptance-criteria-fixtures.md) | Generic Update — Acceptance Criteria I/O Fixtures | 0.1.0 | Stub |
 | [`17-generic-update/99-consistency-report.md`](./17-generic-update/99-consistency-report.md) | Consistency Report — Generic Update | 1.0.0 | — |
 | [`17-generic-update/README.md`](./17-generic-update/README.md) | 08 — Generic Self-Update Specification | — | — |
 
@@ -1240,6 +1248,7 @@
 | [`18-spec-issues/11-content-audit-at-app-coverage.md`](./18-spec-issues/11-content-audit-at-app-coverage.md) | Content Audit — `AT-APP-NN` Coverage Completeness (2026-04-26) | 1.0.0 | — |
 | [`18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md`](./18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md) | AI Readiness Audit — Spec Corpus (Round 4) | 1.4.0 | — |
 | [`18-spec-issues/97-acceptance-criteria.md`](./18-spec-issues/97-acceptance-criteria.md) | Spec Issues — Acceptance Criteria | 1.3.0 | Dispatch |
+| [`18-spec-issues/97a-acceptance-criteria-fixtures.md`](./18-spec-issues/97a-acceptance-criteria-fixtures.md) | Spec Issues — Acceptance Criteria I/O Fixtures | 0.1.0 | Stub |
 | [`18-spec-issues/99-consistency-report.md`](./18-spec-issues/99-consistency-report.md) | Consistency Report — Spec Issues | 1.0.0 | — |
 
 ## 31-app
@@ -1566,4 +1575,4 @@
 
 ---
 
-*Auto-generated index — 1396 files across 25 top-level folders.*
+*Auto-generated index — 1405 files across 25 top-level folders.*
