@@ -68,27 +68,147 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 
 
+## Config Source Precedence
+
+When `ConfigRegistry::get($key)` is called, the registry resolves the value by walking these sources from **highest** to **lowest** priority. The first source that defines the key wins. No merging, no fallback chain inside a single source.
+
+| Rank | Source | Lifetime | Editable by | Example use |
+|---|---|---|---|---|
+| 1 (highest) | Process env var (`WORKFLOWY_<KEY>`) | Process | Operator at boot | Force `WORKFLOWY_TRASH_RETENTIONDAYS=7` in staging. |
+| 2 | `wp-config.php` constant (`WORKFLOWY_<KEY>`) | Site | Server admin | Pin secrets and prod-only overrides. |
+| 3 | DB table `WorkflowyConfigOverride` (per-site) | Persistent | Admin via Settings UI | User changed theme to `dark`. |
+| 4 | DB table `WorkflowyConfigUserOverride` (per-user) | Persistent | End user | User set `items.maxPerView = 100`. |
+| 5 | Seed file `wp-plugin/seed/config.json` | Build artifact | Plugin author | Ships defaults. |
+| 6 (lowest) | Hard-coded fallback in `ConfigSchema::DEFAULT` | Source code | Developer | Last-resort safety net. |
+
+### Resolution diagram
+
+```
+ConfigRegistry::get("items.maxPerView")
+        │
+        ▼
+┌──────────────────────────────────────────────────┐
+│ 1. ENV  WORKFLOWY_ITEMS_MAXPERVIEW   ─ defined? ─┼── yes ──► return cast(env)
+└─────────────────────────┬────────────────────────┘
+                          │ no
+                          ▼
+┌──────────────────────────────────────────────────┐
+│ 2. wp-config.php constant            ─ defined? ─┼── yes ──► return cast(const)
+└─────────────────────────┬────────────────────────┘
+                          │ no
+                          ▼
+┌──────────────────────────────────────────────────┐
+│ 3. DB site override                  ─ exists?  ─┼── yes ──► return validated(value)
+└─────────────────────────┬────────────────────────┘
+                          │ no
+                          ▼
+┌──────────────────────────────────────────────────┐
+│ 4. DB user override (current user)   ─ exists?  ─┼── yes ──► return validated(value)
+└─────────────────────────┬────────────────────────┘
+                          │ no
+                          ▼
+┌──────────────────────────────────────────────────┐
+│ 5. seed/config.json                  ─ has key? ─┼── yes ──► return validated(seed)
+└─────────────────────────┬────────────────────────┘
+                          │ no
+                          ▼
+            6. ConfigSchema::DEFAULT[key]   ──────► return default
+```
+
+## Seeder Idempotency Rules
+
+The seeder runs at plugin activation and on every update. It MUST be safe to run any number of times.
+
+| Rule | Enforcement |
+|---|---|
+| Never overwrite a key already present in `WorkflowyConfigOverride` or `WorkflowyConfigUserOverride`. | Gate `G-06-IDEMPOTENT` (PHPUnit: re-run seeder, assert override row unchanged). |
+| Inserting a new key from seed MUST log `seed.inserted` with key + value. | Gate `G-06-LOG-INSERT`. |
+| Removing a key from `seed/config.json` does **not** remove it from the DB — operators must run `wp workflowy config prune`. | Gate `G-06-NO-IMPLICIT-DELETE`. |
+| Type widening (e.g. int → enum) requires a versioned migration; the seeder MUST refuse to apply it. | Gate `G-06-NO-TYPE-DRIFT`. |
+
 ## Anti-Patterns
 
 The AI MUST NOT:
-- Putting secrets in `wp-plugin/seed/config.json` — secrets stay in `wp-config.php`, never in shipped seed files.
-- Re-running the seeder overwriting user-edited values — the seeder MUST be idempotent and respect user overrides.
-- Reading config directly from the DB in hot paths — go through `ConfigRegistry::get($key)` so the typed validator runs.
 
-## Worked Example (skeleton)
+| # | Anti-pattern | Why it fails | Gate that catches it |
+|---|---|---|---|
+| 1 | Put secrets in `seed/config.json` | Seed file ships in the plugin zip — secrets leak to every install. | `G-06-NO-SECRETS-IN-SEED` (regex bans keys matching `*secret*`, `*token*`, `*key*` ending). |
+| 2 | Re-run seeder overwriting user values | Destroys user customization on every update. | `G-06-IDEMPOTENT`. |
+| 3 | Read config directly from DB in hot paths | Bypasses validator + cache; type drift not caught. | `G-06-VIA-REGISTRY` (PHPStan: `wpdb->get_var` on config tables forbidden outside `ConfigRegistry`). |
+| 4 | Cache config without invalidation hook | Settings UI changes don't take effect until restart. | `G-06-CACHE-INVALIDATE` (action `workflowy/config/changed` MUST clear cache). |
+| 5 | Define a key in seed without a matching `ConfigSchema` entry | Validator silently accepts garbage. | `G-06-SCHEMA-PARITY` (diff: `seed/config.json` keys ⊆ `ConfigSchema::DEFAULT` keys). |
+| 6 | Use ENV at runtime via `getenv()` outside `ConfigRegistry` | Two competing sources of truth. | `G-06-ENV-VIA-REGISTRY`. |
 
-A canonical, copy-pasteable shape for this section's primary output:
+## Worked Example — End-to-End Override Resolution
+
+### 1. Seed file (`wp-plugin/seed/config.json`)
 
 ```json
 {
   "$schema": "../config.schema.json",
-  "appearance.theme": { "value": "auto", "type": "enum", "options": ["light", "dark", "auto"] },
-  "items.maxPerView": { "value": 250, "type": "int", "min": 50, "max": 1000 },
-  "trash.retentionDays": { "value": 30, "type": "int", "min": 1, "max": 365 }
+  "appearance.theme":     { "value": "auto", "type": "enum", "options": ["light", "dark", "auto"] },
+  "items.maxPerView":     { "value": 250,    "type": "int",  "min": 50, "max": 1000 },
+  "trash.retentionDays":  { "value": 30,     "type": "int",  "min": 1,  "max": 365 },
+  "search.fuzzy":         { "value": true,   "type": "bool" }
 }
 ```
 
-*This is a structural skeleton. Real values come from the section's `97-acceptance-criteria.md` row that the AI is implementing.*
+### 2. Site admin sets a DB override via Settings UI
+
+```sql
+INSERT INTO WorkflowyConfigOverride (Key, Value, UpdatedAt)
+VALUES ('items.maxPerView', '500', 1714300000)
+ON CONFLICT(Key) DO UPDATE SET Value = excluded.Value, UpdatedAt = excluded.UpdatedAt;
+```
+
+### 3. End user further narrows for themselves
+
+```sql
+INSERT INTO WorkflowyConfigUserOverride (UserId, Key, Value, UpdatedAt)
+VALUES ('u_42', 'items.maxPerView', '100', 1714300050);
+```
+
+### 4. Operator forces a value at boot via `wp-config.php`
+
+```php
+define('WORKFLOWY_ITEMS_MAXPERVIEW', 50);
+```
+
+### 5. Resolution table for `items.maxPerView`
+
+| Acting as user | ENV set? | wp-config const? | Site override? | User override? | Resolved value | Why |
+|---|---|---|---|---|---|---|
+| Anonymous visitor | no | **yes (50)** | yes (500) | n/a | **50** | Constant beats DB. |
+| Logged-in `u_42`  | no | **yes (50)** | yes (500) | yes (100) | **50** | Constant still wins. |
+| Logged-in `u_42`  | no | no              | yes (500) | yes (100) | **500** | Site override beats user override. |
+| Logged-in `u_42`  | no | no              | no         | yes (100) | **100** | User override beats seed. |
+| Anonymous visitor | no | no              | no         | n/a        | **250** | Seed value (rank 5). |
+
+### 6. PHP read site (load-bearing — gate `G-06-VIA-REGISTRY`)
+
+```php
+<?php
+$limit = ConfigRegistry::get('items.maxPerView');           // returns int, validated, cached
+// ❌ NEVER: $limit = $wpdb->get_var("SELECT Value FROM WorkflowyConfigOverride WHERE Key='items.maxPerView'");
+```
+
+### 7. Cache invalidation hook
+
+```php
+do_action('workflowy/config/changed', 'items.maxPerView');  // ConfigRegistry listens and busts its cache
+```
+
+### Error-code registry (this section owns `CFG-06-*`)
+
+| Code | Meaning | Recovery |
+|---|---|---|
+| `CFG-06-01` | Seed file missing or unreadable | Fall back to `ConfigSchema::DEFAULT`, log warning. |
+| `CFG-06-02` | Seed value violates schema (`min`/`max`/`enum`) | Reject seed key, log error, surface in admin notice. |
+| `CFG-06-03` | DB override violates schema (drift after schema change) | Ignore override, fall through to next source, mark for cleanup. |
+| `CFG-06-04` | Type drift between seed and schema | Refuse to activate plugin until resolved. |
+| `CFG-06-05` | Secret-shaped key found in seed (`*secret*`, `*token*`) | Activation blocked. |
+
+*All values are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings.*
 
 <!-- AUTO-TOC:START -->
 
