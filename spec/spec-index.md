@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-28  
-**Total Files:** 1388  
+**Total Files:** 1390  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -29,12 +29,12 @@
 - [12-consolidated-guidelines](#12-consolidated-guidelines) — 26 file(s)
 - [13-cicd-pipeline-workflows](#13-cicd-pipeline-workflows) — 36 file(s)
 - [14-self-update-app-update](#14-self-update-app-update) — 32 file(s)
-- [15-wp-plugin-how-to](#15-wp-plugin-how-to) — 222 file(s)
+- [15-wp-plugin-how-to](#15-wp-plugin-how-to) — 223 file(s)
 - [16-generic-cli](#16-generic-cli) — 43 file(s)
 - [17-generic-update](#17-generic-update) — 11 file(s)
 - [18-spec-issues](#18-spec-issues) — 14 file(s)
 - [31-app](#31-app) — 133 file(s)
-- [32-ui-design](#32-ui-design) — 121 file(s)
+- [32-ui-design](#32-ui-design) — 122 file(s)
 - [33-feedback-report](#33-feedback-report) — 4 file(s)
 - [34-activity-feed](#34-activity-feed) — 4 file(s)
 - [35-enforcement-rules](#35-enforcement-rules) — 4 file(s)
@@ -1154,6 +1154,7 @@
 | [`15-wp-plugin-how-to/99-consistency-report.md`](./15-wp-plugin-how-to/99-consistency-report.md) | Consistency Report — spec/15-wp-plugin-how-to/ | 1.1.0 | — |
 | [`15-wp-plugin-how-to/changelog.md`](./15-wp-plugin-how-to/changelog.md) | Gold Standard Spec — Changelog | — | — |
 | [`15-wp-plugin-how-to/readme.md`](./15-wp-plugin-how-to/readme.md) | How to Write a WordPress Plugin — Gold Standard Specification | — | — |
+| [`15-wp-plugin-how-to/skeletons/00-overview.md`](./15-wp-plugin-how-to/skeletons/00-overview.md) | WP-Plugin Reference Skeletons (P7) | — | Active |
 
 ## 16-generic-cli
 
@@ -1501,6 +1502,7 @@
 | [`32-ui-design/97-acceptance-criteria.md`](./32-ui-design/97-acceptance-criteria.md) | UI Design — Acceptance Criteria | 2.0.0 | — |
 | [`32-ui-design/97a-acceptance-criteria-fixtures.md`](./32-ui-design/97a-acceptance-criteria-fixtures.md) | UI Design — Acceptance Criteria I/O Fixtures | 1.0.0 | Normative |
 | [`32-ui-design/99-consistency-report.md`](./32-ui-design/99-consistency-report.md) | Consistency Report — Ui Design | 1.3.0 | — |
+| [`32-ui-design/skeletons/00-overview.md`](./32-ui-design/skeletons/00-overview.md) | UI Reference Skeletons (P7) | — | Active |
 
 ## 33-feedback-report
 
@@ -1558,4 +1560,4 @@
 
 ---
 
-*Auto-generated index — 1388 files across 25 top-level folders.*
+*Auto-generated index — 1390 files across 25 top-level folders.*
