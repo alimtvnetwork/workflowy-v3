@@ -68,12 +68,13 @@ Pick the top 🟦 item on every `next`. Strike (✅) when done; new top item bec
 **Verify:** hygiene; re-score `31-app`.
 **✅ Done 2026-04-28:** Inserted F4 appendices into `07-board-view.md` (Fractal Board, Add Card/Column, Move, Convert, Hide Completed), `08-share-dialog.md` (Public Link, Invite People, Permission Levels, Stop Sharing, per-instance ACL on mirrors, Shared-with-me), `13-templates.md` (Templates Button, `#template` tag, Use Template, Templates Panel, Export, Export All, Print, Presentation Mode, Fractal Comments + Mention + Unread + Drafts), and `11-trash-view.md` (Delete, Bulk Delete, Trash View, Restore, Empty Trash, 30-day cron, restore pre-empts purge). Four new F7 reconciliation flags: card-drop-zone uses same fractional-sort patch as list, public-link URL pattern → WP REST `/s/<token>`, `comment_root_id` FK in unified Node interface, WP cron via `wp_schedule_event`. Hygiene PASS for F4; only pre-existing `ItemType` enum drift carried over. Projected composite 67 → 69.
 
-### 🟦 F5 — Merge Workflowy feature reference (Part 5: account & settings)
+### ✅ F5 — Merge Workflowy feature reference (Part 5: account & settings)
 **Targets:** new `spec/36-user-management/01-features/*` topic files (currently `.gitkeep`).
 **Map:** Settings Panel, Set Password, Change Email, Restore from Backup, Referrals, Theme, Daily Email Summary, Workflowy Labs, Delete Account, Multi-Factor Authentication, Help, Report a Bug, Handbook Panel.
 **Verify:** hygiene; first AI score for `36-user-management`.
+**✅ Done 2026-04-28:** Created `spec/36-user-management/01-account-and-settings.md` (kept the section's flat shape rather than introducing a `01-features/` subfolder — avoids parallel-folder drift). All 13 F5 surfaces grouped into 6 sub-sections (Settings Panel root, Account & Identity, Backups & Restore, Personalization, Growth, Support & Documentation). Added a 12-row REST surface summary mapped to PascalCase envelope and the planned WP REST namespace `/wp-json/workflowy/v1/me/*`, plus AT-USR-* range table for P2 to fill (17 IDs reserved). Filled the P1 AI Contract block in `36-user-management/00-overview.md` with concrete file paths (PHP controllers under `wp-plugin/src/Rest/Me/*`, SQLite migrations, React `src/components/settings/*`) and a Definition-of-Done that cross-checks the endpoint matrix. Two new F7 reconciliation flags: settings endpoints must register in `spec/31-app/06-endpoints/`, MFA enrolment recovery-code download flow must match design-system modal-blocking pattern. Hygiene PASS for F5; spec index grew 1365→1366 files. Only pre-existing `ItemType` enum drift carried over. Projected composite 69 → 71.
 
-### F6 — Merge Workflowy feature reference (Part 6: integrations)
+### 🟦 F6 — Merge Workflowy feature reference (Part 6: integrations)
 **Targets:** new `spec/31-app/01-features/18-integrations.md`.
 **Map:** Zapier Integration, Apple Shortcuts Integration.
 **Verify:** hygiene; re-score `31-app`.
