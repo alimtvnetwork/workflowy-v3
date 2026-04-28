@@ -1547,7 +1547,7 @@
 | [`19-glossary.md`](./19-glossary.md) | Glossary — Cross-Spec Terminology SSOT | 1.1.0 | Active |
 | [`20-enums-index.md`](./20-enums-index.md) | Enums Index — Cross-Language Registry | 1.1.0 | Active |
 | [`21-ai-readiness-audit-round-2.md`](./21-ai-readiness-audit-round-2.md) | AI-Readiness Audit Report — Round 2 (post C/M/H/L tier completion) | 2.0.0 | — |
-| [`21-contract-json.md`](./21-contract-json.md) | `spec/contract.json` — Machine-Readable Spec Contract | 1.0.0 | Active |
+| [`22-contract-json.md`](./22-contract-json.md) | `spec/contract.json` — Machine-Readable Spec Contract | 1.0.0 | Active |
 | [`97a-acceptance-criteria-fixtures.md`](./97a-acceptance-criteria-fixtures.md) | Spec — P2g Remainder Acceptance Criteria I/O Fixtures (Sweep) | 1.0.0 | Normative |
 | [`99-consistency-report.md`](./99-consistency-report.md) | Consistency Report: Spec Root | 3.1.0 | — |
 | [`folder-structure-root.md`](./folder-structure-root.md) | Folder Structure Root — Redirect | — | — |

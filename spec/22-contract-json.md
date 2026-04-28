@@ -56,7 +56,7 @@
 
 ### Canonical-file rule for AT collisions
 
-When the same `AT-XXX-NN` id appears as a defined row in multiple files, the generator prefers the row in `9{7,8}-acceptance-criteria.md` as authoritative. The other occurrences are demoted to `cited_in[]`. Two non-canonical definitions of the same id fail the build.
+When the same `AT-<SECTION>-NN` id appears as a defined row in multiple files, the generator prefers the row in `9{7,8}-acceptance-criteria.md` as authoritative. The other occurrences are demoted to `cited_in[]`. Two non-canonical definitions of the same id fail the build.
 
 ### Orphan citations
 

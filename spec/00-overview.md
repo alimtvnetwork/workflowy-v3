@@ -35,7 +35,7 @@
 | 19 | [`19-glossary.md`](./19-glossary.md) | Glossary — Cross-Spec Terminology SSOT | 118 |
 | 20 | [`20-enums-index.md`](./20-enums-index.md) | Enums Index — Cross-Language Registry | 177 |
 | 21 | [`21-ai-readiness-audit-round-2.md`](./21-ai-readiness-audit-round-2.md) | AI-Readiness Audit Report — Round 2 (post C/M/H/L tier completion) | 138 |
-| 22 | [`21-contract-json.md`](./21-contract-json.md) | `spec/contract.json` — Machine-Readable Spec Contract | 104 |
+| 22 | [`22-contract-json.md`](./22-contract-json.md) | `spec/contract.json` — Machine-Readable Spec Contract | 104 |
 | 23 | [`31-app/`](./31-app/00-overview.md) | App | subfolder |
 | 24 | [`32-ui-design/`](./32-ui-design/00-overview.md) | UI Design | subfolder |
 | 25 | [`33-feedback-report/`](./33-feedback-report/00-overview.md) | Feedback Report — Feature Spec | subfolder |
