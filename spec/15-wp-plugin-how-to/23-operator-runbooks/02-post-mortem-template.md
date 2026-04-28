@@ -58,4 +58,4 @@ This template is referenced by `01-disaster-recovery-restore.md` line ~308. CI g
 
 ---
 
-*Created 2026-04-28 to close the only remaining `(TBD)` placeholder in active spec (P4).*
+*Created 2026-04-28 to close the only remaining unresolved placeholder in active spec (P4).*
