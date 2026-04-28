@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-28  
-**Total Files:** 1365  
+**Total Files:** 1366  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -38,7 +38,7 @@
 - [33-feedback-report](#33-feedback-report) — 3 file(s)
 - [34-activity-feed](#34-activity-feed) — 3 file(s)
 - [35-enforcement-rules](#35-enforcement-rules) — 3 file(s)
-- [36-user-management](#36-user-management) — 3 file(s)
+- [36-user-management](#36-user-management) — 4 file(s)
 - [root](#root) — 10 file(s)
 
 ---
@@ -1515,6 +1515,7 @@
 | File | Title | Version | Status |
 |------|-------|---------|--------|
 | [`36-user-management/00-overview.md`](./36-user-management/00-overview.md) | User Management — Feature Spec | 2.0.0 | Planned |
+| [`36-user-management/01-account-and-settings.md`](./36-user-management/01-account-and-settings.md) | Account & Settings — Feature Reference (F5) | 1.0.0 | Active |
 | [`36-user-management/97-acceptance-criteria.md`](./36-user-management/97-acceptance-criteria.md) | User Management — Acceptance Criteria | 1.0.0 | Curated |
 | [`36-user-management/99-consistency-report.md`](./36-user-management/99-consistency-report.md) | Consistency Report — User Management | 1.1.0 | — |
 
@@ -1535,4 +1536,4 @@
 
 ---
 
-*Auto-generated index — 1365 files across 25 top-level folders.*
+*Auto-generated index — 1366 files across 25 top-level folders.*
