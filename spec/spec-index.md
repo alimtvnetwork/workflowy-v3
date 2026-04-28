@@ -1360,8 +1360,8 @@
 | [`31-app/07-db-diagram/97-acceptance-criteria.md`](./31-app/07-db-diagram/97-acceptance-criteria.md) | DB Diagram — Acceptance Criteria | 1.0.1 | — |
 | [`31-app/07-db-diagram/99-consistency-report.md`](./31-app/07-db-diagram/99-consistency-report.md) | Consistency Report — 07-db-diagram | 1.0.0 | — |
 | [`31-app/07-db-diagram/sql/00-overview.md`](./31-app/07-db-diagram/sql/00-overview.md) | SQLite DDL — Reference Implementation | 2.2.0 | — |
-| [`31-app/97-acceptance-criteria-fixtures.md`](./31-app/97-acceptance-criteria-fixtures.md) | App — Acceptance-Criteria I/O Fixtures | 1.0.0 | Active |
 | [`31-app/97-acceptance-criteria.md`](./31-app/97-acceptance-criteria.md) | App — Acceptance Criteria | 2.6.0 | — |
+| [`31-app/97a-acceptance-criteria-fixtures.md`](./31-app/97a-acceptance-criteria-fixtures.md) | App — Acceptance-Criteria I/O Fixtures | 1.0.0 | Active |
 | [`31-app/99-consistency-report.md`](./31-app/99-consistency-report.md) | Consistency Report — App | 1.3.0 | — |
 
 ## 32-ui-design
