@@ -147,7 +147,7 @@ column directly; such fixtures MUST carry an inline comment
   no silent equality.
 - `G-26-OWNER-ID-CANONICAL` — `OwnerId` is the canonical brand;
   `OwnerUserId` is an alias-bridge entry, not a column name.
-- `G-26-WIRE-OWNERID-ONLY` — `rg "OwnerUserId" spec/31-app/06-endpoints` MUST return zero hits; in `spec/31-app/04a-fixtures/**`, every `OwnerUserId` occurrence MUST be on a line containing the substring `DDL-mirror fixture`. PHP serializer test asserts every `EP-*` JSON response contains `OwnerId`, never `OwnerUserId`. (Per D6.)
+- `G-26-WIRE-OWNERID-ONLY` — `rg "OwnerUserId" spec/31-app/06-endpoints` MUST return zero hits. In `spec/31-app/04a-fixtures/**`, `OwnerUserId` is permitted **only** in the three explicitly-DDL-mirror artifacts: `00-overview.md` (the documented `Item` SQL row shape), `generate.py` (the generator), and `item-tree-217.json` (its output). All three derive from the App DB `Item` table per `03-app-db-erd.md` and represent the storage layer, not the wire. PHP serializer test asserts every `EP-*` JSON response contains `OwnerId`, never `OwnerUserId`. (Per D6.)
 
 Updates / strengthens (does NOT supersede):
 
