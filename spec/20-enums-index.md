@@ -1,7 +1,7 @@
 # Enums Index — Cross-Language Registry
 
-> **Version:** 1.1.0
-> **Updated:** 2026-04-26 — Round-3 AUDIT-03: `ItemType` corrected — swapped `mirror` → `dashboard` (mirrors are `Mirrors` table rows, not turn-into targets); count stays at 12. See [`spec/18-spec-issues/07-audit-03-dashboard-taxonomy.md`](./18-spec-issues/07-audit-03-dashboard-taxonomy.md). Prior: 2026-04-20.
+> **Version:** 1.2.0
+> **Updated:** 2026-04-28 — AUDIT-05 fix: added Universal Rule #10 codifying the `ItemType` lowercase exception (cross-language: TS/PHP/Go/SQLite) with explicit ADR-0015 authority and CI gate `G-15-ITEMTYPE-LOWERCASE`. Resolves direct contradiction between Rule #1 (PascalCase) and the lowercase `ItemType` literals enforced by SQLite `CHECK` constraints. Prior: 2026-04-26 (Round-3 AUDIT-03).
 > **Status:** Active
 > **Purpose:** Single source of truth for every named enum across Go, PHP, and TypeScript. Maps each enum to its language-specific spec, canonical case naming, and usage rules.
 
