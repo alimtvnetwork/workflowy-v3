@@ -18,11 +18,11 @@
 
 ## 2. Summary
 
-- **Total named gates:** 288 (was 287 — +1 `G-00-ADR-XLINK-SYMMETRY`)
+- **Total named gates:** 289 (was 288 — +1 `G-00-ADR-CONSEQUENCES-XLINK`)
 - **CI:** 24 (one gate `G-26-WIRE-OWNERID-ONLY` is now dual-tier: counted under both CI and TEST)
 - **TEST:** 14 (was 13 — +1 `G-26-WIRE-OWNERID-ONLY` runtime half via `AT-WIRE-EGRESS-01`)
-- **DOC-NORM:** 50 (was 49 — +1 `G-00-ADR-XLINK-SYMMETRY`)
-- **DOC:** 201 (was 200 — +1 from ADR-0027 monotonic)
+- **DOC-NORM:** 50 (unchanged — sibling `G-00-ADR-CONSEQUENCES-XLINK` is intentionally advisory-only DOC)
+- **DOC:** 202 (was 201 — +1 `G-00-ADR-CONSEQUENCES-XLINK` advisory)
 - **Areas covered:** 36 (was 35 — added ADR-0012)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
