@@ -174,6 +174,7 @@ Suppose someone wants to add a real `Favorite` table (currently forbidden by
 | [`0012`](./0012-tailwind-v4-theme-block-token-registry.md) | Tailwind v4 `@theme` block is the sole design-token registry; HSL-only; no raw colors | `Accepted` | 2026-04-28 |
 | [`0013`](./0013-search-relevance-then-recency-ranking.md) | Search ranking — hybrid relevance-then-recency, tiered match × field weight, sub-300 ms SLA | `Accepted` | 2026-04-28 |
 | [`0014`](./0014-sharing-public-vs-invited-permission-model.md) | Sharing — public link + invited user, 5-role item ACL, separate-table roles, per-instance mirror ACL | `Accepted` | 2026-04-28 |
+| [`0015`](./0015-twelve-itemtypes-enum.md) | Twelve `ItemType` enum values — closed set, lowercase, mirror-excluded | `Accepted` | 2026-04-28 |
 
 > **Maintenance rule (summary — full protocol in [`_INDEX_AUTOMATION.md`](./_INDEX_AUTOMATION.md)):**
 > when adding/superseding an ADR, update **both** index tables (this one
