@@ -155,6 +155,7 @@ Suppose someone wants to add a real `Favorite` table (currently forbidden by
 | ADR | Title | Status | Date |
 |---|---|---|---|
 | [`0001`](./0001-singular-ddl-vs-plural-prose.md) | Singular DDL vs plural prose | `Accepted` | 2026-04-28 |
+| [`0002`](./0002-wp-plugin-php-sqlite-backend.md) | WordPress plugin + PHP 8.1+ + SQLite as the sole backend runtime | `Accepted` | 2026-04-28 |
 
 > **Maintenance rule:** when adding/superseding an ADR, update this index
 > in the **same commit** as the ADR file change. The template
