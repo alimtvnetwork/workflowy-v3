@@ -861,10 +861,6 @@
       "defined_line": 22,
       "cited_in": [
         {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 110
-        },
-        {
           "file": "spec/15-wp-plugin-how-to/13-admin-ui-patterns/97-acceptance-criteria.md",
           "line": 12
         },
@@ -1092,10 +1088,6 @@
       "defined_line": 28,
       "cited_in": [
         {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 72
-        },
-        {
           "file": "spec/31-app/00-overview.md",
           "line": 70
         },
@@ -1126,10 +1118,6 @@
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 16
-        },
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 84
         }
       ]
     },
@@ -1142,10 +1130,6 @@
         {
           "file": "spec/31-app/06-endpoints/01-information-model.md",
           "line": 44
-        },
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 85
         }
       ]
     },
@@ -1158,10 +1142,6 @@
         {
           "file": "spec/31-app/06-endpoints/01-information-model.md",
           "line": 60
-        },
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 86
         }
       ]
     },
@@ -1174,10 +1154,6 @@
         {
           "file": "spec/31-app/06-endpoints/01-information-model.md",
           "line": 32
-        },
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 87
         }
       ]
     },
@@ -1198,10 +1174,6 @@
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
           "line": 23
-        },
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 88
         },
         {
           "file": "spec/31-app/97d-acceptance-criteria-fixtures.md",
@@ -1226,10 +1198,6 @@
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
           "line": 24
-        },
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 94
         }
       ]
     },
@@ -1242,10 +1210,6 @@
         {
           "file": "spec/31-app/06-endpoints/01-information-model.md",
           "line": 86
-        },
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 95
         }
       ]
     },
@@ -1258,10 +1222,6 @@
         {
           "file": "spec/31-app/06-endpoints/01-information-model.md",
           "line": 108
-        },
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 96
         }
       ]
     },
@@ -1274,10 +1234,6 @@
         {
           "file": "spec/31-app/06-endpoints/02-personas.md",
           "line": 32
-        },
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 97
         }
       ]
     },
@@ -1298,10 +1254,6 @@
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
           "line": 25
-        },
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 98
         }
       ]
     },
@@ -1403,10 +1355,6 @@
       "defined_in": "spec/31-app/97-acceptance-criteria.md",
       "defined_line": 240,
       "cited_in": [
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 60
-        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 49
@@ -1618,10 +1566,6 @@
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
           "line": 26
-        },
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 104
         }
       ]
     },
@@ -1658,10 +1602,6 @@
         {
           "file": "spec/31-app/06-endpoints/06-item-context-menu.md",
           "line": 65
-        },
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 106
         }
       ]
     },
@@ -1674,10 +1614,6 @@
         {
           "file": "spec/31-app/06-endpoints/07-board-view.md",
           "line": 27
-        },
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 107
         }
       ]
     },
@@ -1687,10 +1623,6 @@
       "defined_in": "spec/31-app/97-acceptance-criteria.md",
       "defined_line": 57,
       "cited_in": [
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 72
-        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 32
@@ -1706,10 +1638,6 @@
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 16
-        },
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 113
         },
         {
           "file": "spec/31-app/97b-acceptance-criteria-fixtures.md",
@@ -1738,10 +1666,6 @@
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
           "line": 29
-        },
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 114
         },
         {
           "file": "spec/31-app/97b-acceptance-criteria-fixtures.md",
@@ -1776,10 +1700,6 @@
           "line": 30
         },
         {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 120
-        },
-        {
           "file": "spec/31-app/97b-acceptance-criteria-fixtures.md",
           "line": 37
         }
@@ -1794,10 +1714,6 @@
         {
           "file": "spec/31-app/06-endpoints/01-information-model.md",
           "line": 97
-        },
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 121
         },
         {
           "file": "spec/31-app/97b-acceptance-criteria-fixtures.md",
@@ -1824,10 +1740,6 @@
           "line": 224
         },
         {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 127
-        },
-        {
           "file": "spec/31-app/97b-acceptance-criteria-fixtures.md",
           "line": 63
         }
@@ -1842,10 +1754,6 @@
         {
           "file": "spec/31-app/06-endpoints/09-mirrors.md",
           "line": 47
-        },
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 128
         },
         {
           "file": "spec/31-app/97b-acceptance-criteria-fixtures.md",
@@ -1880,10 +1788,6 @@
           "line": 32
         },
         {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 134
-        },
-        {
           "file": "spec/31-app/97b-acceptance-criteria-fixtures.md",
           "line": 88
         },
@@ -1912,10 +1816,6 @@
           "line": 28
         },
         {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 135
-        },
-        {
           "file": "spec/31-app/97b-acceptance-criteria-fixtures.md",
           "line": 98
         },
@@ -1934,10 +1834,6 @@
         {
           "file": "spec/31-app/06-endpoints/11-trash-view.md",
           "line": 39
-        },
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 136
         },
         {
           "file": "spec/31-app/97b-acceptance-criteria-fixtures.md",
@@ -1980,10 +1876,6 @@
           "line": 33
         },
         {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 142
-        },
-        {
           "file": "spec/31-app/97b-acceptance-criteria-fixtures.md",
           "line": 122
         }
@@ -2018,10 +1910,6 @@
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
           "line": 34
-        },
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 143
         },
         {
           "file": "spec/31-app/97b-acceptance-criteria-fixtures.md",
@@ -2148,10 +2036,6 @@
           "line": 36
         },
         {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 157
-        },
-        {
           "file": "spec/31-app/97b-acceptance-criteria-fixtures.md",
           "line": 186
         }
@@ -2164,10 +2048,6 @@
       "defined_line": 102,
       "cited_in": [
         {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 158
-        },
-        {
           "file": "spec/31-app/97b-acceptance-criteria-fixtures.md",
           "line": 196
         }
@@ -2179,10 +2059,6 @@
       "defined_in": "spec/31-app/97-acceptance-criteria.md",
       "defined_line": 103,
       "cited_in": [
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 159
-        },
         {
           "file": "spec/31-app/97b-acceptance-criteria-fixtures.md",
           "line": 208
@@ -2200,10 +2076,6 @@
           "line": 119
         },
         {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 160
-        },
-        {
           "file": "spec/31-app/97b-acceptance-criteria-fixtures.md",
           "line": 218
         }
@@ -2215,10 +2087,6 @@
       "defined_in": "spec/31-app/97-acceptance-criteria.md",
       "defined_line": 110,
       "cited_in": [
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 72
-        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 46
@@ -2374,10 +2242,6 @@
         {
           "file": "spec/18-spec-issues/97-acceptance-criteria.md",
           "line": 32
-        },
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 60
         },
         {
           "file": "spec/31-app/06-endpoints/14-concurrency-and-sync.md",
@@ -2540,10 +2404,6 @@
           "line": 94
         },
         {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 186
-        },
-        {
           "file": "spec/31-app/97c-acceptance-criteria-fixtures.md",
           "line": 118
         },
@@ -2572,10 +2432,6 @@
           "line": 103
         },
         {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 187
-        },
-        {
           "file": "spec/31-app/97c-acceptance-criteria-fixtures.md",
           "line": 131
         }
@@ -2592,10 +2448,6 @@
           "line": 104
         },
         {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 188
-        },
-        {
           "file": "spec/31-app/97c-acceptance-criteria-fixtures.md",
           "line": 141
         }
@@ -2610,10 +2462,6 @@
         {
           "file": "spec/31-app/02-workflows/02-template-application-flow.md",
           "line": 105
-        },
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 189
         },
         {
           "file": "spec/31-app/97c-acceptance-criteria-fixtures.md",
@@ -2644,10 +2492,6 @@
           "line": 95
         },
         {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 195
-        },
-        {
           "file": "spec/31-app/97c-acceptance-criteria-fixtures.md",
           "line": 165
         },
@@ -2668,10 +2512,6 @@
           "line": 114
         },
         {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 196
-        },
-        {
           "file": "spec/31-app/97c-acceptance-criteria-fixtures.md",
           "line": 178
         }
@@ -2683,10 +2523,6 @@
       "defined_in": "spec/31-app/97-acceptance-criteria.md",
       "defined_line": 141,
       "cited_in": [
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 197
-        },
         {
           "file": "spec/31-app/02-workflows/03-share-invite-flow.md",
           "line": 115
@@ -2867,10 +2703,6 @@
       "defined_in": "spec/31-app/97-acceptance-criteria.md",
       "defined_line": 160,
       "cited_in": [
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 60
-        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 5
@@ -3248,14 +3080,6 @@
       "defined_line": 175,
       "cited_in": [
         {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 60
-        },
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 72
-        },
-        {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 34
         },
@@ -3384,10 +3208,6 @@
       "defined_line": 188,
       "cited_in": [
         {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 60
-        },
-        {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 36
         },
@@ -3467,10 +3287,6 @@
       "defined_in": "spec/31-app/97-acceptance-criteria.md",
       "defined_line": 198,
       "cited_in": [
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 60
-        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 41
@@ -3636,10 +3452,6 @@
       "defined_line": 208,
       "cited_in": [
         {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 60
-        },
-        {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 43
         },
@@ -3728,10 +3540,6 @@
       "defined_line": 219,
       "cited_in": [
         {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 60
-        },
-        {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 45
         },
@@ -3807,10 +3615,6 @@
       "defined_in": "spec/31-app/97-acceptance-criteria.md",
       "defined_line": 229,
       "cited_in": [
-        {
-          "file": "spec/31-app/00-overview-condensed.md",
-          "line": 60
-        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 47
@@ -7697,10 +7501,6 @@
       "defined_line": 22,
       "cited_in": [
         {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 107
-        },
-        {
           "file": "spec/15-wp-plugin-how-to/10-deployment-patterns/97-acceptance-criteria.md",
           "line": 12
         },
@@ -7826,10 +7626,6 @@
       "defined_in": "spec/15-wp-plugin-how-to/12-design-system/97-acceptance-criteria.md",
       "defined_line": 22,
       "cited_in": [
-        {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 109
-        },
         {
           "file": "spec/15-wp-plugin-how-to/12-design-system/97-acceptance-criteria.md",
           "line": 12
@@ -8238,10 +8034,6 @@
       "defined_in": "spec/15-wp-plugin-how-to/20-end-to-end-walkthrough/97-acceptance-criteria.md",
       "defined_line": 24,
       "cited_in": [
-        {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 115
-        },
         {
           "file": "spec/15-wp-plugin-how-to/20-end-to-end-walkthrough/97-acceptance-criteria.md",
           "line": 12
@@ -8666,10 +8458,6 @@
       "defined_line": 22,
       "cited_in": [
         {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 101
-        },
-        {
           "file": "spec/15-wp-plugin-how-to/02-enums-and-coding-style/97-acceptance-criteria.md",
           "line": 12
         },
@@ -9056,10 +8844,6 @@
       "defined_in": "spec/15-wp-plugin-how-to/16-error-handling-extraction/97-acceptance-criteria.md",
       "defined_line": 22,
       "cited_in": [
-        {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 113
-        },
         {
           "file": "spec/15-wp-plugin-how-to/16-error-handling-extraction/97-acceptance-criteria.md",
           "line": 12
@@ -10253,10 +10037,6 @@
       "defined_in": "spec/15-wp-plugin-how-to/11-frontend-and-template-patterns/97-acceptance-criteria.md",
       "defined_line": 22,
       "cited_in": [
-        {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 108
-        },
         {
           "file": "spec/15-wp-plugin-how-to/11-frontend-and-template-patterns/97-acceptance-criteria.md",
           "line": 12
@@ -11933,10 +11713,6 @@
       "defined_line": 22,
       "cited_in": [
         {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 103
-        },
-        {
           "file": "spec/15-wp-plugin-how-to/05-helpers-responses-and-integration/97-acceptance-criteria.md",
           "line": 12
         },
@@ -13189,10 +12965,6 @@
       "defined_line": 22,
       "cited_in": [
         {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 102
-        },
-        {
           "file": "spec/15-wp-plugin-how-to/04-logging-and-error-handling/97-acceptance-criteria.md",
           "line": 12
         },
@@ -13554,10 +13326,6 @@
       "defined_in": "spec/15-wp-plugin-how-to/19-micro-orm-and-root-db/97-acceptance-criteria.md",
       "defined_line": 22,
       "cited_in": [
-        {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 114
-        },
         {
           "file": "spec/15-wp-plugin-how-to/19-micro-orm-and-root-db/97-acceptance-criteria.md",
           "line": 12
@@ -15874,10 +15642,6 @@
       "defined_line": 24,
       "cited_in": [
         {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 104
-        },
-        {
           "file": "spec/15-wp-plugin-how-to/07-reference-implementations/97-acceptance-criteria.md",
           "line": 12
         },
@@ -16368,10 +16132,6 @@
       "defined_in": "spec/15-wp-plugin-how-to/14-rest-api-conventions/97-acceptance-criteria.md",
       "defined_line": 22,
       "cited_in": [
-        {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 111
-        },
         {
           "file": "spec/15-wp-plugin-how-to/14-rest-api-conventions/97-acceptance-criteria.md",
           "line": 12
@@ -17600,10 +17360,6 @@
       "defined_line": 22,
       "cited_in": [
         {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 112
-        },
-        {
           "file": "spec/15-wp-plugin-how-to/15-settings-architecture/97-acceptance-criteria.md",
           "line": 12
         },
@@ -18738,10 +18494,6 @@
       "defined_in": "spec/15-wp-plugin-how-to/09-testing-patterns/97-acceptance-criteria.md",
       "defined_line": 22,
       "cited_in": [
-        {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 106
-        },
         {
           "file": "spec/15-wp-plugin-how-to/09-testing-patterns/97-acceptance-criteria.md",
           "line": 12
@@ -19985,10 +19737,6 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 72
-        },
-        {
-          "file": "spec/32-ui-design/00-overview-condensed.md",
-          "line": 79
         }
       ]
     },
@@ -19997,288 +19745,168 @@
       "definition": "All routes are declared in a single `routes` module per `01-architecture/02-routes.md`.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 25,
-      "cited_in": [
-        {
-          "file": "spec/32-ui-design/00-overview-condensed.md",
-          "line": 80
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-UIDESIGN-03",
       "definition": "Component tree matches `01-architecture/03-component-hierarchy.md` — `AppLayout` wraps every route via `<Outlet />`.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 26,
-      "cited_in": [
-        {
-          "file": "spec/32-ui-design/00-overview-condensed.md",
-          "line": 81
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-UIDESIGN-04",
       "definition": "Source folders match `01-architecture/04-file-organization.md` (e.g., `src/components/layout/`, `src/pages/`).",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 27,
-      "cited_in": [
-        {
-          "file": "spec/32-ui-design/00-overview-condensed.md",
-          "line": 82
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-UIDESIGN-05",
       "definition": "Every component listed in `01-architecture/05-component-contract-map.md` has matching props/events in code; new components extend that map.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 28,
-      "cited_in": [
-        {
-          "file": "spec/32-ui-design/00-overview-condensed.md",
-          "line": 83
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-UIDESIGN-06",
       "definition": "All color tokens are defined in HSL inside `src/index.css` `@theme { … }`. No hex/rgb in components.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 34,
-      "cited_in": [
-        {
-          "file": "spec/32-ui-design/00-overview-condensed.md",
-          "line": 89
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-UIDESIGN-07",
       "definition": "Components use semantic Tailwind classes (`bg-background`, `text-foreground`, `border-border`). Raw classes (`bg-white`, `text-black`) are forbidden.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 35,
-      "cited_in": [
-        {
-          "file": "spec/32-ui-design/00-overview-condensed.md",
-          "line": 90
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-UIDESIGN-08",
       "definition": "Tailwind is v4 via `@tailwindcss/vite`. No legacy `tailwind.config.ts` color extensions.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 36,
-      "cited_in": [
-        {
-          "file": "spec/32-ui-design/00-overview-condensed.md",
-          "line": 91
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-UIDESIGN-09",
       "definition": "Light and dark themes are token-driven; toggling theme changes only `@theme` variables, not component classes.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 37,
-      "cited_in": [
-        {
-          "file": "spec/32-ui-design/00-overview-condensed.md",
-          "line": 92
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-UIDESIGN-10",
       "definition": "State management approach matches `02-state-and-data/01-state-management.md` (no Redux unless that file mandates it).",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 43,
-      "cited_in": [
-        {
-          "file": "spec/32-ui-design/00-overview-condensed.md",
-          "line": 98
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-UIDESIGN-11",
       "definition": "Recursive item list renders a tree, not a flat array; collapsed children remain mounted (CSS-hidden) to keep re-expand instant.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 44,
-      "cited_in": [
-        {
-          "file": "spec/32-ui-design/00-overview-condensed.md",
-          "line": 99
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-UIDESIGN-12",
       "definition": "A view never holds more than 250 rendered item nodes; beyond that it virtualizes/paginates.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 45,
-      "cited_in": [
-        {
-          "file": "spec/32-ui-design/00-overview-condensed.md",
-          "line": 100
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-UIDESIGN-13",
       "definition": "Shared TS types live in `02-state-and-data/03-data-types.md` and are imported, not redefined.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 46,
-      "cited_in": [
-        {
-          "file": "spec/32-ui-design/00-overview-condensed.md",
-          "line": 101
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-UIDESIGN-14",
       "definition": "Rich-text format matches `04-editor/01-rich-text-format.md`; storage is the documented serialized form.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 52,
-      "cited_in": [
-        {
-          "file": "spec/32-ui-design/00-overview-condensed.md",
-          "line": 107
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-UIDESIGN-15",
       "definition": "Enter-key behavior matches `04-editor/02-enter-key-rules.md` exactly (sibling-after on non-empty, sibling-before on empty-at-start, etc.).",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 53,
-      "cited_in": [
-        {
-          "file": "spec/32-ui-design/00-overview-condensed.md",
-          "line": 108
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-UIDESIGN-16",
       "definition": "Drag-and-drop computes a **fractional-index midpoint** for the new position; siblings are not re-numbered. Drag preview shows the full subtree.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 54,
-      "cited_in": [
-        {
-          "file": "spec/32-ui-design/00-overview-condensed.md",
-          "line": 109
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-UIDESIGN-17",
       "definition": "Tab indents under previous sibling; Shift+Tab outdents to grandparent. Both update only the moved item's `parentId` + index.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 55,
-      "cited_in": [
-        {
-          "file": "spec/32-ui-design/00-overview-condensed.md",
-          "line": 110
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-UIDESIGN-18",
       "definition": "All interactive elements meet WCAG 2.1 AA: 4.5:1 text contrast, visible focus ring, full keyboard reachability.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 61,
-      "cited_in": [
-        {
-          "file": "spec/32-ui-design/00-overview-condensed.md",
-          "line": 116
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-UIDESIGN-19",
       "definition": "First contentful paint targets and bundle-size budgets in `05-quality/02-performance.md` are met.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 62,
-      "cited_in": [
-        {
-          "file": "spec/32-ui-design/00-overview-condensed.md",
-          "line": 117
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-UIDESIGN-20",
       "definition": "Every async surface ships **all three** of: loading state, empty state, error state — no silent blank UI.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 63,
-      "cited_in": [
-        {
-          "file": "spec/32-ui-design/00-overview-condensed.md",
-          "line": 118
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-UIDESIGN-21",
       "definition": "Navbar matches Phase 1 spec (`06-workflowy-ui/01-navbar/`) including breadcrumb collapse and back/forward disabled states.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 69,
-      "cited_in": [
-        {
-          "file": "spec/32-ui-design/00-overview-condensed.md",
-          "line": 124
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-UIDESIGN-22",
       "definition": "Search popover behaves as a command-palette per Phase 2 (`06-workflowy-ui/02-search/`).",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 70,
-      "cited_in": [
-        {
-          "file": "spec/32-ui-design/00-overview-condensed.md",
-          "line": 125
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-UIDESIGN-23",
       "definition": "Bullet anatomy and per-bullet context menus match Phase 4 (`06-workflowy-ui/04-bullet/`).",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 71,
-      "cited_in": [
-        {
-          "file": "spec/32-ui-design/00-overview-condensed.md",
-          "line": 126
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-UIDESIGN-24",
       "definition": "Editor visuals (cursor, selection, inline tokens) match Phase 5 (`06-workflowy-ui/05-editor/`).",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 72,
-      "cited_in": [
-        {
-          "file": "spec/32-ui-design/00-overview-condensed.md",
-          "line": 127
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-UIDESIGN-25",
       "definition": "App shell — themes, fonts, settings, app menu — matches Phase 8 (`06-workflowy-ui/08-app-shell/`).",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 73,
-      "cited_in": [
-        {
-          "file": "spec/32-ui-design/00-overview-condensed.md",
-          "line": 128
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-UIDS-01",
@@ -22236,10 +21864,6 @@
       "defined_line": 22,
       "cited_in": [
         {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 105
-        },
-        {
           "file": "spec/15-wp-plugin-how-to/08-wordpress-integration-patterns/97-acceptance-criteria.md",
           "line": 12
         },
@@ -22557,16 +22181,8 @@
       "defined_line": 53,
       "cited_in": [
         {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 93
-        },
-        {
           "file": "spec/15-wp-plugin-how-to/97-acceptance-criteria.md",
           "line": 20
-        },
-        {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 126
         }
       ]
     },
@@ -22575,60 +22191,35 @@
       "definition": "Every PHP enum referenced anywhere in this how-to MUST appear in `spec/20-enums-index.md`; missing registration is a Code-Red consistency bug.",
       "defined_in": "spec/15-wp-plugin-how-to/97-acceptance-criteria.md",
       "defined_line": 59,
-      "cited_in": [
-        {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 132
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-WPROOT-03",
       "definition": "Every response-payload key across §05 / §13 / §14 / §15 MUST come from the `ResponseKeyType` enum; string-literal keys ANYWHERE in PHP response builders are Code-Red.",
       "defined_in": "spec/15-wp-plugin-how-to/97-acceptance-criteria.md",
       "defined_line": 60,
-      "cited_in": [
-        {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 133
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-WPROOT-04",
       "definition": "Every code path that calls into WordPress core, the DB layer, or the network MUST be wrapped by `SafeExecute::run(...)` (per §04 AT-LOGGINGANDERRORHANDLING-11) OR explicitly justify-and-link a §16 extraction reason; bare try/catch+log is forbidden.",
       "defined_in": "spec/15-wp-plugin-how-to/97-acceptance-criteria.md",
       "defined_line": 66,
-      "cited_in": [
-        {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 139
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-WPROOT-05",
       "definition": "The Tier-1 delegated-server contract from `03-error-manage` MUST be honoured by every API error path: error envelope includes `code`, `message`, `statusCode`, `requestId`, `stacktraceId` (when debug-mode on); divergence is a Code-Red cross-stack bug.",
       "defined_in": "spec/15-wp-plugin-how-to/97-acceptance-criteria.md",
       "defined_line": 67,
-      "cited_in": [
-        {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 140
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-WPROOT-06",
       "definition": "Every plugin setting whose default appears in §15 MUST also appear in the seedable-config layer with the same default; the two SSOTs MUST agree byte-for-byte (per `06-seedable-config-architecture/01-fundamentals`).",
       "defined_in": "spec/15-wp-plugin-how-to/97-acceptance-criteria.md",
       "defined_line": 73,
-      "cited_in": [
-        {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 146
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-WPROOT-07",
@@ -22636,10 +22227,6 @@
       "defined_in": "spec/15-wp-plugin-how-to/97-acceptance-criteria.md",
       "defined_line": 79,
       "cited_in": [
-        {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 152
-        },
         {
           "file": "spec/31-app/06-endpoints/00-overview.md",
           "line": 85
@@ -22663,48 +22250,28 @@
       "definition": "The admin-UI design system (§12) MUST consume the same color, spacing, and typography tokens as the front-end design system (`32-ui-design/03-design-system`); divergence is a brand-consistency bug.",
       "defined_in": "spec/15-wp-plugin-how-to/97-acceptance-criteria.md",
       "defined_line": 80,
-      "cited_in": [
-        {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 153
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-WPROOT-09",
       "definition": "Every public PHP class added under §07 / §08 / §11 / §13 / §14 / §15 / §19 MUST have at least one unit OR integration test in §09; uncovered public classes fail the §09 coverage gate.",
       "defined_in": "spec/15-wp-plugin-how-to/97-acceptance-criteria.md",
       "defined_line": 86,
-      "cited_in": [
-        {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 159
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-WPROOT-10",
       "definition": "The §10 deployment pipeline MUST run the §09 test suite + the spec-hygiene suite + a static analysis pass before producing a release artefact; skipping any gate is a Code-Red CI bug.",
       "defined_in": "spec/15-wp-plugin-how-to/97-acceptance-criteria.md",
       "defined_line": 87,
-      "cited_in": [
-        {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 160
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-WPROOT-11",
       "definition": "The §20 end-to-end walkthrough MUST exercise at least one criterion from EACH of §02, §04, §05, §08, §13, §14, §15; gaps fail the §20 coverage gate.",
       "defined_in": "spec/15-wp-plugin-how-to/97-acceptance-criteria.md",
       "defined_line": 93,
-      "cited_in": [
-        {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 166
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-WPROOT-12",
@@ -22713,16 +22280,8 @@
       "defined_line": 94,
       "cited_in": [
         {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 93
-        },
-        {
           "file": "spec/15-wp-plugin-how-to/97-acceptance-criteria.md",
           "line": 20
-        },
-        {
-          "file": "spec/15-wp-plugin-how-to/00-overview-condensed.md",
-          "line": 167
         }
       ]
     }
