@@ -34,6 +34,7 @@ const checks = [
   "scripts/spec-hygiene/35-allow-list-inventory.mjs --check",
   "scripts/spec-hygiene/36-check-cross-scope-islands.mjs",
   "scripts/spec-hygiene/37-check-stale-relative-links.mjs",
+  "scripts/spec-hygiene/40-generate-contract-json.mjs",
   "scripts/spec-hygiene/04-generate-index.mjs",
 ];
 
