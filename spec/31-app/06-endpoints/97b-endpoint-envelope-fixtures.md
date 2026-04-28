@@ -283,7 +283,7 @@ ADR-0026 §D6 mandates that every REST/SSE wire payload emit the canonical key `
 
 ### Test ID
 
-`AT-WIRE-EGRESS-01` — bound to gate `G-26-WIRE-OWNERID-ONLY` (CI tier).
+`AT-WIRE-EGRESS-01` — bound to gate `G-26-WIRE-OWNERID-ONLY` (CI + TEST dual tier; this AT is the TEST half).
 
 ### Setup contract
 
