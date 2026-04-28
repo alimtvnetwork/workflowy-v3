@@ -130,8 +130,11 @@ walk(ROOT, (file) => {
     const line = lines[i];
 
     const at = AT_TABLE_ROW.exec(line);
+    const ah = !at && AT_HEADING.exec(line);
     if (at) {
       recordAT(at[1], at[2].trim(), rel, i + 1);
+    } else if (ah) {
+      recordAT(ah[1], ah[2].trim(), rel, i + 1);
     } else {
       AT_INLINE.lastIndex = 0;
       let m;
