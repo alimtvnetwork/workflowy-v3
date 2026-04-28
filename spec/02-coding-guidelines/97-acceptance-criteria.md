@@ -76,3 +76,13 @@
 - [Golang Standards](./03-golang/00-overview.md)
 - [PHP Standards](./04-php/00-overview.md)
 - [Rust Standards](./05-rust/00-overview.md)
+
+---
+
+## Fixtures
+
+All `AT-*` rows in this rollup AND in every sub-rollup under `spec/02-coding-guidelines/**/97-acceptance-criteria.md` are lint-shape ATs covered by a single canonical template:
+
+→ [`97a-acceptance-criteria-fixtures.md`](./97a-acceptance-criteria-fixtures.md)
+
+The template + nine per-rollup verification recipes subsume all 363 coding-guideline ATs per the lint-shape opt-out in [`spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](../01-spec-authoring-guide/19-acceptance-criteria-io-table.md) § "Two AT shapes that opt out of the JSON rows".
