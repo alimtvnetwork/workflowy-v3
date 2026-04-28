@@ -129,3 +129,4 @@ prose form `Ratified by ADR-NNNN §Dn` or a Markdown link to
 - [`spec/00-adrs/_LEDGER-G-00-ADR-XLINK-SYMMETRY-BASELINE.md`](../../00-adrs/_LEDGER-G-00-ADR-XLINK-SYMMETRY-BASELINE.md)
   — baseline ledger (4 symmetric pairs).
 - [`spec/_GATE-REGISTRY.md`](../../_GATE-REGISTRY.md) — Meta-00 row.
+- [`../00-overview.md`](../00-overview.md) — P13 CI/CD overview (Related → Fixtures-as-spec block).

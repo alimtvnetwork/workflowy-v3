@@ -47,3 +47,7 @@ Files here describe algorithms; they MUST NOT be `import`ed or `exec`-ed
 by runtime code. Promotion to runtime requires the user trigger phrase
 `exit spec-only` or `go for implementation` per the project's
 SPEC-ONLY MODE invariant.
+
+## Parent
+
+- [`../00-overview.md`](../00-overview.md) — P13 CI/CD overview (Related → Fixtures-as-spec block surfaces this directory).
