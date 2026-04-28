@@ -69,6 +69,7 @@ prefix `00-` reserves it as the architectural anchor for the whole spec tree.
 | [`0006`](./00-adrs/0006-migrate-spec-sql-to-singular-ddl.md) | Migrate spec SQL fragments to singular DDL identifiers | `Accepted` 2026-04-28 | `G-04-NO-DDL-PLURALS` (promoted to binary, no grandfathering), `G-04-ALIAS-DDL-CANONICAL` (strengthened) |
 | [`0007`](./00-adrs/0007-strict-typescript-rules.md) | Strict TypeScript coding rules (R1–R7) | `Accepted` 2026-04-28 | `G-02-NO-ANY`, `G-02-MAX-3-PARAMS`, `G-02-NO-NESTED-IF`, `G-02-15-LINE-LOGIC`, `G-02-POSITIVE-GUARDS`, `G-02-MAX-2-BOOL-OPERANDS`, `G-02-CHAIN-MULTILINE` |
 | [`0008`](./00-adrs/0008-unified-item-node-interface.md) | Unified `Node` interface + 250-item per-view limit | `Accepted` 2026-04-28 | `G-31-NODE-INTERFACE-CANONICAL`, `G-31-NODE-ID-PERSISTENT`, `G-31-ROOT-SINGLETON`, `G-31-VIEW-250-CAP`, `G-31-NO-PARALLEL-NODE` |
+| [`0009`](./00-adrs/0009-trash-30-day-retention.md) | Trash — 30-day retention, soft-delete, daily reaper at 03:00 UTC, batch=1000 | `Accepted` 2026-04-28 | `G-11-TRASH-SOFT-DELETE-ONLY`, `G-11-TRASH-30-DAY-WINDOW`, `G-11-REAPER-DAILY-03-UTC`, `G-11-REAPER-BATCH-1000`, `G-11-REAPER-CASCADE-SCOPE`, `G-11-REAPER-AUDIT-ROW` |
 
 **When to consult ADRs first** (before editing any spec section):
 
