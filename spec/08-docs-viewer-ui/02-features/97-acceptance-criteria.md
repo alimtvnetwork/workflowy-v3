@@ -52,3 +52,10 @@ Acceptance criteria for individual features live in each feature file's own `## 
 ---
 
 *Populated 2026-04-26 (polish #3, A-26 wave-1) — replaces scaffold.*
+
+
+---
+
+## Fixtures
+
+Fixtures for every AT row in this file are covered by the global P2g sweep — see [`../../97a-acceptance-criteria-fixtures.md`](../../97a-acceptance-criteria-fixtures.md) (apply the matching pattern by section).

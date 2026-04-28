@@ -35,3 +35,10 @@
 
 - [`00-overview.md`](./00-overview.md) — Parent overview
 - [`../../consolidated-review-guide/97-acceptance-criteria.md`](../../consolidated-review-guide/97-acceptance-criteria.md) — Cross-cutting `AT-CONSOLIDATEDREVIEWGUIDE-*` IDs that subsume some rules above
+
+
+---
+
+## Fixtures
+
+Fixtures for every AT row in this file are covered by the global P2g sweep — see [`../../../97a-acceptance-criteria-fixtures.md`](../../../97a-acceptance-criteria-fixtures.md) (apply the matching pattern by section).

@@ -32,3 +32,10 @@
 - [`00-overview.md`](./00-overview.md) — Parent overview
 - [`16-static-analysis/97-acceptance-criteria.md`](./16-static-analysis/97-acceptance-criteria.md) — `AT-CGSA-*` enforcement IDs
 - [`../consolidated-review-guide/97-acceptance-criteria.md`](../consolidated-review-guide/97-acceptance-criteria.md) — `AT-CONSOLIDATEDREVIEWGUIDE-*` cross-cutting IDs
+
+
+---
+
+## Fixtures
+
+Fixtures for every AT row in this file are covered by the global P2g sweep — see [`../../97a-acceptance-criteria-fixtures.md`](../../97a-acceptance-criteria-fixtures.md) (apply the matching pattern by section).

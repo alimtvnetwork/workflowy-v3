@@ -87,3 +87,10 @@ node scripts/spec-hygiene/00-run-all.mjs
 ---
 
 *Populated 2026-04-26 (polish #3, A-26 wave-1) — replaces scaffold; closes the in-scope rollup stub for the consolidated-guidelines redirect-index folder.*
+
+
+---
+
+## Fixtures
+
+Fixtures for every AT row in this file are covered by the global P2g sweep — see [`../97a-acceptance-criteria-fixtures.md`](../97a-acceptance-criteria-fixtures.md) (apply the matching pattern by section).

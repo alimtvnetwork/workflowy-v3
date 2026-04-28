@@ -63,3 +63,10 @@
 - [Required Files](./03-required-files.md)
 - [Naming Conventions](./02-naming-conventions.md)
 - [Cross-References Guide](./08-cross-references.md)
+
+
+---
+
+## Fixtures
+
+Fixtures for every AT row in this file are covered by the global P2g sweep — see [`../97a-acceptance-criteria-fixtures.md`](../97a-acceptance-criteria-fixtures.md) (apply the matching pattern by section).

@@ -78,3 +78,10 @@ All criteria are testable via code review or static analysis. Each AC maps to ru
 ## Related
 
 - [`00-overview.md`](./00-overview.md) — Parent overview
+
+
+---
+
+## Fixtures
+
+Fixtures for every AT row in this file are covered by the global P2g sweep — see [`../../97a-acceptance-criteria-fixtures.md`](../../97a-acceptance-criteria-fixtures.md) (apply the matching pattern by section).

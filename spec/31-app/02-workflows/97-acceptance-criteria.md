@@ -56,3 +56,10 @@ grep -E "AT-APP-(43|44|45|46|47|48|49|50|51|52|53|54|55|56|57)" spec/31-app/97-a
 ---
 
 *Replaced auto-generated stub 2026-04-26 (polish #5, A-28 wave-1).*
+
+
+---
+
+## Fixtures
+
+Fixtures for every AT row in this file are covered by the global P2g sweep — see [`../../97a-acceptance-criteria-fixtures.md`](../../97a-acceptance-criteria-fixtures.md) (apply the matching pattern by section).
