@@ -68,6 +68,7 @@ prefix `00-` reserves it as the architectural anchor for the whole spec tree.
 | [`0005`](./00-adrs/0005-mirror-as-peer-group.md) | Mirror is a peer-group relation (not an ItemType) | `Accepted` 2026-04-28 | `G-MIRROR-NO-ITEMTYPE`, `G-MIRROR-PEER-COLUMN`, `G-MIRROR-DISSOLVE-SINGLETON`, `G-MIRROR-LWW-TIEBREAK`, `G-MIRROR-CYCLE-PRECHECK` |
 | [`0006`](./00-adrs/0006-migrate-spec-sql-to-singular-ddl.md) | Migrate spec SQL fragments to singular DDL identifiers | `Accepted` 2026-04-28 | `G-04-NO-DDL-PLURALS` (promoted to binary, no grandfathering), `G-04-ALIAS-DDL-CANONICAL` (strengthened) |
 | [`0007`](./00-adrs/0007-strict-typescript-rules.md) | Strict TypeScript coding rules (R1–R7) | `Accepted` 2026-04-28 | `G-02-NO-ANY`, `G-02-MAX-3-PARAMS`, `G-02-NO-NESTED-IF`, `G-02-15-LINE-LOGIC`, `G-02-POSITIVE-GUARDS`, `G-02-MAX-2-BOOL-OPERANDS`, `G-02-CHAIN-MULTILINE` |
+| [`0008`](./00-adrs/0008-unified-item-node-interface.md) | Unified `Node` interface + 250-item per-view limit | `Accepted` 2026-04-28 | `G-31-NODE-INTERFACE-CANONICAL`, `G-31-NODE-ID-PERSISTENT`, `G-31-ROOT-SINGLETON`, `G-31-VIEW-250-CAP`, `G-31-NO-PARALLEL-NODE` |
 
 **When to consult ADRs first** (before editing any spec section):
 
