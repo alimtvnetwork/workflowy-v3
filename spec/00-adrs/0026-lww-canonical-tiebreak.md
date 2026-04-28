@@ -84,6 +84,18 @@ the primary key). If the resolver ever observes equality at all three
 tiers, it MUST raise a hard error to the boundary defined in
 ADR-0017; silent acceptance is forbidden.
 
+**D6 — Wire-boundary canonicalisation (MUST).** All REST/SSE wire
+payloads MUST emit the canonical key **`OwnerId`**. The DDL spelling
+`OwnerUserId` is permitted **only** in: (a) `*.sql` DDL files,
+(b) `07-db-diagram/` ERD/index/migration tables, (c) SQL pseudocode
+inside workflow specs. The PHP serializer layer MUST translate
+`Templates.OwnerUserId`, `Items.OwnerUserId`, etc. → wire `OwnerId` at
+the `EP-*` boundary (alias-bridge per D2 applied at egress, not at the
+storage layer). Endpoint specs (`spec/31-app/06-endpoints/**`),
+fixtures (`04a-fixtures/**`), and SSE frame schemas (ADR-0025) MUST
+NOT expose `OwnerUserId` in any documented `Results` shape, JSON
+example, or TypeScript wire type.
+
 ## Consequences
 
 **Positive**
