@@ -51,6 +51,7 @@
 | 16 | [`16-lovable-folder.md`](./16-lovable-folder.md) | The `.lovable/` Folder Guide | 103 |
 | 17 | [`17-quick-start-and-enforcement.md`](./17-quick-start-and-enforcement.md) | AI Quick Start & Folder Structure Enforcement | 125 |
 | 18 | [`18-ai-contract-template.md`](./18-ai-contract-template.md) | AI Contract Header — Canonical Template | 113 |
+| 19 | [`19-acceptance-criteria-io-table.md`](./19-acceptance-criteria-io-table.md) | Acceptance-Criteria I/O Table — Authoring Guide | 114 |
 
 <!-- AUTO-TOC:END -->
 
