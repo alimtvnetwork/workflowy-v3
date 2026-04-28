@@ -55,13 +55,14 @@ Pick the top 🟦 item on every `next`. Strike (✅) when done; new top item bec
 **Verify:** hygiene; re-score `31-app`.
 **✅ Done 2026-04-28:** Inserted F2 appendices into `01-features/00-overview.md` (sidebar inventory index), `03-layout-structure.md` (Sidebar / Home / Back-Forward / Jump-To / Star / Breadcrumbs), `16-search-ranking.md` (full operator table + Recent / Nested Search), and `10-today-view.md` (Add Date / Date Search / Jump-to-Today / recurring-dates F7 flag). Extended `16-search-ranking.md` instead of creating new `17-search.md` to avoid splitting search semantics. Two F7 reconciliation candidates flagged: `is:mirror` operator semantics + recurring date chips (v1 out-of-scope). Hygiene PASS for F2; only pre-existing `ItemType` enum drift carried over. Projected composite 63 → 65.
 
-### 🟦 F3 — Merge Workflowy feature reference (Part 3: structural ops & mirrors)
+### ✅ F3 — Merge Workflowy feature reference (Part 3: structural ops & mirrors)
 **Targets:** `06-item-context-menu.md`, `09-mirrors.md`, `09b-mirror-peer-group-model.md`, `12-multi-select.md`.
 **Map:** Duplicate, Copy Internal Link, Delete, Show/Hide Completed, Expand All, Collapse All, Move To, Move Here, Mirror, Mirror To, Mirror Here, Detach Mirror, See Mirrors, Internal Links, Backlinks, External Links, Remove Link, Slash Commands.
 **Reconciliation note:** confirm Workflowy "Mirror = peer group" matches `mem://features/mirroring`.
 **Verify:** hygiene; re-score `31-app`.
+**✅ Done 2026-04-28:** Inserted F3 appendices into `06-item-context-menu.md` (full ⋮ inventory + canonical slash-command table + Internal/External/Backlinks), `09-mirrors.md` (Mirror/Mirror-To/Mirror-Here/Detach/See-Mirrors UX with bidirectional rules), `09b-mirror-peer-group-model.md` (Workflowy ↔ peer-group reconciliation map across all 10 AT-MPG-* IDs + vocabulary policy), and `12-multi-select.md` (Bulk Move/Mirror/Delete/Complete/Tag/Export/Templates/Zoom). Three new F7 reconciliation flags: slash→handler binding linter, "mirror copy" forbidden-phrase scan, mirror peer-group founder semantics. Hygiene PASS for F3; only pre-existing `ItemType` enum drift carried over. Projected composite 65 → 67.
 
-### F4 — Merge Workflowy feature reference (Part 4: views, sharing, templates)
+### 🟦 F4 — Merge Workflowy feature reference (Part 4: views, sharing, templates)
 **Targets:** `07-board-view.md`, `08-share-dialog.md`, `13-templates.md`, `11-trash-view.md`.
 **Map:** Fractal Board, Add Card/Column to Board, Move Cards/Columns, Share, Templates (button + `#template`), Export, Export All, Print, Presentation Mode, Fractal Comments.
 **Verify:** hygiene; re-score `31-app`.
