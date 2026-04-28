@@ -32,8 +32,8 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 > Total: **10** acceptance rows, **10** fixture binds, **0** orphan citations.
 <!-- /P24-RUBRIC-SELFCHECK -->
 
-> **Version:** 3.3.0
-> **Updated:** 2026-04-25 (UTC+8)
+> **Version:** 3.4.0
+> **Updated:** 2026-04-28 (UTC+8) — v3.4.0 surfaces `scripts-as-spec/` fixture-as-spec subdirectory in the Related block (follow-up to G-00-ADR-XLINK-SYMMETRY audit-script promotion).
 
 ## AI Contract
 
