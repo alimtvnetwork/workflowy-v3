@@ -98,7 +98,7 @@ A mediocre AI implementer will crash and burn trying to build from this spec, de
 
 **How to fix:** Create `spec/06-seedable-config-architecture/02-features/05-validation-data-seeding/03-complex-item-graph.json` with a 300+ item deeply nested tree.
 
-### 🟡 AUDIT-AI-05 — Sparse Endpoint-to-AT Cross-referencing
+### ✅ AUDIT-AI-05 — Sparse Endpoint-to-AT Cross-referencing — **CLOSED 2026-04-27**
 
 | Field | Value |
 |-------|-------|
