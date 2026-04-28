@@ -1227,7 +1227,7 @@
 
 | File | Title | Version | Status |
 |------|-------|---------|--------|
-| [`18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | Spec Issues | 1.0.0 | — |
+| [`18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | Spec Issues | 1.0.0 | Closed |
 | [`18-spec-issues/01-audit-2026-04-18.md`](./18-spec-issues/01-audit-2026-04-18.md) | Spec Audit — 2026-04-18 | 1.0.0 | — |
 | [`18-spec-issues/03-ai-readiness-audit-2026-04-19.md`](./18-spec-issues/03-ai-readiness-audit-2026-04-19.md) | Spec Tree AI-Development Readiness Audit | — | — |
 | [`18-spec-issues/04-required-files-gate.md`](./18-spec-issues/04-required-files-gate.md) | Spec-Hygiene Gate: Required Files | 1.0.0 | — |

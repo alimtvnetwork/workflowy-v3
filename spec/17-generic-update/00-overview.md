@@ -47,6 +47,36 @@
 ---
 
 
+
+
+## Anti-Patterns
+
+The AI MUST NOT:
+- Implementing an updater without declaring the rollback strategy in the same file (hot-rollback / data-rollback / no-rollback).
+- Mixing schema-version bumps with data migrations in the same updater — split into two updaters chained by version.
+- Skipping the changelog entry — every shipped update MUST add a row to `CHANGELOG.md` matched by the gate.
+
+## Worked Example (skeleton)
+
+A canonical, copy-pasteable shape for this section's primary output:
+
+```php
+<?php
+final class ItemSchemaUpdater implements UpdateContract {
+    public function targetVersion(): string { return '1.4.0'; }
+    public function rollbackStrategy(): RollbackStrategy { return RollbackStrategy::HotRollback; }
+    public function apply(Connection $db): UpdateResult {
+        $db->exec('ALTER TABLE Items ADD COLUMN pinnedAt INTEGER NULL');
+        return UpdateResult::success();
+    }
+    public function rollback(Connection $db): void {
+        $db->exec('ALTER TABLE Items DROP COLUMN pinnedAt');
+    }
+}
+```
+
+*This is a structural skeleton. Real values come from the section's `97-acceptance-criteria.md` row that the AI is implementing.*
+
 <!-- AUTO-TOC:START -->
 
 ## Topics in this Folder
