@@ -86,33 +86,133 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 
 
+## Parameter-Binding Rules
+
+Every PS1 script invoked by the WP plugin MUST follow these rules. The PHP-side `PowerShellRunner` rejects scripts that don't.
+
+| Rule | Required syntax | Why |
+|---|---|---|
+| Every script begins with `[CmdletBinding(SupportsShouldProcess)]`. | `[CmdletBinding(SupportsShouldProcess)]` immediately above `param()`. | Free `-WhatIf` / `-Confirm` / `-Verbose` support. |
+| Mandatory parameters use `[Parameter(Mandatory)]`. | `[Parameter(Mandatory)] [string] $PluginPath` | Missing args fail at parse, not mid-execution. |
+| Parameter types are explicit and minimal. | Allowed: `[string]`, `[int]`, `[bool]`, `[switch]`, `[string[]]`. | Forbids `[object]` / `[hashtable]` (untyped = unsafe). |
+| Defaults are literals, never expressions with side effects. | `$BackupDir = "$env:USERPROFILE\workflowy-backups"` ✓ — `$x = (Get-Date)` ✗ | Side effects at parse time break `-WhatIf`. |
+| `$ErrorActionPreference = 'Stop'` is the **second** statement (after `param()`). | Exact string match. | Otherwise non-terminating errors silently produce exit `0`. |
+| Output is **always** `Write-Output` (or implicit return), never `Write-Host`. | `Write-Output $obj` | `Write-Host` writes to the host, not stdout — PHP captures nothing. |
+| Final line is `exit <code>` from the registry below. | `exit 0` / `exit 2` / `exit 7` | Aligns with `16-generic-cli` exit-code registry. |
+| Strings passed from PHP MUST go through `[Management.Automation.Language.CodeGeneration]::EscapeSingleQuotedStringContent` on the PHP side. | N/A in PS1; enforced by `PowerShellRunner::buildCommand()`. | Prevents PS injection via item content. |
+
+## Argument-Passing Contract (PHP → PS1)
+
+PHP MUST invoke scripts using **named** parameters via `-File`, never `-Command` string concatenation.
+
+| Source | Example call | Status |
+|---|---|---|
+| ✅ Required | `pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File backup.ps1 -PluginPath 'C:\wp\plugin' -BackupDir 'D:\b'` | Safe — args are bound positionally by name. |
+| ❌ Forbidden | `pwsh -Command "& backup.ps1 -PluginPath '$path'"` | String interpolation = injection vector. |
+| ❌ Forbidden | `pwsh -EncodedCommand <base64>` | Hides intent; un-auditable. |
+
+## Output Contract
+
+| Stream | What goes here | Captured by PHP as |
+|---|---|---|
+| stdout | Exactly one JSON document (envelope per `04-database-conventions/06-rest-api-format/`). | `$result['stdout']` — parsed via `json_decode`. |
+| stderr | Human log lines (one per `Write-Verbose` / `Write-Warning`). | `$result['stderr']` — written to plugin log. |
+| exit code | One of the values in the `PS1-10-*` registry below. | `$result['exit']`. |
+
+Mixing JSON and free text on stdout is a hard error caught by `G-10-STDOUT-PURE`.
+
 ## Anti-Patterns
 
 The AI MUST NOT:
-- Using `Write-Host` for script output — use `Write-Output` so values are pipeable; reserve `Write-Host` for log lines.
-- Skipping `[CmdletBinding(SupportsShouldProcess)]` — every mutating script MUST support `-WhatIf` and `-Confirm`.
-- Hardcoding paths — accept a `-PluginPath` parameter so the script works on any install.
 
-## Worked Example (skeleton)
+| # | Anti-pattern | Why it fails | Gate that catches it |
+|---|---|---|---|
+| 1 | Use `Write-Host` for script output | Bypasses stdout — PHP captures nothing, JSON parse fails. | `G-10-NO-WRITE-HOST` (regex). |
+| 2 | Omit `[CmdletBinding(SupportsShouldProcess)]` | No `-WhatIf` support; mutations cannot be dry-run. | `G-10-CMDLET-BINDING` (AST scan). |
+| 3 | Hardcode `C:\Program Files\…` paths | Breaks portable installs; fails on non-default WP layouts. | `G-10-NO-HARDCODE-PATH` (regex). |
+| 4 | Build the command line as a string in PHP and pass via `-Command` | PowerShell injection via unescaped item titles. | `G-10-USE-FILE-FLAG` (PHPStan rule on `PowerShellRunner`). |
+| 5 | Omit `$ErrorActionPreference = 'Stop'` | Non-terminating errors → exit `0` despite failure. | `G-10-ERROR-STOP` (AST: must appear in lines 1–5). |
+| 6 | Print log lines to stdout instead of stderr | Breaks JSON parsing on PHP side. | `G-10-STDOUT-PURE` (test: stdout MUST `JSON.parse`). |
+| 7 | Use `Invoke-Expression` on any input | Arbitrary code execution. | `G-10-NO-IEX` (regex). |
 
-A canonical, copy-pasteable shape for this section's primary output:
+## Worked Example — `backup.ps1` end-to-end
+
+### 1. Script (`wp-plugin/scripts/backup.ps1`)
 
 ```powershell
 [CmdletBinding(SupportsShouldProcess)]
 param(
     [Parameter(Mandatory)] [string] $PluginPath,
-    [string] $BackupDir = "$env:USERPROFILE\workflowy-backups"
+    [string] $BackupDir = "$env:USERPROFILE\workflowy-backups",
+    [switch] $Force
 )
 $ErrorActionPreference = 'Stop'
-$snap = "snap_$(Get-Date -Format 'yyyy-MM-ddTHH-mm-ss')"
-if ($PSCmdlet.ShouldProcess($PluginPath, "Backup to $BackupDir\$snap")) {
-    Copy-Item -Path "$PluginPath\data" -Destination "$BackupDir\$snap" -Recurse
-    Write-Output @{ status = 'ok'; snapshot_id = $snap } | ConvertTo-Json
+
+$snapId = "snap_$(Get-Date -Format 'yyyy-MM-ddTHH-mm-ssZ')"
+$dest   = Join-Path $BackupDir $snapId
+
+if ((Test-Path $dest) -and -not $Force) {
+    Write-Output (@{
+        Status     = 'Failed'
+        Attributes = @{ ExitCode = 7 }
+        Errors     = @(@{ Code = 'PS1-10-07'; Message = "Destination $dest exists; pass -Force to overwrite." })
+    } | ConvertTo-Json -Depth 6 -Compress)
+    exit 7
+}
+
+if ($PSCmdlet.ShouldProcess($PluginPath, "Backup to $dest")) {
+    Copy-Item -Path (Join-Path $PluginPath 'data') -Destination $dest -Recurse
+    $size = (Get-ChildItem $dest -Recurse | Measure-Object -Property Length -Sum).Sum
+    Write-Output (@{
+        Status     = 'Success'
+        Attributes = @{ DurationMs = 0; ExitCode = 0 }
+        Results    = @(@{ SnapshotId = $snapId; Path = $dest; SizeBytes = $size })
+    } | ConvertTo-Json -Depth 6 -Compress)
+    exit 0
 }
 exit 0
 ```
 
-*This is a structural skeleton. Real values come from the section's `97-acceptance-criteria.md` row that the AI is implementing.*
+### 2. PHP invocation (load-bearing — gate `G-10-USE-FILE-FLAG`)
+
+```php
+<?php
+$result = PowerShellRunner::run(
+    script: 'backup.ps1',
+    args:   [
+        '-PluginPath' => WP_PLUGIN_DIR . '/workflowy',
+        '-BackupDir'  => $config->backupDir,
+    ],
+    timeoutSec: 60,
+);
+// $result = ['stdout' => '...json...', 'stderr' => '...', 'exit' => 0]
+$envelope = json_decode($result['stdout'], associative: true, flags: JSON_THROW_ON_ERROR);
+```
+
+### 3. Captured stdout (single JSON document, success)
+
+```json
+{"Status":"Success","Attributes":{"DurationMs":0,"ExitCode":0},"Results":[{"SnapshotId":"snap_2026-04-28T10-15-00Z","Path":"D:\\b\\snap_2026-04-28T10-15-00Z","SizeBytes":4823551}]}
+```
+
+### 4. Captured stdout (conflict, exit `7`)
+
+```json
+{"Status":"Failed","Attributes":{"ExitCode":7},"Errors":[{"Code":"PS1-10-07","Message":"Destination D:\\b\\snap_2026-04-28T10-15-00Z exists; pass -Force to overwrite."}]}
+```
+
+### Error / exit-code registry (this section owns `PS1-10-*`)
+
+| Code | Exit | Meaning |
+|---|---|---|
+| `PS1-10-02` | `2` | Parameter binding failed (missing mandatory / wrong type). |
+| `PS1-10-03` | `3` | Path in `-PluginPath` does not exist. |
+| `PS1-10-05` | `5` | Required external tool (e.g. `sqlite3.exe`) not on PATH. |
+| `PS1-10-07` | `7` | Destination exists, `-Force` not given. |
+| `PS1-10-09` | `9` | Caller pressed Ctrl-C / received `CancelKeyPress`. |
+| `PS1-10-99` | `1` | Unhandled `[System.Exception]` — bug, page on-call. |
+
+*All values are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings.*
 
 <!-- AUTO-TOC:START -->
 
