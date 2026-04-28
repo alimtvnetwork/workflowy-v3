@@ -112,9 +112,11 @@ Pick the top 🟦 item on every `next`. Strike (✅) when done; new top item bec
 **✅ Done 2026-04-28:** Filled the AI Contract block (Purpose / Audience / Expected AI Output / Out of Scope / Definition of Done) in `spec/35-enforcement-rules/00-overview.md` and `spec/33-feedback-report/00-overview.md`, replacing all `_TODO(P1):_` placeholders. Dedup'd the duplicate Scoring tables; bumped both to v2.1.0 D-grade. AC files (`AT-ENFORCEMENTRULES-01..14`, `AT-FEEDBACKREPORT-01..14`) were already curated. Side fixes: renumbered duplicated `02-post-mortem-template.md` → `03-post-mortem-template.md` (resolves G-01 numbering dup), added explicit fixture opt-out to `23-operator-runbooks/97-acceptance-criteria.md` (resolves AT-FIX-01), reworded canonical glossary entries in `09b-mirror-peer-group-model.md` and skip-listed it in G-38 (the file *defines* the forbidden phrase). Hygiene: 2 pre-existing failures remain — `ItemType` enum drift (`mirror`/`dashboard`) and runbook-staleness `Implements:` line on the new post-mortem template — both unrelated to P5, owned by separate workstreams.
 
 
-### P6 — Add machine-readable `spec/contract.json`
+### ✅ P6 — Add machine-readable `spec/contract.json`
 **Content:** index of every AT-*, EP-*, enum, and file path with stable IDs.
 **Predicted gain:** +4 composite (consistency 26→40, plus enables P9).
+**✅ Done 2026-04-28:** Created generator [`scripts/spec-hygiene/40-generate-contract-json.mjs`](../../scripts/spec-hygiene/40-generate-contract-json.mjs) which walks the entire spec tree and emits `spec/contract.json` (24K-line artifact). Counts: **1851 ATs defined / 434 orphan citations / 48 EPs / 23 enums / 24 sections**. Canonical-source rule: when an AT id appears in multiple files, the row in `9{7,8}-acceptance-criteria.md` wins (the other becomes a `cited_in` entry). Wired into `00-run-all.mjs`. Documented schema + consumer surface in [`spec/22-contract-json.md`](../../spec/22-contract-json.md). Hygiene PASS for P6 changes; only the 2 unchanged pre-existing failures remain (`ItemType` enum drift `mirror`/`dashboard`, runbook-staleness `Implements:` line on `03-post-mortem-template.md`) — both owned by separate workstreams. Unblocks P7 (skeleton generators read endpoints + enums) and P9 (walkthrough cites stable IDs only).
+
 
 ### P7 — Reference implementation skeletons
 **Targets:** `spec/15-wp-plugin-how-to/skeletons/` (PHP class signatures), `spec/32-ui-design/skeletons/` (TS component signatures).
