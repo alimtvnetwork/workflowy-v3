@@ -1,7 +1,7 @@
 # Enums Index — Cross-Language Registry
 
-> **Version:** 1.1.0
-> **Updated:** 2026-04-26 — Round-3 AUDIT-03: `ItemType` corrected — swapped `mirror` → `dashboard` (mirrors are `Mirrors` table rows, not turn-into targets); count stays at 12. See [`spec/18-spec-issues/07-audit-03-dashboard-taxonomy.md`](./18-spec-issues/07-audit-03-dashboard-taxonomy.md). Prior: 2026-04-20.
+> **Version:** 1.2.0
+> **Updated:** 2026-04-28 — AUDIT-05 fix: added Universal Rule #10 codifying the `ItemType` lowercase exception (cross-language: TS/PHP/Go/SQLite) with explicit ADR-0015 authority and CI gate `G-15-ITEMTYPE-LOWERCASE`. Resolves direct contradiction between Rule #1 (PascalCase) and the lowercase `ItemType` literals enforced by SQLite `CHECK` constraints. Prior: 2026-04-26 (Round-3 AUDIT-03).
 > **Status:** Active
 > **Purpose:** Single source of truth for every named enum across Go, PHP, and TypeScript. Maps each enum to its language-specific spec, canonical case naming, and usage rules.
 
@@ -22,6 +22,7 @@ These rules apply across **all three languages**. Language-specific extensions a
 | 7 | **Single `variantLabels` table** — dual-table pattern (`variantStrings` + `variantLabels`) is deprecated as of v2.1.0 | Go |
 | 8 | **Protocol-driven enums** (`content_type`, `endpoint`, `header`, `response_key`, `response_message`) are exempt from PascalCase string rule | Go |
 | 9 | **TS shape is `as const` object + derived union** — the `enum` keyword and bare literal string unions are both forbidden for named enums. See §5 for the worked pattern. | TS |
+| 10 | **`ItemType` lowercase exception** — `ItemType` case names are **lowercase** (`bullet`, `h1`, `h2`, `h3`, `paragraph`, `todo`, `numbered`, `board`, `dashboard`, `quote`, `code`, `divider`) — NOT PascalCase. This is a **deliberate, ADR-pinned exception** to Rules #1/#2 because `ItemType` doubles as the canonical DB-column value (`Items.ItemType TEXT NOT NULL CHECK(ItemType IN (...))`) and the API wire value, where mixed-case would force per-language re-mapping at every IO boundary. The TS object key is `ItemType.bullet` (lowercase key, lowercase value). **Authority:** [ADR-0015 — Closed ItemType Taxonomy](./00-adrs/0015-closed-itemtype-taxonomy.md). **No other enum may invoke this exception** without a new superseding ADR. | Go, PHP, TS, SQLite |
 
 See [Glossary](./19-glossary.md) for term definitions.
 
@@ -79,7 +80,7 @@ These enums exist (or should exist) in all three languages with matching case na
 
 | Enum | Cases | Used For |
 |------|-------|----------|
-| `ItemType` | `bullet`, `h1`, `h2`, `h3`, `paragraph`, `todo`, `numbered`, `board`, `dashboard`, `quote`, `code`, `divider` | 12 distinct outliner node types — see [`32-ui-design/02-state-and-data/03-data-types.md`](./32-ui-design/02-state-and-data/03-data-types.md) for the UI taxonomy SSOT. **Note:** `mirror` is intentionally NOT in this list — mirrors are rows in the `Mirrors` table referencing a source `Items` row, not a turn-into target. `dashboard` and `board` are the two values whose effect is **child-rendering** rather than self-rendering. Full reasoning: [`spec/18-spec-issues/07-audit-03-dashboard-taxonomy.md`](./18-spec-issues/07-audit-03-dashboard-taxonomy.md). Lowercase per DB column convention; the heading split (h1/h2/h3) matches what users actually create. |
+| `ItemType` ⚠️ **lowercase exception (Rule #10)** | `bullet`, `h1`, `h2`, `h3`, `paragraph`, `todo`, `numbered`, `board`, `dashboard`, `quote`, `code`, `divider` | 12 distinct outliner node types — see [`32-ui-design/02-state-and-data/03-data-types.md`](./32-ui-design/02-state-and-data/03-data-types.md) for the UI taxonomy SSOT. **Casing:** lowercase across all 4 layers (TS object value, PHP backed-enum value, Go string label, SQLite `CHECK` literal). Authority: [ADR-0015](./00-adrs/0015-closed-itemtype-taxonomy.md) + Rule #10 above. AI-implementer gate **G-15-ITEMTYPE-LOWERCASE**: any PR introducing `"Bullet"`, `ItemType.Bullet`, or PascalCase `ItemType` literal MUST fail CI. **Note:** `mirror` is intentionally NOT in this list — mirrors are rows in the `Mirrors` table referencing a source `Items` row, not a turn-into target. `dashboard` and `board` are the two values whose effect is **child-rendering** rather than self-rendering. Full reasoning: [`spec/18-spec-issues/07-audit-03-dashboard-taxonomy.md`](./18-spec-issues/07-audit-03-dashboard-taxonomy.md). |
 | `SortDirectionType` | `Asc`, `Desc`, `Manual` | Sibling ordering |
 | `ZoomLevelType` | `Root`, `Single`, `Filtered` | View focus mode |
 | `SharePermissionType` | `View`, `Comment`, `Edit`, `Owner` | Share-link role |
