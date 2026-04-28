@@ -218,3 +218,30 @@ For UI rendering decisions (colors, fonts, spacing, animations), the SSOT is [`.
 - [`99-consistency-report.md`](./99-consistency-report.md) — Module health (100/100)
 - [`06-endpoints/00-overview.md`](./06-endpoints/00-overview.md) — REST endpoint wire contracts (35 endpoints, 1:1 mirror of features)
 - [`07-db-diagram/00-overview.md`](./07-db-diagram/00-overview.md) — Visual database design (ERDs, lifecycles, indexes, migrations)
+
+---
+
+## 🔗 Spec↔DDL Alias Bridge (P40 backlink)
+
+This overview—and every page beneath `spec/31-app/`—uses **plural prose aliases**
+(`Items`, `Users`, `Mirrors`, `Templates`, `Favorites`) for readability. These
+**MUST NOT** be treated as DDL identifiers.
+
+| Prose alias used here | Canonical DDL identifier (SSOT) |
+|---|---|
+| Items, item rows, item record | `Item` (singular table) |
+| Users, user accounts | `User` |
+| Mirrors, mirror peer-group | `MirrorGroup` + `MirrorMember` |
+| Templates, snapshot | `Template`, `TemplateBody` |
+| Favorites, starred items | `Item.IsFavorite` (column, not a table) |
+| Content, body text | `Item.Content` |
+| Title, name | `Item.Title` |
+
+→ Canonical mapping & enforcement gates: see
+[`spec/04-database-conventions/00-overview.md`](../04-database-conventions/00-overview.md)
+sections **"Spec↔DDL Alias Bridge"**, **Golden Rule #7**, and gates
+`G-04-ALIAS-DDL-CANONICAL` / `G-04-NO-DDL-PLURALS`.
+
+**Rule of resolution:** if prose here and DDL there appear to disagree,
+**DDL wins**. File an ADR under `spec/00-adrs/` to change DDL; never silently
+re-alias prose to imply a schema change.
