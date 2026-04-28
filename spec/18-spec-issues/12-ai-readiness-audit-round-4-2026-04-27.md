@@ -68,7 +68,7 @@ A mediocre AI implementer will crash and burn trying to build from this spec, de
 
 **How it was fixed:** Authored `spec/31-app/05-conventions/32-sse-php-implementation.md` — header order strictly defined (BEFORE any echo), bounded loop with `gc_collect_cycles()` every 100 events, 30-min wall-clock cutoff, 9-name event whitelist enforced, 5-tab-per-user concurrency cap via WP transients, fallback to long-poll when `set_time_limit(0)` is denied, RSS stability load test (AT-SSE-PHP-10).
 
-### 🟠 AUDIT-AI-03 — Missing Concrete SQLite DDL Schemas
+### ✅ AUDIT-AI-03 — Missing Concrete SQLite DDL Schemas — **CLOSED 2026-04-27**
 
 | Field | Value |
 |-------|-------|
