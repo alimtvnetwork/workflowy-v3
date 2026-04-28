@@ -273,6 +273,88 @@ node scripts/spec-hygiene/00-run-all.mjs
 
 ---
 
+## PHP Serializer Egress Test — `G-26-WIRE-OWNERID-ONLY` enforcement
+
+> **Spec status:** TEST-tier contract (authored 2026-04-28). Closes the runtime half of `G-26-WIRE-OWNERID-ONLY`; the regex half is enforced by the CI grep gate documented in ADR-0026 §D6 + Gate Registry v1.1.1.
+
+### Purpose
+
+ADR-0026 §D6 mandates that every REST/SSE wire payload emit the canonical key `OwnerId` and **never** the DDL spelling `OwnerUserId`. The static gate (regex grep over `spec/31-app/06-endpoints/**`) prevents *spec drift*; this test prevents *runtime drift* — i.e. a future PHP change that bypasses the alias-bridge serializer and emits raw column names.
+
+### Test ID
+
+`AT-WIRE-EGRESS-01` — bound to gate `G-26-WIRE-OWNERID-ONLY` (CI tier).
+
+### Setup contract
+
+| Item | Specification |
+|---|---|
+| Test runner | PHPUnit 10+ (matches WP-plugin tooling already specified in the backend stack). |
+| Fixture DB | An in-memory SQLite database seeded by `spec/31-app/04a-fixtures/generate.py` (the 217-item DDL-mirror artifact). The seed MUST include at least one `Items` row, one `Templates` row, and one `Tags` row — every table whose DDL contains an `OwnerUserId` column. |
+| HTTP layer | `WP_REST_Request` instances dispatched through `rest_do_request()`; no live HTTP server required. |
+| Auth context | A test user with `wp_set_current_user()`; role grants read on every fixture row. |
+
+### Endpoints exercised (MUST cover all)
+
+The test MUST issue one request per endpoint whose response payload, per the corresponding section above, contains an owner-bearing object. As of v1.0.0 this set is exhaustively:
+
+| Endpoint | Response field carrying owner identity |
+|---|---|
+| `EP-ITEMS-LIST` | `Results[].OwnerId` (when populated) |
+| `EP-ITEMS-GET` | `Results[0].OwnerId` |
+| `EP-ITEMS-CREATE` | `Results[0].OwnerId` |
+| `EP-ITEMS-UPDATE` | `Results[0].OwnerId` |
+| `EP-TEMPLATES-LIST` | `Results.Templates[].OwnerId` |
+| `EP-TEMPLATES-GET` | `Results.Template.OwnerId` |
+| `EP-TEMPLATES-CREATE` | `Results.Template.OwnerId` |
+| `EP-TAGS-LIST` | `Results[].OwnerId` (when scope=mine) |
+| `EP-SHARES-LIST` | `Results[].OwnerId` of the shared root |
+| `EP-MIRRORS-LIST` | `Results[].OwnerId` of each peer |
+
+The full enumeration MUST be derived programmatically from `16-endpoint-at-matrix.md` so adding a new endpoint does not silently bypass the test (see "Drift guard" below).
+
+### Assertion contract (MUST all hold)
+
+For each endpoint response `R`:
+
+1. **A1 — Canonical key present.** Every object in `R` that originated from a DB row with an `OwnerUserId` column MUST contain a string field named exactly `OwnerId`. JSON path traversal — recursion required because `Results.Templates[]` is two levels deep.
+2. **A2 — DDL spelling absent.** A recursive scan of the entire JSON-decoded response (`Status`, `Attributes`, `Results`, `Navigation`, `Errors`, `MethodsStack`) MUST find **zero** keys named `OwnerUserId` — case-sensitive exact match. Any hit fails the test with the JSON path of the offending key.
+3. **A3 — Brand shape.** Every emitted `OwnerId` MUST satisfy the ADR-0020 wire regex `^[A-Za-z0-9_-]{8,64}$`. Numeric primary keys (e.g. integer `1` from the DDL-mirror fixture) MUST be rejected — the serializer MUST translate to the opaque-string brand.
+4. **A4 — Round-trip stability.** Re-encoding the response JSON and decoding it MUST yield byte-identical key sets (no PHP `stdClass` → `array` rename surprises that swallow the casing check).
+5. **A5 — Error envelope.** Trigger one `403`/`404` response per endpoint. Assert A1–A4 still hold on the error envelope (the `Errors.Backend[]` stack trace MAY contain the DDL spelling `OwnerUserId` since stack frames quote raw SQL — the assertion MUST scope the recursive scan to *keys only*, not string values).
+
+### Drift guard
+
+A2 alone is insufficient if a future endpoint forgets to expose owner identity. The test MUST therefore **also** assert:
+
+- **A6 — Coverage parity.** The list of endpoints exercised by this test MUST equal `endpoints_with_owner_column(16-endpoint-at-matrix.md)`. The matrix file is the SSOT; the test reads it at boot and fails if any matrix row marked `Owner: yes` lacks a corresponding test case.
+
+### Failure messages (specified)
+
+When an assertion fails, the test MUST emit:
+
+```
+[G-26-WIRE-OWNERID-ONLY] {EndpointId}: forbidden key `OwnerUserId` at JSON path `{path}`.
+Fix: route the {Table}.OwnerUserId column through the alias-bridge serializer
+     (see ADR-0026 §D2 + §D6, Spec↔DDL Alias Bridge in
+     spec/04-database-conventions/00-overview.md).
+```
+
+The literal substring `[G-26-WIRE-OWNERID-ONLY]` is mandatory so CI log scrapers can attribute failures to the gate without parsing test names.
+
+### Why this is TEST-tier, not CI-tier
+
+The static regex check (`rg "\bOwnerUserId\s*[:?,}]" spec/31-app/06-endpoints`) is the CI half — it runs in milliseconds in pre-commit and catches *spec* drift. The PHPUnit suite is the TEST half — it catches *runtime* drift where the serializer produces output the spec doesn't predict. Both halves are required because the two failure modes are independent.
+
+### Cross-references
+
+- ADR-0026 §D6 — wire-boundary canonicalisation rule.
+- Gate Registry v1.1.1 entry `G-26-WIRE-OWNERID-ONLY` (`spec/_GATE-REGISTRY.md`).
+- Spec↔DDL Alias Bridge — `spec/04-database-conventions/00-overview.md`.
+- Endpoint AT matrix (drift-guard SSOT) — `./16-endpoint-at-matrix.md`.
+
+---
+
 ## Related
 
 - [`./16-endpoint-at-matrix.md`](./16-endpoint-at-matrix.md) — Endpoint → AT matrix (SSOT)
@@ -280,7 +362,9 @@ node scripts/spec-hygiene/00-run-all.mjs
 - [`../../04-database-conventions/06-rest-api-format/02-rest-samples.md`](../../04-database-conventions/06-rest-api-format/02-rest-samples.md) — Canonical envelope samples (SSOT)
 - [`../../04-database-conventions/06-rest-api-format/03-envelope-and-flow.md`](../../04-database-conventions/06-rest-api-format/03-envelope-and-flow.md) — Envelope quick reference
 - [`../../04-database-conventions/97a-acceptance-criteria-fixtures.md`](../../04-database-conventions/97a-acceptance-criteria-fixtures.md) — DB-conventions fixtures (P2c)
+- [`../../00-adrs/0026-lww-canonical-tiebreak.md`](../../00-adrs/0026-lww-canonical-tiebreak.md) — D6 wire-boundary rule (this section's authority)
 
 ---
 
 *Created 2026-04-28 — closes P3 (REST envelope JSON fixtures per endpoint).*
+*Amended 2026-04-28 — added PHP serializer egress test spec `AT-WIRE-EGRESS-01` for `G-26-WIRE-OWNERID-ONLY`.*
