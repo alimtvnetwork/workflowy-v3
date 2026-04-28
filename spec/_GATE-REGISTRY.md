@@ -341,6 +341,35 @@
 | `G-26-RADIX-MATRIX-PINNED` | **DOC-NORM** | [`spec/00-overview.md`](./00-overview.md) | [0022](./00-adrs/0022-shadcn-radix-component-base.md) shadcn/ui (CLI-vendored) + Radix sole base; MUI/Mantine/Ant/Headl |
 | `G-26-SHADCN-PATCHES-TRACKED` | **DOC** | [`spec/00-adrs/0022-shadcn-radix-component-base.md`](./00-adrs/0022-shadcn-radix-component-base.md) | - G-26-SHADCN-PATCHES-TRACKED — enforces D4 (any diff |
 
+### ADR-0027
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-27-RING-IS-SQLITE-WAL` | **CI** | [`spec/00-adrs/0027-sse-multiworker-shared-ring-buffer.md`](./00-adrs/0027-sse-multiworker-shared-ring-buffer.md) | Realtime DB connection MUST set `PRAGMA journal_mode = WAL` at boot. CI asserts `PRAGMA journal_mode;` returns `wal`. ADR-0027 §D2. |
+| `G-27-PRODUCER-COMPLETENESS` | **CI** | [`spec/00-adrs/0027-sse-multiworker-shared-ring-buffer.md`](./00-adrs/0027-sse-multiworker-shared-ring-buffer.md) | Every REST handler mutating `Items`/`Mirrors`/`Favorites`/`Trash` MUST `INSERT INTO SseRing` in the same transaction (PHPStan custom rule). ADR-0027 §D3. |
+| `G-27-NO-INPROCESS-PUBSUB` | **CI** | [`spec/00-adrs/0027-sse-multiworker-shared-ring-buffer.md`](./00-adrs/0027-sse-multiworker-shared-ring-buffer.md) | No PHP source may reference `pcntl_fork`, `posix_kill`, `shm_*`, or any in-process pub/sub library (phpcs deny-list). ADR-0027 §D7. |
+| `G-27-NO-EXTERNAL-BROKER` | **CI** | [`spec/00-adrs/0027-sse-multiworker-shared-ring-buffer.md`](./00-adrs/0027-sse-multiworker-shared-ring-buffer.md) | `composer.lock` MUST NOT contain Redis/Memcached/RabbitMQ/NATS/Pusher clients. ADR-0027 §D7. |
+| `G-27-RING-TTL-300S` | **TEST** | [`spec/00-adrs/0027-sse-multiworker-shared-ring-buffer.md`](./00-adrs/0027-sse-multiworker-shared-ring-buffer.md) | Reaper test: insert 1000 rows with `CreatedAtUnix - 301`, run cron, assert `COUNT(*) = 0`. ADR-0027 §D5. |
+| `G-27-COLD-GAP-RESYNC` | **TEST** | [`spec/00-adrs/0027-sse-multiworker-shared-ring-buffer.md`](./00-adrs/0027-sse-multiworker-shared-ring-buffer.md) | Connect with `Last-Event-ID = 1`, oldest ring row `ServerSeq = 5000` → server emits one `event: resync` frame and closes. ADR-0027 §D6. |
+| `G-27-MULTIWORKER-REPLAY` | **TEST** | [`spec/00-adrs/0027-sse-multiworker-shared-ring-buffer.md`](./00-adrs/0027-sse-multiworker-shared-ring-buffer.md) | Integration test with 4 PHP-FPM workers: write 100 events, reconnect from each worker, assert every reconnect sees all 100 in order. ADR-0027 §D7. |
+| `G-27-SERVERSEQ-MONOTONIC` | **DOC-NORM** | [`spec/00-adrs/0027-sse-multiworker-shared-ring-buffer.md`](./00-adrs/0027-sse-multiworker-shared-ring-buffer.md) | `ServerSeq` MUST be strictly monotonically increasing per host; rollback gaps tolerated, reordering not. ADR-0027 §D8. |
+
+### ADR-0028
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-28-LIBRARY-IS-I18NEXT` | **CI** | [`spec/00-adrs/0028-i18n-locale-strategy.md`](./00-adrs/0028-i18n-locale-strategy.md) | `package.json` MUST list `react-i18next` and `i18next`; CI denies `react-intl`/`lingui`/`@formatjs/*` imports or deps. ADR-0028 §D1. |
+| `G-28-NO-HTML-IN-JSON` | **CI** | [`spec/00-adrs/0028-i18n-locale-strategy.md`](./00-adrs/0028-i18n-locale-strategy.md) | Pre-commit hook greps every `locales/**/*.json` for `<` / `>` / `&[a-z]+;` and fails. Use `<Trans>` component for inline markup. ADR-0028 §D9. |
+| `G-28-INTL-EXPLICIT-LOCALE` | **CI** | [`spec/00-adrs/0028-i18n-locale-strategy.md`](./00-adrs/0028-i18n-locale-strategy.md) | ESLint rule: `.toLocaleString()` / `.toLocaleDateString()` calls without an explicit first arg fail. ADR-0028 §D7. |
+| `G-28-TYPED-KEYS` | **CI** | [`spec/00-adrs/0028-i18n-locale-strategy.md`](./00-adrs/0028-i18n-locale-strategy.md) | `tsc --noEmit` MUST fail if `t('foo.bar')` references an unknown key (TS module augmentation per D8). ADR-0028 §D8. |
+| `G-28-MISSING-KEY-LOGGED` | **TEST** | [`spec/00-adrs/0028-i18n-locale-strategy.md`](./00-adrs/0028-i18n-locale-strategy.md) | Test fakes a missing key; assert one entry hits the error logger with category `Frontend`. ADR-0028 §D5. |
+| `G-28-FALLBACK-CHAIN` | **TEST** | [`spec/00-adrs/0028-i18n-locale-strategy.md`](./00-adrs/0028-i18n-locale-strategy.md) | Acceptance test: request `es-MX` → assert `es` then `en` are tried in order; final string is `en` text when `es` lacks the key. ADR-0028 §D5. |
+| `G-28-RTL-DIR-ATTR` | **TEST** | [`spec/00-adrs/0028-i18n-locale-strategy.md`](./00-adrs/0028-i18n-locale-strategy.md) | Switch to `ar`; assert `document.documentElement.dir === 'rtl'` and `lang === 'ar'`. ADR-0028 §D6. |
+| `G-28-DETECTION-ORDER` | **TEST** | [`spec/00-adrs/0028-i18n-locale-strategy.md`](./00-adrs/0028-i18n-locale-strategy.md) | All 5 detection tiers covered by a parameterised test; tier-1 `?locale=` overrides every other tier. ADR-0028 §D3. |
+| `G-28-LOCALE-WRITE-VIA-QUEUE` | **DOC-NORM** | [`spec/00-adrs/0028-i18n-locale-strategy.md`](./00-adrs/0028-i18n-locale-strategy.md) | Locale change MUST go through the offline FIFO queue — no direct `fetch` to `OwnerSettings`. ADR-0028 §D10. |
+| ~~`G-28-NO-PHYSICAL-MARGINS`~~ | **— (superseded)** | [`spec/00-adrs/0028-i18n-locale-strategy.md`](./00-adrs/0028-i18n-locale-strategy.md) | **Superseded by `G-12-LOGICAL-MARGINS-PADDING` + `G-12-LOGICAL-INSET`** (ADR-0012 §D7). Retained for traceability. |
+| ~~`G-28-NO-PHYSICAL-ALIGN`~~ | **— (superseded)** | [`spec/00-adrs/0028-i18n-locale-strategy.md`](./00-adrs/0028-i18n-locale-strategy.md) | **Superseded by `G-12-LOGICAL-TEXT-ALIGN`** (ADR-0012 §D7). Retained for traceability. |
+
 ### ADR-0031
 
 | Gate | Tier | Primary File | Brief |
