@@ -48,6 +48,14 @@ const STUBS = [
     { id: 'AT-MIRROR-07', title: 'Mirror peer-group edge case (P13-stub)' },
     { id: 'AT-BOARD-99', title: 'Board view placeholder (P13-stub)' },
   ]},
+  { file: 'spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md', items: [
+    { id: 'AT-ENV-01', title: 'Response uses universal envelope with PascalCase keys' },
+    { id: 'AT-ENV-02', title: '`Status` is one of `success` / `error` only' },
+  ]},
+  { file: 'spec/31-app/05-conventions/97-acceptance-criteria.md', items: [
+    { id: 'AT-AUTH-01', title: 'Every authenticated route calls Auth::hasRole server-side' },
+    { id: 'AT-RATE-01', title: 'Endpoint respects per-tier rate limits (returns 429 on breach)' },
+  ]},
 ];
 
 // Build relative-path prefixes from the target file's depth so the auto-stamp
