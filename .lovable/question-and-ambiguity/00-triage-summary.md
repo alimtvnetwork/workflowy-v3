@@ -1,4 +1,12 @@
-# Ambiguity Triage Summary — 2026-04-27
+# Ambiguity Triage Summary — 2026-04-27 (updated 2026-04-28)
+
+> **2026-04-28 status update (P37):** All 3 soft-confirm rulings have been promoted into spec text and are now load-bearing — they are no longer "soft":
+> - **#01** (audit dimension scope): footnote-only resolution stands; recorded here.
+> - **#03** (DDL singular vs spec plural): canonicalised in `spec/04-database-conventions/00-overview.md` → "Spec↔DDL Alias Bridge" + Golden Rule #7.
+> - **#17** (Favorites endpoint vs table): canonicalised in `spec/31-app/06-endpoints/03-layout-structure.md` → "Favorites canonical placement" bullet.
+>
+> The hard-confirm (#02, AT-MGP-/AT-MPG-) was previously resolved → `AT-MPG-`.
+
 
 **Reviewer:** AI (mode-review pass following NO-QUESTIONS-MODE expiry)
 **Source:** 48 numbered notes in `.lovable/question-and-ambiguity/` (memory previously said 35 — undercount; actual is 48 because some prefixes were reused: `20`, `23`, `29`, `32`, `35`, `42` each appear twice).
