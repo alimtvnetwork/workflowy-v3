@@ -119,10 +119,12 @@ if __name__ == "__main__":
 
 ## Strictness roadmap
 
-- **Phase 1 (current):** header-presence check + Algorithm fence check.
-- **Phase 2 (planned):** assert Algorithm code block declares a
-  language tag (`python`, `bash`, `javascript`) so future tooling can
-  syntax-check the frozen reference.
+- **Phase 1 (shipped 2026-04-28 morning):** header-presence check + Algorithm fence check.
+- **Phase 2 (current — shipped 2026-04-28 afternoon):** Algorithm code
+  block MUST declare an allowed language tag from
+  `{python, bash, sh, javascript, js, typescript, ts}`. Untagged or
+  disallowed-language fences fail the audit. Allowed-list expansion
+  requires bumping this fixture and re-baselining.
 - **Phase 3 (planned):** assert every fixture cites its gate ID in the
   banner blockquote, and that the gate ID resolves to a row in
   `spec/_GATE-REGISTRY.md`.
@@ -132,9 +134,10 @@ if __name__ == "__main__":
 
 ## Test fixtures
 
-Baseline as of 2026-04-28: 2 fixture files in scope —
-[`xlink-symmetry-audit.md`](./xlink-symmetry-audit.md) and this file.
-Both pass the Phase-1 audit.
+Baseline as of 2026-04-28 (post-Phase-2): 2 fixture files in scope —
+[`xlink-symmetry-audit.md`](./xlink-symmetry-audit.md) (Algorithm
+fence tagged `python`) and this file (Algorithm fence tagged
+`python`). Both pass the Phase-2 audit.
 
 ## See also
 
