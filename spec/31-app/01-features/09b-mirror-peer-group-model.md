@@ -259,7 +259,7 @@ This migration is in [`07-db-diagram/sql/07-migration-v2-mirror-peer-groups.sql`
 | AT-MPG-06 | User opens context menu on a mirror | Clicks "See them" | List of all peers with parent titles opens | `mirror-see-them` |
 | AT-MPG-07 | Peer #2 collapsed, peer #1 expanded | Render | Each peer renders its own collapse state | `mirror-collapse-isolation` |
 | AT-MPG-08 | Canonical peer is deleted | After delete | `MirrorGroup.CanonicalItemId` is re-pointed to next-lowest `ItemId` | `mirror-canonical-promotion` |
-| AT-MPG-09 | Two devices edit canonical content offline | Both reconnect | Later `UpdatedAt` wins; tie → lower `OwnerUserId` wins | `mirror-lww-tiebreak` |
+| AT-MPG-09 | Two devices edit canonical content offline | Both reconnect | Later `ServerTs` wins; tie → lower `OwnerId`; second tie → lower `ItemId` (ADR-0026 §D1) | `mirror-lww-tiebreak` |
 | AT-MPG-10 | User picks own subtree as mirror target | Submit | Block with `ERR_CYCLE` toast | `mirror-cycle-error` |
 
 
