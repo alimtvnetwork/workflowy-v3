@@ -83,8 +83,9 @@ Failure modes:
 - Ledger file missing → empty set (Phase 4 enforces strict symmetry on
   ALL gates, surfacing any new asymmetric pair as a violation).
 - Row malformed (non-numeric leading column, missing backticks) →
-  silently skipped; consider adding a Phase-5 lint that the ledger row
-  count matches the consumed-set size.
+  silently skipped; **enforced by Phase-5 lint
+  [`G-13-LEDGER-ROW-COUNT-PARITY`](./13-cicd-pipeline-workflows/scripts-as-spec/ledger-row-count-lint.md)**
+  which asserts visual-row count equals loader-set size.
 
 ---
 

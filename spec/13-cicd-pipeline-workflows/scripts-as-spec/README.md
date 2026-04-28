@@ -28,6 +28,7 @@ for gate algorithms specifically:
 | [`xlink-symmetry-audit.md`](./xlink-symmetry-audit.md) | `G-00-ADR-XLINK-SYMMETRY` | Frozen — Phase 1 (file-level back-link check) |
 | [`fixture-as-spec-shape-audit.md`](./fixture-as-spec-shape-audit.md) | `G-13-FIXTURE-AS-SPEC-SHAPE` | Frozen — Phase 4 (FINAL): header presence + tagged Algorithm fence + banner cites resolved gate ID + registry row back-links to fixture (with `BACKLINK_EXEMPT` carve-out for authoritative-spec-elsewhere gates). Self-audits this directory. |
 | [`placeholder-token-parity-audit.md`](./placeholder-token-parity-audit.md) | `G-13-PLACEHOLDER-TOKEN-PARITY` | Frozen — Phase 1: set equality between `fixture-as-spec-shape-audit.md`'s `PLACEHOLDER_TOKENS` literal and registry §5.1 "Documentation placeholders" row (drift guard). |
+| [`ledger-row-count-lint.md`](./ledger-row-count-lint.md) | `G-13-LEDGER-ROW-COUNT-PARITY` | Frozen — Phase 5 nibble: visual-row count under `## Exempt gates` in `_LEDGER-G-13-BACKLINK-EXEMPT.md` MUST equal `len(load_backlink_exempt())`; guards against silent row-drop typos. |
 
 > **Test corpus.** Deliberate-fail and minimal-pass fixtures for the audits above live in [`./_TEST-CORPUS/`](./_TEST-CORPUS/README.md). The production scan uses non-recursive `glob("*.md")` and never picks them up; they exist as a frozen rejection-behaviour spec for a future audit-runner CI job.
 

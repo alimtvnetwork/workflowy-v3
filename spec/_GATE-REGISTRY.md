@@ -1,7 +1,7 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.1.4  
-> **Updated:** 2026-04-28 — patch: +1 gate `G-13-PLACEHOLDER-TOKEN-PARITY` (drift guard for §5.1 reconciliation table). Prior: 1.1.3 (§5.1 reconciliation), 1.1.2 (G-26-WIRE-OWNERID-ONLY dual tier), 1.1.1 (added the gate), 1.1.0 (20 new gates from ADR-0012 §D7, ADR-0027, ADR-0028).  
+> **Version:** 1.1.5  
+> **Updated:** 2026-04-28 — patch: +1 gate `G-13-LEDGER-ROW-COUNT-PARITY` (Phase-5 nibble for backlink-exempt ledger). Prior: 1.1.4 (G-13-PLACEHOLDER-TOKEN-PARITY), 1.1.3 (§5.1 reconciliation), 1.1.2 (G-26-WIRE-OWNERID-ONLY dual tier), 1.1.1 (added the gate), 1.1.0 (20 new gates from ADR-0012 §D7, ADR-0027, ADR-0028).  
 > **Status:** Active  
 > **Purpose:** Single registry of every `G-*` compliance gate referenced anywhere in `spec/`. Each gate is classified by enforcement tier so AI implementers can tell at a glance which gates a CI pipeline must mechanically enforce vs. which are normative documentation invariants vs. which require test fixtures.
 
@@ -18,10 +18,10 @@
 
 ## 2. Summary
 
-- **Total named gates:** 291 (was 290 — +1 `G-13-PLACEHOLDER-TOKEN-PARITY`)
+- **Total named gates:** 292 (was 291 — +1 `G-13-LEDGER-ROW-COUNT-PARITY`)
 - **CI:** 24 (one gate `G-26-WIRE-OWNERID-ONLY` is now dual-tier: counted under both CI and TEST)
 - **TEST:** 14 (was 13 — +1 `G-26-WIRE-OWNERID-ONLY` runtime half via `AT-WIRE-EGRESS-01`)
-- **DOC-NORM:** 52 (was 51 — +1 `G-13-PLACEHOLDER-TOKEN-PARITY`)
+- **DOC-NORM:** 53 (was 52 — +1 `G-13-LEDGER-ROW-COUNT-PARITY`)
 - **DOC:** 202 (was 201 — +1 `G-00-ADR-CONSEQUENCES-XLINK` advisory)
 - **Areas covered:** 36 (was 35 — added ADR-0012)
 
@@ -162,6 +162,7 @@
 | `G-13-PUBLISH-NEEDS-SIGN` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | Publish from a job that didn't depend on sign-artifact Unsigned release reaches users. |
 | `G-13-FIXTURE-AS-SPEC-SHAPE` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md`](./13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md) | Phase 4 (FINAL): every file in `scripts-as-spec/` (except `README.md`) MUST contain the 6 required H2 sections; the Algorithm section MUST contain a tagged fenced code block (`python`/`bash`/`sh`/`js`/`ts`); the banner blockquote MUST cite ≥1 gate ID resolving in this registry; AND the cited gate's registry row MUST link back to the fixture file (with `BACKLINK_EXEMPT` carve-out for gates whose authoritative spec lives elsewhere, e.g. `G-00-ADR-XLINK-SYMMETRY`). Closes meta-symmetry loop. |
 | `G-13-PLACEHOLDER-TOKEN-PARITY` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/scripts-as-spec/placeholder-token-parity-audit.md`](./13-cicd-pipeline-workflows/scripts-as-spec/placeholder-token-parity-audit.md) | Drift guard: the `PLACEHOLDER_TOKENS` literal in `fixture-as-spec-shape-audit.md` MUST equal the set of tokens listed in this file's §5.1 "Documentation placeholders" row Silent drift between the two would either falsely flag real gate IDs as placeholders or accept a real gate as a placeholder. |
+| `G-13-LEDGER-ROW-COUNT-PARITY` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/scripts-as-spec/ledger-row-count-lint.md`](./13-cicd-pipeline-workflows/scripts-as-spec/ledger-row-count-lint.md) | Phase-5 nibble: visual-row count under `## Exempt gates` in `_LEDGER-G-13-BACKLINK-EXEMPT.md` MUST equal `len(load_backlink_exempt())` Silent row drop (typo in leading number, missing backtick on gate ID) shrinks the exempt set without any signal — falsely re-flagging carve-out gates as Phase-4 violations. |
 
 ### ADR-0014
 
