@@ -131,6 +131,7 @@ Hypothetical: a future contributor wants a real `Favorite` table.
 | Listing `_TEMPLATE.md` or `_LEDGER-*.md` in the index | These are not ADRs and do not get numbers | `G-00-ADR-NUMBERING` |
 | Updating one index table but not the other | The two surfaces diverge; readers see different statuses | `G-00-ADR-INDEX-FRESH` (planned) |
 | Recording a status flip without the date | Loses audit trail; can't tell when the rule changed | `G-00-ADR-SHAPE` |
+| Citing an external file (e.g. `.lovable/question-and-ambiguity/00-triage-summary.md`) from an ADR's Decision section without a reciprocal back-link from that file to the ADR's anchor (`§Dn`) | Cross-references rot one-way; readers landing on the external file can't tell the soft-confirm has been ratified, risking accidental reversal | `G-00-ADR-XLINK-SYMMETRY` (planned) |
 
 ---
 
@@ -152,6 +153,54 @@ When `G-00-ADR-INDEX-FRESH` ships under
 
 Until then: **this file is the gate**. Reviewers consult it on every PR
 that touches `spec/00-adrs/`.
+
+### `G-00-ADR-XLINK-SYMMETRY` (planned)
+
+**Tier:** DOC-NORM (mechanizable to CI when shipped under
+`spec/13-cicd-pipeline-workflows/`).
+
+**Scope.** Every link from an `Accepted` ADR's Decision section
+(`## Decision` and the `**Dn —**` clauses beneath it) to a non-ADR file
+inside the repo (e.g. `.lovable/question-and-ambiguity/*.md`,
+`spec/04-database-conventions/*.md`, fixture files) MUST have a
+**reciprocal back-link** from the linked anchor (or the file's banner
+section if no anchor is targeted) back to the ADR's `§Dn` clause.
+
+**Algorithm (when mechanized).**
+
+1. For every file `spec/00-adrs/NNNN-*.md` with `Status: Accepted`:
+   a. Parse the `## Decision` section.
+   b. Extract every Markdown link of the form `[text](path#anchor)`
+      whose `path` resolves to a file **outside** `spec/00-adrs/`.
+   c. Record the tuple `(adr_number, dn_clause, target_path,
+      target_anchor)`.
+2. For every recorded target file:
+   a. Read its full text.
+   b. Assert at least one link of the form
+      `[text](…/00-adrs/NNNN-…md#dn-anchor)` or a prose mention
+      `Ratified by ADR-NNNN §Dn` exists at or above the recorded
+      `target_anchor` heading. If `target_anchor` is empty, the
+      back-link MUST appear in the file's first H2 section.
+3. Fail CI listing any one-way link with the recommended fix
+   (`add reciprocal: in <target_path> add ">  Ratified by [ADR-NNNN
+   §Dn](…)"`).
+
+**Exemptions.**
+
+- Links from ADR `## Context` or `## Consequences` sections (these are
+  citations, not load-bearing decisions).
+- Links to spec files in `spec/00-adrs/` (intra-ADR cross-refs are
+  governed by `G-00-ADR-INDEX-FRESH`).
+- Links to external URLs (`https://…`) — not under repo control.
+
+**Reference implementation precedent.** ADR-0024 §§ D1/D2/D3 link to
+`.lovable/question-and-ambiguity/00-triage-summary.md` `### #01/#03/#17`,
+which in turn each carry an inline
+`> ✅ Ratified by [ADR-0024 §Dn](…)` blockquote (added 2026-04-28). This
+is the canonical "symmetric round-trip" shape the gate enforces.
+
+**Until shipped: this file is the gate.** PR reviewers MUST manually
+verify symmetry whenever an ADR Decision section adds an outbound link.
 
 ---
 
