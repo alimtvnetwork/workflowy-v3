@@ -137,6 +137,14 @@
 | `G-11-TRASH-30-DAY-WINDOW` | **DOC** | [`spec/00-adrs/0009-trash-30-day-retention.md`](./00-adrs/0009-trash-30-day-retention.md) | - G-11-TRASH-30-DAY-WINDOW — enforces D2 (cutoff is exactly |
 | `G-11-TRASH-SOFT-DELETE-ONLY` | **DOC** | [`spec/00-adrs/0009-trash-30-day-retention.md`](./00-adrs/0009-trash-30-day-retention.md) | - G-11-TRASH-SOFT-DELETE-ONLY — enforces D1 (no user path issues |
 
+### ADR-0012
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-12-LOGICAL-MARGINS-PADDING` | **CI** | [`spec/00-adrs/0012-tailwind-v4-theme-block-token-registry.md`](./00-adrs/0012-tailwind-v4-theme-block-token-registry.md) | ESLint bans `pl-*`/`pr-*`/`ml-*`/`mr-*`/`border-l-*`/`border-r-*`/`rounded-l-*`/`rounded-r-*` in `src/` outside `src/components/ui/` (grandfathered). Escape hatch: `/* a11y-rtl-exempt: <reason> */` on the preceding line. ADR-0012 §D7. |
+| `G-12-LOGICAL-TEXT-ALIGN` | **CI** | [`spec/00-adrs/0012-tailwind-v4-theme-block-token-registry.md`](./00-adrs/0012-tailwind-v4-theme-block-token-registry.md) | ESLint bans `text-left` / `text-right`; require `text-start` / `text-end`. Same exemption-comment escape hatch. ADR-0012 §D7. |
+| `G-12-LOGICAL-INSET` | **CI** | [`spec/00-adrs/0012-tailwind-v4-theme-block-token-registry.md`](./00-adrs/0012-tailwind-v4-theme-block-token-registry.md) | ESLint bans `left-*` / `right-*` positional utilities; require `start-*` / `end-*`. Same exemption-comment escape hatch. ADR-0012 §D7. |
+
 ### ADR-0013
 
 | Gate | Tier | Primary File | Brief |
