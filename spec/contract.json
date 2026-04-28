@@ -7,7 +7,7 @@
     "acceptance_tests_defined": 1851,
     "acceptance_tests_orphan_citations": 434,
     "endpoints": 48,
-    "enums": 0,
+    "enums": 23,
     "sections": 24
   },
   "sections": [
@@ -470,7 +470,267 @@
       "definedLine": 18
     }
   ],
-  "enums": [],
+  "enums": [
+    {
+      "name": "BackupStrategyType",
+      "definedIn": "spec/20-enums-index.md",
+      "definedLine": 60,
+      "values": [
+        "Full",
+        "Incremental",
+        "Differential"
+      ]
+    },
+    {
+      "name": "CapabilityType",
+      "definedIn": "spec/20-enums-index.md",
+      "definedLine": 66,
+      "values": [
+        "ManageOptions",
+        "EditPosts",
+        "UploadFiles"
+      ]
+    },
+    {
+      "name": "ECast001",
+      "definedIn": "spec/20-enums-index.md",
+      "definedLine": 92,
+      "values": [
+        "CAST_TYPE_ASSERTION_FAILED"
+      ]
+    },
+    {
+      "name": "ECast002",
+      "definedIn": "spec/20-enums-index.md",
+      "definedLine": 93,
+      "values": [
+        "CAST_SLICE_ELEMENT_FAILED"
+      ]
+    },
+    {
+      "name": "ErrorCategoryType",
+      "definedIn": "spec/20-enums-index.md",
+      "definedLine": 52,
+      "values": [
+        "Connection",
+        "RemoteSite",
+        "Resource",
+        "Validation",
+        "Server",
+        "WpRemote",
+        "Scheduler",
+        "Delegated",
+        "Frontend"
+      ]
+    },
+    {
+      "name": "HeaderType",
+      "definedIn": "spec/20-enums-index.md",
+      "definedLine": 106,
+      "values": [
+        "Authorization"
+      ]
+    },
+    {
+      "name": "HttpMethodType",
+      "definedIn": "spec/20-enums-index.md",
+      "definedLine": 51,
+      "values": [
+        "Get",
+        "Post",
+        "Put",
+        "Patch",
+        "Delete",
+        "Options",
+        "Head"
+      ]
+    },
+    {
+      "name": "ItemType",
+      "definedIn": "spec/20-enums-index.md",
+      "definedLine": 82,
+      "values": [
+        "bullet",
+        "h1",
+        "h2",
+        "h3",
+        "paragraph",
+        "todo",
+        "numbered",
+        "board",
+        "dashboard",
+        "quote",
+        "code",
+        "divider"
+      ]
+    },
+    {
+      "name": "LogColumnType",
+      "definedIn": "spec/20-enums-index.md",
+      "definedLine": 75,
+      "values": [
+        "Id",
+        "CreatedAt",
+        "UpdatedAt",
+        "Status",
+        "Sequence"
+      ]
+    },
+    {
+      "name": "LogLevelType",
+      "definedIn": "spec/20-enums-index.md",
+      "definedLine": 50,
+      "values": [
+        "Trace",
+        "Debug",
+        "Info",
+        "Warn",
+        "Error",
+        "Fatal"
+      ]
+    },
+    {
+      "name": "MigrationStatusType",
+      "definedIn": "spec/20-enums-index.md",
+      "definedLine": 76,
+      "values": [
+        "Pending",
+        "Running",
+        "Completed",
+        "Failed",
+        "Rolledback"
+      ]
+    },
+    {
+      "name": "PluginConfigType",
+      "definedIn": "spec/20-enums-index.md",
+      "definedLine": 67,
+      "values": [
+        "Version",
+        "Slug",
+        "MainFile",
+        "TextDomain"
+      ]
+    },
+    {
+      "name": "PostStatusType",
+      "definedIn": "spec/20-enums-index.md",
+      "definedLine": 68,
+      "values": [
+        "Publish",
+        "Draft",
+        "Pending",
+        "Trash",
+        "Future",
+        "Private"
+      ]
+    },
+    {
+      "name": "ResponseKeyType",
+      "definedIn": "spec/20-enums-index.md",
+      "definedLine": 108,
+      "values": [
+        "Status",
+        "Data",
+        "Errors",
+        "Attributes"
+      ]
+    },
+    {
+      "name": "ResponseMessageType",
+      "definedIn": "spec/20-enums-index.md",
+      "definedLine": 109,
+      "values": [
+        "success",
+        "failed",
+        "pending"
+      ]
+    },
+    {
+      "name": "SharePermissionType",
+      "definedIn": "spec/20-enums-index.md",
+      "definedLine": 85,
+      "values": [
+        "View",
+        "Comment",
+        "Edit",
+        "Owner"
+      ]
+    },
+    {
+      "name": "SnapshotScopeType",
+      "definedIn": "spec/20-enums-index.md",
+      "definedLine": 58,
+      "values": [
+        "All",
+        "PerTable",
+        "SingleDb"
+      ]
+    },
+    {
+      "name": "SnapshotTriggerType",
+      "definedIn": "spec/20-enums-index.md",
+      "definedLine": 59,
+      "values": [
+        "Manual",
+        "Scheduled",
+        "Api",
+        "WebhookExternal",
+        "Recovery"
+      ]
+    },
+    {
+      "name": "SortDirectionType",
+      "definedIn": "spec/20-enums-index.md",
+      "definedLine": 83,
+      "values": [
+        "Asc",
+        "Desc",
+        "Manual"
+      ]
+    },
+    {
+      "name": "StatusType",
+      "definedIn": "spec/20-enums-index.md",
+      "definedLine": 49,
+      "values": [
+        "Success",
+        "Failed",
+        "Pending",
+        "Skipped"
+      ]
+    },
+    {
+      "name": "TableType",
+      "definedIn": "spec/20-enums-index.md",
+      "definedLine": 74,
+      "values": [
+        "Transactions",
+        "AgentSites",
+        "SnapshotProgress",
+        "PluginSettings"
+      ]
+    },
+    {
+      "name": "TrashRetentionType",
+      "definedIn": "spec/20-enums-index.md",
+      "definedLine": 86,
+      "values": [
+        "Days30",
+        "Permanent"
+      ]
+    },
+    {
+      "name": "ZoomLevelType",
+      "definedIn": "spec/20-enums-index.md",
+      "definedLine": 84,
+      "values": [
+        "Root",
+        "Single",
+        "Filtered"
+      ]
+    }
+  ],
   "acceptance_tests": [
     {
       "id": "AT-ACTIVITYFEED-01",
