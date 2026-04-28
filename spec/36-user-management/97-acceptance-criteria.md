@@ -63,6 +63,12 @@
 
 ---
 
+## Fixtures
+
+I/O fixtures for `AT-USERMANAGEMENT-01..16` live in [`97a-acceptance-criteria-fixtures.md`](./97a-acceptance-criteria-fixtures.md).
+
+---
+
 ## Verification
 
 ```bash
