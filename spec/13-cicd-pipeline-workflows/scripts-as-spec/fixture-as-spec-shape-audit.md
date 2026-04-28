@@ -2,8 +2,10 @@
 
 > **Type:** Fixture-as-spec (executable specification).
 > **Status:** Frozen 2026-04-28 (**Phase 4** — registry-row back-link
-> symmetry check added; final phase). Reference implementation for
-> [`G-13-FIXTURE-AS-SPEC-SHAPE`](../../_GATE-REGISTRY.md#cicd-pipeline-workflows).
+> symmetry check; v1.0.1 hardening: skip 3 documentation-placeholder
+> tokens + accept strikethrough rows as registered, per
+> [`spec/_GATE-REGISTRY.md` §5.1](../../_GATE-REGISTRY.md)). Reference
+> implementation for [`G-13-FIXTURE-AS-SPEC-SHAPE`](../../_GATE-REGISTRY.md#cicd-pipeline-workflows).
 > **SPEC-ONLY classification:** describes a CI algorithm; no runtime code.
 > Meta-property: this fixture audits other fixtures in the same directory,
 > including itself, AND audits the registry's reciprocal links to them.
