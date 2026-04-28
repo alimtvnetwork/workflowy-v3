@@ -143,6 +143,7 @@ example, or TypeScript wire type.
   no silent equality.
 - `G-26-OWNER-ID-CANONICAL` — `OwnerId` is the canonical brand;
   `OwnerUserId` is an alias-bridge entry, not a column name.
+- `G-26-WIRE-OWNERID-ONLY` — `rg "OwnerUserId" spec/31-app/06-endpoints spec/31-app/04a-fixtures` MUST return zero hits; PHP serializer test asserts every `EP-*` JSON response contains `OwnerId`, never `OwnerUserId`. (Per D6.)
 
 Updates / strengthens (does NOT supersede):
 
