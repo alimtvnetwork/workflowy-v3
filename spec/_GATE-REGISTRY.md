@@ -1,7 +1,7 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.0.0  
-> **Updated:** 2026-04-28 — P76 / AUDIT-08 fix: first complete inventory.  
+> **Version:** 1.1.0  
+> **Updated:** 2026-04-28 — added 20 new gates from ADR-0012 §D7 amendment (logical Tailwind utilities), ADR-0027 (SSE multi-worker shared ring buffer), and ADR-0028 (i18n locale strategy). Two `G-28-*` gates struck through (superseded by canonical `G-12-LOGICAL-*` per ADR-0012 §D7). Added new area: ADR-0012. Prior: 1.0.0 (2026-04-28 P76 first inventory).  
 > **Status:** Active  
 > **Purpose:** Single registry of every `G-*` compliance gate referenced anywhere in `spec/`. Each gate is classified by enforcement tier so AI implementers can tell at a glance which gates a CI pipeline must mechanically enforce vs. which are normative documentation invariants vs. which require test fixtures.
 
@@ -18,14 +18,19 @@
 
 ## 2. Summary
 
-- **Total named gates:** 266
-- **CI:** 10
-- **TEST:** 8
-- **DOC-NORM:** 48
-- **DOC:** 200
-- **Areas covered:** 35 (one per ADR or domain prefix)
+- **Total named gates:** 286 (was 266 — 20 added; 2 marked superseded but retained for traceability)
+- **CI:** 23 (was 10 — +13 from ADR-0012(3), 0027(4), 0028(6))
+- **TEST:** 13 (was 8 — +5 from ADR-0027(3), 0028(4); −2 superseded)
+- **DOC-NORM:** 49 (was 48 — +1 net)
+- **DOC:** 201 (was 200 — +1 from ADR-0027 monotonic)
+- **Areas covered:** 36 (was 35 — added ADR-0012)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
+
+> 🆕 **2026-04-28 batch (20 new gates):**
+> • **ADR-0012 §D7** logical-utility mandate: `G-12-LOGICAL-MARGINS-PADDING` / `G-12-LOGICAL-TEXT-ALIGN` / `G-12-LOGICAL-INSET` (all CI).
+> • **ADR-0027** SSE shared ring: `G-27-RING-IS-SQLITE-WAL` / `G-27-PRODUCER-COMPLETENESS` / `G-27-NO-INPROCESS-PUBSUB` / `G-27-NO-EXTERNAL-BROKER` (CI), `G-27-RING-TTL-300S` / `G-27-COLD-GAP-RESYNC` / `G-27-MULTIWORKER-REPLAY` (TEST), `G-27-SERVERSEQ-MONOTONIC` (DOC-NORM).
+> • **ADR-0028** i18n: `G-28-LIBRARY-IS-I18NEXT` / `G-28-NO-HTML-IN-JSON` / `G-28-INTL-EXPLICIT-LOCALE` / `G-28-TYPED-KEYS` (CI), `G-28-MISSING-KEY-LOGGED` / `G-28-FALLBACK-CHAIN` / `G-28-RTL-DIR-ATTR` / `G-28-DETECTION-ORDER` (TEST), `G-28-LOCALE-WRITE-VIA-QUEUE` (DOC-NORM). Plus 2 superseded: `G-28-NO-PHYSICAL-MARGINS` and `G-28-NO-PHYSICAL-ALIGN` (folded into the canonical `G-12-LOGICAL-*` gates).
 
 ---
 
@@ -131,6 +136,14 @@
 | `G-11-REAPER-DAILY-03-UTC` | **DOC** | [`spec/00-adrs/0009-trash-30-day-retention.md`](./00-adrs/0009-trash-30-day-retention.md) | - G-11-REAPER-DAILY-03-UTC — enforces D3 (single deterministic |
 | `G-11-TRASH-30-DAY-WINDOW` | **DOC** | [`spec/00-adrs/0009-trash-30-day-retention.md`](./00-adrs/0009-trash-30-day-retention.md) | - G-11-TRASH-30-DAY-WINDOW — enforces D2 (cutoff is exactly |
 | `G-11-TRASH-SOFT-DELETE-ONLY` | **DOC** | [`spec/00-adrs/0009-trash-30-day-retention.md`](./00-adrs/0009-trash-30-day-retention.md) | - G-11-TRASH-SOFT-DELETE-ONLY — enforces D1 (no user path issues |
+
+### ADR-0012
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-12-LOGICAL-MARGINS-PADDING` | **CI** | [`spec/00-adrs/0012-tailwind-v4-theme-block-token-registry.md`](./00-adrs/0012-tailwind-v4-theme-block-token-registry.md) | ESLint bans `pl-*`/`pr-*`/`ml-*`/`mr-*`/`border-l-*`/`border-r-*`/`rounded-l-*`/`rounded-r-*` in `src/` outside `src/components/ui/` (grandfathered). Escape hatch: `/* a11y-rtl-exempt: <reason> */` on the preceding line. ADR-0012 §D7. |
+| `G-12-LOGICAL-TEXT-ALIGN` | **CI** | [`spec/00-adrs/0012-tailwind-v4-theme-block-token-registry.md`](./00-adrs/0012-tailwind-v4-theme-block-token-registry.md) | ESLint bans `text-left` / `text-right`; require `text-start` / `text-end`. Same exemption-comment escape hatch. ADR-0012 §D7. |
+| `G-12-LOGICAL-INSET` | **CI** | [`spec/00-adrs/0012-tailwind-v4-theme-block-token-registry.md`](./00-adrs/0012-tailwind-v4-theme-block-token-registry.md) | ESLint bans `left-*` / `right-*` positional utilities; require `start-*` / `end-*`. Same exemption-comment escape hatch. ADR-0012 §D7. |
 
 ### ADR-0013
 
@@ -328,6 +341,35 @@
 | `G-26-RADIX-MATRIX-PINNED` | **DOC-NORM** | [`spec/00-overview.md`](./00-overview.md) | [0022](./00-adrs/0022-shadcn-radix-component-base.md) shadcn/ui (CLI-vendored) + Radix sole base; MUI/Mantine/Ant/Headl |
 | `G-26-SHADCN-PATCHES-TRACKED` | **DOC** | [`spec/00-adrs/0022-shadcn-radix-component-base.md`](./00-adrs/0022-shadcn-radix-component-base.md) | - G-26-SHADCN-PATCHES-TRACKED — enforces D4 (any diff |
 
+### ADR-0027
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-27-RING-IS-SQLITE-WAL` | **CI** | [`spec/00-adrs/0027-sse-multiworker-shared-ring-buffer.md`](./00-adrs/0027-sse-multiworker-shared-ring-buffer.md) | Realtime DB connection MUST set `PRAGMA journal_mode = WAL` at boot. CI asserts `PRAGMA journal_mode;` returns `wal`. ADR-0027 §D2. |
+| `G-27-PRODUCER-COMPLETENESS` | **CI** | [`spec/00-adrs/0027-sse-multiworker-shared-ring-buffer.md`](./00-adrs/0027-sse-multiworker-shared-ring-buffer.md) | Every REST handler mutating `Items`/`Mirrors`/`Favorites`/`Trash` MUST `INSERT INTO SseRing` in the same transaction (PHPStan custom rule). ADR-0027 §D3. |
+| `G-27-NO-INPROCESS-PUBSUB` | **CI** | [`spec/00-adrs/0027-sse-multiworker-shared-ring-buffer.md`](./00-adrs/0027-sse-multiworker-shared-ring-buffer.md) | No PHP source may reference `pcntl_fork`, `posix_kill`, `shm_*`, or any in-process pub/sub library (phpcs deny-list). ADR-0027 §D7. |
+| `G-27-NO-EXTERNAL-BROKER` | **CI** | [`spec/00-adrs/0027-sse-multiworker-shared-ring-buffer.md`](./00-adrs/0027-sse-multiworker-shared-ring-buffer.md) | `composer.lock` MUST NOT contain Redis/Memcached/RabbitMQ/NATS/Pusher clients. ADR-0027 §D7. |
+| `G-27-RING-TTL-300S` | **TEST** | [`spec/00-adrs/0027-sse-multiworker-shared-ring-buffer.md`](./00-adrs/0027-sse-multiworker-shared-ring-buffer.md) | Reaper test: insert 1000 rows with `CreatedAtUnix - 301`, run cron, assert `COUNT(*) = 0`. ADR-0027 §D5. |
+| `G-27-COLD-GAP-RESYNC` | **TEST** | [`spec/00-adrs/0027-sse-multiworker-shared-ring-buffer.md`](./00-adrs/0027-sse-multiworker-shared-ring-buffer.md) | Connect with `Last-Event-ID = 1`, oldest ring row `ServerSeq = 5000` → server emits one `event: resync` frame and closes. ADR-0027 §D6. |
+| `G-27-MULTIWORKER-REPLAY` | **TEST** | [`spec/00-adrs/0027-sse-multiworker-shared-ring-buffer.md`](./00-adrs/0027-sse-multiworker-shared-ring-buffer.md) | Integration test with 4 PHP-FPM workers: write 100 events, reconnect from each worker, assert every reconnect sees all 100 in order. ADR-0027 §D7. |
+| `G-27-SERVERSEQ-MONOTONIC` | **DOC-NORM** | [`spec/00-adrs/0027-sse-multiworker-shared-ring-buffer.md`](./00-adrs/0027-sse-multiworker-shared-ring-buffer.md) | `ServerSeq` MUST be strictly monotonically increasing per host; rollback gaps tolerated, reordering not. ADR-0027 §D8. |
+
+### ADR-0028
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-28-LIBRARY-IS-I18NEXT` | **CI** | [`spec/00-adrs/0028-i18n-locale-strategy.md`](./00-adrs/0028-i18n-locale-strategy.md) | `package.json` MUST list `react-i18next` and `i18next`; CI denies `react-intl`/`lingui`/`@formatjs/*` imports or deps. ADR-0028 §D1. |
+| `G-28-NO-HTML-IN-JSON` | **CI** | [`spec/00-adrs/0028-i18n-locale-strategy.md`](./00-adrs/0028-i18n-locale-strategy.md) | Pre-commit hook greps every `locales/**/*.json` for `<` / `>` / `&[a-z]+;` and fails. Use `<Trans>` component for inline markup. ADR-0028 §D9. |
+| `G-28-INTL-EXPLICIT-LOCALE` | **CI** | [`spec/00-adrs/0028-i18n-locale-strategy.md`](./00-adrs/0028-i18n-locale-strategy.md) | ESLint rule: `.toLocaleString()` / `.toLocaleDateString()` calls without an explicit first arg fail. ADR-0028 §D7. |
+| `G-28-TYPED-KEYS` | **CI** | [`spec/00-adrs/0028-i18n-locale-strategy.md`](./00-adrs/0028-i18n-locale-strategy.md) | `tsc --noEmit` MUST fail if `t('foo.bar')` references an unknown key (TS module augmentation per D8). ADR-0028 §D8. |
+| `G-28-MISSING-KEY-LOGGED` | **TEST** | [`spec/00-adrs/0028-i18n-locale-strategy.md`](./00-adrs/0028-i18n-locale-strategy.md) | Test fakes a missing key; assert one entry hits the error logger with category `Frontend`. ADR-0028 §D5. |
+| `G-28-FALLBACK-CHAIN` | **TEST** | [`spec/00-adrs/0028-i18n-locale-strategy.md`](./00-adrs/0028-i18n-locale-strategy.md) | Acceptance test: request `es-MX` → assert `es` then `en` are tried in order; final string is `en` text when `es` lacks the key. ADR-0028 §D5. |
+| `G-28-RTL-DIR-ATTR` | **TEST** | [`spec/00-adrs/0028-i18n-locale-strategy.md`](./00-adrs/0028-i18n-locale-strategy.md) | Switch to `ar`; assert `document.documentElement.dir === 'rtl'` and `lang === 'ar'`. ADR-0028 §D6. |
+| `G-28-DETECTION-ORDER` | **TEST** | [`spec/00-adrs/0028-i18n-locale-strategy.md`](./00-adrs/0028-i18n-locale-strategy.md) | All 5 detection tiers covered by a parameterised test; tier-1 `?locale=` overrides every other tier. ADR-0028 §D3. |
+| `G-28-LOCALE-WRITE-VIA-QUEUE` | **DOC-NORM** | [`spec/00-adrs/0028-i18n-locale-strategy.md`](./00-adrs/0028-i18n-locale-strategy.md) | Locale change MUST go through the offline FIFO queue — no direct `fetch` to `OwnerSettings`. ADR-0028 §D10. |
+| ~~`G-28-NO-PHYSICAL-MARGINS`~~ | **— (superseded)** | [`spec/00-adrs/0028-i18n-locale-strategy.md`](./00-adrs/0028-i18n-locale-strategy.md) | **Superseded by `G-12-LOGICAL-MARGINS-PADDING` + `G-12-LOGICAL-INSET`** (ADR-0012 §D7). Retained for traceability. |
+| ~~`G-28-NO-PHYSICAL-ALIGN`~~ | **— (superseded)** | [`spec/00-adrs/0028-i18n-locale-strategy.md`](./00-adrs/0028-i18n-locale-strategy.md) | **Superseded by `G-12-LOGICAL-TEXT-ALIGN`** (ADR-0012 §D7). Retained for traceability. |
+
 ### ADR-0031
 
 | Gate | Tier | Primary File | Brief |
@@ -487,5 +529,6 @@
 ## 5. Known Gaps
 
 - 44 bare `G-NN` references in spec are section pointers, not real gates — excluded from this registry.
-- Heuristic classifier may mis-tier some gates; manual review pending per Area.
-- ~63 placeholder `97-acceptance-criteria.md` files (AUDIT-03) still empty — their TEST-tier gates show file path but lack runnable fixtures.
+- Heuristic classifier may mis-tier some gates; the 200 DOC-tier rows from the v1.0.0 inventory are still **unaudited** — many likely belong in CI/TEST tiers (e.g. `G-26-LWW-CANONICAL-COMPARATOR` is currently DOC but is enforced in practice). Per-area manual sweep is the largest remaining quality task.
+- ~63 placeholder `97-acceptance-criteria.md` files (AUDIT-03) still empty — their TEST-tier gates show file path but lack runnable fixtures. **As of 2026-04-28 this also affects the 7 new TEST-tier gates from ADR-0027 / 0028** (`G-27-RING-TTL-300S`, `G-27-COLD-GAP-RESYNC`, `G-27-MULTIWORKER-REPLAY`, `G-28-MISSING-KEY-LOGGED`, `G-28-FALLBACK-CHAIN`, `G-28-RTL-DIR-ATTR`, `G-28-DETECTION-ORDER`) — they are well-specified but won't run until the AC backfill lands.
+- Two `G-28-*` rows are intentionally retained as **superseded** (strikethrough) — never delete history per §4 rule 3.
