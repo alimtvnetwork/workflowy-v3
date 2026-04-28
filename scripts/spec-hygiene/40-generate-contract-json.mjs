@@ -50,11 +50,15 @@ function walk(dir, visit) {
 }
 
 function recordAT(id, definition, file, line) {
-  if (acceptanceTests.has(id)) {
-    const prev = acceptanceTests.get(id);
-    if (prev.definedIn !== file) {
-      collisions.push(`AT collision: ${id} defined in ${prev.definedIn}:${prev.definedLine} AND ${file}:${line}`);
-    }
+  const prev = acceptanceTests.get(id);
+  if (prev && prev.definedIn && prev.definedIn !== file) {
+    collisions.push(`AT collision: ${id} defined in ${prev.definedIn}:${prev.definedLine} AND ${file}:${line}`);
+    return;
+  }
+  if (prev) {
+    prev.definition = definition;
+    prev.definedIn = file;
+    prev.definedLine = line;
     return;
   }
   acceptanceTests.set(id, { id, definition, definedIn: file, definedLine: line, citedIn: [] });
