@@ -1,7 +1,7 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.1.0  
-> **Updated:** 2026-04-28 — added 20 new gates from ADR-0012 §D7 amendment (logical Tailwind utilities), ADR-0027 (SSE multi-worker shared ring buffer), and ADR-0028 (i18n locale strategy). Two `G-28-*` gates struck through (superseded by canonical `G-12-LOGICAL-*` per ADR-0012 §D7). Added new area: ADR-0012. Prior: 1.0.0 (2026-04-28 P76 first inventory).  
+> **Version:** 1.1.1  
+> **Updated:** 2026-04-28 — patch: added `G-26-WIRE-OWNERID-ONLY` (CI) from ADR-0026 §D6 amendment (wire-boundary `OwnerId`-only enforcement; `OwnerUserId` is DDL-only). Prior: 1.1.0 (2026-04-28 — 20 new gates from ADR-0012 §D7, ADR-0027, ADR-0028).  
 > **Status:** Active  
 > **Purpose:** Single registry of every `G-*` compliance gate referenced anywhere in `spec/`. Each gate is classified by enforcement tier so AI implementers can tell at a glance which gates a CI pipeline must mechanically enforce vs. which are normative documentation invariants vs. which require test fixtures.
 
@@ -18,9 +18,9 @@
 
 ## 2. Summary
 
-- **Total named gates:** 286 (was 266 — 20 added; 2 marked superseded but retained for traceability)
-- **CI:** 23 (was 10 — +13 from ADR-0012(3), 0027(4), 0028(6))
-- **TEST:** 13 (was 8 — +5 from ADR-0027(3), 0028(4); −2 superseded)
+- **Total named gates:** 287 (was 286 — +1 `G-26-WIRE-OWNERID-ONLY`)
+- **CI:** 24 (was 23 — +1)
+- **TEST:** 13 (unchanged)
 - **DOC-NORM:** 49 (was 48 — +1 net)
 - **DOC:** 201 (was 200 — +1 from ADR-0027 monotonic)
 - **Areas covered:** 36 (was 35 — added ADR-0012)
@@ -340,6 +340,7 @@
 | `G-26-OWNER-ID-CANONICAL` | **DOC** | [`spec/00-adrs/0026-lww-canonical-tiebreak.md`](./00-adrs/0026-lww-canonical-tiebreak.md) | - G-26-OWNER-ID-CANONICAL — OwnerId is the canonical brand; |
 | `G-26-RADIX-MATRIX-PINNED` | **DOC-NORM** | [`spec/00-overview.md`](./00-overview.md) | [0022](./00-adrs/0022-shadcn-radix-component-base.md) shadcn/ui (CLI-vendored) + Radix sole base; MUI/Mantine/Ant/Headl |
 | `G-26-SHADCN-PATCHES-TRACKED` | **DOC** | [`spec/00-adrs/0022-shadcn-radix-component-base.md`](./00-adrs/0022-shadcn-radix-component-base.md) | - G-26-SHADCN-PATCHES-TRACKED — enforces D4 (any diff |
+| `G-26-WIRE-OWNERID-ONLY` | **CI** | [`spec/00-adrs/0026-lww-canonical-tiebreak.md`](./00-adrs/0026-lww-canonical-tiebreak.md) | rg "OwnerUserId" spec/31-app/06-endpoints → 0; fixtures whitelisted to 3 DDL-mirror artifacts; PHP serializer test asserts wire `OwnerId` (D6) |
 
 ### ADR-0027
 

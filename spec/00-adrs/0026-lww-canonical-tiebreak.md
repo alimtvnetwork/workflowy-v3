@@ -84,6 +84,22 @@ the primary key). If the resolver ever observes equality at all three
 tiers, it MUST raise a hard error to the boundary defined in
 ADR-0017; silent acceptance is forbidden.
 
+**D6 — Wire-boundary canonicalisation (MUST).** All REST/SSE wire
+payloads MUST emit the canonical key **`OwnerId`**. The DDL spelling
+`OwnerUserId` is permitted **only** in: (a) `*.sql` DDL files,
+(b) `07-db-diagram/` ERD/index/migration tables, (c) SQL pseudocode
+inside workflow specs. The PHP serializer layer MUST translate
+`Templates.OwnerUserId`, `Items.OwnerUserId`, etc. → wire `OwnerId` at
+the `EP-*` boundary (alias-bridge per D2 applied at egress, not at the
+storage layer). Endpoint specs (`spec/31-app/06-endpoints/**`),
+fixtures (`04a-fixtures/**`), and SSE frame schemas (ADR-0025) MUST
+NOT expose `OwnerUserId` in any documented `Results` shape, JSON
+example, or TypeScript wire type. **Exception:** fixtures explicitly
+labelled "matches `Item` SQL row" (i.e. storage-layer fixtures, not
+wire fixtures) MAY retain `OwnerUserId` since they document the DDL
+column directly; such fixtures MUST carry an inline comment
+`// DDL-mirror fixture; wire egress translates to OwnerId per ADR-0026 D6`.
+
 ## Consequences
 
 **Positive**
@@ -131,6 +147,7 @@ ADR-0017; silent acceptance is forbidden.
   no silent equality.
 - `G-26-OWNER-ID-CANONICAL` — `OwnerId` is the canonical brand;
   `OwnerUserId` is an alias-bridge entry, not a column name.
+- `G-26-WIRE-OWNERID-ONLY` — In `spec/31-app/06-endpoints/**`, no `Results` shape, JSON example, or TypeScript wire type may declare an `OwnerUserId` **field** (regex: `\bOwnerUserId\s*[:?,}]` MUST match zero lines; bare prose mentions of `Templates.OwnerUserId` qualifying the DDL column are permitted). In `spec/31-app/04a-fixtures/**`, `OwnerUserId` is permitted **only** in three explicitly-DDL-mirror artifacts: `00-overview.md` (the documented `Item` SQL row shape), `generate.py` (the generator), and `item-tree-217.json` (its output) — all derived from the App DB `Item` table per `03-app-db-erd.md` and representing the storage layer, not the wire. PHP serializer test asserts every `EP-*` JSON response contains `OwnerId`, never `OwnerUserId`. (Per D6.)
 
 Updates / strengthens (does NOT supersede):
 

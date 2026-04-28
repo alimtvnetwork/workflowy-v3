@@ -57,7 +57,7 @@ The Round-4 audit asked for "**1 MB+ nested item-tree fixture**". At the realist
 {
   "ItemId": 42,                              // PK
   "ParentItemId": 7,                         // null = root
-  "OwnerUserId": 1,                          // logical FK to Root.User.UserId
+  "OwnerUserId": 1,                          // DDL-mirror fixture; wire egress translates to OwnerId per ADR-0026 D6
   "ItemTypeId": 8,                           // FK -> ItemType
   "ItemTypeName": "Todo",                    // FIXTURE-ONLY: convenience denorm
   "Content": "Migrate the activity-log reaper to a WP-cron hook",
