@@ -75,3 +75,10 @@
 - Output: `1364 files across 25 folders`.
 - `git status` on `spec/spec-index.md`: clean (no diff).
 - Conclusion: index was already in sync; AT-MPG- rename pass and prior renames were captured at the time they were made.
+
+## Task #60 — 2026-04-28 — Full hygiene-suite confirmation
+- Ran `node scripts/spec-hygiene/00-run-all.mjs` (all 26 gates).
+- Result: 25 GREEN, 1 RED.
+- Sole failure: **G-15 enum-sync** — `ItemType` drift (`mirror` still present in `src/types/index.ts:43`, removed from spec SSOT per mirror peer-group decision).
+- Confirms: G-15 is the only blocker, and it requires `exit spec-only` to fix (Code-1).
+- No other regressions across G-30/G-31/G-32/G-33/G-34/G-35/G-36/G-37, link checker, header normaliser, or AT coverage.
