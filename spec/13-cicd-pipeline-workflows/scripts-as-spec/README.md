@@ -1,0 +1,49 @@
+# `scripts-as-spec/` — Executable specifications for CI gates
+
+> **Purpose.** When a gate is mechanizable but not yet shipped as a CI
+> workflow under `spec/13-cicd-pipeline-workflows/`, its **algorithm
+> MUST be frozen here** as a fixture-as-spec. The frozen markdown is
+> the load-bearing source: any later CI implementation is a derivative
+> and must produce identical input → output behaviour.
+
+## Why this directory exists
+
+The project's spec/ tree allows fixtures-as-spec (data + algorithms
+described declaratively). `scripts-as-spec/` is the narrower convention
+for gate algorithms specifically:
+
+- A gate is defined in its source ADR or in
+  `spec/00-adrs/_INDEX_AUTOMATION.md`.
+- Its **algorithm** (parsing, traversal, comparison) is frozen here.
+- Its **acceptance baseline** is captured in a sibling
+  `_LEDGER-*.md` next to the gate definition.
+- Its **CI workflow** (when shipped) lives elsewhere under
+  `spec/13-cicd-pipeline-workflows/` and MUST cite this fixture as
+  its specification.
+
+## Contents (2026-04-28)
+
+| File | Gate | Status |
+|------|------|--------|
+| [`xlink-symmetry-audit.md`](./xlink-symmetry-audit.md) | `G-00-ADR-XLINK-SYMMETRY` | Frozen — Phase 1 (file-level back-link check) |
+
+## Adding a new fixture-as-spec script
+
+1. The gate MUST already exist in `spec/_GATE-REGISTRY.md`.
+2. Create `<gate-slug>.md` in this directory with sections:
+   - Purpose (1 paragraph)
+   - Inputs / Outputs / Exit codes
+   - **Algorithm** — fenced code block, frozen reference implementation
+   - Exemptions table (canonical list)
+   - Test fixtures (link to baseline ledger)
+   - Strictness roadmap (if Phase-N promotion is anticipated)
+3. Append a row to the table above.
+4. Cross-link from the gate's defining file (per
+   `G-00-ADR-XLINK-SYMMETRY` itself).
+
+## SPEC-ONLY classification
+
+Files here describe algorithms; they MUST NOT be `import`ed or `exec`-ed
+by runtime code. Promotion to runtime requires the user trigger phrase
+`exit spec-only` or `go for implementation` per the project's
+SPEC-ONLY MODE invariant.
