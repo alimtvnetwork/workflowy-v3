@@ -4,6 +4,26 @@
 > **Updated:** 2026-04-26 (UTC+8) — collapsed duplicate Scoring block; added disambiguation vs `02-coding-guidelines/consolidated-review-guide/` (closes F-AUD30-09).
 > **Status:** Active
 
+## AI Contract
+
+**Purpose** — _TODO(P1): one sentence describing what `Consolidated Guidelines — Redirect Index` solves._
+
+**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+
+**Expected AI Output** —
+- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+
+**Out of Scope** —
+- _TODO(P1): bullet adjacent concerns and link to owning section._
+
+**Definition of Done** —
+- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
+- `node scripts/spec-hygiene/00-run-all.mjs` exits 0
+
+> Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
+
+---
+
 > ⚠️ **NOT the same as** [`spec/02-coding-guidelines/consolidated-review-guide/`](../02-coding-guidelines/consolidated-review-guide/00-overview.md).
 > - **This folder** (`spec/12-consolidated-guidelines/`) is a **redirect index** — every file is a 56-line stub that points to the canonical source folder. **No rules live here.**
 > - **The other** (`spec/02-coding-guidelines/consolidated-review-guide/`) is a **PR-review checklist** scoped to coding rules only (function size, naming, type safety, OWASP, etc.). It IS authoritative content.
