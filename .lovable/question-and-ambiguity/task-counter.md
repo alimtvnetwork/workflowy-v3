@@ -1,8 +1,10 @@
 # Task Counter — No-Questions Mode
 
-**Status:** 🔴 EXPIRED — review .lovable/question-and-ambiguity/ folder before next batch
+**Status:** 🔴 EXPIRED 2026-04-27 — triage complete in `00-triage-summary.md`. Resume normal `ask_questions` usage.
 **Activated:** 2026-04-27
-**Tasks completed: 53 / 40 (overage; mode expired but user continues batch)**
+**Original cap:** 40 tasks
+**Final count:** 57 tasks (overran cap by +17; user continued batch after expiry)
+**Ambiguities logged during window:** 48 (notes #01–#42, with 6 reused prefixes)
 
 ---
 
