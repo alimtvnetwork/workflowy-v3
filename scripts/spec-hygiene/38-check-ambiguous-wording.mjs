@@ -33,6 +33,10 @@ const BANNED = [
   { re: /\bideally\b/gi, label: "ideally" },
   { re: /\bpreferably\b/gi, label: "preferably" },
   { re: /\bshould consider\b/gi, label: "should consider" },
+  // P15: bare "consider" used as soft directive (e.g. "consider adding X").
+  // Natural-English uses ("MUST consider", "will not consider", "could consider")
+  // are filtered by ALLOW_LINE below.
+  { re: /\bconsider\b/gi, label: "consider (use MUST/SHOULD/MAY)" },
   { re: /\bmirror cop(y|ies)\b/gi, label: "mirror copy (use 'mirror peer' — F7-3)" },
 ];
 
