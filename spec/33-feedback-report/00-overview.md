@@ -160,3 +160,34 @@ Specification for the in-app feedback and bug-report feature in WorkFlowy. Lets 
 
 - [`../00-overview.md`](../00-overview.md) — Parent overview
 - [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) — Acceptance criteria
+
+---
+
+## Worked Example — User reports a broken Mirror sync
+
+**Goal:** capture a structured feedback report when a user clicks
+"Report a problem" while a `MirrorGroup` failed to converge.
+
+✅ **Correct path**
+
+1. UI opens the report dialog with `Category: "sync"`, `Subcategory: "mirror"`
+   pre-selected (gate `G-33-CATEGORY-ENUM`).
+2. Client snapshots `{ MirrorGroupId, lastReplayCursor, offlineQueueDepth,
+   clientBuildSha }` into the **Diagnostics** payload — **no PII**, no item
+   `Content` body (gate `G-33-NO-PII`, `G-33-NO-CONTENT-BODY`).
+3. POST `EP-FEEDBACK-CREATE` with envelope `{ Status, Attributes:
+   { Category, Subcategory, Diagnostics, UserNote }, Results: { ReportId } }`.
+4. Server stores row in `FeedbackReport` table, returns `ReportId`,
+   triggers `EP-FEEDBACK-NOTIFY` to maintainers (rate-limited per user/hour).
+5. UI shows toast with `ReportId` for follow-up (gate `G-33-RECEIPT`).
+
+❌ **Anti-Pattern Table**
+
+| Anti-pattern | Why it fails | Gate violated |
+|---|---|---|
+| Sending raw item `Content` in Diagnostics | Leaks user data; violates privacy contract | `G-33-NO-CONTENT-BODY` |
+| Free-text `Category` instead of enum | Breaks triage dashboards + analytics rollups | `G-33-CATEGORY-ENUM` |
+| Skipping rate limit → unlimited reports per minute | Spam vector; DoS on maintainers | `G-33-RATE-LIMIT` |
+| Returning `Status: 200` without `Results.ReportId` | User can't reference the report later | `G-33-RECEIPT` |
+| Storing reports in the `Item` table with `ItemType=Feedback` | Pollutes user tree; alias-bridge violation | `G-04-NO-DDL-PLURALS` (and ADR-0001 once ratified) |
+| Auto-attaching browser `localStorage` dump | Leaks auth tokens; privacy breach | `G-33-NO-PII` |

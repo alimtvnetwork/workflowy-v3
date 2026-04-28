@@ -190,3 +190,37 @@ Specification for **Feature E2 — Activity Feed**: a chronological, filterable 
 
 - [`../00-overview.md`](../00-overview.md) — Parent overview
 - [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) — Acceptance criteria
+
+---
+
+## Worked Example — User attaches a Mirror, feed records the event
+
+**Goal:** when a user attaches `Item-X` into an existing `MirrorGroup`,
+emit a single, idempotent activity-feed entry visible to all peers.
+
+✅ **Correct path**
+
+1. `EP-MIRRORS-ATTACH` succeeds → server enqueues one
+   `ActivityEvent` row with
+   `{ Verb: "mirror.attach", ActorUserId, MirrorGroupId, ItemId,
+     OccurredAtUtc, IdempotencyKey }`.
+2. `IdempotencyKey = sha256(Verb|ActorUserId|MirrorGroupId|ItemId|Minute)` —
+   replaying the same request inside the same minute MUST collapse to one
+   event (gate `G-34-IDEMPOTENT`).
+3. Fan-out: every `User` with read access to **any** member of the group
+   receives the event in their feed query (gate `G-34-FANOUT-RESPECTS-ACL`).
+4. Feed render uses verb dictionary in `34-activity-feed/02-verb-table.md`
+   to localize text — never inline strings (gate `G-34-VERB-DICTIONARY`).
+5. Old events past 90 days are archived, not deleted, preserving audit
+   (gate `G-34-RETENTION-90D`).
+
+❌ **Anti-Pattern Table**
+
+| Anti-pattern | Why it fails | Gate violated |
+|---|---|---|
+| Two events emitted for one attach (one per peer) | Feed duplicates; idempotency broken | `G-34-IDEMPOTENT` |
+| Sending the event to users without ACL on any group member | Information leak | `G-34-FANOUT-RESPECTS-ACL` |
+| Hardcoding `"X attached a mirror"` in the renderer | Breaks i18n + verb evolution | `G-34-VERB-DICTIONARY` |
+| Hard-deleting events at 90 days | Destroys audit trail; compliance risk | `G-34-RETENTION-90D` |
+| Storing events as `Item` rows with `ItemType=Activity` | Pollutes user tree; alias-bridge violation | `G-04-NO-DDL-PLURALS` |
+| Using local clock for `OccurredAtUtc` | Clock skew ⇒ out-of-order feed | `G-34-SERVER-TIME` |

@@ -163,3 +163,40 @@ Until sub-specs are added, the canonical rule set lives in:
 
 - [`../00-overview.md`](../00-overview.md) — Parent overview
 - [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) — Acceptance criteria
+
+---
+
+## Worked Example — Enforcing the 250-item view limit
+
+**Goal:** stop a user from rendering a node whose direct-child count
+exceeds 250 (Core constraint), while staying graceful and explainable.
+
+✅ **Correct path**
+
+1. `EP-ITEMS-LIST?parentId=…` server-side counts children **before**
+   serialization. If `count > 250` → respond
+   `Status: 422`, `Errors: [{ Code: "ENF-VIEW-LIMIT-EXCEEDED",
+   Detail: { Limit: 250, Actual: <n> }, Hint: "Use search or pagination" }]`
+   (gate `G-35-ERR-CODE-ENUM`).
+2. Client maps `ENF-VIEW-LIMIT-EXCEEDED` to the localised banner
+   "Too many items to display — refine with search" (gate `G-35-USER-MESSAGE`).
+3. Banner offers two affordances: open Search prefilled with `parent:<id>`,
+   or open the Board view (which paginates) — gate `G-35-PROVIDE-ESCAPE-HATCH`.
+4. Server emits `EnforcementEvent` with `{ Rule: "view-limit",
+   ActorUserId, ItemId, Threshold: 250, Observed: <n> }` for analytics
+   (gate `G-35-AUDIT-TRAIL`).
+5. Rule lives **only** in `spec/35-enforcement-rules/03-view-limits.md` —
+   constant `VIEW_ITEM_LIMIT = 250` is referenced, never re-declared
+   (gate `G-35-SINGLE-SOURCE`).
+
+❌ **Anti-Pattern Table**
+
+| Anti-pattern | Why it fails | Gate violated |
+|---|---|---|
+| Returning `200` with truncated 250 items, no warning | Silent data loss; user thinks tree is shorter than it is | `G-35-NO-SILENT-TRUNCATION` |
+| Free-text error string `"too many"` | Client can't branch behavior; breaks i18n | `G-35-ERR-CODE-ENUM` |
+| Hard 500 with stack trace | Unhandled = bug, not enforcement | `G-35-EXPECTED-ERRORS` |
+| Hard-coding `250` in 3 places (server, client, test) | Drift; one update misses others | `G-35-SINGLE-SOURCE` |
+| Showing the banner with no Search/Board escape | Dead end for the user | `G-35-PROVIDE-ESCAPE-HATCH` |
+| Skipping the `EnforcementEvent` audit row | Can't measure how often the limit bites; can't tune it | `G-35-AUDIT-TRAIL` |
+| Changing the limit to 500 without an ADR | Load-bearing constant; needs ratification | requires ADR (see `spec/00-adrs/`) |
