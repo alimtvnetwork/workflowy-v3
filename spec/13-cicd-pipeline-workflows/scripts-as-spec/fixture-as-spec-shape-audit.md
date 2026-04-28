@@ -185,14 +185,6 @@ Baseline as of 2026-04-28 (post-Phase-4, FINAL):
 Phase-4 result: 2/2 fixtures pass once the carve-out for
 "authoritative-spec-elsewhere" gates is applied.
 
-## Test fixtures
-
-Baseline as of 2026-04-28 (post-Phase-3): 2 fixture files in scope —
-[`xlink-symmetry-audit.md`](./xlink-symmetry-audit.md) (banner cites
-`G-00-ADR-XLINK-SYMMETRY` ✓) and this file (banner cites
-`G-13-FIXTURE-AS-SPEC-SHAPE` ✓). Both pass the Phase-3 audit; both
-cited gate IDs resolve in `spec/_GATE-REGISTRY.md`.
-
 ## See also
 
 - [`README.md`](./README.md) — convention definition (canonical
