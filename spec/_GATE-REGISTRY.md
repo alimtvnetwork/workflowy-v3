@@ -540,15 +540,15 @@
 
 ### 5.1 Citation-vs-row Reconciliation (audited 2026-04-28)
 
-A naive `rg -o '\`G-[A-Z0-9-]+\`' spec/_GATE-REGISTRY.md | sort -u` returns **295** unique tokens, which superficially appears inconsistent with the **290** active-row count in §2. The reconciliation is:
+A naive `rg -o '\`G-[A-Z0-9-]+\`' spec/_GATE-REGISTRY.md | sort -u` returns **296** unique tokens, which superficially appears inconsistent with the **291** active-row count in §2. The reconciliation is:
 
 | Bucket | Count | Source |
 |--------|------:|--------|
-| Active gate rows (counted in §2) | 290 | Non-strikethrough table rows |
+| Active gate rows (counted in §2) | 291 | Non-strikethrough table rows |
 | Superseded gate rows (strikethrough, retained per §4 rule 3) | 2 | `G-28-NO-PHYSICAL-MARGINS`, `G-28-NO-PHYSICAL-ALIGN` (folded into `G-12-LOGICAL-*`) |
-| **Real gate IDs total** | **292** | |
+| **Real gate IDs total** | **293** | |
 | Documentation placeholders in §4 naming-rule prose (NOT gates) | 3 | `G-NN`, `G-NN-NAME`, `G-DOMAIN-NN` (see §4 rule 5) |
-| **Unique tokens matching `\`G-…\`` regex** | **295** | |
+| **Unique tokens matching `\`G-…\`` regex** | **296** | |
 
-**Implication for fixture-as-spec audits:** any tool that parses gate IDs from this file MUST exclude the 3 documentation-placeholder tokens (`{"G-NN", "G-NN-NAME", "G-DOMAIN-NN"}`) and SHOULD treat strikethrough rows as registered (regex must allow optional `~~` around the backticked ID). The reference implementation in [`spec/13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md`](./13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md) does both as of v1.0.1 (Phase-4 hardening).
+**Implication for fixture-as-spec audits:** any tool that parses gate IDs from this file MUST exclude the 3 documentation-placeholder tokens (`{"G-NN", "G-NN-NAME", "G-DOMAIN-NN"}`) and SHOULD treat strikethrough rows as registered (regex must allow optional `~~` around the backticked ID). The reference implementation in [`spec/13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md`](./13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md) does both as of v1.0.1 (Phase-4 hardening). **Set equality between this row's tokens and the audit fixture's `PLACEHOLDER_TOKENS` literal is itself enforced by [`G-13-PLACEHOLDER-TOKEN-PARITY`](./13-cicd-pipeline-workflows/scripts-as-spec/placeholder-token-parity-audit.md).**
 
