@@ -146,6 +146,29 @@ intentionally identical, e.g. `--bullet`). A token that exists in
 light but not in dark fails `G-32-DARK-MODE-PARITY` (already cited by
 ADR-0003).
 
+### D7 — Logical properties are mandatory; physical directional utilities are forbidden
+
+WorkFlowy supports RTL locales (`ar` initially per ADR-0028 D4). Every directional spacing, alignment, or inset utility in component code MUST use the **logical** Tailwind v4 form so that the UI flips automatically with `<html dir="rtl">`:
+
+| Forbidden (physical) | Required (logical) | Rationale |
+|---|---|---|
+| `pl-*`, `pr-*` | `ps-*`, `pe-*` | Padding inline-start / inline-end |
+| `ml-*`, `mr-*` | `ms-*`, `me-*` | Margin inline-start / inline-end |
+| `left-*`, `right-*` | `start-*`, `end-*` | Absolute / fixed inset on the inline axis |
+| `text-left`, `text-right` | `text-start`, `text-end` | Text alignment along reading direction |
+| `border-l-*`, `border-r-*` | `border-s-*`, `border-e-*` | Inline-axis borders |
+| `rounded-l-*`, `rounded-r-*` | `rounded-s-*`, `rounded-e-*` | Inline-axis corner radii |
+
+**Exceptions** (physical utilities allowed):
+1. **Block-axis** utilities (`pt-*`/`pb-*`/`mt-*`/`mb-*`/`top-*`/`bottom-*`/`text-center`) are direction-agnostic and remain physical.
+2. **Icons that imply direction** (chevrons, undo arrows) MUST stay physical and use `rtl:rotate-180` to mirror — they encode semantic direction, not text-flow direction. (Anchored by ADR-0028 D6 §4.)
+3. **shadcn-vendored components** under `src/components/ui/` are grandfathered until each is touched; PRs touching such a file MUST migrate any physical utilities in the same change (`G-12-LOGICAL-*` gates fire on the diff, not on legacy lines).
+4. **Third-party CSS** (TipTap default styles, lucide-react SVGs) is out of scope — wrap in WorkFlowy components that apply logical utilities.
+
+**Authoring rule:** when a component genuinely depends on a hard left/right (e.g. a left-side gutter that must NOT flip in RTL because it visually encodes elapsed time on a left-anchored timeline), the component MUST add the comment `/* a11y-rtl-exempt: <reason> */` immediately above the offending utility. ESLint reads the comment to suppress the gate; missing comment = build fail.
+
+This rule lives in ADR-0012 (not ADR-0028) because it is a **styling-system invariant** — every component author needs it regardless of whether they touch i18n code. ADR-0028 D6 cites this section as the authority.
+
 ## Consequences
 
 ### Positive
