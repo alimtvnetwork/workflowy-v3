@@ -49,9 +49,27 @@ function walk(dir, visit) {
   }
 }
 
+function isCanonicalACFile(p) {
+  return /\/9[78]-acceptance-criteria\.md$/.test(p);
+}
+
 function recordAT(id, definition, file, line) {
   const prev = acceptanceTests.get(id);
   if (prev && prev.definedIn && prev.definedIn !== file) {
+    // Prefer the canonical 97/98-acceptance-criteria.md as the authoritative definition.
+    const prevCanonical = isCanonicalACFile(prev.definedIn);
+    const newCanonical = isCanonicalACFile(file);
+    if (prevCanonical && !newCanonical) {
+      prev.citedIn.push({ file, line });
+      return;
+    }
+    if (!prevCanonical && newCanonical) {
+      prev.citedIn.push({ file: prev.definedIn, line: prev.definedLine });
+      prev.definedIn = file;
+      prev.definedLine = line;
+      prev.definition = definition;
+      return;
+    }
     collisions.push(`AT collision: ${id} defined in ${prev.definedIn}:${prev.definedLine} AND ${file}:${line}`);
     return;
   }
