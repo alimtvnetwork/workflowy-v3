@@ -181,6 +181,7 @@ Suppose someone wants to add a real `Favorite` table (currently forbidden by
 | [`0019`](./0019-rest-envelope-optional-keys.md) | REST envelope optional keys — `Navigation`/`Errors`/`MethodsStack` omit-never-null + page-based pagination | `Accepted` | 2026-04-28 |
 | [`0020`](./0020-branded-itemid-ownerid.md) | Branded `ItemId`/`OwnerId` — opaque-string brands, validating constructors, wire regex `^[A-Za-z0-9_-]{8,64}$` | `Accepted` | 2026-04-28 |
 | [`0021`](./0021-undo-100-offline-queue-unbounded.md) | Undo/redo cap 100 (in-memory, per-tab) + offline queue UNBOUNDED (IndexedDB per ADR-0010, no `localStorage`) | `Accepted` | 2026-04-28 |
+| [`0022`](./0022-shadcn-radix-component-base.md) | shadcn/ui (CLI-vendored under `src/components/ui/`) + Radix primitives — sole component base; MUI/Mantine/Ant/HeadlessUI/Chakra forbidden | `Accepted` | 2026-04-28 |
 
 > **Maintenance rule (summary — full protocol in [`_INDEX_AUTOMATION.md`](./_INDEX_AUTOMATION.md)):**
 > when adding/superseding an ADR, update **both** index tables (this one
