@@ -209,8 +209,8 @@ This uses the same write path as every other mutation — no special-case egress
 | Gate ID | Severity | Description |
 |---|---|---|
 | `G-28-LIBRARY-IS-I18NEXT` | **CI** | `package.json` MUST list `react-i18next` and `i18next`. CI denies any other i18n library in `package.json` or imports of `react-intl`/`lingui`/`@formatjs/*`. |
-| `G-28-NO-PHYSICAL-MARGINS` | **CI** | `eslint-plugin-tailwindcss` rule forbids `pl-*`, `pr-*`, `ml-*`, `mr-*`, `left-*`, `right-*` in `src/`. Use `ps-*`/`pe-*`/`ms-*`/`me-*`/`start-*`/`end-*`. |
-| `G-28-NO-PHYSICAL-ALIGN` | **CI** | ESLint custom rule forbids `text-left` and `text-right`; enforce `text-start`/`text-end`. |
+| ~~`G-28-NO-PHYSICAL-MARGINS`~~ | — | **Superseded by `G-12-LOGICAL-MARGINS-PADDING` + `G-12-LOGICAL-INSET`** (ADR-0012 §D7) — the styling-system invariant belongs at its authority, not duplicated here. |
+| ~~`G-28-NO-PHYSICAL-ALIGN`~~ | — | **Superseded by `G-12-LOGICAL-TEXT-ALIGN`** (ADR-0012 §D7). |
 | `G-28-NO-HTML-IN-JSON` | **CI** | Pre-commit hook greps every `locales/**/*.json` for `<` / `>` / `&[a-z]+;` and fails. |
 | `G-28-INTL-EXPLICIT-LOCALE` | **CI** | ESLint rule: `.toLocaleString()` and `.toLocaleDateString()` calls without an explicit first arg fail. |
 | `G-28-TYPED-KEYS` | **CI** | `tsc --noEmit` MUST fail if `t('foo.bar')` references an unknown key (relies on D8 module augmentation). |
