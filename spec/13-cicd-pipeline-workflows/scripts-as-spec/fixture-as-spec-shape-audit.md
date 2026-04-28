@@ -168,7 +168,7 @@ if __name__ == "__main__":
 | `README.md` | Convention definition, not a fixture. |
 | Files prefixed with `_` (e.g. `_DRAFT-*.md`) | Reserved for in-progress drafts; promote by removing prefix. |
 | H2 headers with trailing parenthetical (e.g. `## Algorithm (frozen reference, 35 lines of logic)`) | Match by `startswith()` — the parenthetical is informational. |
-| **Phase-4 carve-out:** gates whose authoritative spec lives outside `scripts-as-spec/` (e.g. `G-00-ADR-XLINK-SYMMETRY` is specified in `spec/00-adrs/_INDEX_AUTOMATION.md`) MAY have a registry row that links to the authoritative spec rather than back to the fixture. The fixture MUST still cite the gate (Phase 3) and the authoritative spec MUST link forward to the fixture (already enforced by `G-00-ADR-XLINK-SYMMETRY`-style review). Implementation note: `audit_file()` SHOULD accept a `BACKLINK_EXEMPT` set keyed by gate ID, populated from a `_LEDGER-*` file when this carve-out is used. Initial set: `{"G-00-ADR-XLINK-SYMMETRY"}`. |
+| **Phase-4 ledger-driven carve-out:** gates whose authoritative spec lives outside `scripts-as-spec/` are listed in [`spec/_LEDGER-G-13-BACKLINK-EXEMPT.md`](../../_LEDGER-G-13-BACKLINK-EXEMPT.md) and loaded into the algorithm at runtime. The fixture MUST still cite the gate (Phase 3) and the authoritative spec MUST link forward to the fixture (covered by `G-00-ADR-XLINK-SYMMETRY`-style review). To exempt a new gate, add a row to the ledger — do NOT edit this fixture. |
 
 ## Strictness roadmap
 
