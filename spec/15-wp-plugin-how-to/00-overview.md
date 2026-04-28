@@ -6,19 +6,24 @@
 
 ## AI Contract
 
-**Purpose** — _TODO(P1): one sentence describing what `WordPress Plugin How-To` solves._
+**Purpose** — Define the canonical implementation patterns, file layout, naming conventions, and operational runbooks for the WorkFlowy WordPress plugin (PHP 8.1+ + SQLite + REST), so a mediocre AI can produce a working plugin without inventing architecture decisions. See `mem://constraints/backend-runtime-deferred`.
 
-**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+**Audience** — Backend developer (PHP) and DevOps implementer. Frontend developers consume only the REST contract from `spec/04-database-conventions/06-rest-api-format/` and the generated TS skeletons in `spec/32-ui-design/skeletons/`.
 
 **Expected AI Output** —
-- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+- `wp-plugin/workflowy.php` (plugin bootstrap), `wp-plugin/src/Rest/*Controller.php` (one controller per REST namespace; signatures from [`skeletons/php/RestRoutes.generated.php`](./skeletons/php/RestRoutes.generated.php)), `wp-plugin/src/Domain/*` (entities + services), `wp-plugin/src/Infrastructure/Sqlite/*Repository.php` (`PDO`-backed repos), `wp-plugin/src/Enums/*.php` (from [`skeletons/php/Enums.generated.php`](./skeletons/php/Enums.generated.php)), `wp-plugin/migrations/NNN-*.sql` (one per schema change), `wp-plugin/tests/*Test.php` (PHPUnit; one test per `AT-*` from `97-acceptance-criteria.md` and per-feature ATs).
+- All responses MUST conform to the PascalCase envelope (`Status`/`Attributes`/`Results` mandatory) per `spec/04-database-conventions/06-rest-api-format/`.
 
 **Out of Scope** —
-- _TODO(P1): bullet adjacent concerns and link to owning section._
+- Frontend React code → `spec/32-ui-design/`.
+- REST envelope shape itself → `spec/04-database-conventions/06-rest-api-format/`.
+- WordPress core hardening / hosting → `spec/13-cicd-pipeline-workflows/` + `23-operator-runbooks/`.
 
 **Definition of Done** —
-- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
-- `node scripts/spec-hygiene/00-run-all.mjs` exits 0
+- Every endpoint listed in `spec/contract.json` has a controller method whose name matches the generated stub in `skeletons/php/RestRoutes.generated.php`.
+- Every `AT-WPPLUGIN-*` row in `97-acceptance-criteria.md` has a passing PHPUnit test of the same id.
+- Every enum used in handler signatures resolves to a class in `wp-plugin/src/Enums/` whose cases match `skeletons/php/Enums.generated.php`.
+- `node scripts/spec-hygiene/00-run-all.mjs` exits 0.
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
 
