@@ -96,7 +96,7 @@ concurrent write exists). The server returns HTTP 200 with
 `lww-lost` in the per-mutation result; the client reverts the
 optimistic local state to the server payload.
 
-Tiebreak on identical `ServerTs` is **`OwnerId` ASC**, per ADR-0005.
+Tiebreak on identical `ServerTs` is governed by **ADR-0026** (canonical 3-tier comparator: `ServerTs DESC, OwnerId ASC, ItemId ASC`). The earlier prose "`OwnerId` ASC, per ADR-0005" is preserved here for historical context but the load-bearing rule now lives in ADR-0026 D1 with gate `G-26-LWW-CANONICAL-COMPARATOR`.
 
 `clientTs` MAY be carried in mutation payloads for diagnostic
 telemetry only; it MUST NOT participate in any LWW decision.
