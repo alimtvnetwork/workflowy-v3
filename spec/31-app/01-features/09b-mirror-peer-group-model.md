@@ -30,7 +30,7 @@ The `MirrorOfItemId` column on `Item` and the `Mirror(SourceItemId, MirrorItemId
 | **R-2** | When user creates a mirror via `/mirror`, `/mirror to`, `/mirror here`, or **⇧⌘M**, both the originating item AND the new instance become group members. The "originating" item gains a diamond badge. | Workflowy parity |
 | **R-3** | **Detach removes one member from the group.** If the group's size drops to **1**, the group is **dissolved** and the remaining lone item also becomes a regular item (no diamond). | User confirmation 2026-04-27 |
 | **R-4** | **Edits flow read-through.** Title, Notes, Tags, Completion, Children, Child-order, Attachments, Comments, ItemType — synced across all peers. **Position** (FractionalIndex within parent) and **IsCollapsed** are per-instance. | User confirmation 2026-04-27 |
-| **R-5** | Conflict tiebreak is **LWW by the canonical 3-tier comparator `(ServerTs DESC, OwnerId ASC, ItemId ASC)`** at the field level — see [ADR-0026](../../00-adrs/0026-lww-canonical-tiebreak.md) §D1 (sole authority) and [`05-conventions/33-state-management-architecture.md`](../05-conventions/33-state-management-architecture.md) §3. **Casing:** `OwnerId` is canonical (ADR-0020 branded type); the spelling `OwnerUserId` is a DDL-side alias bridge entry only and MUST NOT appear in new prose, AC fixtures, or wire payloads. | User confirmation 2026-04-27, ratified by ADR-0026 (2026-04-28) |
+| **R-5** | Conflict tiebreak is **LWW by the canonical 3-tier comparator `(ServerTs DESC, OwnerId ASC, ItemId ASC)`** at the field level — see [ADR-0026](../../00-adrs/0026-lww-canonical-tiebreak.md) §D1 (sole authority) and [`05-conventions/33-state-management-architecture.md`](../05-conventions/33-state-management-architecture.md) §3. **Casing:** `OwnerId` is canonical (ADR-0020 branded type); the spelling `OwnerUserId` is a DDL-side alias bridge entry only and MUST NOT appear in new prose, AC fixtures, or wire payloads — see the canonical [column-level Spec↔DDL Alias Bridge](../../04-database-conventions/00-overview.md#alias-bridge-columns) (4 tables: `Item`, `Template`, `Tag`, `Workspace`) and ADR-0026 §D6 wire-boundary rule. The single residual `OwnerUserId` mention in §6.1 SQL pseudocode is whitelisted per §D6. | User confirmation 2026-04-27, ratified by ADR-0026 (2026-04-28); §D6 cross-link added 2026-04-28 |
 
 ---
 
@@ -127,9 +127,9 @@ STEPS:
            INSERT MirrorMember(MirrorGroupId = new.id, ItemId = originatingItemId).
   2. INSERT Item(
        ParentItemId    = targetParentItemId,
-       OwnerUserId     = current user,
+       OwnerUserId     = current user,         -- DDL column name (per ADR-0026 §D6 SQL-pseudocode whitelist); wire egress translates to OwnerId — see Spec↔DDL Alias Bridge (column-level)
        ItemTypeId      = (SELECT ItemTypeId FROM Item WHERE ItemId = canonical),
-       Content         = '',                  -- empty; renderer reads through canonical
+       Content         = '',                   -- empty; renderer reads through canonical
        FractionalIndex = targetFractionalIndex
      ) → newItemId.
   3. INSERT MirrorMember(MirrorGroupId = group.id, ItemId = newItemId).
