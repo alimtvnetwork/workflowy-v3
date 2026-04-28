@@ -46,9 +46,9 @@ React 19, and styled with Tailwind CSS v4 consumed via the
   `noUncheckedIndexedAccess: true`, `noImplicitOverride: true`,
   `exactOptionalPropertyTypes: true`. Strict-TS coding rules
   (zero `any`, max 3 params, no nested `if`s, 15-line logic limit,
-  pure positive guard clauses) apply per the prose in
-  `spec/02-coding-guidelines/00-overview.md` and will be ratified
-  separately by ADR-0007.
+  pure positive guard clauses, max 2 boolean operands, multi-line
+  method chains) are formally ratified by **ADR-0007** (R1–R7) — see
+  `spec/02-coding-guidelines/00-overview.md` for worked examples.
 - **Styling:** Tailwind CSS **v4** via `@tailwindcss/vite`. All design
   tokens MUST live inside the `@theme { … }` block in
   `src/index.css`. No second styling system (no SCSS modules,
