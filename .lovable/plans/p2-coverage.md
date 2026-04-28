@@ -14,3 +14,13 @@
 | P2g | Remainder (~45 rollups across 03/05/06/08/09/10/12/13/14/15/16/17/18/01/11) | 1 (`spec/97a-…` global sweep) — 10 fixture patterns + cross-references; AT-FIX-01 flipped to enforcing in `00-run-all.mjs` | ~400 | ~400 | ✅ done |
 
 > **P2 phase complete.** Hygiene check `AT-FIX-01` now enforces fixture coverage in CI: every `97-acceptance-criteria.md` / `98-acceptance-criteria.md` MUST have a sibling `97a-…-fixtures.md`, link to `spec/97a-acceptance-criteria-fixtures.md`, or carry the explicit opt-out line.
+
+---
+
+## P3 — REST envelope JSON fixtures per endpoint (2026-04-28)
+
+| Sub-task | Scope | Files | Endpoints | Status |
+|----------|-------|-------|-----------|--------|
+| P3 | Per-endpoint envelope JSON fixtures | 1 (`spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md`) — canonical request/response samples by endpoint family + 7 cross-cutting universal ATs | 47/47 | ✅ done |
+
+Linked from `spec/31-app/06-endpoints/97-acceptance-criteria.md` Fixtures section.
