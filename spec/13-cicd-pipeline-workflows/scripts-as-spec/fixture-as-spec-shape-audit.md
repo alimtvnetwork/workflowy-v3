@@ -138,24 +138,27 @@ if __name__ == "__main__":
 ## Strictness roadmap
 
 - **Phase 1 (shipped 2026-04-28 morning):** header-presence check + Algorithm fence check.
-- **Phase 2 (current — shipped 2026-04-28 afternoon):** Algorithm code
-  block MUST declare an allowed language tag from
-  `{python, bash, sh, javascript, js, typescript, ts}`. Untagged or
-  disallowed-language fences fail the audit. Allowed-list expansion
-  requires bumping this fixture and re-baselining.
-- **Phase 3 (planned):** assert every fixture cites its gate ID in the
-  banner blockquote, and that the gate ID resolves to a row in
-  `spec/_GATE-REGISTRY.md`.
+- **Phase 2 (shipped 2026-04-28 afternoon):** Algorithm fence MUST
+  declare an allowed language tag from
+  `{python, bash, sh, javascript, js, typescript, ts}`.
+- **Phase 3 (current — shipped 2026-04-28 evening):** the file's
+  banner blockquote MUST cite at least one gate ID matching
+  `\`G-[A-Z0-9-]+\``, AND every cited gate ID MUST resolve to a row
+  in `spec/_GATE-REGISTRY.md`. This closes the
+  fixture→gate-registry traceability loop.
 - **Phase 4 (planned):** cross-check that the gate's registry row
   links *back* to this fixture file (symmetric link à la
-  `G-00-ADR-XLINK-SYMMETRY`).
+  `G-00-ADR-XLINK-SYMMETRY`); when shipped, this gate effectively
+  becomes the meta-equivalent of `G-00-ADR-XLINK-SYMMETRY` for the
+  fixture-as-spec corpus.
 
 ## Test fixtures
 
-Baseline as of 2026-04-28 (post-Phase-2): 2 fixture files in scope —
-[`xlink-symmetry-audit.md`](./xlink-symmetry-audit.md) (Algorithm
-fence tagged `python`) and this file (Algorithm fence tagged
-`python`). Both pass the Phase-2 audit.
+Baseline as of 2026-04-28 (post-Phase-3): 2 fixture files in scope —
+[`xlink-symmetry-audit.md`](./xlink-symmetry-audit.md) (banner cites
+`G-00-ADR-XLINK-SYMMETRY` ✓) and this file (banner cites
+`G-13-FIXTURE-AS-SPEC-SHAPE` ✓). Both pass the Phase-3 audit; both
+cited gate IDs resolve in `spec/_GATE-REGISTRY.md`.
 
 ## See also
 
