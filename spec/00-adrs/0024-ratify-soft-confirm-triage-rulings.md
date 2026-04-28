@@ -29,13 +29,13 @@ overridden" status.
 
 ## Decision
 
-**D1 — Ratify #01 (audit dimension scope) (MUST).** The 100/100 audit
+**D1 — Ratify [#01](../../.lovable/question-and-ambiguity/00-triage-summary.md#01--audit-100100-score-should-b1b4-addendums-add-a-new-dimension) (audit dimension scope) (MUST).** The 100/100 audit
 score MUST NOT be recomputed to absorb post-100 addendums (B1–B4 or any
 future Bn). Post-100 work MUST be recorded as a "Related spec-completeness
 work" footnote to the audit, never as a new dimension. Reopening requires
 a superseding ADR.
 
-**D2 — Ratify #03 (DDL singular vs spec plural) (MUST).** DDL identifiers
+**D2 — Ratify [#03](../../.lovable/question-and-ambiguity/00-triage-summary.md#03--ddl-singular-itemtitle-vs-spec-plural-itemscontent) (DDL singular vs spec plural) (MUST).** DDL identifiers
 MUST remain **singular** (`Item`, `Title`, `Owner`, etc.) per ADR-0001
 and ADR-0006. Spec prose MAY use plural natural-language terms (`Items`,
 `Content`). The Spec↔DDL Alias Bridge in
@@ -43,7 +43,7 @@ and ADR-0006. Spec prose MAY use plural natural-language terms (`Items`,
 authority. Renaming DDL to plural is **forbidden** without superseding
 ADR-0001, ADR-0006, **and** this ADR.
 
-**D3 — Ratify #17 (Favorites placement) (MUST).** Favorites MUST be a
+**D3 — Ratify [#17](../../.lovable/question-and-ambiguity/00-triage-summary.md#17--favorites-endpoint-vs-table-contradiction) (Favorites placement) (MUST).** Favorites MUST be a
 **table-level** concern (column/flag on the canonical item table). No
 shell endpoint (`EP-FAVORITES-*`) may own it. Any future request to
 introduce `EP-FAVORITES-LIST` or a dedicated `Favorite` table MUST first
