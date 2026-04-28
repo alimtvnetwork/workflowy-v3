@@ -131,6 +131,7 @@ Hypothetical: a future contributor wants a real `Favorite` table.
 | Listing `_TEMPLATE.md` or `_LEDGER-*.md` in the index | These are not ADRs and do not get numbers | `G-00-ADR-NUMBERING` |
 | Updating one index table but not the other | The two surfaces diverge; readers see different statuses | `G-00-ADR-INDEX-FRESH` (planned) |
 | Recording a status flip without the date | Loses audit trail; can't tell when the rule changed | `G-00-ADR-SHAPE` |
+| Citing an external file (e.g. `.lovable/question-and-ambiguity/00-triage-summary.md`) from an ADR's Decision section without a reciprocal back-link from that file to the ADR's anchor (`§Dn`) | Cross-references rot one-way; readers landing on the external file can't tell the soft-confirm has been ratified, risking accidental reversal | `G-00-ADR-XLINK-SYMMETRY` (planned) |
 
 ---
 
