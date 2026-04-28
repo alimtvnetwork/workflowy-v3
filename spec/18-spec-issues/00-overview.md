@@ -79,34 +79,85 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 
 
+## Audit File Lifecycle
+
+Every audit file traverses exactly these states. State transitions are one-way; no audit ever returns to `Open` after closure.
+
+| State | Required sections | Editable? | How it advances |
+|---|---|---|---|
+| `Draft`    | Title, Date, Finding | yes — by author | Reviewer adds Severity → moves to `Open`. |
+| `Open`     | + Severity, Reproduction, Owning section link | yes — append-only notes | Resolution drafted → moves to `Resolved`. |
+| `Resolved` | + Resolution, Spec edit links, Gate id, Verifying AT id | **no** — append-only | Verification passes in CI → moves to `Closed`. |
+| `Closed`   | All of the above + closure date | **frozen** | Corrections require a **new audit file** that links back. |
+
 ## Anti-Patterns
 
 The AI MUST NOT:
-- Editing a closed audit file in place — once an audit has a Resolution section, it is frozen; corrections go in a new audit file.
-- Re-using an active rule wording inside an audit — audits document the **past** state verbatim, even when that wording is now banned by gate G-38.
-- Writing audits without an explicit Resolution section that points to the spec change that closed the issue.
 
-## Worked Example (skeleton)
+| # | Anti-pattern | Why it fails | Gate that catches it |
+|---|---|---|---|
+| 1 | Edit a closed audit in place | Erases the historical record; future readers can't reconstruct what changed. | `G-18-FROZEN` (git-blame check: closed audit lines unchanged after `Closed:` date). |
+| 2 | Re-use an active rule wording inside an audit body | Audits document the **past** state verbatim; mirroring active wording confuses what was wrong. | `G-18-VERBATIM-QUOTE` (markdown lint: `Finding` block MUST be a fenced quote). |
+| 3 | Open an audit without an owning section link | Resolver cannot find what to fix. | `G-18-OWNER-LINK` (regex: `Owning section:` MUST appear before `Resolution`). |
+| 4 | Resolve an audit without citing the spec edit + gate + AT | Future regression cannot be detected. | `G-18-RESOLUTION-TRIPLE` (lint: Resolution MUST contain `spec/`, `G-`, `AT-` tokens). |
+| 5 | Use severity `Critical` without paging the on-call channel | Severity becomes meaningless inflation. | `G-18-SEVERITY-ROUTING` (CI hook: `Critical` triggers PagerDuty webhook). |
+| 6 | Mix multiple findings in one audit file | Cannot be partially closed; blocks unrelated fixes. | `G-18-ONE-FINDING` (lint: file MUST contain exactly one `## Finding` heading). |
 
-A canonical, copy-pasteable shape for this section's primary output:
+## Worked Example — A real closed audit
 
 ```markdown
-# Audit NN — <issue title>
+# Audit 07 — Mirror item-type drift between spec and DDL
 
-> **Date:** YYYY-MM-DD
-> **Status:** Closed | Open
-> **Severity:** High | Medium | Low
+> **Date:**     2026-04-19
+> **Status:**   Closed (2026-04-22)
+> **Severity:** High
+> **Owning section:** [`spec/31-app/01-features/09b-mirror-peer-group-model.md`](../31-app/01-features/09b-mirror-peer-group-model.md)
 
 ## Finding
-<verbatim quote of the inconsistency>
 
-## Resolution
-- Edited `spec/<owning-section>/<file>.md` to <change>.
-- Added gate `G-NN` in `scripts/spec-hygiene/NN-<name>.mjs` to prevent regression.
-- Verified by: `AT-<SECTION>-NN` passes.
+> Mirror was modelled in `09b-mirror-peer-group-model.md` v0.9 as `ItemType.MIRROR`, but
+> the DDL in `04-database-conventions/.../Item.sql` had no `MIRROR` enum value and instead
+> referenced a separate `MirrorGroup` table. The two specs were mutually exclusive.
+
+## Reproduction
+
+```sh
+grep -n "MIRROR" spec/31-app/01-features/09b-mirror-peer-group-model.md   # 11 matches
+grep -n "MIRROR" spec/04-database-conventions/**/Item.sql                 # 0 matches
 ```
 
-*This is a structural skeleton. Real values come from the section's `97-acceptance-criteria.md` row that the AI is implementing.*
+## Resolution
+
+- Edited `spec/31-app/01-features/09b-mirror-peer-group-model.md` v1.0.0 — Mirror is now
+  declared a **peer-group relation**, not an `ItemType`. Removed all 11 `ItemType.MIRROR` references.
+- Added gate `G-31-NO-MIRROR-ENUM` in CI that fails on any reintroduction.
+- Mirror constraint pinned in `mem://features/mirroring`.
+- Verified by: `AT-MPG-01` through `AT-MPG-05` pass on commit `a1b2c3d`.
+```
+
+### Required-section schema (load-bearing)
+
+| Field | Required in `Open`? | Required in `Closed`? | Format |
+|---|---|---|---|
+| `Date`              | yes | yes | ISO `YYYY-MM-DD` |
+| `Status`            | yes | yes | `Draft` / `Open` / `Resolved` / `Closed (YYYY-MM-DD)` |
+| `Severity`          | yes | yes | `Critical` / `High` / `Medium` / `Low` |
+| `Owning section`    | yes | yes | Link to the spec file being corrected |
+| `Finding`           | yes | yes | Single fenced quote of the offending text |
+| `Reproduction`      | yes | yes | Shell or grep commands that demonstrate the issue |
+| `Resolution`        | no  | **yes** | Bulleted edits + gate id + verifying AT id |
+
+### Error-code registry (this section owns `AUD-18-*`)
+
+| Code | Meaning |
+|---|---|
+| `AUD-18-01` | Audit file missing required section. |
+| `AUD-18-02` | Audit edited in place after closure. |
+| `AUD-18-03` | More than one `## Finding` heading in a single file. |
+| `AUD-18-04` | Resolution lacks the spec/gate/AT triple. |
+| `AUD-18-05` | Severity `Critical` without on-call routing record. |
+
+*All values are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings.*
 
 <!-- AUTO-TOC:START -->
 
