@@ -56,6 +56,12 @@
 
 ---
 
+## Fixtures
+
+I/O fixtures for `AT-FEEDBACKREPORT-01..14` live in [`97a-acceptance-criteria-fixtures.md`](./97a-acceptance-criteria-fixtures.md).
+
+---
+
 ## Verification
 
 ```bash
