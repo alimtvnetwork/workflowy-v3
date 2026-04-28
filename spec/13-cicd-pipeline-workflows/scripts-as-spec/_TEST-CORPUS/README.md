@@ -39,6 +39,7 @@ substring(s) in stdout.
 | [`PHASES-1-3-PASS-baseline.md`](./PHASES-1-3-PASS-baseline.md) | PASS | `G-13-FIXTURE-AS-SPEC-SHAPE` (cited; runner uses `phase_max=3`) | `phase_max=3` | `0` | (no violation line referencing this file) |
 | [`PHASE-4-FAIL-asymmetric-backlink.md`](./PHASE-4-FAIL-asymmetric-backlink.md) | FAIL | `G-13-FIXTURE-AS-SPEC-SHAPE` (cited; row points to production fixture, not this file) | `phase_max=4` | `1` | `registry row for \`G-13-FIXTURE-AS-SPEC-SHAPE\` links to "./13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md", expected back-link to "PHASE-4-FAIL-asymmetric-backlink.md"` |
 | [`PHASE-4-FAIL-strikethrough-only.md`](./PHASE-4-FAIL-strikethrough-only.md) | FAIL | `G-28-NO-PHYSICAL-MARGINS` (superseded strikethrough row) **plus** `G-13-FIXTURE-AS-SPEC-SHAPE`. Expect TWO violation lines. | `phase_max=4` | `1` | `registry row for \`G-28-NO-PHYSICAL-MARGINS\` links to "./00-adrs/0028-i18n-locale-strategy.md", expected back-link to "PHASE-4-FAIL-strikethrough-only.md"` |
+| [`PHASE-3-FAIL-unregistered-gate.md`](./PHASE-3-FAIL-unregistered-gate.md) | FAIL | `G-99-NONEXISTENT-DEMO` (synthetic; matches gate-ID regex but is not in the registry; ADR-0099 reserved-by-convention) | `phase_max=3` | `1` | `banner cites unregistered \`G-99-NONEXISTENT-DEMO\`` |
 
 ---
 
