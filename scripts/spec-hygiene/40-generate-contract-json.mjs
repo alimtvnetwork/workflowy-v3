@@ -63,7 +63,10 @@ function isCanonicalACFile(p) {
   return /\/9[78]-acceptance-criteria\.md$/.test(p);
 }
 
+const CITE_ONLY_FILES = /(23-ai-build-walkthrough\.md|16-endpoint-at-matrix\.md)$/;
 function recordAT(id, definition, file, line) {
+  // P13: derivative files never define, only cite (collision suppression).
+  if (CITE_ONLY_FILES.test(file)) { citeAT(id, file, line); return; }
   const prev = acceptanceTests.get(id);
   if (prev && prev.definedIn && prev.definedIn !== file) {
     // Prefer the canonical 97/98-acceptance-criteria.md as the authoritative definition.
