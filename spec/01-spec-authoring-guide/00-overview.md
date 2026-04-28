@@ -5,6 +5,26 @@
 > **Status:** Active
 
 
+## AI Contract
+
+**Purpose** — _TODO(P1): one sentence describing what `Spec Authoring Guide` solves._
+
+**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+
+**Expected AI Output** —
+- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+
+**Out of Scope** —
+- _TODO(P1): bullet adjacent concerns and link to owning section._
+
+**Definition of Done** —
+- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
+- `node scripts/spec-hygiene/00-run-all.mjs` exits 0
+
+> Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
+
+---
+
 <!-- AUTO-TOC:START -->
 
 ## Topics in this Folder
@@ -30,6 +50,7 @@
 | 15 | [`15-folder-examples.md`](./15-folder-examples.md) | Folder Structure Examples | 81 |
 | 16 | [`16-lovable-folder.md`](./16-lovable-folder.md) | The `.lovable/` Folder Guide | 103 |
 | 17 | [`17-quick-start-and-enforcement.md`](./17-quick-start-and-enforcement.md) | AI Quick Start & Folder Structure Enforcement | 125 |
+| 18 | [`18-ai-contract-template.md`](./18-ai-contract-template.md) | AI Contract Header — Canonical Template | 113 |
 
 <!-- AUTO-TOC:END -->
 

@@ -4,6 +4,26 @@
 > **Version:** 1.0.0  
 > **Updated:** 2026-04-18
 
+## AI Contract
+
+**Purpose** — _TODO(P1): one sentence describing what `WordPress Plugin How-To` solves._
+
+**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+
+**Expected AI Output** —
+- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+
+**Out of Scope** —
+- _TODO(P1): bullet adjacent concerns and link to owning section._
+
+**Definition of Done** —
+- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
+- `node scripts/spec-hygiene/00-run-all.mjs` exits 0
+
+> Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
+
+---
+
 ## Keywords
 
 `wp-plugin-how-to` · `wordpress` · `plugin` · `how-to`

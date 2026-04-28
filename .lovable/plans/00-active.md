@@ -35,13 +35,14 @@ Steps are interleaved so each `next` produces a measurable score gain.
 
 Pick the top 🟦 item on every `next`. Strike (✅) when done; new top item becomes active.
 
-### 🟦 P1 — Add canonical "AI Contract" header to every top-level section overview
+### ✅ P1 — Add canonical "AI Contract" header to every top-level section overview
 **Targets:** all `spec/NN-*/00-overview.md` (24 files).
 **Add block:** `## AI Contract` with subsections *Purpose*, *Audience*, *Expected AI Output*, *Out of Scope*, *Definition of Done*. Template lives in `spec/01-spec-authoring-guide/`.
 **Predicted gain:** +6 composite (lifts unambiguity 20→30, actionability 21→30 across all sections).
 **Verify:** hygiene passes; re-score `01-spec-authoring-guide` + 1 sample section.
+**✅ Done 2026-04-28:** Created canonical template `spec/01-spec-authoring-guide/18-ai-contract-template.md` and injected `## AI Contract` block (with `_TODO(P1):_` placeholders) into all 24 top-level overviews via idempotent `/tmp/inject-ai-contract.mjs`. 121 placeholders queued for F1–F6/P2 to fill. Hygiene PASS for P1 changes; only pre-existing failure is the `ItemType` enum drift (`src/types/index.ts` has `mirror`, spec has `dashboard`) carried over from the 2026-04-28 audit — unrelated to P1, tracked separately.
 
-### F1 — Merge Workflowy feature reference (Part 1: editor & item-type features)
+### 🟦 F1 — Merge Workflowy feature reference (Part 1: editor & item-type features)
 **Targets:** `01-information-model.md`, `04-page-content-area.md`, `05-interactions.md`, `05a-hotkey-table.md`.
 **Map (lossless):** Item Types, Bullet, To-do, Heading H1/H2, Paragraph, Numbered List, Complete, Add Note, Add Date, Tags, File Upload, Image Resize, Image Menu, Text Format Toolbar, Text Color, Create Bullet, Zoom In/Out, Item Menu, Expand/Collapse, Auto Save, Undo, Redo.
 **Format:** Feature Title — Description (incl. shortcut + slash command).
