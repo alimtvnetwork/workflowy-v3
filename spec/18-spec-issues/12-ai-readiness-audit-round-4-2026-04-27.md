@@ -113,7 +113,7 @@ A mediocre AI implementer will crash and burn trying to build from this spec, de
 
 **How to fix:** Update endpoints in `spec/31-app/06-endpoints/` to exhaustively cross-reference applicable ATs from the 16 feature files.
 
-### 🟡 AUDIT-AI-06 — Aspirational Components Lack State Strategy
+### ✅ AUDIT-AI-06 — Aspirational Components Lack State Strategy — **CLOSED 2026-04-27**
 
 | Field | Value |
 |-------|-------|
