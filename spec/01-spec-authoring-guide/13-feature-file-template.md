@@ -42,7 +42,7 @@ What the feature consumes. List every input the user, system, or upstream featur
 
 | Field | Type | Source | Required | Notes |
 |-------|------|--------|----------|-------|
-| `itemId` | `string` | URL / parent state | Yes | Stable across mirror/move/share |
+| `itemId` | `ItemId` (branded — ADR-0020; constructed via `asItemId()` at the route-loader boundary) | URL / parent state | Yes | Stable across mirror/move/share |
 | `viewMode` | `ViewMode` enum | UI toggle | No | Defaults to `Outline` |
 
 - Be exhaustive — missing inputs are the #1 cause of rebuild failures.

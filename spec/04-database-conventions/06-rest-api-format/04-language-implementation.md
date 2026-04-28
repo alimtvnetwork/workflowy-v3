@@ -66,10 +66,12 @@ interface ApiResponse<T> {
         CurrentPage: number;
     };
     Results: T[];
+    // Optional keys — OMITTED entirely when not applicable, never `null` (ADR-0019 D1).
+    // The `?:` here means "may be absent from the JSON object", not "may be `null`".
     Navigation?: {
-        NextPage: string | null;
-        PrevPage: string | null;
-        CloserLinks: string[];
+        NextPage: string | null;   // null permitted ONLY on first/last page
+        PrevPage: string | null;   // null permitted ONLY on first/last page
+        CloserLinks: string[];     // 0..5 nearby pages, ordered
     };
     Errors?: {
         BackendMessage: string;
@@ -77,6 +79,11 @@ interface ApiResponse<T> {
         Backend: string[];
         Frontend: string[];
     };
+    MethodsStack?: {
+        Frames: Array<{ Method: string; File: string; Line: number }>;
+        StartedAt: string;
+        ElapsedMs: number;
+    };  // present iff `debug.methods_stack` config flag enabled — production builds MUST omit.
 }
 
 // Domain type

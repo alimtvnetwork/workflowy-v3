@@ -85,11 +85,11 @@ This table describes how every core data entity relates to others in the system.
 
 | Field | Type | Source | Required | Notes |
 |-------|------|--------|----------|-------|
-| `userId` | `string` (UUID) | Auth session | Yes | Owner of every created item |
-| `parentId` | `string \| null` | UI tree position | No | `null` = direct child of root |
+| `ownerId` | `OwnerId` (branded — ADR-0020) | Auth session | Yes | Owner of every created item; constructed via `asOwnerId()` at trust boundary |
+| `parentId` | `ItemId \| null` (branded — ADR-0020) | UI tree position | No | `null` = direct child of root |
 | `content` | `string` (rich text) | User typing | Yes | Empty allowed at creation |
-| `itemType` | `ItemType` enum | Toolbar / shortcut | Yes | One of 12 types (see `mem://features/core-mechanics`) |
-| `sortOrder` | `number` (fractional) | Drop position | Yes | Computed via fractional sorting |
+| `itemType` | `ItemType` enum | Toolbar / shortcut | Yes | One of 12 types per ADR-0015 (see `spec/20-enums-index.md` §3.5) |
+| `sortOrder` | `string` (lexicographic base-62 fractional — ADR-0016) | Drop position | Yes | Generated via fractional-indexing library; never numeric `(A+B)/2` |
 | `tags` | `string[]` | Inline `#tag` syntax | No | Resolved against per-user `Tag` table |
 
 ## Outputs

@@ -92,12 +92,15 @@ function parse<T>(input: string, schema: ZodSchema<T>): T {
 ### R2 — Max 3 params
 
 ```ts
-// ❌ Bad — 5 positional params
+import type { ItemId, OwnerId, Item, ItemType } from "@/types"; // branded IDs per ADR-0020
+
+// ❌ Bad — 5 positional params, AND raw `string` IDs (violates ADR-0020 D1)
 function createItem(parentId: string, content: string, type: ItemType, sortKey: string, ownerId: string) { /* … */ }
 
-// ✅ Good — options object
+// ✅ Good — options object + branded IDs (`ItemId`/`OwnerId`); `sortKey` is the
+//          lexicographic base-62 fractional string per ADR-0016, never `number`.
 type CreateItemInput = {
-  parentId: string; content: string; type: ItemType; sortKey: string; ownerId: string;
+  parentId: ItemId | null; content: string; type: ItemType; sortKey: string; ownerId: OwnerId;
 };
 function createItem(input: CreateItemInput): Item { /* … */ }
 ```
