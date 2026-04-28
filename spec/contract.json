@@ -4,8 +4,8 @@
   "generator": "scripts/spec-hygiene/40-generate-contract-json.mjs",
   "do_not_edit": true,
   "counts": {
-    "acceptance_tests_defined": 2253,
-    "acceptance_tests_orphan_citations": 4,
+    "acceptance_tests_defined": 2257,
+    "acceptance_tests_orphan_citations": 0,
     "endpoints": 48,
     "enums": 23,
     "sections": 24
@@ -4160,6 +4160,22 @@
       "defined_in": "spec/31-app/05-conventions/97-acceptance-criteria.md",
       "defined_line": 87,
       "cited_in": []
+    },
+    {
+      "id": "AT-AUTH-01",
+      "definition": "`05-conventions/10-role-escalation-policy.md`",
+      "defined_in": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
+      "defined_line": 84,
+      "cited_in": [
+        {
+          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+          "line": 81
+        },
+        {
+          "file": "spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md",
+          "line": 255
+        }
+      ]
     },
     {
       "id": "AT-AXIOS-01",
@@ -8930,6 +8946,46 @@
       "cited_in": []
     },
     {
+      "id": "AT-ENV-01",
+      "definition": "`04-database-conventions/06-rest-api-format/97-acceptance-criteria.md`",
+      "defined_in": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
+      "defined_line": 79,
+      "cited_in": [
+        {
+          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+          "line": 81
+        },
+        {
+          "file": "spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md",
+          "line": 14
+        },
+        {
+          "file": "spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md",
+          "line": 250
+        }
+      ]
+    },
+    {
+      "id": "AT-ENV-02",
+      "definition": "same",
+      "defined_in": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
+      "defined_line": 80,
+      "cited_in": [
+        {
+          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+          "line": 81
+        },
+        {
+          "file": "spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md",
+          "line": 14
+        },
+        {
+          "file": "spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md",
+          "line": 251
+        }
+      ]
+    },
+    {
       "id": "AT-ERRCODE-01",
       "definition": "Every error code in registry has a PHP enum case",
       "defined_in": "spec/03-error-manage/97-acceptance-criteria.md",
@@ -10395,10 +10451,6 @@
           "line": 27
         },
         {
-          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 81
-        },
-        {
           "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
           "line": 81
         },
@@ -10630,10 +10682,6 @@
         {
           "file": "spec/31-app/05-conventions/97-acceptance-criteria.md",
           "line": 38
-        },
-        {
-          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 82
         },
         {
           "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
@@ -15630,6 +15678,22 @@
         {
           "file": "spec/06-seedable-config-architecture/02-features/03-rag-validation-tests/97-acceptance-criteria.md",
           "line": 12
+        }
+      ]
+    },
+    {
+      "id": "AT-RATE-01",
+      "definition": "`05-conventions/08-api-rate-limiting.md`",
+      "defined_in": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
+      "defined_line": 85,
+      "cited_in": [
+        {
+          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+          "line": 81
+        },
+        {
+          "file": "spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md",
+          "line": 256
         }
       ]
     },
@@ -22743,82 +22807,5 @@
       ]
     }
   ],
-  "orphan_at_citations": [
-    {
-      "id": "AT-AUTH-01",
-      "citedIn": [
-        {
-          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 84
-        },
-        {
-          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
-          "line": 81
-        },
-        {
-          "file": "spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md",
-          "line": 255
-        }
-      ]
-    },
-    {
-      "id": "AT-ENV-01",
-      "citedIn": [
-        {
-          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 79
-        },
-        {
-          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
-          "line": 81
-        },
-        {
-          "file": "spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md",
-          "line": 14
-        },
-        {
-          "file": "spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md",
-          "line": 250
-        }
-      ]
-    },
-    {
-      "id": "AT-ENV-02",
-      "citedIn": [
-        {
-          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 80
-        },
-        {
-          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
-          "line": 81
-        },
-        {
-          "file": "spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md",
-          "line": 14
-        },
-        {
-          "file": "spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md",
-          "line": 251
-        }
-      ]
-    },
-    {
-      "id": "AT-RATE-01",
-      "citedIn": [
-        {
-          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 85
-        },
-        {
-          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
-          "line": 81
-        },
-        {
-          "file": "spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md",
-          "line": 256
-        }
-      ]
-    }
-  ]
+  "orphan_at_citations": []
 }
