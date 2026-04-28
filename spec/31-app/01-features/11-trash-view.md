@@ -144,6 +144,22 @@ As a user who occasionally deletes the wrong item, I want a 30-day grace period 
 
 ---
 
+## Workflowy Feature Reference (F4) — Delete & Trash UX
+
+> **Source:** Workflowy product feature list, merged 2026-04-28 (lossless, additive). Reproduced verbatim; cross-linked to existing AT-TRASH-* rows above and to the 30-day retention policy in `mem://features/trash-logic`.
+
+- **Delete** — Soft-delete an item and its entire subtree. Items move to Trash; nothing is permanently removed at this step. (item-menu, shortcut: ⌘⌫)
+- **Bulk Delete** — Multi-select equivalent. Single batch confirmation toast covers the whole selection with one Undo. → [`./12-multi-select.md`](./12-multi-select.md) F3 appendix.
+- **Trash View** — Sidebar entry rendering every soft-deleted item the user owns, grouped by deletion date. Each entry shows breadcrumb of original location and time-until-purge. (component: `trash-list`)
+- **Restore** — Per-item *Restore* action returns the item (and its subtree) to its original parent. If the original parent itself is in Trash, restore re-parents to the user's root with a toast explaining the move. (component: `trash-restore-button`, AT-INFOMODEL-06)
+- **Empty Trash** — Bulk action that hard-deletes every item currently in Trash, regardless of age. Confirmation modal lists item count and total subtree size. (component: `trash-empty-button`)
+- **30-Day Auto-Purge** — A daily server cron hard-deletes any Trash item older than 30 days (per `mem://features/trash-logic`). There is no archive tier and no per-account retention override.
+- **Restore Pre-empts Purge** — Restoring an item resets its deletion clock; the next cron run will not consider it.
+
+> **Reconciliation note (F7 candidate):** confirm the WP-plugin cron handler is registered with WordPress's scheduler (`wp_schedule_event` daily) rather than relying on an external cron, per `mem://constraints/backend-runtime-deferred`. Tracked under `.lovable/question-and-ambiguity/`.
+
+---
+
 ## Related
 
 - [01-information-model.md](./01-information-model.md) — `Item.deletedAt` soft-delete column
