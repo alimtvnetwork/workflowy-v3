@@ -32,8 +32,8 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 > Total: **10** acceptance rows, **10** fixture binds, **0** orphan citations.
 <!-- /P24-RUBRIC-SELFCHECK -->
 
-> **Version:** 3.3.0
-> **Updated:** 2026-04-25 (UTC+8)
+> **Version:** 3.4.0
+> **Updated:** 2026-04-28 (UTC+8) — v3.4.0 surfaces `scripts-as-spec/` fixture-as-spec subdirectory in the Related block (follow-up to G-00-ADR-XLINK-SYMMETRY audit-script promotion).
 
 ## AI Contract
 
@@ -433,10 +433,16 @@ AI INSTRUCTION:
 - [`16-shared-conventions.md`](./16-shared-conventions.md) — Shared Conventions
 - [`17-github-release-standard.md`](./17-github-release-standard.md) — Github Release Standard
 
+**Fixtures-as-spec (frozen executable specs for CI gates):**
+
+- [`scripts-as-spec/README.md`](./scripts-as-spec/README.md) — Convention for fixture-as-spec files (frozen reference algorithms cited by gate definitions)
+- [`scripts-as-spec/xlink-symmetry-audit.md`](./scripts-as-spec/xlink-symmetry-audit.md) — Reference Python algorithm for `G-00-ADR-XLINK-SYMMETRY` (auditing reciprocal back-links from ADR `## Decision` sections to non-ADR files)
+
 **See also:**
 
 - [`../00-overview.md`](../00-overview.md) — Parent overview
 - [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) — Acceptance criteria
+- [`../00-adrs/_LEDGER-G-00-ADR-XLINK-SYMMETRY-BASELINE.md`](../00-adrs/_LEDGER-G-00-ADR-XLINK-SYMMETRY-BASELINE.md) — Baseline ledger that consumes the fixture above
 
 ---
 
