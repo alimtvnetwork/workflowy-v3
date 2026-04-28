@@ -177,6 +177,7 @@ Suppose someone wants to add a real `Favorite` table (currently forbidden by
 | [`0015`](./0015-twelve-itemtypes-enum.md) | Twelve `ItemType` enum values — closed set, lowercase, mirror-excluded | `Accepted` | 2026-04-28 |
 | [`0016`](./0016-fractional-index-sortorder.md) | Fractional-index `SortOrder` — lexicographic string, base-62, midpoint split, per-parent rebalance | `Accepted` | 2026-04-28 |
 | [`0017`](./0017-eight-error-boundaries-ui-virtualization.md) | Eight independent UI error boundaries + 1000-item virtualization (`@tanstack/react-virtual`) | `Accepted` | 2026-04-28 |
+| [`0018`](./0018-react-router-v7-data-router-and-lucide-react-only.md) | React Router v7 data-router API + `lucide-react` as the sole icon source | `Accepted` | 2026-04-28 |
 
 > **Maintenance rule (summary — full protocol in [`_INDEX_AUTOMATION.md`](./_INDEX_AUTOMATION.md)):**
 > when adding/superseding an ADR, update **both** index tables (this one
