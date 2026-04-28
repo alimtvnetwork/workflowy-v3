@@ -8,7 +8,7 @@
 | P2a | App canonical (`AT-APP-01..107`) | 4 (`97a/b/c/d`) | 107 | 107 | ✅ done |
 | P2b | App per-feature inline | 1 (`15a` covers 10 novel `AT-ROLES`; other 80 inline rows are pure dispatch aliases of P2a-covered ATs — no fixtures needed) | 10 | 10 | ✅ done |
 | P2c | REST + DB conventions | 1 (`04-database-conventions/97a-…`) covers 13 + 11 = 24 leaf ATs across the two rollups | 24 | 24 | ✅ done |
-| P2d | UI design + DS | ~14 | ~120 | 0 | todo |
+| P2d | UI design + DS | 2 (`07-design-system/97a-…`, `32-ui-design/97a-…`) cover 34 + 25 = 59 rollup ATs; 11 subsection ATs are dispatch detail (no fixtures needed) | 59 | 59 | ✅ done |
 | P2e | 33 / 34 / 35 / 36 | 4 | ~60 | 0 | todo |
 | P2f | Coding-guidelines etc. (lint shape) | ~50 | ~400 | 0 | todo |
 | P2g | Remainder | ~45 | ~300 | 0 | todo |
