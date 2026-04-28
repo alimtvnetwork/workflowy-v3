@@ -300,6 +300,53 @@ On client startup OR SSE drop:
 
 ---
 
+## Diagram — SSE / Poll Handshake (P8)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Client as React Client
+    participant API as WP-Plugin REST
+    participant SSE as EP-SYNC-STREAM
+    participant DB as SQLite
+
+    Client->>API: GET /items (initial fetch)
+    API->>DB: SELECT * FROM Items WHERE UpdatedAt > ?
+    DB-->>API: rows + max(UpdatedAt)
+    API-->>Client: { Results, Attributes.Cursor }
+
+    rect rgba(120, 200, 120, 0.15)
+        note over Client,SSE: Online path — SSE preferred
+        Client->>SSE: GET /sync/stream?since=<Cursor> (text/event-stream)
+        SSE-->>Client: event: change { id, field, value, UpdatedAt }
+        SSE-->>Client: event: heartbeat { ts } (every 25s)
+    end
+
+    rect rgba(220, 180, 120, 0.15)
+        note over Client,API: Fallback — polling on SSE failure
+        Client->>API: GET /sync/poll?since=<Cursor> (every 5s)
+        API->>DB: SELECT * WHERE UpdatedAt > Cursor
+        API-->>Client: { Results, Attributes.Cursor (advanced) }
+    end
+
+    rect rgba(220, 120, 120, 0.15)
+        note over Client,API: Write path — LWW on server
+        Client->>API: PUT /items/{id} { field, value, UpdatedAt: clientTs }
+        API->>DB: UPDATE … WHERE UpdatedAt < clientTs
+        alt Server has newer write
+            DB-->>API: 0 rows changed
+            API-->>Client: 409 Conflict { Status, Errors[StaleWrite] }
+        else Accepted
+            DB-->>API: 1 row changed
+            API-->>Client: 200 { Results.UpdatedAt }
+        end
+    end
+```
+
+> Source-of-truth for the LWW tiebreak: `UpdatedAt DESC, Id ASC` per `mem://features/offline-resilience` and `05-conventions/33-state-management-architecture.md` §3.
+
+---
+
 ## Related
 
 - [01-information-model.md](./01-information-model.md) — `Item.<field>UpdatedAt` columns required for LWW

@@ -83,6 +83,42 @@ Tier 3: Frontend (React) → Error store, Global Error Modal, toast notification
 
 ---
 
+## Diagram — Error Flow End-to-End (P8)
+
+```mermaid
+flowchart LR
+    A[Client request<br/>Axios → /wp-json/workflowy/v1/*] --> B[WP REST router]
+    B --> C{permission_callback}
+    C -->|fail| D[401/403 envelope<br/>Status.Code, Errors[]]
+    C -->|pass| E[Handler invoked]
+    E --> F{Validation<br/>Zod-equivalent in PHP}
+    F -->|fail| G[400 envelope<br/>Errors[ValidationError]]
+    F -->|pass| H[Domain logic<br/>SQLite ops]
+    H --> I{Outcome}
+    I -->|success| J[200 envelope<br/>Status, Attributes, Results]
+    I -->|domain error| K[Map to AppError code<br/>see 03-error-code-registry/]
+    I -->|unhandled exception| L[Catch in REST router<br/>500 envelope + log session]
+
+    K --> M[Response envelope:<br/>Status.Code, Errors[Code,Message]<br/>per 04-database-conventions/06-rest-api-format/]
+    L --> M
+    G --> M
+    D --> M
+    J --> N[Axios interceptor<br/>parses envelope]
+    M --> N
+    N --> O{Status.Code ≥ 400?}
+    O -->|yes| P[ErrorModal renders<br/>04-error-modal/]
+    O -->|no| Q[Component consumes Results]
+
+    classDef ok fill:#e6f4ea,stroke:#196f3d;
+    classDef err fill:#fdecea,stroke:#c0392b;
+    class J,Q ok;
+    class D,G,K,L,M,P err;
+```
+
+> Every error path MUST flow through the same envelope (`Status` mandatory, `Errors[]` populated) per the API envelope rule in `mem://architecture/tech-stack`.
+
+---
+
 ## Cross-References
 
 - [Parent Overview](../00-overview.md) — Error Management root
