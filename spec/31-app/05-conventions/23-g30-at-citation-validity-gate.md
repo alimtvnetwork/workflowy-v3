@@ -130,14 +130,14 @@ G-30 AT citation validity FAILED:
   ❌ 3 unregistered AT citation(s) in spec/31-app/06-endpoints/:
 
     spec/31-app/06-endpoints/15b-search.md:42  AT-APP-200
-    spec/31-app/06-endpoints/11b-trash-reaper.md:18  AT-MGP-58
-    spec/31-app/06-endpoints/11b-trash-reaper.md:19  AT-MGP-58
+    spec/31-app/06-endpoints/11b-trash-reaper.md:18  AT-MPG-58
+    spec/31-app/06-endpoints/11b-trash-reaper.md:19  AT-MPG-58
 
   Resolution:
     1) If the citation is a typo: fix the number to match the registered ID.
     2) If the AT is genuinely new: register it in the appropriate
        97-acceptance-criteria.md as `AT-APP-NN` (canonical) before citing.
-    3) Never invent ad-hoc prefixes like AT-MGP-* — see APP-FIX-14.
+    3) Never invent ad-hoc prefixes like AT-MPG-* — see APP-FIX-14.
 ```
 
 ---
@@ -200,7 +200,7 @@ Map row for naming-scheme documentation:
 |----------|-------|----------|--------------|
 | (a) Future-licensing | 5 | `AT-FOO-`, `AT-WORKFLOWS-`, `AT-ROADMAP-`, `AT-ENDPOINTS-`, `AT-DBDIAGRAM-` | Reserve namespace for not-yet-authored canonical index files |
 | (b) Convention-documentation | 14 | `AT-INFO-`, `AT-MIRROR-`, `AT-MULTI-`, `AT-BOARD-`, `AT-LAYOUT-`, `AT-ROLES-`, `AT-TRASH-`, … | Coverage-Map rows kept on purpose after F15/F20 closure work; they document the inline-prefix naming convention even though every cited ID resolves through closed alias rows |
-| (c) Namespace-placeholder | 22 | `AT-MGP-`, `AT-DV-`, `AT-OQ-`, `AT-SR-`, `AT-WF-CREATE-`, `AT-WF-MIGRATE-`, …, `AT-APP-`, `AT-APPF-` | Feature/workflow files where citations live under canonical `AT-APP-NN`; the prefix row documents the source-file inline scheme (and for `AT-WF-*`, the canonical-map convention) |
+| (c) Namespace-placeholder | 22 | `AT-MPG-`, `AT-DV-`, `AT-OQ-`, `AT-SR-`, `AT-WF-CREATE-`, `AT-WF-MIGRATE-`, …, `AT-APP-`, `AT-APPF-` | Feature/workflow files where citations live under canonical `AT-APP-NN`; the prefix row documents the source-file inline scheme (and for `AT-WF-*`, the canonical-map convention) |
 
 To **revisit** a specific entry (e.g. you intend to delete the prose row),
 remove it from `REDUNDANCY_ALLOWLIST` in the runner and rerun the runner.

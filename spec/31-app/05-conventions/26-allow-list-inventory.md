@@ -79,7 +79,7 @@ Source: [`scripts/spec-hygiene/30-check-at-citation-validity.mjs:111`](../../../
 | 22 | `AT-MIRRORS-` | 09-mirrors source-file prefix (canonical: AT-APP-24) |
 | 23 | `AT-DV-` | 07b-dashboard-view inline (canonical: AT-APP-68..75) |
 | 24 | `AT-SM-` | 08b-sharing-mirror-interaction inline (canonical: AT-APP-76..80) |
-| 25 | `AT-MGP-` | 09b-mirror-peer-group-model inline (canonical: AT-APP-58..67) |
+| 25 | `AT-MPG-` | 09b-mirror-peer-group-model inline (canonical: AT-APP-58..67) |
 | 26 | `AT-TR-` | 11b-trash-reaper inline (canonical: AT-APP-81..85) |
 | 27 | `AT-MZ-` | 12b-multi-select-zoom inline (canonical: AT-APP-86..91) |
 | 28 | `AT-TPL-` | 13b-templates-snapshot-semantics inline (canonical: AT-APP-92..96) |

@@ -1,6 +1,6 @@
 # Component Contract Map
 
-> **Generated:** 2026-04-27
+> **Generated:** 2026-04-28
 > **Source:** every `## Component Contract` table in `spec/31-app/01-features/`
 > **Generator:** `scripts/spec-hygiene/07-extract-contract-map.mjs`
 > **DO NOT EDIT BY HAND** — re-run the generator after editing feature files.
@@ -214,16 +214,16 @@ Total surfaces mapped: **217** across **25** feature file(s).
 
 | Surface | Component path | `data-testid` | Acceptance tests |
 |---------|---------------|---------------|------------------|
-| Diamond peer badge | ``src/components/items/MirrorBadge.tsx`` | `mirror-badge` | AT-MGP-01 |
-| Cross-peer content sync | ``src/state/mirrorGroupStore.ts`` | `mirror-content-sync` | AT-MGP-02 |
-| Per-peer position lane | ``src/components/items/PeerPositionLane.tsx`` | `mirror-position-isolation` | AT-MGP-03 |
-| Singleton-dissolve handler | ``src/state/mirrorDissolveSaga.ts`` | `mirror-singleton-dissolve` | AT-MGP-04 |
-| Survivor preservation | ``src/state/mirrorDetachSaga.ts`` | `mirror-detach-survivors` | AT-MGP-05 |
-| "See them" peer list | ``src/components/items/MirrorPeerList.tsx`` | `mirror-see-them` | AT-MGP-06 |
-| Per-instance collapse | ``src/components/items/ExpandToggle.tsx`` | `mirror-collapse-isolation` | AT-MGP-07 |
-| Canonical promotion | ``src/state/mirrorCanonicalPromotionSaga.ts`` | `mirror-canonical-promotion` | AT-MGP-08 |
-| LWW tiebreak | ``src/state/lwwResolver.ts`` | `mirror-lww-tiebreak` | AT-MGP-09 |
-| Cycle guard | ``src/components/items/MirrorPicker.tsx`` | `mirror-cycle-error` | AT-MGP-10 |
+| Diamond peer badge | ``src/components/items/MirrorBadge.tsx`` | `mirror-badge` | AT-MPG-01 |
+| Cross-peer content sync | ``src/state/mirrorGroupStore.ts`` | `mirror-content-sync` | AT-MPG-02 |
+| Per-peer position lane | ``src/components/items/PeerPositionLane.tsx`` | `mirror-position-isolation` | AT-MPG-03 |
+| Singleton-dissolve handler | ``src/state/mirrorDissolveSaga.ts`` | `mirror-singleton-dissolve` | AT-MPG-04 |
+| Survivor preservation | ``src/state/mirrorDetachSaga.ts`` | `mirror-detach-survivors` | AT-MPG-05 |
+| "See them" peer list | ``src/components/items/MirrorPeerList.tsx`` | `mirror-see-them` | AT-MPG-06 |
+| Per-instance collapse | ``src/components/items/ExpandToggle.tsx`` | `mirror-collapse-isolation` | AT-MPG-07 |
+| Canonical promotion | ``src/state/mirrorCanonicalPromotionSaga.ts`` | `mirror-canonical-promotion` | AT-MPG-08 |
+| LWW tiebreak | ``src/state/lwwResolver.ts`` | `mirror-lww-tiebreak` | AT-MPG-09 |
+| Cycle guard | ``src/components/items/MirrorPicker.tsx`` | `mirror-cycle-error` | AT-MPG-10 |
 
 ### `10-today-view.md`
 
