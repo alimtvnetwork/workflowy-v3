@@ -109,11 +109,8 @@ column directly; such fixtures MUST carry an inline comment
   works identically in JS, PHP, and SQLite without `COLLATE` clauses.
 
 **Negative**
-- `09b-mirror-peer-group-model.md` R-5 and AT-MPG-09 now contain a
-  stale 2-tier rule referencing `OwnerUserId`. The alias bridge (D2)
-  resolves it semantically, but the prose still needs a follow-up
-  PR to read `OwnerId` directly. Tracked in AUDIT-07.
-- One additional gate ID per call site (3 new gates).
+- ~~`09b-mirror-peer-group-model.md` R-5 and AT-MPG-09 now contain a stale 2-tier rule referencing `OwnerUserId`.~~ **Resolved 2026-04-28** — R-5 prose, AT-MPG-09, and §6.1 SQL pseudocode all migrated/annotated to canonical `OwnerId` with cross-link to the column-level Spec↔DDL Alias Bridge. AUDIT-07 closed.
+- One additional gate ID per call site (3 new gates; now 5 with `G-26-OWNER-ID-CANONICAL` and `G-26-WIRE-OWNERID-ONLY`).
 
 ## Alternatives Considered
 
