@@ -39,17 +39,23 @@
 
 ### #01 — Audit 100/100 score: should B1–B4 addendums add a new dimension?
 
+> ✅ **Ratified by [ADR-0024 §D1](../../spec/00-adrs/0024-ratify-soft-confirm-triage-rulings.md#decision)** — load-bearing; reversal requires a superseding ADR.
+
 - **Inferred:** No — added a "Related spec-completeness work (post-100)" footnote; score untouched.
 - **Cost of override:** 1 audit-file revision (recompute composite). Low.
 - **Default:** accept inferred decision.
 
 ### #03 — DDL singular `Item`/`Title` vs spec plural `Items`/`Content`
 
+> ✅ **Ratified by [ADR-0024 §D2](../../spec/00-adrs/0024-ratify-soft-confirm-triage-rulings.md#decision)** — load-bearing; renaming DDL to plural now forbidden without superseding ADR-0001, ADR-0006, **and** ADR-0024.
+
 - **Inferred:** Option A — DDL stays singular; spec aliases bridge the terms.
 - **Cost of override:** Option B (rename DDL to plural + add `Title` virtual column) = touches every SQL file, every migration, every endpoint that names the table. **Large blast radius.**
 - **Default:** accept inferred decision (Option A is cheaper and reversible).
 
 ### #17 — Favorites endpoint-vs-table contradiction
+
+> ✅ **Ratified by [ADR-0024 §D3](../../spec/00-adrs/0024-ratify-soft-confirm-triage-rulings.md#decision)** — load-bearing; introducing `EP-FAVORITES-*` or a `Favorite` table now requires superseding ADR-0001 **and** ADR-0024.
 
 - **Inferred:** Added §4.12 Favorites slice; left the endpoint-overview line alone.
 - **Cost of override:** Edit 1 sentence in `06-endpoints/03-layout-structure.md` to say "Favorites lives at table-level, no shell endpoint owns it." Trivial.
