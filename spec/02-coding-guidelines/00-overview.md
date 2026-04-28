@@ -8,19 +8,24 @@
 
 ## AI Contract
 
-**Purpose** — _TODO(P1): one sentence describing what `Coding Guidelines` solves._
+**Purpose** — Define normative coding rules across every language used in the WorkFlowy stack (TypeScript, PHP, PowerShell, Rust, Go, C#) so a mediocre AI produces code that passes hygiene gates on the first commit. Strict-TS rules from `mem://constraints/coding-guidelines` are the canonical source for the TS surface.
 
-**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+**Audience** — Every implementer (frontend dev, backend dev, DevOps, reviewer). Also consumed by lint configs in `eslint.config.js`, PHPStan rules in `wp-plugin/phpstan.neon`, and pre-commit hooks in `scripts/git-hooks/`.
 
 **Expected AI Output** —
-- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+- Lint configs honoring all rules: `eslint.config.js`, `wp-plugin/phpstan.neon`, `wp-plugin/.php-cs-fixer.php`.
+- Code that satisfies: zero `any`, max 3 params, no nested `if`s, 15-line logic limit, pure positive guard clauses (TS); PHP 8.1+ `enum: string`, `declare(strict_types=1)`, `final class` by default; PascalCase DB field names per `04-database-conventions/`.
+- Per-AT test in `97-acceptance-criteria.md` enforced by a hygiene script under `scripts/spec-hygiene/`.
 
 **Out of Scope** —
-- _TODO(P1): bullet adjacent concerns and link to owning section._
+- Architecture/runtime choices → `mem://architecture/tech-stack` and `15-wp-plugin-how-to/`.
+- REST envelope shape → `04-database-conventions/06-rest-api-format/`.
+- File/folder naming for product features → `08-file-folder-naming/`.
 
 **Definition of Done** —
-- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
-- `node scripts/spec-hygiene/00-run-all.mjs` exits 0
+- Every `AT-CODINGGUIDELINES-*` row in `97-acceptance-criteria.md` is enforced by either a lint rule (config diff) or a hygiene script (script path).
+- `eslint.config.js` and `wp-plugin/phpstan.neon` parse cleanly and reject every counter-example listed in this section.
+- `node scripts/spec-hygiene/00-run-all.mjs` exits 0.
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
 
