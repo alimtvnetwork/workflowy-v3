@@ -41,29 +41,29 @@
 | Gate | Tier | Primary File | Brief |
 |------|------|--------------|-------|
 | `G-02-CHAIN-MULTILINE` | **DOC** | [`spec/00-adrs/0007-strict-typescript-rules.md`](./00-adrs/0007-strict-typescript-rules.md) | - G-02-CHAIN-MULTILINE — enforces R7. |
-| `G-02-MAX-2-BOOL-OPERANDS` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0007](./00-adrs/0007-strict-typescript-rules.md) Strict TypeScript coding rules (R1–R7) Accepted 2026-04-28 G-02-NO-AN |
-| `G-02-MAX-3-PARAMS` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0007](./00-adrs/0007-strict-typescript-rules.md) Strict TypeScript coding rules (R1–R7) Accepted 2026-04-28 G-02-NO-AN |
+| `G-02-MAX-2-BOOL-OPERANDS` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | Enforces ADR-0007 — Strict TypeScript coding rules (R1–R7). |
+| `G-02-MAX-3-PARAMS` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | Enforces ADR-0007 — Strict TypeScript coding rules (R1–R7). |
 | `G-02-NO-ANY` | **DOC** | [`spec/00-adrs/0007-strict-typescript-rules.md`](./00-adrs/0007-strict-typescript-rules.md) | - G-02-NO-ANY — enforces R1. |
-| `G-02-NO-DISABLE` | **CI** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | 3 Use // eslint-disable-next-line to silence a hard rule Defeats the gate; bug ships. G-02-NO-DISABLE (CI blocks eslint |
+| `G-02-NO-DISABLE` | **CI** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | Use // eslint-disable-next-line to silence a hard rule Defeats the gate; bug ships. |
 | `G-02-NO-NESTED-IF` | **DOC** | [`spec/00-adrs/0007-strict-typescript-rules.md`](./00-adrs/0007-strict-typescript-rules.md) | G-02-NO-NESTED-IF) have no decision to cite. |
-| `G-02-NO-RETURN-TERNARY` | **DOC** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | 5 Replace a guard with a ternary that hides early-return intent Reduces readability; breaks line-counter heuristics. Co |
-| `G-02-PAIRED-EXAMPLES` | **DOC** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | 2 Cite a rule without both a bad and a good snippet AI consumers can't disambiguate intent. G-02-PAIRED-EXAMPLES (markd |
+| `G-02-NO-RETURN-TERNARY` | **DOC** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | Replace a guard with a ternary that hides early-return intent Reduces readability; breaks line-counter heuristics. Co. |
+| `G-02-PAIRED-EXAMPLES` | **DOC** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | Cite a rule without both a bad and a good snippet AI consumers can't disambiguate intent. |
 | `G-02-POSITIVE-GUARDS` | **DOC** | [`spec/00-adrs/0007-strict-typescript-rules.md`](./00-adrs/0007-strict-typescript-rules.md) | - G-02-POSITIVE-GUARDS — enforces R5. |
-| `G-02-RULE-HAS-GATE` | **DOC** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | 1 Add a coding rule without a paired automated check Rule rots — humans won't enforce by review alone. G-02-RULE-HAS-GA |
+| `G-02-RULE-HAS-GATE` | **DOC** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | Add a coding rule without a paired automated check Rule rots — humans won't enforce by review alone. |
 
 ### ADR-0003
 
 | Gate | Tier | Primary File | Brief |
 |------|------|--------------|-------|
-| `G-03-CODE-ASCII` | **DOC** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | 5 Localize the Code field Codes are machine identifiers; localization belongs in Message. G-03-CODE-ASCII (regex blocks |
+| `G-03-CODE-ASCII` | **DOC** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Localize the Code field Codes are machine identifiers; localization belongs in Message. |
 | `G-03-CODE-FORMAT` | **DOC** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Codes are UPPER_SNAKE_CASE, ≤ 40 chars. Gate G-03-CODE-FORMAT (regex ^[A-Z][A-Z0-9_]{0,39}$). |
 | `G-03-CODE-UNIQUE` | **DOC** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Codes are unique across the entire codebase. Gate G-03-CODE-UNIQUE (grep). |
-| `G-03-ENVELOPE-ONLY` | **TEST** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | 2 Return a non-envelope body on error (raw string, plain object) Frontend error handler cannot parse uniformly. G-03-EN |
+| `G-03-ENVELOPE-ONLY` | **TEST** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Return a non-envelope body on error (raw string, plain object) Frontend error handler cannot parse uniformly. |
 | `G-03-FIELD-CONDITIONAL` | **DOC-NORM** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Field is required when the error references a specific input field; forbidden otherwise. Gate G-03-FIELD-CONDITIONAL. |
 | `G-03-MESSAGE-PRESENT` | **DOC-NORM** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Each code MUST have a one-line human message template in errors.messages.<code>. Gate G-03-MESSAGE-PRESENT. |
-| `G-03-NO-BARE-THROW` | **CI** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | 1 Throw a bare xception / Error without errorCode Caller cannot branch on cause; observability cannot bucket. G-03-NO- |
-| `G-03-NO-LEAK` | **DOC** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | 6 Leak stack traces or SQL into Message Information disclosure; violates security review. G-03-NO-LEAK (regex blocks at |
-| `G-03-STATUS-CONSISTENT` | **DOC** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | 4 Set Status: "Success" while the Errors array is non-empty Self-contradicting envelope; clients double-render. G-03-ST |
+| `G-03-NO-BARE-THROW` | **CI** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Throw a bare xception / Error without errorCode Caller cannot branch on cause; observability cannot bucket. |
+| `G-03-NO-LEAK` | **DOC** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Leak stack traces or SQL into Message Information disclosure; violates security review. |
+| `G-03-STATUS-CONSISTENT` | **DOC** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Set Status: "Success" while the Errors array is non-empty Self-contradicting envelope; clients double-render. |
 
 ### ADR-0004
 
@@ -94,10 +94,10 @@
 |------|------|--------------|-------|
 | `G-05-ATTACH-ORDER` | **TEST** | [`spec/05-split-db-architecture/00-overview.md`](./05-split-db-architecture/00-overview.md) | - The order is fixed; reordering is a spec violation caught by gate G-05-ATTACH-ORDER (PHPUnit asserts sqlite_master que |
 | `G-05-AUDIT-NONBLOCKING` | **DOC-NORM** | [`spec/05-split-db-architecture/00-overview.md`](./05-split-db-architecture/00-overview.md) | audit writes are fire-and-forget — they MUST NOT roll back the parent transaction on failure. Gate G-05-AUDIT-NONBLOCKI |
-| `G-05-MIN-TABLES` | **DOC** | [`spec/05-split-db-architecture/00-overview.md`](./05-split-db-architecture/00-overview.md) | 2 Split a domain that owns < 3 tables Overhead (extra ATTACH, extra backup target) exceeds isolation benefit. G-05-MIN- |
-| `G-05-NO-ADHOC-PDO` | **CI** | [`spec/05-split-db-architecture/00-overview.md`](./05-split-db-architecture/00-overview.md) | 5 Open ad-hoc new PDO(...) instead of using DbConnectionPool::for($name) Bypasses pragmas, attach order, and pooling. G |
+| `G-05-MIN-TABLES` | **DOC** | [`spec/05-split-db-architecture/00-overview.md`](./05-split-db-architecture/00-overview.md) | Split a domain that owns < 3 tables Overhead (extra ATTACH, extra backup target) exceeds isolation benefit. |
+| `G-05-NO-ADHOC-PDO` | **CI** | [`spec/05-split-db-architecture/00-overview.md`](./05-split-db-architecture/00-overview.md) | Open ad-hoc new PDO(...) instead of using DbConnectionPool::for($name) Bypasses pragmas, attach order, and pooling. G. |
 | `G-05-NO-RAW-CROSS-JOIN` | **DOC-NORM** | [`spec/05-split-db-architecture/00-overview.md`](./05-split-db-architecture/00-overview.md) | Raw SQL joins across attached schemas are forbidden in handler code. Gate G-05-NO-RAW-CROSS-JOIN (grep: JOIN\s+(usersau |
-| `G-05-REGISTRY-COMPLETE` | **DOC** | [`spec/05-split-db-architecture/00-overview.md`](./05-split-db-architecture/00-overview.md) | 3 Omit a new file from wp-plugin/config/db-split.json Orchestrator never attaches it; queries silently target the wrong |
+| `G-05-REGISTRY-COMPLETE` | **DOC** | [`spec/05-split-db-architecture/00-overview.md`](./05-split-db-architecture/00-overview.md) | Omit a new file from wp-plugin/config/db-split.json Orchestrator never attaches it; queries silently target the wrong. |
 | `G-05-REPO-COMPOSE` | **DOC-NORM** | [`spec/05-split-db-architecture/00-overview.md`](./05-split-db-architecture/00-overview.md) | Cross-DB reads MUST go through a repository method that performs two queries and joins in PHP. Gate G-05-REPO-COMPOSE. |
 
 ### ADR-0006
@@ -105,26 +105,26 @@
 | Gate | Tier | Primary File | Brief |
 |------|------|--------------|-------|
 | `G-06-CACHE-INVALIDATE` | **DOC-NORM** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | 4 Cache config without invalidation hook Settings UI changes don't take effect until restart. G-06-CACHE-INVALIDATE (ac |
-| `G-06-ENV-VIA-REGISTRY` | **DOC** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | 6 Use ENV at runtime via getenv() outside ConfigRegistry Two competing sources of truth. G-06-ENV-VIA-REGISTRY. |
+| `G-06-ENV-VIA-REGISTRY` | **DOC** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | Use ENV at runtime via getenv() outside ConfigRegistry Two competing sources of truth. |
 | `G-06-IDEMPOTENT` | **TEST** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | Never overwrite a key already present in WorkflowyConfigOverride or WorkflowyConfigUserOverride. Gate G-06-IDEMPOTENT ( |
 | `G-06-LOG-INSERT` | **DOC-NORM** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | Inserting a new key from seed MUST log seed.inserted with key + value. Gate G-06-LOG-INSERT. |
 | `G-06-NO-IMPLICIT-DELETE` | **DOC-NORM** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | Removing a key from seed/config.json does not remove it from the DB — operators must run wp workflowy config prune. Gat |
-| `G-06-NO-SECRETS-IN-SEED` | **DOC** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | 1 Put secrets in seed/config.json Seed file ships in the plugin zip — secrets leak to every install. G-06-NO-SECRETS-IN |
+| `G-06-NO-SECRETS-IN-SEED` | **DOC** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | Put secrets in seed/config.json Seed file ships in the plugin zip — secrets leak to every install. |
 | `G-06-NO-TYPE-DRIFT` | **DOC-NORM** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | Type widening (e.g. int → enum) requires a versioned migration; the seeder MUST refuse to apply it. Gate G-06-NO-TYPE-D |
-| `G-06-SCHEMA-PARITY` | **DOC** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | 5 Define a key in seed without a matching ConfigSchema entry Validator silently accepts garbage. G-06-SCHEMA-PARITY (di |
-| `G-06-VIA-REGISTRY` | **CI** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | 3 Read config directly from DB in hot paths Bypasses validator + cache; type drift not caught. G-06-VIA-REGISTRY (PHPSt |
+| `G-06-SCHEMA-PARITY` | **DOC** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | Define a key in seed without a matching ConfigSchema entry Validator silently accepts garbage. |
+| `G-06-VIA-REGISTRY` | **CI** | [`spec/06-seedable-config-architecture/00-overview.md`](./06-seedable-config-architecture/00-overview.md) | Read config directly from DB in hot paths Bypasses validator + cache; type drift not caught. |
 
 ### ADR-0010
 
 | Gate | Tier | Primary File | Brief |
 |------|------|--------------|-------|
-| `G-10-CMDLET-BINDING` | **DOC** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | 2 Omit [CmdletBinding(SupportsShouldProcess)] No -WhatIf support; mutations cannot be dry-run. G-10-CMDLET-BINDING (AST |
+| `G-10-CMDLET-BINDING` | **DOC** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | Omit [CmdletBinding(SupportsShouldProcess)] No -WhatIf support; mutations cannot be dry-run. |
 | `G-10-ERROR-STOP` | **DOC-NORM** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | 5 Omit $ErrorActionPreference = 'Stop' Non-terminating errors → exit 0 despite failure. G-10-ERROR-STOP (AST: must appe |
-| `G-10-NO-HARDCODE-PATH` | **DOC** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | 3 Hardcode C:\Program Files\… paths Breaks portable installs; fails on non-default WP layouts. G-10-NO-HARDCODE-PATH (r |
-| `G-10-NO-IEX` | **DOC** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | 7 Use Invoke-Expression on any input Arbitrary code execution. G-10-NO-IEX (regex). |
-| `G-10-NO-WRITE-HOST` | **DOC** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | 1 Use Write-Host for script output Bypasses stdout — PHP captures nothing, JSON parse fails. G-10-NO-WRITE-HOST (regex) |
+| `G-10-NO-HARDCODE-PATH` | **DOC** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | Hardcode C:\Program Files\… paths Breaks portable installs; fails on non-default WP layouts. |
+| `G-10-NO-IEX` | **DOC** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | Use Invoke-Expression on any input Arbitrary code execution. |
+| `G-10-NO-WRITE-HOST` | **DOC** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | Use Write-Host for script output Bypasses stdout — PHP captures nothing, JSON parse fails. |
 | `G-10-STDOUT-PURE` | **DOC** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | Mixing JSON and free text on stdout is a hard error caught by G-10-STDOUT-PURE. |
-| `G-10-USE-FILE-FLAG` | **CI** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | 4 Build the command line as a string in PHP and pass via -Command PowerShell injection via unescaped item titles. G-10- |
+| `G-10-USE-FILE-FLAG` | **CI** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | Build the command line as a string in PHP and pass via -Command PowerShell injection via unescaped item titles. |
 
 ### ADR-0011
 
@@ -149,17 +149,17 @@
 
 | Gate | Tier | Primary File | Brief |
 |------|------|--------------|-------|
-| `G-13-ACTION-VERSIONS` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | 7 Use actions/checkout@v3 or older Known supply-chain CVE; loses sparse-checkout. G-13-ACTION-VERSIONS (lint: pin major |
+| `G-13-ACTION-VERSIONS` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | Use actions/checkout@v3 or older Known supply-chain CVE; loses sparse-checkout. |
 | `G-13-ARCHETYPE-DECLARED` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | 1 Add a new repo without picking one of the documented archetypes Pipeline drift — each repo invents its own gates. G-1 |
-| `G-13-CACHE-KEY` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0002](./00-adrs/0002-wp-plugin-php-sqlite-backend.md) WordPress plugin + PHP 8.1+ + SQLite Accepted 2026-04-28 G-13-CA |
+| `G-13-CACHE-KEY` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | Enforces ADR-0002 — WordPress plugin + PHP 8.1+ + SQLite. |
 | `G-13-CONCURRENCY` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | concurrency: { group: ${{ github.workflow }}-${{ github.ref }}, cancel-in-progress: true } on every PR workflow. Gate G |
 | `G-13-DAG-PARALLEL` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | 5 Run jobs in series when DAG allows parallel Wastes CI minutes; balloons feedback time. G-13-DAG-PARALLEL (lint: lint- |
-| `G-13-HYGIENE-PRESENT` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | 2 Skip the spec-hygiene step Spec rot ships unchecked. G-13-HYGIENE-PRESENT (workflow lint). |
+| `G-13-HYGIENE-PRESENT` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | Skip the spec-hygiene step Spec rot ships unchecked. |
 | `G-13-NO-CANCEL-TAG` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | Tag workflows MUST set cancel-in-progress: false — releases are never cancelled mid-flight. Gate G-13-NO-CANCEL-TAG. |
 | `G-13-NO-SECRET-ECHO` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | Secrets accessed only via ${{ secrets. }}; never echoed to logs. Gate G-13-NO-SECRET-ECHO (regex over workflow). |
-| `G-13-NO-SECRET-LITERAL` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | 3 Hardcode secrets / registry URLs in workflow YAML Token leak; rotation impossible. G-13-NO-SECRET-LITERAL (regex). |
+| `G-13-NO-SECRET-LITERAL` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | Hardcode secrets / registry URLs in workflow YAML Token leak; rotation impossible. |
 | `G-13-PROTECTION-MATCH` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | 4 Mark scan-security as required Slows merges on third-party CVE noise. Branch-protection JSON checked into repo, valid |
-| `G-13-PUBLISH-NEEDS-SIGN` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | 6 Publish from a job that didn't depend on sign-artifact Unsigned release reaches users. G-13-PUBLISH-NEEDS-SIGN. |
+| `G-13-PUBLISH-NEEDS-SIGN` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | Publish from a job that didn't depend on sign-artifact Unsigned release reaches users. |
 
 ### ADR-0014
 
@@ -169,14 +169,14 @@
 | `G-14-CONFLICT-UX-SILENT` | **DOC** | [`spec/00-adrs/0010-offline-fifo-replay-queue.md`](./00-adrs/0010-offline-fifo-replay-queue.md) | - G-14-CONFLICT-UX-SILENT — enforces D5 (no prompts; "restored |
 | `G-14-LWW-SERVERTS-CANONICAL` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0010](./00-adrs/0010-offline-fifo-replay-queue.md) Offline FIFO replay queue (IndexedDB) + server-stamped LWW reconcil |
 | `G-14-NO-HARDCODE-URL` | **DOC-NORM** | [`spec/14-self-update-app-update/00-overview.md`](./14-self-update-app-update/00-overview.md) | 2 Hardcode the update-server URL in PHP Breaks air-gapped/self-hosted deployments. G-14-NO-HARDCODE-URL (grep: https?:/ |
-| `G-14-NO-SWALLOW` | **CI** | [`spec/14-self-update-app-update/00-overview.md`](./14-self-update-app-update/00-overview.md) | 4 Catch Throwable in apply() and return success Hides corruption; later phases run on broken state. G-14-NO-SWALLOW (PH |
-| `G-14-PHASE-ORDER` | **TEST** | [`spec/14-self-update-app-update/00-overview.md`](./14-self-update-app-update/00-overview.md) | 1 Run ExtractFiles before BackupSqlite succeeded No rollback target — partial extraction corrupts plugin. G-14-PHASE-OR |
+| `G-14-NO-SWALLOW` | **CI** | [`spec/14-self-update-app-update/00-overview.md`](./14-self-update-app-update/00-overview.md) | Catch Throwable in apply() and return success Hides corruption; later phases run on broken state. |
+| `G-14-PHASE-ORDER` | **TEST** | [`spec/14-self-update-app-update/00-overview.md`](./14-self-update-app-update/00-overview.md) | Run ExtractFiles before BackupSqlite succeeded No rollback target — partial extraction corrupts plugin. |
 | `G-14-QUEUE-FIFO-LOCALSEQ` | **DOC** | [`spec/00-adrs/0010-offline-fifo-replay-queue.md`](./00-adrs/0010-offline-fifo-replay-queue.md) | - G-14-QUEUE-FIFO-LOCALSEQ — enforces D1 (strict LocalSeq order, |
 | `G-14-QUEUE-INDEPENDENT-OF-VIEW-CAP` | **DOC** | [`spec/00-adrs/0010-offline-fifo-replay-queue.md`](./00-adrs/0010-offline-fifo-replay-queue.md) | - G-14-QUEUE-INDEPENDENT-OF-VIEW-CAP — enforces D6 (queue + local |
 | `G-14-QUEUE-INDEXEDDB-ONLY` | **DOC** | [`spec/00-adrs/0010-offline-fifo-replay-queue.md`](./00-adrs/0010-offline-fifo-replay-queue.md) | - G-14-QUEUE-INDEXEDDB-ONLY — enforces D2 (no localStorage / |
 | `G-14-REPLAY-IDEMPOTENT-CMID` | **DOC** | [`spec/00-adrs/0010-offline-fifo-replay-queue.md`](./00-adrs/0010-offline-fifo-replay-queue.md) | - G-14-REPLAY-IDEMPOTENT-CMID — enforces D4 (ClientMutationId + |
-| `G-14-SIG-REQUIRED` | **CI** | [`spec/14-self-update-app-update/00-overview.md`](./14-self-update-app-update/00-overview.md) | 3 Skip Ed25519 signature verification Allows arbitrary RCE via spoofed update server. G-14-SIG-REQUIRED (PHPStan: Extra |
-| `G-14-STAGING-ONLY` | **DOC** | [`spec/14-self-update-app-update/00-overview.md`](./14-self-update-app-update/00-overview.md) | 6 Mutate the live plugin/ dir instead of plugin/.staging/ A crash mid-extract leaves users with a half-installed plugin |
+| `G-14-SIG-REQUIRED` | **CI** | [`spec/14-self-update-app-update/00-overview.md`](./14-self-update-app-update/00-overview.md) | Skip Ed25519 signature verification Allows arbitrary RCE via spoofed update server. |
+| `G-14-STAGING-ONLY` | **DOC** | [`spec/14-self-update-app-update/00-overview.md`](./14-self-update-app-update/00-overview.md) | Mutate the live plugin/ dir instead of plugin/.staging/ A crash mid-extract leaves users with a half-installed plugin. |
 
 ### ADR-0015
 
@@ -199,7 +199,7 @@
 | `G-16-CONFIG-VIA-FLAG` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | 4 Read config file paths from positional args Confuses <file> semantics with config plumbing. G-16-CONFIG-VIA-FLAG (lin |
 | `G-16-EMPTY-QUERY-NO-FALLBACK` | **DOC** | [`spec/00-adrs/0013-search-relevance-then-recency-ranking.md`](./00-adrs/0013-search-relevance-then-recency-ranking.md) | - G-16-EMPTY-QUERY-NO-FALLBACK — enforces D6 (zero results, never |
 | `G-16-EXIT-DOCUMENTED` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | - The hygiene gate G-16-EXIT-DOCUMENTED rejects help text that lists an undocumented code. |
-| `G-16-EXIT-NONZERO-ON-FAIL` | **TEST** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | 2 Return exit 0 on partial failure Hides errors from CI; cron jobs miss alerts. G-16-EXIT-NONZERO-ON-FAIL (integration |
+| `G-16-EXIT-NONZERO-ON-FAIL` | **TEST** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | Return exit 0 on partial failure Hides errors from CI; cron jobs miss alerts. |
 | `G-16-FIELD-WEIGHTS-CONTENT-NOTE` | **DOC** | [`spec/00-adrs/0013-search-relevance-then-recency-ranking.md`](./00-adrs/0013-search-relevance-then-recency-ranking.md) | - G-16-FIELD-WEIGHTS-CONTENT-NOTE — enforces D3 (max(Content×1.5, |
 | `G-16-FLAG-STYLE` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | 3 Use -flagName (single dash + camelCase) Conflicts with POSIX short-flag bundling (-abc = -a -b -c). G-16-FLAG-STYLE ( |
 | `G-16-JSON-PURE` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | 1 Print free-form text to stdout when --json is set Breaks downstream jq pipelines; unparseable. G-16-JSON-PURE (test: |
@@ -209,29 +209,29 @@
 | `G-16-RANKING-HYBRID-BUCKETED` | **DOC** | [`spec/00-adrs/0013-search-relevance-then-recency-ranking.md`](./00-adrs/0013-search-relevance-then-recency-ranking.md) | - G-16-RANKING-HYBRID-BUCKETED — enforces D1 (5 buckets of |
 | `G-16-SEARCH-300MS-SLA` | **DOC** | [`spec/00-adrs/0013-search-relevance-then-recency-ranking.md`](./00-adrs/0013-search-relevance-then-recency-ranking.md) | - G-16-SEARCH-300MS-SLA — enforces D5 (< 300 ms on ≥ 5 000-item |
 | `G-16-STRICT-FLAGS` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | 6 Silently ignore unknown flags Typos pass undetected; users blame the tool. G-16-STRICT-FLAGS (parser MUST exit 2 on u |
-| `G-16-TTY-DETECT` | **TEST** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | 5 Emit ANSI color codes when stdout is not a TTY Garbles logs and CI output. G-16-TTY-DETECT (test: pipe stdout, assert |
+| `G-16-TTY-DETECT` | **TEST** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | Emit ANSI color codes when stdout is not a TTY Garbles logs and CI output. |
 
 ### ADR-0017
 
 | Gate | Tier | Primary File | Brief |
 |------|------|--------------|-------|
-| `G-17-CHANGELOG-MATCH` | **DOC** | [`spec/17-generic-update/00-overview.md`](./17-generic-update/00-overview.md) | 3 Skip the CHANGELOG.md row for the new targetVersion() Downstream installers cannot present release notes; semver prov |
-| `G-17-NO-SWALLOW` | **CI** | [`spec/17-generic-update/00-overview.md`](./17-generic-update/00-overview.md) | 4 Catch Throwable in apply() and return UpdateResult::success() Hides corruption; rollback never triggered. G-17-NO-SWA |
-| `G-17-ROLLBACK-DECLARED` | **DOC** | [`spec/17-generic-update/00-overview.md`](./17-generic-update/00-overview.md) | 1 Implement an updater without declaring rollbackStrategy() Operators cannot reason about recovery; CI cannot route to |
-| `G-17-SINGLE-CONCERN` | **DOC** | [`spec/17-generic-update/00-overview.md`](./17-generic-update/00-overview.md) | 2 Mix a schema bump and a data migration in one updater Partial failure leaves DB in a state that matches no targetVers |
+| `G-17-CHANGELOG-MATCH` | **DOC** | [`spec/17-generic-update/00-overview.md`](./17-generic-update/00-overview.md) | Skip the CHANGELOG.md row for the new targetVersion() Downstream installers cannot present release notes; semver prov. |
+| `G-17-NO-SWALLOW` | **CI** | [`spec/17-generic-update/00-overview.md`](./17-generic-update/00-overview.md) | Catch Throwable in apply() and return UpdateResult::success() Hides corruption; rollback never triggered. |
+| `G-17-ROLLBACK-DECLARED` | **DOC** | [`spec/17-generic-update/00-overview.md`](./17-generic-update/00-overview.md) | Implement an updater without declaring rollbackStrategy() Operators cannot reason about recovery; CI cannot route to. |
+| `G-17-SINGLE-CONCERN` | **DOC** | [`spec/17-generic-update/00-overview.md`](./17-generic-update/00-overview.md) | Mix a schema bump and a data migration in one updater Partial failure leaves DB in a state that matches no targetVers. |
 | `G-17-SINGLE-VERSION` | **DOC-NORM** | [`spec/17-generic-update/00-overview.md`](./17-generic-update/00-overview.md) | 5 Hard-code the version string in two places Drift between class constant and changelog. G-17-SINGLE-VERSION (grep: tar |
-| `G-17-TXN-WRAP` | **TEST** | [`spec/17-generic-update/00-overview.md`](./17-generic-update/00-overview.md) | 6 Run apply() outside a transaction on a writable DB Crash mid-statement leaves half-applied schema. G-17-TXN-WRAP (run |
+| `G-17-TXN-WRAP` | **TEST** | [`spec/17-generic-update/00-overview.md`](./17-generic-update/00-overview.md) | Run apply() outside a transaction on a writable DB Crash mid-statement leaves half-applied schema. |
 
 ### ADR-0018
 
 | Gate | Tier | Primary File | Brief |
 |------|------|--------------|-------|
-| `G-18-FROZEN` | **DOC** | [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | 1 Edit a closed audit in place Erases the historical record; future readers can't reconstruct what changed. G-18-FROZEN |
+| `G-18-FROZEN` | **DOC** | [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | Edit a closed audit in place Erases the historical record; future readers can't reconstruct what changed. |
 | `G-18-ONE-FINDING` | **DOC-NORM** | [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | 6 Mix multiple findings in one audit file Cannot be partially closed; blocks unrelated fixes. G-18-ONE-FINDING (lint: f |
 | `G-18-OWNER-LINK` | **DOC-NORM** | [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | 3 Open an audit without an owning section link Resolver cannot find what to fix. G-18-OWNER-LINK (regex: Owning section |
 | `G-18-RESOLUTION-TRIPLE` | **DOC-NORM** | [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | 4 Resolve an audit without citing the spec edit + gate + AT Future regression cannot be detected. G-18-RESOLUTION-TRIPL |
-| `G-18-SEVERITY-ROUTING` | **DOC** | [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | 5 Use severity Critical without paging the on-call channel Severity becomes meaningless inflation. G-18-SEVERITY-ROUTIN |
-| `G-18-VERBATIM-QUOTE` | **DOC** | [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | 2 Re-use an active rule wording inside an audit body Audits document the past state verbatim; mirroring active wording |
+| `G-18-SEVERITY-ROUTING` | **DOC** | [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | Use severity Critical without paging the on-call channel Severity becomes meaningless inflation. |
+| `G-18-VERBATIM-QUOTE` | **DOC** | [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | Re-use an active rule wording inside an audit body Audits document the past state verbatim; mirroring active wording. |
 
 ### ADR-0019
 
@@ -271,7 +271,7 @@
 | `G-22-ERROR-BOUNDARIES-EXACTLY-8` | **DOC** | [`spec/00-adrs/0017-eight-error-boundaries-ui-virtualization.md`](./00-adrs/0017-eight-error-boundaries-ui-virtualization.md) | - G-22-ERROR-BOUNDARIES-EXACTLY-8 — enforces D1 (CI counts |
 | `G-22-FALLBACK-CONTRACT` | **DOC** | [`spec/00-adrs/0017-eight-error-boundaries-ui-virtualization.md`](./00-adrs/0017-eight-error-boundaries-ui-virtualization.md) | - G-22-FALLBACK-CONTRACT — enforces D3 (every fallback must |
 | `G-22-NO-SILENT-FALLBACK` | **DOC** | [`spec/00-adrs/0017-eight-error-boundaries-ui-virtualization.md`](./00-adrs/0017-eight-error-boundaries-ui-virtualization.md) | - G-22-NO-SILENT-FALLBACK — enforces D6 (boundary fallbacks |
-| `G-22-REGISTRY-LOCKSTEP` | **DOC** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | 3 Add an error code outside the two registry files PHP↔TS drift; Code becomes meaningless string. G-22-REGISTRY-LOCKSTE |
+| `G-22-REGISTRY-LOCKSTEP` | **DOC** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Add an error code outside the two registry files PHP↔TS drift; Code becomes meaningless string. |
 | `G-22-VIRTUALIZATION-1000` | **DOC** | [`spec/00-adrs/0017-eight-error-boundaries-ui-virtualization.md`](./00-adrs/0017-eight-error-boundaries-ui-virtualization.md) | - G-22-VIRTUALIZATION-1000 — enforces D4 (any list/tree/grid |
 | `G-22-VIRTUALIZER-TANSTACK-ONLY` | **DOC** | [`spec/00-adrs/0017-eight-error-boundaries-ui-virtualization.md`](./00-adrs/0017-eight-error-boundaries-ui-virtualization.md) | - G-22-VIRTUALIZER-TANSTACK-ONLY — enforces D5 (only |
 
@@ -438,8 +438,8 @@
 | Gate | Tier | Primary File | Brief |
 |------|------|--------------|-------|
 | `G-36-CLIENT-NO-ROLE` | **DOC-NORM** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | Admin status MUST NOT be read from client-side storage (localStorage, sessionStorage, cookies). Gate G-36-CLIENT-NO-ROL |
-| `G-36-HAS-ROLE-DEFINER` | **DOC** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | 5 Implement Auth::hasRole as a plain SQL view (not SECURITY DEFINER) RLS recursion — query inside the policy queries th |
-| `G-36-NO-HARDCODE-ADMIN` | **DOC** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | 7 Hardcode an admin email/UUID in PHP Cannot be rotated; lost-key disaster. G-36-NO-HARDCODE-ADMIN (regex). |
+| `G-36-HAS-ROLE-DEFINER` | **DOC** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | Implement Auth::hasRole as a plain SQL view (not SECURITY DEFINER) RLS recursion — query inside the policy queries th. |
+| `G-36-NO-HARDCODE-ADMIN` | **DOC** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | Hardcode an admin email/UUID in PHP Cannot be rotated; lost-key disaster. |
 | `G-36-NO-ROLE-COLUMN` | **DOC-NORM** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | Roles live only in UserRole (separate table). NEVER on User or UserProfile. Gate G-36-NO-ROLE-COLUMN (DDL lint rejects |
 | `G-36-NO-SELF-ROLE` | **DOC-NORM** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | 6 Self-assign a role via POST /users/{me}/roles Privilege escalation by the user themselves. G-36-NO-SELF-ROLE (handler |
 | `G-36-PASSWORD-WRITE-ONLY` | **DOC-NORM** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | Passwords are write-only — never appear in any response envelope. Gate G-36-PASSWORD-WRITE-ONLY (response-schema test: |
@@ -484,7 +484,7 @@
 | `G-MIRROR-CYCLE-PRECHECK` | **DOC** | [`spec/00-adrs/0005-mirror-as-peer-group.md`](./00-adrs/0005-mirror-as-peer-group.md) | - G-MIRROR-CYCLE-PRECHECK — every structural mutation that |
 | `G-MIRROR-DISSOLVE-SINGLETON` | **DOC** | [`spec/00-adrs/0005-mirror-as-peer-group.md`](./00-adrs/0005-mirror-as-peer-group.md) | - G-MIRROR-DISSOLVE-SINGLETON — every detach workflow MUST |
 | `G-MIRROR-LWW-TIEBREAK` | **DOC** | [`spec/00-adrs/0005-mirror-as-peer-group.md`](./00-adrs/0005-mirror-as-peer-group.md) | - G-MIRROR-LWW-TIEBREAK — every conflict-resolution code path |
-| `G-MIRROR-NO-ITEMTYPE` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0005](./00-adrs/0005-mirror-as-peer-group.md) Mirror is a peer-group relation (not an ItemType) Accepted 2026-04-28 G- |
+| `G-MIRROR-NO-ITEMTYPE` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | Enforces ADR-0005 — Mirror is a peer-group relation (not an ItemType). |
 | `G-MIRROR-PEER-COLUMN` | **DOC** | [`spec/00-adrs/0005-mirror-as-peer-group.md`](./00-adrs/0005-mirror-as-peer-group.md) | - G-MIRROR-PEER-COLUMN — Item.PeerGroupId is the only |
 
 ### Domain-SPLIT
