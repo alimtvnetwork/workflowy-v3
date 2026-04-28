@@ -4,8 +4,8 @@
   "generator": "scripts/spec-hygiene/40-generate-contract-json.mjs",
   "do_not_edit": true,
   "counts": {
-    "acceptance_tests_defined": 2257,
-    "acceptance_tests_orphan_citations": 0,
+    "acceptance_tests_defined": 2253,
+    "acceptance_tests_orphan_citations": 4,
     "endpoints": 48,
     "enums": 23,
     "sections": 24
@@ -4160,22 +4160,6 @@
       "defined_in": "spec/31-app/05-conventions/97-acceptance-criteria.md",
       "defined_line": 87,
       "cited_in": []
-    },
-    {
-      "id": "AT-AUTH-01",
-      "definition": "`05-conventions/10-role-escalation-policy.md`",
-      "defined_in": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-      "defined_line": 84,
-      "cited_in": [
-        {
-          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
-          "line": 81
-        },
-        {
-          "file": "spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md",
-          "line": 255
-        }
-      ]
     },
     {
       "id": "AT-AXIOS-01",
@@ -8946,46 +8930,6 @@
       "cited_in": []
     },
     {
-      "id": "AT-ENV-01",
-      "definition": "`04-database-conventions/06-rest-api-format/97-acceptance-criteria.md`",
-      "defined_in": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-      "defined_line": 79,
-      "cited_in": [
-        {
-          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
-          "line": 81
-        },
-        {
-          "file": "spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md",
-          "line": 14
-        },
-        {
-          "file": "spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md",
-          "line": 250
-        }
-      ]
-    },
-    {
-      "id": "AT-ENV-02",
-      "definition": "same",
-      "defined_in": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-      "defined_line": 80,
-      "cited_in": [
-        {
-          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
-          "line": 81
-        },
-        {
-          "file": "spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md",
-          "line": 14
-        },
-        {
-          "file": "spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md",
-          "line": 251
-        }
-      ]
-    },
-    {
       "id": "AT-ERRCODE-01",
       "definition": "Every error code in registry has a PHP enum case",
       "defined_in": "spec/03-error-manage/97-acceptance-criteria.md",
@@ -10451,6 +10395,10 @@
           "line": 27
         },
         {
+          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
+          "line": 81
+        },
+        {
           "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
           "line": 81
         },
@@ -10682,6 +10630,10 @@
         {
           "file": "spec/31-app/05-conventions/97-acceptance-criteria.md",
           "line": 38
+        },
+        {
+          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
+          "line": 82
         },
         {
           "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
@@ -15682,22 +15634,6 @@
       ]
     },
     {
-      "id": "AT-RATE-01",
-      "definition": "`05-conventions/08-api-rate-limiting.md`",
-      "defined_in": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-      "defined_line": 85,
-      "cited_in": [
-        {
-          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
-          "line": 81
-        },
-        {
-          "file": "spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md",
-          "line": 256
-        }
-      ]
-    },
-    {
       "id": "AT-RATELIMIT-01",
       "definition": "User has made 29 of 30 burst requests",
       "defined_in": "spec/31-app/05-conventions/08-api-rate-limiting.md",
@@ -19014,12 +18950,20 @@
           "line": 43
         },
         {
-          "file": "spec/31-app/01-features/10-today-view.md",
-          "line": 104
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 73
         },
         {
           "file": "spec/23-ai-build-walkthrough.md",
-          "line": 73
+          "line": 155
+        },
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 172
+        },
+        {
+          "file": "spec/31-app/01-features/10-today-view.md",
+          "line": 85
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
@@ -19038,12 +18982,20 @@
       "defined_line": 156,
       "cited_in": [
         {
-          "file": "spec/31-app/01-features/10-today-view.md",
-          "line": 105
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 74
         },
         {
           "file": "spec/23-ai-build-walkthrough.md",
-          "line": 74
+          "line": 156
+        },
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 173
+        },
+        {
+          "file": "spec/31-app/01-features/10-today-view.md",
+          "line": 86
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
@@ -19122,9 +19074,22 @@
     {
       "id": "AT-TODAY-08",
       "definition": "Item TZ is today in user TZ but yesterday in UTC",
-      "defined_in": "spec/23-ai-build-walkthrough.md",
-      "defined_line": 75,
-      "cited_in": []
+      "defined_in": "spec/31-app/01-features/10-today-view.md",
+      "defined_line": 92,
+      "cited_in": [
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 75
+        },
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 91
+        },
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 174
+        }
+      ]
     },
     {
       "id": "AT-TODAY-09",
@@ -19145,16 +19110,42 @@
     {
       "id": "AT-TODAY-10",
       "definition": "Item is a mirror",
-      "defined_in": "spec/23-ai-build-walkthrough.md",
-      "defined_line": 76,
-      "cited_in": []
+      "defined_in": "spec/31-app/01-features/10-today-view.md",
+      "defined_line": 94,
+      "cited_in": [
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 76
+        },
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 158
+        },
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 175
+        }
+      ]
     },
     {
       "id": "AT-TODAY-11",
       "definition": "View is open at 23:59 local",
-      "defined_in": "spec/23-ai-build-walkthrough.md",
-      "defined_line": 77,
-      "cited_in": []
+      "defined_in": "spec/31-app/01-features/10-today-view.md",
+      "defined_line": 95,
+      "cited_in": [
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 77
+        },
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 161
+        },
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 176
+        }
+      ]
     },
     {
       "id": "AT-TODAY-12",
@@ -19171,9 +19162,22 @@
     {
       "id": "AT-TODAY-13",
       "definition": "Network drops",
-      "defined_in": "spec/23-ai-build-walkthrough.md",
-      "defined_line": 78,
-      "cited_in": []
+      "defined_in": "spec/31-app/01-features/10-today-view.md",
+      "defined_line": 97,
+      "cited_in": [
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 78
+        },
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 159
+        },
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 177
+        }
+      ]
     },
     {
       "id": "AT-TODAY-14",
@@ -22739,5 +22743,82 @@
       ]
     }
   ],
-  "orphan_at_citations": []
+  "orphan_at_citations": [
+    {
+      "id": "AT-AUTH-01",
+      "citedIn": [
+        {
+          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
+          "line": 84
+        },
+        {
+          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+          "line": 81
+        },
+        {
+          "file": "spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md",
+          "line": 255
+        }
+      ]
+    },
+    {
+      "id": "AT-ENV-01",
+      "citedIn": [
+        {
+          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
+          "line": 79
+        },
+        {
+          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+          "line": 81
+        },
+        {
+          "file": "spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md",
+          "line": 14
+        },
+        {
+          "file": "spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md",
+          "line": 250
+        }
+      ]
+    },
+    {
+      "id": "AT-ENV-02",
+      "citedIn": [
+        {
+          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
+          "line": 80
+        },
+        {
+          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+          "line": 81
+        },
+        {
+          "file": "spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md",
+          "line": 14
+        },
+        {
+          "file": "spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md",
+          "line": 251
+        }
+      ]
+    },
+    {
+      "id": "AT-RATE-01",
+      "citedIn": [
+        {
+          "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
+          "line": 85
+        },
+        {
+          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+          "line": 81
+        },
+        {
+          "file": "spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md",
+          "line": 256
+        }
+      ]
+    }
+  ]
 }
