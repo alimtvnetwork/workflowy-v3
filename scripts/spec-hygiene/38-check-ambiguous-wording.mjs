@@ -33,6 +33,7 @@ const BANNED = [
   { re: /\bideally\b/gi, label: "ideally" },
   { re: /\bpreferably\b/gi, label: "preferably" },
   { re: /\bshould consider\b/gi, label: "should consider" },
+  { re: /\bmirror cop(y|ies)\b/gi, label: "mirror copy (use 'mirror peer' — F7-3)" },
 ];
 
 const SKIP_PATH = (p) =>

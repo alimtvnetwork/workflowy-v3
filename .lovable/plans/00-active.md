@@ -98,9 +98,9 @@ Pick the top 🟦 item on every `next`. Strike (✅) when done; new top item bec
 **Resolution:** every hit becomes a hard decision OR a link into `.lovable/question-and-ambiguity/`.
 **Predicted gain:** +8 composite.
 
-### F7 — Reconciliation pass: feature reference vs data model & hotkey table
+### ✅ F7 — Reconciliation pass: feature reference vs data model & hotkey table
 **Targets:** `01-information-model.md`, `05a-hotkey-table.md`, `mem://architecture/data-model`, `mem://features/mirroring`.
-**Action:** flag any conflict between merged Workflowy text and current spec; record resolution in `.lovable/question-and-ambiguity/`.
+**✅ Done 2026-04-28:** Reconciled all 12 flags raised across F1–F6 (F1×1, F2×2, F3×3, F4×4, F5×2). Created [`./archive/09-f07-reconciliation.md`](./archive/09-f07-reconciliation.md) with concrete resolution + owning SSOT for each flag. Extended G-38 BANNED list with `"mirror copy"` per F3-2. Three follow-up tickets escalated (P5-prereq for `/me/*` matrix rows, P11-candidate for slash→endpoint linter, roadmap entry for recurring date chips). Hygiene PASS; only pre-existing `ItemType` enum drift carried over.
 
 ### F8 — Uniform feature-block format pass
 **Targets:** every file touched by F1–F6.
