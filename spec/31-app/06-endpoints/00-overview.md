@@ -263,3 +263,34 @@ If any of these sections is absent in a file, the file is **non-compliant** and 
 - [`../00-overview.md`](../00-overview.md) — App spec root
 - [`../01-features/00-overview.md`](../01-features/00-overview.md) — Feature behavior contracts
 - [`../97-acceptance-criteria.md`](../97-acceptance-criteria.md) — `AT-APP-*` testable criteria
+
+---
+
+## 🔗 Spec↔DDL Alias Bridge (P40 backlink)
+
+Endpoint IDs use plural resource names (`EP-ITEMS-LIST`, `EP-USERS-GET`,
+`EP-MIRRORS-ATTACH`, `EP-TEMPLATES-INSTANTIATE`) because REST URL conventions
+favour plural collections. **The IDs are aliases over singular DDL tables.**
+
+| Endpoint resource segment | Canonical DDL table (SSOT) |
+|---|---|
+| `/items`, `EP-ITEMS-*` | `Item` |
+| `/users`, `EP-USERS-*` | `User` |
+| `/mirrors`, `EP-MIRRORS-*` | `MirrorGroup` + `MirrorMember` |
+| `/templates`, `EP-TEMPLATES-*` | `Template` + `TemplateBody` |
+| `/sessions`, `EP-SESSIONS-*` | `Session` |
+| `/roles`, `EP-ROLES-*` | `Role` + `UserRole` |
+| **(no `/favorites` route)** | `Item.IsFavorite` column — reuse `EP-ITEMS-LIST` / `EP-ITEMS-UPDATE` |
+
+**Forbidden without ADR:** introducing `EP-FAVORITES-*`, `EP-CONTENT-*`,
+or any endpoint family whose resource name does not map to a real DDL table
+(or to an explicitly-aliased column rule above).
+
+**Canonical mapping & gates:** see
+[`spec/04-database-conventions/00-overview.md`](../../04-database-conventions/00-overview.md)
+→ **"Spec↔DDL Alias Bridge"**, **Golden Rule #7**,
+`G-04-ALIAS-DDL-CANONICAL`, `G-04-NO-DDL-PLURALS`.
+
+**Resolution rule:** if an endpoint shape implies a column or table that does
+not exist in DDL, the **DDL wins**—file an ADR under `spec/00-adrs/` before
+changing either side.
