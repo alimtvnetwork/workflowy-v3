@@ -87,6 +87,47 @@ concatenation of buckets from highest to lowest.
 
 ---
 
+## Workflowy Feature Reference (F2) — Search Surface & Operators
+
+> **Source:** Workflowy product feature list, merged 2026-04-28 (lossless, additive). Reproduced verbatim. Ranking semantics (relevance-then-recency, tiered match × field weight) remain governed by `mem://features/search-functionality` and the AT-SR-* table above.
+
+### Surface
+
+- **Search** — Global text search across the user's entire tree. Triggered by ⌘K or the sidebar / navbar Search button; results render in `search-overlay` → `search-results` (see [`./05-interactions.md`](./05-interactions.md) AT-INTERACT-10..13).
+- **Recent Items** — When the search overlay opens with an empty query, it shows the most recently visited items in `search-recent` (AT-INTERACT-13).
+- **Nested Search** — Re-running a search **inside the current zoom** restricts the result set to descendants of the active page root. Driven by the `>` operator below or implicit when the overlay is opened while zoomed.
+
+### Operators
+
+The following operators are reproduced verbatim from the Workflowy spec. Each is a literal substring the user types in the search box; combine with whitespace (implicit AND) and `OR`.
+
+| Operator | Meaning | Example |
+|---|---|---|
+| `is:<itemType>` | Filter by `ItemType` (`bullet`, `todo`, `h1`, `h2`, `paragraph`, `numbered`, `code`, `quote`, `divider`, `board`, `dashboard`, `mirror`). | `is:todo refactor` |
+| `is:complete` / `is:incomplete` | Filter by To-do completion state. | `is:incomplete invoice` |
+| `is:shared` | Items the user has shared (public or invited). | `is:shared` |
+| `is:starred` | Items pinned to the sidebar Starred group. | `is:starred` |
+| `has:note` | Items with an attached note block. | `has:note design` |
+| `has:date` | Items containing a date chip. | `has:date next-week` |
+| `has:tag` | Items containing at least one `#tag` or `@tag`. | `has:tag #ops` |
+| `has:image` / `has:file` | Items with image or file attachments. | `has:image` |
+| `has:link` | Items containing an inline link. | `has:link` |
+| `text:"…"` | Exact phrase match (whitespace-significant). | `text:"quarterly review"` |
+| `highlight:<color>` | Items containing text marked with the given highlight colour. | `highlight:yellow` |
+| `-<term>` | Exclude items matching `<term>` (NOT). | `meeting -cancelled` |
+| `OR` | Logical OR between adjacent terms. | `todo OR bug` |
+| `>` | Restrict search to descendants of the current zoom (Nested Search). | `> is:todo` |
+| `#tag` / `@mention` | Tag literal — matches items containing the exact tag token. | `#blocker` |
+| date keywords (`today`, `yesterday`, `this-week`, `last-week`, `next-week`, `MM/DD/YYYY`, `YYYY-MM-DD`) | Match date chips on or around the given date. Combine with `has:date`. | `has:date today` |
+
+> **Reconciliation note (F7 candidate):** the `is:mirror` filter is provided for query parity with Workflowy. In WorkFlowy, "mirror" is a peer-group relation, so `is:mirror` returns items that participate in any peer group of size ≥ 2 (see [`./09b-mirror-peer-group-model.md`](./09b-mirror-peer-group-model.md)).
+
+### Ranking
+
+Operator filters are applied **first** as a hard predicate; the remaining hits are then ordered by the AT-SR-* relevance-then-recency rules above. Operators do not change weights — they only narrow the candidate set.
+
+---
+
 ## Related
 
 | Topic | Link |

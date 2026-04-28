@@ -189,6 +189,24 @@ Every feature in `spec/31-app/01-features/` MUST: (1) write boolean checks as **
 
 ---
 
+## Workflowy Feature Reference (F2) — Sidebar Inventory (overview index)
+
+> **Source:** Workflowy product feature list, merged 2026-04-28 (lossless, additive). The sidebar is rendered by chrome documented in [`./03-layout-structure.md`](./03-layout-structure.md) F2 appendix; this overview index is the sidebar's logical content map.
+
+The sidebar contains, top to bottom:
+
+1. **Home** — Root navigation (clears zoom). → [`./03-layout-structure.md`](./03-layout-structure.md) F2.
+2. **Search** — Trigger for the global Search overlay. → [`./16-search-ranking.md`](./16-search-ranking.md) F2.
+3. **Jump To** — Fuzzy quick-switcher (⌘P). → [`./03-layout-structure.md`](./03-layout-structure.md) F2.
+4. **📅 Today** — Anchor to Today view. → [`./10-today-view.md`](./10-today-view.md) F2.
+5. **Starred** — User-pinned items group. → [`./03-layout-structure.md`](./03-layout-structure.md) F2 (Star / Bookmark).
+6. **Top-level pages** — The first depth of the user's tree, lazily loaded.
+7. **Account chrome** — Settings, Help, theme toggle. → consumed by [`spec/36-user-management/`](../../36-user-management/00-overview.md) (F5).
+
+> **Sidebar collapse:** the entire rail collapses to icon-only mode (⌘\). All of the above remain reachable via icon + tooltip in collapsed state.
+
+---
+
 ## Related
 
 - [`../00-overview.md`](../00-overview.md) — Parent overview
