@@ -5,7 +5,7 @@
 
 | Sub-task | Scope | Files | AT rows | Fixtures landed | Status |
 |----------|-------|-------|---------|-----------------|--------|
-| P2a | App canonical | 1 | 57 (`AT-APP-01..107` minus B-batch gaps) | 14 (exemplar block) | 🟦 in progress |
+| P2a | App canonical (`AT-APP-01..107`) | 4 (`97a/b/c/d`) | 107 | 107 | ✅ done |
 | P2b | App per-feature inline | ~12 | ~110 | 0 | todo |
 | P2c | REST + DB conventions | 4 | ~30 | 0 | todo |
 | P2d | UI design + DS | ~14 | ~120 | 0 | todo |
