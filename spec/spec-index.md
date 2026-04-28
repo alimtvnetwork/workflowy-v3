@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-28  
-**Total Files:** 1383  
+**Total Files:** 1387  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -15,7 +15,7 @@
 
 ## Table of Contents
 
-- [01-spec-authoring-guide](#01-spec-authoring-guide) — 23 file(s)
+- [01-spec-authoring-guide](#01-spec-authoring-guide) — 25 file(s)
 - [02-coding-guidelines](#02-coding-guidelines) — 309 file(s)
 - [03-error-manage](#03-error-manage) — 188 file(s)
 - [04-database-conventions](#04-database-conventions) — 17 file(s)
@@ -29,7 +29,7 @@
 - [12-consolidated-guidelines](#12-consolidated-guidelines) — 26 file(s)
 - [13-cicd-pipeline-workflows](#13-cicd-pipeline-workflows) — 36 file(s)
 - [14-self-update-app-update](#14-self-update-app-update) — 32 file(s)
-- [15-wp-plugin-how-to](#15-wp-plugin-how-to) — 220 file(s)
+- [15-wp-plugin-how-to](#15-wp-plugin-how-to) — 222 file(s)
 - [16-generic-cli](#16-generic-cli) — 43 file(s)
 - [17-generic-update](#17-generic-update) — 11 file(s)
 - [18-spec-issues](#18-spec-issues) — 14 file(s)
@@ -67,6 +67,8 @@
 | [`01-spec-authoring-guide/17-quick-start-and-enforcement.md`](./01-spec-authoring-guide/17-quick-start-and-enforcement.md) | AI Quick Start & Folder Structure Enforcement | — | — |
 | [`01-spec-authoring-guide/18-ai-contract-template.md`](./01-spec-authoring-guide/18-ai-contract-template.md) | AI Contract Header — Canonical Template | 1.0.0 | Active |
 | [`01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](./01-spec-authoring-guide/19-acceptance-criteria-io-table.md) | Acceptance-Criteria I/O Table — Authoring Guide | 1.0.0 | Normative |
+| [`01-spec-authoring-guide/20-rfc-2119-wording-policy.md`](./01-spec-authoring-guide/20-rfc-2119-wording-policy.md) | RFC-2119 Wording Policy (SSOT) | 1.0.0 | — |
+| [`01-spec-authoring-guide/21-feature-block-format.md`](./01-spec-authoring-guide/21-feature-block-format.md) | Workflowy Feature-Reference Appendix — Block Format SSOT (F8) | 1.0.0 | — |
 | [`01-spec-authoring-guide/97-acceptance-criteria.md`](./01-spec-authoring-guide/97-acceptance-criteria.md) | Spec Authoring Guide — Acceptance Criteria | 3.1.0 | — |
 | [`01-spec-authoring-guide/98-changelog.md`](./01-spec-authoring-guide/98-changelog.md) | Spec Authoring Guide — Changelog | 3.1.0 | — |
 | [`01-spec-authoring-guide/99-consistency-report.md`](./01-spec-authoring-guide/99-consistency-report.md) | Consistency Report — Spec Authoring Guide | 3.1.0 | — |
@@ -1145,6 +1147,8 @@
 | [`15-wp-plugin-how-to/23-operator-runbooks/00-overview.md`](./15-wp-plugin-how-to/23-operator-runbooks/00-overview.md) | 16 — Operator Runbooks | 1.1.0 | Active |
 | [`15-wp-plugin-how-to/23-operator-runbooks/01-disaster-recovery-restore.md`](./15-wp-plugin-how-to/23-operator-runbooks/01-disaster-recovery-restore.md) | Runbook: Disaster-Recovery Restore | 1.0.0 | Active |
 | [`15-wp-plugin-how-to/23-operator-runbooks/02-backup-key-rotation.md`](./15-wp-plugin-how-to/23-operator-runbooks/02-backup-key-rotation.md) | Runbook: Backup KEK Rotation | 1.0.0 | Active |
+| [`15-wp-plugin-how-to/23-operator-runbooks/02-post-mortem-template.md`](./15-wp-plugin-how-to/23-operator-runbooks/02-post-mortem-template.md) | Disaster-Recovery Post-Mortem Template | 1.0.0 | — |
+| [`15-wp-plugin-how-to/23-operator-runbooks/97-acceptance-criteria.md`](./15-wp-plugin-how-to/23-operator-runbooks/97-acceptance-criteria.md) | Operator Runbooks — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`15-wp-plugin-how-to/24-local-dev-harness.md`](./15-wp-plugin-how-to/24-local-dev-harness.md) | Phase 24 — Local WordPress Development Harness | 1.0.0 | Active |
 | [`15-wp-plugin-how-to/97-acceptance-criteria.md`](./15-wp-plugin-how-to/97-acceptance-criteria.md) | WP Plugin How-To — Acceptance Criteria (Roll-up) | 2.0.0 | Curated |
 | [`15-wp-plugin-how-to/99-consistency-report.md`](./15-wp-plugin-how-to/99-consistency-report.md) | Consistency Report — spec/15-wp-plugin-how-to/ | 1.1.0 | — |
@@ -1502,7 +1506,7 @@
 
 | File | Title | Version | Status |
 |------|-------|---------|--------|
-| [`33-feedback-report/00-overview.md`](./33-feedback-report/00-overview.md) | Feedback Report — Feature Spec | 2.0.0 | Planned |
+| [`33-feedback-report/00-overview.md`](./33-feedback-report/00-overview.md) | Feedback Report — Feature Spec | 2.1.0 | D |
 | [`33-feedback-report/97-acceptance-criteria.md`](./33-feedback-report/97-acceptance-criteria.md) | Feedback Report — Acceptance Criteria | 1.0.0 | Curated |
 | [`33-feedback-report/97a-acceptance-criteria-fixtures.md`](./33-feedback-report/97a-acceptance-criteria-fixtures.md) | Feedback Report — Acceptance Criteria I/O Fixtures | 1.0.0 | Normative |
 | [`33-feedback-report/99-consistency-report.md`](./33-feedback-report/99-consistency-report.md) | Consistency Report — Feedback Report Feature | 1.1.0 | — |
@@ -1520,7 +1524,7 @@
 
 | File | Title | Version | Status |
 |------|-------|---------|--------|
-| [`35-enforcement-rules/00-overview.md`](./35-enforcement-rules/00-overview.md) | Enforcement Rules — Spec | 2.0.0 | Planned |
+| [`35-enforcement-rules/00-overview.md`](./35-enforcement-rules/00-overview.md) | Enforcement Rules — Spec | 2.1.0 | D |
 | [`35-enforcement-rules/97-acceptance-criteria.md`](./35-enforcement-rules/97-acceptance-criteria.md) | Enforcement Rules — Acceptance Criteria | 1.0.0 | Curated |
 | [`35-enforcement-rules/97a-acceptance-criteria-fixtures.md`](./35-enforcement-rules/97a-acceptance-criteria-fixtures.md) | Enforcement Rules — Acceptance Criteria I/O Fixtures | 1.0.0 | Normative |
 | [`35-enforcement-rules/99-consistency-report.md`](./35-enforcement-rules/99-consistency-report.md) | Consistency Report — Generic Enforce | 1.1.0 | — |
@@ -1553,4 +1557,4 @@
 
 ---
 
-*Auto-generated index — 1383 files across 25 top-level folders.*
+*Auto-generated index — 1387 files across 25 top-level folders.*
