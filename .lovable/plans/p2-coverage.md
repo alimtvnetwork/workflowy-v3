@@ -24,3 +24,14 @@
 | P3 | Per-endpoint envelope JSON fixtures | 1 (`spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md`) — canonical request/response samples by endpoint family + 7 cross-cutting universal ATs | 47/47 | ✅ done |
 
 Linked from `spec/31-app/06-endpoints/97-acceptance-criteria.md` Fixtures section.
+
+---
+
+## P4 — TBD/should/consider sweep (2026-04-28)
+
+| Sub-task | Scope | Files | Outcome | Status |
+|----------|-------|-------|---------|--------|
+| P4.1 | Audit ambiguous wording across `spec/**` | — | 2 real `(TBD)` placeholders found in active spec; soft-language phrases all in audit/archive files | ✅ done |
+| P4.2 | Resolve real `(TBD)` | edited `spec/15-wp-plugin-how-to/23-operator-runbooks/01-disaster-recovery-restore.md`; created `02-post-mortem-template.md` | placeholder removed; canonical post-mortem template now exists | ✅ done |
+| P4.3 | RFC-2119 wording SSOT | created `spec/01-spec-authoring-guide/20-rfc-2119-wording-policy.md` | canonical keywords + forbidden-phrase table + allow-list | ✅ done |
+| P4.4 | Hygiene gate G-38 | created `scripts/spec-hygiene/38-check-ambiguous-wording.mjs`; wired into `00-run-all.mjs` | bans new TBD/FIXME/XXX + 8 soft-language phrases in active spec | ✅ done |
