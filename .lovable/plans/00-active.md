@@ -42,13 +42,14 @@ Pick the top 🟦 item on every `next`. Strike (✅) when done; new top item bec
 **Verify:** hygiene passes; re-score `01-spec-authoring-guide` + 1 sample section.
 **✅ Done 2026-04-28:** Created canonical template `spec/01-spec-authoring-guide/18-ai-contract-template.md` and injected `## AI Contract` block (with `_TODO(P1):_` placeholders) into all 24 top-level overviews via idempotent `/tmp/inject-ai-contract.mjs`. 121 placeholders queued for F1–F6/P2 to fill. Hygiene PASS for P1 changes; only pre-existing failure is the `ItemType` enum drift (`src/types/index.ts` has `mirror`, spec has `dashboard`) carried over from the 2026-04-28 audit — unrelated to P1, tracked separately.
 
-### 🟦 F1 — Merge Workflowy feature reference (Part 1: editor & item-type features)
+### ✅ F1 — Merge Workflowy feature reference (Part 1: editor & item-type features)
 **Targets:** `01-information-model.md`, `04-page-content-area.md`, `05-interactions.md`, `05a-hotkey-table.md`.
 **Map (lossless):** Item Types, Bullet, To-do, Heading H1/H2, Paragraph, Numbered List, Complete, Add Note, Add Date, Tags, File Upload, Image Resize, Image Menu, Text Format Toolbar, Text Color, Create Bullet, Zoom In/Out, Item Menu, Expand/Collapse, Auto Save, Undo, Redo.
 **Format:** Feature Title — Description (incl. shortcut + slash command).
 **Verify:** hygiene; re-score `31-app`.
+**✅ Done 2026-04-28:** Inserted "Workflowy Feature Reference (F1)" appendix into all four target files (additive, before existing `## Related`). Mirror reconciliation note ties Workflowy item-level "Mirror" → WorkFlowy peer-group relation per `mem://features/mirroring`. F1 hotkey appendix flags an F7 reconciliation candidate (every appendix row must appear in the canonical AT-HK-* table). Hygiene PASS for F1 changes; only pre-existing `ItemType` enum drift carried over (unrelated). Projected composite 61 → 63.
 
-### F2 — Merge Workflowy feature reference (Part 2: navigation, search, sidebar)
+### 🟦 F2 — Merge Workflowy feature reference (Part 2: navigation, search, sidebar)
 **Targets:** `00-overview.md` (sidebar), new `17-search.md` (or extend `16-search-ranking.md`), `10-today-view.md` (Jump-to anchor).
 **Map:** Sidebar, Home/Back/Forward Navigation, Jump To, Star/Bookmark, Search, Search Operators (`is:`, `has:`, `text:`, `highlight:`, `-`, `OR`, `>`), Date Search, Nested Search.
 **Verify:** hygiene; re-score `31-app`.

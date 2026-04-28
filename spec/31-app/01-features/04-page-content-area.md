@@ -201,6 +201,25 @@ Each swatch: small circle. Currently selected color has a ring border. Hover: sl
 
 ---
 
+## Workflowy Feature Reference (F1) — Page Content & Editor Affordances
+
+> **Source:** Workflowy product feature list, merged 2026-04-28 (lossless, additive). Reproduced verbatim; cross-linked to existing component-contract rows above.
+
+- **Text Format Toolbar** — Floating toolbar that appears on text selection. Exposes Bold / Italic / Underline / Strike / Inline-code, link insertion, type conversion (H1/H2/Paragraph/Bullet/To-do), and the colour picker. Implemented by `format-toolbar` (see component-contract table above). (shortcuts: ⌘B, ⌘I, ⌘U, ⌘+Shift+S, ⌘E, ⌘K)
+- **Text Color** — Apply foreground / highlight colour to selected text via the toolbar's colour picker. (component: `color-picker`)
+- **Create Bullet** — Press ↵ at the end of an item to create a new sibling bullet; press ↹ to indent the new bullet under the previous one. (shortcut: ↵, ↹, Shift+↹ to outdent)
+- **Zoom In** — Open an item as the current page root, hiding all ancestors. Triggered by clicking the bullet glyph. (shortcut: ⌘.)
+- **Zoom Out** — Return one ancestor level toward the home root. (shortcut: ⌘,)
+- **Inline Link** — Paste or type a URL on selected text to attach a link; renders via the `inline-link` component above. (shortcut: ⌘K)
+- **Image Resize / Image Menu** — When an image attachment is rendered in the page, dragging the corner handles resizes it; clicking the image opens a per-image action menu (replace / download / copy-link / delete). Backed by the `format-toolbar` and per-image overlay (see [`./01-information-model.md`](./01-information-model.md) F1 appendix).
+- **Add Note** — Press Shift+↵ on an item to attach a secondary "note" block; rendered by `note-editor`. (shortcut: Shift+↵)
+- **Add Date** — Insert a date chip inline (powers Today view and `is:`/date search). (slash: `/date`, shortcut: ⌘+Shift+.)
+- **To-do Checkbox** — Visible leading checkbox on items of type `todo`; clicking toggles `completed` and applies completion styling. Backed by `todo-checkbox`. (shortcut on focused row: ⌘↵)
+
+> Cross-link: shortcut reference → [`./05a-hotkey-table.md`](./05a-hotkey-table.md). Item-level affordances (Item Menu, Expand/Collapse, Auto Save, Undo, Redo) → [`./01-information-model.md`](./01-information-model.md) F1 appendix.
+
+---
+
 ## Related
 
 - [01-information-model.md](./01-information-model.md) — what an Item is

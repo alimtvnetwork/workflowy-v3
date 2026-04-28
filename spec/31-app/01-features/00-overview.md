@@ -156,11 +156,11 @@ Every feature in `spec/31-app/01-features/` MUST: (1) write boolean checks as **
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`01-information-model.md`](./01-information-model.md) | Information Model Foundations | 166 |
+| 1 | [`01-information-model.md`](./01-information-model.md) | Information Model Foundations | 201 |
 | 2 | [`02-personas.md`](./02-personas.md) | Target User Personas | 119 |
 | 3 | [`03-layout-structure.md`](./03-layout-structure.md) | Layout Structure | 264 |
-| 4 | [`04-page-content-area.md`](./04-page-content-area.md) | Page / Content Area | 214 |
-| 5 | [`05-interactions.md`](./05-interactions.md) | Interaction Behaviors | 173 |
+| 4 | [`04-page-content-area.md`](./04-page-content-area.md) | Page / Content Area | 233 |
+| 5 | [`05-interactions.md`](./05-interactions.md) | Interaction Behaviors | 194 |
 | 6 | [`06-item-context-menu.md`](./06-item-context-menu.md) | Item Context Menu (⋮) | 214 |
 | 7 | [`07-board-view.md`](./07-board-view.md) | Board View Specification | 214 |
 | 8 | [`08-share-dialog.md`](./08-share-dialog.md) | Share Dialog Specification | 157 |

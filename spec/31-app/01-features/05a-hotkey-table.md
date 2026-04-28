@@ -158,6 +158,29 @@ The Action ID is the registry key in the planned `src/lib/hotkeys.ts` map; multi
 
 ---
 
+## Workflowy Feature Reference (F1) — Hotkeys for Editor & Item Affordances
+
+> **Source:** Workflowy product feature list, merged 2026-04-28 (lossless, additive). The canonical AT-HK-* table above is the SSOT for AT-* IDs; this appendix is a human-friendly grouping of the F1 (editor / item-type) shortcuts only. F2 (search/navigation) and F3 (structural ops & mirrors) appendices will be added by their respective steps.
+
+| Action | macOS | Windows / Linux | Notes |
+|---|---|---|---|
+| Toggle To-do completion | ⌘↵ | Ctrl+↵ | Focused `todo` row only. |
+| Add note to current item | Shift+↵ | Shift+↵ | Creates `note` child block. |
+| Insert date chip | ⌘+Shift+. | Ctrl+Shift+. | Powers Today view + date search. |
+| Bold / Italic / Underline | ⌘B / ⌘I / ⌘U | Ctrl+B / Ctrl+I / Ctrl+U | On selected text. |
+| Inline code | ⌘E | Ctrl+E | Toggles `code` inline mark. |
+| Insert / edit link | ⌘K | Ctrl+K | Opens link prompt. |
+| Strike-through | ⌘+Shift+S | Ctrl+Shift+S | Toggles `strike` inline mark. |
+| Create sibling bullet | ↵ | ↵ | At end of item content. |
+| Indent / outdent | ↹ / Shift+↹ | ↹ / Shift+↹ | Re-parents the focused row. |
+| Expand / collapse children | ⌘↓ / ⌘↑ | Ctrl+↓ / Ctrl+↑ | Focused row only. |
+| Zoom in / zoom out | ⌘. / ⌘, | Ctrl+. / Ctrl+, | Page-root navigation. |
+| Undo / Redo | ⌘Z / ⌘+Shift+Z | Ctrl+Z / Ctrl+Y | Global mutation stack. |
+
+> **Reconciliation note (F7 candidate):** every row above MUST appear in the canonical AT-HK-* table at the top of this file. Any drift is a hygiene violation and should be flagged in the F7 reconciliation pass.
+
+---
+
 ## Related
 
 **In this section:**
