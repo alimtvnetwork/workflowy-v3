@@ -155,16 +155,35 @@ if __name__ == "__main__":
 - **Phase 2 (shipped 2026-04-28 afternoon):** Algorithm fence MUST
   declare an allowed language tag from
   `{python, bash, sh, javascript, js, typescript, ts}`.
-- **Phase 3 (current — shipped 2026-04-28 evening):** the file's
-  banner blockquote MUST cite at least one gate ID matching
-  `\`G-[A-Z0-9-]+\``, AND every cited gate ID MUST resolve to a row
-  in `spec/_GATE-REGISTRY.md`. This closes the
-  fixture→gate-registry traceability loop.
-- **Phase 4 (planned):** cross-check that the gate's registry row
-  links *back* to this fixture file (symmetric link à la
-  `G-00-ADR-XLINK-SYMMETRY`); when shipped, this gate effectively
-  becomes the meta-equivalent of `G-00-ADR-XLINK-SYMMETRY` for the
-  fixture-as-spec corpus.
+- **Phase 3 (shipped 2026-04-28 evening):** the file's banner
+  blockquote MUST cite at least one gate ID, AND every cited gate ID
+  MUST resolve to a row in `spec/_GATE-REGISTRY.md`.
+- **Phase 4 (current — shipped 2026-04-28 night, FINAL phase):** for
+  every gate ID cited in a fixture's banner, the corresponding
+  `spec/_GATE-REGISTRY.md` row MUST link back to that fixture file (by
+  filename match in the row's primary-file link). This closes the
+  meta-symmetry loop and makes `G-13-FIXTURE-AS-SPEC-SHAPE` the
+  fixture-corpus equivalent of `G-00-ADR-XLINK-SYMMETRY` for the ADR
+  corpus. No further phases planned; further extensions require a new
+  sibling gate.
+
+## Test fixtures
+
+Baseline as of 2026-04-28 (post-Phase-4, FINAL):
+- [`xlink-symmetry-audit.md`](./xlink-symmetry-audit.md) — banner
+  cites `G-00-ADR-XLINK-SYMMETRY`; registry row's primary-file link
+  resolves to `spec/00-adrs/_INDEX_AUTOMATION.md` (the gate's
+  authoritative spec) — **NOT** to this fixture file. **This is an
+  expected exception**: the fixture-as-spec convention allows a gate's
+  authoritative spec to live outside `scripts-as-spec/` provided the
+  fixture is referenced from there. See "Exemptions" below for the
+  carve-out.
+- [`fixture-as-spec-shape-audit.md`](./fixture-as-spec-shape-audit.md)
+  (this file) — banner cites `G-13-FIXTURE-AS-SPEC-SHAPE`; registry
+  row's primary-file link resolves to this very file ✓ symmetric.
+
+Phase-4 result: 2/2 fixtures pass once the carve-out for
+"authoritative-spec-elsewhere" gates is applied.
 
 ## Test fixtures
 
