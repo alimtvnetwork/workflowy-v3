@@ -294,3 +294,16 @@ or any endpoint family whose resource name does not map to a real DDL table
 **Resolution rule:** if an endpoint shape implies a column or table that does
 not exist in DDL, the **DDL wins**—file an ADR under `spec/00-adrs/` before
 changing either side.
+
+
+---
+
+## 🔖 ADR Backlinks (P46)
+
+The endpoint master index here is load-bearing because of:
+
+- **[ADR-0001 — Singular DDL vs plural prose](../../00-adrs/0001-singular-ddl-vs-plural-prose.md)** (`Accepted` 2026-04-28) — explicitly locks `EP-ITEMS-*`, `EP-USERS-*`, `EP-MIRRORS-*`, `EP-TEMPLATES-*`, `EP-SESSIONS-*`, `EP-ROLES-*` as **aliases** over singular DDL tables, and explicitly **forbids** `EP-FAVORITES-*`, `EP-CONTENT-*`, `EP-FAVORITE-*` endpoint families.
+- **[ADR-0002 — WP plugin + PHP 8.1+ + SQLite](../../00-adrs/0002-wp-plugin-php-sqlite-backend.md)** (`Accepted` 2026-04-28) — every endpoint listed here is implemented as a `register_rest_route()` handler under the plugin REST namespace.
+
+Adding a new endpoint family that does not map to a real DDL table — or changing the runtime that serves these endpoints — requires a new ADR. See [`spec/00-adrs/00-overview.md`](../../00-adrs/00-overview.md).
+

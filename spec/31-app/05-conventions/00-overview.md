@@ -184,3 +184,16 @@ convention.
   `Item`.
 - Rate-limit buckets keyed by plural endpoint segment → key by canonical
   resource (`Item`, `User`, `MirrorGroup`).
+
+
+---
+
+## 🔖 ADR Backlinks (P46)
+
+Convention pages in this section are load-bearing because of:
+
+- **[ADR-0002 — WP plugin + PHP 8.1+ + SQLite](../../00-adrs/0002-wp-plugin-php-sqlite-backend.md)** (`Accepted` 2026-04-28) — directly anchors `31-wp-plugin-folder-skeleton.md`, `32-sse-php-implementation.md`, and the cache/CI gates referenced here (`G-13-CACHE-KEY`, `G-19-WORKFLOW-CONTRACT`, `G-20-PRECOMMIT-CONTRACT`).
+- **[ADR-0001 — Singular DDL vs plural prose](../../00-adrs/0001-singular-ddl-vs-plural-prose.md)** (`Accepted` 2026-04-28) — every audit-log row, rate-limit bucket, role/permission rule, and session/token policy in this section attaches to **singular** DDL identifiers (`AuditEvent`, `RateLimitBucket`, `Role`, `UserRole`, `Session`).
+
+Changing folder skeleton, REST adapter shape, or the runtime assumed by these conventions requires a new ADR. See [`spec/00-adrs/00-overview.md`](../../00-adrs/00-overview.md).
+

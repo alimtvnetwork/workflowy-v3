@@ -241,3 +241,16 @@ DDL identifiers. The DDL is singular and PascalCase.
 `spec/00-adrs/`—never re-alias prose to imply a hidden schema change.
 **Favorites note:** there is no `Favorite` / `Favorites` table; reads use
 `EP-ITEMS-LIST?includeFavorites=1`, writes use `EP-ITEMS-UPDATE { "IsFavorite": true }`.
+
+
+---
+
+## 🔖 ADR Backlinks (P46)
+
+Feature pages here use plural prose aliases (items, users, favorites, mirrors, templates) governed by:
+
+- **[ADR-0001 — Singular DDL vs plural prose](../../00-adrs/0001-singular-ddl-vs-plural-prose.md)** (`Accepted` 2026-04-28) — alias bridge + forbidden DDL plurals + forbidden endpoint families (`EP-FAVORITES-*`, `EP-CONTENT-*`, `EP-FAVORITE-*`). **Favorites** specifically is `Item.IsFavorite` (column), not a table.
+- **[ADR-0002 — WP plugin + PHP 8.1+ + SQLite](../../00-adrs/0002-wp-plugin-php-sqlite-backend.md)** (`Accepted` 2026-04-28) — locks the runtime backing every feature in this section.
+
+Promoting a column to a table (or any structural change to a feature) **MUST** start with a new ADR. See [`spec/00-adrs/00-overview.md`](../../00-adrs/00-overview.md).
+

@@ -437,3 +437,14 @@ AI INSTRUCTION:
 
 - [`../00-overview.md`](../00-overview.md) — Parent overview
 - [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) — Acceptance criteria
+
+---
+
+## 🔖 ADR Backlinks (P46)
+
+The CI/CD pipeline in this section is load-bearing because it is ratified by:
+
+- **[ADR-0002 — WordPress plugin + PHP 8.1+ + SQLite](../00-adrs/0002-wp-plugin-php-sqlite-backend.md)** (`Accepted` 2026-04-28) — anchors gate `G-13-CACHE-KEY` (Composer/PHP cache assumptions), the PHP-lint and PHPUnit jobs, and the WP-plugin signing/publish steps.
+- **[ADR-0001 — Singular DDL vs plural prose](../00-adrs/0001-singular-ddl-vs-plural-prose.md)** (`Accepted` 2026-04-28) — anchors the spec-hygiene job's enforcement of `G-04-NO-DDL-PLURALS` and `G-04-ALIAS-DDL-CANONICAL`.
+
+Adding/removing required CI gates, changing the runtime matrix, or adding a second backend runtime alongside the WP plugin all require a new ADR. See [`spec/00-adrs/00-overview.md`](../00-adrs/00-overview.md).

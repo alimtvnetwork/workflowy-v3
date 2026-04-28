@@ -473,3 +473,14 @@ The app-specific subfolders (`21-app/`, `23-app-database/`, `24-app-design-syste
 
 - [`../00-overview.md`](../00-overview.md) — Parent overview
 - [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) — Acceptance criteria
+
+---
+
+## 🔖 ADR Backlinks (P46)
+
+Coding guideline rules in this section are load-bearing because they are ratified by:
+
+- **[ADR-0002 — WordPress plugin + PHP 8.1+ + SQLite](../00-adrs/0002-wp-plugin-php-sqlite-backend.md)** (`Accepted` 2026-04-28) — anchors the PHP 8.1+ floor, SQLite-flavoured DDL, and the WP-plugin folder skeleton conventions referenced from this section.
+- **[ADR-0001 — Singular DDL vs plural prose](../00-adrs/0001-singular-ddl-vs-plural-prose.md)** (`Accepted` 2026-04-28) — anchors the singular-PascalCase identifier rule that all guideline examples assume.
+
+Strict-TS rules (zero `any`, max 3 params, no nested `if`s, 15-line logic limit, pure positive guard clauses) and the SQLite naming rules **MUST NOT** be relaxed without a new ADR superseding the relevant one. See [`spec/00-adrs/00-overview.md`](../00-adrs/00-overview.md).
