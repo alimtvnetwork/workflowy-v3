@@ -66,33 +66,138 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 
 
+## Error Taxonomy
+
+Every error in WorkFlowy MUST be classified into exactly one of these four categories. Category drives HTTP status, retry policy, and observability routing.
+
+| Category | HTTP status | Retryable? | Examples | Routing |
+|---|---|---|---|---|
+| **`ClientError`**     | 400 / 404 / 409 / 422 | **No** — caller must change input. | `ITEM_NOT_FOUND`, `VALIDATION_FAILED`, `STALE_VERSION`. | Logged at `info`; **not** paged. |
+| **`AuthError`**       | 401 / 403 | **No** — caller must re-authenticate. | `TOKEN_EXPIRED`, `INSUFFICIENT_ROLE`. | Logged at `warn`; rate-limit watcher. |
+| **`TransientError`**  | 503 / 504 | **Yes** — exponential backoff. | `DB_LOCKED`, `UPSTREAM_TIMEOUT`. | Logged at `warn`; auto-retry budget = 3. |
+| **`ServerError`**     | 500       | **No** — bug, requires fix. | `INTERNAL`, `INVARIANT_VIOLATION`. | Logged at `error`; pages on-call. |
+
+**Rules:**
+- Every entry in `wp-plugin/includes/Errors/ErrorCode.php` MUST declare its category via the `Category` enum.
+- The HTTP status is derived from the category — handlers MUST NOT set status independently.
+- Only `TransientError` is eligible for client-side retry; the response MUST include `Retry-After` (seconds).
+- The category is mirrored in `src/types/errors.ts` and validated by gate `G-22` (PHP↔TS lock-step).
+
+## Error-Code Registry Rules
+
+| Rule | Enforcement |
+|---|---|
+| Codes are `UPPER_SNAKE_CASE`, ≤ 40 chars. | Gate `G-03-CODE-FORMAT` (regex `^[A-Z][A-Z0-9_]{0,39}$`). |
+| Codes are unique across the entire codebase. | Gate `G-03-CODE-UNIQUE` (grep). |
+| New codes MUST be added in the **same PR** to PHP and TS files. | Gate `G-22` (diff parity). |
+| Each code MUST have a one-line human message template in `errors.messages.<code>`. | Gate `G-03-MESSAGE-PRESENT`. |
+| `Field` is required when the error references a specific input field; forbidden otherwise. | Gate `G-03-FIELD-CONDITIONAL`. |
+
 ## Anti-Patterns
 
 The AI MUST NOT:
-- Throwing a bare `Exception` / `Error` — every error MUST carry an `errorCode` from the registry.
-- Returning a non-envelope JSON response on error — `Status` MUST be `"error"` and the `Errors` array MUST contain `{code, message, field?}`.
-- Adding a new error code anywhere except `wp-plugin/includes/Errors/ErrorCode.php` (PHP) and `src/types/errors.ts` (TS), kept in lock-step by gate G-22.
 
-## Worked Example (skeleton)
+| # | Anti-pattern | Why it fails | Gate that catches it |
+|---|---|---|---|
+| 1 | Throw a bare `\Exception` / `Error` without `errorCode` | Caller cannot branch on cause; observability cannot bucket. | `G-03-NO-BARE-THROW` (PHPStan rule). |
+| 2 | Return a non-envelope body on error (raw string, plain object) | Frontend error handler cannot parse uniformly. | `G-03-ENVELOPE-ONLY` (integration test asserts response shape). |
+| 3 | Add an error code outside the two registry files | PHP↔TS drift; `Code` becomes meaningless string. | `G-22-REGISTRY-LOCKSTEP`. |
+| 4 | Set `Status: "Success"` while the `Errors` array is non-empty | Self-contradicting envelope; clients double-render. | `G-03-STATUS-CONSISTENT` (schema test: `Status==="Success"` ⇒ `Errors` absent or `[]`). |
+| 5 | Localize the `Code` field | Codes are machine identifiers; localization belongs in `Message`. | `G-03-CODE-ASCII` (regex blocks non-ASCII in `Code`). |
+| 6 | Leak stack traces or SQL into `Message` | Information disclosure; violates security review. | `G-03-NO-LEAK` (regex blocks `at /`, `SELECT `, `Stack trace:` in production responses). |
 
-A canonical, copy-pasteable shape for this section's primary output:
+## Worked Examples — Canonical Envelopes
+
+### 1. Client error — item not found (HTTP 404, category `ClientError`)
 
 ```json
 {
-  "Status": "error",
-  "Attributes": { "RequestId": "req_01H..." },
+  "Status": "Failed",
+  "Attributes": { "RequestId": "req_01HXYZ...", "Category": "ClientError" },
   "Errors": [
     {
-      "Code": "ITEM_NOT_FOUND",
+      "Code":    "ITEM_NOT_FOUND",
       "Message": "Item with id 'abc123' does not exist.",
-      "Field": "itemId"
+      "Field":   "itemId"
     }
-  ],
-  "Results": null
+  ]
 }
 ```
 
-*This is a structural skeleton. Real values come from the section's `97-acceptance-criteria.md` row that the AI is implementing.*
+### 2. Validation error with multiple field violations (HTTP 422)
+
+```json
+{
+  "Status": "Failed",
+  "Attributes": { "RequestId": "req_01HXYZ...", "Category": "ClientError" },
+  "Errors": [
+    { "Code": "VALIDATION_FAILED", "Message": "Title must be ≤ 250 chars.",     "Field": "title"   },
+    { "Code": "VALIDATION_FAILED", "Message": "ParentId must be a valid UUID.", "Field": "parentId" }
+  ]
+}
+```
+
+### 3. Auth error (HTTP 401, no `Field`)
+
+```json
+{
+  "Status": "Failed",
+  "Attributes": { "RequestId": "req_01HXYZ...", "Category": "AuthError" },
+  "Errors": [
+    { "Code": "TOKEN_EXPIRED", "Message": "Authentication token expired at 2026-04-28T09:00:00Z." }
+  ]
+}
+```
+
+### 4. Transient error (HTTP 503, includes `Retry-After`)
+
+Response headers:
+```
+HTTP/1.1 503 Service Unavailable
+Retry-After: 2
+```
+
+Body:
+```json
+{
+  "Status": "Failed",
+  "Attributes": { "RequestId": "req_01HXYZ...", "Category": "TransientError", "RetryAfterSec": 2 },
+  "Errors": [
+    { "Code": "DB_LOCKED", "Message": "SQLite database is locked; retry in 2 seconds." }
+  ]
+}
+```
+
+### 5. Server error (HTTP 500, generic message — details only in logs)
+
+```json
+{
+  "Status": "Failed",
+  "Attributes": { "RequestId": "req_01HXYZ...", "Category": "ServerError" },
+  "Errors": [
+    { "Code": "INTERNAL", "Message": "An unexpected error occurred. Reference RequestId when reporting." }
+  ]
+}
+```
+
+### 6. PHP throw site (load-bearing — fixtures cite this shape)
+
+```php
+<?php
+throw new DomainError(
+    code:     ErrorCode::ITEM_NOT_FOUND,   // category resolved from enum
+    message:  "Item with id '{$id}' does not exist.",
+    field:    'itemId',
+);
+```
+
+The framework's central `ErrorMiddleware` MUST:
+1. Resolve `Category` from `ErrorCode::categoryOf($code)`.
+2. Map category → HTTP status via the taxonomy table.
+3. Append `RequestId` from the current request scope.
+4. Strip stack traces in production; include them only when `WORKFLOWY_DEBUG=1`.
+
+*All `Code` values shown are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings.*
 
 <!-- AUTO-TOC:START -->
 
