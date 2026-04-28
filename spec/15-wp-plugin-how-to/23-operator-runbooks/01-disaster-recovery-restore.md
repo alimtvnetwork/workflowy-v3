@@ -305,7 +305,7 @@ The email template is owned by the i18n SSOT and MUST state:
 
 ### Within 7 days
 
-Open a post-mortem from the template at [`docs/templates/post-mortem.md`](#) (TBD), linked from the `SYSTEM.RESTORE_INITIATED` audit row by `Ticket` field. Per A-44 §7 step 12, the post-mortem MUST include:
+Open a post-mortem from the canonical template at [`spec/15-wp-plugin-how-to/23-operator-runbooks/02-post-mortem-template.md`](./02-post-mortem-template.md), linked from the `SYSTEM.RESTORE_INITIATED` audit row by `Ticket` field. Per A-44 §7 step 12, the post-mortem MUST include:
 
 - Root cause (what failed in production)
 - Why backups were needed (not: "as a precaution")
