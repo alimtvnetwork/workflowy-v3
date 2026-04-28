@@ -187,6 +187,7 @@ Suppose someone wants to add a real `Favorite` table (currently forbidden by
 | [`0025`](./0025-sse-realtime-transport.md) | Server-Sent Events as the sole realtime transport — `/stream/page` + `/stream/user`, PascalCase frames, `Last-Event-ID` replay, read-only signal | `Accepted` | 2026-04-28 |
 | [`0026`](./0026-lww-canonical-tiebreak.md) | Canonical LWW tie-break — single 3-tier comparator `(ServerTs DESC, OwnerId ASC, ItemId ASC)`; collapses ADR-0005/0010/0016 drift; `OwnerUserId` aliased to `OwnerId` | `Accepted` | 2026-04-28 |
 | [`0027`](./0027-sse-multiworker-shared-ring-buffer.md) | SSE multi-worker shared ring buffer — `SseRing` SQLite WAL table replaces per-process buffer; closes ADR-0025 multi-PHP-FPM gap (AUDIT-06) | `Accepted` | 2026-04-28 |
+| [`0028`](./0028-i18n-locale-strategy.md) | i18n locale strategy — `react-i18next` + `i18next-icu`; 5-tier locale detection; explicit fallback chain; RTL via logical Tailwind props; typed keys via TS module augmentation | `Accepted` | 2026-04-28 |
 
 > **Maintenance rule (summary — full protocol in [`_INDEX_AUTOMATION.md`](./_INDEX_AUTOMATION.md)):**
 > when adding/superseding an ADR, update **both** index tables (this one
