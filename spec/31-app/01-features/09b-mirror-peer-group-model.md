@@ -241,7 +241,7 @@ This migration is in [`07-db-diagram/sql/07-migration-v2-mirror-peer-groups.sql`
 3. Group has 2 members; user detaches one → `TrgMirrorMember_DissolveOnSingleton` deletes the group; lone surviving Item becomes regular.
 4. Group has 5 members; user detaches one → group + 4 remaining peers stay; diamonds intact.
 5. Canonical peer is hard-deleted → `ON DELETE CASCADE` on `MirrorGroup.CanonicalItemId` would dissolve the group; **before delete**, application code re-points `CanonicalItemId` to next-lowest `ItemId` in group.
-6. Two devices edit the canonical row's title offline → on reconnect, LWW by `(UpdatedAt DESC, OwnerUserId ASC)` picks the winner; all peers re-render.
+6. Two devices edit the canonical row's title offline → on reconnect, LWW by the canonical 3-tier comparator `(ServerTs DESC, OwnerId ASC, ItemId ASC)` (ADR-0026 §D1) picks the winner; all peers re-render.
 7. Peer A is collapsed in location-1, peer B is expanded in location-2 → `IsCollapsed` is per-instance; toggling A does not affect B.
 8. User reorders peer A inside its parent → only A's `FractionalIndex` changes; peers B, C, ... keep theirs.
 9. User shares the source content to a teammate → share grant is on the canonical `ItemId`; all peers inherit the grant.
