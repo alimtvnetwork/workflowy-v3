@@ -87,6 +87,10 @@ function recordEP(id, method, path, file, line) {
 
 walk(ROOT, (file) => {
   if (file.includes("/_archive") || file.endsWith("/spec-index.md")) return;
+  // Skip template/example files: they intentionally reference existing AT ids as illustrations.
+  if (file.includes("/01-spec-authoring-guide/") && /(template|example|fixtures)\.md$/i.test(file)) return;
+  if (file.endsWith("/97a-acceptance-criteria-fixtures.md")) return;
+  if (file.endsWith("/spec/97a-acceptance-criteria-fixtures.md")) return;
   const rel = relative(".", file);
   const lines = readFileSync(file, "utf8").split("\n");
 
