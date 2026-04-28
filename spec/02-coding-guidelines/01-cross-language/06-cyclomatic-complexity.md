@@ -285,7 +285,7 @@ func ProcessOrder(order *Order) error {
 | Complexity | Rating | Action Required |
 |-----------|--------|-----------------|
 | 0–1 | ✅ Ideal | No action needed |
-| 2–3 | ⚠️ Acceptable | Consider refactoring |
+| 2–3 | ⚠️ Acceptable | SHOULD refactor when touched (no merge gate) |
 | 4+ | ❌ Rejected | Must refactor before merge |
 
 ### How Guards Reduce Complexity

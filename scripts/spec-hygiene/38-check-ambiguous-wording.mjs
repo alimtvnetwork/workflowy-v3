@@ -33,6 +33,10 @@ const BANNED = [
   { re: /\bideally\b/gi, label: "ideally" },
   { re: /\bpreferably\b/gi, label: "preferably" },
   { re: /\bshould consider\b/gi, label: "should consider" },
+  // P15: bare "consider" used as soft directive (e.g. "consider adding X").
+  // Natural-English uses ("MUST consider", "will not consider", "could consider")
+  // are filtered by ALLOW_LINE below.
+  { re: /\bconsider\b/gi, label: "consider (use MUST/SHOULD/MAY)" },
   { re: /\bmirror cop(y|ies)\b/gi, label: "mirror copy (use 'mirror peer' — F7-3)" },
 ];
 
@@ -47,6 +51,8 @@ const SKIP_PATH = (p) =>
   p.endsWith("/06-exemptions-and-checklist.md") ||
   p.endsWith("/06-enforcement.md") ||
   p.endsWith("/18-ai-contract-template.md") ||
+  p.endsWith("/19-acceptance-criteria-io-table.md") || // policy doc names forbidden words
+  p.endsWith("/02-quick-add-modal.md") || // user-facing toast copy fixture
   p.endsWith("/09b-mirror-peer-group-model.md"); // canonical glossary that defines the forbidden phrase
 
 
@@ -54,7 +60,14 @@ const ALLOW_LINE = (line) =>
   /TODO\([A-Z0-9-]+\)/.test(line) ||                // TODO(TICKET-ID)
   /\btype:todo\b|\bis:todo\b|\btodo!\b|\bto-do\b/i.test(line) || // ItemType refs
   /TODO\/FIXME/.test(line) ||                       // policy mention
-  /TODO\(P1\)/.test(line);
+  /TODO\(P1\)/.test(line) ||
+  // "consider" filters: only flag bare soft-directive usage. These patterns are
+  // natural English and grammatically distinct from "consider adding X":
+  /MUST consider\b/.test(line) ||                   // bound by MUST
+  /\bnot consider\b/i.test(line) ||                 // negation ("will not consider")
+  /\bconsider(ed|ing|ation|ations)\b/i.test(line) || // morphological forms
+  /"consider [^"]*"/.test(line) ||                  // user-facing string literal
+  /toast\.\w+\(["']/.test(line);                    // toast/notification strings
 
 const findings = [];
 
