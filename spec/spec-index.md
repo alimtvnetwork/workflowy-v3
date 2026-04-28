@@ -392,7 +392,7 @@
 
 | File | Title | Version | Status |
 |------|-------|---------|--------|
-| [`03-error-manage/00-overview-condensed.md`](./03-error-manage/00-overview-condensed.md) | Condensed Overview — `spec/03-error-manage/` (P11) | 3.1.0 | — |
+| [`03-error-manage/00-overview-condensed.md`](./03-error-manage/00-overview-condensed.md) | Condensed Overview — `spec/03-error-manage/` (P11) | 3.1.0 | Concrete |
 | [`03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Error Management Specification | 3.1.0 | — |
 | [`03-error-manage/01-error-resolution/00-overview.md`](./03-error-manage/01-error-resolution/00-overview.md) | Error Resolution | 3.1.0 | — |
 | [`03-error-manage/01-error-resolution/01-cross-reference-diagram.md`](./03-error-manage/01-error-resolution/01-cross-reference-diagram.md) | Error Resolution Cross-Reference Diagram | 3.1.0 | Complete |
@@ -708,7 +708,7 @@
 | [`06-seedable-config-architecture/02-features/05-validation-data-seeding/97-acceptance-criteria.md`](./06-seedable-config-architecture/02-features/05-validation-data-seeding/97-acceptance-criteria.md) | Validation Data Seeding — Acceptance Criteria | 1.0.0 | Curated |
 | [`06-seedable-config-architecture/02-features/99-consistency-report.md`](./06-seedable-config-architecture/02-features/99-consistency-report.md) | Consistency Report: Seedable Config Features | 3.1.0 | — |
 | [`06-seedable-config-architecture/97-changelog.md`](./06-seedable-config-architecture/97-changelog.md) | Seedable Config Architecture — Changelog | 3.1.0 | — |
-| [`06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md`](./06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md) | Seedable Config Architecture — Acceptance Criteria I/O Fixtures | 0.1.0 | Stub |
+| [`06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md`](./06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md) | Seedable Config Architecture — Acceptance Criteria I/O Fixtures | 1.0.0 | Concrete |
 | [`06-seedable-config-architecture/98-acceptance-criteria.md`](./06-seedable-config-architecture/98-acceptance-criteria.md) | Seedable Config Architecture: Acceptance Criteria | 3.1.0 | Active |
 | [`06-seedable-config-architecture/99-consistency-report.md`](./06-seedable-config-architecture/99-consistency-report.md) | Consistency Report: Seedable Config Architecture | 3.1.0 | — |
 
@@ -1211,7 +1211,7 @@
 | [`16-generic-cli/20-terminal-output-design/12-implementation-checklist.md`](./16-generic-cli/20-terminal-output-design/12-implementation-checklist.md) | Implementation Checklist | — | — |
 | [`16-generic-cli/20-terminal-output-design/97-acceptance-criteria.md`](./16-generic-cli/20-terminal-output-design/97-acceptance-criteria.md) | Terminal Output Design — Acceptance Criteria | 1.0.0 | Curated |
 | [`16-generic-cli/97-acceptance-criteria.md`](./16-generic-cli/97-acceptance-criteria.md) | Generic CLI — Acceptance Criteria (rollup) | 2.0.0 | Curated |
-| [`16-generic-cli/97a-acceptance-criteria-fixtures.md`](./16-generic-cli/97a-acceptance-criteria-fixtures.md) | Generic Cli — Acceptance Criteria I/O Fixtures | 0.1.0 | Stub |
+| [`16-generic-cli/97a-acceptance-criteria-fixtures.md`](./16-generic-cli/97a-acceptance-criteria-fixtures.md) | Generic CLI — Acceptance Criteria I/O Fixtures | 1.0.0 | Concrete |
 | [`16-generic-cli/99-consistency-report.md`](./16-generic-cli/99-consistency-report.md) | Consistency Report — Generic Cli | 1.0.0 | — |
 
 ## 17-generic-update
@@ -1227,7 +1227,7 @@
 | [`17-generic-update/06-cleanup.md`](./17-generic-update/06-cleanup.md) | 06 — Cleanup | — | — |
 | [`17-generic-update/07-console-safe-handoff.md`](./17-generic-update/07-console-safe-handoff.md) | 07 — Console-Safe Handoff | — | — |
 | [`17-generic-update/97-acceptance-criteria.md`](./17-generic-update/97-acceptance-criteria.md) | Generic Update — Acceptance Criteria | 2.0.0 | Curated |
-| [`17-generic-update/97a-acceptance-criteria-fixtures.md`](./17-generic-update/97a-acceptance-criteria-fixtures.md) | Generic Update — Acceptance Criteria I/O Fixtures | 0.1.0 | Stub |
+| [`17-generic-update/97a-acceptance-criteria-fixtures.md`](./17-generic-update/97a-acceptance-criteria-fixtures.md) | Generic Update — Acceptance Criteria I/O Fixtures | 1.0.0 | Concrete |
 | [`17-generic-update/99-consistency-report.md`](./17-generic-update/99-consistency-report.md) | Consistency Report — Generic Update | 1.0.0 | — |
 | [`17-generic-update/README.md`](./17-generic-update/README.md) | 08 — Generic Self-Update Specification | — | — |
 
@@ -1248,14 +1248,14 @@
 | [`18-spec-issues/11-content-audit-at-app-coverage.md`](./18-spec-issues/11-content-audit-at-app-coverage.md) | Content Audit — `AT-APP-NN` Coverage Completeness (2026-04-26) | 1.0.0 | — |
 | [`18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md`](./18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md) | AI Readiness Audit — Spec Corpus (Round 4) | 1.4.0 | — |
 | [`18-spec-issues/97-acceptance-criteria.md`](./18-spec-issues/97-acceptance-criteria.md) | Spec Issues — Acceptance Criteria | 1.3.0 | Dispatch |
-| [`18-spec-issues/97a-acceptance-criteria-fixtures.md`](./18-spec-issues/97a-acceptance-criteria-fixtures.md) | Spec Issues — Acceptance Criteria I/O Fixtures | 0.1.0 | Stub |
+| [`18-spec-issues/97a-acceptance-criteria-fixtures.md`](./18-spec-issues/97a-acceptance-criteria-fixtures.md) | Spec Issues — Acceptance Criteria I/O Fixtures | 1.0.0 | Concrete |
 | [`18-spec-issues/99-consistency-report.md`](./18-spec-issues/99-consistency-report.md) | Consistency Report — Spec Issues | 1.0.0 | — |
 
 ## 31-app
 
 | File | Title | Version | Status |
 |------|-------|---------|--------|
-| [`31-app/00-overview-condensed.md`](./31-app/00-overview-condensed.md) | Condensed Overview — `spec/31-app/` (P11) | 2.6.0 | — |
+| [`31-app/00-overview-condensed.md`](./31-app/00-overview-condensed.md) | Condensed Overview — `spec/31-app/` (P11) | 2.6.0 | Active |
 | [`31-app/00-overview.md`](./31-app/00-overview.md) | App | 2.1.0 | — |
 | [`31-app/01-features/00-overview.md`](./31-app/01-features/00-overview.md) | Features | 2.3.0 | — |
 | [`31-app/01-features/01-information-model.md`](./31-app/01-features/01-information-model.md) | Information Model Foundations | 2.3.0 | — |
@@ -1394,7 +1394,7 @@
 
 | File | Title | Version | Status |
 |------|-------|---------|--------|
-| [`32-ui-design/00-overview-condensed.md`](./32-ui-design/00-overview-condensed.md) | Condensed Overview — `spec/32-ui-design/` (P11) | 2.0.0 | — |
+| [`32-ui-design/00-overview-condensed.md`](./32-ui-design/00-overview-condensed.md) | Condensed Overview — `spec/32-ui-design/` (P11) | 2.0.0 | Normative |
 | [`32-ui-design/00-overview.md`](./32-ui-design/00-overview.md) | UI Design | 2.0.0 | — |
 | [`32-ui-design/01-architecture/00-overview.md`](./32-ui-design/01-architecture/00-overview.md) | Architecture | 1.0.0 | — |
 | [`32-ui-design/01-architecture/01-tech-stack.md`](./32-ui-design/01-architecture/01-tech-stack.md) | Tech Stack | 1.1.0 | — |

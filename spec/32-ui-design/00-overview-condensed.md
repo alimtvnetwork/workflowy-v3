@@ -154,3 +154,149 @@ Each AT is "done" when (a) it has a stable ID, (b) its source file contains the 
 
 *Populated 2026-04-25 to close audit finding F-01.*
 
+<!-- P23-FIXTURE-INDEX -->
+## Acceptance-Criteria I/O Fixtures (auto-attached by P23)
+
+### Fixtures included from `spec/32-ui-design/97a-acceptance-criteria-fixtures.md`
+
+# UI Design — Acceptance Criteria I/O Fixtures
+
+> **Version:** 1.0.0
+> **Created:** 2026-04-28 (UTC+8)
+> **Status:** Normative companion to [`97-acceptance-criteria.md`](./97-acceptance-criteria.md).
+> **Format spec:** [`spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](../01-spec-authoring-guide/19-acceptance-criteria-io-table.md)
+> **Spawned by:** `.lovable/plans/00-active.md` § P2d.
+
+---
+
+## Purpose
+
+I/O fixtures for `AT-UIDESIGN-01..25`. The 11 sub-section AT files under `01-architecture/`, `02-state-and-data/`, `03-design-system/`, `04-editor/`, `05-quality/`, and `06-workflowy-ui/**/` are dispatch detail of these 25 rollup criteria — each subsection AT row is a more granular phrasing of the parent rollup AT. Per the P2b precedent, only novel rollup-level fixtures are codified here. Subsection rollups inherit by reference.
+
+---
+
+## Tech stack & architecture
+
+### `AT-UIDESIGN-01` — React 18 + Vite 5 + TS 5; no other frameworks
+
+| Slot | Value |
+|------|-------|
+| **Linter command** | `node -e "const p=require('./package.json');const d={...p.dependencies,...p.devDependencies};process.exit(d.react?.startsWith('^18')&&d.vite?.startsWith('^5')&&d.typescript?.startsWith('^5')&&!d.next&&!d.vue&&!d['@angular/core']&&!d.svelte?0:1)"` |
+| **Expected exit code** | `0` |
+| **Negative assertion** | `next`, `vue`, `@angular/core`, `svelte` MUST NOT appear in `package.json`. |
+
+### `AT-UIDESIGN-02` — Single `routes` module
+
+| Linter command | `rg -lP "createBrowserRouter\|<Routes>" src/` |
+|---|---|
+| **Expected** | Exactly one matching file (e.g. `src/routes.tsx` or `src/App.tsx`). |
+| **Negative assertion** | Two or more files declaring routes MUST fail. |
+
+### `AT-UIDESIGN-03` — `AppLayout` wraps every route via `<Outlet />`
+
+| Given | `src/components/layout/AppLayout.tsx`. |
+|---|---|
+| **Linter command** | `rg -nP "<Outlet" src/components/layout/AppLayout.tsx` |
+| **Expected exit code** | `0` |
+| **Then** | Route table nests every page under `<AppLayout>`; orphan routes fail the contract test. |
+
+### `AT-UIDESIGN-04` — Folder layout matches spec
+
+| Linter command | `node scripts/spec-hygiene/12-check-required-files.mjs --root src` |
+|---|---|
+| **Expected exit code** | `0` |
+| **Then** | `src/components/layout/`, `src/components/ui/`, `src/pages/`, `src/hooks/`, `src/lib/`, `src/types/` all present. |
+
+### `AT-UIDESIGN-05` — Component contract map matches code
+
+| Linter command | `node scripts/spec-hygiene/07-extract-contract-map.mjs --diff` |
+|---|---|
+| **Expected exit code** | `0` |
+| **Negative assertion** | Adding a new component without an entry in `01-architecture/05-component-contract-map.md` MUST fail. |
+
+---
+
+## Design system & theming
+
+### `AT-UIDESIGN-06` — HSL tokens in `@theme`; no hex/rgb in components
+
+| Linter command | `rg -nP "@theme\s*\{" src/index.css && rg -nP "#[0-9a-fA-F]{3,8}\|rgb\(" src/components` |
+|---|---|
+| **Expected exit code** | First `0`, second `1`. |
+
+### `AT-UIDESIGN-07` — Semantic Tailwind classes only
+
+| Linter command | `rg -nP "\b(bg\|text\|border)-(white\|black\|gray-\d+\|slate-\d+\|zinc-\d+\|red-\d+\|blue-\d+\|green-\d+\|yellow-\d+)\b" src/components` |
+|---|---|
+| **Expected exit code** | `1` |
+| **Negative assertion** | `text-white`, `bg-slate-900` MUST NOT appear in `src/components/**`. |
+
+### `AT-UIDESIGN-08` — Tailwind v4 via `@tailwindcss/vite`; no legacy color extensions
+
+| Linter command | `node -e "const p=require('./package.json');const d={...p.dependencies,...p.devDependencies};process.exit(d['@tailwindcss/vite']?0:1)" && rg -nP "extend:\s*\{[^}]*colors:" tailwind.config.* 2>/dev/null` |
+|---|---|
+| **Expected exit code** | First `0`, second `1` (no matches). |
+
+### `AT-UIDESIGN-09` — Theme is token-driven; toggle changes only `@theme` vars
+
+| Given | App rendered. |
+|---|---|
+| **When** | Toggle `.dark` on `<html>` and diff each component's `className` set before/after. |
+| **Then** | Diff is empty (zero class changes); only computed CSS values change. |
+
+---
+
+## State & data
+
+### `AT-UIDESIGN-10` — State management approach matches spec
+
+| Linter command | `rg -lP "from ['\"]redux['\"]\|from ['\"]@reduxjs" src/` |
+|---|---|
+| **Expected exit code** | `1` (no matches, unless spec mandates Redux — currently it does not). |
+
+### `AT-UIDESIGN-11` — Tree render; collapsed children stay mounted (CSS-hidden)
+
+| Given | Item with 3 children, collapsed. |
+|---|---|
+| **Then** | DOM contains 3 child nodes with `[hidden]` or `display:none`; React reconciler reports same fiber instances after expand → no remount. |
+| **Negative assertion** | Children MUST NOT be removed from the DOM when collapsed. |
+
+### `AT-UIDESIGN-12` — ≤ 250 rendered nodes per view
+
+| Given | List with 1000 items. |
+|---|---|
+| **Then** | `document.querySelectorAll('[data-item-row]').length <= 250`; remaining nodes virtualized or paginated. |
+
+### `AT-UIDESIGN-13` — Shared TS types imported, not redefined
+
+| Linter command | `rg -nP "^(export )?(interface\|type) Item\b" src/ \| wc -l` |
+|---|---|
+| **Expected** | Exactly `1` (the canonical declaration in `src/types/index.ts`). |
+
+---
+
+## Editor
+
+### `AT-UIDESIGN-14` — Rich-text format matches spec serialized form
+
+| Given | Editor content `"hello **bold** world"`. |
+|---|---|
+| **When** | Serialize via documented adapter. |
+| **Then** | Output equals the literal JSON shape in `04-editor/01-rich-text-format.md`'s sample (deep-equal). |
+
+### `AT-UIDESIGN-15` — Enter-key behavior matches spec exactly
+
+> Cross-references `AT-APP-12` fixture in `spec/31-app/97a-acceptance-criteria-fixtures.md`.
+
+| Given | Item `itm_A` content `"hello"`, caret at end. |
+|---|---|
+| **When** | Press `Enter`. |
+| **Then** | New sibling `itm_B` after `itm_A`, empty content, focused. Empty `itm_A` + caret-at-start + Enter → sibling **before**. |
+
+### `AT-UIDESIGN-16` — Drag-drop fractional-index midpoint; no re-numbering
+
+| Given | Siblings sorted as `A(sort=1.0)`, `B(sort=2.0)`, `C(sort=3.0)`. |
+|---|---|
+| **When** | Drag `C` between `
+…(truncated for audit; full file: spec/32-ui-design/97a-acceptance-criteria-fixtures.md)
+

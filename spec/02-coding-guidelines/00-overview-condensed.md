@@ -146,3 +146,135 @@ All `AT-*` rows in this rollup AND in every sub-rollup under `spec/02-coding-gui
 
 The template + nine per-rollup verification recipes subsume all 363 coding-guideline ATs per the lint-shape opt-out in [`spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](../01-spec-authoring-guide/19-acceptance-criteria-io-table.md) § "Two AT shapes that opt out of the JSON rows".
 
+<!-- P23-FIXTURE-INDEX -->
+## Acceptance-Criteria I/O Fixtures (auto-attached by P23)
+
+### Fixtures included from `spec/02-coding-guidelines/97a-acceptance-criteria-fixtures.md`
+
+# Coding Guidelines — Acceptance Criteria I/O Fixtures (Template)
+
+> **Version:** 1.0.0
+> **Created:** 2026-04-28 (UTC+8)
+> **Status:** Normative companion to every `97-acceptance-criteria.md` under `spec/02-coding-guidelines/**`.
+> **Format spec:** [`spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](../01-spec-authoring-guide/19-acceptance-criteria-io-table.md)
+> **Spawned by:** `.lovable/plans/00-active.md` § P2f.
+
+---
+
+## Why a template, not 363 rows
+
+Every `AT-CROSSLANGUAGE-*`, `AT-TYPESCRIPT-*`, `AT-GOLANG-*`, `AT-PHP-*`, `AT-RUST-*`, `AT-CSHARP-*`, `AT-FILEFOLDERNAMING-*`, `AT-AIOPTIMIZATION-*`, `AT-CONSOLIDATEDREVIEWGUIDE-*`, `AT-MASTERCODINGGUIDELINES-*`, and `AT-STATICANALYSIS-*` row shares the same shape per the format SSOT's "Static-analysis / lint rule" opt-out (Section "Two AT shapes that opt out of the JSON rows"):
+
+> Replace JSON rows with: `Linter command` + `Expected exit code` + `Expected stderr regex` rows.
+
+Authoring 363 near-identical fixture blocks would be noise. Instead this file declares **one canonical template** + one **per-rollup verification recipe**. Every coding-guideline AT MUST conform to the template; per-rule deviations live as overrides inline in their source row.
+
+---
+
+## Canonical lint-shape template
+
+Every coding-guideline AT is satisfied when the following four assertions all hold for a fresh checkout of the repo:
+
+| Slot | Value |
+|------|-------|
+| **Given** | A clean repo at HEAD; `node_modules/` installed; the rule's source spec file exists at the path cited in the prose `Source` column. |
+| **Linter command** | The command listed in the prose row's source spec OR — if absent — the project-wide gate: `node scripts/spec-hygiene/00-run-all.mjs && npm run lint && npm run typecheck`. |
+| **Expected exit code** | `0` when the codebase complies; `1` when a violating fixture file is added (used as a meta-test of the rule). |
+| **Expected stderr regex** | `/<RULE-ID>:\s+.+/` matching the rule's documented error format (e.g. `boolean-naming: variable 'flag' must start with is/has/should/can/will`). |
+| **Then** | Adding the rule's negative example (`invalid:` block from the rule meta) MUST produce exit code `1` AND a stderr line that matches the regex. Removing the violation MUST restore exit code `0`. |
+| **Side effects** | none (pure static analysis). |
+| **Negative assertion** | The rule MUST NOT silently pass on its documented `invalid:` example. The rule MUST NOT fail on its documented `valid:` example. |
+
+This template subsumes every row whose `Criterion` text starts with one of: `MUST … live`, `MUST … start with`, `MUST … be`, `MUST NOT …`, `is forbidden`, `must follow`, `must use`, `must enforce`, `MUST be tagged with`, `MUST be hashed with`. Per `spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md` § "Two AT shapes that opt out of the JSON rows" → row 2.
+
+---
+
+## Per-rollup verification recipes
+
+Each recipe is the **specific command** that proves the entire rollup. CI runs all of them as parallel jobs.
+
+### `AT-CROSSLANGUAGE-*` (issues-and-fixes-log, boolean, casting, code-style, master, static-analysis, types-folder)
+
+```bash
+# Issues-and-fixes log: every entry has Status + Owner + DateRaised
+node scripts/spec-hygiene/00-run-all.mjs --rollup cross-language
+
+# Boolean naming
+rg -nP "\b(let|const|var)\s+(?!is|has|should|can|will)[a-z]\w*\s*[:=]\s*(true|false|Boolean)" src/ && exit 1 || exit 0
+
+# Casting elimination
+rg -nP "\bas\s+(any|unknown|object)\b" src/ && exit 1 || exit 0
+
+# Code style — blank lines / spacing
+npx prettier --check "src/**/*.{ts,tsx,js}"
+
+# Static analysis CI gate
+test -f .github/workflows/static-analysis.yml || exit 1
+
+# Types-folder convention
+ls src/types/index.ts && rg -nP "^export (type|interface) " src/types/index.ts | wc -l | awk '{exit ($1>=1?0:1)}'
+```
+
+### `AT-TYPESCRIPT-*`
+
+```bash
+# tsconfig strict
+node -e "const c=require('./tsconfig.json').compilerOptions;process.exit(c.strict&&c.noImplicitAny&&c.noUncheckedIndexedAccess?0:1)"
+
+# Zero any / @ts-ignore (matches mem://constraints/coding-guidelines)
+rg -nP ":\s*any\b|@ts-ignore" src/ | rg -v "@ts-expect-error:" && exit 1 || exit 0
+
+# Max 3 params, no nested if, ≤15-line logic, positive guards (custom plugin)
+npx eslint --plugin coding-guidelines src/
+
+# Typescript reference docs present
+test -f spec/02-coding-guidelines/02-typescript/08-typescript-standards-reference/00-overview.md
+```
+
+### `AT-GOLANG-*`
+
+```bash
+# String-backed enums
+rg -nP "type \w+ int.*//.*enum" pkg/enums/ && exit 1 || true
+
+# Required enum methods present
+for d in pkg/enums/*/; do
+  for m in String IsValid Parse; do
+    grep -q "func.*$m" "$d"*.go || { echo "MISSING $m in $d"; exit 1; }
+  done
+done
+
+# defer placement + loop-defer wrapping
+go vet -vettool=$(which deferchecker) ./...
+
+# pathutil / fileutil discipline
+rg -nP "filepath\.Join|os\.WriteFile" --type go internal/ | rg -v 'pathutil|fileutil|_test' && exit 1 || true
+
+# golangci-lint with severity tags
+golangci-lint run --config linters/golangci-lint/.golangci.yml
+```
+
+> **Note**: Per `mem://constraints/backend-runtime-deferred`, Go is forbidden in this project. These ATs remain canonical for cross-project reuse but currently produce zero hits.
+
+### `AT-PHP-*` (enums, forbidden-patterns, naming-conventions, response-key-type, standards-reference)
+
+```bash
+# Enum classes use backed string enums + ResponseKeyType discipline
+phpcs --standard=linters/phpcs/coding-guidelines-ruleset.xml wp-plugin/
+
+# PascalCase response keys (Golden Rule end-to-end)
+rg -nP "\['(?:[a-z][a-z0-9_]*)'\s*=>" wp-plugin/src/ | rg -v "ResponseKeyType::" && exit 1 || true
+
+# Forbidden patterns: bare $_GET / $_POST / globals
+rg -nP "\\\$_(GET|POST|REQUEST|SESSION)\b" wp-plugin/src/ | rg -v "Boundary/" && exit 1 || true
+
+# Response-key-type inventory drift
+node scripts/spec-hygiene/15-check-enums-in-sync.mjs --enum ResponseKeyType
+```
+
+### `AT-RUST-*` / `AT-CSHARP-*`
+
+```bash
+# These language guidelines are documented for cross-project reuse
+…(truncated for audit; full file: spec/02-coding-guidelines/97a-acceptance-criteria-fixtures.md)
+
