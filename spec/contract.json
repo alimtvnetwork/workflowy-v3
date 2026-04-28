@@ -481,10 +481,6 @@
         {
           "file": "spec/34-activity-feed/97-acceptance-criteria.md",
           "line": 12
-        },
-        {
-          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
-          "line": 11
         }
       ]
     },
@@ -493,168 +489,98 @@
       "definition": "`ActivityEvent` MUST carry: `EventId`, `UserId`, `ItemId`, `EventType` (typed enum), `Before` snapshot, `After` snapshot, `CreatedAt` (UTC, ISO-8601). Missing any field fails review.",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 23,
-      "cited_in": [
-        {
-          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
-          "line": 21
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-ACTIVITYFEED-03",
       "definition": "`EventType` MUST be the documented enum (`ItemCreated`, `ItemUpdated`, `ItemMoved`, `ItemDeleted`, `ItemRestored`, `ItemMirrored`, `BoardColumnReordered`, `TemplateApplied`); adding a new type MUST update the enum + this AT — magic-string types are forbidden.",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 24,
-      "cited_in": [
-        {
-          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
-          "line": 31
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-ACTIVITYFEED-04",
       "definition": "Events MUST persist in a dedicated `activity.db` SQLite (Split-DB pattern, FR-6); sharing user-data DB is forbidden because it slows read paths.",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 30,
-      "cited_in": [
-        {
-          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
-          "line": 38
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-ACTIVITYFEED-05",
       "definition": "The `ActivityEvent` table MUST follow naming conventions: singular PascalCase, `EventId` PK, indexed on `(UserId, CreatedAt DESC)` for the default feed query.",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 31,
-      "cited_in": [
-        {
-          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
-          "line": 45
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-ACTIVITYFEED-06",
       "definition": "`Before`/`After` snapshots MUST be stored as JSON columns (NOT serialized as opaque blobs) so future tooling can diff them; opaque blobs fail review.",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 32,
-      "cited_in": [
-        {
-          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
-          "line": 51
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-ACTIVITYFEED-07",
       "definition": "Default feed page size MUST be 50 (FR-3) — well below the 250-item view limit; uncapped pagination is a Code-Red perf bug.",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 38,
-      "cited_in": [
-        {
-          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
-          "line": 57
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-ACTIVITYFEED-08",
       "definition": "Feed MUST support filters: `eventType`, `userId`, `dateRange`, `itemSubtree`; filter combination MUST be server-side (client-side filtering on the full table is forbidden).",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 39,
-      "cited_in": [
-        {
-          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
-          "line": 66
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-ACTIVITYFEED-09",
       "definition": "Per-item history MUST be reachable from the item context menu (FR-4); hiding it under a hidden flag fails review.",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 40,
-      "cited_in": [
-        {
-          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
-          "line": 72
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-ACTIVITYFEED-10",
       "definition": "\"Restore to this state\" MUST reapply the inverse of the recorded event (FR-5); silent best-effort restore that drops fields is a Code-Red data-loss bug.",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 46,
-      "cited_in": [
-        {
-          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
-          "line": 78
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-ACTIVITYFEED-11",
       "definition": "Reversibility MUST match the table: `Created/Updated/Moved/Deleted/Restored/Mirrored/BoardColumnReordered` are fully reversible; `TemplateApplied` is partial — UI MUST show a clear warning before partial restores.",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 47,
-      "cited_in": [
-        {
-          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
-          "line": 86
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-ACTIVITYFEED-12",
       "definition": "Every restore MUST itself emit an `ActivityEvent` (audit of the audit) so the chain stays inspectable; silent restores are forbidden.",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 48,
-      "cited_in": [
-        {
-          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
-          "line": 94
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-ACTIVITYFEED-13",
       "definition": "Retention MUST be 30 days by default (FR-7), mirroring trash retention; silent extension beyond 30 d is forbidden — config must be explicit and audited.",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 54,
-      "cited_in": [
-        {
-          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
-          "line": 101
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-ACTIVITYFEED-14",
       "definition": "Weekly purge job MUST log per-purge counts at INFO and MUST NOT delete events that are referenced by an in-flight restore operation.",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 55,
-      "cited_in": [
-        {
-          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
-          "line": 107
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-ACTIVITYFEED-15",
       "definition": "A user MUST only see events for items they own OR are shared with (Editor/Admin); cross-user visibility for non-Admins is a Code-Red privacy bug.",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 61,
-      "cited_in": [
-        {
-          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
-          "line": 114
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-ACTIVITYFEED-16",
@@ -665,10 +591,6 @@
         {
           "file": "spec/34-activity-feed/97-acceptance-criteria.md",
           "line": 12
-        },
-        {
-          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
-          "line": 121
         }
       ]
     },
@@ -4286,14 +4208,6 @@
         {
           "file": "spec/04-database-conventions/97-acceptance-criteria.md",
           "line": 20
-        },
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 17
-        },
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 26
         }
       ]
     },
@@ -4302,24 +4216,14 @@
       "definition": "Every column name is PascalCase (e.g. `Id`, `CreatedAt`, `UserId`); identical to the REST JSON key it serializes to.",
       "defined_in": "spec/04-database-conventions/97-acceptance-criteria.md",
       "defined_line": 25,
-      "cited_in": [
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 36
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-DATABASECONVENTIONS-03",
       "definition": "Foreign-key columns use `<ReferencedTable>Id` form (e.g. `UserId`, `ParentId`); index/constraint names follow the documented prefix rules.",
       "defined_in": "spec/04-database-conventions/97-acceptance-criteria.md",
       "defined_line": 26,
-      "cited_in": [
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 49
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-DATABASECONVENTIONS-04",
@@ -4330,10 +4234,6 @@
         {
           "file": "spec/04-database-conventions/97-acceptance-criteria.md",
           "line": 28
-        },
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 59
         }
       ]
     },
@@ -4342,24 +4242,14 @@
       "definition": "Enum-backed columns store the enum's underlying value (TEXT for string-backed, INTEGER for int-backed); a CHECK constraint or trigger enforces validity.",
       "defined_in": "spec/04-database-conventions/97-acceptance-criteria.md",
       "defined_line": 33,
-      "cited_in": [
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 69
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-DATABASECONVENTIONS-06",
       "definition": "Every nullable column is justified in the schema doc; defaulting to NOT NULL is the documented preference.",
       "defined_in": "spec/04-database-conventions/97-acceptance-criteria.md",
       "defined_line": 34,
-      "cited_in": [
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 79
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-DATABASECONVENTIONS-07",
@@ -4370,10 +4260,6 @@
         {
           "file": "spec/04-database-conventions/97-acceptance-criteria.md",
           "line": 36
-        },
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 89
         }
       ]
     },
@@ -4382,12 +4268,7 @@
       "definition": "Views follow the same naming rules as tables and are documented alongside the tables they aggregate.",
       "defined_in": "spec/04-database-conventions/97-acceptance-criteria.md",
       "defined_line": 41,
-      "cited_in": [
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 99
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-DATABASECONVENTIONS-09",
@@ -4398,10 +4279,6 @@
         {
           "file": "spec/04-database-conventions/97-acceptance-criteria.md",
           "line": 43
-        },
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 109
         }
       ]
     },
@@ -4410,12 +4287,7 @@
       "definition": "Test fixtures load via the documented seed-data mechanism; ad-hoc INSERTs in tests are forbidden.",
       "defined_in": "spec/04-database-conventions/97-acceptance-criteria.md",
       "defined_line": 48,
-      "cited_in": [
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 119
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-DATABASECONVENTIONS-11",
@@ -4426,10 +4298,6 @@
         {
           "file": "spec/04-database-conventions/97-acceptance-criteria.md",
           "line": 50
-        },
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 129
         }
       ]
     },
@@ -4442,10 +4310,6 @@
         {
           "file": "spec/04-database-conventions/97-acceptance-criteria.md",
           "line": 56
-        },
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 139
         }
       ]
     },
@@ -4458,10 +4322,6 @@
         {
           "file": "spec/04-database-conventions/97-acceptance-criteria.md",
           "line": 62
-        },
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 151
         }
       ]
     },
@@ -5412,10 +5272,6 @@
         {
           "file": "spec/35-enforcement-rules/97-acceptance-criteria.md",
           "line": 12
-        },
-        {
-          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
-          "line": 11
         }
       ]
     },
@@ -5428,10 +5284,6 @@
         {
           "file": "spec/35-enforcement-rules/00-overview.md",
           "line": 22
-        },
-        {
-          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
-          "line": 18
         }
       ]
     },
@@ -5440,136 +5292,77 @@
       "definition": "All custom enforcement rules MUST live under `eslint-plugins/coding-guidelines/`; scattering rules across `.eslintrc` overrides is forbidden because it harms discoverability.",
       "defined_in": "spec/35-enforcement-rules/97-acceptance-criteria.md",
       "defined_line": 29,
-      "cited_in": [
-        {
-          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
-          "line": 25
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-ENFORCEMENTRULES-04",
       "definition": "The plugin MUST enforce: boolean-naming (`is*`/`has*`/`should*`), no-nested-`if`, max-3-params, max-15-line-logic, positive guard clauses (NO `else`); each rule MUST cite the source guideline file.",
       "defined_in": "spec/35-enforcement-rules/97-acceptance-criteria.md",
       "defined_line": 30,
-      "cited_in": [
-        {
-          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
-          "line": 31
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-ENFORCEMENTRULES-05",
       "definition": "Every custom rule MUST ship with: meta (docs URL), positive examples (`valid:`), negative examples (`invalid:`), AND auto-fixer where mechanically safe; rules without examples fail review.",
       "defined_in": "spec/35-enforcement-rules/97-acceptance-criteria.md",
       "defined_line": 31,
-      "cited_in": [
-        {
-          "file": "spec/02-coding-guidelines/97a-acceptance-criteria-fixtures.md",
-          "line": 188
-        },
-        {
-          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
-          "line": 38
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-ENFORCEMENTRULES-06",
       "definition": "All boundary inputs (API responses, form submissions, `localStorage` reads, URL query params, `postMessage` payloads) MUST be parsed through a Zod (or Valibot) schema; raw `JSON.parse` followed by type assertion is a Code-Red trust bug.",
       "defined_in": "spec/35-enforcement-rules/97-acceptance-criteria.md",
       "defined_line": 37,
-      "cited_in": [
-        {
-          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
-          "line": 46
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-ENFORCEMENTRULES-07",
       "definition": "Schema parse failures MUST surface a typed error (NOT `throw new Error(\"invalid\")`); schemas MUST live in a co-located `*.schema.ts` file next to the consumer.",
       "defined_in": "spec/35-enforcement-rules/97-acceptance-criteria.md",
       "defined_line": 38,
-      "cited_in": [
-        {
-          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
-          "line": 53
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-ENFORCEMENTRULES-08",
       "definition": "Schemas MUST be the SOLE source of truth — derived TypeScript types via `z.infer<…>` are mandatory; manually maintained twin types are forbidden because they drift.",
       "defined_in": "spec/35-enforcement-rules/97-acceptance-criteria.md",
       "defined_line": 39,
-      "cited_in": [
-        {
-          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
-          "line": 60
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-ENFORCEMENTRULES-09",
       "definition": "Public function signatures MUST return generic `T` (NOT `unknown` / `any`); returning `unknown` from non-boundary code is forbidden because it pushes assertions onto callers.",
       "defined_in": "spec/35-enforcement-rules/97-acceptance-criteria.md",
       "defined_line": 45,
-      "cited_in": [
-        {
-          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
-          "line": 67
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-ENFORCEMENTRULES-10",
       "definition": "Helpers that accept user-defined data MUST be generic over the data shape (`function pick<T, K extends keyof T>(…)`); accepting `Record<string, unknown>` is forbidden.",
       "defined_in": "spec/35-enforcement-rules/97-acceptance-criteria.md",
       "defined_line": 46,
-      "cited_in": [
-        {
-          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
-          "line": 75
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-ENFORCEMENTRULES-11",
       "definition": "Critical generic helpers MUST have type-tests (e.g., `expectTypeOf` from `expect-type` or vitest's built-in); missing type-tests on generics fail review because runtime tests can't catch type regressions.",
       "defined_in": "spec/35-enforcement-rules/97-acceptance-criteria.md",
       "defined_line": 52,
-      "cited_in": [
-        {
-          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
-          "line": 82
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-ENFORCEMENTRULES-12",
       "definition": "Critical helpers MUST have property-based tests (e.g., fast-check) covering at least: identity, idempotence (where applicable), and inverse properties; example-only coverage fails review.",
       "defined_in": "spec/35-enforcement-rules/97-acceptance-criteria.md",
       "defined_line": 53,
-      "cited_in": [
-        {
-          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
-          "line": 89
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-ENFORCEMENTRULES-13",
       "definition": "This folder MUST cite its authoritative source files (currently in `02-coding-guidelines/`); when sub-specs `01-04` are authored, the authoritative-source list MUST be updated to point to them — orphan citations fail review.",
       "defined_in": "spec/35-enforcement-rules/97-acceptance-criteria.md",
       "defined_line": 59,
-      "cited_in": [
-        {
-          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
-          "line": 95
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-ENFORCEMENTRULES-14",
@@ -5578,20 +5371,12 @@
       "defined_line": 60,
       "cited_in": [
         {
-          "file": "spec/02-coding-guidelines/97a-acceptance-criteria-fixtures.md",
-          "line": 172
-        },
-        {
           "file": "spec/35-enforcement-rules/00-overview.md",
           "line": 23
         },
         {
           "file": "spec/35-enforcement-rules/97-acceptance-criteria.md",
           "line": 12
-        },
-        {
-          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
-          "line": 102
         }
       ]
     },
@@ -6662,10 +6447,6 @@
         {
           "file": "spec/33-feedback-report/97-acceptance-criteria.md",
           "line": 12
-        },
-        {
-          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
-          "line": 11
         }
       ]
     },
@@ -6674,60 +6455,35 @@
       "definition": "Form fields MUST be: `type` (enum: `bug` / `idea` / `praise` / `question`), `title` (≤ 120 chars), `body` (≤ 2000 chars), optional screenshot. Server MUST re-validate every limit — client-only validation is a Code-Red trust bug.",
       "defined_in": "spec/33-feedback-report/97-acceptance-criteria.md",
       "defined_line": 23,
-      "cited_in": [
-        {
-          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
-          "line": 21
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-FEEDBACKREPORT-03",
       "definition": "The `type` field MUST be a typed enum constant (NOT a magic string in templates); adding a new type MUST require updating the enum + this AT.",
       "defined_in": "spec/33-feedback-report/97-acceptance-criteria.md",
       "defined_line": 24,
-      "cited_in": [
-        {
-          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
-          "line": 34
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-FEEDBACKREPORT-04",
       "definition": "Submission MUST auto-attach: current `Item.id`, breadcrumb path, viewport size, user-agent string (FR-3); missing any field fails review.",
       "defined_in": "spec/33-feedback-report/97-acceptance-criteria.md",
       "defined_line": 30,
-      "cited_in": [
-        {
-          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
-          "line": 41
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-FEEDBACKREPORT-05",
       "definition": "Auto-captured context MUST exclude PII beyond what's strictly required (no clipboard contents, no other items' content, no auth tokens); leaking PII is a Code-Red privacy bug.",
       "defined_in": "spec/33-feedback-report/97-acceptance-criteria.md",
       "defined_line": 31,
-      "cited_in": [
-        {
-          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
-          "line": 52
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-FEEDBACKREPORT-06",
       "definition": "Feedback MUST persist in a dedicated `feedback.db` SQLite (Split-DB pattern) — sharing the user data DB is forbidden.",
       "defined_in": "spec/33-feedback-report/97-acceptance-criteria.md",
       "defined_line": 37,
-      "cited_in": [
-        {
-          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
-          "line": 59
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-FEEDBACKREPORT-07",
@@ -6738,10 +6494,6 @@
         {
           "file": "spec/33-feedback-report/00-overview.md",
           "line": 24
-        },
-        {
-          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
-          "line": 66
         }
       ]
     },
@@ -6750,12 +6502,7 @@
       "definition": "The `Feedback` table MUST follow naming conventions: singular PascalCase table name, `FeedbackId` PK as `INTEGER PRIMARY KEY AUTOINCREMENT`.",
       "defined_in": "spec/33-feedback-report/97-acceptance-criteria.md",
       "defined_line": 39,
-      "cited_in": [
-        {
-          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
-          "line": 74
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-FEEDBACKREPORT-09",
@@ -6766,10 +6513,6 @@
         {
           "file": "spec/33-feedback-report/00-overview.md",
           "line": 25
-        },
-        {
-          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
-          "line": 81
         }
       ]
     },
@@ -6778,48 +6521,28 @@
       "definition": "Admin UI MUST support filter by `type`, `status`, `userId`, `createdAt range`; server-side filtering is mandatory (client-side filtering of the full table is forbidden — leaks data + breaks at scale).",
       "defined_in": "spec/33-feedback-report/97-acceptance-criteria.md",
       "defined_line": 46,
-      "cited_in": [
-        {
-          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
-          "line": 90
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-FEEDBACKREPORT-11",
       "definition": "Status transitions MUST be a typed enum (`new → triaged → resolved → archived`) with one-way arrows; arbitrary transitions fail review.",
       "defined_in": "spec/33-feedback-report/97-acceptance-criteria.md",
       "defined_line": 47,
-      "cited_in": [
-        {
-          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
-          "line": 97
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-FEEDBACKREPORT-12",
       "definition": "Default retention MUST be 90 days, configurable via the seedable-config layer (FR-6); hardcoded retention windows are forbidden.",
       "defined_in": "spec/33-feedback-report/97-acceptance-criteria.md",
       "defined_line": 53,
-      "cited_in": [
-        {
-          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
-          "line": 104
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-FEEDBACKREPORT-13",
       "definition": "Retention purge MUST run as a scheduled job AND log per-purge counts at INFO level; silent purge is forbidden because it breaks audit-ability.",
       "defined_in": "spec/33-feedback-report/97-acceptance-criteria.md",
       "defined_line": 54,
-      "cited_in": [
-        {
-          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
-          "line": 111
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-FEEDBACKREPORT-14",
@@ -6834,10 +6557,6 @@
         {
           "file": "spec/33-feedback-report/97-acceptance-criteria.md",
           "line": 12
-        },
-        {
-          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
-          "line": 119
         }
       ]
     },
@@ -9908,14 +9627,10 @@
     },
     {
       "id": "AT-MIRRORS-01",
-      "definition": "An item with 2 mirrors exists",
-      "defined_in": "spec/01-spec-authoring-guide/13-feature-file-template.md",
-      "defined_line": 81,
+      "definition": "Item with 2 mirrors exists",
+      "defined_in": "spec/31-app/01-features/09-mirrors.md",
+      "defined_line": 165,
       "cited_in": [
-        {
-          "file": "spec/31-app/01-features/09-mirrors.md",
-          "line": 191
-        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 77
@@ -9932,14 +9647,10 @@
     },
     {
       "id": "AT-MIRRORS-02",
-      "definition": "A mirror is the last instance",
-      "defined_in": "spec/01-spec-authoring-guide/13-feature-file-template.md",
-      "defined_line": 82,
+      "definition": "Source item is open",
+      "defined_in": "spec/31-app/01-features/09-mirrors.md",
+      "defined_line": 166,
       "cited_in": [
-        {
-          "file": "spec/31-app/01-features/09-mirrors.md",
-          "line": 189
-        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 78
@@ -9956,10 +9667,6 @@
       "defined_in": "spec/31-app/01-features/09-mirrors.md",
       "defined_line": 167,
       "cited_in": [
-        {
-          "file": "spec/01-spec-authoring-guide/13-feature-file-template.md",
-          "line": 94
-        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 79
@@ -12618,18 +12325,6 @@
         {
           "file": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
           "line": 20
-        },
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 18
-        },
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 141
-        },
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 165
         }
       ]
     },
@@ -12638,24 +12333,14 @@
       "definition": "The PascalCase rule applies to nested objects and arrays of objects — recursively.",
       "defined_in": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
       "defined_line": 25,
-      "cited_in": [
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 178
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-RESTAPIFORMAT-03",
       "definition": "Database column names match REST response keys exactly (PascalCase, identical spelling), enabling direct `column → key` mapping.",
       "defined_in": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
       "defined_line": 26,
-      "cited_in": [
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 191
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-RESTAPIFORMAT-04",
@@ -12666,10 +12351,6 @@
         {
           "file": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
           "line": 28
-        },
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 204
         }
       ]
     },
@@ -12678,12 +12359,7 @@
       "definition": "Every sample is a complete, copy-pasteable JSON document — not a fragment.",
       "defined_in": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
       "defined_line": 33,
-      "cited_in": [
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 214
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-RESTAPIFORMAT-06",
@@ -12694,14 +12370,6 @@
         {
           "file": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
           "line": 35
-        },
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 224
-        },
-        {
-          "file": "spec/97a-acceptance-criteria-fixtures.md",
-          "line": 175
         }
       ]
     },
@@ -12710,24 +12378,14 @@
       "definition": "Success responses populate `Data`; error responses populate `Error` (never both); `Status` is always present.",
       "defined_in": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
       "defined_line": 40,
-      "cited_in": [
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 234
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-RESTAPIFORMAT-08",
       "definition": "The PascalCase data flow is unbroken end-to-end: SQLite column → ORM struct field → REST handler → JSON response → TypeScript interface.",
       "defined_in": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
       "defined_line": 41,
-      "cited_in": [
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 251
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-RESTAPIFORMAT-09",
@@ -12738,10 +12396,6 @@
         {
           "file": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
           "line": 43
-        },
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 261
         }
       ]
     },
@@ -12750,12 +12404,7 @@
       "definition": "Go uses `json:\"PascalCase\"` struct tags; PHP uses `ResponseKeyType` enum; TypeScript types match the same PascalCase keys exactly.",
       "defined_in": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
       "defined_line": 48,
-      "cited_in": [
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 271
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-RESTAPIFORMAT-11",
@@ -12766,10 +12415,6 @@
         {
           "file": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
           "line": 50
-        },
-        {
-          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
-          "line": 281
         }
       ]
     },
@@ -16265,10 +15910,6 @@
         {
           "file": "spec/36-user-management/97-acceptance-criteria.md",
           "line": 12
-        },
-        {
-          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
-          "line": 11
         }
       ]
     },
@@ -16277,168 +15918,98 @@
       "definition": "Roles MUST live in a separate `UserRole` table linking `UserId` ↔ `Role` enum (FR-2); storing role columns directly on `User` is a Code-Red privilege-escalation bug per the project memory rule.",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 23,
-      "cited_in": [
-        {
-          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
-          "line": 18
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-USERMANAGEMENT-03",
       "definition": "The `Role` enum MUST be exactly `User`, `Editor`, `Admin`; adding new roles MUST update the enum + capability matrix + this AT — magic-string roles are forbidden.",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 24,
-      "cited_in": [
-        {
-          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
-          "line": 25
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-USERMANAGEMENT-04",
       "definition": "The capability matrix in `00-overview.md` MUST be the SSOT — code MUST NOT introduce ad-hoc capabilities not listed; new capabilities require updating the matrix first.",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 30,
-      "cited_in": [
-        {
-          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
-          "line": 31
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-USERMANAGEMENT-05",
       "definition": "All RBAC checks MUST go through the central `hasRole(userId, role)` helper (FR-6) — inline role comparisons (`if (user.role === 'Admin')`) are forbidden because they're un-auditable.",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 31,
-      "cited_in": [
-        {
-          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
-          "line": 38
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-USERMANAGEMENT-06",
       "definition": "`hasRole` MUST be the security-definer pattern: it MUST query the `UserRole` table (NOT a session cache) for privilege-elevation checks, even though session cache may be used for UI rendering.",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 32,
-      "cited_in": [
-        {
-          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
-          "line": 45
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-USERMANAGEMENT-07",
       "definition": "Auth MUST support password + optional WebAuthn passkey (FR-3); password-only auth without a documented passkey upgrade path fails review.",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 38,
-      "cited_in": [
-        {
-          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
-          "line": 53
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-USERMANAGEMENT-08",
       "definition": "Passwords MUST be hashed with Argon2id (memory ≥ 64 MB, iterations ≥ 3, parallelism ≥ 1) — bcrypt/PBKDF2/SHA-256 are forbidden as they're below the 2026 baseline.",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 39,
-      "cited_in": [
-        {
-          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
-          "line": 62
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-USERMANAGEMENT-09",
       "definition": "Session tokens MUST live in `httpOnly` + `Secure` + `SameSite=Lax` cookies when sync is enabled (FR-4); `localStorage` fallback is allowed ONLY in solo (no-sync) mode.",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 40,
-      "cited_in": [
-        {
-          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
-          "line": 70
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-USERMANAGEMENT-10",
       "definition": "JWTs (if used) MUST carry only the `userId` reference (NOT user data); embedding role/permissions in JWT claims is a Code-Red privilege-escalation bug.",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 41,
-      "cited_in": [
-        {
-          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
-          "line": 77
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-USERMANAGEMENT-11",
       "definition": "Solo mode MUST work with NO server login required; forcing login for offline use is a Code-Red product-promise violation.",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 47,
-      "cited_in": [
-        {
-          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
-          "line": 85
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-USERMANAGEMENT-12",
       "definition": "Switching from solo → sync mode MUST migrate the local user data into the synced account WITHOUT data loss; partial migration is a Code-Red data-loss bug.",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 48,
-      "cited_in": [
-        {
-          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
-          "line": 92
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-USERMANAGEMENT-13",
       "definition": "Admin UI MUST support invite, deactivate, role-change (FR-5); deletion MUST be a separate flow gated by an additional confirmation (NOT folded into deactivate).",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 54,
-      "cited_in": [
-        {
-          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
-          "line": 100
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-USERMANAGEMENT-14",
       "definition": "Every admin action MUST emit an entry to the activity feed (audit-of-the-audit); silent admin actions are a Code-Red audit-integrity bug.",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 55,
-      "cited_in": [
-        {
-          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
-          "line": 106
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-USERMANAGEMENT-15",
       "definition": "Per-item sharing permissions MUST follow the sharing-model memory; admin override of share permissions MUST be logged AND user-notified — silent override is a Code-Red trust bug.",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 61,
-      "cited_in": [
-        {
-          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
-          "line": 113
-        }
-      ]
+      "cited_in": []
     },
     {
       "id": "AT-USERMANAGEMENT-16",
@@ -16449,14 +16020,6 @@
         {
           "file": "spec/36-user-management/97-acceptance-criteria.md",
           "line": 12
-        },
-        {
-          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
-          "line": 120
-        },
-        {
-          "file": "spec/97a-acceptance-criteria-fixtures.md",
-          "line": 82
         }
       ]
     },
@@ -18196,14 +17759,6 @@
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 28
-        },
-        {
-          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
-          "line": 7
-        },
-        {
-          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
-          "line": 24
         }
       ]
     },
@@ -18221,10 +17776,6 @@
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 72
-        },
-        {
-          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
-          "line": 35
         }
       ]
     },
@@ -18238,10 +17789,6 @@
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 30
-        },
-        {
-          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
-          "line": 45
         }
       ]
     },
@@ -18255,10 +17802,6 @@
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 31
-        },
-        {
-          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
-          "line": 55
         }
       ]
     },
@@ -18286,10 +17829,6 @@
           "line": 181
         },
         {
-          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
-          "line": 67
-        },
-        {
           "file": "spec/31-app/97d-acceptance-criteria-fixtures.md",
           "line": 79
         }
@@ -18313,10 +17852,6 @@
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 38
-        },
-        {
-          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
-          "line": 81
         }
       ]
     },
@@ -18330,10 +17865,6 @@
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 39
-        },
-        {
-          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
-          "line": 91
         }
       ]
     },
@@ -18347,10 +17878,6 @@
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 40
-        },
-        {
-          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
-          "line": 101
         }
       ]
     },
@@ -18364,10 +17891,6 @@
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 41
-        },
-        {
-          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
-          "line": 111
         }
       ]
     },
@@ -18389,10 +17912,6 @@
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 42
-        },
-        {
-          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
-          "line": 121
         }
       ]
     },
@@ -18714,10 +18233,6 @@
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 48
-        },
-        {
-          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
-          "line": 137
         }
       ]
     },
@@ -18747,14 +18262,6 @@
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 49
-        },
-        {
-          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
-          "line": 147
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 128
         }
       ]
     },
@@ -18768,10 +18275,6 @@
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 50
-        },
-        {
-          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
-          "line": 159
         }
       ]
     },
@@ -18785,10 +18288,6 @@
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 51
-        },
-        {
-          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
-          "line": 171
         }
       ]
     },
@@ -18814,14 +18313,6 @@
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 57
-        },
-        {
-          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
-          "line": 7
-        },
-        {
-          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
-          "line": 185
         },
         {
           "file": "spec/31-app/97b-acceptance-criteria-fixtures.md",
@@ -22172,22 +21663,6 @@
         {
           "file": "spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md",
           "line": 101
-        },
-        {
-          "file": "spec/97a-acceptance-criteria-fixtures.md",
-          "line": 190
-        },
-        {
-          "file": "spec/97a-acceptance-criteria-fixtures.md",
-          "line": 194
-        },
-        {
-          "file": "spec/97a-acceptance-criteria-fixtures.md",
-          "line": 212
-        },
-        {
-          "file": "spec/97a-acceptance-criteria-fixtures.md",
-          "line": 225
         }
       ]
     },
@@ -24111,18 +23586,6 @@
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 79
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 13
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 19
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 225
         }
       ]
     },
@@ -24132,10 +23595,6 @@
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 25
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 27
         }
       ]
     },
@@ -24145,10 +23604,6 @@
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 26
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 34
         }
       ]
     },
@@ -24158,10 +23613,6 @@
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 27
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 42
         }
       ]
     },
@@ -24171,10 +23622,6 @@
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 28
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 49
         }
       ]
     },
@@ -24184,10 +23631,6 @@
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 34
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 60
         }
       ]
     },
@@ -24197,10 +23640,6 @@
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 35
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 66
         }
       ]
     },
@@ -24210,10 +23649,6 @@
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 36
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 73
         }
       ]
     },
@@ -24223,10 +23658,6 @@
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 37
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 79
         }
       ]
     },
@@ -24236,10 +23667,6 @@
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 43
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 90
         }
       ]
     },
@@ -24249,10 +23676,6 @@
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 44
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 96
         }
       ]
     },
@@ -24262,10 +23685,6 @@
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 45
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 103
         }
       ]
     },
@@ -24275,10 +23694,6 @@
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 46
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 109
         }
       ]
     },
@@ -24288,10 +23703,6 @@
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 52
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 119
         }
       ]
     },
@@ -24301,10 +23712,6 @@
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 53
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 126
         }
       ]
     },
@@ -24314,10 +23721,6 @@
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 54
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 135
         }
       ]
     },
@@ -24327,10 +23730,6 @@
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 55
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 143
         }
       ]
     },
@@ -24340,10 +23739,6 @@
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 61
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 154
         }
       ]
     },
@@ -24353,10 +23748,6 @@
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 62
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 160
         }
       ]
     },
@@ -24366,10 +23757,6 @@
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 63
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 167
         }
       ]
     },
@@ -24379,10 +23766,6 @@
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 69
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 180
         }
       ]
     },
@@ -24392,10 +23775,6 @@
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 70
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 186
         }
       ]
     },
@@ -24405,10 +23784,6 @@
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 71
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 192
         }
       ]
     },
@@ -24418,10 +23793,6 @@
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 72
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 199
         }
       ]
     },
@@ -24431,10 +23802,6 @@
         {
           "file": "spec/32-ui-design/97-acceptance-criteria.md",
           "line": 73
-        },
-        {
-          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
-          "line": 205
         }
       ]
     },
