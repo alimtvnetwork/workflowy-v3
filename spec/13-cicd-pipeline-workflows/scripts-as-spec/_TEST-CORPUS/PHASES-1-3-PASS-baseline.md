@@ -40,7 +40,7 @@ When the shape audit is intentionally pointed at this file under a
 **Phase ≤3 runner profile** (default for test-corpus baselines):
 
 - **Expected exit:** `0`.
-- **Expected stdout:** no line containing `PHASE-4-PASS-baseline.md`.
+- **Expected stdout:** no line containing `PHASES-1-3-PASS-baseline.md`.
 
 When run under a **Phase-4 runner profile** (NOT the default — only
 the production-scan profile applies Phase 4), this fixture is
