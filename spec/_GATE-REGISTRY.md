@@ -18,9 +18,9 @@
 
 ## 2. Summary
 
-- **Total named gates:** 286 (was 266 — 20 added; 2 marked superseded but retained for traceability)
-- **CI:** 23 (was 10 — +13 from ADR-0012(3), 0027(4), 0028(6))
-- **TEST:** 13 (was 8 — +5 from ADR-0027(3), 0028(4); −2 superseded)
+- **Total named gates:** 287 (was 286 — +1 `G-26-WIRE-OWNERID-ONLY`)
+- **CI:** 24 (was 23 — +1)
+- **TEST:** 13 (unchanged)
 - **DOC-NORM:** 49 (was 48 — +1 net)
 - **DOC:** 201 (was 200 — +1 from ADR-0027 monotonic)
 - **Areas covered:** 36 (was 35 — added ADR-0012)
