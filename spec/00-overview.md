@@ -65,6 +65,7 @@ prefix `00-` reserves it as the architectural anchor for the whole spec tree.
 | [`0002`](./00-adrs/0002-wp-plugin-php-sqlite-backend.md) | WordPress plugin + PHP 8.1+ + SQLite | `Accepted` 2026-04-28 | `G-13-CACHE-KEY`, `G-19-WORKFLOW-CONTRACT`, `G-20-PRECOMMIT-CONTRACT`, all `EP-*` runtime |
 | [`0003`](./00-adrs/0003-react-19-ts-strict-frontend.md) | Vite 5.4 + React 19 + TS 5.6 (strict) + Tailwind v4 frontend | `Accepted` 2026-04-28 | `G-32-NO-RAW-COLORS`, `G-32-DARK-MODE-PARITY`, `G-32-TOKEN-REGISTRY`, Axios-only HTTP |
 | [`0004`](./00-adrs/0004-rest-envelope-pascalcase.md) | REST envelope (PascalCase, 3 mandatory + 3 optional keys) | `Accepted` 2026-04-28 | `G-04-ENVELOPE-SHAPE`, `G-04-ENVELOPE-STATUS-ENUM`, `G-04-ENVELOPE-NO-EMPTY-ERRORS`, `G-04-ENVELOPE-DEBUG-FLAG` |
+| [`0005`](./00-adrs/0005-mirror-as-peer-group.md) | Mirror is a peer-group relation (not an ItemType) | `Accepted` 2026-04-28 | `G-MIRROR-NO-ITEMTYPE`, `G-MIRROR-PEER-COLUMN`, `G-MIRROR-DISSOLVE-SINGLETON`, `G-MIRROR-LWW-TIEBREAK`, `G-MIRROR-CYCLE-PRECHECK` |
 
 **When to consult ADRs first** (before editing any spec section):
 
