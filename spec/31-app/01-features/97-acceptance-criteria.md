@@ -2,7 +2,7 @@
 
 > **Version:** 2.3.0
 > **Created:** 2026-04-23 (UTC+8)
-> **Updated:** 2026-04-27 — v2.4.0 (F20) closed 12 more open prefixes via §"Inline-Prefix Closure (12 prefixes, 67 IDs)" — 11 identity registrations (`AT-BOARD/CONCURRENCY/CTXMENU/INTERACT/LAYOUT/PAGE/ROLES/SHARE/TEMPLATES/TODAY/TRASH-NN`) + 1 alias closure (`AT-MULTI-NN` → `AT-MULTISELECT-NN`). G-30 closed IDs 901→968. v2.3.0 (F15) closed two open prefixes: enumerated `AT-INFO-01..07` and `AT-MIRROR-01..06` as explicit alias rows mapping to source-file IDs (`AT-INFOMODEL-NN`, `AT-MIRRORS-NN`). Cited by 8 endpoint matrix rows. Prior: v2.2.0 added 8 dispatch rows for B1–B4 addendums (`07b`, `08b`, `09b`, `11b`, `12b`, `13b`, `14b`, `16`) covering `AT-APP-58..107` and inline prefixes `AT-MGP/DV/SM/TR/MZ/TPL/OQ/SR-NN`. v2.1.0 backfilled canonical AT for Today/Templates/Concurrency/SSE (`AT-APP-26..42`). v2.0.0 declared `AT-APP-NN` canonical (APP-FIX-14, closes F-12).
+> **Updated:** 2026-04-27 — v2.4.0 (F20) closed 12 more open prefixes via §"Inline-Prefix Closure (12 prefixes, 67 IDs)" — 11 identity registrations (`AT-BOARD/CONCURRENCY/CTXMENU/INTERACT/LAYOUT/PAGE/ROLES/SHARE/TEMPLATES/TODAY/TRASH-NN`) + 1 alias closure (`AT-MULTI-NN` → `AT-MULTISELECT-NN`). G-30 closed IDs 901→968. v2.3.0 (F15) closed two open prefixes: enumerated `AT-INFO-01..07` and `AT-MIRROR-01..06` as explicit alias rows mapping to source-file IDs (`AT-INFOMODEL-NN`, `AT-MIRRORS-NN`). Cited by 8 endpoint matrix rows. Prior: v2.2.0 added 8 dispatch rows for B1–B4 addendums (`07b`, `08b`, `09b`, `11b`, `12b`, `13b`, `14b`, `16`) covering `AT-APP-58..107` and inline prefixes `AT-MPG/DV/SM/TR/MZ/TPL/OQ/SR-NN`. v2.1.0 backfilled canonical AT for Today/Templates/Concurrency/SSE (`AT-APP-26..42`). v2.0.0 declared `AT-APP-NN` canonical (APP-FIX-14, closes F-12).
 > **Status:** Active — dispatch index for `AT-APP-*` (canonical) and per-feature inline `AT-*-*` IDs
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
@@ -35,7 +35,7 @@
 | 8 | Share dialog | [`08-share-dialog.md`](./08-share-dialog.md) | `AT-APP-25` | `AT-SHARE-NN` | `AT-APPF-41..45` |
 | 8b | Sharing × Mirror (B4) | [`08b-sharing-mirror-interaction.md`](./08b-sharing-mirror-interaction.md) | `AT-APP-76..80` | `AT-SM-NN` | — |
 | 9 | Mirrors | [`09-mirrors.md`](./09-mirrors.md) | `AT-APP-24` | `AT-MIRROR-NN` | `AT-APPF-46..50` |
-| 9b | Mirror peer-group (B1) | [`09b-mirror-peer-group-model.md`](./09b-mirror-peer-group-model.md) | `AT-APP-58..67` | `AT-MGP-NN` | — |
+| 9b | Mirror peer-group (B1) | [`09b-mirror-peer-group-model.md`](./09b-mirror-peer-group-model.md) | `AT-APP-58..67` | `AT-MPG-NN` | — |
 | 10 | Today view | [`10-today-view.md`](./10-today-view.md) | `AT-APP-26..28` | `AT-TODAY-NN` | `AT-APPF-51..55` |
 | 11 | Trash view | [`11-trash-view.md`](./11-trash-view.md) | `AT-APP-16, 19, 20` | `AT-TRASH-NN` | `AT-APPF-56..60` |
 | 11b | Trash reaper (B4) | [`11b-trash-reaper.md`](./11b-trash-reaper.md) | `AT-APP-81..85` | `AT-TR-NN` | — |

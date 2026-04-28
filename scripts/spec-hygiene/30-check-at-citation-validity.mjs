@@ -143,7 +143,7 @@ const REDUNDANCY_ALLOWLIST = new Set([
   "AT-MIRRORS-",      // 09-mirrors source-file prefix (canonical: AT-APP-24)
   "AT-DV-",           // 07b-dashboard-view inline (canonical: AT-APP-68..75)
   "AT-SM-",           // 08b-sharing-mirror-interaction inline (canonical: AT-APP-76..80)
-  "AT-MGP-",          // 09b-mirror-peer-group-model inline (canonical: AT-APP-58..67)
+  "AT-MPG-",          // 09b-mirror-peer-group-model inline (canonical: AT-APP-58..67)
   "AT-TR-",           // 11b-trash-reaper inline (canonical: AT-APP-81..85)
   "AT-MZ-",           // 12b-multi-select-zoom inline (canonical: AT-APP-86..91)
   "AT-TPL-",          // 13b-templates-snapshot-semantics inline (canonical: AT-APP-92..96)
@@ -400,7 +400,7 @@ function main() {
     console.error("    1) If the citation is a typo: fix the number to match a registered ID.");
     console.error("    2) If the AT is genuinely new: register it in the appropriate");
     console.error("       97-acceptance-criteria.md as `AT-APP-NN` (canonical) before citing.");
-    console.error("    3) Never invent ad-hoc prefixes like AT-MGP-* — see APP-FIX-14.");
+    console.error("    3) Never invent ad-hoc prefixes like AT-MPG-* — see APP-FIX-14.");
     process.exit(1);
   }
 

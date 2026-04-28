@@ -151,20 +151,20 @@ Testable acceptance criteria for the App domain. Each criterion is independently
 | `AT-APP-56` | Restoring an item heals its broken mirrors by clearing `Mirrors.BrokenAt` via LWW (subject to AT-APP-34 stickiness) and emits an SSE `mirror-healed` event. | `02-workflows/04-trash-restore-flow.md` (was `AT-WF-RESTORE-05`) |
 | `AT-APP-57` | A stale restore racing with the reaper's hard-delete loses LWW: the reaper's newer `ServerTs` wins and the broken-mirror state is preserved. | `02-workflows/04-trash-restore-flow.md` (was `AT-WF-RESTORE-06`) + AT-APP-34 |
 
-### Mirror peer-group model (B1 addendum, mirrors `AT-MGP-*`)
+### Mirror peer-group model (B1 addendum, mirrors `AT-MPG-*`)
 
 | ID | Criterion | Source |
 |----|-----------|--------|
-| `AT-APP-58` | Mirroring item X under parent P creates a peer-group `G` and inserts P-scoped peer P₂ such that `MirrorPeerGroupMembers` contains both X and P₂ with the same `PeerGroupId`. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MGP-01`) |
-| `AT-APP-59` | Editing the title of any peer in `G` updates `Items.Title` of the canonical content row, and an SSE `item-updated` event fans out to all peers within **1 s**. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MGP-02`) |
-| `AT-APP-60` | `ParentId`, `SortOrder`, and `Permissions` are stored per peer (not per group) and are independent across peers. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MGP-03`) |
-| `AT-APP-61` | Detaching peer P₁ removes it from `MirrorPeerGroupMembers`; if the group's surviving member count drops to **1**, the group is auto-dissolved (group row deleted, last member's PeerGroupId nulled). | `01-features/09b-mirror-peer-group-model.md` (was `AT-MGP-04`) |
-| `AT-APP-62` | Cycle-prevention algorithm rejects a mirror operation that would create a peer of an ancestor of itself, returning **HTTP 409**. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MGP-05`) + `09a-mirror-cycle-detection.md` |
-| `AT-APP-63` | Soft-deleting one peer does NOT delete other peers; the group survives at size ≥2. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MGP-06`) |
-| `AT-APP-64` | Hard-deleting (reaper) a peer that drops the group to size 1 triggers auto-dissolve via DB trigger within the same transaction. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MGP-07`) + `11b-trash-reaper.md` |
-| `AT-APP-65` | LWW conflicts on shared content fields use server `ServerTs` with `OwnerId` ASC tiebreak. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MGP-08`) + AT-APP-33 |
-| `AT-APP-66` | Mirror peer-group migration script v1→v2 converts every legacy `Mirrors(SourceId, MirrorId)` pair into a peer-group with both rows as members; idempotent re-runs are no-ops. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MGP-09`) + `07-db-diagram/sql/07-migration-v2-mirror-peer-groups.sql` |
-| `AT-APP-67` | The legacy `Mirrors` table is read-only after v2 migration; writes return **HTTP 410**. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MGP-10`) |
+| `AT-APP-58` | Mirroring item X under parent P creates a peer-group `G` and inserts P-scoped peer P₂ such that `MirrorPeerGroupMembers` contains both X and P₂ with the same `PeerGroupId`. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MPG-01`) |
+| `AT-APP-59` | Editing the title of any peer in `G` updates `Items.Title` of the canonical content row, and an SSE `item-updated` event fans out to all peers within **1 s**. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MPG-02`) |
+| `AT-APP-60` | `ParentId`, `SortOrder`, and `Permissions` are stored per peer (not per group) and are independent across peers. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MPG-03`) |
+| `AT-APP-61` | Detaching peer P₁ removes it from `MirrorPeerGroupMembers`; if the group's surviving member count drops to **1**, the group is auto-dissolved (group row deleted, last member's PeerGroupId nulled). | `01-features/09b-mirror-peer-group-model.md` (was `AT-MPG-04`) |
+| `AT-APP-62` | Cycle-prevention algorithm rejects a mirror operation that would create a peer of an ancestor of itself, returning **HTTP 409**. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MPG-05`) + `09a-mirror-cycle-detection.md` |
+| `AT-APP-63` | Soft-deleting one peer does NOT delete other peers; the group survives at size ≥2. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MPG-06`) |
+| `AT-APP-64` | Hard-deleting (reaper) a peer that drops the group to size 1 triggers auto-dissolve via DB trigger within the same transaction. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MPG-07`) + `11b-trash-reaper.md` |
+| `AT-APP-65` | LWW conflicts on shared content fields use server `ServerTs` with `OwnerId` ASC tiebreak. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MPG-08`) + AT-APP-33 |
+| `AT-APP-66` | Mirror peer-group migration script v1→v2 converts every legacy `Mirrors(SourceId, MirrorId)` pair into a peer-group with both rows as members; idempotent re-runs are no-ops. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MPG-09`) + `07-db-diagram/sql/07-migration-v2-mirror-peer-groups.sql` |
+| `AT-APP-67` | The legacy `Mirrors` table is read-only after v2 migration; writes return **HTTP 410**. | `01-features/09b-mirror-peer-group-model.md` (was `AT-MPG-10`) |
 
 ### Dashboard view (B2 addendum, mirrors `AT-DV-*`)
 

@@ -172,16 +172,16 @@ WHERE  mm.MirrorGroupId = (SELECT MirrorGroupId FROM MirrorMember WHERE ItemId =
 
 | ID | Given | When | Then | testid |
 |---|---|---|---|---|
-| AT-MGP-01 | Item X is regular (not a mirror) | User runs `/mirror to` and picks parent P | A new `MirrorGroup` is created; both X and the new peer have `MirrorMember` rows; both render the diamond ◇ badge | `mirror-badge` |
-| AT-MGP-02 | X has 3 mirror peers (group size 4) | User edits the title on peer #2 | All 4 peers render the new title within 100 ms via SSE `item.updated` | `mirror-content-sync` |
-| AT-MGP-03 | X has 3 peers, each in different parents at different positions | User drags peer #2 to a new position | Only peer #2's `FractionalIndex` changes; peers #1, #3, #4 keep their positions | `mirror-position-isolation` |
-| AT-MGP-04 | Group has 2 members | User detaches one | Group is dissolved; the remaining item has NO diamond badge and is a regular item | `mirror-singleton-dissolve` |
-| AT-MGP-05 | Group has 3 members | User detaches one | Remaining 2 stay mirrored, still show diamond, group still exists | `mirror-detach-survivors` |
-| AT-MGP-06 | User opens context menu on a mirror | Menu shows "See them" | Clicking opens a list of all peers with their parent titles | `mirror-see-them` |
-| AT-MGP-07 | Peer #2 is `IsCollapsed = 1`, peer #1 is expanded | Render | Peer #2 renders collapsed, peer #1 renders expanded; toggling one does NOT toggle the other | `mirror-collapse-isolation` |
-| AT-MGP-08 | Canonical peer is deleted (moved to trash) | After delete | The `MirrorGroup.CanonicalItemId` is updated to the next-lowest `ItemId` in the group; renderer continues seamlessly | `mirror-canonical-promotion` |
-| AT-MGP-09 | Two devices edit the same canonical content offline | Both reconnect within 1 s | The edit with the later `UpdatedAt` wins; if equal, the edit from the lower `OwnerUserId` wins (LWW per R-5) | `mirror-lww-tiebreak` |
-| AT-MGP-10 | User attempts to mirror item X under a parent inside X's own subtree | Submit | Block with toast "Cannot mirror an item into itself or its descendants" — see [`09a-mirror-cycle-detection.md`](./09a-mirror-cycle-detection.md) | `mirror-cycle-error` |
+| AT-MPG-01 | Item X is regular (not a mirror) | User runs `/mirror to` and picks parent P | A new `MirrorGroup` is created; both X and the new peer have `MirrorMember` rows; both render the diamond ◇ badge | `mirror-badge` |
+| AT-MPG-02 | X has 3 mirror peers (group size 4) | User edits the title on peer #2 | All 4 peers render the new title within 100 ms via SSE `item.updated` | `mirror-content-sync` |
+| AT-MPG-03 | X has 3 peers, each in different parents at different positions | User drags peer #2 to a new position | Only peer #2's `FractionalIndex` changes; peers #1, #3, #4 keep their positions | `mirror-position-isolation` |
+| AT-MPG-04 | Group has 2 members | User detaches one | Group is dissolved; the remaining item has NO diamond badge and is a regular item | `mirror-singleton-dissolve` |
+| AT-MPG-05 | Group has 3 members | User detaches one | Remaining 2 stay mirrored, still show diamond, group still exists | `mirror-detach-survivors` |
+| AT-MPG-06 | User opens context menu on a mirror | Menu shows "See them" | Clicking opens a list of all peers with their parent titles | `mirror-see-them` |
+| AT-MPG-07 | Peer #2 is `IsCollapsed = 1`, peer #1 is expanded | Render | Peer #2 renders collapsed, peer #1 renders expanded; toggling one does NOT toggle the other | `mirror-collapse-isolation` |
+| AT-MPG-08 | Canonical peer is deleted (moved to trash) | After delete | The `MirrorGroup.CanonicalItemId` is updated to the next-lowest `ItemId` in the group; renderer continues seamlessly | `mirror-canonical-promotion` |
+| AT-MPG-09 | Two devices edit the same canonical content offline | Both reconnect within 1 s | The edit with the later `UpdatedAt` wins; if equal, the edit from the lower `OwnerUserId` wins (LWW per R-5) | `mirror-lww-tiebreak` |
+| AT-MPG-10 | User attempts to mirror item X under a parent inside X's own subtree | Submit | Block with toast "Cannot mirror an item into itself or its descendants" — see [`09a-mirror-cycle-detection.md`](./09a-mirror-cycle-detection.md) | `mirror-cycle-error` |
 
 ---
 
@@ -250,16 +250,16 @@ This migration is in [`07-db-diagram/sql/07-migration-v2-mirror-peer-groups.sql`
 
 | ID | Given | When | Then | testid |
 |----|-------|------|------|--------|
-| AT-MGP-01 | Item X is regular (not a mirror) | User runs `/mirror to` and picks parent P | Both X and the new peer have `MirrorMember` rows; both render diamond ◇ | `mirror-badge` |
-| AT-MGP-02 | X has 3 mirror peers | User edits the title on peer #2 | All 4 peers render the new title within 100 ms via SSE | `mirror-content-sync` |
-| AT-MGP-03 | X has 3 peers in different parents | User drags peer #2 to a new position | Only peer #2's `FractionalIndex` changes | `mirror-position-isolation` |
-| AT-MGP-04 | Group has 2 members | User detaches one | Group dissolves; remaining item has NO diamond | `mirror-singleton-dissolve` |
-| AT-MGP-05 | Group has 3 members | User detaches one | Remaining 2 stay mirrored, group still exists | `mirror-detach-survivors` |
-| AT-MGP-06 | User opens context menu on a mirror | Clicks "See them" | List of all peers with parent titles opens | `mirror-see-them` |
-| AT-MGP-07 | Peer #2 collapsed, peer #1 expanded | Render | Each peer renders its own collapse state | `mirror-collapse-isolation` |
-| AT-MGP-08 | Canonical peer is deleted | After delete | `MirrorGroup.CanonicalItemId` is re-pointed to next-lowest `ItemId` | `mirror-canonical-promotion` |
-| AT-MGP-09 | Two devices edit canonical content offline | Both reconnect | Later `UpdatedAt` wins; tie → lower `OwnerUserId` wins | `mirror-lww-tiebreak` |
-| AT-MGP-10 | User picks own subtree as mirror target | Submit | Block with `ERR_CYCLE` toast | `mirror-cycle-error` |
+| AT-MPG-01 | Item X is regular (not a mirror) | User runs `/mirror to` and picks parent P | Both X and the new peer have `MirrorMember` rows; both render diamond ◇ | `mirror-badge` |
+| AT-MPG-02 | X has 3 mirror peers | User edits the title on peer #2 | All 4 peers render the new title within 100 ms via SSE | `mirror-content-sync` |
+| AT-MPG-03 | X has 3 peers in different parents | User drags peer #2 to a new position | Only peer #2's `FractionalIndex` changes | `mirror-position-isolation` |
+| AT-MPG-04 | Group has 2 members | User detaches one | Group dissolves; remaining item has NO diamond | `mirror-singleton-dissolve` |
+| AT-MPG-05 | Group has 3 members | User detaches one | Remaining 2 stay mirrored, group still exists | `mirror-detach-survivors` |
+| AT-MPG-06 | User opens context menu on a mirror | Clicks "See them" | List of all peers with parent titles opens | `mirror-see-them` |
+| AT-MPG-07 | Peer #2 collapsed, peer #1 expanded | Render | Each peer renders its own collapse state | `mirror-collapse-isolation` |
+| AT-MPG-08 | Canonical peer is deleted | After delete | `MirrorGroup.CanonicalItemId` is re-pointed to next-lowest `ItemId` | `mirror-canonical-promotion` |
+| AT-MPG-09 | Two devices edit canonical content offline | Both reconnect | Later `UpdatedAt` wins; tie → lower `OwnerUserId` wins | `mirror-lww-tiebreak` |
+| AT-MPG-10 | User picks own subtree as mirror target | Submit | Block with `ERR_CYCLE` toast | `mirror-cycle-error` |
 
 
 ## Component Contract
@@ -268,16 +268,16 @@ This migration is in [`07-db-diagram/sql/07-migration-v2-mirror-peer-groups.sql`
 
 | Surface | Component path | `data-testid` | Acceptance tests |
 |---------|---------------|---------------|------------------|
-| Diamond peer badge | `src/components/items/MirrorBadge.tsx` | `mirror-badge` | AT-MGP-01 |
-| Cross-peer content sync | `src/state/mirrorGroupStore.ts` | `mirror-content-sync` | AT-MGP-02 |
-| Per-peer position lane | `src/components/items/PeerPositionLane.tsx` | `mirror-position-isolation` | AT-MGP-03 |
-| Singleton-dissolve handler | `src/state/mirrorDissolveSaga.ts` | `mirror-singleton-dissolve` | AT-MGP-04 |
-| Survivor preservation | `src/state/mirrorDetachSaga.ts` | `mirror-detach-survivors` | AT-MGP-05 |
-| "See them" peer list | `src/components/items/MirrorPeerList.tsx` | `mirror-see-them` | AT-MGP-06 |
-| Per-instance collapse | `src/components/items/ExpandToggle.tsx` | `mirror-collapse-isolation` | AT-MGP-07 |
-| Canonical promotion | `src/state/mirrorCanonicalPromotionSaga.ts` | `mirror-canonical-promotion` | AT-MGP-08 |
-| LWW tiebreak | `src/state/lwwResolver.ts` | `mirror-lww-tiebreak` | AT-MGP-09 |
-| Cycle guard | `src/components/items/MirrorPicker.tsx` | `mirror-cycle-error` | AT-MGP-10 |
+| Diamond peer badge | `src/components/items/MirrorBadge.tsx` | `mirror-badge` | AT-MPG-01 |
+| Cross-peer content sync | `src/state/mirrorGroupStore.ts` | `mirror-content-sync` | AT-MPG-02 |
+| Per-peer position lane | `src/components/items/PeerPositionLane.tsx` | `mirror-position-isolation` | AT-MPG-03 |
+| Singleton-dissolve handler | `src/state/mirrorDissolveSaga.ts` | `mirror-singleton-dissolve` | AT-MPG-04 |
+| Survivor preservation | `src/state/mirrorDetachSaga.ts` | `mirror-detach-survivors` | AT-MPG-05 |
+| "See them" peer list | `src/components/items/MirrorPeerList.tsx` | `mirror-see-them` | AT-MPG-06 |
+| Per-instance collapse | `src/components/items/ExpandToggle.tsx` | `mirror-collapse-isolation` | AT-MPG-07 |
+| Canonical promotion | `src/state/mirrorCanonicalPromotionSaga.ts` | `mirror-canonical-promotion` | AT-MPG-08 |
+| LWW tiebreak | `src/state/lwwResolver.ts` | `mirror-lww-tiebreak` | AT-MPG-09 |
+| Cycle guard | `src/components/items/MirrorPicker.tsx` | `mirror-cycle-error` | AT-MPG-10 |
 
 ---
 
