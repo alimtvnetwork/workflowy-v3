@@ -1,7 +1,7 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.1.2  
-> **Updated:** 2026-04-28 — patch: `G-26-WIRE-OWNERID-ONLY` promoted to **CI + TEST** dual tier with the addition of `AT-WIRE-EGRESS-01` PHP serializer egress test (specified in `spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md`). Prior: 1.1.1 (added the gate), 1.1.0 (20 new gates from ADR-0012 §D7, ADR-0027, ADR-0028).  
+> **Version:** 1.1.3  
+> **Updated:** 2026-04-28 — patch: §5 Known Gaps now records the citation-vs-row reconciliation (295 unique cited / 292 real gate IDs / 290 active rows / 2 superseded rows / 3 documentation placeholders). Prior: 1.1.2 (G-26-WIRE-OWNERID-ONLY dual tier), 1.1.1 (added the gate), 1.1.0 (20 new gates from ADR-0012 §D7, ADR-0027, ADR-0028).  
 > **Status:** Active  
 > **Purpose:** Single registry of every `G-*` compliance gate referenced anywhere in `spec/`. Each gate is classified by enforcement tier so AI implementers can tell at a glance which gates a CI pipeline must mechanically enforce vs. which are normative documentation invariants vs. which require test fixtures.
 
@@ -536,3 +536,18 @@
 - Heuristic classifier may mis-tier some gates; the 200 DOC-tier rows from the v1.0.0 inventory are still **unaudited** — many likely belong in CI/TEST tiers (e.g. `G-26-LWW-CANONICAL-COMPARATOR` is currently DOC but is enforced in practice). Per-area manual sweep is the largest remaining quality task.
 - ~63 placeholder `97-acceptance-criteria.md` files (AUDIT-03) still empty — their TEST-tier gates show file path but lack runnable fixtures. **As of 2026-04-28 this also affects the 7 new TEST-tier gates from ADR-0027 / 0028** (`G-27-RING-TTL-300S`, `G-27-COLD-GAP-RESYNC`, `G-27-MULTIWORKER-REPLAY`, `G-28-MISSING-KEY-LOGGED`, `G-28-FALLBACK-CHAIN`, `G-28-RTL-DIR-ATTR`, `G-28-DETECTION-ORDER`) — they are well-specified but won't run until the AC backfill lands.
 - Two `G-28-*` rows are intentionally retained as **superseded** (strikethrough) — never delete history per §4 rule 3.
+
+### 5.1 Citation-vs-row Reconciliation (audited 2026-04-28)
+
+A naive `rg -o '\`G-[A-Z0-9-]+\`' spec/_GATE-REGISTRY.md | sort -u` returns **295** unique tokens, which superficially appears inconsistent with the **290** active-row count in §2. The reconciliation is:
+
+| Bucket | Count | Source |
+|--------|------:|--------|
+| Active gate rows (counted in §2) | 290 | Non-strikethrough table rows |
+| Superseded gate rows (strikethrough, retained per §4 rule 3) | 2 | `G-28-NO-PHYSICAL-MARGINS`, `G-28-NO-PHYSICAL-ALIGN` (folded into `G-12-LOGICAL-*`) |
+| **Real gate IDs total** | **292** | |
+| Documentation placeholders in §4 naming-rule prose (NOT gates) | 3 | `G-NN`, `G-NN-NAME`, `G-DOMAIN-NN` (see §4 rule 5) |
+| **Unique tokens matching `\`G-…\`` regex** | **295** | |
+
+**Implication for fixture-as-spec audits:** any tool that parses gate IDs from this file MUST exclude the 3 documentation-placeholder tokens (`{"G-NN", "G-NN-NAME", "G-DOMAIN-NN"}`) and SHOULD treat strikethrough rows as registered (regex must allow optional `~~` around the backticked ID). The reference implementation in [`spec/13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md`](./13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md) does both as of v1.0.1 (Phase-4 hardening).
+

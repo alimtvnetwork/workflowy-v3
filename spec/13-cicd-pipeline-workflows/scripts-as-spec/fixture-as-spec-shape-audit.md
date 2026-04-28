@@ -2,8 +2,10 @@
 
 > **Type:** Fixture-as-spec (executable specification).
 > **Status:** Frozen 2026-04-28 (**Phase 4** — registry-row back-link
-> symmetry check added; final phase). Reference implementation for
-> [`G-13-FIXTURE-AS-SPEC-SHAPE`](../../_GATE-REGISTRY.md#cicd-pipeline-workflows).
+> symmetry check; v1.0.1 hardening: skip 3 documentation-placeholder
+> tokens + accept strikethrough rows as registered, per
+> [`spec/_GATE-REGISTRY.md` §5.1](../../_GATE-REGISTRY.md)). Reference
+> implementation for [`G-13-FIXTURE-AS-SPEC-SHAPE`](../../_GATE-REGISTRY.md#cicd-pipeline-workflows).
 > **SPEC-ONLY classification:** describes a CI algorithm; no runtime code.
 > Meta-property: this fixture audits other fixtures in the same directory,
 > including itself, AND audits the registry's reciprocal links to them.
@@ -72,10 +74,15 @@ FENCE_TAGGED = re.compile(r"```([a-zA-Z0-9_+-]+)\s*\n.*?\n```", re.S)
 FENCE_ANY = re.compile(r"```[a-zA-Z0-9_+-]*\s*\n.*?\n```", re.S)
 GATE_ID = re.compile(r"`(G-[A-Z0-9][A-Z0-9-]+)`")
 BANNER = re.compile(r"^> .+(?:\n> .+)*", re.M)
+# Documentation placeholders in §4 naming-rule prose — NOT real gates.
+# Reconciliation rationale: see spec/_GATE-REGISTRY.md §5.1.
+PLACEHOLDER_TOKENS = {"G-NN", "G-NN-NAME", "G-DOMAIN-NN"}
 # Phase 4: registry row = a markdown table row that starts with
 # `| \`G-NN-...\` |` and contains a link path. Capture (gate_id, link_path).
+# Optional `~~` allows superseded (strikethrough) rows to count as registered
+# per §4 rule 3 ("never delete history").
 REGISTRY_ROW = re.compile(
-    r"^\|\s*`(G-[A-Z0-9][A-Z0-9-]+)`\s*\|[^|]*\|\s*\[[^\]]+\]\(([^)]+)\)",
+    r"^\|\s*~?~?`(G-[A-Z0-9][A-Z0-9-]+)`~?~?\s*\|[^|]*\|\s*\[[^\]]+\]\(([^)]+)\)",
     re.M,
 )
 # Phase-4 carve-out: gates whose authoritative spec lives outside
@@ -91,7 +98,8 @@ def load_backlink_exempt() -> set[str]:
         EXEMPT_LEDGER.read_text(encoding="utf-8")))
 
 def registry_gate_ids() -> set[str]:
-    return set(GATE_ID.findall(REGISTRY.read_text(encoding="utf-8")))
+    raw = set(GATE_ID.findall(REGISTRY.read_text(encoding="utf-8")))
+    return raw - PLACEHOLDER_TOKENS
 
 def registry_rows() -> dict[str, str]:
     """Map gate_id → primary-file path as written in the registry row."""
