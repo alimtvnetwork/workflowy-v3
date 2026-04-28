@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-28  
-**Total Files:** 1367  
+**Total Files:** 1369  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -15,7 +15,7 @@
 
 ## Table of Contents
 
-- [01-spec-authoring-guide](#01-spec-authoring-guide) — 22 file(s)
+- [01-spec-authoring-guide](#01-spec-authoring-guide) — 23 file(s)
 - [02-coding-guidelines](#02-coding-guidelines) — 308 file(s)
 - [03-error-manage](#03-error-manage) — 188 file(s)
 - [04-database-conventions](#04-database-conventions) — 16 file(s)
@@ -33,7 +33,7 @@
 - [16-generic-cli](#16-generic-cli) — 43 file(s)
 - [17-generic-update](#17-generic-update) — 11 file(s)
 - [18-spec-issues](#18-spec-issues) — 14 file(s)
-- [31-app](#31-app) — 127 file(s)
+- [31-app](#31-app) — 128 file(s)
 - [32-ui-design](#32-ui-design) — 120 file(s)
 - [33-feedback-report](#33-feedback-report) — 3 file(s)
 - [34-activity-feed](#34-activity-feed) — 3 file(s)
@@ -66,6 +66,7 @@
 | [`01-spec-authoring-guide/16-lovable-folder.md`](./01-spec-authoring-guide/16-lovable-folder.md) | The `.lovable/` Folder Guide | — | — |
 | [`01-spec-authoring-guide/17-quick-start-and-enforcement.md`](./01-spec-authoring-guide/17-quick-start-and-enforcement.md) | AI Quick Start & Folder Structure Enforcement | — | — |
 | [`01-spec-authoring-guide/18-ai-contract-template.md`](./01-spec-authoring-guide/18-ai-contract-template.md) | AI Contract Header — Canonical Template | 1.0.0 | Active |
+| [`01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](./01-spec-authoring-guide/19-acceptance-criteria-io-table.md) | Acceptance-Criteria I/O Table — Authoring Guide | 1.0.0 | Normative |
 | [`01-spec-authoring-guide/97-acceptance-criteria.md`](./01-spec-authoring-guide/97-acceptance-criteria.md) | Spec Authoring Guide — Acceptance Criteria | 3.1.0 | — |
 | [`01-spec-authoring-guide/98-changelog.md`](./01-spec-authoring-guide/98-changelog.md) | Spec Authoring Guide — Changelog | 3.1.0 | — |
 | [`01-spec-authoring-guide/99-consistency-report.md`](./01-spec-authoring-guide/99-consistency-report.md) | Consistency Report — Spec Authoring Guide | 3.1.0 | — |
@@ -1359,6 +1360,7 @@
 | [`31-app/07-db-diagram/97-acceptance-criteria.md`](./31-app/07-db-diagram/97-acceptance-criteria.md) | DB Diagram — Acceptance Criteria | 1.0.1 | — |
 | [`31-app/07-db-diagram/99-consistency-report.md`](./31-app/07-db-diagram/99-consistency-report.md) | Consistency Report — 07-db-diagram | 1.0.0 | — |
 | [`31-app/07-db-diagram/sql/00-overview.md`](./31-app/07-db-diagram/sql/00-overview.md) | SQLite DDL — Reference Implementation | 2.2.0 | — |
+| [`31-app/97-acceptance-criteria-fixtures.md`](./31-app/97-acceptance-criteria-fixtures.md) | App — Acceptance-Criteria I/O Fixtures | 1.0.0 | Active |
 | [`31-app/97-acceptance-criteria.md`](./31-app/97-acceptance-criteria.md) | App — Acceptance Criteria | 2.6.0 | — |
 | [`31-app/99-consistency-report.md`](./31-app/99-consistency-report.md) | Consistency Report — App | 1.3.0 | — |
 
@@ -1537,4 +1539,4 @@
 
 ---
 
-*Auto-generated index — 1367 files across 25 top-level folders.*
+*Auto-generated index — 1369 files across 25 top-level folders.*

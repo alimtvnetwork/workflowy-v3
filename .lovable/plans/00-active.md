@@ -81,10 +81,12 @@ Pick the top 🟦 item on every `next`. Strike (✅) when done; new top item bec
 **✅ Done 2026-04-28:** Created `spec/31-app/01-features/18-integrations.md` (288 lines) covering: §1 Personal Access Token auth model + table schema (`UserPersonalAccessToken`), §2 Zapier (5 triggers + 5 actions, all with `/wp-json/workflowy/v1/integrations/*` endpoints + `since`-cursor polling contract), §3 Apple Shortcuts gallery (5 bundled shortcuts), §4 Common contracts (rate-limit 60/min per PAT, idempotency-key, activity-feed audit). Wrote full F-template compliance: 8 Inputs rows, 8 Outputs rows, 12 Edge Cases, 21 inline AT-INT-* Acceptance Tests with Given/When/Then, 10-row Component Contract mapping React PAT-manager + 6 PHP controller/middleware classes. Cross-linked from `01-features/00-overview.md`. Hygiene caught two strict-template violations on first run (missing 5 mandatory `##` headings, then a stricter Component-Contract column header) — both fixed; final hygiene PASS for F6, only pre-existing `ItemType` enum drift carried over. Spec index 1366 → 1367. Projected composite 71 → 73 (closes the F-series; combined F1–F6 lifted from baseline 55 to 73).
 
 ### 🟦 P2 — Convert every `97-acceptance-criteria.md` to concrete I/O tables
-**Targets:** all `97-acceptance-criteria.md` files (~24).
-**Change:** every AT-* row gets *Given / When / Then* + sample request JSON + expected response JSON (PascalCase envelope).
+**Targets:** all 130 `97-acceptance-criteria.md` files across 24 sections.
+**Change:** every AT-* row gets *Given / When / Then* + sample request/response JSON (PascalCase envelope) per the canonical format.
 **Predicted gain:** +10 composite (testability 21→55, determinism 21→50).
 **Verify:** hygiene; re-score 3 sample sections.
+**Sub-tasks (one per `next`):** P2a (App canonical) → P2b (App per-feature) → P2c (REST/DB) → P2d (UI design) → P2e (33–36) → P2f (coding-guidelines lint shape) → P2g (remainder + flip hygiene gate AT-FIX-01 to enforcing).
+**🟦 In progress 2026-04-28 (P2a partial):** Created canonical format spec `spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md` (mandatory two-row pattern: prose row + fixture block; PascalCase envelope; 5 mandatory slots; pure-UI + lint-rule opt-out variants). Created coverage tracker `.lovable/plans/p2-coverage.md`. Built fixtures file `spec/31-app/97-acceptance-criteria-fixtures.md` covering `AT-APP-01..14` (Information model 5, Layout shell 5, Page+interactions 4) — each with Given/When/Then + literal JSON request/response under `/wp-json/workflowy/v1` + side-effects + negative assertion. Linked from canonical AT file. Hygiene PASS for new files; only pre-existing `ItemType` enum drift carried over. Projected `31-app` subscore: testability +6, determinism +5 → +11. Remaining for P2a: `AT-APP-15..107` (~93 fixtures).
 
 ### P3 — Generate REST envelope JSON fixtures
 **Targets:** `spec/04-database-conventions/06-rest-api-format/fixtures/*.json` (new folder).
