@@ -8,12 +8,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const TARGETS = [
-  ['spec/05-split-db-architecture',   '97a-acceptance-criteria-fixtures.md', '98-acceptance-criteria.md'],
-  ['spec/10-powershell-integration',  '97a-acceptance-criteria-fixtures.md', '97-acceptance-criteria.md'],
-  ['spec/14-self-update-app-update',  '97a-acceptance-criteria-fixtures.md', '97-acceptance-criteria.md'],
-  ['spec/36-user-management',         '97a-acceptance-criteria-fixtures.md', '97-acceptance-criteria.md'],
-];
+// P25: auto-discover all sections that have a fixtures file + a 00-overview.md
+const TARGETS = fs.readdirSync('spec', { withFileTypes: true })
+  .filter(d => d.isDirectory() && /^\d+-/.test(d.name))
+  .map(d => [`spec/${d.name}`, '97a-acceptance-criteria-fixtures.md', '97-acceptance-criteria.md'])
+  .filter(([dir, fix]) => fs.existsSync(path.join(dir, fix)) && fs.existsSync(path.join(dir, '00-overview.md')));
 
 const M_OPEN  = '<!-- P24-RUBRIC-SELFCHECK -->';
 const M_CLOSE = '<!-- /P24-RUBRIC-SELFCHECK -->';
