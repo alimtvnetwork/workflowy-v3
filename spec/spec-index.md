@@ -578,7 +578,7 @@
 | [`03-error-manage/03-error-code-registry/97-acceptance-criteria.md`](./03-error-manage/03-error-code-registry/97-acceptance-criteria.md) | Error Code Registry — Acceptance Criteria | 2.0.0 | Curated |
 | [`03-error-manage/03-error-code-registry/99-consistency-report.md`](./03-error-manage/03-error-code-registry/99-consistency-report.md) | Consistency Report: Error Code Registry | 3.1.0 | — |
 | [`03-error-manage/97-acceptance-criteria.md`](./03-error-manage/97-acceptance-criteria.md) | Error Management — Acceptance Criteria | 3.1.0 | — |
-| [`03-error-manage/97a-acceptance-criteria-fixtures.md`](./03-error-manage/97a-acceptance-criteria-fixtures.md) | Error Manage — Acceptance Criteria I/O Fixtures | 0.1.0 | Stub |
+| [`03-error-manage/97a-acceptance-criteria-fixtures.md`](./03-error-manage/97a-acceptance-criteria-fixtures.md) | Error Resolution — Acceptance Criteria I/O Fixtures | 1.0.0 | Concrete |
 | [`03-error-manage/98-changelog.md`](./03-error-manage/98-changelog.md) | Error Management — Changelog | 3.1.0 | — |
 | [`03-error-manage/99-consistency-report.md`](./03-error-manage/99-consistency-report.md) | Consistency Report: Error Management | 3.1.0 | — |
 | [`03-error-manage/structure.md`](./03-error-manage/structure.md) | 04-error-manage — Structure Summary | 3.1.0 | — |
@@ -894,7 +894,7 @@
 | [`13-cicd-pipeline-workflows/18-wp-plugin-deploy/04-version-sync.md`](./13-cicd-pipeline-workflows/18-wp-plugin-deploy/04-version-sync.md) | 03.04 — Version Synchronization (`package.json` → PHP) | 1.0.0 | — |
 | [`13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md`](./13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md) | WP-Plugin Deploy — Acceptance Criteria | 1.0.0 | — |
 | [`13-cicd-pipeline-workflows/97-acceptance-criteria.md`](./13-cicd-pipeline-workflows/97-acceptance-criteria.md) | CI/CD Pipeline Workflows — Acceptance Criteria | 2.0.0 | — |
-| [`13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md`](./13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md) | Cicd Pipeline Workflows — Acceptance Criteria I/O Fixtures | 0.1.0 | Stub |
+| [`13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md`](./13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md) | CICD Pipeline Workflows — Acceptance Criteria I/O Fixtures | 1.0.0 | Concrete |
 | [`13-cicd-pipeline-workflows/99-consistency-report.md`](./13-cicd-pipeline-workflows/99-consistency-report.md) | Consistency Report — CI/CD Pipeline Workflows | 3.1.0 | — |
 | [`13-cicd-pipeline-workflows/README.md`](./13-cicd-pipeline-workflows/README.md) | 09 — Pipeline Specifications | — | — |
 
@@ -931,7 +931,7 @@
 | [`14-self-update-app-update/15-config-file.md`](./14-self-update-app-update/15-config-file.md) | Configuration File | 3.1.0 | — |
 | [`14-self-update-app-update/16-update-command-workflow.md`](./14-self-update-app-update/16-update-command-workflow.md) | Update Command — Step-by-Step Workflow | 3.1.0 | — |
 | [`14-self-update-app-update/97-acceptance-criteria.md`](./14-self-update-app-update/97-acceptance-criteria.md) | Self-Update / App-Update — Acceptance Criteria (rollup) | 2.0.0 | Curated |
-| [`14-self-update-app-update/97a-acceptance-criteria-fixtures.md`](./14-self-update-app-update/97a-acceptance-criteria-fixtures.md) | Self Update App Update — Acceptance Criteria I/O Fixtures | 0.1.0 | Stub |
+| [`14-self-update-app-update/97a-acceptance-criteria-fixtures.md`](./14-self-update-app-update/97a-acceptance-criteria-fixtures.md) | Self-Update / App-Update — Acceptance Criteria I/O Fixtures | 1.0.0 | Concrete |
 | [`14-self-update-app-update/99-consistency-report.md`](./14-self-update-app-update/99-consistency-report.md) | Consistency Report — Self-Update & App Update | 3.1.0 | — |
 | [`14-self-update-app-update/diagrams/00-overview.md`](./14-self-update-app-update/diagrams/00-overview.md) | Diagrams — Self-Update & App Update | 3.1.0 | — |
 | [`14-self-update-app-update/diagrams/99-consistency-report.md`](./14-self-update-app-update/diagrams/99-consistency-report.md) | Consistency Report — Diagrams | 1.0.0 | — |
