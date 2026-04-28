@@ -172,6 +172,7 @@ Suppose someone wants to add a real `Favorite` table (currently forbidden by
 | [`0010`](./0010-offline-fifo-replay-queue.md) | Offline FIFO replay queue (IndexedDB) + server-stamped LWW reconciliation | `Accepted` | 2026-04-28 |
 | [`0011`](./0011-axios-only-http-client.md) | Axios is the sole HTTP client — pinned to `1.14.0` or `0.30.3` exact | `Accepted` | 2026-04-28 |
 | [`0012`](./0012-tailwind-v4-theme-block-token-registry.md) | Tailwind v4 `@theme` block is the sole design-token registry; HSL-only; no raw colors | `Accepted` | 2026-04-28 |
+| [`0013`](./0013-search-relevance-then-recency-ranking.md) | Search ranking — hybrid relevance-then-recency, tiered match × field weight, sub-300 ms SLA | `Accepted` | 2026-04-28 |
 
 > **Maintenance rule (summary — full protocol in [`_INDEX_AUTOMATION.md`](./_INDEX_AUTOMATION.md)):**
 > when adding/superseding an ADR, update **both** index tables (this one
