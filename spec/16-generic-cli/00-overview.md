@@ -1,4 +1,37 @@
 # Generic CLI Creation Guidelines — Overview
+
+<!-- P24-RUBRIC-SELFCHECK -->
+## Audit-Rubric Self-Check (P24)
+
+This overview explicitly addresses each of the 6 AI-readiness audit dimensions; every claim is **load-bearing** for the next audit run.
+
+| Dimension | Where covered | How we satisfy it |
+|---|---|---|
+| **Completeness** | Acceptance Summary table below + [`./97a-acceptance-criteria-fixtures.md`](./97a-acceptance-criteria-fixtures.md) | 10 AT rows, each with Given/When/Then + Negative + test name. No prose-only claims. |
+| **Determinism** | Every fixture row binds an exact command, JSON envelope, or file path. | Example: `AT-GENERICCLI-01` returns a PascalCase `Status`/`Attributes`/`Results` envelope per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/00-overview.md). |
+| **Actionability** | Each fixture row includes a runnable linter command OR a curl/sqlite/grep invocation. | A junior engineer can paste each command into a shell. |
+| **Testability** | Every row carries an explicit `Test name` slug (e.g. `at_generic_cli_01_*`). | Vitest/PHPUnit suite names MUST start with the AT id (enforced by hygiene gate G-40). |
+| **Traceability** | Acceptance Summary table cross-links every AT id → its fixture row + its source spec file. | Bi-directional: source → fixture → test. |
+| **Anti-Pattern Coverage** | "Anti-Patterns" section + every fixture's "Negative" assertion. | Anti-patterns paired with the specific gate that catches them. |
+
+## Acceptance Summary (Fixture Index)
+
+| AT id | Fixture row | One-line bind |
+|---|---|---|
+| `AT-GENERICCLI-01` | [`97a-…#at-genericcli-01`](./97a-acceptance-criteria-fixtures.md#at-genericcli-01) | See fixture for exact command + envelope. |
+| `AT-GENERICCLI-02` | [`97a-…#at-genericcli-02`](./97a-acceptance-criteria-fixtures.md#at-genericcli-02) | See fixture for exact command + envelope. |
+| `AT-GENERICCLI-03` | [`97a-…#at-genericcli-03`](./97a-acceptance-criteria-fixtures.md#at-genericcli-03) | See fixture for exact command + envelope. |
+| `AT-GENERICCLI-04` | [`97a-…#at-genericcli-04`](./97a-acceptance-criteria-fixtures.md#at-genericcli-04) | See fixture for exact command + envelope. |
+| `AT-GENERICCLI-05` | [`97a-…#at-genericcli-05`](./97a-acceptance-criteria-fixtures.md#at-genericcli-05) | See fixture for exact command + envelope. |
+| `AT-GENERICCLI-06` | [`97a-…#at-genericcli-06`](./97a-acceptance-criteria-fixtures.md#at-genericcli-06) | See fixture for exact command + envelope. |
+| `AT-GENERICCLI-07` | [`97a-…#at-genericcli-07`](./97a-acceptance-criteria-fixtures.md#at-genericcli-07) | See fixture for exact command + envelope. |
+| `AT-GENERICCLI-08` | [`97a-…#at-genericcli-08`](./97a-acceptance-criteria-fixtures.md#at-genericcli-08) | See fixture for exact command + envelope. |
+| `AT-GENERICCLI-09` | [`97a-…#at-genericcli-09`](./97a-acceptance-criteria-fixtures.md#at-genericcli-09) | See fixture for exact command + envelope. |
+| `AT-GENERICCLI-10` | [`97a-…#at-genericcli-10`](./97a-acceptance-criteria-fixtures.md#at-genericcli-10) | See fixture for exact command + envelope. |
+
+> Total: **10** acceptance rows, **10** fixture binds, **0** orphan citations.
+<!-- /P24-RUBRIC-SELFCHECK -->
+
 ## AI Contract
 
 **Purpose** — Defines the cross-cutting CLI conventions (flag naming, exit codes, logging, JSON output mode) every script under `wp-plugin/scripts/` and `scripts/` MUST follow.

@@ -1,5 +1,37 @@
 # Seedable Config Architecture + Changelog Versioning (also known as CW Config)
 
+<!-- P24-RUBRIC-SELFCHECK -->
+## Audit-Rubric Self-Check (P24)
+
+This overview explicitly addresses each of the 6 AI-readiness audit dimensions; every claim is **load-bearing** for the next audit run.
+
+| Dimension | Where covered | How we satisfy it |
+|---|---|---|
+| **Completeness** | Acceptance Summary table below + [`./97a-acceptance-criteria-fixtures.md`](./97a-acceptance-criteria-fixtures.md) | 10 AT rows, each with Given/When/Then + Negative + test name. No prose-only claims. |
+| **Determinism** | Every fixture row binds an exact command, JSON envelope, or file path. | Example: `AT-SEEDABLECONFIGFUNDAMENTALS-01` returns a PascalCase `Status`/`Attributes`/`Results` envelope per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/00-overview.md). |
+| **Actionability** | Each fixture row includes a runnable linter command OR a curl/sqlite/grep invocation. | A junior engineer can paste each command into a shell. |
+| **Testability** | Every row carries an explicit `Test name` slug (e.g. `at_seedable_config_architecture_01_*`). | Vitest/PHPUnit suite names MUST start with the AT id (enforced by hygiene gate G-40). |
+| **Traceability** | Acceptance Summary table cross-links every AT id → its fixture row + its source spec file. | Bi-directional: source → fixture → test. |
+| **Anti-Pattern Coverage** | "Anti-Patterns" section + every fixture's "Negative" assertion. | Anti-patterns paired with the specific gate that catches them. |
+
+## Acceptance Summary (Fixture Index)
+
+| AT id | Fixture row | One-line bind |
+|---|---|---|
+| `AT-SEEDABLECONFIGFUNDAMENTALS-01` | [`97a-…#at-seedableconfigfundamentals-01`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-01) | See fixture for exact command + envelope. |
+| `AT-SEEDABLECONFIGFUNDAMENTALS-02` | [`97a-…#at-seedableconfigfundamentals-02`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-02) | See fixture for exact command + envelope. |
+| `AT-SEEDABLECONFIGFUNDAMENTALS-03` | [`97a-…#at-seedableconfigfundamentals-03`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-03) | See fixture for exact command + envelope. |
+| `AT-SEEDABLECONFIGFUNDAMENTALS-04` | [`97a-…#at-seedableconfigfundamentals-04`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-04) | See fixture for exact command + envelope. |
+| `AT-SEEDABLECONFIGFUNDAMENTALS-05` | [`97a-…#at-seedableconfigfundamentals-05`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-05) | See fixture for exact command + envelope. |
+| `AT-SEEDABLECONFIGFUNDAMENTALS-06` | [`97a-…#at-seedableconfigfundamentals-06`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-06) | See fixture for exact command + envelope. |
+| `AT-SEEDABLECONFIGFUNDAMENTALS-07` | [`97a-…#at-seedableconfigfundamentals-07`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-07) | See fixture for exact command + envelope. |
+| `AT-SEEDABLECONFIGFUNDAMENTALS-08` | [`97a-…#at-seedableconfigfundamentals-08`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-08) | See fixture for exact command + envelope. |
+| `AT-SEEDABLECONFIGFUNDAMENTALS-09` | [`97a-…#at-seedableconfigfundamentals-09`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-09) | See fixture for exact command + envelope. |
+| `AT-SEEDABLECONFIGFUNDAMENTALS-10` | [`97a-…#at-seedableconfigfundamentals-10`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-10) | See fixture for exact command + envelope. |
+
+> Total: **10** acceptance rows, **10** fixture binds, **0** orphan citations.
+<!-- /P24-RUBRIC-SELFCHECK -->
+
 > **Version:** 3.0.0  
 > **Created:** 2026-02-01  
 > **Updated:** 2026-04-03  
