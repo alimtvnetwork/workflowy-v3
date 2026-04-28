@@ -28,11 +28,19 @@ const TARGETS = [
 ];
 
 function readAcceptanceFile(dir) {
-  for (const f of ['97-acceptance-criteria.md', '98-acceptance-criteria.md']) {
-    const p = path.join(dir, f);
-    if (fs.existsSync(p)) return { path: p, body: fs.readFileSync(p, 'utf8') };
+  const out = [];
+  function walk(d) {
+    for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+      const p = path.join(d, e.name);
+      if (e.isDirectory()) walk(p);
+      else if (/^9[78]-acceptance-criteria\.md$/.test(e.name)) {
+        out.push({ path: p, body: fs.readFileSync(p, 'utf8') });
+      }
+    }
   }
-  return null;
+  walk(dir);
+  if (out.length === 0) return null;
+  return { path: out.map(o => o.path).join(', '), body: out.map(o => o.body).join('\n') };
 }
 
 function extractATIds(body, prefix) {
