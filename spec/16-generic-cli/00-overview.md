@@ -85,31 +85,126 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 
 
+## Exit-Code Registry
+
+Every CLI subcommand MUST return one of these exit codes. No other values are legal. Codes are stable across versions.
+
+| Code | Name | Meaning | When emitted |
+|---|---|---|---|
+| `0`  | `OK`              | Operation completed successfully. | All assertions/post-conditions held. |
+| `1`  | `GenericFailure`  | Catch-all for unhandled errors. | Last-resort fallback only — prefer specific codes below. |
+| `2`  | `UsageError`      | Invalid flags, missing required args, unknown subcommand. | Argument parser rejected input **before** any side effect. |
+| `3`  | `ConfigError`     | Config file missing, malformed, or required key absent. | `ConfigRegistry::load()` failed. |
+| `4`  | `AuthError`       | Authentication/authorization rejected. | API returned 401/403, or local credentials invalid. |
+| `5`  | `NetworkError`    | Network timeout, DNS failure, connection refused. | After retry budget exhausted. |
+| `6`  | `RemoteError`     | Server returned 5xx or unparseable body. | After retry budget exhausted. |
+| `7`  | `ConflictError`   | Operation would clobber existing state without `--force`. | File exists, version mismatch, optimistic-lock fail. |
+| `8`  | `ValidationError` | Input was syntactically valid but semantically wrong. | E.g. `--limit=-3`, malformed UUID. |
+| `9`  | `Interrupted`     | User pressed Ctrl-C or received SIGTERM. | Signal handler caught — partial work rolled back. |
+| `10` | `PartialSuccess`  | Some items succeeded, some failed (batch ops only). | `--continue-on-error` mode reached end with ≥1 failure. |
+
+**Rules:**
+- Exit `0` is **only** valid when every assertion passed. Partial success uses `10`.
+- A subcommand MUST document which subset of the registry it can return.
+- The hygiene gate `G-16-EXIT-DOCUMENTED` rejects help text that lists an undocumented code.
+
+## Flag-Precedence Rules
+
+When the same setting can come from multiple sources, the CLI MUST resolve in this exact order (highest wins):
+
+| Rank | Source | Example | Notes |
+|---|---|---|---|
+| 1 (highest) | Explicit CLI flag | `--limit=50` | Wins unconditionally. |
+| 2 | Environment variable | `WORKFLOWY_LIMIT=50` | Prefix `WORKFLOWY_` + UPPER_SNAKE of flag name. |
+| 3 | Per-project config | `./.workflowy/config.json` | Found by walking up from CWD. |
+| 4 | User config | `$XDG_CONFIG_HOME/workflowy/config.json` | Falls back to `~/.config/workflowy/`. |
+| 5 (lowest) | Built-in default | declared in `flag.Define()` | MUST be a value, never `nil`. |
+
+**Rules:**
+- Boolean flags: `--no-foo` always overrides `--foo` regardless of order on the command line (last-no-wins is forbidden — too surprising).
+- Repeated scalar flags MUST exit `2 (UsageError)`. Repetition is reserved for explicitly list-typed flags (`--tag=a --tag=b`).
+- Unknown flags MUST exit `2`, never be silently ignored.
+- `--json` and `--quiet` are **mutually exclusive** — combining them exits `2`.
+
 ## Anti-Patterns
 
 The AI MUST NOT:
-- Printing free-form text to stdout when `--json` is set — JSON mode MUST emit one valid JSON document and nothing else.
-- Returning exit 0 on partial failure — exit codes MUST be documented per script and non-zero on any failure.
-- Using a custom flag style (`-flagName`) — long flags MUST use kebab-case (`--flag-name`).
 
-## Worked Example (skeleton)
+| # | Anti-pattern | Why it fails | Gate that catches it |
+|---|---|---|---|
+| 1 | Print free-form text to stdout when `--json` is set | Breaks downstream `jq` pipelines; unparseable. | `G-16-JSON-PURE` (test: stdout under `--json` MUST `JSON.parse` cleanly). |
+| 2 | Return exit `0` on partial failure | Hides errors from CI; cron jobs miss alerts. | `G-16-EXIT-NONZERO-ON-FAIL` (integration test injects failure, asserts non-zero). |
+| 3 | Use `-flagName` (single dash + camelCase) | Conflicts with POSIX short-flag bundling (`-abc` = `-a -b -c`). | `G-16-FLAG-STYLE` (lint: long flags MUST match `^--[a-z][a-z0-9-]*$`). |
+| 4 | Read config file paths from positional args | Confuses `<file>` semantics with config plumbing. | `G-16-CONFIG-VIA-FLAG` (lint: `ConfigRegistry::load()` MUST take only flag/env input). |
+| 5 | Emit ANSI color codes when stdout is not a TTY | Garbles logs and CI output. | `G-16-TTY-DETECT` (test: pipe stdout, assert no `\x1b[` bytes). |
+| 6 | Silently ignore unknown flags | Typos pass undetected; users blame the tool. | `G-16-STRICT-FLAGS` (parser MUST exit `2` on unknown). |
 
-A canonical, copy-pasteable shape for this section's primary output:
+## Worked Example — `workflowy backup` invocation
+
+### Success (TTY mode, exit `0`)
+
+```text
+$ workflowy backup --output=/tmp/snap.sqlite
+✓ Snapshot written: /tmp/snap.sqlite (4.6 MiB, 12 tables, 1247 ms)
+$ echo $?
+0
+```
+
+### Success (`--json` mode, exit `0`, stdout is single JSON document)
 
 ```json
 {
-  "status": "ok",
-  "command": "backup",
-  "duration_ms": 1247,
-  "result": {
-    "snapshot_id": "snap_2026-04-28T10-00-00Z",
-    "size_bytes": 4823551,
-    "tables_backed_up": 12
-  }
+  "Status": "Success",
+  "Attributes": {
+    "Command":   "backup",
+    "DurationMs": 1247,
+    "ExitCode":  0
+  },
+  "Results": [
+    {
+      "SnapshotId":     "snap_2026-04-28T10-00-00Z",
+      "Path":           "/tmp/snap.sqlite",
+      "SizeBytes":      4823551,
+      "TablesBackedUp": 12
+    }
+  ]
 }
 ```
 
-*This is a structural skeleton. Real values come from the section's `97-acceptance-criteria.md` row that the AI is implementing.*
+### Conflict (file exists, no `--force`, exit `7`)
+
+```json
+{
+  "Status": "Failed",
+  "Attributes": { "Command": "backup", "ExitCode": 7 },
+  "Errors": [
+    { "Code": "CLI-16-07", "Message": "Refusing to overwrite /tmp/snap.sqlite — pass --force to replace." }
+  ]
+}
+```
+
+### Usage error (unknown flag, exit `2`)
+
+```text
+$ workflowy backup --outpt=/tmp/snap.sqlite
+error: unknown flag --outpt (did you mean --output?)
+run `workflowy backup --help` for usage
+$ echo $?
+2
+```
+
+### Error-code registry (this section owns `CLI-16-*`)
+
+| Code | Maps to exit | Meaning |
+|---|---|---|
+| `CLI-16-02` | `2` | Unknown flag / bad usage. |
+| `CLI-16-03` | `3` | Config file unreadable. |
+| `CLI-16-05` | `5` | Network unreachable after retries. |
+| `CLI-16-07` | `7` | Destination exists, `--force` not given. |
+| `CLI-16-08` | `8` | Validation failed (e.g. negative `--limit`). |
+| `CLI-16-10` | `10` | Batch finished with mixed outcomes. |
+
+*All values are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings.*
 
 <!-- AUTO-TOC:START -->
 
