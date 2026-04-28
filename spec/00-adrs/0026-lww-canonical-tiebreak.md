@@ -48,9 +48,8 @@ sufficient — the regex excludes locale-sensitive characters).
 **D2 — Naming alignment (MUST).** The user/owner key in the
 comparator is **`OwnerId`** (per ADR-0020 branded type). The legacy
 spelling `OwnerUserId` (used in `09b-mirror-peer-group-model.md` R-5
-and AT-MPG-09) MUST be treated as an **alias** of `OwnerId` and added
-to the Spec↔DDL Alias Bridge in
-`spec/04-database-conventions/00-overview.md`. New writes MUST use
+and AT-MPG-09) MUST be treated as an **alias** of `OwnerId` and is
+catalogued in the [column-level Spec↔DDL Alias Bridge](../04-database-conventions/00-overview.md#alias-bridge-columns) (4 tables: `Item`, `Template`, `Tag`, `Workspace`). New writes MUST use
 `OwnerId`. The mirror-feature file SHOULD be updated to `OwnerId` in a
 follow-up housekeeping pass; until then, the alias bridge is
 load-bearing.
