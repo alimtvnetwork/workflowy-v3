@@ -74,6 +74,12 @@ Testable acceptance criteria for the UI Design domain. Each criterion is indepen
 
 ---
 
+## Fixtures
+
+I/O fixtures for `AT-UIDESIGN-01..25` live in [`97a-acceptance-criteria-fixtures.md`](./97a-acceptance-criteria-fixtures.md) per [`spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](../01-spec-authoring-guide/19-acceptance-criteria-io-table.md).
+
+---
+
 ## Verification
 
 ```bash

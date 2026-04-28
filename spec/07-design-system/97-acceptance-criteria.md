@@ -77,8 +77,15 @@ Testable criteria for validating design system compliance across all components 
 
 ---
 
+## Fixtures
+
+I/O fixtures (linter commands + DOM snapshots) for every `AC-NNN` row above live in [`97a-acceptance-criteria-fixtures.md`](./97a-acceptance-criteria-fixtures.md) per [`spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](../01-spec-authoring-guide/19-acceptance-criteria-io-table.md).
+
+---
+
 ## Cross-References
 
 | Reference | Location |
 |-----------|----------|
 | Full Design System | [00-overview.md](./00-overview.md) |
+| I/O Fixtures | [97a-acceptance-criteria-fixtures.md](./97a-acceptance-criteria-fixtures.md) |
