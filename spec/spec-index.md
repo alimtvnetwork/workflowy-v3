@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-28  
-**Total Files:** 1364  
+**Total Files:** 1365  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -15,7 +15,7 @@
 
 ## Table of Contents
 
-- [01-spec-authoring-guide](#01-spec-authoring-guide) — 21 file(s)
+- [01-spec-authoring-guide](#01-spec-authoring-guide) — 22 file(s)
 - [02-coding-guidelines](#02-coding-guidelines) — 308 file(s)
 - [03-error-manage](#03-error-manage) — 188 file(s)
 - [04-database-conventions](#04-database-conventions) — 16 file(s)
@@ -65,6 +65,7 @@
 | [`01-spec-authoring-guide/15-folder-examples.md`](./01-spec-authoring-guide/15-folder-examples.md) | Folder Structure Examples | — | — |
 | [`01-spec-authoring-guide/16-lovable-folder.md`](./01-spec-authoring-guide/16-lovable-folder.md) | The `.lovable/` Folder Guide | — | — |
 | [`01-spec-authoring-guide/17-quick-start-and-enforcement.md`](./01-spec-authoring-guide/17-quick-start-and-enforcement.md) | AI Quick Start & Folder Structure Enforcement | — | — |
+| [`01-spec-authoring-guide/18-ai-contract-template.md`](./01-spec-authoring-guide/18-ai-contract-template.md) | AI Contract Header — Canonical Template | 1.0.0 | Active |
 | [`01-spec-authoring-guide/97-acceptance-criteria.md`](./01-spec-authoring-guide/97-acceptance-criteria.md) | Spec Authoring Guide — Acceptance Criteria | 3.1.0 | — |
 | [`01-spec-authoring-guide/98-changelog.md`](./01-spec-authoring-guide/98-changelog.md) | Spec Authoring Guide — Changelog | 3.1.0 | — |
 | [`01-spec-authoring-guide/99-consistency-report.md`](./01-spec-authoring-guide/99-consistency-report.md) | Consistency Report — Spec Authoring Guide | 3.1.0 | — |
@@ -1534,4 +1535,4 @@
 
 ---
 
-*Auto-generated index — 1364 files across 25 top-level folders.*
+*Auto-generated index — 1365 files across 25 top-level folders.*

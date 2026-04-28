@@ -50,6 +50,7 @@
 | 15 | [`15-folder-examples.md`](./15-folder-examples.md) | Folder Structure Examples | 81 |
 | 16 | [`16-lovable-folder.md`](./16-lovable-folder.md) | The `.lovable/` Folder Guide | 103 |
 | 17 | [`17-quick-start-and-enforcement.md`](./17-quick-start-and-enforcement.md) | AI Quick Start & Folder Structure Enforcement | 125 |
+| 18 | [`18-ai-contract-template.md`](./18-ai-contract-template.md) | AI Contract Header — Canonical Template | 113 |
 
 <!-- AUTO-TOC:END -->
 
