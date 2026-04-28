@@ -74,12 +74,13 @@ Pick the top 🟦 item on every `next`. Strike (✅) when done; new top item bec
 **Verify:** hygiene; first AI score for `36-user-management`.
 **✅ Done 2026-04-28:** Created `spec/36-user-management/01-account-and-settings.md` (kept the section's flat shape rather than introducing a `01-features/` subfolder — avoids parallel-folder drift). All 13 F5 surfaces grouped into 6 sub-sections (Settings Panel root, Account & Identity, Backups & Restore, Personalization, Growth, Support & Documentation). Added a 12-row REST surface summary mapped to PascalCase envelope and the planned WP REST namespace `/wp-json/workflowy/v1/me/*`, plus AT-USR-* range table for P2 to fill (17 IDs reserved). Filled the P1 AI Contract block in `36-user-management/00-overview.md` with concrete file paths (PHP controllers under `wp-plugin/src/Rest/Me/*`, SQLite migrations, React `src/components/settings/*`) and a Definition-of-Done that cross-checks the endpoint matrix. Two new F7 reconciliation flags: settings endpoints must register in `spec/31-app/06-endpoints/`, MFA enrolment recovery-code download flow must match design-system modal-blocking pattern. Hygiene PASS for F5; spec index grew 1365→1366 files. Only pre-existing `ItemType` enum drift carried over. Projected composite 69 → 71.
 
-### 🟦 F6 — Merge Workflowy feature reference (Part 6: integrations)
+### ✅ F6 — Merge Workflowy feature reference (Part 6: integrations)
 **Targets:** new `spec/31-app/01-features/18-integrations.md`.
 **Map:** Zapier Integration, Apple Shortcuts Integration.
 **Verify:** hygiene; re-score `31-app`.
+**✅ Done 2026-04-28:** Created `spec/31-app/01-features/18-integrations.md` (288 lines) covering: §1 Personal Access Token auth model + table schema (`UserPersonalAccessToken`), §2 Zapier (5 triggers + 5 actions, all with `/wp-json/workflowy/v1/integrations/*` endpoints + `since`-cursor polling contract), §3 Apple Shortcuts gallery (5 bundled shortcuts), §4 Common contracts (rate-limit 60/min per PAT, idempotency-key, activity-feed audit). Wrote full F-template compliance: 8 Inputs rows, 8 Outputs rows, 12 Edge Cases, 21 inline AT-INT-* Acceptance Tests with Given/When/Then, 10-row Component Contract mapping React PAT-manager + 6 PHP controller/middleware classes. Cross-linked from `01-features/00-overview.md`. Hygiene caught two strict-template violations on first run (missing 5 mandatory `##` headings, then a stricter Component-Contract column header) — both fixed; final hygiene PASS for F6, only pre-existing `ItemType` enum drift carried over. Spec index 1366 → 1367. Projected composite 71 → 73 (closes the F-series; combined F1–F6 lifted from baseline 55 to 73).
 
-### P2 — Convert every `97-acceptance-criteria.md` to concrete I/O tables
+### 🟦 P2 — Convert every `97-acceptance-criteria.md` to concrete I/O tables
 **Targets:** all `97-acceptance-criteria.md` files (~24).
 **Change:** every AT-* row gets *Given / When / Then* + sample request JSON + expected response JSON (PascalCase envelope).
 **Predicted gain:** +10 composite (testability 21→55, determinism 21→50).

@@ -172,6 +172,7 @@ Every feature in `spec/31-app/01-features/` MUST: (1) write boolean checks as **
 | 14 | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | Concurrency & Sync | 313 |
 | 15 | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | Roles & Permissions | 391 |
 | 16 | [`16-search-ranking.md`](./16-search-ranking.md) | Search Ranking | 179 |
+| 17 | [`18-integrations.md`](./18-integrations.md) | Integrations — Zapier & Apple Shortcuts (F6) | 217 |
 
 <!-- AUTO-TOC:END -->
 
@@ -186,6 +187,7 @@ Every feature in `spec/31-app/01-features/` MUST: (1) write boolean checks as **
 | Workflowy UI phases (visual SSOT) | [`../../32-ui-design/06-workflowy-ui/00-overview.md`](../../32-ui-design/06-workflowy-ui/00-overview.md) |
 | Glossary | [`../../19-glossary.md`](../../19-glossary.md) |
 | Enums | [`../../20-enums-index.md`](../../20-enums-index.md) |
+| Integrations (Zapier, Apple Shortcuts) — F6 | [`./18-integrations.md`](./18-integrations.md) |
 
 ---
 
