@@ -1,115 +1,90 @@
 # Generic Update — Acceptance Criteria I/O Fixtures
 
-> **Version:** 0.1.0 (P20 stub seed)
+> **Version:** 1.0.0
 > **Created:** 2026-04-28 (UTC+8)
-> **Status:** Stub seed — companion to [`97-acceptance-criteria.md`](./97-acceptance-criteria.md).
+> **Status:** Concrete companion to [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). Replaces P20 stub seed.
 > **Format spec:** [`spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](../01-spec-authoring-guide/19-acceptance-criteria-io-table.md)
-> **Spawned by:** `.lovable/plans/00-active.md` § P20.
+> **Spawned by:** `.lovable/plans/00-active.md` § P22.
 
-Each row below references one `AT-*` id from the source acceptance file and
-restates the binding I/O contract in the SSOT table format. Stubs have a 🟡
-marker; replace with concrete fixtures during the next P2 sweep.
+This folder is the **slim subset** of [`spec/14-self-update-app-update/`](../14-self-update-app-update/00-overview.md). Where applicable, fixtures cite the canonical AT and bind the lighter contract.
 
 ---
 
-## `AT-GENERICUPDATE-01` — Stub fixture (P20)
+## `AT-GENERICUPDATE-01` — Algorithmic mirror of canonical flow
 
-| Given | Conditions described in the prose definition of `AT-GENERICUPDATE-01` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Given | The 6-step flow in `01-self-update-overview.md` of this folder. |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-GENERICUPDATE-01` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_genericupdate_01` |
+| **When** | A linter diffs the step list against `spec/14-self-update-app-update/01-self-update-overview.md`. |
+| **Then** | Both contain the same 6 steps in the same order: `check → download → verify → rename-into-place → handoff → cleanup`. |
+| **Negative** | Step reorder, addition, or omission in this folder MUST fail the consistency gate. |
+| **Test name** | `at_genericupdate_01_algorithmic_mirror` |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-GENERICUPDATE-02` — CWD-independent path resolution
 
-## `AT-GENERICUPDATE-02` — Stub fixture (P20)
-
-| Given | Conditions described in the prose definition of `AT-GENERICUPDATE-02` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Given | Identical to [`AT-SELFUPDATEAPPUPDATE-02`](../14-self-update-app-update/97a-acceptance-criteria-fixtures.md). |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-GENERICUPDATE-02` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_genericupdate_02` |
+| **Then** | Same outcome: deploy path resolved via `/proc/self/exe` / `_NSGetExecutablePath` / `GetModuleFileNameW`; CWD does not appear in result. |
+| **Negative** | CWD echoed in resolved path MUST fail. |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-GENERICUPDATE-03` — Atomic rename pair
 
-## `AT-GENERICUPDATE-03` — Stub fixture (P20)
-
-| Given | Conditions described in the prose definition of `AT-GENERICUPDATE-03` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Given | Identical to [`AT-SELFUPDATEAPPUPDATE-03`](../14-self-update-app-update/97a-acceptance-criteria-fixtures.md). |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-GENERICUPDATE-03` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_genericupdate_03` |
+| **Then** | Same two-`rename(2)` sequence; old binary preserved. |
+| **Negative** | Non-atomic `cp + truncate` MUST fail. |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-GENERICUPDATE-04` — Reproducible build artifacts
 
-## `AT-GENERICUPDATE-04` — Stub fixture (P20)
-
-| Given | Conditions described in the prose definition of `AT-GENERICUPDATE-04` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Given | Two CI runs of the same commit on a clean runner. |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-GENERICUPDATE-04` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_genericupdate_04` |
+| **When** | Build script `scripts/build.sh` completes on each run. |
+| **Then** | `sha256sum build/app-linux-amd64` is byte-identical between runs. Build envelope (when emitted): `{"Status":"success","Results":{"Sha256":"<hex>","BuildSeconds":<n>}}`. |
+| **Negative** | Differing sha256 between two clean runs MUST fail reproducibility. |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-GENERICUPDATE-05` — Hand-off accounting
 
-## `AT-GENERICUPDATE-05` — Stub fixture (P20)
-
-| Given | Conditions described in the prose definition of `AT-GENERICUPDATE-05` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Given | Old process holds: 1 listening socket, 2 open file descriptors, 1 pending write buffer. |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-GENERICUPDATE-05` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_genericupdate_05` |
+| **When** | Hand-off completes. |
+| **Then** | New process inherits the listener (`LISTEN_FDS=1`); other fds explicitly closed before `execve`; pending writes flushed (`fsync`) before re-exec. `lsof -p <new-pid>` shows expected fd count. |
+| **Negative** | Leaked or unflushed fd MUST fail. |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-GENERICUPDATE-06` — Healthcheck-gated cleanup with rollback
 
-## `AT-GENERICUPDATE-06` — Stub fixture (P20)
-
-| Given | Conditions described in the prose definition of `AT-GENERICUPDATE-06` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Given | New binary booted; healthcheck endpoint defined per `06-cleanup.md`. |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-GENERICUPDATE-06` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_genericupdate_06` |
+| **When** | Cleanup phase runs. |
+| **Then** | Healthcheck must pass 3 consecutive times before `unlink(<old>)`. On failure: `rename(<old>, <live>)` rollback, exit non-zero, envelope `{"Status":"error","Errors":[{"Code":"UPD-2201","Message":"healthcheck failed, rolled back"}]}`. |
+| **Negative** | Deleting old binary before health passes MUST fail. |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-GENERICUPDATE-07` — Console-safe handoff
 
-## `AT-GENERICUPDATE-07` — Stub fixture (P20)
-
-| Given | Conditions described in the prose definition of `AT-GENERICUPDATE-07` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Given | Old process attached to a TTY in raw mode with ANSI colour state. |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-GENERICUPDATE-07` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_genericupdate_07` |
+| **When** | Hand-off prepares to re-exec. |
+| **Then** | Before `execve`: TTY restored to cooked mode (`tcsetattr` with original termios), ANSI reset (`\x1b[0m\x1b[?25h`) emitted, cursor visible, scroll region cleared. Post-exec, `stty -a` matches pre-launch snapshot. |
+| **Negative** | A user terminal left in raw mode after re-exec MUST fail the console-safety gate. |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-GENERICUPDATE-08` — Consistency report ≥95/100 before merge
 
-## `AT-GENERICUPDATE-08` — Stub fixture (P20)
-
-| Given | Conditions described in the prose definition of `AT-GENERICUPDATE-08` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Linter command | `node scripts/spec-hygiene/42-ai-audit.mjs --section spec/17-generic-update | jq -r '.composite'` |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-GENERICUPDATE-08` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_genericupdate_08` |
+| **Expected** | Numeric value `≥ 95`. |
+| **Negative** | A PR that touches any of the 7 topic files without regenerating `99-consistency-report.md` to ≥95 MUST fail merge. |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-GENERICUPDATE-09` — README points to canonical folder
 
-## `AT-GENERICUPDATE-09` — Stub fixture (P20)
-
-| Given | Conditions described in the prose definition of `AT-GENERICUPDATE-09` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Linter command | `rg -nP "spec/14-self-update-app-update" spec/17-generic-update/README.md` |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-GENERICUPDATE-09` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_genericupdate_09` |
+| **Expected exit code** | `0` (at least one match). |
+| **Negative** | A README with no link to `spec/14-self-update-app-update/` MUST fail. |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-GENERICUPDATE-10` — Folder is strict subset of canonical
+
+| Linter command | `comm -23 <(ls spec/17-generic-update/*.md | xargs -n1 basename | sort) <(ls spec/14-self-update-app-update/*.md | xargs -n1 basename | sort)` |
+|---|---|
+| **Expected** | Empty output (no file in `17-` that doesn't exist in `14-`, modulo `README.md` and `99-consistency-report.md`). |
+| **Negative** | A novel topic file in `17-` not present in `14-` MUST fail; novel content belongs in the canonical folder. |
 
 ---
 
@@ -117,10 +92,12 @@ marker; replace with concrete fixtures during the next P2 sweep.
 
 ```bash
 grep -c "^## \`AT-GENERICUPDATE-" spec/17-generic-update/97a-acceptance-criteria-fixtures.md
+# expected: 10
 node scripts/spec-hygiene/00-run-all.mjs
 ```
 
 ## Related
 
 - [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) — Source AT prose
-- [`spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](../01-spec-authoring-guide/19-acceptance-criteria-io-table.md) — Format SSOT
+- [`spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md`](../14-self-update-app-update/97a-acceptance-criteria-fixtures.md) — Canonical fixtures
+- [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/00-overview.md) — Envelope SSOT
