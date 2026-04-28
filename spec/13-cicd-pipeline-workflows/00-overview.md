@@ -83,37 +83,195 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 
 
+## Pipeline Job DAG
+
+Every WP-Plugin pipeline MUST realize this exact dependency graph. Adding/removing nodes requires an ADR. Edges encode `needs:` in GitHub Actions.
+
+```
+                  ┌──────────────────┐
+                  │  setup           │   (checkout, install PHP+Node, cache deps)
+                  └────────┬─────────┘
+                           │
+        ┌──────────────────┼──────────────────┐
+        ▼                  ▼                  ▼
+┌──────────────┐  ┌──────────────┐  ┌────────────────────┐
+│ spec-hygiene │  │ lint-php     │  │ lint-ts            │
+│ (REQUIRED)   │  │ (REQUIRED)   │  │ (REQUIRED)         │
+└──────┬───────┘  └──────┬───────┘  └──────────┬─────────┘
+       │                 │                     │
+       └────────┬────────┴─────────┬───────────┘
+                ▼                  ▼
+       ┌─────────────────┐  ┌─────────────────┐
+       │ test-phpunit    │  │ test-vitest     │
+       │ (REQUIRED)      │  │ (REQUIRED)      │
+       └────────┬────────┘  └────────┬────────┘
+                └─────────┬──────────┘
+                          ▼
+                ┌─────────────────────┐
+                │ build-plugin-zip    │   (only on push to main / tag)
+                │ (REQUIRED on tag)   │
+                └──────────┬──────────┘
+                           │
+              ┌────────────┴────────────┐
+              ▼                         ▼
+      ┌──────────────┐         ┌────────────────┐
+      │ sign-artifact│         │ scan-security  │  (optional, parallel)
+      │ (REQUIRED on │         │ (advisory)     │
+      │  tag)        │         └────────────────┘
+      └──────┬───────┘
+             ▼
+      ┌──────────────┐
+      │ publish      │   (only on tag matching v*.*.*)
+      │ (REQUIRED on │
+      │  tag)        │
+      └──────────────┘
+```
+
+## Required-vs-Optional Gate Matrix
+
+The matrix below is **load-bearing**. Branch-protection rules MUST mirror this exactly. A PR that fails any "Required" gate is unmergeable; "Advisory" gates emit annotations but do not block.
+
+| Job | Trigger | Status | Failure mode | Owns codes |
+|---|---|---|---|---|
+| `setup`          | every push, every PR | **Required** | Hard block — nothing else runs. | `CI-13-00` |
+| `spec-hygiene`   | every push, every PR | **Required** | Hard block on PR; paged on `main`. | `CI-13-01` |
+| `lint-php`       | every push, every PR | **Required** | Hard block. | `CI-13-02` |
+| `lint-ts`        | every push, every PR | **Required** | Hard block. | `CI-13-03` |
+| `test-phpunit`   | every push, every PR | **Required** | Hard block. | `CI-13-04` |
+| `test-vitest`    | every push, every PR | **Required** | Hard block. | `CI-13-05` |
+| `build-plugin-zip` | push to `main`, any `v*.*.*` tag | **Required on tag**, advisory on `main` | Hard block on tag; on `main`, posts a sticky issue. | `CI-13-06` |
+| `sign-artifact`  | tag only | **Required on tag** | Hard block; release MUST NOT publish unsigned. | `CI-13-07` |
+| `scan-security`  | every push, every PR | Advisory | Comments on PR; never blocks merge. | `CI-13-08` |
+| `publish`        | tag matching `v[0-9]+.[0-9]+.[0-9]+` | **Required on tag** | Hard block; manual rerun allowed. | `CI-13-09` |
+
+**Branch-protection rules:**
+- `main` requires: `setup`, `spec-hygiene`, `lint-php`, `lint-ts`, `test-phpunit`, `test-vitest` to be green.
+- Tag pushes additionally require: `build-plugin-zip`, `sign-artifact`, `publish`.
+- `scan-security` is **never** in the required list (advisory only).
+
+## Concurrency & Caching Rules
+
+| Rule | Enforcement |
+|---|---|
+| `concurrency: { group: ${{ github.workflow }}-${{ github.ref }}, cancel-in-progress: true }` on every PR workflow. | Gate `G-13-CONCURRENCY` (workflow-yaml lint). |
+| Tag workflows MUST set `cancel-in-progress: false` — releases are never cancelled mid-flight. | Gate `G-13-NO-CANCEL-TAG`. |
+| Composer + npm caches keyed on lockfile hashes only. | Gate `G-13-CACHE-KEY`. |
+| Secrets accessed only via `${{ secrets.* }}`; never echoed to logs. | Gate `G-13-NO-SECRET-ECHO` (regex over workflow). |
+
 ## Anti-Patterns
 
 The AI MUST NOT:
-- Adding a new repo without picking one of the documented archetypes (WP-Plugin / Frontend-SPA / Browser-Extension).
-- Skipping the `node scripts/spec-hygiene/00-run-all.mjs` step — it is a required check on every workflow.
-- Hardcoding secrets or registry URLs — those go through repo secrets / org variables.
 
-## Worked Example (skeleton)
+| # | Anti-pattern | Why it fails | Gate that catches it |
+|---|---|---|---|
+| 1 | Add a new repo without picking one of the documented archetypes | Pipeline drift — each repo invents its own gates. | `G-13-ARCHETYPE-DECLARED` (workflow MUST contain `# archetype: <name>` header). |
+| 2 | Skip the `spec-hygiene` step | Spec rot ships unchecked. | `G-13-HYGIENE-PRESENT` (workflow lint). |
+| 3 | Hardcode secrets / registry URLs in workflow YAML | Token leak; rotation impossible. | `G-13-NO-SECRET-LITERAL` (regex). |
+| 4 | Mark `scan-security` as required | Slows merges on third-party CVE noise. | Branch-protection JSON checked into repo, validated by `G-13-PROTECTION-MATCH`. |
+| 5 | Run jobs in series when DAG allows parallel | Wastes CI minutes; balloons feedback time. | `G-13-DAG-PARALLEL` (lint: lint-php / lint-ts / spec-hygiene MUST share `needs: [setup]`). |
+| 6 | Publish from a job that didn't depend on `sign-artifact` | Unsigned release reaches users. | `G-13-PUBLISH-NEEDS-SIGN`. |
+| 7 | Use `actions/checkout@v3` or older | Known supply-chain CVE; loses sparse-checkout. | `G-13-ACTION-VERSIONS` (lint: pin major versions, minimum allowed list). |
 
-A canonical, copy-pasteable shape for this section's primary output:
+## Worked Example — Minimal compliant workflow
 
 ```yaml
+# archetype: WP-Plugin
 name: WP-Plugin CI
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+    tags:    ['v*.*.*']
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ !startsWith(github.ref, 'refs/tags/') }}
+
 jobs:
-  test:
+  setup:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: shivammathur/setup-php@v2
-        with: { php-version: '8.1' }
+        with: { php-version: '8.1', tools: composer }
       - uses: actions/setup-node@v4
-        with: { node-version: '20' }
-      - run: composer install --no-progress
+        with: { node-version: '20', cache: 'npm' }
+      - run: composer install --no-progress --no-interaction
       - run: npm ci
-      - run: node scripts/spec-hygiene/00-run-all.mjs
-      - run: composer test
-      - run: npm run test
+
+  spec-hygiene: { needs: setup, runs-on: ubuntu-latest, steps: [{ run: node scripts/spec-hygiene/00-run-all.mjs }] }
+  lint-php:     { needs: setup, runs-on: ubuntu-latest, steps: [{ run: composer lint }] }
+  lint-ts:      { needs: setup, runs-on: ubuntu-latest, steps: [{ run: npm run lint }] }
+
+  test-phpunit: { needs: [spec-hygiene, lint-php], runs-on: ubuntu-latest, steps: [{ run: composer test }] }
+  test-vitest:  { needs: [spec-hygiene, lint-ts],  runs-on: ubuntu-latest, steps: [{ run: npm run test }] }
+
+  build-plugin-zip:
+    needs: [test-phpunit, test-vitest]
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - run: bash scripts/build/package-plugin.sh
+      - uses: actions/upload-artifact@v4
+        with: { name: workflowy-plugin, path: dist/workflowy.zip }
+
+  sign-artifact:
+    needs: build-plugin-zip
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { name: workflowy-plugin, path: dist }
+      - run: bash scripts/build/sign.sh dist/workflowy.zip
+        env: { SIGNING_KEY: ${{ secrets.ED25519_PRIVATE_KEY }} }
+
+  scan-security:
+    needs: setup
+    runs-on: ubuntu-latest
+    continue-on-error: true   # advisory only
+    steps:
+      - run: composer audit
+      - run: npm audit --audit-level=high
+
+  publish:
+    needs: sign-artifact
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { name: workflowy-plugin, path: dist }
+      - run: bash scripts/build/publish.sh dist/workflowy.zip
+        env: { UPDATE_SERVER_TOKEN: ${{ secrets.UPDATE_SERVER_TOKEN }} }
 ```
 
-*This is a structural skeleton. Real values come from the section's `97-acceptance-criteria.md` row that the AI is implementing.*
+### Failure-mode envelope (workflow-level summary, posted as job summary)
+
+```json
+{
+  "Status": "Failed",
+  "Attributes": { "Workflow": "WP-Plugin CI", "Run": 1247, "FailedJob": "test-phpunit" },
+  "Errors": [
+    { "Code": "CI-13-04", "Message": "PHPUnit suite failed: 3 failing, 0 errored, 142 passed." }
+  ]
+}
+```
+
+### Error-code registry (this section owns `CI-13-*`)
+
+| Code | Job | Recovery |
+|---|---|---|
+| `CI-13-00` | setup | Re-run; if still failing, check runner image. |
+| `CI-13-01` | spec-hygiene | Run locally `node scripts/spec-hygiene/00-run-all.mjs`; commit fixes. |
+| `CI-13-02` | lint-php | `composer lint -- --fix`. |
+| `CI-13-03` | lint-ts | `npm run lint -- --fix`. |
+| `CI-13-04` | test-phpunit | Inspect `Tests/` output; fix or update fixtures. |
+| `CI-13-05` | test-vitest | Same — never `--update-snapshots` blindly. |
+| `CI-13-06` | build-plugin-zip | Check `scripts/build/package-plugin.sh`; verify `composer install --no-dev`. |
+| `CI-13-07` | sign-artifact | Verify `ED25519_PRIVATE_KEY` secret exists and is unrotated. |
+| `CI-13-08` | scan-security | Advisory — file issue, do not retry to clear. |
+| `CI-13-09` | publish | Verify `UPDATE_SERVER_TOKEN`; manual rerun safe (publish is idempotent on version). |
+
+*All values are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings.*
 
 <!-- AUTO-TOC:START -->
 
