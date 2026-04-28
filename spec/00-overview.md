@@ -73,6 +73,7 @@ prefix `00-` reserves it as the architectural anchor for the whole spec tree.
 | [`0010`](./00-adrs/0010-offline-fifo-replay-queue.md) | Offline FIFO replay queue (IndexedDB) + server-stamped LWW reconciliation | `Accepted` 2026-04-28 | `G-14-QUEUE-FIFO-LOCALSEQ`, `G-14-QUEUE-INDEXEDDB-ONLY`, `G-14-LWW-SERVERTS-CANONICAL`, `G-14-REPLAY-IDEMPOTENT-CMID`, `G-14-CONFLICT-UX-SILENT`, `G-14-QUEUE-INDEPENDENT-OF-VIEW-CAP` |
 | [`0011`](./00-adrs/0011-axios-only-http-client.md) | Axios sole HTTP client — pinned `1.14.0` OR `0.30.3` exact | `Accepted` 2026-04-28 | `G-32-AXIOS-ONLY`, `G-32-AXIOS-SINGLETON`, `G-32-AXIOS-EXACT-PIN`, `G-20-PRECOMMIT-CONTRACT` (strengthened), `G-32-NO-CLIENT-WRAPPER-FACADE` |
 | [`0012`](./00-adrs/0012-tailwind-v4-theme-block-token-registry.md) | Tailwind v4 `@theme` block sole token registry; HSL-only; no raw colors | `Accepted` 2026-04-28 | `G-32-NO-TAILWIND-CONFIG`, `G-32-NO-SECOND-STYLING-SYSTEM`, `G-32-TOKEN-REGISTRY`, `G-32-HSL-ONLY-TOKENS`, `G-32-NO-RAW-COLORS`, `G-32-VARIANT-SEMANTIC-ONLY`, `G-32-DARK-MODE-PARITY` (strengthened) |
+| [`0013`](./00-adrs/0013-search-relevance-then-recency-ranking.md) | Search — hybrid relevance-then-recency, 5 tiers × field weight, sub-300 ms SLA | `Accepted` 2026-04-28 | `G-16-RANKING-HYBRID-BUCKETED`, `G-16-MATCH-TIER-TABLE`, `G-16-FIELD-WEIGHTS-CONTENT-NOTE`, `G-16-OPERATORS-AS-PREDICATE`, `G-16-SEARCH-300MS-SLA`, `G-16-EMPTY-QUERY-NO-FALLBACK`, `G-16-MIRROR-PEERS-INDEPENDENT` |
 
 **When to consult ADRs first** (before editing any spec section):
 
