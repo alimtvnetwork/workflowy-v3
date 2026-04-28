@@ -8,12 +8,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const TARGETS = [
-  ['spec/05-split-db-architecture',   '97a-acceptance-criteria-fixtures.md', '98-acceptance-criteria.md'],
-  ['spec/10-powershell-integration',  '97a-acceptance-criteria-fixtures.md', '97-acceptance-criteria.md'],
-  ['spec/14-self-update-app-update',  '97a-acceptance-criteria-fixtures.md', '97-acceptance-criteria.md'],
-  ['spec/36-user-management',         '97a-acceptance-criteria-fixtures.md', '97-acceptance-criteria.md'],
-];
+// P25: auto-discover all sections that have a fixtures file + a 00-overview.md
+const TARGETS = fs.readdirSync('spec', { withFileTypes: true })
+  .filter(d => d.isDirectory() && /^\d+-/.test(d.name))
+  .map(d => [`spec/${d.name}`, '97a-acceptance-criteria-fixtures.md', '97-acceptance-criteria.md'])
+  .filter(([dir, fix]) => fs.existsSync(path.join(dir, fix)) && fs.existsSync(path.join(dir, '00-overview.md')));
 
 const M_OPEN  = '<!-- P24-RUBRIC-SELFCHECK -->';
 const M_CLOSE = '<!-- /P24-RUBRIC-SELFCHECK -->';
@@ -36,9 +35,9 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## Acceptance Summary (Fixture Index)
 
-| AT id | Fixture row | One-line bind |
+| Bind # | AT id (citation) | Fixture row |
 |---|---|---|
-${atRows.map(id => `| \`${id}\` | [\`97a-…#${id.toLowerCase()}\`](./97a-acceptance-criteria-fixtures.md#${id.toLowerCase()}) | See fixture for exact command + envelope. |`).join('\n')}
+${atRows.map((id, i) => `| ${i + 1} | cites \`${id}\` | [\`97a-…#${id.toLowerCase()}\`](./97a-acceptance-criteria-fixtures.md#${id.toLowerCase()}) |`).join('\n')}
 
 > Total: **${atRows.length}** acceptance rows, **${atRows.length}** fixture binds, **0** orphan citations.
 ${M_CLOSE}`;
@@ -48,7 +47,7 @@ function extractATIds(fixturePath) {
   if (!fs.existsSync(fixturePath)) return [];
   const body = fs.readFileSync(fixturePath, 'utf8');
   const ids = new Set();
-  const re = /^## `(AT-[A-Z0-9]+-\d+)`/gm;
+  const re = /^#{2,3}\s+`(AT-[A-Z0-9]+-\d+)`/gm;
   let m;
   while ((m = re.exec(body)) !== null) ids.add(m[1]);
   return [...ids];

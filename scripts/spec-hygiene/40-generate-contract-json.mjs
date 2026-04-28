@@ -26,7 +26,7 @@ const OUTPUT = "spec/contract.json";
 //   (1) ID column may be wrapped in backticks (`AT-APP-01`) — the canonical pattern.
 //   (2) Many sections define ATs as H3 narrative headings: `### AT-CICD-01 — Title`.
 const AT_TABLE_ROW = /^\|\s*`?(AT-[A-Z][A-Z0-9]*-\d+)`?\s*\|\s*([^|]+?)\s*\|/;
-const AT_HEADING = /^#{2,4}\s+(AT-[A-Z][A-Z0-9]*-\d+)\s+[—-]\s+(.+?)\s*$/;
+const AT_HEADING = /^#{2,4}\s+`?(AT-[A-Z][A-Z0-9]*-\d+)`?\s+[—-]\s+(.+?)\s*$/;
 const AT_INLINE = /\b(AT-[A-Z][A-Z0-9]*-\d+)\b/g;
 
 // P13: documentation-only IDs that are intentionally cited but never need a definition.
@@ -120,8 +120,8 @@ walk(ROOT, (file) => {
   if (file.includes("/_archive") || file.endsWith("/spec-index.md")) return;
   // Skip template/example files: they intentionally reference existing AT ids as illustrations.
   if (file.includes("/01-spec-authoring-guide/") && /(template|example|fixtures)\.md$/i.test(file)) return;
-  if (file.endsWith("/97a-acceptance-criteria-fixtures.md")) return;
-  if (file.endsWith("/spec/97a-acceptance-criteria-fixtures.md")) return;
+  // P25: 97a- fixture files ARE valid definition sites (their `## \`AT-X-N\` — title` headings define ATs).
+  // (Previously skipped; orphans like AT-SPECISSUES-* were defined only there.)
   // P13 fix: P11-generated condensed overviews include the canonical AC table verbatim.
   // They are derived artifacts — never definition sites. Skip for AT detection,
   // but do allow citation collection (orphan tracking still works correctly).

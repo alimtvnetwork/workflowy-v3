@@ -16,18 +16,18 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## Acceptance Summary (Fixture Index)
 
-| AT id | Fixture row | One-line bind |
+| Bind # | AT id (citation) | Fixture row |
 |---|---|---|
-| `AT-SELFUPDATEAPPUPDATE-01` | [`97a-…#at-selfupdateappupdate-01`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-01) | See fixture for exact command + envelope. |
-| `AT-SELFUPDATEAPPUPDATE-02` | [`97a-…#at-selfupdateappupdate-02`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-02) | See fixture for exact command + envelope. |
-| `AT-SELFUPDATEAPPUPDATE-03` | [`97a-…#at-selfupdateappupdate-03`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-03) | See fixture for exact command + envelope. |
-| `AT-SELFUPDATEAPPUPDATE-04` | [`97a-…#at-selfupdateappupdate-04`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-04) | See fixture for exact command + envelope. |
-| `AT-SELFUPDATEAPPUPDATE-05` | [`97a-…#at-selfupdateappupdate-05`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-05) | See fixture for exact command + envelope. |
-| `AT-SELFUPDATEAPPUPDATE-06` | [`97a-…#at-selfupdateappupdate-06`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-06) | See fixture for exact command + envelope. |
-| `AT-SELFUPDATEAPPUPDATE-07` | [`97a-…#at-selfupdateappupdate-07`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-07) | See fixture for exact command + envelope. |
-| `AT-SELFUPDATEAPPUPDATE-08` | [`97a-…#at-selfupdateappupdate-08`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-08) | See fixture for exact command + envelope. |
-| `AT-SELFUPDATEAPPUPDATE-09` | [`97a-…#at-selfupdateappupdate-09`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-09) | See fixture for exact command + envelope. |
-| `AT-SELFUPDATEAPPUPDATE-10` | [`97a-…#at-selfupdateappupdate-10`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-10) | See fixture for exact command + envelope. |
+| 1 | cites `AT-SELFUPDATEAPPUPDATE-01` | [`97a-…#at-selfupdateappupdate-01`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-01) |
+| 2 | cites `AT-SELFUPDATEAPPUPDATE-02` | [`97a-…#at-selfupdateappupdate-02`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-02) |
+| 3 | cites `AT-SELFUPDATEAPPUPDATE-03` | [`97a-…#at-selfupdateappupdate-03`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-03) |
+| 4 | cites `AT-SELFUPDATEAPPUPDATE-04` | [`97a-…#at-selfupdateappupdate-04`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-04) |
+| 5 | cites `AT-SELFUPDATEAPPUPDATE-05` | [`97a-…#at-selfupdateappupdate-05`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-05) |
+| 6 | cites `AT-SELFUPDATEAPPUPDATE-06` | [`97a-…#at-selfupdateappupdate-06`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-06) |
+| 7 | cites `AT-SELFUPDATEAPPUPDATE-07` | [`97a-…#at-selfupdateappupdate-07`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-07) |
+| 8 | cites `AT-SELFUPDATEAPPUPDATE-08` | [`97a-…#at-selfupdateappupdate-08`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-08) |
+| 9 | cites `AT-SELFUPDATEAPPUPDATE-09` | [`97a-…#at-selfupdateappupdate-09`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-09) |
+| 10 | cites `AT-SELFUPDATEAPPUPDATE-10` | [`97a-…#at-selfupdateappupdate-10`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-10) |
 
 > Total: **10** acceptance rows, **10** fixture binds, **0** orphan citations.
 <!-- /P24-RUBRIC-SELFCHECK -->

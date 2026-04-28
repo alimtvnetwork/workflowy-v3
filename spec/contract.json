@@ -4,7 +4,7 @@
   "generator": "scripts/spec-hygiene/40-generate-contract-json.mjs",
   "do_not_edit": true,
   "counts": {
-    "acceptance_tests_defined": 2257,
+    "acceptance_tests_defined": 2268,
     "acceptance_tests_orphan_citations": 0,
     "endpoints": 48,
     "enums": 23,
@@ -740,11 +740,23 @@
       "cited_in": [
         {
           "file": "spec/34-activity-feed/00-overview.md",
-          "line": 20
+          "line": 11
+        },
+        {
+          "file": "spec/34-activity-feed/00-overview.md",
+          "line": 21
+        },
+        {
+          "file": "spec/34-activity-feed/00-overview.md",
+          "line": 59
         },
         {
           "file": "spec/34-activity-feed/97-acceptance-criteria.md",
           "line": 12
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 11
         }
       ]
     },
@@ -753,98 +765,224 @@
       "definition": "`ActivityEvent` MUST carry: `EventId`, `UserId`, `ItemId`, `EventType` (typed enum), `Before` snapshot, `After` snapshot, `CreatedAt` (UTC, ISO-8601). Missing any field fails review.",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 23,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/34-activity-feed/00-overview.md",
+          "line": 22
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 21
+        }
+      ]
     },
     {
       "id": "AT-ACTIVITYFEED-03",
       "definition": "`EventType` MUST be the documented enum (`ItemCreated`, `ItemUpdated`, `ItemMoved`, `ItemDeleted`, `ItemRestored`, `ItemMirrored`, `BoardColumnReordered`, `TemplateApplied`); adding a new type MUST update the enum + this AT — magic-string types are forbidden.",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 24,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/34-activity-feed/00-overview.md",
+          "line": 23
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 31
+        }
+      ]
     },
     {
       "id": "AT-ACTIVITYFEED-04",
       "definition": "Events MUST persist in a dedicated `activity.db` SQLite (Split-DB pattern, FR-6); sharing user-data DB is forbidden because it slows read paths.",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 30,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/34-activity-feed/00-overview.md",
+          "line": 24
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 38
+        }
+      ]
     },
     {
       "id": "AT-ACTIVITYFEED-05",
       "definition": "The `ActivityEvent` table MUST follow naming conventions: singular PascalCase, `EventId` PK, indexed on `(UserId, CreatedAt DESC)` for the default feed query.",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 31,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/34-activity-feed/00-overview.md",
+          "line": 25
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 45
+        }
+      ]
     },
     {
       "id": "AT-ACTIVITYFEED-06",
       "definition": "`Before`/`After` snapshots MUST be stored as JSON columns (NOT serialized as opaque blobs) so future tooling can diff them; opaque blobs fail review.",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 32,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/34-activity-feed/00-overview.md",
+          "line": 26
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 51
+        }
+      ]
     },
     {
       "id": "AT-ACTIVITYFEED-07",
       "definition": "Default feed page size MUST be 50 (FR-3) — well below the 250-item view limit; uncapped pagination is a Code-Red perf bug.",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 38,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/34-activity-feed/00-overview.md",
+          "line": 27
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 57
+        }
+      ]
     },
     {
       "id": "AT-ACTIVITYFEED-08",
       "definition": "Feed MUST support filters: `eventType`, `userId`, `dateRange`, `itemSubtree`; filter combination MUST be server-side (client-side filtering on the full table is forbidden).",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 39,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/34-activity-feed/00-overview.md",
+          "line": 28
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 66
+        }
+      ]
     },
     {
       "id": "AT-ACTIVITYFEED-09",
       "definition": "Per-item history MUST be reachable from the item context menu (FR-4); hiding it under a hidden flag fails review.",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 40,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/34-activity-feed/00-overview.md",
+          "line": 29
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 72
+        }
+      ]
     },
     {
       "id": "AT-ACTIVITYFEED-10",
       "definition": "\"Restore to this state\" MUST reapply the inverse of the recorded event (FR-5); silent best-effort restore that drops fields is a Code-Red data-loss bug.",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 46,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/34-activity-feed/00-overview.md",
+          "line": 30
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 78
+        }
+      ]
     },
     {
       "id": "AT-ACTIVITYFEED-11",
       "definition": "Reversibility MUST match the table: `Created/Updated/Moved/Deleted/Restored/Mirrored/BoardColumnReordered` are fully reversible; `TemplateApplied` is partial — UI MUST show a clear warning before partial restores.",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 47,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/34-activity-feed/00-overview.md",
+          "line": 31
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 86
+        }
+      ]
     },
     {
       "id": "AT-ACTIVITYFEED-12",
       "definition": "Every restore MUST itself emit an `ActivityEvent` (audit of the audit) so the chain stays inspectable; silent restores are forbidden.",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 48,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/34-activity-feed/00-overview.md",
+          "line": 32
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 94
+        }
+      ]
     },
     {
       "id": "AT-ACTIVITYFEED-13",
       "definition": "Retention MUST be 30 days by default (FR-7), mirroring trash retention; silent extension beyond 30 d is forbidden — config must be explicit and audited.",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 54,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/34-activity-feed/00-overview.md",
+          "line": 33
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 101
+        }
+      ]
     },
     {
       "id": "AT-ACTIVITYFEED-14",
       "definition": "Weekly purge job MUST log per-purge counts at INFO and MUST NOT delete events that are referenced by an in-flight restore operation.",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 55,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/34-activity-feed/00-overview.md",
+          "line": 34
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 107
+        }
+      ]
     },
     {
       "id": "AT-ACTIVITYFEED-15",
       "definition": "A user MUST only see events for items they own OR are shared with (Editor/Admin); cross-user visibility for non-Admins is a Code-Red privacy bug.",
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 61,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/34-activity-feed/00-overview.md",
+          "line": 35
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 114
+        }
+      ]
     },
     {
       "id": "AT-ACTIVITYFEED-16",
@@ -853,8 +991,16 @@
       "defined_line": 62,
       "cited_in": [
         {
+          "file": "spec/34-activity-feed/00-overview.md",
+          "line": 36
+        },
+        {
           "file": "spec/34-activity-feed/97-acceptance-criteria.md",
           "line": 12
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 121
         }
       ]
     },
@@ -1092,8 +1238,20 @@
       "defined_line": 28,
       "cited_in": [
         {
+          "file": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
+          "line": 5
+        },
+        {
           "file": "spec/31-app/00-overview.md",
-          "line": 70
+          "line": 11
+        },
+        {
+          "file": "spec/31-app/00-overview.md",
+          "line": 21
+        },
+        {
+          "file": "spec/31-app/00-overview.md",
+          "line": 105
         },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
@@ -1122,6 +1280,14 @@
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 16
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 7
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 24
         }
       ]
     },
@@ -1132,8 +1298,16 @@
       "defined_line": 29,
       "cited_in": [
         {
+          "file": "spec/31-app/00-overview.md",
+          "line": 22
+        },
+        {
           "file": "spec/31-app/06-endpoints/01-information-model.md",
           "line": 44
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 35
         }
       ]
     },
@@ -1144,8 +1318,16 @@
       "defined_line": 30,
       "cited_in": [
         {
+          "file": "spec/31-app/00-overview.md",
+          "line": 23
+        },
+        {
           "file": "spec/31-app/06-endpoints/01-information-model.md",
           "line": 60
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 45
         }
       ]
     },
@@ -1156,8 +1338,16 @@
       "defined_line": 31,
       "cited_in": [
         {
+          "file": "spec/31-app/00-overview.md",
+          "line": 24
+        },
+        {
           "file": "spec/31-app/06-endpoints/01-information-model.md",
           "line": 32
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 55
         }
       ]
     },
@@ -1167,6 +1357,10 @@
       "defined_in": "spec/31-app/97-acceptance-criteria.md",
       "defined_line": 32,
       "cited_in": [
+        {
+          "file": "spec/31-app/00-overview.md",
+          "line": 25
+        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 186
@@ -1178,6 +1372,10 @@
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
           "line": 23
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 67
         },
         {
           "file": "spec/31-app/97d-acceptance-criteria-fixtures.md",
@@ -1192,6 +1390,10 @@
       "defined_line": 38,
       "cited_in": [
         {
+          "file": "spec/31-app/00-overview.md",
+          "line": 26
+        },
+        {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 29
         },
@@ -1202,6 +1404,10 @@
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
           "line": 24
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 81
         }
       ]
     },
@@ -1212,8 +1418,16 @@
       "defined_line": 39,
       "cited_in": [
         {
+          "file": "spec/31-app/00-overview.md",
+          "line": 27
+        },
+        {
           "file": "spec/31-app/06-endpoints/01-information-model.md",
           "line": 86
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 91
         }
       ]
     },
@@ -1224,8 +1438,16 @@
       "defined_line": 40,
       "cited_in": [
         {
+          "file": "spec/31-app/00-overview.md",
+          "line": 28
+        },
+        {
           "file": "spec/31-app/06-endpoints/01-information-model.md",
           "line": 108
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 101
         }
       ]
     },
@@ -1236,8 +1458,16 @@
       "defined_line": 41,
       "cited_in": [
         {
+          "file": "spec/31-app/00-overview.md",
+          "line": 29
+        },
+        {
           "file": "spec/31-app/06-endpoints/02-personas.md",
           "line": 32
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 111
         }
       ]
     },
@@ -1247,6 +1477,10 @@
       "defined_in": "spec/31-app/97-acceptance-criteria.md",
       "defined_line": 42,
       "cited_in": [
+        {
+          "file": "spec/31-app/00-overview.md",
+          "line": 30
+        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 33
@@ -1258,6 +1492,10 @@
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
           "line": 25
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 121
         }
       ]
     },
@@ -1560,6 +1798,10 @@
       "defined_line": 48,
       "cited_in": [
         {
+          "file": "spec/31-app/00-overview.md",
+          "line": 31
+        },
+        {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 30
         },
@@ -1570,6 +1812,10 @@
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
           "line": 26
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 137
         }
       ]
     },
@@ -1579,6 +1825,10 @@
       "defined_in": "spec/31-app/97-acceptance-criteria.md",
       "defined_line": 49,
       "cited_in": [
+        {
+          "file": "spec/31-app/00-overview.md",
+          "line": 32
+        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 31
@@ -1594,6 +1844,14 @@
         {
           "file": "spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md",
           "line": 62
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 147
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 128
         }
       ]
     },
@@ -1604,8 +1862,16 @@
       "defined_line": 50,
       "cited_in": [
         {
+          "file": "spec/31-app/00-overview.md",
+          "line": 33
+        },
+        {
           "file": "spec/31-app/06-endpoints/06-item-context-menu.md",
           "line": 65
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 159
         }
       ]
     },
@@ -1616,8 +1882,16 @@
       "defined_line": 51,
       "cited_in": [
         {
+          "file": "spec/31-app/00-overview.md",
+          "line": 34
+        },
+        {
           "file": "spec/31-app/06-endpoints/07-board-view.md",
           "line": 27
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 171
         }
       ]
     },
@@ -1642,6 +1916,14 @@
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 16
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 7
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 185
         },
         {
           "file": "spec/31-app/97b-acceptance-criteria-fixtures.md",
@@ -2122,10 +2404,6 @@
         {
           "file": "spec/31-app/97c-acceptance-criteria-fixtures.md",
           "line": 266
-        },
-        {
-          "file": "spec/31-app/97d-acceptance-criteria-fixtures.md",
-          "line": 353
         }
       ]
     },
@@ -2205,7 +2483,7 @@
       "cited_in": [
         {
           "file": "spec/18-spec-issues/00-overview.md",
-          "line": 21
+          "line": 52
         },
         {
           "file": "spec/18-spec-issues/10-content-audit-endpoints-and-db-diagram.md",
@@ -2250,6 +2528,10 @@
         {
           "file": "spec/18-spec-issues/97-acceptance-criteria.md",
           "line": 32
+        },
+        {
+          "file": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
+          "line": 59
         },
         {
           "file": "spec/31-app/06-endpoints/14-concurrency-and-sync.md",
@@ -5131,11 +5413,23 @@
       "cited_in": [
         {
           "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
-          "line": 25
+          "line": 11
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
+          "line": 21
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
+          "line": 56
         },
         {
           "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
           "line": 19
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md",
+          "line": 11
         }
       ]
     },
@@ -5144,28 +5438,64 @@
       "definition": "Concurrency group per ref",
       "defined_in": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
       "defined_line": 34,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
+          "line": 22
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md",
+          "line": 20
+        }
+      ]
     },
     {
       "id": "AT-CICD-03",
       "definition": "Version SSOT per archetype",
       "defined_in": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
       "defined_line": 37,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
+          "line": 23
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md",
+          "line": 27
+        }
+      ]
     },
     {
       "id": "AT-CICD-04",
       "definition": "Asset checksum sidecar",
       "defined_in": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
       "defined_line": 40,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
+          "line": 24
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md",
+          "line": 35
+        }
+      ]
     },
     {
       "id": "AT-CICD-05",
       "definition": "Permissions least-privilege",
       "defined_in": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
       "defined_line": 43,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
+          "line": 25
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md",
+          "line": 42
+        }
+      ]
     },
     {
       "id": "AT-CICD-06",
@@ -5174,8 +5504,16 @@
       "defined_line": 46,
       "cited_in": [
         {
+          "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
+          "line": 26
+        },
+        {
           "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
           "line": 20
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md",
+          "line": 49
         }
       ]
     },
@@ -5184,14 +5522,32 @@
       "definition": "Pre-release detection",
       "defined_in": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
       "defined_line": 50,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
+          "line": 27
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md",
+          "line": 57
+        }
+      ]
     },
     {
       "id": "AT-CICD-08",
       "definition": "Reproducible asset names",
       "defined_in": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
       "defined_line": 53,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
+          "line": 28
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md",
+          "line": 65
+        }
+      ]
     },
     {
       "id": "AT-CICD-09",
@@ -5200,8 +5556,16 @@
       "defined_line": 56,
       "cited_in": [
         {
+          "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
+          "line": 29
+        },
+        {
           "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
           "line": 21
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md",
+          "line": 72
         }
       ]
     },
@@ -5210,7 +5574,16 @@
       "definition": "Audit reports retained",
       "defined_in": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
       "defined_line": 60,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
+          "line": 30
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md",
+          "line": 80
+        }
+      ]
     },
     {
       "id": "AT-CICD-11",
@@ -7091,11 +7464,27 @@
       "cited_in": [
         {
           "file": "spec/04-database-conventions/00-overview.md",
-          "line": 23
+          "line": 11
+        },
+        {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 21
+        },
+        {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 69
         },
         {
           "file": "spec/04-database-conventions/97-acceptance-criteria.md",
           "line": 20
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 17
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 26
         }
       ]
     },
@@ -7104,14 +7493,32 @@
       "definition": "Every column name is PascalCase (e.g. `Id`, `CreatedAt`, `UserId`); identical to the REST JSON key it serializes to.",
       "defined_in": "spec/04-database-conventions/97-acceptance-criteria.md",
       "defined_line": 25,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 22
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 36
+        }
+      ]
     },
     {
       "id": "AT-DATABASECONVENTIONS-03",
       "definition": "Foreign-key columns use `<ReferencedTable>Id` form (e.g. `UserId`, `ParentId`); index/constraint names follow the documented prefix rules.",
       "defined_in": "spec/04-database-conventions/97-acceptance-criteria.md",
       "defined_line": 26,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 23
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 49
+        }
+      ]
     },
     {
       "id": "AT-DATABASECONVENTIONS-04",
@@ -7120,8 +7527,16 @@
       "defined_line": 32,
       "cited_in": [
         {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 24
+        },
+        {
           "file": "spec/04-database-conventions/97-acceptance-criteria.md",
           "line": 28
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 59
         }
       ]
     },
@@ -7130,14 +7545,32 @@
       "definition": "Enum-backed columns store the enum's underlying value (TEXT for string-backed, INTEGER for int-backed); a CHECK constraint or trigger enforces validity.",
       "defined_in": "spec/04-database-conventions/97-acceptance-criteria.md",
       "defined_line": 33,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 25
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 69
+        }
+      ]
     },
     {
       "id": "AT-DATABASECONVENTIONS-06",
       "definition": "Every nullable column is justified in the schema doc; defaulting to NOT NULL is the documented preference.",
       "defined_in": "spec/04-database-conventions/97-acceptance-criteria.md",
       "defined_line": 34,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 26
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 79
+        }
+      ]
     },
     {
       "id": "AT-DATABASECONVENTIONS-07",
@@ -7146,8 +7579,16 @@
       "defined_line": 40,
       "cited_in": [
         {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 27
+        },
+        {
           "file": "spec/04-database-conventions/97-acceptance-criteria.md",
           "line": 36
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 89
         }
       ]
     },
@@ -7156,7 +7597,16 @@
       "definition": "Views follow the same naming rules as tables and are documented alongside the tables they aggregate.",
       "defined_in": "spec/04-database-conventions/97-acceptance-criteria.md",
       "defined_line": 41,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 28
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 99
+        }
+      ]
     },
     {
       "id": "AT-DATABASECONVENTIONS-09",
@@ -7165,8 +7615,16 @@
       "defined_line": 47,
       "cited_in": [
         {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 29
+        },
+        {
           "file": "spec/04-database-conventions/97-acceptance-criteria.md",
           "line": 43
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 109
         }
       ]
     },
@@ -7175,7 +7633,16 @@
       "definition": "Test fixtures load via the documented seed-data mechanism; ad-hoc INSERTs in tests are forbidden.",
       "defined_in": "spec/04-database-conventions/97-acceptance-criteria.md",
       "defined_line": 48,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 30
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 119
+        }
+      ]
     },
     {
       "id": "AT-DATABASECONVENTIONS-11",
@@ -7184,8 +7651,16 @@
       "defined_line": 54,
       "cited_in": [
         {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 31
+        },
+        {
           "file": "spec/04-database-conventions/97-acceptance-criteria.md",
           "line": 50
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 129
         }
       ]
     },
@@ -7196,8 +7671,16 @@
       "defined_line": 60,
       "cited_in": [
         {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 32
+        },
+        {
           "file": "spec/04-database-conventions/97-acceptance-criteria.md",
           "line": 56
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 139
         }
       ]
     },
@@ -7208,8 +7691,16 @@
       "defined_line": 66,
       "cited_in": [
         {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 33
+        },
+        {
           "file": "spec/04-database-conventions/97-acceptance-criteria.md",
           "line": 62
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 151
         }
       ]
     },
@@ -8485,15 +8976,27 @@
       "cited_in": [
         {
           "file": "spec/35-enforcement-rules/00-overview.md",
+          "line": 11
+        },
+        {
+          "file": "spec/35-enforcement-rules/00-overview.md",
           "line": 21
         },
         {
           "file": "spec/35-enforcement-rules/00-overview.md",
-          "line": 49
+          "line": 58
+        },
+        {
+          "file": "spec/35-enforcement-rules/00-overview.md",
+          "line": 86
         },
         {
           "file": "spec/35-enforcement-rules/97-acceptance-criteria.md",
           "line": 12
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 11
         }
       ]
     },
@@ -8506,6 +9009,14 @@
         {
           "file": "spec/35-enforcement-rules/00-overview.md",
           "line": 22
+        },
+        {
+          "file": "spec/35-enforcement-rules/00-overview.md",
+          "line": 59
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 18
         }
       ]
     },
@@ -8514,77 +9025,180 @@
       "definition": "All custom enforcement rules MUST live under `eslint-plugins/coding-guidelines/`; scattering rules across `.eslintrc` overrides is forbidden because it harms discoverability.",
       "defined_in": "spec/35-enforcement-rules/97-acceptance-criteria.md",
       "defined_line": 29,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/35-enforcement-rules/00-overview.md",
+          "line": 23
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 25
+        }
+      ]
     },
     {
       "id": "AT-ENFORCEMENTRULES-04",
       "definition": "The plugin MUST enforce: boolean-naming (`is*`/`has*`/`should*`), no-nested-`if`, max-3-params, max-15-line-logic, positive guard clauses (NO `else`); each rule MUST cite the source guideline file.",
       "defined_in": "spec/35-enforcement-rules/97-acceptance-criteria.md",
       "defined_line": 30,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/35-enforcement-rules/00-overview.md",
+          "line": 24
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 31
+        }
+      ]
     },
     {
       "id": "AT-ENFORCEMENTRULES-05",
       "definition": "Every custom rule MUST ship with: meta (docs URL), positive examples (`valid:`), negative examples (`invalid:`), AND auto-fixer where mechanically safe; rules without examples fail review.",
       "defined_in": "spec/35-enforcement-rules/97-acceptance-criteria.md",
       "defined_line": 31,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/02-coding-guidelines/97a-acceptance-criteria-fixtures.md",
+          "line": 188
+        },
+        {
+          "file": "spec/35-enforcement-rules/00-overview.md",
+          "line": 25
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 38
+        }
+      ]
     },
     {
       "id": "AT-ENFORCEMENTRULES-06",
       "definition": "All boundary inputs (API responses, form submissions, `localStorage` reads, URL query params, `postMessage` payloads) MUST be parsed through a Zod (or Valibot) schema; raw `JSON.parse` followed by type assertion is a Code-Red trust bug.",
       "defined_in": "spec/35-enforcement-rules/97-acceptance-criteria.md",
       "defined_line": 37,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/35-enforcement-rules/00-overview.md",
+          "line": 26
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 46
+        }
+      ]
     },
     {
       "id": "AT-ENFORCEMENTRULES-07",
       "definition": "Schema parse failures MUST surface a typed error (NOT `throw new Error(\"invalid\")`); schemas MUST live in a co-located `*.schema.ts` file next to the consumer.",
       "defined_in": "spec/35-enforcement-rules/97-acceptance-criteria.md",
       "defined_line": 38,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/35-enforcement-rules/00-overview.md",
+          "line": 27
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 53
+        }
+      ]
     },
     {
       "id": "AT-ENFORCEMENTRULES-08",
       "definition": "Schemas MUST be the SOLE source of truth — derived TypeScript types via `z.infer<…>` are mandatory; manually maintained twin types are forbidden because they drift.",
       "defined_in": "spec/35-enforcement-rules/97-acceptance-criteria.md",
       "defined_line": 39,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/35-enforcement-rules/00-overview.md",
+          "line": 28
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 60
+        }
+      ]
     },
     {
       "id": "AT-ENFORCEMENTRULES-09",
       "definition": "Public function signatures MUST return generic `T` (NOT `unknown` / `any`); returning `unknown` from non-boundary code is forbidden because it pushes assertions onto callers.",
       "defined_in": "spec/35-enforcement-rules/97-acceptance-criteria.md",
       "defined_line": 45,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/35-enforcement-rules/00-overview.md",
+          "line": 29
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 67
+        }
+      ]
     },
     {
       "id": "AT-ENFORCEMENTRULES-10",
       "definition": "Helpers that accept user-defined data MUST be generic over the data shape (`function pick<T, K extends keyof T>(…)`); accepting `Record<string, unknown>` is forbidden.",
       "defined_in": "spec/35-enforcement-rules/97-acceptance-criteria.md",
       "defined_line": 46,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/35-enforcement-rules/00-overview.md",
+          "line": 30
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 75
+        }
+      ]
     },
     {
       "id": "AT-ENFORCEMENTRULES-11",
       "definition": "Critical generic helpers MUST have type-tests (e.g., `expectTypeOf` from `expect-type` or vitest's built-in); missing type-tests on generics fail review because runtime tests can't catch type regressions.",
       "defined_in": "spec/35-enforcement-rules/97-acceptance-criteria.md",
       "defined_line": 52,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/35-enforcement-rules/00-overview.md",
+          "line": 31
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 82
+        }
+      ]
     },
     {
       "id": "AT-ENFORCEMENTRULES-12",
       "definition": "Critical helpers MUST have property-based tests (e.g., fast-check) covering at least: identity, idempotence (where applicable), and inverse properties; example-only coverage fails review.",
       "defined_in": "spec/35-enforcement-rules/97-acceptance-criteria.md",
       "defined_line": 53,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/35-enforcement-rules/00-overview.md",
+          "line": 32
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 89
+        }
+      ]
     },
     {
       "id": "AT-ENFORCEMENTRULES-13",
       "definition": "This folder MUST cite its authoritative source files (currently in `02-coding-guidelines/`); when sub-specs `01-04` are authored, the authoritative-source list MUST be updated to point to them — orphan citations fail review.",
       "defined_in": "spec/35-enforcement-rules/97-acceptance-criteria.md",
       "defined_line": 59,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/35-enforcement-rules/00-overview.md",
+          "line": 33
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 95
+        }
+      ]
     },
     {
       "id": "AT-ENFORCEMENTRULES-14",
@@ -8593,12 +9207,24 @@
       "defined_line": 60,
       "cited_in": [
         {
+          "file": "spec/02-coding-guidelines/97a-acceptance-criteria-fixtures.md",
+          "line": 172
+        },
+        {
           "file": "spec/35-enforcement-rules/00-overview.md",
-          "line": 23
+          "line": 34
+        },
+        {
+          "file": "spec/35-enforcement-rules/00-overview.md",
+          "line": 60
         },
         {
           "file": "spec/35-enforcement-rules/97-acceptance-criteria.md",
           "line": 12
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 102
         }
       ]
     },
@@ -8989,7 +9615,7 @@
       "cited_in": [
         {
           "file": "spec/04-database-conventions/00-overview.md",
-          "line": 21
+          "line": 67
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
@@ -9017,7 +9643,7 @@
       "cited_in": [
         {
           "file": "spec/04-database-conventions/00-overview.md",
-          "line": 21
+          "line": 67
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
@@ -9645,8 +10271,20 @@
       "defined_line": 24,
       "cited_in": [
         {
+          "file": "spec/03-error-manage/00-overview.md",
+          "line": 11
+        },
+        {
+          "file": "spec/03-error-manage/00-overview.md",
+          "line": 21
+        },
+        {
           "file": "spec/03-error-manage/01-error-resolution/97-acceptance-criteria.md",
           "line": 12
+        },
+        {
+          "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
+          "line": 11
         }
       ]
     },
@@ -9655,63 +10293,144 @@
       "definition": "The debugging cheat sheet in §02 covers PHP, Go, AND TypeScript with a uniform 4-row template (Symptom / Diagnostic / Fix / Spec link) per row.",
       "defined_in": "spec/03-error-manage/01-error-resolution/97-acceptance-criteria.md",
       "defined_line": 25,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/03-error-manage/00-overview.md",
+          "line": 22
+        },
+        {
+          "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
+          "line": 19
+        }
+      ]
     },
     {
       "id": "AT-ERRORRESOLUTION-03",
       "definition": "Every retrospective under `03-retrospectives/` follows the canonical 6-section format and carries a stable `R-NN` ID; the rollup spec at `03-retrospectives/97-acceptance-criteria.md` enforces this.",
       "defined_in": "spec/03-error-manage/01-error-resolution/97-acceptance-criteria.md",
       "defined_line": 31,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/03-error-manage/00-overview.md",
+          "line": 23
+        },
+        {
+          "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
+          "line": 27
+        }
+      ]
     },
     {
       "id": "AT-ERRORRESOLUTION-04",
       "definition": "Net-new failures discovered during development MUST produce a new retro file before the fix merges; an error code without a matching retro entry is a process violation.",
       "defined_in": "spec/03-error-manage/01-error-resolution/97-acceptance-criteria.md",
       "defined_line": 32,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/03-error-manage/00-overview.md",
+          "line": 24
+        },
+        {
+          "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
+          "line": 34
+        }
+      ]
     },
     {
       "id": "AT-ERRORRESOLUTION-05",
       "definition": "Verification patterns under `04-verification-patterns/` define the **standard recipes** for cross-stack checks (frontend↔backend sync, envelope conformance, code-registry coverage); each recipe has a runnable command.",
       "defined_in": "spec/03-error-manage/01-error-resolution/97-acceptance-criteria.md",
       "defined_line": 38,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/03-error-manage/00-overview.md",
+          "line": 25
+        },
+        {
+          "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
+          "line": 42
+        }
+      ]
     },
     {
       "id": "AT-ERRORRESOLUTION-06",
       "definition": "A frontend-backend sync verification MUST cover: endpoint path, HTTP method, envelope shape, status-code mapping, and error-code coverage; missing any of the five fails the check.",
       "defined_in": "spec/03-error-manage/01-error-resolution/97-acceptance-criteria.md",
       "defined_line": 39,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/03-error-manage/00-overview.md",
+          "line": 26
+        },
+        {
+          "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
+          "line": 49
+        }
+      ]
     },
     {
       "id": "AT-ERRORRESOLUTION-07",
       "definition": "Each debugging guide under `05-debugging-guides/` (PHP, Go, TypeScript) has a sibling `97-acceptance-criteria.md` and is registered in the parent overview.",
       "defined_in": "spec/03-error-manage/01-error-resolution/97-acceptance-criteria.md",
       "defined_line": 45,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/03-error-manage/00-overview.md",
+          "line": 27
+        },
+        {
+          "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
+          "line": 57
+        }
+      ]
     },
     {
       "id": "AT-ERRORRESOLUTION-08",
       "definition": "The debugging guides cross-reference `02-error-architecture/01-error-handling-reference/` (cross-stack error flow) AND `03-error-code-registry/` (error codes); broken back-links fail hygiene.",
       "defined_in": "spec/03-error-manage/01-error-resolution/97-acceptance-criteria.md",
       "defined_line": 46,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/03-error-manage/00-overview.md",
+          "line": 28
+        },
+        {
+          "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
+          "line": 64
+        }
+      ]
     },
     {
       "id": "AT-ERRORRESOLUTION-09",
       "definition": "The error-documentation guideline (§06) is the SSOT for **what to write** when documenting an error — required fields: code, symptom, root cause, detection signal, fix, prevention rule, retro link.",
       "defined_in": "spec/03-error-manage/01-error-resolution/97-acceptance-criteria.md",
       "defined_line": 52,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/03-error-manage/00-overview.md",
+          "line": 29
+        },
+        {
+          "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
+          "line": 72
+        }
+      ]
     },
     {
       "id": "AT-ERRORRESOLUTION-10",
       "definition": "Every documented error references a registered code from `03-error-code-registry/` AND an `apperrtype.Variation`; orphan codes fail the registry coverage check.",
       "defined_in": "spec/03-error-manage/01-error-resolution/97-acceptance-criteria.md",
       "defined_line": 53,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/03-error-manage/00-overview.md",
+          "line": 30
+        },
+        {
+          "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
+          "line": 80
+        }
+      ]
     },
     {
       "id": "AT-ERRORRESOLUTION-11",
@@ -9968,15 +10687,27 @@
       "cited_in": [
         {
           "file": "spec/33-feedback-report/00-overview.md",
-          "line": 23
+          "line": 11
         },
         {
           "file": "spec/33-feedback-report/00-overview.md",
-          "line": 52
+          "line": 21
+        },
+        {
+          "file": "spec/33-feedback-report/00-overview.md",
+          "line": 60
+        },
+        {
+          "file": "spec/33-feedback-report/00-overview.md",
+          "line": 89
         },
         {
           "file": "spec/33-feedback-report/97-acceptance-criteria.md",
           "line": 12
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 11
         }
       ]
     },
@@ -9985,35 +10716,80 @@
       "definition": "Form fields MUST be: `type` (enum: `bug` / `idea` / `praise` / `question`), `title` (≤ 120 chars), `body` (≤ 2000 chars), optional screenshot. Server MUST re-validate every limit — client-only validation is a Code-Red trust bug.",
       "defined_in": "spec/33-feedback-report/97-acceptance-criteria.md",
       "defined_line": 23,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/33-feedback-report/00-overview.md",
+          "line": 22
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 21
+        }
+      ]
     },
     {
       "id": "AT-FEEDBACKREPORT-03",
       "definition": "The `type` field MUST be a typed enum constant (NOT a magic string in templates); adding a new type MUST require updating the enum + this AT.",
       "defined_in": "spec/33-feedback-report/97-acceptance-criteria.md",
       "defined_line": 24,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/33-feedback-report/00-overview.md",
+          "line": 23
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 34
+        }
+      ]
     },
     {
       "id": "AT-FEEDBACKREPORT-04",
       "definition": "Submission MUST auto-attach: current `Item.id`, breadcrumb path, viewport size, user-agent string (FR-3); missing any field fails review.",
       "defined_in": "spec/33-feedback-report/97-acceptance-criteria.md",
       "defined_line": 30,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/33-feedback-report/00-overview.md",
+          "line": 24
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 41
+        }
+      ]
     },
     {
       "id": "AT-FEEDBACKREPORT-05",
       "definition": "Auto-captured context MUST exclude PII beyond what's strictly required (no clipboard contents, no other items' content, no auth tokens); leaking PII is a Code-Red privacy bug.",
       "defined_in": "spec/33-feedback-report/97-acceptance-criteria.md",
       "defined_line": 31,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/33-feedback-report/00-overview.md",
+          "line": 25
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 52
+        }
+      ]
     },
     {
       "id": "AT-FEEDBACKREPORT-06",
       "definition": "Feedback MUST persist in a dedicated `feedback.db` SQLite (Split-DB pattern) — sharing the user data DB is forbidden.",
       "defined_in": "spec/33-feedback-report/97-acceptance-criteria.md",
       "defined_line": 37,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/33-feedback-report/00-overview.md",
+          "line": 26
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 59
+        }
+      ]
     },
     {
       "id": "AT-FEEDBACKREPORT-07",
@@ -10023,7 +10799,15 @@
       "cited_in": [
         {
           "file": "spec/33-feedback-report/00-overview.md",
-          "line": 24
+          "line": 27
+        },
+        {
+          "file": "spec/33-feedback-report/00-overview.md",
+          "line": 61
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 66
         }
       ]
     },
@@ -10032,7 +10816,16 @@
       "definition": "The `Feedback` table MUST follow naming conventions: singular PascalCase table name, `FeedbackId` PK as `INTEGER PRIMARY KEY AUTOINCREMENT`.",
       "defined_in": "spec/33-feedback-report/97-acceptance-criteria.md",
       "defined_line": 39,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/33-feedback-report/00-overview.md",
+          "line": 28
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 74
+        }
+      ]
     },
     {
       "id": "AT-FEEDBACKREPORT-09",
@@ -10042,7 +10835,15 @@
       "cited_in": [
         {
           "file": "spec/33-feedback-report/00-overview.md",
-          "line": 25
+          "line": 29
+        },
+        {
+          "file": "spec/33-feedback-report/00-overview.md",
+          "line": 62
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 81
         }
       ]
     },
@@ -10051,28 +10852,64 @@
       "definition": "Admin UI MUST support filter by `type`, `status`, `userId`, `createdAt range`; server-side filtering is mandatory (client-side filtering of the full table is forbidden — leaks data + breaks at scale).",
       "defined_in": "spec/33-feedback-report/97-acceptance-criteria.md",
       "defined_line": 46,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/33-feedback-report/00-overview.md",
+          "line": 30
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 90
+        }
+      ]
     },
     {
       "id": "AT-FEEDBACKREPORT-11",
       "definition": "Status transitions MUST be a typed enum (`new → triaged → resolved → archived`) with one-way arrows; arbitrary transitions fail review.",
       "defined_in": "spec/33-feedback-report/97-acceptance-criteria.md",
       "defined_line": 47,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/33-feedback-report/00-overview.md",
+          "line": 31
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 97
+        }
+      ]
     },
     {
       "id": "AT-FEEDBACKREPORT-12",
       "definition": "Default retention MUST be 90 days, configurable via the seedable-config layer (FR-6); hardcoded retention windows are forbidden.",
       "defined_in": "spec/33-feedback-report/97-acceptance-criteria.md",
       "defined_line": 53,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/33-feedback-report/00-overview.md",
+          "line": 32
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 104
+        }
+      ]
     },
     {
       "id": "AT-FEEDBACKREPORT-13",
       "definition": "Retention purge MUST run as a scheduled job AND log per-purge counts at INFO level; silent purge is forbidden because it breaks audit-ability.",
       "defined_in": "spec/33-feedback-report/97-acceptance-criteria.md",
       "defined_line": 54,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/33-feedback-report/00-overview.md",
+          "line": 33
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 111
+        }
+      ]
     },
     {
       "id": "AT-FEEDBACKREPORT-14",
@@ -10082,11 +10919,19 @@
       "cited_in": [
         {
           "file": "spec/33-feedback-report/00-overview.md",
-          "line": 26
+          "line": 34
+        },
+        {
+          "file": "spec/33-feedback-report/00-overview.md",
+          "line": 63
         },
         {
           "file": "spec/33-feedback-report/97-acceptance-criteria.md",
           "line": 12
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 119
         }
       ]
     },
@@ -11547,11 +12392,23 @@
       "cited_in": [
         {
           "file": "spec/16-generic-cli/00-overview.md",
-          "line": 18
+          "line": 11
+        },
+        {
+          "file": "spec/16-generic-cli/00-overview.md",
+          "line": 21
+        },
+        {
+          "file": "spec/16-generic-cli/00-overview.md",
+          "line": 51
         },
         {
           "file": "spec/16-generic-cli/97-acceptance-criteria.md",
           "line": 13
+        },
+        {
+          "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
+          "line": 11
         }
       ]
     },
@@ -11560,63 +12417,144 @@
       "definition": "Subcommands follow the documented pattern: one file per subcommand, each registers via the central command registry; nested subcommands use the same pattern recursively.",
       "defined_in": "spec/16-generic-cli/97-acceptance-criteria.md",
       "defined_line": 24,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/16-generic-cli/00-overview.md",
+          "line": 22
+        },
+        {
+          "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
+          "line": 19
+        }
+      ]
     },
     {
       "id": "AT-GENERICCLI-03",
       "definition": "Flag parsing uses a single library SSOT (no mix of stdlib `flag` + `cobra` + `pflag`); short and long flag names follow the conventions in `04-flag-parsing.md`.",
       "defined_in": "spec/16-generic-cli/97-acceptance-criteria.md",
       "defined_line": 25,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/16-generic-cli/00-overview.md",
+          "line": 23
+        },
+        {
+          "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
+          "line": 26
+        }
+      ]
     },
     {
       "id": "AT-GENERICCLI-04",
       "definition": "Configuration resolution order is: CLI flag > env var > config file > built-in default. The order is deterministic and documented.",
       "defined_in": "spec/16-generic-cli/97-acceptance-criteria.md",
       "defined_line": 26,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/16-generic-cli/00-overview.md",
+          "line": 24
+        },
+        {
+          "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
+          "line": 33
+        }
+      ]
     },
     {
       "id": "AT-GENERICCLI-05",
       "definition": "Output formatting supports at minimum `text` (default, human) and `json` (machine); the format flag is global and respected by every subcommand.",
       "defined_in": "spec/16-generic-cli/97-acceptance-criteria.md",
       "defined_line": 32,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/16-generic-cli/00-overview.md",
+          "line": 25
+        },
+        {
+          "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
+          "line": 41
+        }
+      ]
     },
     {
       "id": "AT-GENERICCLI-06",
       "definition": "Errors are printed to stderr with the documented envelope (Code, Message, optional Details); `0` exit code is reserved for success only.",
       "defined_in": "spec/16-generic-cli/97-acceptance-criteria.md",
       "defined_line": 33,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/16-generic-cli/00-overview.md",
+          "line": 26
+        },
+        {
+          "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
+          "line": 49
+        }
+      ]
     },
     {
       "id": "AT-GENERICCLI-07",
       "definition": "The help system is auto-generated from subcommand metadata; manual help text duplication is forbidden.",
       "defined_in": "spec/16-generic-cli/97-acceptance-criteria.md",
       "defined_line": 34,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/16-generic-cli/00-overview.md",
+          "line": 27
+        },
+        {
+          "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
+          "line": 57
+        }
+      ]
     },
     {
       "id": "AT-GENERICCLI-08",
       "definition": "Date formatting follows the documented canonical form (RFC 3339 in machine output, locale-friendly in text output) per `14-date-formatting.md`.",
       "defined_in": "spec/16-generic-cli/97-acceptance-criteria.md",
       "defined_line": 35,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/16-generic-cli/00-overview.md",
+          "line": 28
+        },
+        {
+          "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
+          "line": 64
+        }
+      ]
     },
     {
       "id": "AT-GENERICCLI-09",
       "definition": "Code style follows `08-code-style.md` (which inherits from the cross-language guidelines: ≤15 logical lines, no nested `if`, positive booleans, K&R braces).",
       "defined_in": "spec/16-generic-cli/97-acceptance-criteria.md",
       "defined_line": 41,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/16-generic-cli/00-overview.md",
+          "line": 29
+        },
+        {
+          "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
+          "line": 71
+        }
+      ]
     },
     {
       "id": "AT-GENERICCLI-10",
       "definition": "Database access (when present) goes through the documented per-DB pool pattern; raw `sql.Open` outside the manager is forbidden.",
       "defined_in": "spec/16-generic-cli/97-acceptance-criteria.md",
       "defined_line": 42,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/16-generic-cli/00-overview.md",
+          "line": 30
+        },
+        {
+          "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
+          "line": 78
+        }
+      ]
     },
     {
       "id": "AT-GENERICCLI-11",
@@ -11659,10 +12597,22 @@
       "cited_in": [
         {
           "file": "spec/17-generic-update/00-overview.md",
-          "line": 22
+          "line": 11
+        },
+        {
+          "file": "spec/17-generic-update/00-overview.md",
+          "line": 21
+        },
+        {
+          "file": "spec/17-generic-update/00-overview.md",
+          "line": 53
         },
         {
           "file": "spec/17-generic-update/97-acceptance-criteria.md",
+          "line": 13
+        },
+        {
+          "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
           "line": 13
         }
       ]
@@ -11672,49 +12622,112 @@
       "definition": "Deploy-path resolution MUST be deterministic and never depend on the current working directory; the same rules as the canonical folder apply.",
       "defined_in": "spec/17-generic-update/97-acceptance-criteria.md",
       "defined_line": 22,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/17-generic-update/00-overview.md",
+          "line": 22
+        },
+        {
+          "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
+          "line": 22
+        }
+      ]
     },
     {
       "id": "AT-GENERICUPDATE-03",
       "definition": "Rename-first deploy: download next to the live binary, verify checksum, then rename into place atomically; the old binary is preserved for rollback.",
       "defined_in": "spec/17-generic-update/97-acceptance-criteria.md",
       "defined_line": 23,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/17-generic-update/00-overview.md",
+          "line": 23
+        },
+        {
+          "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
+          "line": 29
+        }
+      ]
     },
     {
       "id": "AT-GENERICUPDATE-04",
       "definition": "Build scripts produce reproducible artifacts (same commit → same SHA-256) on a clean runner.",
       "defined_in": "spec/17-generic-update/97-acceptance-criteria.md",
       "defined_line": 24,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/17-generic-update/00-overview.md",
+          "line": 24
+        },
+        {
+          "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
+          "line": 36
+        }
+      ]
     },
     {
       "id": "AT-GENERICUPDATE-05",
       "definition": "Hand-off MUST re-exec the new binary cleanly; sockets, file descriptors, and pending writes are accounted for.",
       "defined_in": "spec/17-generic-update/97-acceptance-criteria.md",
       "defined_line": 25,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/17-generic-update/00-overview.md",
+          "line": 25
+        },
+        {
+          "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
+          "line": 44
+        }
+      ]
     },
     {
       "id": "AT-GENERICUPDATE-06",
       "definition": "Cleanup removes the previous binary only after the new one has booted past a documented healthcheck; a failed boot triggers rollback to the preserved binary.",
       "defined_in": "spec/17-generic-update/97-acceptance-criteria.md",
       "defined_line": 26,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/17-generic-update/00-overview.md",
+          "line": 26
+        },
+        {
+          "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
+          "line": 52
+        }
+      ]
     },
     {
       "id": "AT-GENERICUPDATE-07",
       "definition": "Console-safe handoff: any console attached to the old process MUST not be left in a broken state (TTY mode restored, ANSI reset emitted) before re-exec.",
       "defined_in": "spec/17-generic-update/97-acceptance-criteria.md",
       "defined_line": 27,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/17-generic-update/00-overview.md",
+          "line": 27
+        },
+        {
+          "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
+          "line": 60
+        }
+      ]
     },
     {
       "id": "AT-GENERICUPDATE-08",
       "definition": "The `99-consistency-report.md` is regenerated whenever any of the 7 topic files changes and the score MUST be ≥95/100 before merge.",
       "defined_in": "spec/17-generic-update/97-acceptance-criteria.md",
       "defined_line": 28,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/17-generic-update/00-overview.md",
+          "line": 28
+        },
+        {
+          "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
+          "line": 68
+        }
+      ]
     },
     {
       "id": "AT-GENERICUPDATE-09",
@@ -11723,8 +12736,28 @@
       "defined_line": 29,
       "cited_in": [
         {
+          "file": "spec/17-generic-update/00-overview.md",
+          "line": 29
+        },
+        {
           "file": "spec/17-generic-update/97-acceptance-criteria.md",
           "line": 13
+        },
+        {
+          "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
+          "line": 75
+        }
+      ]
+    },
+    {
+      "id": "AT-GENERICUPDATE-10",
+      "definition": "Folder is strict subset of canonical",
+      "defined_in": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
+      "defined_line": 82,
+      "cited_in": [
+        {
+          "file": "spec/17-generic-update/00-overview.md",
+          "line": 30
         }
       ]
     },
@@ -15362,6 +16395,14 @@
           "line": 11
         },
         {
+          "file": "spec/10-powershell-integration/00-overview.md",
+          "line": 21
+        },
+        {
+          "file": "spec/10-powershell-integration/00-overview.md",
+          "line": 57
+        },
+        {
           "file": "spec/10-powershell-integration/08-wp-plugin-boundary.md",
           "line": 100
         },
@@ -15370,8 +16411,8 @@
           "line": 6
         },
         {
-          "file": "spec/10-powershell-integration/00-overview.md",
-          "line": 21
+          "file": "spec/10-powershell-integration/97a-acceptance-criteria-fixtures.md",
+          "line": 11
         }
       ]
     },
@@ -15384,6 +16425,10 @@
         {
           "file": "spec/10-powershell-integration/00-overview.md",
           "line": 22
+        },
+        {
+          "file": "spec/10-powershell-integration/97a-acceptance-criteria-fixtures.md",
+          "line": 19
         }
       ]
     },
@@ -15396,6 +16441,10 @@
         {
           "file": "spec/10-powershell-integration/00-overview.md",
           "line": 23
+        },
+        {
+          "file": "spec/10-powershell-integration/97a-acceptance-criteria-fixtures.md",
+          "line": 26
         }
       ]
     },
@@ -15408,6 +16457,10 @@
         {
           "file": "spec/10-powershell-integration/00-overview.md",
           "line": 24
+        },
+        {
+          "file": "spec/10-powershell-integration/97a-acceptance-criteria-fixtures.md",
+          "line": 32
         }
       ]
     },
@@ -15420,6 +16473,10 @@
         {
           "file": "spec/10-powershell-integration/00-overview.md",
           "line": 25
+        },
+        {
+          "file": "spec/10-powershell-integration/97a-acceptance-criteria-fixtures.md",
+          "line": 40
         }
       ]
     },
@@ -15432,6 +16489,10 @@
         {
           "file": "spec/10-powershell-integration/00-overview.md",
           "line": 26
+        },
+        {
+          "file": "spec/10-powershell-integration/97a-acceptance-criteria-fixtures.md",
+          "line": 47
         }
       ]
     },
@@ -15444,6 +16505,10 @@
         {
           "file": "spec/10-powershell-integration/00-overview.md",
           "line": 27
+        },
+        {
+          "file": "spec/10-powershell-integration/97a-acceptance-criteria-fixtures.md",
+          "line": 54
         }
       ]
     },
@@ -15456,6 +16521,10 @@
         {
           "file": "spec/10-powershell-integration/00-overview.md",
           "line": 28
+        },
+        {
+          "file": "spec/10-powershell-integration/97a-acceptance-criteria-fixtures.md",
+          "line": 61
         }
       ]
     },
@@ -15468,6 +16537,10 @@
         {
           "file": "spec/10-powershell-integration/00-overview.md",
           "line": 29
+        },
+        {
+          "file": "spec/10-powershell-integration/97a-acceptance-criteria-fixtures.md",
+          "line": 68
         }
       ]
     },
@@ -15480,6 +16553,10 @@
         {
           "file": "spec/10-powershell-integration/00-overview.md",
           "line": 30
+        },
+        {
+          "file": "spec/10-powershell-integration/97a-acceptance-criteria-fixtures.md",
+          "line": 74
         }
       ]
     },
@@ -16765,8 +17842,24 @@
       "defined_line": 24,
       "cited_in": [
         {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 34
+        },
+        {
           "file": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
           "line": 20
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 18
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 141
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 165
         }
       ]
     },
@@ -16775,14 +17868,32 @@
       "definition": "The PascalCase rule applies to nested objects and arrays of objects — recursively.",
       "defined_in": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
       "defined_line": 25,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 35
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 178
+        }
+      ]
     },
     {
       "id": "AT-RESTAPIFORMAT-03",
       "definition": "Database column names match REST response keys exactly (PascalCase, identical spelling), enabling direct `column → key` mapping.",
       "defined_in": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
       "defined_line": 26,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 36
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 191
+        }
+      ]
     },
     {
       "id": "AT-RESTAPIFORMAT-04",
@@ -16791,8 +17902,16 @@
       "defined_line": 32,
       "cited_in": [
         {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 37
+        },
+        {
           "file": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
           "line": 28
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 204
         }
       ]
     },
@@ -16801,7 +17920,16 @@
       "definition": "Every sample is a complete, copy-pasteable JSON document — not a fragment.",
       "defined_in": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
       "defined_line": 33,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 38
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 214
+        }
+      ]
     },
     {
       "id": "AT-RESTAPIFORMAT-06",
@@ -16810,8 +17938,20 @@
       "defined_line": 39,
       "cited_in": [
         {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 39
+        },
+        {
           "file": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
           "line": 35
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 224
+        },
+        {
+          "file": "spec/97a-acceptance-criteria-fixtures.md",
+          "line": 175
         }
       ]
     },
@@ -16820,14 +17960,32 @@
       "definition": "Success responses populate `Data`; error responses populate `Error` (never both); `Status` is always present.",
       "defined_in": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
       "defined_line": 40,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 40
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 234
+        }
+      ]
     },
     {
       "id": "AT-RESTAPIFORMAT-08",
       "definition": "The PascalCase data flow is unbroken end-to-end: SQLite column → ORM struct field → REST handler → JSON response → TypeScript interface.",
       "defined_in": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
       "defined_line": 41,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 41
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 251
+        }
+      ]
     },
     {
       "id": "AT-RESTAPIFORMAT-09",
@@ -16836,8 +17994,16 @@
       "defined_line": 47,
       "cited_in": [
         {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 42
+        },
+        {
           "file": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
           "line": 43
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 261
         }
       ]
     },
@@ -16846,7 +18012,16 @@
       "definition": "Go uses `json:\"PascalCase\"` struct tags; PHP uses `ResponseKeyType` enum; TypeScript types match the same PascalCase keys exactly.",
       "defined_in": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
       "defined_line": 48,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 43
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 271
+        }
+      ]
     },
     {
       "id": "AT-RESTAPIFORMAT-11",
@@ -16855,8 +18030,16 @@
       "defined_line": 54,
       "cited_in": [
         {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 44
+        },
+        {
           "file": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
           "line": 50
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 281
         }
       ]
     },
@@ -17544,8 +18727,20 @@
       "defined_line": 22,
       "cited_in": [
         {
+          "file": "spec/06-seedable-config-architecture/00-overview.md",
+          "line": 11
+        },
+        {
+          "file": "spec/06-seedable-config-architecture/00-overview.md",
+          "line": 21
+        },
+        {
           "file": "spec/06-seedable-config-architecture/01-fundamentals/97-acceptance-criteria.md",
           "line": 12
+        },
+        {
+          "file": "spec/06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 11
         }
       ]
     },
@@ -17554,63 +18749,144 @@
       "definition": "Merge is **additive**: new keys are inserted, existing user-overridden values are preserved (NEVER overwritten); the merge algorithm in §01 is the SSOT.",
       "defined_in": "spec/06-seedable-config-architecture/01-fundamentals/97-acceptance-criteria.md",
       "defined_line": 23,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/06-seedable-config-architecture/00-overview.md",
+          "line": 22
+        },
+        {
+          "file": "spec/06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 20
+        }
+      ]
     },
     {
       "id": "AT-SEEDABLECONFIGFUNDAMENTALS-03",
       "definition": "The pattern requires exactly three artifacts: `config.seed.json`, `config.schema.json`, `CHANGELOG.md`; missing any of the three fails project bootstrap.",
       "defined_in": "spec/06-seedable-config-architecture/01-fundamentals/97-acceptance-criteria.md",
       "defined_line": 29,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/06-seedable-config-architecture/00-overview.md",
+          "line": 23
+        },
+        {
+          "file": "spec/06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 28
+        }
+      ]
     },
     {
       "id": "AT-SEEDABLECONFIGFUNDAMENTALS-04",
       "definition": "`config.seed.json` MUST validate against `config.schema.json` at build time (CI gate); a schema-invalid seed fails CI.",
       "defined_in": "spec/06-seedable-config-architecture/01-fundamentals/97-acceptance-criteria.md",
       "defined_line": 30,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/06-seedable-config-architecture/00-overview.md",
+          "line": 24
+        },
+        {
+          "file": "spec/06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 35
+        }
+      ]
     },
     {
       "id": "AT-SEEDABLECONFIGFUNDAMENTALS-05",
       "definition": "`CHANGELOG.md` follows the documented Keep-a-Changelog-style format; missing entries for the current version block release.",
       "defined_in": "spec/06-seedable-config-architecture/01-fundamentals/97-acceptance-criteria.md",
       "defined_line": 31,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/06-seedable-config-architecture/00-overview.md",
+          "line": 25
+        },
+        {
+          "file": "spec/06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 42
+        }
+      ]
     },
     {
       "id": "AT-SEEDABLECONFIGFUNDAMENTALS-06",
       "definition": "The schema defines exactly three tables: `ConfigMeta`, `Setting`, `SettingHistory` — all in **PascalCase** with `{TableName}Id` primary keys.",
       "defined_in": "spec/06-seedable-config-architecture/01-fundamentals/97-acceptance-criteria.md",
       "defined_line": 37,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/06-seedable-config-architecture/00-overview.md",
+          "line": 26
+        },
+        {
+          "file": "spec/06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 50
+        }
+      ]
     },
     {
       "id": "AT-SEEDABLECONFIGFUNDAMENTALS-07",
       "definition": "`SettingHistory` MUST capture every change to `Setting` (insert, update, delete) with `(settingKey, oldValue, newValue, changedAt, changedBy)`; missing audit rows is a Code-Red bug.",
       "defined_in": "spec/06-seedable-config-architecture/01-fundamentals/97-acceptance-criteria.md",
       "defined_line": 38,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/06-seedable-config-architecture/00-overview.md",
+          "line": 27
+        },
+        {
+          "file": "spec/06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 57
+        }
+      ]
     },
     {
       "id": "AT-SEEDABLECONFIGFUNDAMENTALS-08",
       "definition": "`SettingValue` is a **typed union** (string, number, boolean, JSON-object); `interface{}` / `any` containers are forbidden.",
       "defined_in": "spec/06-seedable-config-architecture/01-fundamentals/97-acceptance-criteria.md",
       "defined_line": 44,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/06-seedable-config-architecture/00-overview.md",
+          "line": 28
+        },
+        {
+          "file": "spec/06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 65
+        }
+      ]
     },
     {
       "id": "AT-SEEDABLECONFIGFUNDAMENTALS-09",
       "definition": "Each setting in `config.seed.json` declares its `valueType` matching one of the union variants; runtime type mismatch triggers a typed `apperror`.",
       "defined_in": "spec/06-seedable-config-architecture/01-fundamentals/97-acceptance-criteria.md",
       "defined_line": 45,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/06-seedable-config-architecture/00-overview.md",
+          "line": 29
+        },
+        {
+          "file": "spec/06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 72
+        }
+      ]
     },
     {
       "id": "AT-SEEDABLECONFIGFUNDAMENTALS-10",
       "definition": "All config access goes through `ConfigService`; direct queries against the `Setting` table from handlers/services are forbidden.",
       "defined_in": "spec/06-seedable-config-architecture/01-fundamentals/97-acceptance-criteria.md",
       "defined_line": 51,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/06-seedable-config-architecture/00-overview.md",
+          "line": 30
+        },
+        {
+          "file": "spec/06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 80
+        }
+      ]
     },
     {
       "id": "AT-SEEDABLECONFIGFUNDAMENTALS-11",
@@ -17663,12 +18939,20 @@
           "line": 11
         },
         {
+          "file": "spec/14-self-update-app-update/00-overview.md",
+          "line": 21
+        },
+        {
+          "file": "spec/14-self-update-app-update/00-overview.md",
+          "line": 56
+        },
+        {
           "file": "spec/14-self-update-app-update/97-acceptance-criteria.md",
           "line": 13
         },
         {
-          "file": "spec/14-self-update-app-update/00-overview.md",
-          "line": 21
+          "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
+          "line": 11
         }
       ]
     },
@@ -17681,6 +18965,14 @@
         {
           "file": "spec/14-self-update-app-update/00-overview.md",
           "line": 22
+        },
+        {
+          "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
+          "line": 20
+        },
+        {
+          "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
+          "line": 24
         }
       ]
     },
@@ -17693,6 +18985,14 @@
         {
           "file": "spec/14-self-update-app-update/00-overview.md",
           "line": 23
+        },
+        {
+          "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
+          "line": 28
+        },
+        {
+          "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
+          "line": 31
         }
       ]
     },
@@ -17705,6 +19005,10 @@
         {
           "file": "spec/14-self-update-app-update/00-overview.md",
           "line": 24
+        },
+        {
+          "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
+          "line": 36
         }
       ]
     },
@@ -17717,6 +19021,10 @@
         {
           "file": "spec/14-self-update-app-update/00-overview.md",
           "line": 25
+        },
+        {
+          "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
+          "line": 44
         }
       ]
     },
@@ -17729,6 +19037,10 @@
         {
           "file": "spec/14-self-update-app-update/00-overview.md",
           "line": 26
+        },
+        {
+          "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
+          "line": 52
         }
       ]
     },
@@ -17741,6 +19053,10 @@
         {
           "file": "spec/14-self-update-app-update/00-overview.md",
           "line": 27
+        },
+        {
+          "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
+          "line": 60
         }
       ]
     },
@@ -17751,12 +19067,16 @@
       "defined_line": 40,
       "cited_in": [
         {
+          "file": "spec/14-self-update-app-update/00-overview.md",
+          "line": 28
+        },
+        {
           "file": "spec/14-self-update-app-update/09-release-versioning/97-acceptance-criteria.md",
           "line": 80
         },
         {
-          "file": "spec/14-self-update-app-update/00-overview.md",
-          "line": 28
+          "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
+          "line": 68
         }
       ]
     },
@@ -17769,6 +19089,10 @@
         {
           "file": "spec/14-self-update-app-update/00-overview.md",
           "line": 29
+        },
+        {
+          "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
+          "line": 75
         }
       ]
     },
@@ -17781,6 +19105,10 @@
         {
           "file": "spec/14-self-update-app-update/00-overview.md",
           "line": 30
+        },
+        {
+          "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
+          "line": 83
         }
       ]
     },
@@ -18382,6 +19710,130 @@
       ]
     },
     {
+      "id": "AT-SPECISSUES-01",
+      "definition": "Every audit file follows canonical 5-section format",
+      "defined_in": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
+      "defined_line": 17,
+      "cited_in": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 11
+        },
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 21
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-02",
+      "definition": "Findings carry a stable `F-AUDxx-NN` ID",
+      "defined_in": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
+      "defined_line": 25,
+      "cited_in": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 22
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-03",
+      "definition": "Severity ∈ {LOW, MEDIUM, HIGH, CRITICAL}",
+      "defined_in": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
+      "defined_line": 32,
+      "cited_in": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 23
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-04",
+      "definition": "Every finding cites the failing AT or rule",
+      "defined_in": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
+      "defined_line": 39,
+      "cited_in": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 24
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-05",
+      "definition": "Resolved findings link to the resolution PR/commit",
+      "defined_in": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
+      "defined_line": 47,
+      "cited_in": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 25
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-06",
+      "definition": "`AT-APP-NN` findings cross-link to spec/31-app",
+      "defined_in": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
+      "defined_line": 54,
+      "cited_in": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 26
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-07",
+      "definition": "Audit dates monotonic in filename",
+      "defined_in": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
+      "defined_line": 61,
+      "cited_in": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 27
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-08",
+      "definition": "`AT-CONCURRENCY-*` findings include reproduction steps",
+      "defined_in": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
+      "defined_line": 68,
+      "cited_in": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 28
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-09",
+      "definition": "`AT-HARNESS-*` findings cite the failing test file",
+      "defined_in": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
+      "defined_line": 76,
+      "cited_in": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 29
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-10",
+      "definition": "Open findings counter in `00-overview.md`",
+      "defined_in": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
+      "defined_line": 84,
+      "cited_in": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 30
+        }
+      ]
+    },
+    {
       "id": "AT-SPLITDBFUNDAMENTALS-01",
       "definition": "The terminology in §01 is the SSOT for **Root DB**, **Domain DB**, **History DB**, **Cache DB**; alternative names (e.g., \"main DB\") in other specs MUST be reconciled to these.",
       "defined_in": "spec/05-split-db-architecture/01-fundamentals/97-acceptance-criteria.md",
@@ -18392,12 +19844,16 @@
           "line": 11
         },
         {
+          "file": "spec/05-split-db-architecture/00-overview.md",
+          "line": 21
+        },
+        {
           "file": "spec/05-split-db-architecture/01-fundamentals/97-acceptance-criteria.md",
           "line": 12
         },
         {
-          "file": "spec/05-split-db-architecture/00-overview.md",
-          "line": 21
+          "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 13
         }
       ]
     },
@@ -18409,6 +19865,10 @@
       "cited_in": [
         {
           "file": "spec/05-split-db-architecture/00-overview.md",
+          "line": 22
+        },
+        {
+          "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
           "line": 22
         }
       ]
@@ -18422,6 +19882,10 @@
         {
           "file": "spec/05-split-db-architecture/00-overview.md",
           "line": 23
+        },
+        {
+          "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 29
         }
       ]
     },
@@ -18434,6 +19898,10 @@
         {
           "file": "spec/05-split-db-architecture/00-overview.md",
           "line": 24
+        },
+        {
+          "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 37
         }
       ]
     },
@@ -18446,6 +19914,10 @@
         {
           "file": "spec/05-split-db-architecture/00-overview.md",
           "line": 25
+        },
+        {
+          "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 44
         }
       ]
     },
@@ -18458,6 +19930,10 @@
         {
           "file": "spec/05-split-db-architecture/00-overview.md",
           "line": 26
+        },
+        {
+          "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 52
         }
       ]
     },
@@ -18470,6 +19946,10 @@
         {
           "file": "spec/05-split-db-architecture/00-overview.md",
           "line": 27
+        },
+        {
+          "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 60
         }
       ]
     },
@@ -18482,6 +19962,10 @@
         {
           "file": "spec/05-split-db-architecture/00-overview.md",
           "line": 28
+        },
+        {
+          "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 67
         }
       ]
     },
@@ -18494,6 +19978,10 @@
         {
           "file": "spec/05-split-db-architecture/00-overview.md",
           "line": 29
+        },
+        {
+          "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 74
         }
       ]
     },
@@ -18506,6 +19994,10 @@
         {
           "file": "spec/05-split-db-architecture/00-overview.md",
           "line": 30
+        },
+        {
+          "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 81
         }
       ]
     },
@@ -20415,7 +21907,27 @@
       "cited_in": [
         {
           "file": "spec/32-ui-design/00-overview.md",
-          "line": 72
+          "line": 11
+        },
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 21
+        },
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 118
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 13
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 19
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 225
         }
       ]
     },
@@ -20424,168 +21936,384 @@
       "definition": "All routes are declared in a single `routes` module per `01-architecture/02-routes.md`.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 25,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 22
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 27
+        }
+      ]
     },
     {
       "id": "AT-UIDESIGN-03",
       "definition": "Component tree matches `01-architecture/03-component-hierarchy.md` — `AppLayout` wraps every route via `<Outlet />`.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 26,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 23
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 34
+        }
+      ]
     },
     {
       "id": "AT-UIDESIGN-04",
       "definition": "Source folders match `01-architecture/04-file-organization.md` (e.g., `src/components/layout/`, `src/pages/`).",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 27,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 24
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 42
+        }
+      ]
     },
     {
       "id": "AT-UIDESIGN-05",
       "definition": "Every component listed in `01-architecture/05-component-contract-map.md` has matching props/events in code; new components extend that map.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 28,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 25
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 49
+        }
+      ]
     },
     {
       "id": "AT-UIDESIGN-06",
       "definition": "All color tokens are defined in HSL inside `src/index.css` `@theme { … }`. No hex/rgb in components.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 34,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 26
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 60
+        }
+      ]
     },
     {
       "id": "AT-UIDESIGN-07",
       "definition": "Components use semantic Tailwind classes (`bg-background`, `text-foreground`, `border-border`). Raw classes (`bg-white`, `text-black`) are forbidden.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 35,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 27
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 66
+        }
+      ]
     },
     {
       "id": "AT-UIDESIGN-08",
       "definition": "Tailwind is v4 via `@tailwindcss/vite`. No legacy `tailwind.config.ts` color extensions.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 36,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 28
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 73
+        }
+      ]
     },
     {
       "id": "AT-UIDESIGN-09",
       "definition": "Light and dark themes are token-driven; toggling theme changes only `@theme` variables, not component classes.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 37,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 29
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 79
+        }
+      ]
     },
     {
       "id": "AT-UIDESIGN-10",
       "definition": "State management approach matches `02-state-and-data/01-state-management.md` (no Redux unless that file mandates it).",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 43,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 30
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 90
+        }
+      ]
     },
     {
       "id": "AT-UIDESIGN-11",
       "definition": "Recursive item list renders a tree, not a flat array; collapsed children remain mounted (CSS-hidden) to keep re-expand instant.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 44,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 31
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 96
+        }
+      ]
     },
     {
       "id": "AT-UIDESIGN-12",
       "definition": "A view never holds more than 250 rendered item nodes; beyond that it virtualizes/paginates.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 45,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 32
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 103
+        }
+      ]
     },
     {
       "id": "AT-UIDESIGN-13",
       "definition": "Shared TS types live in `02-state-and-data/03-data-types.md` and are imported, not redefined.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 46,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 33
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 109
+        }
+      ]
     },
     {
       "id": "AT-UIDESIGN-14",
       "definition": "Rich-text format matches `04-editor/01-rich-text-format.md`; storage is the documented serialized form.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 52,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 34
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 119
+        }
+      ]
     },
     {
       "id": "AT-UIDESIGN-15",
       "definition": "Enter-key behavior matches `04-editor/02-enter-key-rules.md` exactly (sibling-after on non-empty, sibling-before on empty-at-start, etc.).",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 53,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 35
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 126
+        }
+      ]
     },
     {
       "id": "AT-UIDESIGN-16",
       "definition": "Drag-and-drop computes a **fractional-index midpoint** for the new position; siblings are not re-numbered. Drag preview shows the full subtree.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 54,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 36
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 135
+        }
+      ]
     },
     {
       "id": "AT-UIDESIGN-17",
       "definition": "Tab indents under previous sibling; Shift+Tab outdents to grandparent. Both update only the moved item's `parentId` + index.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 55,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 37
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 143
+        }
+      ]
     },
     {
       "id": "AT-UIDESIGN-18",
       "definition": "All interactive elements meet WCAG 2.1 AA: 4.5:1 text contrast, visible focus ring, full keyboard reachability.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 61,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 38
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 154
+        }
+      ]
     },
     {
       "id": "AT-UIDESIGN-19",
       "definition": "First contentful paint targets and bundle-size budgets in `05-quality/02-performance.md` are met.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 62,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 39
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 160
+        }
+      ]
     },
     {
       "id": "AT-UIDESIGN-20",
       "definition": "Every async surface ships **all three** of: loading state, empty state, error state — no silent blank UI.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 63,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 40
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 167
+        }
+      ]
     },
     {
       "id": "AT-UIDESIGN-21",
       "definition": "Navbar matches Phase 1 spec (`06-workflowy-ui/01-navbar/`) including breadcrumb collapse and back/forward disabled states.",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 69,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 41
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 180
+        }
+      ]
     },
     {
       "id": "AT-UIDESIGN-22",
       "definition": "Search popover behaves as a command-palette per Phase 2 (`06-workflowy-ui/02-search/`).",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 70,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 42
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 186
+        }
+      ]
     },
     {
       "id": "AT-UIDESIGN-23",
       "definition": "Bullet anatomy and per-bullet context menus match Phase 4 (`06-workflowy-ui/04-bullet/`).",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 71,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 43
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 192
+        }
+      ]
     },
     {
       "id": "AT-UIDESIGN-24",
       "definition": "Editor visuals (cursor, selection, inline tokens) match Phase 5 (`06-workflowy-ui/05-editor/`).",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 72,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 44
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 199
+        }
+      ]
     },
     {
       "id": "AT-UIDESIGN-25",
       "definition": "App shell — themes, fonts, settings, app menu — matches Phase 8 (`06-workflowy-ui/08-app-shell/`).",
       "defined_in": "spec/32-ui-design/97-acceptance-criteria.md",
       "defined_line": 73,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 45
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 205
+        }
+      ]
     },
     {
       "id": "AT-UIDS-01",
@@ -21091,12 +22819,16 @@
           "line": 11
         },
         {
+          "file": "spec/36-user-management/00-overview.md",
+          "line": 21
+        },
+        {
           "file": "spec/36-user-management/97-acceptance-criteria.md",
           "line": 12
         },
         {
-          "file": "spec/36-user-management/00-overview.md",
-          "line": 21
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 11
         }
       ]
     },
@@ -21109,6 +22841,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 22
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 18
         }
       ]
     },
@@ -21121,6 +22857,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 23
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 25
         }
       ]
     },
@@ -21133,6 +22873,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 24
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 31
         }
       ]
     },
@@ -21145,6 +22889,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 25
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 38
         }
       ]
     },
@@ -21157,6 +22905,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 26
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 45
         }
       ]
     },
@@ -21169,6 +22921,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 27
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 53
         }
       ]
     },
@@ -21181,6 +22937,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 28
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 62
         }
       ]
     },
@@ -21193,6 +22953,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 29
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 70
         }
       ]
     },
@@ -21205,6 +22969,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 30
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 77
         }
       ]
     },
@@ -21217,6 +22985,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 31
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 85
         }
       ]
     },
@@ -21229,6 +23001,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 32
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 92
         }
       ]
     },
@@ -21241,6 +23017,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 33
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 100
         }
       ]
     },
@@ -21253,6 +23033,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 34
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 106
         }
       ]
     },
@@ -21265,6 +23049,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 35
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 113
         }
       ]
     },
@@ -21275,12 +23063,20 @@
       "defined_line": 62,
       "cited_in": [
         {
+          "file": "spec/36-user-management/00-overview.md",
+          "line": 36
+        },
+        {
           "file": "spec/36-user-management/97-acceptance-criteria.md",
           "line": 12
         },
         {
-          "file": "spec/36-user-management/00-overview.md",
-          "line": 36
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 120
+        },
+        {
+          "file": "spec/97a-acceptance-criteria-fixtures.md",
+          "line": 82
         }
       ]
     },
@@ -22885,7 +24681,7 @@
       "cited_in": [
         {
           "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
-          "line": 198
+          "line": 229
         },
         {
           "file": "spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/00-overview.md",
