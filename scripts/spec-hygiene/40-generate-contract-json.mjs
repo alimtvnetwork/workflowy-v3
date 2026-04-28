@@ -137,8 +137,10 @@ walk(ROOT, (file) => {
     const ah = !at && AT_HEADING.exec(line);
     if (at) {
       recordAT(at[1], at[2].trim(), rel, i + 1);
-    } else if (ah) {
+    } else if (ah && !CITE_ONLY) {
       recordAT(ah[1], ah[2].trim(), rel, i + 1);
+    } else if (ah && CITE_ONLY) {
+      citeAT(ah[1], rel, i + 1);
     } else {
       AT_INLINE.lastIndex = 0;
       let m;
