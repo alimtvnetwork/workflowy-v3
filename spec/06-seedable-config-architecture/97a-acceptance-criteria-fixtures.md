@@ -14,7 +14,7 @@ marker; replace with concrete fixtures during the next P2 sweep.
 
 ## `AT-SEEDABLECONFIGFUNDAMENTALS-01` — Stub fixture (P20)
 
-| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-01` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-01` in [`98-acceptance-criteria.md`](./98-acceptance-criteria.md). |
 |---|---|
 | **When** | The corresponding action / linter / endpoint described for `AT-SEEDABLECONFIGFUNDAMENTALS-01` is invoked. |
 | **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
@@ -25,7 +25,7 @@ marker; replace with concrete fixtures during the next P2 sweep.
 
 ## `AT-SEEDABLECONFIGFUNDAMENTALS-02` — Stub fixture (P20)
 
-| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-02` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-02` in [`98-acceptance-criteria.md`](./98-acceptance-criteria.md). |
 |---|---|
 | **When** | The corresponding action / linter / endpoint described for `AT-SEEDABLECONFIGFUNDAMENTALS-02` is invoked. |
 | **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
@@ -36,7 +36,7 @@ marker; replace with concrete fixtures during the next P2 sweep.
 
 ## `AT-SEEDABLECONFIGFUNDAMENTALS-03` — Stub fixture (P20)
 
-| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-03` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-03` in [`98-acceptance-criteria.md`](./98-acceptance-criteria.md). |
 |---|---|
 | **When** | The corresponding action / linter / endpoint described for `AT-SEEDABLECONFIGFUNDAMENTALS-03` is invoked. |
 | **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
@@ -47,7 +47,7 @@ marker; replace with concrete fixtures during the next P2 sweep.
 
 ## `AT-SEEDABLECONFIGFUNDAMENTALS-04` — Stub fixture (P20)
 
-| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-04` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-04` in [`98-acceptance-criteria.md`](./98-acceptance-criteria.md). |
 |---|---|
 | **When** | The corresponding action / linter / endpoint described for `AT-SEEDABLECONFIGFUNDAMENTALS-04` is invoked. |
 | **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
@@ -58,7 +58,7 @@ marker; replace with concrete fixtures during the next P2 sweep.
 
 ## `AT-SEEDABLECONFIGFUNDAMENTALS-05` — Stub fixture (P20)
 
-| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-05` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-05` in [`98-acceptance-criteria.md`](./98-acceptance-criteria.md). |
 |---|---|
 | **When** | The corresponding action / linter / endpoint described for `AT-SEEDABLECONFIGFUNDAMENTALS-05` is invoked. |
 | **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
@@ -69,7 +69,7 @@ marker; replace with concrete fixtures during the next P2 sweep.
 
 ## `AT-SEEDABLECONFIGFUNDAMENTALS-06` — Stub fixture (P20)
 
-| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-06` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-06` in [`98-acceptance-criteria.md`](./98-acceptance-criteria.md). |
 |---|---|
 | **When** | The corresponding action / linter / endpoint described for `AT-SEEDABLECONFIGFUNDAMENTALS-06` is invoked. |
 | **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
@@ -80,7 +80,7 @@ marker; replace with concrete fixtures during the next P2 sweep.
 
 ## `AT-SEEDABLECONFIGFUNDAMENTALS-07` — Stub fixture (P20)
 
-| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-07` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-07` in [`98-acceptance-criteria.md`](./98-acceptance-criteria.md). |
 |---|---|
 | **When** | The corresponding action / linter / endpoint described for `AT-SEEDABLECONFIGFUNDAMENTALS-07` is invoked. |
 | **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
@@ -91,7 +91,7 @@ marker; replace with concrete fixtures during the next P2 sweep.
 
 ## `AT-SEEDABLECONFIGFUNDAMENTALS-08` — Stub fixture (P20)
 
-| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-08` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-08` in [`98-acceptance-criteria.md`](./98-acceptance-criteria.md). |
 |---|---|
 | **When** | The corresponding action / linter / endpoint described for `AT-SEEDABLECONFIGFUNDAMENTALS-08` is invoked. |
 | **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
@@ -102,7 +102,7 @@ marker; replace with concrete fixtures during the next P2 sweep.
 
 ## `AT-SEEDABLECONFIGFUNDAMENTALS-09` — Stub fixture (P20)
 
-| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-09` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-09` in [`98-acceptance-criteria.md`](./98-acceptance-criteria.md). |
 |---|---|
 | **When** | The corresponding action / linter / endpoint described for `AT-SEEDABLECONFIGFUNDAMENTALS-09` is invoked. |
 | **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
@@ -113,7 +113,7 @@ marker; replace with concrete fixtures during the next P2 sweep.
 
 ## `AT-SEEDABLECONFIGFUNDAMENTALS-10` — Stub fixture (P20)
 
-| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-10` in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md). |
+| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-10` in [`98-acceptance-criteria.md`](./98-acceptance-criteria.md). |
 |---|---|
 | **When** | The corresponding action / linter / endpoint described for `AT-SEEDABLECONFIGFUNDAMENTALS-10` is invoked. |
 | **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
