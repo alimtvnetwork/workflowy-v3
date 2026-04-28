@@ -132,25 +132,22 @@ walk(ROOT, (file) => {
 });
 
 // --- Enum extraction --------------------------------------------------
+// Enums in spec/20-enums-index.md are listed as table rows:
+//   | `EnumName` | `Case1`, `Case2`, ... | description |
+const ENUM_ROW = /^\|\s*`([A-Z][A-Za-z0-9_]+(?:Type)?)`\s*\|\s*([^|]+?)\s*\|/;
 try {
   const enumLines = readFileSync(ENUM_INDEX, "utf8").split("\n");
-  // crude: capture sections like "## ItemType" / "### ItemType" with following list items
-  let currentEnum = null;
   for (let i = 0; i < enumLines.length; i++) {
-    const line = enumLines[i];
-    const heading = /^#{2,4}\s+`?([A-Z][A-Za-z0-9_]+)`?\s*(?:enum|Enum|—.*)?$/.exec(line);
-    if (heading && /^[A-Z]/.test(heading[1]) && heading[1].length > 2) {
-      currentEnum = heading[1];
-      if (!enums.has(currentEnum)) {
-        enums.set(currentEnum, { name: currentEnum, definedIn: ENUM_INDEX, definedLine: i + 1, values: [] });
-      }
-      continue;
-    }
-    if (!currentEnum) continue;
-    const valueRow = /^\|\s*`([a-z_][a-z0-9_]*)`\s*\|/i.exec(line);
-    if (valueRow) {
-      const rec = enums.get(currentEnum);
-      if (!rec.values.includes(valueRow[1])) rec.values.push(valueRow[1]);
+    const m = ENUM_ROW.exec(enumLines[i]);
+    if (!m) continue;
+    const name = m[1];
+    if (name.length < 3) continue;
+    const valuesCell = m[2];
+    // pull every backticked token from the values cell
+    const values = [...valuesCell.matchAll(/`([A-Za-z][A-Za-z0-9_]*)`/g)].map((x) => x[1]);
+    if (values.length === 0) continue;
+    if (!enums.has(name)) {
+      enums.set(name, { name, definedIn: ENUM_INDEX, definedLine: i + 1, values });
     }
   }
 } catch {
