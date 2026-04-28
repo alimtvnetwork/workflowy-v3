@@ -388,16 +388,16 @@ flowchart LR
     Insert --> Sidebar
 ```
 
-**Touched tables (read+write)**: `Favorite`, `Item` (read-only — for sidebar label).
+**Touched tables (read+write)**: `Item` (writes the `IsFavorite` and `FavoriteFractionalIndex` columns; **no separate `Favorite` table** — see [ADR-0001](../../00-adrs/0001-singular-ddl-vs-plural-prose.md), `Accepted` 2026-04-28).
 
-**Endpoints (current MVP)**: `EP-ITEMS-UPDATE` (carries `isFavorited` boolean per AT-LAYOUT-12).
-**Endpoints (deferred)**: A dedicated `EP-FAVORITES-*` family is **not yet allocated**. When promoted, it will land at the next free slot in `06-endpoints/` (likely `17-favorites.md`) per the endpoint-numbering note in `06-endpoints/00-overview.md`. Until then, do not invent `EP-FAV-*` IDs in citations.
+**Endpoints (current MVP)**: `EP-ITEMS-UPDATE` (carries `IsFavorite` boolean per AT-LAYOUT-12; reorder writes `FavoriteFractionalIndex` via the same endpoint).
+**Endpoints (forbidden without superseding ADR-0001)**: an `EP-FAVORITES-*` family is **not** deferred — it is **forbidden** because Favorites is a column on `Item`, not a table. Any future allocation **MUST** first supersede [ADR-0001](../../00-adrs/0001-singular-ddl-vs-plural-prose.md) with a new ADR that promotes the column to a table.
 
-**Sidebar reorder**: Drag-and-drop in the sidebar mutates `Favorite.FractionalIndex` only (no `Item` write). This is intentionally outside `EP-ITEMS-UPDATE`; reorder will move to the deferred `EP-FAVORITES-REORDER` slot when the endpoint family is allocated.
+**Sidebar reorder**: Drag-and-drop in the sidebar mutates `Item.FavoriteFractionalIndex` (still inside the `Item` row, no separate-table write). The mutation flows through `EP-ITEMS-UPDATE` like every other `Item` field change.
 
 **ATs**: `AT-LAYOUT-12` (toggle); `AT-LAYOUT-NN` open-prefix reserves future favorite ATs (sidebar reorder, drag-into-sidebar, etc.).
 
-**Outstanding contradiction (logged)**: `06-endpoints/03-layout-structure.md` line 20 still claims "no favorites table in MVP". That sentence pre-dates the v1.0.0 DDL allocation of `Favorite` and is stale; see [`.lovable/question-and-ambiguity/17-favorites-endpoint-vs-table-contradiction.md`](../../../.lovable/question-and-ambiguity/17-favorites-endpoint-vs-table-contradiction.md). A separate task (F23) will reword that endpoint-overview sentence; this slice intentionally does not touch endpoint files.
+**Resolved contradiction**: the prior text on this slice asserted a `Favorite` table and a deferred `EP-FAVORITES-*` family. Both claims were retired by ADR-0001 on 2026-04-28; the entry in [`.lovable/question-and-ambiguity/17-favorites-endpoint-vs-table-contradiction.md`](../../../.lovable/question-and-ambiguity/17-favorites-endpoint-vs-table-contradiction.md) is now closed by ADR-0001.
 
 ---
 
