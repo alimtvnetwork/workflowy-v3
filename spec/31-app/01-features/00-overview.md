@@ -213,3 +213,31 @@ The sidebar contains, top to bottom:
 
 - [`../00-overview.md`](../00-overview.md) — Parent overview
 - [`../97-acceptance-criteria.md`](../97-acceptance-criteria.md) — `AT-APP-*` criteria covering these features
+
+---
+
+## 🔗 Spec↔DDL Alias Bridge (P40 backlink)
+
+Feature pages frequently say **"items"**, **"users"**, **"favorites"**,
+**"mirrors"**, **"templates"** in plural prose. These are **aliases**, not
+DDL identifiers. The DDL is singular and PascalCase.
+
+| Plural prose alias | Canonical DDL (SSOT) |
+|---|---|
+| items / item rows | `Item` |
+| users | `User` |
+| favorites / starred | `Item.IsFavorite` (column on `Item`, not a separate table) |
+| mirrors / mirror group | `MirrorGroup` + `MirrorMember` |
+| templates | `Template` + `TemplateBody` |
+| roles | `Role` + `UserRole` |
+| sessions | `Session` |
+
+**Canonical source:** see
+[`spec/04-database-conventions/00-overview.md`](../../04-database-conventions/00-overview.md)
+→ section **"Spec↔DDL Alias Bridge"** + **Golden Rule #7** + gates
+`G-04-ALIAS-DDL-CANONICAL`, `G-04-NO-DDL-PLURALS`.
+
+**Conflict resolution:** DDL wins. Change requires an ADR under
+`spec/00-adrs/`—never re-alias prose to imply a hidden schema change.
+**Favorites note:** there is no `Favorite` / `Favorites` table; reads use
+`EP-ITEMS-LIST?includeFavorites=1`, writes use `EP-ITEMS-UPDATE { "IsFavorite": true }`.
