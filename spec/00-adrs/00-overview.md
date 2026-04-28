@@ -173,6 +173,7 @@ Suppose someone wants to add a real `Favorite` table (currently forbidden by
 | [`0011`](./0011-axios-only-http-client.md) | Axios is the sole HTTP client — pinned to `1.14.0` or `0.30.3` exact | `Accepted` | 2026-04-28 |
 | [`0012`](./0012-tailwind-v4-theme-block-token-registry.md) | Tailwind v4 `@theme` block is the sole design-token registry; HSL-only; no raw colors | `Accepted` | 2026-04-28 |
 | [`0013`](./0013-search-relevance-then-recency-ranking.md) | Search ranking — hybrid relevance-then-recency, tiered match × field weight, sub-300 ms SLA | `Accepted` | 2026-04-28 |
+| [`0014`](./0014-sharing-public-vs-invited-permission-model.md) | Sharing — public link + invited user, 5-role item ACL, separate-table roles, per-instance mirror ACL | `Accepted` | 2026-04-28 |
 
 > **Maintenance rule (summary — full protocol in [`_INDEX_AUTOMATION.md`](./_INDEX_AUTOMATION.md)):**
 > when adding/superseding an ADR, update **both** index tables (this one
