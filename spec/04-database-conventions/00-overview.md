@@ -143,7 +143,7 @@ Comprehensive database design and implementation conventions covering naming, sc
 > 4. **FK = exact PK name** — `UserId` in both `User` and `UserProfile` tables
 > 5. **SQLite first** (Split DB pattern) — MySQL as fallback
 > 6. **Always use ORMs** — never write raw SQL in business logic
-> 7. **Spec↔DDL alias bridge** — feature specs MAY use plural domain terms (e.g. *"Items"*, *"Content"*) for readability; the **DDL is the single source of truth** and stays singular (`Item`, `Title`). The alias mapping is canonical and load-bearing — see the table immediately below. *(Resolves ambiguity-triage #03, ruling 2026-04-27.)*
+> 7. **Spec↔DDL alias bridge** — feature specs MAY use plural domain terms (e.g. *"Items"*, *"Content"*) for readability; the **DDL is the single source of truth** and stays singular (`Item`, `Title`). The alias mapping is canonical and load-bearing — see the table immediately below. *(Resolves ambiguity-triage #03, ruling 2026-04-27; **ratified by [ADR-0024](../00-adrs/0024-ratify-soft-confirm-triage-rulings.md) §D2 on 2026-04-28** — gate `G-24-DDL-SINGULAR-LOCKED`. Renaming DDL to plural now requires superseding ADR-0001, ADR-0006, **and** ADR-0024.)*
 
 ### Spec↔DDL Alias Bridge (canonical)
 
