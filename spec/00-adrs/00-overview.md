@@ -154,7 +154,7 @@ Suppose someone wants to add a real `Favorite` table (currently forbidden by
 
 | ADR | Title | Status | Date |
 |---|---|---|---|
-| `0001` | Singular DDL vs plural prose | _planned (P44)_ | — |
+| [`0001`](./0001-singular-ddl-vs-plural-prose.md) | Singular DDL vs plural prose | `Accepted` | 2026-04-28 |
 
 > **Maintenance rule:** when adding/superseding an ADR, update this index
 > in the **same commit** as the ADR file change. The template
