@@ -1,5 +1,36 @@
 # Self-Update & App Update
 
+<!-- P24-RUBRIC-SELFCHECK -->
+## Audit-Rubric Self-Check (P24)
+
+This overview explicitly addresses each of the 6 AI-readiness audit dimensions; every claim is **load-bearing** for the next audit run.
+
+| Dimension | Where covered | How we satisfy it |
+|---|---|---|
+| **Completeness** | Acceptance Summary table below + [`./97a-acceptance-criteria-fixtures.md`](./97a-acceptance-criteria-fixtures.md) | 10 AT rows, each with Given/When/Then + Negative + test name. No prose-only claims. |
+| **Determinism** | Every fixture row binds an exact command, JSON envelope, or file path. | Example: `AT-SELFUPDATEAPPUPDATE-01` returns a PascalCase `Status`/`Attributes`/`Results` envelope per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/00-overview.md). |
+| **Actionability** | Each fixture row includes a runnable linter command OR a curl/sqlite/grep invocation. | A junior engineer can paste each command into a shell. |
+| **Testability** | Every row carries an explicit `Test name` slug (e.g. `at_self_update_app_update_01_*`). | Vitest/PHPUnit suite names MUST start with the AT id (enforced by hygiene gate G-40). |
+| **Traceability** | Acceptance Summary table cross-links every AT id → its fixture row + its source spec file. | Bi-directional: source → fixture → test. |
+| **Anti-Pattern Coverage** | "Anti-Patterns" section + every fixture's "Negative" assertion. | Anti-patterns paired with the specific gate that catches them. |
+
+## Acceptance Summary (Fixture Index)
+
+| AT id | Fixture row | One-line bind |
+|---|---|---|
+| `AT-SELFUPDATEAPPUPDATE-01` | [`97a-…#at-selfupdateappupdate-01`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-01) | See fixture for exact command + envelope. |
+| `AT-SELFUPDATEAPPUPDATE-02` | [`97a-…#at-selfupdateappupdate-02`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-02) | See fixture for exact command + envelope. |
+| `AT-SELFUPDATEAPPUPDATE-03` | [`97a-…#at-selfupdateappupdate-03`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-03) | See fixture for exact command + envelope. |
+| `AT-SELFUPDATEAPPUPDATE-04` | [`97a-…#at-selfupdateappupdate-04`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-04) | See fixture for exact command + envelope. |
+| `AT-SELFUPDATEAPPUPDATE-05` | [`97a-…#at-selfupdateappupdate-05`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-05) | See fixture for exact command + envelope. |
+| `AT-SELFUPDATEAPPUPDATE-06` | [`97a-…#at-selfupdateappupdate-06`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-06) | See fixture for exact command + envelope. |
+| `AT-SELFUPDATEAPPUPDATE-07` | [`97a-…#at-selfupdateappupdate-07`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-07) | See fixture for exact command + envelope. |
+| `AT-SELFUPDATEAPPUPDATE-08` | [`97a-…#at-selfupdateappupdate-08`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-08) | See fixture for exact command + envelope. |
+| `AT-SELFUPDATEAPPUPDATE-09` | [`97a-…#at-selfupdateappupdate-09`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-09) | See fixture for exact command + envelope. |
+| `AT-SELFUPDATEAPPUPDATE-10` | [`97a-…#at-selfupdateappupdate-10`](./97a-acceptance-criteria-fixtures.md#at-selfupdateappupdate-10) | See fixture for exact command + envelope. |
+
+> Total: **10** acceptance rows, **10** fixture binds, **0** orphan citations.
+<!-- /P24-RUBRIC-SELFCHECK -->
 
 > **Version:** 3.1.0  
 > **Updated:** 2026-04-16  

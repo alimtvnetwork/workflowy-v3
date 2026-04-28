@@ -15359,7 +15359,7 @@
       "cited_in": [
         {
           "file": "spec/10-powershell-integration/00-overview.md",
-          "line": 26
+          "line": 11
         },
         {
           "file": "spec/10-powershell-integration/08-wp-plugin-boundary.md",
@@ -15368,6 +15368,10 @@
         {
           "file": "spec/10-powershell-integration/97-acceptance-criteria.md",
           "line": 6
+        },
+        {
+          "file": "spec/10-powershell-integration/00-overview.md",
+          "line": 21
         }
       ]
     },
@@ -15376,63 +15380,108 @@
       "definition": "PowerShell artifacts excluded from ZIP",
       "defined_in": "spec/10-powershell-integration/97-acceptance-criteria.md",
       "defined_line": 41,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/10-powershell-integration/00-overview.md",
+          "line": 22
+        }
+      ]
     },
     {
       "id": "AT-POWERSHELLINTEGRATION-03",
       "definition": "No PHP-to-PowerShell shell-out",
       "defined_in": "spec/10-powershell-integration/97-acceptance-criteria.md",
       "defined_line": 48,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/10-powershell-integration/00-overview.md",
+          "line": 23
+        }
+      ]
     },
     {
       "id": "AT-POWERSHELLINTEGRATION-04",
       "definition": "Cross-platform parity",
       "defined_in": "spec/10-powershell-integration/97-acceptance-criteria.md",
       "defined_line": 54,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/10-powershell-integration/00-overview.md",
+          "line": 24
+        }
+      ]
     },
     {
       "id": "AT-POWERSHELLINTEGRATION-05",
       "definition": "Scope limited to dev tooling",
       "defined_in": "spec/10-powershell-integration/97-acceptance-criteria.md",
       "defined_line": 63,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/10-powershell-integration/00-overview.md",
+          "line": 25
+        }
+      ]
     },
     {
       "id": "AT-POWERSHELLINTEGRATION-06",
       "definition": "Historical Go content flagged",
       "defined_in": "spec/10-powershell-integration/97-acceptance-criteria.md",
       "defined_line": 66,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/10-powershell-integration/00-overview.md",
+          "line": 26
+        }
+      ]
     },
     {
       "id": "AT-POWERSHELLINTEGRATION-07",
       "definition": "Windows-only scripts segregated",
       "defined_in": "spec/10-powershell-integration/97-acceptance-criteria.md",
       "defined_line": 73,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/10-powershell-integration/00-overview.md",
+          "line": 27
+        }
+      ]
     },
     {
       "id": "AT-POWERSHELLINTEGRATION-08",
       "definition": "Out-of-scope items documented",
       "defined_in": "spec/10-powershell-integration/97-acceptance-criteria.md",
       "defined_line": 76,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/10-powershell-integration/00-overview.md",
+          "line": 28
+        }
+      ]
     },
     {
       "id": "AT-POWERSHELLINTEGRATION-09",
       "definition": "Decision matrix unambiguous",
       "defined_in": "spec/10-powershell-integration/97-acceptance-criteria.md",
       "defined_line": 79,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/10-powershell-integration/00-overview.md",
+          "line": 29
+        }
+      ]
     },
     {
       "id": "AT-POWERSHELLINTEGRATION-10",
       "definition": "Cross-references CI archetype",
       "defined_in": "spec/10-powershell-integration/97-acceptance-criteria.md",
       "defined_line": 82,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/10-powershell-integration/00-overview.md",
+          "line": 30
+        }
+      ]
     },
     {
       "id": "AT-PRECOMMIT-01",
@@ -17611,11 +17660,15 @@
       "cited_in": [
         {
           "file": "spec/14-self-update-app-update/00-overview.md",
-          "line": 25
+          "line": 11
         },
         {
           "file": "spec/14-self-update-app-update/97-acceptance-criteria.md",
           "line": 13
+        },
+        {
+          "file": "spec/14-self-update-app-update/00-overview.md",
+          "line": 21
         }
       ]
     },
@@ -17624,42 +17677,72 @@
       "definition": "Deploy-path resolution MUST be deterministic and never rely on the current working directory; symlinks and renamed binaries are handled explicitly per `02-deploy-path-resolution.md`.",
       "defined_in": "spec/14-self-update-app-update/97-acceptance-criteria.md",
       "defined_line": 24,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/14-self-update-app-update/00-overview.md",
+          "line": 22
+        }
+      ]
     },
     {
       "id": "AT-SELFUPDATEAPPUPDATE-03",
       "definition": "Rename-first deploy: the new binary is downloaded next to the live binary, verified, then renamed-into-place atomically; the old binary is preserved for rollback.",
       "defined_in": "spec/14-self-update-app-update/97-acceptance-criteria.md",
       "defined_line": 25,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/14-self-update-app-update/00-overview.md",
+          "line": 23
+        }
+      ]
     },
     {
       "id": "AT-SELFUPDATEAPPUPDATE-04",
       "definition": "Hand-off from the old process to the new process re-execs cleanly without leaking sockets, file descriptors, or partial writes.",
       "defined_in": "spec/14-self-update-app-update/97-acceptance-criteria.md",
       "defined_line": 26,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/14-self-update-app-update/00-overview.md",
+          "line": 24
+        }
+      ]
     },
     {
       "id": "AT-SELFUPDATEAPPUPDATE-05",
       "definition": "Cleanup removes the prior binary only after the new binary has booted successfully past a documented healthcheck; failed boot triggers rollback.",
       "defined_in": "spec/14-self-update-app-update/97-acceptance-criteria.md",
       "defined_line": 27,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/14-self-update-app-update/00-overview.md",
+          "line": 25
+        }
+      ]
     },
     {
       "id": "AT-SELFUPDATEAPPUPDATE-06",
       "definition": "Every downloaded asset is verified against a SHA-256 checksum from a signed manifest before any rename-into-place; verification failure aborts the update — Code Red on bypass.",
       "defined_in": "spec/14-self-update-app-update/97-acceptance-criteria.md",
       "defined_line": 33,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/14-self-update-app-update/00-overview.md",
+          "line": 26
+        }
+      ]
     },
     {
       "id": "AT-SELFUPDATEAPPUPDATE-07",
       "definition": "The release manifest is the SSOT for `Version`, `Channel`, `Url`, `Sha256`, `MinPreviousVersion`; missing or extra keys MUST be rejected.",
       "defined_in": "spec/14-self-update-app-update/97-acceptance-criteria.md",
       "defined_line": 34,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/14-self-update-app-update/00-overview.md",
+          "line": 27
+        }
+      ]
     },
     {
       "id": "AT-SELFUPDATEAPPUPDATE-08",
@@ -17670,6 +17753,10 @@
         {
           "file": "spec/14-self-update-app-update/09-release-versioning/97-acceptance-criteria.md",
           "line": 80
+        },
+        {
+          "file": "spec/14-self-update-app-update/00-overview.md",
+          "line": 28
         }
       ]
     },
@@ -17678,14 +17765,24 @@
       "definition": "Cross-compilation matrix matches the documented platform list; missing a platform is a release-blocking defect.",
       "defined_in": "spec/14-self-update-app-update/97-acceptance-criteria.md",
       "defined_line": 46,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/14-self-update-app-update/00-overview.md",
+          "line": 29
+        }
+      ]
     },
     {
       "id": "AT-SELFUPDATEAPPUPDATE-10",
       "definition": "The release pipeline produces install scripts that are idempotent (re-running on an up-to-date system MUST be a no-op) and the updater binary is statically linked or ships its runtime.",
       "defined_in": "spec/14-self-update-app-update/97-acceptance-criteria.md",
       "defined_line": 47,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/14-self-update-app-update/00-overview.md",
+          "line": 30
+        }
+      ]
     },
     {
       "id": "AT-SELFUPDATEAPPUPDATE-11",
@@ -18291,8 +18388,16 @@
       "defined_line": 22,
       "cited_in": [
         {
+          "file": "spec/05-split-db-architecture/00-overview.md",
+          "line": 11
+        },
+        {
           "file": "spec/05-split-db-architecture/01-fundamentals/97-acceptance-criteria.md",
           "line": 12
+        },
+        {
+          "file": "spec/05-split-db-architecture/00-overview.md",
+          "line": 21
         }
       ]
     },
@@ -18301,63 +18406,108 @@
       "definition": "The architecture supports a 2-, 3-, OR 4-layer hierarchy (root → domain [→ scope [→ user]]); deeper hierarchies are forbidden.",
       "defined_in": "spec/05-split-db-architecture/01-fundamentals/97-acceptance-criteria.md",
       "defined_line": 23,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/05-split-db-architecture/00-overview.md",
+          "line": 22
+        }
+      ]
     },
     {
       "id": "AT-SPLITDBFUNDAMENTALS-03",
       "definition": "The Root DB tables and the supported DB-type enum are defined in §02; adding a new DB type requires a doc bump AND an update to the `DbManager` factory.",
       "defined_in": "spec/05-split-db-architecture/01-fundamentals/97-acceptance-criteria.md",
       "defined_line": 29,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/05-split-db-architecture/00-overview.md",
+          "line": 23
+        }
+      ]
     },
     {
       "id": "AT-SPLITDBFUNDAMENTALS-04",
       "definition": "Each DB type has a documented retention policy (forever / N days / per-action); a DB type without retention metadata fails review.",
       "defined_in": "spec/05-split-db-architecture/01-fundamentals/97-acceptance-criteria.md",
       "defined_line": 30,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/05-split-db-architecture/00-overview.md",
+          "line": 24
+        }
+      ]
     },
     {
       "id": "AT-SPLITDBFUNDAMENTALS-05",
       "definition": "All SQLite databases run in **WAL mode**; `journal_mode = DELETE` (default) is forbidden in production.",
       "defined_in": "spec/05-split-db-architecture/01-fundamentals/97-acceptance-criteria.md",
       "defined_line": 36,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/05-split-db-architecture/00-overview.md",
+          "line": 25
+        }
+      ]
     },
     {
       "id": "AT-SPLITDBFUNDAMENTALS-06",
       "definition": "Connection pooling is per-database (NOT one global pool); the documented pool-size policy in §03 applies uniformly.",
       "defined_in": "spec/05-split-db-architecture/01-fundamentals/97-acceptance-criteria.md",
       "defined_line": 37,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/05-split-db-architecture/00-overview.md",
+          "line": 26
+        }
+      ]
     },
     {
       "id": "AT-SPLITDBFUNDAMENTALS-07",
       "definition": "Incremental backup uses SQLite's online backup API (NOT file copy); WAL-checkpoint is performed before backup snapshot.",
       "defined_in": "spec/05-split-db-architecture/01-fundamentals/97-acceptance-criteria.md",
       "defined_line": 43,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/05-split-db-architecture/00-overview.md",
+          "line": 27
+        }
+      ]
     },
     {
       "id": "AT-SPLITDBFUNDAMENTALS-08",
       "definition": "Point-in-time recovery is supported per DB (not just root) via the documented WAL-archive policy in §04.",
       "defined_in": "spec/05-split-db-architecture/01-fundamentals/97-acceptance-criteria.md",
       "defined_line": 44,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/05-split-db-architecture/00-overview.md",
+          "line": 28
+        }
+      ]
     },
     {
       "id": "AT-SPLITDBFUNDAMENTALS-09",
       "definition": "All DB access goes through the `DbManager` interface; direct `sql.Open` / `sqlite3.Open` outside the manager is forbidden.",
       "defined_in": "spec/05-split-db-architecture/01-fundamentals/97-acceptance-criteria.md",
       "defined_line": 50,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/05-split-db-architecture/00-overview.md",
+          "line": 29
+        }
+      ]
     },
     {
       "id": "AT-SPLITDBFUNDAMENTALS-10",
       "definition": "`GetOrCreateDb(type, scope) (*Db, error)` is idempotent — concurrent calls with the same `(type, scope)` return the same handle and never trigger duplicate-create races.",
       "defined_in": "spec/05-split-db-architecture/01-fundamentals/97-acceptance-criteria.md",
       "defined_line": 51,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/05-split-db-architecture/00-overview.md",
+          "line": 30
+        }
+      ]
     },
     {
       "id": "AT-SPLITDBFUNDAMENTALS-11",
@@ -20937,8 +21087,16 @@
       "defined_line": 22,
       "cited_in": [
         {
+          "file": "spec/36-user-management/00-overview.md",
+          "line": 11
+        },
+        {
           "file": "spec/36-user-management/97-acceptance-criteria.md",
           "line": 12
+        },
+        {
+          "file": "spec/36-user-management/00-overview.md",
+          "line": 21
         }
       ]
     },
@@ -20947,98 +21105,168 @@
       "definition": "Roles MUST live in a separate `UserRole` table linking `UserId` ↔ `Role` enum (FR-2); storing role columns directly on `User` is a Code-Red privilege-escalation bug per the project memory rule.",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 23,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/36-user-management/00-overview.md",
+          "line": 22
+        }
+      ]
     },
     {
       "id": "AT-USERMANAGEMENT-03",
       "definition": "The `Role` enum MUST be exactly `User`, `Editor`, `Admin`; adding new roles MUST update the enum + capability matrix + this AT — magic-string roles are forbidden.",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 24,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/36-user-management/00-overview.md",
+          "line": 23
+        }
+      ]
     },
     {
       "id": "AT-USERMANAGEMENT-04",
       "definition": "The capability matrix in `00-overview.md` MUST be the SSOT — code MUST NOT introduce ad-hoc capabilities not listed; new capabilities require updating the matrix first.",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 30,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/36-user-management/00-overview.md",
+          "line": 24
+        }
+      ]
     },
     {
       "id": "AT-USERMANAGEMENT-05",
       "definition": "All RBAC checks MUST go through the central `hasRole(userId, role)` helper (FR-6) — inline role comparisons (`if (user.role === 'Admin')`) are forbidden because they're un-auditable.",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 31,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/36-user-management/00-overview.md",
+          "line": 25
+        }
+      ]
     },
     {
       "id": "AT-USERMANAGEMENT-06",
       "definition": "`hasRole` MUST be the security-definer pattern: it MUST query the `UserRole` table (NOT a session cache) for privilege-elevation checks, even though session cache may be used for UI rendering.",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 32,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/36-user-management/00-overview.md",
+          "line": 26
+        }
+      ]
     },
     {
       "id": "AT-USERMANAGEMENT-07",
       "definition": "Auth MUST support password + optional WebAuthn passkey (FR-3); password-only auth without a documented passkey upgrade path fails review.",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 38,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/36-user-management/00-overview.md",
+          "line": 27
+        }
+      ]
     },
     {
       "id": "AT-USERMANAGEMENT-08",
       "definition": "Passwords MUST be hashed with Argon2id (memory ≥ 64 MB, iterations ≥ 3, parallelism ≥ 1) — bcrypt/PBKDF2/SHA-256 are forbidden as they're below the 2026 baseline.",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 39,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/36-user-management/00-overview.md",
+          "line": 28
+        }
+      ]
     },
     {
       "id": "AT-USERMANAGEMENT-09",
       "definition": "Session tokens MUST live in `httpOnly` + `Secure` + `SameSite=Lax` cookies when sync is enabled (FR-4); `localStorage` fallback is allowed ONLY in solo (no-sync) mode.",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 40,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/36-user-management/00-overview.md",
+          "line": 29
+        }
+      ]
     },
     {
       "id": "AT-USERMANAGEMENT-10",
       "definition": "JWTs (if used) MUST carry only the `userId` reference (NOT user data); embedding role/permissions in JWT claims is a Code-Red privilege-escalation bug.",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 41,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/36-user-management/00-overview.md",
+          "line": 30
+        }
+      ]
     },
     {
       "id": "AT-USERMANAGEMENT-11",
       "definition": "Solo mode MUST work with NO server login required; forcing login for offline use is a Code-Red product-promise violation.",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 47,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/36-user-management/00-overview.md",
+          "line": 31
+        }
+      ]
     },
     {
       "id": "AT-USERMANAGEMENT-12",
       "definition": "Switching from solo → sync mode MUST migrate the local user data into the synced account WITHOUT data loss; partial migration is a Code-Red data-loss bug.",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 48,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/36-user-management/00-overview.md",
+          "line": 32
+        }
+      ]
     },
     {
       "id": "AT-USERMANAGEMENT-13",
       "definition": "Admin UI MUST support invite, deactivate, role-change (FR-5); deletion MUST be a separate flow gated by an additional confirmation (NOT folded into deactivate).",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 54,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/36-user-management/00-overview.md",
+          "line": 33
+        }
+      ]
     },
     {
       "id": "AT-USERMANAGEMENT-14",
       "definition": "Every admin action MUST emit an entry to the activity feed (audit-of-the-audit); silent admin actions are a Code-Red audit-integrity bug.",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 55,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/36-user-management/00-overview.md",
+          "line": 34
+        }
+      ]
     },
     {
       "id": "AT-USERMANAGEMENT-15",
       "definition": "Per-item sharing permissions MUST follow the sharing-model memory; admin override of share permissions MUST be logged AND user-notified — silent override is a Code-Red trust bug.",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 61,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/36-user-management/00-overview.md",
+          "line": 35
+        }
+      ]
     },
     {
       "id": "AT-USERMANAGEMENT-16",
@@ -21049,6 +21277,10 @@
         {
           "file": "spec/36-user-management/97-acceptance-criteria.md",
           "line": 12
+        },
+        {
+          "file": "spec/36-user-management/00-overview.md",
+          "line": 36
         }
       ]
     },
