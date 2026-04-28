@@ -78,4 +78,5 @@ node scripts/spec-hygiene/00-run-all.mjs
 
 ## Fixtures
 
-Fixtures for every AT row in this file are covered by the global P2g sweep — see [`../../97a-acceptance-criteria-fixtures.md`](../../97a-acceptance-criteria-fixtures.md) (apply the matching pattern by section).
+- **Per-endpoint envelope JSON fixtures (P3):** [`./97b-endpoint-envelope-fixtures.md`](./97b-endpoint-envelope-fixtures.md) — canonical request/response samples for all 47 endpoints in [`./16-endpoint-at-matrix.md`](./16-endpoint-at-matrix.md), satisfying `AT-ENV-01`, `AT-ENV-02`, `AT-G19-01`, `AT-G22-01`, `AT-WPROOT-07`, `AT-AUTH-01`, `AT-RATE-01`.
+- Remaining narrative ATs are covered by the global P2g sweep — see [`../../97a-acceptance-criteria-fixtures.md`](../../97a-acceptance-criteria-fixtures.md).
