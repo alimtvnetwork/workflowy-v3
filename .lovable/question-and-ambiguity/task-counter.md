@@ -96,3 +96,9 @@
   - But §3 finding-section headers for AI-03/04/05/06 still showed 🟠/🟡 markers (no "CLOSED" tag).
 - Updated the 4 stale headers to ✅ ... — **CLOSED 2026-04-27** matching the final-state bullets in §7.
 - Verified G-02 (headers) and G-03 (links) still GREEN after edit.
+
+## Task #63 — 2026-04-28 — Plan-doc refresh (.lovable/plans/00-active.md)
+- Updated header to current state: 100/100 AI readiness, 25/26 hygiene green, sole red gate G-15 (= Code-1, blocked by spec-only).
+- Demoted prior 99/100 + 89/100 + Round-4 78/100 statuses to archived one-liners (kept history without bloat).
+- Refreshed "What's still live" — collapsed F-01..F-04 into one line; added AUDIT-AI-01..07 as closed; added Code-1/G-15 + soft-confirms #01/#03/#17 as the only remaining items.
+- Removed stale "Polish queue is no longer empty" wording (queue is now empty).
