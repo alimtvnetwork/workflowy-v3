@@ -515,6 +515,7 @@
 | `G-00-ADR-STATUS` | **DOC-NORM** | [`spec/00-adrs/00-overview.md`](./00-adrs/00-overview.md) | G-00-ADR-STATUS Status MUST be one of the 5 enum values; Accepted required for any G- reference. |
 | `G-00-ADR-SUPERSEDE` | **DOC-NORM** | [`spec/00-adrs/00-overview.md`](./00-adrs/00-overview.md) | G-00-ADR-SUPERSEDE A new ADR that supersedes another MUST update the older ADR's status in the same change. |
 | `G-00-ADR-XLINK-SYMMETRY` | **DOC-NORM** | [`spec/00-adrs/_INDEX_AUTOMATION.md`](./00-adrs/_INDEX_AUTOMATION.md) | Outbound links from an Accepted ADR's `## Decision` section to non-ADR repo files MUST have a reciprocal back-link at the linked anchor. Reference precedent: ADR-0024 §D1/D2/D3 ↔ triage `### #01/#03/#17`. |
+| `G-00-ADR-CONSEQUENCES-XLINK` | **DOC** | [`spec/00-adrs/_INDEX_AUTOMATION.md`](./00-adrs/_INDEX_AUTOMATION.md) | Sibling-advisory to `G-00-ADR-XLINK-SYMMETRY`. Outbound links from an Accepted ADR's `## Consequences` section that contain an action verb (must/requires/add/update/migrate/backfill/rename/remove) SHOULD have a reciprocal back-link. WARN-only; promotes to DOC-NORM at ≥10 baseline pairs. |
 
 ---
 
