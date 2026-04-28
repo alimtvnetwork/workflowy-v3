@@ -162,7 +162,27 @@ Whenever a spec sentence uses a plural domain noun, it refers to the singular DD
 **Rules:**
 - New spec terms MUST be added to this table in the same PR that introduces them.
 - The DDL side MUST NOT acquire a plural alias (no `Items_view`, no `ItemsAll`).
-- Endpoint payloads serialise the **DDL** name (`Item`, `Title`) — clients receive singular keys.
+- Endpoint payloads serialise the **DDL** name for **table-level** terms (`Item`, `Title`) — clients receive singular keys. **Column-level wire keys are governed separately by the column-level bridge below (per ADR-0026 §D6) — NOT all DDL column names appear unchanged on the wire.**
+
+### Spec↔DDL Alias Bridge (column-level — wire egress) {#alias-bridge-columns}
+
+ADR-0026 §D6 mandates that the PHP serializer translate certain DDL column names to canonical wire keys at egress. The DDL spelling is load-bearing inside `*.sql`, `07-db-diagram/`, SQL pseudocode, and the three explicitly-DDL-mirror fixture artifacts (`spec/31-app/04a-fixtures/{00-overview.md, generate.py, item-tree-217.json}`); every other context — REST/SSE wire payloads, TypeScript wire types, endpoint examples, prose `Results` shapes — MUST use the wire spelling.
+
+| DDL column (storage truth) | Wire key (PascalCase canonical) | Tables carrying this column | Authority |
+|---|---|---|---|
+| `OwnerUserId`               | `OwnerId`             | `Item`, `Template`, `Tag`, `Workspace` (App DB); `Workspace.OwnerUserId` (Root DB) | ADR-0020 (branded `OwnerId`) + ADR-0026 §D6 |
+
+**Rules (column-level):**
+- Adding a new table whose owner-of-record FK is the user MUST use the DDL spelling `OwnerUserId` (matches existing 4-table convention) **and** MUST appear as a row above so the alias-bridge stays exhaustive.
+- The PHP serializer is the **single egress translator**: no view, no ad-hoc REST callback may emit `OwnerUserId` on the wire.
+- The reverse direction (wire `OwnerId` → DDL `OwnerUserId`) applies on REST request **ingress** (e.g. POST/PATCH bodies); see `EP-*` request schemas.
+- Adding a new column to this bridge MUST also: (a) add a CI grep gate ensuring the DDL spelling is absent from `06-endpoints/**`, (b) extend `AT-WIRE-EGRESS-01` to assert the new wire key, (c) bump `_GATE-REGISTRY.md`.
+
+**Cross-references:**
+- `spec/00-adrs/0026-lww-canonical-tiebreak.md` §D2 (alias-bridge mandate) and §D6 (wire-boundary rule).
+- `spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md` §"PHP Serializer Egress Test" — runtime enforcement (`AT-WIRE-EGRESS-01`).
+- `spec/31-app/06-endpoints/16-endpoint-at-matrix.md` `Owner` column — drift-guard SSOT (33 owner-bearing endpoints).
+- `spec/_GATE-REGISTRY.md` entry `G-26-WIRE-OWNERID-ONLY` (CI + TEST dual tier).
 > 7. **Smallest possible key type** — `INTEGER` over `BIGINT`, never UUID unless required
 > 8. **Repeated values → separate table** — normalize with foreign key relationships
 > 9. **Views for joins** — define DB views instead of on-the-fly joins in code
