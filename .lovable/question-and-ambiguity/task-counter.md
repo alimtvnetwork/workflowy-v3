@@ -102,3 +102,11 @@
 - Demoted prior 99/100 + 89/100 + Round-4 78/100 statuses to archived one-liners (kept history without bloat).
 - Refreshed "What's still live" — collapsed F-01..F-04 into one line; added AUDIT-AI-01..07 as closed; added Code-1/G-15 + soft-confirms #01/#03/#17 as the only remaining items.
 - Removed stale "Polish queue is no longer empty" wording (queue is now empty).
+
+## Task #64 — 2026-04-28 — Final memory + project sweep
+- Searched for hidden work: TODO/FIXME in `spec/` and `scripts/`, suggestions tracker, pending-issues, plan archive.
+- TODO matches in spec are **content mentions** (e.g. persona description "developers jotting TODOs", style-guide example syntax) — not actionable.
+- TODO matches in `scripts/`: zero.
+- Suggestions tracker: all S/A entries closed.
+- Pending-issues folder: only README.
+- **Conclusion:** spec-only work queue is genuinely empty. Every remaining item requires either user input (Code-1 exit-spec-only / soft-confirms #01/#03/#17) or is dormant polish (F-future-G32-meta with no triggering data, F3-poly multi-day refactor needing its own plan).
