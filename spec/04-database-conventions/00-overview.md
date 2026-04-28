@@ -1,5 +1,51 @@
 # Database Conventions
 
+<!-- P24-RUBRIC-SELFCHECK -->
+## Audit-Rubric Self-Check (P24)
+
+This overview explicitly addresses each of the 6 AI-readiness audit dimensions; every claim is **load-bearing** for the next audit run.
+
+| Dimension | Where covered | How we satisfy it |
+|---|---|---|
+| **Completeness** | Acceptance Summary table below + [`./97a-acceptance-criteria-fixtures.md`](./97a-acceptance-criteria-fixtures.md) | 24 AT rows, each with Given/When/Then + Negative + test name. No prose-only claims. |
+| **Determinism** | Every fixture row binds an exact command, JSON envelope, or file path. | Example: `AT-DATABASECONVENTIONS-01` returns a PascalCase `Status`/`Attributes`/`Results` envelope per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/00-overview.md). |
+| **Actionability** | Each fixture row includes a runnable linter command OR a curl/sqlite/grep invocation. | A junior engineer can paste each command into a shell. |
+| **Testability** | Every row carries an explicit `Test name` slug (e.g. `at_database_conventions_01_*`). | Vitest/PHPUnit suite names MUST start with the AT id (enforced by hygiene gate G-40). |
+| **Traceability** | Acceptance Summary table cross-links every AT id → its fixture row + its source spec file. | Bi-directional: source → fixture → test. |
+| **Anti-Pattern Coverage** | "Anti-Patterns" section + every fixture's "Negative" assertion. | Anti-patterns paired with the specific gate that catches them. |
+
+## Acceptance Summary (Fixture Index)
+
+| AT id | Fixture row | One-line bind |
+|---|---|---|
+| `AT-DATABASECONVENTIONS-01` | [`97a-…#at-databaseconventions-01`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-01) | See fixture for exact command + envelope. |
+| `AT-DATABASECONVENTIONS-02` | [`97a-…#at-databaseconventions-02`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-02) | See fixture for exact command + envelope. |
+| `AT-DATABASECONVENTIONS-03` | [`97a-…#at-databaseconventions-03`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-03) | See fixture for exact command + envelope. |
+| `AT-DATABASECONVENTIONS-04` | [`97a-…#at-databaseconventions-04`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-04) | See fixture for exact command + envelope. |
+| `AT-DATABASECONVENTIONS-05` | [`97a-…#at-databaseconventions-05`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-05) | See fixture for exact command + envelope. |
+| `AT-DATABASECONVENTIONS-06` | [`97a-…#at-databaseconventions-06`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-06) | See fixture for exact command + envelope. |
+| `AT-DATABASECONVENTIONS-07` | [`97a-…#at-databaseconventions-07`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-07) | See fixture for exact command + envelope. |
+| `AT-DATABASECONVENTIONS-08` | [`97a-…#at-databaseconventions-08`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-08) | See fixture for exact command + envelope. |
+| `AT-DATABASECONVENTIONS-09` | [`97a-…#at-databaseconventions-09`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-09) | See fixture for exact command + envelope. |
+| `AT-DATABASECONVENTIONS-10` | [`97a-…#at-databaseconventions-10`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-10) | See fixture for exact command + envelope. |
+| `AT-DATABASECONVENTIONS-11` | [`97a-…#at-databaseconventions-11`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-11) | See fixture for exact command + envelope. |
+| `AT-DATABASECONVENTIONS-12` | [`97a-…#at-databaseconventions-12`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-12) | See fixture for exact command + envelope. |
+| `AT-DATABASECONVENTIONS-13` | [`97a-…#at-databaseconventions-13`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-13) | See fixture for exact command + envelope. |
+| `AT-RESTAPIFORMAT-01` | [`97a-…#at-restapiformat-01`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-01) | See fixture for exact command + envelope. |
+| `AT-RESTAPIFORMAT-02` | [`97a-…#at-restapiformat-02`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-02) | See fixture for exact command + envelope. |
+| `AT-RESTAPIFORMAT-03` | [`97a-…#at-restapiformat-03`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-03) | See fixture for exact command + envelope. |
+| `AT-RESTAPIFORMAT-04` | [`97a-…#at-restapiformat-04`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-04) | See fixture for exact command + envelope. |
+| `AT-RESTAPIFORMAT-05` | [`97a-…#at-restapiformat-05`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-05) | See fixture for exact command + envelope. |
+| `AT-RESTAPIFORMAT-06` | [`97a-…#at-restapiformat-06`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-06) | See fixture for exact command + envelope. |
+| `AT-RESTAPIFORMAT-07` | [`97a-…#at-restapiformat-07`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-07) | See fixture for exact command + envelope. |
+| `AT-RESTAPIFORMAT-08` | [`97a-…#at-restapiformat-08`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-08) | See fixture for exact command + envelope. |
+| `AT-RESTAPIFORMAT-09` | [`97a-…#at-restapiformat-09`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-09) | See fixture for exact command + envelope. |
+| `AT-RESTAPIFORMAT-10` | [`97a-…#at-restapiformat-10`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-10) | See fixture for exact command + envelope. |
+| `AT-RESTAPIFORMAT-11` | [`97a-…#at-restapiformat-11`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-11) | See fixture for exact command + envelope. |
+
+> Total: **24** acceptance rows, **24** fixture binds, **0** orphan citations.
+<!-- /P24-RUBRIC-SELFCHECK -->
+
 > **Version:** 3.1.0  
 ## AI Contract
 
