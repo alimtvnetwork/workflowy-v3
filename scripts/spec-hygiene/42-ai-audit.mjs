@@ -9,14 +9,17 @@ import path from 'node:path';
 const SPEC_DIR = 'spec';
 const MODEL = 'google/gemini-2.5-flash'; // mediocre-AI baseline per rubric
 const MAX_CHARS_PER_SECTION = 18000; // cap input
-const OUT_MD = '/mnt/documents/spec_ai_audit_FINAL.md';
-const OUT_JSON = '/mnt/documents/spec_ai_audit_FINAL.json';
+const OUT_MD = process.env.AUDIT_OUT_MD || '/mnt/documents/spec_ai_audit_FINAL.md';
+const OUT_JSON = process.env.AUDIT_OUT_JSON || '/mnt/documents/spec_ai_audit_FINAL.json';
 const API_KEY = process.env.LOVABLE_API_KEY;
 if (!API_KEY) { console.error('LOVABLE_API_KEY missing'); process.exit(1); }
 
+const ONLY = (process.env.AUDIT_ONLY || '').split(',').map(s => s.trim()).filter(Boolean);
 const SECTIONS = fs.readdirSync(SPEC_DIR, { withFileTypes: true })
   .filter(d => d.isDirectory() && /^\d/.test(d.name))
-  .map(d => d.name).sort();
+  .map(d => d.name)
+  .filter(n => !ONLY.length || ONLY.includes(n))
+  .sort();
 
 function walk(dir) {
   const out = [];
