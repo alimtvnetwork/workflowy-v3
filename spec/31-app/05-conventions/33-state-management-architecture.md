@@ -24,7 +24,7 @@ This file is the **single canonical answer** to "where does this piece of state 
 | D3 | **No Redux / Jotai / Recoil** | Forbidden | Redundant given D1+D2 |
 | D4 | **No `useContext` for app data** | Allowed only for *static* providers (theme, i18n, auth-user) | Context re-renders on every value identity change; Zustand uses `useSyncExternalStore` |
 | D5 | **Per-route slice for the 250-item view** | Item slice keyed by `zoomedItemId` | Memory-bounded — only one zoom-root tree is hot at a time |
-| D6 | **Mirror propagation** | (a) **TanStack Query cache patch** on local edit + (b) **SSE push** for cross-tab/cross-user, with **last-write-wins on `UpdatedAt`** (ties broken by `OwnerUserId` ASC) | Local edits feel instant (a); cross-session correctness comes from authoritative server stream (b); deterministic tie-break removes ambiguity |
+| D6 | **Mirror propagation** | (a) **TanStack Query cache patch** on local edit + (b) **SSE push** for cross-tab/cross-user, with **last-write-wins per the canonical 3-tier comparator `(ServerTs DESC, OwnerId ASC, ItemId ASC)`** ([ADR-0026](../../00-adrs/0026-lww-canonical-tiebreak.md) §D1) | Local edits feel instant (a); cross-session correctness comes from authoritative server stream (b); the 3-tier comparator removes all ambiguity including the `(ts, owner)` second-tie case |
 | D7 | **Optimistic mutations** | Always-on for: rename, complete-toggle, indent/outdent, drag-reorder, tag toggle. **Off** for: share invites, role changes, template apply | Edit-grade ops need <16 ms feel; permission-grade ops are rare and need confirmation |
 | D8 | **Undo/redo** | Local Zustand stack of inverse `Mutation` records, capped at 100 entries per `zoomedItemId` | Per-zoom stack mirrors WorkFlowy's behaviour and bounds memory |
 | D9 | **Offline queue** | Zustand-persisted (`localStorage`) FIFO of pending `Mutation` records, flushed on `online` event | Survives reload; replays in order; idempotent because every mutation has client-generated `MutationId` |
@@ -137,9 +137,11 @@ Local edit on Source Item S
    └──▶ server emits SSE 'item.update' → all OTHER tabs receive and re-invalidate
            → mirrors fan out via the same listener as Scenario 2
    
-LWW tie-break:
-   if (local.UpdatedAt === remote.UpdatedAt)
-       winner = (local.OwnerUserId < remote.OwnerUserId) ? local : remote
+LWW tie-break (canonical 3-tier per ADR-0026 §D1):
+   compare(local, remote):
+       if (local.ServerTs !== remote.ServerTs) return local.ServerTs > remote.ServerTs ? local : remote
+       if (local.OwnerId  !== remote.OwnerId)  return local.OwnerId  < remote.OwnerId  ? local : remote
+       return                                         local.ItemId   < remote.ItemId   ? local : remote
 ```
 
 ---
@@ -257,8 +259,8 @@ src/
 | `AT-STATE-04` | The SSE `EventSource` is constructed in exactly one file (`RealtimeProvider.tsx`); a grep for `new EventSource(` returns exactly one match in `src/`. (R5) |
 | `AT-STATE-05` | Every `useMutation` with `onMutate` for optimistic updates has a matching `onError` rollback that calls `queryClient.setQueryData` with the snapshot. (R6) |
 | `AT-STATE-06` | `useUndoStore` is keyed by `zoomedItemId` — switching zoom and pressing Cmd-Z does not affect the previous zoom's history. (R7) |
-| `AT-STATE-07` | When two tabs edit the same Mirror within 50 ms, the resulting `Item.Content` matches the row with the latest `(UpdatedAt, OwnerUserId ASC)` lex tuple. (D6) |
-| `AT-STATE-08` | After 24 h offline, the `useOfflineQueueStore` survives reload via `localStorage`, and replays in FIFO order on the next `online` event. (D9) |
+| `AT-STATE-07` | When two tabs edit the same Mirror within 50 ms, the resulting `Item.Content` matches the row chosen by the canonical 3-tier comparator `(ServerTs DESC, OwnerId ASC, ItemId ASC)` per ADR-0026 §D1. (D6) |
+| `AT-STATE-08` | After 24 h offline, the `useOfflineQueueStore` survives reload via **IndexedDB** (per ADR-0021 — localStorage is forbidden), and replays in FIFO order on the next `online` event. (D9) |
 
 ---
 

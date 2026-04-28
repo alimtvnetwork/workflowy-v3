@@ -20401,7 +20401,7 @@
     },
     {
       "id": "AT-STATE-07",
-      "definition": "When two tabs edit the same Mirror within 50 ms, the resulting `Item.Content` matches the row with the latest `(UpdatedAt, OwnerUserId ASC)` lex tuple. (D6)",
+      "definition": "When two tabs edit the same Mirror within 50 ms, the resulting `Item.Content` matches the row with the latest `(ServerTs DESC, OwnerId ASC, ItemId ASC)` canonical 3-tier LWW tuple per ADR-0026 §D1. (D6)",
       "defined_in": "spec/31-app/05-conventions/33-state-management-architecture.md",
       "defined_line": 260,
       "cited_in": []

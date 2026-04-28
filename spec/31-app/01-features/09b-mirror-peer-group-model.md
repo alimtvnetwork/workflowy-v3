@@ -30,7 +30,7 @@ The `MirrorOfItemId` column on `Item` and the `Mirror(SourceItemId, MirrorItemId
 | **R-2** | When user creates a mirror via `/mirror`, `/mirror to`, `/mirror here`, or **⇧⌘M**, both the originating item AND the new instance become group members. The "originating" item gains a diamond badge. | Workflowy parity |
 | **R-3** | **Detach removes one member from the group.** If the group's size drops to **1**, the group is **dissolved** and the remaining lone item also becomes a regular item (no diamond). | User confirmation 2026-04-27 |
 | **R-4** | **Edits flow read-through.** Title, Notes, Tags, Completion, Children, Child-order, Attachments, Comments, ItemType — synced across all peers. **Position** (FractionalIndex within parent) and **IsCollapsed** are per-instance. | User confirmation 2026-04-27 |
-| **R-5** | Conflict tiebreak is **LWW by `(UpdatedAt DESC, OwnerUserId ASC)`** at the field level. See [`05-conventions/33-state-management-architecture.md`](../05-conventions/33-state-management-architecture.md) §3. | User confirmation 2026-04-27 |
+| **R-5** | Conflict tiebreak is **LWW by the canonical 3-tier comparator `(ServerTs DESC, OwnerId ASC, ItemId ASC)`** at the field level — see [ADR-0026](../../00-adrs/0026-lww-canonical-tiebreak.md) §D1 (sole authority) and [`05-conventions/33-state-management-architecture.md`](../05-conventions/33-state-management-architecture.md) §3. **Casing:** `OwnerId` is canonical (ADR-0020 branded type); the spelling `OwnerUserId` is a DDL-side alias bridge entry only and MUST NOT appear in new prose, AC fixtures, or wire payloads. | User confirmation 2026-04-27, ratified by ADR-0026 (2026-04-28) |
 
 ---
 
@@ -181,7 +181,7 @@ WHERE  mm.MirrorGroupId = (SELECT MirrorGroupId FROM MirrorMember WHERE ItemId =
 | AT-MPG-06 | User opens context menu on a mirror | Menu shows "See them" | Clicking opens a list of all peers with their parent titles | `mirror-see-them` |
 | AT-MPG-07 | Peer #2 is `IsCollapsed = 1`, peer #1 is expanded | Render | Peer #2 renders collapsed, peer #1 renders expanded; toggling one does NOT toggle the other | `mirror-collapse-isolation` |
 | AT-MPG-08 | Canonical peer is deleted (moved to trash) | After delete | The `MirrorGroup.CanonicalItemId` is updated to the next-lowest `ItemId` in the group; renderer continues seamlessly | `mirror-canonical-promotion` |
-| AT-MPG-09 | Two devices edit the same canonical content offline | Both reconnect within 1 s | The edit with the later `UpdatedAt` wins; if equal, the edit from the lower `OwnerUserId` wins (LWW per R-5) | `mirror-lww-tiebreak` |
+| AT-MPG-09 | Two devices edit the same canonical content offline | Both reconnect within 1 s | The edit with the later `ServerTs` wins; on tie → lower `OwnerId` wins; on second tie → lower `ItemId` wins (canonical 3-tier LWW per R-5 / ADR-0026 §D1) | `mirror-lww-tiebreak` |
 | AT-MPG-10 | User attempts to mirror item X under a parent inside X's own subtree | Submit | Block with toast "Cannot mirror an item into itself or its descendants" — see [`09a-mirror-cycle-detection.md`](./09a-mirror-cycle-detection.md) | `mirror-cycle-error` |
 
 ---
@@ -241,7 +241,7 @@ This migration is in [`07-db-diagram/sql/07-migration-v2-mirror-peer-groups.sql`
 3. Group has 2 members; user detaches one → `TrgMirrorMember_DissolveOnSingleton` deletes the group; lone surviving Item becomes regular.
 4. Group has 5 members; user detaches one → group + 4 remaining peers stay; diamonds intact.
 5. Canonical peer is hard-deleted → `ON DELETE CASCADE` on `MirrorGroup.CanonicalItemId` would dissolve the group; **before delete**, application code re-points `CanonicalItemId` to next-lowest `ItemId` in group.
-6. Two devices edit the canonical row's title offline → on reconnect, LWW by `(UpdatedAt DESC, OwnerUserId ASC)` picks the winner; all peers re-render.
+6. Two devices edit the canonical row's title offline → on reconnect, LWW by the canonical 3-tier comparator `(ServerTs DESC, OwnerId ASC, ItemId ASC)` (ADR-0026 §D1) picks the winner; all peers re-render.
 7. Peer A is collapsed in location-1, peer B is expanded in location-2 → `IsCollapsed` is per-instance; toggling A does not affect B.
 8. User reorders peer A inside its parent → only A's `FractionalIndex` changes; peers B, C, ... keep theirs.
 9. User shares the source content to a teammate → share grant is on the canonical `ItemId`; all peers inherit the grant.
@@ -259,7 +259,7 @@ This migration is in [`07-db-diagram/sql/07-migration-v2-mirror-peer-groups.sql`
 | AT-MPG-06 | User opens context menu on a mirror | Clicks "See them" | List of all peers with parent titles opens | `mirror-see-them` |
 | AT-MPG-07 | Peer #2 collapsed, peer #1 expanded | Render | Each peer renders its own collapse state | `mirror-collapse-isolation` |
 | AT-MPG-08 | Canonical peer is deleted | After delete | `MirrorGroup.CanonicalItemId` is re-pointed to next-lowest `ItemId` | `mirror-canonical-promotion` |
-| AT-MPG-09 | Two devices edit canonical content offline | Both reconnect | Later `UpdatedAt` wins; tie → lower `OwnerUserId` wins | `mirror-lww-tiebreak` |
+| AT-MPG-09 | Two devices edit canonical content offline | Both reconnect | Later `ServerTs` wins; tie → lower `OwnerId`; second tie → lower `ItemId` (ADR-0026 §D1) | `mirror-lww-tiebreak` |
 | AT-MPG-10 | User picks own subtree as mirror target | Submit | Block with `ERR_CYCLE` toast | `mirror-cycle-error` |
 
 
