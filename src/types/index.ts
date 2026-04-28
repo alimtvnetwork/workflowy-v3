@@ -38,10 +38,10 @@ export type ItemType =
   | "todo"
   | "numbered"
   | "board"
+  | "dashboard"
   | "quote"
   | "code"
-  | "divider"
-  | "mirror";
+  | "divider";
 
 /** Core item as stored in the database. */
 export interface Item {
