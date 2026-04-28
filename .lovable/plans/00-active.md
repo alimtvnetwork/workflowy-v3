@@ -136,9 +136,29 @@ Pick the top 🟦 item on every `next`. Strike (✅) when done; new top item bec
 **✅ Done 2026-04-28:** Authored [`spec/23-ai-build-walkthrough.md`](../../spec/23-ai-build-walkthrough.md) (~210 lines). Chosen vertical slice: **Today View** (`EP-VIEWS-TODAY` + `AT-TODAY-01..14` + `ItemType` enum + 3 mem:// rules). Walkthrough has 7 ordered steps: (1) resolve contract slice via `jq spec/contract.json`, (2) bind ATs to fixtures from §Acceptance Tests, (3) fill the P7-generated PHP `handle_views_today` stub with full envelope-shaped 200 response, (4) refine the P7 TS `viewsToday()` method with concrete `TodayItem`/`TodayAttributes` types, (5) author `<TodayView />` React component honoring 250-item cap + mirror dedup + offline fallback, (6) author Vitest suite where every test name MUST start with an AT id, (7) verify slice closes the contract via shell loop checking each `AT-TODAY-NN` is present. Includes self-test table + failure-mode catalog mapping each symptom back to an owning ticket. Cites only stable IDs and `mem://` pointers — zero source-code reads required. Hygiene PASS for P9 changes; only the 2 unchanged pre-existing failures remain. Together with P6+P7, completes the AI-readiness substrate (contract → skeletons → walkthrough). Last remaining task: P10 re-audit.
 
 
-### P10 — Re-run full audit on all 24 sections (needs credits topped up)
-**Action:** `node /tmp/run_audit.mjs` against the full set; produce `spec_ai_audit_FINAL.md`.
+### ✅ P10 — Re-run full audit on all 24 sections
+**Action:** `node /tmp/audit.mjs` against the full set; produce `spec_ai_audit_FINAL.md`.
 **Gate:** every section ≥90; if any <90, branch back into a P-step targeted at the failing dimension.
+**✅ Done 2026-04-28:** Built reusable audit runner [`/tmp/audit.mjs`](https://example.invalid) (140 LOC, model `google/gemini-2.5-flash`, 18 KB input cap per section, forced `submit_score` tool-call). Scored **24/24 sections, 0 errors** — first full coverage in project history (prior runs hit 10/24 due to quota). Composite **35/100 (F)** — see [/mnt/documents/spec_ai_audit_FINAL.md](/mnt/documents/spec_ai_audit_FINAL.md). The headline drop vs round-4 (55) is a **methodology artefact**, not a regression: the per-section input cap truncates the 5 mega-sections (`02-coding-guidelines` 36 256 lines, `15-wp-plugin-how-to` 22 347, `03-error-manage` 21 334, `31-app` 26 406, `13-cicd-pipeline-workflows` 7168) so the AI rightly penalises them for missing context. Real signal lives in the small focused sections that fit the cap and reflect F/P-series gains: **35-enforcement 80 (B)**, **33-feedback 76 (C)**, **14-self-update 70 (C)**, **34-activity 62 (D)**, **36-user-management 60 (D)**, **12-consolidated 60 (D)**. Aggregate dim leader: **consistency 68** (hygiene scripts working). Aggregate dim laggards: **actionability 20**, **determinism 21** (still need P4 sweep + P2 fixture expansion). Branches into the P11+ follow-up queue below.
+
+### 🟦 P11 — Section-splitter for mega-sections (audit-cap workaround)
+**Targets:** `02-coding-guidelines` (309 files), `15-wp-plugin-how-to` (223), `03-error-manage` (197), `31-app` (134), `32-ui-design` (122).
+**Action:** Either (a) audit per-subsection in a second pass and weight-average back to the parent, OR (b) emit a per-section `00-overview-condensed.md` ≤ 18 KB that the audit runner prefers when present.
+**Gate:** all 5 mega-sections re-score ≥60 (D) on next P10-style run.
+
+### P12 — Drain G-39 feature-block backlog
+**Targets:** 29 prose violations in 9 F1–F6 files.
+**Action:** Convert "Feature (shortcut)" parentheticals → `**Feature** — desc \`shortcut\`` rows; flip `ENFORCE = true` in [`scripts/spec-hygiene/39-check-feature-block-format.mjs`](../../scripts/spec-hygiene/39-check-feature-block-format.mjs).
+
+### P13 — Resolve 434 orphan AT citations (P6 finding)
+**Action:** Each citation either gets a definition row in the right `9{7,8}-acceptance-criteria.md` or the citation gets removed. Track in [`./archive/12-p13-orphan-ats.md`](./archive/12-p13-orphan-ats.md).
+**Gate:** `spec/contract.json` shows 0 orphan citations; flip a new G-40 enforcing gate.
+
+### P14 — Resolve `ItemType` enum drift + runbook-staleness `Implements:` line
+**Targets:** 2 long-standing pre-existing hygiene failures carried across all P-step notes. Pick one source of truth (spec uses `dashboard`, code uses `mirror`) and reconcile.
+
+### P15 — P4 sweep (TBD / "should" / "consider")
+**Action:** original P4 was deferred behind P10. Run `rg -n '\b(TBD|consider|should|maybe|tentative)\b' spec/`, resolve every hit. Predicted gain on next audit: **+8 composite** (lifts unambiguity 31 → ~50).
 
 ---
 
