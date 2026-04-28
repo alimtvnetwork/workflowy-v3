@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-28  
-**Total Files:** 1405  
+**Total Files:** 1410  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -17,9 +17,9 @@
 
 - [01-spec-authoring-guide](#01-spec-authoring-guide) — 25 file(s)
 - [02-coding-guidelines](#02-coding-guidelines) — 310 file(s)
-- [03-error-manage](#03-error-manage) — 190 file(s)
+- [03-error-manage](#03-error-manage) — 191 file(s)
 - [04-database-conventions](#04-database-conventions) — 17 file(s)
-- [05-split-db-architecture](#05-split-db-architecture) — 46 file(s)
+- [05-split-db-architecture](#05-split-db-architecture) — 47 file(s)
 - [06-seedable-config-architecture](#06-seedable-config-architecture) — 51 file(s)
 - [07-design-system](#07-design-system) — 17 file(s)
 - [08-docs-viewer-ui](#08-docs-viewer-ui) — 29 file(s)
@@ -28,10 +28,10 @@
 - [11-research](#11-research) — 2 file(s)
 - [12-consolidated-guidelines](#12-consolidated-guidelines) — 26 file(s)
 - [13-cicd-pipeline-workflows](#13-cicd-pipeline-workflows) — 37 file(s)
-- [14-self-update-app-update](#14-self-update-app-update) — 33 file(s)
+- [14-self-update-app-update](#14-self-update-app-update) — 34 file(s)
 - [15-wp-plugin-how-to](#15-wp-plugin-how-to) — 224 file(s)
-- [16-generic-cli](#16-generic-cli) — 44 file(s)
-- [17-generic-update](#17-generic-update) — 12 file(s)
+- [16-generic-cli](#16-generic-cli) — 45 file(s)
+- [17-generic-update](#17-generic-update) — 13 file(s)
 - [18-spec-issues](#18-spec-issues) — 15 file(s)
 - [31-app](#31-app) — 134 file(s)
 - [32-ui-design](#32-ui-design) — 123 file(s)
@@ -581,6 +581,7 @@
 | [`03-error-manage/97a-acceptance-criteria-fixtures.md`](./03-error-manage/97a-acceptance-criteria-fixtures.md) | Error Resolution — Acceptance Criteria I/O Fixtures | 1.0.0 | Concrete |
 | [`03-error-manage/98-changelog.md`](./03-error-manage/98-changelog.md) | Error Management — Changelog | 3.1.0 | — |
 | [`03-error-manage/99-consistency-report.md`](./03-error-manage/99-consistency-report.md) | Consistency Report: Error Management | 3.1.0 | — |
+| [`03-error-manage/99a-worked-example-fixtures.md`](./03-error-manage/99a-worked-example-fixtures.md) | Worked Example Fixtures — Canonical Error Envelope (P27) | — | — |
 | [`03-error-manage/structure.md`](./03-error-manage/structure.md) | 04-error-manage — Structure Summary | 3.1.0 | — |
 
 ## 04-database-conventions
@@ -655,6 +656,7 @@
 | [`05-split-db-architecture/97a-acceptance-criteria-fixtures.md`](./05-split-db-architecture/97a-acceptance-criteria-fixtures.md) | Split DB Architecture — Acceptance Criteria I/O Fixtures | 1.0.0 | Normative |
 | [`05-split-db-architecture/98-acceptance-criteria.md`](./05-split-db-architecture/98-acceptance-criteria.md) | Split DB Architecture: Acceptance Criteria | 3.1.0 | Active |
 | [`05-split-db-architecture/99-consistency-report.md`](./05-split-db-architecture/99-consistency-report.md) | Consistency Report: Split DB Architecture | 3.1.0 | — |
+| [`05-split-db-architecture/99a-worked-example-fixtures.md`](./05-split-db-architecture/99a-worked-example-fixtures.md) | Worked Example Fixtures — DB Split Decision Matrix + ATTACH (P27) | — | — |
 
 ## 06-seedable-config-architecture
 
@@ -933,6 +935,7 @@
 | [`14-self-update-app-update/97-acceptance-criteria.md`](./14-self-update-app-update/97-acceptance-criteria.md) | Self-Update / App-Update — Acceptance Criteria (rollup) | 2.0.0 | Curated |
 | [`14-self-update-app-update/97a-acceptance-criteria-fixtures.md`](./14-self-update-app-update/97a-acceptance-criteria-fixtures.md) | Self-Update / App-Update — Acceptance Criteria I/O Fixtures | 1.0.0 | Concrete |
 | [`14-self-update-app-update/99-consistency-report.md`](./14-self-update-app-update/99-consistency-report.md) | Consistency Report — Self-Update & App Update | 3.1.0 | — |
+| [`14-self-update-app-update/99a-worked-example-fixtures.md`](./14-self-update-app-update/99a-worked-example-fixtures.md) | Worked Example Fixtures — Self-Update Algorithm (P27) | — | — |
 | [`14-self-update-app-update/diagrams/00-overview.md`](./14-self-update-app-update/diagrams/00-overview.md) | Diagrams — Self-Update & App Update | 3.1.0 | — |
 | [`14-self-update-app-update/diagrams/99-consistency-report.md`](./14-self-update-app-update/diagrams/99-consistency-report.md) | Consistency Report — Diagrams | 1.0.0 | — |
 
@@ -1213,6 +1216,7 @@
 | [`16-generic-cli/97-acceptance-criteria.md`](./16-generic-cli/97-acceptance-criteria.md) | Generic CLI — Acceptance Criteria (rollup) | 2.0.0 | Curated |
 | [`16-generic-cli/97a-acceptance-criteria-fixtures.md`](./16-generic-cli/97a-acceptance-criteria-fixtures.md) | Generic CLI — Acceptance Criteria I/O Fixtures | 1.0.0 | Concrete |
 | [`16-generic-cli/99-consistency-report.md`](./16-generic-cli/99-consistency-report.md) | Consistency Report — Generic Cli | 1.0.0 | — |
+| [`16-generic-cli/99a-worked-example-fixtures.md`](./16-generic-cli/99a-worked-example-fixtures.md) | Worked Example Fixtures — Generic CLI Envelopes (P27) | — | — |
 
 ## 17-generic-update
 
@@ -1229,6 +1233,7 @@
 | [`17-generic-update/97-acceptance-criteria.md`](./17-generic-update/97-acceptance-criteria.md) | Generic Update — Acceptance Criteria | 2.0.0 | Curated |
 | [`17-generic-update/97a-acceptance-criteria-fixtures.md`](./17-generic-update/97a-acceptance-criteria-fixtures.md) | Generic Update — Acceptance Criteria I/O Fixtures | 1.0.0 | Concrete |
 | [`17-generic-update/99-consistency-report.md`](./17-generic-update/99-consistency-report.md) | Consistency Report — Generic Update | 1.0.0 | — |
+| [`17-generic-update/99a-worked-example-fixtures.md`](./17-generic-update/99a-worked-example-fixtures.md) | Worked Example Fixtures — Generic Update Manifest (P27) | — | — |
 | [`17-generic-update/README.md`](./17-generic-update/README.md) | 08 — Generic Self-Update Specification | — | — |
 
 ## 18-spec-issues
@@ -1575,4 +1580,4 @@
 
 ---
 
-*Auto-generated index — 1405 files across 25 top-level folders.*
+*Auto-generated index — 1410 files across 25 top-level folders.*
