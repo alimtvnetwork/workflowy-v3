@@ -48,12 +48,13 @@ A fixture file MAY include additional sections (e.g. "See also",
   `<fixture-path>: section "Algorithm" lacks fenced code block`.
 - **exit code:** `0` on clean audit, `1` on any violation.
 
-## Algorithm (frozen reference, ~30 lines of logic)
+## Algorithm (frozen reference, ~40 lines of logic)
 
 ```python
 #!/usr/bin/env python3
 """Reference implementation of G-13-FIXTURE-AS-SPEC-SHAPE.
-Frozen 2026-04-28. Audits the shape of every fixture-as-spec file.
+Frozen 2026-04-28 — Phase 2 (language-tag enforcement).
+Audits the shape of every fixture-as-spec file.
 """
 import re, pathlib, sys
 
@@ -62,8 +63,12 @@ REQUIRED = ["Purpose", "Inputs", "Outputs", "Algorithm", "Exemptions"]
 ROADMAP_OR_FIXTURES = ["Strictness roadmap", "Test fixtures",
                        "Baseline ledger"]
 EXEMPT_FILES = {"README.md"}
+ALLOWED_LANGS = {"python", "bash", "sh", "javascript", "js",
+                 "typescript", "ts"}
 H2 = re.compile(r"^## (.+?)\s*$", re.M)
-FENCE = re.compile(r"```[a-z]*\s*\n.*?\n```", re.S)
+# Phase 2: capture the language tag explicitly (group 1).
+FENCE_TAGGED = re.compile(r"```([a-zA-Z0-9_+-]+)\s*\n.*?\n```", re.S)
+FENCE_ANY = re.compile(r"```[a-zA-Z0-9_+-]*\s*\n.*?\n```", re.S)
 
 def audit_file(path: pathlib.Path) -> list[str]:
     text = path.read_text(encoding="utf-8")
@@ -75,10 +80,21 @@ def audit_file(path: pathlib.Path) -> list[str]:
     if not any(any(h.startswith(opt) for h in headers)
                for opt in ROADMAP_OR_FIXTURES):
         errors.append('missing "Strictness roadmap" or "Test fixtures"')
-    # Algorithm section MUST contain a fenced code block.
     algo = re.search(r"^## Algorithm.*?(?=^## |\Z)", text, re.S | re.M)
-    if algo and not FENCE.search(algo.group(0)):
+    if not algo:
+        return [f"{path}: {e}" for e in errors]
+    body = algo.group(0)
+    if not FENCE_ANY.search(body):
         errors.append('section "Algorithm" lacks fenced code block')
+        return [f"{path}: {e}" for e in errors]
+    # Phase 2: at least one fence in Algorithm MUST carry an allowed lang.
+    tagged = [m.group(1).lower() for m in FENCE_TAGGED.finditer(body)]
+    if not tagged:
+        errors.append('section "Algorithm" fence lacks language tag '
+                      '(expected one of: python/bash/js/ts)')
+    elif not any(t in ALLOWED_LANGS for t in tagged):
+        errors.append(f'section "Algorithm" uses disallowed language '
+                      f'tag(s): {tagged} (allowed: {sorted(ALLOWED_LANGS)})')
     return [f"{path}: {e}" for e in errors]
 
 def main() -> int:
@@ -86,7 +102,7 @@ def main() -> int:
     violations = [v for p in fixtures for v in audit_file(p)]
     if violations:
         print("\n".join(violations)); return 1
-    print(f"OK — {len(fixtures)} fixtures, all shapes valid")
+    print(f"OK — {len(fixtures)} fixtures, all shapes valid (Phase 2)")
     return 0
 
 if __name__ == "__main__":
