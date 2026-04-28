@@ -168,6 +168,7 @@ Suppose someone wants to add a real `Favorite` table (currently forbidden by
 | [`0006`](./0006-migrate-spec-sql-to-singular-ddl.md) | Migrate spec SQL fragments to singular DDL identifiers | `Accepted` | 2026-04-28 |
 | [`0007`](./0007-strict-typescript-rules.md) | Strict TypeScript coding rules (zero `any`, max 3 params, no nested `if`s, 15-line logic limit, positive guards) | `Accepted` | 2026-04-28 |
 | [`0008`](./0008-unified-item-node-interface.md) | Unified `Node` interface + 250-item per-view limit | `Accepted` | 2026-04-28 |
+| [`0009`](./0009-trash-30-day-retention.md) | Trash — 30-day retention, soft-delete, daily reaper at 03:00 UTC, batch=1000 | `Accepted` | 2026-04-28 |
 
 > **Maintenance rule (summary — full protocol in [`_INDEX_AUTOMATION.md`](./_INDEX_AUTOMATION.md)):**
 > when adding/superseding an ADR, update **both** index tables (this one
