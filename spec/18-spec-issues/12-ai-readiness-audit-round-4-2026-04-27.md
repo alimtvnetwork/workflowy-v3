@@ -83,7 +83,7 @@ A mediocre AI implementer will crash and burn trying to build from this spec, de
 
 **How to fix:** Inject `schema-seed-sqlite.sql` files with concrete SQLite types mapped directly from the prose ERD into the `07-db-diagram` folder.
 
-### 🟠 AUDIT-AI-04 — No Complex Item-Tree JSON Fixtures
+### ✅ AUDIT-AI-04 — No Complex Item-Tree JSON Fixtures — **CLOSED 2026-04-27**
 
 | Field | Value |
 |-------|-------|
