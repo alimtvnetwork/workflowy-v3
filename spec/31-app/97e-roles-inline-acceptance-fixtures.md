@@ -1,8 +1,8 @@
 # Roles & Permissions — Acceptance-Criteria I/O Fixtures (`AT-ROLES-01..10`)
 
-> **Companion to:** [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) §Acceptance Tests
-> **Format:** [`spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](../../01-spec-authoring-guide/19-acceptance-criteria-io-table.md)
-> **Elaborates canonical:** `AT-APP-21`, `AT-APP-22`, `AT-APP-23` (see [`spec/31-app/97c-acceptance-criteria-fixtures.md`](../97c-acceptance-criteria-fixtures.md) — actually canonical fixtures are in [`97b`](../97b-acceptance-criteria-fixtures.md)).
+> **Companion to:** [`01-features/15-roles-and-permissions.md`](./01-features/15-roles-and-permissions.md) §Acceptance Tests
+> **Format:** [`spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](../01-spec-authoring-guide/19-acceptance-criteria-io-table.md)
+> **Elaborates canonical:** `AT-APP-21`, `AT-APP-22`, `AT-APP-23` — see [`97b-acceptance-criteria-fixtures.md`](./97b-acceptance-criteria-fixtures.md).
 
 ---
 

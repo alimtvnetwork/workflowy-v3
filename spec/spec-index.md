@@ -1261,7 +1261,6 @@
 | [`31-app/01-features/14-concurrency-and-sync.md`](./31-app/01-features/14-concurrency-and-sync.md) | Concurrency & Sync | 1.8.0 | — |
 | [`31-app/01-features/14b-offline-queue.md`](./31-app/01-features/14b-offline-queue.md) | Offline Queue & Local Mirror | 1.0.0 | — |
 | [`31-app/01-features/15-roles-and-permissions.md`](./31-app/01-features/15-roles-and-permissions.md) | Roles & Permissions | 1.6.0 | Active |
-| [`31-app/01-features/15a-roles-acceptance-fixtures.md`](./31-app/01-features/15a-roles-acceptance-fixtures.md) | Roles & Permissions — Acceptance-Criteria I/O Fixtures (`AT-ROLES-01..10`) | — | — |
 | [`31-app/01-features/16-search-ranking.md`](./31-app/01-features/16-search-ranking.md) | Search Ranking | 1.0.0 | — |
 | [`31-app/01-features/18-integrations.md`](./31-app/01-features/18-integrations.md) | Integrations — Zapier & Apple Shortcuts (F6) | 1.0.0 | Active |
 | [`31-app/01-features/97-acceptance-criteria.md`](./31-app/01-features/97-acceptance-criteria.md) | App Features — Acceptance Criteria | 2.3.0 | Active |
@@ -1366,6 +1365,7 @@
 | [`31-app/97b-acceptance-criteria-fixtures.md`](./31-app/97b-acceptance-criteria-fixtures.md) | App — Acceptance-Criteria I/O Fixtures (Part B: AT-APP-15..32) | — | — |
 | [`31-app/97c-acceptance-criteria-fixtures.md`](./31-app/97c-acceptance-criteria-fixtures.md) | App — Acceptance-Criteria I/O Fixtures (Part C: AT-APP-33..67) | — | — |
 | [`31-app/97d-acceptance-criteria-fixtures.md`](./31-app/97d-acceptance-criteria-fixtures.md) | App — Acceptance-Criteria I/O Fixtures (Part D: AT-APP-68..107) | — | — |
+| [`31-app/97e-roles-inline-acceptance-fixtures.md`](./31-app/97e-roles-inline-acceptance-fixtures.md) | Roles & Permissions — Acceptance-Criteria I/O Fixtures (`AT-ROLES-01..10`) | — | — |
 | [`31-app/99-consistency-report.md`](./31-app/99-consistency-report.md) | Consistency Report — App | 1.3.0 | — |
 
 ## 32-ui-design
