@@ -1,7 +1,8 @@
 # Mirror Peer-Group Model — SSOT
 
-> **Version:** 1.0.0
+> **Version:** 1.1.0
 > **Created:** 2026-04-27 (UTC+8) — Authored from user-confirmed Workflowy parity (chat: mirror semantics clarification, 2026-04-27).
+> **v1.1.0:** 2026-04-27 — Renamed AT prefix `AT-MGP-` → `AT-MPG-` (Mirror Peer Group). Per Ambiguity #02 user resolution. Global rename across 8 files: this SSOT, `97-acceptance-criteria.md` ×2, `02-ci-quality-gates.md`, `23-g30-at-citation-validity-gate.md`, `26-allow-list-inventory.md`, `30-check-at-citation-validity.mjs`, `05-component-contract-map.md`. 61 occurrences total.
 > **Parent:** [09-mirrors.md](./09-mirrors.md)
 > **Status:** ✅ FINAL — supersedes the source/target language in `09-mirrors.md` §8.2 wherever the two conflict. `09-mirrors.md` will be folded into this model in v3.0.0.
 
