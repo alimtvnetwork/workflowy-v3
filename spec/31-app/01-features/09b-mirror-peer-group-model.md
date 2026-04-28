@@ -181,7 +181,7 @@ WHERE  mm.MirrorGroupId = (SELECT MirrorGroupId FROM MirrorMember WHERE ItemId =
 | AT-MPG-06 | User opens context menu on a mirror | Menu shows "See them" | Clicking opens a list of all peers with their parent titles | `mirror-see-them` |
 | AT-MPG-07 | Peer #2 is `IsCollapsed = 1`, peer #1 is expanded | Render | Peer #2 renders collapsed, peer #1 renders expanded; toggling one does NOT toggle the other | `mirror-collapse-isolation` |
 | AT-MPG-08 | Canonical peer is deleted (moved to trash) | After delete | The `MirrorGroup.CanonicalItemId` is updated to the next-lowest `ItemId` in the group; renderer continues seamlessly | `mirror-canonical-promotion` |
-| AT-MPG-09 | Two devices edit the same canonical content offline | Both reconnect within 1 s | The edit with the later `UpdatedAt` wins; if equal, the edit from the lower `OwnerUserId` wins (LWW per R-5) | `mirror-lww-tiebreak` |
+| AT-MPG-09 | Two devices edit the same canonical content offline | Both reconnect within 1 s | The edit with the later `ServerTs` wins; on tie → lower `OwnerId` wins; on second tie → lower `ItemId` wins (canonical 3-tier LWW per R-5 / ADR-0026 §D1) | `mirror-lww-tiebreak` |
 | AT-MPG-10 | User attempts to mirror item X under a parent inside X's own subtree | Submit | Block with toast "Cannot mirror an item into itself or its descendants" — see [`09a-mirror-cycle-detection.md`](./09a-mirror-cycle-detection.md) | `mirror-cycle-error` |
 
 ---
