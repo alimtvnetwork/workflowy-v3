@@ -102,8 +102,9 @@ reconnects succeed.
 - No client→server push (must use REST `action`); fine because
   ADR-0023 D2 already mandates action-only egress.
 - 5-minute ring buffer is in-memory per worker pool → multi-worker
-  deployments need a shared store (Redis/SQLite WAL); flagged as a
-  follow-up rather than blocker.
+  deployments need a shared store. **Resolved 2026-04-28 by
+  [ADR-0027](./0027-sse-multiworker-shared-ring-buffer.md)** (SQLite WAL
+  `SseRing` table); no longer a known gap. Redis is forbidden by ADR-0002.
 - Some corporate proxies buffer `text/event-stream` → mitigated by
   the heartbeat (D6) and 503-fallback polling (D8).
 
