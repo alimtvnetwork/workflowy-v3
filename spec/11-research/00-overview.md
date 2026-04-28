@@ -21,7 +21,6 @@
 
 **Definition of Done** —
 - Every file in this folder carries `> **Status:** Research (not normative)` in its front-matter
-- `AT-RESEARCH-01` from `97-acceptance-criteria.md` passes (or the file is empty)
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
