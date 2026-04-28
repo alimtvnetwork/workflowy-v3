@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-28  
-**Total Files:** 1390  
+**Total Files:** 1391  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -39,7 +39,7 @@
 - [34-activity-feed](#34-activity-feed) — 4 file(s)
 - [35-enforcement-rules](#35-enforcement-rules) — 4 file(s)
 - [36-user-management](#36-user-management) — 5 file(s)
-- [root](#root) — 12 file(s)
+- [root](#root) — 13 file(s)
 
 ---
 
@@ -1550,6 +1550,7 @@
 | [`20-enums-index.md`](./20-enums-index.md) | Enums Index — Cross-Language Registry | 1.1.0 | Active |
 | [`21-ai-readiness-audit-round-2.md`](./21-ai-readiness-audit-round-2.md) | AI-Readiness Audit Report — Round 2 (post C/M/H/L tier completion) | 2.0.0 | — |
 | [`22-contract-json.md`](./22-contract-json.md) | `spec/contract.json` — Machine-Readable Spec Contract | 1.0.0 | Active |
+| [`23-ai-build-walkthrough.md`](./23-ai-build-walkthrough.md) | AI Build Walkthrough — End-to-End Smoke Test (P9) | 1.0.0 | Active |
 | [`97a-acceptance-criteria-fixtures.md`](./97a-acceptance-criteria-fixtures.md) | Spec — P2g Remainder Acceptance Criteria I/O Fixtures (Sweep) | 1.0.0 | Normative |
 | [`99-consistency-report.md`](./99-consistency-report.md) | Consistency Report: Spec Root | 3.1.0 | — |
 | [`folder-structure-root.md`](./folder-structure-root.md) | Folder Structure Root — Redirect | — | — |
@@ -1560,4 +1561,4 @@
 
 ---
 
-*Auto-generated index — 1390 files across 25 top-level folders.*
+*Auto-generated index — 1391 files across 25 top-level folders.*
