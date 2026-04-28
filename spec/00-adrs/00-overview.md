@@ -165,6 +165,7 @@ Suppose someone wants to add a real `Favorite` table (currently forbidden by
 | [`0003`](./0003-react-19-ts-strict-frontend.md) | Vite 5.4 + React 19 + TypeScript 5.6 (strict) + Tailwind v4 as the sole frontend stack | `Accepted` | 2026-04-28 |
 | [`0004`](./0004-rest-envelope-pascalcase.md) | REST envelope — PascalCase keys, three mandatory + three optional | `Accepted` | 2026-04-28 |
 | [`0005`](./0005-mirror-as-peer-group.md) | Mirror is a peer-group relation, not an ItemType | `Accepted` | 2026-04-28 |
+| [`0006`](./0006-migrate-spec-sql-to-singular-ddl.md) | Migrate spec SQL fragments to singular DDL identifiers | `Accepted` | 2026-04-28 |
 
 > **Maintenance rule (summary — full protocol in [`_INDEX_AUTOMATION.md`](./_INDEX_AUTOMATION.md)):**
 > when adding/superseding an ADR, update **both** index tables (this one
