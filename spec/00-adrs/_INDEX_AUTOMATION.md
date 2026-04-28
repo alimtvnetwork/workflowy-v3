@@ -199,8 +199,20 @@ which in turn each carry an inline
 `> ✅ Ratified by [ADR-0024 §Dn](…)` blockquote (added 2026-04-28). This
 is the canonical "symmetric round-trip" shape the gate enforces.
 
-**Until shipped: this file is the gate.** PR reviewers MUST manually
-verify symmetry whenever an ADR Decision section adds an outbound link.
+**Frozen reference algorithm:**
+[`spec/13-cicd-pipeline-workflows/scripts-as-spec/xlink-symmetry-audit.md`](../13-cicd-pipeline-workflows/scripts-as-spec/xlink-symmetry-audit.md)
+captures the load-bearing algorithm + exemptions + Phase-2 strictness
+roadmap. Any CI implementation MUST be derived from that fixture.
+
+**Baseline ledger:**
+[`spec/00-adrs/_LEDGER-G-00-ADR-XLINK-SYMMETRY-BASELINE.md`](./_LEDGER-G-00-ADR-XLINK-SYMMETRY-BASELINE.md)
+documents the 4 known-good symmetric pairs as of 2026-04-28; future
+audit runs MUST be diffable against it.
+
+**Until shipped: this file + the fixture-as-spec are the gate.** PR
+reviewers MUST manually verify symmetry whenever an ADR Decision
+section adds an outbound link, and MUST update the baseline ledger in
+the same PR.
 
 ---
 
