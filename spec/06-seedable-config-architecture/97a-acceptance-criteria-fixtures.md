@@ -1,126 +1,88 @@
 # Seedable Config Architecture — Acceptance Criteria I/O Fixtures
 
-> **Version:** 0.1.0 (P20 stub seed)
+> **Version:** 1.0.0
 > **Created:** 2026-04-28 (UTC+8)
-> **Status:** Stub seed — companion to [`98-acceptance-criteria.md`](./98-acceptance-criteria.md).
+> **Status:** Concrete companion to [`98-acceptance-criteria.md`](./98-acceptance-criteria.md). Replaces P20 stub seed.
 > **Format spec:** [`spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](../01-spec-authoring-guide/19-acceptance-criteria-io-table.md)
-> **Spawned by:** `.lovable/plans/00-active.md` § P20.
-
-Each row below references one `AT-*` id from the source acceptance file and
-restates the binding I/O contract in the SSOT table format. Stubs have a 🟡
-marker; replace with concrete fixtures during the next P2 sweep.
+> **Spawned by:** `.lovable/plans/00-active.md` § P22.
 
 ---
 
-## `AT-SEEDABLECONFIGFUNDAMENTALS-01` — Stub fixture (P20)
+## `AT-SEEDABLECONFIGFUNDAMENTALS-01` — Version-detection inputs are exactly two
 
-| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-01` in [`98-acceptance-criteria.md`](./98-acceptance-criteria.md). |
+| Given | `config.seed.json.version="2.3.0"`, `ConfigMeta.version="2.2.0"` in DB. |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-SEEDABLECONFIGFUNDAMENTALS-01` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_seedableconfigfundamentals_01` |
+| **When** | `ConfigService.detectAction()` is called. |
+| **Then** | Returns `{Action:"merge", From:"2.2.0", To:"2.3.0"}`. With identical versions → `{Action:"skip"}`. With seed `<` DB → `{Action:"skip", Reason:"seed_older"}`. |
+| **Negative** | A code path that consults env vars, file mtimes, or git SHA in this decision MUST fail the input-purity test. |
+| **Test name** | `at_seedableconfigfundamentals_01_two_inputs_only` |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-SEEDABLECONFIGFUNDAMENTALS-02` — Merge is additive (no overwrites)
 
-## `AT-SEEDABLECONFIGFUNDAMENTALS-02` — Stub fixture (P20)
-
-| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-02` in [`98-acceptance-criteria.md`](./98-acceptance-criteria.md). |
+| Given | DB has `Setting.theme="dark"` (user override); seed v2.3.0 declares `theme="light"` and new key `density="cozy"`. |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-SEEDABLECONFIGFUNDAMENTALS-02` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_seedableconfigfundamentals_02` |
+| **When** | Merge runs. |
+| **Then** | `Setting.theme="dark"` (preserved); `Setting.density="cozy"` (inserted); `SettingHistory` gets exactly 1 INSERT row for `density`, 0 rows for `theme`. |
+| **Negative** | Any UPDATE to `theme` is **Code Red** and MUST fail the additive-merge invariant. |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-SEEDABLECONFIGFUNDAMENTALS-03` — Three-artifact requirement
 
-## `AT-SEEDABLECONFIGFUNDAMENTALS-03` — Stub fixture (P20)
-
-| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-03` in [`98-acceptance-criteria.md`](./98-acceptance-criteria.md). |
+| Linter command | `for f in config.seed.json config.schema.json CHANGELOG.md; do test -f "$f" || { echo "missing: $f"; exit 1; }; done` |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-SEEDABLECONFIGFUNDAMENTALS-03` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_seedableconfigfundamentals_03` |
+| **Expected exit code** | `0`. |
+| **Negative** | Project bootstrap with only 2 of the 3 files MUST fail. |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-SEEDABLECONFIGFUNDAMENTALS-04` — Seed validates against schema in CI
 
-## `AT-SEEDABLECONFIGFUNDAMENTALS-04` — Stub fixture (P20)
-
-| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-04` in [`98-acceptance-criteria.md`](./98-acceptance-criteria.md). |
+| Linter command | `npx ajv validate -s config.schema.json -d config.seed.json --strict=true` |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-SEEDABLECONFIGFUNDAMENTALS-04` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_seedableconfigfundamentals_04` |
+| **Expected exit code** | `0`. |
+| **Negative** | A seed with an extra key not declared in schema MUST fail with `additionalProperties=false` violation. |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-SEEDABLECONFIGFUNDAMENTALS-05` — CHANGELOG covers current version
 
-## `AT-SEEDABLECONFIGFUNDAMENTALS-05` — Stub fixture (P20)
-
-| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-05` in [`98-acceptance-criteria.md`](./98-acceptance-criteria.md). |
+| Given | `config.seed.json.version="2.3.0"`. |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-SEEDABLECONFIGFUNDAMENTALS-05` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_seedableconfigfundamentals_05` |
+| **When** | Release gate parses `CHANGELOG.md`. |
+| **Then** | A `## [2.3.0] — YYYY-MM-DD` heading exists with non-empty body containing at least one `### Added`/`### Changed`/`### Removed` subsection. |
+| **Negative** | Tagging `2.3.0` with no CHANGELOG entry MUST fail release. |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-SEEDABLECONFIGFUNDAMENTALS-06` — Schema = exactly 3 tables, PascalCase
 
-## `AT-SEEDABLECONFIGFUNDAMENTALS-06` — Stub fixture (P20)
-
-| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-06` in [`98-acceptance-criteria.md`](./98-acceptance-criteria.md). |
+| Linter command | `sqlite3 config.db ".tables" | tr -s ' ' '\n' | sort` |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-SEEDABLECONFIGFUNDAMENTALS-06` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_seedableconfigfundamentals_06` |
+| **Expected** | Output is exactly: `ConfigMeta\nSetting\nSettingHistory\n`. PRAGMA table_info confirms `{TableName}Id INTEGER PRIMARY KEY` on each. |
+| **Negative** | A snake_case `setting_history` or a 4th table MUST fail the schema-shape gate. |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-SEEDABLECONFIGFUNDAMENTALS-07` — SettingHistory captures every mutation
 
-## `AT-SEEDABLECONFIGFUNDAMENTALS-07` — Stub fixture (P20)
-
-| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-07` in [`98-acceptance-criteria.md`](./98-acceptance-criteria.md). |
+| Given | `Setting.fontSize=14` (existing). |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-SEEDABLECONFIGFUNDAMENTALS-07` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_seedableconfigfundamentals_07` |
+| **When** | UPDATE sets it to `16`, then DELETE removes it. |
+| **Then** | `SELECT count(*) FROM SettingHistory WHERE settingKey='fontSize'` = `2`; rows: `(fontSize,14,16,<ts>,<user>)` then `(fontSize,16,NULL,<ts>,<user>)`. |
+| **Negative** | A direct write to `Setting` that bypasses the trigger leaving 0 history rows is **Code Red** and MUST fail. |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-SEEDABLECONFIGFUNDAMENTALS-08` — Typed-union value, no `any`
 
-## `AT-SEEDABLECONFIGFUNDAMENTALS-08` — Stub fixture (P20)
-
-| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-08` in [`98-acceptance-criteria.md`](./98-acceptance-criteria.md). |
+| Linter command | `rg -nP "interface\\{\\}\|any\b" $(go env GOPATH)/src/.../config/ -g '!*_test.go'` |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-SEEDABLECONFIGFUNDAMENTALS-08` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_seedableconfigfundamentals_08` |
+| **Expected exit code** | `1` (no matches in production code). |
+| **Negative** | A `map[string]interface{}` for SettingValue MUST fail the typed-union gate. |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-SEEDABLECONFIGFUNDAMENTALS-09` — `valueType` declared per setting
 
-## `AT-SEEDABLECONFIGFUNDAMENTALS-09` — Stub fixture (P20)
-
-| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-09` in [`98-acceptance-criteria.md`](./98-acceptance-criteria.md). |
+| Given | A `config.seed.json` setting `{ "key":"theme", "value":"dark" }` (missing `valueType`). |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-SEEDABLECONFIGFUNDAMENTALS-09` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_seedableconfigfundamentals_09` |
+| **When** | Schema validation runs. |
+| **Then** | Validation fails with envelope `{"Status":"error","Errors":[{"Code":"CFG-1101","Message":"missing valueType","Details":{"Key":"theme"}}]}`. Runtime type mismatch (e.g. `valueType:"number"` + `value:"hi"`) → `CFG-1102`. |
+| **Negative** | A missing or wrong `valueType` accepted as valid MUST fail. |
 
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+## `AT-SEEDABLECONFIGFUNDAMENTALS-10` — All access through ConfigService
 
-## `AT-SEEDABLECONFIGFUNDAMENTALS-10` — Stub fixture (P20)
-
-| Given | Conditions described in the prose definition of `AT-SEEDABLECONFIGFUNDAMENTALS-10` in [`98-acceptance-criteria.md`](./98-acceptance-criteria.md). |
+| Linter command | `rg -nP "FROM\s+Setting\b\|UPDATE\s+Setting\b\|INSERT\s+INTO\s+Setting\b" --type go | rg -v "internal/config/"` |
 |---|---|
-| **When** | The corresponding action / linter / endpoint described for `AT-SEEDABLECONFIGFUNDAMENTALS-10` is invoked. |
-| **Then** | Observable outcome matches the prose; if a REST envelope is involved, response uses PascalCase `Status` / `Attributes` / `Results` per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). |
-| **Negative** | The opposite of the documented outcome MUST fail the corresponding test. |
-| **Test name** | `at_seedableconfigfundamentals_10` |
-
-> 🟡 **P20 stub.** Replace with concrete commands / JSON request + envelope / file paths during the next P2 sweep. Citation count for this AT in spec/ remains satisfied; this fixture is the binding I/O contract.
+| **Expected exit code** | `1` (no direct queries outside `internal/config/`). |
+| **Negative** | A handler in `internal/api/` that issues `SELECT * FROM Setting` MUST fail the encapsulation gate. |
 
 ---
 
@@ -128,10 +90,12 @@ marker; replace with concrete fixtures during the next P2 sweep.
 
 ```bash
 grep -c "^## \`AT-SEEDABLECONFIGFUNDAMENTALS-" spec/06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md
+# expected: 10
 node scripts/spec-hygiene/00-run-all.mjs
 ```
 
 ## Related
 
 - [`98-acceptance-criteria.md`](./98-acceptance-criteria.md) — Source AT prose
-- [`spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](../01-spec-authoring-guide/19-acceptance-criteria-io-table.md) — Format SSOT
+- [`spec/03-error-manage/03-error-code-registry/`](../03-error-manage/03-error-code-registry/) — `CFG-11xx` range
+- [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/00-overview.md) — Envelope SSOT
