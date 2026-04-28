@@ -147,7 +147,7 @@ column directly; such fixtures MUST carry an inline comment
   no silent equality.
 - `G-26-OWNER-ID-CANONICAL` — `OwnerId` is the canonical brand;
   `OwnerUserId` is an alias-bridge entry, not a column name.
-- `G-26-WIRE-OWNERID-ONLY` — `rg "OwnerUserId" spec/31-app/06-endpoints spec/31-app/04a-fixtures` MUST return zero hits; PHP serializer test asserts every `EP-*` JSON response contains `OwnerId`, never `OwnerUserId`. (Per D6.)
+- `G-26-WIRE-OWNERID-ONLY` — `rg "OwnerUserId" spec/31-app/06-endpoints` MUST return zero hits; in `spec/31-app/04a-fixtures/**`, every `OwnerUserId` occurrence MUST be on a line containing the substring `DDL-mirror fixture`. PHP serializer test asserts every `EP-*` JSON response contains `OwnerId`, never `OwnerUserId`. (Per D6.)
 
 Updates / strengthens (does NOT supersede):
 
