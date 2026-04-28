@@ -83,36 +83,109 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 
 
+## Update-Phase State Machine
+
+Every self-update run MUST traverse exactly these phases in order. Skipping a phase is a spec violation.
+
+| # | Phase | Entry condition | Exit (success) | Exit (failure → next action) |
+|---|---|---|---|---|
+| 1 | `CheckRemote` | `update.serverUrl` resolved from `ConfigRegistry`. | Manifest fetched, `RemoteVersion > LocalVersion`. | Network/HTTP error → return `Status: "NoOp"`, code `UPD-14-01`. |
+| 2 | `Download` | Phase 1 success. | Artifact written to `wp-content/uploads/workflowy/staging/<version>.zip`. | Truncated/timeout → retry up to 3× then `UPD-14-02`. |
+| 3 | `VerifySignature` | Phase 2 success. | Ed25519 signature matches `update.publicKey`. | Mismatch → delete staged file, abort `UPD-14-03`. **No retry.** |
+| 4 | `BackupSqlite` | Phase 3 success. | Snapshot copied to `wp-content/uploads/workflowy/backup/<fromVersion>-<ts>.sqlite`. | Disk full / lock → abort `UPD-14-04`. |
+| 5 | `ExtractFiles` | Phase 4 success; backup id captured. | New PHP files staged in `plugin/.staging/`. | Any error → restore backup, `UPD-14-05`. |
+| 6 | `RunMigrations` | Phase 5 success. | All `UpdateContract` updaters return `success`. | Any updater throws → restore backup + revert files, `UPD-14-06`. |
+| 7 | `Activate` | Phase 6 success. | Atomic rename `plugin/ ↔ plugin/.staging/`. | Rename fails → restore backup + revert files, `UPD-14-07`. |
+| 8 | `Cleanup` | Phase 7 success. | Staging dir removed; backup retained per `update.backupRetention`. | Cleanup error is **non-fatal** — log only. |
+
 ## Anti-Patterns
 
 The AI MUST NOT:
-- Applying an update without first taking a SQLite backup — atomicity gate requires a rollback target.
-- Hardcoding the update-server URL — it MUST come from `ConfigRegistry::get("update.serverUrl")`.
-- Skipping signature verification on the downloaded artifact — every update payload MUST be signed.
 
-## Worked Example (skeleton)
+| # | Anti-pattern | Why it fails | Gate that catches it |
+|---|---|---|---|
+| 1 | Run `ExtractFiles` before `BackupSqlite` succeeded | No rollback target — partial extraction corrupts plugin. | `G-14-PHASE-ORDER` (PHPUnit: phases assert monotonic counter). |
+| 2 | Hardcode the update-server URL in PHP | Breaks air-gapped/self-hosted deployments. | `G-14-NO-HARDCODE-URL` (grep: `https?://` literals forbidden in `Update/*.php`). |
+| 3 | Skip Ed25519 signature verification | Allows arbitrary RCE via spoofed update server. | `G-14-SIG-REQUIRED` (PHPStan: `ExtractFiles` MUST be preceded by `verifySignature()` call in same scope). |
+| 4 | Catch `Throwable` in `apply()` and return success | Hides corruption; later phases run on broken state. | `G-14-NO-SWALLOW` (PHPStan rule). |
+| 5 | Delete the SQLite backup before phase 7 commits | Loses the only rollback target. | `G-14-BACKUP-RETAIN` (runtime: `BackupRegistry::delete()` rejects ids whose phase < 7). |
+| 6 | Mutate the live `plugin/` dir instead of `plugin/.staging/` | A crash mid-extract leaves users with a half-installed plugin. | `G-14-STAGING-ONLY` (filesystem hook: writes to `plugin/` outside phase 7 throw). |
 
-A canonical, copy-pasteable shape for this section's primary output:
+## Worked Example — End-to-End Update Run
+
+### Successful response (HTTP 200, all 8 phases green)
+
+```json
+{
+  "Status": "Success",
+  "Attributes": {
+    "FromVersion": "3.0.4",
+    "ToVersion":   "3.1.0",
+    "BackupId":    "3.0.4-20260428T101512Z",
+    "DurationMs":  4180,
+    "PhasesRun":   ["CheckRemote","Download","VerifySignature","BackupSqlite","ExtractFiles","RunMigrations","Activate","Cleanup"]
+  },
+  "Results": [
+    { "Phase": "Download",       "Bytes": 1843201, "Sha256": "9f86d0…b0f00a08" },
+    { "Phase": "RunMigrations",  "Updaters": ["ItemSchemaUpdater@1.4.0","MirrorBackfill@3.1.0"] },
+    { "Phase": "Activate",       "RenamedFrom": "plugin/.staging", "RenamedTo": "plugin" }
+  ]
+}
+```
+
+### Failure response (HTTP 500, signature mismatch in phase 3)
+
+```json
+{
+  "Status": "Failed",
+  "Attributes": {
+    "FromVersion": "3.0.4",
+    "ToVersion":   "3.0.4",
+    "FailedPhase": "VerifySignature",
+    "RolledBack":  true,
+    "BackupId":    null
+  },
+  "Errors": [
+    { "Code": "UPD-14-03", "Message": "Ed25519 signature mismatch: expected 8a3f… got 7c91…" }
+  ]
+}
+```
+
+### Reference skeleton (load-bearing — fixtures cite these method names)
 
 ```php
 <?php
 final class UpdateApplier {
     public function apply(UpdatePackage $pkg): UpdateResult {
-        $this->verifySignature($pkg);                  // throws on bad sig
-        $backupId = $this->backup->snapshot();          // pre-update snapshot
+        $this->verifySignature($pkg);                  // phase 3 — UPD-14-03 on mismatch
+        $backupId = $this->backup->snapshot();         // phase 4 — UPD-14-04 on failure
         try {
-            $this->files->extract($pkg->path, PLUGIN_DIR);
-            $this->migrator->run();
+            $this->files->stage($pkg->path);           // phase 5 → plugin/.staging/
+            $this->migrator->run();                    // phase 6
+            $this->files->activate();                  // phase 7 — atomic rename
             return UpdateResult::success($backupId);
-        } catch (Throwable $e) {
-            $this->backup->restore($backupId);          // atomic rollback
-            throw new UpdateFailedException($e);
+        } catch (\Throwable $e) {
+            $this->files->revertStaging();
+            $this->backup->restore($backupId);
+            throw new UpdateFailedException($e);       // anti-pattern #4: never swallow
         }
     }
 }
 ```
 
-*This is a structural skeleton. Real values come from the section's `97-acceptance-criteria.md` row that the AI is implementing.*
+### Error-code registry (this section owns `UPD-14-*`)
+
+| Code | Phase | Recovery |
+|---|---|---|
+| `UPD-14-01` | CheckRemote | None — return `NoOp`. |
+| `UPD-14-02` | Download | Auto-retry 3× then abort. |
+| `UPD-14-03` | VerifySignature | Abort, no retry, page on-call. |
+| `UPD-14-04` | BackupSqlite | Abort, surface disk-space metric. |
+| `UPD-14-05` | ExtractFiles | Restore backup, revert staging. |
+| `UPD-14-06` | RunMigrations | Restore backup, revert staging, log failing updater id. |
+| `UPD-14-07` | Activate | Restore backup, revert staging, mark plugin `Quarantined`. |
+
+*All values are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings.*
 
 <!-- AUTO-TOC:START -->
 
