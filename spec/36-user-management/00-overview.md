@@ -1,19 +1,28 @@
 # User Management — Feature Spec
 ## AI Contract
 
-**Purpose** — _TODO(P1): one sentence describing what `User Management — Feature Spec` solves._
+**Purpose** — Define every account, role, permission, authentication, and admin surface for WorkFlowy users (solo, sync, and admin) on the WP-plugin backend.
 
-**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+**Audience** — Backend dev (PHP / WP REST), frontend dev (React/TS settings panel), QA reviewer, security reviewer.
 
 **Expected AI Output** —
-- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+- PHP REST controllers under `wp-plugin/src/Rest/Me/*.php` (settings, password, email, MFA, account, backups, referrals, feedback) per the endpoint table in [`./01-account-and-settings.md`](./01-account-and-settings.md) §REST Surface Summary.
+- SQLite migrations under `wp-plugin/migrations/` for `User`, `UserRole`, `UserSetting`, `UserBackup`, `UserMfaCredential`, `UserReferral` tables (PascalCase per `spec/04-database-conventions/`).
+- React components under `src/components/settings/` (`SettingsPanel`, `SetPasswordForm`, `ChangeEmailForm`, `MfaEnrollDialog`, `DeleteAccountDialog`, `BackupRestoreDialog`, `ThemePicker`, `LabsPanel`, `ReferralsPanel`, `HelpOverlay`, `BugReportForm`, `HandbookPanel`).
+- Vitest specs mirroring the `AT-USR-*` IDs registered in `97-acceptance-criteria.md`.
 
 **Out of Scope** —
-- _TODO(P1): bullet adjacent concerns and link to owning section._
+- Per-item sharing ACLs → [`spec/31-app/01-features/08-share-dialog.md`](../31-app/01-features/08-share-dialog.md) F4 appendix and `mem://features/sharing-model`.
+- OAuth provider integration (Google / Apple / GitHub sign-in) — deferred post-v1.
+- Multi-tenant org hierarchy, federated identity (SAML/SSO), real-time presence cursors — explicitly excluded in §Scope below.
+- Docs corpus rendering for Help / Handbook → [`spec/08-docs-viewer-ui/`](../08-docs-viewer-ui/00-overview.md).
+- REST envelope shape → [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/00-overview.md).
 
 **Definition of Done** —
-- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
-- `node scripts/spec-hygiene/00-run-all.mjs` exits 0
+- Every surface in [`./01-account-and-settings.md`](./01-account-and-settings.md) §1–§6 has at least one `AT-USR-*` row in `97-acceptance-criteria.md` (filled in P2).
+- Every endpoint in `./01-account-and-settings.md` §REST Surface Summary appears in [`spec/31-app/06-endpoints/`](../31-app/06-endpoints/00-overview.md) and is verified by `scripts/spec-hygiene/29-check-endpoint-matrix-coverage.mjs`.
+- Roles are stored in the dedicated `UserRole` table (FR-2) and validated server-side via `hasRole(userId, role)` (FR-6) — never read from `localStorage`/`sessionStorage`.
+- `node scripts/spec-hygiene/00-run-all.mjs` exits 0.
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
 
@@ -143,6 +152,7 @@ Specification for WorkFlowy's user management system: accounts, roles, permissio
 | Feedback Report (admin reviewer) | [`../33-feedback-report/00-overview.md`](../33-feedback-report/00-overview.md) |
 | Activity Feed (admin auditor) | [`../34-activity-feed/00-overview.md`](../34-activity-feed/00-overview.md) |
 | Roadmap | [`../31-app/04-roadmap/00-overview.md`](../31-app/04-roadmap/00-overview.md) |
+| Account & Settings feature reference (F5) | [`./01-account-and-settings.md`](./01-account-and-settings.md) |
 
 ---
 
