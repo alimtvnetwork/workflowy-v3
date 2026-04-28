@@ -143,6 +143,26 @@ Comprehensive database design and implementation conventions covering naming, sc
 > 4. **FK = exact PK name** — `UserId` in both `User` and `UserProfile` tables
 > 5. **SQLite first** (Split DB pattern) — MySQL as fallback
 > 6. **Always use ORMs** — never write raw SQL in business logic
+> 7. **Spec↔DDL alias bridge** — feature specs MAY use plural domain terms (e.g. *"Items"*, *"Content"*) for readability; the **DDL is the single source of truth** and stays singular (`Item`, `Title`). The alias mapping is canonical and load-bearing — see the table immediately below. *(Resolves ambiguity-triage #03, ruling 2026-04-27.)*
+
+### Spec↔DDL Alias Bridge (canonical)
+
+Whenever a spec sentence uses a plural domain noun, it refers to the singular DDL object below. Gates `G-04-ALIAS-DDL-CANONICAL` (spec→DDL) and `G-04-NO-DDL-PLURALS` (DDL lint) keep both sides consistent.
+
+| Spec prose term (plural, allowed) | DDL truth (singular, mandatory) | Notes |
+|---|---|---|
+| `Items`           | `Item`                | Primary node table. |
+| `Content`         | `Item.Title`          | "Content" is the rich-text body shown in the UI; column name in DDL is `Title`. |
+| `Users`           | `User`                | |
+| `Sessions`        | `Session`             | |
+| `Mirrors` (group) | `MirrorGroup` + `MirrorMember` | Mirror is a peer-group relation, not an item type. |
+| `Audits` / `Logs` | `AuditLog`            | |
+| `Favorites`       | `Favorite`            | Table-level; no shell endpoint owns it (see `31-app/06-endpoints/03-layout-structure.md`). |
+
+**Rules:**
+- New spec terms MUST be added to this table in the same PR that introduces them.
+- The DDL side MUST NOT acquire a plural alias (no `Items_view`, no `ItemsAll`).
+- Endpoint payloads serialise the **DDL** name (`Item`, `Title`) — clients receive singular keys.
 > 7. **Smallest possible key type** — `INTEGER` over `BIGINT`, never UUID unless required
 > 8. **Repeated values → separate table** — normalize with foreign key relationships
 > 9. **Views for joins** — define DB views instead of on-the-fly joins in code
