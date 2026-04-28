@@ -22,6 +22,7 @@ These rules apply across **all three languages**. Language-specific extensions a
 | 7 | **Single `variantLabels` table** — dual-table pattern (`variantStrings` + `variantLabels`) is deprecated as of v2.1.0 | Go |
 | 8 | **Protocol-driven enums** (`content_type`, `endpoint`, `header`, `response_key`, `response_message`) are exempt from PascalCase string rule | Go |
 | 9 | **TS shape is `as const` object + derived union** — the `enum` keyword and bare literal string unions are both forbidden for named enums. See §5 for the worked pattern. | TS |
+| 10 | **`ItemType` lowercase exception** — `ItemType` case names are **lowercase** (`bullet`, `h1`, `h2`, `h3`, `paragraph`, `todo`, `numbered`, `board`, `dashboard`, `quote`, `code`, `divider`) — NOT PascalCase. This is a **deliberate, ADR-pinned exception** to Rules #1/#2 because `ItemType` doubles as the canonical DB-column value (`Items.ItemType TEXT NOT NULL CHECK(ItemType IN (...))`) and the API wire value, where mixed-case would force per-language re-mapping at every IO boundary. The TS object key is `ItemType.bullet` (lowercase key, lowercase value). **Authority:** [ADR-0015 — Closed ItemType Taxonomy](./00-adrs/0015-closed-itemtype-taxonomy.md). **No other enum may invoke this exception** without a new superseding ADR. | Go, PHP, TS, SQLite |
 
 See [Glossary](./19-glossary.md) for term definitions.
 
