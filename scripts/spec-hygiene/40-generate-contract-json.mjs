@@ -26,7 +26,7 @@ const OUTPUT = "spec/contract.json";
 //   (1) ID column may be wrapped in backticks (`AT-APP-01`) — the canonical pattern.
 //   (2) Many sections define ATs as H3 narrative headings: `### AT-CICD-01 — Title`.
 const AT_TABLE_ROW = /^\|\s*`?(AT-[A-Z][A-Z0-9]*-\d+)`?\s*\|\s*([^|]+?)\s*\|/;
-const AT_HEADING = /^#{2,4}\s+(AT-[A-Z][A-Z0-9]*-\d+)\s+[—-]\s+(.+?)\s*$/;
+const AT_HEADING = /^#{2,4}\s+`?(AT-[A-Z][A-Z0-9]*-\d+)`?\s+[—-]\s+(.+?)\s*$/;
 const AT_INLINE = /\b(AT-[A-Z][A-Z0-9]*-\d+)\b/g;
 
 // P13: documentation-only IDs that are intentionally cited but never need a definition.
