@@ -162,6 +162,27 @@ As a power user, I want every common action — split a line, indent, move, comp
 
 ---
 
+## Workflowy Feature Reference (F1) — Interaction Affordances
+
+> **Source:** Workflowy product feature list, merged 2026-04-28 (lossless, additive). Reproduced verbatim; cross-linked to existing AT-INTERACT-* rows above and to the canonical hotkey table in [`./05a-hotkey-table.md`](./05a-hotkey-table.md).
+
+- **Auto Save** — Every keystroke and structural mutation is persisted automatically; there is no manual "save" command. The transient sync state surfaces via the `save-indicator` component (AT-INTERACT-14).
+- **Undo** — Revert the last mutation in the global undo stack (text edits, structural moves, completion toggles, etc.). (shortcut: ⌘Z on macOS / Ctrl+Z on Windows)
+- **Redo** — Re-apply the most recently undone mutation. (shortcut: ⌘+Shift+Z on macOS / Ctrl+Y on Windows)
+- **Expand / Collapse** — Toggle visibility of an item's children without changing zoom. (shortcut: ⌘↑ collapse, ⌘↓ expand on the focused row)
+- **Zoom In / Zoom Out** — Promote an item to be the current page root (Zoom In) or return one ancestor level (Zoom Out). Drives breadcrumb chrome rendered by [`./03-layout-structure.md`](./03-layout-structure.md). (shortcuts: ⌘. zoom-in, ⌘, zoom-out)
+- **Create Bullet** — ↵ creates a new sibling at the same depth; ↹ indents under the previous sibling; Shift+↹ outdents to the parent's level.
+- **Complete (To-do toggle)** — On a `todo` row, ⌘↵ toggles `completed`. Bound by AT-INTERACT-08 to the `todo-checkbox` component.
+- **Slash Commands** — Typing `/` at the start of an item opens the slash-command menu for type conversion and inline insertion (date, mirror, upload, etc.). The full slash inventory lives in [`./06-item-context-menu.md`](./06-item-context-menu.md) F3 appendix.
+- **Drag-and-Drop Move** — Pointer interaction handled by `dnd-layer` (AT-INTERACT-09). Errors surface through `dnd-error-toast`.
+- **Search Trigger** — ⌘K (or click the Search button in chrome) opens `search-overlay`. Operators (`is:`, `has:`, `text:`, `highlight:`, `-`, `OR`, `>`) are documented in F2.
+- **Offline Indicator** — `offline-banner` (AT-INTERACT-15) appears when the client cannot reach the WP-plugin REST endpoint; the offline queue continues to capture mutations (see [`./14b-offline-queue.md`](./14b-offline-queue.md)).
+- **Unsaved-Changes Warning** — `useBeforeUnload` hook (AT-INTERACT-16) warns if the user navigates away while the offline queue is non-empty.
+
+> The full keyboard map (all OS variants) is consolidated in [`./05a-hotkey-table.md`](./05a-hotkey-table.md).
+
+---
+
 ## Related
 
 - [01-information-model.md](./01-information-model.md) — what items the interactions mutate

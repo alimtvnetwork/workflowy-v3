@@ -150,6 +150,41 @@ This table describes how every core data entity relates to others in the system.
 
 ---
 
+## Workflowy Feature Reference (F1) — Item Types & Item Affordances
+
+> **Source:** Workflowy product feature list, merged 2026-04-28 (lossless, additive). Format: **Feature Title** — Description (slash command + shortcut where applicable).
+> **Reconciliation:** Workflowy ships "Mirror" as an item-level feature; in WorkFlowy it is a peer-group **relation**, not an `ItemType`. See `mem://features/mirroring` and [`./09b-mirror-peer-group-model.md`](./09b-mirror-peer-group-model.md). The reference text below is reproduced verbatim from the Workflowy spec; the model-level interpretation lives in §2 of this file.
+
+### Item Types
+
+- **Item Types** — Choose how an item should look or behave. Item types include: Bullet, To-do, Heading H1/H2, Paragraph, Numbered List, Mirror, Code Block, Quote, Divider, Board, and Dashboard. Convert via slash command or item menu. (slash: `/<type>`)
+- **Bullet** — Default item type. Renders as a round bullet. (slash: `/bullet`)
+- **To-do** — Item with a leading checkbox; toggling marks the item complete and applies completion styling. (slash: `/todo`, shortcut: ⌘↵ on macOS / Ctrl+↵ on Windows)
+- **Heading H1** — Larger emphasised title used to break a list into sections. (slash: `/h1`)
+- **Heading H2** — Secondary section title, smaller than H1. (slash: `/h2`)
+- **Paragraph** — Item rendered as flowing prose without a leading bullet. (slash: `/paragraph`)
+- **Numbered List** — Item that auto-numbers among its sibling group. (slash: `/numbered`)
+- **Complete** — Mark a To-do item as done. Completed items can be hidden via *Show/Hide Completed*. (shortcut: ⌘↵)
+- **Add Note** — Attach a secondary text block ("note") under any item. Renders smaller and dimmer than the parent. (shortcut: Shift+↵)
+- **Add Date** — Insert a date chip into the item content; powers Today view and date search. (slash: `/date`, shortcut: ⌘+Shift+. on macOS)
+- **Tags** — Inline `#tag` or `@tag` tokens. Click a tag to filter; tags also drive search operators. See `12-tags-and-mentions.md` if present.
+- **File Upload** — Upload a file (image, PDF, etc.) attached to an item. Files render inline where supported. (slash: `/upload`)
+- **Image Resize** — Drag image corners to resize attached images inline.
+- **Image Menu** — Per-image overlay menu: replace, download, copy link, delete.
+- **Mirror (item-level reference)** — In Workflowy this is presented as an item action that creates an additional reference to the same content elsewhere in the tree. **WorkFlowy interpretation:** modelled as a peer-group relation, not an `ItemType`; see [`./09-mirrors.md`](./09-mirrors.md), [`./09b-mirror-peer-group-model.md`](./09b-mirror-peer-group-model.md), and `mem://features/mirroring`.
+
+### Item Affordances (per-item UI)
+
+- **Item Menu** — The `⋮` button on each item row. Exposes Duplicate, Move To, Mirror, Share, Delete, etc. See [`./06-item-context-menu.md`](./06-item-context-menu.md) for the full menu inventory.
+- **Expand/Collapse** — Toggle children visibility. (shortcut: ⌘↑ / ⌘↓)
+- **Auto Save** — Every edit is persisted automatically; no manual save action exists. The autosave indicator surfaces transient sync state — see [`./05-interactions.md`](./05-interactions.md) §autosave.
+- **Undo** — Reverse the last mutation. (shortcut: ⌘Z)
+- **Redo** — Replay the last undone mutation. (shortcut: ⌘+Shift+Z on macOS / Ctrl+Y on Windows)
+
+> Cross-link: keyboard reference is consolidated in [`./05a-hotkey-table.md`](./05a-hotkey-table.md). Slash-command reference is consolidated in [`./06-item-context-menu.md`](./06-item-context-menu.md).
+
+---
+
 ## Related
 
 - [02-personas.md](./02-personas.md) — who the model serves
