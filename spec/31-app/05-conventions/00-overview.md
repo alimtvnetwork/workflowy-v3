@@ -145,3 +145,42 @@ Conventions specification module. See files below.
 **See also:**
 
 - [`../00-overview.md`](../00-overview.md) — Parent overview
+
+---
+
+## 🔗 Spec↔DDL Alias Bridge (P43 backlink)
+
+Convention pages here describe **rules** about how spec prose, endpoints,
+roles, tokens, audit logs, and rate limits are written. Many of these rules
+quote plural/alias terms (`items`, `users`, `sessions`, `roles`,
+`favorites`). These remain **aliases** — the DDL is singular and PascalCase.
+
+| Plural prose alias used in convention pages | Canonical DDL (SSOT) |
+|---|---|
+| items | `Item` |
+| users | `User` |
+| sessions / tokens | `Session` |
+| roles | `Role` + `UserRole` |
+| favorites | `Item.IsFavorite` (column on `Item`) |
+| audit logs | `AuditEvent` |
+| rate-limit buckets | `RateLimitBucket` |
+
+**Canonical mapping & gates:** see
+[`spec/04-database-conventions/00-overview.md`](../../04-database-conventions/00-overview.md)
+→ **"Spec↔DDL Alias Bridge"**, **Golden Rule #7**,
+`G-04-ALIAS-DDL-CANONICAL`, `G-04-NO-DDL-PLURALS`.
+
+**Resolution:** if a convention rule appears to require a DDL identifier
+that doesn't exist (e.g. a `Favorites` table to attach a policy to),
+the **DDL wins**. Promote the change via an ADR under
+[`spec/00-adrs/`](../../00-adrs/00-overview.md) before amending the
+convention.
+
+**Specifically forbidden without ADR** in this section's policies:
+
+- Audit-log policy referencing a `Favorite` table → use `Item` rows where
+  `IsFavorite` changed.
+- Role/permission rules attached to alias names like `Items` → attach to
+  `Item`.
+- Rate-limit buckets keyed by plural endpoint segment → key by canonical
+  resource (`Item`, `User`, `MirrorGroup`).

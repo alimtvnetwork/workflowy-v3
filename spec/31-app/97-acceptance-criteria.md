@@ -270,3 +270,41 @@ Each AT is "done" when (a) it has a stable ID, (b) its source file exists and co
 
 *Populated 2026-04-25 to close audit finding F-01. Extended v2.2.0 with Today / Templates / Concurrency / SSE coverage (`AT-APP-26..42`); v2.3.0 backfilled workflow flows (`AT-APP-43..57`). v2.4.0 added cross-references to `06-endpoints/` and `07-db-diagram/` (2026-04-26).*
 
+
+---
+
+## 🔗 Spec↔DDL Alias Bridge (P43 backlink)
+
+Acceptance Criteria (AT-*) frequently use **plural prose**
+("the user sees their items", "favorites are returned first",
+"mirrors stay in sync") because that reads naturally to QA.
+These are aliases over singular DDL identifiers.
+
+| Plural prose in AT statements | Canonical DDL (SSOT) |
+|---|---|
+| "items" / "an item row" | `Item` |
+| "users" / "the user record" | `User` |
+| "favorites" / "starred items" | `Item.IsFavorite` (column, **not** a table) |
+| "mirrors" / "mirror group" | `MirrorGroup` + `MirrorMember` |
+| "templates" | `Template` + `TemplateBody` |
+| "sessions" | `Session` |
+| "audit entries" | `AuditEvent` |
+
+**Canonical mapping & gates:** see
+[`spec/04-database-conventions/00-overview.md`](../04-database-conventions/00-overview.md)
+→ **"Spec↔DDL Alias Bridge"**, `G-04-ALIAS-DDL-CANONICAL`,
+`G-04-NO-DDL-PLURALS`.
+
+**AT authoring rules**
+
+- ✅ AT prose MAY use plural aliases for readability.
+- ❌ AT **fixtures** (under `97a-`/`97b-`/…) MUST use canonical singular
+  PascalCase DDL identifiers in JSON / SQL payloads.
+- ❌ AT MUST NOT assert against a non-existent table or column
+  (e.g. `SELECT * FROM Favorites` — this is a hallucinated table; the real
+  query is `SELECT * FROM Item WHERE IsFavorite = 1`).
+- 🔁 If an AT requires a real schema change (e.g. promoting Favorites to a
+  table), file an ADR under [`spec/00-adrs/`](../00-adrs/00-overview.md)
+  **before** writing the AT. Otherwise the AT is unimplementable.
+
+**Resolution rule:** DDL wins. Aliases never imply a schema change.
