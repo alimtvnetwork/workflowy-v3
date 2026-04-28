@@ -18,10 +18,10 @@
 
 ## 2. Summary
 
-- **Total named gates:** 289 (was 288 — +1 `G-00-ADR-CONSEQUENCES-XLINK`)
+- **Total named gates:** 290 (was 289 — +1 `G-13-FIXTURE-AS-SPEC-SHAPE`)
 - **CI:** 24 (one gate `G-26-WIRE-OWNERID-ONLY` is now dual-tier: counted under both CI and TEST)
 - **TEST:** 14 (was 13 — +1 `G-26-WIRE-OWNERID-ONLY` runtime half via `AT-WIRE-EGRESS-01`)
-- **DOC-NORM:** 50 (unchanged — sibling `G-00-ADR-CONSEQUENCES-XLINK` is intentionally advisory-only DOC)
+- **DOC-NORM:** 51 (was 50 — +1 `G-13-FIXTURE-AS-SPEC-SHAPE`)
 - **DOC:** 202 (was 201 — +1 `G-00-ADR-CONSEQUENCES-XLINK` advisory)
 - **Areas covered:** 36 (was 35 — added ADR-0012)
 
@@ -160,6 +160,7 @@
 | `G-13-NO-SECRET-LITERAL` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | Hardcode secrets / registry URLs in workflow YAML Token leak; rotation impossible. |
 | `G-13-PROTECTION-MATCH` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | Mark scan-security as required Slows merges on third-party CVE noise. Branch-protection JSON checked into repo, valid. |
 | `G-13-PUBLISH-NEEDS-SIGN` | **DOC** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | Publish from a job that didn't depend on sign-artifact Unsigned release reaches users. |
+| `G-13-FIXTURE-AS-SPEC-SHAPE` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md`](./13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md) | Every file in `scripts-as-spec/` (except `README.md`) MUST contain the 6 required H2 sections (Purpose / Inputs / Outputs / Algorithm / Exemptions / Strictness-roadmap-or-Test-fixtures), and the Algorithm section MUST contain a fenced code block. Frozen reference algorithm self-audits this directory. |
 
 ### ADR-0014
 
