@@ -29,7 +29,13 @@
 - **Risk if wrong:** every downstream contract-map row, AT-table reference, and `06-endpoints/16-endpoint-at-matrix.md` row that cites `AT-MGP-NN` would need a global rename + v-bump. Currently 5 ATs × multiple call-sites ≈ 15 edits.
 - **Recommended user action:** confirm `AT-MGP-` is fine OR say "rename to AT-MPG-" → I do the global pass.
 
-## 🟡 Soft-confirm queue (3)
+## ✅ Ratified by ADR-0024 (formerly 🟡 Soft-confirm queue, 3)
+
+> Per ADR-0024 §D4, the three entries below — originally classified as
+> 🟡 Soft-confirm under the expired NO-QUESTIONS-MODE — are now load-bearing
+> ratified decisions. Reversal requires a superseding ADR. Per-item 🟡
+> markers below are retained for historical fidelity only; this banner
+> and the ADR are authoritative.
 
 ### #01 — Audit 100/100 score: should B1–B4 addendums add a new dimension?
 

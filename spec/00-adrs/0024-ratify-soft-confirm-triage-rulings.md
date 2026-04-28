@@ -50,9 +50,12 @@ introduce `EP-FAVORITES-LIST` or a dedicated `Favorite` table MUST first
 supersede ADR-0001 (per its Worked Example) **and** this ADR.
 
 **D4 — Triage classification update (MUST).** The three items MUST be
-re-labelled in `00-triage-summary.md` from 🟡 **Soft-confirm** to ✅
-**Ratified by ADR-0024**. The triage file remains an audit trail; the
-ADR is now the load-bearing source.
+re-labelled in `.lovable/question-and-ambiguity/00-triage-summary.md`
+(see §D1) from 🟡 **Soft-confirm** to ✅ **Ratified by ADR-0024**. The
+triage file remains an audit trail; the ADR is now the load-bearing
+source. **Status (2026-04-28):** banner update applied at file head;
+per-item section headers (§§ #01, #03, #17) MAY retain their original
+🟡 markers for historical fidelity — the banner is authoritative.
 
 ## Consequences
 
