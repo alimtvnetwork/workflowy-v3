@@ -142,6 +142,56 @@ shared envelope validator:
 | `debug.methods_stack === true` (config) | `MethodsStack` present |
 | (default / production) | `MethodsStack` omitted |
 
+**D9 — Omit-vs-null recursion rule (nested payloads).** The
+`omit-never-null` discipline (D1) applies **only** to the three
+named root-level optional keys (`Navigation`, `Errors`,
+`MethodsStack`). For **all other** array-valued fields anywhere in
+the response — at any nesting depth inside `Results`, `Errors`,
+`MethodsStack`, or any sub-object — the rule **inverts**:
+
+| Field shape | Empty value MUST be |
+|---|---|
+| Root-level optional envelope key (`Navigation` / `Errors` / `MethodsStack`) | **omitted** (D1) |
+| Any array-valued field (incl. `Children`, `Tags`, `Mentions`, `Frames`, `Backend`, `Frontend`, `CloserLinks`, `DelegatedServiceErrorStack`, `MirrorPeers`, `MultiSelectIds`, …) | `[]` — **never** `null`, **never** omitted |
+| Any object-valued sub-field declared in the type | present with its required sub-keys; if optional, MAY be omitted but **never** `null` |
+| Any scalar-valued sub-field (string/number/boolean) declared as nullable in the type | `null` permitted (e.g., `NavigationBlock.NextPage` per D3) |
+| Any scalar-valued sub-field declared as non-nullable | MUST be present with a defined value |
+
+**Worked example** (single GET, leaf node, no errors, no debug):
+
+```jsonc
+{
+  "Status": { "Code": "OK", "Message": "" },
+  "Attributes": { "IsSingle": true, "HasAnyErrors": false, /* … */ },
+  "Results": [
+    {
+      "ItemId": "itm_LEAF001",
+      "ParentId": "itm_ROOT",
+      "Content": "Hello",
+      "ItemType": "bullet",
+      "Children": [],          // ← []  NOT null, NOT omitted
+      "Tags": [],              // ← []  NOT null, NOT omitted
+      "Mentions": []           // ← []  NOT null, NOT omitted
+    }
+  ]
+  // Navigation, Errors, MethodsStack omitted entirely (D1)
+}
+```
+
+**Anti-patterns** (each is a protocol violation):
+
+| ❌ Wrong | ✔ Right | Why |
+|---|---|---|
+| `"Children": null` | `"Children": []` | D9 — nested arrays never null |
+| `"Tags"` omitted from a leaf node | `"Tags": []` | D9 — declared array fields always present |
+| `"Navigation": []` | `"Navigation"` omitted | D1/D2 — root optional keys are object-shaped, never arrays |
+| `"Errors": { "BackendMessage": "x" }` (with `Backend`/`Frontend`/`DelegatedServiceErrorStack` missing) | All four sub-keys present, arrays may be `[]` | D5 — no nested optional cascade |
+| `"NextPage": ""` (empty string for last page) | `"NextPage": null` | D3 — scalar nullable fields use `null`, not sentinel strings |
+
+The shared envelope validator (`G-04-ENVELOPE-VALIDATOR`) MUST
+enforce D9 in addition to D8.
+
+
 ## Consequences
 
 **Positive**
@@ -212,6 +262,13 @@ shared envelope validator:
   - `G-04-ENVELOPE-VALIDATOR` — enforces D8 invariants centrally
     (single validator function shared by REST handler middleware
     and client-side response parser).
+  - `G-04-NESTED-ARRAY-NEVER-NULL` — enforces D9 (any declared
+    array-valued field at any nesting depth MUST be `[]` when
+    empty; CI fails on any fixture containing a `null` literal
+    where the schema expects an array).
+  - `G-04-NESTED-DECLARED-FIELD-PRESENT` — enforces D9 (declared
+    non-optional sub-fields MUST be present in every response;
+    only the three root-level optional keys may be omitted).
 - **Modified gates:** `G-04-WIRE-PASCALCASE` (ADR-0004) clarified
   to additionally require omit-not-null for optional keys.
 - **Endpoints locked:** all endpoints under
