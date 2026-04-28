@@ -71,6 +71,7 @@ prefix `00-` reserves it as the architectural anchor for the whole spec tree.
 | [`0008`](./00-adrs/0008-unified-item-node-interface.md) | Unified `Node` interface + 250-item per-view limit | `Accepted` 2026-04-28 | `G-31-NODE-INTERFACE-CANONICAL`, `G-31-NODE-ID-PERSISTENT`, `G-31-ROOT-SINGLETON`, `G-31-VIEW-250-CAP`, `G-31-NO-PARALLEL-NODE` |
 | [`0009`](./00-adrs/0009-trash-30-day-retention.md) | Trash — 30-day retention, soft-delete, daily reaper at 03:00 UTC, batch=1000 | `Accepted` 2026-04-28 | `G-11-TRASH-SOFT-DELETE-ONLY`, `G-11-TRASH-30-DAY-WINDOW`, `G-11-REAPER-DAILY-03-UTC`, `G-11-REAPER-BATCH-1000`, `G-11-REAPER-CASCADE-SCOPE`, `G-11-REAPER-AUDIT-ROW` |
 | [`0010`](./00-adrs/0010-offline-fifo-replay-queue.md) | Offline FIFO replay queue (IndexedDB) + server-stamped LWW reconciliation | `Accepted` 2026-04-28 | `G-14-QUEUE-FIFO-LOCALSEQ`, `G-14-QUEUE-INDEXEDDB-ONLY`, `G-14-LWW-SERVERTS-CANONICAL`, `G-14-REPLAY-IDEMPOTENT-CMID`, `G-14-CONFLICT-UX-SILENT`, `G-14-QUEUE-INDEPENDENT-OF-VIEW-CAP` |
+| [`0011`](./00-adrs/0011-axios-only-http-client.md) | Axios sole HTTP client — pinned `1.14.0` OR `0.30.3` exact | `Accepted` 2026-04-28 | `G-32-AXIOS-ONLY`, `G-32-AXIOS-SINGLETON`, `G-32-AXIOS-EXACT-PIN`, `G-20-PRECOMMIT-CONTRACT` (strengthened), `G-32-NO-CLIENT-WRAPPER-FACADE` |
 
 **When to consult ADRs first** (before editing any spec section):
 
