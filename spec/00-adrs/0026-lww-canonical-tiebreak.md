@@ -94,7 +94,11 @@ the `EP-*` boundary (alias-bridge per D2 applied at egress, not at the
 storage layer). Endpoint specs (`spec/31-app/06-endpoints/**`),
 fixtures (`04a-fixtures/**`), and SSE frame schemas (ADR-0025) MUST
 NOT expose `OwnerUserId` in any documented `Results` shape, JSON
-example, or TypeScript wire type.
+example, or TypeScript wire type. **Exception:** fixtures explicitly
+labelled "matches `Item` SQL row" (i.e. storage-layer fixtures, not
+wire fixtures) MAY retain `OwnerUserId` since they document the DDL
+column directly; such fixtures MUST carry an inline comment
+`// DDL-mirror fixture; wire egress translates to OwnerId per ADR-0026 D6`.
 
 ## Consequences
 
