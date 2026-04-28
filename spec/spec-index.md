@@ -1147,7 +1147,7 @@
 | [`15-wp-plugin-how-to/23-operator-runbooks/00-overview.md`](./15-wp-plugin-how-to/23-operator-runbooks/00-overview.md) | 16 — Operator Runbooks | 1.1.0 | Active |
 | [`15-wp-plugin-how-to/23-operator-runbooks/01-disaster-recovery-restore.md`](./15-wp-plugin-how-to/23-operator-runbooks/01-disaster-recovery-restore.md) | Runbook: Disaster-Recovery Restore | 1.0.0 | Active |
 | [`15-wp-plugin-how-to/23-operator-runbooks/02-backup-key-rotation.md`](./15-wp-plugin-how-to/23-operator-runbooks/02-backup-key-rotation.md) | Runbook: Backup KEK Rotation | 1.0.0 | Active |
-| [`15-wp-plugin-how-to/23-operator-runbooks/02-post-mortem-template.md`](./15-wp-plugin-how-to/23-operator-runbooks/02-post-mortem-template.md) | Disaster-Recovery Post-Mortem Template | 1.0.0 | — |
+| [`15-wp-plugin-how-to/23-operator-runbooks/03-post-mortem-template.md`](./15-wp-plugin-how-to/23-operator-runbooks/03-post-mortem-template.md) | Disaster-Recovery Post-Mortem Template | 1.0.0 | — |
 | [`15-wp-plugin-how-to/23-operator-runbooks/97-acceptance-criteria.md`](./15-wp-plugin-how-to/23-operator-runbooks/97-acceptance-criteria.md) | Operator Runbooks — Acceptance Criteria | 0.1.0 | Scaffold |
 | [`15-wp-plugin-how-to/24-local-dev-harness.md`](./15-wp-plugin-how-to/24-local-dev-harness.md) | Phase 24 — Local WordPress Development Harness | 1.0.0 | Active |
 | [`15-wp-plugin-how-to/97-acceptance-criteria.md`](./15-wp-plugin-how-to/97-acceptance-criteria.md) | WP Plugin How-To — Acceptance Criteria (Roll-up) | 2.0.0 | Curated |
