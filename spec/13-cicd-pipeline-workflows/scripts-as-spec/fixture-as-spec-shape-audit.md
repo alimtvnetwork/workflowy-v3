@@ -79,8 +79,16 @@ REGISTRY_ROW = re.compile(
     re.M,
 )
 # Phase-4 carve-out: gates whose authoritative spec lives outside
-# scripts-as-spec/ (registry row links there, not to the fixture).
-BACKLINK_EXEMPT = {"G-00-ADR-XLINK-SYMMETRY"}
+# scripts-as-spec/ are loaded from the ledger file (append-only, audited).
+EXEMPT_LEDGER = pathlib.Path("spec/_LEDGER-G-13-BACKLINK-EXEMPT.md")
+EXEMPT_ROW = re.compile(r"^\|\s*\d+\s*\|\s*`(G-[A-Z0-9][A-Z0-9-]+)`",
+                        re.M)
+
+def load_backlink_exempt() -> set[str]:
+    if not EXEMPT_LEDGER.exists():
+        return set()
+    return set(EXEMPT_ROW.findall(
+        EXEMPT_LEDGER.read_text(encoding="utf-8")))
 
 def registry_gate_ids() -> set[str]:
     return set(GATE_ID.findall(REGISTRY.read_text(encoding="utf-8")))
@@ -91,7 +99,8 @@ def registry_rows() -> dict[str, str]:
             for m in REGISTRY_ROW.finditer(REGISTRY.read_text(encoding="utf-8"))}
 
 def audit_file(path: pathlib.Path, known_gates: set[str],
-               rows: dict[str, str]) -> list[str]:
+               rows: dict[str, str],
+               exempt: set[str]) -> list[str]:
     text = path.read_text(encoding="utf-8")
     headers = [m.group(1).strip() for m in H2.finditer(text)]
     errors = []
@@ -120,28 +129,32 @@ def audit_file(path: pathlib.Path, known_gates: set[str],
             errors.append(f'banner cites unregistered `{gid}`')
             continue
         # Phase 4: registry row for this gate MUST link back to THIS
-        # file, UNLESS the gate is in the BACKLINK_EXEMPT carve-out
+        # file, UNLESS the gate is in the ledger-driven exempt set
         # (authoritative spec lives elsewhere).
-        if gid in BACKLINK_EXEMPT:
+        if gid in exempt:
             continue
         row_path = rows.get(gid, "")
         if path.name not in row_path:
             errors.append(
                 f'registry row for `{gid}` links to "{row_path}", '
                 f'expected back-link to "{path.name}" '
-                f'(asymmetric: add `{gid}` to BACKLINK_EXEMPT or '
+                f'(asymmetric: add `{gid}` to '
+                f'spec/_LEDGER-G-13-BACKLINK-EXEMPT.md or '
                 f'point its registry row at this fixture)')
     return [f"{path}: {e}" for e in errors]
 
 def main() -> int:
     known = registry_gate_ids()
     rows = registry_rows()
+    exempt = load_backlink_exempt()
     fixtures = [p for p in DIR.glob("*.md") if p.name not in EXEMPT_FILES]
-    violations = [v for p in fixtures for v in audit_file(p, known, rows)]
+    violations = [v for p in fixtures
+                  for v in audit_file(p, known, rows, exempt)]
     if violations:
         print("\n".join(violations)); return 1
     print(f"OK — {len(fixtures)} fixtures, Phase-4 symmetric "
-          f"({len(known)} gates known, {len(rows)} rows parsed)")
+          f"({len(known)} gates known, {len(rows)} rows parsed, "
+          f"{len(exempt)} ledger-exempt)")
     return 0
 
 if __name__ == "__main__":
@@ -155,7 +168,7 @@ if __name__ == "__main__":
 | `README.md` | Convention definition, not a fixture. |
 | Files prefixed with `_` (e.g. `_DRAFT-*.md`) | Reserved for in-progress drafts; promote by removing prefix. |
 | H2 headers with trailing parenthetical (e.g. `## Algorithm (frozen reference, 35 lines of logic)`) | Match by `startswith()` — the parenthetical is informational. |
-| **Phase-4 carve-out:** gates whose authoritative spec lives outside `scripts-as-spec/` (e.g. `G-00-ADR-XLINK-SYMMETRY` is specified in `spec/00-adrs/_INDEX_AUTOMATION.md`) MAY have a registry row that links to the authoritative spec rather than back to the fixture. The fixture MUST still cite the gate (Phase 3) and the authoritative spec MUST link forward to the fixture (already enforced by `G-00-ADR-XLINK-SYMMETRY`-style review). Implementation note: `audit_file()` SHOULD accept a `BACKLINK_EXEMPT` set keyed by gate ID, populated from a `_LEDGER-*` file when this carve-out is used. Initial set: `{"G-00-ADR-XLINK-SYMMETRY"}`. |
+| **Phase-4 ledger-driven carve-out:** gates whose authoritative spec lives outside `scripts-as-spec/` are listed in [`spec/_LEDGER-G-13-BACKLINK-EXEMPT.md`](../../_LEDGER-G-13-BACKLINK-EXEMPT.md) and loaded into the algorithm at runtime. The fixture MUST still cite the gate (Phase 3) and the authoritative spec MUST link forward to the fixture (covered by `G-00-ADR-XLINK-SYMMETRY`-style review). To exempt a new gate, add a row to the ledger — do NOT edit this fixture. |
 
 ## Strictness roadmap
 
