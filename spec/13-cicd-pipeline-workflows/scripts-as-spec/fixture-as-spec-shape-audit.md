@@ -78,6 +78,9 @@ REGISTRY_ROW = re.compile(
     r"^\|\s*`(G-[A-Z0-9][A-Z0-9-]+)`\s*\|[^|]*\|\s*\[[^\]]+\]\(([^)]+)\)",
     re.M,
 )
+# Phase-4 carve-out: gates whose authoritative spec lives outside
+# scripts-as-spec/ (registry row links there, not to the fixture).
+BACKLINK_EXEMPT = {"G-00-ADR-XLINK-SYMMETRY"}
 
 def registry_gate_ids() -> set[str]:
     return set(GATE_ID.findall(REGISTRY.read_text(encoding="utf-8")))
