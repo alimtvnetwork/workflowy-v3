@@ -1,7 +1,7 @@
 # Endpoint ↔ Acceptance-Test Cross-Reference Matrix
 
-> **Version:** 1.1.0  
-> **Updated:** 2026-04-27 (UTC+8) — v1.1.0 added 5 endpoints from B1–B4 addendums (`EP-REAPER-RUN`, `EP-REAPER-RUNS-LIST`, `EP-SEARCH-QUERY`, `EP-SYNC-REPLAY`, `EP-MIRRORS-GROUP-GET`, `EP-MIRRORS-DETACH`). Total 41→46.  
+> **Version:** 1.2.0  
+> **Updated:** 2026-04-28 (UTC+8) — v1.2.0 added `Owner` column (SSOT for `AT-WIRE-EGRESS-01` A6 coverage-parity drift-guard per ADR-0026 §D6 + `97b-endpoint-envelope-fixtures.md`). v1.1.0 added 5 endpoints from B1–B4 addendums. Total 41→47.  
 > **Status:** ✅ SSOT for endpoint→AT traceability (AUDIT-AI-05 closure)  
 > **Parent:** [`./00-overview.md`](./00-overview.md)
 
