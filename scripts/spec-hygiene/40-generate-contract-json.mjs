@@ -22,7 +22,8 @@ const ROOT = "spec";
 const OUTPUT = "spec/contract.json";
 
 // --- AT extraction -----------------------------------------------------
-const AT_TABLE_ROW = /^\|\s*(AT-[A-Z][A-Z0-9]*-\d+)\s*\|\s*([^|]+?)\s*\|/;
+// P13 fix: ID column may be wrapped in backticks (`AT-APP-01`) — the canonical pattern.
+const AT_TABLE_ROW = /^\|\s*`?(AT-[A-Z][A-Z0-9]*-\d+)`?\s*\|\s*([^|]+?)\s*\|/;
 const AT_INLINE = /\b(AT-[A-Z][A-Z0-9]*-\d+)\b/g;
 
 // --- EP extraction (## EP-XXX — METHOD `path`) -------------------------
