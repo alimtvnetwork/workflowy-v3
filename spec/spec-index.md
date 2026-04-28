@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-28  
-**Total Files:** 1391  
+**Total Files:** 1396  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -16,8 +16,8 @@
 ## Table of Contents
 
 - [01-spec-authoring-guide](#01-spec-authoring-guide) — 25 file(s)
-- [02-coding-guidelines](#02-coding-guidelines) — 309 file(s)
-- [03-error-manage](#03-error-manage) — 188 file(s)
+- [02-coding-guidelines](#02-coding-guidelines) — 310 file(s)
+- [03-error-manage](#03-error-manage) — 189 file(s)
 - [04-database-conventions](#04-database-conventions) — 17 file(s)
 - [05-split-db-architecture](#05-split-db-architecture) — 45 file(s)
 - [06-seedable-config-architecture](#06-seedable-config-architecture) — 50 file(s)
@@ -29,12 +29,12 @@
 - [12-consolidated-guidelines](#12-consolidated-guidelines) — 26 file(s)
 - [13-cicd-pipeline-workflows](#13-cicd-pipeline-workflows) — 36 file(s)
 - [14-self-update-app-update](#14-self-update-app-update) — 32 file(s)
-- [15-wp-plugin-how-to](#15-wp-plugin-how-to) — 223 file(s)
+- [15-wp-plugin-how-to](#15-wp-plugin-how-to) — 224 file(s)
 - [16-generic-cli](#16-generic-cli) — 43 file(s)
 - [17-generic-update](#17-generic-update) — 11 file(s)
 - [18-spec-issues](#18-spec-issues) — 14 file(s)
-- [31-app](#31-app) — 133 file(s)
-- [32-ui-design](#32-ui-design) — 122 file(s)
+- [31-app](#31-app) — 134 file(s)
+- [32-ui-design](#32-ui-design) — 123 file(s)
 - [33-feedback-report](#33-feedback-report) — 4 file(s)
 - [34-activity-feed](#34-activity-feed) — 4 file(s)
 - [35-enforcement-rules](#35-enforcement-rules) — 4 file(s)
@@ -77,6 +77,7 @@
 
 | File | Title | Version | Status |
 |------|-------|---------|--------|
+| [`02-coding-guidelines/00-overview-condensed.md`](./02-coding-guidelines/00-overview-condensed.md) | Condensed Overview — `spec/02-coding-guidelines/` (P11) | 3.1.0 | Active |
 | [`02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | Coding Guidelines | 3.2.0 | Active |
 | [`02-coding-guidelines/01-cross-language/00-overview.md`](./02-coding-guidelines/01-cross-language/00-overview.md) | Cross-Language Coding Guidelines | 3.1.0 | Active |
 | [`02-coding-guidelines/01-cross-language/01-issues-and-fixes-log/00-overview.md`](./02-coding-guidelines/01-cross-language/01-issues-and-fixes-log/00-overview.md) | Issues & Fixes Log — Historical Reference | 2.0.0 | — |
@@ -391,6 +392,7 @@
 
 | File | Title | Version | Status |
 |------|-------|---------|--------|
+| [`03-error-manage/00-overview-condensed.md`](./03-error-manage/00-overview-condensed.md) | Condensed Overview — `spec/03-error-manage/` (P11) | 3.1.0 | — |
 | [`03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Error Management Specification | 3.1.0 | — |
 | [`03-error-manage/01-error-resolution/00-overview.md`](./03-error-manage/01-error-resolution/00-overview.md) | Error Resolution | 3.1.0 | — |
 | [`03-error-manage/01-error-resolution/01-cross-reference-diagram.md`](./03-error-manage/01-error-resolution/01-cross-reference-diagram.md) | Error Resolution Cross-Reference Diagram | 3.1.0 | Complete |
@@ -932,6 +934,7 @@
 
 | File | Title | Version | Status |
 |------|-------|---------|--------|
+| [`15-wp-plugin-how-to/00-overview-condensed.md`](./15-wp-plugin-how-to/00-overview-condensed.md) | Condensed Overview — `spec/15-wp-plugin-how-to/` (P11) | 2.0.0 | Curated |
 | [`15-wp-plugin-how-to/00-overview.md`](./15-wp-plugin-how-to/00-overview.md) | WordPress Plugin How-To | 1.0.0 | — |
 | [`15-wp-plugin-how-to/01-foundation-and-architecture.md`](./15-wp-plugin-how-to/01-foundation-and-architecture.md) | Phase 1 — Foundation and Architecture | — | — |
 | [`15-wp-plugin-how-to/02-enums-and-coding-style/00-overview.md`](./15-wp-plugin-how-to/02-enums-and-coding-style/00-overview.md) | Phase 2 — Enums and Coding Style | — | — |
@@ -1243,6 +1246,7 @@
 
 | File | Title | Version | Status |
 |------|-------|---------|--------|
+| [`31-app/00-overview-condensed.md`](./31-app/00-overview-condensed.md) | Condensed Overview — `spec/31-app/` (P11) | 2.6.0 | — |
 | [`31-app/00-overview.md`](./31-app/00-overview.md) | App | 2.1.0 | — |
 | [`31-app/01-features/00-overview.md`](./31-app/01-features/00-overview.md) | Features | 2.3.0 | — |
 | [`31-app/01-features/01-information-model.md`](./31-app/01-features/01-information-model.md) | Information Model Foundations | 2.3.0 | — |
@@ -1381,6 +1385,7 @@
 
 | File | Title | Version | Status |
 |------|-------|---------|--------|
+| [`32-ui-design/00-overview-condensed.md`](./32-ui-design/00-overview-condensed.md) | Condensed Overview — `spec/32-ui-design/` (P11) | 2.0.0 | — |
 | [`32-ui-design/00-overview.md`](./32-ui-design/00-overview.md) | UI Design | 2.0.0 | — |
 | [`32-ui-design/01-architecture/00-overview.md`](./32-ui-design/01-architecture/00-overview.md) | Architecture | 1.0.0 | — |
 | [`32-ui-design/01-architecture/01-tech-stack.md`](./32-ui-design/01-architecture/01-tech-stack.md) | Tech Stack | 1.1.0 | — |
@@ -1561,4 +1566,4 @@
 
 ---
 
-*Auto-generated index — 1391 files across 25 top-level folders.*
+*Auto-generated index — 1396 files across 25 top-level folders.*

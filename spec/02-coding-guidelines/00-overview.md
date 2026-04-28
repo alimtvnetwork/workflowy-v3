@@ -60,18 +60,19 @@
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`01-cross-language/`](./01-cross-language/00-overview.md) | Cross-Language Coding Guidelines | subfolder |
-| 2 | [`02-typescript/`](./02-typescript/00-overview.md) | TypeScript Standards | subfolder |
-| 3 | [`03-golang/`](./03-golang/00-overview.md) | Golang Standards | subfolder |
-| 4 | [`04-php/`](./04-php/00-overview.md) | PHP Standards | subfolder |
-| 5 | [`05-rust/`](./05-rust/00-overview.md) | Rust Coding Standards | subfolder |
-| 6 | [`06-ai-optimization/`](./06-ai-optimization/00-overview.md) | AI Optimization | subfolder |
-| 7 | [`07-csharp/`](./07-csharp/00-overview.md) | C# Coding Standards | subfolder |
-| 8 | [`08-file-folder-naming/`](./08-file-folder-naming/00-overview.md) | File & Folder Naming Conventions | subfolder |
-| 9 | [`09-powershell-integration/`](./09-powershell-integration/00-overview.md) | PowerShell Integration | subfolder |
-| 10 | [`10-research/`](./10-research/00-overview.md) | Research | subfolder |
-| 11 | [`11-security/`](./11-security/00-overview.md) | Security Guidelines | subfolder |
-| 12 | [`22-app-issues/`](./22-app-issues/00-overview.md) | App Issues | subfolder |
+| 1 | [`00-overview-condensed.md`](./00-overview-condensed.md) | Condensed Overview — `spec/02-coding-guidelines/` (P11) | 149 |
+| 2 | [`01-cross-language/`](./01-cross-language/00-overview.md) | Cross-Language Coding Guidelines | subfolder |
+| 3 | [`02-typescript/`](./02-typescript/00-overview.md) | TypeScript Standards | subfolder |
+| 4 | [`03-golang/`](./03-golang/00-overview.md) | Golang Standards | subfolder |
+| 5 | [`04-php/`](./04-php/00-overview.md) | PHP Standards | subfolder |
+| 6 | [`05-rust/`](./05-rust/00-overview.md) | Rust Coding Standards | subfolder |
+| 7 | [`06-ai-optimization/`](./06-ai-optimization/00-overview.md) | AI Optimization | subfolder |
+| 8 | [`07-csharp/`](./07-csharp/00-overview.md) | C# Coding Standards | subfolder |
+| 9 | [`08-file-folder-naming/`](./08-file-folder-naming/00-overview.md) | File & Folder Naming Conventions | subfolder |
+| 10 | [`09-powershell-integration/`](./09-powershell-integration/00-overview.md) | PowerShell Integration | subfolder |
+| 11 | [`10-research/`](./10-research/00-overview.md) | Research | subfolder |
+| 12 | [`11-security/`](./11-security/00-overview.md) | Security Guidelines | subfolder |
+| 13 | [`22-app-issues/`](./22-app-issues/00-overview.md) | App Issues | subfolder |
 
 <!-- AUTO-TOC:END -->
 

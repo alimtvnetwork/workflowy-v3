@@ -50,7 +50,9 @@ const APPENDIX_RE = /^##\s+(?:Workflowy[\s\S]*Reference|F[1-6][\s\S]*Appendix)/i
 const FEATURE_LINE_RE = /^\*\*[^*]+\*\*\s+—\s+/; // **Title** — Description
 const HAS_SHORTCUT_HINT = /(shortcut|keys?|hot ?key)\s*[:=]/i;
 const SHORTCUT_AT_END_RE = /`[^`]+`\s*$/;
-const SLASH_INLINE_RE = /(^|[^`])\/[a-z][a-z0-9-]+\b(?![^`]*`)/i; // bare /command not in backticks
+// R3: a true /command token starts at line-start or after whitespace/( — never after a letter
+// (which would be a "word/word" prose construct like "adding/removing" or "Shift/Cmd-click").
+const SLASH_INLINE_RE = /(^|[\s(])\/[a-z][a-z0-9-]+\b(?![^`]*`)/i;
 const OPERATOR_BARE_RE = /(^|[^`a-z])(is|in|has|link|tag|due|created|changed|by|to|from|day-of-week):[a-z0-9-_@]+(?![^`]*`)/i;
 
 const findings = [];
@@ -111,11 +113,10 @@ function scanFile(path) {
 
 for (const f of F1_F6_FILES) scanFile(f);
 
-// G-39 ships in report-only mode for the F8 baseline. The 29 known
-// pre-existing violations (parenthetical shortcuts mid-sentence) are
-// queued for fix in .lovable/plans/archive/10-f08-feature-block-format.md.
-// Once the queue is drained, flip ENFORCE = true.
-const ENFORCE = false;
+// G-39 ships ENFORCING after the P12 cleanup (29 → 0 violations).
+// R3 false-positive on "word/word" prose constructs fixed by tightening
+// SLASH_INLINE_RE to require leading whitespace/( — see above.
+const ENFORCE = true;
 
 if (findings.length === 0) {
   console.log(`✅ G-39: feature-block format clean across ${F1_F6_FILES.length} F1–F6 files`);

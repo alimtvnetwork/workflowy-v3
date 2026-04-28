@@ -130,12 +130,13 @@ Then components only ever reference semantic classes. No exceptions.
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`01-architecture/`](./01-architecture/00-overview.md) | Architecture | subfolder |
-| 2 | [`02-state-and-data/`](./02-state-and-data/00-overview.md) | State & Data | subfolder |
-| 3 | [`03-design-system/`](./03-design-system/00-overview.md) | Design System | subfolder |
-| 4 | [`04-editor/`](./04-editor/00-overview.md) | Editor | subfolder |
-| 5 | [`05-quality/`](./05-quality/00-overview.md) | Quality | subfolder |
-| 6 | [`06-workflowy-ui/`](./06-workflowy-ui/00-overview.md) | Workflowy UI Spec — Parent Overview | subfolder |
+| 1 | [`00-overview-condensed.md`](./00-overview-condensed.md) | Condensed Overview — `spec/32-ui-design/` (P11) | 157 |
+| 2 | [`01-architecture/`](./01-architecture/00-overview.md) | Architecture | subfolder |
+| 3 | [`02-state-and-data/`](./02-state-and-data/00-overview.md) | State & Data | subfolder |
+| 4 | [`03-design-system/`](./03-design-system/00-overview.md) | Design System | subfolder |
+| 5 | [`04-editor/`](./04-editor/00-overview.md) | Editor | subfolder |
+| 6 | [`05-quality/`](./05-quality/00-overview.md) | Quality | subfolder |
+| 7 | [`06-workflowy-ui/`](./06-workflowy-ui/00-overview.md) | Workflowy UI Spec — Parent Overview | subfolder |
 
 <!-- AUTO-TOC:END -->
 

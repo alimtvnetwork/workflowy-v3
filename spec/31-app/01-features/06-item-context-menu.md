@@ -210,17 +210,17 @@ The `⋮` button on every item row opens this menu. Items appear in this order; 
 
 - **Duplicate** — Create a sibling copy of the item and its entire subtree. Copies preserve content, type, and attachments; tags retain their literal text but become independent. (item-menu)
 - **Copy Internal Link** — Copy a `wf://item/<id>` URL to the clipboard. Pasting it elsewhere in WorkFlowy creates an inline link that resolves on click; pasting it externally yields a normal URL. (item-menu)
-- **Move To** — Open the move-target picker; selecting a destination re-parents the item (and its subtree). Cycle-protected. (item-menu, shortcut: ⌘+Shift+M)
+- **Move To** — Open the move-target picker; selecting a destination re-parents the item (and its subtree). Cycle-protected. `⌘+Shift+M`
 - **Move Here** — When triggered from a destination's `+` slot during multi-select, moves the current selection to this anchor. (multi-select chrome)
 - **Mirror** — Create a mirror peer of the item. The new peer joins the source's peer group; if the item had no group, a new group is created. See [`./09-mirrors.md`](./09-mirrors.md) F3 appendix. (item-menu)
-- **Mirror To** — Open a target picker and create the mirror peer at the chosen location. (item-menu, shortcut: ⌘+Shift+L)
+- **Mirror To** — Open a target picker and create the mirror peer at the chosen location. `⌘+Shift+L`
 - **Mirror Here** — Companion to Move Here for mirror placement during a multi-select drag. (multi-select chrome)
 - **Detach Mirror** — Remove the item from its peer group. If the group reduces to a singleton, the group is dissolved (per `mem://features/mirroring`). (item-menu, _conditional:_ visible only when the item is in a peer group of size ≥ 2)
 - **See Mirrors** — Open a panel listing every other peer in this item's peer group, with breadcrumb path to each. Click to jump. (item-menu, _conditional:_ visible only when peer-group size ≥ 2)
-- **Show Completed / Hide Completed** — Per-page toggle: when off, items with `completed=true` are hidden from rendering. State is per-user, per-page. (item-menu, shortcut: ⌘+Shift+C)
-- **Expand All** — Recursively expand the item and every descendant. Capped by the 250-item view limit (per Core memory). (item-menu, shortcut: ⌘+Shift+↓)
-- **Collapse All** — Recursively collapse the item and every descendant. (item-menu, shortcut: ⌘+Shift+↑)
-- **Delete** — Soft-delete the item and its subtree. Items go to Trash and are hard-deleted after 30 days (`mem://features/trash-logic`). (item-menu, shortcut: ⌘⌫)
+- **Show Completed / Hide Completed** — Per-page toggle: when off, items with `completed=true` are hidden from rendering. State is per-user, per-page. `⌘+Shift+C`
+- **Expand All** — Recursively expand the item and every descendant. Capped by the 250-item view limit (per Core memory). `⌘+Shift+↓`
+- **Collapse All** — Recursively collapse the item and every descendant. `⌘+Shift+↑`
+- **Delete** — Soft-delete the item and its subtree. Items go to Trash and are hard-deleted after 30 days (`mem://features/trash-logic`). `⌘⌫`
 - **Share** — Open the share dialog. (item-menu) → see [`./08-share-dialog.md`](./08-share-dialog.md) F4 appendix.
 - **Add to Templates** — Snapshot the item's subtree as a reusable template. (item-menu, also via `#template` tag) → see [`./13-templates.md`](./13-templates.md) F4 appendix.
 - **Export** — Export the item subtree (Markdown / OPML / plain text). (item-menu) → see [`./13-templates.md`](./13-templates.md) F4 appendix.
@@ -231,7 +231,7 @@ The `⋮` button on every item row opens this menu. Items appear in this order; 
 - **Internal Links** — `wf://item/<id>` URLs auto-resolve to inline pills showing the target item's content; click to navigate.
 - **Backlinks** — Below an item, an automatically maintained list of every item whose content contains an internal link to it. Click to jump. (component: `backlinks-panel`)
 - **External Links** — Pasted `http(s)://` URLs become inline link pills (also editable via ⌘K).
-- **Remove Link** — Strip the link mark from the selected text without deleting the visible label. (selection toolbar, shortcut: ⌘+Shift+K)
+- **Remove Link** — Strip the link mark from the selected text without deleting the visible label. `⌘+Shift+K`
 
 ### Slash Commands (canonical inventory)
 
