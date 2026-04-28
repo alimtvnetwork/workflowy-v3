@@ -58,7 +58,14 @@ const ALLOW_LINE = (line) =>
   /TODO\([A-Z0-9-]+\)/.test(line) ||                // TODO(TICKET-ID)
   /\btype:todo\b|\bis:todo\b|\btodo!\b|\bto-do\b/i.test(line) || // ItemType refs
   /TODO\/FIXME/.test(line) ||                       // policy mention
-  /TODO\(P1\)/.test(line);
+  /TODO\(P1\)/.test(line) ||
+  // "consider" filters: only flag bare soft-directive usage. These patterns are
+  // natural English and grammatically distinct from "consider adding X":
+  /MUST consider\b/.test(line) ||                   // bound by MUST
+  /\bnot consider\b/i.test(line) ||                 // negation ("will not consider")
+  /\bconsider(ed|ing|ation|ations)\b/i.test(line) || // morphological forms
+  /"consider [^"]*"/.test(line) ||                  // user-facing string literal
+  /toast\.\w+\(["']/.test(line);                    // toast/notification strings
 
 const findings = [];
 
