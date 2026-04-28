@@ -22,9 +22,18 @@ const ROOT = "spec";
 const OUTPUT = "spec/contract.json";
 
 // --- AT extraction -----------------------------------------------------
-// P13 fix: ID column may be wrapped in backticks (`AT-APP-01`) — the canonical pattern.
+// P13 fixes:
+//   (1) ID column may be wrapped in backticks (`AT-APP-01`) — the canonical pattern.
+//   (2) Many sections define ATs as H3 narrative headings: `### AT-CICD-01 — Title`.
 const AT_TABLE_ROW = /^\|\s*`?(AT-[A-Z][A-Z0-9]*-\d+)`?\s*\|\s*([^|]+?)\s*\|/;
+const AT_HEADING = /^#{2,4}\s+(AT-[A-Z][A-Z0-9]*-\d+)\s+[—-]\s+(.+?)\s*$/;
 const AT_INLINE = /\b(AT-[A-Z][A-Z0-9]*-\d+)\b/g;
+
+// P13: documentation-only IDs that are intentionally cited but never need a definition.
+//   - APPF-NN: legacy frozen dispatch index (per APP-FIX-14 reconciliation note).
+//   - APP-200, MPG-58: deliberately bad illustrative citations in G-30 gate doc.
+//   - FIX-01: planned hygiene-gate name, not an acceptance test.
+const AT_ALLOW_ORPHAN = /^AT-(APPF-\d+|APP-200|MPG-58|FIX-01)$/;
 
 // --- EP extraction (## EP-XXX — METHOD `path`) -------------------------
 const EP_HEADING = /^##\s+(EP-[A-Z][A-Z0-9-]*)\s+[—-]\s+(GET|POST|PUT|DELETE|PATCH|HEAD|OPTIONS)\s+`?([^`\n]+?)`?\s*$/;
