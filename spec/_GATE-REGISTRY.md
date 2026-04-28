@@ -376,8 +376,8 @@
 | Gate | Tier | Primary File | Brief |
 |------|------|--------------|-------|
 | `G-31-NO-MIRROR-ENUM` | **DOC** | [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) | - Added gate G-31-NO-MIRROR-ENUM in CI that fails on any reintroduction. |
-| `G-31-NO-PARALLEL-NODE` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0008](./00-adrs/0008-unified-item-node-interface.md) Unified Node interface + 250-item per-view limit Accepted 2026-04 |
-| `G-31-NODE-ID-PERSISTENT` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | [0008](./00-adrs/0008-unified-item-node-interface.md) Unified Node interface + 250-item per-view limit Accepted 2026-04 |
+| `G-31-NO-PARALLEL-NODE` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | Enforces ADR-0008 — Unified Node interface + 250-item per-view limit. |
+| `G-31-NODE-ID-PERSISTENT` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | Enforces ADR-0008 — Unified Node interface + 250-item per-view limit. |
 | `G-31-NODE-INTERFACE-CANONICAL` | **DOC-NORM** | [`spec/00-adrs/0008-unified-item-node-interface.md`](./00-adrs/0008-unified-item-node-interface.md) | - G-31-NODE-INTERFACE-CANONICAL — enforces D1 (mandatory fields, |
 | `G-31-ROOT-SINGLETON` | **DOC** | [`spec/00-adrs/0008-unified-item-node-interface.md`](./00-adrs/0008-unified-item-node-interface.md) | - G-31-ROOT-SINGLETON — enforces D3 (exactly one parentId === null, |
 | `G-31-VIEW-250-CAP` | **DOC** | [`spec/00-adrs/0008-unified-item-node-interface.md`](./00-adrs/0008-unified-item-node-interface.md) | - G-31-VIEW-250-CAP — enforces D4 (no default view renders > 250 |
