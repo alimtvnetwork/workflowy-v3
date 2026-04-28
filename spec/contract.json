@@ -5,7 +5,7 @@
   "do_not_edit": true,
   "counts": {
     "acceptance_tests_defined": 2257,
-    "acceptance_tests_orphan_citations": 0,
+    "acceptance_tests_orphan_citations": 11,
     "endpoints": 48,
     "enums": 23,
     "sections": 24
@@ -738,6 +738,10 @@
       "defined_in": "spec/34-activity-feed/97-acceptance-criteria.md",
       "defined_line": 22,
       "cited_in": [
+        {
+          "file": "spec/34-activity-feed/00-overview.md",
+          "line": 20
+        },
         {
           "file": "spec/34-activity-feed/97-acceptance-criteria.md",
           "line": 12
@@ -5122,6 +5126,10 @@
       "defined_line": 30,
       "cited_in": [
         {
+          "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
+          "line": 25
+        },
+        {
           "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
           "line": 19
         }
@@ -7070,6 +7078,10 @@
       "defined_line": 24,
       "cited_in": [
         {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 23
+        },
+        {
           "file": "spec/04-database-conventions/97-acceptance-criteria.md",
           "line": 20
         }
@@ -7759,6 +7771,10 @@
       "defined_in": "spec/15-wp-plugin-how-to/12-design-system/97-acceptance-criteria.md",
       "defined_line": 22,
       "cited_in": [
+        {
+          "file": "spec/07-design-system/00-overview.md",
+          "line": 23
+        },
         {
           "file": "spec/15-wp-plugin-how-to/12-design-system/97-acceptance-criteria.md",
           "line": 12
@@ -8956,6 +8972,10 @@
       "defined_line": 90,
       "cited_in": [
         {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 21
+        },
+        {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
           "line": 79
         },
@@ -8979,6 +8999,10 @@
       "defined_in": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
       "defined_line": 97,
       "cited_in": [
+        {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 21
+        },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
           "line": 80
@@ -11613,6 +11637,10 @@
       "defined_in": "spec/17-generic-update/97-acceptance-criteria.md",
       "defined_line": 21,
       "cited_in": [
+        {
+          "file": "spec/17-generic-update/00-overview.md",
+          "line": 22
+        },
         {
           "file": "spec/17-generic-update/97-acceptance-criteria.md",
           "line": 13
@@ -22597,7 +22625,7 @@
       "cited_in": [
         {
           "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
-          "line": 159
+          "line": 164
         },
         {
           "file": "spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/00-overview.md",
@@ -22831,5 +22859,105 @@
       ]
     }
   ],
-  "orphan_at_citations": []
+  "orphan_at_citations": [
+    {
+      "id": "AT-AUTHORING-01",
+      "citedIn": [
+        {
+          "file": "spec/01-spec-authoring-guide/00-overview.md",
+          "line": 27
+        }
+      ]
+    },
+    {
+      "id": "AT-CLI-01",
+      "citedIn": [
+        {
+          "file": "spec/16-generic-cli/00-overview.md",
+          "line": 18
+        }
+      ]
+    },
+    {
+      "id": "AT-CODEBLOCK-01",
+      "citedIn": [
+        {
+          "file": "spec/09-code-block-system/00-overview.md",
+          "line": 23
+        }
+      ]
+    },
+    {
+      "id": "AT-CONSOLIDATED-01",
+      "citedIn": [
+        {
+          "file": "spec/12-consolidated-guidelines/00-overview.md",
+          "line": 22
+        }
+      ]
+    },
+    {
+      "id": "AT-DOCSVIEWER-01",
+      "citedIn": [
+        {
+          "file": "spec/08-docs-viewer-ui/00-overview.md",
+          "line": 20
+        }
+      ]
+    },
+    {
+      "id": "AT-POWERSHELL-01",
+      "citedIn": [
+        {
+          "file": "spec/10-powershell-integration/00-overview.md",
+          "line": 26
+        }
+      ]
+    },
+    {
+      "id": "AT-RESEARCH-01",
+      "citedIn": [
+        {
+          "file": "spec/11-research/00-overview.md",
+          "line": 24
+        }
+      ]
+    },
+    {
+      "id": "AT-SEEDABLECONFIG-01",
+      "citedIn": [
+        {
+          "file": "spec/06-seedable-config-architecture/00-overview.md",
+          "line": 27
+        }
+      ]
+    },
+    {
+      "id": "AT-SELFUPDATE-01",
+      "citedIn": [
+        {
+          "file": "spec/14-self-update-app-update/00-overview.md",
+          "line": 25
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-01",
+      "citedIn": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 21
+        }
+      ]
+    },
+    {
+      "id": "AT-SPLITDB-01",
+      "citedIn": [
+        {
+          "file": "spec/05-split-db-architecture/00-overview.md",
+          "line": 27
+        }
+      ]
+    }
+  ]
 }
