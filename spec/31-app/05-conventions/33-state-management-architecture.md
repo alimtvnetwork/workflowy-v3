@@ -137,9 +137,11 @@ Local edit on Source Item S
    └──▶ server emits SSE 'item.update' → all OTHER tabs receive and re-invalidate
            → mirrors fan out via the same listener as Scenario 2
    
-LWW tie-break:
-   if (local.UpdatedAt === remote.UpdatedAt)
-       winner = (local.OwnerUserId < remote.OwnerUserId) ? local : remote
+LWW tie-break (canonical 3-tier per ADR-0026 §D1):
+   compare(local, remote):
+       if (local.ServerTs !== remote.ServerTs) return local.ServerTs > remote.ServerTs ? local : remote
+       if (local.OwnerId  !== remote.OwnerId)  return local.OwnerId  < remote.OwnerId  ? local : remote
+       return                                         local.ItemId   < remote.ItemId   ? local : remote
 ```
 
 ---
