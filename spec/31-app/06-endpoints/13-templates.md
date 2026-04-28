@@ -23,7 +23,7 @@
 
 - **Auth**: `user`.
 - **Query**: `Scope` (`mine` | `shared` | `all`, default `all`).
-- **Success (200)** `Results`: `{ Templates: TemplateSummary[] }` where `TemplateSummary = { Id, Name, NodeCount, OwnerUserId, CreatedAt }`.
+- **Success (200)** `Results`: `{ Templates: TemplateSummary[] }` where `TemplateSummary = { Id, Name, NodeCount, OwnerId, CreatedAt }`. The wire field is `OwnerId` (canonical PascalCase per ADR-0020); the DDL column `Templates.OwnerUserId` is mapped via the ADR-0026 §D2 alias bridge at the serialization boundary.
 - **Errors**: —.
 - **Side effects**: none.
 
