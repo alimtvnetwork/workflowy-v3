@@ -110,6 +110,10 @@ walk(ROOT, (file) => {
   if (file.includes("/01-spec-authoring-guide/") && /(template|example|fixtures)\.md$/i.test(file)) return;
   if (file.endsWith("/97a-acceptance-criteria-fixtures.md")) return;
   if (file.endsWith("/spec/97a-acceptance-criteria-fixtures.md")) return;
+  // P13 fix: P11-generated condensed overviews include the canonical AC table verbatim.
+  // They are derived artifacts — never definition sites. Skip for AT detection,
+  // but do allow citation collection (orphan tracking still works correctly).
+  if (file.endsWith("/00-overview-condensed.md")) return;
   const rel = relative(".", file);
   const lines = readFileSync(file, "utf8").split("\n");
 
