@@ -26,6 +26,7 @@ for gate algorithms specifically:
 | File | Gate | Status |
 |------|------|--------|
 | [`xlink-symmetry-audit.md`](./xlink-symmetry-audit.md) | `G-00-ADR-XLINK-SYMMETRY` | Frozen — Phase 1 (file-level back-link check) |
+| [`fixture-as-spec-shape-audit.md`](./fixture-as-spec-shape-audit.md) | `G-13-FIXTURE-AS-SPEC-SHAPE` | Frozen — Phase 1 (header presence + Algorithm fence). Self-audits this directory. |
 
 ## Adding a new fixture-as-spec script
 
