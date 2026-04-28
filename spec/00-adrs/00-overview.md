@@ -162,6 +162,7 @@ Suppose someone wants to add a real `Favorite` table (currently forbidden by
 |---|---|---|---|
 | [`0001`](./0001-singular-ddl-vs-plural-prose.md) | Singular DDL vs plural prose | `Accepted` | 2026-04-28 |
 | [`0002`](./0002-wp-plugin-php-sqlite-backend.md) | WordPress plugin + PHP 8.1+ + SQLite as the sole backend runtime | `Accepted` | 2026-04-28 |
+| [`0003`](./0003-react-19-ts-strict-frontend.md) | Vite 5.4 + React 19 + TypeScript 5.6 (strict) + Tailwind v4 as the sole frontend stack | `Accepted` | 2026-04-28 |
 
 > **Maintenance rule (summary — full protocol in [`_INDEX_AUTOMATION.md`](./_INDEX_AUTOMATION.md)):**
 > when adding/superseding an ADR, update **both** index tables (this one
