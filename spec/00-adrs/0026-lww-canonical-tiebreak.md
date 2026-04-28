@@ -50,9 +50,7 @@ comparator is **`OwnerId`** (per ADR-0020 branded type). The legacy
 spelling `OwnerUserId` (used in `09b-mirror-peer-group-model.md` R-5
 and AT-MPG-09) MUST be treated as an **alias** of `OwnerId` and is
 catalogued in the [column-level Spec↔DDL Alias Bridge](../04-database-conventions/00-overview.md#alias-bridge-columns) (4 tables: `Item`, `Template`, `Tag`, `Workspace`). New writes MUST use
-`OwnerId`. The mirror-feature file SHOULD be updated to `OwnerId` in a
-follow-up housekeeping pass; until then, the alias bridge is
-load-bearing.
+`OwnerId`. **Housekeeping closure (2026-04-28):** `09b-mirror-peer-group-model.md` R-5 prose has been migrated to canonical `OwnerId` with a forward-pointer to the column-level bridge; the lone residual `OwnerUserId` in §6.1 SQL pseudocode is whitelisted per §D6 and carries an inline annotation. The alias bridge remains load-bearing for storage-layer fixtures and DDL.
 
 **D3 — Three-site ratification (MUST).** The same comparator applies
 to:
