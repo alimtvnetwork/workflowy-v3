@@ -32,7 +32,7 @@
 
 ---
 
-<!-- AUTO-TOC:START -->
+
 
 
 ## 2. Section inventory (one-line summary per file/folder)

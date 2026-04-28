@@ -34,6 +34,30 @@
 > **Purpose:** Reusable pattern for version-controlled configuration with automatic changelog updates and initial seeding
 
 
+
+
+## Anti-Patterns
+
+The AI MUST NOT:
+- Putting secrets in `wp-plugin/seed/config.json` — secrets stay in `wp-config.php`, never in shipped seed files.
+- Re-running the seeder overwriting user-edited values — the seeder MUST be idempotent and respect user overrides.
+- Reading config directly from the DB in hot paths — go through `ConfigRegistry::get($key)` so the typed validator runs.
+
+## Worked Example (skeleton)
+
+A canonical, copy-pasteable shape for this section's primary output:
+
+```json
+{
+  "$schema": "../config.schema.json",
+  "appearance.theme": { "value": "auto", "type": "enum", "options": ["light", "dark", "auto"] },
+  "items.maxPerView": { "value": 250, "type": "int", "min": 50, "max": 1000 },
+  "trash.retentionDays": { "value": 30, "type": "int", "min": 1, "max": 365 }
+}
+```
+
+*This is a structural skeleton. Real values come from the section's `97-acceptance-criteria.md` row that the AI is implementing.*
+
 <!-- AUTO-TOC:START -->
 
 ## Topics in this Folder

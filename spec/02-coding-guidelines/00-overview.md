@@ -52,6 +52,39 @@
 ---
 
 
+
+
+## Anti-Patterns
+
+The AI MUST NOT:
+- Adding a rule without a paired ESLint / PHPStan / phpcs check that enforces it.
+- Citing a rule without exactly one compliant **and** one non-compliant code example side by side.
+- Allowing TypeScript `any`, nested `if`s, > 3 params, > 15-line logic blocks, or `else` branches — all are gate-enforced.
+
+## Worked Example (skeleton)
+
+A canonical, copy-pasteable shape for this section's primary output:
+
+```ts
+// ✅ Compliant — guard clause, max-3-params, no nested if, no else
+function publishItem(item: Item, ctx: PublishCtx): PublishResult {
+  if (!ctx.isAuthenticated) return { status: 'error', reason: 'unauth' };
+  if (item.isArchived) return { status: 'error', reason: 'archived' };
+  return repo.publish(item.id);
+}
+
+// ❌ Non-compliant — nested if + else + 4 params
+function publishItemBad(item, ctx, opts, retry) {
+  if (ctx.isAuthenticated) {
+    if (!item.isArchived) {
+      return repo.publish(item.id, opts, retry);
+    } else { return null; }
+  }
+}
+```
+
+*This is a structural skeleton. Real values come from the section's `97-acceptance-criteria.md` row that the AI is implementing.*
+
 <!-- AUTO-TOC:START -->
 
 ## Topics in this Folder

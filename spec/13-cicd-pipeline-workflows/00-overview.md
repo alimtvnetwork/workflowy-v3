@@ -50,6 +50,40 @@
 ---
 
 
+
+
+## Anti-Patterns
+
+The AI MUST NOT:
+- Adding a new repo without picking one of the documented archetypes (WP-Plugin / Frontend-SPA / Browser-Extension).
+- Skipping the `node scripts/spec-hygiene/00-run-all.mjs` step — it is a required check on every workflow.
+- Hardcoding secrets or registry URLs — those go through repo secrets / org variables.
+
+## Worked Example (skeleton)
+
+A canonical, copy-pasteable shape for this section's primary output:
+
+```yaml
+name: WP-Plugin CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with: { php-version: '8.1' }
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: composer install --no-progress
+      - run: npm ci
+      - run: node scripts/spec-hygiene/00-run-all.mjs
+      - run: composer test
+      - run: npm run test
+```
+
+*This is a structural skeleton. Real values come from the section's `97-acceptance-criteria.md` row that the AI is implementing.*
+
 <!-- AUTO-TOC:START -->
 
 ## Topics in this Folder

@@ -166,3 +166,33 @@ Specification for WorkFlowy's user management system: accounts, roles, permissio
 
 - [`../00-overview.md`](../00-overview.md) — Parent overview
 - [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) — Acceptance criteria
+
+
+## Anti-Patterns
+
+The AI MUST NOT:
+- Storing a role on the user / profile row — roles MUST live in the separate `user_roles` table (privilege-escalation guard).
+- Checking admin status from `localStorage` / `sessionStorage` or a hardcoded credential — every check MUST go through `Auth::hasRole($userId, $role)` server-side.
+- Sending the password back in any envelope field — passwords are write-only.
+
+## Worked Example (skeleton)
+
+A canonical, copy-pasteable shape for this section's primary output:
+
+```json
+{
+  "Status": "success",
+  "Attributes": { "RequestId": "req_01H..." },
+  "Results": {
+    "user": {
+      "id": "usr_abc",
+      "email": "alice@example.com",
+      "displayName": "Alice",
+      "createdAt": "2026-04-28T10:00:00Z"
+    },
+    "roles": ["user", "moderator"]
+  }
+}
+```
+
+*This is a structural skeleton. Real values come from the section's `97-acceptance-criteria.md` row that the AI is implementing.*

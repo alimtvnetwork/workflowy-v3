@@ -46,6 +46,37 @@
 ---
 
 
+
+
+## Anti-Patterns
+
+The AI MUST NOT:
+- Editing a closed audit file in place — once an audit has a Resolution section, it is frozen; corrections go in a new audit file.
+- Re-using an active rule wording inside an audit — audits document the **past** state verbatim, even when that wording is now banned by gate G-38.
+- Writing audits without an explicit Resolution section that points to the spec change that closed the issue.
+
+## Worked Example (skeleton)
+
+A canonical, copy-pasteable shape for this section's primary output:
+
+```markdown
+# Audit NN — <issue title>
+
+> **Date:** YYYY-MM-DD
+> **Status:** Closed | Open
+> **Severity:** High | Medium | Low
+
+## Finding
+<verbatim quote of the inconsistency>
+
+## Resolution
+- Edited `spec/<owning-section>/<file>.md` to <change>.
+- Added gate `G-NN` in `scripts/spec-hygiene/NN-<name>.mjs` to prevent regression.
+- Verified by: `AT-<SECTION>-NN` passes.
+```
+
+*This is a structural skeleton. Real values come from the section's `97-acceptance-criteria.md` row that the AI is implementing.*
+
 <!-- AUTO-TOC:START -->
 
 ## Topics in this Folder

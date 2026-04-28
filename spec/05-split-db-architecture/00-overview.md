@@ -34,6 +34,29 @@
 > **Purpose:** Reusable pattern for hierarchical SQLite database organization across all projects
 
 
+
+
+## Anti-Patterns
+
+The AI MUST NOT:
+- Joining across attached SQLite files in raw SQL — every cross-DB read MUST go through a repo method.
+- Splitting a domain that has < 3 tables — the overhead exceeds the benefit; merge into a related domain instead.
+- Forgetting to register the split in `wp-plugin/config/db-split.json` — the orchestrator only attaches files declared there.
+
+## Worked Example (skeleton)
+
+A canonical, copy-pasteable shape for this section's primary output:
+
+```json
+{
+  "items": { "file": "items.sqlite", "tables": ["Items", "ItemRevisions", "Mirrors"] },
+  "users": { "file": "users.sqlite", "tables": ["Users", "UserRoles", "Sessions"] },
+  "audit": { "file": "audit.sqlite", "tables": ["AuditLog"], "rotateMonthly": true }
+}
+```
+
+*This is a structural skeleton. Real values come from the section's `97-acceptance-criteria.md` row that the AI is implementing.*
+
 <!-- AUTO-TOC:START -->
 
 ## Topics in this Folder

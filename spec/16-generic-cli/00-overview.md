@@ -50,6 +50,34 @@
 > - [20-terminal-output-design/00-overview.md](20-terminal-output-design/00-overview.md) — terminal rendering architecture
 
 
+
+
+## Anti-Patterns
+
+The AI MUST NOT:
+- Printing free-form text to stdout when `--json` is set — JSON mode MUST emit one valid JSON document and nothing else.
+- Returning exit 0 on partial failure — exit codes MUST be documented per script and non-zero on any failure.
+- Using a custom flag style (`-flagName`) — long flags MUST use kebab-case (`--flag-name`).
+
+## Worked Example (skeleton)
+
+A canonical, copy-pasteable shape for this section's primary output:
+
+```json
+{
+  "status": "ok",
+  "command": "backup",
+  "duration_ms": 1247,
+  "result": {
+    "snapshot_id": "snap_2026-04-28T10-00-00Z",
+    "size_bytes": 4823551,
+    "tables_backed_up": 12
+  }
+}
+```
+
+*This is a structural skeleton. Real values come from the section's `97-acceptance-criteria.md` row that the AI is implementing.*
+
 <!-- AUTO-TOC:START -->
 
 ## Topics in this Folder

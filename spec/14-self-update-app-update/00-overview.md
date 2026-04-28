@@ -50,6 +50,39 @@
 ---
 
 
+
+
+## Anti-Patterns
+
+The AI MUST NOT:
+- Applying an update without first taking a SQLite backup — atomicity gate requires a rollback target.
+- Hardcoding the update-server URL — it MUST come from `ConfigRegistry::get("update.serverUrl")`.
+- Skipping signature verification on the downloaded artifact — every update payload MUST be signed.
+
+## Worked Example (skeleton)
+
+A canonical, copy-pasteable shape for this section's primary output:
+
+```php
+<?php
+final class UpdateApplier {
+    public function apply(UpdatePackage $pkg): UpdateResult {
+        $this->verifySignature($pkg);                  // throws on bad sig
+        $backupId = $this->backup->snapshot();          // pre-update snapshot
+        try {
+            $this->files->extract($pkg->path, PLUGIN_DIR);
+            $this->migrator->run();
+            return UpdateResult::success($backupId);
+        } catch (Throwable $e) {
+            $this->backup->restore($backupId);          // atomic rollback
+            throw new UpdateFailedException($e);
+        }
+    }
+}
+```
+
+*This is a structural skeleton. Real values come from the section's `97-acceptance-criteria.md` row that the AI is implementing.*
+
 <!-- AUTO-TOC:START -->
 
 ## Topics in this Folder

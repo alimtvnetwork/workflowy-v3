@@ -32,6 +32,36 @@
 
 ---
 
+
+
+## Anti-Patterns
+
+The AI MUST NOT:
+- Throwing a bare `Exception` / `Error` — every error MUST carry an `errorCode` from the registry.
+- Returning a non-envelope JSON response on error — `Status` MUST be `"error"` and the `Errors` array MUST contain `{code, message, field?}`.
+- Adding a new error code anywhere except `wp-plugin/includes/Errors/ErrorCode.php` (PHP) and `src/types/errors.ts` (TS), kept in lock-step by gate G-22.
+
+## Worked Example (skeleton)
+
+A canonical, copy-pasteable shape for this section's primary output:
+
+```json
+{
+  "Status": "error",
+  "Attributes": { "RequestId": "req_01H..." },
+  "Errors": [
+    {
+      "Code": "ITEM_NOT_FOUND",
+      "Message": "Item with id 'abc123' does not exist.",
+      "Field": "itemId"
+    }
+  ],
+  "Results": null
+}
+```
+
+*This is a structural skeleton. Real values come from the section's `97-acceptance-criteria.md` row that the AI is implementing.*
+
 <!-- AUTO-TOC:START -->
 
 ## Topics in this Folder

@@ -53,6 +53,36 @@
 > **Purpose:** Reusable PowerShell runner for Go backend + React frontend projects with pnpm PnP support
 
 
+
+
+## Anti-Patterns
+
+The AI MUST NOT:
+- Using `Write-Host` for script output — use `Write-Output` so values are pipeable; reserve `Write-Host` for log lines.
+- Skipping `[CmdletBinding(SupportsShouldProcess)]` — every mutating script MUST support `-WhatIf` and `-Confirm`.
+- Hardcoding paths — accept a `-PluginPath` parameter so the script works on any install.
+
+## Worked Example (skeleton)
+
+A canonical, copy-pasteable shape for this section's primary output:
+
+```powershell
+[CmdletBinding(SupportsShouldProcess)]
+param(
+    [Parameter(Mandatory)] [string] $PluginPath,
+    [string] $BackupDir = "$env:USERPROFILE\workflowy-backups"
+)
+$ErrorActionPreference = 'Stop'
+$snap = "snap_$(Get-Date -Format 'yyyy-MM-ddTHH-mm-ss')"
+if ($PSCmdlet.ShouldProcess($PluginPath, "Backup to $BackupDir\$snap")) {
+    Copy-Item -Path "$PluginPath\data" -Destination "$BackupDir\$snap" -Recurse
+    Write-Output @{ status = 'ok'; snapshot_id = $snap } | ConvertTo-Json
+}
+exit 0
+```
+
+*This is a structural skeleton. Real values come from the section's `97-acceptance-criteria.md` row that the AI is implementing.*
+
 <!-- AUTO-TOC:START -->
 
 ## Topics in this Folder
