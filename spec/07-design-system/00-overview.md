@@ -4,18 +4,23 @@
 > **Updated:** 2026-04-16  
 ## AI Contract
 
-**Purpose** — _TODO(P1): one sentence describing what `AI-Adaptable Design System` solves._
+**Purpose** — Defines the Tailwind v4 design tokens (colors, spacing, type, radius, shadow) and the semantic CSS variables in `src/index.css` so every component renders consistently in light and dark mode.
 
-**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+**Audience** — Frontend developers building or modifying any React component under `src/`.
 
 **Expected AI Output** —
-- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+- `src/index.css` — `@theme` block with HSL semantic tokens
+- `tailwind.config.ts` — token registration so utility classes resolve
+- `src/components/ui/<component>.tsx` — shadcn variants that consume tokens (no raw colors)
 
 **Out of Scope** —
-- _TODO(P1): bullet adjacent concerns and link to owning section._
+- Per-feature page layouts — see [`spec/32-ui-design/`](../32-ui-design/00-overview.md)
+- Icon library choice — covered by [`32-ui-design/`](../32-ui-design/00-overview.md)
 
 **Definition of Done** —
-- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
+- Zero raw color classes (`text-white`, `bg-black`, `text-[#…]`) in components (gate G-16)
+- Every token resolves in both `:root` and `.dark` blocks
+- `AT-DESIGNSYSTEM-01` through `AT-DESIGNSYSTEM-NN` from `97-acceptance-criteria.md` pass
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

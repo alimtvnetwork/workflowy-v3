@@ -8,18 +8,23 @@
 
 ## AI Contract
 
-**Purpose** — _TODO(P1): one sentence describing what `Split Database Architecture` solves._
+**Purpose** — Defines when a single SQLite database MUST be split across multiple files (per-domain or per-tenant) and how the application MUST attach, query, and migrate them.
 
-**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+**Audience** — Backend developers designing new domains; operators planning capacity.
 
 **Expected AI Output** —
-- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+- `wp-plugin/includes/Database/Connection.php` — `ATTACH DATABASE` orchestration per split policy
+- `wp-plugin/includes/Database/SplitMigrator.php` — split/merge migrations
+- `wp-plugin/config/db-split.json` — declarative split-map per domain
 
 **Out of Scope** —
-- _TODO(P1): bullet adjacent concerns and link to owning section._
+- Schema design within a single file — see [`spec/04-database-conventions/02-schema-design.md`](../04-database-conventions/02-schema-design.md)
+- Backup and DR — see [`spec/31-app/05-conventions/14-backup-and-dr-policy.md`](../31-app/05-conventions/14-backup-and-dr-policy.md)
 
 **Definition of Done** —
-- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
+- Every cross-DB join is documented and goes through a repo, not raw SQL
+- Split decision matrix in `07-split-db-pattern.md` is reachable from each domain folder
+- `AT-SPLITDB-01` through `AT-SPLITDB-NN` from `97-acceptance-criteria.md` pass
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

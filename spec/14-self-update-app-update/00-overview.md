@@ -6,18 +6,23 @@
 
 ## AI Contract
 
-**Purpose** — _TODO(P1): one sentence describing what `Self-Update & App Update` solves._
+**Purpose** — Defines how the WP plugin checks for, downloads, and applies updates from a self-hosted update server while preserving SQLite data and user config.
 
-**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+**Audience** — Backend (PHP plugin) developers; operators planning rollouts.
 
 **Expected AI Output** —
-- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+- `wp-plugin/includes/Update/UpdateChecker.php`
+- `wp-plugin/includes/Update/UpdateApplier.php`
+- `wp-plugin/includes/Update/RollbackManager.php`
 
 **Out of Scope** —
-- _TODO(P1): bullet adjacent concerns and link to owning section._
+- CI build of the update artifact — see [`spec/13-cicd-pipeline-workflows/`](../13-cicd-pipeline-workflows/00-overview.md)
+- User-facing update UI — see [`spec/36-user-management/`](../36-user-management/00-overview.md)
 
 **Definition of Done** —
-- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
+- Every update is atomic — failure rolls back to the previous version with zero data loss
+- Update server URL is config-driven, never hardcoded
+- `AT-SELFUPDATE-01` through `AT-SELFUPDATE-NN` from `97-acceptance-criteria.md` pass
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

@@ -6,18 +6,19 @@
 
 ## AI Contract
 
-**Purpose** — _TODO(P1): one sentence describing what `Spec Issues` solves._
+**Purpose** — Logs spec audits, contradictions, and resolution decisions. Files here document **past** states verbatim and are exempt from many hygiene gates so the historical record is preserved unaltered.
 
-**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+**Audience** — Spec authors writing audit notes; reviewers tracing why a rule changed.
 
 **Expected AI Output** —
-- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+- `spec/18-spec-issues/<NN>-<audit-name>.md` — one file per audit, dated and versioned
 
 **Out of Scope** —
-- _TODO(P1): bullet adjacent concerns and link to owning section._
+- Active rules — rules MUST live in their owning section, not here
 
 **Definition of Done** —
-- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
+- Every audit file ends with a "Resolution" section pointing to the spec change that closed it
+- `AT-SPECISSUES-01` through `AT-SPECISSUES-NN` from `97-acceptance-criteria.md` pass
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

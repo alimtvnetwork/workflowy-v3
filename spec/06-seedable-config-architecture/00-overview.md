@@ -8,18 +8,23 @@
 
 ## AI Contract
 
-**Purpose** — _TODO(P1): one sentence describing what `Seedable Config Architecture + Changelog Versioning (also known as CW Config)` solves._
+**Purpose** — Defines the layered config pipeline (defaults → env → DB → user override) so every plugin install boots with deterministic, testable values regardless of host.
 
-**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+**Audience** — Backend developers adding a new config key; operators provisioning a new install.
 
 **Expected AI Output** —
-- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+- `wp-plugin/includes/Config/ConfigRegistry.php` — typed config registry
+- `wp-plugin/seed/config.json` — default seed values
+- `wp-plugin/includes/Migration/SeedConfigMigration.php` — first-run seeder
 
 **Out of Scope** —
-- _TODO(P1): bullet adjacent concerns and link to owning section._
+- Secrets management — secrets stay in `wp-config.php`, never in the seed JSON
+- Per-user UI preferences — see [`spec/36-user-management/01-account-and-settings.md`](../36-user-management/01-account-and-settings.md)
 
 **Definition of Done** —
-- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
+- Every config key has a default value, a type, and a validator
+- Re-running the seeder is idempotent — no duplicate rows, no overwritten user values
+- `AT-SEEDABLECONFIG-01` through `AT-SEEDABLECONFIG-NN` from `97-acceptance-criteria.md` pass
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
