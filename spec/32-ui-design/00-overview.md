@@ -9,19 +9,27 @@
 
 ## AI Contract
 
-**Purpose** — _TODO(P1): one sentence describing what `UI Design` solves._
+**Purpose** — Define the WorkFlowy frontend implementation contract: file/folder layout under `src/`, component decomposition, state architecture (TanStack Query + Zustand), design-token consumption from `07-design-system/`, editor implementation (TipTap/Slate), and quality gates (Vitest, Playwright, axe). Pairs with `31-app/` (behavior) — this section owns *how the React app is built*.
 
-**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+**Audience** — Frontend developer (React 19 + Vite 5.4 + TS 5.6 strict). DevOps consumes the build/test commands.
 
 **Expected AI Output** —
-- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+- `src/main.tsx`, `src/App.tsx`, `src/router.tsx` (TanStack Router), `src/components/<feature>/*.tsx`, `src/state/*Store.ts` (Zustand), `src/api/*.ts` (typed Axios; signatures from [`skeletons/ts/api-client.generated.ts`](./skeletons/ts/api-client.generated.ts) + enums from [`skeletons/ts/enums.generated.ts`](./skeletons/ts/enums.generated.ts)), `src/index.css` (Tailwind v4 `@theme` block per `mem://design/theme`).
+- Editor: `src/editor/Editor.tsx` + extensions per `04-editor/`.
+- Tests: Vitest under `src/**/__tests__/`, Playwright e2e under `tests/e2e/`. Every test name starts with the AT id it covers.
+- All code obeys strict-TS rules from `mem://constraints/coding-guidelines`.
 
 **Out of Scope** —
-- _TODO(P1): bullet adjacent concerns and link to owning section._
+- Product behavior + acceptance criteria → `31-app/`.
+- Backend (PHP) → `15-wp-plugin-how-to/`.
+- Visual tokens → `07-design-system/`.
+- REST envelope shape → `04-database-conventions/06-rest-api-format/`.
 
 **Definition of Done** —
-- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
-- `node scripts/spec-hygiene/00-run-all.mjs` exits 0
+- Every TS interface in `skeletons/ts/api-client.generated.ts` has a real implementation in `src/api/`.
+- Every feature in `31-app/01-features/` has a corresponding `src/components/<feature>/` folder with at least one component.
+- `bun run lint && bun run typecheck && bun run test` all exit 0.
+- `node scripts/spec-hygiene/00-run-all.mjs` exits 0.
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
 

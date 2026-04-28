@@ -9,19 +9,27 @@
 
 ## AI Contract
 
-**Purpose** — _TODO(P1): one sentence describing what `App` solves._
+**Purpose** — Specify every product-facing behavior of the WorkFlowy app (data model, layout, 18 features, edge cases, REST surface, DB shape) so a mediocre AI can build the entire frontend + backend slice without inferring product decisions. The acceptance criteria here (`AT-APP-*`, `AT-<FEATURE>-*`) are the binding contract.
 
-**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+**Audience** — Frontend dev (React components + state), backend dev (REST handlers + SQLite schema), reviewer (cross-cutting consistency).
 
 **Expected AI Output** —
-- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+- Frontend: `src/components/<feature>/*.tsx`, `src/state/<feature>Store.ts`, `src/api/<feature>.ts` (typed Axios calls from `spec/32-ui-design/skeletons/ts/api-client.generated.ts`).
+- Backend: `wp-plugin/src/Rest/<Feature>Controller.php` (signatures from `spec/15-wp-plugin-how-to/skeletons/php/RestRoutes.generated.php`), `wp-plugin/src/Domain/<Feature>/*`, `wp-plugin/migrations/NNN-<feature>.sql`.
+- Tests: one Vitest + one PHPUnit test per `AT-*` row in `97-acceptance-criteria.md` and per-feature `97-acceptance-criteria.md` files; test names MUST start with the AT id.
+- Fixtures: one JSON envelope per endpoint listed in `06-endpoints/` under `04a-fixtures/`.
 
 **Out of Scope** —
-- _TODO(P1): bullet adjacent concerns and link to owning section._
+- Visual styling tokens → `07-design-system/` and `32-ui-design/03-design-system/`.
+- WP-plugin scaffolding (composer, autoload) → `15-wp-plugin-how-to/`.
+- REST envelope rules → `04-database-conventions/06-rest-api-format/`.
+- Coding-rule enforcement → `02-coding-guidelines/`.
 
 **Definition of Done** —
-- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
-- `node scripts/spec-hygiene/00-run-all.mjs` exits 0
+- Every endpoint in `06-endpoints/` has a controller + a TS client method + a fixture + an `AT-*` test.
+- Every feature in `01-features/` honors the unified Node interface (`mem://architecture/data-model`) and the 250-item-per-view cap.
+- Mirror-related code follows `mem://features/mirroring` (peer-group, NOT an ItemType).
+- `node scripts/spec-hygiene/00-run-all.mjs` exits 0.
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
 

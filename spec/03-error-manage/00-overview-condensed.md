@@ -8,19 +8,25 @@
 
 ## AI Contract
 
-**Purpose** — _TODO(P1): one sentence describing what `Error Management Specification` solves._
+**Purpose** — Define the end-to-end error-handling contract: how errors are raised in PHP handlers, serialized into the PascalCase REST envelope (`Errors[]`), surfaced through the Axios interceptor, rendered by `<ErrorModal />`, and recorded for diagnosis. Eliminates "what does this error mean" guesswork for AI implementers.
 
-**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+**Audience** — Backend dev (PHP handlers + envelope shape), frontend dev (interceptor + modal), reviewer (consistency of error codes).
 
 **Expected AI Output** —
-- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+- PHP: `wp-plugin/src/Errors/ErrorCode.php` (enum: string, mirrors `03-error-code-registry/`), `wp-plugin/src/Errors/ApiException.php`, every controller `try/catch` returning the canonical envelope `{Status:"Error", Errors:[{Code, Message, Field?}]}`.
+- TS: `src/api/errorInterceptor.ts` (Axios response interceptor), `src/components/errors/ErrorModal.tsx`, `src/api/errorTypes.ts` (one type per registry entry).
+- Per-error fixture under `spec/03-error-manage/04-fixtures/<code>.json` (request → expected envelope).
+- Mermaid error-flow diagram already in `02-error-architecture/00-overview.md` (P8) is the binding visual contract.
 
 **Out of Scope** —
-- _TODO(P1): bullet adjacent concerns and link to owning section._
+- HTTP-layer concerns (CORS, auth-401 origin) → `15-wp-plugin-how-to/14-rest-api-conventions/`.
+- Retry/backoff strategy → `31-app/01-features/14-concurrency-and-sync.md`.
+- Logging/observability sinks → `13-cicd-pipeline-workflows/`.
 
 **Definition of Done** —
-- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
-- `node scripts/spec-hygiene/00-run-all.mjs` exits 0
+- Every code in `03-error-code-registry/` has: a PHP enum case, a TS type, a fixture file, and an `AT-ERRORMANAGE-*` row covering its trigger.
+- `<ErrorModal />` renders every fixture without crashing (Vitest snapshots).
+- `node scripts/spec-hygiene/00-run-all.mjs` exits 0.
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
 
