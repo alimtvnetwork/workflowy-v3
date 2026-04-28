@@ -2,7 +2,7 @@
 
 ## Status
 
-`Accepted` — 2026-04-28
+`Accepted` — 2026-04-28 (**Amended 2026-04-28**: added D7 — logical properties mandate, anchoring the rule introduced by ADR-0028 D6 at its rightful authority. Three new gates: `G-12-LOGICAL-MARGINS-PADDING`, `G-12-LOGICAL-TEXT-ALIGN`, `G-12-LOGICAL-INSET`.)
 
 ## Context
 
