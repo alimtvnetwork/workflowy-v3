@@ -27,6 +27,7 @@ for gate algorithms specifically:
 |------|------|--------|
 | [`xlink-symmetry-audit.md`](./xlink-symmetry-audit.md) | `G-00-ADR-XLINK-SYMMETRY` | Frozen — Phase 1 (file-level back-link check) |
 | [`fixture-as-spec-shape-audit.md`](./fixture-as-spec-shape-audit.md) | `G-13-FIXTURE-AS-SPEC-SHAPE` | Frozen — Phase 4 (FINAL): header presence + tagged Algorithm fence + banner cites resolved gate ID + registry row back-links to fixture (with `BACKLINK_EXEMPT` carve-out for authoritative-spec-elsewhere gates). Self-audits this directory. |
+| [`placeholder-token-parity-audit.md`](./placeholder-token-parity-audit.md) | `G-13-PLACEHOLDER-TOKEN-PARITY` | Frozen — Phase 1: set equality between `fixture-as-spec-shape-audit.md`'s `PLACEHOLDER_TOKENS` literal and registry §5.1 "Documentation placeholders" row (drift guard). |
 
 ## Adding a new fixture-as-spec script
 
