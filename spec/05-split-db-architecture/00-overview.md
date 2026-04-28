@@ -16,18 +16,18 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## Acceptance Summary (Fixture Index)
 
-| AT id | Fixture row | One-line bind |
+| Bind # | AT id (citation) | Fixture row |
 |---|---|---|
-| `AT-SPLITDBFUNDAMENTALS-01` | [`97a-…#at-splitdbfundamentals-01`](./97a-acceptance-criteria-fixtures.md#at-splitdbfundamentals-01) | See fixture for exact command + envelope. |
-| `AT-SPLITDBFUNDAMENTALS-02` | [`97a-…#at-splitdbfundamentals-02`](./97a-acceptance-criteria-fixtures.md#at-splitdbfundamentals-02) | See fixture for exact command + envelope. |
-| `AT-SPLITDBFUNDAMENTALS-03` | [`97a-…#at-splitdbfundamentals-03`](./97a-acceptance-criteria-fixtures.md#at-splitdbfundamentals-03) | See fixture for exact command + envelope. |
-| `AT-SPLITDBFUNDAMENTALS-04` | [`97a-…#at-splitdbfundamentals-04`](./97a-acceptance-criteria-fixtures.md#at-splitdbfundamentals-04) | See fixture for exact command + envelope. |
-| `AT-SPLITDBFUNDAMENTALS-05` | [`97a-…#at-splitdbfundamentals-05`](./97a-acceptance-criteria-fixtures.md#at-splitdbfundamentals-05) | See fixture for exact command + envelope. |
-| `AT-SPLITDBFUNDAMENTALS-06` | [`97a-…#at-splitdbfundamentals-06`](./97a-acceptance-criteria-fixtures.md#at-splitdbfundamentals-06) | See fixture for exact command + envelope. |
-| `AT-SPLITDBFUNDAMENTALS-07` | [`97a-…#at-splitdbfundamentals-07`](./97a-acceptance-criteria-fixtures.md#at-splitdbfundamentals-07) | See fixture for exact command + envelope. |
-| `AT-SPLITDBFUNDAMENTALS-08` | [`97a-…#at-splitdbfundamentals-08`](./97a-acceptance-criteria-fixtures.md#at-splitdbfundamentals-08) | See fixture for exact command + envelope. |
-| `AT-SPLITDBFUNDAMENTALS-09` | [`97a-…#at-splitdbfundamentals-09`](./97a-acceptance-criteria-fixtures.md#at-splitdbfundamentals-09) | See fixture for exact command + envelope. |
-| `AT-SPLITDBFUNDAMENTALS-10` | [`97a-…#at-splitdbfundamentals-10`](./97a-acceptance-criteria-fixtures.md#at-splitdbfundamentals-10) | See fixture for exact command + envelope. |
+| 1 | cites `AT-SPLITDBFUNDAMENTALS-01` | [`97a-…#at-splitdbfundamentals-01`](./97a-acceptance-criteria-fixtures.md#at-splitdbfundamentals-01) |
+| 2 | cites `AT-SPLITDBFUNDAMENTALS-02` | [`97a-…#at-splitdbfundamentals-02`](./97a-acceptance-criteria-fixtures.md#at-splitdbfundamentals-02) |
+| 3 | cites `AT-SPLITDBFUNDAMENTALS-03` | [`97a-…#at-splitdbfundamentals-03`](./97a-acceptance-criteria-fixtures.md#at-splitdbfundamentals-03) |
+| 4 | cites `AT-SPLITDBFUNDAMENTALS-04` | [`97a-…#at-splitdbfundamentals-04`](./97a-acceptance-criteria-fixtures.md#at-splitdbfundamentals-04) |
+| 5 | cites `AT-SPLITDBFUNDAMENTALS-05` | [`97a-…#at-splitdbfundamentals-05`](./97a-acceptance-criteria-fixtures.md#at-splitdbfundamentals-05) |
+| 6 | cites `AT-SPLITDBFUNDAMENTALS-06` | [`97a-…#at-splitdbfundamentals-06`](./97a-acceptance-criteria-fixtures.md#at-splitdbfundamentals-06) |
+| 7 | cites `AT-SPLITDBFUNDAMENTALS-07` | [`97a-…#at-splitdbfundamentals-07`](./97a-acceptance-criteria-fixtures.md#at-splitdbfundamentals-07) |
+| 8 | cites `AT-SPLITDBFUNDAMENTALS-08` | [`97a-…#at-splitdbfundamentals-08`](./97a-acceptance-criteria-fixtures.md#at-splitdbfundamentals-08) |
+| 9 | cites `AT-SPLITDBFUNDAMENTALS-09` | [`97a-…#at-splitdbfundamentals-09`](./97a-acceptance-criteria-fixtures.md#at-splitdbfundamentals-09) |
+| 10 | cites `AT-SPLITDBFUNDAMENTALS-10` | [`97a-…#at-splitdbfundamentals-10`](./97a-acceptance-criteria-fixtures.md#at-splitdbfundamentals-10) |
 
 > Total: **10** acceptance rows, **10** fixture binds, **0** orphan citations.
 <!-- /P24-RUBRIC-SELFCHECK -->

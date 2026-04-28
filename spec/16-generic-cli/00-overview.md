@@ -16,18 +16,18 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## Acceptance Summary (Fixture Index)
 
-| AT id | Fixture row | One-line bind |
+| Bind # | AT id (citation) | Fixture row |
 |---|---|---|
-| `AT-GENERICCLI-01` | [`97a-…#at-genericcli-01`](./97a-acceptance-criteria-fixtures.md#at-genericcli-01) | See fixture for exact command + envelope. |
-| `AT-GENERICCLI-02` | [`97a-…#at-genericcli-02`](./97a-acceptance-criteria-fixtures.md#at-genericcli-02) | See fixture for exact command + envelope. |
-| `AT-GENERICCLI-03` | [`97a-…#at-genericcli-03`](./97a-acceptance-criteria-fixtures.md#at-genericcli-03) | See fixture for exact command + envelope. |
-| `AT-GENERICCLI-04` | [`97a-…#at-genericcli-04`](./97a-acceptance-criteria-fixtures.md#at-genericcli-04) | See fixture for exact command + envelope. |
-| `AT-GENERICCLI-05` | [`97a-…#at-genericcli-05`](./97a-acceptance-criteria-fixtures.md#at-genericcli-05) | See fixture for exact command + envelope. |
-| `AT-GENERICCLI-06` | [`97a-…#at-genericcli-06`](./97a-acceptance-criteria-fixtures.md#at-genericcli-06) | See fixture for exact command + envelope. |
-| `AT-GENERICCLI-07` | [`97a-…#at-genericcli-07`](./97a-acceptance-criteria-fixtures.md#at-genericcli-07) | See fixture for exact command + envelope. |
-| `AT-GENERICCLI-08` | [`97a-…#at-genericcli-08`](./97a-acceptance-criteria-fixtures.md#at-genericcli-08) | See fixture for exact command + envelope. |
-| `AT-GENERICCLI-09` | [`97a-…#at-genericcli-09`](./97a-acceptance-criteria-fixtures.md#at-genericcli-09) | See fixture for exact command + envelope. |
-| `AT-GENERICCLI-10` | [`97a-…#at-genericcli-10`](./97a-acceptance-criteria-fixtures.md#at-genericcli-10) | See fixture for exact command + envelope. |
+| 1 | cites `AT-GENERICCLI-01` | [`97a-…#at-genericcli-01`](./97a-acceptance-criteria-fixtures.md#at-genericcli-01) |
+| 2 | cites `AT-GENERICCLI-02` | [`97a-…#at-genericcli-02`](./97a-acceptance-criteria-fixtures.md#at-genericcli-02) |
+| 3 | cites `AT-GENERICCLI-03` | [`97a-…#at-genericcli-03`](./97a-acceptance-criteria-fixtures.md#at-genericcli-03) |
+| 4 | cites `AT-GENERICCLI-04` | [`97a-…#at-genericcli-04`](./97a-acceptance-criteria-fixtures.md#at-genericcli-04) |
+| 5 | cites `AT-GENERICCLI-05` | [`97a-…#at-genericcli-05`](./97a-acceptance-criteria-fixtures.md#at-genericcli-05) |
+| 6 | cites `AT-GENERICCLI-06` | [`97a-…#at-genericcli-06`](./97a-acceptance-criteria-fixtures.md#at-genericcli-06) |
+| 7 | cites `AT-GENERICCLI-07` | [`97a-…#at-genericcli-07`](./97a-acceptance-criteria-fixtures.md#at-genericcli-07) |
+| 8 | cites `AT-GENERICCLI-08` | [`97a-…#at-genericcli-08`](./97a-acceptance-criteria-fixtures.md#at-genericcli-08) |
+| 9 | cites `AT-GENERICCLI-09` | [`97a-…#at-genericcli-09`](./97a-acceptance-criteria-fixtures.md#at-genericcli-09) |
+| 10 | cites `AT-GENERICCLI-10` | [`97a-…#at-genericcli-10`](./97a-acceptance-criteria-fixtures.md#at-genericcli-10) |
 
 > Total: **10** acceptance rows, **10** fixture binds, **0** orphan citations.
 <!-- /P24-RUBRIC-SELFCHECK -->

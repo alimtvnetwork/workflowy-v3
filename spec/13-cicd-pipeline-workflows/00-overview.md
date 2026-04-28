@@ -16,18 +16,18 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## Acceptance Summary (Fixture Index)
 
-| AT id | Fixture row | One-line bind |
+| Bind # | AT id (citation) | Fixture row |
 |---|---|---|
-| `AT-CICD-01` | [`97a-…#at-cicd-01`](./97a-acceptance-criteria-fixtures.md#at-cicd-01) | See fixture for exact command + envelope. |
-| `AT-CICD-02` | [`97a-…#at-cicd-02`](./97a-acceptance-criteria-fixtures.md#at-cicd-02) | See fixture for exact command + envelope. |
-| `AT-CICD-03` | [`97a-…#at-cicd-03`](./97a-acceptance-criteria-fixtures.md#at-cicd-03) | See fixture for exact command + envelope. |
-| `AT-CICD-04` | [`97a-…#at-cicd-04`](./97a-acceptance-criteria-fixtures.md#at-cicd-04) | See fixture for exact command + envelope. |
-| `AT-CICD-05` | [`97a-…#at-cicd-05`](./97a-acceptance-criteria-fixtures.md#at-cicd-05) | See fixture for exact command + envelope. |
-| `AT-CICD-06` | [`97a-…#at-cicd-06`](./97a-acceptance-criteria-fixtures.md#at-cicd-06) | See fixture for exact command + envelope. |
-| `AT-CICD-07` | [`97a-…#at-cicd-07`](./97a-acceptance-criteria-fixtures.md#at-cicd-07) | See fixture for exact command + envelope. |
-| `AT-CICD-08` | [`97a-…#at-cicd-08`](./97a-acceptance-criteria-fixtures.md#at-cicd-08) | See fixture for exact command + envelope. |
-| `AT-CICD-09` | [`97a-…#at-cicd-09`](./97a-acceptance-criteria-fixtures.md#at-cicd-09) | See fixture for exact command + envelope. |
-| `AT-CICD-10` | [`97a-…#at-cicd-10`](./97a-acceptance-criteria-fixtures.md#at-cicd-10) | See fixture for exact command + envelope. |
+| 1 | cites `AT-CICD-01` | [`97a-…#at-cicd-01`](./97a-acceptance-criteria-fixtures.md#at-cicd-01) |
+| 2 | cites `AT-CICD-02` | [`97a-…#at-cicd-02`](./97a-acceptance-criteria-fixtures.md#at-cicd-02) |
+| 3 | cites `AT-CICD-03` | [`97a-…#at-cicd-03`](./97a-acceptance-criteria-fixtures.md#at-cicd-03) |
+| 4 | cites `AT-CICD-04` | [`97a-…#at-cicd-04`](./97a-acceptance-criteria-fixtures.md#at-cicd-04) |
+| 5 | cites `AT-CICD-05` | [`97a-…#at-cicd-05`](./97a-acceptance-criteria-fixtures.md#at-cicd-05) |
+| 6 | cites `AT-CICD-06` | [`97a-…#at-cicd-06`](./97a-acceptance-criteria-fixtures.md#at-cicd-06) |
+| 7 | cites `AT-CICD-07` | [`97a-…#at-cicd-07`](./97a-acceptance-criteria-fixtures.md#at-cicd-07) |
+| 8 | cites `AT-CICD-08` | [`97a-…#at-cicd-08`](./97a-acceptance-criteria-fixtures.md#at-cicd-08) |
+| 9 | cites `AT-CICD-09` | [`97a-…#at-cicd-09`](./97a-acceptance-criteria-fixtures.md#at-cicd-09) |
+| 10 | cites `AT-CICD-10` | [`97a-…#at-cicd-10`](./97a-acceptance-criteria-fixtures.md#at-cicd-10) |
 
 > Total: **10** acceptance rows, **10** fixture binds, **0** orphan citations.
 <!-- /P24-RUBRIC-SELFCHECK -->

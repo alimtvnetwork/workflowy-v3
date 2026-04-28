@@ -4,8 +4,8 @@
   "generator": "scripts/spec-hygiene/40-generate-contract-json.mjs",
   "do_not_edit": true,
   "counts": {
-    "acceptance_tests_defined": 2268,
-    "acceptance_tests_orphan_citations": 0,
+    "acceptance_tests_defined": 2257,
+    "acceptance_tests_orphan_citations": 11,
     "endpoints": 48,
     "enums": 23,
     "sections": 24
@@ -743,12 +743,16 @@
           "line": 11
         },
         {
-          "file": "spec/34-activity-feed/97-acceptance-criteria.md",
-          "line": 12
+          "file": "spec/34-activity-feed/00-overview.md",
+          "line": 21
         },
         {
           "file": "spec/34-activity-feed/00-overview.md",
-          "line": 21
+          "line": 59
+        },
+        {
+          "file": "spec/34-activity-feed/97-acceptance-criteria.md",
+          "line": 12
         }
       ]
     },
@@ -927,12 +931,12 @@
       "defined_line": 62,
       "cited_in": [
         {
-          "file": "spec/34-activity-feed/97-acceptance-criteria.md",
-          "line": 12
-        },
-        {
           "file": "spec/34-activity-feed/00-overview.md",
           "line": 36
+        },
+        {
+          "file": "spec/34-activity-feed/97-acceptance-criteria.md",
+          "line": 12
         }
       ]
     },
@@ -1174,6 +1178,14 @@
           "line": 11
         },
         {
+          "file": "spec/31-app/00-overview.md",
+          "line": 21
+        },
+        {
+          "file": "spec/31-app/00-overview.md",
+          "line": 105
+        },
+        {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 27
         },
@@ -1200,10 +1212,6 @@
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 16
-        },
-        {
-          "file": "spec/31-app/00-overview.md",
-          "line": 21
         }
       ]
     },
@@ -1214,12 +1222,12 @@
       "defined_line": 29,
       "cited_in": [
         {
-          "file": "spec/31-app/06-endpoints/01-information-model.md",
-          "line": 44
-        },
-        {
           "file": "spec/31-app/00-overview.md",
           "line": 22
+        },
+        {
+          "file": "spec/31-app/06-endpoints/01-information-model.md",
+          "line": 44
         }
       ]
     },
@@ -1230,12 +1238,12 @@
       "defined_line": 30,
       "cited_in": [
         {
-          "file": "spec/31-app/06-endpoints/01-information-model.md",
-          "line": 60
-        },
-        {
           "file": "spec/31-app/00-overview.md",
           "line": 23
+        },
+        {
+          "file": "spec/31-app/06-endpoints/01-information-model.md",
+          "line": 60
         }
       ]
     },
@@ -1246,12 +1254,12 @@
       "defined_line": 31,
       "cited_in": [
         {
-          "file": "spec/31-app/06-endpoints/01-information-model.md",
-          "line": 32
-        },
-        {
           "file": "spec/31-app/00-overview.md",
           "line": 24
+        },
+        {
+          "file": "spec/31-app/06-endpoints/01-information-model.md",
+          "line": 32
         }
       ]
     },
@@ -1261,6 +1269,10 @@
       "defined_in": "spec/31-app/97-acceptance-criteria.md",
       "defined_line": 32,
       "cited_in": [
+        {
+          "file": "spec/31-app/00-overview.md",
+          "line": 25
+        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 186
@@ -1272,10 +1284,6 @@
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
           "line": 23
-        },
-        {
-          "file": "spec/31-app/00-overview.md",
-          "line": 25
         },
         {
           "file": "spec/31-app/97d-acceptance-criteria-fixtures.md",
@@ -1290,6 +1298,10 @@
       "defined_line": 38,
       "cited_in": [
         {
+          "file": "spec/31-app/00-overview.md",
+          "line": 26
+        },
+        {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 29
         },
@@ -1300,10 +1312,6 @@
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
           "line": 24
-        },
-        {
-          "file": "spec/31-app/00-overview.md",
-          "line": 26
         }
       ]
     },
@@ -1314,12 +1322,12 @@
       "defined_line": 39,
       "cited_in": [
         {
-          "file": "spec/31-app/06-endpoints/01-information-model.md",
-          "line": 86
-        },
-        {
           "file": "spec/31-app/00-overview.md",
           "line": 27
+        },
+        {
+          "file": "spec/31-app/06-endpoints/01-information-model.md",
+          "line": 86
         }
       ]
     },
@@ -1330,12 +1338,12 @@
       "defined_line": 40,
       "cited_in": [
         {
-          "file": "spec/31-app/06-endpoints/01-information-model.md",
-          "line": 108
-        },
-        {
           "file": "spec/31-app/00-overview.md",
           "line": 28
+        },
+        {
+          "file": "spec/31-app/06-endpoints/01-information-model.md",
+          "line": 108
         }
       ]
     },
@@ -1346,12 +1354,12 @@
       "defined_line": 41,
       "cited_in": [
         {
-          "file": "spec/31-app/06-endpoints/02-personas.md",
-          "line": 32
-        },
-        {
           "file": "spec/31-app/00-overview.md",
           "line": 29
+        },
+        {
+          "file": "spec/31-app/06-endpoints/02-personas.md",
+          "line": 32
         }
       ]
     },
@@ -1361,6 +1369,10 @@
       "defined_in": "spec/31-app/97-acceptance-criteria.md",
       "defined_line": 42,
       "cited_in": [
+        {
+          "file": "spec/31-app/00-overview.md",
+          "line": 30
+        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 33
@@ -1372,10 +1384,6 @@
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
           "line": 25
-        },
-        {
-          "file": "spec/31-app/00-overview.md",
-          "line": 30
         }
       ]
     },
@@ -1678,6 +1686,10 @@
       "defined_line": 48,
       "cited_in": [
         {
+          "file": "spec/31-app/00-overview.md",
+          "line": 31
+        },
+        {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 30
         },
@@ -1688,10 +1700,6 @@
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
           "line": 26
-        },
-        {
-          "file": "spec/31-app/00-overview.md",
-          "line": 31
         }
       ]
     },
@@ -1701,6 +1709,10 @@
       "defined_in": "spec/31-app/97-acceptance-criteria.md",
       "defined_line": 49,
       "cited_in": [
+        {
+          "file": "spec/31-app/00-overview.md",
+          "line": 32
+        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 31
@@ -1726,12 +1738,12 @@
       "defined_line": 50,
       "cited_in": [
         {
-          "file": "spec/31-app/06-endpoints/06-item-context-menu.md",
-          "line": 65
-        },
-        {
           "file": "spec/31-app/00-overview.md",
           "line": 33
+        },
+        {
+          "file": "spec/31-app/06-endpoints/06-item-context-menu.md",
+          "line": 65
         }
       ]
     },
@@ -1742,12 +1754,12 @@
       "defined_line": 51,
       "cited_in": [
         {
-          "file": "spec/31-app/06-endpoints/07-board-view.md",
-          "line": 27
-        },
-        {
           "file": "spec/31-app/00-overview.md",
           "line": 34
+        },
+        {
+          "file": "spec/31-app/06-endpoints/07-board-view.md",
+          "line": 27
         }
       ]
     },
@@ -5264,12 +5276,16 @@
           "line": 11
         },
         {
-          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
-          "line": 19
+          "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
+          "line": 21
         },
         {
           "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
-          "line": 21
+          "line": 56
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
+          "line": 19
         }
       ]
     },
@@ -5328,12 +5344,12 @@
       "defined_line": 46,
       "cited_in": [
         {
-          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
-          "line": 20
-        },
-        {
           "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
           "line": 26
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
+          "line": 20
         }
       ]
     },
@@ -5368,12 +5384,12 @@
       "defined_line": 56,
       "cited_in": [
         {
-          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
-          "line": 21
-        },
-        {
           "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
           "line": 29
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
+          "line": 21
         }
       ]
     },
@@ -7271,12 +7287,16 @@
           "line": 11
         },
         {
-          "file": "spec/04-database-conventions/97-acceptance-criteria.md",
-          "line": 20
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 21
         },
         {
           "file": "spec/04-database-conventions/00-overview.md",
-          "line": 21
+          "line": 69
+        },
+        {
+          "file": "spec/04-database-conventions/97-acceptance-criteria.md",
+          "line": 20
         }
       ]
     },
@@ -7311,12 +7331,12 @@
       "defined_line": 32,
       "cited_in": [
         {
-          "file": "spec/04-database-conventions/97-acceptance-criteria.md",
-          "line": 28
-        },
-        {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 24
+        },
+        {
+          "file": "spec/04-database-conventions/97-acceptance-criteria.md",
+          "line": 28
         }
       ]
     },
@@ -7351,12 +7371,12 @@
       "defined_line": 40,
       "cited_in": [
         {
-          "file": "spec/04-database-conventions/97-acceptance-criteria.md",
-          "line": 36
-        },
-        {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 27
+        },
+        {
+          "file": "spec/04-database-conventions/97-acceptance-criteria.md",
+          "line": 36
         }
       ]
     },
@@ -7379,12 +7399,12 @@
       "defined_line": 47,
       "cited_in": [
         {
-          "file": "spec/04-database-conventions/97-acceptance-criteria.md",
-          "line": 43
-        },
-        {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 29
+        },
+        {
+          "file": "spec/04-database-conventions/97-acceptance-criteria.md",
+          "line": 43
         }
       ]
     },
@@ -7407,12 +7427,12 @@
       "defined_line": 54,
       "cited_in": [
         {
-          "file": "spec/04-database-conventions/97-acceptance-criteria.md",
-          "line": 50
-        },
-        {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 31
+        },
+        {
+          "file": "spec/04-database-conventions/97-acceptance-criteria.md",
+          "line": 50
         }
       ]
     },
@@ -7423,12 +7443,12 @@
       "defined_line": 60,
       "cited_in": [
         {
-          "file": "spec/04-database-conventions/97-acceptance-criteria.md",
-          "line": 56
-        },
-        {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 32
+        },
+        {
+          "file": "spec/04-database-conventions/97-acceptance-criteria.md",
+          "line": 56
         }
       ]
     },
@@ -7439,12 +7459,12 @@
       "defined_line": 66,
       "cited_in": [
         {
-          "file": "spec/04-database-conventions/97-acceptance-criteria.md",
-          "line": 62
-        },
-        {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 33
+        },
+        {
+          "file": "spec/04-database-conventions/97-acceptance-criteria.md",
+          "line": 62
         }
       ]
     },
@@ -8723,12 +8743,20 @@
           "line": 11
         },
         {
-          "file": "spec/35-enforcement-rules/97-acceptance-criteria.md",
-          "line": 12
+          "file": "spec/35-enforcement-rules/00-overview.md",
+          "line": 21
         },
         {
           "file": "spec/35-enforcement-rules/00-overview.md",
-          "line": 21
+          "line": 58
+        },
+        {
+          "file": "spec/35-enforcement-rules/00-overview.md",
+          "line": 86
+        },
+        {
+          "file": "spec/35-enforcement-rules/97-acceptance-criteria.md",
+          "line": 12
         }
       ]
     },
@@ -8741,6 +8769,10 @@
         {
           "file": "spec/35-enforcement-rules/00-overview.md",
           "line": 22
+        },
+        {
+          "file": "spec/35-enforcement-rules/00-overview.md",
+          "line": 59
         }
       ]
     },
@@ -8883,12 +8915,16 @@
       "defined_line": 60,
       "cited_in": [
         {
-          "file": "spec/35-enforcement-rules/97-acceptance-criteria.md",
-          "line": 12
+          "file": "spec/35-enforcement-rules/00-overview.md",
+          "line": 34
         },
         {
           "file": "spec/35-enforcement-rules/00-overview.md",
-          "line": 34
+          "line": 60
+        },
+        {
+          "file": "spec/35-enforcement-rules/97-acceptance-criteria.md",
+          "line": 12
         }
       ]
     },
@@ -9939,12 +9975,12 @@
           "line": 11
         },
         {
-          "file": "spec/03-error-manage/01-error-resolution/97-acceptance-criteria.md",
-          "line": 12
-        },
-        {
           "file": "spec/03-error-manage/00-overview.md",
           "line": 21
+        },
+        {
+          "file": "spec/03-error-manage/01-error-resolution/97-acceptance-criteria.md",
+          "line": 12
         }
       ]
     },
@@ -10314,12 +10350,20 @@
           "line": 11
         },
         {
-          "file": "spec/33-feedback-report/97-acceptance-criteria.md",
-          "line": 12
+          "file": "spec/33-feedback-report/00-overview.md",
+          "line": 21
         },
         {
           "file": "spec/33-feedback-report/00-overview.md",
-          "line": 21
+          "line": 60
+        },
+        {
+          "file": "spec/33-feedback-report/00-overview.md",
+          "line": 89
+        },
+        {
+          "file": "spec/33-feedback-report/97-acceptance-criteria.md",
+          "line": 12
         }
       ]
     },
@@ -10392,6 +10436,10 @@
         {
           "file": "spec/33-feedback-report/00-overview.md",
           "line": 27
+        },
+        {
+          "file": "spec/33-feedback-report/00-overview.md",
+          "line": 61
         }
       ]
     },
@@ -10416,6 +10464,10 @@
         {
           "file": "spec/33-feedback-report/00-overview.md",
           "line": 29
+        },
+        {
+          "file": "spec/33-feedback-report/00-overview.md",
+          "line": 62
         }
       ]
     },
@@ -10474,12 +10526,16 @@
       "defined_line": 55,
       "cited_in": [
         {
-          "file": "spec/33-feedback-report/97-acceptance-criteria.md",
-          "line": 12
+          "file": "spec/33-feedback-report/00-overview.md",
+          "line": 34
         },
         {
           "file": "spec/33-feedback-report/00-overview.md",
-          "line": 34
+          "line": 63
+        },
+        {
+          "file": "spec/33-feedback-report/97-acceptance-criteria.md",
+          "line": 12
         }
       ]
     },
@@ -11943,12 +11999,16 @@
           "line": 11
         },
         {
-          "file": "spec/16-generic-cli/97-acceptance-criteria.md",
-          "line": 13
+          "file": "spec/16-generic-cli/00-overview.md",
+          "line": 21
         },
         {
           "file": "spec/16-generic-cli/00-overview.md",
-          "line": 21
+          "line": 51
+        },
+        {
+          "file": "spec/16-generic-cli/97-acceptance-criteria.md",
+          "line": 13
         }
       ]
     },
@@ -12104,12 +12164,16 @@
           "line": 11
         },
         {
-          "file": "spec/17-generic-update/97-acceptance-criteria.md",
-          "line": 13
+          "file": "spec/17-generic-update/00-overview.md",
+          "line": 21
         },
         {
           "file": "spec/17-generic-update/00-overview.md",
-          "line": 21
+          "line": 53
+        },
+        {
+          "file": "spec/17-generic-update/97-acceptance-criteria.md",
+          "line": 13
         }
       ]
     },
@@ -12204,21 +12268,14 @@
       "defined_line": 29,
       "cited_in": [
         {
-          "file": "spec/17-generic-update/97-acceptance-criteria.md",
-          "line": 13
-        },
-        {
           "file": "spec/17-generic-update/00-overview.md",
           "line": 29
+        },
+        {
+          "file": "spec/17-generic-update/97-acceptance-criteria.md",
+          "line": 13
         }
       ]
-    },
-    {
-      "id": "AT-GENERICUPDATE-10",
-      "definition": "[`97a-…#at-genericupdate-10`](./97a-acceptance-criteria-fixtures.md#at-genericupdate-10)",
-      "defined_in": "spec/17-generic-update/00-overview.md",
-      "defined_line": 30,
-      "cited_in": []
     },
     {
       "id": "AT-GOBINARYDEPLOY-01",
@@ -15854,16 +15911,20 @@
           "line": 11
         },
         {
+          "file": "spec/10-powershell-integration/00-overview.md",
+          "line": 21
+        },
+        {
+          "file": "spec/10-powershell-integration/00-overview.md",
+          "line": 57
+        },
+        {
           "file": "spec/10-powershell-integration/08-wp-plugin-boundary.md",
           "line": 100
         },
         {
           "file": "spec/10-powershell-integration/97-acceptance-criteria.md",
           "line": 6
-        },
-        {
-          "file": "spec/10-powershell-integration/00-overview.md",
-          "line": 21
         }
       ]
     },
@@ -17257,12 +17318,12 @@
       "defined_line": 24,
       "cited_in": [
         {
-          "file": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
-          "line": 20
-        },
-        {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 34
+        },
+        {
+          "file": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
+          "line": 20
         }
       ]
     },
@@ -17297,12 +17358,12 @@
       "defined_line": 32,
       "cited_in": [
         {
-          "file": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
-          "line": 28
-        },
-        {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 37
+        },
+        {
+          "file": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
+          "line": 28
         }
       ]
     },
@@ -17325,12 +17386,12 @@
       "defined_line": 39,
       "cited_in": [
         {
-          "file": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
-          "line": 35
-        },
-        {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 39
+        },
+        {
+          "file": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
+          "line": 35
         }
       ]
     },
@@ -17365,12 +17426,12 @@
       "defined_line": 47,
       "cited_in": [
         {
-          "file": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
-          "line": 43
-        },
-        {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 42
+        },
+        {
+          "file": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
+          "line": 43
         }
       ]
     },
@@ -17393,12 +17454,12 @@
       "defined_line": 54,
       "cited_in": [
         {
-          "file": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
-          "line": 50
-        },
-        {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 44
+        },
+        {
+          "file": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
+          "line": 50
         }
       ]
     },
@@ -18090,12 +18151,12 @@
           "line": 11
         },
         {
-          "file": "spec/06-seedable-config-architecture/01-fundamentals/97-acceptance-criteria.md",
-          "line": 12
-        },
-        {
           "file": "spec/06-seedable-config-architecture/00-overview.md",
           "line": 21
+        },
+        {
+          "file": "spec/06-seedable-config-architecture/01-fundamentals/97-acceptance-criteria.md",
+          "line": 12
         }
       ]
     },
@@ -18258,12 +18319,16 @@
           "line": 11
         },
         {
-          "file": "spec/14-self-update-app-update/97-acceptance-criteria.md",
-          "line": 13
+          "file": "spec/14-self-update-app-update/00-overview.md",
+          "line": 21
         },
         {
           "file": "spec/14-self-update-app-update/00-overview.md",
-          "line": 21
+          "line": 56
+        },
+        {
+          "file": "spec/14-self-update-app-update/97-acceptance-criteria.md",
+          "line": 13
         }
       ]
     },
@@ -18346,12 +18411,12 @@
       "defined_line": 40,
       "cited_in": [
         {
-          "file": "spec/14-self-update-app-update/09-release-versioning/97-acceptance-criteria.md",
-          "line": 80
-        },
-        {
           "file": "spec/14-self-update-app-update/00-overview.md",
           "line": 28
+        },
+        {
+          "file": "spec/14-self-update-app-update/09-release-versioning/97-acceptance-criteria.md",
+          "line": 80
         }
       ]
     },
@@ -18977,81 +19042,6 @@
       ]
     },
     {
-      "id": "AT-SPECISSUES-01",
-      "definition": "[`97a-…#at-specissues-01`](./97a-acceptance-criteria-fixtures.md#at-specissues-01)",
-      "defined_in": "spec/18-spec-issues/00-overview.md",
-      "defined_line": 21,
-      "cited_in": [
-        {
-          "file": "spec/18-spec-issues/00-overview.md",
-          "line": 11
-        }
-      ]
-    },
-    {
-      "id": "AT-SPECISSUES-02",
-      "definition": "[`97a-…#at-specissues-02`](./97a-acceptance-criteria-fixtures.md#at-specissues-02)",
-      "defined_in": "spec/18-spec-issues/00-overview.md",
-      "defined_line": 22,
-      "cited_in": []
-    },
-    {
-      "id": "AT-SPECISSUES-03",
-      "definition": "[`97a-…#at-specissues-03`](./97a-acceptance-criteria-fixtures.md#at-specissues-03)",
-      "defined_in": "spec/18-spec-issues/00-overview.md",
-      "defined_line": 23,
-      "cited_in": []
-    },
-    {
-      "id": "AT-SPECISSUES-04",
-      "definition": "[`97a-…#at-specissues-04`](./97a-acceptance-criteria-fixtures.md#at-specissues-04)",
-      "defined_in": "spec/18-spec-issues/00-overview.md",
-      "defined_line": 24,
-      "cited_in": []
-    },
-    {
-      "id": "AT-SPECISSUES-05",
-      "definition": "[`97a-…#at-specissues-05`](./97a-acceptance-criteria-fixtures.md#at-specissues-05)",
-      "defined_in": "spec/18-spec-issues/00-overview.md",
-      "defined_line": 25,
-      "cited_in": []
-    },
-    {
-      "id": "AT-SPECISSUES-06",
-      "definition": "[`97a-…#at-specissues-06`](./97a-acceptance-criteria-fixtures.md#at-specissues-06)",
-      "defined_in": "spec/18-spec-issues/00-overview.md",
-      "defined_line": 26,
-      "cited_in": []
-    },
-    {
-      "id": "AT-SPECISSUES-07",
-      "definition": "[`97a-…#at-specissues-07`](./97a-acceptance-criteria-fixtures.md#at-specissues-07)",
-      "defined_in": "spec/18-spec-issues/00-overview.md",
-      "defined_line": 27,
-      "cited_in": []
-    },
-    {
-      "id": "AT-SPECISSUES-08",
-      "definition": "[`97a-…#at-specissues-08`](./97a-acceptance-criteria-fixtures.md#at-specissues-08)",
-      "defined_in": "spec/18-spec-issues/00-overview.md",
-      "defined_line": 28,
-      "cited_in": []
-    },
-    {
-      "id": "AT-SPECISSUES-09",
-      "definition": "[`97a-…#at-specissues-09`](./97a-acceptance-criteria-fixtures.md#at-specissues-09)",
-      "defined_in": "spec/18-spec-issues/00-overview.md",
-      "defined_line": 29,
-      "cited_in": []
-    },
-    {
-      "id": "AT-SPECISSUES-10",
-      "definition": "[`97a-…#at-specissues-10`](./97a-acceptance-criteria-fixtures.md#at-specissues-10)",
-      "defined_in": "spec/18-spec-issues/00-overview.md",
-      "defined_line": 30,
-      "cited_in": []
-    },
-    {
       "id": "AT-SPLITDBFUNDAMENTALS-01",
       "definition": "The terminology in §01 is the SSOT for **Root DB**, **Domain DB**, **History DB**, **Cache DB**; alternative names (e.g., \"main DB\") in other specs MUST be reconciled to these.",
       "defined_in": "spec/05-split-db-architecture/01-fundamentals/97-acceptance-criteria.md",
@@ -19062,12 +19052,12 @@
           "line": 11
         },
         {
-          "file": "spec/05-split-db-architecture/01-fundamentals/97-acceptance-criteria.md",
-          "line": 12
-        },
-        {
           "file": "spec/05-split-db-architecture/00-overview.md",
           "line": 21
+        },
+        {
+          "file": "spec/05-split-db-architecture/01-fundamentals/97-acceptance-criteria.md",
+          "line": 12
         }
       ]
     },
@@ -21090,6 +21080,10 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 21
+        },
+        {
+          "file": "spec/32-ui-design/00-overview.md",
+          "line": 118
         }
       ]
     },
@@ -21885,12 +21879,12 @@
           "line": 11
         },
         {
-          "file": "spec/36-user-management/97-acceptance-criteria.md",
-          "line": 12
-        },
-        {
           "file": "spec/36-user-management/00-overview.md",
           "line": 21
+        },
+        {
+          "file": "spec/36-user-management/97-acceptance-criteria.md",
+          "line": 12
         }
       ]
     },
@@ -22069,12 +22063,12 @@
       "defined_line": 62,
       "cited_in": [
         {
-          "file": "spec/36-user-management/97-acceptance-criteria.md",
-          "line": 12
-        },
-        {
           "file": "spec/36-user-management/00-overview.md",
           "line": 36
+        },
+        {
+          "file": "spec/36-user-management/97-acceptance-criteria.md",
+          "line": 12
         }
       ]
     },
@@ -23913,5 +23907,109 @@
       ]
     }
   ],
-  "orphan_at_citations": []
+  "orphan_at_citations": [
+    {
+      "id": "AT-GENERICUPDATE-10",
+      "citedIn": [
+        {
+          "file": "spec/17-generic-update/00-overview.md",
+          "line": 30
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-01",
+      "citedIn": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 11
+        },
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 21
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-02",
+      "citedIn": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 22
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-03",
+      "citedIn": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 23
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-04",
+      "citedIn": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 24
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-05",
+      "citedIn": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 25
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-06",
+      "citedIn": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 26
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-07",
+      "citedIn": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 27
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-08",
+      "citedIn": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 28
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-09",
+      "citedIn": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 29
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-10",
+      "citedIn": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 30
+        }
+      ]
+    }
+  ]
 }

@@ -16,22 +16,22 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## Acceptance Summary (Fixture Index)
 
-| AT id | Fixture row | One-line bind |
+| Bind # | AT id (citation) | Fixture row |
 |---|---|---|
-| `AT-ENFORCEMENTRULES-01` | [`97a-…#at-enforcementrules-01`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-01) | See fixture for exact command + envelope. |
-| `AT-ENFORCEMENTRULES-02` | [`97a-…#at-enforcementrules-02`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-02) | See fixture for exact command + envelope. |
-| `AT-ENFORCEMENTRULES-03` | [`97a-…#at-enforcementrules-03`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-03) | See fixture for exact command + envelope. |
-| `AT-ENFORCEMENTRULES-04` | [`97a-…#at-enforcementrules-04`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-04) | See fixture for exact command + envelope. |
-| `AT-ENFORCEMENTRULES-05` | [`97a-…#at-enforcementrules-05`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-05) | See fixture for exact command + envelope. |
-| `AT-ENFORCEMENTRULES-06` | [`97a-…#at-enforcementrules-06`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-06) | See fixture for exact command + envelope. |
-| `AT-ENFORCEMENTRULES-07` | [`97a-…#at-enforcementrules-07`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-07) | See fixture for exact command + envelope. |
-| `AT-ENFORCEMENTRULES-08` | [`97a-…#at-enforcementrules-08`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-08) | See fixture for exact command + envelope. |
-| `AT-ENFORCEMENTRULES-09` | [`97a-…#at-enforcementrules-09`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-09) | See fixture for exact command + envelope. |
-| `AT-ENFORCEMENTRULES-10` | [`97a-…#at-enforcementrules-10`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-10) | See fixture for exact command + envelope. |
-| `AT-ENFORCEMENTRULES-11` | [`97a-…#at-enforcementrules-11`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-11) | See fixture for exact command + envelope. |
-| `AT-ENFORCEMENTRULES-12` | [`97a-…#at-enforcementrules-12`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-12) | See fixture for exact command + envelope. |
-| `AT-ENFORCEMENTRULES-13` | [`97a-…#at-enforcementrules-13`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-13) | See fixture for exact command + envelope. |
-| `AT-ENFORCEMENTRULES-14` | [`97a-…#at-enforcementrules-14`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-14) | See fixture for exact command + envelope. |
+| 1 | cites `AT-ENFORCEMENTRULES-01` | [`97a-…#at-enforcementrules-01`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-01) |
+| 2 | cites `AT-ENFORCEMENTRULES-02` | [`97a-…#at-enforcementrules-02`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-02) |
+| 3 | cites `AT-ENFORCEMENTRULES-03` | [`97a-…#at-enforcementrules-03`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-03) |
+| 4 | cites `AT-ENFORCEMENTRULES-04` | [`97a-…#at-enforcementrules-04`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-04) |
+| 5 | cites `AT-ENFORCEMENTRULES-05` | [`97a-…#at-enforcementrules-05`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-05) |
+| 6 | cites `AT-ENFORCEMENTRULES-06` | [`97a-…#at-enforcementrules-06`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-06) |
+| 7 | cites `AT-ENFORCEMENTRULES-07` | [`97a-…#at-enforcementrules-07`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-07) |
+| 8 | cites `AT-ENFORCEMENTRULES-08` | [`97a-…#at-enforcementrules-08`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-08) |
+| 9 | cites `AT-ENFORCEMENTRULES-09` | [`97a-…#at-enforcementrules-09`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-09) |
+| 10 | cites `AT-ENFORCEMENTRULES-10` | [`97a-…#at-enforcementrules-10`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-10) |
+| 11 | cites `AT-ENFORCEMENTRULES-11` | [`97a-…#at-enforcementrules-11`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-11) |
+| 12 | cites `AT-ENFORCEMENTRULES-12` | [`97a-…#at-enforcementrules-12`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-12) |
+| 13 | cites `AT-ENFORCEMENTRULES-13` | [`97a-…#at-enforcementrules-13`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-13) |
+| 14 | cites `AT-ENFORCEMENTRULES-14` | [`97a-…#at-enforcementrules-14`](./97a-acceptance-criteria-fixtures.md#at-enforcementrules-14) |
 
 > Total: **14** acceptance rows, **14** fixture binds, **0** orphan citations.
 <!-- /P24-RUBRIC-SELFCHECK -->

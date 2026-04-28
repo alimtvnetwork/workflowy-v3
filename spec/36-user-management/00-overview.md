@@ -16,24 +16,24 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## Acceptance Summary (Fixture Index)
 
-| AT id | Fixture row | One-line bind |
+| Bind # | AT id (citation) | Fixture row |
 |---|---|---|
-| `AT-USERMANAGEMENT-01` | [`97a-…#at-usermanagement-01`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-01) | See fixture for exact command + envelope. |
-| `AT-USERMANAGEMENT-02` | [`97a-…#at-usermanagement-02`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-02) | See fixture for exact command + envelope. |
-| `AT-USERMANAGEMENT-03` | [`97a-…#at-usermanagement-03`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-03) | See fixture for exact command + envelope. |
-| `AT-USERMANAGEMENT-04` | [`97a-…#at-usermanagement-04`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-04) | See fixture for exact command + envelope. |
-| `AT-USERMANAGEMENT-05` | [`97a-…#at-usermanagement-05`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-05) | See fixture for exact command + envelope. |
-| `AT-USERMANAGEMENT-06` | [`97a-…#at-usermanagement-06`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-06) | See fixture for exact command + envelope. |
-| `AT-USERMANAGEMENT-07` | [`97a-…#at-usermanagement-07`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-07) | See fixture for exact command + envelope. |
-| `AT-USERMANAGEMENT-08` | [`97a-…#at-usermanagement-08`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-08) | See fixture for exact command + envelope. |
-| `AT-USERMANAGEMENT-09` | [`97a-…#at-usermanagement-09`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-09) | See fixture for exact command + envelope. |
-| `AT-USERMANAGEMENT-10` | [`97a-…#at-usermanagement-10`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-10) | See fixture for exact command + envelope. |
-| `AT-USERMANAGEMENT-11` | [`97a-…#at-usermanagement-11`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-11) | See fixture for exact command + envelope. |
-| `AT-USERMANAGEMENT-12` | [`97a-…#at-usermanagement-12`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-12) | See fixture for exact command + envelope. |
-| `AT-USERMANAGEMENT-13` | [`97a-…#at-usermanagement-13`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-13) | See fixture for exact command + envelope. |
-| `AT-USERMANAGEMENT-14` | [`97a-…#at-usermanagement-14`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-14) | See fixture for exact command + envelope. |
-| `AT-USERMANAGEMENT-15` | [`97a-…#at-usermanagement-15`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-15) | See fixture for exact command + envelope. |
-| `AT-USERMANAGEMENT-16` | [`97a-…#at-usermanagement-16`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-16) | See fixture for exact command + envelope. |
+| 1 | cites `AT-USERMANAGEMENT-01` | [`97a-…#at-usermanagement-01`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-01) |
+| 2 | cites `AT-USERMANAGEMENT-02` | [`97a-…#at-usermanagement-02`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-02) |
+| 3 | cites `AT-USERMANAGEMENT-03` | [`97a-…#at-usermanagement-03`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-03) |
+| 4 | cites `AT-USERMANAGEMENT-04` | [`97a-…#at-usermanagement-04`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-04) |
+| 5 | cites `AT-USERMANAGEMENT-05` | [`97a-…#at-usermanagement-05`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-05) |
+| 6 | cites `AT-USERMANAGEMENT-06` | [`97a-…#at-usermanagement-06`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-06) |
+| 7 | cites `AT-USERMANAGEMENT-07` | [`97a-…#at-usermanagement-07`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-07) |
+| 8 | cites `AT-USERMANAGEMENT-08` | [`97a-…#at-usermanagement-08`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-08) |
+| 9 | cites `AT-USERMANAGEMENT-09` | [`97a-…#at-usermanagement-09`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-09) |
+| 10 | cites `AT-USERMANAGEMENT-10` | [`97a-…#at-usermanagement-10`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-10) |
+| 11 | cites `AT-USERMANAGEMENT-11` | [`97a-…#at-usermanagement-11`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-11) |
+| 12 | cites `AT-USERMANAGEMENT-12` | [`97a-…#at-usermanagement-12`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-12) |
+| 13 | cites `AT-USERMANAGEMENT-13` | [`97a-…#at-usermanagement-13`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-13) |
+| 14 | cites `AT-USERMANAGEMENT-14` | [`97a-…#at-usermanagement-14`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-14) |
+| 15 | cites `AT-USERMANAGEMENT-15` | [`97a-…#at-usermanagement-15`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-15) |
+| 16 | cites `AT-USERMANAGEMENT-16` | [`97a-…#at-usermanagement-16`](./97a-acceptance-criteria-fixtures.md#at-usermanagement-16) |
 
 > Total: **16** acceptance rows, **16** fixture binds, **0** orphan citations.
 <!-- /P24-RUBRIC-SELFCHECK -->

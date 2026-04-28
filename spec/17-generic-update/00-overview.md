@@ -16,18 +16,18 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## Acceptance Summary (Fixture Index)
 
-| AT id | Fixture row | One-line bind |
+| Bind # | AT id (citation) | Fixture row |
 |---|---|---|
-| `AT-GENERICUPDATE-01` | [`97a-…#at-genericupdate-01`](./97a-acceptance-criteria-fixtures.md#at-genericupdate-01) | See fixture for exact command + envelope. |
-| `AT-GENERICUPDATE-02` | [`97a-…#at-genericupdate-02`](./97a-acceptance-criteria-fixtures.md#at-genericupdate-02) | See fixture for exact command + envelope. |
-| `AT-GENERICUPDATE-03` | [`97a-…#at-genericupdate-03`](./97a-acceptance-criteria-fixtures.md#at-genericupdate-03) | See fixture for exact command + envelope. |
-| `AT-GENERICUPDATE-04` | [`97a-…#at-genericupdate-04`](./97a-acceptance-criteria-fixtures.md#at-genericupdate-04) | See fixture for exact command + envelope. |
-| `AT-GENERICUPDATE-05` | [`97a-…#at-genericupdate-05`](./97a-acceptance-criteria-fixtures.md#at-genericupdate-05) | See fixture for exact command + envelope. |
-| `AT-GENERICUPDATE-06` | [`97a-…#at-genericupdate-06`](./97a-acceptance-criteria-fixtures.md#at-genericupdate-06) | See fixture for exact command + envelope. |
-| `AT-GENERICUPDATE-07` | [`97a-…#at-genericupdate-07`](./97a-acceptance-criteria-fixtures.md#at-genericupdate-07) | See fixture for exact command + envelope. |
-| `AT-GENERICUPDATE-08` | [`97a-…#at-genericupdate-08`](./97a-acceptance-criteria-fixtures.md#at-genericupdate-08) | See fixture for exact command + envelope. |
-| `AT-GENERICUPDATE-09` | [`97a-…#at-genericupdate-09`](./97a-acceptance-criteria-fixtures.md#at-genericupdate-09) | See fixture for exact command + envelope. |
-| `AT-GENERICUPDATE-10` | [`97a-…#at-genericupdate-10`](./97a-acceptance-criteria-fixtures.md#at-genericupdate-10) | See fixture for exact command + envelope. |
+| 1 | cites `AT-GENERICUPDATE-01` | [`97a-…#at-genericupdate-01`](./97a-acceptance-criteria-fixtures.md#at-genericupdate-01) |
+| 2 | cites `AT-GENERICUPDATE-02` | [`97a-…#at-genericupdate-02`](./97a-acceptance-criteria-fixtures.md#at-genericupdate-02) |
+| 3 | cites `AT-GENERICUPDATE-03` | [`97a-…#at-genericupdate-03`](./97a-acceptance-criteria-fixtures.md#at-genericupdate-03) |
+| 4 | cites `AT-GENERICUPDATE-04` | [`97a-…#at-genericupdate-04`](./97a-acceptance-criteria-fixtures.md#at-genericupdate-04) |
+| 5 | cites `AT-GENERICUPDATE-05` | [`97a-…#at-genericupdate-05`](./97a-acceptance-criteria-fixtures.md#at-genericupdate-05) |
+| 6 | cites `AT-GENERICUPDATE-06` | [`97a-…#at-genericupdate-06`](./97a-acceptance-criteria-fixtures.md#at-genericupdate-06) |
+| 7 | cites `AT-GENERICUPDATE-07` | [`97a-…#at-genericupdate-07`](./97a-acceptance-criteria-fixtures.md#at-genericupdate-07) |
+| 8 | cites `AT-GENERICUPDATE-08` | [`97a-…#at-genericupdate-08`](./97a-acceptance-criteria-fixtures.md#at-genericupdate-08) |
+| 9 | cites `AT-GENERICUPDATE-09` | [`97a-…#at-genericupdate-09`](./97a-acceptance-criteria-fixtures.md#at-genericupdate-09) |
+| 10 | cites `AT-GENERICUPDATE-10` | [`97a-…#at-genericupdate-10`](./97a-acceptance-criteria-fixtures.md#at-genericupdate-10) |
 
 > Total: **10** acceptance rows, **10** fixture binds, **0** orphan citations.
 <!-- /P24-RUBRIC-SELFCHECK -->

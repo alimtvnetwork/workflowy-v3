@@ -16,18 +16,18 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## Acceptance Summary (Fixture Index)
 
-| AT id | Fixture row | One-line bind |
+| Bind # | AT id (citation) | Fixture row |
 |---|---|---|
-| `AT-SEEDABLECONFIGFUNDAMENTALS-01` | [`97a-…#at-seedableconfigfundamentals-01`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-01) | See fixture for exact command + envelope. |
-| `AT-SEEDABLECONFIGFUNDAMENTALS-02` | [`97a-…#at-seedableconfigfundamentals-02`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-02) | See fixture for exact command + envelope. |
-| `AT-SEEDABLECONFIGFUNDAMENTALS-03` | [`97a-…#at-seedableconfigfundamentals-03`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-03) | See fixture for exact command + envelope. |
-| `AT-SEEDABLECONFIGFUNDAMENTALS-04` | [`97a-…#at-seedableconfigfundamentals-04`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-04) | See fixture for exact command + envelope. |
-| `AT-SEEDABLECONFIGFUNDAMENTALS-05` | [`97a-…#at-seedableconfigfundamentals-05`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-05) | See fixture for exact command + envelope. |
-| `AT-SEEDABLECONFIGFUNDAMENTALS-06` | [`97a-…#at-seedableconfigfundamentals-06`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-06) | See fixture for exact command + envelope. |
-| `AT-SEEDABLECONFIGFUNDAMENTALS-07` | [`97a-…#at-seedableconfigfundamentals-07`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-07) | See fixture for exact command + envelope. |
-| `AT-SEEDABLECONFIGFUNDAMENTALS-08` | [`97a-…#at-seedableconfigfundamentals-08`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-08) | See fixture for exact command + envelope. |
-| `AT-SEEDABLECONFIGFUNDAMENTALS-09` | [`97a-…#at-seedableconfigfundamentals-09`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-09) | See fixture for exact command + envelope. |
-| `AT-SEEDABLECONFIGFUNDAMENTALS-10` | [`97a-…#at-seedableconfigfundamentals-10`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-10) | See fixture for exact command + envelope. |
+| 1 | cites `AT-SEEDABLECONFIGFUNDAMENTALS-01` | [`97a-…#at-seedableconfigfundamentals-01`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-01) |
+| 2 | cites `AT-SEEDABLECONFIGFUNDAMENTALS-02` | [`97a-…#at-seedableconfigfundamentals-02`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-02) |
+| 3 | cites `AT-SEEDABLECONFIGFUNDAMENTALS-03` | [`97a-…#at-seedableconfigfundamentals-03`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-03) |
+| 4 | cites `AT-SEEDABLECONFIGFUNDAMENTALS-04` | [`97a-…#at-seedableconfigfundamentals-04`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-04) |
+| 5 | cites `AT-SEEDABLECONFIGFUNDAMENTALS-05` | [`97a-…#at-seedableconfigfundamentals-05`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-05) |
+| 6 | cites `AT-SEEDABLECONFIGFUNDAMENTALS-06` | [`97a-…#at-seedableconfigfundamentals-06`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-06) |
+| 7 | cites `AT-SEEDABLECONFIGFUNDAMENTALS-07` | [`97a-…#at-seedableconfigfundamentals-07`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-07) |
+| 8 | cites `AT-SEEDABLECONFIGFUNDAMENTALS-08` | [`97a-…#at-seedableconfigfundamentals-08`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-08) |
+| 9 | cites `AT-SEEDABLECONFIGFUNDAMENTALS-09` | [`97a-…#at-seedableconfigfundamentals-09`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-09) |
+| 10 | cites `AT-SEEDABLECONFIGFUNDAMENTALS-10` | [`97a-…#at-seedableconfigfundamentals-10`](./97a-acceptance-criteria-fixtures.md#at-seedableconfigfundamentals-10) |
 
 > Total: **10** acceptance rows, **10** fixture binds, **0** orphan citations.
 <!-- /P24-RUBRIC-SELFCHECK -->

@@ -16,33 +16,33 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## Acceptance Summary (Fixture Index)
 
-| AT id | Fixture row | One-line bind |
+| Bind # | AT id (citation) | Fixture row |
 |---|---|---|
-| `AT-UIDESIGN-01` | [`97a-…#at-uidesign-01`](./97a-acceptance-criteria-fixtures.md#at-uidesign-01) | See fixture for exact command + envelope. |
-| `AT-UIDESIGN-02` | [`97a-…#at-uidesign-02`](./97a-acceptance-criteria-fixtures.md#at-uidesign-02) | See fixture for exact command + envelope. |
-| `AT-UIDESIGN-03` | [`97a-…#at-uidesign-03`](./97a-acceptance-criteria-fixtures.md#at-uidesign-03) | See fixture for exact command + envelope. |
-| `AT-UIDESIGN-04` | [`97a-…#at-uidesign-04`](./97a-acceptance-criteria-fixtures.md#at-uidesign-04) | See fixture for exact command + envelope. |
-| `AT-UIDESIGN-05` | [`97a-…#at-uidesign-05`](./97a-acceptance-criteria-fixtures.md#at-uidesign-05) | See fixture for exact command + envelope. |
-| `AT-UIDESIGN-06` | [`97a-…#at-uidesign-06`](./97a-acceptance-criteria-fixtures.md#at-uidesign-06) | See fixture for exact command + envelope. |
-| `AT-UIDESIGN-07` | [`97a-…#at-uidesign-07`](./97a-acceptance-criteria-fixtures.md#at-uidesign-07) | See fixture for exact command + envelope. |
-| `AT-UIDESIGN-08` | [`97a-…#at-uidesign-08`](./97a-acceptance-criteria-fixtures.md#at-uidesign-08) | See fixture for exact command + envelope. |
-| `AT-UIDESIGN-09` | [`97a-…#at-uidesign-09`](./97a-acceptance-criteria-fixtures.md#at-uidesign-09) | See fixture for exact command + envelope. |
-| `AT-UIDESIGN-10` | [`97a-…#at-uidesign-10`](./97a-acceptance-criteria-fixtures.md#at-uidesign-10) | See fixture for exact command + envelope. |
-| `AT-UIDESIGN-11` | [`97a-…#at-uidesign-11`](./97a-acceptance-criteria-fixtures.md#at-uidesign-11) | See fixture for exact command + envelope. |
-| `AT-UIDESIGN-12` | [`97a-…#at-uidesign-12`](./97a-acceptance-criteria-fixtures.md#at-uidesign-12) | See fixture for exact command + envelope. |
-| `AT-UIDESIGN-13` | [`97a-…#at-uidesign-13`](./97a-acceptance-criteria-fixtures.md#at-uidesign-13) | See fixture for exact command + envelope. |
-| `AT-UIDESIGN-14` | [`97a-…#at-uidesign-14`](./97a-acceptance-criteria-fixtures.md#at-uidesign-14) | See fixture for exact command + envelope. |
-| `AT-UIDESIGN-15` | [`97a-…#at-uidesign-15`](./97a-acceptance-criteria-fixtures.md#at-uidesign-15) | See fixture for exact command + envelope. |
-| `AT-UIDESIGN-16` | [`97a-…#at-uidesign-16`](./97a-acceptance-criteria-fixtures.md#at-uidesign-16) | See fixture for exact command + envelope. |
-| `AT-UIDESIGN-17` | [`97a-…#at-uidesign-17`](./97a-acceptance-criteria-fixtures.md#at-uidesign-17) | See fixture for exact command + envelope. |
-| `AT-UIDESIGN-18` | [`97a-…#at-uidesign-18`](./97a-acceptance-criteria-fixtures.md#at-uidesign-18) | See fixture for exact command + envelope. |
-| `AT-UIDESIGN-19` | [`97a-…#at-uidesign-19`](./97a-acceptance-criteria-fixtures.md#at-uidesign-19) | See fixture for exact command + envelope. |
-| `AT-UIDESIGN-20` | [`97a-…#at-uidesign-20`](./97a-acceptance-criteria-fixtures.md#at-uidesign-20) | See fixture for exact command + envelope. |
-| `AT-UIDESIGN-21` | [`97a-…#at-uidesign-21`](./97a-acceptance-criteria-fixtures.md#at-uidesign-21) | See fixture for exact command + envelope. |
-| `AT-UIDESIGN-22` | [`97a-…#at-uidesign-22`](./97a-acceptance-criteria-fixtures.md#at-uidesign-22) | See fixture for exact command + envelope. |
-| `AT-UIDESIGN-23` | [`97a-…#at-uidesign-23`](./97a-acceptance-criteria-fixtures.md#at-uidesign-23) | See fixture for exact command + envelope. |
-| `AT-UIDESIGN-24` | [`97a-…#at-uidesign-24`](./97a-acceptance-criteria-fixtures.md#at-uidesign-24) | See fixture for exact command + envelope. |
-| `AT-UIDESIGN-25` | [`97a-…#at-uidesign-25`](./97a-acceptance-criteria-fixtures.md#at-uidesign-25) | See fixture for exact command + envelope. |
+| 1 | cites `AT-UIDESIGN-01` | [`97a-…#at-uidesign-01`](./97a-acceptance-criteria-fixtures.md#at-uidesign-01) |
+| 2 | cites `AT-UIDESIGN-02` | [`97a-…#at-uidesign-02`](./97a-acceptance-criteria-fixtures.md#at-uidesign-02) |
+| 3 | cites `AT-UIDESIGN-03` | [`97a-…#at-uidesign-03`](./97a-acceptance-criteria-fixtures.md#at-uidesign-03) |
+| 4 | cites `AT-UIDESIGN-04` | [`97a-…#at-uidesign-04`](./97a-acceptance-criteria-fixtures.md#at-uidesign-04) |
+| 5 | cites `AT-UIDESIGN-05` | [`97a-…#at-uidesign-05`](./97a-acceptance-criteria-fixtures.md#at-uidesign-05) |
+| 6 | cites `AT-UIDESIGN-06` | [`97a-…#at-uidesign-06`](./97a-acceptance-criteria-fixtures.md#at-uidesign-06) |
+| 7 | cites `AT-UIDESIGN-07` | [`97a-…#at-uidesign-07`](./97a-acceptance-criteria-fixtures.md#at-uidesign-07) |
+| 8 | cites `AT-UIDESIGN-08` | [`97a-…#at-uidesign-08`](./97a-acceptance-criteria-fixtures.md#at-uidesign-08) |
+| 9 | cites `AT-UIDESIGN-09` | [`97a-…#at-uidesign-09`](./97a-acceptance-criteria-fixtures.md#at-uidesign-09) |
+| 10 | cites `AT-UIDESIGN-10` | [`97a-…#at-uidesign-10`](./97a-acceptance-criteria-fixtures.md#at-uidesign-10) |
+| 11 | cites `AT-UIDESIGN-11` | [`97a-…#at-uidesign-11`](./97a-acceptance-criteria-fixtures.md#at-uidesign-11) |
+| 12 | cites `AT-UIDESIGN-12` | [`97a-…#at-uidesign-12`](./97a-acceptance-criteria-fixtures.md#at-uidesign-12) |
+| 13 | cites `AT-UIDESIGN-13` | [`97a-…#at-uidesign-13`](./97a-acceptance-criteria-fixtures.md#at-uidesign-13) |
+| 14 | cites `AT-UIDESIGN-14` | [`97a-…#at-uidesign-14`](./97a-acceptance-criteria-fixtures.md#at-uidesign-14) |
+| 15 | cites `AT-UIDESIGN-15` | [`97a-…#at-uidesign-15`](./97a-acceptance-criteria-fixtures.md#at-uidesign-15) |
+| 16 | cites `AT-UIDESIGN-16` | [`97a-…#at-uidesign-16`](./97a-acceptance-criteria-fixtures.md#at-uidesign-16) |
+| 17 | cites `AT-UIDESIGN-17` | [`97a-…#at-uidesign-17`](./97a-acceptance-criteria-fixtures.md#at-uidesign-17) |
+| 18 | cites `AT-UIDESIGN-18` | [`97a-…#at-uidesign-18`](./97a-acceptance-criteria-fixtures.md#at-uidesign-18) |
+| 19 | cites `AT-UIDESIGN-19` | [`97a-…#at-uidesign-19`](./97a-acceptance-criteria-fixtures.md#at-uidesign-19) |
+| 20 | cites `AT-UIDESIGN-20` | [`97a-…#at-uidesign-20`](./97a-acceptance-criteria-fixtures.md#at-uidesign-20) |
+| 21 | cites `AT-UIDESIGN-21` | [`97a-…#at-uidesign-21`](./97a-acceptance-criteria-fixtures.md#at-uidesign-21) |
+| 22 | cites `AT-UIDESIGN-22` | [`97a-…#at-uidesign-22`](./97a-acceptance-criteria-fixtures.md#at-uidesign-22) |
+| 23 | cites `AT-UIDESIGN-23` | [`97a-…#at-uidesign-23`](./97a-acceptance-criteria-fixtures.md#at-uidesign-23) |
+| 24 | cites `AT-UIDESIGN-24` | [`97a-…#at-uidesign-24`](./97a-acceptance-criteria-fixtures.md#at-uidesign-24) |
+| 25 | cites `AT-UIDESIGN-25` | [`97a-…#at-uidesign-25`](./97a-acceptance-criteria-fixtures.md#at-uidesign-25) |
 
 > Total: **25** acceptance rows, **25** fixture binds, **0** orphan citations.
 <!-- /P24-RUBRIC-SELFCHECK -->

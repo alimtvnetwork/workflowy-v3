@@ -16,18 +16,18 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## Acceptance Summary (Fixture Index)
 
-| AT id | Fixture row | One-line bind |
+| Bind # | AT id (citation) | Fixture row |
 |---|---|---|
-| `AT-ERRORRESOLUTION-01` | [`97a-…#at-errorresolution-01`](./97a-acceptance-criteria-fixtures.md#at-errorresolution-01) | See fixture for exact command + envelope. |
-| `AT-ERRORRESOLUTION-02` | [`97a-…#at-errorresolution-02`](./97a-acceptance-criteria-fixtures.md#at-errorresolution-02) | See fixture for exact command + envelope. |
-| `AT-ERRORRESOLUTION-03` | [`97a-…#at-errorresolution-03`](./97a-acceptance-criteria-fixtures.md#at-errorresolution-03) | See fixture for exact command + envelope. |
-| `AT-ERRORRESOLUTION-04` | [`97a-…#at-errorresolution-04`](./97a-acceptance-criteria-fixtures.md#at-errorresolution-04) | See fixture for exact command + envelope. |
-| `AT-ERRORRESOLUTION-05` | [`97a-…#at-errorresolution-05`](./97a-acceptance-criteria-fixtures.md#at-errorresolution-05) | See fixture for exact command + envelope. |
-| `AT-ERRORRESOLUTION-06` | [`97a-…#at-errorresolution-06`](./97a-acceptance-criteria-fixtures.md#at-errorresolution-06) | See fixture for exact command + envelope. |
-| `AT-ERRORRESOLUTION-07` | [`97a-…#at-errorresolution-07`](./97a-acceptance-criteria-fixtures.md#at-errorresolution-07) | See fixture for exact command + envelope. |
-| `AT-ERRORRESOLUTION-08` | [`97a-…#at-errorresolution-08`](./97a-acceptance-criteria-fixtures.md#at-errorresolution-08) | See fixture for exact command + envelope. |
-| `AT-ERRORRESOLUTION-09` | [`97a-…#at-errorresolution-09`](./97a-acceptance-criteria-fixtures.md#at-errorresolution-09) | See fixture for exact command + envelope. |
-| `AT-ERRORRESOLUTION-10` | [`97a-…#at-errorresolution-10`](./97a-acceptance-criteria-fixtures.md#at-errorresolution-10) | See fixture for exact command + envelope. |
+| 1 | cites `AT-ERRORRESOLUTION-01` | [`97a-…#at-errorresolution-01`](./97a-acceptance-criteria-fixtures.md#at-errorresolution-01) |
+| 2 | cites `AT-ERRORRESOLUTION-02` | [`97a-…#at-errorresolution-02`](./97a-acceptance-criteria-fixtures.md#at-errorresolution-02) |
+| 3 | cites `AT-ERRORRESOLUTION-03` | [`97a-…#at-errorresolution-03`](./97a-acceptance-criteria-fixtures.md#at-errorresolution-03) |
+| 4 | cites `AT-ERRORRESOLUTION-04` | [`97a-…#at-errorresolution-04`](./97a-acceptance-criteria-fixtures.md#at-errorresolution-04) |
+| 5 | cites `AT-ERRORRESOLUTION-05` | [`97a-…#at-errorresolution-05`](./97a-acceptance-criteria-fixtures.md#at-errorresolution-05) |
+| 6 | cites `AT-ERRORRESOLUTION-06` | [`97a-…#at-errorresolution-06`](./97a-acceptance-criteria-fixtures.md#at-errorresolution-06) |
+| 7 | cites `AT-ERRORRESOLUTION-07` | [`97a-…#at-errorresolution-07`](./97a-acceptance-criteria-fixtures.md#at-errorresolution-07) |
+| 8 | cites `AT-ERRORRESOLUTION-08` | [`97a-…#at-errorresolution-08`](./97a-acceptance-criteria-fixtures.md#at-errorresolution-08) |
+| 9 | cites `AT-ERRORRESOLUTION-09` | [`97a-…#at-errorresolution-09`](./97a-acceptance-criteria-fixtures.md#at-errorresolution-09) |
+| 10 | cites `AT-ERRORRESOLUTION-10` | [`97a-…#at-errorresolution-10`](./97a-acceptance-criteria-fixtures.md#at-errorresolution-10) |
 
 > Total: **10** acceptance rows, **10** fixture binds, **0** orphan citations.
 <!-- /P24-RUBRIC-SELFCHECK -->

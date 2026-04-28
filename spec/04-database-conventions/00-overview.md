@@ -16,32 +16,32 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## Acceptance Summary (Fixture Index)
 
-| AT id | Fixture row | One-line bind |
+| Bind # | AT id (citation) | Fixture row |
 |---|---|---|
-| `AT-DATABASECONVENTIONS-01` | [`97a-…#at-databaseconventions-01`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-01) | See fixture for exact command + envelope. |
-| `AT-DATABASECONVENTIONS-02` | [`97a-…#at-databaseconventions-02`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-02) | See fixture for exact command + envelope. |
-| `AT-DATABASECONVENTIONS-03` | [`97a-…#at-databaseconventions-03`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-03) | See fixture for exact command + envelope. |
-| `AT-DATABASECONVENTIONS-04` | [`97a-…#at-databaseconventions-04`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-04) | See fixture for exact command + envelope. |
-| `AT-DATABASECONVENTIONS-05` | [`97a-…#at-databaseconventions-05`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-05) | See fixture for exact command + envelope. |
-| `AT-DATABASECONVENTIONS-06` | [`97a-…#at-databaseconventions-06`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-06) | See fixture for exact command + envelope. |
-| `AT-DATABASECONVENTIONS-07` | [`97a-…#at-databaseconventions-07`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-07) | See fixture for exact command + envelope. |
-| `AT-DATABASECONVENTIONS-08` | [`97a-…#at-databaseconventions-08`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-08) | See fixture for exact command + envelope. |
-| `AT-DATABASECONVENTIONS-09` | [`97a-…#at-databaseconventions-09`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-09) | See fixture for exact command + envelope. |
-| `AT-DATABASECONVENTIONS-10` | [`97a-…#at-databaseconventions-10`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-10) | See fixture for exact command + envelope. |
-| `AT-DATABASECONVENTIONS-11` | [`97a-…#at-databaseconventions-11`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-11) | See fixture for exact command + envelope. |
-| `AT-DATABASECONVENTIONS-12` | [`97a-…#at-databaseconventions-12`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-12) | See fixture for exact command + envelope. |
-| `AT-DATABASECONVENTIONS-13` | [`97a-…#at-databaseconventions-13`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-13) | See fixture for exact command + envelope. |
-| `AT-RESTAPIFORMAT-01` | [`97a-…#at-restapiformat-01`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-01) | See fixture for exact command + envelope. |
-| `AT-RESTAPIFORMAT-02` | [`97a-…#at-restapiformat-02`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-02) | See fixture for exact command + envelope. |
-| `AT-RESTAPIFORMAT-03` | [`97a-…#at-restapiformat-03`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-03) | See fixture for exact command + envelope. |
-| `AT-RESTAPIFORMAT-04` | [`97a-…#at-restapiformat-04`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-04) | See fixture for exact command + envelope. |
-| `AT-RESTAPIFORMAT-05` | [`97a-…#at-restapiformat-05`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-05) | See fixture for exact command + envelope. |
-| `AT-RESTAPIFORMAT-06` | [`97a-…#at-restapiformat-06`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-06) | See fixture for exact command + envelope. |
-| `AT-RESTAPIFORMAT-07` | [`97a-…#at-restapiformat-07`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-07) | See fixture for exact command + envelope. |
-| `AT-RESTAPIFORMAT-08` | [`97a-…#at-restapiformat-08`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-08) | See fixture for exact command + envelope. |
-| `AT-RESTAPIFORMAT-09` | [`97a-…#at-restapiformat-09`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-09) | See fixture for exact command + envelope. |
-| `AT-RESTAPIFORMAT-10` | [`97a-…#at-restapiformat-10`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-10) | See fixture for exact command + envelope. |
-| `AT-RESTAPIFORMAT-11` | [`97a-…#at-restapiformat-11`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-11) | See fixture for exact command + envelope. |
+| 1 | cites `AT-DATABASECONVENTIONS-01` | [`97a-…#at-databaseconventions-01`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-01) |
+| 2 | cites `AT-DATABASECONVENTIONS-02` | [`97a-…#at-databaseconventions-02`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-02) |
+| 3 | cites `AT-DATABASECONVENTIONS-03` | [`97a-…#at-databaseconventions-03`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-03) |
+| 4 | cites `AT-DATABASECONVENTIONS-04` | [`97a-…#at-databaseconventions-04`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-04) |
+| 5 | cites `AT-DATABASECONVENTIONS-05` | [`97a-…#at-databaseconventions-05`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-05) |
+| 6 | cites `AT-DATABASECONVENTIONS-06` | [`97a-…#at-databaseconventions-06`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-06) |
+| 7 | cites `AT-DATABASECONVENTIONS-07` | [`97a-…#at-databaseconventions-07`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-07) |
+| 8 | cites `AT-DATABASECONVENTIONS-08` | [`97a-…#at-databaseconventions-08`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-08) |
+| 9 | cites `AT-DATABASECONVENTIONS-09` | [`97a-…#at-databaseconventions-09`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-09) |
+| 10 | cites `AT-DATABASECONVENTIONS-10` | [`97a-…#at-databaseconventions-10`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-10) |
+| 11 | cites `AT-DATABASECONVENTIONS-11` | [`97a-…#at-databaseconventions-11`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-11) |
+| 12 | cites `AT-DATABASECONVENTIONS-12` | [`97a-…#at-databaseconventions-12`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-12) |
+| 13 | cites `AT-DATABASECONVENTIONS-13` | [`97a-…#at-databaseconventions-13`](./97a-acceptance-criteria-fixtures.md#at-databaseconventions-13) |
+| 14 | cites `AT-RESTAPIFORMAT-01` | [`97a-…#at-restapiformat-01`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-01) |
+| 15 | cites `AT-RESTAPIFORMAT-02` | [`97a-…#at-restapiformat-02`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-02) |
+| 16 | cites `AT-RESTAPIFORMAT-03` | [`97a-…#at-restapiformat-03`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-03) |
+| 17 | cites `AT-RESTAPIFORMAT-04` | [`97a-…#at-restapiformat-04`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-04) |
+| 18 | cites `AT-RESTAPIFORMAT-05` | [`97a-…#at-restapiformat-05`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-05) |
+| 19 | cites `AT-RESTAPIFORMAT-06` | [`97a-…#at-restapiformat-06`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-06) |
+| 20 | cites `AT-RESTAPIFORMAT-07` | [`97a-…#at-restapiformat-07`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-07) |
+| 21 | cites `AT-RESTAPIFORMAT-08` | [`97a-…#at-restapiformat-08`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-08) |
+| 22 | cites `AT-RESTAPIFORMAT-09` | [`97a-…#at-restapiformat-09`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-09) |
+| 23 | cites `AT-RESTAPIFORMAT-10` | [`97a-…#at-restapiformat-10`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-10) |
+| 24 | cites `AT-RESTAPIFORMAT-11` | [`97a-…#at-restapiformat-11`](./97a-acceptance-criteria-fixtures.md#at-restapiformat-11) |
 
 > Total: **24** acceptance rows, **24** fixture binds, **0** orphan citations.
 <!-- /P24-RUBRIC-SELFCHECK -->

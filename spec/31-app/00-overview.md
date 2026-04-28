@@ -16,22 +16,22 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## Acceptance Summary (Fixture Index)
 
-| AT id | Fixture row | One-line bind |
+| Bind # | AT id (citation) | Fixture row |
 |---|---|---|
-| `AT-APP-01` | [`97a-…#at-app-01`](./97a-acceptance-criteria-fixtures.md#at-app-01) | See fixture for exact command + envelope. |
-| `AT-APP-02` | [`97a-…#at-app-02`](./97a-acceptance-criteria-fixtures.md#at-app-02) | See fixture for exact command + envelope. |
-| `AT-APP-03` | [`97a-…#at-app-03`](./97a-acceptance-criteria-fixtures.md#at-app-03) | See fixture for exact command + envelope. |
-| `AT-APP-04` | [`97a-…#at-app-04`](./97a-acceptance-criteria-fixtures.md#at-app-04) | See fixture for exact command + envelope. |
-| `AT-APP-05` | [`97a-…#at-app-05`](./97a-acceptance-criteria-fixtures.md#at-app-05) | See fixture for exact command + envelope. |
-| `AT-APP-06` | [`97a-…#at-app-06`](./97a-acceptance-criteria-fixtures.md#at-app-06) | See fixture for exact command + envelope. |
-| `AT-APP-07` | [`97a-…#at-app-07`](./97a-acceptance-criteria-fixtures.md#at-app-07) | See fixture for exact command + envelope. |
-| `AT-APP-08` | [`97a-…#at-app-08`](./97a-acceptance-criteria-fixtures.md#at-app-08) | See fixture for exact command + envelope. |
-| `AT-APP-09` | [`97a-…#at-app-09`](./97a-acceptance-criteria-fixtures.md#at-app-09) | See fixture for exact command + envelope. |
-| `AT-APP-10` | [`97a-…#at-app-10`](./97a-acceptance-criteria-fixtures.md#at-app-10) | See fixture for exact command + envelope. |
-| `AT-APP-11` | [`97a-…#at-app-11`](./97a-acceptance-criteria-fixtures.md#at-app-11) | See fixture for exact command + envelope. |
-| `AT-APP-12` | [`97a-…#at-app-12`](./97a-acceptance-criteria-fixtures.md#at-app-12) | See fixture for exact command + envelope. |
-| `AT-APP-13` | [`97a-…#at-app-13`](./97a-acceptance-criteria-fixtures.md#at-app-13) | See fixture for exact command + envelope. |
-| `AT-APP-14` | [`97a-…#at-app-14`](./97a-acceptance-criteria-fixtures.md#at-app-14) | See fixture for exact command + envelope. |
+| 1 | cites `AT-APP-01` | [`97a-…#at-app-01`](./97a-acceptance-criteria-fixtures.md#at-app-01) |
+| 2 | cites `AT-APP-02` | [`97a-…#at-app-02`](./97a-acceptance-criteria-fixtures.md#at-app-02) |
+| 3 | cites `AT-APP-03` | [`97a-…#at-app-03`](./97a-acceptance-criteria-fixtures.md#at-app-03) |
+| 4 | cites `AT-APP-04` | [`97a-…#at-app-04`](./97a-acceptance-criteria-fixtures.md#at-app-04) |
+| 5 | cites `AT-APP-05` | [`97a-…#at-app-05`](./97a-acceptance-criteria-fixtures.md#at-app-05) |
+| 6 | cites `AT-APP-06` | [`97a-…#at-app-06`](./97a-acceptance-criteria-fixtures.md#at-app-06) |
+| 7 | cites `AT-APP-07` | [`97a-…#at-app-07`](./97a-acceptance-criteria-fixtures.md#at-app-07) |
+| 8 | cites `AT-APP-08` | [`97a-…#at-app-08`](./97a-acceptance-criteria-fixtures.md#at-app-08) |
+| 9 | cites `AT-APP-09` | [`97a-…#at-app-09`](./97a-acceptance-criteria-fixtures.md#at-app-09) |
+| 10 | cites `AT-APP-10` | [`97a-…#at-app-10`](./97a-acceptance-criteria-fixtures.md#at-app-10) |
+| 11 | cites `AT-APP-11` | [`97a-…#at-app-11`](./97a-acceptance-criteria-fixtures.md#at-app-11) |
+| 12 | cites `AT-APP-12` | [`97a-…#at-app-12`](./97a-acceptance-criteria-fixtures.md#at-app-12) |
+| 13 | cites `AT-APP-13` | [`97a-…#at-app-13`](./97a-acceptance-criteria-fixtures.md#at-app-13) |
+| 14 | cites `AT-APP-14` | [`97a-…#at-app-14`](./97a-acceptance-criteria-fixtures.md#at-app-14) |
 
 > Total: **14** acceptance rows, **14** fixture binds, **0** orphan citations.
 <!-- /P24-RUBRIC-SELFCHECK -->

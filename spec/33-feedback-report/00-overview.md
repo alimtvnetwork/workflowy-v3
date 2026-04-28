@@ -16,22 +16,22 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## Acceptance Summary (Fixture Index)
 
-| AT id | Fixture row | One-line bind |
+| Bind # | AT id (citation) | Fixture row |
 |---|---|---|
-| `AT-FEEDBACKREPORT-01` | [`97a-…#at-feedbackreport-01`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-01) | See fixture for exact command + envelope. |
-| `AT-FEEDBACKREPORT-02` | [`97a-…#at-feedbackreport-02`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-02) | See fixture for exact command + envelope. |
-| `AT-FEEDBACKREPORT-03` | [`97a-…#at-feedbackreport-03`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-03) | See fixture for exact command + envelope. |
-| `AT-FEEDBACKREPORT-04` | [`97a-…#at-feedbackreport-04`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-04) | See fixture for exact command + envelope. |
-| `AT-FEEDBACKREPORT-05` | [`97a-…#at-feedbackreport-05`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-05) | See fixture for exact command + envelope. |
-| `AT-FEEDBACKREPORT-06` | [`97a-…#at-feedbackreport-06`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-06) | See fixture for exact command + envelope. |
-| `AT-FEEDBACKREPORT-07` | [`97a-…#at-feedbackreport-07`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-07) | See fixture for exact command + envelope. |
-| `AT-FEEDBACKREPORT-08` | [`97a-…#at-feedbackreport-08`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-08) | See fixture for exact command + envelope. |
-| `AT-FEEDBACKREPORT-09` | [`97a-…#at-feedbackreport-09`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-09) | See fixture for exact command + envelope. |
-| `AT-FEEDBACKREPORT-10` | [`97a-…#at-feedbackreport-10`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-10) | See fixture for exact command + envelope. |
-| `AT-FEEDBACKREPORT-11` | [`97a-…#at-feedbackreport-11`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-11) | See fixture for exact command + envelope. |
-| `AT-FEEDBACKREPORT-12` | [`97a-…#at-feedbackreport-12`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-12) | See fixture for exact command + envelope. |
-| `AT-FEEDBACKREPORT-13` | [`97a-…#at-feedbackreport-13`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-13) | See fixture for exact command + envelope. |
-| `AT-FEEDBACKREPORT-14` | [`97a-…#at-feedbackreport-14`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-14) | See fixture for exact command + envelope. |
+| 1 | cites `AT-FEEDBACKREPORT-01` | [`97a-…#at-feedbackreport-01`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-01) |
+| 2 | cites `AT-FEEDBACKREPORT-02` | [`97a-…#at-feedbackreport-02`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-02) |
+| 3 | cites `AT-FEEDBACKREPORT-03` | [`97a-…#at-feedbackreport-03`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-03) |
+| 4 | cites `AT-FEEDBACKREPORT-04` | [`97a-…#at-feedbackreport-04`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-04) |
+| 5 | cites `AT-FEEDBACKREPORT-05` | [`97a-…#at-feedbackreport-05`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-05) |
+| 6 | cites `AT-FEEDBACKREPORT-06` | [`97a-…#at-feedbackreport-06`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-06) |
+| 7 | cites `AT-FEEDBACKREPORT-07` | [`97a-…#at-feedbackreport-07`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-07) |
+| 8 | cites `AT-FEEDBACKREPORT-08` | [`97a-…#at-feedbackreport-08`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-08) |
+| 9 | cites `AT-FEEDBACKREPORT-09` | [`97a-…#at-feedbackreport-09`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-09) |
+| 10 | cites `AT-FEEDBACKREPORT-10` | [`97a-…#at-feedbackreport-10`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-10) |
+| 11 | cites `AT-FEEDBACKREPORT-11` | [`97a-…#at-feedbackreport-11`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-11) |
+| 12 | cites `AT-FEEDBACKREPORT-12` | [`97a-…#at-feedbackreport-12`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-12) |
+| 13 | cites `AT-FEEDBACKREPORT-13` | [`97a-…#at-feedbackreport-13`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-13) |
+| 14 | cites `AT-FEEDBACKREPORT-14` | [`97a-…#at-feedbackreport-14`](./97a-acceptance-criteria-fixtures.md#at-feedbackreport-14) |
 
 > Total: **14** acceptance rows, **14** fixture binds, **0** orphan citations.
 <!-- /P24-RUBRIC-SELFCHECK -->
