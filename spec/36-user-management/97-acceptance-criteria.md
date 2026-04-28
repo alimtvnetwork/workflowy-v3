@@ -97,3 +97,52 @@ node scripts/spec-hygiene/00-run-all.mjs
 ---
 
 *Curated 2026-04-25 — closes batch-16 item 5. Replaces v1.0.0 scaffold.*
+
+
+---
+
+## P13 stub rows
+
+> Auto-appended by [`scripts/spec-hygiene/45-append-p13-orphan-stubs.mjs`](../../../scripts/spec-hygiene/45-append-p13-orphan-stubs.mjs) on 2026-04-28 to close orphan AT citations surfaced by [`40-generate-contract-json.mjs`](../../../scripts/spec-hygiene/40-generate-contract-json.mjs). Each row is a **placeholder definition** — replace the body with concrete Given/When/Then + JSON fixture during P2 (I/O table conversion). Do **not** delete a row without first removing every citation of its ID elsewhere in spec/.
+
+### AT-USR-01 — Settings panel auto-save
+
+📝 **P13-stub.** Definition pending. Replace this block with:
+- Given/When/Then prose
+- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../../04-database-conventions/06-rest-api-format/).
+- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
+
+### AT-USR-03 — Set password flow
+
+📝 **P13-stub.** Definition pending. Replace this block with:
+- Given/When/Then prose
+- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../../04-database-conventions/06-rest-api-format/).
+- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
+
+### AT-USR-09 — Restore from backup
+
+📝 **P13-stub.** Definition pending. Replace this block with:
+- Given/When/Then prose
+- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../../04-database-conventions/06-rest-api-format/).
+- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
+
+### AT-USR-11 — Theme selection persistence
+
+📝 **P13-stub.** Definition pending. Replace this block with:
+- Given/When/Then prose
+- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../../04-database-conventions/06-rest-api-format/).
+- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
+
+### AT-USR-14 — Referrals
+
+📝 **P13-stub.** Definition pending. Replace this block with:
+- Given/When/Then prose
+- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../../04-database-conventions/06-rest-api-format/).
+- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
+
+### AT-USR-15 — Help / Report a bug
+
+📝 **P13-stub.** Definition pending. Replace this block with:
+- Given/When/Then prose
+- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../../04-database-conventions/06-rest-api-format/).
+- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.

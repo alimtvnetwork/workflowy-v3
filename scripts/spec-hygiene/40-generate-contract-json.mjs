@@ -22,8 +22,18 @@ const ROOT = "spec";
 const OUTPUT = "spec/contract.json";
 
 // --- AT extraction -----------------------------------------------------
-const AT_TABLE_ROW = /^\|\s*(AT-[A-Z][A-Z0-9]*-\d+)\s*\|\s*([^|]+?)\s*\|/;
+// P13 fixes:
+//   (1) ID column may be wrapped in backticks (`AT-APP-01`) — the canonical pattern.
+//   (2) Many sections define ATs as H3 narrative headings: `### AT-CICD-01 — Title`.
+const AT_TABLE_ROW = /^\|\s*`?(AT-[A-Z][A-Z0-9]*-\d+)`?\s*\|\s*([^|]+?)\s*\|/;
+const AT_HEADING = /^#{2,4}\s+(AT-[A-Z][A-Z0-9]*-\d+)\s+[—-]\s+(.+?)\s*$/;
 const AT_INLINE = /\b(AT-[A-Z][A-Z0-9]*-\d+)\b/g;
+
+// P13: documentation-only IDs that are intentionally cited but never need a definition.
+//   - APPF-NN: legacy frozen dispatch index (per APP-FIX-14 reconciliation note).
+//   - APP-200, MPG-58: deliberately bad illustrative citations in G-30 gate doc.
+//   - FIX-01: planned hygiene-gate name, not an acceptance test.
+const AT_ALLOW_ORPHAN = /^AT-(APPF-\d+|APP-200|MPG-58|FIX-01)$/;
 
 // --- EP extraction (## EP-XXX — METHOD `path`) -------------------------
 const EP_HEADING = /^##\s+(EP-[A-Z][A-Z0-9-]*)\s+[—-]\s+(GET|POST|PUT|DELETE|PATCH|HEAD|OPTIONS)\s+`?([^`\n]+?)`?\s*$/;
@@ -53,7 +63,10 @@ function isCanonicalACFile(p) {
   return /\/9[78]-acceptance-criteria\.md$/.test(p);
 }
 
+const CITE_ONLY_FILES = /23-ai-build-walkthrough\.md$/;
 function recordAT(id, definition, file, line) {
+  // P13: derivative files never define, only cite (collision suppression).
+  if (CITE_ONLY_FILES.test(file)) { citeAT(id, file, line); return; }
   const prev = acceptanceTests.get(id);
   if (prev && prev.definedIn && prev.definedIn !== file) {
     // Prefer the canonical 97/98-acceptance-criteria.md as the authoritative definition.
@@ -109,6 +122,14 @@ walk(ROOT, (file) => {
   if (file.includes("/01-spec-authoring-guide/") && /(template|example|fixtures)\.md$/i.test(file)) return;
   if (file.endsWith("/97a-acceptance-criteria-fixtures.md")) return;
   if (file.endsWith("/spec/97a-acceptance-criteria-fixtures.md")) return;
+  // P13 fix: P11-generated condensed overviews include the canonical AC table verbatim.
+  // They are derived artifacts — never definition sites. Skip for AT detection,
+  // but do allow citation collection (orphan tracking still works correctly).
+  if (file.endsWith("/00-overview-condensed.md")) return;
+  // P13: derivative documentation files cite ATs but never DEFINE them.
+  // Treat their H3 `### AT-… —` headings as citations, not definitions.
+  const CITE_ONLY = file.endsWith("spec/23-ai-build-walkthrough.md")
+    || file.endsWith("spec/31-app/06-endpoints/16-endpoint-at-matrix.md");
   const rel = relative(".", file);
   const lines = readFileSync(file, "utf8").split("\n");
 
@@ -116,8 +137,13 @@ walk(ROOT, (file) => {
     const line = lines[i];
 
     const at = AT_TABLE_ROW.exec(line);
+    const ah = !at && AT_HEADING.exec(line);
     if (at) {
       recordAT(at[1], at[2].trim(), rel, i + 1);
+    } else if (ah && !CITE_ONLY) {
+      recordAT(ah[1], ah[2].trim(), rel, i + 1);
+    } else if (ah && CITE_ONLY) {
+      citeAT(ah[1], rel, i + 1);
     } else {
       AT_INLINE.lastIndex = 0;
       let m;
@@ -173,10 +199,11 @@ sections.sort((a, b) => a.slug.localeCompare(b.slug));
 
 // --- Validation ------------------------------------------------------
 const orphanCitations = [];
+const allowedOrphans = [];
 for (const [id, rec] of acceptanceTests) {
-  if (!rec.definedIn && rec.citedIn.length > 0) {
-    orphanCitations.push({ id, citedIn: rec.citedIn });
-  }
+  if (rec.definedIn || rec.citedIn.length === 0) continue;
+  if (AT_ALLOW_ORPHAN.test(id)) { allowedOrphans.push(id); continue; }
+  orphanCitations.push({ id, citedIn: rec.citedIn });
 }
 
 // --- Emit ------------------------------------------------------------
