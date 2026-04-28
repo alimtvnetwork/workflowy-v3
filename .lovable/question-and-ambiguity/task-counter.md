@@ -69,3 +69,9 @@
 | 56 | 2026-04-27 | Ambiguity #02 resolved (user picked "Rename"). Global rename `AT-MGP-` → `AT-MPG-` across 8 files (61 occurrences): 09b-mirror-peer-group-model.md (30, also bumped to v1.1.0), spec/31-app/97-acceptance-criteria.md (11), 05-component-contract-map.md (10), 23-g30-at-citation-validity-gate.md (4), spec/31-app/01-features/97-acceptance-criteria.md (2), 30-check-at-citation-validity.mjs (2), 02-ci-quality-gates.md (1), 26-allow-list-inventory.md (1). Verified: G-30 ✅ all 233 cited IDs resolve, G-07 ✅ 217-row contract map regenerated, master suite shows only G-15 failing (the known spec-only-blocked task). | 0 |
 | 57 | 2026-04-27 | Memory hygiene — corrected stale figures in `mem://index.md`. Core line: "(40/40 reached)" → "overran cap (54 tasks vs 40)"; "35 logged ambiguities" → "48 ambiguities logged & triaged" with pointer to `00-triage-summary.md` and triage breakdown (44 self-resolved / 3 soft-confirm / 1 hard-confirm-resolved). Updated Memories entry for No-Questions Mode to mirror new wording. No spec/code changes. | 0 |
 | 58 | 2026-04-27 | Counter rename — corrected stale heading: "Tasks completed: 53/40" → structured block (Original cap: 40, Final count: 57, Ambiguities logged: 48). Updated Status line to point to `00-triage-summary.md`. No spec/code changes. | 0 |
+
+## Task #59 — 2026-04-28 — Spec-index regeneration check
+- Ran `node scripts/spec-hygiene/04-generate-index.mjs`.
+- Output: `1364 files across 25 folders`.
+- `git status` on `spec/spec-index.md`: clean (no diff).
+- Conclusion: index was already in sync; AT-MPG- rename pass and prior renames were captured at the time they were made.
