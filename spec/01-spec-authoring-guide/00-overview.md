@@ -7,18 +7,24 @@
 
 ## AI Contract
 
-**Purpose** — _TODO(P1): one sentence describing what `Spec Authoring Guide` solves._
+**Purpose** — Defines the authoring contract every spec file MUST follow — folder numbering, AI Contract block, RFC-2119 wording, acceptance-criteria format — so the spec corpus stays machine-parseable end-to-end.
 
-**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+**Audience** — Spec authors and reviewers (any role) before opening a PR that touches `spec/`.
 
 **Expected AI Output** —
-- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+- `spec/<section>/00-overview.md` with a complete AI Contract block (no `_TODO(P1)_` placeholders)
+- `spec/<section>/97-acceptance-criteria.md` with at least one `AT-<SECTION>-NN` row per public behaviour
+- `spec/<section>/97a-acceptance-criteria-fixtures.md` with JSON I/O fixtures for every AT row
 
 **Out of Scope** —
-- _TODO(P1): bullet adjacent concerns and link to owning section._
+- Code generation — see [`spec/02-coding-guidelines/`](../02-coding-guidelines/00-overview.md)
+- Backend runtime selection — see [`spec/15-wp-plugin-how-to/`](../15-wp-plugin-how-to/00-overview.md)
 
 **Definition of Done** —
-- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
+- Every authored file passes `node scripts/spec-hygiene/00-run-all.mjs` (G-01 numbering through G-40 AT-citation completeness)
+- No `_TODO(P1)_`, `TBD`, `FIXME`, or `XXX` tokens outside the allow-list (gate G-38)
+- AT IDs introduced are reachable from `spec/contract.json` (gate G-40)
+- `AC-001` through `AC-018` from `97-acceptance-criteria.md` pass
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

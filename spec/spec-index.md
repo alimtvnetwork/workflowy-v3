@@ -818,7 +818,7 @@
 
 | File | Title | Version | Status |
 |------|-------|---------|--------|
-| [`11-research/00-overview.md`](./11-research/00-overview.md) | Research | 3.1.0 | — |
+| [`11-research/00-overview.md`](./11-research/00-overview.md) | Research | 3.1.0 | Research |
 | [`11-research/99-consistency-report.md`](./11-research/99-consistency-report.md) | Consistency Report — Research | 1.0.0 | — |
 
 ## 12-consolidated-guidelines

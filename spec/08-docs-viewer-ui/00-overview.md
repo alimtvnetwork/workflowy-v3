@@ -1,18 +1,23 @@
 # Docs Viewer UI — Overview
 ## AI Contract
 
-**Purpose** — _TODO(P1): one sentence describing what `Docs Viewer UI — Overview` solves._
+**Purpose** — Defines the in-app documentation viewer that renders `spec/` markdown files at runtime with anchor navigation, search, and version awareness.
 
-**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+**Audience** — Frontend developers building the docs route; spec authors verifying their files render correctly.
 
 **Expected AI Output** —
-- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+- `src/pages/docs/DocsViewer.tsx` — top-level route component
+- `src/components/docs/MarkdownRenderer.tsx` — sanitised markdown renderer with anchor sync
+- `src/components/docs/DocsSidebar.tsx` — folder tree generated from `spec/spec-index.md`
 
 **Out of Scope** —
-- _TODO(P1): bullet adjacent concerns and link to owning section._
+- Spec authoring conventions — see [`spec/01-spec-authoring-guide/`](../01-spec-authoring-guide/00-overview.md)
+- Search ranking — see [`mem://features/search-functionality`](../31-app/01-features/16-search-ranking.md)
 
 **Definition of Done** —
-- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
+- Every link in a rendered spec file resolves (no client-side 404s)
+- Anchor links scroll-restore correctly on back/forward navigation
+- `AT-DOCSVIEWERUI-01` through `AT-DOCSVIEWERUI-NN` from `97-acceptance-criteria.md` pass
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

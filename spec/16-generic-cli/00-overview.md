@@ -1,18 +1,21 @@
 # Generic CLI Creation Guidelines — Overview
 ## AI Contract
 
-**Purpose** — _TODO(P1): one sentence describing what `Generic CLI Creation Guidelines — Overview` solves._
+**Purpose** — Defines the cross-cutting CLI conventions (flag naming, exit codes, logging, JSON output mode) every script under `wp-plugin/scripts/` and `scripts/` MUST follow.
 
-**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+**Audience** — Any developer adding a new script invoked from a shell.
 
 **Expected AI Output** —
-- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+- `wp-plugin/scripts/lib/cli.php` — shared CLI helper
+- `scripts/lib/cli.mjs` — Node-side equivalent
 
 **Out of Scope** —
-- _TODO(P1): bullet adjacent concerns and link to owning section._
+- Script-specific business logic — that lives in the script itself
 
 **Definition of Done** —
-- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
+- Every script supports `--help`, `--json`, and `--verbose`
+- Every script returns 0 on success, non-zero on failure, with documented codes
+- `AT-GENERICCLI-01` through `AT-GENERICCLI-NN` from `97-acceptance-criteria.md` pass
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

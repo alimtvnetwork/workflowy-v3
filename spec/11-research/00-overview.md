@@ -9,18 +9,18 @@
 
 ## AI Contract
 
-**Purpose** — _TODO(P1): one sentence describing what `Research` solves._
+**Purpose** — Holds in-progress research notes that have not yet been promoted to a normative spec section. Files here are advisory and MUST NOT be cited as a source of truth.
 
-**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+**Audience** — Spec authors evaluating new ideas; reviewers checking provenance of design decisions.
 
 **Expected AI Output** —
-- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+- `spec/11-research/<topic>.md` — research note with explicit "Status: Research" header
 
 **Out of Scope** —
-- _TODO(P1): bullet adjacent concerns and link to owning section._
+- Anything normative — once a research file becomes binding, it MUST be moved into a numbered section and given an AT row.
 
 **Definition of Done** —
-- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
+- Every file in this folder carries `> **Status:** Research (not normative)` in its front-matter
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

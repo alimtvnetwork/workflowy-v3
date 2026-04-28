@@ -1,18 +1,23 @@
 # Activity Feed — Feature Spec
 ## AI Contract
 
-**Purpose** — _TODO(P1): one sentence describing what `Activity Feed — Feature Spec` solves._
+**Purpose** — Defines the in-app activity feed that surfaces item-mutation events (created / edited / moved / deleted / restored / shared) for the current user across all their workspaces.
 
-**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+**Audience** — Frontend developers building the feed route; backend developers emitting feed events.
 
 **Expected AI Output** —
-- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+- `src/pages/activity/ActivityFeed.tsx`
+- `wp-plugin/includes/Activity/ActivityRecorder.php`
+- `wp-plugin/includes/Rest/ActivityController.php`
 
 **Out of Scope** —
-- _TODO(P1): bullet adjacent concerns and link to owning section._
+- Audit log for compliance — see operator runbooks in [`spec/15-wp-plugin-how-to/23-operator-runbooks/`](../15-wp-plugin-how-to/23-operator-runbooks/)
+- Email/push notifications — covered separately by `spec/36-user-management/`
 
 **Definition of Done** —
-- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
+- Every feed row is reachable from at least one user-visible mutation flow
+- Feed query respects RLS / per-user scoping
+- `AT-ACTIVITYFEED-01` through `AT-ACTIVITYFEED-NN` from `97-acceptance-criteria.md` pass
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

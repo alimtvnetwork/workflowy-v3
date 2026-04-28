@@ -6,18 +6,20 @@
 
 ## AI Contract
 
-**Purpose** — _TODO(P1): one sentence describing what `Consolidated Guidelines — Redirect Index` solves._
+**Purpose** — Bundles the most-cited rules from `02-coding-guidelines/` into a single skim-friendly handbook for new contributors. Normative content lives in `02-coding-guidelines/`; this folder is a curated index.
 
-**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+**Audience** — New contributors during onboarding; senior reviewers needing a quick recap.
 
 **Expected AI Output** —
-- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+- `spec/12-consolidated-guidelines/<topic>.md` — each file links back to the canonical rule it summarises
 
 **Out of Scope** —
-- _TODO(P1): bullet adjacent concerns and link to owning section._
+- Authoritative rule definitions — those live in [`spec/02-coding-guidelines/`](../02-coding-guidelines/00-overview.md). Do not re-declare rules here.
 
 **Definition of Done** —
-- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
+- Every rule mentioned has a back-link to its canonical home in `02-coding-guidelines/`
+- Zero contradictions between this folder and `02-coding-guidelines/` (gate planned: G-41 cross-doc rule reciprocity)
+- `AT-CONSOLIDATEDGUIDELINES-01` through `AT-CONSOLIDATEDGUIDELINES-NN` from `97-acceptance-criteria.md` pass
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

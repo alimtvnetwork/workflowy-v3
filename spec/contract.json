@@ -739,6 +739,10 @@
       "defined_line": 22,
       "cited_in": [
         {
+          "file": "spec/34-activity-feed/00-overview.md",
+          "line": 20
+        },
+        {
           "file": "spec/34-activity-feed/97-acceptance-criteria.md",
           "line": 12
         }
@@ -2199,6 +2203,10 @@
       "defined_in": "spec/31-app/97-acceptance-criteria.md",
       "defined_line": 119,
       "cited_in": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 21
+        },
         {
           "file": "spec/18-spec-issues/10-content-audit-endpoints-and-db-diagram.md",
           "line": 31
@@ -5122,6 +5130,10 @@
       "defined_line": 30,
       "cited_in": [
         {
+          "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
+          "line": 25
+        },
+        {
           "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
           "line": 19
         }
@@ -5611,6 +5623,10 @@
       "defined_in": "spec/09-code-block-system/97-acceptance-criteria.md",
       "defined_line": 23,
       "cited_in": [
+        {
+          "file": "spec/09-code-block-system/00-overview.md",
+          "line": 23
+        },
         {
           "file": "spec/09-code-block-system/11-highlighter-dependency-pin.md",
           "line": 183
@@ -6379,6 +6395,10 @@
       "defined_line": 28,
       "cited_in": [
         {
+          "file": "spec/12-consolidated-guidelines/00-overview.md",
+          "line": 22
+        },
+        {
           "file": "spec/12-consolidated-guidelines/97-acceptance-criteria.md",
           "line": 18
         }
@@ -7070,6 +7090,10 @@
       "defined_line": 24,
       "cited_in": [
         {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 23
+        },
+        {
           "file": "spec/04-database-conventions/97-acceptance-criteria.md",
           "line": 20
         }
@@ -7760,6 +7784,10 @@
       "defined_line": 22,
       "cited_in": [
         {
+          "file": "spec/07-design-system/00-overview.md",
+          "line": 23
+        },
+        {
           "file": "spec/15-wp-plugin-how-to/12-design-system/97-acceptance-criteria.md",
           "line": 12
         },
@@ -7885,6 +7913,10 @@
       "defined_in": "spec/08-docs-viewer-ui/97-acceptance-criteria.md",
       "defined_line": 24,
       "cited_in": [
+        {
+          "file": "spec/08-docs-viewer-ui/00-overview.md",
+          "line": 20
+        },
         {
           "file": "spec/08-docs-viewer-ui/97-acceptance-criteria.md",
           "line": 12
@@ -8956,6 +8988,10 @@
       "defined_line": 90,
       "cited_in": [
         {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 21
+        },
+        {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
           "line": 79
         },
@@ -8979,6 +9015,10 @@
       "defined_in": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
       "defined_line": 97,
       "cited_in": [
+        {
+          "file": "spec/04-database-conventions/00-overview.md",
+          "line": 21
+        },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
           "line": 80
@@ -11506,6 +11546,10 @@
       "defined_line": 23,
       "cited_in": [
         {
+          "file": "spec/16-generic-cli/00-overview.md",
+          "line": 18
+        },
+        {
           "file": "spec/16-generic-cli/97-acceptance-criteria.md",
           "line": 13
         }
@@ -11613,6 +11657,10 @@
       "defined_in": "spec/17-generic-update/97-acceptance-criteria.md",
       "defined_line": 21,
       "cited_in": [
+        {
+          "file": "spec/17-generic-update/00-overview.md",
+          "line": 22
+        },
         {
           "file": "spec/17-generic-update/97-acceptance-criteria.md",
           "line": 13
@@ -15310,6 +15358,10 @@
       "defined_line": 36,
       "cited_in": [
         {
+          "file": "spec/10-powershell-integration/00-overview.md",
+          "line": 26
+        },
+        {
           "file": "spec/10-powershell-integration/08-wp-plugin-boundary.md",
           "line": 100
         },
@@ -17557,6 +17609,10 @@
       "defined_in": "spec/14-self-update-app-update/97-acceptance-criteria.md",
       "defined_line": 23,
       "cited_in": [
+        {
+          "file": "spec/14-self-update-app-update/00-overview.md",
+          "line": 25
+        },
         {
           "file": "spec/14-self-update-app-update/97-acceptance-criteria.md",
           "line": 13
@@ -22597,7 +22653,7 @@
       "cited_in": [
         {
           "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
-          "line": 159
+          "line": 164
         },
         {
           "file": "spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/00-overview.md",

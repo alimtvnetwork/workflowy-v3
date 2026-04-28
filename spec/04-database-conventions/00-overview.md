@@ -3,18 +3,24 @@
 > **Version:** 3.1.0  
 ## AI Contract
 
-**Purpose** — _TODO(P1): one sentence describing what `Database Conventions` solves._
+**Purpose** — Defines how every persisted entity is named, schemaed, indexed, joined, and exposed via REST so backend, frontend, and migrations all reference one source of truth.
 
-**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+**Audience** — Backend (PHP plugin) developers and any frontend developer that calls a REST endpoint.
 
 **Expected AI Output** —
-- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+- `wp-plugin/includes/Database/Schema.php` — `CREATE TABLE` statements that match `02-schema-design.md`
+- `wp-plugin/includes/Repository/<Entity>Repository.php` — single-responsibility repos per `03-orm-and-views.md`
+- `wp-plugin/includes/Rest/<Endpoint>Controller.php` — envelope responses per `06-rest-api-format/`
 
 **Out of Scope** —
-- _TODO(P1): bullet adjacent concerns and link to owning section._
+- Per-feature business rules — see [`spec/31-app/01-features/`](../31-app/01-features/)
+- Operator runbooks — see [`spec/15-wp-plugin-how-to/23-operator-runbooks/`](../15-wp-plugin-how-to/23-operator-runbooks/)
 
 **Definition of Done** —
-- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
+- Every table has UNIQUE coverage documented in `06-indexes.md` (gate G-32)
+- Every endpoint returns the universal envelope (`AT-ENV-01`, `AT-ENV-02`)
+- Every column name is `snake_case`; every TS field is `camelCase` (gate in `02-coding-guidelines`)
+- `AT-DATABASECONVENTIONS-01` through `AT-DATABASECONVENTIONS-NN` from `97-acceptance-criteria.md` pass
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

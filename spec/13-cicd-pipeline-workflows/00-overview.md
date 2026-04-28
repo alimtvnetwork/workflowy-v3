@@ -6,18 +6,23 @@
 
 ## AI Contract
 
-**Purpose** — _TODO(P1): one sentence describing what `CI/CD Pipeline Workflows` solves._
+**Purpose** — Defines the CI/CD pipeline archetypes (WP-Plugin, Frontend-SPA, Browser-Extension) and the GitHub Actions / Bitbucket Pipelines YAML they MUST emit.
 
-**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+**Audience** — DevOps engineers; maintainers wiring a new repo into the pipeline.
 
 **Expected AI Output** —
-- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+- `.github/workflows/wp-plugin-ci.yml`
+- `.github/workflows/frontend-ci.yml`
+- `bitbucket-pipelines.yml` (alternate host)
 
 **Out of Scope** —
-- _TODO(P1): bullet adjacent concerns and link to owning section._
+- Local developer scripts — covered by [`spec/15-wp-plugin-how-to/`](../15-wp-plugin-how-to/00-overview.md)
+- Release versioning policy — covered by [`spec/14-self-update-app-update/`](../14-self-update-app-update/00-overview.md)
 
 **Definition of Done** —
-- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
+- Every archetype has a working reference YAML committed under `.github/workflows/`
+- Every workflow runs `node scripts/spec-hygiene/00-run-all.mjs` as a required check
+- `AT-CICD-01` through `AT-CICD-NN` from `97-acceptance-criteria.md` pass
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

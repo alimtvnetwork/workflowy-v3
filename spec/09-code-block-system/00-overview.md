@@ -6,18 +6,21 @@
 
 ## AI Contract
 
-**Purpose** — _TODO(P1): one sentence describing what `08 — Code Block System` solves._
+**Purpose** — Defines the syntax-highlighted code-block component used inside the docs viewer, including copy-to-clipboard, language tag, and line-number rendering.
 
-**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+**Audience** — Frontend developers; spec authors who want their fenced code-blocks to render correctly.
 
 **Expected AI Output** —
-- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+- `src/components/docs/CodeBlock.tsx` — fenced-block renderer
+- `src/lib/highlight.ts` — Shiki/Prism wrapper with theme tokens
 
 **Out of Scope** —
-- _TODO(P1): bullet adjacent concerns and link to owning section._
+- Markdown parsing — see [`spec/08-docs-viewer-ui/`](../08-docs-viewer-ui/00-overview.md)
 
 **Definition of Done** —
-- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
+- Highlighter loads lazily; no chunk added to the initial bundle
+- Copy button announces success via aria-live region
+- `AT-CODEBLOCKSYSTEM-01` through `AT-CODEBLOCKSYSTEM-NN` from `97-acceptance-criteria.md` pass
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

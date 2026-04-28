@@ -6,18 +6,20 @@
 
 ## AI Contract
 
-**Purpose** — _TODO(P1): one sentence describing what `Generic Update` solves._
+**Purpose** — Defines the cross-cutting "update something" pattern — reusable across plugin updates, config updates, and content updates — covering version pinning, changelog format, and rollback hooks.
 
-**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+**Audience** — Backend developers adding any update flow.
 
 **Expected AI Output** —
-- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+- `wp-plugin/includes/Update/UpdateContract.php` — interface every update implementation MUST satisfy
+- Per-domain implementations under `wp-plugin/includes/<Domain>/<Domain>Updater.php`
 
 **Out of Scope** —
-- _TODO(P1): bullet adjacent concerns and link to owning section._
+- Plugin self-update — that is `14-self-update-app-update/` and consumes this contract
 
 **Definition of Done** —
-- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
+- Every update implementation declares its rollback strategy explicitly
+- `AT-GENERICUPDATE-01` through `AT-GENERICUPDATE-NN` from `97-acceptance-criteria.md` pass
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
