@@ -74,7 +74,7 @@ This rule applies to **all** array key access where the key matches a `ResponseK
 
 ### Exceptions
 
-Keys that are **not** in `ResponseKeyType` remain as literal strings (e.g., domain-specific keys like `'retention'`, `'orphans'`, `'stuck'`, `'settings'`, `'providers'`, `'content'`). If a key appears in 3+ files, consider adding it to the enum.
+Keys that are **not** in `ResponseKeyType` remain as literal strings (e.g., domain-specific keys like `'retention'`, `'orphans'`, `'stuck'`, `'settings'`, `'providers'`, `'content'`). If a key appears in 3+ files, the author MUST promote it to the `ResponseKeyType` enum (see [`../../01-cross-language/01-naming/05-enum-naming.md`](../../01-cross-language/01-naming/05-enum-naming.md)).
 
 Keys inside `$_FILES` superglobal access (e.g., `$files['file']['size']`) and WordPress hook/filter names are exempt — these are PHP/WordPress API contracts.
 
