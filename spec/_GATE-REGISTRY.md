@@ -340,7 +340,7 @@
 | `G-26-OWNER-ID-CANONICAL` | **DOC** | [`spec/00-adrs/0026-lww-canonical-tiebreak.md`](./00-adrs/0026-lww-canonical-tiebreak.md) | - G-26-OWNER-ID-CANONICAL — OwnerId is the canonical brand; |
 | `G-26-RADIX-MATRIX-PINNED` | **DOC-NORM** | [`spec/00-overview.md`](./00-overview.md) | [0022](./00-adrs/0022-shadcn-radix-component-base.md) shadcn/ui (CLI-vendored) + Radix sole base; MUI/Mantine/Ant/Headl |
 | `G-26-SHADCN-PATCHES-TRACKED` | **DOC** | [`spec/00-adrs/0022-shadcn-radix-component-base.md`](./00-adrs/0022-shadcn-radix-component-base.md) | - G-26-SHADCN-PATCHES-TRACKED — enforces D4 (any diff |
-| `G-26-WIRE-OWNERID-ONLY` | **CI** | [`spec/00-adrs/0026-lww-canonical-tiebreak.md`](./00-adrs/0026-lww-canonical-tiebreak.md) | rg "OwnerUserId" spec/31-app/06-endpoints → 0; fixtures whitelisted to 3 DDL-mirror artifacts; PHP serializer test asserts wire `OwnerId` (D6) |
+| `G-26-WIRE-OWNERID-ONLY` | **CI + TEST** | [`spec/00-adrs/0026-lww-canonical-tiebreak.md`](./00-adrs/0026-lww-canonical-tiebreak.md) | CI: regex `\bOwnerUserId\s*[:?,}]` over `06-endpoints/**` → 0 + 3-file fixture whitelist. TEST: `AT-WIRE-EGRESS-01` PHPUnit serializer test (spec at `06-endpoints/97b-endpoint-envelope-fixtures.md`). |
 
 ### ADR-0027
 
