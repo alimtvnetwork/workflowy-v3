@@ -1,7 +1,7 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.0.0  
-> **Updated:** 2026-04-28 — P76 / AUDIT-08 fix: first complete inventory.  
+> **Version:** 1.1.0  
+> **Updated:** 2026-04-28 — added 20 new gates from ADR-0012 §D7 amendment (logical Tailwind utilities), ADR-0027 (SSE multi-worker shared ring buffer), and ADR-0028 (i18n locale strategy). Two `G-28-*` gates struck through (superseded by canonical `G-12-LOGICAL-*` per ADR-0012 §D7). Added new area: ADR-0012. Prior: 1.0.0 (2026-04-28 P76 first inventory).  
 > **Status:** Active  
 > **Purpose:** Single registry of every `G-*` compliance gate referenced anywhere in `spec/`. Each gate is classified by enforcement tier so AI implementers can tell at a glance which gates a CI pipeline must mechanically enforce vs. which are normative documentation invariants vs. which require test fixtures.
 
