@@ -127,9 +127,9 @@ STEPS:
            INSERT MirrorMember(MirrorGroupId = new.id, ItemId = originatingItemId).
   2. INSERT Item(
        ParentItemId    = targetParentItemId,
-       OwnerUserId     = current user,
+       OwnerUserId     = current user,         -- DDL column name (per ADR-0026 §D6 SQL-pseudocode whitelist); wire egress translates to OwnerId — see Spec↔DDL Alias Bridge (column-level)
        ItemTypeId      = (SELECT ItemTypeId FROM Item WHERE ItemId = canonical),
-       Content         = '',                  -- empty; renderer reads through canonical
+       Content         = '',                   -- empty; renderer reads through canonical
        FractionalIndex = targetFractionalIndex
      ) → newItemId.
   3. INSERT MirrorMember(MirrorGroupId = group.id, ItemId = newItemId).
