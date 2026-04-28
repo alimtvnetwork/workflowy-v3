@@ -32,6 +32,13 @@ function loadSection(section) {
   const dir = path.join(SPEC_DIR, section);
   const files = walk(dir);
   let total = 0, lines = 0;
+  for (const f of files) { lines += fs.readFileSync(f, 'utf8').split('\n').length; total++; }
+  // P11: prefer condensed overview when present (mega-sections)
+  const condensed = path.join(dir, '00-overview-condensed.md');
+  if (fs.existsSync(condensed)) {
+    const c = fs.readFileSync(condensed, 'utf8');
+    return { section, fileCount: total, lineCount: lines, content: `=== FILE: ${condensed} (CONDENSED, P11) ===\n` + c, condensed: true };
+  }
   // prioritise overview + acceptance-criteria
   files.sort((a, b) => {
     const score = (p) => /00-overview/.test(p) ? 0 : /9[78]-acceptance/.test(p) ? 1 : /\.md$/.test(p) ? 2 : 3;
@@ -39,15 +46,12 @@ function loadSection(section) {
   });
   let buf = '';
   for (const f of files) {
+    if (buf.length >= MAX_CHARS_PER_SECTION) break;
     const c = fs.readFileSync(f, 'utf8');
-    lines += c.split('\n').length;
-    if (buf.length < MAX_CHARS_PER_SECTION) {
-      const remaining = MAX_CHARS_PER_SECTION - buf.length;
-      buf += `\n\n=== FILE: ${f} ===\n` + c.slice(0, remaining);
-    }
-    total++;
+    const remaining = MAX_CHARS_PER_SECTION - buf.length;
+    buf += `\n\n=== FILE: ${f} ===\n` + c.slice(0, remaining);
   }
-  return { section, fileCount: total, lineCount: lines, content: buf };
+  return { section, fileCount: total, lineCount: lines, content: buf, condensed: false };
 }
 
 const TOOL = {
