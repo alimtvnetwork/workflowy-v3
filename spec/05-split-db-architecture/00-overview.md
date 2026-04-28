@@ -68,26 +68,148 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 
 
+## Domain Split Registry
+
+WorkFlowy ships with exactly three SQLite databases. No fourth domain may be added without an ADR amending this table.
+
+| Logical name | File (relative to `wp-content/uploads/workflowy/`) | Owns tables | Rotation | Backup priority |
+|---|---|---|---|---|
+| `items` | `items.sqlite` | `Items`, `ItemRevisions`, `Mirrors`, `MirrorGroups` | None — append + soft-delete. | **P0** — restore first on disaster. |
+| `users` | `users.sqlite` | `Users`, `UserRoles`, `Sessions`, `Invitations` | None. | **P0** — restore second. |
+| `audit` | `audit.sqlite` (+ monthly rotation `audit-YYYY-MM.sqlite`) | `AuditLog` | Monthly: previous month sealed read-only on day 1. | **P2** — restore last; never blocks app boot. |
+
+## ATTACH Ordering Rules
+
+The orchestrator MUST `ATTACH` databases in **exactly** this sequence on every connection. Order is load-bearing because foreign-key validation and trigger registration depend on it.
+
+| Step | Operation | Rationale |
+|---|---|---|
+| 1 | Open `items.sqlite` as the **main** connection (`PRAGMA foreign_keys=ON` first). | Items is the hottest path; making it `main` lets the planner skip the `items.` prefix in 90% of queries. |
+| 2 | `ATTACH DATABASE 'users.sqlite' AS users;` | Required before triggers that reference `users.Users(id)` are registered. |
+| 3 | `ATTACH DATABASE 'audit.sqlite' AS audit;` | Last — audit writes are best-effort; failure to attach MUST log a warning, not abort boot. |
+| 4 | `PRAGMA foreign_keys=ON;` re-asserted on attached schemas. | SQLite resets the pragma scope per attach in some builds. |
+
+**Rules:**
+- The order is fixed; reordering is a spec violation caught by gate `G-05-ATTACH-ORDER` (PHPUnit asserts `sqlite_master` query order).
+- A connection MUST NOT proceed to serve requests until steps 1–4 succeed (except step 3, which degrades gracefully).
+- Detach is forbidden during a request lifecycle — connections are pooled and reused.
+
+## Cross-DB Query Rules
+
+| Rule | Enforcement |
+|---|---|
+| Raw SQL joins across attached schemas are **forbidden** in handler code. | Gate `G-05-NO-RAW-CROSS-JOIN` (grep: `JOIN\s+(users|audit)\.` outside `Repository/*.php` fails CI). |
+| Cross-DB reads MUST go through a repository method that performs two queries and joins in PHP. | Gate `G-05-REPO-COMPOSE`. |
+| Cross-DB writes MUST use the `MultiDbTransaction` wrapper (one `BEGIN` per DB, two-phase commit pattern). | Gate `G-05-2PC-REQUIRED`. |
+| `audit` writes are fire-and-forget — they MUST NOT roll back the parent transaction on failure. | Gate `G-05-AUDIT-NONBLOCKING`. |
+
 ## Anti-Patterns
 
 The AI MUST NOT:
-- Joining across attached SQLite files in raw SQL — every cross-DB read MUST go through a repo method.
-- Splitting a domain that has < 3 tables — the overhead exceeds the benefit; merge into a related domain instead.
-- Forgetting to register the split in `wp-plugin/config/db-split.json` — the orchestrator only attaches files declared there.
 
-## Worked Example (skeleton)
+| # | Anti-pattern | Why it fails | Gate that catches it |
+|---|---|---|---|
+| 1 | Write `JOIN users.Users` in a handler / service file | Couples handler to physical layout; breaks when `users` is sharded. | `G-05-NO-RAW-CROSS-JOIN` (regex). |
+| 2 | Split a domain that owns < 3 tables | Overhead (extra ATTACH, extra backup target) exceeds isolation benefit. | `G-05-MIN-TABLES` (lint over `db-split.json`). |
+| 3 | Omit a new file from `wp-plugin/config/db-split.json` | Orchestrator never attaches it; queries silently target the wrong schema. | `G-05-REGISTRY-COMPLETE` (filesystem ↔ JSON diff). |
+| 4 | Begin a write transaction on `audit` inside the parent request transaction | Audit lock contention stalls user-facing writes. | `G-05-AUDIT-NONBLOCKING`. |
+| 5 | Open ad-hoc `new PDO(...)` instead of using `DbConnectionPool::for($name)` | Bypasses pragmas, attach order, and pooling. | `G-05-NO-ADHOC-PDO` (PHPStan rule). |
+| 6 | Reorder ATTACH (e.g. open `audit` before `users`) | Trigger registration on `users` references fails; boot crashes. | `G-05-ATTACH-ORDER` (PHPUnit). |
 
-A canonical, copy-pasteable shape for this section's primary output:
+## Worked Example — End-to-End Multi-DB Read
+
+### 1. Registry file (`wp-plugin/config/db-split.json`)
 
 ```json
 {
-  "items": { "file": "items.sqlite", "tables": ["Items", "ItemRevisions", "Mirrors"] },
-  "users": { "file": "users.sqlite", "tables": ["Users", "UserRoles", "Sessions"] },
-  "audit": { "file": "audit.sqlite", "tables": ["AuditLog"], "rotateMonthly": true }
+  "items": { "file": "items.sqlite", "tables": ["Items", "ItemRevisions", "Mirrors", "MirrorGroups"], "priority": "P0" },
+  "users": { "file": "users.sqlite", "tables": ["Users", "UserRoles", "Sessions", "Invitations"],   "priority": "P0" },
+  "audit": { "file": "audit.sqlite", "tables": ["AuditLog"], "rotateMonthly": true,                 "priority": "P2" }
 }
 ```
 
-*This is a structural skeleton. Real values come from the section's `97-acceptance-criteria.md` row that the AI is implementing.*
+### 2. Connection bootstrap (load-bearing — gate `G-05-ATTACH-ORDER` asserts this exact order)
+
+```php
+<?php
+$pdo = new PDO("sqlite:{$base}/items.sqlite");
+$pdo->exec('PRAGMA foreign_keys=ON');                              // step 1
+$pdo->exec("ATTACH DATABASE '{$base}/users.sqlite' AS users");     // step 2
+try {
+    $pdo->exec("ATTACH DATABASE '{$base}/audit.sqlite' AS audit"); // step 3 (best-effort)
+} catch (\PDOException $e) {
+    Log::warning('audit DB unavailable', ['error' => $e->getMessage()]);
+}
+$pdo->exec('PRAGMA foreign_keys=ON');                              // step 4
+```
+
+### 3. Forbidden — raw cross-DB join (gate `G-05-NO-RAW-CROSS-JOIN` rejects this)
+
+```php
+// ❌ FORBIDDEN in handler/service files
+$rows = $pdo->query("
+    SELECT i.id, i.content, u.displayName
+    FROM Items i
+    JOIN users.Users u ON u.id = i.ownerId
+    WHERE i.parentId = :p
+");
+```
+
+### 4. Required — repository method composes results in PHP
+
+```php
+<?php
+final class ItemWithOwnerRepository {
+    public function listChildren(string $parentId): array {
+        $items   = $this->itemsDb->select('SELECT id, content, ownerId FROM Items WHERE parentId = ?', [$parentId]);
+        $ownerIds = array_unique(array_column($items, 'ownerId'));
+        $owners  = $this->usersDb->selectIn('SELECT id, displayName FROM Users WHERE id IN (?)', $ownerIds);
+        $byId    = array_column($owners, null, 'id');
+        return array_map(fn($i) => $i + ['displayName' => $byId[$i['ownerId']]['displayName'] ?? null], $items);
+    }
+}
+```
+
+### 5. API response (PascalCase per `04-database-conventions/06-rest-api-format/`)
+
+```json
+{
+  "Status": "Success",
+  "Attributes": { "ParentId": "abc123", "Count": 2, "DurationMs": 14 },
+  "Results": [
+    { "Id": "i_001", "Content": "Buy milk", "OwnerId": "u_42", "DisplayName": "Alex" },
+    { "Id": "i_002", "Content": "Walk dog", "OwnerId": "u_42", "DisplayName": "Alex" }
+  ]
+}
+```
+
+### 6. Multi-DB write — two-phase commit pattern
+
+```php
+<?php
+$tx = MultiDbTransaction::begin(['items', 'users']);   // BEGIN on both
+try {
+    $tx->items->exec('UPDATE Items SET ownerId = ? WHERE id = ?', [$newOwner, $id]);
+    $tx->users->exec('UPDATE Users SET itemCount = itemCount + 1 WHERE id = ?', [$newOwner]);
+    $tx->commit();                                     // COMMIT items, then users
+    AuditLog::write('item.reowned', ['id' => $id]);   // fire-and-forget; never blocks
+} catch (\Throwable $e) {
+    $tx->rollBack();                                   // rollback both
+    throw $e;
+}
+```
+
+### Error-code registry (this section owns `DB-05-*`)
+
+| Code | Meaning | Recovery |
+|---|---|---|
+| `DB-05-01` | `items.sqlite` failed to open | Abort boot — service unavailable. |
+| `DB-05-02` | `users.sqlite` ATTACH failed | Abort boot — auth impossible. |
+| `DB-05-03` | `audit.sqlite` ATTACH failed | Log warning, continue (degraded). |
+| `DB-05-04` | Raw cross-DB join detected at runtime | Throw `InvariantViolation`; pages on-call. |
+| `DB-05-05` | `MultiDbTransaction` partial commit | Mark connection `Quarantined`; force pool eviction. |
+
+*All values are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings.*
 
 <!-- AUTO-TOC:START -->
 
