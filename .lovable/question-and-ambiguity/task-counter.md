@@ -89,3 +89,10 @@
 - Verified each of the 9 files: 0 peer-endpoint inbound refs (rg scan across `spec/31-app/06-endpoints/**`).
 - Conclusion: every exemption still justified by 2026-04-27 drainage rationale; nothing further to drain.
 - F-future-G31e is now **closed** (was already maximally drained; only re-audit was outstanding).
+
+## Task #62 — 2026-04-28 — Stale status-marker correction in audit-round-4 doc
+- Found discrepancy in `spec/18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md`:
+  - Header summary said "7 of 7 CLOSED"
+  - But §3 finding-section headers for AI-03/04/05/06 still showed 🟠/🟡 markers (no "CLOSED" tag).
+- Updated the 4 stale headers to ✅ ... — **CLOSED 2026-04-27** matching the final-state bullets in §7.
+- Verified G-02 (headers) and G-03 (links) still GREEN after edit.
