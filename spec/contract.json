@@ -4,8 +4,8 @@
   "generator": "scripts/spec-hygiene/40-generate-contract-json.mjs",
   "do_not_edit": true,
   "counts": {
-    "acceptance_tests_defined": 2227,
-    "acceptance_tests_orphan_citations": 30,
+    "acceptance_tests_defined": 2257,
+    "acceptance_tests_orphan_citations": 0,
     "endpoints": 48,
     "enums": 23,
     "sections": 24
@@ -4663,6 +4663,18 @@
       "cited_in": []
     },
     {
+      "id": "AT-BOARD-99",
+      "definition": "Board view placeholder (P13-stub)",
+      "defined_in": "spec/31-app/01-features/97-acceptance-criteria.md",
+      "defined_line": 246,
+      "cited_in": [
+        {
+          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
+          "line": 166
+        }
+      ]
+    },
+    {
       "id": "AT-BOOLEANPRINCIPLES-01",
       "definition": "Boolean variables, fields, and methods use a **positive `is`/`has`/`can`/`should`** prefix; `not`, `disable`, `block`, `prevent` prefixes are forbidden.",
       "defined_in": "spec/02-coding-guidelines/01-cross-language/02-boolean-principles/97-acceptance-criteria.md",
@@ -5183,6 +5195,38 @@
       "defined_in": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
       "defined_line": 60,
       "cited_in": []
+    },
+    {
+      "id": "AT-CICD-11",
+      "definition": "Browser-Extension archetype reference",
+      "defined_in": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
+      "defined_line": 109,
+      "cited_in": [
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
+          "line": 22
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
+          "line": 63
+        }
+      ]
+    },
+    {
+      "id": "AT-CICD-14",
+      "definition": "Go-Binary archetype reference",
+      "defined_in": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
+      "defined_line": 116,
+      "cited_in": [
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
+          "line": 23
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
+          "line": 66
+        }
+      ]
     },
     {
       "id": "AT-CIGATE-01",
@@ -8114,6 +8158,150 @@
       ]
     },
     {
+      "id": "AT-ENDPOINTS-01",
+      "definition": "Endpoint coverage — Information model",
+      "defined_in": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+      "defined_line": 91,
+      "cited_in": [
+        {
+          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+          "line": 22
+        }
+      ]
+    },
+    {
+      "id": "AT-ENDPOINTS-08",
+      "definition": "Endpoint coverage — Personas",
+      "defined_in": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+      "defined_line": 98,
+      "cited_in": [
+        {
+          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+          "line": 23
+        }
+      ]
+    },
+    {
+      "id": "AT-ENDPOINTS-09",
+      "definition": "Endpoint coverage — Item context menu (duplicate)",
+      "defined_in": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+      "defined_line": 105,
+      "cited_in": [
+        {
+          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+          "line": 27
+        }
+      ]
+    },
+    {
+      "id": "AT-ENDPOINTS-13",
+      "definition": "Endpoint coverage — Board view (projection)",
+      "defined_in": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+      "defined_line": 112,
+      "cited_in": [
+        {
+          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+          "line": 28
+        }
+      ]
+    },
+    {
+      "id": "AT-ENDPOINTS-15",
+      "definition": "Endpoint coverage — Share dialog (list shares)",
+      "defined_in": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+      "defined_line": 119,
+      "cited_in": [
+        {
+          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+          "line": 29
+        }
+      ]
+    },
+    {
+      "id": "AT-ENDPOINTS-20",
+      "definition": "Endpoint coverage — Mirrors (create)",
+      "defined_in": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+      "defined_line": 126,
+      "cited_in": [
+        {
+          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+          "line": 30
+        }
+      ]
+    },
+    {
+      "id": "AT-ENDPOINTS-23",
+      "definition": "Endpoint coverage — Today view",
+      "defined_in": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+      "defined_line": 133,
+      "cited_in": [
+        {
+          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+          "line": 31
+        }
+      ]
+    },
+    {
+      "id": "AT-ENDPOINTS-24",
+      "definition": "Endpoint coverage — Trash list",
+      "defined_in": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+      "defined_line": 140,
+      "cited_in": [
+        {
+          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+          "line": 32
+        }
+      ]
+    },
+    {
+      "id": "AT-ENDPOINTS-28",
+      "definition": "Endpoint coverage — Search",
+      "defined_in": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+      "defined_line": 147,
+      "cited_in": [
+        {
+          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+          "line": 33
+        }
+      ]
+    },
+    {
+      "id": "AT-ENDPOINTS-32",
+      "definition": "Endpoint coverage — Templates",
+      "defined_in": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+      "defined_line": 154,
+      "cited_in": [
+        {
+          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+          "line": 34
+        }
+      ]
+    },
+    {
+      "id": "AT-ENDPOINTS-37",
+      "definition": "Endpoint coverage — Multi-select bulk ops",
+      "defined_in": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+      "defined_line": 161,
+      "cited_in": [
+        {
+          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+          "line": 35
+        }
+      ]
+    },
+    {
+      "id": "AT-ENDPOINTS-40",
+      "definition": "Endpoint coverage — Concurrency / sync",
+      "defined_in": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+      "defined_line": 168,
+      "cited_in": [
+        {
+          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
+          "line": 36
+        }
+      ]
+    },
+    {
       "id": "AT-ENDTOENDWALKTHROUGH-01",
       "definition": "The \"what we're building\" scope (§01) MUST be a single named feature with a 1-paragraph user story; multi-feature mega-walkthroughs are forbidden.",
       "defined_in": "spec/15-wp-plugin-how-to/20-end-to-end-walkthrough/97-acceptance-criteria.md",
@@ -8794,6 +8982,30 @@
         {
           "file": "spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md",
           "line": 251
+        }
+      ]
+    },
+    {
+      "id": "AT-ERRCODE-01",
+      "definition": "Every error code in registry has a PHP enum case",
+      "defined_in": "spec/03-error-manage/97-acceptance-criteria.md",
+      "defined_line": 86,
+      "cited_in": [
+        {
+          "file": "spec/03-error-manage/02-error-architecture/05-response-envelope/05-error-code-catalogue.md",
+          "line": 240
+        }
+      ]
+    },
+    {
+      "id": "AT-ERRCODE-08",
+      "definition": "Every error code has a fixture envelope",
+      "defined_in": "spec/03-error-manage/97-acceptance-criteria.md",
+      "defined_line": 93,
+      "cited_in": [
+        {
+          "file": "spec/03-error-manage/02-error-architecture/05-response-envelope/05-error-code-catalogue.md",
+          "line": 6
         }
       ]
     },
@@ -12208,6 +12420,18 @@
       ]
     },
     {
+      "id": "AT-INFO-08",
+      "definition": "Information-model edge case (P13-stub)",
+      "defined_in": "spec/31-app/01-features/97-acceptance-criteria.md",
+      "defined_line": 218,
+      "cited_in": [
+        {
+          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
+          "line": 84
+        }
+      ]
+    },
+    {
       "id": "AT-INFOMODEL-01",
       "definition": "A new user signs up",
       "defined_in": "spec/31-app/01-features/01-information-model.md",
@@ -13044,6 +13268,30 @@
       ]
     },
     {
+      "id": "AT-LAYOUT-13",
+      "definition": "Layout-structure edge case (P13-stub)",
+      "defined_in": "spec/31-app/01-features/97-acceptance-criteria.md",
+      "defined_line": 225,
+      "cited_in": [
+        {
+          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
+          "line": 166
+        }
+      ]
+    },
+    {
+      "id": "AT-LAYOUT-99",
+      "definition": "Layout-structure placeholder (P13-stub)",
+      "defined_in": "spec/31-app/01-features/97-acceptance-criteria.md",
+      "defined_line": 232,
+      "cited_in": [
+        {
+          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
+          "line": 90
+        }
+      ]
+    },
+    {
       "id": "AT-LOGGINGANDERRORHANDLING-01",
       "definition": "Two log tiers exist: **operational log** (always-on, INFO+) and **debug log** (gated by debug-mode constant); merging them into one tier is forbidden.",
       "defined_in": "spec/15-wp-plugin-how-to/04-logging-and-error-handling/97-acceptance-criteria.md",
@@ -13594,6 +13842,18 @@
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
           "line": 40
+        }
+      ]
+    },
+    {
+      "id": "AT-MIRROR-07",
+      "definition": "Mirror peer-group edge case (P13-stub)",
+      "defined_in": "spec/31-app/01-features/97-acceptance-criteria.md",
+      "defined_line": 239,
+      "cited_in": [
+        {
+          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
+          "line": 84
         }
       ]
     },
@@ -14357,6 +14617,42 @@
         {
           "file": "spec/02-coding-guidelines/04-php/03-naming-conventions/97-acceptance-criteria.md",
           "line": 13
+        }
+      ]
+    },
+    {
+      "id": "AT-OPERATORRUNBOOKS-01",
+      "definition": "Disaster-recovery restore runbook covers all steps",
+      "defined_in": "spec/15-wp-plugin-how-to/23-operator-runbooks/97-acceptance-criteria.md",
+      "defined_line": 66,
+      "cited_in": [
+        {
+          "file": "spec/15-wp-plugin-how-to/23-operator-runbooks/97-acceptance-criteria.md",
+          "line": 22
+        }
+      ]
+    },
+    {
+      "id": "AT-OPERATORRUNBOOKS-02",
+      "definition": "Backup-key rotation runbook covers all steps",
+      "defined_in": "spec/15-wp-plugin-how-to/23-operator-runbooks/97-acceptance-criteria.md",
+      "defined_line": 73,
+      "cited_in": [
+        {
+          "file": "spec/15-wp-plugin-how-to/23-operator-runbooks/97-acceptance-criteria.md",
+          "line": 23
+        }
+      ]
+    },
+    {
+      "id": "AT-OPERATORRUNBOOKS-03",
+      "definition": "Post-mortem template covers all sections",
+      "defined_in": "spec/15-wp-plugin-how-to/23-operator-runbooks/97-acceptance-criteria.md",
+      "defined_line": 80,
+      "cited_in": [
+        {
+          "file": "spec/15-wp-plugin-how-to/23-operator-runbooks/97-acceptance-criteria.md",
+          "line": 24
         }
       ]
     },
@@ -20722,6 +21018,78 @@
       ]
     },
     {
+      "id": "AT-USR-01",
+      "definition": "Settings panel auto-save",
+      "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
+      "defined_line": 108,
+      "cited_in": [
+        {
+          "file": "spec/36-user-management/01-account-and-settings.md",
+          "line": 105
+        }
+      ]
+    },
+    {
+      "id": "AT-USR-03",
+      "definition": "Set password flow",
+      "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
+      "defined_line": 115,
+      "cited_in": [
+        {
+          "file": "spec/36-user-management/01-account-and-settings.md",
+          "line": 106
+        }
+      ]
+    },
+    {
+      "id": "AT-USR-09",
+      "definition": "Restore from backup",
+      "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
+      "defined_line": 122,
+      "cited_in": [
+        {
+          "file": "spec/36-user-management/01-account-and-settings.md",
+          "line": 107
+        }
+      ]
+    },
+    {
+      "id": "AT-USR-11",
+      "definition": "Theme selection persistence",
+      "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
+      "defined_line": 129,
+      "cited_in": [
+        {
+          "file": "spec/36-user-management/01-account-and-settings.md",
+          "line": 108
+        }
+      ]
+    },
+    {
+      "id": "AT-USR-14",
+      "definition": "Referrals",
+      "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
+      "defined_line": 136,
+      "cited_in": [
+        {
+          "file": "spec/36-user-management/01-account-and-settings.md",
+          "line": 109
+        }
+      ]
+    },
+    {
+      "id": "AT-USR-15",
+      "definition": "Help / Report a bug",
+      "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
+      "defined_line": 143,
+      "cited_in": [
+        {
+          "file": "spec/36-user-management/01-account-and-settings.md",
+          "line": 110
+        }
+      ]
+    },
+    {
       "id": "AT-VALIDATIONDATASEEDING-01",
       "definition": "Hardcoded validation arrays in Go source files (e.g., `var allowedModels = []string{…}` with literal members) are FORBIDDEN — every such array MUST be sourced from `config.seed.json` via the `ValidationDataService`. Violations are a Code-Red configurability bug.",
       "defined_in": "spec/06-seedable-config-architecture/02-features/05-validation-data-seeding/97-acceptance-criteria.md",
@@ -22371,284 +22739,5 @@
       ]
     }
   ],
-  "orphan_at_citations": [
-    {
-      "id": "AT-BOARD-99",
-      "citedIn": [
-        {
-          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
-          "line": 166
-        }
-      ]
-    },
-    {
-      "id": "AT-CICD-11",
-      "citedIn": [
-        {
-          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
-          "line": 22
-        },
-        {
-          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
-          "line": 63
-        }
-      ]
-    },
-    {
-      "id": "AT-CICD-14",
-      "citedIn": [
-        {
-          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
-          "line": 23
-        },
-        {
-          "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
-          "line": 66
-        }
-      ]
-    },
-    {
-      "id": "AT-ENDPOINTS-01",
-      "citedIn": [
-        {
-          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
-          "line": 22
-        }
-      ]
-    },
-    {
-      "id": "AT-ENDPOINTS-08",
-      "citedIn": [
-        {
-          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
-          "line": 23
-        }
-      ]
-    },
-    {
-      "id": "AT-ENDPOINTS-09",
-      "citedIn": [
-        {
-          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
-          "line": 27
-        }
-      ]
-    },
-    {
-      "id": "AT-ENDPOINTS-13",
-      "citedIn": [
-        {
-          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
-          "line": 28
-        }
-      ]
-    },
-    {
-      "id": "AT-ENDPOINTS-15",
-      "citedIn": [
-        {
-          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
-          "line": 29
-        }
-      ]
-    },
-    {
-      "id": "AT-ENDPOINTS-20",
-      "citedIn": [
-        {
-          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
-          "line": 30
-        }
-      ]
-    },
-    {
-      "id": "AT-ENDPOINTS-23",
-      "citedIn": [
-        {
-          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
-          "line": 31
-        }
-      ]
-    },
-    {
-      "id": "AT-ENDPOINTS-24",
-      "citedIn": [
-        {
-          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
-          "line": 32
-        }
-      ]
-    },
-    {
-      "id": "AT-ENDPOINTS-28",
-      "citedIn": [
-        {
-          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
-          "line": 33
-        }
-      ]
-    },
-    {
-      "id": "AT-ENDPOINTS-32",
-      "citedIn": [
-        {
-          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
-          "line": 34
-        }
-      ]
-    },
-    {
-      "id": "AT-ENDPOINTS-37",
-      "citedIn": [
-        {
-          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
-          "line": 35
-        }
-      ]
-    },
-    {
-      "id": "AT-ENDPOINTS-40",
-      "citedIn": [
-        {
-          "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
-          "line": 36
-        }
-      ]
-    },
-    {
-      "id": "AT-ERRCODE-01",
-      "citedIn": [
-        {
-          "file": "spec/03-error-manage/02-error-architecture/05-response-envelope/05-error-code-catalogue.md",
-          "line": 240
-        }
-      ]
-    },
-    {
-      "id": "AT-ERRCODE-08",
-      "citedIn": [
-        {
-          "file": "spec/03-error-manage/02-error-architecture/05-response-envelope/05-error-code-catalogue.md",
-          "line": 6
-        }
-      ]
-    },
-    {
-      "id": "AT-INFO-08",
-      "citedIn": [
-        {
-          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
-          "line": 84
-        }
-      ]
-    },
-    {
-      "id": "AT-LAYOUT-13",
-      "citedIn": [
-        {
-          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
-          "line": 166
-        }
-      ]
-    },
-    {
-      "id": "AT-LAYOUT-99",
-      "citedIn": [
-        {
-          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
-          "line": 90
-        }
-      ]
-    },
-    {
-      "id": "AT-MIRROR-07",
-      "citedIn": [
-        {
-          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
-          "line": 84
-        }
-      ]
-    },
-    {
-      "id": "AT-OPERATORRUNBOOKS-01",
-      "citedIn": [
-        {
-          "file": "spec/15-wp-plugin-how-to/23-operator-runbooks/97-acceptance-criteria.md",
-          "line": 22
-        }
-      ]
-    },
-    {
-      "id": "AT-OPERATORRUNBOOKS-02",
-      "citedIn": [
-        {
-          "file": "spec/15-wp-plugin-how-to/23-operator-runbooks/97-acceptance-criteria.md",
-          "line": 23
-        }
-      ]
-    },
-    {
-      "id": "AT-OPERATORRUNBOOKS-03",
-      "citedIn": [
-        {
-          "file": "spec/15-wp-plugin-how-to/23-operator-runbooks/97-acceptance-criteria.md",
-          "line": 24
-        }
-      ]
-    },
-    {
-      "id": "AT-USR-01",
-      "citedIn": [
-        {
-          "file": "spec/36-user-management/01-account-and-settings.md",
-          "line": 105
-        }
-      ]
-    },
-    {
-      "id": "AT-USR-03",
-      "citedIn": [
-        {
-          "file": "spec/36-user-management/01-account-and-settings.md",
-          "line": 106
-        }
-      ]
-    },
-    {
-      "id": "AT-USR-09",
-      "citedIn": [
-        {
-          "file": "spec/36-user-management/01-account-and-settings.md",
-          "line": 107
-        }
-      ]
-    },
-    {
-      "id": "AT-USR-11",
-      "citedIn": [
-        {
-          "file": "spec/36-user-management/01-account-and-settings.md",
-          "line": 108
-        }
-      ]
-    },
-    {
-      "id": "AT-USR-14",
-      "citedIn": [
-        {
-          "file": "spec/36-user-management/01-account-and-settings.md",
-          "line": 109
-        }
-      ]
-    },
-    {
-      "id": "AT-USR-15",
-      "citedIn": [
-        {
-          "file": "spec/36-user-management/01-account-and-settings.md",
-          "line": 110
-        }
-      ]
-    }
-  ]
+  "orphan_at_citations": []
 }

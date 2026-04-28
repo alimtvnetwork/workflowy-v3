@@ -80,3 +80,94 @@ node scripts/spec-hygiene/00-run-all.mjs
 
 - **Per-endpoint envelope JSON fixtures (P3):** [`./97b-endpoint-envelope-fixtures.md`](./97b-endpoint-envelope-fixtures.md) — canonical request/response samples for all 47 endpoints in [`./16-endpoint-at-matrix.md`](./16-endpoint-at-matrix.md), satisfying `AT-ENV-01`, `AT-ENV-02`, `AT-G19-01`, `AT-G22-01`, `AT-WPROOT-07`, `AT-AUTH-01`, `AT-RATE-01`.
 - Remaining narrative ATs are covered by the global P2g sweep — see [`../../97a-acceptance-criteria-fixtures.md`](../../97a-acceptance-criteria-fixtures.md).
+
+
+---
+
+## P13 stub rows
+
+> Auto-appended by [`scripts/spec-hygiene/45-append-p13-orphan-stubs.mjs`](../../../scripts/spec-hygiene/45-append-p13-orphan-stubs.mjs) on 2026-04-28 to close orphan AT citations surfaced by [`40-generate-contract-json.mjs`](../../../scripts/spec-hygiene/40-generate-contract-json.mjs). Each row is a **placeholder definition** — replace the body with concrete Given/When/Then + JSON fixture during P2 (I/O table conversion). Do **not** delete a row without first removing every citation of its ID elsewhere in spec/.
+
+### AT-ENDPOINTS-01 — Endpoint coverage — Information model
+
+📝 **P13-stub.** Definition pending. Replace this block with:
+- Given/When/Then prose
+- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../../04-database-conventions/06-rest-api-format/).
+- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
+
+### AT-ENDPOINTS-08 — Endpoint coverage — Personas
+
+📝 **P13-stub.** Definition pending. Replace this block with:
+- Given/When/Then prose
+- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../../04-database-conventions/06-rest-api-format/).
+- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
+
+### AT-ENDPOINTS-09 — Endpoint coverage — Item context menu (duplicate)
+
+📝 **P13-stub.** Definition pending. Replace this block with:
+- Given/When/Then prose
+- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../../04-database-conventions/06-rest-api-format/).
+- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
+
+### AT-ENDPOINTS-13 — Endpoint coverage — Board view (projection)
+
+📝 **P13-stub.** Definition pending. Replace this block with:
+- Given/When/Then prose
+- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../../04-database-conventions/06-rest-api-format/).
+- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
+
+### AT-ENDPOINTS-15 — Endpoint coverage — Share dialog (list shares)
+
+📝 **P13-stub.** Definition pending. Replace this block with:
+- Given/When/Then prose
+- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../../04-database-conventions/06-rest-api-format/).
+- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
+
+### AT-ENDPOINTS-20 — Endpoint coverage — Mirrors (create)
+
+📝 **P13-stub.** Definition pending. Replace this block with:
+- Given/When/Then prose
+- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../../04-database-conventions/06-rest-api-format/).
+- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
+
+### AT-ENDPOINTS-23 — Endpoint coverage — Today view
+
+📝 **P13-stub.** Definition pending. Replace this block with:
+- Given/When/Then prose
+- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../../04-database-conventions/06-rest-api-format/).
+- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
+
+### AT-ENDPOINTS-24 — Endpoint coverage — Trash list
+
+📝 **P13-stub.** Definition pending. Replace this block with:
+- Given/When/Then prose
+- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../../04-database-conventions/06-rest-api-format/).
+- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
+
+### AT-ENDPOINTS-28 — Endpoint coverage — Search
+
+📝 **P13-stub.** Definition pending. Replace this block with:
+- Given/When/Then prose
+- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../../04-database-conventions/06-rest-api-format/).
+- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
+
+### AT-ENDPOINTS-32 — Endpoint coverage — Templates
+
+📝 **P13-stub.** Definition pending. Replace this block with:
+- Given/When/Then prose
+- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../../04-database-conventions/06-rest-api-format/).
+- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
+
+### AT-ENDPOINTS-37 — Endpoint coverage — Multi-select bulk ops
+
+📝 **P13-stub.** Definition pending. Replace this block with:
+- Given/When/Then prose
+- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../../04-database-conventions/06-rest-api-format/).
+- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
+
+### AT-ENDPOINTS-40 — Endpoint coverage — Concurrency / sync
+
+📝 **P13-stub.** Definition pending. Replace this block with:
+- Given/When/Then prose
+- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../../04-database-conventions/06-rest-api-format/).
+- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
