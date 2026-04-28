@@ -92,3 +92,21 @@ applies fully to all *new* content).
 - **16 SQL-plural sites** inventoried; rewrite deferred to a dedicated
   ADR + follow-up task to keep the change atomic and auditable.
 - **No new ADR violations introduced** by this sweep.
+
+---
+
+## E. Closure (P53 — 2026-04-28)
+
+§C **fully discharged** by ADR-0006 + automated rewrite:
+
+- **Files touched:** all 16 inventoried files in §C.
+- **SQL sites rewritten:** **41** (verified by post-rewrite `grep` —
+  zero `(FROM|INTO|UPDATE|JOIN)\s+(Items|Users|Mirrors|Sessions|Templates|Permissions)\b` matches remain in the 16 files).
+- **Identifier renames applied (exhaustive):**
+  `Items→Item`, `Users→User`, `Mirrors→Mirror`,
+  `Sessions→Session`, `Templates→Template`, `Permissions→Permission`.
+- **Gate `G-04-NO-DDL-PLURALS`** promoted from
+  *"applies to new content"* to *"applies to **all** spec content,
+  zero grandfathered exceptions"*.
+- **Status of this ledger:** historical. Ledger remains on disk for
+  audit trail; no further action required.
