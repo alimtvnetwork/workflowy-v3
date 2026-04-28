@@ -1,8 +1,8 @@
 # Fixture-as-spec — `fixture-as-spec-shape-audit` algorithm
 
 > **Type:** Fixture-as-spec (executable specification).
-> **Status:** Frozen 2026-04-28 (**Phase 2** — language-tag enforcement
-> added). Reference implementation for
+> **Status:** Frozen 2026-04-28 (**Phase 3** — gate-ID citation +
+> registry-resolution check added). Reference implementation for
 > [`G-13-FIXTURE-AS-SPEC-SHAPE`](../../_GATE-REGISTRY.md#cicd-pipeline-workflows).
 > **SPEC-ONLY classification:** describes a CI algorithm; no runtime code.
 > Meta-property: this fixture audits other fixtures in the same directory,
