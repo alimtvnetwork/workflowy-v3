@@ -184,6 +184,7 @@ Suppose someone wants to add a real `Favorite` table (currently forbidden by
 | [`0022`](./0022-shadcn-radix-component-base.md) | shadcn/ui (CLI-vendored under `src/components/ui/`) + Radix primitives — sole component base; MUI/Mantine/Ant/HeadlessUI/Chakra forbidden | `Accepted` | 2026-04-28 |
 | [`0023`](./0023-route-loaders-offline-queue-interaction.md) | Route loaders ↔ offline FIFO queue contract — local-mirror-first reads, action-only egress, cold-offline shell, reconnect lock | `Accepted` | 2026-04-28 |
 | [`0024`](./0024-ratify-soft-confirm-triage-rulings.md) | Ratify 3 soft-confirm triage rulings (#01 audit-frozen, #03 DDL-singular-locked, #17 favorites-table-only) | `Accepted` | 2026-04-28 |
+| [`0025`](./0025-sse-realtime-transport.md) | Server-Sent Events as the sole realtime transport — `/stream/page` + `/stream/user`, PascalCase frames, `Last-Event-ID` replay, read-only signal | `Accepted` | 2026-04-28 |
 
 > **Maintenance rule (summary — full protocol in [`_INDEX_AUTOMATION.md`](./_INDEX_AUTOMATION.md)):**
 > when adding/superseding an ADR, update **both** index tables (this one
