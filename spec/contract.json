@@ -4,8 +4,8 @@
   "generator": "scripts/spec-hygiene/40-generate-contract-json.mjs",
   "do_not_edit": true,
   "counts": {
-    "acceptance_tests_defined": 2257,
-    "acceptance_tests_orphan_citations": 11,
+    "acceptance_tests_defined": 2268,
+    "acceptance_tests_orphan_citations": 0,
     "endpoints": 48,
     "enums": 23,
     "sections": 24
@@ -753,6 +753,10 @@
         {
           "file": "spec/34-activity-feed/97-acceptance-criteria.md",
           "line": 12
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 11
         }
       ]
     },
@@ -765,6 +769,10 @@
         {
           "file": "spec/34-activity-feed/00-overview.md",
           "line": 22
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 21
         }
       ]
     },
@@ -777,6 +785,10 @@
         {
           "file": "spec/34-activity-feed/00-overview.md",
           "line": 23
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 31
         }
       ]
     },
@@ -789,6 +801,10 @@
         {
           "file": "spec/34-activity-feed/00-overview.md",
           "line": 24
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 38
         }
       ]
     },
@@ -801,6 +817,10 @@
         {
           "file": "spec/34-activity-feed/00-overview.md",
           "line": 25
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 45
         }
       ]
     },
@@ -813,6 +833,10 @@
         {
           "file": "spec/34-activity-feed/00-overview.md",
           "line": 26
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 51
         }
       ]
     },
@@ -825,6 +849,10 @@
         {
           "file": "spec/34-activity-feed/00-overview.md",
           "line": 27
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 57
         }
       ]
     },
@@ -837,6 +865,10 @@
         {
           "file": "spec/34-activity-feed/00-overview.md",
           "line": 28
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 66
         }
       ]
     },
@@ -849,6 +881,10 @@
         {
           "file": "spec/34-activity-feed/00-overview.md",
           "line": 29
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 72
         }
       ]
     },
@@ -861,6 +897,10 @@
         {
           "file": "spec/34-activity-feed/00-overview.md",
           "line": 30
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 78
         }
       ]
     },
@@ -873,6 +913,10 @@
         {
           "file": "spec/34-activity-feed/00-overview.md",
           "line": 31
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 86
         }
       ]
     },
@@ -885,6 +929,10 @@
         {
           "file": "spec/34-activity-feed/00-overview.md",
           "line": 32
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 94
         }
       ]
     },
@@ -897,6 +945,10 @@
         {
           "file": "spec/34-activity-feed/00-overview.md",
           "line": 33
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 101
         }
       ]
     },
@@ -909,6 +961,10 @@
         {
           "file": "spec/34-activity-feed/00-overview.md",
           "line": 34
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 107
         }
       ]
     },
@@ -921,6 +977,10 @@
         {
           "file": "spec/34-activity-feed/00-overview.md",
           "line": 35
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 114
         }
       ]
     },
@@ -937,6 +997,10 @@
         {
           "file": "spec/34-activity-feed/97-acceptance-criteria.md",
           "line": 12
+        },
+        {
+          "file": "spec/34-activity-feed/97a-acceptance-criteria-fixtures.md",
+          "line": 121
         }
       ]
     },
@@ -1174,6 +1238,10 @@
       "defined_line": 28,
       "cited_in": [
         {
+          "file": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
+          "line": 5
+        },
+        {
           "file": "spec/31-app/00-overview.md",
           "line": 11
         },
@@ -1212,6 +1280,14 @@
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 16
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 7
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 24
         }
       ]
     },
@@ -1228,6 +1304,10 @@
         {
           "file": "spec/31-app/06-endpoints/01-information-model.md",
           "line": 44
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 35
         }
       ]
     },
@@ -1244,6 +1324,10 @@
         {
           "file": "spec/31-app/06-endpoints/01-information-model.md",
           "line": 60
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 45
         }
       ]
     },
@@ -1260,6 +1344,10 @@
         {
           "file": "spec/31-app/06-endpoints/01-information-model.md",
           "line": 32
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 55
         }
       ]
     },
@@ -1284,6 +1372,10 @@
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
           "line": 23
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 67
         },
         {
           "file": "spec/31-app/97d-acceptance-criteria-fixtures.md",
@@ -1312,6 +1404,10 @@
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
           "line": 24
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 81
         }
       ]
     },
@@ -1328,6 +1424,10 @@
         {
           "file": "spec/31-app/06-endpoints/01-information-model.md",
           "line": 86
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 91
         }
       ]
     },
@@ -1344,6 +1444,10 @@
         {
           "file": "spec/31-app/06-endpoints/01-information-model.md",
           "line": 108
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 101
         }
       ]
     },
@@ -1360,6 +1464,10 @@
         {
           "file": "spec/31-app/06-endpoints/02-personas.md",
           "line": 32
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 111
         }
       ]
     },
@@ -1384,6 +1492,10 @@
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
           "line": 25
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 121
         }
       ]
     },
@@ -1700,6 +1812,10 @@
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
           "line": 26
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 137
         }
       ]
     },
@@ -1728,6 +1844,14 @@
         {
           "file": "spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md",
           "line": 62
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 147
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 128
         }
       ]
     },
@@ -1744,6 +1868,10 @@
         {
           "file": "spec/31-app/06-endpoints/06-item-context-menu.md",
           "line": 65
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 159
         }
       ]
     },
@@ -1760,6 +1888,10 @@
         {
           "file": "spec/31-app/06-endpoints/07-board-view.md",
           "line": 27
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 171
         }
       ]
     },
@@ -1784,6 +1916,14 @@
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 16
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 7
+        },
+        {
+          "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
+          "line": 185
         },
         {
           "file": "spec/31-app/97b-acceptance-criteria-fixtures.md",
@@ -2264,10 +2404,6 @@
         {
           "file": "spec/31-app/97c-acceptance-criteria-fixtures.md",
           "line": 266
-        },
-        {
-          "file": "spec/31-app/97d-acceptance-criteria-fixtures.md",
-          "line": 353
         }
       ]
     },
@@ -2392,6 +2528,10 @@
         {
           "file": "spec/18-spec-issues/97-acceptance-criteria.md",
           "line": 32
+        },
+        {
+          "file": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
+          "line": 59
         },
         {
           "file": "spec/31-app/06-endpoints/14-concurrency-and-sync.md",
@@ -5286,6 +5426,10 @@
         {
           "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
           "line": 19
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md",
+          "line": 11
         }
       ]
     },
@@ -5298,6 +5442,10 @@
         {
           "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
           "line": 22
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md",
+          "line": 20
         }
       ]
     },
@@ -5310,6 +5458,10 @@
         {
           "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
           "line": 23
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md",
+          "line": 27
         }
       ]
     },
@@ -5322,6 +5474,10 @@
         {
           "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
           "line": 24
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md",
+          "line": 35
         }
       ]
     },
@@ -5334,6 +5490,10 @@
         {
           "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
           "line": 25
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md",
+          "line": 42
         }
       ]
     },
@@ -5350,6 +5510,10 @@
         {
           "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
           "line": 20
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md",
+          "line": 49
         }
       ]
     },
@@ -5362,6 +5526,10 @@
         {
           "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
           "line": 27
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md",
+          "line": 57
         }
       ]
     },
@@ -5374,6 +5542,10 @@
         {
           "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
           "line": 28
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md",
+          "line": 65
         }
       ]
     },
@@ -5390,6 +5562,10 @@
         {
           "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
           "line": 21
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md",
+          "line": 72
         }
       ]
     },
@@ -5402,6 +5578,10 @@
         {
           "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
           "line": 30
+        },
+        {
+          "file": "spec/13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md",
+          "line": 80
         }
       ]
     },
@@ -7297,6 +7477,14 @@
         {
           "file": "spec/04-database-conventions/97-acceptance-criteria.md",
           "line": 20
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 17
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 26
         }
       ]
     },
@@ -7309,6 +7497,10 @@
         {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 22
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 36
         }
       ]
     },
@@ -7321,6 +7513,10 @@
         {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 23
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 49
         }
       ]
     },
@@ -7337,6 +7533,10 @@
         {
           "file": "spec/04-database-conventions/97-acceptance-criteria.md",
           "line": 28
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 59
         }
       ]
     },
@@ -7349,6 +7549,10 @@
         {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 25
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 69
         }
       ]
     },
@@ -7361,6 +7565,10 @@
         {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 26
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 79
         }
       ]
     },
@@ -7377,6 +7585,10 @@
         {
           "file": "spec/04-database-conventions/97-acceptance-criteria.md",
           "line": 36
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 89
         }
       ]
     },
@@ -7389,6 +7601,10 @@
         {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 28
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 99
         }
       ]
     },
@@ -7405,6 +7621,10 @@
         {
           "file": "spec/04-database-conventions/97-acceptance-criteria.md",
           "line": 43
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 109
         }
       ]
     },
@@ -7417,6 +7637,10 @@
         {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 30
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 119
         }
       ]
     },
@@ -7433,6 +7657,10 @@
         {
           "file": "spec/04-database-conventions/97-acceptance-criteria.md",
           "line": 50
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 129
         }
       ]
     },
@@ -7449,6 +7677,10 @@
         {
           "file": "spec/04-database-conventions/97-acceptance-criteria.md",
           "line": 56
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 139
         }
       ]
     },
@@ -7465,6 +7697,10 @@
         {
           "file": "spec/04-database-conventions/97-acceptance-criteria.md",
           "line": 62
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 151
         }
       ]
     },
@@ -8757,6 +8993,10 @@
         {
           "file": "spec/35-enforcement-rules/97-acceptance-criteria.md",
           "line": 12
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 11
         }
       ]
     },
@@ -8773,6 +9013,10 @@
         {
           "file": "spec/35-enforcement-rules/00-overview.md",
           "line": 59
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 18
         }
       ]
     },
@@ -8785,6 +9029,10 @@
         {
           "file": "spec/35-enforcement-rules/00-overview.md",
           "line": 23
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 25
         }
       ]
     },
@@ -8797,6 +9045,10 @@
         {
           "file": "spec/35-enforcement-rules/00-overview.md",
           "line": 24
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 31
         }
       ]
     },
@@ -8807,8 +9059,16 @@
       "defined_line": 31,
       "cited_in": [
         {
+          "file": "spec/02-coding-guidelines/97a-acceptance-criteria-fixtures.md",
+          "line": 188
+        },
+        {
           "file": "spec/35-enforcement-rules/00-overview.md",
           "line": 25
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 38
         }
       ]
     },
@@ -8821,6 +9081,10 @@
         {
           "file": "spec/35-enforcement-rules/00-overview.md",
           "line": 26
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 46
         }
       ]
     },
@@ -8833,6 +9097,10 @@
         {
           "file": "spec/35-enforcement-rules/00-overview.md",
           "line": 27
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 53
         }
       ]
     },
@@ -8845,6 +9113,10 @@
         {
           "file": "spec/35-enforcement-rules/00-overview.md",
           "line": 28
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 60
         }
       ]
     },
@@ -8857,6 +9129,10 @@
         {
           "file": "spec/35-enforcement-rules/00-overview.md",
           "line": 29
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 67
         }
       ]
     },
@@ -8869,6 +9145,10 @@
         {
           "file": "spec/35-enforcement-rules/00-overview.md",
           "line": 30
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 75
         }
       ]
     },
@@ -8881,6 +9161,10 @@
         {
           "file": "spec/35-enforcement-rules/00-overview.md",
           "line": 31
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 82
         }
       ]
     },
@@ -8893,6 +9177,10 @@
         {
           "file": "spec/35-enforcement-rules/00-overview.md",
           "line": 32
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 89
         }
       ]
     },
@@ -8905,6 +9193,10 @@
         {
           "file": "spec/35-enforcement-rules/00-overview.md",
           "line": 33
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 95
         }
       ]
     },
@@ -8914,6 +9206,10 @@
       "defined_in": "spec/35-enforcement-rules/97-acceptance-criteria.md",
       "defined_line": 60,
       "cited_in": [
+        {
+          "file": "spec/02-coding-guidelines/97a-acceptance-criteria-fixtures.md",
+          "line": 172
+        },
         {
           "file": "spec/35-enforcement-rules/00-overview.md",
           "line": 34
@@ -8925,6 +9221,10 @@
         {
           "file": "spec/35-enforcement-rules/97-acceptance-criteria.md",
           "line": 12
+        },
+        {
+          "file": "spec/35-enforcement-rules/97a-acceptance-criteria-fixtures.md",
+          "line": 102
         }
       ]
     },
@@ -9981,6 +10281,10 @@
         {
           "file": "spec/03-error-manage/01-error-resolution/97-acceptance-criteria.md",
           "line": 12
+        },
+        {
+          "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
+          "line": 11
         }
       ]
     },
@@ -9993,6 +10297,10 @@
         {
           "file": "spec/03-error-manage/00-overview.md",
           "line": 22
+        },
+        {
+          "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
+          "line": 19
         }
       ]
     },
@@ -10005,6 +10313,10 @@
         {
           "file": "spec/03-error-manage/00-overview.md",
           "line": 23
+        },
+        {
+          "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
+          "line": 27
         }
       ]
     },
@@ -10017,6 +10329,10 @@
         {
           "file": "spec/03-error-manage/00-overview.md",
           "line": 24
+        },
+        {
+          "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
+          "line": 34
         }
       ]
     },
@@ -10029,6 +10345,10 @@
         {
           "file": "spec/03-error-manage/00-overview.md",
           "line": 25
+        },
+        {
+          "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
+          "line": 42
         }
       ]
     },
@@ -10041,6 +10361,10 @@
         {
           "file": "spec/03-error-manage/00-overview.md",
           "line": 26
+        },
+        {
+          "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
+          "line": 49
         }
       ]
     },
@@ -10053,6 +10377,10 @@
         {
           "file": "spec/03-error-manage/00-overview.md",
           "line": 27
+        },
+        {
+          "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
+          "line": 57
         }
       ]
     },
@@ -10065,6 +10393,10 @@
         {
           "file": "spec/03-error-manage/00-overview.md",
           "line": 28
+        },
+        {
+          "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
+          "line": 64
         }
       ]
     },
@@ -10077,6 +10409,10 @@
         {
           "file": "spec/03-error-manage/00-overview.md",
           "line": 29
+        },
+        {
+          "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
+          "line": 72
         }
       ]
     },
@@ -10089,6 +10425,10 @@
         {
           "file": "spec/03-error-manage/00-overview.md",
           "line": 30
+        },
+        {
+          "file": "spec/03-error-manage/97a-acceptance-criteria-fixtures.md",
+          "line": 80
         }
       ]
     },
@@ -10364,6 +10704,10 @@
         {
           "file": "spec/33-feedback-report/97-acceptance-criteria.md",
           "line": 12
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 11
         }
       ]
     },
@@ -10376,6 +10720,10 @@
         {
           "file": "spec/33-feedback-report/00-overview.md",
           "line": 22
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 21
         }
       ]
     },
@@ -10388,6 +10736,10 @@
         {
           "file": "spec/33-feedback-report/00-overview.md",
           "line": 23
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 34
         }
       ]
     },
@@ -10400,6 +10752,10 @@
         {
           "file": "spec/33-feedback-report/00-overview.md",
           "line": 24
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 41
         }
       ]
     },
@@ -10412,6 +10768,10 @@
         {
           "file": "spec/33-feedback-report/00-overview.md",
           "line": 25
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 52
         }
       ]
     },
@@ -10424,6 +10784,10 @@
         {
           "file": "spec/33-feedback-report/00-overview.md",
           "line": 26
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 59
         }
       ]
     },
@@ -10440,6 +10804,10 @@
         {
           "file": "spec/33-feedback-report/00-overview.md",
           "line": 61
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 66
         }
       ]
     },
@@ -10452,6 +10820,10 @@
         {
           "file": "spec/33-feedback-report/00-overview.md",
           "line": 28
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 74
         }
       ]
     },
@@ -10468,6 +10840,10 @@
         {
           "file": "spec/33-feedback-report/00-overview.md",
           "line": 62
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 81
         }
       ]
     },
@@ -10480,6 +10856,10 @@
         {
           "file": "spec/33-feedback-report/00-overview.md",
           "line": 30
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 90
         }
       ]
     },
@@ -10492,6 +10872,10 @@
         {
           "file": "spec/33-feedback-report/00-overview.md",
           "line": 31
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 97
         }
       ]
     },
@@ -10504,6 +10888,10 @@
         {
           "file": "spec/33-feedback-report/00-overview.md",
           "line": 32
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 104
         }
       ]
     },
@@ -10516,6 +10904,10 @@
         {
           "file": "spec/33-feedback-report/00-overview.md",
           "line": 33
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 111
         }
       ]
     },
@@ -10536,6 +10928,10 @@
         {
           "file": "spec/33-feedback-report/97-acceptance-criteria.md",
           "line": 12
+        },
+        {
+          "file": "spec/33-feedback-report/97a-acceptance-criteria-fixtures.md",
+          "line": 119
         }
       ]
     },
@@ -12009,6 +12405,10 @@
         {
           "file": "spec/16-generic-cli/97-acceptance-criteria.md",
           "line": 13
+        },
+        {
+          "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
+          "line": 11
         }
       ]
     },
@@ -12021,6 +12421,10 @@
         {
           "file": "spec/16-generic-cli/00-overview.md",
           "line": 22
+        },
+        {
+          "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
+          "line": 19
         }
       ]
     },
@@ -12033,6 +12437,10 @@
         {
           "file": "spec/16-generic-cli/00-overview.md",
           "line": 23
+        },
+        {
+          "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
+          "line": 26
         }
       ]
     },
@@ -12045,6 +12453,10 @@
         {
           "file": "spec/16-generic-cli/00-overview.md",
           "line": 24
+        },
+        {
+          "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
+          "line": 33
         }
       ]
     },
@@ -12057,6 +12469,10 @@
         {
           "file": "spec/16-generic-cli/00-overview.md",
           "line": 25
+        },
+        {
+          "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
+          "line": 41
         }
       ]
     },
@@ -12069,6 +12485,10 @@
         {
           "file": "spec/16-generic-cli/00-overview.md",
           "line": 26
+        },
+        {
+          "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
+          "line": 49
         }
       ]
     },
@@ -12081,6 +12501,10 @@
         {
           "file": "spec/16-generic-cli/00-overview.md",
           "line": 27
+        },
+        {
+          "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
+          "line": 57
         }
       ]
     },
@@ -12093,6 +12517,10 @@
         {
           "file": "spec/16-generic-cli/00-overview.md",
           "line": 28
+        },
+        {
+          "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
+          "line": 64
         }
       ]
     },
@@ -12105,6 +12533,10 @@
         {
           "file": "spec/16-generic-cli/00-overview.md",
           "line": 29
+        },
+        {
+          "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
+          "line": 71
         }
       ]
     },
@@ -12117,6 +12549,10 @@
         {
           "file": "spec/16-generic-cli/00-overview.md",
           "line": 30
+        },
+        {
+          "file": "spec/16-generic-cli/97a-acceptance-criteria-fixtures.md",
+          "line": 78
         }
       ]
     },
@@ -12174,6 +12610,10 @@
         {
           "file": "spec/17-generic-update/97-acceptance-criteria.md",
           "line": 13
+        },
+        {
+          "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
+          "line": 13
         }
       ]
     },
@@ -12185,6 +12625,10 @@
       "cited_in": [
         {
           "file": "spec/17-generic-update/00-overview.md",
+          "line": 22
+        },
+        {
+          "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
           "line": 22
         }
       ]
@@ -12198,6 +12642,10 @@
         {
           "file": "spec/17-generic-update/00-overview.md",
           "line": 23
+        },
+        {
+          "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
+          "line": 29
         }
       ]
     },
@@ -12210,6 +12658,10 @@
         {
           "file": "spec/17-generic-update/00-overview.md",
           "line": 24
+        },
+        {
+          "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
+          "line": 36
         }
       ]
     },
@@ -12222,6 +12674,10 @@
         {
           "file": "spec/17-generic-update/00-overview.md",
           "line": 25
+        },
+        {
+          "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
+          "line": 44
         }
       ]
     },
@@ -12234,6 +12690,10 @@
         {
           "file": "spec/17-generic-update/00-overview.md",
           "line": 26
+        },
+        {
+          "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
+          "line": 52
         }
       ]
     },
@@ -12246,6 +12706,10 @@
         {
           "file": "spec/17-generic-update/00-overview.md",
           "line": 27
+        },
+        {
+          "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
+          "line": 60
         }
       ]
     },
@@ -12258,6 +12722,10 @@
         {
           "file": "spec/17-generic-update/00-overview.md",
           "line": 28
+        },
+        {
+          "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
+          "line": 68
         }
       ]
     },
@@ -12274,6 +12742,22 @@
         {
           "file": "spec/17-generic-update/97-acceptance-criteria.md",
           "line": 13
+        },
+        {
+          "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
+          "line": 75
+        }
+      ]
+    },
+    {
+      "id": "AT-GENERICUPDATE-10",
+      "definition": "Folder is strict subset of canonical",
+      "defined_in": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
+      "defined_line": 82,
+      "cited_in": [
+        {
+          "file": "spec/17-generic-update/00-overview.md",
+          "line": 30
         }
       ]
     },
@@ -15925,6 +16409,10 @@
         {
           "file": "spec/10-powershell-integration/97-acceptance-criteria.md",
           "line": 6
+        },
+        {
+          "file": "spec/10-powershell-integration/97a-acceptance-criteria-fixtures.md",
+          "line": 11
         }
       ]
     },
@@ -15937,6 +16425,10 @@
         {
           "file": "spec/10-powershell-integration/00-overview.md",
           "line": 22
+        },
+        {
+          "file": "spec/10-powershell-integration/97a-acceptance-criteria-fixtures.md",
+          "line": 19
         }
       ]
     },
@@ -15949,6 +16441,10 @@
         {
           "file": "spec/10-powershell-integration/00-overview.md",
           "line": 23
+        },
+        {
+          "file": "spec/10-powershell-integration/97a-acceptance-criteria-fixtures.md",
+          "line": 26
         }
       ]
     },
@@ -15961,6 +16457,10 @@
         {
           "file": "spec/10-powershell-integration/00-overview.md",
           "line": 24
+        },
+        {
+          "file": "spec/10-powershell-integration/97a-acceptance-criteria-fixtures.md",
+          "line": 32
         }
       ]
     },
@@ -15973,6 +16473,10 @@
         {
           "file": "spec/10-powershell-integration/00-overview.md",
           "line": 25
+        },
+        {
+          "file": "spec/10-powershell-integration/97a-acceptance-criteria-fixtures.md",
+          "line": 40
         }
       ]
     },
@@ -15985,6 +16489,10 @@
         {
           "file": "spec/10-powershell-integration/00-overview.md",
           "line": 26
+        },
+        {
+          "file": "spec/10-powershell-integration/97a-acceptance-criteria-fixtures.md",
+          "line": 47
         }
       ]
     },
@@ -15997,6 +16505,10 @@
         {
           "file": "spec/10-powershell-integration/00-overview.md",
           "line": 27
+        },
+        {
+          "file": "spec/10-powershell-integration/97a-acceptance-criteria-fixtures.md",
+          "line": 54
         }
       ]
     },
@@ -16009,6 +16521,10 @@
         {
           "file": "spec/10-powershell-integration/00-overview.md",
           "line": 28
+        },
+        {
+          "file": "spec/10-powershell-integration/97a-acceptance-criteria-fixtures.md",
+          "line": 61
         }
       ]
     },
@@ -16021,6 +16537,10 @@
         {
           "file": "spec/10-powershell-integration/00-overview.md",
           "line": 29
+        },
+        {
+          "file": "spec/10-powershell-integration/97a-acceptance-criteria-fixtures.md",
+          "line": 68
         }
       ]
     },
@@ -16033,6 +16553,10 @@
         {
           "file": "spec/10-powershell-integration/00-overview.md",
           "line": 30
+        },
+        {
+          "file": "spec/10-powershell-integration/97a-acceptance-criteria-fixtures.md",
+          "line": 74
         }
       ]
     },
@@ -17324,6 +17848,18 @@
         {
           "file": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
           "line": 20
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 18
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 141
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 165
         }
       ]
     },
@@ -17336,6 +17872,10 @@
         {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 35
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 178
         }
       ]
     },
@@ -17348,6 +17888,10 @@
         {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 36
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 191
         }
       ]
     },
@@ -17364,6 +17908,10 @@
         {
           "file": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
           "line": 28
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 204
         }
       ]
     },
@@ -17376,6 +17924,10 @@
         {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 38
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 214
         }
       ]
     },
@@ -17392,6 +17944,14 @@
         {
           "file": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
           "line": 35
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 224
+        },
+        {
+          "file": "spec/97a-acceptance-criteria-fixtures.md",
+          "line": 175
         }
       ]
     },
@@ -17404,6 +17964,10 @@
         {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 40
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 234
         }
       ]
     },
@@ -17416,6 +17980,10 @@
         {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 41
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 251
         }
       ]
     },
@@ -17432,6 +18000,10 @@
         {
           "file": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
           "line": 43
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 261
         }
       ]
     },
@@ -17444,6 +18016,10 @@
         {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 43
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 271
         }
       ]
     },
@@ -17460,6 +18036,10 @@
         {
           "file": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
           "line": 50
+        },
+        {
+          "file": "spec/04-database-conventions/97a-acceptance-criteria-fixtures.md",
+          "line": 281
         }
       ]
     },
@@ -18157,6 +18737,10 @@
         {
           "file": "spec/06-seedable-config-architecture/01-fundamentals/97-acceptance-criteria.md",
           "line": 12
+        },
+        {
+          "file": "spec/06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 11
         }
       ]
     },
@@ -18169,6 +18753,10 @@
         {
           "file": "spec/06-seedable-config-architecture/00-overview.md",
           "line": 22
+        },
+        {
+          "file": "spec/06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 20
         }
       ]
     },
@@ -18181,6 +18769,10 @@
         {
           "file": "spec/06-seedable-config-architecture/00-overview.md",
           "line": 23
+        },
+        {
+          "file": "spec/06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 28
         }
       ]
     },
@@ -18193,6 +18785,10 @@
         {
           "file": "spec/06-seedable-config-architecture/00-overview.md",
           "line": 24
+        },
+        {
+          "file": "spec/06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 35
         }
       ]
     },
@@ -18205,6 +18801,10 @@
         {
           "file": "spec/06-seedable-config-architecture/00-overview.md",
           "line": 25
+        },
+        {
+          "file": "spec/06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 42
         }
       ]
     },
@@ -18217,6 +18817,10 @@
         {
           "file": "spec/06-seedable-config-architecture/00-overview.md",
           "line": 26
+        },
+        {
+          "file": "spec/06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 50
         }
       ]
     },
@@ -18229,6 +18833,10 @@
         {
           "file": "spec/06-seedable-config-architecture/00-overview.md",
           "line": 27
+        },
+        {
+          "file": "spec/06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 57
         }
       ]
     },
@@ -18241,6 +18849,10 @@
         {
           "file": "spec/06-seedable-config-architecture/00-overview.md",
           "line": 28
+        },
+        {
+          "file": "spec/06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 65
         }
       ]
     },
@@ -18253,6 +18865,10 @@
         {
           "file": "spec/06-seedable-config-architecture/00-overview.md",
           "line": 29
+        },
+        {
+          "file": "spec/06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 72
         }
       ]
     },
@@ -18265,6 +18881,10 @@
         {
           "file": "spec/06-seedable-config-architecture/00-overview.md",
           "line": 30
+        },
+        {
+          "file": "spec/06-seedable-config-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 80
         }
       ]
     },
@@ -18329,6 +18949,10 @@
         {
           "file": "spec/14-self-update-app-update/97-acceptance-criteria.md",
           "line": 13
+        },
+        {
+          "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
+          "line": 11
         }
       ]
     },
@@ -18341,6 +18965,14 @@
         {
           "file": "spec/14-self-update-app-update/00-overview.md",
           "line": 22
+        },
+        {
+          "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
+          "line": 20
+        },
+        {
+          "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
+          "line": 24
         }
       ]
     },
@@ -18353,6 +18985,14 @@
         {
           "file": "spec/14-self-update-app-update/00-overview.md",
           "line": 23
+        },
+        {
+          "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
+          "line": 28
+        },
+        {
+          "file": "spec/17-generic-update/97a-acceptance-criteria-fixtures.md",
+          "line": 31
         }
       ]
     },
@@ -18365,6 +19005,10 @@
         {
           "file": "spec/14-self-update-app-update/00-overview.md",
           "line": 24
+        },
+        {
+          "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
+          "line": 36
         }
       ]
     },
@@ -18377,6 +19021,10 @@
         {
           "file": "spec/14-self-update-app-update/00-overview.md",
           "line": 25
+        },
+        {
+          "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
+          "line": 44
         }
       ]
     },
@@ -18389,6 +19037,10 @@
         {
           "file": "spec/14-self-update-app-update/00-overview.md",
           "line": 26
+        },
+        {
+          "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
+          "line": 52
         }
       ]
     },
@@ -18401,6 +19053,10 @@
         {
           "file": "spec/14-self-update-app-update/00-overview.md",
           "line": 27
+        },
+        {
+          "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
+          "line": 60
         }
       ]
     },
@@ -18417,6 +19073,10 @@
         {
           "file": "spec/14-self-update-app-update/09-release-versioning/97-acceptance-criteria.md",
           "line": 80
+        },
+        {
+          "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
+          "line": 68
         }
       ]
     },
@@ -18429,6 +19089,10 @@
         {
           "file": "spec/14-self-update-app-update/00-overview.md",
           "line": 29
+        },
+        {
+          "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
+          "line": 75
         }
       ]
     },
@@ -18441,6 +19105,10 @@
         {
           "file": "spec/14-self-update-app-update/00-overview.md",
           "line": 30
+        },
+        {
+          "file": "spec/14-self-update-app-update/97a-acceptance-criteria-fixtures.md",
+          "line": 83
         }
       ]
     },
@@ -19042,6 +19710,130 @@
       ]
     },
     {
+      "id": "AT-SPECISSUES-01",
+      "definition": "Every audit file follows canonical 5-section format",
+      "defined_in": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
+      "defined_line": 17,
+      "cited_in": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 11
+        },
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 21
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-02",
+      "definition": "Findings carry a stable `F-AUDxx-NN` ID",
+      "defined_in": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
+      "defined_line": 25,
+      "cited_in": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 22
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-03",
+      "definition": "Severity ∈ {LOW, MEDIUM, HIGH, CRITICAL}",
+      "defined_in": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
+      "defined_line": 32,
+      "cited_in": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 23
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-04",
+      "definition": "Every finding cites the failing AT or rule",
+      "defined_in": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
+      "defined_line": 39,
+      "cited_in": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 24
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-05",
+      "definition": "Resolved findings link to the resolution PR/commit",
+      "defined_in": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
+      "defined_line": 47,
+      "cited_in": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 25
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-06",
+      "definition": "`AT-APP-NN` findings cross-link to spec/31-app",
+      "defined_in": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
+      "defined_line": 54,
+      "cited_in": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 26
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-07",
+      "definition": "Audit dates monotonic in filename",
+      "defined_in": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
+      "defined_line": 61,
+      "cited_in": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 27
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-08",
+      "definition": "`AT-CONCURRENCY-*` findings include reproduction steps",
+      "defined_in": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
+      "defined_line": 68,
+      "cited_in": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 28
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-09",
+      "definition": "`AT-HARNESS-*` findings cite the failing test file",
+      "defined_in": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
+      "defined_line": 76,
+      "cited_in": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 29
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECISSUES-10",
+      "definition": "Open findings counter in `00-overview.md`",
+      "defined_in": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
+      "defined_line": 84,
+      "cited_in": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 30
+        }
+      ]
+    },
+    {
       "id": "AT-SPLITDBFUNDAMENTALS-01",
       "definition": "The terminology in §01 is the SSOT for **Root DB**, **Domain DB**, **History DB**, **Cache DB**; alternative names (e.g., \"main DB\") in other specs MUST be reconciled to these.",
       "defined_in": "spec/05-split-db-architecture/01-fundamentals/97-acceptance-criteria.md",
@@ -19058,6 +19850,10 @@
         {
           "file": "spec/05-split-db-architecture/01-fundamentals/97-acceptance-criteria.md",
           "line": 12
+        },
+        {
+          "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 13
         }
       ]
     },
@@ -19069,6 +19865,10 @@
       "cited_in": [
         {
           "file": "spec/05-split-db-architecture/00-overview.md",
+          "line": 22
+        },
+        {
+          "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
           "line": 22
         }
       ]
@@ -19082,6 +19882,10 @@
         {
           "file": "spec/05-split-db-architecture/00-overview.md",
           "line": 23
+        },
+        {
+          "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 29
         }
       ]
     },
@@ -19094,6 +19898,10 @@
         {
           "file": "spec/05-split-db-architecture/00-overview.md",
           "line": 24
+        },
+        {
+          "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 37
         }
       ]
     },
@@ -19106,6 +19914,10 @@
         {
           "file": "spec/05-split-db-architecture/00-overview.md",
           "line": 25
+        },
+        {
+          "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 44
         }
       ]
     },
@@ -19118,6 +19930,10 @@
         {
           "file": "spec/05-split-db-architecture/00-overview.md",
           "line": 26
+        },
+        {
+          "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 52
         }
       ]
     },
@@ -19130,6 +19946,10 @@
         {
           "file": "spec/05-split-db-architecture/00-overview.md",
           "line": 27
+        },
+        {
+          "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 60
         }
       ]
     },
@@ -19142,6 +19962,10 @@
         {
           "file": "spec/05-split-db-architecture/00-overview.md",
           "line": 28
+        },
+        {
+          "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 67
         }
       ]
     },
@@ -19154,6 +19978,10 @@
         {
           "file": "spec/05-split-db-architecture/00-overview.md",
           "line": 29
+        },
+        {
+          "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 74
         }
       ]
     },
@@ -19166,6 +19994,10 @@
         {
           "file": "spec/05-split-db-architecture/00-overview.md",
           "line": 30
+        },
+        {
+          "file": "spec/05-split-db-architecture/97a-acceptance-criteria-fixtures.md",
+          "line": 81
         }
       ]
     },
@@ -21084,6 +21916,18 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 118
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 13
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 19
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 225
         }
       ]
     },
@@ -21096,6 +21940,10 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 22
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 27
         }
       ]
     },
@@ -21108,6 +21956,10 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 23
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 34
         }
       ]
     },
@@ -21120,6 +21972,10 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 24
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 42
         }
       ]
     },
@@ -21132,6 +21988,10 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 25
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 49
         }
       ]
     },
@@ -21144,6 +22004,10 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 26
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 60
         }
       ]
     },
@@ -21156,6 +22020,10 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 27
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 66
         }
       ]
     },
@@ -21168,6 +22036,10 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 28
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 73
         }
       ]
     },
@@ -21180,6 +22052,10 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 29
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 79
         }
       ]
     },
@@ -21192,6 +22068,10 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 30
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 90
         }
       ]
     },
@@ -21204,6 +22084,10 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 31
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 96
         }
       ]
     },
@@ -21216,6 +22100,10 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 32
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 103
         }
       ]
     },
@@ -21228,6 +22116,10 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 33
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 109
         }
       ]
     },
@@ -21240,6 +22132,10 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 34
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 119
         }
       ]
     },
@@ -21252,6 +22148,10 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 35
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 126
         }
       ]
     },
@@ -21264,6 +22164,10 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 36
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 135
         }
       ]
     },
@@ -21276,6 +22180,10 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 37
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 143
         }
       ]
     },
@@ -21288,6 +22196,10 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 38
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 154
         }
       ]
     },
@@ -21300,6 +22212,10 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 39
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 160
         }
       ]
     },
@@ -21312,6 +22228,10 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 40
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 167
         }
       ]
     },
@@ -21324,6 +22244,10 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 41
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 180
         }
       ]
     },
@@ -21336,6 +22260,10 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 42
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 186
         }
       ]
     },
@@ -21348,6 +22276,10 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 43
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 192
         }
       ]
     },
@@ -21360,6 +22292,10 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 44
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 199
         }
       ]
     },
@@ -21372,6 +22308,10 @@
         {
           "file": "spec/32-ui-design/00-overview.md",
           "line": 45
+        },
+        {
+          "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
+          "line": 205
         }
       ]
     },
@@ -21885,6 +22825,10 @@
         {
           "file": "spec/36-user-management/97-acceptance-criteria.md",
           "line": 12
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 11
         }
       ]
     },
@@ -21897,6 +22841,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 22
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 18
         }
       ]
     },
@@ -21909,6 +22857,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 23
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 25
         }
       ]
     },
@@ -21921,6 +22873,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 24
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 31
         }
       ]
     },
@@ -21933,6 +22889,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 25
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 38
         }
       ]
     },
@@ -21945,6 +22905,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 26
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 45
         }
       ]
     },
@@ -21957,6 +22921,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 27
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 53
         }
       ]
     },
@@ -21969,6 +22937,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 28
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 62
         }
       ]
     },
@@ -21981,6 +22953,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 29
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 70
         }
       ]
     },
@@ -21993,6 +22969,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 30
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 77
         }
       ]
     },
@@ -22005,6 +22985,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 31
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 85
         }
       ]
     },
@@ -22017,6 +23001,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 32
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 92
         }
       ]
     },
@@ -22029,6 +23017,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 33
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 100
         }
       ]
     },
@@ -22041,6 +23033,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 34
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 106
         }
       ]
     },
@@ -22053,6 +23049,10 @@
         {
           "file": "spec/36-user-management/00-overview.md",
           "line": 35
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 113
         }
       ]
     },
@@ -22069,6 +23069,14 @@
         {
           "file": "spec/36-user-management/97-acceptance-criteria.md",
           "line": 12
+        },
+        {
+          "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
+          "line": 120
+        },
+        {
+          "file": "spec/97a-acceptance-criteria-fixtures.md",
+          "line": 82
         }
       ]
     },
@@ -23907,109 +24915,5 @@
       ]
     }
   ],
-  "orphan_at_citations": [
-    {
-      "id": "AT-GENERICUPDATE-10",
-      "citedIn": [
-        {
-          "file": "spec/17-generic-update/00-overview.md",
-          "line": 30
-        }
-      ]
-    },
-    {
-      "id": "AT-SPECISSUES-01",
-      "citedIn": [
-        {
-          "file": "spec/18-spec-issues/00-overview.md",
-          "line": 11
-        },
-        {
-          "file": "spec/18-spec-issues/00-overview.md",
-          "line": 21
-        }
-      ]
-    },
-    {
-      "id": "AT-SPECISSUES-02",
-      "citedIn": [
-        {
-          "file": "spec/18-spec-issues/00-overview.md",
-          "line": 22
-        }
-      ]
-    },
-    {
-      "id": "AT-SPECISSUES-03",
-      "citedIn": [
-        {
-          "file": "spec/18-spec-issues/00-overview.md",
-          "line": 23
-        }
-      ]
-    },
-    {
-      "id": "AT-SPECISSUES-04",
-      "citedIn": [
-        {
-          "file": "spec/18-spec-issues/00-overview.md",
-          "line": 24
-        }
-      ]
-    },
-    {
-      "id": "AT-SPECISSUES-05",
-      "citedIn": [
-        {
-          "file": "spec/18-spec-issues/00-overview.md",
-          "line": 25
-        }
-      ]
-    },
-    {
-      "id": "AT-SPECISSUES-06",
-      "citedIn": [
-        {
-          "file": "spec/18-spec-issues/00-overview.md",
-          "line": 26
-        }
-      ]
-    },
-    {
-      "id": "AT-SPECISSUES-07",
-      "citedIn": [
-        {
-          "file": "spec/18-spec-issues/00-overview.md",
-          "line": 27
-        }
-      ]
-    },
-    {
-      "id": "AT-SPECISSUES-08",
-      "citedIn": [
-        {
-          "file": "spec/18-spec-issues/00-overview.md",
-          "line": 28
-        }
-      ]
-    },
-    {
-      "id": "AT-SPECISSUES-09",
-      "citedIn": [
-        {
-          "file": "spec/18-spec-issues/00-overview.md",
-          "line": 29
-        }
-      ]
-    },
-    {
-      "id": "AT-SPECISSUES-10",
-      "citedIn": [
-        {
-          "file": "spec/18-spec-issues/00-overview.md",
-          "line": 30
-        }
-      ]
-    }
-  ]
+  "orphan_at_citations": []
 }
