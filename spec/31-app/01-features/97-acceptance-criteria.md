@@ -200,3 +200,10 @@
 | 2026-04-27 | 2.2.0 | **B1–B4 batch.** Added 8 dispatch rows (7b, 8b, 9b, 11b, 12b, 13b, 14b, 16) covering 50 new ATs (`AT-APP-58..107`) with inline prefixes `AT-DV/SM/MGP/TR/MZ/TPL/OQ/SR-NN`. |
 | 2026-04-27 | 2.3.0 | **F15.** Added "Inline-Prefix Alias Enumeration (closed)" section enumerating `AT-INFO-01..07` ↔ `AT-INFOMODEL-01..07` (7 rows) and `AT-MIRROR-01..06` ↔ `AT-MIRRORS-01..06` (6 rows). G-30 now resolves these 13 specific citations from closed rows; open prefixes retained for documenting the naming convention but no longer the *only* declaration source. |
 | 2026-04-27 | 2.4.0 | **F20.** Closed 12 more open prefixes via §"Inline-Prefix Closure" — 11 identity registrations (`AT-BOARD/CONCURRENCY/CTXMENU/INTERACT/LAYOUT/PAGE/ROLES/SHARE/TEMPLATES/TODAY/TRASH-NN`) + 1 alias closure (`AT-MULTI-NN` → `AT-MULTISELECT-NN`). 67 closed registrations total; G-30 closed IDs 901→968. Open-prefix declarations in Coverage Map retained for naming-convention documentation only. |
+
+
+---
+
+## Fixtures
+
+Fixtures for every AT row in this file are covered by the global P2g sweep — see [`../../97a-acceptance-criteria-fixtures.md`](../../97a-acceptance-criteria-fixtures.md) (apply the matching pattern by section).

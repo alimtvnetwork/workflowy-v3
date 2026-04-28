@@ -109,3 +109,10 @@ node scripts/spec-hygiene/00-run-all.mjs
 ---
 
 *Created 2026-04-25 — closes batch-20 item 3 (folder roll-up). Aggregates 10 phase folders.*
+
+
+---
+
+## Fixtures
+
+Fixtures for every AT row in this file are covered by the global P2g sweep — see [`../../97a-acceptance-criteria-fixtures.md`](../../97a-acceptance-criteria-fixtures.md) (apply the matching pattern by section).

@@ -108,3 +108,10 @@ node scripts/spec-hygiene/00-run-all.mjs
 - [`spec/20-enums-index.md`](../20-enums-index.md) — Enum registry
 
 *Acceptance criteria v2.0.0 — updated 2026-04-25 (UTC+8) — closes audit gap F-03.*
+
+
+---
+
+## Fixtures
+
+Fixtures for every AT row in this file are covered by the global P2g sweep — see [`../97a-acceptance-criteria-fixtures.md`](../97a-acceptance-criteria-fixtures.md) (apply the matching pattern by section).

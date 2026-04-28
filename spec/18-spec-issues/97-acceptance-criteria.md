@@ -38,3 +38,10 @@ This file exists to satisfy the spec-hygiene coverage gate (`scripts/spec-hygien
 - [x] Every audit finding has a tracked status (open / resolved). — Inline in each audit file
 - [x] Every CI gate has acceptance rules documented. — Inline in each gate file
 - [x] Coverage gate (`08-check-acceptance-coverage.mjs`) passes for this folder.
+
+
+---
+
+## Fixtures
+
+Fixtures for every AT row in this file are covered by the global P2g sweep — see [`../97a-acceptance-criteria-fixtures.md`](../97a-acceptance-criteria-fixtures.md) (apply the matching pattern by section).

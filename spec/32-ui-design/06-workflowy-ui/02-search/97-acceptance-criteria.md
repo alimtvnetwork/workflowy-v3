@@ -107,3 +107,10 @@ All 13 sub-specs have at least one AC. Total: **20 criteria**.
 | Performance trace (Chrome DevTools) | RES-13 |
 | Screen reader pass (NVDA + VoiceOver) | OC-02, A11Y-17, EXT-20 |
 | Unit test (parser + reducers) | TOK-12, EXT-19 |
+
+
+---
+
+## Fixtures
+
+Fixtures for every AT row in this file are covered by the global P2g sweep — see [`../../../97a-acceptance-criteria-fixtures.md`](../../../97a-acceptance-criteria-fixtures.md) (apply the matching pattern by section).

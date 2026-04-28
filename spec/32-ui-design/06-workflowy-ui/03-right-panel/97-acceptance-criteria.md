@@ -80,3 +80,10 @@ node scripts/spec-hygiene/00-run-all.mjs
 ---
 
 *Curated 2026-04-25 — closes batch-20 item 1. Replaces v1.0.0 checklist.*
+
+
+---
+
+## Fixtures
+
+Fixtures for every AT row in this file are covered by the global P2g sweep — see [`../../../97a-acceptance-criteria-fixtures.md`](../../../97a-acceptance-criteria-fixtures.md) (apply the matching pattern by section).

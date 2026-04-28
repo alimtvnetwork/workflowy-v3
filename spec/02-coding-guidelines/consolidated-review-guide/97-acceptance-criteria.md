@@ -96,3 +96,10 @@ rg -c '^- \[ \] ' spec/02-coding-guidelines/consolidated-review-guide/99-quick-c
 ---
 
 *Curated 2026-04-25 — closes A-22 (batch 11). Replaces v0.1.0 stub.*
+
+
+---
+
+## Fixtures
+
+Fixtures for every AT row in this file are covered by the global P2g sweep — see [`../../97a-acceptance-criteria-fixtures.md`](../../97a-acceptance-criteria-fixtures.md) (apply the matching pattern by section).

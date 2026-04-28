@@ -179,3 +179,10 @@ node scripts/spec-hygiene/00-run-all.mjs
 ---
 
 *Acceptance criteria v1.0.0 — created 2026-04-25 (UTC+8) — closes audit gap F-02.*
+
+
+---
+
+## Fixtures
+
+Fixtures for every AT row in this file are covered by the global P2g sweep — see [`../../97a-acceptance-criteria-fixtures.md`](../../97a-acceptance-criteria-fixtures.md) (apply the matching pattern by section).

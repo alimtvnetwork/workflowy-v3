@@ -52,3 +52,10 @@ grep -rn "AT-REGISTRY-" spec/ && echo "DEFECT: AT-REGISTRY-* should not exist" |
 ---
 
 *Replaced auto-generated stub 2026-04-26 (polish #5, A-28 wave-1).*
+
+
+---
+
+## Fixtures
+
+Fixtures for every AT row in this file are covered by the global P2g sweep — see [`../../../97a-acceptance-criteria-fixtures.md`](../../../97a-acceptance-criteria-fixtures.md) (apply the matching pattern by section).

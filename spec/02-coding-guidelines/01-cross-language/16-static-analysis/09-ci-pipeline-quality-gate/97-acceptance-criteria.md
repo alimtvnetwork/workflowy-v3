@@ -79,3 +79,10 @@ node scripts/spec-hygiene/00-run-all.mjs
 - [`../../15-master-coding-guidelines/97-acceptance-criteria.md`](../../15-master-coding-guidelines/97-acceptance-criteria.md) — Master rules enforced here
 
 *Curated v2.0.0 — 2026-04-25 (UTC+8). Replaced auto-generated H-2.1 scaffold.*
+
+
+---
+
+## Fixtures
+
+Fixtures for every AT row in this file are covered by the global P2g sweep — see [`../../../../97a-acceptance-criteria-fixtures.md`](../../../../97a-acceptance-criteria-fixtures.md) (apply the matching pattern by section).
