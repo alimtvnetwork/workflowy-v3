@@ -216,3 +216,32 @@ Then components only ever reference semantic classes. No exceptions.
 - [`../00-overview.md`](../00-overview.md) — Spec root
 - [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) — `AT-UIDESIGN-*` criteria
 - [`99-consistency-report.md`](./99-consistency-report.md) — Module health
+
+---
+
+## Worked Example — Theming a new "Pinned" badge
+
+**Goal:** add a small "Pinned" badge next to pinned `Item` titles, themed via
+the design system (no raw colors in components).
+
+✅ **Correct path**
+
+1. Add semantic token in `src/index.css` `@theme` block:
+   `--color-badge-pinned: oklch(0.78 0.14 85);` (light) +
+   `--color-badge-pinned-fg: oklch(0.18 0 0);`
+2. Mirror dark-mode value under `@media (prefers-color-scheme: dark)`.
+3. Use Tailwind v4 utility: `bg-badge-pinned text-badge-pinned-fg`
+   inside the badge component (no `bg-yellow-300`, no inline `style`).
+4. Verify contrast ratio ≥ 4.5:1 in both modes (gate `G-32-A11Y-CONTRAST`).
+5. Document the token in `spec/32-ui-design/02-color-tokens.md` (alpha ordered).
+
+❌ **Anti-Pattern Table**
+
+| Anti-pattern | Why it fails | Gate violated |
+|---|---|---|
+| `<span className="bg-yellow-300 text-black">Pinned</span>` | Raw Tailwind colour bypasses the token system → un-themable, breaks dark mode | `G-32-NO-RAW-COLORS` |
+| Inline `style={{ background: '#facc15' }}` | Same as above + escapes token cascade | `G-32-NO-INLINE-STYLE` |
+| Adding the token only to light mode | Dark-mode regression; contrast collapses | `G-32-DARK-MODE-PARITY` |
+| Naming token `--color-yellow-pinned` | Token name encodes hue, not purpose → can't re-skin | `G-32-SEMANTIC-NAMING` |
+| Skipping `02-color-tokens.md` documentation entry | Token is invisible to designers + audit | `G-32-TOKEN-REGISTRY` |
+| Contrast ratio 3.8:1 in dark mode | A11y failure | `G-32-A11Y-CONTRAST` |
