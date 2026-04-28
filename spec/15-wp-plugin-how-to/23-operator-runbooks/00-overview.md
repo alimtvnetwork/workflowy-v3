@@ -16,6 +16,7 @@
 |---|------|-------|-------|
 | 1 | [`01-disaster-recovery-restore.md`](./01-disaster-recovery-restore.md) | Runbook: Disaster-Recovery Restore | 354 |
 | 2 | [`02-backup-key-rotation.md`](./02-backup-key-rotation.md) | Runbook: Backup KEK Rotation | 298 |
+| 3 | [`03-post-mortem-template.md`](./03-post-mortem-template.md) | Disaster-Recovery Post-Mortem Template | 62 |
 
 <!-- AUTO-TOC:END -->
 

@@ -1,42 +1,38 @@
 # Feedback Report — Feature Spec
 ## AI Contract
 
-**Purpose** — _TODO(P1): one sentence describing what `Feedback Report — Feature Spec` solves._
+**Purpose** — Specify WorkFlowy's in-app feedback + bug-report feature: a Navbar-reachable form that auto-attaches diagnostic context, persists to a dedicated `feedback.db` SQLite (Split-DB pattern), and exposes an Admin-gated review UI with typed status transitions and GDPR-compliant retention.
 
-**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+**Audience** — Frontend dev (form + Navbar entry + Admin UI) + backend dev (feedback REST endpoints + retention job) + reviewer.
 
 **Expected AI Output** —
-- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+- `Feedback` table migration in `feedback.db` (PascalCase, `FeedbackId INTEGER PRIMARY KEY AUTOINCREMENT`, status enum)
+- `FeedbackType` + `FeedbackStatus` TypeScript enums (no magic strings)
+- `src/features/feedback/FeedbackButton.tsx` + `FeedbackForm.tsx` (Navbar entry per FR-1)
+- `src/features/feedback/feedback.schema.ts` (Zod schema enforcing 120/2000 char limits)
+- `src/features/feedback/admin/FeedbackInbox.tsx` (Admin-role gated)
+- REST endpoints under `/feedback/*` registered in [`31-app/06-endpoints/`](../31-app/06-endpoints/00-overview.md)
+- Scheduled retention job (90-day default, configurable via [`06-seedable-config-architecture/`](../06-seedable-config-architecture/00-overview.md))
 
 **Out of Scope** —
-- _TODO(P1): bullet adjacent concerns and link to owning section._
+- Real-time chat support → not planned
+- Public bug tracker / external ticketing → not planned
+- Email reply threads / SLA escalation → [`14-self-update-app-update/`](../14-self-update-app-update/00-overview.md) covers release comms
 
 **Definition of Done** —
-- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
+- `AT-FEEDBACKREPORT-01..14` all pass per [`97-acceptance-criteria.md`](./97-acceptance-criteria.md)
+- Form non-blocking with optimistic close + retry toast (per `AT-FEEDBACKREPORT-07`)
+- Admin role gating uses central `hasRole(userId, 'Admin')` (per `AT-FEEDBACKREPORT-09`)
+- `DeleteMyFeedback(userId)` one-shot operation passes GDPR deadline (per `AT-FEEDBACKREPORT-14`)
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
 
 ---
 
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| `00-overview.md` present | ✅ |
-| AI Confidence assigned | ✅ |
-| Ambiguity assigned | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-| AI Confidence (auto-backfill) | Medium |
-| Ambiguity (auto-backfill) | Medium |
-
----
-
-
-> **Version:** 2.0.0  
-> **Updated:** 2026-04-19  
-> **Status:** Planned (not yet implemented)
+> **Version:** 2.1.0
+> **Updated:** 2026-04-28 (UTC+8)
+> **Status:** D-grade — AI Contract filled per P5
 
 ---
 
@@ -50,15 +46,12 @@
 
 | Criterion | Status |
 |-----------|--------|
-| Overview present | ✅ |
-| Confidence rated | ✅ |
-| Ambiguity rated | ✅ |
+| `00-overview.md` present | ✅ |
+| AI Contract filled | ✅ |
 | Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-## Confidence
-
-Draft (high-level only) · Ambiguity: Medium (sub-specs pending)
+| AC file curated (`AT-FEEDBACKREPORT-01..14`) | ✅ |
+| Confidence | High |
+| Ambiguity | Low |
 
 ---
 

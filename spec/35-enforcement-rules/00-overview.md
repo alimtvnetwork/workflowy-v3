@@ -1,42 +1,35 @@
 # Enforcement Rules — Spec
 ## AI Contract
 
-**Purpose** — _TODO(P1): one sentence describing what `Enforcement Rules — Spec` solves._
+**Purpose** — Codify the project's strict-typing, generics-first, and runtime-validation rules into mechanically checkable artefacts (TS compiler flags, ESLint custom rules, Zod boundary schemas, type-tests) so violations fail CI rather than relying on reviewer memory.
 
-**Audience** — _TODO(P1): which implementer role (spec author / frontend dev / backend dev / DevOps / reviewer)._
+**Audience** — Reviewer + DevOps (for CI wiring) + frontend/backend dev (for rule consumption).
 
 **Expected AI Output** —
-- _TODO(P1): list concrete artifact paths (files, fixtures, migrations) the AI should produce when implementing this section._
+- `eslint-plugins/coding-guidelines/rules/<rule-name>.ts` — one file per rule with `meta.docs.url` pointing to the source guideline
+- `<feature>/<feature>.schema.ts` — Zod schemas co-located with each boundary consumer
+- `tsconfig.json` — `strict: true`, `noImplicitAny: true`, `noUncheckedIndexedAccess: true`
+- `*.type-test.ts` — `expectTypeOf` tests for every public generic helper
+- CI step in `.github/workflows/*.yml` running all four enforcement layers
 
 **Out of Scope** —
-- _TODO(P1): bullet adjacent concerns and link to owning section._
+- Prettier formatting → [`02-coding-guidelines/01-cross-language/04-code-style/`](../02-coding-guidelines/01-cross-language/04-code-style/00-overview.md)
+- Git hooks / pre-commit → [`13-cicd-pipeline-workflows/`](../13-cicd-pipeline-workflows/00-overview.md)
+- Server-side authn/authz enforcement → [`36-user-management/`](../36-user-management/00-overview.md)
 
 **Definition of Done** —
-- _TODO(P1): testable bullets, each referencing an `AT-*` ID from this section's `97-acceptance-criteria.md` or a hygiene-script name._
+- `AT-ENFORCEMENTRULES-01..14` all pass per [`97-acceptance-criteria.md`](./97-acceptance-criteria.md)
+- `rg -nP ":\s*any\b|@ts-ignore" src/` returns zero hits (per `AT-ENFORCEMENTRULES-02`)
+- All four enforcement layers (compile / lint / runtime / test) execute in CI (per `AT-ENFORCEMENTRULES-14`)
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
 
 ---
 
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| `00-overview.md` present | ✅ |
-| AI Confidence assigned | ✅ |
-| Ambiguity assigned | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-| AI Confidence (auto-backfill) | Medium |
-| Ambiguity (auto-backfill) | Medium |
-
----
-
-
-> **Version:** 2.0.0  
-> **Updated:** 2026-04-19  
-> **Status:** Planned (not yet implemented)
+> **Version:** 2.1.0
+> **Updated:** 2026-04-28 (UTC+8)
+> **Status:** D-grade — AI Contract filled per P5
 
 ---
 
@@ -50,15 +43,12 @@
 
 | Criterion | Status |
 |-----------|--------|
-| Overview present | ✅ |
-| Confidence rated | ✅ |
-| Ambiguity rated | ✅ |
+| `00-overview.md` present | ✅ |
+| AI Contract filled | ✅ |
 | Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-## Confidence
-
-Draft (high-level only) · Ambiguity: Medium (sub-specs pending)
+| AC file curated (`AT-ENFORCEMENTRULES-01..14`) | ✅ |
+| Confidence | High |
+| Ambiguity | Low |
 
 ---
 

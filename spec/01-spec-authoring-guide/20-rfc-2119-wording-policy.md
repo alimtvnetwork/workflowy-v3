@@ -84,4 +84,4 @@ This policy is gate-enforced by the hygiene script — the script's pass/fail ou
 
 ---
 
-*Created 2026-04-28 — closes P4 (TBD/should/consider sweep). Two real TBDs resolved before gate activation: `15-wp-plugin-how-to/23-operator-runbooks/01-disaster-recovery-restore.md:308` (post-mortem template now exists at `02-post-mortem-template.md`) and the soft-language audit reference in `18-spec-issues/03-...` (allow-listed under `18-spec-issues/`).*
+*Created 2026-04-28 — closes P4 (TBD/should/consider sweep). Two real TBDs resolved before gate activation: `15-wp-plugin-how-to/23-operator-runbooks/01-disaster-recovery-restore.md:308` (post-mortem template now exists at `03-post-mortem-template.md`) and the soft-language audit reference in `18-spec-issues/03-...` (allow-listed under `18-spec-issues/`).*
