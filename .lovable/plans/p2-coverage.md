@@ -6,7 +6,7 @@
 | Sub-task | Scope | Files | AT rows | Fixtures landed | Status |
 |----------|-------|-------|---------|-----------------|--------|
 | P2a | App canonical (`AT-APP-01..107`) | 4 (`97a/b/c/d`) | 107 | 107 | ✅ done |
-| P2b | App per-feature inline | ~12 | ~110 | 0 | todo |
+| P2b | App per-feature inline | 1 (`15a` covers 10 novel `AT-ROLES`; other 80 inline rows are pure dispatch aliases of P2a-covered ATs — no fixtures needed) | 10 | 10 | ✅ done |
 | P2c | REST + DB conventions | 4 | ~30 | 0 | todo |
 | P2d | UI design + DS | ~14 | ~120 | 0 | todo |
 | P2e | 33 / 34 / 35 / 36 | 4 | ~60 | 0 | todo |

@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-28  
-**Total Files:** 1372  
+**Total Files:** 1373  
 **Top-Level Folders:** 25
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -33,7 +33,7 @@
 - [16-generic-cli](#16-generic-cli) — 43 file(s)
 - [17-generic-update](#17-generic-update) — 11 file(s)
 - [18-spec-issues](#18-spec-issues) — 14 file(s)
-- [31-app](#31-app) — 131 file(s)
+- [31-app](#31-app) — 132 file(s)
 - [32-ui-design](#32-ui-design) — 120 file(s)
 - [33-feedback-report](#33-feedback-report) — 3 file(s)
 - [34-activity-feed](#34-activity-feed) — 3 file(s)
@@ -1261,6 +1261,7 @@
 | [`31-app/01-features/14-concurrency-and-sync.md`](./31-app/01-features/14-concurrency-and-sync.md) | Concurrency & Sync | 1.8.0 | — |
 | [`31-app/01-features/14b-offline-queue.md`](./31-app/01-features/14b-offline-queue.md) | Offline Queue & Local Mirror | 1.0.0 | — |
 | [`31-app/01-features/15-roles-and-permissions.md`](./31-app/01-features/15-roles-and-permissions.md) | Roles & Permissions | 1.6.0 | Active |
+| [`31-app/01-features/15a-roles-acceptance-fixtures.md`](./31-app/01-features/15a-roles-acceptance-fixtures.md) | Roles & Permissions — Acceptance-Criteria I/O Fixtures (`AT-ROLES-01..10`) | — | — |
 | [`31-app/01-features/16-search-ranking.md`](./31-app/01-features/16-search-ranking.md) | Search Ranking | 1.0.0 | — |
 | [`31-app/01-features/18-integrations.md`](./31-app/01-features/18-integrations.md) | Integrations — Zapier & Apple Shortcuts (F6) | 1.0.0 | Active |
 | [`31-app/01-features/97-acceptance-criteria.md`](./31-app/01-features/97-acceptance-criteria.md) | App Features — Acceptance Criteria | 2.3.0 | Active |
@@ -1542,4 +1543,4 @@
 
 ---
 
-*Auto-generated index — 1372 files across 25 top-level folders.*
+*Auto-generated index — 1373 files across 25 top-level folders.*

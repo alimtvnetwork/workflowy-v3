@@ -162,6 +162,8 @@ Defines the **runtime-agnostic** roles, permission grants, and authorization che
 ## Acceptance Tests
 
 > **Inline prefix:** `AT-ROLES-NN` per dispatch index. Canonical rollups: `AT-APP-21..23` (see `spec/31-app/97-acceptance-criteria.md`). Legacy `AT-APPF-76..85` IDs remain as the third column for back-references already present in `spec/18-spec-issues/`.
+>
+> **P2 — I/O fixtures:** Concrete Given/When/Then + JSON request/response fixtures for `AT-ROLES-01..10` live in [`15a-roles-acceptance-fixtures.md`](./15a-roles-acceptance-fixtures.md) (P2b ✅ closed 2026-04-28).
 
 | ID | Canonical | Given | When | Then | testid | Legacy |
 |----|-----------|-------|------|------|--------|--------|
