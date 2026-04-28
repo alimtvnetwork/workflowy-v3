@@ -211,6 +211,8 @@ After the audit closed at 100/100, four product-clarification batches (B1–B4) 
 
 These are independent of the audit's 10-dimension scoring rubric and do not trigger a re-score. See `spec/31-app/01-features/99-consistency-report.md` v2.2.0 for the registered inventory.
 
+> **Score-frozen ratification (2026-04-28):** The "100/100 frozen — post-100 work is footnote-only, never a new dimension" rule of this section was originally soft-confirmed as ambiguity-triage **#01** and is now load-bearing per [**ADR-0024**](../00-adrs/0024-ratify-soft-confirm-triage-rulings.md) §D1 (gate `G-24-AUDIT-SCORE-FROZEN`). Recomputing the score to absorb any future Bn batch requires a superseding ADR.
+
 ---
 
 ## Changelog
