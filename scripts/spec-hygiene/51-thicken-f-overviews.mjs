@@ -35,9 +35,9 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## Acceptance Summary (Fixture Index)
 
-| AT id | Fixture row | One-line bind |
+| Bind # | AT id (citation) | Fixture row |
 |---|---|---|
-${atRows.map(id => `| \`${id}\` | [\`97a-…#${id.toLowerCase()}\`](./97a-acceptance-criteria-fixtures.md#${id.toLowerCase()}) | See fixture for exact command + envelope. |`).join('\n')}
+${atRows.map((id, i) => `| ${i + 1} | cites \`${id}\` | [\`97a-…#${id.toLowerCase()}\`](./97a-acceptance-criteria-fixtures.md#${id.toLowerCase()}) |`).join('\n')}
 
 > Total: **${atRows.length}** acceptance rows, **${atRows.length}** fixture binds, **0** orphan citations.
 ${M_CLOSE}`;
