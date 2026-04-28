@@ -514,6 +514,7 @@
 | `G-00-ADR-SHAPE` | **DOC** | [`spec/00-adrs/_INDEX_AUTOMATION.md`](./00-adrs/_INDEX_AUTOMATION.md) | Deleting a Superseded row from the index Erases decision history; future readers can't trace why something was overturn |
 | `G-00-ADR-STATUS` | **DOC-NORM** | [`spec/00-adrs/00-overview.md`](./00-adrs/00-overview.md) | G-00-ADR-STATUS Status MUST be one of the 5 enum values; Accepted required for any G- reference. |
 | `G-00-ADR-SUPERSEDE` | **DOC-NORM** | [`spec/00-adrs/00-overview.md`](./00-adrs/00-overview.md) | G-00-ADR-SUPERSEDE A new ADR that supersedes another MUST update the older ADR's status in the same change. |
+| `G-00-ADR-XLINK-SYMMETRY` | **DOC-NORM** | [`spec/00-adrs/_INDEX_AUTOMATION.md`](./00-adrs/_INDEX_AUTOMATION.md) | Outbound links from an Accepted ADR's `## Decision` section to non-ADR repo files MUST have a reciprocal back-link at the linked anchor. Reference precedent: ADR-0024 §D1/D2/D3 ↔ triage `### #01/#03/#17`. |
 
 ---
 
