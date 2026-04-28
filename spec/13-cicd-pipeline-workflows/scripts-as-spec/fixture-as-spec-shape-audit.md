@@ -1,12 +1,12 @@
 # Fixture-as-spec — `fixture-as-spec-shape-audit` algorithm
 
 > **Type:** Fixture-as-spec (executable specification).
-> **Status:** Frozen 2026-04-28 (**Phase 3** — gate-ID citation +
-> registry-resolution check added). Reference implementation for
+> **Status:** Frozen 2026-04-28 (**Phase 4** — registry-row back-link
+> symmetry check added; final phase). Reference implementation for
 > [`G-13-FIXTURE-AS-SPEC-SHAPE`](../../_GATE-REGISTRY.md#cicd-pipeline-workflows).
 > **SPEC-ONLY classification:** describes a CI algorithm; no runtime code.
 > Meta-property: this fixture audits other fixtures in the same directory,
-> including itself.
+> including itself, AND audits the registry's reciprocal links to them.
 
 ---
 
@@ -48,13 +48,14 @@ A fixture file MAY include additional sections (e.g. "See also",
   `<fixture-path>: section "Algorithm" lacks fenced code block`.
 - **exit code:** `0` on clean audit, `1` on any violation.
 
-## Algorithm (frozen reference, ~55 lines of logic)
+## Algorithm (frozen reference, ~75 lines of logic)
 
 ```python
 #!/usr/bin/env python3
 """Reference implementation of G-13-FIXTURE-AS-SPEC-SHAPE.
-Frozen 2026-04-28 — Phase 3 (gate-ID citation + registry resolution).
-Audits the shape of every fixture-as-spec file.
+Frozen 2026-04-28 — Phase 4 (registry-row back-link symmetry).
+Audits the shape of every fixture-as-spec file AND the reciprocal
+registry rows that cite them.
 """
 import re, pathlib, sys
 
@@ -69,16 +70,28 @@ ALLOWED_LANGS = {"python", "bash", "sh", "javascript", "js",
 H2 = re.compile(r"^## (.+?)\s*$", re.M)
 FENCE_TAGGED = re.compile(r"```([a-zA-Z0-9_+-]+)\s*\n.*?\n```", re.S)
 FENCE_ANY = re.compile(r"```[a-zA-Z0-9_+-]*\s*\n.*?\n```", re.S)
-# Phase 3: gate-ID grammar — uppercase, dash-separated, must start with G-.
 GATE_ID = re.compile(r"`(G-[A-Z0-9][A-Z0-9-]+)`")
-# Phase 3: banner = first blockquote block at top of file.
 BANNER = re.compile(r"^> .+(?:\n> .+)*", re.M)
+# Phase 4: registry row = a markdown table row that starts with
+# `| \`G-NN-...\` |` and contains a link path. Capture (gate_id, link_path).
+REGISTRY_ROW = re.compile(
+    r"^\|\s*`(G-[A-Z0-9][A-Z0-9-]+)`\s*\|[^|]*\|\s*\[[^\]]+\]\(([^)]+)\)",
+    re.M,
+)
+# Phase-4 carve-out: gates whose authoritative spec lives outside
+# scripts-as-spec/ (registry row links there, not to the fixture).
+BACKLINK_EXEMPT = {"G-00-ADR-XLINK-SYMMETRY"}
 
 def registry_gate_ids() -> set[str]:
-    text = REGISTRY.read_text(encoding="utf-8")
-    return set(GATE_ID.findall(text))
+    return set(GATE_ID.findall(REGISTRY.read_text(encoding="utf-8")))
 
-def audit_file(path: pathlib.Path, known_gates: set[str]) -> list[str]:
+def registry_rows() -> dict[str, str]:
+    """Map gate_id → primary-file path as written in the registry row."""
+    return {m.group(1): m.group(2)
+            for m in REGISTRY_ROW.finditer(REGISTRY.read_text(encoding="utf-8"))}
+
+def audit_file(path: pathlib.Path, known_gates: set[str],
+               rows: dict[str, str]) -> list[str]:
     text = path.read_text(encoding="utf-8")
     headers = [m.group(1).strip() for m in H2.finditer(text)]
     errors = []
@@ -91,36 +104,44 @@ def audit_file(path: pathlib.Path, known_gates: set[str]) -> list[str]:
     algo = re.search(r"^## Algorithm.*?(?=^## |\Z)", text, re.S | re.M)
     if algo:
         body = algo.group(0)
+        tagged = [m.group(1).lower() for m in FENCE_TAGGED.finditer(body)]
         if not FENCE_ANY.search(body):
-            errors.append('section "Algorithm" lacks fenced code block')
-        else:
-            tagged = [m.group(1).lower() for m in FENCE_TAGGED.finditer(body)]
-            if not tagged:
-                errors.append('Algorithm fence lacks language tag')
-            elif not any(t in ALLOWED_LANGS for t in tagged):
-                errors.append(f'Algorithm uses disallowed lang(s): {tagged}')
-    # Phase 3a: banner MUST cite at least one gate ID.
+            errors.append('Algorithm lacks fenced code block')
+        elif not tagged:
+            errors.append('Algorithm fence lacks language tag')
+        elif not any(t in ALLOWED_LANGS for t in tagged):
+            errors.append(f'Algorithm uses disallowed lang(s): {tagged}')
     banner = BANNER.search(text)
-    banner_text = banner.group(0) if banner else ""
-    cited = GATE_ID.findall(banner_text)
+    cited = GATE_ID.findall(banner.group(0) if banner else "")
     if not cited:
-        errors.append('banner blockquote cites no gate ID '
-                      '(expected at least one `G-XX-...`)')
-    # Phase 3b: every cited gate ID MUST resolve in _GATE-REGISTRY.md.
+        errors.append('banner cites no gate ID')
     for gid in cited:
         if gid not in known_gates:
-            errors.append(f'banner cites `{gid}` but it is not '
-                          f'registered in spec/_GATE-REGISTRY.md')
+            errors.append(f'banner cites unregistered `{gid}`')
+            continue
+        # Phase 4: registry row for this gate MUST link back to THIS
+        # file, UNLESS the gate is in the BACKLINK_EXEMPT carve-out
+        # (authoritative spec lives elsewhere).
+        if gid in BACKLINK_EXEMPT:
+            continue
+        row_path = rows.get(gid, "")
+        if path.name not in row_path:
+            errors.append(
+                f'registry row for `{gid}` links to "{row_path}", '
+                f'expected back-link to "{path.name}" '
+                f'(asymmetric: add `{gid}` to BACKLINK_EXEMPT or '
+                f'point its registry row at this fixture)')
     return [f"{path}: {e}" for e in errors]
 
 def main() -> int:
     known = registry_gate_ids()
+    rows = registry_rows()
     fixtures = [p for p in DIR.glob("*.md") if p.name not in EXEMPT_FILES]
-    violations = [v for p in fixtures for v in audit_file(p, known)]
+    violations = [v for p in fixtures for v in audit_file(p, known, rows)]
     if violations:
         print("\n".join(violations)); return 1
-    print(f"OK — {len(fixtures)} fixtures, all shapes valid (Phase 3); "
-          f"{len(known)} gate IDs known to registry")
+    print(f"OK — {len(fixtures)} fixtures, Phase-4 symmetric "
+          f"({len(known)} gates known, {len(rows)} rows parsed)")
     return 0
 
 if __name__ == "__main__":
@@ -134,6 +155,7 @@ if __name__ == "__main__":
 | `README.md` | Convention definition, not a fixture. |
 | Files prefixed with `_` (e.g. `_DRAFT-*.md`) | Reserved for in-progress drafts; promote by removing prefix. |
 | H2 headers with trailing parenthetical (e.g. `## Algorithm (frozen reference, 35 lines of logic)`) | Match by `startswith()` — the parenthetical is informational. |
+| **Phase-4 carve-out:** gates whose authoritative spec lives outside `scripts-as-spec/` (e.g. `G-00-ADR-XLINK-SYMMETRY` is specified in `spec/00-adrs/_INDEX_AUTOMATION.md`) MAY have a registry row that links to the authoritative spec rather than back to the fixture. The fixture MUST still cite the gate (Phase 3) and the authoritative spec MUST link forward to the fixture (already enforced by `G-00-ADR-XLINK-SYMMETRY`-style review). Implementation note: `audit_file()` SHOULD accept a `BACKLINK_EXEMPT` set keyed by gate ID, populated from a `_LEDGER-*` file when this carve-out is used. Initial set: `{"G-00-ADR-XLINK-SYMMETRY"}`. |
 
 ## Strictness roadmap
 
@@ -141,24 +163,35 @@ if __name__ == "__main__":
 - **Phase 2 (shipped 2026-04-28 afternoon):** Algorithm fence MUST
   declare an allowed language tag from
   `{python, bash, sh, javascript, js, typescript, ts}`.
-- **Phase 3 (current — shipped 2026-04-28 evening):** the file's
-  banner blockquote MUST cite at least one gate ID matching
-  `\`G-[A-Z0-9-]+\``, AND every cited gate ID MUST resolve to a row
-  in `spec/_GATE-REGISTRY.md`. This closes the
-  fixture→gate-registry traceability loop.
-- **Phase 4 (planned):** cross-check that the gate's registry row
-  links *back* to this fixture file (symmetric link à la
-  `G-00-ADR-XLINK-SYMMETRY`); when shipped, this gate effectively
-  becomes the meta-equivalent of `G-00-ADR-XLINK-SYMMETRY` for the
-  fixture-as-spec corpus.
+- **Phase 3 (shipped 2026-04-28 evening):** the file's banner
+  blockquote MUST cite at least one gate ID, AND every cited gate ID
+  MUST resolve to a row in `spec/_GATE-REGISTRY.md`.
+- **Phase 4 (current — shipped 2026-04-28 night, FINAL phase):** for
+  every gate ID cited in a fixture's banner, the corresponding
+  `spec/_GATE-REGISTRY.md` row MUST link back to that fixture file (by
+  filename match in the row's primary-file link). This closes the
+  meta-symmetry loop and makes `G-13-FIXTURE-AS-SPEC-SHAPE` the
+  fixture-corpus equivalent of `G-00-ADR-XLINK-SYMMETRY` for the ADR
+  corpus. No further phases planned; further extensions require a new
+  sibling gate.
 
 ## Test fixtures
 
-Baseline as of 2026-04-28 (post-Phase-3): 2 fixture files in scope —
-[`xlink-symmetry-audit.md`](./xlink-symmetry-audit.md) (banner cites
-`G-00-ADR-XLINK-SYMMETRY` ✓) and this file (banner cites
-`G-13-FIXTURE-AS-SPEC-SHAPE` ✓). Both pass the Phase-3 audit; both
-cited gate IDs resolve in `spec/_GATE-REGISTRY.md`.
+Baseline as of 2026-04-28 (post-Phase-4, FINAL):
+- [`xlink-symmetry-audit.md`](./xlink-symmetry-audit.md) — banner
+  cites `G-00-ADR-XLINK-SYMMETRY`; registry row's primary-file link
+  resolves to `spec/00-adrs/_INDEX_AUTOMATION.md` (the gate's
+  authoritative spec) — **NOT** to this fixture file. **This is an
+  expected exception**: the fixture-as-spec convention allows a gate's
+  authoritative spec to live outside `scripts-as-spec/` provided the
+  fixture is referenced from there. See "Exemptions" below for the
+  carve-out.
+- [`fixture-as-spec-shape-audit.md`](./fixture-as-spec-shape-audit.md)
+  (this file) — banner cites `G-13-FIXTURE-AS-SPEC-SHAPE`; registry
+  row's primary-file link resolves to this very file ✓ symmetric.
+
+Phase-4 result: 2/2 fixtures pass once the carve-out for
+"authoritative-spec-elsewhere" gates is applied.
 
 ## See also
 
