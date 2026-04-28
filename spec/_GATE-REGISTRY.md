@@ -18,10 +18,10 @@
 
 ## 2. Summary
 
-- **Total named gates:** 290 (was 289 — +1 `G-13-FIXTURE-AS-SPEC-SHAPE`)
+- **Total named gates:** 291 (was 290 — +1 `G-13-PLACEHOLDER-TOKEN-PARITY`)
 - **CI:** 24 (one gate `G-26-WIRE-OWNERID-ONLY` is now dual-tier: counted under both CI and TEST)
 - **TEST:** 14 (was 13 — +1 `G-26-WIRE-OWNERID-ONLY` runtime half via `AT-WIRE-EGRESS-01`)
-- **DOC-NORM:** 51 (was 50 — +1 `G-13-FIXTURE-AS-SPEC-SHAPE`)
+- **DOC-NORM:** 52 (was 51 — +1 `G-13-PLACEHOLDER-TOKEN-PARITY`)
 - **DOC:** 202 (was 201 — +1 `G-00-ADR-CONSEQUENCES-XLINK` advisory)
 - **Areas covered:** 36 (was 35 — added ADR-0012)
 
