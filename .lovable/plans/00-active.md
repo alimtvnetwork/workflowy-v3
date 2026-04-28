@@ -1,10 +1,12 @@
 # Active Plans
 
-> **Updated:** 2026-04-27 (UTC+8) · **Status:** 🟢 **AI READINESS 99/100 + HYGIENE 17/18 GREEN.** Polish loop closed self-introduced regressions from the audit-closure work: (a) fixed numbering collisions by renaming `04-fixtures/` → `04a-fixtures/` and moving `01-features/00-state-management-architecture.md` → `05-conventions/33-state-management-architecture.md` (it's an architectural convention, not a feature file, so it doesn't need the feature-shape 5-heading template); (b) replaced 4 broken links (`02-bootstrap-files.md` → `01-foundation-and-architecture.md`; runbooks `## Related` block now points to real `05-conventions/14-backup-and-dr-policy.md`; relative `01-features/` links re-anchored after the move); (c) added missing `99-consistency-report.md` for fixtures folder; (d) renamed `## Cross-References` → `## Related` in 3 new overview files (H-4.1 gate). **Hygiene:** 17/18 passing — only `15-check-enums-in-sync` red (= deferred AUDIT-AI-07, awaits user design discussion on `mirror` ↔ `dashboard`). **No remaining spec work.**
+> **Updated:** 2026-04-28 (UTC+8) · **Status:** 🟢 **AI READINESS 100/100 + HYGIENE 25/26 GREEN.** All 7 AUDIT-AI findings (01–07) closed 2026-04-27. Mirror redesigned as a peer-group relation (not an ItemType). 48 NO-QUESTIONS-mode ambiguities triaged (44 self-resolved, 3 soft-confirm default-accept, 1 hard-confirm resolved → AT-MPG-). Sole remaining red gate: **G-15 enum-sync** — `mirror` still in `src/types/index.ts:43` ItemType enum (= 1-line code edit, blocked only by spec-only mode). **No remaining spec work.**
+
+> **Previous status (archived):** 🟢 99/100 + 17/18 hygiene — closed self-introduced regressions from audit-closure work (numbering collisions, broken links, missing consistency reports, header drift).
 
 > **Previous status (archived):** 🟢 89/100 after v1.1.0 closed AUDIT-AI-01 (local WP dev harness) + AUDIT-AI-02 (PHP SSE fixtures), both CRITICAL.
 
-> **Previous status (archived):** ⚠️ **AI READINESS AUDIT (ROUND 4) — COMPOSITE 78/100, CONFIDENCE: LOW.** Ran a brutally-honest AI-driven audit (Gemini 3 Pro via Lovable AI Gateway, structured-output mode, schema-enforced 10 dimensions × 7 findings) against 1,329 spec files + `src/` inventory + 10 verified probes. **Verdict challenges the prior internal `spec/31-app/**` 100/100 verdict** on grounds that "product-spec completeness" was confused with "implementability by a fresh AI session". 7 findings: 🔴 2 CRITICAL — (AUDIT-AI-01) **no local WP dev harness** strategy (zero `@wordpress/env`/express-mock docs in `spec/15-wp-plugin-how-to/`; AI will hallucinate Vite proxies endlessly); (AUDIT-AI-02) **no PHP SSE code fixtures** (zero ```php blocks in `14-concurrency-and-sync.md` or `05-conventions/`; AI will write naive `while(true){echo}` that leaks PHP memory). 🟠 2 HIGH — (AUDIT-AI-03) **no concrete SQLite DDL `.sql` files** (only ERD prose; AI will guess `BOOLEAN` which SQLite lacks); (AUDIT-AI-04) **no complex item-tree JSON fixtures** (only error-envelope fixtures exist; AI cannot test 250-item virtualisation). 🟡 2 MEDIUM — (AUDIT-AI-05) **sparse endpoint↔AT cross-refs** (42 endpoints × 1-7 ATs each vs 498 feature ATs); (AUDIT-AI-06) **no state-orchestration map** (17 feature contracts list aspirational `src/components/*` paths without context-vs-prop strategy). 🟢 1 LOW — (AUDIT-AI-07) A-01 ItemType drift (already known, gated). **Dimension scores:** completeness 85, unambiguity 85, **implementability 60**, **testability 65**, consistency_internal 95, consistency_spec_to_code 90, discoverability 90, **examples_and_fixtures 50**, edge_case_coverage 95, operational_readiness 75. **Path to 100:** 7 ordered actions totalling +22 pts (~30-50h effort) → 100/100 ceiling. Persisted as `spec/18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md` v1.0.0; raw JSON at `/mnt/documents/spec-ai-readiness-audit-2026-04-27.json`. Hygiene preserved at 17/18. Spec-only constraint preserved. **Polish queue is no longer empty** — 6 high-impact spec-side gaps (AUDIT-AI-01..06) are addressable in spec-only mode.
+> **Previous status (archived):** ⚠️ Round-4 audit composite 78/100 — 7 findings (2 CRIT / 2 HIGH / 2 MED / 1 LOW). All since closed; see `spec/18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md`.
 
 ---
 
@@ -27,10 +29,11 @@
 
 - `mem://constraints/spec-only-mode` — implementation gated until user explicitly authorizes exit ⛔ **only remaining blocker**
 - ~~**S003** backend runtime~~ → ✅ **RESOLVED 2026-04-25**: WordPress plugin (PHP + SQLite)
-- ~~**F-01** rollup gap~~ → ✅ **RESOLVED 2026-04-25** (Plan 04)
-- ~~**F-02** CI/CD packaging~~ → ✅ **RESOLVED 2026-04-25** (Plan 05)
-- ~~**F-03** PowerShell/CLI boundary~~ → ✅ **RESOLVED 2026-04-25** (Plan 06)
-- ~~**F-04** Code-block highlighter~~ → ✅ **RESOLVED 2026-04-25** (Plan 07)
+- ~~**F-01..F-04**~~ → ✅ **RESOLVED 2026-04-25** (Plans 04–07)
 - ~~**A-26** AT-stub scaffolds (11 files)~~ → ✅ **RESOLVED 2026-04-26** (polish #3, 107 new criteria)
+- ~~**AUDIT-AI-01..07**~~ → ✅ **CLOSED 2026-04-27** (7/7 findings; mirror peer-group redesign closed AI-07)
+- **Code-1 / G-15 enum-sync** — `mirror` still in `src/types/index.ts:43`; 1-line removal blocked by spec-only mode
+- **Soft-confirms #01, #03, #17** — 3 default-accepted ambiguities user could still override (audit footnote / DDL singular / favorites contradiction); see `.lovable/question-and-ambiguity/00-triage-summary.md`
 - Phase-1 build path P1.1 → P1.7 — unblocked, awaits SPEC-ONLY lift
-- **Recommended next:** say **`exit spec-only`** to start **P1.1 Bootstrap** — there is no more spec work to do
+- **Recommended next:** say **`exit spec-only`** to clear G-15 (1-line edit) and start **P1.1 Bootstrap** — there is no more spec work to do
+
