@@ -161,6 +161,33 @@ When multiple items are selected, a **bulk action bar** appears at the bottom of
 
 ---
 
+## Workflowy Feature Reference (F3) — Bulk Structural Operations
+
+> **Source:** Workflowy product feature list, merged 2026-04-28 (lossless, additive). Reproduced verbatim; cross-linked to existing AT-MS-* rows above and to the per-item operations defined in [`./06-item-context-menu.md`](./06-item-context-menu.md) F3 appendix.
+
+When N ≥ 2 items are selected via Shift/Cmd-click (or keyboard range), the floating multi-select toolbar exposes:
+
+- **Bulk Move To** — Open the move-target picker; selected items (and their subtrees) are moved as a contiguous block under the chosen destination, preserving sibling order. Cycle-protected. (toolbar, shortcut: ⌘+Shift+M)
+- **Bulk Mirror To** — Create a mirror peer for **each** selected item at the chosen destination. Each mirror joins the corresponding source's peer group (or creates a new singleton-then-pair group). (toolbar, shortcut: ⌘+Shift+L)
+- **Move Here / Mirror Here** — When dragging the selection, drop targets show inline `Move Here` / `Mirror Here` chips; choose at drop time. (drag chrome)
+- **Bulk Delete** — Soft-delete every selected item; all subtrees go to Trash. Single confirmation toast covers the whole batch with an Undo affordance (`global-undo-toast`). (toolbar, shortcut: ⌘⌫)
+- **Bulk Complete / Uncomplete** — On a selection of `todo` rows, toggle `completed` for every row in one action. Rows of other types in the selection are ignored (no error). (toolbar, shortcut: ⌘↵)
+- **Bulk Tag / Untag** — Apply or remove a `#tag` across the entire selection. (toolbar)
+- **Bulk Export** — Export the selection (and subtrees) as a single Markdown / OPML / plain-text document. → [`./13-templates.md`](./13-templates.md) F4 appendix.
+- **Bulk Add to Templates** — Snapshot the selection as a multi-root template. → [`./13-templates.md`](./13-templates.md) F4 appendix.
+- **Zoom Selection** — When N ≥ 2 selected, ⌘. opens the **virtual scope** ephemeral page containing only the selection (per `mem://features/multi-select`). (shortcut: ⌘.)
+- **Clear Selection** — Esc clears the selection and dismisses the toolbar. (shortcut: Esc)
+
+### Selection rules (already canonical)
+
+- Selection is **flat**: choosing a parent does not implicitly select its children, but bulk operations on a parent always include its subtree.
+- Selection survives expand/collapse of unrelated items; collapsing an ancestor of a selected item does NOT deselect it.
+- The 250-item view limit applies to render, not to selection — bulk ops on > 250 items are allowed and progress is reported via `bulk-progress` toast.
+
+> Cross-link: per-item equivalents in [`./06-item-context-menu.md`](./06-item-context-menu.md) F3 appendix; multi-select zoom semantics in [`./12b-multi-select-zoom.md`](./12b-multi-select-zoom.md).
+
+---
+
 ## Related
 
 - [05-interactions.md](./05-interactions.md) — single-item Shift/Cmd-click base behavior
