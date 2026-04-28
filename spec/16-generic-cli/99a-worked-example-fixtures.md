@@ -120,13 +120,13 @@
 
 | Bind | AT id (cited) | Vitest slug |
 |---|---|---|
-| `AT-GENERICCLI-01` | `at_genericcli_01_internal_isolation_govet` |
-| `AT-GENERICCLI-02` | `at_genericcli_02_one_file_per_subcommand` |
-| `AT-GENERICCLI-03` | `at_genericcli_03_single_flag_library_ssot` |
-| `AT-GENERICCLI-04` | `at_genericcli_04_flag_precedence_4_tier` |
-| `AT-GENERICCLI-05` | `at_genericcli_05_format_text_json_envelope` |
-| `AT-GENERICCLI-06` | `at_genericcli_06_stderr_error_envelope_cli1003` |
-| `AT-GENERICCLI-07` | `at_genericcli_07_help_autogen_no_duplication` |
-| `AT-GENERICCLI-08` | `at_genericcli_08_rfc3339_date_format` |
-| `AT-GENERICCLI-09` | `at_genericcli_09_15ll_no_nested_if_lint` |
-| `AT-GENERICCLI-10` | `at_genericcli_10_single_sql_open_gate` |
+| – | cites `AT-GENERICCLI-01` | `at_genericcli_01_internal_isolation_govet` |
+| – | cites `AT-GENERICCLI-02` | `at_genericcli_02_one_file_per_subcommand` |
+| – | cites `AT-GENERICCLI-03` | `at_genericcli_03_single_flag_library_ssot` |
+| – | cites `AT-GENERICCLI-04` | `at_genericcli_04_flag_precedence_4_tier` |
+| – | cites `AT-GENERICCLI-05` | `at_genericcli_05_format_text_json_envelope` |
+| – | cites `AT-GENERICCLI-06` | `at_genericcli_06_stderr_error_envelope_cli1003` |
+| – | cites `AT-GENERICCLI-07` | `at_genericcli_07_help_autogen_no_duplication` |
+| – | cites `AT-GENERICCLI-08` | `at_genericcli_08_rfc3339_date_format` |
+| – | cites `AT-GENERICCLI-09` | `at_genericcli_09_15ll_no_nested_if_lint` |
+| – | cites `AT-GENERICCLI-10` | `at_genericcli_10_single_sql_open_gate` |

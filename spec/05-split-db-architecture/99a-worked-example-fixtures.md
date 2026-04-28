@@ -160,13 +160,13 @@ COMMIT;
 
 | Bind | AT id (cited) | Vitest/PHPUnit slug |
 |---|---|---|
-| `AT-SPLITDBFUNDAMENTALS-01` | `at_splitdb_01_decision_matrix_thresholds` |
-| `AT-SPLITDBFUNDAMENTALS-02` | `at_splitdb_02_db_split_json_schema_valid` |
-| `AT-SPLITDBFUNDAMENTALS-03` | `at_splitdb_03_attach_at_connection_open` |
-| `AT-SPLITDBFUNDAMENTALS-04` | `at_splitdb_04_cross_db_join_via_repo_only` |
-| `AT-SPLITDBFUNDAMENTALS-05` | `at_splitdb_05_split_migrator_atomic_renames` |
-| `AT-SPLITDBFUNDAMENTALS-06` | `at_splitdb_06_merge_migrator_row_count_verify` |
-| `AT-SPLITDBFUNDAMENTALS-07` | `at_splitdb_07_premature_split_blocked` |
-| `AT-SPLITDBFUNDAMENTALS-08` | `at_splitdb_08_no_lazy_attach_per_query` |
-| `AT-SPLITDBFUNDAMENTALS-09` | `at_splitdb_09_detach_blocked_during_tx` |
-| `AT-SPLITDBFUNDAMENTALS-10` | `at_splitdb_10_db_split_json_atomic_write` |
+| – | cites `AT-SPLITDBFUNDAMENTALS-01` | `at_splitdb_01_decision_matrix_thresholds` |
+| – | cites `AT-SPLITDBFUNDAMENTALS-02` | `at_splitdb_02_db_split_json_schema_valid` |
+| – | cites `AT-SPLITDBFUNDAMENTALS-03` | `at_splitdb_03_attach_at_connection_open` |
+| – | cites `AT-SPLITDBFUNDAMENTALS-04` | `at_splitdb_04_cross_db_join_via_repo_only` |
+| – | cites `AT-SPLITDBFUNDAMENTALS-05` | `at_splitdb_05_split_migrator_atomic_renames` |
+| – | cites `AT-SPLITDBFUNDAMENTALS-06` | `at_splitdb_06_merge_migrator_row_count_verify` |
+| – | cites `AT-SPLITDBFUNDAMENTALS-07` | `at_splitdb_07_premature_split_blocked` |
+| – | cites `AT-SPLITDBFUNDAMENTALS-08` | `at_splitdb_08_no_lazy_attach_per_query` |
+| – | cites `AT-SPLITDBFUNDAMENTALS-09` | `at_splitdb_09_detach_blocked_during_tx` |
+| – | cites `AT-SPLITDBFUNDAMENTALS-10` | `at_splitdb_10_db_split_json_atomic_write` |

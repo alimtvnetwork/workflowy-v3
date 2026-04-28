@@ -106,13 +106,13 @@ mv -T /var/lib/workflowy/current.rollback /var/lib/workflowy/current
 
 | Bind | AT id (cited) | Vitest slug |
 |---|---|---|
-| `AT-SELFUPDATEAPPUPDATE-01` | `at_selfupdate_01_check_emits_pascalcase_state` |
-| `AT-SELFUPDATEAPPUPDATE-02` | `at_selfupdate_02_verify_rejects_bad_sha256` |
-| `AT-SELFUPDATEAPPUPDATE-03` | `at_selfupdate_03_swap_is_atomic_rename` |
-| `AT-SELFUPDATEAPPUPDATE-04` | `at_selfupdate_04_healthcheck_5s_timeout` |
-| `AT-SELFUPDATEAPPUPDATE-05` | `at_selfupdate_05_rollback_restores_symlink` |
-| `AT-SELFUPDATEAPPUPDATE-06` | `at_selfupdate_06_exit_code_table_complete` |
-| `AT-SELFUPDATEAPPUPDATE-07` | `at_selfupdate_07_state_json_envelope_shape` |
-| `AT-SELFUPDATEAPPUPDATE-08` | `at_selfupdate_08_no_cp_in_swap_step` |
-| `AT-SELFUPDATEAPPUPDATE-09` | `at_selfupdate_09_sha256_before_swap` |
-| `AT-SELFUPDATEAPPUPDATE-10` | `at_selfupdate_10_rollback_alert_on_failure` |
+| – | cites `AT-SELFUPDATEAPPUPDATE-01` | `at_selfupdate_01_check_emits_pascalcase_state` |
+| – | cites `AT-SELFUPDATEAPPUPDATE-02` | `at_selfupdate_02_verify_rejects_bad_sha256` |
+| – | cites `AT-SELFUPDATEAPPUPDATE-03` | `at_selfupdate_03_swap_is_atomic_rename` |
+| – | cites `AT-SELFUPDATEAPPUPDATE-04` | `at_selfupdate_04_healthcheck_5s_timeout` |
+| – | cites `AT-SELFUPDATEAPPUPDATE-05` | `at_selfupdate_05_rollback_restores_symlink` |
+| – | cites `AT-SELFUPDATEAPPUPDATE-06` | `at_selfupdate_06_exit_code_table_complete` |
+| – | cites `AT-SELFUPDATEAPPUPDATE-07` | `at_selfupdate_07_state_json_envelope_shape` |
+| – | cites `AT-SELFUPDATEAPPUPDATE-08` | `at_selfupdate_08_no_cp_in_swap_step` |
+| – | cites `AT-SELFUPDATEAPPUPDATE-09` | `at_selfupdate_09_sha256_before_swap` |
+| – | cites `AT-SELFUPDATEAPPUPDATE-10` | `at_selfupdate_10_rollback_alert_on_failure` |

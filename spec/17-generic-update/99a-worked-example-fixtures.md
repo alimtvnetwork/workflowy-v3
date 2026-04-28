@@ -158,13 +158,13 @@ diff build-1.sha256 build-2.sha256   # exit 0 = pass
 
 | Bind | AT id (cited) | Vitest slug |
 |---|---|---|
-| `AT-GENERICUPDATE-01` | `at_genericupdate_01_manifest_envelope_pascalcase` |
-| `AT-GENERICUPDATE-02` | `at_genericupdate_02_ajv_validates_schema` |
-| `AT-GENERICUPDATE-03` | `at_genericupdate_03_atomic_renameat2_trace` |
-| `AT-GENERICUPDATE-04` | `at_genericupdate_04_reproducible_build_sha256` |
-| `AT-GENERICUPDATE-05` | `at_genericupdate_05_healthcheck_pascalcase_envelope` |
-| `AT-GENERICUPDATE-06` | `at_genericupdate_06_exit_codes_table_match` |
-| `AT-GENERICUPDATE-07` | `at_genericupdate_07_min_previous_version_gate` |
-| `AT-GENERICUPDATE-08` | `at_genericupdate_08_no_unlink_symlink_pattern` |
-| `AT-GENERICUPDATE-09` | `at_genericupdate_09_sha256_field_not_url_fragment` |
-| `AT-GENERICUPDATE-10` | `at_genericupdate_10_bytes_field_is_integer` |
+| – | cites `AT-GENERICUPDATE-01` | `at_genericupdate_01_manifest_envelope_pascalcase` |
+| – | cites `AT-GENERICUPDATE-02` | `at_genericupdate_02_ajv_validates_schema` |
+| – | cites `AT-GENERICUPDATE-03` | `at_genericupdate_03_atomic_renameat2_trace` |
+| – | cites `AT-GENERICUPDATE-04` | `at_genericupdate_04_reproducible_build_sha256` |
+| – | cites `AT-GENERICUPDATE-05` | `at_genericupdate_05_healthcheck_pascalcase_envelope` |
+| – | cites `AT-GENERICUPDATE-06` | `at_genericupdate_06_exit_codes_table_match` |
+| – | cites `AT-GENERICUPDATE-07` | `at_genericupdate_07_min_previous_version_gate` |
+| – | cites `AT-GENERICUPDATE-08` | `at_genericupdate_08_no_unlink_symlink_pattern` |
+| – | cites `AT-GENERICUPDATE-09` | `at_genericupdate_09_sha256_field_not_url_fragment` |
+| – | cites `AT-GENERICUPDATE-10` | `at_genericupdate_10_bytes_field_is_integer` |

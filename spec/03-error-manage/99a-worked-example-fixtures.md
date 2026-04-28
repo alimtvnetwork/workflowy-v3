@@ -121,13 +121,13 @@ export interface ErrorModalProps {
 
 | Bind | AT id (cited) | Vitest slug |
 |---|---|---|
-| `AT-ERRORRESOLUTION-01` | `at_errorresolution_01_envelope_pascalcase_shape` |
-| `AT-ERRORRESOLUTION-02` | `at_errorresolution_02_code_regex_namespace` |
-| `AT-ERRORRESOLUTION-03` | `at_errorresolution_03_severity_enum_closed` |
-| `AT-ERRORRESOLUTION-04` | `at_errorresolution_04_traceid_is_ulid` |
-| `AT-ERRORRESOLUTION-05` | `at_errorresolution_05_redaction_email_ip_token` |
-| `AT-ERRORRESOLUTION-06` | `at_errorresolution_06_errormodal_renders_single` |
-| `AT-ERRORRESOLUTION-07` | `at_errorresolution_07_errormodal_accordion_multi` |
-| `AT-ERRORRESOLUTION-08` | `at_errorresolution_08_stack_hidden_in_prod` |
-| `AT-ERRORRESOLUTION-09` | `at_errorresolution_09_registry_codes_unique` |
-| `AT-ERRORRESOLUTION-10` | `at_errorresolution_10_methodsstack_chain_present` |
+| – | cites `AT-ERRORRESOLUTION-01` | `at_errorresolution_01_envelope_pascalcase_shape` |
+| – | cites `AT-ERRORRESOLUTION-02` | `at_errorresolution_02_code_regex_namespace` |
+| – | cites `AT-ERRORRESOLUTION-03` | `at_errorresolution_03_severity_enum_closed` |
+| – | cites `AT-ERRORRESOLUTION-04` | `at_errorresolution_04_traceid_is_ulid` |
+| – | cites `AT-ERRORRESOLUTION-05` | `at_errorresolution_05_redaction_email_ip_token` |
+| – | cites `AT-ERRORRESOLUTION-06` | `at_errorresolution_06_errormodal_renders_single` |
+| – | cites `AT-ERRORRESOLUTION-07` | `at_errorresolution_07_errormodal_accordion_multi` |
+| – | cites `AT-ERRORRESOLUTION-08` | `at_errorresolution_08_stack_hidden_in_prod` |
+| – | cites `AT-ERRORRESOLUTION-09` | `at_errorresolution_09_registry_codes_unique` |
+| – | cites `AT-ERRORRESOLUTION-10` | `at_errorresolution_10_methodsstack_chain_present` |
