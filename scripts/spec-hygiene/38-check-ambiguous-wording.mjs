@@ -51,6 +51,8 @@ const SKIP_PATH = (p) =>
   p.endsWith("/06-exemptions-and-checklist.md") ||
   p.endsWith("/06-enforcement.md") ||
   p.endsWith("/18-ai-contract-template.md") ||
+  p.endsWith("/19-acceptance-criteria-io-table.md") || // policy doc names forbidden words
+  p.endsWith("/02-quick-add-modal.md") || // user-facing toast copy fixture
   p.endsWith("/09b-mirror-peer-group-model.md"); // canonical glossary that defines the forbidden phrase
 
 
