@@ -200,6 +200,61 @@ Displayed in very small, muted text.
 
 ---
 
+## Workflowy Feature Reference (F3) — Item Menu, Slash Commands & Structural Ops
+
+> **Source:** Workflowy product feature list, merged 2026-04-28 (lossless, additive). Reproduced verbatim; cross-linked to existing menu-row tables above.
+
+### Item Menu (⋮) Inventory
+
+The `⋮` button on every item row opens this menu. Items appear in this order; entries marked _conditional_ are hidden when not applicable.
+
+- **Duplicate** — Create a sibling copy of the item and its entire subtree. Copies preserve content, type, and attachments; tags retain their literal text but become independent. (item-menu)
+- **Copy Internal Link** — Copy a `wf://item/<id>` URL to the clipboard. Pasting it elsewhere in WorkFlowy creates an inline link that resolves on click; pasting it externally yields a normal URL. (item-menu)
+- **Move To** — Open the move-target picker; selecting a destination re-parents the item (and its subtree). Cycle-protected. (item-menu, shortcut: ⌘+Shift+M)
+- **Move Here** — When triggered from a destination's `+` slot during multi-select, moves the current selection to this anchor. (multi-select chrome)
+- **Mirror** — Create a mirror peer of the item. The new peer joins the source's peer group; if the item had no group, a new group is created. See [`./09-mirrors.md`](./09-mirrors.md) F3 appendix. (item-menu)
+- **Mirror To** — Open a target picker and create the mirror peer at the chosen location. (item-menu, shortcut: ⌘+Shift+L)
+- **Mirror Here** — Companion to Move Here for mirror placement during a multi-select drag. (multi-select chrome)
+- **Detach Mirror** — Remove the item from its peer group. If the group reduces to a singleton, the group is dissolved (per `mem://features/mirroring`). (item-menu, _conditional:_ visible only when the item is in a peer group of size ≥ 2)
+- **See Mirrors** — Open a panel listing every other peer in this item's peer group, with breadcrumb path to each. Click to jump. (item-menu, _conditional:_ visible only when peer-group size ≥ 2)
+- **Show Completed / Hide Completed** — Per-page toggle: when off, items with `completed=true` are hidden from rendering. State is per-user, per-page. (item-menu, shortcut: ⌘+Shift+C)
+- **Expand All** — Recursively expand the item and every descendant. Capped by the 250-item view limit (per Core memory). (item-menu, shortcut: ⌘+Shift+↓)
+- **Collapse All** — Recursively collapse the item and every descendant. (item-menu, shortcut: ⌘+Shift+↑)
+- **Delete** — Soft-delete the item and its subtree. Items go to Trash and are hard-deleted after 30 days (`mem://features/trash-logic`). (item-menu, shortcut: ⌘⌫)
+- **Share** — Open the share dialog. (item-menu) → see [`./08-share-dialog.md`](./08-share-dialog.md) F4 appendix.
+- **Add to Templates** — Snapshot the item's subtree as a reusable template. (item-menu, also via `#template` tag) → see [`./13-templates.md`](./13-templates.md) F4 appendix.
+- **Export** — Export the item subtree (Markdown / OPML / plain text). (item-menu) → see [`./13-templates.md`](./13-templates.md) F4 appendix.
+- **Print** — Browser print dialog scoped to the current item subtree. (item-menu)
+
+### Inline Links
+
+- **Internal Links** — `wf://item/<id>` URLs auto-resolve to inline pills showing the target item's content; click to navigate.
+- **Backlinks** — Below an item, an automatically maintained list of every item whose content contains an internal link to it. Click to jump. (component: `backlinks-panel`)
+- **External Links** — Pasted `http(s)://` URLs become inline link pills (also editable via ⌘K).
+- **Remove Link** — Strip the link mark from the selected text without deleting the visible label. (selection toolbar, shortcut: ⌘+Shift+K)
+
+### Slash Commands (canonical inventory)
+
+Typing `/` at the start of an empty item (or after a space) opens the slash menu. The full list, in display order:
+
+| Command | Action |
+|---|---|
+| `/bullet`, `/todo`, `/h1`, `/h2`, `/paragraph`, `/numbered`, `/code`, `/quote`, `/divider`, `/board`, `/dashboard` | Convert item type. (F1) |
+| `/note` | Add a note block under the item. (F1) |
+| `/date` | Insert a date chip at the cursor. (F2) |
+| `/upload` | Open file picker; attach selection to the item. (F1) |
+| `/star` | Toggle Star/Bookmark on the item. (F2) |
+| `/template` | Mark the item as a template (equivalent to `#template` tag). (F4) |
+| `/mirror` | Create a mirror peer at the cursor's current item. (F3) |
+| `/move` | Open Move-To picker. (F3) |
+| `/share` | Open Share dialog. (F4) |
+| `/export` | Open Export dialog. (F4) |
+| `/help` | Open Help panel. (F5) |
+
+> **Reconciliation note (F7 candidate):** every slash command above MUST resolve to either an item-menu entry or an interaction handler. Any command without a binding is a hygiene violation.
+
+---
+
 ## Related
 
 - [04-page-content-area.md](./04-page-content-area.md) — where the ⋮ trigger lives in the row
