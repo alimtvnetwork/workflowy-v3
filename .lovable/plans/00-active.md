@@ -102,9 +102,9 @@ Pick the top 🟦 item on every `next`. Strike (✅) when done; new top item bec
 **Targets:** `01-information-model.md`, `05a-hotkey-table.md`, `mem://architecture/data-model`, `mem://features/mirroring`.
 **✅ Done 2026-04-28:** Reconciled all 12 flags raised across F1–F6 (F1×1, F2×2, F3×3, F4×4, F5×2). Created [`./archive/09-f07-reconciliation.md`](./archive/09-f07-reconciliation.md) with concrete resolution + owning SSOT for each flag. Extended G-38 BANNED list with `"mirror copy"` per F3-2. Three follow-up tickets escalated (P5-prereq for `/me/*` matrix rows, P11-candidate for slash→endpoint linter, roadmap entry for recurring date chips). Hygiene PASS; only pre-existing `ItemType` enum drift carried over.
 
-### F8 — Uniform feature-block format pass
+### ✅ F8 — Uniform feature-block format pass
 **Targets:** every file touched by F1–F6.
-**Action:** enforce `**Feature Title** — Description` block, shortcut at end, slash command inline, search operators in backticks.
+**✅ Done 2026-04-28:** Created format SSOT [`spec/01-spec-authoring-guide/21-feature-block-format.md`](../../spec/01-spec-authoring-guide/21-feature-block-format.md) (R1 `**Title** — Description`, R2 shortcut at end in backticks, R3 `/command` inline, R4 search operators in backticks) + gate G-39 ([`scripts/spec-hygiene/39-check-feature-block-format.mjs`](../../scripts/spec-hygiene/39-check-feature-block-format.mjs)) wired into `00-run-all.mjs`. Gate ships in **report-only** mode for the baseline; surfaces 29 pre-existing prose violations across 9 F1–F6 files (mostly parenthetical shortcuts mid-sentence). Cleanup queued in [`./archive/10-f08-feature-block-format.md`](./archive/10-f08-feature-block-format.md) as a P11+ follow-up; flip `ENFORCE = true` once drained. Hygiene PASS.
 
 ### P5 — Promote `35-enforcement-rules` and `33-feedback-report` from scaffolds
 **Targets:** their `00-overview.md` + `97-acceptance-criteria.md`.
