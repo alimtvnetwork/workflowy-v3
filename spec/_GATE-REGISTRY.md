@@ -1,7 +1,7 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.1.3  
-> **Updated:** 2026-04-28 — patch: §5 Known Gaps now records the citation-vs-row reconciliation (295 unique cited / 292 real gate IDs / 290 active rows / 2 superseded rows / 3 documentation placeholders). Prior: 1.1.2 (G-26-WIRE-OWNERID-ONLY dual tier), 1.1.1 (added the gate), 1.1.0 (20 new gates from ADR-0012 §D7, ADR-0027, ADR-0028).  
+> **Version:** 1.1.4  
+> **Updated:** 2026-04-28 — patch: +1 gate `G-13-PLACEHOLDER-TOKEN-PARITY` (drift guard for §5.1 reconciliation table). Prior: 1.1.3 (§5.1 reconciliation), 1.1.2 (G-26-WIRE-OWNERID-ONLY dual tier), 1.1.1 (added the gate), 1.1.0 (20 new gates from ADR-0012 §D7, ADR-0027, ADR-0028).  
 > **Status:** Active  
 > **Purpose:** Single registry of every `G-*` compliance gate referenced anywhere in `spec/`. Each gate is classified by enforcement tier so AI implementers can tell at a glance which gates a CI pipeline must mechanically enforce vs. which are normative documentation invariants vs. which require test fixtures.
 
