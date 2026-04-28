@@ -125,8 +125,8 @@ walk(ROOT, (file) => {
   if (file.endsWith("/00-overview-condensed.md")) return;
   // P13: derivative documentation files cite ATs but never DEFINE them.
   // Treat their H3 `### AT-… —` headings as citations, not definitions.
-  const CITE_ONLY = file.endsWith("/spec/23-ai-build-walkthrough.md")
-    || file.endsWith("/spec/31-app/06-endpoints/16-endpoint-at-matrix.md");
+  const CITE_ONLY = file.endsWith("spec/23-ai-build-walkthrough.md")
+    || file.endsWith("spec/31-app/06-endpoints/16-endpoint-at-matrix.md");
   const rel = relative(".", file);
   const lines = readFileSync(file, "utf8").split("\n");
 
