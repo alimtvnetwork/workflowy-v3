@@ -248,3 +248,16 @@ Whenever a spec sentence uses a plural domain noun, it refers to the singular DD
 
 - [`../00-overview.md`](../00-overview.md) — Parent overview
 - [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) — Acceptance criteria
+
+
+---
+
+## 🔖 ADR Backlinks (P46)
+
+The rules in this section are load-bearing because they are ratified by:
+
+- **[ADR-0001 — Singular DDL vs plural prose](../00-adrs/0001-singular-ddl-vs-plural-prose.md)** (`Accepted` 2026-04-28) — anchors gates `G-04-ALIAS-DDL-CANONICAL`, `G-04-NO-DDL-PLURALS`, and Golden Rule #7. Locks the singular-PascalCase DDL identifiers and the forbidden endpoint families (`EP-FAVORITES-*`, `EP-CONTENT-*`, `EP-FAVORITE-*`).
+- **[ADR-0002 — WordPress plugin + PHP 8.1+ + SQLite as the sole backend runtime](../00-adrs/0002-wp-plugin-php-sqlite-backend.md)** (`Accepted` 2026-04-28) — locks SQLite as the storage engine for every identifier ratified by ADR-0001.
+
+To change any rule above, file a new ADR that **supersedes** the relevant one (see [`spec/00-adrs/00-overview.md`](../00-adrs/00-overview.md) → status lifecycle).
+

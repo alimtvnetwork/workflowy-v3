@@ -245,3 +245,16 @@ sections **"Spec↔DDL Alias Bridge"**, **Golden Rule #7**, and gates
 **Rule of resolution:** if prose here and DDL there appear to disagree,
 **DDL wins**. File an ADR under `spec/00-adrs/` to change DDL; never silently
 re-alias prose to imply a schema change.
+
+
+---
+
+## 🔖 ADR Backlinks (P46)
+
+Everything in `spec/31-app/` is load-bearing because of:
+
+- **[ADR-0001 — Singular DDL vs plural prose](../00-adrs/0001-singular-ddl-vs-plural-prose.md)** (`Accepted` 2026-04-28) — every plural prose alias used in app pages (`items`, `users`, `mirrors`, `favorites`, `templates`, `sessions`, `roles`) is permitted **only** as an alias over the singular DDL identifier locked by this ADR.
+- **[ADR-0002 — WP plugin + PHP 8.1+ + SQLite](../00-adrs/0002-wp-plugin-php-sqlite-backend.md)** (`Accepted` 2026-04-28) — every `EP-*` endpoint, every SSE stream, and every persistence rule in this section assumes the runtime locked by this ADR.
+
+To change any of these assumptions, file a new ADR that supersedes the relevant one. See [`spec/00-adrs/00-overview.md`](../00-adrs/00-overview.md).
+
