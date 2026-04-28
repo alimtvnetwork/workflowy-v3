@@ -16,7 +16,7 @@
  *
  *     <!-- f8-format-block: enforce -->
  *
- * Exempt: files under `_archive*/`, `18-spec-issues/`, and the SSOT itself.
+ * Exempt: files under _archive folders, 18-spec-issues, and the SSOT itself.
  */
 import { readFileSync, existsSync } from "node:fs";
 
