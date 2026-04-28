@@ -113,11 +113,10 @@ function scanFile(path) {
 
 for (const f of F1_F6_FILES) scanFile(f);
 
-// G-39 ships in report-only mode for the F8 baseline. The 29 known
-// pre-existing violations (parenthetical shortcuts mid-sentence) are
-// queued for fix in .lovable/plans/archive/10-f08-feature-block-format.md.
-// Once the queue is drained, flip ENFORCE = true.
-const ENFORCE = false;
+// G-39 ships ENFORCING after the P12 cleanup (29 → 0 violations).
+// R3 false-positive on "word/word" prose constructs fixed by tightening
+// SLASH_INLINE_RE to require leading whitespace/( — see above.
+const ENFORCE = true;
 
 if (findings.length === 0) {
   console.log(`✅ G-39: feature-block format clean across ${F1_F6_FILES.length} F1–F6 files`);
