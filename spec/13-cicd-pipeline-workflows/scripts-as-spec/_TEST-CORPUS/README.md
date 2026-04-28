@@ -36,8 +36,8 @@ substring(s) in stdout.
 
 | File | Targets | Phase | Expected exit | Expected stdout substring |
 |------|---------|-------|--------------:|---------------------------|
-| [`PHASE-4-FAIL-asymmetric-backlink.md`](./PHASE-4-FAIL-asymmetric-backlink.md) | `G-13-FIXTURE-AS-SPEC-SHAPE` | 4 | `1` | `registry row for ... links to ..., expected back-link to "PHASE-4-FAIL-asymmetric-backlink.md"` |
-| [`PHASE-4-FAIL-strikethrough-only.md`](./PHASE-4-FAIL-strikethrough-only.md) | `G-13-FIXTURE-AS-SPEC-SHAPE` | 4 | `1` | `registry row for \`G-28-NO-PHYSICAL-MARGINS\` links to ".../0028-i18n-locale-strategy.md"` |
+| [`PHASE-4-FAIL-asymmetric-backlink.md`](./PHASE-4-FAIL-asymmetric-backlink.md) | `G-13-FIXTURE-AS-SPEC-SHAPE` (cited; row points to production fixture, not this file) | 4 | `1` | `registry row for \`G-13-FIXTURE-AS-SPEC-SHAPE\` links to "./13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md", expected back-link to "PHASE-4-FAIL-asymmetric-backlink.md"` |
+| [`PHASE-4-FAIL-strikethrough-only.md`](./PHASE-4-FAIL-strikethrough-only.md) | `G-28-NO-PHYSICAL-MARGINS` (superseded strikethrough row in registry) **plus** `G-13-FIXTURE-AS-SPEC-SHAPE` (asymmetric like the other case). Expect TWO violation lines. | 4 | `1` | `registry row for \`G-28-NO-PHYSICAL-MARGINS\` links to "./00-adrs/0028-i18n-locale-strategy.md", expected back-link to "PHASE-4-FAIL-strikethrough-only.md"` |
 
 ---
 
