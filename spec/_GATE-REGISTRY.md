@@ -1,7 +1,7 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.1.1  
-> **Updated:** 2026-04-28 — patch: added `G-26-WIRE-OWNERID-ONLY` (CI) from ADR-0026 §D6 amendment (wire-boundary `OwnerId`-only enforcement; `OwnerUserId` is DDL-only). Prior: 1.1.0 (2026-04-28 — 20 new gates from ADR-0012 §D7, ADR-0027, ADR-0028).  
+> **Version:** 1.1.2  
+> **Updated:** 2026-04-28 — patch: `G-26-WIRE-OWNERID-ONLY` promoted to **CI + TEST** dual tier with the addition of `AT-WIRE-EGRESS-01` PHP serializer egress test (specified in `spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md`). Prior: 1.1.1 (added the gate), 1.1.0 (20 new gates from ADR-0012 §D7, ADR-0027, ADR-0028).  
 > **Status:** Active  
 > **Purpose:** Single registry of every `G-*` compliance gate referenced anywhere in `spec/`. Each gate is classified by enforcement tier so AI implementers can tell at a glance which gates a CI pipeline must mechanically enforce vs. which are normative documentation invariants vs. which require test fixtures.
 
