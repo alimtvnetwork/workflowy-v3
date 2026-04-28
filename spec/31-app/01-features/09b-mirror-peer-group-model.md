@@ -290,7 +290,7 @@ This migration is in [`07-db-diagram/sql/07-migration-v2-mirror-peer-groups.sql`
 |---|---|---|
 | "Create a mirror of X" | Add a new peer to X's group; if no group exists, create one with X and the new peer. | AT-MPG-01, AT-MPG-02 |
 | "The original / source" | Group founder by `created_at` (ties broken by `id` ascending). UI must NOT label any peer as "the original". | AT-MPG-03 |
-| "The mirror copy" | Any peer other than the founder. UX-equivalent to founder; all CRUD propagates. | AT-MPG-03, AT-MPG-04 |
+| "The `mirror copy`" (forbidden) | Legacy phrase. Any peer other than the founder; UX-equivalent to founder; all CRUD propagates. Use "peer" instead. | AT-MPG-03, AT-MPG-04 |
 | "Detach mirror" | Remove the peer from its group; if group ≤ 1 after removal, dissolve the group (`is_active=false` on the group row, peers become standalone items). | AT-MPG-05, AT-MPG-06 |
 | "See mirrors" panel | Read-only listing of every other peer in the group with breadcrumb path; backed by `mirror_peer_groups.id` lookup. | AT-MPG-07 |
 | "Edit a mirror" | Edit any peer; mutation broadcasts to all peers in the group with LWW tiebreak (`updated_at` desc, `id` asc). | AT-MPG-08 |
@@ -300,7 +300,7 @@ This migration is in [`07-db-diagram/sql/07-migration-v2-mirror-peer-groups.sql`
 ### Vocabulary policy
 
 1. Spec text (this folder) MAY use "mirror" as a noun synonym for "peer", BUT every use must be hyperlinked to this peer-group model file on first occurrence per page.
-2. UI copy strings MUST prefer "peer" / "linked item" over "mirror copy". A linter check (F7) will scan `src/components/**` and the design-system spec for the forbidden phrase "mirror copy".
+2. UI copy strings MUST prefer "peer" / "linked item" over the legacy `mirror copy` phrasing. A linter check (F7) MUST scan `src/components/**` and the design-system spec for the forbidden phrase `mirror copy`.
 3. Database identifiers stay canonical: tables remain `mirror_peer_groups` / `mirror_peer_group_members`; no rename to "mirror_copies".
 
 > Cross-link: user-facing UX in [`./09-mirrors.md`](./09-mirrors.md) F3 appendix; item-menu entries in [`./06-item-context-menu.md`](./06-item-context-menu.md) F3 appendix.
