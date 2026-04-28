@@ -14663,6 +14663,30 @@
       "defined_line": 85,
       "cited_in": [
         {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 19
+        },
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 29
+        },
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 43
+        },
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 73
+        },
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 155
+        },
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 172
+        },
+        {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 155
         },
@@ -14686,6 +14710,18 @@
       "defined_in": "spec/31-app/01-features/10-today-view.md",
       "defined_line": 86,
       "cited_in": [
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 74
+        },
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 156
+        },
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 173
+        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 156
@@ -14722,6 +14758,10 @@
       "defined_in": "spec/31-app/01-features/10-today-view.md",
       "defined_line": 88,
       "cited_in": [
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 155
+        },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
           "line": 235
@@ -14769,7 +14809,20 @@
       "definition": "Item TZ is today in user TZ but yesterday in UTC",
       "defined_in": "spec/31-app/01-features/10-today-view.md",
       "defined_line": 92,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 75
+        },
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 91
+        },
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 174
+        }
+      ]
     },
     {
       "id": "AT-TODAY-09",
@@ -14777,6 +14830,10 @@
       "defined_in": "spec/31-app/01-features/10-today-view.md",
       "defined_line": 93,
       "cited_in": [
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 92
+        },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
           "line": 239
@@ -14788,28 +14845,72 @@
       "definition": "Item is a mirror",
       "defined_in": "spec/31-app/01-features/10-today-view.md",
       "defined_line": 94,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 76
+        },
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 158
+        },
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 175
+        }
+      ]
     },
     {
       "id": "AT-TODAY-11",
       "definition": "View is open at 23:59 local",
       "defined_in": "spec/31-app/01-features/10-today-view.md",
       "defined_line": 95,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 77
+        },
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 161
+        },
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 176
+        }
+      ]
     },
     {
       "id": "AT-TODAY-12",
       "definition": "User clicks a breadcrumb header",
       "defined_in": "spec/31-app/01-features/10-today-view.md",
       "defined_line": 96,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 157
+        }
+      ]
     },
     {
       "id": "AT-TODAY-13",
       "definition": "Network drops",
       "defined_in": "spec/31-app/01-features/10-today-view.md",
       "defined_line": 97,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 78
+        },
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 159
+        },
+        {
+          "file": "spec/23-ai-build-walkthrough.md",
+          "line": 177
+        }
+      ]
     },
     {
       "id": "AT-TODAY-14",

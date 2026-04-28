@@ -36,12 +36,13 @@
 | 20 | [`20-enums-index.md`](./20-enums-index.md) | Enums Index — Cross-Language Registry | 177 |
 | 21 | [`21-ai-readiness-audit-round-2.md`](./21-ai-readiness-audit-round-2.md) | AI-Readiness Audit Report — Round 2 (post C/M/H/L tier completion) | 138 |
 | 22 | [`22-contract-json.md`](./22-contract-json.md) | `spec/contract.json` — Machine-Readable Spec Contract | 104 |
-| 23 | [`31-app/`](./31-app/00-overview.md) | App | subfolder |
-| 24 | [`32-ui-design/`](./32-ui-design/00-overview.md) | UI Design | subfolder |
-| 25 | [`33-feedback-report/`](./33-feedback-report/00-overview.md) | Feedback Report — Feature Spec | subfolder |
-| 26 | [`34-activity-feed/`](./34-activity-feed/00-overview.md) | Activity Feed — Feature Spec | subfolder |
-| 27 | [`35-enforcement-rules/`](./35-enforcement-rules/00-overview.md) | Enforcement Rules — Spec | subfolder |
-| 28 | [`36-user-management/`](./36-user-management/00-overview.md) | User Management — Feature Spec | subfolder |
+| 23 | [`23-ai-build-walkthrough.md`](./23-ai-build-walkthrough.md) | AI Build Walkthrough — End-to-End Smoke Test (P9) | 240 |
+| 24 | [`31-app/`](./31-app/00-overview.md) | App | subfolder |
+| 25 | [`32-ui-design/`](./32-ui-design/00-overview.md) | UI Design | subfolder |
+| 26 | [`33-feedback-report/`](./33-feedback-report/00-overview.md) | Feedback Report — Feature Spec | subfolder |
+| 27 | [`34-activity-feed/`](./34-activity-feed/00-overview.md) | Activity Feed — Feature Spec | subfolder |
+| 28 | [`35-enforcement-rules/`](./35-enforcement-rules/00-overview.md) | Enforcement Rules — Spec | subfolder |
+| 29 | [`36-user-management/`](./36-user-management/00-overview.md) | User Management — Feature Spec | subfolder |
 
 <!-- AUTO-TOC:END -->
 
