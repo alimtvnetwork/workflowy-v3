@@ -12,7 +12,7 @@
 
 **Out of Scope** —
 - Spec authoring conventions — see [`spec/01-spec-authoring-guide/`](../01-spec-authoring-guide/00-overview.md)
-- Search ranking — see [`mem://features/search-functionality`](../31-app/01-features/08-search.md)
+- Search ranking — see [`mem://features/search-functionality`](../31-app/01-features/16-search-ranking.md)
 
 **Definition of Done** —
 - Every link in a rendered spec file resolves (no client-side 404s)
