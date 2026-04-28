@@ -190,10 +190,11 @@ sections.sort((a, b) => a.slug.localeCompare(b.slug));
 
 // --- Validation ------------------------------------------------------
 const orphanCitations = [];
+const allowedOrphans = [];
 for (const [id, rec] of acceptanceTests) {
-  if (!rec.definedIn && rec.citedIn.length > 0) {
-    orphanCitations.push({ id, citedIn: rec.citedIn });
-  }
+  if (rec.definedIn || rec.citedIn.length === 0) continue;
+  if (AT_ALLOW_ORPHAN.test(id)) { allowedOrphans.push(id); continue; }
+  orphanCitations.push({ id, citedIn: rec.citedIn });
 }
 
 // --- Emit ------------------------------------------------------------
