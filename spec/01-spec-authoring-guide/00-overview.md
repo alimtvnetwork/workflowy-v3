@@ -24,7 +24,7 @@
 - Every authored file passes `node scripts/spec-hygiene/00-run-all.mjs` (G-01 numbering through G-40 AT-citation completeness)
 - No `_TODO(P1)_`, `TBD`, `FIXME`, or `XXX` tokens outside the allow-list (gate G-38)
 - AT IDs introduced are reachable from `spec/contract.json` (gate G-40)
-- `AT-AUTHORING-01` through `AT-AUTHORING-NN` from `97-acceptance-criteria.md` pass
+- `AC-001` through `AC-018` from `97-acceptance-criteria.md` pass
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

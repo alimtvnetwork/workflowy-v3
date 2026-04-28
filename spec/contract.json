@@ -5,7 +5,7 @@
   "do_not_edit": true,
   "counts": {
     "acceptance_tests_defined": 2257,
-    "acceptance_tests_orphan_citations": 1,
+    "acceptance_tests_orphan_citations": 0,
     "endpoints": 48,
     "enums": 23,
     "sections": 24
@@ -22887,15 +22887,5 @@
       ]
     }
   ],
-  "orphan_at_citations": [
-    {
-      "id": "AT-AUTHORING-01",
-      "citedIn": [
-        {
-          "file": "spec/01-spec-authoring-guide/00-overview.md",
-          "line": 27
-        }
-      ]
-    }
-  ]
+  "orphan_at_citations": []
 }
