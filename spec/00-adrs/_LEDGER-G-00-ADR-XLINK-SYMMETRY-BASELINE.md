@@ -49,9 +49,11 @@ matching back-link in the same change.
    the corresponding ledger row, with a `Superseded-by:` note if the
    removal is consequential.
 3. **Re-running the audit:** quarterly, or whenever a new ADR reaches
-   `Accepted` status. The audit script lives at `/tmp/xlink_audit.py`
-   in the worked example; promote to `spec/13-cicd-pipeline-workflows/`
-   when `G-00-ADR-XLINK-SYMMETRY` is mechanized.
+   `Accepted` status. The audit algorithm is frozen at
+   [`spec/13-cicd-pipeline-workflows/scripts-as-spec/xlink-symmetry-audit.md`](../13-cicd-pipeline-workflows/scripts-as-spec/xlink-symmetry-audit.md);
+   copy the fenced code block into a runnable `.py` to execute. Promote
+   to a CI workflow under `spec/13-cicd-pipeline-workflows/` when
+   `G-00-ADR-XLINK-SYMMETRY` is mechanized.
 
 ## See also
 
