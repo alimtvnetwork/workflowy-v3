@@ -5,7 +5,7 @@
 > **Status:** ✅ P3 — REST envelope JSON fixtures per endpoint
 > **Parent:** [`./00-overview.md`](./00-overview.md)
 > **Matrix:** [`./16-endpoint-at-matrix.md`](./16-endpoint-at-matrix.md)
-> **Envelope SSOT:** [`../../04-database-conventions/06-rest-api-format/02-rest-samples.md`](../../../04-database-conventions/06-rest-api-format/02-rest-samples.md)
+> **Envelope SSOT:** [`../../04-database-conventions/06-rest-api-format/02-rest-samples.md`](../../04-database-conventions/06-rest-api-format/02-rest-samples.md)
 
 ---
 
@@ -277,9 +277,9 @@ node scripts/spec-hygiene/00-run-all.mjs
 
 - [`./16-endpoint-at-matrix.md`](./16-endpoint-at-matrix.md) — Endpoint → AT matrix (SSOT)
 - [`./97-acceptance-criteria.md`](./97-acceptance-criteria.md) — Endpoint-level ATs
-- [`../../04-database-conventions/06-rest-api-format/02-rest-samples.md`](../../../04-database-conventions/06-rest-api-format/02-rest-samples.md) — Canonical envelope samples (SSOT)
-- [`../../04-database-conventions/06-rest-api-format/03-envelope-and-flow.md`](../../../04-database-conventions/06-rest-api-format/03-envelope-and-flow.md) — Envelope quick reference
-- [`../../04-database-conventions/97a-acceptance-criteria-fixtures.md`](../../../04-database-conventions/97a-acceptance-criteria-fixtures.md) — DB-conventions fixtures (P2c)
+- [`../../04-database-conventions/06-rest-api-format/02-rest-samples.md`](../../04-database-conventions/06-rest-api-format/02-rest-samples.md) — Canonical envelope samples (SSOT)
+- [`../../04-database-conventions/06-rest-api-format/03-envelope-and-flow.md`](../../04-database-conventions/06-rest-api-format/03-envelope-and-flow.md) — Envelope quick reference
+- [`../../04-database-conventions/97a-acceptance-criteria-fixtures.md`](../../04-database-conventions/97a-acceptance-criteria-fixtures.md) — DB-conventions fixtures (P2c)
 
 ---
 
