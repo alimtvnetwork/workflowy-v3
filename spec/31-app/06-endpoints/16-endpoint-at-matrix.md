@@ -97,8 +97,10 @@ These are not repeated per row but every endpoint must pass them:
 | Endpoints with ≥1 specific AT | **47** |
 | Endpoints inheriting universal-envelope ATs | **47** (all) |
 | Total unique AT references in this file | **140+** |
+| Owner-bearing endpoints (`Owner: yes`) | **33** — covered by `AT-WIRE-EGRESS-01` |
+| Non-owner-bearing endpoints (`Owner: no`) | **15** — exempt from `AT-WIRE-EGRESS-01` |
 
-> If you add a new endpoint, this matrix MUST be updated in the same PR. CI gate (planned) `G29` will fail any PR that adds an `EP-*` symbol without a matching row here.
+> If you add a new endpoint, this matrix MUST be updated in the same PR. CI gate (planned) `G29` will fail any PR that adds an `EP-*` symbol without a matching row here. **Additionally, `AT-WIRE-EGRESS-01` A6 reads the `Owner` column at boot and fails the PHPUnit suite if any `Owner: yes` row lacks a serializer test case.**
 
 ---
 
