@@ -131,7 +131,7 @@ When the same setting can come from multiple sources, the CLI MUST resolve in th
 
 ## Anti-Patterns
 
-The AI MUST NOT:
+Anti-patterns enumerated below; each row binds to a specific enforcement gate (gates `G-16-JSON-PURE`, `G-16-EXIT-NONZERO-ON-FAIL`, `G-16-FLAG-STYLE`, `G-16-CONFIG-VIA-FLAG`, `G-16-TTY-DETECT`, `G-16-STRICT-FLAGS`). The AI MUST NOT do any of:
 
 | # | Anti-pattern | Why it fails | Gate that catches it |
 |---|---|---|---|
