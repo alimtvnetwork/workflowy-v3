@@ -125,8 +125,8 @@ When the same setting can come from multiple sources, the CLI MUST resolve in th
 
 **Rules:**
 - Boolean flags: `--no-foo` always overrides `--foo` regardless of order on the command line (last-no-wins is forbidden — too surprising).
-- Repeated scalar flags MUST exit `2 (UsageError)`. Repetition is reserved for explicitly list-typed flags (`--tag=a --tag=b`).
-- Unknown flags MUST exit `2`, never be silently ignored.
+- Repeated scalar flags MUST exit `2 (UsageError)` (gate `G-16-STRICT-FLAGS`). Repetition is reserved for explicitly list-typed flags (`--tag=a --tag=b`).
+- Unknown flags MUST exit `2`, never be silently ignored (gate `G-16-STRICT-FLAGS`).
 - `--json` and `--quiet` are **mutually exclusive** — combining them exits `2`.
 
 ## Anti-Patterns
