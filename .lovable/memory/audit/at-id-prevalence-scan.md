@@ -214,3 +214,12 @@ Path depth corrected from `../../../../../00-adrs/...` to `../../../../00-adrs/.
 - **Renames:** `47-check-adr-consequences-xlink.mjs` → `52-check-adr-consequences-xlink.mjs` (resolved slot collision with `47-drain-ai-contracts.mjs`); all 4 cross-references updated via sed.
 - **Registry:** v1.3.6 (gates 307→308; CI 37→38).
 - **Suite:** 36/36 checks passing (4 non-blocking WARNs from new freshness gate).
+
+---
+
+## 2026-04-29 — Task #12: G-00-OVERVIEW-SCORING-VALUES-FRESH baseline drained
+
+- Added `> Scoring fresh as of 2026-04-29` to 4 overviews lacking date metadata: `00-adrs/`, `16-generic-cli/`, `34-activity-feed/`, `36-user-management/`.
+- Runner now reports 25/25 fresh.
+- Same-day drain — gate ships green from day 1, simplifying future hard-fail promotion (task #19).
+- Suite: 36/36 checks passing, zero WARNs.
