@@ -1,12 +1,12 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.5.1  
-> **Updated:** 2026-04-29 — Task #11 (per-(gate, path) ledger schema spec, Phase-1): minted new gate `G-13-LEDGER-PER-GATE-PATH` (DOC-NORM, fixture-as-spec). New fixture-as-spec at [`spec/13-cicd-pipeline-workflows/scripts-as-spec/per-gate-path-ledger-schema.md`](./13-cicd-pipeline-workflows/scripts-as-spec/per-gate-path-ledger-schema.md) freezes the canonical 5-column ledger schema (`gate` × `pathGlob` × `entry` × `rationale` × `addedOn`), validation rules (gate-existence / glob-non-empty / no-overlap-info / rationale-prose / date-monotonicity), shared `loadPerGatePathLedger` helper contract, golden-input test fixture, and the 3-phase strictness roadmap (P1 spec → P2 migrate `REDUNDANCY_ALLOWLIST` → P3 promote to CI). Closes Task #18 polish bundle. Prior: 1.5.0 (xlink-symmetry Phase-2 promotion).
+> **Version:** 1.5.2  
+> **Updated:** 2026-04-29 — Task #11 Phase-2 (per-(gate, path) ledger migration): migrated all 41 entries of `REDUNDANCY_ALLOWLIST` from `scripts/spec-hygiene/30-check-at-citation-validity.mjs` to canonical sibling ledger [`spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md`](./01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md) using the 5-column schema frozen in Phase-1. Runner now loads the ledger via inline `loadG30RedundancyExemptions()` helper (≤15-line logic per ADR-0007 R3); in-source `REDUNDANCY_ALLOWLIST_INSOURCE` Set is empty, reserved for emergency overrides. G-30.2 behaviour preserved: 0 redundancy cleanup candidates pre- and post-migration. G-30.3 meta-rationale check trivially green (empty Set). Full hygiene sweep (36 runners) green after regenerating G-35 inventory snapshot. Prior: 1.5.1 (Phase-1 schema spec).
 
-- **Total named gates:** 310 (+1: `G-13-LEDGER-PER-GATE-PATH`)
+- **Total named gates:** 310 (unchanged)
 - **CI:** 40 (unchanged)
 - **TEST:** 14 (unchanged)
-- **DOC-NORM:** 54 (+1: `G-13-LEDGER-PER-GATE-PATH`)
+- **DOC-NORM:** 54 (unchanged)
 - **DOC:** 202 (unchanged)
 - **Areas covered:** 37 (unchanged)
 
