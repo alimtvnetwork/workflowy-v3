@@ -1,7 +1,7 @@
 # Coding Guidelines — Acceptance Criteria
 
-> **Version:** 3.1.0  
-> **Updated:** 2026-04-16
+> **Version:** 3.2.0  
+> **Updated:** 2026-04-29 — renamed 5 section headers `AC-01..05` → `AT-CG-G01..G05` and 22 row IDs `AC-001..022` → `AT-CG-001..022` (audit task #20, P2 hot-spot closed). Cascading rename applied to `00-overview-condensed.md` (same 27 IDs duplicated). New `AT-CG-` namespace registered. **27 active legacy IDs migrated.**
 
 ---
 
