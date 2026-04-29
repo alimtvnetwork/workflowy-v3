@@ -197,7 +197,7 @@ The framework's central `ErrorMiddleware` MUST (gate `G-03-MIDDLEWARE`):
 3. Append `RequestId` from the current request scope.
 4. Strip stack traces in production; include them only when `WORKFLOWY_DEBUG=1`.
 
-*All `Code` values shown are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings.*
+*All `Code` values shown are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings (gate `G-03-CODE-LOAD-BEARING`).*
 
 <!-- AUTO-TOC:START -->
 
