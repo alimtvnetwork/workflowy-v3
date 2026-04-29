@@ -34,6 +34,7 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { globToRegExp } from './_lib/per-gate-path-ledger.mjs';
+import { splitMdRow, splitMdHeader } from './_lib/md-table.mjs';
 
 const ROOT = process.cwd();
 const MANIFEST = join(ROOT, 'spec', '_AUDIT-EXEMPTIONS.md');
@@ -51,7 +52,7 @@ function loadManifest() {
 }
 
 function parseHeader(line) {
-  return line.split('|').map((c) => c.trim()).filter(Boolean);
+  return splitMdHeader(line);
 }
 
 function extractRows(src) {
@@ -71,8 +72,9 @@ function extractRows(src) {
     const l = lines[i];
     if (!l.trim() || l.startsWith('#')) break;
     if (!l.includes('|')) continue;
-    const cells = l.split('|').map((c) => c.trim().replace(/^`|`$/g, '')).filter((_, idx, arr) => idx > 0 && idx < arr.length - 1);
-    if (cells.length === 5) rows.push({ pathGlob: cells[0], category: cells[1], rationale: cells[2], closes: cells[3], addedOn: cells[4] });
+    const cells = splitMdRow(l);
+    if (cells.length !== 5) throw new Error(`I3 violated: row at line ${i + 1} has ${cells.length} cells (expected 5) — check for unescaped \`|\` outside backtick spans`);
+    rows.push({ pathGlob: cells[0], category: cells[1], rationale: cells[2], closes: cells[3], addedOn: cells[4] });
   }
   return rows;
 }
