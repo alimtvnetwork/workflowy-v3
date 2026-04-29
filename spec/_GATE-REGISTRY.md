@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.3  
-> **Updated:** 2026-04-29 — **batch-6 prose→AT migration:** registered new `Domain-SCOPING` subsection with 9 `G-NS-SCOPING-*` gates (3 promoting reserved-name gates from `spec/00-scoping.md` §Hygiene Gate to formal registry rows + 6 new DOC-NORM gates for §Classification Vocabulary and §Reclassification Procedure prose-MUSTs). Prior: 1.7.2 (batch-5 G-A4-* gates).
+> **Version:** 1.7.4  
+> **Updated:** 2026-04-29 — **batch-7 prose→AT migration:** registered new **Spec-Authoring · F8 Feature-Block Format** subsection with 5 `G-39*` gates (1 umbrella CI gate + 4 sub-rule CI gates) — promotes the inline-cited `G-39` (and 4 implicit R1–R4 sub-rules) to formal registry rows. Cross-linked to `AT-F8-01..04`. Prior: 1.7.3 (batch-6 G-NS-SCOPING-* gates).
 
-- **Total named gates:** 341 (+9 this revision: nine `G-NS-SCOPING-*`)
+- **Total named gates:** 346 (+5 this revision: `G-39`, `G-39-R1-ROW-SHAPE`, `G-39-R2-SHORTCUT-PLACEMENT`, `G-39-R3-SLASH-INLINE`, `G-39-R4-SEARCH-OPERATORS`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
-- **CI:** 44
+- **CI:** 49 (+5 this revision)
 - **TEST:** 14 (unchanged)
-- **DOC-NORM:** 77 (+9 this revision)
+- **DOC-NORM:** 77 (unchanged)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 39 (+1: Domain-SCOPING)
+- **Areas covered:** 40 (+1: Spec-Authoring · F8)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
@@ -558,6 +558,18 @@
 | `G-NS-SCOPING-AI-LEGACY-NOCONSUME` | **DOC-NORM** | [`spec/00-scoping.md`](./00-scoping.md) | AI implementer behaviour for `🗑 Legacy` rows: MUST NOT consume; MUST NOT emit code from; treat any feature-spec citation of a Legacy file as a stale reference and surface as a content bug. |
 | `G-NS-SCOPING-NO-SILENT-RECLASS` | **DOC-NORM** | [`spec/00-scoping.md`](./00-scoping.md) | A scope's status MUST NOT be silently changed. Reclassification requires a new ADR following the §"Reclassification Procedure" steps. |
 | `G-NS-SCOPING-RECLASS-ADR-COUPLING` | **DOC-NORM** | [`spec/00-scoping.md`](./00-scoping.md) | The reclassification ADR MUST cite this file and the row being changed; once `Accepted`, both files MUST land in the same PR. |
+
+### Spec-Authoring · F8 Feature-Block Format
+
+> Reserved gate IDs for the Feature-Reference Appendix block-format SSOT. `G-39` was already cited inline in `spec/01-spec-authoring-guide/21-feature-block-format.md` (front matter + R3/R4 prose) and bound by 4 ATs (`AT-F8-01..04`); batch-7 (2026-04-29) registers the umbrella gate and 4 sub-rule gates for parser visibility.
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-39` | **CI** | [`spec/01-spec-authoring-guide/21-feature-block-format.md`](./01-spec-authoring-guide/21-feature-block-format.md) | Umbrella gate — enforced by `scripts/spec-hygiene/39-check-feature-block-format.mjs`. Combines R1 (row shape), R2 (shortcut placement), R3 (slash-command backticks), R4 (search-operator backticks). In-scope files matched by `## Workflowy … Reference` / `F[1-6] … Appendix` headings or explicit opt-in marker. |
+| `G-39-R1-ROW-SHAPE` | **CI** | [`spec/01-spec-authoring-guide/21-feature-block-format.md`](./01-spec-authoring-guide/21-feature-block-format.md) | Every appendix feature row MUST use the form `**<Title>** — <Description>.`: true em-dash separator (U+2014, not `-`/`--`), bold title containing only the feature name (no shortcut/slash command), single-sentence description ending in a period. AT: `AT-F8-01`. |
+| `G-39-R2-SHORTCUT-PLACEMENT` | **CI** | [`spec/01-spec-authoring-guide/21-feature-block-format.md`](./01-spec-authoring-guide/21-feature-block-format.md) | When a feature carries a shortcut, it MUST appear at end of line, backtick-wrapped, prefixed `Shortcut:`. Multiple shortcuts comma-separated inside one backtick group. The shortcut MUST also appear in the canonical hotkey table (`spec/31-app/01-features/05-interactions.md`). AT: `AT-F8-02`. |
+| `G-39-R3-SLASH-INLINE` | **CI** | [`spec/01-spec-authoring-guide/21-feature-block-format.md`](./01-spec-authoring-guide/21-feature-block-format.md) | Slash commands MUST appear inline as `` `/command` `` backtick-wrapped. Bare `/command` outside backticks forbidden. URL paths (`/wp-json/…`, `/api/…`, `/items/…`) exempt. AT: `AT-F8-03`. |
+| `G-39-R4-SEARCH-OPERATORS` | **CI** | [`spec/01-spec-authoring-guide/21-feature-block-format.md`](./01-spec-authoring-guide/21-feature-block-format.md) | Search operators (`is:todo`, `in:Inbox`, `has:note`, `tag:#work`, `due:7d`, …) MUST be backtick-wrapped wherever they appear in prose. Bare operators forbidden. AT: `AT-F8-04`. |
 
 ### Meta-00
 
