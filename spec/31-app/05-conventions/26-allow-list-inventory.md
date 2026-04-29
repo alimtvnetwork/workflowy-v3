@@ -51,7 +51,7 @@ does not hide behind a green ✅.
 
 *open-prefix declarations exempt from redundancy ERROR.*
 
-Source: [`scripts/spec-hygiene/30-check-at-citation-validity.mjs:124`](../../../scripts/spec-hygiene/30-check-at-citation-validity.mjs#L124)
+Source: [`scripts/spec-hygiene/30-check-at-citation-validity.mjs:131`](../../../scripts/spec-hygiene/30-check-at-citation-validity.mjs#L131)
 
 _(empty)_
 
@@ -63,7 +63,7 @@ _(empty)_
 
 *asymmetric cross-flow links by design.*
 
-Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:174`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L174)
+Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:175`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L175)
 
 _(empty)_
 
@@ -71,7 +71,7 @@ _(empty)_
 
 *asymmetric feature cross-refs by design.*
 
-Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:178`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L178)
+Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:179`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L179)
 
 _(empty)_
 
@@ -79,7 +79,7 @@ _(empty)_
 
 *asymmetric endpoint cross-refs by design.*
 
-Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:182`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L182)
+Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:183`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L183)
 
 _(empty)_
 
@@ -87,7 +87,7 @@ _(empty)_
 
 *asymmetric db-diagram cross-refs by design.*
 
-Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:186`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L186)
+Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:187`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L187)
 
 _(empty)_
 
@@ -95,7 +95,7 @@ _(empty)_
 
 *workflow files with no peer cross-refs (legitimate).*
 
-Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:199`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L199)
+Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:200`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L200)
 
 _(empty)_
 
@@ -103,7 +103,7 @@ _(empty)_
 
 *feature files with no peer cross-refs (legitimate).*
 
-Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:203`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L203)
+Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:204`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L204)
 
 _(empty)_
 
@@ -111,7 +111,7 @@ _(empty)_
 
 *endpoint files with no peer cross-refs (legitimate).*
 
-Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:213`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L213)
+Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:214`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L214)
 
 _(empty)_
 
@@ -119,7 +119,7 @@ _(empty)_
 
 *db-diagram files with no peer cross-refs (legitimate).*
 
-Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:217`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L217)
+Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:218`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L218)
 
 _(empty)_
 
@@ -127,7 +127,7 @@ _(empty)_
 
 *workflow files using non-canonical related-section heading.*
 
-Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:228`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L228)
+Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:229`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L229)
 
 _(empty)_
 
@@ -135,7 +135,7 @@ _(empty)_
 
 *feature files using non-canonical related-section heading.*
 
-Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:232`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L232)
+Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:233`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L233)
 
 _(empty)_
 
@@ -143,7 +143,7 @@ _(empty)_
 
 *endpoint files using non-canonical related-section heading.*
 
-Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:236`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L236)
+Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:237`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L237)
 
 _(empty)_
 
@@ -151,7 +151,7 @@ _(empty)_
 
 *db-diagram files using non-canonical related-section heading.*
 
-Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:240`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L240)
+Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:241`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L241)
 
 _(empty)_
 
@@ -163,7 +163,7 @@ _(empty)_
 
 *DDL CREATE INDEX statements exempt from doc-row coverage.*
 
-Source: [`scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs:83`](../../../scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs#L83)
+Source: [`scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs:84`](../../../scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs#L84)
 
 _(empty)_
 
@@ -171,7 +171,7 @@ _(empty)_
 
 *doc rows allowed without a corresponding DDL CREATE INDEX.*
 
-Source: [`scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs:95`](../../../scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs#L95)
+Source: [`scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs:96`](../../../scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs#L96)
 
 _(empty)_
 
@@ -179,7 +179,7 @@ _(empty)_
 
 *indexes allowed to be non-UNIQUE despite UNIQUE-by-default policy.*
 
-Source: [`scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs:104`](../../../scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs#L104)
+Source: [`scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs:105`](../../../scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs#L105)
 
 _(empty)_
 
@@ -187,7 +187,7 @@ _(empty)_
 
 *doc rows whose columns/predicate intentionally diverge from DDL.*
 
-Source: [`scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs:112`](../../../scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs#L112)
+Source: [`scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs:113`](../../../scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs#L113)
 
 _(empty)_
 
