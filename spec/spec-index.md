@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-29  
-**Total Files:** 1460  
+**Total Files:** 1461  
 **Top-Level Folders:** 26
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -15,7 +15,7 @@
 
 ## Table of Contents
 
-- [00-adrs](#00-adrs) — 34 file(s)
+- [00-adrs](#00-adrs) — 35 file(s)
 - [01-spec-authoring-guide](#01-spec-authoring-guide) — 26 file(s)
 - [02-coding-guidelines](#02-coding-guidelines) — 310 file(s)
 - [03-error-manage](#03-error-manage) — 191 file(s)
@@ -49,6 +49,7 @@
 | File | Title | Version | Status |
 |------|-------|---------|--------|
 | [`00-adrs/_INDEX_AUTOMATION.md`](./00-adrs/_INDEX_AUTOMATION.md) | ADR Registry Index — Manual Update Protocol | — | Interim |
+| [`00-adrs/_LEDGER-G-00-ADR-CONSEQUENCES-XLINK-BASELINE.md`](./00-adrs/_LEDGER-G-00-ADR-CONSEQUENCES-XLINK-BASELINE.md) | Ledger — `G-00-ADR-CONSEQUENCES-XLINK` Baseline Allow-list | 1.0.0 | DEFERRED |
 | [`00-adrs/_LEDGER-G-00-ADR-XLINK-SYMMETRY-BASELINE.md`](./00-adrs/_LEDGER-G-00-ADR-XLINK-SYMMETRY-BASELINE.md) | Ledger — `G-00-ADR-XLINK-SYMMETRY` baseline (2026-04-28) | — | — |
 | [`00-adrs/_LEDGER-P48-PLURAL-DDL-SWEEP.md`](./00-adrs/_LEDGER-P48-PLURAL-DDL-SWEEP.md) | P48 Sweep Ledger — Plural-DDL References After ADR-0001 | — | — |
 | [`00-adrs/_TEMPLATE.md`](./00-adrs/_TEMPLATE.md) | ADR-NNNN: <Imperative, declarative title ≤ 8 words> | — | — |
@@ -1616,7 +1617,7 @@
 
 | File | Title | Version | Status |
 |------|-------|---------|--------|
-| [`_GATE-REGISTRY.md`](./_GATE-REGISTRY.md) | Gate Registry — Master Index of `G-*` Compliance Gates | 1.3.4 | — |
+| [`_GATE-REGISTRY.md`](./_GATE-REGISTRY.md) | Gate Registry — Master Index of `G-*` Compliance Gates | 1.3.5 | — |
 | [`_LEDGER-G-13-BACKLINK-EXEMPT.md`](./_LEDGER-G-13-BACKLINK-EXEMPT.md) | Ledger — `G-13-FIXTURE-AS-SPEC-SHAPE` Phase-4 Backlink Exemptions | — | Live |
 | [`_LEDGER-G-NS-ADR-COVERAGE.md`](./_LEDGER-G-NS-ADR-COVERAGE.md) | Ledger — `G-NS-ADR-MUST-HAS-AT` Coverage Allow-list | 1.0.0 | DEFERRED |
 | [`_LEDGER-G-NS-LEGACY-EXEMPT.md`](./_LEDGER-G-NS-LEGACY-EXEMPT.md) | Ledger — `G-NS-NO-DEPRECATED-ALIAS` Legacy Exemptions | 1.0.0 | Active |
@@ -1636,4 +1637,4 @@
 
 ---
 
-*Auto-generated index — 1460 files across 26 top-level folders.*
+*Auto-generated index — 1461 files across 26 top-level folders.*

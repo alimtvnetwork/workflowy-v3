@@ -190,3 +190,15 @@ Path depth corrected from `../../../../../00-adrs/...` to `../../../../00-adrs/.
 **Net runner state:** 7 → 4 failing. Remaining: G-08 (00-adrs/ AC file), G-13 (cascade from G-08), G-15 (ItemType enum-sync), G-30 (7 unregistered AT citations).
 
 **Implementability impact:** +1.0 pts (98.6 → 99.6).
+
+---
+
+## 2026-04-29 — Task #12: G-00-ADR-CONSEQUENCES-XLINK runner authored
+
+- **Author:** scripts/spec-hygiene/47-check-adr-consequences-xlink.mjs
+- **Gate:** `G-00-ADR-CONSEQUENCES-XLINK` minted CI / WARN-only
+- **Baseline:** 28/28 ADRs allow-listed (none cite downstream scope from Consequences); ledger at `spec/00-adrs/_LEDGER-G-00-ADR-CONSEQUENCES-XLINK-BASELINE.md` (90-day TTL, hard-fail 2026-07-28)
+- **AT impact:** AT-ADR-009 promoted from "(planned)" to fully-bound row in `spec/00-adrs/97-acceptance-criteria.md`
+- **Registry:** v1.3.5 (gates 306 → 307; CI 36 → 37)
+- **Self-test:** WARN mode green, `CI=true` strict mode green (allow-list covers full baseline)
+- **Suite:** 35/35 checks passing
