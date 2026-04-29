@@ -80,34 +80,13 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 | Ambiguity (auto-backfill) | Medium |
 | Health Score | 85% (B) |
 
----
-
-
-> **Version:** 2.0.0  
-> **Updated:** 2026-04-19  
-> **Status:** Planned (not yet implemented)
+> **Confidence rationale:** Draft (high-level only) — sub-specs pending.
 
 ---
 
 ## Keywords
 
 `users` · `roles` · `permissions` · `auth` · `rbac` · `admin`
-
----
-
-## Scoring
-
-| Criterion | Status |
-|-----------|--------|
-| Overview present | ✅ |
-| Confidence rated | ✅ |
-| Ambiguity rated | ✅ |
-| Keywords present | ✅ |
-| Scoring table present | ✅ |
-
-## Confidence
-
-Draft (high-level only) · Ambiguity: Medium (sub-specs pending)
 
 ---
 

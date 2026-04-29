@@ -111,3 +111,27 @@ Layer-2.5 has no AI Contract counterpart by design: AI Contract subsection bodie
 **Scope tightening:** the linter restricts to the **first** Scoring block per file. This was needed because `08-docs-viewer-ui`, `34-activity-feed`, and `36-user-management` each carry a second `## Scoring` heading with per-feature criterion grids (e.g. `| Ambiguity | 10% | Clear requirements |`) that share row names but encode different semantics. Task #17 (dedupe) will rename those to `## Per-Feature Scoring` or move them under a different heading; until then, the "first block" scope keeps the gate precise without false-flagging legitimate authoring patterns.
 
 **Trio Layer-2.5 status:** Scoring side complete with hard-fail across all 3 rules. AI Contract has no Layer-2.5 by design (subsection bodies are free-form prose, not parseable cells).
+
+---
+
+## Dedupe sweep (2026-04-29, same day, +Rule 4 added)
+
+**Trigger:** Layer-2.5 hard-fail required a "first block per file" carve-out because `08`/`34`/`36` carried duplicate `## Scoring` headings. Carve-out cleaned this sweep.
+
+**Sweep actions:**
+
+| File | Action | Lines removed |
+|------|--------|---------------|
+| `08-docs-viewer-ui` | Renamed second `## Scoring` (per-feature criterion grid) → `## Quality Breakdown` | 0 (rename only) |
+| `34-activity-feed` | Removed stale boilerplate dupe block (duplicate Version frontmatter + duplicate Scoring + duplicate `## Confidence`); preserved Confidence rationale as `> **Confidence rationale:**` blockquote under canonical Scoring; restored `## Keywords` block that was adjacent to the dupe | 12 net (27 removed, 15 restored — Keywords block was sandwiched between the two `## Scoring` headings) |
+| `36-user-management` | Same shape as `34` | 14 net |
+
+**Verification:** `awk` linter walking **all** `^(##|###)\s+Scoring\b` blocks (no first-block restriction) — zero violations across 25/25 overviews. Heading count check: every overview has exactly 1 `## Scoring`.
+
+**Rule 4 added:** "Single Scoring section per file" — codifies the invariant that just held this sweep. Per-feature criterion grids MUST use a different heading (`## Quality Breakdown` recommended; `## Per-Feature Scoring` also acceptable).
+
+**Carve-out retired:** the "first `## Scoring` block per file" scope restriction (introduced 2026-04-29 morning during the value-format sweep) is **removed** — the linter now walks all matching headings, but Rule 4 ensures there's only ever one to walk.
+
+**Trio Layer-2.5 final state:**
+- Scoring side: 4 hard-fail rules (value shapes ×3 + single-section invariant).
+- AI Contract side: no Layer-2.5 by design (subsection bodies are free-form prose).
