@@ -9,16 +9,18 @@
 Layer-2.6 of the overview Scoring trio. Catches stale Scoring tables: values
 that haven't been re-evaluated in >90 days (WARN) / >180 days (HARD-FAIL).
 
-## Baseline 2026-04-29 — 21/25 fresh
+## Baseline 2026-04-29 — 25/25 fresh ✅ (drained same day)
 
-### Surfaced WARNs (4 — no date metadata, cannot evaluate)
+### Initially-surfaced WARNs (all closed 2026-04-29)
 
-| File | Action |
+| File | Resolution |
 |---|---|
-| `spec/00-adrs/00-overview.md` | Add `> **Updated:** 2026-04-29` (or `> Scoring fresh as of 2026-04-29`) below Scoring table |
-| `spec/16-generic-cli/00-overview.md` | Same |
-| `spec/34-activity-feed/00-overview.md` | Same |
-| `spec/36-user-management/00-overview.md` | Same |
+| `spec/00-adrs/00-overview.md` | Added `> Scoring fresh as of 2026-04-29` after `#### Current values` block (line 50) |
+| `spec/16-generic-cli/00-overview.md` | Added `> Scoring fresh as of 2026-04-29` after Scoring table (line 77) |
+| `spec/34-activity-feed/00-overview.md` | Added `> Scoring fresh as of 2026-04-29` above Confidence-rationale blockquote (line 79) |
+| `spec/36-user-management/00-overview.md` | Added `> Scoring fresh as of 2026-04-29` above Confidence-rationale blockquote (line 83) |
+
+Final state: runner reports `✅ all Scoring blocks fresh (≤90 days)`.
 
 ### Resolution recipe
 
