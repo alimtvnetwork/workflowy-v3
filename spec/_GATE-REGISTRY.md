@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.7  
-> **Updated:** 2026-04-29 — **batch-10 prose→AT migration:** registered new **Domain-AUI (Admin-UI Patterns)** subsection with 9 `G-AUI-*` gates (1 umbrella `G-AUI-MISC` DOC-NORM + 5 CI sub-rules `-A11Y-TH-SCOPE`/`-A11Y-LABEL-FOR`/`-A11Y-INPUT-TYPE`/`-A11Y-DASHICON-WRAP`/`-A11Y-INTERACTIVE-TAG` + 3 DOC-NORM `-PARTIAL-DOCBLOCK`/`-PARTIAL-UNSET`/`-A11Y-REQUIRED-MARK`). Prior: 1.7.6 (batch-9 G-HLPIN-* gates).
+> **Version:** 1.7.8  
+> **Updated:** 2026-04-29 — **batch-11 prose→AT migration:** registered new **Domain-RE (Role-Escalation Policy)** subsection with 9 `G-24*` gates (1 umbrella `G-24` CI + 5 sub-rule CI gates `-DC-REQUESTER-DISTINCT`/`-DC-APPROVER-DISTINCT`/`-DC-DIFFERENT-SESSION`/`-DC-FRESH-AUTH`/`-EXPIRY-AT-REQUEST-TIME` + 1 TEST `-REVOCATION-PROPAGATION-60S` + 3 DOC-NORM `-DC-GRANTEE-PRENOTIFY`/`-RENEW-REMINDER`/`-AUDIT-TAXONOMY-COUPLING`). Umbrella `G-24` was already named-but-unregistered in source file's §7. Prior: 1.7.7 (batch-10 G-AUI-* gates).
 
-- **Total named gates:** 368 (+9 this revision: nine `G-AUI-*`)
+- **Total named gates:** 377 (+9 this revision: nine `G-24*`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
-- **CI:** 62 (+5 this revision)
-- **TEST:** 14 (unchanged)
-- **DOC-NORM:** 86 (+4 this revision)
+- **CI:** 68 (+6 this revision)
+- **TEST:** 15 (+1 this revision)
+- **DOC-NORM:** 89 (+3 this revision)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 43 (+1: Domain-AUI)
+- **Areas covered:** 44 (+1: Domain-RE)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
@@ -613,6 +613,23 @@
 | `G-AUI-A11Y-REQUIRED-MARK` | **DOC-NORM** | [`spec/15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md) | Required fields MUST display `<span class="required">*</span>` inside the `<label>` (in addition to the form-side `required` attribute). Provides the WCAG-recommended visible-and-programmatic dual signal. |
 | `G-AUI-A11Y-DASHICON-WRAP` | **CI** | [`spec/15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md) | Decorative dashicons MUST be wrapped in a `<span class="dashicons dashicons-…">`, never emitted as a standalone tag. Required so the wrapper can carry `aria-hidden="true"` without poisoning the parent control's accessible name. |
 | `G-AUI-A11Y-INTERACTIVE-TAG` | **CI** | [`spec/15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md) | Interactive controls MUST be `<button>` or `<a>` — never `<div>` or `<span>` with click handlers. Restores keyboard focus, Enter/Space activation, and assistive-tech role inference for free. |
+
+### Domain-RE (Role-Escalation Policy · Dual-Control & Lifecycle)
+
+> Reserved gate IDs for the role-escalation control-plane invariants in `spec/31-app/05-conventions/10-role-escalation-policy.md`. The umbrella `G-24` was already named in §7 "Hygiene Gate G-24 (proposed)" of the source file; batch-11 (2026-04-29) promotes it to a formal registry row with implementation-script reservation `scripts/spec-hygiene/24-check-role-escalation-coverage.mjs`, plus 8 sub-rule gates that bind every prose-MUST in the §3 dual-control rule, §4 expiry contract, §5 revocation propagation table, and §6 audit integration callout. Sub-rules split into 4 dual-control (`-DC-*`), 1 renewal (`-RENEW-*`), 1 expiry-enforcement (`-EXPIRY-*`), 1 revocation-deadline (`-REVOCATION-*`), and 1 audit-coupling (`-AUDIT-*`) gate.
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-24` | **CI** | [`spec/31-app/05-conventions/10-role-escalation-policy.md`](./31-app/05-conventions/10-role-escalation-policy.md) | Umbrella — every transition in the role-escalation lifecycle is gate-bound; AI MUST NOT emit any code path that grants `Owner` synchronously without dual-control or grants permanent `Admin` outside the L1 flow. Composed of `G-24-DC-*` (4), `G-24-RENEW-REMINDER`, `G-24-EXPIRY-AT-REQUEST-TIME`, `G-24-REVOCATION-PROPAGATION-60S`, `G-24-AUDIT-TAXONOMY-COUPLING`. Implementation script reservation: `scripts/spec-hygiene/24-check-role-escalation-coverage.mjs`. |
+| `G-24-DC-REQUESTER-DISTINCT` | **CI** | [`spec/31-app/05-conventions/10-role-escalation-policy.md`](./31-app/05-conventions/10-role-escalation-policy.md) | The Requester actor on an L2/L3 grant MUST NOT equal the grantee. Server-side check enforced before the request row is persisted. |
+| `G-24-DC-APPROVER-DISTINCT` | **CI** | [`spec/31-app/05-conventions/10-role-escalation-policy.md`](./31-app/05-conventions/10-role-escalation-policy.md) | The Approver actor MUST NOT equal the requester AND MUST NOT equal the grantee. Composite distinctness check enforced at approval time. |
+| `G-24-DC-DIFFERENT-SESSION` | **CI** | [`spec/31-app/05-conventions/10-role-escalation-policy.md`](./31-app/05-conventions/10-role-escalation-policy.md) | Requester and Approver MUST be authenticated from different `SessionId` values (anti-collusion). Same-session approval rejected with `ERR_ESCALATION_SAME_SESSION`. |
+| `G-24-DC-FRESH-AUTH` | **CI** | [`spec/31-app/05-conventions/10-role-escalation-policy.md`](./31-app/05-conventions/10-role-escalation-policy.md) | The approval action MUST re-confirm the approver's password OR a fresh MFA challenge ≤ 5 min old. Long-lived sessions cannot silently approve escalations. |
+| `G-24-DC-GRANTEE-PRENOTIFY` | **DOC-NORM** | [`spec/31-app/05-conventions/10-role-escalation-policy.md`](./31-app/05-conventions/10-role-escalation-policy.md) | The grantee MUST receive the email notification *before* the grant transitions to `Active`, with a ≥ 60 s grace window honoring the "this wasn't me — cancel" link. Email-send and state-transition are not parallel — email-first ordering is mandatory. |
+| `G-24-RENEW-REMINDER` | **DOC-NORM** | [`spec/31-app/05-conventions/10-role-escalation-policy.md`](./31-app/05-conventions/10-role-escalation-policy.md) | Backend MUST send renewal-reminder emails at T-7d and T-1d before any L1 standing-`Admin` expiry. Missing either reminder is a P1 bug. |
+| `G-24-EXPIRY-AT-REQUEST-TIME` | **CI** | [`spec/31-app/05-conventions/10-role-escalation-policy.md`](./31-app/05-conventions/10-role-escalation-policy.md) | `Auth::hasRole()` MUST treat any `WorkspaceMember` row with `ExpiresAt < NOW()` as non-existent, regardless of cron-sweep latency. Defense-in-depth against late sweeps; tested via injected clock-skew fixtures. |
+| `G-24-REVOCATION-PROPAGATION-60S` | **TEST** | [`spec/31-app/05-conventions/10-role-escalation-policy.md`](./31-app/05-conventions/10-role-escalation-policy.md) | Every authorization-cache layer (in-process LRU, REST tokens, SSE subscribers, frontend role badge) MUST invalidate within the per-layer deadlines tabled in §5. Any layer not visibly enforcing revocation within 60 s is a P0 bug. Fixture: synthetic revoke-then-replay test. |
+| `G-24-AUDIT-TAXONOMY-COUPLING` | **DOC-NORM** | [`spec/31-app/05-conventions/10-role-escalation-policy.md`](./31-app/05-conventions/10-role-escalation-policy.md) | All ten action codes from §6 (`AUTHZ.ROLE_REQUEST`, `…ROLE_APPROVE`, `…ROLE_DENY`, `…ROLE_DENY_TIMEOUT`, `…ROLE_GRANT`, `…ROLE_RENEW`, `…ROLE_EXPIRE`, `…ROLE_REVOKE`, `…OWNER_TRANSFER`, `…BREAK_GLASS`) MUST land in `09-audit-log-policy.md` §Action Taxonomy v1.1.0 in the same PR. Cross-file coupling enforced by the audit-taxonomy-coverage gate. |
 
 ### Meta-00
 

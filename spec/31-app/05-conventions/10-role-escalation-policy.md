@@ -78,15 +78,15 @@ A sensitive grant requires **two distinct human actors**, neither of whom is the
 
 | Actor | Role required | Distinctness rule |
 |-------|--------------|-------------------|
-| **Requester** | `Admin` or `Owner` | MUST NOT equal grantee |
-| **Approver** | `Owner` (for L2) / any other `Admin` or `Owner` (for L3) | MUST NOT equal requester AND MUST NOT equal grantee |
+| **Requester** | `Admin` or `Owner` | MUST NOT equal grantee (gate `G-24-DC-REQUESTER-DISTINCT`) |
+| **Approver** | `Owner` (for L2) / any other `Admin` or `Owner` (for L3) | MUST NOT equal requester AND MUST NOT equal grantee (gate `G-24-DC-APPROVER-DISTINCT`) |
 
 ### Anti-collusion constraints
 
-1. Requester and Approver MUST have logged in from **different sessions** (different `SessionId`). Same session → reject with `ERR_ESCALATION_SAME_SESSION`.
+1. Requester and Approver MUST have logged in from **different sessions** (different `SessionId`) — same session → reject with `ERR_ESCALATION_SAME_SESSION` (gate `G-24-DC-DIFFERENT-SESSION`).
 2. Approval window: 30 minutes from request creation. Stale requests auto-deny.
-3. Approval action MUST re-confirm the approver's password OR a fresh MFA challenge (≤ 5 min old).
-4. The grantee MUST be notified by email **before** the grant becomes `Active` (≥ 60 s grace window for "this wasn't me — cancel" link).
+3. Approval action MUST re-confirm the approver's password OR a fresh MFA challenge (≤ 5 min old) (gate `G-24-DC-FRESH-AUTH`).
+4. The grantee MUST be notified by email **before** the grant becomes `Active` (≥ 60 s grace window for "this wasn't me — cancel" link) (gate `G-24-DC-GRANTEE-PRENOTIFY`).
 
 ### Bypass — break-glass
 
@@ -113,20 +113,20 @@ This is the **only** sanctioned single-actor path to `Admin`. Any other code pat
 ### Renewal contract
 
 - Renewal of L1 standing `Admin` is itself an L1 action — single-actor (Owner only) + audit row `ROLE_RENEW`.
-- Backend MUST send renewal-reminder email at T-7d and T-1d.
+- Backend MUST send renewal-reminder email at T-7d and T-1d (gate `G-24-RENEW-REMINDER`).
 - On expiry, the `WorkspaceMember` row is **moved** to `WorkspaceMemberHistory`; the user is downgraded to `Member` (not removed from workspace).
 - A grant cannot be silently extended — every renewal is a new audit row.
 
 ### Expiry timer
 
 - Implemented as a SQLite `WHERE ExpiresAt < ?` sweep run by `wp-cron` every **5 minutes** (configurable, min 1 min, max 15 min).
-- Expiry MUST be enforced **at request time** as well — `Auth::hasRole()` MUST treat any row with `ExpiresAt < NOW()` as if it doesn't exist, even if the cron sweep is late.
+- Expiry MUST be enforced **at request time** as well — `Auth::hasRole()` MUST treat any row with `ExpiresAt < NOW()` as if it doesn't exist, even if the cron sweep is late (gate `G-24-EXPIRY-AT-REQUEST-TIME`).
 
 ---
 
 ## 5 — Revocation Propagation Deadlines
 
-When a grant is revoked, every layer that caches authorization MUST invalidate within these bounds:
+When a grant is revoked, every layer that caches authorization MUST invalidate within these bounds (gate `G-24-REVOCATION-PROPAGATION-60S`):
 
 | Layer | Deadline | Mechanism |
 |-------|----------|-----------|
@@ -158,7 +158,7 @@ Every state transition emits exactly one audit row using the taxonomy from `09-a
 | Owner transfer | `AUTHZ.OWNER_TRANSFER` | `error` | `FromUserId`, `ToUserId`, `WorkspaceId` |
 | Break-glass used | `AUTHZ.BREAK_GLASS` | `fatal` | `OwnerId`, `GranteeId`, `Role`, `Reason` |
 
-> All ten action codes MUST be added to `09-audit-log-policy.md` §Action Taxonomy in its next minor version (`v1.1.0`).
+> All ten action codes MUST be added to `09-audit-log-policy.md` §Action Taxonomy in its next minor version (`v1.1.0`) (gate `G-24-AUDIT-TAXONOMY-COUPLING`).
 
 ---
 
