@@ -90,6 +90,7 @@
 | `G-05-NO-RAW-CROSS-JOIN` | **DOC-NORM** | [`spec/05-split-db-architecture/00-overview.md`](./05-split-db-architecture/00-overview.md) | Raw SQL joins across attached schemas are forbidden in handler code. Gate G-05-NO-RAW-CROSS-JOIN (grep: JOIN\s+(usersau |
 | `G-05-REGISTRY-COMPLETE` | **DOC** | [`spec/05-split-db-architecture/00-overview.md`](./05-split-db-architecture/00-overview.md) | Omit a new file from wp-plugin/config/db-split.json Orchestrator never attaches it; queries silently target the wrong. |
 | `G-05-REPO-COMPOSE` | **DOC-NORM** | [`spec/05-split-db-architecture/00-overview.md`](./05-split-db-architecture/00-overview.md) | Cross-DB reads MUST go through a repository method that performs two queries and joins in PHP. Gate G-05-REPO-COMPOSE. |
+| `G-05-FIXTURE-CITES-LITERAL` | **DOC-NORM** | [`spec/05-split-db-architecture/00-overview.md`](./05-split-db-architecture/00-overview.md) | Fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite the exact `DB-05-01..05` failure-mode strings declared in §Failure-Mode Codes (load-bearing literal-string contract). |
 
 ### ADR-0006
 
