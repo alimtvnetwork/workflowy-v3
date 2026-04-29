@@ -95,7 +95,7 @@ Every error in WorkFlowy MUST be classified into exactly one of these four categ
 
 ## Anti-Patterns
 
-The AI MUST NOT:
+Anti-patterns enumerated below; each row binds to a specific enforcement gate (gates `G-03-NO-BARE-THROW`, `G-03-ENVELOPE-ONLY`, `G-22-REGISTRY-LOCKSTEP`, `G-03-STATUS-CONSISTENT`, `G-03-CODE-ASCII`, `G-03-NO-LEAK`). The AI MUST NOT do any of:
 
 | # | Anti-pattern | Why it fails | Gate that catches it |
 |---|---|---|---|
