@@ -1,9 +1,11 @@
 #!/usr/bin/env node
-// AT-block-aware prose-MUST counter (v5 — handles heading nesting + fixture slots
-// + bare gate citations + RFC-2119 priority cells).
+// AT-block-aware prose-MUST counter (v6 — handles heading nesting + fixture slots
+// + bare gate citations (numeric AND alphabetic prefixes) + RFC-2119 priority cells).
 // A line is "in an AT block" if ANY ancestor heading (walking up through ALL
 // ###/####/## levels) cites `AT-…-`. v3 added fixture-slot/blockquote skips,
-// v4 added bare-form gate citations, v5 adds RFC-2119 priority-cell skip.
+// v4 added bare-form gate citations, v5 added RFC-2119 priority cells, v6
+// (F-SCOPE-08) broadened bare-form gate regex to accept alphabetic prefixes
+// like `G-A4-…`, `G-ERR-…`, `G-UPD-…`, `G-SPLIT-…`.
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 
@@ -43,7 +45,10 @@ function countFile(file) {
     // v4 (F-SCOPE-06): gate ids appear in bare form (G-40, G-22, G-N1, G-NS-SCOPING-01)
     // — terminator is word-boundary, not a literal `-`. Old regex `G-[0-9N][0-9NS]?-`
     // required trailing dash and missed ~888 corpus-wide bare-form citations.
-    if (/AT-[A-Z]+-|\bG-[0-9N][0-9NS-]*\b/.test(ln)) continue;
+    // v6 (F-SCOPE-08, batch-5): gate ids may also start with alphabetic domain prefixes
+    // (e.g. G-A4-STREAM-SEPARATION, G-ERR-02, G-UPD-01, G-SPLIT-03). Old class
+    // `[0-9N][0-9NS-]*` rejected these. Broadened to `[A-Z0-9][A-Z0-9-]*` (ASCII).
+    if (/AT-[A-Z]+-|\bG-[A-Z0-9][A-Z0-9-]*\b/.test(ln)) continue;
     if (stack.some((f) => f.citesAT)) continue;
     if (FIXTURE_SLOT_RE.test(ln)) continue;
     if (/^\s*>\s/.test(ln)) continue;
@@ -65,5 +70,5 @@ for (const file of walk("spec")) {
 
 const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
 for (const [f, n] of sorted.slice(0, 15)) console.log(`${n}\t${f}`);
-console.log(`---\nTotal real prose-MUSTs (v5 + RFC-2119 priority-cell aware): ${total}`);
+console.log(`---\nTotal real prose-MUSTs (v6 + alphabetic-prefix gate-aware): ${total}`);
 console.log(`Files with ≥1 prose-MUST: ${sorted.length}`);

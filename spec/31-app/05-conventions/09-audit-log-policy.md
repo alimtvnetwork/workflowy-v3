@@ -16,7 +16,7 @@ Three audiences consume backend events; each needs a different stream:
 | Operator ("server is on fire") | **Operational log** — `Logger::*`, ephemeral, free-form | `spec/02-coding-guidelines/` |
 | Owner / compliance ("prove what happened") | **Audit log** — append-only, integrity-checked, long-retention | **this file** |
 
-Conflating them violates least-privilege (operators see PII), bloats activity-feed pagination, and prevents tamper detection. The three streams MUST be physically separate tables.
+Conflating them violates least-privilege (operators see PII), bloats activity-feed pagination, and prevents tamper detection. The three streams MUST be physically separate tables (gate G-A4-STREAM-SEPARATION).
 
 ---
 
@@ -179,7 +179,7 @@ G-23 verifies every `Audit::action(<shorthand>)` call resolves to a row in §2.1
 
 ### 2.2 · Forbidden categories
 
-The following events MUST NOT be written to the audit log (they belong in the activity feed or operational log):
+The following events MUST NOT be written to the audit log (gate G-A4-FORBIDDEN-CATEGORIES) — they belong in the activity feed or operational log:
 
 - Item content edits (title / note / type changes) — activity feed
 - Drag-reorder operations — activity feed
@@ -198,8 +198,8 @@ The following events MUST NOT be written to the audit log (they belong in the ac
 
 Rules:
 
-1. **Floor is mandatory.** Records younger than the minimum MUST NOT be deleted, even on owner request — answer `ERR_RETENTION_PROTECTED` (HTTP 409).
-2. **Ceiling is mandatory.** Records older than the maximum MUST be deleted within 24 h of the cron schedule. No "indefinite" retention.
+1. **Floor is mandatory.** Records younger than the minimum MUST NOT be deleted, even on owner request — answer `ERR_RETENTION_PROTECTED` (HTTP 409) (gate G-A4-RETENTION-FLOOR).
+2. **Ceiling is mandatory.** Records older than the maximum MUST be deleted within 24 h of the cron schedule (gate G-A4-RETENTION-CEILING). No "indefinite" retention.
 3. **Account deletion** purges all records whose `ActorOwnerId == deletedOwnerId` **after the floor expires**, never sooner.
 4. The purge job emits a single `policy.retention.purge` event summarising counts per category — it does NOT delete itself.
 
@@ -237,14 +237,14 @@ Encryption requires a key, which itself becomes a compliance liability. Hashing 
 Each row stores `IntegrityHash = SHA256(prevRow.IntegrityHash || canonicalJson(thisRow without IntegrityHash))`.
 
 - The first row of each calendar UTC day uses the previous day's last hash as `prev`. The genesis row uses 64 zero-bytes.
-- Canonical JSON: PHP `JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRESERVE_ZERO_FRACTION` with **alphabetically sorted keys**. Identical encoding rules MUST be used by the verifier.
+- Canonical JSON: PHP `JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRESERVE_ZERO_FRACTION` with **alphabetically sorted keys**. Identical encoding rules MUST be used by the verifier (gate G-A4-CANONICAL-JSON).
 - Verification job runs nightly and on-demand via `EP-AUDIT-VERIFY` (§7). On failure it emits `system.integrity.breach` and locks new writes until an operator clears the alert.
 
 ### 5.2 · Append-only enforcement
 
 - The `audit_log` SQLite table has no `UPDATE` or `DELETE` triggers; the PHP DAO calls only `INSERT` and `SELECT`.
 - The purge cron is the **only** writer with `DELETE` privilege and uses a separate DB role (`audit_purge`).
-- Backup procedure (out of scope here) MUST snapshot before purge.
+- Backup procedure (out of scope here) MUST snapshot before purge (gate G-A4-BACKUP-BEFORE-PURGE).
 
 ### 5.3 · No row mutation
 
@@ -263,7 +263,7 @@ If a write is wrong (e.g. classification error), the correct procedure is to wri
 
 ### 6.2 · Coalescing
 
-When the per-minute quota is exceeded for a single `(ActorOwnerId, Action)` pair, identical events MUST be merged into a single row with `Metadata.coalescedCount = <n>` and `Metadata.coalescedWindowEnd` set to the last suppressed event's timestamp. The first event in the window is preserved verbatim.
+When the per-minute quota is exceeded for a single `(ActorOwnerId, Action)` pair, identical events MUST be merged into a single row with `Metadata.coalescedCount = <n>` and `Metadata.coalescedWindowEnd` set to the last suppressed event's timestamp (gate G-A4-COALESCE). The first event in the window is preserved verbatim.
 
 ### 6.3 · Sampling
 
@@ -328,9 +328,9 @@ Algorithm SSOT lives at [`16-g23-audit-log-coverage-gate.md`](./16-g23-audit-log
 
 ## 10 · Frontend Contract
 
-- The frontend MUST NOT attempt to write audit events directly. All audit writes happen server-side as side-effects of authenticated mutations.
+- The frontend MUST NOT attempt to write audit events directly (gate G-A4-CLIENT-NO-WRITE). All audit writes happen server-side as side-effects of authenticated mutations.
 - The frontend MAY query `EP-AUDIT-LIST` for the user's own records and render them under Settings → Security → Activity.
-- Audit query responses MUST be cached for at most 60 s (audit data must always look fresh).
+- Audit query responses MUST be cached for at most 60 s (gate G-A4-QUERY-CACHE-MAX) — audit data must always look fresh.
 
 ---
 
