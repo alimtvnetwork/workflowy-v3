@@ -34,7 +34,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## AI Contract
 
-**Purpose** — Defines the cross-cutting CLI conventions (flag naming, exit codes, logging, JSON output mode) every script under `wp-plugin/scripts/` and `scripts/` MUST follow.
+**Purpose** — Defines the cross-cutting CLI conventions (flag naming, exit codes, logging, JSON output mode) every script under `wp-plugin/scripts/` and `scripts/` MUST follow (gates `G-16-FLAG-STYLE`, `G-16-EXIT-DOCUMENTED`, `G-16-FLAG-PRECEDENCE`, `G-16-JSON-PURE`).
 
 **Audience** — Any developer adding a new script invoked from a shell.
 
@@ -90,7 +90,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## Exit-Code Registry
 
-Every CLI subcommand MUST return one of these exit codes. No other values are legal. Codes are stable across versions.
+Every CLI subcommand MUST return one of these exit codes (gate `G-16-EXIT-DOCUMENTED`). No other values are legal. Codes are stable across versions.
 
 | Code | Name | Meaning | When emitted |
 |---|---|---|---|
@@ -108,12 +108,12 @@ Every CLI subcommand MUST return one of these exit codes. No other values are le
 
 **Rules:**
 - Exit `0` is **only** valid when every assertion passed. Partial success uses `10`.
-- A subcommand MUST document which subset of the registry it can return.
+- A subcommand MUST document which subset of the registry it can return (gate `G-16-EXIT-DOCUMENTED`).
 - The hygiene gate `G-16-EXIT-DOCUMENTED` rejects help text that lists an undocumented code.
 
 ## Flag-Precedence Rules
 
-When the same setting can come from multiple sources, the CLI MUST resolve in this exact order (highest wins):
+When the same setting can come from multiple sources, the CLI MUST resolve in this exact order (highest wins) (gate `G-16-FLAG-PRECEDENCE`):
 
 | Rank | Source | Example | Notes |
 |---|---|---|---|
@@ -121,17 +121,17 @@ When the same setting can come from multiple sources, the CLI MUST resolve in th
 | 2 | Environment variable | `WORKFLOWY_LIMIT=50` | Prefix `WORKFLOWY_` + UPPER_SNAKE of flag name. |
 | 3 | Per-project config | `./.workflowy/config.json` | Found by walking up from CWD. |
 | 4 | User config | `$XDG_CONFIG_HOME/workflowy/config.json` | Falls back to `~/.config/workflowy/`. |
-| 5 (lowest) | Built-in default | declared in `flag.Define()` | MUST be a value, never `nil`. |
+| 5 (lowest) | Built-in default | declared in `flag.Define()` | MUST be a value, never `nil` (gate `G-16-FLAG-PRECEDENCE`). |
 
 **Rules:**
 - Boolean flags: `--no-foo` always overrides `--foo` regardless of order on the command line (last-no-wins is forbidden — too surprising).
-- Repeated scalar flags MUST exit `2 (UsageError)`. Repetition is reserved for explicitly list-typed flags (`--tag=a --tag=b`).
-- Unknown flags MUST exit `2`, never be silently ignored.
+- Repeated scalar flags MUST exit `2 (UsageError)` (gate `G-16-STRICT-FLAGS`). Repetition is reserved for explicitly list-typed flags (`--tag=a --tag=b`).
+- Unknown flags MUST exit `2`, never be silently ignored (gate `G-16-STRICT-FLAGS`).
 - `--json` and `--quiet` are **mutually exclusive** — combining them exits `2`.
 
 ## Anti-Patterns
 
-The AI MUST NOT:
+Anti-patterns enumerated below; each row binds to a specific enforcement gate (gates `G-16-JSON-PURE`, `G-16-EXIT-NONZERO-ON-FAIL`, `G-16-FLAG-STYLE`, `G-16-CONFIG-VIA-FLAG`, `G-16-TTY-DETECT`, `G-16-STRICT-FLAGS`). The AI MUST NOT do any of:
 
 | # | Anti-pattern | Why it fails | Gate that catches it |
 |---|---|---|---|
@@ -207,7 +207,7 @@ $ echo $?
 | `CLI-16-08` | `8` | Validation failed (e.g. negative `--limit`). |
 | `CLI-16-10` | `10` | Batch finished with mixed outcomes. |
 
-*All values are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings.*
+*All values are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings (gate `G-16-CLI-CODE-LOAD-BEARING`).*
 
 <!-- AUTO-TOC:START -->
 

@@ -1,13 +1,13 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.0  
-> **Updated:** 2026-04-29 — **batch-3 prose→AT migration:** registered 4 new G-03-* gates (`G-03-CODE-LOAD-BEARING`, `G-03-FRONTEND-STATUS-PRIMARY`, `G-03-MIDDLEWARE`, `G-03-RETRY-AFTER`, all DOC-NORM) per task #6-batch-3 to provide enforcement bindings for the 9 substantive prose-MUSTs in `spec/03-error-manage/00-overview.md`. Prior: 1.6.9 (G-32-LICENSE-FILES-PRESENT).
+> **Version:** 1.7.1  
+> **Updated:** 2026-04-29 — **batch-4 prose→AT migration:** registered 2 new G-16-* gates (`G-16-CLI-CODE-LOAD-BEARING`, `G-16-FLAG-PRECEDENCE`, both DOC-NORM) per task #6-batch-4 to provide enforcement bindings for substantive prose-MUSTs in `spec/16-generic-cli/00-overview.md`. Prior: 1.7.0 (batch-3 G-03-* gates).
 
-- **Total named gates:** 321 (+4 this revision: `G-03-CODE-LOAD-BEARING`, `G-03-FRONTEND-STATUS-PRIMARY`, `G-03-MIDDLEWARE`, `G-03-RETRY-AFTER`)
+- **Total named gates:** 323 (+2 this revision: `G-16-CLI-CODE-LOAD-BEARING`, `G-16-FLAG-PRECEDENCE`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
 - **CI:** 44
 - **TEST:** 14 (unchanged)
-- **DOC-NORM:** 57 (+4 this revision)
+- **DOC-NORM:** 59 (+2 this revision)
 - **DOC:** 202 (unchanged)
 - **Areas covered:** 37 (unchanged)
 - **Areas covered:** 37 (unchanged)
@@ -192,11 +192,13 @@
 
 | Gate | Tier | Primary File | Brief |
 |------|------|--------------|-------|
+| `G-16-CLI-CODE-LOAD-BEARING` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | All `CLI-16-NN` codes shown in 16-generic-cli/00-overview.md exit-code-mapping table are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings. Drift forbidden. |
 | `G-16-CONFIG-VIA-FLAG` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | Read config file paths from positional args Confuses <file> semantics with config plumbing. |
 | `G-16-EMPTY-QUERY-NO-FALLBACK` | **DOC** | [`spec/00-adrs/0013-search-relevance-then-recency-ranking.md`](./00-adrs/0013-search-relevance-then-recency-ranking.md) | - G-16-EMPTY-QUERY-NO-FALLBACK — enforces D6 (zero results, never |
 | `G-16-EXIT-DOCUMENTED` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | - The hygiene gate G-16-EXIT-DOCUMENTED rejects help text that lists an undocumented code. |
 | `G-16-EXIT-NONZERO-ON-FAIL` | **TEST** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | Return exit 0 on partial failure Hides errors from CI; cron jobs miss alerts. |
 | `G-16-FIELD-WEIGHTS-CONTENT-NOTE` | **DOC** | [`spec/00-adrs/0013-search-relevance-then-recency-ranking.md`](./00-adrs/0013-search-relevance-then-recency-ranking.md) | - G-16-FIELD-WEIGHTS-CONTENT-NOTE — enforces D3 (max(Content×1.5, |
+| `G-16-FLAG-PRECEDENCE` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | When a setting is multi-sourced, CLI MUST resolve in this exact order (highest wins): (1) explicit CLI flag, (2) `WORKFLOWY_<NAME>` env, (3) `./.workflowy/config.json`, (4) `$XDG_CONFIG_HOME/workflowy/config.json`, (5) built-in default (must be a value, never `nil`). Boolean `--no-foo` always overrides `--foo`; `--json` and `--quiet` mutually exclusive. |
 | `G-16-FLAG-STYLE` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | Use -flagName (single dash + camelCase) Conflicts with POSIX short-flag bundling (-abc = -a -b -c). |
 | `G-16-JSON-PURE` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | Print free-form text to stdout when --json is set Breaks downstream jq pipelines; unparseable. |
 | `G-16-MATCH-TIER-TABLE` | **DOC** | [`spec/00-adrs/0013-search-relevance-then-recency-ranking.md`](./00-adrs/0013-search-relevance-then-recency-ranking.md) | - G-16-MATCH-TIER-TABLE — enforces D2 (the five tier values |

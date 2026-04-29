@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-// AT-block-aware prose-MUST counter (v3 — handles heading nesting + fixture slots).
+// AT-block-aware prose-MUST counter (v5 — handles heading nesting + fixture slots
+// + bare gate citations + RFC-2119 priority cells).
 // A line is "in an AT block" if ANY ancestor heading (walking up through ALL
-// ###/####/## levels) cites `AT-…-`. v1 bug: stopped at first heading found
-// (sub-headings shadowed AT parent). v3 adds: skip canonical fixture-table
-// slot rows (already AT-shaped per format SSOT) + skip blockquote citations.
+// ###/####/## levels) cites `AT-…-`. v3 added fixture-slot/blockquote skips,
+// v4 added bare-form gate citations, v5 adds RFC-2119 priority-cell skip.
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 
@@ -47,6 +47,10 @@ function countFile(file) {
     if (stack.some((f) => f.citesAT)) continue;
     if (FIXTURE_SLOT_RE.test(ln)) continue;
     if (/^\s*>\s/.test(ln)) continue;
+    // v5 (F-SCOPE-07): RFC-2119 priority cells in requirements matrix
+    // (`| F1 | requirement | MUST |`). Per RFC-2119 these are tag-style priority
+    // markers in a tabular requirements convention, not prose normative claims.
+    if (/^\|\s*[A-Z]+[0-9]+\s*\|.*\|\s*(MUST|SHALL|SHOULD|MAY)\s*\|/.test(ln)) continue;
     n++;
   }
   return n;
@@ -61,5 +65,5 @@ for (const file of walk("spec")) {
 
 const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
 for (const [f, n] of sorted.slice(0, 15)) console.log(`${n}\t${f}`);
-console.log(`---\nTotal real prose-MUSTs (v4 nested + fixture-slot + bare-gate aware): ${total}`);
+console.log(`---\nTotal real prose-MUSTs (v5 + RFC-2119 priority-cell aware): ${total}`);
 console.log(`Files with ≥1 prose-MUST: ${sorted.length}`);
