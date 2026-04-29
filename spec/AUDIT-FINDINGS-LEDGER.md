@@ -259,6 +259,21 @@ This is the **third** scope-correction in 3 turns (F-SCOPE-01 → 02 → 03), ea
 
 ---
 
+### Retraction case study #6 — F-SCOPE-06
+
+**Discovery context.** Task #6-batch-2 per F-SCOPE-05 picked the new top hit (`spec/03-error-manage/00-overview.md`, 11 prose-MUSTs). Manual inspection of every flagged line revealed 2 of the 11 (lines 13 and 92) were already gate-bound — both cited `G-40` and `G-22` respectively in narrative text — but the v3 counter regex `G-[0-9N][0-9NS]?-` required a trailing `-` after the digits and missed the bare-form citations. The remaining 9 lines are genuine substantive prose-MUSTs (real migration work for batch-3).
+
+**Why v3 missed them.** The regex was authored under the implicit assumption that gate ids are always referenced with a trailing component (e.g. `G-N1-FOO`), but corpus evidence shows the bare form is **2,037 instances vs 1,149 dashed** — bare is 64% of all gate citations. Real-world terminators include `)`, `,`, `.`, ` `, end-of-line, none of which match a literal `-`.
+
+**Resolution.** v4 (`scripts/spec-hygiene/audits/count-prose-musts.mjs` line 43) updates the regex to `\bG-[0-9N][0-9NS-]*\b` — word-boundary terminator with optional dash continuation. This matches both `G-40` (bare) and `G-N1-FOO` (dashed) without requiring the trailing `-`.
+
+**Methodology lessons.**
+- **Regex assumptions about identifier shape MUST be validated against corpus frequencies.** F-SCOPE-06 is the third regex-shape bug in the F-SCOPE-NN family (preceded by F-SCOPE-01 line-scoping and F-SCOPE-03 single-heading walk). A `grep -cE` of bare vs dashed forms is a 5-second sanity check that would have prevented this. Add to checklist for any new identifier-class regex.
+- **Word boundaries beat literal terminators.** Whenever an identifier can appear with multiple natural-language terminators, `\b` is the correct boundary marker. Literal terminators only work for stylized contexts (e.g. inside JSON keys or specific markdown patterns).
+- **Methodology probes are converging.** F-SCOPE-03 → -05 → -06 each eliminated ~30–75 false positives. The deltas are shrinking (74 → 29) which is the convergence signal predicted by case study #5. Cluster σ has grown slightly (38 → 47) as v4 added a 5th methodology, but coefficient of variation is **stable at ~7%** — well under the 20% "broken methodology" threshold.
+- **Streak-watch exception triggered correctly (2nd consecutive).** The "parser-fix counts as content when it eliminates a false-positive content finding" exception applied here: v4 eliminated 2 false-positive prose-MUSTs in the targeted file (and 29 across the corpus). The next batch (#6-batch-3) MUST tackle the 9 remaining substantive lines in `spec/03-error-manage/00-overview.md` — no further parser-fix exceptions are available without re-triggering streak-violation.
+
+---
 
 ## Related
 
