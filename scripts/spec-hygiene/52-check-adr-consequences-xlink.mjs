@@ -95,7 +95,8 @@ for (const f of files) {
   }
 }
 
-const isCi = process.env.CI === "true" || process.argv.includes("--strict");
+// PROMOTED 2026-04-29: ledger fully drained (28/28 ADRs carry downstream xlinks). Hard-fail unconditionally.
+const isCi = true;
 
 if (missing.length === 0) {
   console.log(`✅ G-00-ADR-CONSEQUENCES-XLINK: all ADRs cite downstream scope ` +

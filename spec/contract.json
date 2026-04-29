@@ -8478,11 +8478,11 @@
         },
         {
           "file": "spec/00-adrs/0017-eight-error-boundaries-ui-virtualization.md",
-          "line": 166
+          "line": 169
         },
         {
           "file": "spec/00-adrs/0017-eight-error-boundaries-ui-virtualization.md",
-          "line": 176
+          "line": 179
         }
       ]
     },
@@ -16854,15 +16854,15 @@
         },
         {
           "file": "spec/00-adrs/0021-undo-100-offline-queue-unbounded.md",
-          "line": 140
+          "line": 143
         },
         {
           "file": "spec/00-adrs/0021-undo-100-offline-queue-unbounded.md",
-          "line": 183
+          "line": 186
         },
         {
           "file": "spec/00-adrs/0021-undo-100-offline-queue-unbounded.md",
-          "line": 194
+          "line": 197
         },
         {
           "file": "spec/31-app/01-features/14b-offline-queue.md",
@@ -21317,7 +21317,7 @@
         },
         {
           "file": "spec/00-adrs/0013-search-relevance-then-recency-ranking.md",
-          "line": 213
+          "line": 216
         },
         {
           "file": "spec/31-app/01-features/16-search-ranking.md",
@@ -21345,7 +21345,7 @@
         },
         {
           "file": "spec/00-adrs/0013-search-relevance-then-recency-ranking.md",
-          "line": 213
+          "line": 216
         },
         {
           "file": "spec/31-app/01-features/16-search-ranking.md",
@@ -23734,15 +23734,15 @@
         },
         {
           "file": "spec/00-adrs/0022-shadcn-radix-component-base.md",
-          "line": 129
+          "line": 132
         },
         {
           "file": "spec/00-adrs/0022-shadcn-radix-component-base.md",
-          "line": 169
+          "line": 172
         },
         {
           "file": "spec/00-adrs/0022-shadcn-radix-component-base.md",
-          "line": 180
+          "line": 183
         },
         {
           "file": "spec/32-ui-design/03-design-system/97-acceptance-criteria.md",
