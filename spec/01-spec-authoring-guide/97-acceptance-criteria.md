@@ -103,3 +103,20 @@ Fixtures for every AT row in this file are covered by the global P2g sweep — s
 - **Failure mode:** CI lint emits `<file>:<line>: deprecated namespace alias '<alias>-' — use canonical '<canonical>-' (audit ledger §1)` and exits non-zero.
 - **Promotion path:** As the P3 namespace consolidation sweep migrates aliased rows to canonical, entries are removed from the allow-list. Gate becomes 100% enforceable (zero exemptions) when the legacy ledger is empty.
 - **Distinct-pair guard:** The lint MUST NOT flag the 10 ratified distinct-but-confusable pairs (audit ledger §2: `AT-FIX-`/`AT-FIXTURE-`, `AT-INT-`/`AT-INTERACT-`, `AT-INFO-`/`AT-INFOMODEL-`, `AT-STATE-`/`AT-UISTATE-`, `AT-SR-`/`AT-USR-`, `AT-TR-`/`AT-TRASH-`, `AT-MS-`/`AT-MULTISELECT-`, `AT-WF-` parent vs `AT-WFxx-` children, `AT-CG-` parent vs `AT-CGxx-` children, `AT-WPPLUGIN-`/`AT-WPPLUGINDEPLOY-`). These are explicitly allow-listed.
+
+---
+
+## Gate `G-NS-STATUS-IN-LEGEND` (CI, hard-fail; WARN-only until P3 sweep)
+
+- **Purpose:** Reduce 46-value `**Status:**` drift (audit 2026-04-29) to a closed 9-value enum so status-based filtering, DOC-tier promotion, and `STATUS: DEFERRED` tagging become mechanical.
+- **SSOT for enum:** [`20-status-legend.md`](./20-status-legend.md) §1 (9 values: `DRAFT`, `REVIEW`, `CANONICAL`, `COMPANION`, `DISPATCH`, `DEFERRED`, `DEPRECATED`, `REDIRECT`, `ARCHIVED`).
+- **Audit ledger:** [`.lovable/memory/audit/at-status-legend-audit.md`](../../.lovable/memory/audit/at-status-legend-audit.md) — full inventory + mapping table.
+- **Scope:**
+  - File-level `**Status:**` lines in any `spec/**/*.md` front-matter block.
+  - Per-row `STATUS: <token>` inline tags inside `97-acceptance-criteria.md` description columns.
+- **Regex:** `^\*\*Status:\*\*\s+(DRAFT|REVIEW|CANONICAL|COMPANION|DISPATCH|DEFERRED|DEPRECATED|REDIRECT|ARCHIVED)(\s*\(.*\))?\s*$`
+- **Exempt zones (lint MUST strip before scan):** fenced code blocks (```` ``` ````) and inline `code spans` — same carve-out as `G-01-AT-ID-FORMAT-CANONICAL` and `G-NS-NO-DEPRECATED-ALIAS`. This permits the legend SSOT itself to quote legacy values.
+- **Optional qualifier:** parenthetical free text after the canonical token is permitted and excluded from gate matching (e.g. `CANONICAL (post-AUDIT-03 backfill)`).
+- **WARN-only initial mode:** Gate ships emitting warnings only. Hard-fail flag flips when the P3 status sweep retires the legacy 46 values (target: legacy count 0).
+- **Failure mode (hard-fail mode):** CI emits `<file>:<line>: non-canonical status '<value>' — see spec/01-spec-authoring-guide/20-status-legend.md §2 for canonical mapping` and exits non-zero.
+- **Promotion path:** WARN → HARD when `rg -c '\*\*Status:\*\*\s*(Curated|Active|Complete|...)' spec/` returns 0.
