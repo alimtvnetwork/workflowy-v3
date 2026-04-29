@@ -15,7 +15,7 @@
 ## Purpose
 
 Every file in `spec/13-cicd-pipeline-workflows/scripts-as-spec/` (other
-than `README.md`) MUST follow the 6-section template defined by the
+than `README.md`) MUST (gate `G-13-FIXTURE-SHAPE-6-SECTIONS`) follow the 6-section template defined by the
 README's "Adding a new fixture-as-spec script" block (gate `G-13-FIXTURE-SHAPE-6-SECTIONS`). This audit
 mechanizes that template check so a reviewer can verify shape
 compliance without re-reading the README.
@@ -28,7 +28,7 @@ The 6 required sections are:
 4. **Algorithm** — fenced code block, frozen reference implementation.
 5. **Exemptions** — canonical list of cases the gate skips.
 6. **Strictness roadmap** *(optional but recommended)* OR **Test
-   fixtures** link — at least one of the two MUST be present so the
+   fixtures** link — at least one of the two MUST (gate `G-13-FIXTURE-SHAPE-EVOLUTION-LINK`) be present so the
    gate's evolution path is traceable (gate `G-13-FIXTURE-SHAPE-EVOLUTION-LINK`).
 
 A fixture file MAY include additional sections (e.g. "See also",
@@ -181,15 +181,15 @@ if __name__ == "__main__":
 ## Strictness roadmap
 
 - **Phase 1 (shipped 2026-04-28 morning):** header-presence check + Algorithm fence check.
-- **Phase 2 (shipped 2026-04-28 afternoon):** Algorithm fence MUST
+- **Phase 2 (shipped 2026-04-28 afternoon):** Algorithm fence MUST (gate `G-13-FIXTURE-SHAPE-PHASE2-LANG-TAG`)
   declare an allowed language tag from
   `{python, bash, sh, javascript, js, typescript, ts}` (gate `G-13-FIXTURE-SHAPE-PHASE2-LANG-TAG`).
 - **Phase 3 (shipped 2026-04-28 evening):** the file's banner
-  blockquote MUST cite at least one gate ID, AND every cited gate ID
+  blockquote MUST (gate `G-13-FIXTURE-SHAPE-PHASE3-GATE-CITED`) cite at least one gate ID, AND every cited gate ID
   MUST resolve to a row in `spec/_GATE-REGISTRY.md` (gate `G-13-FIXTURE-SHAPE-PHASE3-GATE-CITED`).
 - **Phase 4 (current — shipped 2026-04-28 night, FINAL phase):** for
   every gate ID cited in a fixture's banner, the corresponding
-  `spec/_GATE-REGISTRY.md` row MUST link back to that fixture file (by
+  `spec/_GATE-REGISTRY.md` row MUST (gate `G-13-FIXTURE-SHAPE-PHASE4-BACKLINK`) link back to that fixture file (by
   filename match in the row's primary-file link) (gate `G-13-FIXTURE-SHAPE-PHASE4-BACKLINK`). This closes the
   meta-symmetry loop and makes `G-13-FIXTURE-AS-SPEC-SHAPE` the
   fixture-corpus equivalent of `G-00-ADR-XLINK-SYMMETRY` for the ADR
