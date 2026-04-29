@@ -48,6 +48,7 @@
 | Scoring table present | ✅ |
 | AI Confidence | High (folder is a stable redirect map; rules live in canonical sources) |
 | Ambiguity | Low |
+| Health Score | 97% (A+) |
 
 ---
 
