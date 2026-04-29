@@ -23,6 +23,10 @@
  * Cap: 15% per scope. Violations print scope, count, total, percentage,
  * and the top 5 offending files for triage.
  *
+ * **Mode:** warn-only (exit 0) until F-AUDIT-15 closes (172 placeholders
+ * scheduled for cleanup). Flip `STRICT = true` when global density ≤ 8%
+ * AND no scope exceeds 15%. Tracked in tasks #2/#3/#4/#7.
+ *
  * Visibility line (mandatory, parsed by future meta-test):
  *   "density <pct>% across <scopes> scope(s); cap 15%"
  *
