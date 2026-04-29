@@ -1,21 +1,22 @@
 # Spec — `00-adrs` Acceptance Criteria I/O Fixtures (ADR-0029 + ADR-0030)
 
-> **Version:** 1.0.0
-> **Created:** 2026-04-29 (UTC+8)
+> **Version:** 1.1.0
+> **Created:** 2026-04-29 (UTC+8) — v1.0.0 seeded AT-29-* + AT-30-* fixtures. **Updated:** 2026-04-29 — v1.1.0 added §3 AT-31-* fixtures (9 rows: AT-31-D1..D7 + D5-OVERDUE + PROTOCOL-COOLING-WINDOW) per ADR-0031 §6 + AC v1.3.0.
 > **Status:** Normative companion to [`97-acceptance-criteria.md`](./97-acceptance-criteria.md).
 > **Format SSOT:** [`../01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](../01-spec-authoring-guide/19-acceptance-criteria-io-table.md)
-> **Closes:** AT-FIX-01 deficit for AT-ADR-G04 (5 rows: AT-29-D1/D3/D4×3) and AT-ADR-G05 (8 rows: AT-30-I1..I8). Ratifies fixtures-as-spec for ADR-0029 and ADR-0030.
+> **Closes:** AT-FIX-01 deficit for AT-ADR-G04 (5 rows), AT-ADR-G05 (8 rows), and **AT-ADR-G06 (9 rows: AT-31-D1..D7 + AT-31-D5-OVERDUE + AT-31-PROTOCOL — closes F-SPEC-13 + F-AUDIT-26 fixture leg)**.
 
 ---
 
 ## Scope
 
-This file pairs every AT row added in `97-acceptance-criteria.md` v1.1.0 (AT-ADR-G04) and v1.2.0 (AT-ADR-G05) with a Given/When/Then I/O fixture. AT-ADR-G01..G03 are pre-existing meta-shape ATs verified by the standing `spec-hygiene` suite and do not need fixtures here (covered by Pattern 1 / Doc-shape in [`../97a-acceptance-criteria-fixtures.md`](../97a-acceptance-criteria-fixtures.md)).
+This file pairs every AT row added in `97-acceptance-criteria.md` v1.1.0 (AT-ADR-G04), v1.2.0 (AT-ADR-G05), and v1.3.0 (AT-ADR-G06) with a Given/When/Then I/O fixture. AT-ADR-G01..G03 are pre-existing meta-shape ATs verified by the standing `spec-hygiene` suite and do not need fixtures here (covered by Pattern 1 / Doc-shape in [`../97a-acceptance-criteria-fixtures.md`](../97a-acceptance-criteria-fixtures.md)).
 
 | AT cluster | Owning ADR | Owning gate(s) | Fixtures below |
 |------------|------------|----------------|----------------|
 | AT-29-D1 / D3 / D4×3 | [ADR-0029](./0029-per-gate-path-ledger-shared-lib.md) | `G-13-LEDGER-USES-SHARED-LIB`, `G-13-LEDGER-PER-GATE-PATH` | §1.1–§1.5 |
 | AT-30-I1..I8 | [ADR-0030](./0030-audit-exemption-manifest.md) | `G-00-AUDIT-EXEMPTION-REVIEW` | §2.1–§2.8 |
+| AT-31-D1..D7 + D5-OVERDUE + PROTOCOL | [ADR-0031](./0031-warn-only-strict-flip-pattern.md) | `G-00-GRADUATION-LEDGER-FRESH`, `G-00-GRADUATION-LEDGER-DATE-DRIFT`, `G-38-AMBIGUOUS-WORDING` | §3.1–§3.9 |
 
 ---
 
@@ -149,28 +150,128 @@ This file pairs every AT row added in `97-acceptance-criteria.md` v1.1.0 (AT-ADR
 
 ---
 
-## Verification
+## §3 — AT-ADR-G06 fixtures (ADR-0031, warn-only-with-STRICT-flip pattern)
+
+> Pairs the 9 acceptance rows in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) §AT-ADR-G06 with reproducible Given/When/Then I/O fixtures. CI-enforced rows (D2, D3 vague-token leg, D5, D5-OVERDUE, D7) are exercised by gates `G-00-GRADUATION-LEDGER-FRESH` (#60), `G-00-GRADUATION-LEDGER-DATE-DRIFT` (#61), and `G-38-AMBIGUOUS-WORDING` (#38). DOC-tier rows (D1, D3 grammar leg, D4, D6, PROTOCOL) carry reproducible reviewer fixtures pending CI promotion (tracked as tasks #42 + future).
+
+### §3.1 AT-31-D1-CLOSED-MODES
+
+| Slot | Value |
+|------|-------|
+| **Given** | Repo at HEAD with all hygiene runners under `scripts/spec-hygiene/[0-9][0-9]-*.mjs` (excluding `_lib/`). |
+| **When** | A reviewer greps `^const STRICT = ` across the runner corpus. |
+| **Expected exit** | (DOC-tier; no exit code today) Every match is the literal `true` or `false`, not `process.env.X === "1"`, not a ternary, not a function call. |
+| **Then (positive)** | A new runner declaring `const STRICT = true` or `const STRICT = false` passes review. |
+| **Negative fixture** | A runner declaring `const STRICT = process.env.LOVABLE_STRICT === "1"` MUST be rejected at PR review with the citation `ADR-0031 §D1 — STRICT MUST be a literal boolean; environment-driven launch modes are forbidden (use a separate WARN-only gate that auto-graduates per the §D6 protocol instead)`. |
+
+### §3.2 AT-31-D2-LEDGER-COVERAGE
+
+| Slot | Value |
+|------|-------|
+| **Given** | `_GATE-REGISTRY.md` contains N rows whose description matches `/\*\*WARN-only\*\*/` (currently N=8 per registry head). `_GATE-GRADUATION-LEDGER.md` §Entries contains M rows (currently M=8). |
+| **When** | `node scripts/spec-hygiene/60-check-graduation-ledger-fresh.mjs` runs. |
+| **Expected exit** | `0` when N == M and every registry WARN-row's gate ID appears in the ledger §Entries OR §Graduated entries. |
+| **Then (positive)** | stdout matches `/\[G-00-GRADUATION-LEDGER-FRESH\] ✓ tracking \d+ WARN gate\(s\); \d+ graduated/` — meta-test at [`_tests/60.test.mjs`](../../scripts/spec-hygiene/_tests/60.test.mjs) locks this contract. |
+| **Negative fixture** | Adding `**WARN-only**` to a registry row without a matching ledger entry → exit `1` with stderr `[G-00-GRADUATION-LEDGER-FRESH] ✗ N orphan registry WARN-row(s); M orphan ledger row(s)`; restoring → exit `0`. |
+
+### §3.3 AT-31-D3-MEASURABLE-PREDICATE
+
+| Slot | Value |
+|------|-------|
+| **Given** | `_GATE-GRADUATION-LEDGER.md` §Entries with rows whose `flipCriterion` cells contain at least one of: `count =`, `≤`, `consecutive CI`, `targetDate <`, or compound `AND`/`OR`. |
+| **When** | `node scripts/spec-hygiene/38-check-ambiguous-wording.mjs` runs (vague-token leg). |
+| **Expected exit** | `0` when no cell contains `eventually`, `to-be-determined`, the bare three-letter unspecified-marker, `next pass`, `event-driven`, or `someday`. |
+| **Then (positive)** | All 8 current ledger rows pass — verified 2026-04-29 ledger v1.1.0 (3 vague-criterion offenders eliminated per F-AUDIT-26 closure cycle). |
+| **Negative fixture** | Editing a `flipCriterion` cell back to `eventually` → gate #38 exits `1` with stderr matching `/G-38: \d+ ambiguous-wording occurrence\(s\).*flipCriterion/`; restoring → exit `0`. (Already exercised in this cycle when ADR-0031 itself initially tripped #38 — fix was a narrow path-exemption per ADR-0030 manifest, not weakening the gate.) |
+
+### §3.4 AT-31-D4-FLIP-MECHANISM-CITES-RUNNER
+
+| Slot | Value |
+|------|-------|
+| **Given** | `_GATE-GRADUATION-LEDGER.md` §Entries rows. |
+| **When** | A reviewer greps each `flipMechanism` cell for either `scripts/spec-hygiene/[0-9][0-9]-*.mjs` or `_LEDGER-G-*-EXEMPTIONS.md`. |
+| **Expected exit** | (DOC-tier) Every cell cites at least one match. |
+| **Then (positive)** | All 8 current rows pass — examples: `set STRICT = true in 59-check-placeholder-density.mjs`, `flip 3 rule flags in 54-check-ai-contract-complete.mjs`. |
+| **Negative fixture** | A row with `flipMechanism = "TBD"` or `flipMechanism = "ask the team"` MUST be rejected at PR review with the citation `ADR-0031 §D4 — flipMechanism MUST cite a grep-able runner path or ledger filename so the graduator knows exactly which file to edit`. |
+
+### §3.5 AT-31-D5-ISO-DATE
+
+| Slot | Value |
+|------|-------|
+| **Given** | `_GATE-GRADUATION-LEDGER.md` §Entries with `targetDate` and `addedOn` cells. |
+| **When** | `node scripts/spec-hygiene/61-check-graduation-ledger-date-drift.mjs` runs (date-shape branch). |
+| **Expected exit** | `0` when every `targetDate` matches `^\d{4}-\d{2}-\d{2}$` AND `targetDate >= addedOn`. |
+| **Then (positive)** | All 8 current rows have ISO-formatted `targetDate` ≥ `2026-05-13` (earliest is `G-00-AT-FIX-COMPANION-SHAPE`); all `addedOn` are `2026-04-29`. |
+| **Negative fixture** | Editing `targetDate` to `Q3 2026` → exit `1` with stderr `/G-00-GRADUATION-LEDGER-DATE-DRIFT.*invalid date format/`; restoring → exit `0`. |
+
+### §3.6 AT-31-D5-OVERDUE-FAIL
+
+| Slot | Value |
+|------|-------|
+| **Given** | A `_GATE-GRADUATION-LEDGER.md` §Entries row with `targetDate < today`. |
+| **When** | `node scripts/spec-hygiene/61-check-graduation-ledger-date-drift.mjs` runs. |
+| **Expected exit** | `1` with stderr matching `/G-00-GRADUATION-LEDGER-DATE-DRIFT.*overdue/`. |
+| **Then (positive)** | stdout matches `/\d+ overdue, \d+ due-soon, \d+ on-track/` — meta-test at [`_tests/61.test.mjs`](../../scripts/spec-hygiene/_tests/61.test.mjs) locks this visibility-line contract. Current state: `0 overdue, 0 due-soon, 7 on-track` (verified 2026-04-29). |
+| **Negative fixture** | Tampering `targetDate` to `2025-01-01` → exit `1`; restoring to `2026-07-29` → exit `0` with `0 overdue` recorded. |
+
+### §3.7 AT-31-D6-PROTOCOL-COMPLETE
+
+| Slot | Value |
+|------|-------|
+| **Given** | A graduation PR for any WARN-only gate (e.g. the upcoming `G-00-ADR-CONSEQUENCES-XLINK` flip whose cooling window ends 2026-05-06). |
+| **When** | A reviewer audits the PR's changeset. |
+| **Expected exit** | (DOC-tier today; CI as task #42) The PR MUST modify ALL three of: (a) the named runner per `flipMechanism`, (b) `_GATE-GRADUATION-LEDGER.md` (row moved from §Entries to §Graduated entries with `graduatedOn` cell appended), (c) `_GATE-REGISTRY.md` (the `**WARN-only**` parenthetical removed from the gate's row description). |
+| **Then (positive)** | A graduation PR touching all three files passes review; gate #60 stdout will report the new `graduated` count incremented by 1. |
+| **Negative fixture** | A PR that flips the runner's `STRICT = true` but forgets step (b) → reviewer rejects citing ADR-0031 §D6 + future task #42 (when promoted to CI, gate #60 will detect §Entries → §Graduated entries desync and exit 1). |
+
+### §3.8 AT-31-D7-NO-RETROACTIVE-DATES
+
+| Slot | Value |
+|------|-------|
+| **Given** | A PR adding a new row to `_GATE-GRADUATION-LEDGER.md` §Entries with `addedOn = 2026-04-29` and `targetDate = 2026-04-15`. |
+| **When** | `node scripts/spec-hygiene/61-check-graduation-ledger-date-drift.mjs` runs. |
+| **Expected exit** | `1` with stderr `/G-00-GRADUATION-LEDGER-DATE-DRIFT.*targetDate.*before.*addedOn/` (date-sanity branch). |
+| **Then (positive)** | A row with `targetDate >= addedOn` passes — all 8 current rows satisfy (every `targetDate` is ≥ 14 days after `addedOn`). |
+| **Negative fixture** | Above-described row → exit `1`; correcting `targetDate` to any `>= 2026-04-29` → exit `0`. |
+
+### §3.9 AT-31-PROTOCOL-COOLING-WINDOW
+
+| Slot | Value |
+|------|-------|
+| **Given** | A WARN-only gate whose `flipCriterion` reports `0` for the first time on a given CI run. |
+| **When** | The graduator considers steps 2–6 of the §D6 protocol. |
+| **Expected exit** | (DOC-tier) The graduator MUST wait for **7 consecutive CI runs** all reporting `0` (or all reporting the criterion satisfied) before executing steps 2–6. Skipping this is forbidden. |
+| **Then (positive)** | Example: `G-00-ADR-CONSEQUENCES-XLINK` reached 0 offenders on 2026-04-29; cooling window ends 2026-05-06 (7 daily CI runs); flip permissible from 2026-05-06 (tracked as task #36). |
+| **Negative fixture** | A graduator who flips `STRICT = true` on the same day as the first 0-count read MUST be reverted citing ADR-0031 §D6.1; a cooling-window note column may be added to ledger §Entries to track per-row "first 0-count CI run" timestamps (future task — pending §D6.1 CI promotion). Real-history justification: 3 of the 9 historical WARN gates had transient 0-counts that reverted within 48 h before stabilising. |
+
+
 
 ```bash
 # Per-AT verification:
 node scripts/spec-hygiene/48-check-ledger-uses-shared-lib.mjs  # AT-29-D1 / D4×3
 node scripts/spec-hygiene/57-check-audit-exemption-review.mjs  # AT-30-I1..I8
+node scripts/spec-hygiene/60-check-graduation-ledger-fresh.mjs # AT-31-D2
+node scripts/spec-hygiene/61-check-graduation-ledger-date-drift.mjs # AT-31-D5 / D5-OVERDUE / D7
+node scripts/spec-hygiene/38-check-ambiguous-wording.mjs       # AT-31-D3 (vague-token leg)
 # AT-29-D3 is owned by G-13-LEDGER-PER-GATE-PATH (existing runner).
+# AT-31-D1 / D4 / D6 / PROTOCOL are DOC-tier (reviewer-enforced; future CI candidates per task #42).
 
 # Full suite:
-node scripts/spec-hygiene/00-run-all.mjs                       # all gates incl. #48 + #57
+node scripts/spec-hygiene/00-run-all.mjs                       # all gates incl. #38, #48, #57, #60, #61
 ```
 
 ---
 
 ## Related
 
-- [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) — AT row catalogue (AT-ADR-G01..G05)
+- [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) — AT row catalogue (AT-ADR-G01..G06)
 - [`0029-per-gate-path-ledger-shared-lib.md`](./0029-per-gate-path-ledger-shared-lib.md) — §6 cites AT-29-* inline
 - [`0030-audit-exemption-manifest.md`](./0030-audit-exemption-manifest.md) — §D1..D3 cites AT-30-* inline
+- [`0031-warn-only-strict-flip-pattern.md`](./0031-warn-only-strict-flip-pattern.md) — §6 cites AT-31-* inline
 - [`../_AUDIT-EXEMPTIONS.md`](../_AUDIT-EXEMPTIONS.md) — singleton manifest under enforcement
+- [`../_GATE-GRADUATION-LEDGER.md`](../_GATE-GRADUATION-LEDGER.md) — singleton ledger under enforcement (row schema implements AT-31-D2..D5)
 - [`../97a-acceptance-criteria-fixtures.md`](../97a-acceptance-criteria-fixtures.md) — corpus-wide P2g sweep (Pattern 1 covers AT-ADR-G01..G03)
 - [`../01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](../01-spec-authoring-guide/19-acceptance-criteria-io-table.md) — Format SSOT
-- [`../_GATE-REGISTRY.md`](../_GATE-REGISTRY.md) — gate↔AT bindings (rows for AT-29-* and AT-30-* live here)
+- [`../_GATE-REGISTRY.md`](../_GATE-REGISTRY.md) — gate↔AT bindings (rows for AT-29-*, AT-30-*, AT-31-* live here)
 
-*Created 2026-04-29 — closes AT-FIX-01 fixture-deficit for ADR-0029 and ADR-0030 acceptance rows. 13 fixtures (5 AT-29-* + 8 AT-30-*) ratified.*
+*Created 2026-04-29 — closes AT-FIX-01 fixture-deficit for ADR-0029, ADR-0030, and **ADR-0031** acceptance rows. **22 fixtures** (5 AT-29-* + 8 AT-30-* + 9 AT-31-*) ratified.*
