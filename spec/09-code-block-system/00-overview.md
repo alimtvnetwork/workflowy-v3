@@ -1,8 +1,8 @@
-# 08 — Code Block System
+# 09 — Code Block System
 
 
-> **Version:** 3.1.0  
-> **Updated:** 2026-04-16
+> **Version:** 3.1.1  
+> **Updated:** 2026-04-29 — H1 numeric prefix corrected from "08" → "09" to match folder index (audit issue #6); Definition-of-Done AT range made concrete (`AT-CODEBLOCKSYSTEM-01` through `-18`, audit issue #8).
 
 ## AI Contract
 
@@ -20,7 +20,7 @@
 **Definition of Done** —
 - Highlighter loads lazily; no chunk added to the initial bundle
 - Copy button announces success via aria-live region
-- `AT-CODEBLOCKSYSTEM-01` through `AT-CODEBLOCKSYSTEM-NN` from `97-acceptance-criteria.md` pass
+- `AT-CODEBLOCKSYSTEM-01` through `AT-CODEBLOCKSYSTEM-18` from `97-acceptance-criteria.md` pass
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
