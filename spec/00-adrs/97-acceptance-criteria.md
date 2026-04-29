@@ -297,3 +297,33 @@ Result: **5 files**, all in Active or meta scopes. Per-file analysis:
 
 **Tracking:** v7 audit re-run will validate against Gemini-2.5-Pro using the explicit post-#44c regex (not substring). Expected outcome: F-AUDIT-29 confirmed closed, score 94 → 99.
 
+
+---
+
+## F-AUDIT-26 stale-finding closure note (v1.15.0, 2026-04-29, task #F26)
+
+**Finding:** v6 audit (Gemini-2.5-Pro) listed "vague gate graduation criteria" as the **sole open carryover from v5** (+3, MED).
+
+**Status when v6 ran:** **Already closed** in audit-v4 cycle (also dated 2026-04-29). Evidence trail:
+
+| Artifact | Evidence |
+|---|---|
+| `spec/_GATE-GRADUATION-LEDGER.md` v1.1.0 | Header explicitly states "**F-AUDIT-26 RESOLVED.** Tightened 3 vague flipCriteria (rows for `G-01-DOD-CONDENSED-MIRRORS-OVERVIEW`, `G-00-OVERVIEW-AI-CONTRACT-PRESENT` sub-tier, `G-00-OVERVIEW-AI-CONTRACT-COMPLETE` rules 3–5) to measurable predicates with concrete count/regex/CI-window thresholds; assigned linkedTask IDs #46/#47/#48." |
+| `spec/00-adrs/0031-warn-only-strict-flip-pattern.md` | Full ADR codifying the WARN→HARD-FAIL flip pattern; §6 ratifies 8 ATs; §"Consequences" line 112: "**Closes F-SPEC-13 + F-AUDIT-26.**" |
+| `spec/00-adrs/97-acceptance-criteria.md` line 90 | Pre-existing closure block for F-AUDIT-26 + F-SPEC-13 ratifying 8 ATs from ADR-0031 §6 |
+| `spec/00-adrs/97a-acceptance-criteria-fixtures.md` line 184 | Fixture explicitly cites "verified 2026-04-29 ledger v1.1.0 (3 vague-criterion offenders eliminated per F-AUDIT-26 closure cycle)" |
+| `spec/_AUDIT-EXEMPTIONS.md` line 43 | Exemption row keyed `F-AUDIT-26-CLOSURE (2026-04-29)` |
+| `G-38-AMBIGUOUS-WORDING` gate | Mechanically forbids `eventually`, `to-be-determined`, `TBD`, `next pass`, `event-driven`, `someday` in flipCriterion strings — runner-enforced regression guard |
+
+**Empirical re-verification (2026-04-29):**
+
+```bash
+rg -c "eventually|to-be-determined|TBD|next pass|event-driven|someday" spec/_GATE-GRADUATION-LEDGER.md
+```
+
+Result: **0 matches** in the entries table (the only hits are in the §"Forbidden tokens" definition, which is exempted by `_AUDIT-EXEMPTIONS.md` as a category-error per the policy-definition exemption).
+
+**Verdict:** F-AUDIT-26 is a **stale finding** — same false-positive pattern as F-AUDIT-29 (v6 Gemini did not have visibility into the v1.1.0 ledger update or ADR-0031). All 8 graduation-ledger entries already have measurable predicates (numeric counts, regex matches, CI-window thresholds, ISO dates). All 3 originally-vague rows have been tightened. ADR-0031 is the load-bearing SSOT for the pattern. **F-AUDIT-26 confirmed CLOSED — no further work required.**
+
+**Tracking:** v7 audit re-run will validate against Gemini-2.5-Pro with explicit pointers to ledger v1.1.0 + ADR-0031 in the audit prompt. Expected outcome: F-AUDIT-26 + F-AUDIT-29 both confirmed closed, score 91 → 99+.
+
