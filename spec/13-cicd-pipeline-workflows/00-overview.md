@@ -37,7 +37,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## AI Contract
 
-**Purpose** — Defines the CI/CD pipeline archetypes (WP-Plugin, Frontend-SPA, Browser-Extension) and the GitHub Actions / Bitbucket Pipelines YAML they MUST emit.
+**Purpose** — Defines the CI/CD pipeline archetypes (WP-Plugin, Frontend-SPA, Browser-Extension) and the GitHub Actions / Bitbucket Pipelines YAML they MUST emit (gate `G-13-OVERVIEW-ARCHETYPE-EMIT`).
 
 **Audience** — DevOps engineers; maintainers wiring a new repo into the pipeline.
 
@@ -86,7 +86,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## Pipeline Job DAG
 
-Every WP-Plugin pipeline MUST realize this exact dependency graph. Adding/removing nodes requires an ADR. Edges encode `needs:` in GitHub Actions.
+Every WP-Plugin pipeline MUST realize this exact dependency graph (gate `G-13-DAG-EXACT-MIRROR`). Adding/removing nodes requires an ADR. Edges encode `needs:` in GitHub Actions.
 
 ```
                   ┌──────────────────┐
@@ -130,7 +130,7 @@ Every WP-Plugin pipeline MUST realize this exact dependency graph. Adding/removi
 
 ## Required-vs-Optional Gate Matrix
 
-The matrix below is **load-bearing**. Branch-protection rules MUST mirror this exactly. A PR that fails any "Required" gate is unmergeable; "Advisory" gates emit annotations but do not block.
+The matrix below is **load-bearing**. Branch-protection rules MUST mirror this exactly (gate `G-13-BRANCH-PROTECTION-MIRROR`). A PR that fails any "Required" gate is unmergeable; "Advisory" gates emit annotations but do not block.
 
 | Job | Trigger | Status | Failure mode | Owns codes |
 |---|---|---|---|---|
@@ -141,7 +141,7 @@ The matrix below is **load-bearing**. Branch-protection rules MUST mirror this e
 | `test-phpunit`   | every push, every PR | **Required** | Hard block. | `CI-13-04` |
 | `test-vitest`    | every push, every PR | **Required** | Hard block. | `CI-13-05` |
 | `build-plugin-zip` | push to `main`, any `v*.*.*` tag | **Required on tag**, advisory on `main` | Hard block on tag; on `main`, posts a sticky issue. | `CI-13-06` |
-| `sign-artifact`  | tag only | **Required on tag** | Hard block; release MUST NOT publish unsigned. | `CI-13-07` |
+| `sign-artifact`  | tag only | **Required on tag** (gate `G-13-SIGN-REQUIRED-ON-TAG`) | Hard block; release MUST NOT publish unsigned. | `CI-13-07` |
 | `scan-security`  | every push, every PR | Advisory | Comments on PR; never blocks merge. | `CI-13-08` |
 | `publish`        | tag matching `v[0-9]+.[0-9]+.[0-9]+` | **Required on tag** | Hard block; manual rerun allowed. | `CI-13-09` |
 
@@ -161,7 +161,7 @@ The matrix below is **load-bearing**. Branch-protection rules MUST mirror this e
 
 ## Anti-Patterns
 
-The AI MUST NOT:
+The AI MUST NOT (gate `G-13-ANTIPATTERN-COMPLIANCE`):
 
 | # | Anti-pattern | Why it fails | Gate that catches it |
 |---|---|---|---|
@@ -272,7 +272,7 @@ jobs:
 | `CI-13-08` | scan-security | Advisory — file issue, do not retry to clear. |
 | `CI-13-09` | publish | Verify `UPDATE_SERVER_TOKEN`; manual rerun safe (publish is idempotent on version). |
 
-*All values are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings.*
+*All values are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings (gate `G-13-FIXTURE-STRING-PARITY`).*
 
 <!-- AUTO-TOC:START -->
 
@@ -307,7 +307,7 @@ jobs:
 
 ## Purpose
 
-Central location for all CI/CD pipeline specifications, deployment automation, and related infrastructure-as-code documentation. All pipeline-related content — build pipelines, deployment workflows, environment promotion strategies, and CI/CD tooling configurations — MUST be documented in this folder.
+Central location for all CI/CD pipeline specifications, deployment automation, and related infrastructure-as-code documentation. All pipeline-related content — build pipelines, deployment workflows, environment promotion strategies, and CI/CD tooling configurations — MUST be documented in this folder (gate `G-13-FOLDER-PLACEMENT`).
 
 ---
 
