@@ -1,10 +1,10 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.1.9  
-> **Updated:** 2026-04-29 — patch: +1 gate `G-NS-STATUS-IN-LEGEND` (CI, WARN-only initial mode; `Spec-Authoring` area). Reduces 46-value `**Status:**` drift to a closed 9-value enum (`DRAFT|REVIEW|CANONICAL|COMPANION|DISPATCH|DEFERRED|DEPRECATED|REDIRECT|ARCHIVED`). SSOT: `spec/01-spec-authoring-guide/20-status-legend.md`; audit: `.lovable/memory/audit/at-status-legend-audit.md`. Hard-fails when P3 status sweep retires legacy values. Prior: 1.1.8 (G-NS-NO-DEPRECATED-ALIAS), 1.1.7 (G-01-AT-ID-FORMAT-CANONICAL), 1.1.6 (G-13-LEDGER-NUMBERING-CONTIGUOUS), 1.1.5 (G-13-LEDGER-ROW-COUNT-PARITY), 1.1.4 (G-13-PLACEHOLDER-TOKEN-PARITY), 1.1.3 (§5.1 reconciliation), 1.1.2 (G-26-WIRE-OWNERID-ONLY dual tier), 1.1.1 (added the gate), 1.1.0 (20 new gates from ADR-0012 §D7, ADR-0027, ADR-0028).  
+> **Version:** 1.2.0  
+> **Updated:** 2026-04-29 — patch: +1 gate `G-NS-ADR-MUST-HAS-AT` (CI, WARN-only initial mode; `Spec-Authoring` area). Every ADR with ≥5 `MUST`/`SHALL` rules MUST be cited by at least one `97-acceptance-criteria.md` row. 23 ADRs (285 orphaned MUSTs) allow-listed in `spec/_LEDGER-G-NS-ADR-COVERAGE.md`; ADR-0026 closed today via `AT-APP-108..110` (-21 orphans). Audit: `.lovable/memory/audit/at-prose-must-shall-sweep.md`. Prior: 1.1.9 (G-NS-STATUS-IN-LEGEND), 1.1.8 (G-NS-NO-DEPRECATED-ALIAS), 1.1.7 (G-01-AT-ID-FORMAT-CANONICAL), 1.1.6 (G-13-LEDGER-NUMBERING-CONTIGUOUS), 1.1.5 (G-13-LEDGER-ROW-COUNT-PARITY), 1.1.4 (G-13-PLACEHOLDER-TOKEN-PARITY), 1.1.3 (§5.1 reconciliation), 1.1.2 (G-26-WIRE-OWNERID-ONLY dual tier), 1.1.1 (added the gate), 1.1.0 (20 new gates from ADR-0012 §D7, ADR-0027, ADR-0028).  
 ...
-- **Total named gates:** 296 (was 295 — +1 `G-NS-STATUS-IN-LEGEND`)
-- **CI:** 27 (was 26 — +1 `G-NS-STATUS-IN-LEGEND`; WARN-only until P3 status sweep; one gate `G-26-WIRE-OWNERID-ONLY` is dual-tier: counted under both CI and TEST)
+- **Total named gates:** 297 (was 296 — +1 `G-NS-ADR-MUST-HAS-AT`)
+- **CI:** 28 (was 27 — +1 `G-NS-ADR-MUST-HAS-AT`; WARN-only until AUDIT-03 backfill empties allow-list; one gate `G-26-WIRE-OWNERID-ONLY` is dual-tier: counted under both CI and TEST)
 - **TEST:** 14 (unchanged)
 - **DOC-NORM:** 54 (unchanged)
 - **DOC:** 202 (unchanged)
