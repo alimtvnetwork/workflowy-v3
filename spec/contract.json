@@ -1166,7 +1166,24 @@
       "definition": "Every ADR with non-trivial downstream impact MUST list at least one `## Consequences` bullet that cross-links to the spec scope it locks (e.g. `spec/04-database-conventions/`).",
       "defined_in": "spec/00-adrs/97-acceptance-criteria.md",
       "defined_line": 51,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/00-adrs/_LEDGER-G-00-ADR-CONSEQUENCES-XLINK-BASELINE.md",
+          "line": 8
+        },
+        {
+          "file": "spec/00-adrs/_LEDGER-G-00-ADR-CONSEQUENCES-XLINK-BASELINE.md",
+          "line": 81
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 4
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 455
+        }
+      ]
     },
     {
       "id": "AT-AIOPTIMIZATION-01",
