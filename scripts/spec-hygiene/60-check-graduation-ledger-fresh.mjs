@@ -78,32 +78,12 @@ function loadLedger() {
   catch { throw new Error(`L1 violated: ${LEDGER} missing`); }
 }
 
-// Mask backtick code-spans (`…`) so embedded `|` chars inside them are NOT
-// treated as cell boundaries. Standard CommonMark behaviour for tables.
-// Restores spans after split. Without this, a flipCriterion containing
-// regex like `(##\|###)` silently shifts the cell count and the row gets
-// dropped (root cause of task #54: 3 of 7 active rows invisible to L4–L8
-// validators on 2026-04-29).
-const SPAN_RE = /`[^`\n]*`/g;
-function maskSpans(line) {
-  const spans = [];
-  const masked = line.replace(SPAN_RE, (m) => { spans.push(m); return `\u0000SPAN${spans.length - 1}\u0000`; });
-  return { masked, spans };
-}
-function unmask(cell, spans) {
-  return cell.replace(/\u0000SPAN(\d+)\u0000/g, (_, n) => spans[Number(n)]);
-}
-function splitMdRow(line) {
-  const { masked, spans } = maskSpans(line);
-  return masked.split('|')
-    .map((c) => unmask(c, spans).trim().replace(/^`|`$/g, ''))
-    .filter((_, idx, arr) => idx > 0 && idx < arr.length - 1);
-}
+// Markdown table cell-splitter lives in `./_lib/md-table.mjs` (extracted
+// in task #55 so all gates that parse `_GATE-*`/`_AUDIT-*`/`_LEDGER-*`
+// tables share one safe implementation; root cause: task #54).
 
 function parseHeader(line) {
-  // Header cells never contain `|` in code spans in practice, but use the
-  // same splitter for consistency.
-  return splitMdRow(line).filter(Boolean);
+  return splitMdHeader(line);
 }
 
 function extractRows(src) {
