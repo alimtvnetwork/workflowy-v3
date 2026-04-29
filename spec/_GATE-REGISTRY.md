@@ -1,12 +1,12 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.5.2  
-> **Updated:** 2026-04-29 — Task #11 Phase-2 (per-(gate, path) ledger migration): migrated all 41 entries of `REDUNDANCY_ALLOWLIST` from `scripts/spec-hygiene/30-check-at-citation-validity.mjs` to canonical sibling ledger [`spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md`](./01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md) using the 5-column schema frozen in Phase-1. Runner now loads the ledger via inline `loadG30RedundancyExemptions()` helper (≤15-line logic per ADR-0007 R3); in-source `REDUNDANCY_ALLOWLIST_INSOURCE` Set is empty, reserved for emergency overrides. G-30.2 behaviour preserved: 0 redundancy cleanup candidates pre- and post-migration. G-30.3 meta-rationale check trivially green (empty Set). Full hygiene sweep (36 runners) green after regenerating G-35 inventory snapshot. Prior: 1.5.1 (Phase-1 schema spec).
+> **Version:** 1.6.0  
+> **Updated:** 2026-04-29 — Task #11 Phase-3 (per-(gate, path) ledger CI promotion): G-30.2 redundancy advisory now consults each ledger row's `pathGlob` per declaring file via new `isRedundancyExempt(prefix, declaringFile)` + `globToRegExp()` helpers (≤15-line logic per ADR-0007 R3). Path-glob tightening shifted 5 rows from area-roots to specific 97-acceptance-criteria.md / 15-roles-and-permissions.md hosts; all 41 ledger rows now match their real declaring path. Negative test: corrupting AT-INFO- row's pathGlob → all 7 covered citations correctly re-surface as cleanup candidates. Promoted `G-13-LEDGER-PER-GATE-PATH` DOC-NORM → CI. Closes the per-(gate, path) trilogy (Phase-1 schema → Phase-2 migrate → Phase-3 enforce). Prior: 1.5.2 (Phase-2 migration).
 
 - **Total named gates:** 310 (unchanged)
-- **CI:** 40 (unchanged)
+- **CI:** 41 (+1: `G-13-LEDGER-PER-GATE-PATH` promoted from DOC-NORM)
 - **TEST:** 14 (unchanged)
-- **DOC-NORM:** 54 (unchanged)
+- **DOC-NORM:** 53 (−1: `G-13-LEDGER-PER-GATE-PATH` promoted)
 - **DOC:** 202 (unchanged)
 - **Areas covered:** 37 (unchanged)
 
