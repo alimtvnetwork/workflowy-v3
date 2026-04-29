@@ -1,13 +1,13 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.14  
-> **Updated:** 2026-04-29 — **batch-17 prose→AT migration:** registered 6 new `G-BACKUP-*` sub-gates (`-CLIENT-SIDE-ENCRYPT` promoted from reserved, `-S3-CONFIG-HARDENED`, `-NO-SENSITIVE-IN-TARBALL`, `-RESTORE-AUDIT-REWALK`, `-DRILL-CADENCE-90D`, `-SCHEDULE-CRON-PARITY`) covering 7 prose-MUSTs in `spec/31-app/05-conventions/21-g28-backup-coverage-gate.md`. All CI tier (umbrella `G-BACKUP` is CI). **Pre-flight namespace check caught a critical collision:** the source file labelled itself "G-28" but the `G-28-*` namespace is fully owned by ADR-0028 (i18n). Used the existing `G-BACKUP-*` family established by F-SCOPE-15 instead — this batch effectively closes the §axis-content portion of `F-SCOPE-15-FOLLOWUP` (axis prose now cites `G-BACKUP-*`; only the file-title and §Reserved Gate ID line still say "G-28"). Existing `G-BACKUP-RESTORE-INTEGRITY-CHECK` reused for axis 5 first half (PRAGMA pairing); axis 1 (SQLite-API exclusivity) reuses umbrella `G-BACKUP` (no per-axis MUST in source — the rule is in code-block algorithm only). Prior: 1.7.13 (batch-16 G-13-LEDGER-* sub-gates).
+> **Version:** 1.7.15  
+> **Updated:** 2026-04-29 — **batch-18 prose→AT migration:** registered 5 new `G-NS-STATUS-*` sub-gates (`-FRONTMATTER-EXACTLY-ONE`, `-COMPANION-CITES-PARENT`, `-DEPRECATED-CITES-SUCCESSOR`, `-REDIRECT-BODY-CAP`, `-SWEEP-ATOMIC`) covering 6 prose-MUSTs in `spec/01-spec-authoring-guide/22-status-legend.md`. 4 CI tier + 1 DOC-NORM (sweep-atomic is process-only). All sub-rules of existing umbrella `G-NS-STATUS-IN-LEGEND` (CI, WARN-only). Pre-flight namespace check: only 1 sibling `G-NS-STATUS-*` gate registered (the umbrella) — no collisions. Prior: 1.7.14 (batch-17 G-BACKUP-* sub-gates).
 
-- **Total named gates:** 418 (+6 this revision: six `G-BACKUP-*`)
+- **Total named gates:** 423 (+5 this revision: five `G-NS-STATUS-*`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
-- **CI:** 85 (+6 this revision)
+- **CI:** 89 (+4 this revision)
 - **TEST:** 17 (unchanged)
-- **DOC-NORM:** 111 (unchanged)
+- **DOC-NORM:** 112 (+1 this revision)
 - **DOC:** 202 (unchanged)
 - **Areas covered:** 46 (unchanged)
 - **Areas covered:** 37 (unchanged)
