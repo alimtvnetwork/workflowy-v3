@@ -1,10 +1,10 @@
 # Licensing Strategy
 
-> **Version:** 1.1.0
-> **Updated:** 2026-04-29 (UTC+8)
-> **Status:** Draft — load-bearing decision deferred to ADR-0032 (pending).
+> **Version:** 1.2.0
+> **Updated:** 2026-04-29 (UTC+8) — v1.2.0: ADR-0032 authored (`Proposed`); Q1–Q5 ratified pending migration steps 1–6. v1.1.0 (prior) carried Q1–Q5 as Open.
+> **Status:** Awaiting graduation — ratified by [ADR-0032](./00-adrs/0032-license-decision.md) (`Proposed`); flips to `Accepted` after migration steps 1–6.
 > **Parent:** [`spec-index.md`](./spec-index.md)
-> **Owner:** Project lead (no delegated stewardship until ADR ratifies).
+> **Owner:** Project lead (no delegated stewardship until ADR-0032 → `Accepted`).
 
 ---
 
