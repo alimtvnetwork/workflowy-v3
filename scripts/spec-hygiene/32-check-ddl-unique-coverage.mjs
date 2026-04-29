@@ -64,6 +64,7 @@
  */
 
 import { readFileSync, statSync } from "node:fs";
+import { walkLedger, buildGlobMap, isExempt } from "./_lib/per-gate-path-ledger.mjs";
 
 const SCHEMA_FILES = [
   "spec/31-app/07-db-diagram/sql/01-root-schema.sql",
