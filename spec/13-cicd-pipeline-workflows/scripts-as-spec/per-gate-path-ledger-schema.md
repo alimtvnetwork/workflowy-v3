@@ -126,7 +126,7 @@ once migrated to this schema. Until then, use the worked example below:
 | G-30-AT-CITATION-VALIDITY     | spec/01-features/**/*.md        | AT-FOO-       | Doc-example placeholder cited only by 02-ci-quality-gates. | 2026-04-29 |
 ```
 
-A correct runner MUST report `Checked 3 rows; 0 violations; exit 0`.
+A correct runner MUST (gate G-13-LEDGER-RUNNER-CLEAN-OUTPUT) report `Checked 3 rows; 0 violations; exit 0`.
 
 ## Strictness roadmap
 
