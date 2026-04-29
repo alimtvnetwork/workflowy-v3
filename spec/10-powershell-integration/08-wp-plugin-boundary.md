@@ -26,11 +26,11 @@ This file makes the boundary unambiguous.
 | # | Rule | Why |
 |---|------|-----|
 | **B1** | PowerShell is **dev-only tooling** for Windows contributors. It is NEVER a runtime dependency of the shipped plugin. | The plugin runs on any WordPress host (Linux/macOS/Windows); requiring pwsh would break that. |
-| **B2** | `run.ps1`, `powershell.json`, and the `templates/` + `examples/` folders MUST be excluded from the plugin ZIP via `.distignore`. | See [`spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/01-distignore-and-zip-layout.md`](../13-cicd-pipeline-workflows/18-wp-plugin-deploy/01-distignore-and-zip-layout.md). |
-| **B3** | PowerShell scripts MUST NOT call WordPress APIs, modify the SQLite database, or write to `wp-content/`. | These are plugin-runtime concerns; mixing them creates undocumented coupling. |
+| **B2** | `run.ps1`, `powershell.json`, and the `templates/` + `examples/` folders MUST be excluded from the plugin ZIP via `.distignore`. [gate: G-10-BOUNDARY-DISTIGNORE-EXCLUDED] | See [`spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/01-distignore-and-zip-layout.md`](../13-cicd-pipeline-workflows/18-wp-plugin-deploy/01-distignore-and-zip-layout.md). |
+| **B3** | PowerShell scripts MUST NOT call WordPress APIs, modify the SQLite database, or write to `wp-content/`. [gate: G-10-BOUNDARY-NO-WP-RUNTIME] | These are plugin-runtime concerns; mixing them creates undocumented coupling. |
 | **B4** | Any "build" PowerShell does for WorkFlowy is limited to: (a) `bun install`, (b) `bun run build` (Vite), (c) `composer install --no-dev`, (d) optional `zip` for local plugin packaging. | Anything more belongs in CI (`spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/02-github-actions-workflow.md`). |
-| **B5** | PowerShell MUST NOT be invoked from PHP code (no `shell_exec('powershell ...')`, no `proc_open` for pwsh). | Server-side shell-out is a security risk and breaks portability. |
-| **B6** | Cross-platform parity: every PowerShell convenience script MUST have an equivalent `bash` script (or `package.json` script) so macOS/Linux contributors are not blocked. | See parity table below. |
+| **B5** | PowerShell MUST NOT be invoked from PHP code (no `shell_exec('powershell ...')`, no `proc_open` for pwsh). [gate: G-10-BOUNDARY-NO-PHP-SHELLOUT] | Server-side shell-out is a security risk and breaks portability. |
+| **B6** | Cross-platform parity: every PowerShell convenience script MUST have an equivalent `bash` script (or `package.json` script) so macOS/Linux contributors are not blocked. [gate: G-10-BOUNDARY-PARITY-SCRIPT] | See parity table below. |
 | **B7** | The Go-specific content in `01-configuration-schema.md`, `02-script-reference/`, `03-integration-guide.md`, and `25-multi-site-deployment.md` is **historical reference only** for WorkFlowy. Treat it as "do not copy verbatim." | Avoids hallucinating Go code paths into a PHP project. |
 | **B8** | If a contributor needs Windows-only automation that doesn't fit B4, it goes in `scripts/windows/` at the repo root and is documented in `CONTRIBUTING.md`, NOT in `spec/10-powershell-integration/`. | Keeps spec focused on cross-cutting patterns. |
 
@@ -38,7 +38,7 @@ This file makes the boundary unambiguous.
 
 ## Parity Table (B6)
 
-Every PowerShell developer convenience MUST have a cross-platform equivalent.
+Every PowerShell developer convenience MUST have a cross-platform equivalent. [gate: G-10-BOUNDARY-PARITY-TABLE-COMPLETE]
 
 | Task | PowerShell (Windows) | Bash (macOS/Linux) | Cross-platform fallback |
 |------|----------------------|--------------------|--------------------------|
@@ -50,7 +50,7 @@ Every PowerShell developer convenience MUST have a cross-platform equivalent.
 | Sync version | `.\scripts\sync-version.ps1` | `./scripts/sync-version.sh` | (canonical: bash — see [`04-version-sync.md`](../13-cicd-pipeline-workflows/18-wp-plugin-deploy/04-version-sync.md)) |
 | Bump SemVer | `npm version` | `npm version` | (npm/bun built-in) |
 
-**Rule:** If a script lacks one of the three columns, it is incomplete and MUST NOT be merged.
+**Rule:** If a script lacks one of the three columns, it is incomplete and MUST NOT be merged. [gate: G-10-BOUNDARY-PARITY-MERGE-BLOCK]
 
 ---
 

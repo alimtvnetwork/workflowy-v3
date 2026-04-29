@@ -1,6 +1,6 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.17  
+> **Version:** 1.7.18  
 > **Updated:** 2026-04-29 — **batch-18 prose→AT migration:** registered 5 new `G-NS-STATUS-*` sub-gates (`-FRONTMATTER-EXACTLY-ONE`, `-COMPANION-CITES-PARENT`, `-DEPRECATED-CITES-SUCCESSOR`, `-REDIRECT-BODY-CAP`, `-SWEEP-ATOMIC`) covering 6 prose-MUSTs in `spec/01-spec-authoring-guide/22-status-legend.md`. 4 CI tier + 1 DOC-NORM (sweep-atomic is process-only). All sub-rules of existing umbrella `G-NS-STATUS-IN-LEGEND` (CI, WARN-only). Pre-flight namespace check: only 1 sibling `G-NS-STATUS-*` gate registered (the umbrella) — no collisions. Prior: 1.7.14 (batch-17 G-BACKUP-* sub-gates).
 
 - **Total named gates:** 423 (+5 this revision: five `G-NS-STATUS-*`)
@@ -110,6 +110,12 @@
 
 | Gate | Tier | Primary File | Brief |
 |------|------|--------------|-------|
+| `G-10-BOUNDARY-DISTIGNORE-EXCLUDED` | **CI** | [`spec/10-powershell-integration/08-wp-plugin-boundary.md`](./10-powershell-integration/08-wp-plugin-boundary.md) | `run.ps1`, `powershell.json`, `templates/`, `examples/` MUST appear in `.distignore` so they are excluded from the plugin ZIP (B2). |
+| `G-10-BOUNDARY-NO-WP-RUNTIME` | **DOC-NORM** | [`spec/10-powershell-integration/08-wp-plugin-boundary.md`](./10-powershell-integration/08-wp-plugin-boundary.md) | PowerShell scripts MUST NOT call WordPress APIs, mutate the SQLite DB, or write to `wp-content/` (B3). |
+| `G-10-BOUNDARY-NO-PHP-SHELLOUT` | **CI** | [`spec/10-powershell-integration/08-wp-plugin-boundary.md`](./10-powershell-integration/08-wp-plugin-boundary.md) | PHP source MUST NOT invoke PowerShell (`shell_exec('powershell …')`, `proc_open(['pwsh', …])`) — server-side shell-out is forbidden (B5). |
+| `G-10-BOUNDARY-PARITY-SCRIPT` | **CI** | [`spec/10-powershell-integration/08-wp-plugin-boundary.md`](./10-powershell-integration/08-wp-plugin-boundary.md) | Every `.ps1` developer-convenience script MUST have a sibling `.sh` (or `package.json` script) — cross-platform parity (B6). |
+| `G-10-BOUNDARY-PARITY-TABLE-COMPLETE` | **DOC-NORM** | [`spec/10-powershell-integration/08-wp-plugin-boundary.md`](./10-powershell-integration/08-wp-plugin-boundary.md) | Parity table §"Parity Table (B6)" MUST list a row per developer-convenience task with all three columns populated (Windows/Bash/Cross-platform). |
+| `G-10-BOUNDARY-PARITY-MERGE-BLOCK` | **CI** | [`spec/10-powershell-integration/08-wp-plugin-boundary.md`](./10-powershell-integration/08-wp-plugin-boundary.md) | A script lacking one of the three parity columns is incomplete and MUST NOT be merged — gate fails CI when a `.ps1` exists without sibling `.sh` (or vice versa). |
 | `G-10-CMDLET-BINDING` | **DOC** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | Omit [CmdletBinding(SupportsShouldProcess)] No -WhatIf support; mutations cannot be dry-run. |
 | `G-10-ERROR-STOP` | **DOC-NORM** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | Omit $ErrorActionPreference = 'Stop' Non-terminating errors → exit 0 despite failure. |
 | `G-10-NO-HARDCODE-PATH` | **DOC** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | Hardcode C:\Program Files\… paths Breaks portable installs; fails on non-default WP layouts. |
