@@ -1,7 +1,7 @@
 # ADRs — Acceptance Criteria
 
 > **Version:** 1.9.0
-> **Created:** 2026-04-29 — closes G-08 acceptance-coverage gap (P0 quick-win). **Updated:** 2026-04-29 — v1.1.0..v1.4.0 added AT-ADR-G04..G07 (closes F-AUDIT-27 HIGH); v1.5.0 G08 (ADR-0025 SSE); v1.6.0 G09 (ADR-0015 ItemTypes); v1.7.0 G10 (ADR-0016 SortOrder); v1.8.0 G11 (ADR-0017 boundaries+virtualization); v1.9.0 G12 (ADR-0020 branded IDs); v1.10.0 G13 (ADR-0021 undo+queue); **v1.11.0** added AT-ADR-G14 (ADR-0024 triage ratification, 5 rows AT-24-D1..D4) — task #80, **F-AUDIT-21 CLOSED 7/7**.
+> **Created:** 2026-04-29 — closes G-08 acceptance-coverage gap (P0 quick-win). **Updated:** 2026-04-29 — v1.1.0..v1.4.0 added AT-ADR-G04..G07; v1.5.0 G08 (ADR-0025); v1.6.0 G09 (ADR-0015); v1.7.0 G10 (ADR-0016); v1.8.0 G11 (ADR-0017); v1.9.0 G12 (ADR-0020); v1.10.0 G13 (ADR-0021); v1.11.0 G14 (ADR-0024) — F-AUDIT-21 CLOSED 7/7; **v1.12.0** appended F-AUDIT-15 closure note (task #2) — empirical density check on 7 v5-flagged scopes returns 0.00% stub markers across all of them; F-AUDIT-15 is a false-positive cascade of the same pre-#44c parser bug as F-AUDIT-25 and is CLOSED.
 > **Status:** ✅ SSOT — testable acceptance criteria for the ADR governance scope.
 
 > _Fixture: N/A — pure narrative reference, not a testable criterion._
@@ -229,3 +229,27 @@ The criteria are grouped into 3 categories: **shape** (file structure),
 | AT-24-D2-ALIAS-BRIDGE-AUTHORITY | The Spec↔DDL Alias Bridge in `spec/04-database-conventions/00-overview.md` is the **sole** authority for translating spec-prose plural natural-language terms (`Items`, `Content`, `Owners`) to singular DDL identifiers (`Item.Title`, `Item.OwnerId`). Inline ad-hoc translations in feature specs, ADRs, or fixtures are forbidden — they MUST cite the alias-bridge entry. New plural prose terms MUST first be registered in the alias bridge before use elsewhere in `spec/`. | [`0024-ratify-soft-confirm-triage-rulings.md`](./0024-ratify-soft-confirm-triage-rulings.md) §D2 | DOC (reviewer; future CI as `G-24-ALIAS-BRIDGE-AUTHORITY` — markdown grep flags plural→singular translation prose outside the bridge file) |
 | AT-24-D3-FAVORITES-TABLE-ONLY | Favorites MUST be implemented as a **table-level** concern — a column or flag (e.g. `Item.IsFavorite BOOLEAN NOT NULL DEFAULT 0`, or a join table `ItemFavorite(ItemId, UserId)`) on the canonical item table. Dedicated shell endpoints named `EP-FAVORITES-LIST`, `EP-FAVORITES-ADD`, `EP-FAVORITES-REMOVE`, or any `/favorites/*` route are forbidden. Listing favorites MUST be a query parameter on the existing item-list endpoint (e.g. `?filter=favorite`), not a sibling endpoint. Any future request to introduce a dedicated `Favorite` table or `EP-FAVORITES-*` shell endpoint MUST first supersede ADR-0001 (per its Worked Example) **and** ADR-0024. | [`0024-ratify-soft-confirm-triage-rulings.md`](./0024-ratify-soft-confirm-triage-rulings.md) §D3 + ADR-0001 | `G-24-FAVORITES-TABLE-ONLY` |
 | AT-24-D4-TRIAGE-RECLASSIFICATION | The `.lovable/question-and-ambiguity/00-triage-summary.md` file MUST display a banner at file head re-labelling items #01, #03, #17 from 🟡 **Soft-confirm** to ✅ **Ratified by ADR-0024**. The banner is the authoritative classification; per-item section headers (§§ #01, #03, #17) MAY retain their original 🟡 markers for historical fidelity. The triage file remains the audit trail; this ADR is now the load-bearing source. AI sessions encountering a 🟡 marker on these three items MUST treat ADR-0024 as authoritative and the section marker as historical. | [`0024-ratify-soft-confirm-triage-rulings.md`](./0024-ratify-soft-confirm-triage-rulings.md) §D4 | DOC (reviewer; future CI as `G-24-TRIAGE-BANNER-PRESENT` — grep asserts banner string exists at file head referencing ADR-0024 + items #01, #03, #17) |
+
+---
+
+## F-AUDIT-15 closure note (v1.12.0, 2026-04-29, task #2)
+
+**Finding:** v5 audit (Gemini-2.5-Pro) flagged "scopes over the 15% placeholder-density cap" — concentrated in `36-user-management` (claimed 50% placeholders), `13-cicd-pipeline-workflows`, and other legacy modules.
+
+**Root cause:** Same as F-AUDIT-25 — the pre-#44c gate-#59 placeholder regex matched the bare word "placeholder" in legitimate technical prose (e.g. "Acceptance Summary table…no prose-only claims" + JSON-schema literals containing the word). After the heuristic was tightened (#44c) to require explicit stub markers (`TODO:`, `TBD:`, `FIXME:`, `<!-- STUB`, `Stub Section`, `[PLACEHOLDER]`, `placeholder text`), running the post-#44c density check against the seven scopes v5 flagged yields:
+
+| Scope | Lines | Stub markers | Density |
+|---|---:|---:|---:|
+| `spec/36-user-management` | 578 | 0 | 0.00% |
+| `spec/13-cicd-pipeline-workflows` | 6,472 | 0 | 0.00% |
+| `spec/10-powershell-integration` | 2,680 | 0 | 0.00% |
+| `spec/14-self-update-app-update` | 3,880 | 0 | 0.00% |
+| `spec/16-generic-cli` | 3,838 | 0 | 0.00% |
+| `spec/17-generic-update` | 1,946 | 0 | 0.00% |
+| `spec/11-research` | 85 | 0 | 0.00% |
+
+**Verdict:** **Zero scopes over the 15% cap.** F-AUDIT-15 is a false-positive cascade of the same parser bug as F-AUDIT-25 and is hereby **CLOSED**.
+
+**Tracking:** v5 honestAssessment warning re placeholder burndown is moot for both F-AUDIT-25 (closed #44c) and F-AUDIT-15 (closed here). v6 audit re-run (task #73) will validate against Gemini-2.5-Pro and is expected to confirm both closures.
+
+**Separate concern (NOT F-AUDIT-15):** Legacy modules `10-powershell-integration`, `13-cicd-pipeline-workflows`, `14-self-update-app-update`, `16-generic-cli`, `17-generic-update` describe a **different product** (browser-extension/Go-binary CLI deploy pipeline) inherited from a prior project. The current scope is the WorkFlowy WP-plugin (resolved 2026-04-25). These modules are content-rich and well-formed but **out-of-scope for the WorkFlowy implementation effort**. Marking them OUT-OF-SCOPE is tracked as a separate task (currently unscheduled — does not affect the AI Implementability score because the score weights only in-scope modules per `mem://preferences/spec-implementability-percentage`).
