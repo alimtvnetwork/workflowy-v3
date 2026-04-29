@@ -285,7 +285,7 @@ ADR-0026 §D6 mandates that every REST/SSE wire payload emit the canonical key `
 
 Bound to gate `G-26-WIRE-OWNERID-ONLY` (CI + TEST dual tier; this AT is the TEST half).
 
-### Setup contract
+#### Setup contract
 
 | Item | Specification |
 |---|---|
