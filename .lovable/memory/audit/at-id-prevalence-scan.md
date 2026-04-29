@@ -132,3 +132,19 @@ Re-run `/tmp/at_id_scan.py` (logic embedded in 2026-04-29 conversation). Inputs:
 | **Total** | **2 files** | **61 IDs** |
 
 **Cumulative progress on task #2:** 39 of 100 original active IDs migrated (39%).
+
+---
+
+## Update 2026-04-29 (P2 closed)
+
+**Action:** Migrated 27 active legacy IDs in `02-coding-guidelines/97-acceptance-criteria.md` (5 section headers + 22 row IDs) → `AT-CG-G01..G05` / `AT-CG-001..022`. Lock-step duplicate set in `00-overview-condensed.md` (also 27 IDs) renamed in the same pass.
+
+**New namespace:** `AT-CG-` (now 166 distinct prefixes).
+
+**Real remaining surface for task #2:**
+| Priority | File | Active legacy IDs |
+|---|---|---:|
+| P1 | `07-design-system/97-acceptance-criteria.md` | 34 |
+| **Total** | **1 file** | **34 IDs** |
+
+**Cumulative progress on task #2:** 66 of 100 original active IDs migrated (66%). Only the P1 design-system file remains as a real hot-spot; everything else is historical-citation false positives.
