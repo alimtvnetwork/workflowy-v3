@@ -1,7 +1,7 @@
 # ADRs — Acceptance Criteria
 
-> **Version:** 1.0.0
-> **Created:** 2026-04-29 — closes G-08 acceptance-coverage gap (P0 quick-win).
+> **Version:** 1.1.0
+> **Created:** 2026-04-29 — closes G-08 acceptance-coverage gap (P0 quick-win). **Updated:** 2026-04-29 — v1.1.0 added AT-ADR-G04 (ADR-0029 ledger shared-lib, 5 rows: AT-29-D1/D3/D4×3).
 > **Status:** ✅ SSOT — testable acceptance criteria for the ADR governance scope.
 
 > _Fixture: N/A — pure narrative reference, not a testable criterion._
@@ -50,9 +50,24 @@ The criteria are grouped into 3 categories: **shape** (file structure),
 | AT-ADR-008 | The ADR-overview AI Contract block MUST contain the 5 required subsections (`Purpose`, `Audience`, `Expected AI Output`, `Out of Scope`, `Definition of Done`) plus a `### Scoring` table. | [`00-overview.md`](./00-overview.md) §AI Contract | `G-00-OVERVIEW-AI-CONTRACT-COMPLETE` |
 | AT-ADR-009 | Every ADR with non-trivial downstream impact MUST list at least one `## Consequences` bullet that cross-links to the spec scope it locks (e.g. `spec/04-database-conventions/`). | [`00-overview.md`](./00-overview.md) §Required sections | `G-00-ADR-CONSEQUENCES-XLINK` (CI, WARN-only initial mode; baseline allow-list at [`_LEDGER-G-00-ADR-CONSEQUENCES-XLINK-BASELINE.md`](./_LEDGER-G-00-ADR-CONSEQUENCES-XLINK-BASELINE.md), 90-day TTL) |
 
+
+
 ---
 
-## Coverage notes
+## AT-ADR-G04: ADR-0029 — per-(gate, path) ledger shared library
+
+> Ratifies the 5 acceptance tests cited inline by [`0029-per-gate-path-ledger-shared-lib.md`](./0029-per-gate-path-ledger-shared-lib.md) §6. All five are enforced by CI gate `G-13-LEDGER-USES-SHARED-LIB` ([`scripts/spec-hygiene/48-check-ledger-uses-shared-lib.mjs`](../../scripts/spec-hygiene/48-check-ledger-uses-shared-lib.mjs)) except `AT-29-D3-SCHEMA-FROZEN`, which is owned by `G-13-LEDGER-PER-GATE-PATH`.
+
+| # | Criterion | Source | Gate |
+|---|-----------|--------|------|
+| AT-29-D1-IMPORT-PRESENT | Every runner under `scripts/spec-hygiene/` (excluding `_lib/`) that references `_LEDGER-G-*-EXEMPTIONS.md` MUST also import from `scripts/spec-hygiene/_lib/per-gate-path-ledger.mjs`. | [`0029-per-gate-path-ledger-shared-lib.md`](./0029-per-gate-path-ledger-shared-lib.md) §D1 | `G-13-LEDGER-USES-SHARED-LIB` |
+| AT-29-D3-SCHEMA-FROZEN | Every `_LEDGER-G-*-EXEMPTIONS.md` file MUST contain exactly one `## Entries` H2 and a 5-column table with header row `gate \| pathGlob \| entry \| rationale \| addedOn` (case-sensitive, in order). | [`0029-per-gate-path-ledger-shared-lib.md`](./0029-per-gate-path-ledger-shared-lib.md) §D3 | `G-13-LEDGER-PER-GATE-PATH` |
+| AT-29-D4-NO-INLINE-GLOBTOREGEXP | No file under `scripts/spec-hygiene/` outside `_lib/` may define `function globToRegExp` or `const globToRegExp =`. | [`0029-per-gate-path-ledger-shared-lib.md`](./0029-per-gate-path-ledger-shared-lib.md) §D4.1 | `G-13-LEDGER-USES-SHARED-LIB` |
+| AT-29-D4-NO-INLINE-WALKLEDGER | No file under `scripts/spec-hygiene/` outside `_lib/` may define `function walkLedger`, `function* walkLedger`, or `const walkLedger =`. | [`0029-per-gate-path-ledger-shared-lib.md`](./0029-per-gate-path-ledger-shared-lib.md) §D4.2 | `G-13-LEDGER-USES-SHARED-LIB` |
+| AT-29-D4-NO-DIRECT-LEDGER-READ | No file under `scripts/spec-hygiene/` outside `_lib/` may pass a path matching `_LEDGER-G-*-EXEMPTIONS.md` to `fs.readFile` / `fs.readFileSync` directly — ledger I/O MUST flow through `walkLedger()`. | [`0029-per-gate-path-ledger-shared-lib.md`](./0029-per-gate-path-ledger-shared-lib.md) §D4.3 | `G-13-LEDGER-USES-SHARED-LIB` |
+
+---
+
 
 - Gates `G-00-ADR-SHAPE`, `G-00-ADR-NUMBERING`, `G-00-ADR-STATUS`, `G-00-ADR-SUPERSEDE`, and `G-13-ADR-INDEX-CASCADE` are already implemented in `scripts/spec-hygiene/`.
 - `G-00-ADR-CONSEQUENCES-XLINK` was authored 2026-04-29 in [`scripts/spec-hygiene/52-check-adr-consequences-xlink.mjs`](../../scripts/spec-hygiene/52-check-adr-consequences-xlink.mjs) (WARN-only; baseline allow-list at [`_LEDGER-G-00-ADR-CONSEQUENCES-XLINK-BASELINE.md`](./_LEDGER-G-00-ADR-CONSEQUENCES-XLINK-BASELINE.md), 90-day TTL).
