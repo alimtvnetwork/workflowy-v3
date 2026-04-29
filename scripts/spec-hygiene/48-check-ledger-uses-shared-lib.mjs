@@ -25,7 +25,7 @@ const LEDGER_MENTION = /_LEDGER-G-[A-Z0-9-]+-EXEMPTIONS\.md/;
 const INLINE_GLOB = /(?:^|\s)(?:function\s+globToRegExp|const\s+globToRegExp\s*=)/;
 const INLINE_WALK = /(?:^|\s)(?:function\*?\s+walkLedger|const\s+walkLedger\s*=)/;
 const DIRECT_READ = /readFile(?:Sync)?\s*\([^)]*_LEDGER-G-[A-Z0-9-]+-EXEMPTIONS\.md/;
-const SHARED_IMPORT = /from\s+['"]\.\/_lib\/per-gate-path-ledger\.mjs['"]/;
+const SHARED_IMPORT = /from\s+["']\.\/_lib\/per-gate-path-ledger\.mjs["']/;
 
 function listRunners(dir) {
   const out = [];
