@@ -174,7 +174,9 @@ describe("HOTKEYS uniqueness within (scope, combo)", () => {
       { itemContentIsEmpty: true },
       { itemContentIsEmpty: false },
     ];
-    const enterRow = HOTKEYS.filter((h) => h.scope === "itemRow" && h.combo.key === "Enter");
+    const enterRow = HOTKEYS.filter(
+      (h) => h.scope === "itemRow" && h.combo.key === "Enter" && !h.combo.mod && !h.combo.shift && !h.combo.alt,
+    );
     expect(enterRow.length).toBeGreaterThanOrEqual(2);
     for (const ctx of samples) {
       const firing = enterRow.filter((h) => (h.when ? h.when(ctx) : true));
