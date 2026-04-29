@@ -1320,10 +1320,6 @@
           "line": 92
         },
         {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 78
-        },
-        {
           "file": "spec/31-app/06-endpoints/01-information-model.md",
           "line": 32
         },
@@ -1702,14 +1698,6 @@
         {
           "file": "spec/31-app/02-workflows/06-search-query-flow.md",
           "line": 126
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 87
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 91
         },
         {
           "file": "spec/31-app/06-endpoints/15b-search.md",
@@ -2107,10 +2095,6 @@
           "line": 42
         },
         {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 77
-        },
-        {
           "file": "spec/31-app/06-endpoints/08-share-dialog.md",
           "line": 68
         },
@@ -2285,10 +2269,6 @@
         {
           "file": "spec/31-app/03-edge-cases/01-edge-cases.md",
           "line": 68
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 79
         },
         {
           "file": "spec/31-app/06-endpoints/11-trash-view.md",
@@ -2831,10 +2811,6 @@
           "line": 21
         },
         {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 94
-        },
-        {
           "file": "spec/31-app/97c-acceptance-criteria-fixtures.md",
           "line": 118
         },
@@ -2921,10 +2897,6 @@
         {
           "file": "spec/31-app/02-workflows/97-acceptance-criteria.md",
           "line": 22
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 95
         },
         {
           "file": "spec/31-app/97c-acceptance-criteria-fixtures.md",
@@ -3021,10 +2993,6 @@
         {
           "file": "spec/31-app/02-workflows/97-acceptance-criteria.md",
           "line": 23
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 96
         },
         {
           "file": "spec/31-app/97c-acceptance-criteria-fixtures.md",
@@ -3183,14 +3151,6 @@
           "line": 153
         },
         {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 82
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 89
-        },
-        {
           "file": "spec/31-app/06-endpoints/09b-mirror-peer-group.md",
           "line": 28
         },
@@ -3277,10 +3237,6 @@
         {
           "file": "spec/31-app/02-workflows/08-mirror-detach-flow.md",
           "line": 125
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 93
         },
         {
           "file": "spec/31-app/06-endpoints/09b-mirror-peer-group.md",
@@ -3491,10 +3447,6 @@
           "line": 186
         },
         {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 88
-        },
-        {
           "file": "spec/31-app/97c-acceptance-criteria-fixtures.md",
           "line": 374
         }
@@ -3545,10 +3497,6 @@
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 34
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 80
         },
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
@@ -3679,10 +3627,6 @@
           "line": 36
         },
         {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 81
-        },
-        {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 4
         },
@@ -3777,14 +3721,6 @@
         {
           "file": "spec/31-app/02-workflows/05-trash-reaper-flow.md",
           "line": 123
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 83
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 90
         },
         {
           "file": "spec/31-app/06-endpoints/11b-trash-reaper.md",
@@ -3935,10 +3871,6 @@
           "line": 43
         },
         {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 84
-        },
-        {
           "file": "spec/31-app/97-acceptance-criteria.md",
           "line": 4
         },
@@ -4025,10 +3957,6 @@
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 45
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 85
         },
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
@@ -4129,14 +4057,6 @@
         {
           "file": "spec/31-app/02-workflows/07-sync-replay-flow.md",
           "line": 139
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 86
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 92
         },
         {
           "file": "spec/31-app/06-endpoints/14b-sync-replay.md",
