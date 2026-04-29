@@ -310,4 +310,5 @@ Fixtures for every AT row in this file are covered by the global P2g sweep — s
   - `<file>: Health Score value '<actual>' does not match canonical '\d{1,3}% (A-F[+-]?)' — Rule 1. Suggest: '<auto-fix>'.`
   - `<file>: AI Confidence value '<actual>' is not one of {Very High, High, Medium, Low, Very Low} — Rule 2. Suggest: '<auto-fix>'.`
   - `<file>: Ambiguity value '<actual>' is not one of {None, Low, Medium, High, Very High} — Rule 3. Suggest: '<auto-fix>'.`
-- **SSOT:** [`./14-scoring-metrics.md`](./14-scoring-metrics.md). Audit ledger: `.lovable/memory/audit/at-overview-scoring-value-format-gate.md` (updated post-sweep).
+  - `<file>: file contains <N> '## Scoring' headings — Rule 4 requires exactly 1. Rename per-feature criterion grids to '## Quality Breakdown' or '## Per-Feature Scoring'.`
+- **SSOT:** [`./14-scoring-metrics.md`](./14-scoring-metrics.md). Audit ledger: `.lovable/memory/audit/at-overview-scoring-value-format-gate.md` (post-dedupe).
