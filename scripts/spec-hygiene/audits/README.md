@@ -16,8 +16,9 @@ Counts unformalized prose-MUSTs (MUST/SHALL assertions outside `AT-…` row bloc
 - Excludes lines that themselves cite `AT-…` or `G-…` identifiers (bare or dashed; both `G-40` and `G-N1-FOO` accepted).
 - Excludes canonical fixture-table slot rows (`| **Negative assertion** |`, `| **Then** |`, `| **Side effects** |`, `| **Given** |`, `| **When** |`, `| **Linter command** |`, `| **Response envelope** |`, `| **Expected …** |`) — these ARE AT-shaped per `19-acceptance-criteria-io-table.md` SSOT.
 - Excludes blockquoted lines (`> …`): citations of other docs, not new MUSTs.
+- Excludes RFC-2119 priority cells (`| F1 | requirement | MUST |`): tag-style priority markers in tabular requirements convention.
 
-**Authoritative output (2026-04-29, v4):** 594 prose-MUSTs across 259 files.
+**Authoritative output (2026-04-29, v5):** 556 prose-MUSTs across 255 files.
 This is the working baseline for spec-task #6 (prose→AT migration).
 
 **Methodology history** (see `spec/AUDIT-FINDINGS-LEDGER.md`):
@@ -26,5 +27,6 @@ This is the working baseline for spec-task #6 (prose→AT migration).
 - F-SCOPE-03 — v2 (full heading-stack) → 697.
 - F-SCOPE-05 — v3 (fixture-slot + blockquote exclusions) → 623.
 - F-SCOPE-06 — v4 (bare-form gate citations: `G-40` not just `G-40-…`) → 594.
+- F-SCOPE-07 — v5 (RFC-2119 priority cells in requirements matrices) → 565 → **556** after batch-4 content migration.
 
 Run: `node scripts/spec-hygiene/audits/count-prose-musts.mjs`
