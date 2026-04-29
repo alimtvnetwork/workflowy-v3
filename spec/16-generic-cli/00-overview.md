@@ -34,7 +34,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## AI Contract
 
-**Purpose** — Defines the cross-cutting CLI conventions (flag naming, exit codes, logging, JSON output mode) every script under `wp-plugin/scripts/` and `scripts/` MUST follow.
+**Purpose** — Defines the cross-cutting CLI conventions (flag naming, exit codes, logging, JSON output mode) every script under `wp-plugin/scripts/` and `scripts/` MUST follow (gates `G-16-FLAG-STYLE`, `G-16-EXIT-DOCUMENTED`, `G-16-FLAG-PRECEDENCE`, `G-16-JSON-PURE`).
 
 **Audience** — Any developer adding a new script invoked from a shell.
 
