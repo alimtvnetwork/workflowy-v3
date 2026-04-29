@@ -86,10 +86,7 @@ function validateRow(row, idx) {
   return errs.map((e) => `  row ${idx + 1}: ${e}`);
 }
 
-function globToRegExp(g) {
-  const esc = g.replace(/[.+^${}()|[\]\\]/g, '\\$&').replace(/\*\*/g, '\x00').replace(/\*/g, '[^/]*').replace(/\x00/g, '.*');
-  return new RegExp('^' + esc + '$');
-}
+// globToRegExp is imported from _lib/per-gate-path-ledger.mjs (ADR-0029 D1).
 
 function walk(dir, acc = []) {
   for (const n of readdirSync(dir)) {
