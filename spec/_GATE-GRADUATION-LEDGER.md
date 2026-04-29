@@ -13,7 +13,7 @@
 A WARN-only gate that lacks a documented **flip criterion** drifts into permanent advisory mode. The 2026-04-29 audit-tooling cycle shipped three diagnostic gates (`G-00-AUDIT-EXEMPTION-REVIEW`, `G-00-AT-FIX-COMPANION-SHAPE`, `G-00-PLACEHOLDER-DENSITY`) each with its own bespoke flip rule buried in the runner's `STRICT` constant or the registry row's prose. This ledger consolidates those rules so:
 
 1. A single grep answers "which gates are still soft?" — eliminates the registry scan.
-2. Every WARN-only gate is forced to declare a **measurable** flip criterion (no "eventually", no "TBD"). [^1]
+2. Every WARN-only gate is forced to declare a **measurable** flip criterion (no "eventually", no `to-be-determined` placeholder). [^1]
 3. CI can later read this file to auto-detect gates whose flip date has passed but who remain soft (separate gate, future task).
 
 [^1]: The bare three-letter "to-be-determined" token is forbidden by `G-38-AMBIGUOUS-WORDING`; declare a measurable threshold instead.
