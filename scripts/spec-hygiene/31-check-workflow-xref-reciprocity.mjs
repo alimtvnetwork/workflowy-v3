@@ -211,19 +211,7 @@ const FEATURES_ISLAND_EXEMPT = new Set([
 ]);
 
 const ENDPOINTS_ISLAND_EXEMPT = new Set([
-  // All 9 entries below describe a distinct UI surface with no semantic
-  // peer in the endpoints scope. Each page's natural cross-references
-  // point OUT-of-scope (to features / db-diagram), not to siblings.
-  // Forcing peer links would be artificial. Drained 2026-04-27.
-  "03-layout-structure.md",   // top-level shell; no sibling endpoint depends on it
-  "04-page-content-area.md",  // main outliner surface; standalone
-  "05-interactions.md",       // global interaction catalog; standalone
-  "06-item-context-menu.md",  // context-menu surface; standalone
-  "07-board-view.md",         // board surface; cross-refs go to features
-  "10-today-view.md",         // today surface; cross-refs go to features
-  "12-multi-select.md",       // multi-select surface; cross-refs go to features
-  "13-templates.md",          // templates surface; cross-refs go to features
-  "15b-search.md",             // search surface; cross-refs go to features
+  // (in-source override slot — empty; canonical entries in ledger.)
 ]);
 
 const DB_DIAGRAM_ISLAND_EXEMPT = new Set([
