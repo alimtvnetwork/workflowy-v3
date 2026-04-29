@@ -1,7 +1,7 @@
 # ADRs — Acceptance Criteria
 
-> **Version:** 1.1.0
-> **Created:** 2026-04-29 — closes G-08 acceptance-coverage gap (P0 quick-win). **Updated:** 2026-04-29 — v1.1.0 added AT-ADR-G04 (ADR-0029 ledger shared-lib, 5 rows: AT-29-D1/D3/D4×3).
+> **Version:** 1.2.0
+> **Created:** 2026-04-29 — closes G-08 acceptance-coverage gap (P0 quick-win). **Updated:** 2026-04-29 — v1.1.0 added AT-ADR-G04 (ADR-0029 ledger shared-lib, 5 rows: AT-29-D1/D3/D4×3); v1.2.0 added AT-ADR-G05 (ADR-0030 audit-exemption manifest, 8 rows: AT-30-I1..I8).
 > **Status:** ✅ SSOT — testable acceptance criteria for the ADR governance scope.
 
 > _Fixture: N/A — pure narrative reference, not a testable criterion._
@@ -65,6 +65,23 @@ The criteria are grouped into 3 categories: **shape** (file structure),
 | AT-29-D4-NO-INLINE-GLOBTOREGEXP | No file under `scripts/spec-hygiene/` outside `_lib/` may define `function globToRegExp` or `const globToRegExp =`. | [`0029-per-gate-path-ledger-shared-lib.md`](./0029-per-gate-path-ledger-shared-lib.md) §D4.1 | `G-13-LEDGER-USES-SHARED-LIB` |
 | AT-29-D4-NO-INLINE-WALKLEDGER | No file under `scripts/spec-hygiene/` outside `_lib/` may define `function walkLedger`, `function* walkLedger`, or `const walkLedger =`. | [`0029-per-gate-path-ledger-shared-lib.md`](./0029-per-gate-path-ledger-shared-lib.md) §D4.2 | `G-13-LEDGER-USES-SHARED-LIB` |
 | AT-29-D4-NO-DIRECT-LEDGER-READ | No file under `scripts/spec-hygiene/` outside `_lib/` may pass a path matching `_LEDGER-G-*-EXEMPTIONS.md` to `fs.readFile` / `fs.readFileSync` directly — ledger I/O MUST flow through `walkLedger()`. | [`0029-per-gate-path-ledger-shared-lib.md`](./0029-per-gate-path-ledger-shared-lib.md) §D4.3 | `G-13-LEDGER-USES-SHARED-LIB` |
+
+---
+
+## AT-ADR-G05: ADR-0030 — audit exemption manifest
+
+> Ratifies the 8 acceptance tests cited inline by [`0030-audit-exemption-manifest.md`](./0030-audit-exemption-manifest.md) §6. All eight are enforced by CI gate `G-00-AUDIT-EXEMPTION-REVIEW` ([`scripts/spec-hygiene/57-check-audit-exemption-review.mjs`](../../scripts/spec-hygiene/57-check-audit-exemption-review.mjs)). Closes [F-AUDIT-31](file:///mnt/documents/spec-ai-implementability-audit-v2.json) (LOW — surfaced by re-audit v2).
+
+| # | Criterion | Source | Gate |
+|---|-----------|--------|------|
+| AT-30-I1-MANIFEST-EXISTS | `spec/_AUDIT-EXEMPTIONS.md` MUST exist at the canonical path. | [`0030-audit-exemption-manifest.md`](./0030-audit-exemption-manifest.md) §D1 | `G-00-AUDIT-EXEMPTION-REVIEW` |
+| AT-30-I2-SINGLE-H2 | The manifest MUST contain exactly one `## Exemption rows` H2 (case-sensitive). | [`0030-audit-exemption-manifest.md`](./0030-audit-exemption-manifest.md) §D2 | `G-00-AUDIT-EXEMPTION-REVIEW` |
+| AT-30-I3-HEADER-SHAPE | The table header row MUST be `pathGlob \| category \| rationale \| closes \| addedOn` (case-sensitive, in order). | [`0030-audit-exemption-manifest.md`](./0030-audit-exemption-manifest.md) §D2 | `G-00-AUDIT-EXEMPTION-REVIEW` |
+| AT-30-I4-SPEC-ROOTED | Every row's `pathGlob` MUST start with `spec/`. | [`0030-audit-exemption-manifest.md`](./0030-audit-exemption-manifest.md) §D3 | `G-00-AUDIT-EXEMPTION-REVIEW` |
+| AT-30-I5-NO-BLANK-CHEQUE | Every row's `pathGlob` MUST NOT be a corpus-wide pattern (`spec/**`, `spec/**/*`, `spec/**/*.md`, `spec/*`, `**/*`). | [`0030-audit-exemption-manifest.md`](./0030-audit-exemption-manifest.md) §D3 | `G-00-AUDIT-EXEMPTION-REVIEW` |
+| AT-30-I6-CITED | Every row's `closes` cell MUST cite at least one of: `AUD-*`, `F-AUDIT-NN`, `F-AUDxx-NN`, `ADR-NNNN`, or the literal `n/a`. | [`0030-audit-exemption-manifest.md`](./0030-audit-exemption-manifest.md) §D3 | `G-00-AUDIT-EXEMPTION-REVIEW` |
+| AT-30-I7-ISO-DATE | Every row's `addedOn` MUST be ISO `YYYY-MM-DD`. | [`0030-audit-exemption-manifest.md`](./0030-audit-exemption-manifest.md) §D3 | `G-00-AUDIT-EXEMPTION-REVIEW` |
+| AT-30-I8-VISIBILITY | Every CI run MUST print `matched/total (pct%)` so reviewers can detect drift in PR output. | [`0030-audit-exemption-manifest.md`](./0030-audit-exemption-manifest.md) §D3 | `G-00-AUDIT-EXEMPTION-REVIEW` |
 
 ---
 
