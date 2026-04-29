@@ -78,7 +78,7 @@ commit using this table; manual deviations require an inline `<!-- STATUS-MAP-EX
 
 ## §3 — Front-matter format (required)
 
-Every spec file's front-matter block MUST contain exactly one `**Status:**`
+Every spec file's front-matter block MUST (gate G-NS-STATUS-FRONTMATTER-EXACTLY-ONE) contain exactly one `**Status:**`
 line whose value is one of the 9 canonical tokens, optionally followed by a
 free-text qualifier in parentheses (excluded from gate matching).
 
