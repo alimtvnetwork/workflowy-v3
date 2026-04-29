@@ -680,7 +680,7 @@ function printIslandReport(scope, files, islands) {
 function findHeadingDrift(scope, files) {
   const drift = []; // [{file, foundHead}]
   for (const f of files) {
-    if (scope.headExemptions.has(f)) continue;
+    if (isG31Exempt(scope.id, "head", f, `${scope.dir}/${f}`)) continue;
     let content;
     try {
       content = readFileSync(join(scope.dir, f), "utf8");
