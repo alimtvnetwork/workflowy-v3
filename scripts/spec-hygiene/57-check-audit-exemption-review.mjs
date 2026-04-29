@@ -17,8 +17,9 @@
  *   I3. Table header MUST be `pathGlob | category | rationale | closes | addedOn`
  *       (case-sensitive, in order).
  *   I4. Every row's `pathGlob` cell MUST start with `spec/` (no repo-root escapes).
- *   I5. Every row's `pathGlob` MUST NOT be a bare `spec/**` or `spec/**/*.md`
- *       (those would mask the entire corpus — refuse blank-cheque globs).
+ *   I5. Every row's `pathGlob` MUST NOT be a bare corpus-wide glob (e.g.
+ *       `spec/**` or any pattern matching every markdown file under `spec/`).
+ *       Such blank-cheque globs would mask the entire corpus.
  *   I6. Every row MUST cite at least one of: an audit finding ID
  *       (`AUD-*` or `F-AUDIT-*` or `F-AUD\d+-*`), an ADR ID (`ADR-\d{4}`),
  *       or `n/a` (explicit acknowledgement that no audit ratifies it).
