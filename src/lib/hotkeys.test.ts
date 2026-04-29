@@ -4,8 +4,10 @@ import {
   getHotkey,
   formatCombo,
   matches,
+  resolveHotkey,
   type HotkeyId,
   type KeyCombo,
+  type WhenContext,
 } from "./hotkeys";
 
 /**
@@ -136,5 +138,73 @@ describe("matches()", () => {
     const ev = makeEvent({ key: "z", metaKey: true, shiftKey: true });
     expect(matches(ev, redo)).toBe(true);
     expect(matches(ev, undo)).toBe(false);
+  });
+});
+
+/**
+ * Hygiene gate: within a single (scope, combo) cell, every binding MUST
+ * carry a `when` predicate, AND those predicates MUST be mutually exclusive
+ * across a representative sample of `WhenContext` shapes. This guards
+ * against the AUD-05 regression where two `Enter` bindings collided in the
+ * `itemRow` scope with no discriminator.
+ */
+describe("HOTKEYS uniqueness within (scope, combo)", () => {
+  function comboKey(c: KeyCombo): string {
+    return [c.mod ? "m" : "", c.shift ? "s" : "", c.alt ? "a" : "", c.key].join("|");
+  }
+
+  it("collisions exist only when every binding declares `when`", () => {
+    const buckets = new Map<string, typeof HOTKEYS[number][]>();
+    for (const h of HOTKEYS) {
+      const k = `${h.scope}::${comboKey(h.combo)}`;
+      const arr = buckets.get(k) ?? [];
+      arr.push(h);
+      buckets.set(k, arr);
+    }
+    for (const [, group] of buckets) {
+      if (group.length === 1) continue;
+      for (const h of group) {
+        expect(h.when, `${h.id} shares (scope,combo) and must declare when()`).toBeTypeOf("function");
+      }
+    }
+  });
+
+  it("Enter@itemRow predicates are mutually exclusive over sample contexts", () => {
+    const samples: WhenContext[] = [
+      { itemContentIsEmpty: true },
+      { itemContentIsEmpty: false },
+    ];
+    const enterRow = HOTKEYS.filter(
+      (h) => h.scope === "itemRow" && h.combo.key === "Enter" && !h.combo.mod && !h.combo.shift && !h.combo.alt,
+    );
+    expect(enterRow.length).toBeGreaterThanOrEqual(2);
+    for (const ctx of samples) {
+      const firing = enterRow.filter((h) => (h.when ? h.when(ctx) : true));
+      expect(firing.length, `ctx=${JSON.stringify(ctx)}`).toBe(1);
+    }
+  });
+});
+
+describe("resolveHotkey()", () => {
+  function ev(key: string, mod = false, shift = false): KeyboardEvent {
+    return new KeyboardEvent("keydown", { key, metaKey: mod, shiftKey: shift });
+  }
+
+  it("picks ItemNewSibling when item is empty", () => {
+    const hk = resolveHotkey(ev("Enter"), "itemRow", { itemContentIsEmpty: true });
+    expect(hk?.id).toBe("ItemNewSibling");
+  });
+
+  it("picks ItemSplit when item is non-empty", () => {
+    const hk = resolveHotkey(ev("Enter"), "itemRow", { itemContentIsEmpty: false });
+    expect(hk?.id).toBe("ItemSplit");
+  });
+
+  it("returns null when no binding matches the scope", () => {
+    expect(resolveHotkey(ev("Enter"), "searchOverlay", {})).toBeNull();
+  });
+
+  it("returns null when all candidates are gated out", () => {
+    expect(resolveHotkey(ev("Enter"), "itemRow", {})).toBeNull();
   });
 });

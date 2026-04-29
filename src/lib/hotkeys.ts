@@ -42,6 +42,19 @@ export interface KeyCombo {
   readonly key: string;
 }
 
+/**
+ * Runtime context passed to a binding's `when` predicate.
+ * Kept intentionally narrow — extend only when a binding needs more.
+ */
+export interface WhenContext {
+  readonly itemContentIsEmpty?: boolean;
+  readonly caretAtEnd?: boolean;
+  readonly hasSelection?: boolean;
+}
+
+/** Predicate gating a binding within its (scope, combo) cell. */
+export type WhenPredicate = (ctx: WhenContext) => boolean;
+
 /** Single binding entry. */
 export interface HotkeyBinding {
   readonly id: HotkeyId;
@@ -49,6 +62,12 @@ export interface HotkeyBinding {
   readonly scope: HotkeyScope;
   readonly description: string;
   readonly specRef: string;
+  /**
+   * Optional discriminator. When two bindings share the same (scope, combo),
+   * each MUST declare a `when` predicate, and the predicates MUST be mutually
+   * exclusive for any given `WhenContext`. Enforced by uniqueness test.
+   */
+  readonly when?: WhenPredicate;
 }
 
 /**
@@ -62,6 +81,7 @@ export const HOTKEYS: ReadonlyArray<HotkeyBinding> = [
     scope: "itemRow",
     description: "Split item at caret; text after caret becomes new sibling",
     specRef: "spec/31-app/01-features/05-interactions.md#L24",
+    when: (ctx) => ctx.itemContentIsEmpty === false,
   },
   {
     id: "ItemNewSibling",
@@ -69,6 +89,7 @@ export const HOTKEYS: ReadonlyArray<HotkeyBinding> = [
     scope: "itemRow",
     description: "Create empty sibling below when item is empty",
     specRef: "spec/31-app/01-features/05-interactions.md#L25",
+    when: (ctx) => ctx.itemContentIsEmpty === true,
   },
   {
     id: "ItemIndent",
@@ -198,3 +219,26 @@ export function matches(event: KeyboardEvent, combo: KeyCombo): boolean {
   if (Boolean(combo.alt) !== event.altKey) return false;
   return event.key === combo.key;
 }
+
+/**
+ * Resolve which binding fires for this event in this scope+context.
+ * Returns `null` when none match. When multiple structural matches exist
+ * (same scope+combo), `when` predicates MUST disambiguate to exactly one.
+ */
+export function resolveHotkey(
+  event: KeyboardEvent,
+  scope: HotkeyScope,
+  ctx: WhenContext,
+): HotkeyBinding | null {
+  const candidates = HOTKEYS.filter(
+    (h) => h.scope === scope && matches(event, h.combo),
+  );
+  if (candidates.length === 0) return null;
+  const gated = candidates.filter((h) => (h.when ? h.when(ctx) : true));
+  if (gated.length === 1) return gated[0] ?? null;
+  if (gated.length === 0) return null;
+  throw new Error(
+    `Ambiguous hotkey resolution in scope "${scope}": ${gated.map((g) => g.id).join(", ")}`,
+  );
+}
+
