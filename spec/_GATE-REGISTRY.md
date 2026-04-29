@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.10  
-> **Updated:** 2026-04-29 — **batch-13 prose→AT migration:** registered new **Domain-ERRCODE** subsection with 8 `G-ERRCODE-*` gates (1 umbrella `G-ERRCODE` CI + 6 CI sub-rules `-RUNTIME-AGNOSTIC`/`-SEVERITY-INTRINSIC`/`-HTTPSTATUS-PARITY`/`-INTERCEPTOR-SWITCHES-ON-CODE`/`-UNKNOWN-FUNNEL`/`-I18N-MESSAGEKEY-LOOKUP` + 1 DOC-NORM `-DEPRECATION-GRACE`). Disjoint from existing `G-ERR-*` (envelope shape) and `G-22-REGISTRY-LOCKSTEP` (registry-build). Pre-flight namespace check applied (lesson from F-SCOPE-15). Prior: 1.7.9 (batch-12 G-BACKUP-* gates).
+> **Version:** 1.7.11  
+> **Updated:** 2026-04-29 — **batch-14 prose→AT migration:** registered 7 new `G-13-*` sub-gates in **ADR-0013** section (`-OVERVIEW-ARCHETYPE-EMIT`, `-DAG-EXACT-MIRROR`, `-BRANCH-PROTECTION-MIRROR`, `-SIGN-REQUIRED-ON-TAG`, `-ANTIPATTERN-COMPLIANCE`, `-FIXTURE-STRING-PARITY`, `-FOLDER-PLACEMENT`) covering all 7 prose-MUSTs in `spec/13-cicd-pipeline-workflows/00-overview.md`. All DOC-NORM tier (gate-table consumers / spec-shape claims). Pre-flight namespace check applied (G-13-* family was already established with 16 sibling gates; no collisions). Prior: 1.7.10 (batch-13 G-ERRCODE-* gates).
 
-- **Total named gates:** 392 (+8 this revision: eight `G-ERRCODE-*`)
+- **Total named gates:** 399 (+7 this revision: seven `G-13-*`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
-- **CI:** 79 (+7 this revision)
+- **CI:** 79 (unchanged)
 - **TEST:** 17 (unchanged)
-- **DOC-NORM:** 91 (+1 this revision)
+- **DOC-NORM:** 98 (+7 this revision)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 46 (+1: Domain-ERRCODE)
+- **Areas covered:** 46 (unchanged)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
@@ -156,6 +156,13 @@
 | `G-13-LEDGER-ROW-COUNT-PARITY` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/scripts-as-spec/ledger-row-count-lint.md`](./13-cicd-pipeline-workflows/scripts-as-spec/ledger-row-count-lint.md) | Phase-5 nibble: visual-row count under `## Exempt gates` in `_LEDGER-G-13-BACKLINK-EXEMPT.md` MUST equal `len(load_backlink_exempt())` Silent row drop (typo in leading number, missing backtick on gate ID) shrinks the exempt set without any signal — falsely re-flagging carve-out gates as Phase-4 violations. |
 | `G-13-LEDGER-NUMBERING-CONTIGUOUS` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/scripts-as-spec/ledger-numbering-contiguous-lint.md`](./13-cicd-pipeline-workflows/scripts-as-spec/ledger-numbering-contiguous-lint.md) | Sibling Phase-5 lint: leading-number column under `## Exempt gates` MUST form a contiguous `1..N` sequence Hard-deleting a row instead of marking `Removed` per the ledger's deletion convention erases the audit trail of why a gate was once exempt. |
 | `G-13-LEDGER-PER-GATE-PATH` | **CI** | [`spec/13-cicd-pipeline-workflows/scripts-as-spec/per-gate-path-ledger-schema.md`](./13-cicd-pipeline-workflows/scripts-as-spec/per-gate-path-ledger-schema.md) | Per-(gate, path) ledger upgrade — Phase-3 promoted to CI 2026-04-29 (G-30 first consumer): ledger rows MUST carry the canonical 5-column schema (`gate` × `pathGlob` × `entry` × `rationale` × `addedOn`); each exemption is bounded to its (gate × file-path-glob) pair (NOT a global wildcard). G-30.2 now consults `pathGlob` per row before silencing — corrupting an exemption row's `pathGlob` to a non-matching path correctly re-surfaces the redundancy advisory (negative-test verified with AT-INFO- → wrong path → 7 candidates re-flagged). Phase-2 ledger: `spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md` (41 rows). Sibling migrations (G-31 `WORKFLOW_PROXY_ALLOWLIST`, G-32 `DDL_UNIQUE_ALLOWLIST`) tracked separately. |
+| `G-13-OVERVIEW-ARCHETYPE-EMIT` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | batch-14 prose→AT migration (L40): the three archetypes (WP-Plugin, Frontend-SPA, Browser-Extension) MUST emit one of the three named workflow YAML files (`wp-plugin-ci.yml`, `frontend-ci.yml`, `bitbucket-pipelines.yml`); a new archetype without a corresponding YAML emitter is a spec drift. |
+| `G-13-DAG-EXACT-MIRROR` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | batch-14 prose→AT migration (L89): every WP-Plugin pipeline MUST realize the exact 11-node Pipeline-Job DAG (setup → {spec-hygiene, lint-php, lint-ts} → {test-phpunit, test-vitest} → build-plugin-zip → {sign-artifact ∥ scan-security} → publish); adding/removing nodes requires an ADR. |
+| `G-13-BRANCH-PROTECTION-MIRROR` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | batch-14 prose→AT migration (L133): repo branch-protection rules MUST mirror the Required-vs-Optional Gate Matrix exactly — `main` requires {setup, spec-hygiene, lint-php, lint-ts, test-phpunit, test-vitest}; tag pushes additionally require {build-plugin-zip, sign-artifact, publish}; `scan-security` is never required. |
+| `G-13-SIGN-REQUIRED-ON-TAG` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | batch-14 prose→AT migration (L144): on tag pushes, `sign-artifact` is **Required** and `publish` MUST NOT run if `sign-artifact` failed or was skipped; releases MUST NOT publish unsigned. Pairs with `G-13-PUBLISH-NEEDS-SIGN` (DAG edge) for both static and runtime enforcement. |
+| `G-13-ANTIPATTERN-COMPLIANCE` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | batch-14 prose→AT migration (L164): the AI MUST NOT emit any of the 7 enumerated anti-patterns (undeclared archetype, missing spec-hygiene, hardcoded secrets, scan-security required, serial DAG, publish without sign, outdated `actions/checkout`). Each anti-pattern row in `00-overview.md`'s table cites its catching gate; this umbrella asserts the table is exhaustive (every anti-pattern has a catching gate; no orphan rows). |
+| `G-13-FIXTURE-STRING-PARITY` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | batch-14 prose→AT migration (L275): all values in the §Error-code registry table (`CI-13-00`..`CI-13-09` codes, job names, recovery strings) are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings (case-sensitive, byte-equal). |
+| `G-13-FOLDER-PLACEMENT` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/00-overview.md`](./13-cicd-pipeline-workflows/00-overview.md) | batch-14 prose→AT migration (L310): all CI/CD pipeline content (build pipelines, deployment workflows, environment-promotion strategies, CI/CD tooling configs) MUST be documented under `spec/13-cicd-pipeline-workflows/` — never scattered across other module folders. App-specific deployment notes belong in `spec/31-app/` instead.  |
 
 ### ADR-0014
 
