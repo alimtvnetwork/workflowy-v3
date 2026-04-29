@@ -48,9 +48,14 @@ function readOrAbort(path) {
 /**
  * Extract cases from a `spec/20-enums-index.md` table row of the form:
  *   | `EnumName` | `case1`, `case2`, ... | description |
+ *
+ * The enum-name cell may carry trailing annotations after the closing
+ * backtick (e.g. `` `ItemType` ⚠️ **lowercase exception** ``) — the regex
+ * tolerates any non-pipe content between the backtick and the column
+ * separator so SSOT rows can self-document deviations inline.
  */
 function extractSpecCases(specText, enumName) {
-  const re = new RegExp(`\\|\\s*\`${enumName}\`\\s*\\|([^|]+)\\|`);
+  const re = new RegExp(`\\|\\s*\`${enumName}\`[^|]*\\|([^|]+)\\|`);
   const m = specText.match(re);
   if (!m) return null;
   const cases = m[1]
