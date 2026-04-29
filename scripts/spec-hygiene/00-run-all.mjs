@@ -24,6 +24,7 @@ const checks = [
   "scripts/spec-hygiene/39-check-feature-block-format.mjs",
   "scripts/spec-hygiene/15-check-enums-in-sync.mjs",
   "scripts/spec-hygiene/16-check-tailwind-tokens.mjs",
+  "scripts/spec-hygiene/18-check-scoring-value-format.mjs",
   "scripts/spec-hygiene/19-check-runbook-staleness.mjs",
   "scripts/spec-hygiene/29-check-endpoint-matrix-coverage.mjs",
   "scripts/spec-hygiene/30-check-at-citation-validity.mjs",
