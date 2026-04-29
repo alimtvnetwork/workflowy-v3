@@ -229,7 +229,7 @@ Add to `spec/_GATE-REGISTRY.md` under area **ADR-0028** in the next sweep (11 ne
 1. **Translator workflow** — pick a TMS (Crowdin/Lokalise) or define a Git-PR workflow with translator-only branches. Tracked separately as P78.
 2. **Server-side i18n** — when transactional email is introduced, decide PHP-side approach (likely `gettext` via WordPress core's `__()`).
 3. **Date-fns vs Intl.RelativeTimeFormat** — decision deferred; D7 mandates `Intl.*` for now to avoid the dependency.
-4. **Per-namespace lazy-load thresholds** — `editor.json` is large enough to consider splitting per-feature once it exceeds 8 KB.
+4. **Per-namespace lazy-load thresholds** — `editor.json` SHOULD be split per-feature once it exceeds 8 KB.
 
 ---
 
