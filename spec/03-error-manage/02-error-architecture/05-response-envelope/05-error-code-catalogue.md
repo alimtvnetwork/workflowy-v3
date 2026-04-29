@@ -14,7 +14,7 @@ Each error code has the following six attributes. They are non-negotiable.
 | Attribute | Type | Description |
 |---|---|---|
 | `Code` | `SCREAMING_SNAKE` string, prefix `ERR_` | Stable identifier — never reused, never renamed |
-| `HttpStatus` | int (4xx / 5xx / 0) | Status the WP-plugin REST handler MUST return when emitting this code; `0` for non-HTTP (CLI/installer) codes |
+| `HttpStatus` | int (4xx / 5xx / 0) | Status the WP-plugin REST handler MUST return when emitting this code; `0` for non-HTTP (CLI/installer) codes (gate `G-ERRCODE-HTTPSTATUS-PARITY`) |
 | `Severity` | `info` \| `warn` \| `error` \| `fatal` | Drives client UI treatment (see §4) |
 | `Retryable` | `never` \| `after-backoff` \| `after-user-action` | Client-retry contract (§5) |
 | `Tier` | `runtime` \| `installer` \| `validation` \| `policy` \| `infra` | Originating subsystem (§3) |
@@ -25,7 +25,7 @@ Each error code has the following six attributes. They are non-negotiable.
 - Prefix: **`ERR_`** — mandatory, no exceptions.
 - Body: `SCREAMING_SNAKE_CASE`, ASCII letters/underscores/digits only.
 - Length: 6–48 characters total.
-- No backend-runtime infixes (e.g. `ERR_GO_*`, `ERR_NODE_*` allowed **only** in the `installer` tier — runtime codes MUST be runtime-agnostic per `mem://constraints/backend-runtime-deferred`).
+- No backend-runtime infixes (e.g. `ERR_GO_*`, `ERR_NODE_*` allowed **only** in the `installer` tier — runtime codes MUST be runtime-agnostic per `mem://constraints/backend-runtime-deferred`) (gate `G-ERRCODE-RUNTIME-AGNOSTIC`).
 - Once shipped, a code is **append-only**: deprecate via §7, never repurpose.
 
 ---
@@ -39,7 +39,7 @@ Each error code has the following six attributes. They are non-negotiable.
 | `error` | Hard failure — operation rejected, state unchanged | Modal or destructive toast, requires acknowledgement |
 | `fatal` | Unrecoverable — session, data, or app integrity compromised | Full-screen ErrorBoundary, forces reload / re-auth |
 
-Severity is intrinsic to the code and MUST NOT vary by call site.
+Severity is intrinsic to the code and MUST NOT vary by call site (gate `G-ERRCODE-SEVERITY-INTRINSIC`).
 
 ---
 
@@ -209,7 +209,7 @@ A code MAY be deprecated but never deleted.
 
 1. Mark the row with ⚠️ and add a `Deprecated: <ISO date>` note in the message-key payload.
 2. Add a `Replacement:` pointer if a successor code exists; leave blank for terminal removal.
-3. Backend SHOULD stop emitting it; frontend MUST still recognise it for one full minor version.
+3. Backend SHOULD stop emitting it; frontend MUST still recognise it for one full minor version (gate `G-ERRCODE-DEPRECATION-GRACE`).
 4. Removal from §5 is forbidden until the code has been absent from emission for two consecutive minor releases.
 
 **Currently deprecated (Go-toolchain, post WP-plugin decision 2026-04-25):**
@@ -219,9 +219,9 @@ A code MAY be deprecated but never deleted.
 
 ## 8 · Frontend Contract
 
-- The Axios response interceptor MUST switch on `Errors.Code` (never on `Status.Message`).
-- Unknown codes (not in §5) MUST be funnelled through `ERR_UNKNOWN` in the UI layer **without** silently mapping them to a known code. They are simultaneously logged to the analytics channel for catalogue back-fill.
-- i18n lookups MUST use `MessageKey` — raw English strings from the backend are debug-only and never user-facing.
+- The Axios response interceptor MUST switch on `Errors.Code` (never on `Status.Message`) (gate `G-ERRCODE-INTERCEPTOR-SWITCHES-ON-CODE`).
+- Unknown codes (not in §5) MUST be funnelled through `ERR_UNKNOWN` in the UI layer **without** silently mapping them to a known code. They are simultaneously logged to the analytics channel for catalogue back-fill (gate `G-ERRCODE-UNKNOWN-FUNNEL`).
+- i18n lookups MUST use `MessageKey` — raw English strings from the backend are debug-only and never user-facing (gate `G-ERRCODE-I18N-MESSAGEKEY-LOOKUP`).
 
 ---
 
