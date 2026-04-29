@@ -278,7 +278,9 @@ function loadG31Exemptions() {
     if (/^\|\s*gate\s*\|/i.test(line)) continue; // header row
     const cells = line.split("|").slice(1, -1).map((c) => c.trim());
     if (cells.length < 5) continue;
-    const [gate, , entry, rationale] = cells;
+    const stripBackticks = (s) => s.replace(/^`(.*)`$/, "$1");
+    const [gate, , entryRaw, rationale] = cells;
+    const entry = stripBackticks(entryRaw);
     const m = gate.match(/^(G-31\.\d)\.(peer|island|head)$/);
     if (!m) fail(`G-31 ledger: malformed gate \`${gate}\` at line ${i + 1}`);
     const [, scopeId, category] = m;
