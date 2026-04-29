@@ -57,7 +57,7 @@ _No endpoints defined directly in this section._
 
 ---
 
-## AC-01: Structured Error Response
+## AT-ERRMANAGE-01: Structured Error Response
 
 **GIVEN** any CLI backend encounters an error during request processing  
 **WHEN** the error response is generated  
@@ -71,7 +71,7 @@ _No endpoints defined directly in this section._
 
 ---
 
-## AC-02: Frontend-Backend Verification Protocol
+## AT-ERRMANAGE-02: Frontend-Backend Verification Protocol
 
 **GIVEN** the frontend receives an error response from the backend  
 **WHEN** the error is displayed in the error modal  
@@ -84,7 +84,7 @@ _No endpoints defined directly in this section._
 
 ---
 
-## AC-03: Retrospective Document Structure
+## AT-ERRMANAGE-03: Retrospective Document Structure
 
 **GIVEN** a production bug has been resolved  
 **WHEN** a retrospective document is created  
@@ -92,7 +92,7 @@ _No endpoints defined directly in this section._
 
 ---
 
-## AC-04: Verification Pattern Application
+## AT-ERRMANAGE-04: Verification Pattern Application
 
 **GIVEN** a developer implements a fix for a known error pattern  
 **WHEN** they consult the verification patterns documentation  
@@ -100,7 +100,7 @@ _No endpoints defined directly in this section._
 
 ---
 
-## AC-05: Debugging Guide Coverage
+## AT-ERRMANAGE-05: Debugging Guide Coverage
 
 **GIVEN** a developer encounters a backend error  
 **WHEN** they follow the language-specific debugging guide  
@@ -108,7 +108,7 @@ _No endpoints defined directly in this section._
 
 ---
 
-## AC-06: Quick Resolution
+## AT-ERRMANAGE-06: Quick Resolution
 
 **GIVEN** a common error scenario  
 **WHEN** the developer consults the cheat sheet  
