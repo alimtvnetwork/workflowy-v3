@@ -1,7 +1,7 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.3.9  
-> **Updated:** 2026-04-29 — Tasks #12 + #13 (combined finish): drained the remaining 36 Rule-5 baseline WARNs of `G-00-OVERVIEW-AI-CONTRACT-COMPLETE` by appending folder-scoped `AT-<PREFIX>-*` / `G-*` citation pointers to every uncited Definition-of-Done bullet across 22 top-level overviews (3 folders without AC files cite an existing `G-*` gate instead). Manual fix for 2 broken `./07-split-db-pattern.md` suggestions in `05-split-db-architecture/` (file doesn't exist; redirected to `01-fundamentals/` and `98-acceptance-criteria.md`). With baseline 65 → 0, **flipped `PROMOTED_HARDFAIL=true`** in `scripts/spec-hygiene/54-check-ai-contract-complete.mjs` — all 5 rules now hard-fail. Layer-2 of the AI-Contract trio is now contractual, not aspirational. Prior: 1.3.8 (Rule-4 drain only).
+> **Version:** 1.4.0  
+> **Updated:** 2026-04-29 — Tasks #5 + auto-#15 (ADR-Consequences drain + promotion): drained the entire 28-ADR baseline allow-list of `G-00-ADR-CONSEQUENCES-XLINK` by appending a `**Spec impact**` paragraph (with downstream `spec/` markdown links) to every ADR's Consequences section. Two collateral fixes: (a) runner SECTION regex used literal `\Z` which JS treats as `Z`, prematurely truncating Consequences body at any line starting with "Z" (e.g. "Zero new infra" in ADR-0027) — now `$(?![\s\S])`; (b) drainer regex extended to match numbered headings `## 3. Consequences` (ADR-0027/0028). With ledger empty, **flipped runner from `WARN-only` to unconditional hard-fail** (`isCi = true`). 28/28 ADRs pass; ledger marked DRAINED v2.0.0. Third WARN→hard-fail promotion of the day. Prior: 1.3.9 (AI-Contract Rule-5 drain + promotion).
 
 - **Total named gates:** 308 (unchanged — gate row already existed; only the runner is new)
 - **CI:** 38 (unchanged — gate was already CI-tier; runner now realises the contract)

@@ -1169,11 +1169,7 @@
       "cited_in": [
         {
           "file": "spec/00-adrs/_LEDGER-G-00-ADR-CONSEQUENCES-XLINK-BASELINE.md",
-          "line": 8
-        },
-        {
-          "file": "spec/00-adrs/_LEDGER-G-00-ADR-CONSEQUENCES-XLINK-BASELINE.md",
-          "line": 81
+          "line": 9
         },
         {
           "file": "spec/_GATE-REGISTRY.md",

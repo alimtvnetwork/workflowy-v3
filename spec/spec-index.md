@@ -49,7 +49,7 @@
 | File | Title | Version | Status |
 |------|-------|---------|--------|
 | [`00-adrs/_INDEX_AUTOMATION.md`](./00-adrs/_INDEX_AUTOMATION.md) | ADR Registry Index — Manual Update Protocol | — | Interim |
-| [`00-adrs/_LEDGER-G-00-ADR-CONSEQUENCES-XLINK-BASELINE.md`](./00-adrs/_LEDGER-G-00-ADR-CONSEQUENCES-XLINK-BASELINE.md) | Ledger — `G-00-ADR-CONSEQUENCES-XLINK` Baseline Allow-list | 1.0.0 | DEFERRED |
+| [`00-adrs/_LEDGER-G-00-ADR-CONSEQUENCES-XLINK-BASELINE.md`](./00-adrs/_LEDGER-G-00-ADR-CONSEQUENCES-XLINK-BASELINE.md) | Ledger — `G-00-ADR-CONSEQUENCES-XLINK` Baseline Allow-list | 2.0.0 | EMPTY |
 | [`00-adrs/_LEDGER-G-00-ADR-XLINK-SYMMETRY-BASELINE.md`](./00-adrs/_LEDGER-G-00-ADR-XLINK-SYMMETRY-BASELINE.md) | Ledger — `G-00-ADR-XLINK-SYMMETRY` baseline (2026-04-28) | — | — |
 | [`00-adrs/_LEDGER-P48-PLURAL-DDL-SWEEP.md`](./00-adrs/_LEDGER-P48-PLURAL-DDL-SWEEP.md) | P48 Sweep Ledger — Plural-DDL References After ADR-0001 | — | — |
 | [`00-adrs/_TEMPLATE.md`](./00-adrs/_TEMPLATE.md) | ADR-NNNN: <Imperative, declarative title ≤ 8 words> | — | — |
