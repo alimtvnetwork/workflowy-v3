@@ -191,7 +191,7 @@ throw new DomainError(
 );
 ```
 
-The framework's central `ErrorMiddleware` MUST:
+The framework's central `ErrorMiddleware` MUST (gate `G-03-MIDDLEWARE`):
 1. Resolve `Category` from `ErrorCode::categoryOf($code)`.
 2. Map category → HTTP status via the taxonomy table.
 3. Append `RequestId` from the current request scope.
