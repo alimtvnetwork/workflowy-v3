@@ -27,10 +27,28 @@
  *   L8. Every row's `addedOn` MUST be ISO `YYYY-MM-DD`.
  *   L9. Total WARN-row count is printed for reviewer drift detection on every CI run.
  *
+ *   Graduated-entries section invariants (added 2026-04-29 with task #42 —
+ *   activated when `_GATE-GRADUATION-LEDGER.md` "Graduated entries" table
+ *   becomes non-empty after the first flip):
+ *   L10. Optional `## Graduated entries` H2 — if present, MUST be unique.
+ *   L11. If present AND the table has rows, header MUST be
+ *        `gate | graduatedOn | priorMode | newMode | evidence | flipCommit | linkedTasks`
+ *        (case-sensitive, in order).
+ *   L12. Every graduated row's `gate` MUST match the same gate-ID regex AND
+ *        MUST appear in `_GATE-REGISTRY.md` (mirror of L4).
+ *   L13. Every graduated row's `graduatedOn` MUST be ISO `YYYY-MM-DD`.
+ *   L14. Every graduated row's `priorMode` MUST start with `WARN` and `newMode`
+ *        MUST start with `HARD-FAIL` (only valid graduation direction —
+ *        re-demoting is not a graduation; it is a regression and lives elsewhere).
+ *   L15. No gate ID may appear in BOTH the `## Entries` table AND the
+ *        `## Graduated entries` table simultaneously (mutual exclusion —
+ *        a gate is either in-flight or graduated, never both).
+ *
  * Visibility line (mandatory): `tracking <N> WARN gate(s); <M> graduated`
  *
  * @see spec/_GATE-GRADUATION-LEDGER.md
  * @see spec/_GATE-REGISTRY.md
+ * @see spec/00-adrs/0031-warn-only-strict-flip-pattern.md §D6 (flip protocol)
  */
 
 import { readFileSync } from 'node:fs';
