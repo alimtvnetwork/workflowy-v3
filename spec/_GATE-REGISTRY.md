@@ -1,14 +1,14 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.4.0  
-> **Updated:** 2026-04-29 — Tasks #5 + auto-#15 (ADR-Consequences drain + promotion): drained the entire 28-ADR baseline allow-list of `G-00-ADR-CONSEQUENCES-XLINK` by appending a `**Spec impact**` paragraph (with downstream `spec/` markdown links) to every ADR's Consequences section. Two collateral fixes: (a) runner SECTION regex used literal `\Z` which JS treats as `Z`, prematurely truncating Consequences body at any line starting with "Z" (e.g. "Zero new infra" in ADR-0027) — now `$(?![\s\S])`; (b) drainer regex extended to match numbered headings `## 3. Consequences` (ADR-0027/0028). With ledger empty, **flipped runner from `WARN-only` to unconditional hard-fail** (`isCi = true`). 28/28 ADRs pass; ledger marked DRAINED v2.0.0. Third WARN→hard-fail promotion of the day. Prior: 1.3.9 (AI-Contract Rule-5 drain + promotion).
+> **Version:** 1.4.1  
+> **Updated:** 2026-04-29 — Task #15 (defensive `\Z` regex-bug sweep + new gate): swept all 36 hygiene runners for invalid JS-regex anchors `\Z`/`\A` (zero offenders found post-Task-#5 fix). Minted new gate `G-13-RUNNER-NO-INVALID-REGEX-ANCHORS` (CI, hard-fail from day 1) implemented by `scripts/spec-hygiene/55-check-runner-regex-anchors.mjs` to prevent recurrence. Negative test verified (injects `/foo\Z/m` literal → runner correctly fails). Sibling to `G-13-AUDIT-RUNNER-CONTRACT`. Audit ledger: `.lovable/memory/audit/at-runner-regex-anchors.md`. Closes the silent-failure class that mis-reported Task #5 drain progress as `26/28` instead of `28/28`. Prior: 1.4.0 (ADR-Consequences drain + promotion).
 
-- **Total named gates:** 308 (unchanged — gate row already existed; only the runner is new)
-- **CI:** 38 (unchanged — gate was already CI-tier; runner now realises the contract)
+- **Total named gates:** 309 (+1: `G-13-RUNNER-NO-INVALID-REGEX-ANCHORS`)
+- **CI:** 39 (+1)
 - **TEST:** 14 (unchanged)
 - **DOC-NORM:** 54 (unchanged)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 37 (unchanged — `G-NS-*` registered under existing `Spec-Authoring`)
+- **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
 
