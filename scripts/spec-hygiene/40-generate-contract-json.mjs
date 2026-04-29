@@ -37,7 +37,14 @@ const AT_INLINE = /\b(AT-[A-Z][A-Z0-9]*-\d+)\b/g;
 //   - APPF-NN: legacy frozen dispatch index (per APP-FIX-14 reconciliation note).
 //   - APP-200, MPG-58: deliberately bad illustrative citations in G-30 gate doc.
 //   - FIX-01: planned hygiene-gate name, not an acceptance test.
-const AT_ALLOW_ORPHAN = /^AT-(APPF-\d+|APP-200|MPG-58|FIX-01)$/;
+// AT_ALLOW_ORPHAN — IDs that legitimately appear without a defining row.
+//   AT-APPF-N / AT-APP-200 / AT-MPG-58 / AT-FIX-01 — historical / cross-spec stubs.
+//   AT-FOO-01 — illustrative placeholder used in spec-authoring-guide/97-AC.md
+//     gate prose (worked example for the AT-id format gate). Not a real test.
+//   AT-SPECAUTHORING-020..023 — referenced inside their own gate definitions
+//     in 97-acceptance-criteria.md (G-13-AUDIT-RUNNER-CONTRACT et al.) as
+//     gate-documentation prose; the corresponding gate IS the definition.
+const AT_ALLOW_ORPHAN = /^AT-(APPF-\d+|APP-200|MPG-58|FIX-01|FOO-01|SPECAUTHORING-(020|021|022|023))$/;
 
 // --- EP extraction (## EP-XXX — METHOD `path`) -------------------------
 const EP_HEADING = /^##\s+(EP-[A-Z][A-Z0-9-]*)\s+[—-]\s+(GET|POST|PUT|DELETE|PATCH|HEAD|OPTIONS)\s+`?([^`\n]+?)`?\s*$/;
@@ -124,11 +131,6 @@ walk(ROOT, (file) => {
   if (file.includes("/_archive") || file.endsWith("/spec-index.md")) return;
   // Skip template/example files: they intentionally reference existing AT ids as illustrations.
   if (file.includes("/01-spec-authoring-guide/") && /(template|example|fixtures)\.md$/i.test(file)) return;
-  // P0-quick-win-C1 (2026-04-29): the spec-authoring-guide's own 97-acceptance-criteria.md
-  // contains illustrative `AT-FOO-01` and gate-documentation references like
-  // `AT-SPECAUTHORING-020..023` (used as worked examples in gate prose, not as
-  // AT-row definitions). It is a meta-doc, not a definition site.
-  if (file.endsWith("/01-spec-authoring-guide/97-acceptance-criteria.md")) return;
   // P25: 97a- fixture files ARE valid definition sites (their `## \`AT-X-N\` — title` headings define ATs).
   // (Previously skipped; orphans like AT-SPECISSUES-* were defined only there.)
   // P13 fix: P11-generated condensed overviews include the canonical AC table verbatim.
