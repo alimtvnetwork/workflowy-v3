@@ -18,7 +18,7 @@ long-tail variants like `D-grade`, `WARN-only`, `Spec Ready`, `Live since …`,
 
 This drift makes status filtering, triage, and the planned DOC-tier sweep
 mechanically impossible. This file defines **the closed enum of 9 canonical
-status values**. Every spec file's `**Status:**` line MUST resolve to one of
+status values**. Every spec file's `**Status:**` line MUST (gate G-NS-STATUS-IN-LEGEND) resolve to one of
 these 9; free-form prose statuses are forbidden.
 
 ---
@@ -30,11 +30,11 @@ these 9; free-form prose statuses are forbidden.
 | `DRAFT` | Authoring in progress; not yet reviewed. Subject to breaking changes. | Pre-review |
 | `REVIEW` | Author-complete; awaiting peer review or ADR ratification. | In review |
 | `CANONICAL` | Reviewed, ratified, and is the SSOT for its topic. **Default for shipped specs.** | Active |
-| `COMPANION` | Concrete companion to a CANONICAL parent (e.g. `97a-…-fixtures.md` files). MUST cite parent. | Active |
+| `COMPANION` | Concrete companion to a CANONICAL parent (e.g. `97a-…-fixtures.md` files). MUST (gate G-NS-STATUS-COMPANION-CITES-PARENT) cite parent. | Active |
 | `DISPATCH` | Meta-index that delegates ATs to numbered children (e.g. `spec/18-spec-issues/97-…`). No ATs of its own by design. | Active |
 | `DEFERRED` | Out-of-scope for current release; tracked but not implemented. | Parked |
-| `DEPRECATED` | Superseded by a newer canonical file. MUST cite successor in front-matter. | Sunsetting |
-| `REDIRECT` | Stub that redirects to a canonical file. Body MUST be ≤10 lines. | Sunsetting |
+| `DEPRECATED` | Superseded by a newer canonical file. MUST (gate G-NS-STATUS-DEPRECATED-CITES-SUCCESSOR) cite successor in front-matter. | Sunsetting |
+| `REDIRECT` | Stub that redirects to a canonical file. Body MUST (gate G-NS-STATUS-REDIRECT-BODY-CAP) be ≤10 lines. | Sunsetting |
 | `ARCHIVED` | Historical record; do not modify. Excluded from hygiene gates. | Terminal |
 
 **Forbidden:** any other free-form value (`Active`, `Curated`, `Complete`,
@@ -71,14 +71,14 @@ applies it mechanically; ambiguous cases route to `CANONICAL` by default.
 | `Placeholder` (1) · `Scaffold` (1) | → `DRAFT` | Stub awaiting content. |
 | `This is a …` (4) | → resolve case-by-case (most → `CANONICAL`) | Prose status; needs human disambiguation. |
 
-**Audit-trail requirement:** the P3 sweep MUST land as a single mechanical
+**Audit-trail requirement:** the P3 sweep MUST (gate G-NS-STATUS-SWEEP-ATOMIC) land as a single mechanical
 commit using this table; manual deviations require an inline `<!-- STATUS-MAP-EXCEPTION: <reason> -->` comment so future audits can re-verify.
 
 ---
 
 ## §3 — Front-matter format (required)
 
-Every spec file's front-matter block MUST contain exactly one `**Status:**`
+Every spec file's front-matter block MUST (gate G-NS-STATUS-FRONTMATTER-EXACTLY-ONE) contain exactly one `**Status:**`
 line whose value is one of the 9 canonical tokens, optionally followed by a
 free-text qualifier in parentheses (excluded from gate matching).
 
