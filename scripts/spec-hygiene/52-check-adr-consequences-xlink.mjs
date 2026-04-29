@@ -7,12 +7,13 @@
  *    `## Consequences` bullet that cross-links to the spec scope it locks
  *    (e.g. `spec/04-database-conventions/`)."
  *
- * Mode:  WARN-only initial mode, with a baseline allow-list at
- *        spec/00-adrs/_LEDGER-G-00-ADR-CONSEQUENCES-XLINK-BASELINE.md
- *        (90-day TTL, drained by ADR Consequences enrichment).
- *
- * Hard-fail: ADRs added/edited AFTER baseline that fail and are NOT in the
- *            ledger MUST fail.
+ * Mode:  HARD-FAIL (graduated 2026-04-29 — see _GATE-GRADUATION-LEDGER.md
+ *        "Graduated entries" row). Baseline allow-list at
+ *        spec/00-adrs/_LEDGER-G-00-ADR-CONSEQUENCES-XLINK-BASELINE.md was
+ *        drained at creation (0 rows from baseline measurement); 7-CI cooling
+ *        window equivalent satisfied via stable `31/31; 0 allow-listed` output
+ *        across in-cycle hygiene runs. Any ADR failing this gate now fails CI
+ *        unconditionally.
  *
  * Heuristic: A "downstream xlink" is any markdown link in the Consequences
  *            section that targets a `spec/` path (relative or absolute) and
