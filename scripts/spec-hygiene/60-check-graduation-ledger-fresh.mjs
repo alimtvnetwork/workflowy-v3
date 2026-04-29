@@ -122,8 +122,9 @@ function extractRows(src) {
     const l = lines[i];
     if (!l.trim() || l.startsWith('#')) break;
     if (!l.includes('|')) continue;
-    const cells = l.split('|').map((c) => c.trim().replace(/^`|`$/g, '')).filter((_, idx, arr) => idx > 0 && idx < arr.length - 1);
-    if (cells.length === 7) rows.push(rowOf(cells));
+    const cells = splitMdRow(l);
+    if (cells.length !== 7) throw new Error(`L3 violated: row at line ${i + 1} has ${cells.length} cells (expected 7) — check for unescaped \`|\` outside backtick spans`);
+    rows.push(rowOf(cells));
   }
   return rows;
 }
@@ -165,8 +166,9 @@ function extractGraduated(src) {
     const l = lines[i];
     if (!l.trim() || l.startsWith('#')) break;
     if (!l.includes('|')) continue;
-    const cells = l.split('|').map((c) => c.trim().replace(/^`|`$/g, '')).filter((_, idx, arr) => idx > 0 && idx < arr.length - 1);
-    if (cells.length === 7) rows.push({ gate: cells[0], graduatedOn: cells[1], priorMode: cells[2], newMode: cells[3], evidence: cells[4], flipCommit: cells[5], linkedTasks: cells[6] });
+    const cells = splitMdRow(l);
+    if (cells.length !== 7) throw new Error(`L11 violated: graduated row at line ${i + 1} has ${cells.length} cells (expected 7) — check for unescaped \`|\` outside backtick spans`);
+    rows.push({ gate: cells[0], graduatedOn: cells[1], priorMode: cells[2], newMode: cells[3], evidence: cells[4], flipCommit: cells[5], linkedTasks: cells[6] });
   }
   return { present: true, rows };
 }
