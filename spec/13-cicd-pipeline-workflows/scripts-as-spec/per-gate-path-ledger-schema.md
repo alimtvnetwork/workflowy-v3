@@ -5,7 +5,7 @@
 > [`G-13-LEDGER-PER-GATE-PATH`](../../_GATE-REGISTRY.md) (planned).
 > **SPEC-ONLY classification:** describes a ledger-row schema; no runtime code.
 > When the gate is mechanized under `scripts/spec-hygiene/`, the
-> implementation MUST validate the same input → output behaviour as
+> implementation MUST (gate G-13-LEDGER-IMPL-PARITY) validate the same input → output behaviour as
 > this fixture against the canonical sample rows below.
 
 ---
@@ -26,7 +26,7 @@ appears. This is too coarse — a prefix legitimately reserved for
 
 - **Ledger file** — markdown table at `spec/**/_LEDGER-*.md` matching
   the schema below.
-- **Hygiene runner** — any runner that consults the ledger MUST iterate
+- **Hygiene runner** — any runner that consults the ledger MUST (gate G-13-LEDGER-RUNNER-FILTER) iterate
   over rows and apply each row's `gate` + `pathGlob` filter before
   silencing a violation.
 
@@ -40,7 +40,7 @@ appears. This is too coarse — a prefix legitimately reserved for
 
 ## Canonical row schema
 
-Each ledger MUST contain a markdown table with EXACTLY these 5 columns
+Each ledger MUST (gate G-13-LEDGER-FIVE-COLUMN-SCHEMA) contain a markdown table with EXACTLY these 5 columns
 in this order:
 
 | `gate` | `pathGlob` | `entry` | `rationale` | `addedOn` |
@@ -56,17 +56,17 @@ in this order:
 
 ## Validation rules
 
-1. **Schema-shape rule:** the table header MUST match the canonical
+1. **Schema-shape rule:** the table header MUST (gate G-13-LEDGER-SCHEMA-SHAPE) match the canonical
    5-column form exactly (case-sensitive).
-2. **Gate-existence rule:** `gate` value MUST appear as a row in
+2. **Gate-existence rule:** `gate` value MUST (gate G-13-LEDGER-GATE-EXISTENCE) appear as a row in
    `spec/_GATE-REGISTRY.md` §3.
-3. **Glob-non-empty rule:** `pathGlob` MUST resolve to ≥1 file in the
+3. **Glob-non-empty rule:** `pathGlob` MUST (gate G-13-LEDGER-GLOB-NON-EMPTY) resolve to ≥1 file in the
    repo at audit time (else "stale row" violation — drain or update).
 4. **No-overlap rule (informational):** two rows with the same `gate` +
    `entry` MAY have non-overlapping `pathGlob`s; if their globs DO
    overlap, the runner emits an INFO advisory (not a failure) so the
    author can collapse them.
-5. **Rationale-prose rule:** `rationale` MUST NOT contain markdown
+5. **Rationale-prose rule:** `rationale` MUST NOT (gate G-13-LEDGER-RATIONALE-PROSE) contain markdown
    links `[…](…)` (forces atomic, ledger-local justification — for
    pointers, use a `See also` paragraph below the table).
 6. **Date-monotonicity rule (informational):** within a single ledger,
@@ -126,7 +126,7 @@ once migrated to this schema. Until then, use the worked example below:
 | G-30-AT-CITATION-VALIDITY     | spec/01-features/**/*.md        | AT-FOO-       | Doc-example placeholder cited only by 02-ci-quality-gates. | 2026-04-29 |
 ```
 
-A correct runner MUST report `Checked 3 rows; 0 violations; exit 0`.
+A correct runner MUST (gate G-13-LEDGER-RUNNER-CLEAN-OUTPUT) report `Checked 3 rows; 0 violations; exit 0`.
 
 ## Strictness roadmap
 
