@@ -1,4 +1,4 @@
-# AI-Adaptable Design System
+# 07 — AI-Adaptable Design System
 
 > **Version:** 3.1.0  
 > **Updated:** 2026-04-16  

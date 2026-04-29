@@ -1,4 +1,4 @@
-# Database Conventions
+# 04 — Database Conventions
 
 <!-- P24-RUBRIC-SELFCHECK -->
 ## Audit-Rubric Self-Check (P24)

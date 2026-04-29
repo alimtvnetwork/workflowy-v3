@@ -1,4 +1,4 @@
-# Docs Viewer UI — Overview
+# 08 — Docs Viewer UI — Overview
 ## AI Contract
 
 **Purpose** — Defines the in-app documentation viewer that renders `spec/` markdown files at runtime with anchor navigation, search, and version awareness.
