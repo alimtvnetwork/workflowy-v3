@@ -36,15 +36,16 @@ function decisionSection(text) {
 }
 
 function slugify(heading) {
-  // GitHub-flavoured slug (approx): lowercase, strip punctuation EXCEPT
-  // ASCII alphanumerics, spaces, hyphens, underscores; collapse spaces → '-'.
-  // Em/en dashes, em-dash, slash, colon, '?', '.', '`', emoji → removed.
+  // GitHub-flavoured slug: lowercase; strip punctuation/emoji but PRESERVE
+  // adjacent spaces (em-dash `—` between two spaces becomes two spaces →
+  // double hyphen). Spaces collapsed to single hyphens at the end? No:
+  // GitHub does NOT collapse — `a  b` becomes `a--b`. So we replace each
+  // space with `-` individually rather than collapsing runs.
   return heading
     .toLowerCase()
-    .replace(/[\u2013\u2014]/g, '') // en-dash, em-dash → removed
-    .replace(/[^\p{L}\p{N}\s_-]/gu, '') // strip non-letter/digit (incl. emoji, punct)
+    .replace(/[^\p{L}\p{N} _-]/gu, '') // strip everything except letters/digits/space/_/-
     .trim()
-    .replace(/\s+/g, '-');
+    .replace(/ /g, '-');
 }
 
 function findAnchorLine(lines, anchor) {
