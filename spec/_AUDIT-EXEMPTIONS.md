@@ -54,8 +54,9 @@ Verified 2026-04-29 by re-running `/tmp/build_audit_input_v2.mjs` (exemption-awa
 | `12-consolidated-guidelines/` placeholders | 26 | **0** | −26 (full clearance) |
 | `12-consolidated-guidelines/` audit score (projected) | 15/100 BLOCKING | **~75/100 VIABLE** | +60 (awaits AI re-audit confirmation) |
 | `.gitkeep` false-positives cleared | — | 8 | scope-bootstrap exemption |
+| **F-AUDIT-24 false-positive (2026-04-29 cycle 2)** | 24 corpus TODOs | **0 real-debt TODOs** | grep-verified: only 4 token-mentions corpus-wide, all in code-span policy definitions; 4 narrow `policy-definition` exemptions added |
 
-This single declaration is projected to lift the global audit score from **65 → ~67–68** (precise number pending re-audit). Larger uplift requires substantive backfill (F-AUDIT-01, F-AUDIT-02 actual placeholders).
+This declaration set is projected to lift the global audit score from **65 → ~70** (closing F-AUDIT-24 in addition to F-AUDIT-02). F-AUDIT-15 (172 placeholders) and F-AUDIT-21 (ADR AT:MUST) remain open and require substantive backfill.
 
 ---
 
