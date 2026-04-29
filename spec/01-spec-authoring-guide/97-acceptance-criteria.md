@@ -230,3 +230,34 @@ Fixtures for every AT row in this file are covered by the global P2g sweep — s
   - `scripts/spec-hygiene/<NN>-check-<name>.mjs: orphan checker — exists on disk but missing from 00-run-all.mjs checks array. Rule 6.`
 - **SSOT:** `.lovable/memory/audit/at-audit-runner-contract.md`.
 - **Future companion:** `G-13-AUDIT-RUNNER-PARITY` (deferred) would assert the runner's `checks` array length matches the count of `**CI**`-tier rows in `_GATE-REGISTRY.md` (currently 33 CI tier vs 32 runner entries — 1-row delta is the **G-13-AUDIT-RUNNER-CONTRACT** meta-gate itself, which is enforced by file-existence rather than a dedicated checker).
+
+---
+
+## Gate `G-00-OVERVIEW-AI-CONTRACT-COMPLETE` (CI, hard-fail)
+
+- **Purpose:** `G-00-OVERVIEW-AI-CONTRACT-PRESENT` (the trio's third pillar) only enforces that the `## AI Contract` heading exists. It does NOT enforce that the contract's **body** is well-formed. Without this gate, an overview can satisfy `…-PRESENT` with an empty `## AI Contract` heading followed immediately by the next H2 — gaming the gate without delivering an actual contract. This gate locks the canonical 5-subsection schema from [`./18-ai-contract-template.md`](./18-ai-contract-template.md) so the contract is **structurally complete**, not just nominally present.
+- **AT row:** `AT-SPECAUTHORING-021` — Every top-level overview's `## AI Contract` block MUST contain all five mandatory bold-prefix subsections in canonical order: **Purpose**, **Audience**, **Expected AI Output**, **Out of Scope**, **Definition of Done**.
+- **Rules (all hard-fail):**
+  1. **All five subsections present** — between the `## AI Contract` line and the next `^## ` heading (or EOF), the block MUST contain each of these bold-prefix lines (regex per line, anchored at line start):
+     - `^\*\*Purpose\*\*`
+     - `^\*\*Audience\*\*`
+     - `^\*\*Expected AI Output\*\*`
+     - `^\*\*Out of Scope\*\*`
+     - `^\*\*Definition of Done\*\*`
+  2. **Canonical order** — the five subsections MUST appear in the order listed above. Re-ordering is forbidden (out-of-order is treated as a missing subsection by stricter linters; this gate enforces order explicitly so a future contract-extraction script can rely on positional parsing).
+  3. **Non-empty bodies** — each subsection MUST be followed by at least one non-blank, non-heading line before the next `^\*\*` line or `^## ` heading. Empty subsections (`**Purpose** —` immediately followed by blank then `**Audience**`) are forbidden.
+  4. **Out of Scope items link out** — every bullet under `**Out of Scope**` (`^- ` or `^* `) MUST contain at least one markdown link `\[.+?\]\(.+?\)`. Bare-text scope items are forbidden (Authoring rule §4 in `18-ai-contract-template.md`).
+  5. **Definition of Done bullets are testable** — every bullet under `**Definition of Done**` MUST cite at least one of: an `AT-[A-Z0-9]+-\d+` ID, a `G-[A-Z0-9-]+` gate ID, a script path matching `scripts/[^\s)]+\.mjs`, or a node-runner invocation (`node scripts/spec-hygiene/00-run-all\.mjs`). Prose bullets like "looks good" or "all tests pass" without a concrete pointer are forbidden (Authoring rule §5).
+- **Scope:** all 25 top-level `spec/[0-9][0-9]-*/00-overview.md`. Sub-overview tier is out of scope (sub-overviews inherit the contract from their parent per Authoring rule §6 in `18-ai-contract-template.md` — they MUST NOT duplicate it, so completeness checking on sub-overviews is a category error).
+- **Baseline (2026-04-29):** 25 of 25 top-level overviews already carry all five subsections in canonical order — verified by line-counted regex sweep. Rules 3, 4, 5 not yet baselined; gate ships rule 1 + rule 2 hard-fail from day 1, rules 3–5 WARN-only until first content-quality sweep is scoped.
+- **Exempt zones:** fenced code blocks (a `**Purpose**` line inside a code fence does not count as compliance — must appear in document body); `spec/01-spec-authoring-guide/18-ai-contract-template.md` itself (the template uses these tokens inside example blocks; gate scope is overviews only).
+- **Failure modes:**
+  - `<file>: AI Contract block missing subsection '<name>' — see G-00-OVERVIEW-AI-CONTRACT-COMPLETE rule 1 and 18-ai-contract-template.md §"Required block".`
+  - `<file>: AI Contract subsections out of order — expected [Purpose, Audience, Expected AI Output, Out of Scope, Definition of Done], found <actual>. Rule 2.`
+  - `<file>: AI Contract subsection '<name>' is empty — Rule 3 (WARN).`
+  - `<file>: Out of Scope bullet '<text>' missing link — Rule 4 (WARN).`
+  - `<file>: Definition of Done bullet '<text>' has no AT/gate/script citation — Rule 5 (WARN).`
+- **SSOT:** [`./18-ai-contract-template.md`](./18-ai-contract-template.md) §"Required block" + §"Authoring rules". Audit ledger: `.lovable/memory/audit/at-overview-ai-contract-complete-gate.md`.
+- **Trio status:** This gate completes the **overview-root contract trio's content-completeness layer**:
+  - Layer 1 (presence): `G-09-OVERVIEW-H1-MATCHES-FOLDER-INDEX` (H1), `G-00-OVERVIEW-SCORING-TABLE-PRESENT` (Scoring), `G-00-OVERVIEW-AI-CONTRACT-PRESENT` (AI Contract heading).
+  - Layer 2 (completeness): **this gate** (AI Contract body schema). A future `G-00-OVERVIEW-SCORING-TABLE-COMPLETE` would mirror this for Scoring rows.
