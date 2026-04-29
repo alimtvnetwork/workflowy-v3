@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.1  
-> **Updated:** 2026-04-29 — **batch-4 prose→AT migration:** registered 2 new G-16-* gates (`G-16-CLI-CODE-LOAD-BEARING`, `G-16-FLAG-PRECEDENCE`, both DOC-NORM) per task #6-batch-4 to provide enforcement bindings for substantive prose-MUSTs in `spec/16-generic-cli/00-overview.md`. Prior: 1.7.0 (batch-3 G-03-* gates).
+> **Version:** 1.7.2  
+> **Updated:** 2026-04-29 — **batch-5 prose→AT migration:** registered 9 new `G-A4-*` gates (DOC-NORM) for `spec/31-app/05-conventions/09-audit-log-policy.md` per task #6-batch-5 to provide enforcement bindings for substantive prose-MUSTs. New `Domain-AUDIT` subsection. Prior: 1.7.1 (batch-4 G-16-* gates).
 
-- **Total named gates:** 323 (+2 this revision: `G-16-CLI-CODE-LOAD-BEARING`, `G-16-FLAG-PRECEDENCE`)
+- **Total named gates:** 332 (+9 this revision: nine `G-A4-*`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
 - **CI:** 44
 - **TEST:** 14 (unchanged)
-- **DOC-NORM:** 59 (+2 this revision)
+- **DOC-NORM:** 68 (+9 this revision)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 37 (unchanged)
+- **Areas covered:** 38 (+1: Domain-AUDIT)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
