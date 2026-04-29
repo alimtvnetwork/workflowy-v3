@@ -1,7 +1,7 @@
 # Phase 9 — Email-to-WorkFlowy & Integrations 🚫 DEFERRED
 
 
-> **Status:** 🚫 Deferred to post-v1 (spec authored 2026-04-23, implementation gated on backend runtime choice)
+> **Status:** DEFERRED (post-v1; spec authored 2026-04-23, implementation gated on backend runtime choice)
 
 ## Keywords
 
