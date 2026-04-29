@@ -244,7 +244,7 @@ This file pairs every AT row added in `97-acceptance-criteria.md` v1.1.0 (AT-ADR
 | **Then (positive)** | Example: `G-00-ADR-CONSEQUENCES-XLINK` reached 0 offenders on 2026-04-29; cooling window ends 2026-05-06 (7 daily CI runs); flip permissible from 2026-05-06 (tracked as task #36). |
 | **Negative fixture** | A graduator who flips `STRICT = true` on the same day as the first 0-count read MUST be reverted citing ADR-0031 §D6.1; a cooling-window note column may be added to ledger §Entries to track per-row "first 0-count CI run" timestamps (future task — pending §D6.1 CI promotion). Real-history justification: 3 of the 9 historical WARN gates had transient 0-counts that reverted within 48 h before stabilising. |
 
-
+## Verification
 
 ```bash
 # Per-AT verification:
