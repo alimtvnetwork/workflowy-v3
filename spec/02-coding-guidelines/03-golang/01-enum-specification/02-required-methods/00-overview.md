@@ -1,4 +1,4 @@
-# Required Methods (Overview)
+# 02 — Required Methods (Overview)
 
 
 > **Version:** 3.2.0 (split into subfolder 2026-04-20)

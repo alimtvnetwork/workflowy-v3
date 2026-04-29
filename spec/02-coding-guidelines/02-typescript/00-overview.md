@@ -1,4 +1,4 @@
-# TypeScript Standards
+# 02 — TypeScript Standards
 
 > **Version:** 3.1.0  
 **Status:** Active  

@@ -1,4 +1,4 @@
-# ResponseKeyType — Case Inventory & Usage Map
+# 09 — ResponseKeyType — Case Inventory & Usage Map
 ## Keywords
 
 `coding-guidelines` · `php` · `response-key-type-inventory` · `responsekeytype` · `case` · `inventory`

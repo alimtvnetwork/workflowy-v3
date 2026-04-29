@@ -1,4 +1,4 @@
-# Split Database Architecture — Fundamentals (Overview)
+# 01 — Split Database Architecture — Fundamentals (Overview)
 
 
 > **Version:** 3.2.0  

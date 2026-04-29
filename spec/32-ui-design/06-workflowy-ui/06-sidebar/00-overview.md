@@ -1,4 +1,4 @@
-# Phase 6 — Left Sidebar Offcanvas + Special Nodes
+# 06 — Phase 6 — Left Sidebar Offcanvas + Special Nodes
 
 
 > **Version:** 1.0.0

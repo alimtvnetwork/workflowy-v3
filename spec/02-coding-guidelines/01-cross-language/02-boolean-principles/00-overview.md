@@ -1,4 +1,4 @@
-# Boolean Principles
+# 02 — Boolean Principles
 
 > **Version:** 3.1.0  
 > **Updated:** 2026-04-16  

@@ -1,4 +1,4 @@
-# AppError Package Reference
+# 01 — AppError Package Reference
 
 > **Version:** 3.1.0  
 > **Updated:** 2026-04-16  

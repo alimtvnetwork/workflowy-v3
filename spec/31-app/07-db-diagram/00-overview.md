@@ -1,4 +1,4 @@
-# DB Diagram — Database Design SSOT (Visual)
+# 07 — DB Diagram — Database Design SSOT (Visual)
 
 > **Version:** 1.1.0
 > **Updated:** 2026-04-26 (UTC+8) — v1.1.0 added cross-references to `06-endpoints/` and `97-acceptance-criteria.md`

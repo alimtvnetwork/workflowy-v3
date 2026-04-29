@@ -1,4 +1,4 @@
-# Phase 13 — Admin UI Patterns (Overview)
+# 13 — Phase 13 — Admin UI Patterns (Overview)
 
 
 > **Created:** 2026-04-09

@@ -174,3 +174,18 @@ Fixtures for every AT row in this file are covered by the global P2g sweep — s
 - **Failure modes (hard-fail, both non-zero exit):**
   - `<file>:1: H1 prefix '<h1prefix>' does not match folder prefix '<folder>' — see G-09-OVERVIEW-H1-MATCHES-FOLDER-INDEX`
   - `<file>:1: H1 missing required folder-prefix '<folder>' — expected '# <folder> — <Title>'`
+
+---
+
+## Gate `G-00-OVERVIEW-SCORING-TABLE-PRESENT` (CI, hard-fail)
+
+- **Purpose:** Every top-level `spec/[0-9][0-9]-*/00-overview.md` MUST carry a Scoring section so AI implementability, AI Confidence, Ambiguity, and Health Score are explicitly tracked at the section root. Without this gate, sections silently lose their scoring table during refactors and the per-section quality signal vanishes.
+- **Rule:** the file MUST contain at least one of:
+  - a heading line matching `^(##|###)\s+Scoring\b`
+  - a bold-prefix line matching `^\*\*Scoring\*\*`
+  - the canonical Scoring-criterion table header `^\| Criterion \|` (used in audit-style overviews)
+- **Scope:** all 25 top-level `spec/[0-9][0-9]-*/00-overview.md`. Sub-overview files are out of scope (Scoring lives at the section root only).
+- **Baseline (2026-04-29):** 25 of 25 already compliant — gate ships hard-fail from day 1 with zero violations.
+- **Exempt zones:** fenced code blocks (Scoring inside a code fence does not count as compliance — must be a real section in document body).
+- **Failure mode:** CI emits `<file>: missing Scoring section — every overview MUST carry one of: '## Scoring', '### Scoring', '**Scoring**', or a '| Criterion |' table header. See G-00-OVERVIEW-SCORING-TABLE-PRESENT.` and exits non-zero.
+- **Future companion:** a `G-00-OVERVIEW-SCORING-TABLE-COMPLETE` gate could later enforce specific row presence (e.g. `AI Confidence`, `Ambiguity`, `Health Score`) — deferred until canonical scoring schema is ratified.

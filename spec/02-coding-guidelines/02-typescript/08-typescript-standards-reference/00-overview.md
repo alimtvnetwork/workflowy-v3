@@ -1,4 +1,4 @@
-# TypeScript Coding Standards
+# 08 — TypeScript Coding Standards
 
 
 > **Version:** 3.2.0  

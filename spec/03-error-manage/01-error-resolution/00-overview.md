@@ -1,4 +1,4 @@
-# Error Resolution
+# 01 — Error Resolution
 
 > **Version:** 3.1.0  
 > **Updated:** 2026-04-16  

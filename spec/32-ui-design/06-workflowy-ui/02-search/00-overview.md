@@ -1,4 +1,4 @@
-# Phase 2 — Search Popover (Command-Palette Surface)
+# 02 — Phase 2 — Search Popover (Command-Palette Surface)
 
 
 > **Version:** 2.0.0

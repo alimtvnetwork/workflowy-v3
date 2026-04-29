@@ -1,4 +1,4 @@
-# Error Modal — Copy & Export Formats (Index)
+# 01 — Error Modal — Copy & Export Formats (Index)
 
 
 > **Parent:** [Error Modal Spec](../00-overview.md)  

@@ -1,4 +1,4 @@
-# AppError Package Reference — Domain Error Type Enums (`apperrtype`)
+# 05 — AppError Package Reference — Domain Error Type Enums (`apperrtype`)
 
 
 > **Parent:** [AppError Package Reference](../00-overview.md)  

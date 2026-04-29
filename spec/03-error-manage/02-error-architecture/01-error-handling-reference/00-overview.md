@@ -1,4 +1,4 @@
-# Error Handling — Cross-Stack Specification
+# 01 — Error Handling — Cross-Stack Specification
 
 
 > **Version:** 2.0.0

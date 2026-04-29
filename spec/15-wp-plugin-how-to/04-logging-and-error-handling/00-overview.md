@@ -1,4 +1,4 @@
-# Phase 4 — Logging and Error Handling
+# 04 — Phase 4 — Logging and Error Handling
 ## Scoring
 
 | Criterion | Status |

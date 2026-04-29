@@ -1,4 +1,4 @@
-# TypeScript/React Debugging Guide
+# 03 — TypeScript/React Debugging Guide
 
 
 > **Version:** 1.0.0

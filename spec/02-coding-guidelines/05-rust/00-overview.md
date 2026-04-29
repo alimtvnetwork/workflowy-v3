@@ -1,4 +1,4 @@
-# Rust Coding Standards
+# 05 — Rust Coding Standards
 
 > **Version:** 3.1.0  
 **Status:** Active  

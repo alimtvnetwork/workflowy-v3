@@ -1,4 +1,4 @@
-# Phase 10 — Deployment Patterns (Overview)
+# 10 — Phase 10 — Deployment Patterns (Overview)
 
 
 > **Version:** 3.2.0  

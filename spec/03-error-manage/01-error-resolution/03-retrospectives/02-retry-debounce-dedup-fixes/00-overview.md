@@ -1,4 +1,4 @@
-# Retry, Debounce & Deduplication Fixes — Full Retrospective
+# 02 — Retry, Debounce & Deduplication Fixes — Full Retrospective
 
 
 > **Created:** 2026-02-12

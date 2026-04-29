@@ -1,4 +1,4 @@
-# Phase 19 — Micro-ORM and Cross-Plugin Root Database
+# 19 — Phase 19 — Micro-ORM and Cross-Plugin Root Database
 ## Keywords
 
 `wp-plugin-how-to` · `micro-orm-and-root-db` · `phase` · `micro-orm`

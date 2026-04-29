@@ -1,4 +1,4 @@
-# Phase 20 — End-to-End Walkthrough: Building "Task Tracker" from Scratch
+# 20 — Phase 20 — End-to-End Walkthrough: Building "Task Tracker" from Scratch
 ## Scoring
 
 | Criterion | Status |

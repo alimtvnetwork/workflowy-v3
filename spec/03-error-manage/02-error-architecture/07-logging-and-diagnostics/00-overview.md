@@ -1,4 +1,4 @@
-# Logging and Diagnostics
+# 07 — Logging and Diagnostics
 
 > **Version:** 3.1.0  
 **Status:** Active  

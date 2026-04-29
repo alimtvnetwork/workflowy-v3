@@ -1,4 +1,4 @@
-# Color Theme & Design Token Reference (Index)
+# 04 — Color Theme & Design Token Reference (Index)
 
 
 > **Parent:** [Error Modal Spec](../00-overview.md)  

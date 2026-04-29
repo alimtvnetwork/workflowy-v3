@@ -1,4 +1,4 @@
-# Phase 8 — WordPress Integration Patterns
+# 08 — Phase 8 — WordPress Integration Patterns
 ## Scoring
 
 | Criterion | Status |

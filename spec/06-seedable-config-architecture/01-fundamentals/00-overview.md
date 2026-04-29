@@ -1,4 +1,4 @@
-# Seedable Config Architecture — Fundamentals (Overview)
+# 01 — Seedable Config Architecture — Fundamentals (Overview)
 
 
 > **Version:** 3.2.0

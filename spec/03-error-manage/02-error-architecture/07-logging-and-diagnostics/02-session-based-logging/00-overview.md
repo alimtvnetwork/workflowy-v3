@@ -1,4 +1,4 @@
-# Specification: Session-Based Logging System
+# 02 — Specification: Session-Based Logging System
 
 
 > **Version:** 3.1.0

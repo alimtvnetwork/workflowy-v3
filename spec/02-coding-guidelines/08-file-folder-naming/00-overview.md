@@ -1,4 +1,4 @@
-# File & Folder Naming Conventions
+# 08 — File & Folder Naming Conventions
 
 > **Version:** 3.1.0  
 **Status:** Active  

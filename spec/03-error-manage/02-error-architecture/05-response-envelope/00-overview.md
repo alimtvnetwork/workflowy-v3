@@ -1,4 +1,4 @@
-# Response Envelope
+# 05 — Response Envelope
 
 > **Version:** 3.1.0  
 **Status:** Active  

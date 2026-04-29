@@ -1,4 +1,4 @@
-# Terminal Output Design — Rich CLI Report Formatting
+# 20 — Terminal Output Design — Rich CLI Report Formatting
 ## Keywords
 
 `generic-cli` · `terminal-output-design` · `terminal` · `output` · `design`
