@@ -27,12 +27,12 @@ its interaction with the offline FIFO queue (ADR-0010, ADR-0023).
 
 ## Decision
 
-**D1 — SSE is the sole realtime transport (MUST).** All server→client
-push notifications MUST flow over `text/event-stream` connections served
+**D1 — SSE is the sole realtime transport (MUST).** All server→client [gate: G-25-TRANSPORT-SSE-ONLY]
+push notifications MUST flow over `text/event-stream` connections served [gate: G-25-TRANSPORT-SSE-ONLY]
 by the WordPress plugin REST surface. WebSocket, long-polling, raw HTTP
 streaming, and third-party push services are **forbidden**.
 
-**D2 — Endpoint shape (MUST).** Exactly one SSE endpoint per channel
+**D2 — Endpoint shape (MUST).** Exactly one SSE endpoint per channel [gate: G-25-SSE-ENDPOINT-CLOSED]
 scope, mounted under the existing REST namespace:
 
 ```
@@ -42,7 +42,7 @@ GET /wp-json/workflowy/v1/stream/user/{ownerId}   → user-scoped channel (cross
 
 No other SSE endpoints may be added without superseding this ADR.
 
-**D3 — Frame envelope (MUST).** Every SSE `data:` payload MUST be a
+**D3 — Frame envelope (MUST).** Every SSE `data:` payload MUST be a [gate: G-25-SSE-FRAME-ENVELOPE]
 single-line JSON object matching the REST envelope's PascalCase rule
 (ADR-0004), with `Event` + `Id` mandatory:
 
@@ -52,26 +52,26 @@ id: <monotonic-server-seq>
 data: {"Event":"item.created","Id":"itm_B","ParentId":"itm_A","ServerSeq":4711}
 ```
 
-Event names MUST be lowercase dot-namespaced (`item.created`,
+Event names MUST be lowercase dot-namespaced (`item.created`, [gate: G-25-SSE-EVENT-NAMES-CLOSED]
 `item.updated`, `item.moved`, `item.trashed`, `mirror.linked`,
 `mirror.detached`). The closed set is owned by this ADR.
 
-**D4 — Reconnect contract (MUST).** Clients MUST honour the SSE
-`Last-Event-ID` header on reconnect. The server MUST replay all frames
+**D4 — Reconnect contract (MUST).** Clients MUST honour the SSE [gate: G-25-SSE-LAST-EVENT-ID]
+`Last-Event-ID` header on reconnect. The server MUST replay all frames [gate: G-25-SSE-LAST-EVENT-ID]
 with `ServerSeq > Last-Event-ID` from a 5-minute ring buffer. If the
-buffer doesn't contain `Last-Event-ID + 1` (cold gap), the server MUST
-emit a single `event: resync` frame; the client MUST then trigger a full
+buffer doesn't contain `Last-Event-ID + 1` (cold gap), the server MUST [gate: G-25-SSE-LAST-EVENT-ID]
+emit a single `event: resync` frame; the client MUST then trigger a full [gate: G-25-SSE-LAST-EVENT-ID]
 loader revalidation per ADR-0023 D5.
 
-**D5 — Interaction with offline queue (MUST).** SSE frames are **read
-signals only** — they MUST NOT bypass the local-mirror-first contract
-(ADR-0023 D1). On receiving a frame, the client MUST: (i) write to the
+**D5 — Interaction with offline queue (MUST).** SSE frames are **read [gate: G-25-SSE-READ-ONLY-SIGNAL]
+signals only** — they MUST NOT bypass the local-mirror-first contract [gate: G-25-SSE-READ-ONLY-SIGNAL]
+(ADR-0023 D1). On receiving a frame, the client MUST: (i) write to the [gate: G-25-SSE-READ-ONLY-SIGNAL]
 mirror via the same LWW path as queue replay, (ii) trigger the
-debounced revalidation per ADR-0023 D4. Frames MUST NOT trigger writes
+debounced revalidation per ADR-0023 D4. Frames MUST NOT trigger writes [gate: G-25-SSE-READ-ONLY-SIGNAL]
 to the FIFO queue (no echo loops).
 
-**D6 — Heartbeat & timeout (MUST).** The server MUST emit a `: ping`
-comment frame every 15 s. Clients MUST treat 30 s of silence as a
+**D6 — Heartbeat & timeout (MUST).** The server MUST emit a `: ping` [gate: G-25-SSE-HEARTBEAT-15S]
+comment frame every 15 s. Clients MUST treat 30 s of silence as a [gate: G-25-SSE-HEARTBEAT-15S]
 disconnect and reconnect with exponential backoff (1 s, 2 s, 4 s, …,
 capped at 30 s).
 
@@ -79,10 +79,10 @@ capped at 30 s).
 nonce/cookie auth as REST. Cross-origin SSE is **forbidden** (no `*`
 CORS on the stream namespace).
 
-**D8 — Worker budget (MUST).** Per-host concurrent SSE connections MUST
+**D8 — Worker budget (MUST).** Per-host concurrent SSE connections MUST [gate: G-25-SSE-WORKER-CAP]
 be capped at **N = max(50, php-fpm.max_children − 10)**. Excess
 connections receive `503` with `Retry-After: 30`. Clients receiving 503
-MUST fall back to **30 s polling** of the affected scope until SSE
+MUST fall back to **30 s polling** of the affected scope until SSE [gate: G-25-SSE-WORKER-CAP]
 reconnects succeed.
 
 ## Consequences
