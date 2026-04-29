@@ -27,7 +27,7 @@ const ADR_DIR = "spec/00-adrs";
 const LEDGER = "spec/00-adrs/_LEDGER-G-00-ADR-CONSEQUENCES-XLINK-BASELINE.md";
 
 const ADR_FILE = /^\d{4}-.*\.md$/;
-const SECTION  = /^##[^\n]*\bConsequences\b[^\n]*\n([\s\S]*?)(?=^## |\Z)/m;
+const SECTION  = /^##[^\n]*\bConsequences\b[^\n]*\n([\s\S]*?)(?=\n^## |$(?![\s\S]))/m;
 const ANY_LINK = /\[[^\]]+\]\(([^)\s]+)\)/g;
 
 // A link counts as a "downstream xlink" if its target:
