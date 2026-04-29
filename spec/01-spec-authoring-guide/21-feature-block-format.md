@@ -18,30 +18,30 @@ The F1–F6 passes inserted "Workflowy Feature Reference" appendices into 14 spe
 
 ### R1 — Feature row shape
 
-Every feature row in an appendix MUST use the form:
+Every feature row in an appendix MUST use the form (gate G-39-R1-ROW-SHAPE):
 
 ```
 **<Feature Title>** — <Description sentence>.
 ```
 
-- The separator MUST be a true em-dash (`—`, U+2014), not `-` or `--`.
-- The title MUST be in `**bold**` and contain only the feature name (no shortcut, no slash command).
-- The description MUST be a single sentence ending in a period.
+- The separator MUST be a true em-dash (`—`, U+2014), not `-` or `--` (gate G-39-R1-ROW-SHAPE).
+- The title MUST be in `**bold**` and contain only the feature name (no shortcut, no slash command) (gate G-39-R1-ROW-SHAPE).
+- The description MUST be a single sentence ending in a period (gate G-39-R1-ROW-SHAPE).
 
 ### R2 — Shortcut placement
 
-When a feature carries a keyboard shortcut, the shortcut MUST appear at the END of the line, wrapped in backticks, prefixed with `Shortcut:`:
+When a feature carries a keyboard shortcut, the shortcut MUST appear at the END of the line, wrapped in backticks, prefixed with `Shortcut:` (gate G-39-R2-SHORTCUT-PLACEMENT):
 
 ```
 **Add Date** — Insert a date chip at the cursor. Shortcut: `⌘;`
 ```
 
 Multiple shortcuts: comma-separated inside one backtick group → `` `⌘↵, ⌘.` ``.
-The shortcut MUST also appear in the canonical hotkey table at [`spec/31-app/01-features/05-interactions.md`](../31-app/01-features/05-interactions.md) (per F7 flag #1).
+The shortcut MUST also appear in the canonical hotkey table at [`spec/31-app/01-features/05-interactions.md`](../31-app/01-features/05-interactions.md) (per F7 flag #1) (gate G-39-R2-SHORTCUT-PLACEMENT).
 
 ### R3 — Slash commands inline
 
-Slash commands MUST appear inline as `/command` wrapped in backticks:
+Slash commands MUST appear inline as `/command` wrapped in backticks (gate G-39-R3-SLASH-INLINE):
 
 ```
 **Turn Into** — Convert the focused item to another type via `/turn-into <type>`.
@@ -51,7 +51,7 @@ Bare `/command` outside backticks is forbidden (G-39 rule R3). URL paths (`/wp-j
 
 ### R4 — Search operators in backticks
 
-Search operators (e.g. `is:todo`, `in:Inbox`, `has:note`, `tag:#work`, `due:7d`) MUST be wrapped in backticks wherever they appear in prose:
+Search operators (e.g. `is:todo`, `in:Inbox`, `has:note`, `tag:#work`, `due:7d`) MUST be wrapped in backticks wherever they appear in prose (gate G-39-R4-SEARCH-OPERATORS):
 
 ```
 **Date Search** — Filter today's items with `is:todo due:1d`.
