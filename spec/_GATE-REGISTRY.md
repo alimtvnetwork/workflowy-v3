@@ -1,12 +1,12 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.4.1  
-> **Updated:** 2026-04-29 — Task #15 (defensive `\Z` regex-bug sweep + new gate): swept all 36 hygiene runners for invalid JS-regex anchors `\Z`/`\A` (zero offenders found post-Task-#5 fix). Minted new gate `G-13-RUNNER-NO-INVALID-REGEX-ANCHORS` (CI, hard-fail from day 1) implemented by `scripts/spec-hygiene/55-check-runner-regex-anchors.mjs` to prevent recurrence. Negative test verified (injects `/foo\Z/m` literal → runner correctly fails). Sibling to `G-13-AUDIT-RUNNER-CONTRACT`. Audit ledger: `.lovable/memory/audit/at-runner-regex-anchors.md`. Closes the silent-failure class that mis-reported Task #5 drain progress as `26/28` instead of `28/28`. Prior: 1.4.0 (ADR-Consequences drain + promotion).
+> **Version:** 1.5.0  
+> **Updated:** 2026-04-29 — Task #18 (cheap polish bundle): (a) **`G-00-ADR-XLINK-SYMMETRY` Phase-2 promotion DOC-NORM → CI** via new mechanized runner [`scripts/spec-hygiene/56-check-adr-xlink-symmetry.mjs`](../scripts/spec-hygiene/56-check-adr-xlink-symmetry.mjs) implementing the frozen fixture-as-spec PLUS anchor-locality (±8 lines around the matching heading; explicit `{#id}` attributes honored). All 4 baseline pairs pass clean; negative test verified (locality=2 + corrupted §D1 → ANCHOR-LOCALITY violation surfaced). Wired into `00-run-all.mjs`. Ledger updated to v2.0 Phase-2. (b) Refined generic `[owning section](./00-overview.md)` pointer in `spec/00-adrs/00-overview.md` Out-of-Scope §2 to specific destinations (coding-guidelines + gate-registry). Prior: 1.4.1 (regex-anchor sweep).
 
-- **Total named gates:** 309 (+1: `G-13-RUNNER-NO-INVALID-REGEX-ANCHORS`)
-- **CI:** 39 (+1)
+- **Total named gates:** 309 (unchanged — `G-00-ADR-XLINK-SYMMETRY` already counted)
+- **CI:** 40 (+1: `G-00-ADR-XLINK-SYMMETRY` promoted from DOC-NORM)
 - **TEST:** 14 (unchanged)
-- **DOC-NORM:** 54 (unchanged)
+- **DOC-NORM:** 53 (−1: `G-00-ADR-XLINK-SYMMETRY` promoted)
 - **DOC:** 202 (unchanged)
 - **Areas covered:** 37 (unchanged)
 

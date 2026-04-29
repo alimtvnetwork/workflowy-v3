@@ -1,11 +1,11 @@
-# Ledger — `G-00-ADR-XLINK-SYMMETRY` baseline (2026-04-28)
+# Ledger — `G-00-ADR-XLINK-SYMMETRY` baseline (Phase 2, 2026-04-29)
 
 > **Type:** Audit ledger (informational, not an ADR).
 > **Source gate:** [`G-00-ADR-XLINK-SYMMETRY`](./_INDEX_AUTOMATION.md#g-00-adr-xlink-symmetry-planned)
-> **Audit script:** [`spec/13-cicd-pipeline-workflows/scripts-as-spec/xlink-symmetry-audit.md`](../13-cicd-pipeline-workflows/scripts-as-spec/xlink-symmetry-audit.md)
-> (frozen 2026-04-28). The fixture-as-spec is the load-bearing
-> algorithm; CI implementation pending under
-> `spec/13-cicd-pipeline-workflows/`.
+> **Phase:** **2 (anchor-locality, mechanized)** — promoted from DOC-NORM → CI on 2026-04-29.
+> **Reference impl:** [`scripts/spec-hygiene/56-check-adr-xlink-symmetry.mjs`](../../scripts/spec-hygiene/56-check-adr-xlink-symmetry.mjs) — wired into `00-run-all.mjs`. Locality window = ±8 lines around the matching anchor heading.
+> **Algorithm spec:** [`spec/13-cicd-pipeline-workflows/scripts-as-spec/xlink-symmetry-audit.md`](../13-cicd-pipeline-workflows/scripts-as-spec/xlink-symmetry-audit.md)
+> **Phase-1 → Phase-2 delta:** Phase 1 checked file-level back-link presence anywhere in target. Phase 2 adds an **anchor-locality** check: when the outbound link includes `#anchor`, the reciprocal `ADR-NNNN` mention MUST appear within ±8 lines of the matching heading. Anchorless links still pass with file-level back-link only. Negative-test verified (locality=2 lines + corrupted §D1 backlink → ANCHOR-LOCALITY violation surfaced).
 
 ## Purpose
 
