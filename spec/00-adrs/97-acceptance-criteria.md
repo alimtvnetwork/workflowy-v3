@@ -1,7 +1,7 @@
 # ADRs — Acceptance Criteria
 
 > **Version:** 1.9.0
-> **Created:** 2026-04-29 — closes G-08 acceptance-coverage gap (P0 quick-win). **Updated:** 2026-04-29 — v1.1.0..v1.4.0 added AT-ADR-G04..G07 (closes F-AUDIT-27 HIGH); v1.5.0 added AT-ADR-G08 (ADR-0025 SSE, 8 rows); v1.6.0 added AT-ADR-G09 (ADR-0015 ItemTypes, 7 rows); v1.7.0 added AT-ADR-G10 (ADR-0016 SortOrder, 7 rows); v1.8.0 added AT-ADR-G11 (ADR-0017 8 boundaries + virtualization, 7 rows); **v1.9.0** added AT-ADR-G12 (ADR-0020 branded ItemId/OwnerId, 6 rows AT-20-D1..D6) — task #78, F-AUDIT-21 burndown 5/7.
+> **Created:** 2026-04-29 — closes G-08 acceptance-coverage gap (P0 quick-win). **Updated:** 2026-04-29 — v1.1.0..v1.4.0 added AT-ADR-G04..G07 (closes F-AUDIT-27 HIGH); v1.5.0 AT-ADR-G08 (ADR-0025 SSE); v1.6.0 G09 (ADR-0015 ItemTypes); v1.7.0 G10 (ADR-0016 SortOrder); v1.8.0 G11 (ADR-0017 boundaries+virtualization); v1.9.0 G12 (ADR-0020 branded IDs); **v1.10.0** added AT-ADR-G13 (ADR-0021 undo cap + unbounded IDB queue, 8 rows AT-21-D1-CAP..D6) — task #79, F-AUDIT-21 burndown 6/7.
 > **Status:** ✅ SSOT — testable acceptance criteria for the ADR governance scope.
 
 > _Fixture: N/A — pure narrative reference, not a testable criterion._
