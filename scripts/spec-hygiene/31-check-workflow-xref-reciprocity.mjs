@@ -258,6 +258,18 @@ const G31_SCOPE_TO_SETS = {
   "G-31.4": { peer: DB_DIAGRAM_EXEMPT, island: DB_DIAGRAM_ISLAND_EXEMPT, head: DB_DIAGRAM_HEAD_EXEMPT },
 };
 
+// Phase-3 path-glob matcher (mirrors G-30; ≤15-line logic per ADR-0007 R3).
+function globToRegExp(glob) {
+  const escaped = glob.replace(/[.+^${}()|[\]\\]/g, "\\$&");
+  const pattern = escaped.replace(/\*\*/g, "::DS::").replace(/\*/g, "[^/]*").replace(/::DS::/g, ".*");
+  return new RegExp(`^${pattern}$`);
+}
+
+// Phase-3: per-(scopeId, category, entry) → list of compiled pathGlob regexes.
+// Map key shape: `${scopeId}::${category}::${entry}`.
+const G31_GLOBS_BY_KEY = new Map();
+function g31Key(scopeId, category, entry) { return `${scopeId}::${category}::${entry}`; }
+
 function loadG31Exemptions() {
   let raw;
   try {
@@ -269,17 +281,18 @@ function loadG31Exemptions() {
   const entriesIdx = lines.findIndex((l) => /^##\s+Entries\s*$/.test(l));
   if (entriesIdx < 0) fail(`G-31 ledger: missing '## Entries' section`);
 
+  const stripBackticks = (s) => s.replace(/^`(.*)`$/, "$1");
   let imported = 0;
   for (let i = entriesIdx + 1; i < lines.length; i += 1) {
     const line = lines[i];
-    if (/^##\s/.test(line)) break; // next section
+    if (/^##\s/.test(line)) break;
     if (!line.trim().startsWith("|")) continue;
-    if (/^\|\s*-+/.test(line)) continue; // header separator
-    if (/^\|\s*gate\s*\|/i.test(line)) continue; // header row
+    if (/^\|\s*-+/.test(line)) continue;
+    if (/^\|\s*gate\s*\|/i.test(line)) continue;
     const cells = line.split("|").slice(1, -1).map((c) => c.trim());
     if (cells.length < 5) continue;
-    const stripBackticks = (s) => s.replace(/^`(.*)`$/, "$1");
-    const [gate, , entryRaw, rationale] = cells;
+    const [gate, pathGlobRaw, entryRaw, rationale] = cells;
+    const pathGlob = stripBackticks(pathGlobRaw);
     const entry = stripBackticks(entryRaw);
     const m = gate.match(/^(G-31\.\d)\.(peer|island|head)$/);
     if (!m) fail(`G-31 ledger: malformed gate \`${gate}\` at line ${i + 1}`);
@@ -287,14 +300,32 @@ function loadG31Exemptions() {
     const buckets = G31_SCOPE_TO_SETS[scopeId];
     if (!buckets) fail(`G-31 ledger: unknown scope \`${scopeId}\` at line ${i + 1}`);
     if (!entry) fail(`G-31 ledger: empty entry at line ${i + 1}`);
+    if (!pathGlob) fail(`G-31 ledger: empty pathGlob for \`${entry}\` at line ${i + 1}`);
     if (!rationale) fail(`G-31 ledger: empty rationale for \`${entry}\` at line ${i + 1}`);
     buckets[category].add(entry);
+    const key = g31Key(scopeId, category, entry);
+    if (!G31_GLOBS_BY_KEY.has(key)) G31_GLOBS_BY_KEY.set(key, []);
+    G31_GLOBS_BY_KEY.get(key).push(globToRegExp(pathGlob));
     imported += 1;
   }
   return imported;
 }
 
 const G31_LEDGER_IMPORTED = loadG31Exemptions();
+
+// Phase-3 path-aware exemption check. The in-source override Set is
+// path-agnostic (emergency-hotfix slot). Ledger-sourced entries require
+// the host file to match ≥1 of the row's pathGlobs.
+function isG31Exempt(scopeId, category, entry, hostFile) {
+  const buckets = G31_SCOPE_TO_SETS[scopeId];
+  if (!buckets) return false;
+  if (!buckets[category].has(entry)) return false;
+  const globs = G31_GLOBS_BY_KEY.get(g31Key(scopeId, category, entry));
+  if (!globs) return true; // override-set hit, no ledger row → path-agnostic
+  if (!hostFile) return true;
+  return globs.some((re) => re.test(hostFile));
+}
+
 
 // =====================================================================
 // Scope registry. Order = output order.
