@@ -94,6 +94,7 @@ The criteria are grouped into 3 categories: **shape** (file structure),
 
 ## Related
 
+- [`97a-acceptance-criteria-fixtures.md`](./97a-acceptance-criteria-fixtures.md) — Sibling I/O fixtures for AT-29-* and AT-30-* (closes AT-FIX-01)
 - [`spec/00-adrs/00-overview.md`](./00-overview.md) — ADR authoring contract + index
 - [`spec/_GATE-REGISTRY.md`](../_GATE-REGISTRY.md) — gate ↔ AT bindings
 - [`spec/00-overview.md`](../00-overview.md) — top-level ADR rollup table
