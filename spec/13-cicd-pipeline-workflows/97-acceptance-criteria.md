@@ -102,20 +102,18 @@ Fixtures for every AT row in this file are covered by the global P2g sweep — s
 
 ---
 
-## P13 stub rows
+## P13 backfilled rows
 
-> Auto-appended by [`scripts/spec-hygiene/45-append-p13-orphan-stubs.mjs`](../../scripts/spec-hygiene/45-append-p13-orphan-stubs.mjs) on 2026-04-28 to close orphan AT citations surfaced by [`40-generate-contract-json.mjs`](../../scripts/spec-hygiene/40-generate-contract-json.mjs). Each row is a **placeholder definition** — replace the body with concrete Given/When/Then + JSON fixture during P2 (I/O table conversion). Do **not** delete a row without first removing every citation of its ID elsewhere in spec/.
+> Originally auto-appended by [`scripts/spec-hygiene/45-append-p13-orphan-stubs.mjs`](../../scripts/spec-hygiene/45-append-p13-orphan-stubs.mjs) on 2026-04-28 to close orphan AT citations surfaced by [`40-generate-contract-json.mjs`](../../scripts/spec-hygiene/40-generate-contract-json.mjs). Backfilled with concrete content on 2026-04-29 under task #44b (F-AUDIT-25 burndown). Do **not** delete a row without first removing every citation of its ID elsewhere in spec/.
 
 ### AT-CICD-11 — Browser-Extension archetype reference
 
-📝 **P13-stub.** Definition pending. Replace this block with:
-- Given/When/Then prose
-- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/).
-- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
+**Given** a maintainer pushes a tagged release `v<N.N.N>` to the `release/browser-extension` branch.
+**When** the GitHub Actions workflow defined in [`./01-browser-extension-deploy/01-ci-pipeline.md`](./01-browser-extension-deploy/01-ci-pipeline.md) runs.
+**Then** the workflow MUST (a) build artefacts for both Chromium and Firefox targets, (b) sign each artefact with the corresponding store-issued signing key (secrets `CHROME_WEB_STORE_KEY` / `MOZILLA_AMO_KEY`), (c) emit SHA-256 checksums to the GitHub Release body in the format documented at [`./07-release-body-and-changelog.md`](./07-release-body-and-changelog.md), and (d) upload to the respective stores via their REST APIs. On any signing or upload failure the workflow MUST halt before publishing and surface a structured error matching the standard runner contract (`{Status:"error", Errors:[{Code, Message}], Results:null}`). Reverts use the previous-release artefact already pinned in the GitHub Release; no rebuild is permitted.
 
-### AT-CICD-14 — Go-Binary archetype reference
+**Verifying test:** `at_cicd_11_browser_extension_release_test.php` (PHPUnit dry-run against a fixture workflow YAML) — confirms the workflow exists, both targets are present, and signing-key secret references are non-empty.
 
-📝 **P13-stub.** Definition pending. Replace this block with:
-- Given/When/Then prose
-- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/).
-- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
+### AT-CICD-14 — Go-Binary archetype reference (RETIRED)
+
+**Status:** RETIRED 2026-04-29 — the standalone Go-binary deploy archetype has been formally retired by the 2026-04-25 backend decision recorded in `mem://constraints/backend-runtime-deferred` (Core memory: "WordPress plugin (PHP 8.1+ + SQLite + REST). … Go all forbidden"). Citations of `AT-CICD-14` elsewhere in the corpus MUST be removed by the next P2 sweep; the historical archetype documentation under [`./02-go-binary-deploy/`](./02-go-binary-deploy/) is retained for reference only and is exempted from corpus-density gates per [`spec/_AUDIT-EXEMPTIONS.md`](../_AUDIT-EXEMPTIONS.md). No verifying test is required because no Go binary will ship.
