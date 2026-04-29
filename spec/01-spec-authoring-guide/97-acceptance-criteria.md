@@ -264,7 +264,7 @@ Fixtures for every AT row in this file are covered by the global P2g sweep — s
 
 ---
 
-## Gate `G-00-OVERVIEW-SCORING-TABLE-COMPLETE` (CI, WARN-only initial)
+## Gate `G-00-OVERVIEW-SCORING-TABLE-COMPLETE` (CI, hard-fail rule 1; WARN rules 2–3)
 
 - **Purpose:** `G-00-OVERVIEW-SCORING-TABLE-PRESENT` (Layer 1) only enforces that a Scoring section exists. It does NOT enforce that the table contains the canonical rows. Without this gate, a Scoring section can pass `…-PRESENT` with arbitrary or missing rows, and the per-section quality signal (AI Confidence, Ambiguity, Health Score) is unreliable across the spec corpus. This gate locks the canonical 3-row schema so `health-dashboard.md` and any future score-aggregator can rely on positional/named row presence. Mirrors `G-00-OVERVIEW-AI-CONTRACT-COMPLETE` for the Scoring side of the trio's Layer-2.
 - **AT row:** `AT-SPECAUTHORING-022` — Every top-level overview's Scoring section MUST contain three canonical row tokens: **AI Confidence** (or **AI Implementability**), **Ambiguity**, and **Health Score** (or **Overall** / **Total**).
