@@ -637,7 +637,7 @@ function findIslands(scope, files, matrix) {
   return files.filter((f) => {
     if (matrix[f].size > 0) return false;
     if (incoming[f] > 0) return false;
-    if (scope.islandExemptions.has(f)) return false;
+    if (isG31Exempt(scope.id, "island", f, `${scope.dir}/${f}`)) return false;
     return true;
   });
 }
