@@ -1,8 +1,8 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.2.5  
+> **Version:** 1.2.6  
 > **Updated:** 2026-04-29 — patch: +1 gate `G-13-AUDIT-RUNNER-CONTRACT` (CI, hard-fail). Locks the spec-hygiene runner contract: single entry point (`scripts/spec-hygiene/00-run-all.mjs`), aggregated `process.exit(1)`, no silent skips, no stale entries, CI workflow MUST invoke the runner not individual checks. Clean baseline — runner already conforms (32 checks wired, aggregates via line 55). Closes the meta-gap surfaced by overview-trio work (gate registry's "CI" tier label is now backed by an enforced runner contract). Prior: 1.2.5 (G-00-OVERVIEW-AI-CONTRACT-PRESENT), 1.2.4 (G-00-OVERVIEW-SCORING-TABLE-PRESENT + sub-overview H1 sweep), 1.2.3 (G-09 → Phase 3), 1.2.2 (G-09 minted WARN-conditional), 1.2.1 (G-01-DOD-NO-NN-PLACEHOLDER + G-01-DOD-CONDENSED-MIRRORS-OVERVIEW), 1.2.0 (G-NS-ADR-MUST-HAS-AT), 1.1.9 (G-NS-STATUS-IN-LEGEND), 1.1.8 (G-NS-NO-DEPRECATED-ALIAS), 1.1.7 (G-01-AT-ID-FORMAT-CANONICAL), 1.1.6 (G-13-LEDGER-NUMBERING-CONTIGUOUS), 1.1.5 (G-13-LEDGER-ROW-COUNT-PARITY), 1.1.4 (G-13-PLACEHOLDER-TOKEN-PARITY), 1.1.3 (§5.1 reconciliation), 1.1.2 (G-26-WIRE-OWNERID-ONLY dual tier), 1.1.1 (added the gate), 1.1.0 (20 new gates from ADR-0012 §D7, ADR-0027, ADR-0028).  
-> **Version:** 1.2.6
+
 - **Total named gates:** 303 (was 302 — +1 `G-13-AUDIT-RUNNER-CONTRACT`)
 - **CI:** 33 (was 32 — +1 above; one gate `G-26-WIRE-OWNERID-ONLY` is dual-tier: counted under both CI and TEST)
 - **TEST:** 14 (unchanged)
