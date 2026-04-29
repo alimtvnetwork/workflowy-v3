@@ -52,6 +52,10 @@ const SKIP_PATH = (p) =>
   p.endsWith("/06-enforcement.md") ||
   p.endsWith("/18-ai-contract-template.md") ||
   p.endsWith("/19-acceptance-criteria-io-table.md") || // policy doc names forbidden words
+  // The spec-authoring-guide overview's Scoring rubric row literally
+  // documents the G-38 forbidden phrases — it MUST mention them by name
+  // to be a useful policy reference. (Added 2026-04-29 micro-bundle.)
+  p.endsWith("/01-spec-authoring-guide/00-overview.md") ||
   p.endsWith("/02-quick-add-modal.md") || // user-facing toast copy fixture
   p.endsWith("/09b-mirror-peer-group-model.md"); // canonical glossary that defines the forbidden phrase
 
