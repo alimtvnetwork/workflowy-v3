@@ -82,6 +82,7 @@
 | [`00-adrs/0026-lww-canonical-tiebreak.md`](./00-adrs/0026-lww-canonical-tiebreak.md) | ADR-0026: Canonical LWW tie-break ordering — `(ServerTs, OwnerId, ItemId)` | — | — |
 | [`00-adrs/0027-sse-multiworker-shared-ring-buffer.md`](./00-adrs/0027-sse-multiworker-shared-ring-buffer.md) | ADR-0027 — SSE Multi-Worker Shared Ring Buffer (SQLite WAL-Backed) | — | Accepted |
 | [`00-adrs/0028-i18n-locale-strategy.md`](./00-adrs/0028-i18n-locale-strategy.md) | ADR-0028 — i18n Locale Strategy (Library, Fallback Chain, RTL) | — | Accepted |
+| [`00-adrs/0029-per-gate-path-ledger-shared-lib.md`](./00-adrs/0029-per-gate-path-ledger-shared-lib.md) | ADR-0029 — Per-(Gate, Path) Ledger Consumers MUST Use the Shared Library | — | Accepted |
 | [`00-adrs/97-acceptance-criteria.md`](./00-adrs/97-acceptance-criteria.md) | ADRs — Acceptance Criteria | 1.0.0 | — |
 
 ## 01-spec-authoring-guide
