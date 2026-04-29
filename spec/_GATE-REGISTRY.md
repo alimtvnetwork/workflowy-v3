@@ -1,7 +1,7 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.3.7  
-> **Updated:** 2026-04-29 — Task #13 (AI-Contract Layer-2 runner): authored `scripts/spec-hygiene/54-check-ai-contract-complete.mjs` implementing all 5 rules of the previously runner-less gate `G-00-OVERVIEW-AI-CONTRACT-COMPLETE`. Baseline (25 top-level overviews scanned): **Rules 1+2 hard-fail clean (0 fail)**, Rules 3–5 surface 0 / 29 / 36 = 65 WARNs (rule 4: Out-of-Scope bullets without markdown links; rule 5: DoD bullets without `AT-*`/`G-*`/`scripts/…`/`node …` citation). Sub-overviews carved out per Authoring rule §6; fenced code blocks stripped before scanning. Audit ledger: `.lovable/memory/audit/at-overview-ai-contract-complete-gate.md`. Unblocks Roadmap Task #17 (WARN→hard-fail promotion once 65 baseline WARNs drained). Prior: 1.3.6 (Scoring-Values-Fresh + Rule-3 promotion).
+> **Version:** 1.3.8  
+> **Updated:** 2026-04-29 — Task #12 (Rule-4 drain): converted all 29 baseline Out-of-Scope bullets across 14 top-level overviews to use markdown links, taking `G-00-OVERVIEW-AI-CONTRACT-COMPLETE` Rule 4 from 29 WARNs → **0 WARNs** ✅. Used a one-shot drain script (since deleted) plus a manual fix for one bad sibling/child path heuristic (`08-file-folder-naming/` is a SUB-folder of `02-coding-guidelines/`, not a sibling). Total gate WARN count: 65 → 36 (Rule 5 remains for Task #13). Audit ledger updated with current state. Prior: 1.3.7 (Task #13 — runner authored).
 
 - **Total named gates:** 308 (unchanged — gate row already existed; only the runner is new)
 - **CI:** 38 (unchanged — gate was already CI-tier; runner now realises the contract)
