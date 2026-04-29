@@ -450,6 +450,12 @@
 | `G-36-SESSION-MIN` | **DOC-NORM** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | Sessions store opaque tokens only — no role is baked into JWT/session payloads (must re-check). Gate G-36-SESSION-MIN. |
 | `G-36-VIA-HAS-ROLE` | **CI** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | Role checks go through Auth::hasRole(int $userId, AppRole $role): bool — a SECURITY DEFINER SQL function. Gate G-36-VIA |
 
+### Spec-Authoring
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-01-AT-ID-FORMAT-CANONICAL` | **CI** | [`spec/01-spec-authoring-guide/97-acceptance-criteria.md`](./01-spec-authoring-guide/97-acceptance-criteria.md) | Every acceptance-test ID in `spec/**/97-acceptance-criteria.md` MUST match `^AT-[A-Z][A-Z0-9]*(-[A-Z0-9]+)*-[GA-Z]?[0-9]{2,3}$`. Legacy `AC-NNN` form is forbidden (sweep closed 2026-04-29 at 0/2,387). Carve-out: matches inside fenced code blocks (```…```) and inline `code spans` are exempt — the lint MUST strip those before regex application. Failure mode: CI lint reports each offending file:line with the offending token. |
+
 ### Domain-API
 
 | Gate | Tier | Primary File | Brief |
