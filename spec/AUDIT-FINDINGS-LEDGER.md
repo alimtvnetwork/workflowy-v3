@@ -85,8 +85,9 @@ Resolution = corrected baseline + evidence trail.
 | ID | Severity | First raised | Status | Resolved by | Evidence |
 |---|---|---|---|---|---|
 | F-SCOPE-01 | LOW | 2026-04-29 (task #6 first attempt) | Resolved | Re-baselined "prose→AT migration" scope from inflated 2,170 to actual 682 non-ADR prose-MUSTs (3.2× over-estimate). ADR clauses (352) excluded as legitimately load-bearing prose. See [Retraction case study #2](#retraction-case-study-2--f-scope-01) | This row + case study below |
+| F-SCOPE-02 | LOW | 2026-04-29 (task #6-batch-1) | Resolved | Re-baselined again with AT-block-aware methodology: 682 → **724** when MUSTs inside `### \`AT-…\`` heading blocks are correctly excluded (line-scoped regex undercounted because AT identifiers sit in headings, not the assertion line). First selected migration file (`spec/31-app/97d-acceptance-criteria-fixtures.md`, 29 lines) re-classifies to **0 real prose-MUSTs** — all 29 are canonical "Negative assertion" slots inside AT rows. Authoritative scope: **724 prose-MUSTs across 287 files**, top hit `spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md` (14). Methodology codified in `/tmp/count-prose-musts.mjs`; see [Retraction case study #3](#retraction-case-study-3--f-scope-02) | This row + case study below |
 
-**Open count:** 0 — **Resolved:** 1
+**Open count:** 0 — **Resolved:** 2
 
 ---
 
@@ -176,6 +177,33 @@ A task estimate inflated 3.2× perpetuates the same discoverability failure F-AU
 - **Effort estimates MUST cite the regex/script used to derive them.** A bare "2,170 prose-MUSTs" with no methodology hides counting errors. Future task entries SHOULD inline the one-liner: e.g. `find spec -name "*.md" … | grep -vE "AT-…|G-NN-…" | wc -l`.
 - **Counting "every keyword token" is almost never the right baseline.** Always exclude already-formalized rows (table cells with `AT-` columns, gate-registry briefs, ADR clause stems) before quoting a migration count.
 - **ADR clauses are sources, not targets.** The "prose→AT migration" scope is by definition `spec/` minus `spec/00-adrs/`. Future passes that include ADR MUSTs in the count are committing the same category error this case study retracts.
+
+---
+
+### Retraction case study #3 — F-SCOPE-02
+
+**Source:** Self-imposed task #6-batch-1 (2026-04-29) — first attempt at the prose→AT migration following the F-SCOPE-01 re-baseline.
+**Original claim:** *"`spec/31-app/97d-acceptance-criteria-fixtures.md` contains 29 non-AT prose-MUSTs to migrate (smallest-file batch)."*
+**Severity:** LOW (methodology defect, not a correctness defect)
+**Outcome:** **Re-classified in same pass** — all 29 are already canonical AT-row "Negative assertion" slots; the line-scoped regex from F-SCOPE-01 missed this because AT identifiers sit in `### \`AT-…\`` headings 3–7 lines *above* the assertion line, not on the same line.
+
+#### Evidence trail
+
+1. **F-SCOPE-01's regex** was `grep -E '\b(MUST|SHALL)\b' | grep -vE 'AT-…|G-…'` — purely line-scoped, no AST-style block awareness.
+2. **Sample line** at `spec/31-app/97d-acceptance-criteria-fixtures.md:19`: `> | **Negative assertion** | Dashboard MUST NOT recurse beyond depth 1; …` — clearly a MUST, no AT- token on the line, but the heading 4 lines above is `### \`AT-APP-68\` — depth=1 only`.
+3. **Block-aware re-count** (`/tmp/count-prose-musts.mjs`, walks upward to nearest `### `/`## ` heading and excludes the row if that heading cites `AT-…-`): 97d falls from 29 → **0**.
+4. **Corpus-wide re-count** with the same methodology: 682 → **724** (some files had non-AT MUSTs the simpler regex was incorrectly suppressing because the AT- token appeared elsewhere on the same line — e.g. `[See AT-XYZ-04] All requests MUST …`).
+
+#### Why this matters for F-AUDIT-30
+
+A 2nd consecutive estimate-correction in 1 cycle is empirical proof that *single-pass scope corrections are insufficient*. F-SCOPE-01 thought it had landed the authoritative number; F-SCOPE-02 immediately invalidated it. The discoverability failure F-AUDIT-30 codifies generalizes from "did this finding already close?" to "did the count I'm planning against pass methodology review?". Both questions are answered by the same machinery: a permanent ledger row with a verifiable derivation script.
+
+#### Lessons (codified for future planning)
+
+- **Counting scripts MUST be checked-in artifacts, not inline shell one-liners.** F-SCOPE-01 quoted a regex; F-SCOPE-02 had to write a real script (`/tmp/count-prose-musts.mjs`) to discover the truth. Future scope estimates SHOULD live as committed scripts under `scripts/spec-hygiene/audits/` so the methodology is itself versionable.
+- **Block-scoped grammars beat line-scoped regexes for spec analysis.** Spec markdown carries semantic context across line boundaries (heading scope, table-row scope, blockquote scope). Any tool that ignores this will systematically over- or under-count.
+- **A "smallest tractable file" pre-check MUST verify non-zero work.** Picking 97d as the batch-1 target turned out to be picking a file with 0 work. Future batches MUST run the AT-block-aware count on the candidate file before committing the turn budget.
+- **Regression danger:** the "724" figure itself is now under suspicion until a 3rd independent methodology corroborates it. Treat as `~700 ± 50` for planning purposes; do not bank precision the methodology hasn't earned.
 
 ---
 
