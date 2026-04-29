@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.3  
-> **Updated:** 2026-04-29 — **batch-6 prose→AT migration:** registered new `Domain-SCOPING` subsection with 9 `G-NS-SCOPING-*` gates (3 promoting reserved-name gates from `spec/00-scoping.md` §Hygiene Gate to formal registry rows + 6 new DOC-NORM gates for §Classification Vocabulary and §Reclassification Procedure prose-MUSTs). Prior: 1.7.2 (batch-5 G-A4-* gates).
+> **Version:** 1.7.4  
+> **Updated:** 2026-04-29 — **batch-7 prose→AT migration:** registered new **Spec-Authoring · F8 Feature-Block Format** subsection with 5 `G-39*` gates (1 umbrella CI gate + 4 sub-rule CI gates) — promotes the inline-cited `G-39` (and 4 implicit R1–R4 sub-rules) to formal registry rows. Cross-linked to `AT-F8-01..04`. Prior: 1.7.3 (batch-6 G-NS-SCOPING-* gates).
 
-- **Total named gates:** 341 (+9 this revision: nine `G-NS-SCOPING-*`)
+- **Total named gates:** 346 (+5 this revision: `G-39`, `G-39-R1-ROW-SHAPE`, `G-39-R2-SHORTCUT-PLACEMENT`, `G-39-R3-SLASH-INLINE`, `G-39-R4-SEARCH-OPERATORS`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
-- **CI:** 44
+- **CI:** 49 (+5 this revision)
 - **TEST:** 14 (unchanged)
-- **DOC-NORM:** 77 (+9 this revision)
+- **DOC-NORM:** 77 (unchanged)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 39 (+1: Domain-SCOPING)
+- **Areas covered:** 40 (+1: Spec-Authoring · F8)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
