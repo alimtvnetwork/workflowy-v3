@@ -1,7 +1,8 @@
 # Gate Graduation Ledger
 
-> **Version:** 1.0.0
+> **Version:** 1.1.0
 > **Created:** 2026-04-29 (UTC+8) — answers task #35 (gate-graduation tracking gap surfaced after #57/#58/#59 trio).
+> **Updated:** 2026-04-29 — **F-AUDIT-26 RESOLVED.** Tightened 3 vague flipCriteria (rows for `G-01-DOD-CONDENSED-MIRRORS-OVERVIEW`, `G-00-OVERVIEW-AI-CONTRACT-PRESENT` sub-tier, `G-00-OVERVIEW-AI-CONTRACT-COMPLETE` rules 3–5) to measurable predicates with concrete count/regex/CI-window thresholds; assigned linkedTask IDs #46/#47/#48 (was `none yet`). Per audit-v4 finding F-AUDIT-26 (severity MED, +3pts).
 > **Status:** Active — single source of truth for every WARN-only hygiene gate's flip criteria + target date.
 > **Parent:** [`_GATE-REGISTRY.md`](./_GATE-REGISTRY.md)
 > **Authoritative pattern:** ADR-0031 (pending) — "Warn-only-with-STRICT-flip" gate-graduation pattern.
@@ -40,9 +41,9 @@ A WARN-only gate that lacks a documented **flip criterion** drifts into permanen
 |---|---|---|---|---|---|---|
 | `G-NS-STATUS-IN-LEGEND` | WARN | legacy-status count = 0 (current: 46) | delete WARN branch in runner | 2026-06-30 | 2026-04-29 | P3 status sweep |
 | `G-NS-ADR-MUST-HAS-AT` | WARN | `_LEDGER-G-NS-ADR-COVERAGE.md` row count = 0 (current: 23) | flip flag in runner | 2026-07-29 | 2026-04-29 | #1 (F-AUDIT-21) |
-| `G-01-DOD-CONDENSED-MIRRORS-OVERVIEW` | WARN | next overview-condensation pass completes (event-driven) | delete WARN branch | 2026-09-30 | 2026-04-29 | none yet |
-| `G-00-OVERVIEW-AI-CONTRACT-PRESENT` | WARN (sub-tier only; top-tier already HARD) | sub-overview AI-Contract sweep scoped + landed | delete sub-tier WARN branch | 2026-09-30 | 2026-04-29 | none yet |
-| `G-00-OVERVIEW-AI-CONTRACT-COMPLETE` | WARN (rules 3–5 only; rules 1–2 already HARD) | first content-quality sweep completes (rules 3, 4, 5 all clean for ≥7 days) | flip 3 rule flags in runner | 2026-08-31 | 2026-04-29 | none yet |
+| `G-01-DOD-CONDENSED-MIRRORS-OVERVIEW` | WARN | DoD-hash-mismatch count across condensed-mirror dirs = 0 for ≥7 consecutive CI runs (current: 5 dirs in scope — `02-coding-guidelines`, `03-error-manage`, `15-wp-plugin-how-to`, `31-app`, `32-ui-design`; baseline confirmed clean 2026-04-29 but no 7-CI cooling window started yet) | flip `STRICT = true` in runner gating the WARN branch | 2026-09-30 | 2026-04-29 | #46 (start 7-CI cooling window) |
+| `G-00-OVERVIEW-AI-CONTRACT-PRESENT` | WARN (sub-tier only; top-tier already HARD) | sub-overview count missing `^(##\|###)\s+AI Contract\b` heading = 0 across all 125 sub-overviews (current: baseline count not yet measured — first measurement IS task #47 step 1) | delete sub-tier WARN branch in `12-check-required-files.mjs` (or sibling) | 2026-09-30 | 2026-04-29 | #47 (sub-overview AI-Contract sweep) |
+| `G-00-OVERVIEW-AI-CONTRACT-COMPLETE` | WARN (rules 3–5 only; rules 1–2 already HARD) | rules 3 + 4 + 5 WARN count = 0 across all 25 top-level overviews for ≥7 consecutive CI runs (current: WARN count emitted by `54-check-ai-contract-complete.mjs` lines 168, format `[WARN] … N bullet(s)` per rule) | flip the 3 rule flags in `54-check-ai-contract-complete.mjs` from WARN to FAIL | 2026-08-31 | 2026-04-29 | #48 (rules 3–5 content sweep) |
 | `G-00-ADR-CONSEQUENCES-XLINK` | WARN | `spec/00-adrs/_LEDGER-G-00-ADR-CONSEQUENCES-XLINK-BASELINE.md` row count = 0 (current: 0 — registry says "30/30 cite downstream") | flip flag in runner | 2026-05-29 | 2026-04-29 | already drained — flip-eligible NOW |
 | `G-00-AT-FIX-COMPANION-SHAPE` | WARN | `spec/_LEDGER-G-00-AT-FIX-COMPANION-SHAPE-BASELINE.md` row count = 0 (current: 19) | delete WARN branch in runner | 2026-05-13 | 2026-04-29 | #28 follow-up |
 | `G-00-PLACEHOLDER-DENSITY` | WARN | global density ≤8% AND no scope >15% (current: 11.8%, 8 scopes >15%) | set `STRICT = true` in `59-check-placeholder-density.mjs` | 2026-07-29 | 2026-04-29 | #2/#3/#4/#7, #33 |
