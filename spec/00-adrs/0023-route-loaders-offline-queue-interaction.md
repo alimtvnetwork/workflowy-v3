@@ -26,50 +26,49 @@ and reconnect transitions.
 
 ## Decision
 
-**D1 — Local-mirror-first reads (MUST).** Every `loader` MUST read from the
+**D1 — Local-mirror-first reads (MUST).** Every `loader` MUST (gate G-23-LOADER-MIRROR-FIRST) read from the
 local IndexedDB mirror first and resolve synchronously off that read. A
-loader MUST NOT block on a network call before resolving. Background
-refresh (revalidation) MAY be triggered after resolve, but its result MUST
+loader MUST NOT (gate G-23-LOADER-MIRROR-FIRST) block on a network call before resolving. Background
+refresh (revalidation) MAY be triggered after resolve, but its result MUST (gate G-23-LOADER-MIRROR-FIRST)
 be applied via the same LWW reconciliation path as queue replay (ADR-0010).
 
-**D2 — Actions enqueue, never bypass (MUST).** Every route `action` MUST
+**D2 — Actions enqueue, never bypass (MUST).** Every route `action` MUST (gate G-23-ACTION-ENQUEUE-ONLY)
 write the mutation to (i) the local mirror (optimistic) and (ii) the FIFO
 queue, in that order, inside a single IndexedDB transaction. An action
-MUST NOT issue a direct `fetch`/`axios` call to the server. The queue
+MUST NOT (gate G-23-ACTION-ENQUEUE-ONLY) issue a direct `fetch`/`axios` call to the server. The queue
 worker is the **sole** egress path.
 
 **D3 — Cold start (MUST).** On first paint with no warm cache, the root
-loader MUST hydrate the local mirror from IndexedDB before any child
+loader MUST (gate G-23-COLD-OFFLINE-SHELL) hydrate the local mirror from IndexedDB before any child
 loader runs. If IndexedDB is empty AND the network is offline, the root
-loader MUST resolve with an `OfflineColdStartShell` sentinel — the route
-tree MUST render the empty-state shell, never a spinner-forever or a
+loader MUST (gate G-23-COLD-OFFLINE-SHELL) resolve with an `OfflineColdStartShell` sentinel — the route
+tree MUST (gate G-23-COLD-OFFLINE-SHELL) render the empty-state shell, never a spinner-forever or a
 thrown error.
 
-**D4 — Warm start (MUST).** On warm start (mirror present), loaders MUST
+**D4 — Warm start (MUST).** On warm start (mirror present), loaders MUST (gate G-23-WARM-LOADER-16MS)
 resolve from the mirror in ≤ 16 ms p95 (one frame). Background
-revalidation MUST be debounced per route key (300 ms) to coalesce rapid
+revalidation MUST (gate G-23-WARM-LOADER-16MS) be debounced per route key (300 ms) to coalesce rapid
 navigation.
 
 **D5 — Reconnect ordering (MUST).** When the network transitions
-offline → online, the queue worker MUST drain the FIFO queue **before**
+offline → online, the queue worker MUST (gate G-23-RECONNECT-LOCK) drain the FIFO queue **before**
 any loader's background revalidation fires for the same `parentId`
 scope. Implementation: revalidation requests acquire a shared lock that
 the queue worker holds exclusively while draining.
 
-**D6 — Loaders MUST NOT mutate (MUST NOT).** A `loader` MUST NOT enqueue
-to the FIFO queue, MUST NOT trigger compensating actions, and MUST NOT
+**D6 — Loaders MUST NOT mutate (MUST NOT).** A `loader` MUST NOT (gate G-23-LOADER-NO-MUTATE) enqueue
+to the FIFO queue, MUST NOT (gate G-23-LOADER-NO-MUTATE) trigger compensating actions, and MUST NOT (gate G-23-LOADER-NO-MUTATE)
 write to the mirror except via the read-through cache populated by
 revalidation. All mutations flow through `action`.
 
-**D7 — Error surface (MUST).** Loader failures MUST be caught by the
-nearest of the eight error boundaries (ADR-0017). Action failures MUST
-NOT throw — they resolve with `{ Status: 'queued' | 'rejected', Errors? }`
+**D7 — Error surface (MUST).** Loader failures MUST (gate G-23-ROUTER-ERRORELEMENT) be caught by the
+nearest of the eight error boundaries (ADR-0017). Action failures MUST NOT (gate G-23-ACTION-NO-THROW) throw — they resolve with `{ Status: 'queued' | 'rejected', Errors? }`
 and the UI reads `useActionData()` to render the pending/error chip.
-`QuotaExceededError` from D2's IndexedDB transaction MUST surface a hard
+`QuotaExceededError` from D2's IndexedDB transaction MUST (gate G-23-ACTION-NO-THROW) surface a hard
 banner per ADR-0021 D5.
 
 **D8 — `useFetcher` parity (MUST).** Inline mutations issued via
-`useFetcher().submit()` MUST follow the same D2 path (mirror + queue,
+`useFetcher().submit()` MUST (gate G-23-FETCHER-SAME-PATH) follow the same D2 path (mirror + queue,
 single transaction). No code path may call the queue API directly from a
 component — all writes go through a route `action` or fetcher `action`.
 
