@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.9  
-> **Updated:** 2026-04-29 — **batch-12 prose→AT migration:** registered new **Domain-BACKUP** subsection with 7 `G-BACKUP-*` gates (1 umbrella `G-BACKUP` CI + 3 CI sub-rules `-TWO-REGIONS`/`-AUDIT-CHAIN-PRESERVE`/`-FATAL-PAGER-ALERT` + 2 TEST `-AUDIT-CHAIN-REWALK`/`-RESTORE-INTEGRITY-CHECK` + 1 DOC-NORM `-AUDIT-REWIND-ACK`). Source file's §10 named its umbrella `G-28` but `G-28-*` is already taken by ADR-0028 (i18n) — collision sidestepped via `G-BACKUP-*`; rename of source callout tracked as F-SCOPE-15-FOLLOWUP. Prior: 1.7.8 (batch-11 G-24* gates).
+> **Version:** 1.7.10  
+> **Updated:** 2026-04-29 — **batch-13 prose→AT migration:** registered new **Domain-ERRCODE** subsection with 8 `G-ERRCODE-*` gates (1 umbrella `G-ERRCODE` CI + 6 CI sub-rules `-RUNTIME-AGNOSTIC`/`-SEVERITY-INTRINSIC`/`-HTTPSTATUS-PARITY`/`-INTERCEPTOR-SWITCHES-ON-CODE`/`-UNKNOWN-FUNNEL`/`-I18N-MESSAGEKEY-LOOKUP` + 1 DOC-NORM `-DEPRECATION-GRACE`). Disjoint from existing `G-ERR-*` (envelope shape) and `G-22-REGISTRY-LOCKSTEP` (registry-build). Pre-flight namespace check applied (lesson from F-SCOPE-15). Prior: 1.7.9 (batch-12 G-BACKUP-* gates).
 
-- **Total named gates:** 384 (+7 this revision: seven `G-BACKUP-*`)
+- **Total named gates:** 392 (+8 this revision: eight `G-ERRCODE-*`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
-- **CI:** 72 (+4 this revision)
-- **TEST:** 17 (+2 this revision)
-- **DOC-NORM:** 90 (+1 this revision)
+- **CI:** 79 (+7 this revision)
+- **TEST:** 17 (unchanged)
+- **DOC-NORM:** 91 (+1 this revision)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 45 (+1: Domain-BACKUP)
+- **Areas covered:** 46 (+1: Domain-ERRCODE)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
@@ -644,6 +644,21 @@
 | `G-BACKUP-AUDIT-REWIND-ACK` | **DOC-NORM** | [`spec/31-app/05-conventions/14-backup-and-dr-policy.md`](./31-app/05-conventions/14-backup-and-dr-policy.md) | Restoring an audit DB to a point earlier than the live latest MUST emit `SYSTEM.AUDIT_CHAIN_REWIND` at `fatal` severity on the next live write, AND the operator runbook MUST require explicit acknowledgement before any further audit writes are accepted. |
 | `G-BACKUP-RESTORE-INTEGRITY-CHECK` | **TEST** | [`spec/31-app/05-conventions/14-backup-and-dr-policy.md`](./31-app/05-conventions/14-backup-and-dr-policy.md) | Restore step 6 — `PRAGMA integrity_check` against the decrypted SQLite file MUST return `ok`. Skipping or short-circuiting this check is forbidden (codified in §7 "Forbidden during restore"). Quarterly restore-drill harness exercises both pass and synthetic-corruption paths. |
 | `G-BACKUP-FATAL-PAGER-ALERT` | **CI** | [`spec/31-app/05-conventions/14-backup-and-dr-policy.md`](./31-app/05-conventions/14-backup-and-dr-policy.md) | Every audit row at `fatal` severity in the §9 monitoring table MUST trigger an operator pager alert (PagerDuty/OpsGenie/equivalent). Alert-routing config inspected by CI; missing routing for any `fatal` code in the §9 catalogue is a build failure. |
+
+### Domain-ERRCODE (Error-Code Catalogue · SSOT Drift Rules)
+
+> Reserved gate IDs for the runtime-error-code SSOT in `spec/03-error-manage/02-error-architecture/05-response-envelope/05-error-code-catalogue.md`. Distinct from the existing `G-ERR-*` family (which covers envelope shape; see §99a-worked-example-fixtures.md) and the pre-existing `G-22-REGISTRY-LOCKSTEP` (which guards the registry-build step). Batch-13 (2026-04-29) registers an umbrella + 7 narrative-bound sub-rule gates covering the catalogue's runtime-agnostic naming, intrinsic severity, HTTP-status parity, deprecation grace window, and frontend interceptor/unknown-funnel/i18n contracts.
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-ERRCODE` | **CI** | [`spec/03-error-manage/02-error-architecture/05-response-envelope/05-error-code-catalogue.md`](./03-error-manage/02-error-architecture/05-response-envelope/05-error-code-catalogue.md) | Umbrella — every runtime error code MUST appear in the §5 catalogue, MUST be emitted via `Auth::error()` (already covered by `G-22-REGISTRY-LOCKSTEP`), and MUST satisfy all sub-rules below. AI MUST NOT emit a code path that violates any sub-rule. Composed of `G-ERRCODE-RUNTIME-AGNOSTIC`, `-SEVERITY-INTRINSIC`, `-HTTPSTATUS-PARITY`, `-DEPRECATION-GRACE`, `-INTERCEPTOR-SWITCHES-ON-CODE`, `-UNKNOWN-FUNNEL`, `-I18N-MESSAGEKEY-LOOKUP`. |
+| `G-ERRCODE-RUNTIME-AGNOSTIC` | **CI** | [`spec/03-error-manage/02-error-architecture/05-response-envelope/05-error-code-catalogue.md`](./03-error-manage/02-error-architecture/05-response-envelope/05-error-code-catalogue.md) | Runtime error codes MUST NOT carry backend-runtime infixes (`ERR_GO_*`, `ERR_NODE_*`, etc.). The sole exception is the `installer` tier where bootstrap-runtime identity is unavoidable. Cross-references `mem://constraints/backend-runtime-deferred`. |
+| `G-ERRCODE-SEVERITY-INTRINSIC` | **CI** | [`spec/03-error-manage/02-error-architecture/05-response-envelope/05-error-code-catalogue.md`](./03-error-manage/02-error-architecture/05-response-envelope/05-error-code-catalogue.md) | Severity is a property of the code itself; the same code MUST NOT be emitted at different severities by different call sites. Severity is read-once from the catalogue at emit time, not parameterised. |
+| `G-ERRCODE-HTTPSTATUS-PARITY` | **CI** | [`spec/03-error-manage/02-error-architecture/05-response-envelope/05-error-code-catalogue.md`](./03-error-manage/02-error-architecture/05-response-envelope/05-error-code-catalogue.md) | The HTTP status set by the REST handler MUST equal the `HttpStatus` column in the §5 catalogue row for the emitted code. Mismatch is a `G-22` violation; `0` reserved for non-HTTP (CLI/installer) codes. |
+| `G-ERRCODE-DEPRECATION-GRACE` | **DOC-NORM** | [`spec/03-error-manage/02-error-architecture/05-response-envelope/05-error-code-catalogue.md`](./03-error-manage/02-error-architecture/05-response-envelope/05-error-code-catalogue.md) | When a code is deprecated, the backend SHOULD stop emitting it but the frontend MUST continue to recognise it for **one full minor version**. Removal in the same minor that deprecates the code is forbidden. |
+| `G-ERRCODE-INTERCEPTOR-SWITCHES-ON-CODE` | **CI** | [`spec/03-error-manage/02-error-architecture/05-response-envelope/05-error-code-catalogue.md`](./03-error-manage/02-error-architecture/05-response-envelope/05-error-code-catalogue.md) | The Axios response interceptor MUST branch on `Errors.Code`, never on `Status.Message`. Lint forbids `Status.Message ===` / `.includes(` patterns inside the interceptor module. |
+| `G-ERRCODE-UNKNOWN-FUNNEL` | **CI** | [`spec/03-error-manage/02-error-architecture/05-response-envelope/05-error-code-catalogue.md`](./03-error-manage/02-error-architecture/05-response-envelope/05-error-code-catalogue.md) | Unknown codes (not in §5) MUST be funnelled through `ERR_UNKNOWN` in the UI layer without silent remapping to any sibling code, AND simultaneously logged to the analytics channel for catalogue back-fill. Silent remap is a P1 finding. |
+| `G-ERRCODE-I18N-MESSAGEKEY-LOOKUP` | **CI** | [`spec/03-error-manage/02-error-architecture/05-response-envelope/05-error-code-catalogue.md`](./03-error-manage/02-error-architecture/05-response-envelope/05-error-code-catalogue.md) | i18n lookups MUST use the catalogue's `MessageKey` column. Raw English strings from the backend's `Status.Message` are debug-only and MUST NOT be rendered to end users. |
 
 ### Meta-00
 
