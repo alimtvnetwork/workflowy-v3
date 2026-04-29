@@ -155,6 +155,7 @@
 
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
+import { walkLedger, buildGlobMap, isExempt } from "./_lib/per-gate-path-ledger.mjs";
 
 // =====================================================================
 // Per-scope allow-lists. Format: `${from} → ${to}` (bare filenames).
