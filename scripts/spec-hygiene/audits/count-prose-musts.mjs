@@ -40,7 +40,10 @@ function countFile(file) {
       continue;
     }
     if (!/\b(MUST|SHALL)\b/.test(ln)) continue;
-    if (/AT-[A-Z]+-|G-[0-9N][0-9NS]?-/.test(ln)) continue;
+    // v4 (F-SCOPE-06): gate ids appear in bare form (G-40, G-22, G-N1, G-NS-SCOPING-01)
+    // — terminator is word-boundary, not a literal `-`. Old regex `G-[0-9N][0-9NS]?-`
+    // required trailing dash and missed ~888 corpus-wide bare-form citations.
+    if (/AT-[A-Z]+-|\bG-[0-9N][0-9NS-]*\b/.test(ln)) continue;
     if (stack.some((f) => f.citesAT)) continue;
     if (FIXTURE_SLOT_RE.test(ln)) continue;
     if (/^\s*>\s/.test(ln)) continue;
