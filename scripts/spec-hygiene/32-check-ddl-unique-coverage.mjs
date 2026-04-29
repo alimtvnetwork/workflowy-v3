@@ -583,6 +583,7 @@ function printRationaleReport(violations) {
   console.log("");
   console.log("G-32.4 allow-list rationale-comment coverage:");
   console.log(`  allow-lists scanned:                ${ALLOWLIST_NAMES.length} (${ALLOWLIST_NAMES.join(", ")})`);
+  console.log(`  ledger entries imported:            ${G32_LEDGER_IMPORTED} (${G32_LEDGER_PATH})`);
   console.log(`  entries missing rationale:          ${violations.length}`);
 
   if (violations.length === 0) {
