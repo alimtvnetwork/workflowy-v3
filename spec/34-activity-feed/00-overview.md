@@ -80,6 +80,11 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ---
 
+## Keywords
+
+`activity-feed` · `audit-log` · `event-stream` · `e2` · `notifications`
+
+---
 
 ## Purpose
 
