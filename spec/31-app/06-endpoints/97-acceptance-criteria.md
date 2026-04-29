@@ -176,7 +176,11 @@ node scripts/spec-hygiene/00-run-all.mjs
 
 ### AT-WIRE-EGRESS-01 — PHP serializer egress test (OwnerId canonical wire key)
 
-**Canonical definition:** [`97b-endpoint-envelope-fixtures.md` §AT-WIRE-EGRESS-01](./97b-endpoint-envelope-fixtures.md#at-wire-egress-01--php-serializer-egress-test-ownerid-canonical) — registered here per APP-FIX-14 / G-30 (every cited AT MUST resolve to a heading in a `97-acceptance-criteria.md` file in scope).
+| AT ID | Summary | Source |
+|---|---|---|
+| `AT-WIRE-EGRESS-01` | PHP serializer egress: every wire payload emits `OwnerId`, never `OwnerUserId`. | [`97b-endpoint-envelope-fixtures.md` §AT-WIRE-EGRESS-01](./97b-endpoint-envelope-fixtures.md#at-wire-egress-01--php-serializer-egress-test-ownerid-canonical) |
+
+**Canonical definition:** see source above — registered here per APP-FIX-14 / G-30 (every cited AT MUST resolve to a table-row declaration in a `97-acceptance-criteria.md` file in scope).
 
 **Bound gate:** `G-26-WIRE-OWNERID-ONLY` (CI + TEST dual tier; this AT is the TEST half).
 
