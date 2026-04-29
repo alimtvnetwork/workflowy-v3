@@ -68,7 +68,7 @@ Before adding a row to this manifest:
 
 ## Related
 
-- [`/mnt/documents/spec-ai-implementability-audit.md`](file:///mnt/documents/spec-ai-implementability-audit.md) — the audit this manifest answers
+- Audit artifact (out-of-repo): `/mnt/documents/spec-ai-implementability-audit.md` — the audit this manifest answers (also v2/v3 JSON siblings)
 - [`spec/00-adrs/0029-per-gate-path-ledger-shared-lib.md`](./00-adrs/0029-per-gate-path-ledger-shared-lib.md) — pattern reference for path-globbed exemptions
 - [`spec/12-consolidated-guidelines/00-overview.md`](./12-consolidated-guidelines/00-overview.md) — the canonical declaration this manifest cites
 - [`mem://preferences/spec-implementability-percentage`](mem://preferences/spec-implementability-percentage) — formula that consumes the corrected placeholder count
