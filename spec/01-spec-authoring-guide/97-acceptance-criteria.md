@@ -157,3 +157,19 @@ Fixtures for every AT row in this file are covered by the global P2g sweep — s
 - **Scope:** every directory containing both `00-overview.md` and `00-overview-condensed.md` (currently 4: `02-coding-guidelines`, `03-error-manage`, `15-wp-plugin-how-to`, `31-app`, `32-ui-design`).
 - **Rule:** the DoD block (between `**Definition of Done**` and the next `---` / `## ` / `> Authoring` line) MUST hash-match across both siblings.
 - **Failure mode (WARN):** CI emits `<dir>: DoD drift between 00-overview.md and 00-overview-condensed.md — re-mirror or delete the condensed copy` and continues. Promotion to hard-fail deferred until next overview-condensation pass.
+
+---
+
+## Gate `G-09-OVERVIEW-H1-MATCHES-FOLDER-INDEX` (CI, WARN-only conditional; hard-fail target after H1-prefix sweep)
+
+- **Purpose:** Catch silent drift between an overview file's `# H1` numeric prefix and its parent folder's two-digit prefix. Closes the regression-class behind audit issue #6 in `spec/09-code-block-system/00-overview.md` (H1 carried `08` while folder was `09` — surfaced 2026-04-29).
+- **Conditional rule (initial mode):** For every `spec/[0-9][0-9]-*/00-overview.md`, *if* the H1 line matches `^# (\d{2,3})\b`, the captured prefix MUST equal the folder's leading two-digit (or three-digit) numeric prefix. H1s without a leading numeric prefix are permitted in this mode.
+- **Scope:** the first `^# ` line in any `spec/[0-9][0-9]*/00-overview.md`. Sub-overview files (`spec/**/<deeper>/00-overview.md`) are also in scope, matched against their immediate parent folder prefix.
+- **Rationale for conditional mode:** As of 2026-04-29 only 1 of 25 top-level overviews (`09-code-block-system`) carries a numeric H1 prefix; mandating prefix presence today would mass-fail 24 files. WARN-only conditional mode is enforceable on day 1 and prevents the audit-issue-#6 class of bug without blocking unrelated work.
+- **Promotion path (WARN-conditional → HARD-mandatory):**
+  1. **Phase 1 (today):** Conditional WARN. Catches mismatches; permits absence.
+  2. **Phase 2 (H1-prefix sweep):** Author explicit H1 prefixes in all 24 remaining overviews (estimated +0.5 implementability, xs effort). Audit ledger to be created at `.lovable/memory/audit/at-h1-prefix-sweep.md`.
+  3. **Phase 3 (post-sweep):** Flip to hard-fail mandatory: H1 MUST start with the folder prefix.
+- **Exempt zones:** fenced code blocks (no H1 inside fences anyway); the `spec/00-adrs/` per-ADR files (which intentionally use `# ADR-NNNN — Title` form) — only `00-overview.md` of the folder is in scope.
+- **Failure mode (WARN, conditional):** CI emits `<file>:1: H1 prefix '<h1prefix>' does not match folder prefix '<folder>' — see G-09-OVERVIEW-H1-MATCHES-FOLDER-INDEX` and continues.
+- **Failure mode (HARD, post-Phase-3):** same message + non-zero exit, plus an additional `<file>:1: H1 missing required folder-prefix` for absent prefixes.
