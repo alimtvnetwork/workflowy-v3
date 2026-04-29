@@ -108,6 +108,12 @@ unit-test fixture, if added later.
 
 - The five primitives (each ≤15 logic lines) satisfy ADR-0007 R3 individually, so the lib stays within the strict-TS budget.
 
+### Downstream xlinks (spec/ scopes locked by this ADR)
+
+- [`../12-consolidated-guidelines/`](../12-consolidated-guidelines/) — ledger-driven gates referenced by the consolidated guidelines stem from this shared lib.
+- [`../_GATE-REGISTRY.md`](../_GATE-REGISTRY.md) — `G-13-LEDGER-USES-SHARED-LIB` and `G-13-LEDGER-PER-GATE-PATH` bindings live here.
+- [`./97a-acceptance-criteria-fixtures.md`](./97a-acceptance-criteria-fixtures.md) §1 — AT-29-* I/O fixtures.
+
 ---
 
 ## 4. Alternatives considered

@@ -113,6 +113,12 @@ files), we have 6.6 percentage points of headroom before alarm.
   (header parse + 8 invariants + glob walk). Within ADR-0007 strict-TS
   budget when ported (currently `.mjs`).
 
+### Downstream xlinks (spec/ scopes locked by this ADR)
+
+- [`../_AUDIT-EXEMPTIONS.md`](../_AUDIT-EXEMPTIONS.md) — the singleton manifest under enforcement.
+- [`../_GATE-REGISTRY.md`](../_GATE-REGISTRY.md) — `G-00-AUDIT-EXEMPTION-REVIEW` binding.
+- [`./97a-acceptance-criteria-fixtures.md`](./97a-acceptance-criteria-fixtures.md) §2 — AT-30-I1..I8 I/O fixtures.
+
 ---
 
 ## 4. Alternatives considered
