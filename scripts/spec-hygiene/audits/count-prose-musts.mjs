@@ -22,6 +22,13 @@ function walk(dir, acc = []) {
   return acc;
 }
 
+// v3 exclusions (2026-04-29, F-SCOPE-05):
+//   (a) Fixture-table slot rows: `| **Negative assertion** |`, `| **Then** |`,
+//       `| **Side effects** |`, `| **Given** |`, `| **When** |`, `| **Expected …** |`
+//       — these ARE the AT-shaped form per 19-acceptance-criteria-io-table.md SSOT.
+//   (b) Blockquoted lines (`> …`): citations of other docs, not new MUSTs.
+const FIXTURE_SLOT_RE = /^\|\s*\*\*(Negative assertion|Then|Side effects|Given|When|Expected [^*]+|Linter command|Response envelope|Expected stderr regex)\*\*\s*\|/;
+
 function countFile(file) {
   const lines = readFileSync(file, "utf8").split("\n");
   const stack = []; // {level, citesAT}
@@ -37,6 +44,8 @@ function countFile(file) {
     if (!/\b(MUST|SHALL)\b/.test(ln)) continue;
     if (/AT-[A-Z]+-|G-[0-9N][0-9NS]?-/.test(ln)) continue;
     if (stack.some((f) => f.citesAT)) continue;
+    if (FIXTURE_SLOT_RE.test(ln)) continue;
+    if (/^\s*>\s/.test(ln)) continue;
     n++;
   }
   return n;
