@@ -70,3 +70,15 @@
 ## Fixtures
 
 Fixtures for every AT row in this file are covered by the global P2g sweep — see [`../97a-acceptance-criteria-fixtures.md`](../97a-acceptance-criteria-fixtures.md) (apply the matching pattern by section).
+
+---
+
+## Enforcement Gate
+
+**`G-01-AT-ID-FORMAT-CANONICAL`** (CI, minted 2026-04-29 — see `_GATE-REGISTRY.md` → Spec-Authoring).
+
+- **Regex:** `^AT-[A-Z][A-Z0-9]*(-[A-Z0-9]+)*-[GA-Z]?[0-9]{2,3}$`
+- **Scope:** all `spec/**/97-acceptance-criteria.md` and `spec/**/97a-acceptance-criteria-fixtures.md`.
+- **Exempt zones (lint MUST strip before regex):** fenced code blocks (```` ``` ````) and inline `code spans` (single backticks). This carve-out exists because guidance docs legitimately quote legacy IDs as illustrative bad-examples.
+- **Failure mode:** CI lint emits `<file>:<line>: non-canonical AT-ID '<token>'` and exits non-zero.
+- **Enforceable since:** 2026-04-29 (legacy `AC-NNN` sweep closed at 0/2,387 — no exemption list required).
