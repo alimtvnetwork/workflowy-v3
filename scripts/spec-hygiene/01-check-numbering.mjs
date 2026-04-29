@@ -28,13 +28,22 @@ function scan(dir) {
     const isDir = statSync(full).isDirectory();
     const rel = relative(".", full);
 
-    const goodMatch = name.match(PREFIX_RE);
-    const badMatch = name.match(BAD_PREFIX_RE);
+    // ADR folder uses industry-standard 4-digit prefixes (`0001-…`) per
+    // adr.github.io convention. Exempt the entire `spec/00-adrs/` subtree
+    // from numbering rules — its own naming policy lives in `_TEMPLATE.md`.
+    // (Fix 2026-04-29 — closes G-01 false-positives on 28 ADR files +
+    // duplicate-00 collision between `00-adrs/` folder and `00-overview.md`.)
+    if (rel === "spec/00-adrs" || rel.startsWith("spec/00-adrs/")) {
+      continue;
+    }
 
     // Generated companion files (e.g. 00-overview-condensed.md) intentionally
     // share the prefix of their canonical sibling. Skip duplicate detection
     // for these — they're a 1:1 paired artefact produced by gate G-43.
     const isCondensedCompanion = /-condensed\.md$/.test(name);
+
+    const goodMatch = name.match(PREFIX_RE);
+    const badMatch = name.match(BAD_PREFIX_RE);
 
     if (goodMatch) {
       const prefix = goodMatch[1];
