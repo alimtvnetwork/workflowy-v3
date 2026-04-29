@@ -57,7 +57,13 @@ const SKIP_PATH = (p) =>
   // to be a useful policy reference. (Added 2026-04-29 micro-bundle.)
   p.endsWith("/01-spec-authoring-guide/00-overview.md") ||
   p.endsWith("/02-quick-add-modal.md") || // user-facing toast copy fixture
-  p.endsWith("/09b-mirror-peer-group-model.md"); // canonical glossary that defines the forbidden phrase
+  p.endsWith("/09b-mirror-peer-group-model.md") || // canonical glossary that defines the forbidden phrase
+  // ADR-0031 §D3 codifies the closed grammar of forbidden vague-criterion
+  // tokens that gate G-38 enforces — counting its definitional mentions as
+  // offenders is the same category error as for `00-overview.md` above.
+  // (Added 2026-04-29 with ADR-0031 landing; mirrored row in
+  // `_AUDIT-EXEMPTIONS.md` cites F-SPEC-13 + F-AUDIT-26 closure.)
+  p.endsWith("/0031-warn-only-strict-flip-pattern.md");
 
 
 const ALLOW_LINE = (line) =>
