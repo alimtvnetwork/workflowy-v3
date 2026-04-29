@@ -71,7 +71,7 @@ applies it mechanically; ambiguous cases route to `CANONICAL` by default.
 | `Placeholder` (1) · `Scaffold` (1) | → `DRAFT` | Stub awaiting content. |
 | `This is a …` (4) | → resolve case-by-case (most → `CANONICAL`) | Prose status; needs human disambiguation. |
 
-**Audit-trail requirement:** the P3 sweep MUST land as a single mechanical
+**Audit-trail requirement:** the P3 sweep MUST (gate G-NS-STATUS-SWEEP-ATOMIC) land as a single mechanical
 commit using this table; manual deviations require an inline `<!-- STATUS-MAP-EXCEPTION: <reason> -->` comment so future audits can re-verify.
 
 ---
