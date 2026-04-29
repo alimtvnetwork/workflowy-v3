@@ -171,6 +171,6 @@ node scripts/spec-hygiene/00-run-all.mjs                       # all gates incl.
 - [`../_AUDIT-EXEMPTIONS.md`](../_AUDIT-EXEMPTIONS.md) — singleton manifest under enforcement
 - [`../97a-acceptance-criteria-fixtures.md`](../97a-acceptance-criteria-fixtures.md) — corpus-wide P2g sweep (Pattern 1 covers AT-ADR-G01..G03)
 - [`../01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](../01-spec-authoring-guide/19-acceptance-criteria-io-table.md) — Format SSOT
-- [`_GATE-REGISTRY.md`](./_GATE-REGISTRY.md) — gate↔AT bindings (rows for AT-29-* and AT-30-* live here)
+- [`../_GATE-REGISTRY.md`](../_GATE-REGISTRY.md) — gate↔AT bindings (rows for AT-29-* and AT-30-* live here)
 
 *Created 2026-04-29 — closes AT-FIX-01 fixture-deficit for ADR-0029 and ADR-0030 acceptance rows. 13 fixtures (5 AT-29-* + 8 AT-30-*) ratified.*
