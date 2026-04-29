@@ -78,9 +78,9 @@ Every error in WorkFlowy MUST be classified into exactly one of these four categ
 | **`ServerError`**     | 500       | **No** — bug, requires fix. | `INTERNAL`, `INVARIANT_VIOLATION`. | Logged at `error`; pages on-call. |
 
 **Rules:**
-- Every entry in `wp-plugin/includes/Errors/ErrorCode.php` MUST declare its category via the `Category` enum.
-- The HTTP status is derived from the category — handlers MUST NOT set status independently.
-- Only `TransientError` is eligible for client-side retry; the response MUST include `Retry-After` (seconds).
+- Every entry in `wp-plugin/includes/Errors/ErrorCode.php` MUST declare its category via the `Category` enum (gate `G-03-CODE-FORMAT`).
+- The HTTP status is derived from the category — handlers MUST NOT set status independently (gate `G-03-ENVELOPE-ONLY`).
+- Only `TransientError` is eligible for client-side retry; the response MUST include `Retry-After` (seconds) (gate `G-03-RETRY-AFTER`).
 - The category is mirrored in `src/types/errors.ts` and validated by gate `G-22` (PHP↔TS lock-step).
 
 ## Error-Code Registry Rules
