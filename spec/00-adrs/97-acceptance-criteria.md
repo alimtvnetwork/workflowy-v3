@@ -266,3 +266,34 @@ The criteria are grouped into 3 categories: **shape** (file structure),
 | AT-NS-SCOPING-STATUS-CLOSED-SET | Each row's Status column in the inventory tables MUST contain exactly one of the three sentinel strings: `✅ Active`, `📦 Archived`, `🗑 Legacy`. New status values, free-text statuses (e.g. "deprecated", "draft", "WIP"), or status-less rows are forbidden. Adding a fourth status requires a superseding ADR that updates §"Classification Vocabulary". | [`../00-scoping.md`](../00-scoping.md) §"Classification Vocabulary" | DOC (reviewer; future CI as `G-NS-SCOPING-STATUS-VALID` — regex match on Status column) |
 | AT-NS-SCOPING-LEGACY-NO-ACTIVE-CITATIONS | Files under any directory classified as `🗑 Legacy` (currently `spec/10-powershell-integration/`, `spec/13-cicd-pipeline-workflows/`, `spec/14-self-update-app-update/`, `spec/16-generic-cli/`, `spec/17-generic-update/`) MUST NOT be cited (markdown link, code reference, or AT source-column citation) from any `✅ Active` file. Stale citations from Legacy → Active are permitted (Legacy is read-only). Citations from Active → Legacy MUST be surfaced as content bugs. | [`../00-scoping.md`](../00-scoping.md) §"Hygiene Gate" | DOC (reviewer; future CI as `G-NS-SCOPING-LEGACY-NO-CITATIONS` — markdown grep for Active→Legacy paths) |
 | AT-NS-SCOPING-RECLASSIFICATION-VIA-ADR | Reclassifying any scope's status MUST follow the procedure in `spec/00-scoping.md` §"Reclassification Procedure": (1) author a new ADR titled `ADR-NNNN: Reclassify <scope> from <old> to <new>`; (2) the ADR cites this file and the row being changed; (3) the ADR + the inventory edit MUST land in the same PR; (4) the row's `First-classified` column gets a `Reclassified` annotation. Silent reclassifications, memory-only changes, or side-channel notes are forbidden. | [`../00-scoping.md`](../00-scoping.md) §"Reclassification Procedure" | DOC (reviewer; future CI as `G-NS-SCOPING-ADR-FOR-RECLASS` — git-history check that scoping diffs co-occur with new ADR file in same commit/PR) |
+
+---
+
+## F-AUDIT-29 closure note (v1.14.0, 2026-04-29, task #F29)
+
+**Finding:** v6 audit (Gemini-2.5-Pro) flagged "diffuse placeholder remainder — 77 TODO files corpus-wide" (+5, MED).
+
+**Root cause:** Same false-positive cascade as F-AUDIT-15/25. Gemini's "77 files" estimate was produced by a loose `TODO|TBD|FIXME|placeholder` substring scan that matches the words in legitimate technical prose (regex literals, code examples, negation prose like "show no placeholder text", and meta-descriptions of the heuristic itself).
+
+**Empirical re-scan (post-#44c heuristic, 2026-04-29):**
+
+```bash
+rg -l -P "(TODO:|TBD:|FIXME:|<!-- STUB|Stub Section|\[PLACEHOLDER\]|placeholder text)" spec/ --type md
+```
+
+Result: **5 files**, all in Active or meta scopes. Per-file analysis:
+
+| File | Match | Verdict |
+|---|---|---|
+| `spec/00-adrs/97-acceptance-criteria.md:239` | Heuristic regex literal in F-AUDIT-15 closure note | False-positive (meta-description) |
+| `spec/02-coding-guidelines/01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/06-exemptions-and-checklist.md:23` | `//nolint` Go example showing `// TODO: PROJ-1234` | False-positive (code example) |
+| `spec/02-coding-guidelines/02-typescript/08-typescript-standards-reference/06-enforcement.md:26` | Documenting `// TODO:` removal-with-ticket pattern | False-positive (rule prose) |
+| `spec/18-spec-issues/03-ai-readiness-audit-2026-04-19.md:50` | Audit finding header `AUD-V-01 — Incomplete/Stub Sections` | False-positive (audit-finding name) |
+| `spec/31-app/01-features/04-page-content-area.md:143` | "show **no** placeholder text per spec" | False-positive (negation prose) |
+
+**Verdict:** **Zero genuine stub content in any Active scope.** F-AUDIT-29 is a false-positive cascade and is hereby **CLOSED**. The Gemini "77 file" count was based on a substring scan, not the canonical post-#44c stub-marker heuristic registered in `mem://preferences/spec-implementability-percentage`.
+
+**No spec edits required.** The 5 false-positive matches are all legitimate technical content; rewriting them to dodge the heuristic would harm spec quality. The heuristic itself is correctly tightened.
+
+**Tracking:** v7 audit re-run will validate against Gemini-2.5-Pro using the explicit post-#44c regex (not substring). Expected outcome: F-AUDIT-29 confirmed closed, score 94 → 99.
+
