@@ -38,10 +38,10 @@ does not hide behind a green ✅.
 | G-31 | G-31.7 | `ENDPOINTS_HEAD_EXEMPT` | 0 | 0 ✅ |
 | G-31 | G-31.7 | `DB_DIAGRAM_HEAD_EXEMPT` | 0 | 0 ✅ |
 | G-32 | G-32.1 | `COVERAGE_EXEMPT` | 0 | 0 ✅ |
-| G-32 | G-32.2 | `REVERSE_EXEMPT` | 8 | 0 ✅ |
+| G-32 | G-32.2 | `REVERSE_EXEMPT` | 0 | 0 ✅ |
 | G-32 | G-32.3 | `NONUNIQUE_EXEMPT` | 0 | 0 ✅ |
 | G-32 | G-32.5 | `PARITY_EXEMPT` | 0 | 0 ✅ |
-| **TOTAL** | — | **17 lists** | **8** | **0** |
+| **TOTAL** | — | **17 lists** | **0** | **0** |
 
 ## G-30 — AT Citation Validity
 
@@ -171,24 +171,15 @@ _(empty)_
 
 *doc rows allowed without a corresponding DDL CREATE INDEX.*
 
-Source: [`scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs:92`](../../../scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs#L92)
+Source: [`scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs:95`](../../../scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs#L95)
 
-| # | Entry | Rationale |
-|---|-------|-----------|
-| 1 | `IdxUser_Email` | logical tag for sqlite_autoindex_User_* |
-| 2 | `IdxWorkspace_AppDbPath` | logical tag for sqlite_autoindex_Workspace_* |
-| 3 | `IdxItem_Content` | §"Indexes NOT created" — FTS5 ships in Phase 2 |
-| 4 | `IdxItem_CreatedAt` | §"Indexes NOT created" — order is by FractionalIndex, not CreatedAt |
-| 5 | `IdxComment_AuthorUserId` | §"Indexes NOT created" — "all my comments" is not an MVP view |
-| 6 | `IdxItem_MirrorOfItemId` | dropped by M-117 (legacy Mirror table) |
-| 7 | `IdxMirror_SourceItemId` | dropped by M-117 (legacy Mirror table) |
-| 8 | `IdxMirror_MirrorItemId` | dropped by M-117 (legacy Mirror table) |
+_(empty)_
 
 ### `NONUNIQUE_EXEMPT` (G-32.3)
 
 *indexes allowed to be non-UNIQUE despite UNIQUE-by-default policy.*
 
-Source: [`scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs:114`](../../../scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs#L114)
+Source: [`scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs:104`](../../../scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs#L104)
 
 _(empty)_
 
@@ -196,7 +187,7 @@ _(empty)_
 
 *doc rows whose columns/predicate intentionally diverge from DDL.*
 
-Source: [`scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs:122`](../../../scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs#L122)
+Source: [`scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs:112`](../../../scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs#L112)
 
 _(empty)_
 

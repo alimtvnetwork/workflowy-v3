@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-29  
-**Total Files:** 1464  
+**Total Files:** 1465  
 **Top-Level Folders:** 26
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -34,7 +34,7 @@
 - [16-generic-cli](#16-generic-cli) — 45 file(s)
 - [17-generic-update](#17-generic-update) — 13 file(s)
 - [18-spec-issues](#18-spec-issues) — 15 file(s)
-- [31-app](#31-app) — 135 file(s)
+- [31-app](#31-app) — 136 file(s)
 - [32-ui-design](#32-ui-design) — 123 file(s)
 - [33-feedback-report](#33-feedback-report) — 4 file(s)
 - [34-activity-feed](#34-activity-feed) — 4 file(s)
@@ -1372,6 +1372,7 @@
 | [`31-app/04a-fixtures/00-overview.md`](./31-app/04a-fixtures/00-overview.md) | 04 — Fixtures — JSON & Sample Payloads | 1.0.0 | — |
 | [`31-app/04a-fixtures/99-consistency-report.md`](./31-app/04a-fixtures/99-consistency-report.md) | Consistency Report — 04-fixtures | 1.0.0 | — |
 | [`31-app/05-conventions/_LEDGER-G-31-EXEMPTIONS.md`](./31-app/05-conventions/_LEDGER-G-31-EXEMPTIONS.md) | Ledger: G-31 Workflow / Feature / Endpoint Cross-Reference Exemptions | — | — |
+| [`31-app/05-conventions/_LEDGER-G-32-EXEMPTIONS.md`](./31-app/05-conventions/_LEDGER-G-32-EXEMPTIONS.md) | Ledger: G-32 DDL Unique-Coverage Exemptions | — | — |
 | [`31-app/05-conventions/00-overview.md`](./31-app/05-conventions/00-overview.md) | 05 — Conventions | 1.0.0 | — |
 | [`31-app/05-conventions/01-axios-version-control.md`](./31-app/05-conventions/01-axios-version-control.md) | Axios Version Control Policy | 1.0.0 | — |
 | [`31-app/05-conventions/02-ci-quality-gates.md`](./31-app/05-conventions/02-ci-quality-gates.md) | CI Quality Gates — Convention SSOT | 1.0.0 | — |
@@ -1620,7 +1621,7 @@
 
 | File | Title | Version | Status |
 |------|-------|---------|--------|
-| [`_GATE-REGISTRY.md`](./_GATE-REGISTRY.md) | Gate Registry — Master Index of `G-*` Compliance Gates | 1.6.0 | — |
+| [`_GATE-REGISTRY.md`](./_GATE-REGISTRY.md) | Gate Registry — Master Index of `G-*` Compliance Gates | 1.6.1 | — |
 | [`_LEDGER-G-13-BACKLINK-EXEMPT.md`](./_LEDGER-G-13-BACKLINK-EXEMPT.md) | Ledger — `G-13-FIXTURE-AS-SPEC-SHAPE` Phase-4 Backlink Exemptions | — | Live |
 | [`_LEDGER-G-NS-ADR-COVERAGE.md`](./_LEDGER-G-NS-ADR-COVERAGE.md) | Ledger — `G-NS-ADR-MUST-HAS-AT` Coverage Allow-list | 1.0.0 | DEFERRED |
 | [`_LEDGER-G-NS-LEGACY-EXEMPT.md`](./_LEDGER-G-NS-LEGACY-EXEMPT.md) | Ledger — `G-NS-NO-DEPRECATED-ALIAS` Legacy Exemptions | 1.0.0 | Active |
@@ -1640,4 +1641,4 @@
 
 ---
 
-*Auto-generated index — 1464 files across 26 top-level folders.*
+*Auto-generated index — 1465 files across 26 top-level folders.*

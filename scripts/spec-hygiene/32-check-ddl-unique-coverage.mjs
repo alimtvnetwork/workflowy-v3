@@ -85,25 +85,15 @@ const COVERAGE_EXEMPT = new Set([
 ]);
 
 // G-32.2 allow-list — index identifiers that legitimately appear in
-// `06-indexes.md` prose without a literal DDL match. Use sparingly; the
-// preferred fix is to register the alias in `sql/00-overview.md` §Index-name
-// aliases (which the runner reads automatically) rather than adding entries
-// here. Format: bare identifier (e.g. `IdxItem_Foo`).
+// `06-indexes.md` prose without a literal DDL match. The canonical
+// entries live in the per-(gate, path) ledger:
+//   spec/31-app/05-conventions/_LEDGER-G-32-EXEMPTIONS.md
+// `loadG32Exemptions()` unions ledger entries into this Set at
+// module-load. The Set below is RESERVED FOR EMERGENCY OVERRIDES only.
+// Sibling pattern: see G-30 (`30-check-at-citation-validity.mjs`) and
+// G-31 (`31-check-workflow-xref-reciprocity.mjs`).
 const REVERSE_EXEMPT = new Set([
-  // Conceptual / "logical" tags used in §Implicit Indexes prose. The actual
-  // index is the autoindex; the Idx* name is doc-only shorthand.
-  "IdxUser_Email",         // logical tag for sqlite_autoindex_User_*
-  "IdxWorkspace_AppDbPath", // logical tag for sqlite_autoindex_Workspace_*
-  // Historic / explicitly-rejected names mentioned in §"Indexes intentionally
-  // NOT created" — the runner cannot tell prose-rejected from prose-claimed
-  // without parsing section headings, so we suppress these by name.
-  "IdxItem_Content",         // §"Indexes NOT created" — FTS5 ships in Phase 2
-  "IdxItem_CreatedAt",       // §"Indexes NOT created" — order is by FractionalIndex, not CreatedAt
-  "IdxComment_AuthorUserId", // §"Indexes NOT created" — "all my comments" is not an MVP view
-  // v2-deprecated names mentioned in the v1.3.0 deprecation note for traceability.
-  "IdxItem_MirrorOfItemId",  // dropped by M-117 (legacy Mirror table)
-  "IdxMirror_SourceItemId",  // dropped by M-117 (legacy Mirror table)
-  "IdxMirror_MirrorItemId",  // dropped by M-117 (legacy Mirror table)
+  // (in-source override slot — empty; canonical entries in ledger.)
 ]);
 
 // G-32.3 allow-list — DDL CREATE INDEX names whose documentation is
@@ -122,10 +112,64 @@ const NONUNIQUE_EXEMPT = new Set([
 const PARITY_EXEMPT = new Set([
   // "IdxFoo_Bar:predicate",  // rationale: doc paraphrases predicate for clarity
 ]);
+
+// =====================================================================
+// Per-(gate, path) ledger loader (Phase-2 sibling #3 of G-30/G-31).
+// Reads `spec/31-app/05-conventions/_LEDGER-G-32-EXEMPTIONS.md`, parses
+// the `## Entries` table, and unions each row into the matching in-source
+// override Set above. Hard-fails on schema violations so a malformed
+// ledger row cannot silently weaken the gate.
+// =====================================================================
+
+const G32_LEDGER_PATH = "spec/31-app/05-conventions/_LEDGER-G-32-EXEMPTIONS.md";
+
+const G32_CATEGORY_TO_SET = {
+  coverage:  COVERAGE_EXEMPT,
+  reverse:   REVERSE_EXEMPT,
+  nonunique: NONUNIQUE_EXEMPT,
+  parity:    PARITY_EXEMPT,
+};
+
 function fail(msg, code = 2) {
   console.error(`G-32 runner error: ${msg}`);
   process.exit(code);
 }
+
+function loadG32Exemptions() {
+  let raw;
+  try {
+    raw = readFileSync(G32_LEDGER_PATH, "utf8");
+  } catch (e) {
+    fail(`G-32 ledger: cannot read ${G32_LEDGER_PATH}: ${e.message}`);
+  }
+  const lines = raw.split("\n");
+  const entriesIdx = lines.findIndex((l) => /^##\s+Entries\s*$/.test(l));
+  if (entriesIdx < 0) fail(`G-32 ledger: missing '## Entries' section`);
+
+  const stripBackticks = (s) => s.replace(/^`(.*)`$/, "$1");
+  let imported = 0;
+  for (let i = entriesIdx + 1; i < lines.length; i += 1) {
+    const line = lines[i];
+    if (/^##\s/.test(line)) break;
+    if (!line.trim().startsWith("|")) continue;
+    if (/^\|\s*-+/.test(line)) continue;
+    if (/^\|\s*gate\s*\|/i.test(line)) continue;
+    const cells = line.split("|").slice(1, -1).map((c) => c.trim());
+    if (cells.length < 5) continue;
+    const [gate, , entryRaw, rationale] = cells;
+    const entry = stripBackticks(entryRaw);
+    const m = gate.match(/^G-32\.\d+\.(coverage|reverse|nonunique|parity)$/);
+    if (!m) fail(`G-32 ledger: malformed gate \`${gate}\` at line ${i + 1}`);
+    const category = m[1];
+    if (!entry) fail(`G-32 ledger: empty entry at line ${i + 1}`);
+    if (!rationale) fail(`G-32 ledger: empty rationale for \`${entry}\` at line ${i + 1}`);
+    G32_CATEGORY_TO_SET[category].add(entry);
+    imported += 1;
+  }
+  return imported;
+}
+
+const G32_LEDGER_IMPORTED = loadG32Exemptions();
 
 function readOrFail(path) {
   try {
@@ -539,6 +583,7 @@ function printRationaleReport(violations) {
   console.log("");
   console.log("G-32.4 allow-list rationale-comment coverage:");
   console.log(`  allow-lists scanned:                ${ALLOWLIST_NAMES.length} (${ALLOWLIST_NAMES.join(", ")})`);
+  console.log(`  ledger entries imported:            ${G32_LEDGER_IMPORTED} (${G32_LEDGER_PATH})`);
   console.log(`  entries missing rationale:          ${violations.length}`);
 
   if (violations.length === 0) {
