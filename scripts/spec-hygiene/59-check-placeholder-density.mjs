@@ -37,6 +37,7 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 import { globToRegExp } from './_lib/per-gate-path-ledger.mjs';
+import { splitMdRow } from './_lib/md-table.mjs';
 
 const ROOT = process.cwd();
 const SPEC_DIR = join(ROOT, 'spec');
@@ -61,7 +62,7 @@ function loadExemptionGlobs() {
     const l = lines[i];
     if (!l.trim() || l.startsWith('#')) break;
     if (!l.includes('|')) continue;
-    const cells = l.split('|').map((c) => c.trim().replace(/^`|`$/g, '')).filter((_, idx, arr) => idx > 0 && idx < arr.length - 1);
+    const cells = splitMdRow(l);
     if (cells.length === 5) globs.push(cells[0]);
   }
   return globs.map((g) => globToRegExp(g));
