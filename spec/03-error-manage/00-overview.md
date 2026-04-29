@@ -263,7 +263,7 @@ Before claiming any API endpoint works, verify **both directions**:
 
 ### 2. Response Format Standardization
 
-All backend APIs MUST return the Universal Response Envelope (see [02-error-architecture/05-response-envelope/](./02-error-architecture/05-response-envelope/00-overview.md)):
+All backend APIs MUST return the Universal Response Envelope (gate `G-03-ENVELOPE-ONLY`; cross-ref `AT-RESTAPIFORMAT-06`, `AT-RESTAPIFORMAT-07`, `AT-RESTAPIFORMAT-08`; see [02-error-architecture/05-response-envelope/](./02-error-architecture/05-response-envelope/00-overview.md)):
 
 ```json
 {
