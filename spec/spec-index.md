@@ -86,7 +86,7 @@
 | [`00-adrs/0030-audit-exemption-manifest.md`](./00-adrs/0030-audit-exemption-manifest.md) | ADR-0030 — Audit Exemption Manifest is the Sole False-Positive Channel | — | Accepted |
 | [`00-adrs/0031-warn-only-strict-flip-pattern.md`](./00-adrs/0031-warn-only-strict-flip-pattern.md) | ADR-0031 — Warn-Only-with-STRICT-Flip is the Sole Gate-Graduation Pattern | — | Accepted |
 | [`00-adrs/97-acceptance-criteria.md`](./00-adrs/97-acceptance-criteria.md) | ADRs — Acceptance Criteria | 1.3.0 | — |
-| [`00-adrs/97a-acceptance-criteria-fixtures.md`](./00-adrs/97a-acceptance-criteria-fixtures.md) | Spec — `00-adrs` Acceptance Criteria I/O Fixtures (ADR-0029 + ADR-0030) | 1.0.0 | Normative |
+| [`00-adrs/97a-acceptance-criteria-fixtures.md`](./00-adrs/97a-acceptance-criteria-fixtures.md) | Spec — `00-adrs` Acceptance Criteria I/O Fixtures (ADR-0029 + ADR-0030) | 1.1.0 | Normative |
 
 ## 01-spec-authoring-guide
 
