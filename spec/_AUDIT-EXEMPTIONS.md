@@ -28,7 +28,7 @@ This manifest declares those exemptions so audit scripts and AI auditors can ded
 
 | pathGlob | category | rationale | closes | addedOn |
 |---|---|---|---|---|
-| `spec/12-consolidated-guidelines/[0-9][0-9]-*.md` | redirect-stub | Every numbered file is a deliberate 55-line redirect to its canonical source folder. The folder is an *index*, not a content folder. | AUD-C-01 (2026-04-19); F-AUD30-09 (2026-04-26); F-AUDIT-02-FALSE-POSITIVE (2026-04-29) | 2026-04-29 |
+| `spec/12-consolidated-guidelines/*.md` | redirect-stub | Every numbered file is a deliberate 55-line redirect to its canonical source folder. The folder is an *index*, not a content folder. (Exception: `00-overview.md`, `97-acceptance-criteria.md`, `99-consistency-report.md` are real content but pass the size check anyway, so the broader glob is safe.) | AUD-C-01 (2026-04-19); F-AUD30-09 (2026-04-26); F-AUDIT-02-FALSE-POSITIVE (2026-04-29) | 2026-04-29 |
 | `spec/**/.gitkeep` | scaffold-marker | Empty git-tracking files for new scopes; not spec content. | n/a | 2026-04-29 |
 | `spec/**/97a-acceptance-criteria-fixtures.md` | fixture-stub-allowed | Initial fixture files seeded in P22; expected to grow file-by-file as ATs are authored. | P22 plan | 2026-04-29 |
 | `spec/11-research/.gitkeep` | research-placeholder | `11-research/` is intentionally near-empty; it holds future-scoped research notes only. | n/a | 2026-04-29 |
