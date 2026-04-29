@@ -69,6 +69,6 @@ the original in-source comment; see SSOT §G-30.2 + F27 task log):
 
 ## See also
 
-- [`spec/13-cicd-pipeline-workflows/scripts-as-spec/per-gate-path-ledger-schema.md`](../13-cicd-pipeline-workflows/scripts-as-spec/per-gate-path-ledger-schema.md) — canonical schema spec.
+- [`sp../13-cicd-pipeline-workflows/scripts-as-spec/per-gate-path-ledger-schema.md`](../13-cicd-pipeline-workflows/scripts-as-spec/per-gate-path-ledger-schema.md) — canonical schema spec.
 - [`scripts/spec-hygiene/30-check-at-citation-validity.mjs`](../../scripts/spec-hygiene/30-check-at-citation-validity.mjs) — consumer runner.
 - [`spec/_GATE-REGISTRY.md`](../_GATE-REGISTRY.md) — gate definitions.
