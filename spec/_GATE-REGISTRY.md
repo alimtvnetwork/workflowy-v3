@@ -1,7 +1,7 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.1.6  
-> **Updated:** 2026-04-28 — patch: +1 gate `G-13-LEDGER-NUMBERING-CONTIGUOUS` (sibling to row-count parity; guards against hard-deleted ledger rows). Prior: 1.1.5 (G-13-LEDGER-ROW-COUNT-PARITY), 1.1.4 (G-13-PLACEHOLDER-TOKEN-PARITY), 1.1.3 (§5.1 reconciliation), 1.1.2 (G-26-WIRE-OWNERID-ONLY dual tier), 1.1.1 (added the gate), 1.1.0 (20 new gates from ADR-0012 §D7, ADR-0027, ADR-0028).  
+> **Version:** 1.1.7  
+> **Updated:** 2026-04-29 — patch: +1 gate `G-01-AT-ID-FORMAT-CANONICAL` (CI; new `Spec-Authoring` area). Now enforceable since legacy-`AC-NNN` sweep closed at 0/2,387 occurrences. Includes code-span/fenced-block carve-out. Prior: 1.1.6 (G-13-LEDGER-NUMBERING-CONTIGUOUS), 1.1.5 (G-13-LEDGER-ROW-COUNT-PARITY), 1.1.4 (G-13-PLACEHOLDER-TOKEN-PARITY), 1.1.3 (§5.1 reconciliation), 1.1.2 (G-26-WIRE-OWNERID-ONLY dual tier), 1.1.1 (added the gate), 1.1.0 (20 new gates from ADR-0012 §D7, ADR-0027, ADR-0028).  
 > **Status:** Active  
 > **Purpose:** Single registry of every `G-*` compliance gate referenced anywhere in `spec/`. Each gate is classified by enforcement tier so AI implementers can tell at a glance which gates a CI pipeline must mechanically enforce vs. which are normative documentation invariants vs. which require test fixtures.
 
@@ -18,12 +18,12 @@
 
 ## 2. Summary
 
-- **Total named gates:** 293 (was 292 — +1 `G-13-LEDGER-NUMBERING-CONTIGUOUS`)
-- **CI:** 24 (one gate `G-26-WIRE-OWNERID-ONLY` is now dual-tier: counted under both CI and TEST)
+- **Total named gates:** 294 (was 293 — +1 `G-01-AT-ID-FORMAT-CANONICAL`)
+- **CI:** 25 (was 24 — +1 `G-01-AT-ID-FORMAT-CANONICAL`; one gate `G-26-WIRE-OWNERID-ONLY` is dual-tier: counted under both CI and TEST)
 - **TEST:** 14 (was 13 — +1 `G-26-WIRE-OWNERID-ONLY` runtime half via `AT-WIRE-EGRESS-01`)
 - **DOC-NORM:** 54 (was 53 — +1 `G-13-LEDGER-NUMBERING-CONTIGUOUS`)
 - **DOC:** 202 (was 201 — +1 `G-00-ADR-CONSEQUENCES-XLINK` advisory)
-- **Areas covered:** 36 (was 35 — added ADR-0012)
+- **Areas covered:** 37 (was 36 — added `Spec-Authoring`)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
 
