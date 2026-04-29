@@ -192,6 +192,7 @@
 
 | Gate | Tier | Primary File | Brief |
 |------|------|--------------|-------|
+| `G-16-CLI-CODE-LOAD-BEARING` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | All `CLI-16-NN` codes shown in 16-generic-cli/00-overview.md exit-code-mapping table are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings. Drift forbidden. |
 | `G-16-CONFIG-VIA-FLAG` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | Read config file paths from positional args Confuses <file> semantics with config plumbing. |
 | `G-16-EMPTY-QUERY-NO-FALLBACK` | **DOC** | [`spec/00-adrs/0013-search-relevance-then-recency-ranking.md`](./00-adrs/0013-search-relevance-then-recency-ranking.md) | - G-16-EMPTY-QUERY-NO-FALLBACK — enforces D6 (zero results, never |
 | `G-16-EXIT-DOCUMENTED` | **DOC-NORM** | [`spec/16-generic-cli/00-overview.md`](./16-generic-cli/00-overview.md) | - The hygiene gate G-16-EXIT-DOCUMENTED rejects help text that lists an undocumented code. |
