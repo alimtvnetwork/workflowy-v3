@@ -77,6 +77,19 @@ Out-of-vocabulary statuses (`Pending`, `WIP`, `Wontfix`, `Deferred`, …) are
 
 ---
 
+## Findings — `F-SCOPE-NN` family (scope/estimate corrections)
+
+Surfaces inflated or outdated effort estimates that distort task prioritization.
+Resolution = corrected baseline + evidence trail.
+
+| ID | Severity | First raised | Status | Resolved by | Evidence |
+|---|---|---|---|---|---|
+| F-SCOPE-01 | LOW | 2026-04-29 (task #6 first attempt) | Resolved | Re-baselined "prose→AT migration" scope from inflated 2,170 to actual 682 non-ADR prose-MUSTs (3.2× over-estimate). ADR clauses (352) excluded as legitimately load-bearing prose. See [Retraction case study #2](#retraction-case-study-2--f-scope-01) | This row + case study below |
+
+**Open count:** 0 — **Resolved:** 1
+
+---
+
 ## Implementation-side findings (`F-IMPL-AUD-NN`)
 
 Audit-v8 (spec-vs-impl, 2026-04-29) raised these against the `src/` scaffold.
@@ -137,6 +150,32 @@ future audit that lists `F-IMPL-AUD-04` without `Retracted` status.
 - **Audits MUST cite the ADR clause text, not just the ADR number.** A bare *"violates ADR-0015"* with no quoted clause hides misreads. Future audits SHOULD inline the ≤80-char quote that prompted the finding.
 - **When a finding contradicts a Core memory rule** (here: *"12 closed ItemTypes"*), the audit MUST resolve the contradiction in-band before raising — either by retracting the finding or by proposing a Core memory update with explicit before/after.
 - **Closed-set enum changes are content findings, not impl findings.** A claim of the form "delete a member from a closed enum" belongs in a spec-side `F-AUDIT-NN` because it changes the data model, not in `F-IMPL-AUD-NN`. Misclassification was the second error here.
+
+---
+
+### Retraction case study #2 — F-SCOPE-01
+
+**Source:** Self-imposed task #6 ("Prose→AT migration, 2,170 MUST/SHALL formalization"), carried in remaining-tasks list across 4 cycles (2026-04-28 → 2026-04-29).
+**Original claim:** *"2,170 prose `MUST`/`SHALL` clauses corpus-wide require migration to AT-shaped acceptance criteria."*
+**Severity:** LOW (estimate distortion, not a correctness defect)
+**Outcome:** **Re-baselined in same pass** — the figure was 3.2× the true count; the corrected baseline is **682 non-ADR prose-MUSTs**.
+
+#### Evidence trail
+
+1. **Naive corpus count** matched the originally-cited number: `grep -cE "\b(MUST|SHALL)\b" spec/**/*.md` ≈ 2,170. This is what the task description used.
+2. **Filter for unformalized prose-MUSTs only** (excluding lines that already cite an `AT-…-` row, a `G-NN-` gate, or sit inside a markdown table cell): **1,030 MUSTs** corpus-wide.
+3. **Further split by scope**: ADR files contain **352** of those 1,030 — but ADR-clause MUSTs (D1, D2, …) are *load-bearing constitutional decisions ATs cite*, **not** AT migration targets. Migrating them would be a category error (an AT cannot supersede the ADR clause it derives from).
+4. **True migration target = non-ADR prose-MUSTs only: 682 lines.** That is the number the prioritization layer should plan against, not 2,170.
+
+#### Why this matters for F-AUDIT-30
+
+A task estimate inflated 3.2× perpetuates the same discoverability failure F-AUDIT-30 codifies, but in the *forward* direction: instead of re-discovering a closed finding, the planner repeatedly defers a tractable task because its perceived size exceeds turn budget. Carrying the inflated 2,170 across 4 cycles is empirical proof — the true scope (~682 lines, batches of 50/turn = ~14 turns) was always within reach.
+
+#### Lessons (codified for future planning)
+
+- **Effort estimates MUST cite the regex/script used to derive them.** A bare "2,170 prose-MUSTs" with no methodology hides counting errors. Future task entries SHOULD inline the one-liner: e.g. `find spec -name "*.md" … | grep -vE "AT-…|G-NN-…" | wc -l`.
+- **Counting "every keyword token" is almost never the right baseline.** Always exclude already-formalized rows (table cells with `AT-` columns, gate-registry briefs, ADR clause stems) before quoting a migration count.
+- **ADR clauses are sources, not targets.** The "prose→AT migration" scope is by definition `spec/` minus `spec/00-adrs/`. Future passes that include ADR MUSTs in the count are committing the same category error this case study retracts.
 
 ---
 
