@@ -41,6 +41,7 @@ const checks = [
   "scripts/spec-hygiene/43-generate-condensed-overviews.mjs",
   "scripts/spec-hygiene/50-append-fixtures-to-condensed.mjs",
   "scripts/spec-hygiene/46-check-at-citation-completeness.mjs",
+  "scripts/spec-hygiene/48-check-ledger-uses-shared-lib.mjs",
   "scripts/spec-hygiene/52-check-adr-consequences-xlink.mjs",
   "scripts/spec-hygiene/53-check-scoring-values-fresh.mjs",
   "scripts/spec-hygiene/54-check-ai-contract-complete.mjs",
