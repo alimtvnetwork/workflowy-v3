@@ -42,6 +42,7 @@ const ROOT = process.cwd();
 const SPEC_DIR = join(ROOT, 'spec');
 const MANIFEST = join(SPEC_DIR, '_AUDIT-EXEMPTIONS.md');
 const CAP = 0.15;
+const STRICT = false; // flip to true once F-AUDIT-15 closes
 const PLACEHOLDER_RE = /\b(placeholder|stub|to be defined|TBD|coming soon)\b/i;
 const SIZE_THRESHOLD = 600;
 
