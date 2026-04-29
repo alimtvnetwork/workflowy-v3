@@ -25,9 +25,9 @@
 - Coding-rule enforcement → [`02-coding-guidelines/`](../02-coding-guidelines/).
 
 **Definition of Done** —
-- Every endpoint in `06-endpoints/` has a controller + a TS client method + a fixture + an `AT-*` test.
-- Every feature in `01-features/` honors the unified Node interface (`mem://architecture/data-model`) and the 250-item-per-view cap.
-- Mirror-related code follows `mem://features/mirroring` (peer-group, NOT an ItemType).
+- Every endpoint in `06-endpoints/` has a controller + a TS client method + a fixture + an `AT-*` test. (`AT-APP-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
+- Every feature in `01-features/` honors the unified Node interface (`mem://architecture/data-model`) and the 250-item-per-view cap. (`AT-APP-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
+- Mirror-related code follows `mem://features/mirroring` (peer-group, NOT an ItemType). (`AT-APP-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0.
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
@@ -193,7 +193,7 @@ Testable acceptance criteria for the App domain. Each criterion is independently
 | ID | Criterion | Source |
 |----|-----------|--------|
 | `AT-APP-47` | An inviter without `Admin` on the target item attempting to grant access receives **HTTP 403** and no rows are written to `ItemGrants` or `PendingInvites`. | `02-workflows/03-share-invite-flow.md` (was `AT-WF-SHARE-01`) |
-| `AT-APP-48` | Sharing with an existing account at role `Edit` returns **HTTP 201**, inserts an `ItemGrants` row with `AcceptedAt = NULL`, and delivers an SSE `share-granted` event to the inviter within **1 s**. | `02-workflows/03-share
+| `
 
 _… truncated at 17000 chars to fit AI auditor cap …_
 

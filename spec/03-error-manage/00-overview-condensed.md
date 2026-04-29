@@ -25,7 +25,7 @@
 
 **Definition of Done** —
 - Every code in `03-error-code-registry/` has: a PHP enum case, a TS type, a fixture file, and an `AT-ERRORMANAGE-*` row covering its trigger.
-- `<ErrorModal />` renders every fixture without crashing (Vitest snapshots).
+- `<ErrorModal />` renders every fixture without crashing (Vitest snapshots). (`AT-ERRMANAGE-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0.
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
