@@ -3,7 +3,7 @@ gate: G-00-OVERVIEW-AI-CONTRACT-COMPLETE
 runner: scripts/spec-hygiene/54-check-ai-contract-complete.mjs
 slot: 54
 created: 2026-04-29
-status: WARN-only for Rules 3–5 (Rules 1+2 hard-fail from day 1)
+status: ALL 5 RULES HARD-FAIL (promoted 2026-04-29 after baseline drained 65 → 0 WARNs same-day)
 ssot: spec/01-spec-authoring-guide/18-ai-contract-template.md
 ---
 
