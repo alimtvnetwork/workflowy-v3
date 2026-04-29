@@ -49,7 +49,7 @@ docs-viewer, typography, ubuntu, poppins, syntax-highlighting, highlight-js, ful
 
 ---
 
-## Scoring
+## Quality Breakdown
 
 | Criterion | Score | Notes |
 |-----------|-------|-------|
