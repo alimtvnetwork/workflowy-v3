@@ -40,7 +40,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## AI Contract
 
-**Purpose** — Defines when a single SQLite database MUST be split across multiple files (per-domain or per-tenant) and how the application MUST attach, query, and migrate them.
+**Purpose** — Defines when a single SQLite database MUST be split across multiple files (per-domain or per-tenant) and how the application MUST attach, query, and migrate them. [gate: G-05-ATTACH-ORDER]
 
 **Audience** — Backend developers designing new domains; operators planning capacity.
 
@@ -80,18 +80,18 @@ WorkFlowy ships with exactly three SQLite databases. No fourth domain may be add
 
 ## ATTACH Ordering Rules
 
-The orchestrator MUST `ATTACH` databases in **exactly** this sequence on every connection. Order is load-bearing because foreign-key validation and trigger registration depend on it.
+The orchestrator MUST `ATTACH` databases in **exactly** this sequence on every connection. Order is load-bearing because foreign-key validation and trigger registration depend on it. [gate: G-05-ATTACH-ORDER]
 
 | Step | Operation | Rationale |
 |---|---|---|
 | 1 | Open `items.sqlite` as the **main** connection (`PRAGMA foreign_keys=ON` first). | Items is the hottest path; making it `main` lets the planner skip the `items.` prefix in 90% of queries. |
 | 2 | `ATTACH DATABASE 'users.sqlite' AS users;` | Required before triggers that reference `users.Users(id)` are registered. |
-| 3 | `ATTACH DATABASE 'audit.sqlite' AS audit;` | Last — audit writes are best-effort; failure to attach MUST log a warning, not abort boot. |
+| 3 | `ATTACH DATABASE 'audit.sqlite' AS audit;` | Last — audit writes are best-effort; failure to attach MUST log a warning, not abort boot. [gate: G-05-AUDIT-NONBLOCKING] |
 | 4 | `PRAGMA foreign_keys=ON;` re-asserted on attached schemas. | SQLite resets the pragma scope per attach in some builds. |
 
 **Rules:**
 - The order is fixed; reordering is a spec violation caught by gate `G-05-ATTACH-ORDER` (PHPUnit asserts `sqlite_master` query order).
-- A connection MUST NOT proceed to serve requests until steps 1–4 succeed (except step 3, which degrades gracefully).
+- A connection MUST NOT proceed to serve requests until steps 1–4 succeed (except step 3, which degrades gracefully). [gate: G-05-ATTACH-ORDER]
 - Detach is forbidden during a request lifecycle — connections are pooled and reused.
 
 ## Cross-DB Query Rules
@@ -105,7 +105,7 @@ The orchestrator MUST `ATTACH` databases in **exactly** this sequence on every c
 
 ## Anti-Patterns
 
-The AI MUST NOT:
+The AI MUST NOT: [gate: G-05-NO-RAW-CROSS-JOIN]
 
 | # | Anti-pattern | Why it fails | Gate that catches it |
 |---|---|---|---|
@@ -209,7 +209,7 @@ try {
 | `DB-05-04` | Raw cross-DB join detected at runtime | Throw `InvariantViolation`; pages on-call. |
 | `DB-05-05` | `MultiDbTransaction` partial commit | Mark connection `Quarantined`; force pool eviction. |
 
-*All values are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings.*
+*All values are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings.* [gate: G-05-FIXTURE-CITES-LITERAL]
 
 <!-- AUTO-TOC:START -->
 

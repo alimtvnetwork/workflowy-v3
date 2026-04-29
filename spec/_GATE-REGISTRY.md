@@ -1,6 +1,6 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.16  
+> **Version:** 1.7.17  
 > **Updated:** 2026-04-29 — **batch-18 prose→AT migration:** registered 5 new `G-NS-STATUS-*` sub-gates (`-FRONTMATTER-EXACTLY-ONE`, `-COMPANION-CITES-PARENT`, `-DEPRECATED-CITES-SUCCESSOR`, `-REDIRECT-BODY-CAP`, `-SWEEP-ATOMIC`) covering 6 prose-MUSTs in `spec/01-spec-authoring-guide/22-status-legend.md`. 4 CI tier + 1 DOC-NORM (sweep-atomic is process-only). All sub-rules of existing umbrella `G-NS-STATUS-IN-LEGEND` (CI, WARN-only). Pre-flight namespace check: only 1 sibling `G-NS-STATUS-*` gate registered (the umbrella) — no collisions. Prior: 1.7.14 (batch-17 G-BACKUP-* sub-gates).
 
 - **Total named gates:** 423 (+5 this revision: five `G-NS-STATUS-*`)
@@ -90,6 +90,7 @@
 | `G-05-NO-RAW-CROSS-JOIN` | **DOC-NORM** | [`spec/05-split-db-architecture/00-overview.md`](./05-split-db-architecture/00-overview.md) | Raw SQL joins across attached schemas are forbidden in handler code. Gate G-05-NO-RAW-CROSS-JOIN (grep: JOIN\s+(usersau |
 | `G-05-REGISTRY-COMPLETE` | **DOC** | [`spec/05-split-db-architecture/00-overview.md`](./05-split-db-architecture/00-overview.md) | Omit a new file from wp-plugin/config/db-split.json Orchestrator never attaches it; queries silently target the wrong. |
 | `G-05-REPO-COMPOSE` | **DOC-NORM** | [`spec/05-split-db-architecture/00-overview.md`](./05-split-db-architecture/00-overview.md) | Cross-DB reads MUST go through a repository method that performs two queries and joins in PHP. Gate G-05-REPO-COMPOSE. |
+| `G-05-FIXTURE-CITES-LITERAL` | **DOC-NORM** | [`spec/05-split-db-architecture/00-overview.md`](./05-split-db-architecture/00-overview.md) | Fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite the exact `DB-05-01..05` failure-mode strings declared in §Failure-Mode Codes (load-bearing literal-string contract). |
 
 ### ADR-0006
 
