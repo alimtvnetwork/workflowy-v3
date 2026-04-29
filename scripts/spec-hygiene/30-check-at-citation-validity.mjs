@@ -119,11 +119,38 @@ const { entries: LEDGER_ENTRIES, rows: LEDGER_ROWS } = loadG30RedundancyExemptio
 // rationale comment per G-30.3.
 const REDUNDANCY_ALLOWLIST_INSOURCE = new Set([]);
 
-// Effective allow-list = union(ledger, in-source emergency).
+// Effective allow-list = union(ledger, in-source emergency). Used by
+// G-30.3 meta-check name-resolution and as the path-agnostic fallback.
 const REDUNDANCY_ALLOWLIST = new Set([
   ...LEDGER_ENTRIES,
   ...REDUNDANCY_ALLOWLIST_INSOURCE,
 ]);
+
+// Phase-3 path-glob matcher: minimal POSIX-glob → RegExp converter
+// supporting `**` (any path), `*` (any filename segment), literal chars.
+// Logic kept ≤15 lines per ADR-0007 R3.
+function globToRegExp(glob) {
+  const escaped = glob.replace(/[.+^${}()|[\]\\]/g, "\\$&");
+  const pattern = escaped.replace(/\*\*/g, "::DS::").replace(/\*/g, "[^/]*").replace(/::DS::/g, ".*");
+  return new RegExp(`^${pattern}$`);
+}
+const LEDGER_GLOBS_BY_ENTRY = new Map();
+for (const r of LEDGER_ROWS) {
+  if (!LEDGER_GLOBS_BY_ENTRY.has(r.entry)) LEDGER_GLOBS_BY_ENTRY.set(r.entry, []);
+  LEDGER_GLOBS_BY_ENTRY.get(r.entry).push(globToRegExp(r.pathGlob));
+}
+
+// Path-aware exemption check. Returns true iff:
+//   (a) entry exists in REDUNDANCY_ALLOWLIST_INSOURCE (path-agnostic), OR
+//   (b) entry has ≥1 ledger row whose pathGlob matches the declaring file.
+// Falls back to path-agnostic LEDGER_ENTRIES.has when declaringFile is "".
+function isRedundancyExempt(entry, declaringFile) {
+  if (REDUNDANCY_ALLOWLIST_INSOURCE.has(entry)) return true;
+  const globs = LEDGER_GLOBS_BY_ENTRY.get(entry);
+  if (!globs) return false;
+  if (!declaringFile) return true;
+  return globs.some((re) => re.test(declaringFile));
+}
 
 // G-30.2 advisory is DEFAULT-ON as of v1.4.0 (F28). The redundancy queue
 // was drained to 0 in F27 via REDUNDANCY_ALLOWLIST expansion, so default-on
@@ -277,7 +304,7 @@ function findRedundantOpenPrefixes(registered, citations) {
   const cited = new Set(citations.map((c) => c.id));
   const out = [];
   for (const [prefix, file] of registered.openPrefixes.entries()) {
-    if (REDUNDANCY_ALLOWLIST.has(prefix)) continue;
+    if (isRedundancyExempt(prefix, file)) continue;
     const citedUnder = [...cited].filter(
       (id) => id.startsWith(prefix) && /^\d+$/.test(id.slice(prefix.length)),
     );

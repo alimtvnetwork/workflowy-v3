@@ -51,7 +51,7 @@ does not hide behind a green ✅.
 
 *open-prefix declarations exempt from redundancy ERROR.*
 
-Source: [`scripts/spec-hygiene/30-check-at-citation-validity.mjs:123`](../../../scripts/spec-hygiene/30-check-at-citation-validity.mjs#L123)
+Source: [`scripts/spec-hygiene/30-check-at-citation-validity.mjs:124`](../../../scripts/spec-hygiene/30-check-at-citation-validity.mjs#L124)
 
 _(empty)_
 
