@@ -85,8 +85,9 @@ Resolution = corrected baseline + evidence trail.
 | ID | Severity | First raised | Status | Resolved by | Evidence |
 |---|---|---|---|---|---|
 | F-SCOPE-01 | LOW | 2026-04-29 (task #6 first attempt) | Resolved | Re-baselined "prose→AT migration" scope from inflated 2,170 to actual 682 non-ADR prose-MUSTs (3.2× over-estimate). ADR clauses (352) excluded as legitimately load-bearing prose. See [Retraction case study #2](#retraction-case-study-2--f-scope-01) | This row + case study below |
+| F-SCOPE-02 | LOW | 2026-04-29 (task #6-batch-1) | Resolved | Re-baselined again with AT-block-aware methodology: 682 → **724** when MUSTs inside `### \`AT-…\`` heading blocks are correctly excluded (line-scoped regex undercounted because AT identifiers sit in headings, not the assertion line). First selected migration file (`spec/31-app/97d-acceptance-criteria-fixtures.md`, 29 lines) re-classifies to **0 real prose-MUSTs** — all 29 are canonical "Negative assertion" slots inside AT rows. Authoritative scope: **724 prose-MUSTs across 287 files**, top hit `spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md` (14). Methodology codified in `/tmp/count-prose-musts.mjs`; see [Retraction case study #3](#retraction-case-study-3--f-scope-02) | This row + case study below |
 
-**Open count:** 0 — **Resolved:** 1
+**Open count:** 0 — **Resolved:** 2
 
 ---
 
