@@ -74,6 +74,8 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 | Ambiguity (auto-backfill) | Medium |
 | Health Score | 90% (A-) |
 
+> Scoring fresh as of 2026-04-29
+
 ---
 
 

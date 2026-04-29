@@ -47,6 +47,8 @@
 | Ambiguity | Low |
 | Health Score | 95% (A) |
 
+> Scoring fresh as of 2026-04-29
+
 ---
 
 ## Purpose
