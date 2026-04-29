@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-29  
-**Total Files:** 1465  
+**Total Files:** 1469  
 **Top-Level Folders:** 26
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -15,7 +15,7 @@
 
 ## Table of Contents
 
-- [00-adrs](#00-adrs) — 35 file(s)
+- [00-adrs](#00-adrs) — 38 file(s)
 - [01-spec-authoring-guide](#01-spec-authoring-guide) — 27 file(s)
 - [02-coding-guidelines](#02-coding-guidelines) — 310 file(s)
 - [03-error-manage](#03-error-manage) — 191 file(s)
@@ -40,7 +40,7 @@
 - [34-activity-feed](#34-activity-feed) — 4 file(s)
 - [35-enforcement-rules](#35-enforcement-rules) — 4 file(s)
 - [36-user-management](#36-user-management) — 5 file(s)
-- [root](#root) — 17 file(s)
+- [root](#root) — 18 file(s)
 
 ---
 
@@ -83,7 +83,9 @@
 | [`00-adrs/0027-sse-multiworker-shared-ring-buffer.md`](./00-adrs/0027-sse-multiworker-shared-ring-buffer.md) | ADR-0027 — SSE Multi-Worker Shared Ring Buffer (SQLite WAL-Backed) | — | Accepted |
 | [`00-adrs/0028-i18n-locale-strategy.md`](./00-adrs/0028-i18n-locale-strategy.md) | ADR-0028 — i18n Locale Strategy (Library, Fallback Chain, RTL) | — | Accepted |
 | [`00-adrs/0029-per-gate-path-ledger-shared-lib.md`](./00-adrs/0029-per-gate-path-ledger-shared-lib.md) | ADR-0029 — Per-(Gate, Path) Ledger Consumers MUST Use the Shared Library | — | Accepted |
-| [`00-adrs/97-acceptance-criteria.md`](./00-adrs/97-acceptance-criteria.md) | ADRs — Acceptance Criteria | 1.0.0 | — |
+| [`00-adrs/0030-audit-exemption-manifest.md`](./00-adrs/0030-audit-exemption-manifest.md) | ADR-0030 — Audit Exemption Manifest is the Sole False-Positive Channel | — | Accepted |
+| [`00-adrs/97-acceptance-criteria.md`](./00-adrs/97-acceptance-criteria.md) | ADRs — Acceptance Criteria | 1.2.0 | — |
+| [`00-adrs/97a-acceptance-criteria-fixtures.md`](./00-adrs/97a-acceptance-criteria-fixtures.md) | Spec — `00-adrs` Acceptance Criteria I/O Fixtures (ADR-0029 + ADR-0030) | 1.0.0 | Normative |
 
 ## 01-spec-authoring-guide
 
@@ -1622,7 +1624,8 @@
 
 | File | Title | Version | Status |
 |------|-------|---------|--------|
-| [`_GATE-REGISTRY.md`](./_GATE-REGISTRY.md) | Gate Registry — Master Index of `G-*` Compliance Gates | 1.6.3 | — |
+| [`_AUDIT-EXEMPTIONS.md`](./_AUDIT-EXEMPTIONS.md) | Spec Audit — Heuristic Exemptions Manifest | 1.0.0 | Active |
+| [`_GATE-REGISTRY.md`](./_GATE-REGISTRY.md) | Gate Registry — Master Index of `G-*` Compliance Gates | 1.6.6 | — |
 | [`_LEDGER-G-13-BACKLINK-EXEMPT.md`](./_LEDGER-G-13-BACKLINK-EXEMPT.md) | Ledger — `G-13-FIXTURE-AS-SPEC-SHAPE` Phase-4 Backlink Exemptions | — | Live |
 | [`_LEDGER-G-NS-ADR-COVERAGE.md`](./_LEDGER-G-NS-ADR-COVERAGE.md) | Ledger — `G-NS-ADR-MUST-HAS-AT` Coverage Allow-list | 1.0.0 | DEFERRED |
 | [`_LEDGER-G-NS-LEGACY-EXEMPT.md`](./_LEDGER-G-NS-LEGACY-EXEMPT.md) | Ledger — `G-NS-NO-DEPRECATED-ALIAS` Legacy Exemptions | 1.0.0 | Active |
@@ -1642,4 +1645,4 @@
 
 ---
 
-*Auto-generated index — 1465 files across 26 top-level folders.*
+*Auto-generated index — 1469 files across 26 top-level folders.*
