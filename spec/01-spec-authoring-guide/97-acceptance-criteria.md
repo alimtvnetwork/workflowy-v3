@@ -264,7 +264,7 @@ Fixtures for every AT row in this file are covered by the global P2g sweep — s
 
 ---
 
-## Gate `G-00-OVERVIEW-SCORING-TABLE-COMPLETE` (CI, WARN-only initial)
+## Gate `G-00-OVERVIEW-SCORING-TABLE-COMPLETE` (CI, hard-fail rule 1; WARN rules 2–3)
 
 - **Purpose:** `G-00-OVERVIEW-SCORING-TABLE-PRESENT` (Layer 1) only enforces that a Scoring section exists. It does NOT enforce that the table contains the canonical rows. Without this gate, a Scoring section can pass `…-PRESENT` with arbitrary or missing rows, and the per-section quality signal (AI Confidence, Ambiguity, Health Score) is unreliable across the spec corpus. This gate locks the canonical 3-row schema so `health-dashboard.md` and any future score-aggregator can rely on positional/named row presence. Mirrors `G-00-OVERVIEW-AI-CONTRACT-COMPLETE` for the Scoring side of the trio's Layer-2.
 - **AT row:** `AT-SPECAUTHORING-022` — Every top-level overview's Scoring section MUST contain three canonical row tokens: **AI Confidence** (or **AI Implementability**), **Ambiguity**, and **Health Score** (or **Overall** / **Total**).
@@ -276,7 +276,7 @@ Fixtures for every AT row in this file are covered by the global P2g sweep — s
   2. **Numeric scores parseable** — each canonical row MUST be followed in the same line (or adjacent table cell) by either a percentage (`\d{1,3}\s*%`) or a fraction (`\d{1,3}\s*/\s*\d{1,3}`) or a letter grade (`\b[A-F][+-]?\b`). Pure prose ("looks good", "high") is forbidden as a score value.
   3. **Health Score is the last row** — when a table form is used (`^\| Criterion \|`), the Health Score / Overall / Total row MUST appear after AI Confidence and Ambiguity rows (it is the aggregate; it logically comes last).
 - **Scope:** all 25 top-level `spec/[0-9][0-9]-*/00-overview.md`. Sub-overview tier is out of scope (Scoring lives at section root only — same scope as `…-PRESENT`).
-- **Baseline (2026-04-29):** **0 of 25 fully compliant** — 19/25 carry AI Confidence + Ambiguity rows but lack a `Health Score` / `Overall` / `Total` aggregate row; 6/25 (`00-adrs`, `01-spec-authoring-guide`, `03-error-manage`, `05-split-db-architecture`, `06-seedable-config-architecture`, `07-design-system`) lack the canonical Scoring schema entirely. Gate ships **WARN-only from day 1**; promotion to hard-fail deferred until a Scoring-schema backfill sweep is scoped (target: add the missing aggregate row to the 19, then author full Scoring sections for the 6).
+- **Baseline (2026-04-29, post-backfill sweep):** **25 of 25 fully compliant** — backfill sweep added `Health Score` rows to 17 partial overviews, fixed 2 (`33`, `35`) that used `Confidence` instead of `AI Confidence`, and added a `#### Current values` block to `00-adrs/00-overview.md`. The 4 overviews previously flagged as "missing schema entirely" (`03`, `05`, `06`, `07`) were false positives — they use the `| Metric | Value |` table shape that the original baseline regex (`| Criterion |`-only) missed. Gate **promoted to hard-fail rule 1 from day 1**; rules 2–3 (numeric-score parseability + aggregate-row-last ordering) remain WARN-only until a value-format normalization pass.
 - **Exempt zones:** fenced code blocks (a `Health Score` token inside a `\`\`\`` fence does not count); `spec/01-spec-authoring-guide/14-scoring-metrics.md` if it ever defines the schema with example tables (gate scope is overviews only).
 - **Failure modes (WARN-only):**
   - `<file>: Scoring table missing canonical row '<name>' — see G-00-OVERVIEW-SCORING-TABLE-COMPLETE rule 1 and 14-scoring-metrics.md.`

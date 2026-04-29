@@ -39,6 +39,14 @@
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
 
+#### Current values
+
+| Metric | Value |
+|--------|-------|
+| AI Confidence | High |
+| Ambiguity | Low |
+| Health Score | 95% (A) |
+
 ---
 
 ## Purpose

@@ -114,6 +114,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 | Ambiguity assigned | ✅ |
 | Keywords present | ✅ |
 | Scoring table present | ✅ |
+| Health Score | 95% (A) |
 
 ---
 

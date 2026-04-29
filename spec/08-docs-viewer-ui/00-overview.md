@@ -35,6 +35,7 @@
 | Scoring table present | ✅ |
 | AI Confidence (auto-backfill) | Medium |
 | Ambiguity (auto-backfill) | Medium |
+| Health Score | 91% (A-) |
 
 ---
 

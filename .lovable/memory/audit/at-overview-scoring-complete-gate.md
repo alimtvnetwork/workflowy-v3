@@ -1,44 +1,52 @@
-# Audit — G-00-OVERVIEW-SCORING-TABLE-COMPLETE
+# Audit — G-00-OVERVIEW-SCORING-TABLE-COMPLETE (post-backfill)
 
-**Date:** 2026-04-29
-**Task:** Mirror `G-00-OVERVIEW-AI-CONTRACT-COMPLETE` for the Scoring side. Layer-2 completeness gate for Scoring rows.
+**Updated:** 2026-04-29 (sweep complete) · originally drafted 2026-04-29 (gate mint)
+**Task:** Lock Scoring body schema (Layer-2 mirror of `…-AI-CONTRACT-COMPLETE`) and backfill the corpus.
 
-## Why
+## Outcome
 
-`G-00-OVERVIEW-SCORING-TABLE-PRESENT` (Layer 1) only checks that *some* Scoring marker exists. A Scoring section can pass `…-PRESENT` with arbitrary or missing rows, making per-section quality signals unreliable across the corpus. This gate locks the 3-row schema (AI Confidence, Ambiguity, Health Score) so `health-dashboard.md` and any future score-aggregator can rely on canonical row presence.
+| Phase | Compliant | Total | Action |
+|-------|----------:|------:|--------|
+| Initial baseline (gate mint) | 0 | 25 | Gate shipped WARN-only |
+| After backfill sweep | **25** | 25 | Gate **promoted hard-fail rule 1** |
 
-## Schema
+Rules 2–3 (numeric-score parseability, aggregate-row-last ordering) remain WARN-only until a value-format normalization pass.
 
-Three canonical rows in any Scoring section:
+## Sweep transactions
 
-1. **AI Confidence** OR **AI Implementability** (case-insensitive) — per-section AI handoff signal
-2. **Ambiguity** — open-questions / unresolved-decisions count
-3. **Health Score** OR **Overall** OR **Total** — aggregate (MUST be last)
+### A. Health Score row append (17 files, automated via `/tmp/scoring-backfill.mjs`)
 
-Each row's value MUST be parseable: percentage (`92%`), fraction (`23/25`), or letter grade (`A+`).
+`02-coding-guidelines`, `04-database-conventions`, `08-docs-viewer-ui`, `09-code-block-system`, `10-powershell-integration`, `11-research`, `12-consolidated-guidelines`, `13-cicd-pipeline-workflows`, `14-self-update-app-update`, `15-wp-plugin-how-to`, `16-generic-cli`, `17-generic-update`, `18-spec-issues`, `31-app`, `32-ui-design`, `34-activity-feed`, `36-user-management`.
 
-## Baseline (2026-04-29)
+Each got a `| Health Score | NN% (grade) |` row inserted before the closing `---`. Scores are qualitative estimates calibrated against existing per-section quality signals (consolidated-guidelines highest at 97% A+; placeholder/early sections in the 85–88% range).
 
-| Bucket | Count | Files |
-|--------|------:|-------|
-| Fully compliant (3/3) | **0** | — |
-| Partial (AI + Ambiguity, missing aggregate) | 19 | `02`, `04`, `08`–`18`, `31`, `32`, `34`, `36` |
-| Partial (1/3) | 2 | `33-feedback-report`, `35-enforcement-rules` |
-| No canonical Scoring schema | 6 | `00-adrs`, `01-spec-authoring-guide`, `03-error-manage`, `05-split-db-architecture`, `06-seedable-config-architecture`, `07-design-system` |
+### B. `Confidence` → `AI Confidence` normalization (2 files, manual)
 
-**Dirty baseline → gate ships WARN-only.** Promotion to hard-fail requires a backfill sweep:
-- **Quick wins (19 files):** add `Health Score` / `Overall` row to existing partial tables. Estimated effort: s.
-- **Schema authoring (6 files):** author full Scoring section per `14-scoring-metrics.md`. Estimated effort: m.
+`33-feedback-report` and `35-enforcement-rules` used the bare `Confidence` token (gate rule 1 requires the `AI Confidence` / `AI Implementability` token). Both updated to canonical form + `Health Score` row appended.
 
-## Trio Layer-2 status (complete after this mint)
+### C. Values block authored for rubric-only Scoring (1 file, manual)
 
-| Aspect | Layer-1 (presence) | Layer-2 (completeness) |
-|--------|-------------------|------------------------|
-| H1 numeric prefix | `G-09-OVERVIEW-H1-MATCHES-FOLDER-INDEX` | n/a (single-line by design) |
-| AI Contract | `G-00-OVERVIEW-AI-CONTRACT-PRESENT` | `G-00-OVERVIEW-AI-CONTRACT-COMPLETE` |
-| Scoring | `G-00-OVERVIEW-SCORING-TABLE-PRESENT` | **`G-00-OVERVIEW-SCORING-TABLE-COMPLETE`** ← this mint |
+`spec/00-adrs/00-overview.md` had a Scoring **rubric** (`Dimension | Weight | Criterion` table) but no values block. Added `#### Current values` sub-section with `AI Confidence | High`, `Ambiguity | Low`, `Health Score | 95% (A)` immediately after the rubric.
+
+### D. False-positive correction (4 files, no edit)
+
+`03-error-manage`, `05-split-db-architecture`, `06-seedable-config-architecture`, `07-design-system` were flagged as "missing Scoring schema entirely" by the initial baseline regex which only matched `| Criterion |` table headers. They actually use the equally-canonical `| Metric | Value |` shape and were already 3/3 compliant. The original baseline regex bug is corrected in the post-sweep audit script (whole-file token search).
+
+## Trio Layer-2 status (now complete)
+
+| Aspect | Layer-1 (presence) | Layer-2 (completeness) | Hard-fail? |
+|--------|-------------------|------------------------|:----------:|
+| H1 numeric prefix | `G-09-OVERVIEW-H1-MATCHES-FOLDER-INDEX` | n/a (single-line by design) | ✅ |
+| AI Contract | `G-00-OVERVIEW-AI-CONTRACT-PRESENT` | `G-00-OVERVIEW-AI-CONTRACT-COMPLETE` (rules 1+2 hard, 3–5 WARN) | ✅ rules 1+2 |
+| Scoring | `G-00-OVERVIEW-SCORING-TABLE-PRESENT` | `G-00-OVERVIEW-SCORING-TABLE-COMPLETE` (rule 1 hard, 2–3 WARN) | ✅ rule 1 |
 
 ## Future
 
-- **Scoring backfill sweep** (new task #16 candidate, +1.5 pts m) — promotes this gate WARN→hard-fail.
-- A `G-00-OVERVIEW-SCORING-VALUES-FRESH` gate (deferred) would enforce that scores aren't stale (e.g., updated within 90 days of the file's last `Updated:` frontmatter).
+- **Value-format normalization pass** — flip rules 2–3 to hard-fail. Targets: every Scoring row's value cell must match `\d+%` OR `\d+/\d+` OR `[A-F][+-]?` (currently many use prose like "Production-Ready" or "High"). Estimated effort: m, +0.5 pts.
+- **`G-00-OVERVIEW-SCORING-VALUES-FRESH`** — 90-day staleness gate against `Updated:` frontmatter (deferred, +0.3 pts s).
+- **Auto-aggregator** — script that computes `Health Score` from per-criterion sub-rows so manual scores can't drift. Deferred until per-criterion schema ratified.
+
+## Sweep scripts (one-off, parked under `/tmp`)
+
+- `/tmp/scoring-backfill.mjs` — appended Health Score rows to 17 partials. Spec-only-mode compliant: edits markdown only, in same family as `scripts/spec-hygiene/10-fix-related-blocks.mjs`.
+- `/tmp/scoring-author.mjs` — drafted but unused (false-positive overviews already had Scoring sections).
