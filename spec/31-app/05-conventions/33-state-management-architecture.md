@@ -64,7 +64,7 @@ The single source of truth for *where* every piece of state lives. Aligned with 
 | `useUiStore` | `sidebarOpen`, `searchOpen`, `cmdKOpen`, `currentZoomId`, `zoomHistory`, `zoomIndex`, `viewMode[zoomId]`, `focusedItemId`, `expandOverrides`, `selection` | session | localStorage (whitelist: `sidebarOpen`, `viewMode`) |
 | `useEditorStore` | `textSelection`, `formattingToolbarPos`, `dragSource`, `dropTarget`, `dropPosition`, `pendingMutationCount` | session | no |
 | `useUndoStore` | per-zoom undo/redo stacks (capped 100), `cursor` | session | no |
-| `useOfflineQueueStore` | FIFO of `Mutation` records with `mutationId`, `kind`, `payload`, `createdAt` | persistent | localStorage |
+| `useOfflineQueueStore` | FIFO of `Mutation` records with `mutationId`, `kind`, `payload`, `createdAt` | persistent | **IndexedDB** (UNBOUNDED, per [ADR-0021](../../00-adrs/0021-undo-100-offline-queue-unbounded.md); `localStorage` FORBIDDEN) |
 | `useAuthStore` | `user`, `accessToken`, `expiresAt`, `mfaPending` | session | sessionStorage (token only) |
 | `useRealtimeStore` | `sseConnected`, `lastHeartbeat`, `reconnectAttempt`, `cursor` | session | no |
 
