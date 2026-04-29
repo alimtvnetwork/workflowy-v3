@@ -7,7 +7,7 @@
 
 ## Overview
 
-18 testable criteria across 4 areas covering spec structure, naming, content, and tooling.
+19 testable criteria across 4 areas covering spec structure, naming, content, and tooling.
 
 ---
 
