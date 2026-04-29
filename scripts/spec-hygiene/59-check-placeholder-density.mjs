@@ -7,9 +7,17 @@
  * the exemption manifest's *shape*; this gate consumes the manifest's globs to
  * exclude intentional stubs from the placeholder count, then enforces the cap.
  *
- * Placeholder heuristic (mirrors the 2026-04-29 Gemini-2.5-Pro audit):
- *   - File size < 600 bytes, OR
- *   - File body matches /placeholder|stub|to be defined|TBD|coming soon/i
+ * Placeholder heuristic (refined 2026-04-29 to eliminate false positives —
+ * v1 matched the bare word "placeholder" anywhere, flagging legitimate
+ * technical prose like "extractCodeBlocks() replaces fences with placeholders"
+ * as stubs and inflating F-AUDIT-25 burndown by ~6 phantom files):
+ *   - File size < 600 bytes (very short files are almost always stubs), OR
+ *   - File body matches a stub-context regex requiring an explicit stub
+ *     marker: `TODO:`, `TBD` (followed by `:` / `—` / `-` / EOL),
+ *     `coming soon`, `to be (defined|determined|written|filled)`,
+ *     `Acceptance-Criteria Stub`, `Stub Section`, `<!-- STUB`, or a
+ *     bare-bullet `- placeholder` / `- TODO` line. The bare token
+ *     `placeholder` in narrative prose no longer trips the gate.
  * Applied only to `*.md` files under `spec/`.
  *
  * Exemption-aware: any file matching a `pathGlob` row in
@@ -44,7 +52,31 @@ const SPEC_DIR = join(ROOT, 'spec');
 const MANIFEST = join(SPEC_DIR, '_AUDIT-EXEMPTIONS.md');
 const CAP = 0.15;
 const STRICT = false; // flip to true once F-AUDIT-15 closes
-const PLACEHOLDER_RE = /\b(placeholder|stub|to be defined|TBD|coming soon)\b/i;
+// Stub-context regex — requires an explicit stub marker, not just the bare
+// word "placeholder" or "stub" used in legitimate prose. Each alternative
+// is anchored to a syntactic context that only stubs use:
+//   1. `TODO:` — checklist/note marker
+//   2. `TBD` followed by `:`/`—`/`-` or end-of-line — explicit unknown
+//   3. `coming soon` — stub phrasing
+//   4. `to be (defined|determined|written|filled)` — stub phrasing
+//   5. `Acceptance-Criteria Stub` / `Stub Section` — known stub headings
+//   6. `<!-- STUB` — HTML-comment stub marker
+//   7. `^[\s>*-]*placeholder\b` — bare-bullet "placeholder" line
+//   8. `^[\s>*-]*stub\b` — bare-bullet "stub" line
+const PLACEHOLDER_RE = new RegExp(
+  [
+    'TODO:',
+    'TBD\\s*[:\\-—\\n]',
+    'coming\\s+soon',
+    'to\\s+be\\s+(defined|determined|written|filled)',
+    'Acceptance-Criteria\\s+Stub',
+    'Stub\\s+Section',
+    '<!--\\s*STUB',
+    '^[\\s>*\\-]*placeholder\\b',
+    '^[\\s>*\\-]*stub\\b',
+  ].join('|'),
+  'im',
+);
 const SIZE_THRESHOLD = 600;
 
 function fail(msg) { console.error(`[G-00-PLACEHOLDER-DENSITY] ✗ ${msg}`); return 1; }
