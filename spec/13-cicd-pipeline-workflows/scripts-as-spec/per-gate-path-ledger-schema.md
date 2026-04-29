@@ -56,17 +56,17 @@ in this order:
 
 ## Validation rules
 
-1. **Schema-shape rule:** the table header MUST match the canonical
+1. **Schema-shape rule:** the table header MUST (gate G-13-LEDGER-SCHEMA-SHAPE) match the canonical
    5-column form exactly (case-sensitive).
-2. **Gate-existence rule:** `gate` value MUST appear as a row in
+2. **Gate-existence rule:** `gate` value MUST (gate G-13-LEDGER-GATE-EXISTENCE) appear as a row in
    `spec/_GATE-REGISTRY.md` §3.
-3. **Glob-non-empty rule:** `pathGlob` MUST resolve to ≥1 file in the
+3. **Glob-non-empty rule:** `pathGlob` MUST (gate G-13-LEDGER-GLOB-NON-EMPTY) resolve to ≥1 file in the
    repo at audit time (else "stale row" violation — drain or update).
 4. **No-overlap rule (informational):** two rows with the same `gate` +
    `entry` MAY have non-overlapping `pathGlob`s; if their globs DO
    overlap, the runner emits an INFO advisory (not a failure) so the
    author can collapse them.
-5. **Rationale-prose rule:** `rationale` MUST NOT contain markdown
+5. **Rationale-prose rule:** `rationale` MUST NOT (gate G-13-LEDGER-RATIONALE-PROSE) contain markdown
    links `[…](…)` (forces atomic, ledger-local justification — for
    pointers, use a `See also` paragraph below the table).
 6. **Date-monotonicity rule (informational):** within a single ledger,
