@@ -145,7 +145,7 @@ This file pairs every AT row added in `97-acceptance-criteria.md` v1.1.0 (AT-ADR
 | **When** | Gate `#57` runs in a CI environment. |
 | **Expected exit** | `0` AND stdout MUST contain a line matching `/G-00-AUDIT-EXEMPTION-REVIEW PASS \d+\/\d+ rows? \(\d+\.\d+% of corpus matched\)/`. |
 | **Then (positive)** | Reviewers can grep PR CI logs for `% of corpus matched` to detect drift (e.g., a sudden jump from 3.4% → 12% triggers human review). |
-| **Negative fixture** | A gate revision that silently drops the visibility line MUST be rejected by the meta-test in [`scripts/spec-hygiene/_tests/57.test.mjs`](../../scripts/spec-hygiene/_tests/57.test.mjs) (this meta-test is itself an AT-30-I8 enforcement mechanism; absence of the test file is in scope for AT-29-style follow-ups). |
+| **Negative fixture** | A gate revision that silently drops the visibility line MUST be rejected by a meta-test at `scripts/spec-hygiene/_tests/57.test.mjs` (planned follow-up; absence of the test file is in scope for AT-29-style sweeps). Until that file exists, AT-30-I8 is enforced indirectly by reviewer convention: PR templates require pasting the matched-rows line. |
 
 ---
 
