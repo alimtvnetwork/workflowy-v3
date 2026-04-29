@@ -35,7 +35,7 @@
 |---|------|-------|-------|
 | 1 | [`01-anti-hallucination-rules.md`](./01-anti-hallucination-rules.md) | Anti-Hallucination Rules | 346 |
 | 2 | [`02-ai-quick-reference-checklist.md`](./02-ai-quick-reference-checklist.md) | AI Quick Reference Checklist | 167 |
-| 3 | [`03-common-ai-mistakes/`](./03-common-ai-mistakes/00-overview.md) | Common AI Mistakes — Overview | subfolder |
+| 3 | [`03-common-ai-mistakes/`](./03-common-ai-mistakes/00-overview.md) | 03 — Common AI Mistakes — Overview | subfolder |
 | 4 | [`04-condensed-master-guidelines.md`](./04-condensed-master-guidelines.md) | Condensed Master Coding Guidelines — AI Context Reference | 241 |
 | 5 | [`05-enum-naming-quick-reference.md`](./05-enum-naming-quick-reference.md) | Enum Naming Quick Reference — All Languages | 300 |
 

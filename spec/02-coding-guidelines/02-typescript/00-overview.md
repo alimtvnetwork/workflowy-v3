@@ -22,7 +22,7 @@
 | 5 | [`05-http-method-enum.md`](./05-http-method-enum.md) | TypeScript HttpMethod Enum — `src/lib/enums/http-method-type.ts` | 117 |
 | 6 | [`06-message-status-enum.md`](./06-message-status-enum.md) | TypeScript MessageStatus Enum — `src/lib/enums/message-status.ts` | 101 |
 | 7 | [`07-type-safety-remediation-plan.md`](./07-type-safety-remediation-plan.md) | Codebase Type Safety Remediation Plan | 372 |
-| 8 | [`08-typescript-standards-reference/`](./08-typescript-standards-reference/00-overview.md) | TypeScript Coding Standards | subfolder |
+| 8 | [`08-typescript-standards-reference/`](./08-typescript-standards-reference/00-overview.md) | 08 — TypeScript Coding Standards | subfolder |
 | 9 | [`09-promise-await-patterns.md`](./09-promise-await-patterns.md) | Promise & Await Patterns | 161 |
 | 10 | [`10-log-level-enum.md`](./10-log-level-enum.md) | TypeScript LogLevel Enum — `src/lib/enums/log-level.ts` | 120 |
 | 11 | [`11-eslint-enforcement.md`](./11-eslint-enforcement.md) | TypeScript ESLint Enforcement — Rule Mapping | 146 |

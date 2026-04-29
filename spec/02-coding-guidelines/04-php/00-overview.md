@@ -39,13 +39,13 @@ PHP-specific coding standards and patterns for the RiseupAsia namespace.
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`01-enums/`](./01-enums/00-overview.md) | PHP Enums — Complete Reference | subfolder |
-| 2 | [`02-forbidden-patterns/`](./02-forbidden-patterns/00-overview.md) | PHP Forbidden Patterns — Quick Reference Checklist | subfolder |
-| 3 | [`03-naming-conventions/`](./03-naming-conventions/00-overview.md) | PHP Naming Conventions | subfolder |
+| 1 | [`01-enums/`](./01-enums/00-overview.md) | 01 — PHP Enums — Complete Reference | subfolder |
+| 2 | [`02-forbidden-patterns/`](./02-forbidden-patterns/00-overview.md) | 02 — PHP Forbidden Patterns — Quick Reference Checklist | subfolder |
+| 3 | [`03-naming-conventions/`](./03-naming-conventions/00-overview.md) | 03 — PHP Naming Conventions | subfolder |
 | 4 | [`05-response-array-standard.md`](./05-response-array-standard.md) | PHP Response Array Standard | 221 |
-| 5 | [`07-php-standards-reference/`](./07-php-standards-reference/00-overview.md) | PHP Coding Standards | subfolder |
+| 5 | [`07-php-standards-reference/`](./07-php-standards-reference/00-overview.md) | 07 — PHP Coding Standards | subfolder |
 | 6 | [`08-spacing-and-imports.md`](./08-spacing-and-imports.md) | PHP Spacing and Import Rules | 126 |
-| 7 | [`09-response-key-type-inventory/`](./09-response-key-type-inventory/00-overview.md) | ResponseKeyType — Case Inventory & Usage Map | subfolder |
+| 7 | [`09-response-key-type-inventory/`](./09-response-key-type-inventory/00-overview.md) | 09 — ResponseKeyType — Case Inventory & Usage Map | subfolder |
 | 8 | [`10-php-go-consistency-audit.md`](./10-php-go-consistency-audit.md) | PHP–Go Cross-Language Consistency Audit | 122 |
 
 <!-- AUTO-TOC:END -->

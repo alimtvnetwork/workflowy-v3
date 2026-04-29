@@ -15,10 +15,10 @@
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`01-copy-formats/`](./01-copy-formats/00-overview.md) | Error Modal — Copy & Export Formats (Index) | subfolder |
-| 2 | [`02-react-components/`](./02-react-components/00-overview.md) | Error Modal — Reusable React Components (Index) | subfolder |
-| 3 | [`03-error-modal-reference/`](./03-error-modal-reference/00-overview.md) | Error Modal — Frontend Specification (Index) | subfolder |
-| 4 | [`04-color-themes/`](./04-color-themes/00-overview.md) | Color Theme & Design Token Reference (Index) | subfolder |
+| 1 | [`01-copy-formats/`](./01-copy-formats/00-overview.md) | 01 — Error Modal — Copy & Export Formats (Index) | subfolder |
+| 2 | [`02-react-components/`](./02-react-components/00-overview.md) | 02 — Error Modal — Reusable React Components (Index) | subfolder |
+| 3 | [`03-error-modal-reference/`](./03-error-modal-reference/00-overview.md) | 03 — Error Modal — Frontend Specification (Index) | subfolder |
+| 4 | [`04-color-themes/`](./04-color-themes/00-overview.md) | 04 — Color Theme & Design Token Reference (Index) | subfolder |
 | 5 | [`05-error-history-persistence.md`](./05-error-history-persistence.md) | Error Modal — Error History Persistence | 359 |
 | 6 | [`06-suppress-global-error.md`](./06-suppress-global-error.md) | Error Modal — suppressGlobalError Meta Pattern | 184 |
 | 7 | [`07-error-modal-reference-legacy.md`](./07-error-modal-reference-legacy.md) | Error Modal — Frontend Specification (Legacy Redirect) | 59 |

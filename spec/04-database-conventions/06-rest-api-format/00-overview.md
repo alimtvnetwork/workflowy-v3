@@ -37,7 +37,7 @@
 | 1 | [`01-key-format.md`](./01-key-format.md) | Response Key Format | 42 |
 | 2 | [`02-rest-samples.md`](./02-rest-samples.md) | Full REST API Samples (Universal Envelope) | 314 |
 | 3 | [`03-envelope-and-flow.md`](./03-envelope-and-flow.md) | Envelope Quick Reference & PascalCase Data Flow | 44 |
-| 4 | [`04-language-implementation.md`](./04-language-implementation.md) | Language Implementation | 102 |
+| 4 | [`04-language-implementation.md`](./04-language-implementation.md) | Language Implementation | 109 |
 | 5 | [`05-paths-and-references.md`](./05-paths-and-references.md) | URL Paths vs JSON Keys & Cross-References | 36 |
 
 <!-- AUTO-TOC:END -->

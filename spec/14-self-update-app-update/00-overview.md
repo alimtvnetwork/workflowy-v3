@@ -204,7 +204,7 @@ final class UpdateApplier {
 | 6 | [`06-cleanup.md`](./06-cleanup.md) | Cleanup | 178 |
 | 7 | [`07-release-assets.md`](./07-release-assets.md) | Release Assets | 170 |
 | 8 | [`08-checksums-verification.md`](./08-checksums-verification.md) | Checksums & Verification | 151 |
-| 9 | [`09-release-versioning/`](./09-release-versioning/00-overview.md) | Release Versioning (Overview) | subfolder |
+| 9 | [`09-release-versioning/`](./09-release-versioning/00-overview.md) | 09 — Release Versioning (Overview) | subfolder |
 | 10 | [`10-cross-compilation.md`](./10-cross-compilation.md) | Cross-Compilation | 164 |
 | 11 | [`11-release-pipeline.md`](./11-release-pipeline.md) | Release Pipeline | 226 |
 | 12 | [`12-install-scripts.md`](./12-install-scripts.md) | Install Scripts | 351 |

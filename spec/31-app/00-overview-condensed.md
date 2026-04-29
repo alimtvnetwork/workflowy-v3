@@ -37,14 +37,14 @@
 
 ## 2. Section inventory (one-line summary per file/folder)
 
-- **`01-features/`** — Features · `app` · `features`
-- **`02-workflows/`** — Workflows · `app` · `workflows`
-- **`03-edge-cases/`** — Edge Cases · `app` · `edge-cases` · `edge` · `cases`
-- **`04-roadmap/`** — Roadmap · `app` · `roadmap`
-- **`04a-fixtures/`** — Fixtures — JSON & Sample Payloads · Concrete JSON payloads any AI session can use to:
-- **`05-conventions/`** — Conventions · <!-- AUTO-TOC:START -->
-- **`06-endpoints/`** — Endpoints — Master Index · <!-- AUTO-TOC:START -->
-- **`07-db-diagram/`** — DB Diagram — Database Design SSOT (Visual) · <!-- AUTO-TOC:START -->
+- **`01-features/`** — 01 — Features · `app` · `features`
+- **`02-workflows/`** — 02 — Workflows · `app` · `workflows`
+- **`03-edge-cases/`** — 03 — Edge Cases · `app` · `edge-cases` · `edge` · `cases`
+- **`04-roadmap/`** — 04 — Roadmap · `app` · `roadmap`
+- **`04a-fixtures/`** — 04 — Fixtures — JSON & Sample Payloads · Concrete JSON payloads any AI session can use to:
+- **`05-conventions/`** — 05 — Conventions · <!-- AUTO-TOC:START -->
+- **`06-endpoints/`** — 06 — Endpoints — Master Index · <!-- AUTO-TOC:START -->
+- **`07-db-diagram/`** — 07 — DB Diagram — Database Design SSOT (Visual) · <!-- AUTO-TOC:START -->
 
 ## 3. Contract.json slice
 
@@ -194,7 +194,7 @@ Testable acceptance criteria for the App domain. Each criterion is independently
 |----|-----------|--------|
 | `AT-APP-47` | An inviter without `Admin` on the target item attempting to grant access receives **HTTP 403** and no rows are written to `ItemGrants` or `PendingInvites`. | `02-workflows/03-share-invite-flow.md` (was `AT-WF-SHARE-01`) |
 | `AT-APP-48` | Sharing with an existing account at role `Edit` returns **HTTP 201**, inserts an `ItemGrants` row with `AcceptedAt = NULL`, and delivers an SSE `share-granted` event to the inviter within **1 s**. | `02-workflows/03-share-invite-flow.md` (was `AT-WF-SHARE-02`) |
-| `AT-APP-49` | Sharing with a non-existent email returns **HTTP 201** and inserts a `PendingInvites` row in the Root DB with `
+| `AT-APP-49` | Sharing with a non-existent email returns **HTTP 201** and inserts a `P
 
 _… truncated at 17000 chars to fit AI auditor cap …_
 

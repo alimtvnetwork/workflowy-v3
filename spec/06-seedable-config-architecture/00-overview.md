@@ -218,8 +218,8 @@ do_action('workflowy/config/changed', 'items.maxPerView');  // ConfigRegistry li
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`01-fundamentals/`](./01-fundamentals/00-overview.md) | Seedable Config Architecture — Fundamentals (Overview) | subfolder |
-| 2 | [`02-features/`](./02-features/00-overview.md) | Seedable Config Architecture — Features Index | subfolder |
+| 1 | [`01-fundamentals/`](./01-fundamentals/00-overview.md) | 01 — Seedable Config Architecture — Fundamentals (Overview) | subfolder |
+| 2 | [`02-features/`](./02-features/00-overview.md) | 02 — Seedable Config Architecture — Features Index | subfolder |
 
 <!-- AUTO-TOC:END -->
 

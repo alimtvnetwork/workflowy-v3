@@ -16,7 +16,7 @@
 | # | File | Title | Lines |
 |---|------|-------|-------|
 | 1 | [`01-react-execution-logger.md`](./01-react-execution-logger.md) | Specification: React Execution Logger | 348 |
-| 2 | [`02-session-based-logging/`](./02-session-based-logging/00-overview.md) | Specification: Session-Based Logging System | subfolder |
+| 2 | [`02-session-based-logging/`](./02-session-based-logging/00-overview.md) | 02 — Specification: Session-Based Logging System | subfolder |
 
 <!-- AUTO-TOC:END -->
 

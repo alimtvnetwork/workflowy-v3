@@ -224,7 +224,7 @@ $envelope = json_decode($result['stdout'], associative: true, flags: JSON_THROW_
 | # | File | Title | Lines |
 |---|------|-------|-------|
 | 1 | [`01-configuration-schema.md`](./01-configuration-schema.md) | PowerShell Runner Configuration Schema | 329 |
-| 2 | [`02-script-reference/`](./02-script-reference/00-overview.md) | PowerShell Script Reference | subfolder |
+| 2 | [`02-script-reference/`](./02-script-reference/00-overview.md) | 02 — PowerShell Script Reference | subfolder |
 | 3 | [`03-integration-guide.md`](./03-integration-guide.md) | PowerShell Integration Guide | 395 |
 | 4 | [`04-error-codes.md`](./04-error-codes.md) | PowerShell Runner Error Codes | 159 |
 | 5 | [`05-firewall-rules.md`](./05-firewall-rules.md) | Windows Firewall Configuration | 238 |

@@ -38,16 +38,16 @@
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`01-navbar/`](./01-navbar/00-overview.md) | Phase 1 — Navbar & Breadcrumb | subfolder |
-| 2 | [`02-search/`](./02-search/00-overview.md) | Phase 2 — Search Popover (Command-Palette Surface) | subfolder |
-| 3 | [`03-right-panel/`](./03-right-panel/00-overview.md) | Phase 3 — Right-Side Panel (Handbook + Hotkeys + What's New) | subfolder |
-| 4 | [`04-bullet/`](./04-bullet/00-overview.md) | Phase 4 — Bullet Anatomy & Context Menus | subfolder |
-| 5 | [`05-editor/`](./05-editor/00-overview.md) | Phase 5 — Editor | subfolder |
-| 6 | [`06-sidebar/`](./06-sidebar/00-overview.md) | Phase 6 — Left Sidebar Offcanvas + Special Nodes | subfolder |
-| 7 | [`07-calendar/`](./07-calendar/00-overview.md) | Phase 7 — Calendar / Today + Quick Add | subfolder |
-| 8 | [`08-app-shell/`](./08-app-shell/00-overview.md) | Phase 8 — App Shell (Themes, Fonts, Settings, App Menu) | subfolder |
-| 9 | [`09-integrations/`](./09-integrations/00-overview.md) | Phase 9 — Email-to-WorkFlowy & Integrations 🚫 DEFERRED | subfolder |
-| 10 | [`10-mobile/`](./10-mobile/00-overview.md) | Phase 10 — Mobile / PWA 🚫 DEFERRED | subfolder |
+| 1 | [`01-navbar/`](./01-navbar/00-overview.md) | 01 — Phase 1 — Navbar & Breadcrumb | subfolder |
+| 2 | [`02-search/`](./02-search/00-overview.md) | 02 — Phase 2 — Search Popover (Command-Palette Surface) | subfolder |
+| 3 | [`03-right-panel/`](./03-right-panel/00-overview.md) | 03 — Phase 3 — Right-Side Panel (Handbook + Hotkeys + What's New) | subfolder |
+| 4 | [`04-bullet/`](./04-bullet/00-overview.md) | 04 — Phase 4 — Bullet Anatomy & Context Menus | subfolder |
+| 5 | [`05-editor/`](./05-editor/00-overview.md) | 05 — Phase 5 — Editor | subfolder |
+| 6 | [`06-sidebar/`](./06-sidebar/00-overview.md) | 06 — Phase 6 — Left Sidebar Offcanvas + Special Nodes | subfolder |
+| 7 | [`07-calendar/`](./07-calendar/00-overview.md) | 07 — Phase 7 — Calendar / Today + Quick Add | subfolder |
+| 8 | [`08-app-shell/`](./08-app-shell/00-overview.md) | 08 — Phase 8 — App Shell (Themes, Fonts, Settings, App Menu) | subfolder |
+| 9 | [`09-integrations/`](./09-integrations/00-overview.md) | 09 — Phase 9 — Email-to-WorkFlowy & Integrations 🚫 DEFERRED | subfolder |
+| 10 | [`10-mobile/`](./10-mobile/00-overview.md) | 10 — Phase 10 — Mobile / PWA 🚫 DEFERRED | subfolder |
 
 <!-- AUTO-TOC:END -->
 

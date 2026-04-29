@@ -21,7 +21,7 @@
 | 5 | [`06-vb-dotnet-analyzers.md`](./06-vb-dotnet-analyzers.md) | VB.NET — .NET Analyzers + StyleCop Enforcement | 199 |
 | 6 | [`07-nodejs-eslint.md`](./07-nodejs-eslint.md) | Node.js — ESLint Enforcement (Server-Side) | 219 |
 | 7 | [`08-python-ruff.md`](./08-python-ruff.md) | Python — Ruff / Pylint / Flake8 Enforcement | 222 |
-| 8 | [`09-ci-pipeline-quality-gate/`](./09-ci-pipeline-quality-gate/00-overview.md) | Unified CI Pipeline & Quality Gate — Overview | subfolder |
+| 8 | [`09-ci-pipeline-quality-gate/`](./09-ci-pipeline-quality-gate/00-overview.md) | 09 — Unified CI Pipeline & Quality Gate — Overview | subfolder |
 | 9 | [`10-cross-language-rule-matrix.md`](./10-cross-language-rule-matrix.md) | Cross-Language Rule Matrix | 144 |
 
 <!-- AUTO-TOC:END -->

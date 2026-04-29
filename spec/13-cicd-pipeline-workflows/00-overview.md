@@ -282,8 +282,8 @@ jobs:
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`01-browser-extension-deploy/`](./01-browser-extension-deploy/00-overview.md) | Browser Extension Deploy — Overview | subfolder |
-| 2 | [`02-go-binary-deploy/`](./02-go-binary-deploy/00-overview.md) | Go Binary Deploy — Overview | subfolder |
+| 1 | [`01-browser-extension-deploy/`](./01-browser-extension-deploy/00-overview.md) | 01 — Browser Extension Deploy — Overview | subfolder |
+| 2 | [`02-go-binary-deploy/`](./02-go-binary-deploy/00-overview.md) | 02 — Go Binary Deploy — Overview | subfolder |
 | 3 | [`03-vulnerability-scanning.md`](./03-vulnerability-scanning.md) | Vulnerability Scanning | 105 |
 | 4 | [`04-install-script-generation.md`](./04-install-script-generation.md) | Install Script Generation | 210 |
 | 5 | [`05-code-signing.md`](./05-code-signing.md) | Code Signing | 178 |
@@ -299,7 +299,7 @@ jobs:
 | 15 | [`15-environment-variable-setup.md`](./15-environment-variable-setup.md) | Environment Variable Setup | 327 |
 | 16 | [`16-shared-conventions.md`](./16-shared-conventions.md) | Shared Pipeline Conventions | 218 |
 | 17 | [`17-github-release-standard.md`](./17-github-release-standard.md) | GitHub Release Standard | 163 |
-| 18 | [`18-wp-plugin-deploy/`](./18-wp-plugin-deploy/00-overview.md) | WP-Plugin Deploy — Overview | subfolder |
+| 18 | [`18-wp-plugin-deploy/`](./18-wp-plugin-deploy/00-overview.md) | 18 — WP-Plugin Deploy — Overview | subfolder |
 
 <!-- AUTO-TOC:END -->
 

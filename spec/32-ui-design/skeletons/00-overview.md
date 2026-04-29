@@ -1,6 +1,6 @@
 # UI Reference Skeletons (P7)
 
-> **Generated:** 2026-04-28
+> **Generated:** 2026-04-29
 > **Generator:** [`scripts/spec-hygiene/41-generate-skeletons.mjs`](../../../scripts/spec-hygiene/41-generate-skeletons.mjs)
 > **Source:** [`spec/contract.json`](../../contract.json)
 > **Status:** Active reference (auto-regenerated; do NOT hand-edit `*.generated.ts`)
@@ -14,7 +14,7 @@
 **Audience** — Frontend implementer (when spec-only mode exits) + reviewer.
 
 **Expected AI Output** —
-- [`ts/enums.generated.ts`](./ts/enums.generated.ts) — one `as const` object + derived union per contract enum (23 enums); the `enum` keyword is forbidden per coding-guidelines/02-typescript
+- [`ts/enums.generated.ts`](./ts/enums.generated.ts) — one `as const` object + derived union per contract enum (22 enums); the `enum` keyword is forbidden per coding-guidelines/02-typescript
 - [`ts/api-client.generated.ts`](./ts/api-client.generated.ts) — `WorkFlowyApi` interface + `createWorkFlowyApi(http)` factory with one typed method per endpoint (48 endpoints)
 
 **Out of Scope** —
@@ -34,7 +34,7 @@
 
 | File | Contents | Lines (approx.) |
 |------|----------|-----------------|
-| `ts/enums.generated.ts` | 23 `as const` enum objects + derived unions | ~195 |
+| `ts/enums.generated.ts` | 22 `as const` enum objects + derived unions | ~179 |
 | `ts/api-client.generated.ts` | `WorkFlowyApi` interface + factory with 48 typed methods | ~222 |
 
 ---

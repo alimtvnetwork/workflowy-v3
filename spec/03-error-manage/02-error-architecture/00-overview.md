@@ -14,13 +14,13 @@
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`01-error-handling-reference/`](./01-error-handling-reference/00-overview.md) | Error Handling — Cross-Stack Specification | subfolder |
+| 1 | [`01-error-handling-reference/`](./01-error-handling-reference/00-overview.md) | 01 — Error Handling — Cross-Stack Specification | subfolder |
 | 2 | [`02-go-delegation-fix.md`](./02-go-delegation-fix.md) | Go Backend Fix: Missing Delegation Fields | 198 |
 | 3 | [`03-notification-colors.md`](./03-notification-colors.md) | Notification & Toast Color System | 286 |
-| 4 | [`04-error-modal/`](./04-error-modal/00-overview.md) | Error Modal | subfolder |
-| 5 | [`05-response-envelope/`](./05-response-envelope/00-overview.md) | Response Envelope | subfolder |
-| 6 | [`06-apperror-package/`](./06-apperror-package/00-overview.md) | AppError Package | subfolder |
-| 7 | [`07-logging-and-diagnostics/`](./07-logging-and-diagnostics/00-overview.md) | Logging and Diagnostics | subfolder |
+| 4 | [`04-error-modal/`](./04-error-modal/00-overview.md) | 04 — Error Modal | subfolder |
+| 5 | [`05-response-envelope/`](./05-response-envelope/00-overview.md) | 05 — Response Envelope | subfolder |
+| 6 | [`06-apperror-package/`](./06-apperror-package/00-overview.md) | 06 — AppError Package | subfolder |
+| 7 | [`07-logging-and-diagnostics/`](./07-logging-and-diagnostics/00-overview.md) | 07 — Logging and Diagnostics | subfolder |
 
 <!-- AUTO-TOC:END -->
 

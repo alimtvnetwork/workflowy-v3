@@ -1,134 +1,139 @@
 {
   "$schema": "https://workflowy.local/spec/contract.schema.json",
-  "generated_at": "2026-04-28",
+  "generated_at": "2026-04-29",
   "generator": "scripts/spec-hygiene/40-generate-contract-json.mjs",
   "do_not_edit": true,
   "counts": {
-    "acceptance_tests_defined": 2268,
-    "acceptance_tests_orphan_citations": 0,
+    "acceptance_tests_defined": 2352,
+    "acceptance_tests_orphan_citations": 18,
     "endpoints": 48,
-    "enums": 23,
-    "sections": 24
+    "enums": 22,
+    "sections": 25
   },
   "sections": [
     {
+      "slug": "00-adrs",
+      "title": "00 — Architecture Decision Records (ADRs)",
+      "overview": "spec/00-adrs/00-overview.md"
+    },
+    {
       "slug": "01-spec-authoring-guide",
-      "title": "Spec Authoring Guide",
+      "title": "01 — Spec Authoring Guide",
       "overview": "spec/01-spec-authoring-guide/00-overview.md"
     },
     {
       "slug": "02-coding-guidelines",
-      "title": "Coding Guidelines",
+      "title": "02 — Coding Guidelines",
       "overview": "spec/02-coding-guidelines/00-overview.md"
     },
     {
       "slug": "03-error-manage",
-      "title": "Error Management Specification",
+      "title": "03 — Error Management Specification",
       "overview": "spec/03-error-manage/00-overview.md"
     },
     {
       "slug": "04-database-conventions",
-      "title": "Database Conventions",
+      "title": "04 — Database Conventions",
       "overview": "spec/04-database-conventions/00-overview.md"
     },
     {
       "slug": "05-split-db-architecture",
-      "title": "Split Database Architecture",
+      "title": "05 — Split Database Architecture",
       "overview": "spec/05-split-db-architecture/00-overview.md"
     },
     {
       "slug": "06-seedable-config-architecture",
-      "title": "Seedable Config Architecture + Changelog Versioning (also known as CW Config)",
+      "title": "06 — Seedable Config Architecture + Changelog Versioning (also known as CW Config)",
       "overview": "spec/06-seedable-config-architecture/00-overview.md"
     },
     {
       "slug": "07-design-system",
-      "title": "AI-Adaptable Design System",
+      "title": "07 — AI-Adaptable Design System",
       "overview": "spec/07-design-system/00-overview.md"
     },
     {
       "slug": "08-docs-viewer-ui",
-      "title": "Docs Viewer UI — Overview",
+      "title": "08 — Docs Viewer UI — Overview",
       "overview": "spec/08-docs-viewer-ui/00-overview.md"
     },
     {
       "slug": "09-code-block-system",
-      "title": "08 — Code Block System",
+      "title": "09 — Code Block System",
       "overview": "spec/09-code-block-system/00-overview.md"
     },
     {
       "slug": "10-powershell-integration",
-      "title": "PowerShell Integration for Project Runner",
+      "title": "10 — PowerShell Integration for Project Runner",
       "overview": "spec/10-powershell-integration/00-overview.md"
     },
     {
       "slug": "11-research",
-      "title": "Research",
+      "title": "11 — Research",
       "overview": "spec/11-research/00-overview.md"
     },
     {
       "slug": "12-consolidated-guidelines",
-      "title": "Consolidated Guidelines — Redirect Index",
+      "title": "12 — Consolidated Guidelines — Redirect Index",
       "overview": "spec/12-consolidated-guidelines/00-overview.md"
     },
     {
       "slug": "13-cicd-pipeline-workflows",
-      "title": "CI/CD Pipeline Workflows",
+      "title": "13 — CI/CD Pipeline Workflows",
       "overview": "spec/13-cicd-pipeline-workflows/00-overview.md"
     },
     {
       "slug": "14-self-update-app-update",
-      "title": "Self-Update & App Update",
+      "title": "14 — Self-Update & App Update",
       "overview": "spec/14-self-update-app-update/00-overview.md"
     },
     {
       "slug": "15-wp-plugin-how-to",
-      "title": "WordPress Plugin How-To",
+      "title": "15 — WordPress Plugin How-To",
       "overview": "spec/15-wp-plugin-how-to/00-overview.md"
     },
     {
       "slug": "16-generic-cli",
-      "title": "Generic CLI Creation Guidelines — Overview",
+      "title": "16 — Generic CLI Creation Guidelines — Overview",
       "overview": "spec/16-generic-cli/00-overview.md"
     },
     {
       "slug": "17-generic-update",
-      "title": "Generic Update",
+      "title": "17 — Generic Update",
       "overview": "spec/17-generic-update/00-overview.md"
     },
     {
       "slug": "18-spec-issues",
-      "title": "Spec Issues",
+      "title": "18 — Spec Issues",
       "overview": "spec/18-spec-issues/00-overview.md"
     },
     {
       "slug": "31-app",
-      "title": "App",
+      "title": "31 — App",
       "overview": "spec/31-app/00-overview.md"
     },
     {
       "slug": "32-ui-design",
-      "title": "UI Design",
+      "title": "32 — UI Design",
       "overview": "spec/32-ui-design/00-overview.md"
     },
     {
       "slug": "33-feedback-report",
-      "title": "Feedback Report — Feature Spec",
+      "title": "33 — Feedback Report — Feature Spec",
       "overview": "spec/33-feedback-report/00-overview.md"
     },
     {
       "slug": "34-activity-feed",
-      "title": "Activity Feed — Feature Spec",
+      "title": "34 — Activity Feed — Feature Spec",
       "overview": "spec/34-activity-feed/00-overview.md"
     },
     {
       "slug": "35-enforcement-rules",
-      "title": "Enforcement Rules — Spec",
+      "title": "35 — Enforcement Rules — Spec",
       "overview": "spec/35-enforcement-rules/00-overview.md"
     },
     {
       "slug": "36-user-management",
-      "title": "User Management — Feature Spec",
+      "title": "36 — User Management — Feature Spec",
       "overview": "spec/36-user-management/00-overview.md"
     }
   ],
@@ -474,7 +479,7 @@
     {
       "name": "BackupStrategyType",
       "definedIn": "spec/20-enums-index.md",
-      "definedLine": 60,
+      "definedLine": 61,
       "values": [
         "Full",
         "Incremental",
@@ -484,7 +489,7 @@
     {
       "name": "CapabilityType",
       "definedIn": "spec/20-enums-index.md",
-      "definedLine": 66,
+      "definedLine": 67,
       "values": [
         "ManageOptions",
         "EditPosts",
@@ -494,7 +499,7 @@
     {
       "name": "ECast001",
       "definedIn": "spec/20-enums-index.md",
-      "definedLine": 92,
+      "definedLine": 93,
       "values": [
         "CAST_TYPE_ASSERTION_FAILED"
       ]
@@ -502,7 +507,7 @@
     {
       "name": "ECast002",
       "definedIn": "spec/20-enums-index.md",
-      "definedLine": 93,
+      "definedLine": 94,
       "values": [
         "CAST_SLICE_ELEMENT_FAILED"
       ]
@@ -510,7 +515,7 @@
     {
       "name": "ErrorCategoryType",
       "definedIn": "spec/20-enums-index.md",
-      "definedLine": 52,
+      "definedLine": 53,
       "values": [
         "Connection",
         "RemoteSite",
@@ -526,7 +531,7 @@
     {
       "name": "HeaderType",
       "definedIn": "spec/20-enums-index.md",
-      "definedLine": 106,
+      "definedLine": 107,
       "values": [
         "Authorization"
       ]
@@ -534,7 +539,7 @@
     {
       "name": "HttpMethodType",
       "definedIn": "spec/20-enums-index.md",
-      "definedLine": 51,
+      "definedLine": 52,
       "values": [
         "Get",
         "Post",
@@ -546,28 +551,9 @@
       ]
     },
     {
-      "name": "ItemType",
-      "definedIn": "spec/20-enums-index.md",
-      "definedLine": 82,
-      "values": [
-        "bullet",
-        "h1",
-        "h2",
-        "h3",
-        "paragraph",
-        "todo",
-        "numbered",
-        "board",
-        "dashboard",
-        "quote",
-        "code",
-        "divider"
-      ]
-    },
-    {
       "name": "LogColumnType",
       "definedIn": "spec/20-enums-index.md",
-      "definedLine": 75,
+      "definedLine": 76,
       "values": [
         "Id",
         "CreatedAt",
@@ -579,7 +565,7 @@
     {
       "name": "LogLevelType",
       "definedIn": "spec/20-enums-index.md",
-      "definedLine": 50,
+      "definedLine": 51,
       "values": [
         "Trace",
         "Debug",
@@ -592,7 +578,7 @@
     {
       "name": "MigrationStatusType",
       "definedIn": "spec/20-enums-index.md",
-      "definedLine": 76,
+      "definedLine": 77,
       "values": [
         "Pending",
         "Running",
@@ -604,7 +590,7 @@
     {
       "name": "PluginConfigType",
       "definedIn": "spec/20-enums-index.md",
-      "definedLine": 67,
+      "definedLine": 68,
       "values": [
         "Version",
         "Slug",
@@ -615,7 +601,7 @@
     {
       "name": "PostStatusType",
       "definedIn": "spec/20-enums-index.md",
-      "definedLine": 68,
+      "definedLine": 69,
       "values": [
         "Publish",
         "Draft",
@@ -628,7 +614,7 @@
     {
       "name": "ResponseKeyType",
       "definedIn": "spec/20-enums-index.md",
-      "definedLine": 108,
+      "definedLine": 109,
       "values": [
         "Status",
         "Data",
@@ -639,7 +625,7 @@
     {
       "name": "ResponseMessageType",
       "definedIn": "spec/20-enums-index.md",
-      "definedLine": 109,
+      "definedLine": 110,
       "values": [
         "success",
         "failed",
@@ -649,7 +635,7 @@
     {
       "name": "SharePermissionType",
       "definedIn": "spec/20-enums-index.md",
-      "definedLine": 85,
+      "definedLine": 86,
       "values": [
         "View",
         "Comment",
@@ -660,7 +646,7 @@
     {
       "name": "SnapshotScopeType",
       "definedIn": "spec/20-enums-index.md",
-      "definedLine": 58,
+      "definedLine": 59,
       "values": [
         "All",
         "PerTable",
@@ -670,7 +656,7 @@
     {
       "name": "SnapshotTriggerType",
       "definedIn": "spec/20-enums-index.md",
-      "definedLine": 59,
+      "definedLine": 60,
       "values": [
         "Manual",
         "Scheduled",
@@ -682,7 +668,7 @@
     {
       "name": "SortDirectionType",
       "definedIn": "spec/20-enums-index.md",
-      "definedLine": 83,
+      "definedLine": 84,
       "values": [
         "Asc",
         "Desc",
@@ -692,7 +678,7 @@
     {
       "name": "StatusType",
       "definedIn": "spec/20-enums-index.md",
-      "definedLine": 49,
+      "definedLine": 50,
       "values": [
         "Success",
         "Failed",
@@ -703,7 +689,7 @@
     {
       "name": "TableType",
       "definedIn": "spec/20-enums-index.md",
-      "definedLine": 74,
+      "definedLine": 75,
       "values": [
         "Transactions",
         "AgentSites",
@@ -714,7 +700,7 @@
     {
       "name": "TrashRetentionType",
       "definedIn": "spec/20-enums-index.md",
-      "definedLine": 86,
+      "definedLine": 87,
       "values": [
         "Days30",
         "Permanent"
@@ -723,7 +709,7 @@
     {
       "name": "ZoomLevelType",
       "definedIn": "spec/20-enums-index.md",
-      "definedLine": 84,
+      "definedLine": 85,
       "values": [
         "Root",
         "Single",
@@ -745,10 +731,6 @@
         {
           "file": "spec/34-activity-feed/00-overview.md",
           "line": 21
-        },
-        {
-          "file": "spec/34-activity-feed/00-overview.md",
-          "line": 59
         },
         {
           "file": "spec/34-activity-feed/97-acceptance-criteria.md",
@@ -1251,7 +1233,7 @@
         },
         {
           "file": "spec/31-app/00-overview.md",
-          "line": 105
+          "line": 106
         },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
@@ -1271,11 +1253,11 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 22
+          "line": 24
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 60
+          "line": 62
         },
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
@@ -1338,6 +1320,18 @@
       "defined_line": 31,
       "cited_in": [
         {
+          "file": "spec/00-adrs/0016-fractional-index-sortorder.md",
+          "line": 10
+        },
+        {
+          "file": "spec/00-adrs/0016-fractional-index-sortorder.md",
+          "line": 17
+        },
+        {
+          "file": "spec/00-adrs/0016-fractional-index-sortorder.md",
+          "line": 67
+        },
+        {
           "file": "spec/31-app/00-overview.md",
           "line": 24
         },
@@ -1371,7 +1365,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 23
+          "line": 25
         },
         {
           "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
@@ -1403,7 +1397,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 24
+          "line": 26
         },
         {
           "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
@@ -1491,7 +1485,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 25
+          "line": 27
         },
         {
           "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
@@ -1523,7 +1517,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 67
+          "line": 69
         },
         {
           "file": "spec/31-app/97d-acceptance-criteria-fixtures.md",
@@ -1551,7 +1545,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 67
+          "line": 69
         },
         {
           "file": "spec/31-app/97d-acceptance-criteria-fixtures.md",
@@ -1583,7 +1577,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 67
+          "line": 69
         },
         {
           "file": "spec/31-app/97d-acceptance-criteria-fixtures.md",
@@ -1639,7 +1633,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 66
+          "line": 68
         },
         {
           "file": "spec/31-app/07-db-diagram/04-feature-slices.md",
@@ -1683,7 +1677,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 66
+          "line": 68
         },
         {
           "file": "spec/31-app/97d-acceptance-criteria-fixtures.md",
@@ -1715,7 +1709,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 66
+          "line": 68
         },
         {
           "file": "spec/31-app/97d-acceptance-criteria-fixtures.md",
@@ -1747,7 +1741,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 66
+          "line": 68
         },
         {
           "file": "spec/31-app/97d-acceptance-criteria-fixtures.md",
@@ -1783,11 +1777,43 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 66
+          "line": 68
         },
         {
           "file": "spec/31-app/97d-acceptance-criteria-fixtures.md",
           "line": 428
+        }
+      ]
+    },
+    {
+      "id": "AT-APP-108",
+      "definition": "LWW canonical comparator (per ADR-0026 D1) compares `(ServerTs DESC, OwnerId ASC, ItemId ASC)` in this exact order, short-circuits at the first non-equal tier, and uses ASCII-byte lexicographic ordering over the wire-regex alphabet `[A-Za-z0-9_-]`.",
+      "defined_in": "spec/31-app/97-acceptance-criteria.md",
+      "defined_line": 245,
+      "cited_in": [
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 445
+        },
+        {
+          "file": "spec/_LEDGER-G-NS-ADR-COVERAGE.md",
+          "line": 55
+        },
+        {
+          "file": "spec/_LEDGER-G-NS-ADR-COVERAGE.md",
+          "line": 72
+        }
+      ]
+    },
+    {
+      "id": "AT-APP-109",
+      "definition": "All three LWW comparator keys (`ServerTs`, `OwnerId`, `ItemId`) are mandatory; an LWW resolver that compares only one or two tiers MUST fail this gate. The owner-key spelling is canonically `OwnerId` (per ADR-0020 brand) — `OwnerUserId` is forbidden in any new resolver code or fixture.",
+      "defined_in": "spec/31-app/97-acceptance-criteria.md",
+      "defined_line": 246,
+      "cited_in": [
+        {
+          "file": "spec/_LEDGER-G-NS-ADR-COVERAGE.md",
+          "line": 72
         }
       ]
     },
@@ -1811,13 +1837,32 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 26
+          "line": 28
         },
         {
           "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
           "line": 137
         }
       ]
+    },
+    {
+      "id": "AT-APP-110",
+      "definition": "LWW resolution is bit-identical across every code path (server, offline-queue worker, SSE replay) — given the same two candidates, all three sites MUST return the same winner. Contradictory tie-break keys in any spec site (e.g. `OwnerUserId ASC` vs `OwnerId ASC`) MUST be flagged by the spec-hygiene gate.",
+      "defined_in": "spec/31-app/97-acceptance-criteria.md",
+      "defined_line": 247,
+      "cited_in": [
+        {
+          "file": "spec/_LEDGER-G-NS-ADR-COVERAGE.md",
+          "line": 72
+        }
+      ]
+    },
+    {
+      "id": "AT-APP-111",
+      "definition": "Every ADR with ≥5 `MUST`/`SHALL` rules in its body MUST be cited by at least one `97-acceptance-criteria.md` row. Enforced by `G-NS-ADR-MUST-HAS-AT` (CI, WARN-only initial mode).",
+      "defined_in": "spec/31-app/97-acceptance-criteria.md",
+      "defined_line": 248,
+      "cited_in": []
     },
     {
       "id": "AT-APP-12",
@@ -1839,7 +1884,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 27
+          "line": 29
         },
         {
           "file": "spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md",
@@ -1911,7 +1956,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 28
+          "line": 30
         },
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
@@ -1951,7 +1996,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 29
+          "line": 31
         },
         {
           "file": "spec/31-app/97b-acceptance-criteria-fixtures.md",
@@ -1983,7 +2028,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 30
+          "line": 32
         },
         {
           "file": "spec/31-app/97b-acceptance-criteria-fixtures.md",
@@ -2019,7 +2064,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 37
+          "line": 39
         },
         {
           "file": "spec/31-app/07-db-diagram/04-feature-slices.md",
@@ -2071,7 +2116,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 32
+          "line": 34
         },
         {
           "file": "spec/31-app/97b-acceptance-criteria-fixtures.md",
@@ -2159,7 +2204,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 33
+          "line": 35
         },
         {
           "file": "spec/31-app/97b-acceptance-criteria-fixtures.md",
@@ -2195,7 +2240,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 34
+          "line": 36
         },
         {
           "file": "spec/31-app/97b-acceptance-criteria-fixtures.md",
@@ -2235,7 +2280,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 35
+          "line": 37
         },
         {
           "file": "spec/18-spec-issues/11-content-audit-at-app-coverage.md",
@@ -2319,7 +2364,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 36
+          "line": 38
         },
         {
           "file": "spec/31-app/97b-acceptance-criteria-fixtures.md",
@@ -2383,7 +2428,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 38
+          "line": 40
         },
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
@@ -2463,7 +2508,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 39
+          "line": 41
         },
         {
           "file": "spec/18-spec-issues/11-content-audit-at-app-coverage.md",
@@ -3035,7 +3080,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 68
+          "line": 70
         },
         {
           "file": "spec/31-app/07-db-diagram/04-feature-slices.md",
@@ -3123,7 +3168,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 68
+          "line": 70
         },
         {
           "file": "spec/31-app/97c-acceptance-criteria-fixtures.md",
@@ -3151,7 +3196,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 69
+          "line": 71
         },
         {
           "file": "spec/31-app/97c-acceptance-criteria-fixtures.md",
@@ -3199,7 +3244,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 69
+          "line": 71
         },
         {
           "file": "spec/31-app/97c-acceptance-criteria-fixtures.md",
@@ -3235,7 +3280,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 69
+          "line": 71
         },
         {
           "file": "spec/31-app/97c-acceptance-criteria-fixtures.md",
@@ -3263,7 +3308,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 68
+          "line": 70
         },
         {
           "file": "spec/31-app/97c-acceptance-criteria-fixtures.md",
@@ -3607,7 +3652,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 64
+          "line": 66
         },
         {
           "file": "spec/31-app/07-db-diagram/04-feature-slices.md",
@@ -3647,7 +3692,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 64
+          "line": 66
         },
         {
           "file": "spec/31-app/97d-acceptance-criteria-fixtures.md",
@@ -3675,7 +3720,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 64
+          "line": 66
         },
         {
           "file": "spec/31-app/97d-acceptance-criteria-fixtures.md",
@@ -3699,7 +3744,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 64
+          "line": 66
         },
         {
           "file": "spec/31-app/97d-acceptance-criteria-fixtures.md",
@@ -3727,7 +3772,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 65
+          "line": 67
         },
         {
           "file": "spec/31-app/97d-acceptance-criteria-fixtures.md",
@@ -3906,6 +3951,10 @@
       "defined_line": 229,
       "cited_in": [
         {
+          "file": "spec/00-adrs/0021-undo-100-offline-queue-unbounded.md",
+          "line": 24
+        },
+        {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 47
         },
@@ -3939,7 +3988,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 67
+          "line": 69
         },
         {
           "file": "spec/31-app/07-db-diagram/04-feature-slices.md",
@@ -3983,7 +4032,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 67
+          "line": 69
         },
         {
           "file": "spec/31-app/97d-acceptance-criteria-fixtures.md",
@@ -4015,7 +4064,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 67
+          "line": 69
         },
         {
           "file": "spec/31-app/97d-acceptance-criteria-fixtures.md",
@@ -4459,7 +4508,7 @@
       "cited_in": [
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 84
+          "line": 86
         },
         {
           "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
@@ -4776,7 +4825,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 46
+          "line": 48
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -4796,7 +4845,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 46
+          "line": 48
         }
       ]
     },
@@ -4812,7 +4861,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 47
+          "line": 49
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -4836,7 +4885,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 47
+          "line": 49
         }
       ]
     },
@@ -5294,6 +5343,165 @@
       "cited_in": []
     },
     {
+      "id": "AT-CG-001",
+      "definition": "Boolean principles define naming (`isX`, `hasX`, `canX`) and evaluation patterns",
+      "defined_in": "spec/02-coding-guidelines/97-acceptance-criteria.md",
+      "defined_line": 18,
+      "cited_in": [
+        {
+          "file": "spec/02-coding-guidelines/97-acceptance-criteria.md",
+          "line": 4
+        }
+      ]
+    },
+    {
+      "id": "AT-CG-002",
+      "definition": "Casting elimination patterns cover type-safe alternatives to type assertions",
+      "defined_in": "spec/02-coding-guidelines/97-acceptance-criteria.md",
+      "defined_line": 19,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CG-003",
+      "definition": "Code style defines formatting, naming, and structural conventions",
+      "defined_in": "spec/02-coding-guidelines/97-acceptance-criteria.md",
+      "defined_line": 20,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CG-004",
+      "definition": "All guidelines include ❌ (forbidden) and ✅ (compliant) code examples",
+      "defined_in": "spec/02-coding-guidelines/97-acceptance-criteria.md",
+      "defined_line": 21,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CG-005",
+      "definition": "DRY principles documented with refactoring patterns",
+      "defined_in": "spec/02-coding-guidelines/97-acceptance-criteria.md",
+      "defined_line": 22,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CG-006",
+      "definition": "Cyclomatic complexity limits defined with enforcement rules",
+      "defined_in": "spec/02-coding-guidelines/97-acceptance-criteria.md",
+      "defined_line": 23,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CG-007",
+      "definition": "Connection status enums define all valid states with TypeScript string literals",
+      "defined_in": "spec/02-coding-guidelines/97-acceptance-criteria.md",
+      "defined_line": 31,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CG-008",
+      "definition": "Type definitions avoid `any` and use proper generic constraints",
+      "defined_in": "spec/02-coding-guidelines/97-acceptance-criteria.md",
+      "defined_line": 32,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CG-009",
+      "definition": "React component patterns follow functional component with hooks style",
+      "defined_in": "spec/02-coding-guidelines/97-acceptance-criteria.md",
+      "defined_line": 33,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CG-010",
+      "definition": "State management patterns use Zustand stores with typed selectors",
+      "defined_in": "spec/02-coding-guidelines/97-acceptance-criteria.md",
+      "defined_line": 34,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CG-011",
+      "definition": "Boolean standards define naming and evaluation patterns per Go idioms",
+      "defined_in": "spec/02-coding-guidelines/97-acceptance-criteria.md",
+      "defined_line": 42,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CG-012",
+      "definition": "Error handling uses `apperror.Result[T]` pattern consistently",
+      "defined_in": "spec/02-coding-guidelines/97-acceptance-criteria.md",
+      "defined_line": 43,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CG-013",
+      "definition": "HTTP method enum defines typed constants",
+      "defined_in": "spec/02-coding-guidelines/97-acceptance-criteria.md",
+      "defined_line": 44,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CG-014",
+      "definition": "Service layer follows interface-based dependency injection",
+      "defined_in": "spec/02-coding-guidelines/97-acceptance-criteria.md",
+      "defined_line": 45,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CG-015",
+      "definition": "Class naming follows WordPress PSR-4 autoloading conventions",
+      "defined_in": "spec/02-coding-guidelines/97-acceptance-criteria.md",
+      "defined_line": 53,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CG-016",
+      "definition": "Database queries use $wpdb prepared statements exclusively",
+      "defined_in": "spec/02-coding-guidelines/97-acceptance-criteria.md",
+      "defined_line": 54,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CG-017",
+      "definition": "Type declarations (parameter + return types) required on all functions",
+      "defined_in": "spec/02-coding-guidelines/97-acceptance-criteria.md",
+      "defined_line": 55,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CG-018",
+      "definition": "Input sanitization and output escaping follow WordPress security standards",
+      "defined_in": "spec/02-coding-guidelines/97-acceptance-criteria.md",
+      "defined_line": 56,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CG-019",
+      "definition": "Naming conventions follow Rust idioms (snake_case for functions, PascalCase for types)",
+      "defined_in": "spec/02-coding-guidelines/97-acceptance-criteria.md",
+      "defined_line": 64,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CG-020",
+      "definition": "Error handling uses `Result<T, E>` pattern with custom error types",
+      "defined_in": "spec/02-coding-guidelines/97-acceptance-criteria.md",
+      "defined_line": 65,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CG-021",
+      "definition": "Async patterns use tokio runtime with proper cancellation handling",
+      "defined_in": "spec/02-coding-guidelines/97-acceptance-criteria.md",
+      "defined_line": 66,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CG-022",
+      "definition": "Memory safety patterns documented for FFI boundaries",
+      "defined_in": "spec/02-coding-guidelines/97-acceptance-criteria.md",
+      "defined_line": 67,
+      "cited_in": []
+    },
+    {
       "id": "AT-CGCL-01",
       "definition": "Boolean principles define **naming, evaluation, and composition** patterns (positive prefixes, no negated names, no plurals).",
       "defined_in": "spec/02-coding-guidelines/01-cross-language/97-acceptance-criteria.md",
@@ -5418,10 +5626,6 @@
         {
           "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
           "line": 21
-        },
-        {
-          "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
-          "line": 56
         },
         {
           "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
@@ -5997,6 +6201,14 @@
       "defined_line": 23,
       "cited_in": [
         {
+          "file": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+          "line": 149
+        },
+        {
+          "file": "spec/09-code-block-system/00-overview.md",
+          "line": 5
+        },
+        {
           "file": "spec/09-code-block-system/00-overview.md",
           "line": 23
         },
@@ -6148,6 +6360,10 @@
       "defined_in": "spec/09-code-block-system/97-acceptance-criteria.md",
       "defined_line": 80,
       "cited_in": [
+        {
+          "file": "spec/09-code-block-system/00-overview.md",
+          "line": 23
+        },
         {
           "file": "spec/09-code-block-system/97-acceptance-criteria.md",
           "line": 12
@@ -6462,7 +6678,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 57
+          "line": 59
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -6482,7 +6698,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 57
+          "line": 59
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -6502,7 +6718,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 58
+          "line": 60
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -6522,7 +6738,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 58
+          "line": 60
         }
       ]
     },
@@ -6538,7 +6754,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 59
+          "line": 61
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -6693,7 +6909,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 57
+          "line": 59
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -6767,10 +6983,6 @@
       "defined_in": "spec/12-consolidated-guidelines/97-acceptance-criteria.md",
       "defined_line": 28,
       "cited_in": [
-        {
-          "file": "spec/12-consolidated-guidelines/00-overview.md",
-          "line": 22
-        },
         {
           "file": "spec/12-consolidated-guidelines/97-acceptance-criteria.md",
           "line": 18
@@ -7101,7 +7313,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 29
+          "line": 31
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -7121,7 +7333,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 30
+          "line": 32
         }
       ]
     },
@@ -7137,7 +7349,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 31
+          "line": 33
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -7157,7 +7369,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 32
+          "line": 34
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -7262,6 +7474,10 @@
       "defined_in": "spec/31-app/01-features/06-item-context-menu.md",
       "defined_line": 173,
       "cited_in": [
+        {
+          "file": "spec/00-adrs/0016-fractional-index-sortorder.md",
+          "line": 10
+        },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
           "line": 135
@@ -7469,10 +7685,6 @@
         {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 21
-        },
-        {
-          "file": "spec/04-database-conventions/00-overview.md",
-          "line": 69
         },
         {
           "file": "spec/04-database-conventions/97-acceptance-criteria.md",
@@ -7943,7 +8155,7 @@
       "cited_in": [
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 35
+          "line": 37
         }
       ]
     },
@@ -8118,10 +8330,31 @@
     },
     {
       "id": "AT-DEBUGGINGTYPESCRIPT-10",
-      "definition": "A top-level `<ErrorBoundary>` wraps the application; it (a) renders a typed fallback UI, (b) reports to the structured logger, (c) shows `errorCode` when present.",
+      "definition": "The eight named error boundaries enumerated in ADR-0017 D1 (`AppErrorBoundary`, `RouterErrorBoundary`, `NavbarBoundary`, `SidebarBoundary`, `ContentAreaBoundary`, `EditorBoundary`, `PanelBoundary`, `ModalBoundary`) are each mounted exactly once and isolate their subtree. Every fallback (a) renders a region-appropriate typed UI (no generic \"Something went wrong\" outside `AppErrorBoundary`), (b) reports to the structured logger, (c) shows `errorCode` when present, (d) offers at least one recovery action. A single root-only `<ErrorBoundary>` is a violation of `G-22-ERROR-BOUNDARIES-EXACTLY-8`.",
       "defined_in": "spec/03-error-manage/01-error-resolution/05-debugging-guides/03-debugging-typescript/97-acceptance-criteria.md",
       "defined_line": 29,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/00-adrs/0017-eight-error-boundaries-ui-virtualization.md",
+          "line": 16
+        },
+        {
+          "file": "spec/00-adrs/0017-eight-error-boundaries-ui-virtualization.md",
+          "line": 46
+        },
+        {
+          "file": "spec/00-adrs/0017-eight-error-boundaries-ui-virtualization.md",
+          "line": 115
+        },
+        {
+          "file": "spec/00-adrs/0017-eight-error-boundaries-ui-virtualization.md",
+          "line": 166
+        },
+        {
+          "file": "spec/00-adrs/0017-eight-error-boundaries-ui-virtualization.md",
+          "line": 176
+        }
+      ]
     },
     {
       "id": "AT-DEBUGGINGTYPESCRIPT-11",
@@ -8269,15 +8502,427 @@
       ]
     },
     {
+      "id": "AT-DESIGNSYS-001",
+      "definition": "No component uses hardcoded hex, rgb, or literal Tailwind color classes",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 18,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 13
+        },
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 19
+        },
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 293
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-002",
+      "definition": "All colors reference CSS custom properties via `hsl(var(--token))`",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 19,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 30
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-003",
+      "definition": "Changing `--primary` in `:root` updates all primary-colored elements",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 20,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 41
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-004",
+      "definition": "Both `:root` and `.dark` blocks define all tokens",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 21,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 51
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-005",
+      "definition": "Dark mode toggle changes all surfaces, text, and borders correctly",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 22,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 60
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-006",
+      "definition": "Text on colored backgrounds meets WCAG AA contrast ratio (4.5:1)",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 23,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 70
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-007",
+      "definition": "Headings use Ubuntu font family",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 29,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 83
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-008",
+      "definition": "Body text uses Poppins font family",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 30,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 91
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-009",
+      "definition": "Code blocks use Ubuntu Mono / JetBrains Mono",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 31,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 98
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-010",
+      "definition": "H1 and H2 use gradient text effect",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 32,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 104
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-011",
+      "definition": "No heading level is skipped (H1 → H2 → H3)",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 33,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 112
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-012",
+      "definition": "All hover transitions complete within 300ms",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 39,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 123
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-013",
+      "definition": "No JavaScript animation libraries used for visual effects",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 40,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 130
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-014",
+      "definition": "`prefers-reduced-motion` media query disables animations",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 41,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 136
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-015",
+      "definition": "Link underline sweeps right-to-left on hover",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 42,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 143
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-016",
+      "definition": "CTA buttons use slide text animation, not simple color change",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 43,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 150
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-017",
+      "definition": "Code blocks maintain dark background in both themes",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 49,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 161
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-018",
+      "definition": "Language badge shows correct color dot per language",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 50,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 167
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-019",
+      "definition": "Font size controls adjust between 12px and 32px",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 51,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 173
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-020",
+      "definition": "Line click pins/unpins with primary-colored background",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 52,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 180
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-021",
+      "definition": "Shift-click selects line range",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 53,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 187
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-022",
+      "definition": "Fullscreen mode fills viewport with 2rem inset",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 54,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 194
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-023",
+      "definition": "Escape key exits fullscreen",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 55,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 200
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-024",
+      "definition": "Copy button shows \"Copied ✓\" state for 2 seconds",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 56,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 207
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-025",
+      "definition": "Tree/structure blocks show 📁/📄 prefixes",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 57,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 213
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-026",
+      "definition": "Header icon hover shows scale(1.05) effect",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 63,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 223
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-027",
+      "definition": "Menu item hover shows gradient underline sweep",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 64,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 229
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-028",
+      "definition": "Dropdown items show primary-tinted hover background",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 65,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 234
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-029",
+      "definition": "Sidebar collapses to sheet on mobile (< 768px)",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 66,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 239
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-030",
+      "definition": "Ctrl+B toggles sidebar visibility",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 67,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 245
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-031",
+      "definition": "New pages follow section pattern templates",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 73,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 256
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-032",
+      "definition": "No page introduces fonts not in the design system",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 74,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 262
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-033",
+      "definition": "All interactive elements follow the state language",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 75,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 268
+        }
+      ]
+    },
+    {
+      "id": "AT-DESIGNSYS-034",
+      "definition": "Responsive at mobile/tablet/desktop breakpoints",
+      "defined_in": "spec/07-design-system/97-acceptance-criteria.md",
+      "defined_line": 76,
+      "cited_in": [
+        {
+          "file": "spec/07-design-system/97a-acceptance-criteria-fixtures.md",
+          "line": 274
+        }
+      ]
+    },
+    {
       "id": "AT-DESIGNSYSTEM-01",
       "definition": "All visual values (color, spacing, font-size, radius, shadow, animation duration) come from CSS custom properties (`--token-name`); raw hex/rem/px in components is a Code-Red theming bug.",
       "defined_in": "spec/15-wp-plugin-how-to/12-design-system/97-acceptance-criteria.md",
       "defined_line": 22,
       "cited_in": [
-        {
-          "file": "spec/07-design-system/00-overview.md",
-          "line": 23
-        },
         {
           "file": "spec/15-wp-plugin-how-to/12-design-system/97-acceptance-criteria.md",
           "line": 12
@@ -8404,10 +9049,6 @@
       "defined_in": "spec/08-docs-viewer-ui/97-acceptance-criteria.md",
       "defined_line": 24,
       "cited_in": [
-        {
-          "file": "spec/08-docs-viewer-ui/00-overview.md",
-          "line": 20
-        },
         {
           "file": "spec/08-docs-viewer-ui/97-acceptance-criteria.md",
           "line": 12
@@ -9619,7 +10260,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 79
+          "line": 81
         },
         {
           "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
@@ -9647,7 +10288,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 80
+          "line": 82
         },
         {
           "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
@@ -10589,6 +11230,27 @@
       "cited_in": []
     },
     {
+      "id": "AT-EXAMPLE-001",
+      "definition": "[Specific, testable requirement]",
+      "defined_in": "spec/01-spec-authoring-guide/03-required-files.md",
+      "defined_line": 125,
+      "cited_in": []
+    },
+    {
+      "id": "AT-EXAMPLE-002",
+      "definition": "[Another requirement]",
+      "defined_in": "spec/01-spec-authoring-guide/03-required-files.md",
+      "defined_line": 126,
+      "cited_in": []
+    },
+    {
+      "id": "AT-EXAMPLE-003",
+      "definition": "[Requirement]",
+      "defined_in": "spec/01-spec-authoring-guide/03-required-files.md",
+      "defined_line": 132,
+      "cited_in": []
+    },
+    {
       "id": "AT-EXPORT-01",
       "definition": "User has fresh MFA",
       "defined_in": "spec/31-app/05-conventions/13-data-export-policy.md",
@@ -11144,6 +11806,20 @@
       "cited_in": []
     },
     {
+      "id": "AT-FOO-07",
+      "definition": "Validates …  STATUS: DEFERRED (blocked on ADR-0027 Phase 2)",
+      "defined_in": "spec/01-spec-authoring-guide/20-status-legend.md",
+      "defined_line": 112,
+      "cited_in": []
+    },
+    {
+      "id": "AT-FOO-12",
+      "definition": "…  STATUS: ARCHIVED (see 99-consistency-report.md §3.2)",
+      "defined_in": "spec/01-spec-authoring-guide/20-status-legend.md",
+      "defined_line": 113,
+      "cited_in": []
+    },
+    {
       "id": "AT-FORBIDDENPATTERNS-01",
       "definition": "(§1) `try/catch` swallowing without re-throwing or logging is forbidden; every catch records to the documented logger.",
       "defined_in": "spec/02-coding-guidelines/04-php/02-forbidden-patterns/97-acceptance-criteria.md",
@@ -11393,7 +12069,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 81
+          "line": 83
         },
         {
           "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
@@ -11630,7 +12306,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 82
+          "line": 84
         },
         {
           "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
@@ -12443,10 +13119,6 @@
           "line": 21
         },
         {
-          "file": "spec/16-generic-cli/00-overview.md",
-          "line": 51
-        },
-        {
           "file": "spec/16-generic-cli/97-acceptance-criteria.md",
           "line": 13
         },
@@ -12690,10 +13362,6 @@
         {
           "file": "spec/17-generic-update/00-overview.md",
           "line": 21
-        },
-        {
-          "file": "spec/17-generic-update/00-overview.md",
-          "line": 53
         },
         {
           "file": "spec/17-generic-update/97-acceptance-criteria.md",
@@ -13584,7 +14252,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 22
+          "line": 24
         }
       ]
     },
@@ -13596,7 +14264,7 @@
       "cited_in": [
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 22
+          "line": 24
         }
       ]
     },
@@ -13608,7 +14276,7 @@
       "cited_in": [
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 23
+          "line": 25
         }
       ]
     },
@@ -13620,7 +14288,7 @@
       "cited_in": [
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 24
+          "line": 26
         }
       ]
     },
@@ -13632,7 +14300,7 @@
       "cited_in": [
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 25
+          "line": 27
         }
       ]
     },
@@ -13644,7 +14312,7 @@
       "cited_in": [
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 26
+          "line": 28
         }
       ]
     },
@@ -13656,7 +14324,7 @@
       "cited_in": [
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 31
+          "line": 33
         }
       ]
     },
@@ -13782,6 +14450,10 @@
       "defined_in": "spec/31-app/01-features/01-information-model.md",
       "defined_line": 130,
       "cited_in": [
+        {
+          "file": "spec/00-adrs/0016-fractional-index-sortorder.md",
+          "line": 10
+        },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
           "line": 30
@@ -14017,7 +14689,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 25
+          "line": 27
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -14041,7 +14713,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 26
+          "line": 28
         }
       ]
     },
@@ -14057,7 +14729,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 28
+          "line": 30
         }
       ]
     },
@@ -14077,7 +14749,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 28
+          "line": 30
         }
       ]
     },
@@ -14093,7 +14765,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 30
+          "line": 32
         }
       ]
     },
@@ -14104,12 +14776,16 @@
       "defined_line": 117,
       "cited_in": [
         {
+          "file": "spec/00-adrs/0016-fractional-index-sortorder.md",
+          "line": 10
+        },
+        {
           "file": "spec/31-app/01-features/05-interactions.md",
           "line": 131
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 47
+          "line": 49
         }
       ]
     },
@@ -14338,7 +15014,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 24
+          "line": 26
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -14362,7 +15038,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 60
+          "line": 62
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -15022,7 +15698,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 38
+          "line": 40
         }
       ]
     },
@@ -15034,7 +15710,7 @@
       "cited_in": [
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 38
+          "line": 40
         }
       ]
     },
@@ -15046,7 +15722,7 @@
       "cited_in": [
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 39
+          "line": 41
         }
       ]
     },
@@ -15058,7 +15734,7 @@
       "cited_in": [
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 39
+          "line": 41
         }
       ]
     },
@@ -15070,7 +15746,7 @@
       "cited_in": [
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 40
+          "line": 42
         }
       ]
     },
@@ -15082,7 +15758,7 @@
       "cited_in": [
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 40
+          "line": 42
         }
       ]
     },
@@ -15315,6 +15991,10 @@
       "defined_line": 254,
       "cited_in": [
         {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 136
+        },
+        {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
           "line": 217
         }
@@ -15362,6 +16042,10 @@
       "defined_in": "spec/31-app/01-features/09b-mirror-peer-group-model.md",
       "defined_line": 258,
       "cited_in": [
+        {
+          "file": "spec/18-spec-issues/00-overview.md",
+          "line": 136
+        },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
           "line": 221
@@ -15411,6 +16095,22 @@
       "defined_line": 262,
       "cited_in": [
         {
+          "file": "spec/00-adrs/0026-lww-canonical-tiebreak.md",
+          "line": 16
+        },
+        {
+          "file": "spec/00-adrs/0026-lww-canonical-tiebreak.md",
+          "line": 51
+        },
+        {
+          "file": "spec/00-adrs/0026-lww-canonical-tiebreak.md",
+          "line": 112
+        },
+        {
+          "file": "spec/00-adrs/0026-lww-canonical-tiebreak.md",
+          "line": 112
+        },
+        {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
           "line": 225
         }
@@ -15436,7 +16136,7 @@
       "cited_in": [
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 48
+          "line": 50
         }
       ]
     },
@@ -15448,7 +16148,7 @@
       "cited_in": [
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 48
+          "line": 50
         }
       ]
     },
@@ -15460,7 +16160,7 @@
       "cited_in": [
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 49
+          "line": 51
         }
       ]
     },
@@ -15472,7 +16172,7 @@
       "cited_in": [
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 49
+          "line": 51
         }
       ]
     },
@@ -15484,7 +16184,7 @@
       "cited_in": [
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 50
+          "line": 52
         }
       ]
     },
@@ -15496,7 +16196,7 @@
       "cited_in": [
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 51
+          "line": 53
         }
       ]
     },
@@ -15508,7 +16208,7 @@
       "cited_in": [
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 51
+          "line": 53
         }
       ]
     },
@@ -15972,6 +16672,22 @@
       "defined_line": 129,
       "cited_in": [
         {
+          "file": "spec/00-adrs/0021-undo-100-offline-queue-unbounded.md",
+          "line": 13
+        },
+        {
+          "file": "spec/00-adrs/0021-undo-100-offline-queue-unbounded.md",
+          "line": 140
+        },
+        {
+          "file": "spec/00-adrs/0021-undo-100-offline-queue-unbounded.md",
+          "line": 183
+        },
+        {
+          "file": "spec/00-adrs/0021-undo-100-offline-queue-unbounded.md",
+          "line": 194
+        },
+        {
           "file": "spec/31-app/01-features/14b-offline-queue.md",
           "line": 88
         },
@@ -16013,7 +16729,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 22
+          "line": 24
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -16539,10 +17255,6 @@
           "line": 21
         },
         {
-          "file": "spec/10-powershell-integration/00-overview.md",
-          "line": 57
-        },
-        {
           "file": "spec/10-powershell-integration/08-wp-plugin-boundary.md",
           "line": 100
         },
@@ -17027,7 +17739,7 @@
       "cited_in": [
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 85
+          "line": 87
         },
         {
           "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
@@ -18412,7 +19124,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 42
+          "line": 44
         },
         {
           "file": "spec/31-app/97e-roles-inline-acceptance-fixtures.md",
@@ -18440,7 +19152,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 44
+          "line": 46
         },
         {
           "file": "spec/31-app/97e-roles-inline-acceptance-fixtures.md",
@@ -18464,7 +19176,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 45
+          "line": 47
         },
         {
           "file": "spec/31-app/97e-roles-inline-acceptance-fixtures.md",
@@ -18488,7 +19200,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 60
+          "line": 62
         },
         {
           "file": "spec/31-app/97e-roles-inline-acceptance-fixtures.md",
@@ -18512,7 +19224,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 61
+          "line": 63
         },
         {
           "file": "spec/31-app/97e-roles-inline-acceptance-fixtures.md",
@@ -18536,7 +19248,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 61
+          "line": 63
         },
         {
           "file": "spec/31-app/97e-roles-inline-acceptance-fixtures.md",
@@ -18560,7 +19272,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 62
+          "line": 64
         },
         {
           "file": "spec/31-app/97e-roles-inline-acceptance-fixtures.md",
@@ -18584,7 +19296,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 62
+          "line": 64
         },
         {
           "file": "spec/31-app/97e-roles-inline-acceptance-fixtures.md",
@@ -18608,7 +19320,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 63
+          "line": 65
         },
         {
           "file": "spec/31-app/97e-roles-inline-acceptance-fixtures.md",
@@ -18632,7 +19344,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 63
+          "line": 65
         },
         {
           "file": "spec/31-app/97e-roles-inline-acceptance-fixtures.md",
@@ -19081,10 +19793,6 @@
         {
           "file": "spec/14-self-update-app-update/00-overview.md",
           "line": 21
-        },
-        {
-          "file": "spec/14-self-update-app-update/00-overview.md",
-          "line": 56
         },
         {
           "file": "spec/14-self-update-app-update/97-acceptance-criteria.md",
@@ -19547,7 +20255,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 41
+          "line": 43
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -19571,7 +20279,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 41
+          "line": 43
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -19591,7 +20299,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 42
+          "line": 44
         }
       ]
     },
@@ -19607,7 +20315,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 42
+          "line": 44
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -19631,7 +20339,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 43
+          "line": 45
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -19651,7 +20359,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 43
+          "line": 45
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -19671,7 +20379,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 44
+          "line": 46
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -19691,7 +20399,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 45
+          "line": 47
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -19733,6 +20441,10 @@
       "defined_in": "spec/31-app/01-features/08-share-dialog.md",
       "defined_line": 122,
       "cited_in": [
+        {
+          "file": "spec/00-adrs/0014-sharing-public-vs-invited-permission-model.md",
+          "line": 206
+        },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
           "line": 176
@@ -19892,6 +20604,153 @@
           "line": 184
         }
       ]
+    },
+    {
+      "id": "AT-SPECAUTHORING-001",
+      "definition": "Every spec module has `00-overview.md` at root",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 18,
+      "cited_in": [
+        {
+          "file": "spec/01-spec-authoring-guide/00-overview.md",
+          "line": 27
+        },
+        {
+          "file": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+          "line": 4
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECAUTHORING-002",
+      "definition": "Every spec module has `99-consistency-report.md` at root",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 19,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-003",
+      "definition": "CLI modules follow 3-folder pattern (`01-backend/`, `02-frontend/`, `03-deploy/`)",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 20,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-004",
+      "definition": "Subfolders with 3+ files include their own `00-overview.md`",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 21,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-005",
+      "definition": "All files use lowercase kebab-case naming",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 29,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-006",
+      "definition": "All folders use lowercase kebab-case naming",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 30,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-007",
+      "definition": "All spec files have unique numeric sequence prefixes within their folder",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 31,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-008",
+      "definition": "Reserved prefixes (00, 97, 98, 99) used only for their designated purposes",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 32,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-009",
+      "definition": "Every `00-overview.md` includes Version and Updated metadata",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 40,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-010",
+      "definition": "Every `00-overview.md` includes AI Confidence score",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 41,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-011",
+      "definition": "Every `00-overview.md` includes Ambiguity score",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 42,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-012",
+      "definition": "Every `00-overview.md` includes Keywords section",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 43,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-013",
+      "definition": "Every `00-overview.md` includes Scoring table",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 44,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-014",
+      "definition": "Every `00-overview.md` includes numbered file inventory table",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 45,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-015",
+      "definition": "Every `00-overview.md` includes Cross-References table",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 46,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-016",
+      "definition": "All cross-references use relative paths (never root-relative or absolute)",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 55,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-017",
+      "definition": "All linked files include `.md` extension",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 56,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-018",
+      "definition": "Zero broken links reported by dashboard scanner",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 57,
+      "cited_in": [
+        {
+          "file": "spec/01-spec-authoring-guide/00-overview.md",
+          "line": 27
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECAUTHORING-019",
+      "definition": "Every top-level `00-overview.md` includes an `## AI Contract` section",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 47,
+      "cited_in": []
     },
     {
       "id": "AT-SPECISSUES-01",
@@ -20276,6 +21135,14 @@
       "defined_line": 161,
       "cited_in": [
         {
+          "file": "spec/00-adrs/0013-search-relevance-then-recency-ranking.md",
+          "line": 43
+        },
+        {
+          "file": "spec/00-adrs/0013-search-relevance-then-recency-ranking.md",
+          "line": 213
+        },
+        {
           "file": "spec/31-app/01-features/16-search-ranking.md",
           "line": 82
         },
@@ -20295,6 +21162,14 @@
       "defined_in": "spec/31-app/01-features/16-search-ranking.md",
       "defined_line": 162,
       "cited_in": [
+        {
+          "file": "spec/00-adrs/0013-search-relevance-then-recency-ranking.md",
+          "line": 43
+        },
+        {
+          "file": "spec/00-adrs/0013-search-relevance-then-recency-ranking.md",
+          "line": 213
+        },
         {
           "file": "spec/31-app/01-features/16-search-ranking.md",
           "line": 83
@@ -20361,56 +21236,56 @@
       "id": "AT-STATE-01",
       "definition": "A grep of `src/components/**` returns zero matches for `fetch(`, `axios.`, or `useQuery(` — components only use `use*` hooks. (R1)",
       "defined_in": "spec/31-app/05-conventions/33-state-management-architecture.md",
-      "defined_line": 254,
+      "defined_line": 256,
       "cited_in": []
     },
     {
       "id": "AT-STATE-02",
       "definition": "No Zustand slice's TypeScript type duplicates a field present in any TanStack Query `select` return type. (R2)",
       "defined_in": "spec/31-app/05-conventions/33-state-management-architecture.md",
-      "defined_line": 255,
+      "defined_line": 257,
       "cited_in": []
     },
     {
       "id": "AT-STATE-03",
       "definition": "Every mutation function in `src/api/mutations/` includes a `mutationId: string` field generated via `crypto.randomUUID()`. (R4)",
       "defined_in": "spec/31-app/05-conventions/33-state-management-architecture.md",
-      "defined_line": 256,
+      "defined_line": 258,
       "cited_in": []
     },
     {
       "id": "AT-STATE-04",
       "definition": "The SSE `EventSource` is constructed in exactly one file (`RealtimeProvider.tsx`); a grep for `new EventSource(` returns exactly one match in `src/`. (R5)",
       "defined_in": "spec/31-app/05-conventions/33-state-management-architecture.md",
-      "defined_line": 257,
+      "defined_line": 259,
       "cited_in": []
     },
     {
       "id": "AT-STATE-05",
       "definition": "Every `useMutation` with `onMutate` for optimistic updates has a matching `onError` rollback that calls `queryClient.setQueryData` with the snapshot. (R6)",
       "defined_in": "spec/31-app/05-conventions/33-state-management-architecture.md",
-      "defined_line": 258,
+      "defined_line": 260,
       "cited_in": []
     },
     {
       "id": "AT-STATE-06",
       "definition": "`useUndoStore` is keyed by `zoomedItemId` — switching zoom and pressing Cmd-Z does not affect the previous zoom's history. (R7)",
       "defined_in": "spec/31-app/05-conventions/33-state-management-architecture.md",
-      "defined_line": 259,
+      "defined_line": 261,
       "cited_in": []
     },
     {
       "id": "AT-STATE-07",
-      "definition": "When two tabs edit the same Mirror within 50 ms, the resulting `Item.Content` matches the row with the latest `(ServerTs DESC, OwnerId ASC, ItemId ASC)` canonical 3-tier LWW tuple per ADR-0026 §D1. (D6)",
+      "definition": "When two tabs edit the same Mirror within 50 ms, the resulting `Item.Content` matches the row chosen by the canonical 3-tier comparator `(ServerTs DESC, OwnerId ASC, ItemId ASC)` per ADR-0026 §D1. (D6)",
       "defined_in": "spec/31-app/05-conventions/33-state-management-architecture.md",
-      "defined_line": 260,
+      "defined_line": 262,
       "cited_in": []
     },
     {
       "id": "AT-STATE-08",
-      "definition": "After 24 h offline, the `useOfflineQueueStore` survives reload via `localStorage`, and replays in FIFO order on the next `online` event. (D9)",
+      "definition": "After 24 h offline, the `useOfflineQueueStore` survives reload via **IndexedDB** (per ADR-0021 — localStorage is forbidden), and replays in FIFO order on the next `online` event. (D9)",
       "defined_in": "spec/31-app/05-conventions/33-state-management-architecture.md",
-      "defined_line": 261,
+      "defined_line": 263,
       "cited_in": []
     },
     {
@@ -20425,7 +21300,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 52
+          "line": 54
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -20445,7 +21320,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 52
+          "line": 54
         }
       ]
     },
@@ -20461,7 +21336,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 53
+          "line": 55
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -20481,7 +21356,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 54
+          "line": 56
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -20501,7 +21376,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 54
+          "line": 56
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -20521,7 +21396,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 55
+          "line": 57
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -20541,7 +21416,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 55
+          "line": 57
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -20561,7 +21436,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 56
+          "line": 58
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -20981,7 +21856,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 33
+          "line": 35
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -21013,7 +21888,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 33
+          "line": 35
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -21447,7 +22322,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 27
+          "line": 29
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -21471,7 +22346,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 27
+          "line": 29
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -21491,7 +22366,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 34
+          "line": 36
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -21511,7 +22386,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 34
+          "line": 36
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -21531,7 +22406,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 35
+          "line": 37
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -21551,7 +22426,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 36
+          "line": 38
         }
       ]
     },
@@ -21574,7 +22449,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 37
+          "line": 39
         },
         {
           "file": "spec/31-app/07-db-diagram/04-feature-slices.md",
@@ -21602,7 +22477,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 37
+          "line": 39
         },
         {
           "file": "spec/31-app/07-db-diagram/04-feature-slices.md",
@@ -22143,7 +23018,7 @@
         },
         {
           "file": "spec/32-ui-design/00-overview.md",
-          "line": 118
+          "line": 119
         },
         {
           "file": "spec/32-ui-design/97a-acceptance-criteria-fixtures.md",
@@ -22664,6 +23539,34 @@
       "defined_in": "spec/32-ui-design/03-design-system/97-acceptance-criteria.md",
       "defined_line": 52,
       "cited_in": [
+        {
+          "file": "spec/00-adrs/0022-shadcn-radix-component-base.md",
+          "line": 14
+        },
+        {
+          "file": "spec/00-adrs/0022-shadcn-radix-component-base.md",
+          "line": 33
+        },
+        {
+          "file": "spec/00-adrs/0022-shadcn-radix-component-base.md",
+          "line": 78
+        },
+        {
+          "file": "spec/00-adrs/0022-shadcn-radix-component-base.md",
+          "line": 109
+        },
+        {
+          "file": "spec/00-adrs/0022-shadcn-radix-component-base.md",
+          "line": 129
+        },
+        {
+          "file": "spec/00-adrs/0022-shadcn-radix-component-base.md",
+          "line": 169
+        },
+        {
+          "file": "spec/00-adrs/0022-shadcn-radix-component-base.md",
+          "line": 180
+        },
         {
           "file": "spec/32-ui-design/03-design-system/97-acceptance-criteria.md",
           "line": 12
@@ -24909,7 +25812,7 @@
       "cited_in": [
         {
           "file": "spec/13-cicd-pipeline-workflows/00-overview.md",
-          "line": 229
+          "line": 388
         },
         {
           "file": "spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/00-overview.md",
@@ -25090,7 +25993,7 @@
         },
         {
           "file": "spec/31-app/06-endpoints/16-endpoint-at-matrix.md",
-          "line": 83
+          "line": 85
         },
         {
           "file": "spec/31-app/06-endpoints/97-acceptance-criteria.md",
@@ -25143,5 +26046,176 @@
       ]
     }
   ],
-  "orphan_at_citations": []
+  "orphan_at_citations": [
+    {
+      "id": "AT-CGCS-01",
+      "citedIn": [
+        {
+          "file": "spec/02-coding-guidelines/07-csharp/97-acceptance-criteria.md",
+          "line": 4
+        },
+        {
+          "file": "spec/02-coding-guidelines/07-csharp/97-acceptance-criteria.md",
+          "line": 8
+        }
+      ]
+    },
+    {
+      "id": "AT-CGCS-02",
+      "citedIn": [
+        {
+          "file": "spec/02-coding-guidelines/07-csharp/97-acceptance-criteria.md",
+          "line": 21
+        }
+      ]
+    },
+    {
+      "id": "AT-CGCS-03",
+      "citedIn": [
+        {
+          "file": "spec/02-coding-guidelines/07-csharp/97-acceptance-criteria.md",
+          "line": 29
+        }
+      ]
+    },
+    {
+      "id": "AT-CGCS-04",
+      "citedIn": [
+        {
+          "file": "spec/02-coding-guidelines/07-csharp/97-acceptance-criteria.md",
+          "line": 36
+        }
+      ]
+    },
+    {
+      "id": "AT-CGCS-05",
+      "citedIn": [
+        {
+          "file": "spec/02-coding-guidelines/07-csharp/97-acceptance-criteria.md",
+          "line": 44
+        }
+      ]
+    },
+    {
+      "id": "AT-CGCS-06",
+      "citedIn": [
+        {
+          "file": "spec/02-coding-guidelines/07-csharp/97-acceptance-criteria.md",
+          "line": 52
+        }
+      ]
+    },
+    {
+      "id": "AT-CGCS-07",
+      "citedIn": [
+        {
+          "file": "spec/02-coding-guidelines/07-csharp/97-acceptance-criteria.md",
+          "line": 58
+        }
+      ]
+    },
+    {
+      "id": "AT-ERRMANAGE-01",
+      "citedIn": [
+        {
+          "file": "spec/03-error-manage/97-acceptance-criteria.md",
+          "line": 4
+        },
+        {
+          "file": "spec/03-error-manage/97-acceptance-criteria.md",
+          "line": 8
+        }
+      ]
+    },
+    {
+      "id": "AT-ERRMANAGE-02",
+      "citedIn": [
+        {
+          "file": "spec/03-error-manage/97-acceptance-criteria.md",
+          "line": 22
+        }
+      ]
+    },
+    {
+      "id": "AT-ERRMANAGE-03",
+      "citedIn": [
+        {
+          "file": "spec/03-error-manage/97-acceptance-criteria.md",
+          "line": 35
+        }
+      ]
+    },
+    {
+      "id": "AT-ERRMANAGE-04",
+      "citedIn": [
+        {
+          "file": "spec/03-error-manage/97-acceptance-criteria.md",
+          "line": 43
+        }
+      ]
+    },
+    {
+      "id": "AT-ERRMANAGE-05",
+      "citedIn": [
+        {
+          "file": "spec/03-error-manage/97-acceptance-criteria.md",
+          "line": 51
+        }
+      ]
+    },
+    {
+      "id": "AT-ERRMANAGE-06",
+      "citedIn": [
+        {
+          "file": "spec/03-error-manage/97-acceptance-criteria.md",
+          "line": 59
+        }
+      ]
+    },
+    {
+      "id": "AT-FOO-01",
+      "citedIn": [
+        {
+          "file": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+          "line": 142
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECAUTHORING-020",
+      "citedIn": [
+        {
+          "file": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+          "line": 214
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECAUTHORING-021",
+      "citedIn": [
+        {
+          "file": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+          "line": 239
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECAUTHORING-022",
+      "citedIn": [
+        {
+          "file": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+          "line": 270
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECAUTHORING-023",
+      "citedIn": [
+        {
+          "file": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+          "line": 299
+        }
+      ]
+    }
+  ]
 }

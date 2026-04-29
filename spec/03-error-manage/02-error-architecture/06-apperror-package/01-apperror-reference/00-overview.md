@@ -15,10 +15,10 @@
 | # | File | Title | Lines |
 |---|------|-------|-------|
 | 1 | [`01-overview-and-stack.md`](./01-overview-and-stack.md) | AppError Package Reference — Overview, invariants, StackTrace | 132 |
-| 2 | [`02-apperror-struct/`](./02-apperror-struct/00-overview.md) | AppError Struct & Methods — Overview | subfolder |
+| 2 | [`02-apperror-struct/`](./02-apperror-struct/00-overview.md) | 02 — AppError Struct & Methods — Overview | subfolder |
 | 3 | [`03-result-types.md`](./03-result-types.md) | AppError Package Reference — Result[T], ResultSlice[T], ResultMap[K,V] | 150 |
 | 4 | [`04-codes-and-policy.md`](./04-codes-and-policy.md) | AppError Package Reference — Error code convention, stack trace skip rules, file size | 155 |
-| 5 | [`05-apperrtype-enums/`](./05-apperrtype-enums/00-overview.md) | AppError Package Reference — Domain Error Type Enums (`apperrtype`) | subfolder |
+| 5 | [`05-apperrtype-enums/`](./05-apperrtype-enums/00-overview.md) | 05 — AppError Package Reference — Domain Error Type Enums (`apperrtype`) | subfolder |
 | 6 | [`06-serialization-and-guards.md`](./06-serialization-and-guards.md) | AppError Package Reference — JSON serialization, Result guard rule | 360 |
 | 7 | [`08-usage-and-adapters.md`](./08-usage-and-adapters.md) | AppError Package Reference — Usage examples, service adapter unwrap pattern | 276 |
 

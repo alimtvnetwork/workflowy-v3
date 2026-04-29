@@ -16,7 +16,7 @@
 |---|------|-------|-------|
 | 1 | [`01-braces-and-nesting.md`](./01-braces-and-nesting.md) | Braces, Nesting & Exemptions | 320 |
 | 2 | [`02-conditions-and-extraction.md`](./02-conditions-and-extraction.md) | Condition Extraction | 106 |
-| 3 | [`03-blank-lines-and-spacing/`](./03-blank-lines-and-spacing/00-overview.md) | Blank Lines & Spacing | subfolder |
+| 3 | [`03-blank-lines-and-spacing/`](./03-blank-lines-and-spacing/00-overview.md) | 03 — Blank Lines & Spacing | subfolder |
 | 4 | [`04-function-and-type-size.md`](./04-function-and-type-size.md) | Function & Type Size Limits | 173 |
 | 5 | [`05-multi-line-formatting.md`](./05-multi-line-formatting.md) | Multi-Line Formatting | 313 |
 | 6 | [`06-comments-and-documentation.md`](./06-comments-and-documentation.md) | Comments, Documentation & Dead Code | 172 |

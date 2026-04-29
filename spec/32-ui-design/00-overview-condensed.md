@@ -37,12 +37,12 @@
 
 ## 2. Section inventory (one-line summary per file/folder)
 
-- **`01-architecture/`** — Architecture · `ui-design` · `architecture`
-- **`02-state-and-data/`** — State & Data · `ui-design` · `state-and-data` · `state` · `data`
-- **`03-design-system/`** — Design System · `ui-design` · `design-system` · `design` · `system`
-- **`04-editor/`** — Editor · `ui-design` · `editor`
-- **`05-quality/`** — Quality · `ui-design` · `quality`
-- **`06-workflowy-ui/`** — Workflowy UI Spec — Parent Overview · `ui-design` · `workflowy-ui` · `workflowy`
+- **`01-architecture/`** — 01 — Architecture · `ui-design` · `architecture`
+- **`02-state-and-data/`** — 02 — State & Data · `ui-design` · `state-and-data` · `state` · `data`
+- **`03-design-system/`** — 03 — Design System · `ui-design` · `design-system` · `design` · `system`
+- **`04-editor/`** — 04 — Editor · `ui-design` · `editor`
+- **`05-quality/`** — 05 — Quality · `ui-design` · `quality`
+- **`06-workflowy-ui/`** — 06 — Workflowy UI Spec — Parent Overview · `ui-design` · `workflowy-ui` · `workflowy`
 - **`skeletons/`** — UI Reference Skeletons (P7) · **Purpose** — Provide ready-to-copy TypeScript 5.6+ skeletons (`as const` enum objects + typed Axios API client) derived from the canonical contract. While spec-only mode is active, these files are no
 
 ## 3. Contract.json slice

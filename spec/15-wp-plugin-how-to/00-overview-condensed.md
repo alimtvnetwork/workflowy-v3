@@ -35,30 +35,30 @@
 ## 2. Section inventory (one-line summary per file/folder)
 
 - **`01-foundation-and-architecture.md`** — Phase 1 — Foundation and Architecture · | Requirement | Value |
-- **`02-enums-and-coding-style/`** — Phase 2 — Enums and Coding Style · `wp-plugin-how-to` · `enums-and-coding-style` · `phase` · `enums`
+- **`02-enums-and-coding-style/`** — 02 — Phase 2 — Enums and Coding Style · `wp-plugin-how-to` · `enums-and-coding-style` · `phase` · `enums`
 - **`03-traits-and-composition.md`** — Phase 3 — Traits and Composition · The plugin architecture uses traits instead of service classes for a specific reason: all endpoint handlers need access to the shared `$fileLogger` property and the `ResponseTrait` methods. Traits all
-- **`04-logging-and-error-handling/`** — Phase 4 — Logging and Error Handling · | Criterion | Status |
-- **`05-helpers-responses-and-integration/`** — Phase 5 — Helpers, Response Envelope, and Integration · `wp-plugin-how-to` · `helpers-responses-and-integration` · `phase` · `helpers`
+- **`04-logging-and-error-handling/`** — 04 — Phase 4 — Logging and Error Handling · | Criterion | Status |
+- **`05-helpers-responses-and-integration/`** — 05 — Phase 5 — Helpers, Response Envelope, and Integration · `wp-plugin-how-to` · `helpers-responses-and-integration` · `phase` · `helpers`
 - **`06-input-validation-patterns.md`** — Phase 6 — Input Validation Patterns · | Principle | Rule |
-- **`07-reference-implementations/`** — Phase 7 — Complete Reference Implementations · `wp-plugin-how-to` · `reference-implementations` · `phase` · `complete`
-- **`08-wordpress-integration-patterns/`** — Phase 8 — WordPress Integration Patterns · | Criterion | Status |
-- **`09-testing-patterns/`** — Phase 9 — Testing Patterns · | Criterion | Status |
-- **`10-deployment-patterns/`** — Phase 10 — Deployment Patterns (Overview) · `wp-plugin-how-to` · `deployment-patterns` · `phase` · `deployment`
-- **`11-frontend-and-template-patterns/`** — Phase 11 — Frontend & Template Patterns (Overview) · `wp-plugin-how-to` · `frontend-and-template-patterns` · `phase` · `frontend`
-- **`12-design-system/`** — Phase 12 — WordPress Plugin Design System (Overview) · `wp-plugin-how-to` · `design-system` · `phase` · `wordpress`
-- **`13-admin-ui-patterns/`** — Phase 13 — Admin UI Patterns (Overview) · `wp-plugin-how-to` · `admin-ui-patterns` · `phase` · `admin`
-- **`14-rest-api-conventions/`** — Phase 14 — REST API Conventions (Overview) · `wp-plugin-how-to` · `rest-api-conventions` · `phase` · `rest`
-- **`15-settings-architecture/`** — Phase 15 — Settings Architecture · `wp-plugin-how-to` · `settings-architecture` · `phase` · `settings`
-- **`16-error-handling-extraction/`** — Phase 16 — Error Handling & Diagnostics Extraction · | Criterion | Status |
+- **`07-reference-implementations/`** — 07 — Phase 7 — Complete Reference Implementations · `wp-plugin-how-to` · `reference-implementations` · `phase` · `complete`
+- **`08-wordpress-integration-patterns/`** — 08 — Phase 8 — WordPress Integration Patterns · | Criterion | Status |
+- **`09-testing-patterns/`** — 09 — Phase 9 — Testing Patterns · | Criterion | Status |
+- **`10-deployment-patterns/`** — 10 — Phase 10 — Deployment Patterns (Overview) · `wp-plugin-how-to` · `deployment-patterns` · `phase` · `deployment`
+- **`11-frontend-and-template-patterns/`** — 11 — Phase 11 — Frontend & Template Patterns (Overview) · `wp-plugin-how-to` · `frontend-and-template-patterns` · `phase` · `frontend`
+- **`12-design-system/`** — 12 — Phase 12 — WordPress Plugin Design System (Overview) · `wp-plugin-how-to` · `design-system` · `phase` · `wordpress`
+- **`13-admin-ui-patterns/`** — 13 — Phase 13 — Admin UI Patterns (Overview) · `wp-plugin-how-to` · `admin-ui-patterns` · `phase` · `admin`
+- **`14-rest-api-conventions/`** — 14 — Phase 14 — REST API Conventions (Overview) · `wp-plugin-how-to` · `rest-api-conventions` · `phase` · `rest`
+- **`15-settings-architecture/`** — 15 — Phase 15 — Settings Architecture · `wp-plugin-how-to` · `settings-architecture` · `phase` · `settings`
+- **`16-error-handling-extraction/`** — 16 — Phase 16 — Error Handling & Diagnostics Extraction · | Criterion | Status |
 - **`17-data-file-patterns.md`** — Phase 17 — Data File Patterns · ```
 - **`17a-data-file-validation-and-checklist.md`** — Data File Patterns — Adding Files, Validation & Checklist · 1. **Create the JSON file** in `data/` with a clear, descriptive name (kebab-case)
 - **`18-frontend-javascript-patterns.md`** — Phase 18 — Frontend JavaScript Patterns · ```
 - **`18a-frontend-tables-urls-and-confirms.md`** — Frontend JS Patterns — Tables, URL Builders & Confirm Actions · ```javascript
-- **`19-micro-orm-and-root-db/`** — Phase 19 — Micro-ORM and Cross-Plugin Root Database · `wp-plugin-how-to` · `micro-orm-and-root-db` · `phase` · `micro-orm`
-- **`20-end-to-end-walkthrough/`** — Phase 20 — End-to-End Walkthrough: Building "Task Tracker" from Scratch · | Criterion | Status |
+- **`19-micro-orm-and-root-db/`** — 19 — Phase 19 — Micro-ORM and Cross-Plugin Root Database · `wp-plugin-how-to` · `micro-orm-and-root-db` · `phase` · `micro-orm`
+- **`20-end-to-end-walkthrough/`** — 20 — Phase 20 — End-to-End Walkthrough: Building "Task Tracker" from Scratch · | Criterion | Status |
 - **`21-ping-endpoint.md`** — Phase 21 — Ping Endpoint · Every WordPress plugin built under these conventions **must** expose a `/ping` endpoint. This endpoint serves as a lightweight health-check and identity beacon — returning who built the plugin, which 
 - **`22-quick-start.md`** — Phase 00 — Quick Start Guide · An 18-phase, self-contained guide for building WordPress plugins following the **Gold Standard** architecture. The spec covers everything from folder structure to deployment rollback, admin UI to REST
-- **`23-operator-runbooks/`** — 16 — Operator Runbooks · <!-- AUTO-TOC:START -->
+- **`23-operator-runbooks/`** — 23 — 16 — Operator Runbooks · <!-- AUTO-TOC:START -->
 - **`24-local-dev-harness.md`** — Phase 24 — Local WordPress Development Harness · `local-dev` · `wp-env` · `harness` · `vite-proxy` · `sqlite` · `cors` · `seed-data`
 - **`readme.md`** — How to Write a WordPress Plugin — Gold Standard Specification · | # | File | Title | Description |
 - **`skeletons/`** — WP-Plugin Reference Skeletons (P7) · **Purpose** — Provide ready-to-copy PHP 8.1+ skeleton classes (enums + REST route registrar) derived from the canonical contract. While spec-only mode is active, these files are normative samples that
@@ -197,6 +197,6 @@ node scripts/spec-hygiene/00-run-all.mjs
 
 ---
 
-*Curated 2026-04-25 — closes batch-21 roll-up. Replaces v1.0.0 scaffold. Aggregates 15 sub-leaves with 227 inherited acceptance
+*Curated 2026-04-25 — closes batch-21 roll-up. 
 
 _… truncated at 17000 chars to fit AI auditor cap …_

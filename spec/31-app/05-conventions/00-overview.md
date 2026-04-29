@@ -45,7 +45,7 @@
 | 30 | [`30-g37-stale-relative-link-gate.md`](./30-g37-stale-relative-link-gate.md) | G-37 — Stale Relative-Link Gate (Algorithm SSOT) | 107 |
 | 31 | [`31-wp-plugin-folder-skeleton.md`](./31-wp-plugin-folder-skeleton.md) | WP-Plugin Folder Skeleton — SSOT | 290 |
 | 32 | [`32-sse-php-implementation.md`](./32-sse-php-implementation.md) | Convention 23 — PHP SSE Implementation Pattern | 343 |
-| 33 | [`33-state-management-architecture.md`](./33-state-management-architecture.md) | State Management Architecture | 277 |
+| 33 | [`33-state-management-architecture.md`](./33-state-management-architecture.md) | State Management Architecture | 279 |
 
 <!-- AUTO-TOC:END -->
 

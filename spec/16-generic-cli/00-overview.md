@@ -229,11 +229,11 @@ $ echo $?
 | 12 | [`13-checklist.md`](./13-checklist.md) | Implementation Checklist | 190 |
 | 13 | [`14-date-formatting.md`](./14-date-formatting.md) | Date Display Format | 59 |
 | 14 | [`15-constants-reference.md`](./15-constants-reference.md) | Constants Reference | 70 |
-| 15 | [`16-verbose-logging/`](./16-verbose-logging/00-overview.md) | Verbose Logging — Overview | subfolder |
+| 15 | [`16-verbose-logging/`](./16-verbose-logging/00-overview.md) | 16 — Verbose Logging — Overview | subfolder |
 | 16 | [`17-progress-tracking.md`](./17-progress-tracking.md) | Progress Tracking | 312 |
 | 17 | [`18-batch-execution.md`](./18-batch-execution.md) | Batch Execution | 293 |
 | 18 | [`19-shell-completion.md`](./19-shell-completion.md) | Shell Completion — Generic CLI Spec | 110 |
-| 19 | [`20-terminal-output-design/`](./20-terminal-output-design/00-overview.md) | Terminal Output Design — Rich CLI Report Formatting | subfolder |
+| 19 | [`20-terminal-output-design/`](./20-terminal-output-design/00-overview.md) | 20 — Terminal Output Design — Rich CLI Report Formatting | subfolder |
 
 <!-- AUTO-TOC:END -->
 

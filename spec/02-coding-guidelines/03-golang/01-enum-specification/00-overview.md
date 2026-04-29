@@ -17,7 +17,7 @@
 | # | File | Title | Lines |
 |---|------|-------|-------|
 | 1 | [`01-enum-pattern.md`](./01-enum-pattern.md) | Enum Pattern | 241 |
-| 2 | [`02-required-methods/`](./02-required-methods/00-overview.md) | Required Methods (Overview) | subfolder |
+| 2 | [`02-required-methods/`](./02-required-methods/00-overview.md) | 02 — Required Methods (Overview) | subfolder |
 | 3 | [`03-folder-structure.md`](./03-folder-structure.md) | Folder Structure | 369 |
 | 4 | [`04-validation-checklist.md`](./04-validation-checklist.md) | Validation Checklist | 266 |
 | 5 | [`05-info-object-pattern.md`](./05-info-object-pattern.md) | Info-Object Pattern for Go Enums | 347 |

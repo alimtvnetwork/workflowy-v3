@@ -16,9 +16,9 @@
 |---|------|-------|-------|
 | 1 | [`01-cross-reference-diagram.md`](./01-cross-reference-diagram.md) | Error Resolution Cross-Reference Diagram | 156 |
 | 2 | [`02-debugging-cheat-sheet.md`](./02-debugging-cheat-sheet.md) | Debugging Cheat Sheet | 302 |
-| 3 | [`03-retrospectives/`](./03-retrospectives/00-overview.md) | Retrospectives | subfolder |
-| 4 | [`04-verification-patterns/`](./04-verification-patterns/00-overview.md) | Verification Patterns | subfolder |
-| 5 | [`05-debugging-guides/`](./05-debugging-guides/00-overview.md) | Debugging Guides | subfolder |
+| 3 | [`03-retrospectives/`](./03-retrospectives/00-overview.md) | 03 — Retrospectives | subfolder |
+| 4 | [`04-verification-patterns/`](./04-verification-patterns/00-overview.md) | 04 — Verification Patterns | subfolder |
+| 5 | [`05-debugging-guides/`](./05-debugging-guides/00-overview.md) | 05 — Debugging Guides | subfolder |
 | 6 | [`06-error-documentation-guideline.md`](./06-error-documentation-guideline.md) | Error Documentation Guideline | 82 |
 
 <!-- AUTO-TOC:END -->
