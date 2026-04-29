@@ -10,12 +10,13 @@
 
 ## Scope
 
-This file pairs every AT row added in `97-acceptance-criteria.md` v1.1.0 (AT-ADR-G04) and v1.2.0 (AT-ADR-G05) with a Given/When/Then I/O fixture. AT-ADR-G01..G03 are pre-existing meta-shape ATs verified by the standing `spec-hygiene` suite and do not need fixtures here (covered by Pattern 1 / Doc-shape in [`../97a-acceptance-criteria-fixtures.md`](../97a-acceptance-criteria-fixtures.md)).
+This file pairs every AT row added in `97-acceptance-criteria.md` v1.1.0 (AT-ADR-G04), v1.2.0 (AT-ADR-G05), and v1.3.0 (AT-ADR-G06) with a Given/When/Then I/O fixture. AT-ADR-G01..G03 are pre-existing meta-shape ATs verified by the standing `spec-hygiene` suite and do not need fixtures here (covered by Pattern 1 / Doc-shape in [`../97a-acceptance-criteria-fixtures.md`](../97a-acceptance-criteria-fixtures.md)).
 
 | AT cluster | Owning ADR | Owning gate(s) | Fixtures below |
 |------------|------------|----------------|----------------|
 | AT-29-D1 / D3 / D4×3 | [ADR-0029](./0029-per-gate-path-ledger-shared-lib.md) | `G-13-LEDGER-USES-SHARED-LIB`, `G-13-LEDGER-PER-GATE-PATH` | §1.1–§1.5 |
 | AT-30-I1..I8 | [ADR-0030](./0030-audit-exemption-manifest.md) | `G-00-AUDIT-EXEMPTION-REVIEW` | §2.1–§2.8 |
+| AT-31-D1..D7 + D5-OVERDUE + PROTOCOL | [ADR-0031](./0031-warn-only-strict-flip-pattern.md) | `G-00-GRADUATION-LEDGER-FRESH`, `G-00-GRADUATION-LEDGER-DATE-DRIFT`, `G-38-AMBIGUOUS-WORDING` | §3.1–§3.9 |
 
 ---
 
