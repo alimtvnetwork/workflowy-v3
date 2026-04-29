@@ -1,6 +1,6 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.17  
+> **Version:** 1.7.18  
 > **Updated:** 2026-04-29 — **batch-18 prose→AT migration:** registered 5 new `G-NS-STATUS-*` sub-gates (`-FRONTMATTER-EXACTLY-ONE`, `-COMPANION-CITES-PARENT`, `-DEPRECATED-CITES-SUCCESSOR`, `-REDIRECT-BODY-CAP`, `-SWEEP-ATOMIC`) covering 6 prose-MUSTs in `spec/01-spec-authoring-guide/22-status-legend.md`. 4 CI tier + 1 DOC-NORM (sweep-atomic is process-only). All sub-rules of existing umbrella `G-NS-STATUS-IN-LEGEND` (CI, WARN-only). Pre-flight namespace check: only 1 sibling `G-NS-STATUS-*` gate registered (the umbrella) — no collisions. Prior: 1.7.14 (batch-17 G-BACKUP-* sub-gates).
 
 - **Total named gates:** 423 (+5 this revision: five `G-NS-STATUS-*`)
