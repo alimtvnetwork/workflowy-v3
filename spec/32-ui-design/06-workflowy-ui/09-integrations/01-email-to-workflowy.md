@@ -1,7 +1,7 @@
 # 01 — Email-to-WorkFlowy
 
 > **Version:** 1.0.0
-> **Status:** 🚫 Deferred to post-v1 (spec authored, not implemented)
+> **Status:** DEFERRED (post-v1; spec authored, not implemented)
 > **Parent:** [`00-overview.md`](./00-overview.md)
 > **Screenshots:** img-54
 

@@ -1,7 +1,7 @@
 # 97 — Acceptance Criteria — Phase 9 Integrations
 
 > **Version:** 1.0.0
-> **Status:** 🚫 Deferred to post-v1 (criteria locked, validation gated on backend choice)
+> **Status:** DEFERRED (post-v1; criteria locked, validation gated on backend choice)
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
 ---

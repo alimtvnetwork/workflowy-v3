@@ -1,7 +1,7 @@
 # 97 — Acceptance Criteria — Phase 10 Mobile / PWA
 
 > **Version:** 1.0.0
-> **Status:** 🚫 Deferred to post-v1 (criteria locked)
+> **Status:** DEFERRED (post-v1; criteria locked)
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
 ---

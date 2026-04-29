@@ -1,7 +1,7 @@
 # 03 — Allow-List & Sender Security
 
 > **Version:** 1.0.0
-> **Status:** 🚫 Deferred to post-v1 (spec authored)
+> **Status:** DEFERRED (post-v1; spec authored)
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
 ---

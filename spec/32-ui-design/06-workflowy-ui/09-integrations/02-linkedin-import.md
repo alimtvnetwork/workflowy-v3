@@ -1,7 +1,7 @@
 # 02 — LinkedIn Import (Read-Only)
 
 > **Version:** 1.0.0
-> **Status:** 🚫 Deferred to post-v1 (Blocker D-1 resolved 2026-04-23)
+> **Status:** DEFERRED (post-v1; Blocker D-1 resolved 2026-04-23)
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
 ---

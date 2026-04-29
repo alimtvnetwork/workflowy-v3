@@ -1,7 +1,7 @@
 # Phase 10 — Mobile / PWA 🚫 DEFERRED
 
 
-> **Status:** 🚫 Deferred to post-v1 (spec authored 2026-04-23, implementation gated on build pipeline + device QA matrix)
+> **Status:** DEFERRED (post-v1; spec authored 2026-04-23, implementation gated on build pipeline + device QA matrix)
 
 ## Keywords
 
