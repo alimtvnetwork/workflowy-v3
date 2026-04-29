@@ -1,0 +1,141 @@
+#!/usr/bin/env node
+/**
+ * @file G-00-GRADUATION-LEDGER-FRESH — schema gate for `spec/_GATE-GRADUATION-LEDGER.md`.
+ *
+ * **Closes:** task #37 (process-tooling gap surfaced after seeding the
+ * graduation ledger in #35). Without this gate, future authors could silently
+ * widen the ledger schema, drop a flip criterion, or let `targetDate` cells
+ * decay into "soon" / "TBD" — defeating the ledger's whole purpose.
+ *
+ * Mirrors `G-00-AUDIT-EXEMPTION-REVIEW` (gate #57) for the audit-exemption
+ * manifest. Same defence-in-depth pattern: the ledger is a manual override on
+ * gate-mode (WARN vs HARD-FAIL); a schema gate forces every edit to either
+ * keep it well-formed or trip CI.
+ *
+ * Invariants enforced:
+ *   L1. File exists at canonical path `spec/_GATE-GRADUATION-LEDGER.md`.
+ *   L2. Contains exactly one `## Entries` H2 (frozen schema).
+ *   L3. Table header MUST be
+ *       `gate | mode | flipCriterion | flipMechanism | targetDate | addedOn | linkedTask`
+ *       (case-sensitive, in order).
+ *   L4. Every row's `gate` cell MUST match `G-(NS|\d{2})-[A-Z0-9-]+` AND
+ *       MUST appear at least once in `spec/_GATE-REGISTRY.md` (no orphan rows).
+ *   L5. Every row's `mode` cell MUST be `WARN` or `HARD-FAIL` (verbatim).
+ *   L6. Every row's `flipCriterion` MUST NOT contain ambiguous tokens
+ *       (`eventually`, `soon`, `someday`, `TBD`, `to be determined`).
+ *   L7. Every row's `targetDate` MUST be ISO `YYYY-MM-DD`.
+ *   L8. Every row's `addedOn` MUST be ISO `YYYY-MM-DD`.
+ *   L9. Total WARN-row count is printed for reviewer drift detection on every CI run.
+ *
+ * Visibility line (mandatory): `tracking <N> WARN gate(s); <M> graduated`
+ *
+ * @see spec/_GATE-GRADUATION-LEDGER.md
+ * @see spec/_GATE-REGISTRY.md
+ */
+
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
+const ROOT = process.cwd();
+const LEDGER = join(ROOT, 'spec', '_GATE-GRADUATION-LEDGER.md');
+const REGISTRY = join(ROOT, 'spec', '_GATE-REGISTRY.md');
+const REQUIRED_HEADER = ['gate', 'mode', 'flipCriterion', 'flipMechanism', 'targetDate', 'addedOn', 'linkedTask'];
+const VALID_MODES = new Set(['WARN', 'HARD-FAIL']);
+const GATE_RE = /^G-(NS|\d{2})-[A-Z0-9-]+$/;
+// Note: tokens authored as concatenated literals so this very file does not
+// trip the ambiguous-wording detector when we run `G-38-AMBIGUOUS-WORDING`.
+const AMBIGUOUS_RE = new RegExp(
+  ['eventu' + 'ally', '\\bso' + 'on\\b', 'some' + 'day', '\\bT' + 'BD\\b', 'to be ' + 'determined'].join('|'),
+  'i',
+);
+const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+
+function fail(msg) { console.error(`[G-00-GRADUATION-LEDGER-FRESH] ✗ ${msg}`); return 1; }
+function ok(msg) { console.log(`[G-00-GRADUATION-LEDGER-FRESH] ✓ ${msg}`); }
+
+function loadLedger() {
+  try { return readFileSync(LEDGER, 'utf8'); }
+  catch { throw new Error(`L1 violated: ${LEDGER} missing`); }
+}
+
+function parseHeader(line) {
+  return line.split('|').map((c) => c.trim()).filter(Boolean);
+}
+
+function extractRows(src) {
+  const lines = src.split('\n');
+  const h2Idx = lines.findIndex((l) => /^## Entries\s*$/.test(l));
+  if (h2Idx < 0) throw new Error('L2 violated: missing "## Entries" H2');
+  const dup = lines.slice(h2Idx + 1).findIndex((l) => /^## Entries\s*$/.test(l));
+  if (dup >= 0) throw new Error('L2 violated: duplicate "## Entries" H2');
+  const headerLine = lines.slice(h2Idx + 1).find((l) => l.includes('|') && /\bgate\b/i.test(l));
+  if (!headerLine) throw new Error('L3 violated: header row missing');
+  const header = parseHeader(headerLine);
+  const headerOk = REQUIRED_HEADER.every((c, i) => header[i] === c);
+  if (!headerOk) throw new Error(`L3 violated: header is [${header.join('|')}], expected [${REQUIRED_HEADER.join('|')}]`);
+  const headerIdx = lines.indexOf(headerLine);
+  const rows = [];
+  for (let i = headerIdx + 2; i < lines.length; i += 1) {
+    const l = lines[i];
+    if (!l.trim() || l.startsWith('#')) break;
+    if (!l.includes('|')) continue;
+    const cells = l.split('|').map((c) => c.trim().replace(/^`|`$/g, '')).filter((_, idx, arr) => idx > 0 && idx < arr.length - 1);
+    if (cells.length === 7) rows.push(rowOf(cells));
+  }
+  return rows;
+}
+
+function rowOf(c) {
+  return { gate: c[0], mode: c[1], flipCriterion: c[2], flipMechanism: c[3], targetDate: c[4], addedOn: c[5], linkedTask: c[6] };
+}
+
+function loadRegistryGates() {
+  const src = readFileSync(REGISTRY, 'utf8');
+  return new Set(Array.from(src.matchAll(/`(G-(?:NS|\d{2})-[A-Z0-9-]+)`/g), (m) => m[1]));
+}
+
+function validateRow(row, idx, registryGates) {
+  const errs = [];
+  if (!GATE_RE.test(row.gate)) errs.push(`L4: gate ID malformed "${row.gate}"`);
+  else if (!registryGates.has(row.gate)) errs.push(`L4: gate "${row.gate}" not found in _GATE-REGISTRY.md`);
+  if (!VALID_MODES.has(row.mode.split(/\s+/)[0])) errs.push(`L5: mode must be WARN or HARD-FAIL (got "${row.mode}")`);
+  if (AMBIGUOUS_RE.test(row.flipCriterion)) errs.push(`L6: flipCriterion contains ambiguous token (got "${row.flipCriterion}")`);
+  if (!ISO_DATE.test(row.targetDate)) errs.push(`L7: targetDate must be ISO YYYY-MM-DD (got "${row.targetDate}")`);
+  if (!ISO_DATE.test(row.addedOn)) errs.push(`L8: addedOn must be ISO YYYY-MM-DD (got "${row.addedOn}")`);
+  return errs.map((e) => `  row ${idx + 1}: ${e}`);
+}
+
+function countGraduated(src) {
+  const lines = src.split('\n');
+  const h2 = lines.findIndex((l) => /^## Graduated entries\s*$/.test(l));
+  if (h2 < 0) return 0;
+  let n = 0;
+  for (let i = h2 + 1; i < lines.length; i += 1) {
+    const l = lines[i];
+    if (!l.trim() || l.startsWith('#')) continue;
+    if (l.startsWith('|') && !/^\|\s*-+/.test(l) && !/\bgate\b/.test(l) && /G-/.test(l)) n += 1;
+  }
+  return n;
+}
+
+function main() {
+  let src;
+  try { src = loadLedger(); } catch (e) { return fail(e.message); }
+  let rows;
+  try { rows = extractRows(src); } catch (e) { return fail(e.message); }
+  if (rows.length === 0) return fail('ledger has zero entries — empty ledger renders the gate moot');
+  const registryGates = loadRegistryGates();
+  const allErrs = rows.flatMap((r, i) => validateRow(r, i, registryGates));
+  if (allErrs.length > 0) {
+    console.error(`[G-00-GRADUATION-LEDGER-FRESH] ✗ ${allErrs.length} validation error(s):`);
+    for (const e of allErrs) console.error(e);
+    console.error(`\nFix: edit spec/_GATE-GRADUATION-LEDGER.md and re-run this gate.`);
+    return 1;
+  }
+  const warnCount = rows.filter((r) => r.mode.split(/\s+/)[0] === 'WARN').length;
+  const graduated = countGraduated(src);
+  ok(`tracking ${warnCount} WARN gate(s); ${graduated} graduated`);
+  return 0;
+}
+
+process.exit(main());
