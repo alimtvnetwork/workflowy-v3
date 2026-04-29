@@ -1,13 +1,13 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.0  
-> **Updated:** 2026-04-29 — **batch-3 prose→AT migration:** registered 4 new G-03-* gates (`G-03-CODE-LOAD-BEARING`, `G-03-FRONTEND-STATUS-PRIMARY`, `G-03-MIDDLEWARE`, `G-03-RETRY-AFTER`, all DOC-NORM) per task #6-batch-3 to provide enforcement bindings for the 9 substantive prose-MUSTs in `spec/03-error-manage/00-overview.md`. Prior: 1.6.9 (G-32-LICENSE-FILES-PRESENT).
+> **Version:** 1.7.1  
+> **Updated:** 2026-04-29 — **batch-4 prose→AT migration:** registered 2 new G-16-* gates (`G-16-CLI-CODE-LOAD-BEARING`, `G-16-FLAG-PRECEDENCE`, both DOC-NORM) per task #6-batch-4 to provide enforcement bindings for substantive prose-MUSTs in `spec/16-generic-cli/00-overview.md`. Prior: 1.7.0 (batch-3 G-03-* gates).
 
-- **Total named gates:** 321 (+4 this revision: `G-03-CODE-LOAD-BEARING`, `G-03-FRONTEND-STATUS-PRIMARY`, `G-03-MIDDLEWARE`, `G-03-RETRY-AFTER`)
+- **Total named gates:** 323 (+2 this revision: `G-16-CLI-CODE-LOAD-BEARING`, `G-16-FLAG-PRECEDENCE`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
 - **CI:** 44
 - **TEST:** 14 (unchanged)
-- **DOC-NORM:** 57 (+4 this revision)
+- **DOC-NORM:** 59 (+2 this revision)
 - **DOC:** 202 (unchanged)
 - **Areas covered:** 37 (unchanged)
 - **Areas covered:** 37 (unchanged)
