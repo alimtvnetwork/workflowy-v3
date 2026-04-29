@@ -1642,7 +1642,7 @@
 | [`99-consistency-report.md`](./99-consistency-report.md) | Consistency Report: Spec Root | 3.1.0 | — |
 | [`folder-structure-root.md`](./folder-structure-root.md) | Folder Structure Root — Redirect | — | — |
 | [`health-dashboard.md`](./health-dashboard.md) | Project-Wide Spec Health Dashboard | — | — |
-| [`licensing-strategy.md`](./licensing-strategy.md) | Licensing Strategy | 1.0.0 | Placeholder |
+| [`licensing-strategy.md`](./licensing-strategy.md) | Licensing Strategy | 1.1.0 | Draft |
 | [`readme.md`](./readme.md) | Specifications Index | 1.1.0 | — |
 | [`spec-index.md`](./spec-index.md) | Spec File Index — Auto-Generated | — | — |
 
