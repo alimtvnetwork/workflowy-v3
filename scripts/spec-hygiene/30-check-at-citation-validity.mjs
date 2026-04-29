@@ -304,7 +304,7 @@ function findRedundantOpenPrefixes(registered, citations) {
   const cited = new Set(citations.map((c) => c.id));
   const out = [];
   for (const [prefix, file] of registered.openPrefixes.entries()) {
-    if (REDUNDANCY_ALLOWLIST.has(prefix)) continue;
+    if (isRedundancyExempt(prefix, file)) continue;
     const citedUnder = [...cited].filter(
       (id) => id.startsWith(prefix) && /^\d+$/.test(id.slice(prefix.length)),
     );
