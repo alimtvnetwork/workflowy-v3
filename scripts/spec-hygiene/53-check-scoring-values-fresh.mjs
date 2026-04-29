@@ -7,7 +7,7 @@
  * underneath has churned.
  *
  * Heuristic (cheap + author-driven, no git introspection):
- *   For every top-level `spec/[0-9][0-9]-*/00-overview.md`:
+ *   For every top-level overview file (spec/NN-x/00-overview.md):
  *     1. Find the canonical Scoring block (heading `^(##|###)\s+Scoring\b`
  *        OR the legacy `^\| Criterion \|` table marker).
  *     2. Within the same file, find the most recent date in:
