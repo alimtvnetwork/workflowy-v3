@@ -13,9 +13,10 @@ type: reference
 | Metric | Value |
 |---|---:|
 | Total AC files scanned | 123 |
-| Canonical `AT-X-NN` occurrences | 2,317 |
-| Legacy `AC-NNN` occurrences | 100 |
-| **File-level conformance** | **113 / 123 = 91.9 %** |
+| Canonical `AT-X-NN` occurrences | 2,387 |
+| Legacy `AC-NNN` occurrences | **0** ✅ |
+| **File-level conformance** | **123 / 123 = 100 %** ✅ |
+| Status | **AT-ID sweep COMPLETE** (2026-04-29) — P1–P6 all closed |
 
 ## File-level breakdown
 
