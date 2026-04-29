@@ -1,7 +1,7 @@
 # State Management Architecture
 
-> **Version:** 1.0.0  
-> **Updated:** 2026-04-27 (UTC+8)  
+> **Version:** 1.1.0  
+> **Updated:** 2026-04-29 (UTC+8) — v1.1.0: D9 + `useOfflineQueueStore` rows fixed to mandate **IndexedDB** for the offline queue per ADR-0021 (localStorage was a v1.0.0 contradiction; AT-STATE-08 already cited the correct rule). v1.0.0: initial AUDIT-AI-06 closure.  
 > **Status:** ✅ SSOT for state orchestration (AUDIT-AI-06 closure)  
 > **Parent:** [`./00-overview.md`](./00-overview.md)
 
@@ -27,7 +27,7 @@ This file is the **single canonical answer** to "where does this piece of state 
 | D6 | **Mirror propagation** | (a) **TanStack Query cache patch** on local edit + (b) **SSE push** for cross-tab/cross-user, with **last-write-wins per the canonical 3-tier comparator `(ServerTs DESC, OwnerId ASC, ItemId ASC)`** ([ADR-0026](../../00-adrs/0026-lww-canonical-tiebreak.md) §D1) | Local edits feel instant (a); cross-session correctness comes from authoritative server stream (b); the 3-tier comparator removes all ambiguity including the `(ts, owner)` second-tie case |
 | D7 | **Optimistic mutations** | Always-on for: rename, complete-toggle, indent/outdent, drag-reorder, tag toggle. **Off** for: share invites, role changes, template apply | Edit-grade ops need <16 ms feel; permission-grade ops are rare and need confirmation |
 | D8 | **Undo/redo** | Local Zustand stack of inverse `Mutation` records, capped at 100 entries per `zoomedItemId` | Per-zoom stack mirrors WorkFlowy's behaviour and bounds memory |
-| D9 | **Offline queue** | Zustand-persisted (`localStorage`) FIFO of pending `Mutation` records, flushed on `online` event | Survives reload; replays in order; idempotent because every mutation has client-generated `MutationId` |
+| D9 | **Offline queue** | Zustand-persisted (**IndexedDB** per [ADR-0021](../../00-adrs/0021-undo-100-offline-queue-unbounded.md) §D2 — `localStorage` is FORBIDDEN) UNBOUNDED FIFO of pending `Mutation` records, flushed on `online` event | Survives reload across browser-storage quota cycles; replays in order; idempotent because every mutation has client-generated `MutationId`. `QuotaExceededError` MUST raise a hard error banner — silent drop is forbidden. |
 
 > **Caveat**: D1, D2, D6 are sensible industry defaults but **the user has not yet explicitly confirmed them**. Until confirmation, treat them as DRAFT. If the user picks differently (e.g. Jotai), only the libraries change — the **state-ownership map** below is library-agnostic.
 
@@ -64,7 +64,7 @@ The single source of truth for *where* every piece of state lives. Aligned with 
 | `useUiStore` | `sidebarOpen`, `searchOpen`, `cmdKOpen`, `currentZoomId`, `zoomHistory`, `zoomIndex`, `viewMode[zoomId]`, `focusedItemId`, `expandOverrides`, `selection` | session | localStorage (whitelist: `sidebarOpen`, `viewMode`) |
 | `useEditorStore` | `textSelection`, `formattingToolbarPos`, `dragSource`, `dropTarget`, `dropPosition`, `pendingMutationCount` | session | no |
 | `useUndoStore` | per-zoom undo/redo stacks (capped 100), `cursor` | session | no |
-| `useOfflineQueueStore` | FIFO of `Mutation` records with `mutationId`, `kind`, `payload`, `createdAt` | persistent | localStorage |
+| `useOfflineQueueStore` | FIFO of `Mutation` records with `mutationId`, `kind`, `payload`, `createdAt` | persistent | **IndexedDB** (UNBOUNDED, per [ADR-0021](../../00-adrs/0021-undo-100-offline-queue-unbounded.md); `localStorage` FORBIDDEN) |
 | `useAuthStore` | `user`, `accessToken`, `expiresAt`, `mfaPending` | session | sessionStorage (token only) |
 | `useRealtimeStore` | `sseConnected`, `lastHeartbeat`, `reconnectAttempt`, `cursor` | session | no |
 
