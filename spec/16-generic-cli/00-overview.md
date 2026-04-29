@@ -207,7 +207,7 @@ $ echo $?
 | `CLI-16-08` | `8` | Validation failed (e.g. negative `--limit`). |
 | `CLI-16-10` | `10` | Batch finished with mixed outcomes. |
 
-*All values are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings.*
+*All values are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings (gate `G-16-CLI-CODE-LOAD-BEARING`).*
 
 <!-- AUTO-TOC:START -->
 
