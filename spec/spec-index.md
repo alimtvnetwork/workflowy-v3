@@ -1625,7 +1625,7 @@
 | File | Title | Version | Status |
 |------|-------|---------|--------|
 | [`_AUDIT-EXEMPTIONS.md`](./_AUDIT-EXEMPTIONS.md) | Spec Audit — Heuristic Exemptions Manifest | 1.0.0 | Active |
-| [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md) | Gate Graduation Ledger | 1.0.0 | Active |
+| [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md) | Gate Graduation Ledger | 1.1.0 | Active |
 | [`_GATE-REGISTRY.md`](./_GATE-REGISTRY.md) | Gate Registry — Master Index of `G-*` Compliance Gates | 1.6.8 | — |
 | [`_LEDGER-G-00-AT-FIX-COMPANION-SHAPE-BASELINE.md`](./_LEDGER-G-00-AT-FIX-COMPANION-SHAPE-BASELINE.md) | Ledger — `G-00-AT-FIX-COMPANION-SHAPE` Baseline Allow-list | 1.0.0 | ACTIVE |
 | [`_LEDGER-G-13-BACKLINK-EXEMPT.md`](./_LEDGER-G-13-BACKLINK-EXEMPT.md) | Ledger — `G-13-FIXTURE-AS-SPEC-SHAPE` Phase-4 Backlink Exemptions | — | Live |
