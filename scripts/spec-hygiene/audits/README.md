@@ -18,7 +18,7 @@ Counts unformalized prose-MUSTs (MUST/SHALL assertions outside `AT-…` row bloc
 - Excludes blockquoted lines (`> …`): citations of other docs, not new MUSTs.
 - Excludes RFC-2119 priority cells (`| F1 | requirement | MUST |`): tag-style priority markers in tabular requirements convention.
 
-**Authoritative output (2026-04-29, v6):** 547 prose-MUSTs across 254 files.
+**Authoritative output (2026-04-29, v6):** 539 prose-MUSTs across 253 files.
 This is the working baseline for spec-task #6 (prose→AT migration).
 
 **Methodology history** (see `spec/AUDIT-FINDINGS-LEDGER.md`):
