@@ -1,49 +1,42 @@
-# Audit — G-00-OVERVIEW-AI-CONTRACT-COMPLETE
+---
+gate: G-00-OVERVIEW-AI-CONTRACT-COMPLETE
+runner: scripts/spec-hygiene/54-check-ai-contract-complete.mjs
+slot: 54
+created: 2026-04-29
+status: WARN-only for Rules 3–5 (Rules 1+2 hard-fail from day 1)
+ssot: spec/01-spec-authoring-guide/18-ai-contract-template.md
+---
 
-**Date:** 2026-04-29
-**Task:** Lock the AI Contract body schema so `…-PRESENT` cannot be gamed by an empty heading.
-
-## Why
-
-`G-00-OVERVIEW-AI-CONTRACT-PRESENT` (minted earlier today) only checks that an `## AI Contract` heading exists. A regression that strips the body but leaves the heading would PASS the presence gate. The trio's content-completeness layer was missing.
-
-## Schema (from `18-ai-contract-template.md`)
-
-Five mandatory subsections in canonical order:
-
-1. `**Purpose**` — single sentence (≤25 words)
-2. `**Audience**` — single sentence (≤25 words)
-3. `**Expected AI Output**` — paths, not prose
-4. `**Out of Scope**` — bullets with markdown links to owning sections
-5. `**Definition of Done**` — bullets citing `AT-*` IDs / `G-*` gates / script paths
+# Audit — `G-00-OVERVIEW-AI-CONTRACT-COMPLETE`
 
 ## Baseline (2026-04-29)
 
-| Tier | Files | Rule 1+2 (presence + order) | Rules 3–5 (body quality) |
-|------|------:|----------------------------:|-------------------------:|
-| Top-level (`spec/[0-9][0-9]-*/00-overview.md`) | 25 | 25/25 ✅ | not yet baselined (WARN) |
-| Sub-overview | 125 | scope-exempt (Authoring rule §6) | scope-exempt |
+| Rule | Description | Tier | Baseline |
+|---|---|---|---:|
+| 1 | All 5 subsections present (Purpose, Audience, Expected AI Output, Out of Scope, Definition of Done) | hard-fail | **0 / 25 fail** ✅ |
+| 2 | Canonical order | hard-fail | **0 / 25 fail** ✅ |
+| 3 | Non-empty bodies (≥10 chars) | WARN | **0 WARN** ✅ |
+| 4 | Every Out-of-Scope bullet contains a markdown link | WARN | **29 WARN** across 14 files |
+| 5 | Every DoD bullet cites `AT-*`, `G-*`, `scripts/…`, or `node …` | WARN | **36 WARN** across ~20 files |
 
-Verified via shell sweep — every top-level overview carries all 5 bold-prefix lines.
+**Total baseline noise: 65 WARNs.** Sentinel-marker regex confirmed all top-level overviews carry the canonical 5-subsection schema in canonical order from day 1 (no Rule 1/2 promotion gap).
 
-Gate ships hard-fail rules 1+2 from day 1, zero violations. Rules 3–5 ship as WARN-only until a first content-quality sweep is scoped (most likely candidates for body-quality issues: `Definition of Done` bullets that read like prose without an `AT-*` citation).
+## Promotion criteria
 
-## Trio status
+`PROMOTED_HARDFAIL` flips `true` (Task #17 in roadmap) once baseline WARN count
+drops to **0** for Rules 3–5. Recommended drain order:
+1. Rule 4 (29 WARNs, mechanical: convert path mentions to markdown links).
+2. Rule 5 (36 WARNs, requires authoring AT-IDs or G-gates per DoD bullet).
+3. Promote.
 
-| Layer | Gate | Aspect | Tier |
-|-------|------|--------|------|
-| 1 (presence) | G-09-OVERVIEW-H1-MATCHES-FOLDER-INDEX | H1 numeric prefix | hard-fail (top + sub) |
-| 1 (presence) | G-00-OVERVIEW-SCORING-TABLE-PRESENT | Scoring section | hard-fail (top) |
-| 1 (presence) | G-00-OVERVIEW-AI-CONTRACT-PRESENT | AI Contract heading | hard-fail (top) + WARN (sub) |
-| 2 (completeness) | **G-00-OVERVIEW-AI-CONTRACT-COMPLETE** | AI Contract body schema | hard-fail rules 1+2 (top); WARN rules 3–5 (top); exempt (sub) |
+## Carve-outs
 
-## Future
+- Sub-overviews (`spec/NN-x/MM-y/00-overview.md`) out of scope per Authoring rule §6.
+- Fenced code blocks stripped before scanning (template file `18-ai-contract-template.md` doesn't trip the gate).
 
-- `G-00-OVERVIEW-SCORING-TABLE-COMPLETE` would mirror this for Scoring rows (enforce `AI Confidence`, `Ambiguity`, `Health Score` row presence). Deferred until canonical scoring schema is ratified.
-- Promotion of rules 3–5 to hard-fail after first content-quality sweep.
+## Cross-references
 
-## Exempt zones
-
-- Fenced code blocks (a `**Purpose**` line inside a `\`\`\`` fence is template syntax, not real subsection presence).
-- `spec/01-spec-authoring-guide/18-ai-contract-template.md` itself (the template uses these tokens inside example blocks; gate scope is overviews only).
-- `spec/00-adrs/` per-ADR files (scope is `spec/[0-9][0-9]-*/00-overview.md`, not per-ADR files).
+- SSOT: `spec/01-spec-authoring-guide/18-ai-contract-template.md`
+- Sibling Layer-2 gates: `G-00-OVERVIEW-SCORING-TABLE-COMPLETE`, `G-00-OVERVIEW-SCORING-VALUES-FRESH`
+- Layer-1 sibling: `G-00-OVERVIEW-AI-CONTRACT-PRESENT` (heading-existence only)
+- Roadmap entry: Task #17 (promote Rules 3–5 WARN→hard-fail)

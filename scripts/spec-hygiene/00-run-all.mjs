@@ -43,6 +43,7 @@ const checks = [
   "scripts/spec-hygiene/46-check-at-citation-completeness.mjs",
   "scripts/spec-hygiene/52-check-adr-consequences-xlink.mjs",
   "scripts/spec-hygiene/53-check-scoring-values-fresh.mjs",
+  "scripts/spec-hygiene/54-check-ai-contract-complete.mjs",
   "scripts/spec-hygiene/04-generate-index.mjs",
 ];
 
