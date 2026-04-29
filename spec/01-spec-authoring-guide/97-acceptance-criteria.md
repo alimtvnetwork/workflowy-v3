@@ -1,7 +1,7 @@
 # Spec Authoring Guide — Acceptance Criteria
 
-> **Version:** 3.1.0  
-> **Updated:** 2026-04-16
+> **Version:** 3.2.0  
+> **Updated:** 2026-04-29 — renamed 4 section headers `AC-01..04` → `AT-SPECAUTHORING-G01..G04` and 18 row IDs `AC-001..018` → `AT-SPECAUTHORING-001..018` (audit task #20, P3 hot-spot closed). Cascading refs in `00-overview.md` updated; template-example IDs in `03-required-files.md` and `04-cli-module-template.md` migrated to `AT-EXAMPLE-NNN`. **22 active legacy IDs migrated; new `AT-SPECAUTHORING-` namespace registered.**
 
 ---
 
@@ -11,49 +11,49 @@
 
 ---
 
-## AC-01: Folder Structure & Required Files
+## AT-SPECAUTHORING-G01: Folder Structure & Required Files
 
 | # | Criterion | Source |
 |---|-----------|--------|
-| AC-001 | Every spec module has `00-overview.md` at root | `03-required-files.md` |
-| AC-002 | Every spec module has `99-consistency-report.md` at root | `03-required-files.md` |
-| AC-003 | CLI modules follow 3-folder pattern (`01-backend/`, `02-frontend/`, `03-deploy/`) | `04-cli-module-template.md` |
-| AC-004 | Subfolders with 3+ files include their own `00-overview.md` | `03-required-files.md` |
+| AT-SPECAUTHORING-001 | Every spec module has `00-overview.md` at root | `03-required-files.md` |
+| AT-SPECAUTHORING-002 | Every spec module has `99-consistency-report.md` at root | `03-required-files.md` |
+| AT-SPECAUTHORING-003 | CLI modules follow 3-folder pattern (`01-backend/`, `02-frontend/`, `03-deploy/`) | `04-cli-module-template.md` |
+| AT-SPECAUTHORING-004 | Subfolders with 3+ files include their own `00-overview.md` | `03-required-files.md` |
 
 ---
 
-## AC-02: Naming Conventions
+## AT-SPECAUTHORING-G02: Naming Conventions
 
 | # | Criterion | Source |
 |---|-----------|--------|
-| AC-005 | All files use lowercase kebab-case naming | `02-naming-conventions.md` |
-| AC-006 | All folders use lowercase kebab-case naming | `02-naming-conventions.md` |
-| AC-007 | All spec files have unique numeric sequence prefixes within their folder | `02-naming-conventions.md` |
-| AC-008 | Reserved prefixes (00, 97, 98, 99) used only for their designated purposes | `02-naming-conventions.md` |
+| AT-SPECAUTHORING-005 | All files use lowercase kebab-case naming | `02-naming-conventions.md` |
+| AT-SPECAUTHORING-006 | All folders use lowercase kebab-case naming | `02-naming-conventions.md` |
+| AT-SPECAUTHORING-007 | All spec files have unique numeric sequence prefixes within their folder | `02-naming-conventions.md` |
+| AT-SPECAUTHORING-008 | Reserved prefixes (00, 97, 98, 99) used only for their designated purposes | `02-naming-conventions.md` |
 
 ---
 
-## AC-03: Overview Content Standards
+## AT-SPECAUTHORING-G03: Overview Content Standards
 
 | # | Criterion | Source |
 |---|-----------|--------|
-| AC-009 | Every `00-overview.md` includes Version and Updated metadata | `00-overview.md` |
-| AC-010 | Every `00-overview.md` includes AI Confidence score | `00-overview.md` |
-| AC-011 | Every `00-overview.md` includes Ambiguity score | `00-overview.md` |
-| AC-012 | Every `00-overview.md` includes Keywords section | `00-overview.md` |
-| AC-013 | Every `00-overview.md` includes Scoring table | `00-overview.md` |
-| AC-014 | Every `00-overview.md` includes numbered file inventory table | `00-overview.md` |
-| AC-015 | Every `00-overview.md` includes Cross-References table | `00-overview.md` |
+| AT-SPECAUTHORING-009 | Every `00-overview.md` includes Version and Updated metadata | `00-overview.md` |
+| AT-SPECAUTHORING-010 | Every `00-overview.md` includes AI Confidence score | `00-overview.md` |
+| AT-SPECAUTHORING-011 | Every `00-overview.md` includes Ambiguity score | `00-overview.md` |
+| AT-SPECAUTHORING-012 | Every `00-overview.md` includes Keywords section | `00-overview.md` |
+| AT-SPECAUTHORING-013 | Every `00-overview.md` includes Scoring table | `00-overview.md` |
+| AT-SPECAUTHORING-014 | Every `00-overview.md` includes numbered file inventory table | `00-overview.md` |
+| AT-SPECAUTHORING-015 | Every `00-overview.md` includes Cross-References table | `00-overview.md` |
 
 ---
 
-## AC-04: Cross-References & Validation
+## AT-SPECAUTHORING-G04: Cross-References & Validation
 
 | # | Criterion | Source |
 |---|-----------|--------|
-| AC-016 | All cross-references use relative paths (never root-relative or absolute) | `08-cross-references.md` |
-| AC-017 | All linked files include `.md` extension | `08-cross-references.md` |
-| AC-018 | Zero broken links reported by dashboard scanner | `08-cross-references.md` |
+| AT-SPECAUTHORING-016 | All cross-references use relative paths (never root-relative or absolute) | `08-cross-references.md` |
+| AT-SPECAUTHORING-017 | All linked files include `.md` extension | `08-cross-references.md` |
+| AT-SPECAUTHORING-018 | Zero broken links reported by dashboard scanner | `08-cross-references.md` |
 
 ---
 

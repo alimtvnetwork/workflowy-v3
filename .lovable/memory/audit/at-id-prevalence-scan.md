@@ -108,3 +108,27 @@ Re-run `/tmp/at_id_scan.py` (logic embedded in 2026-04-29 conversation). Inputs:
 | P2 | `02-coding-guidelines/97-acceptance-criteria.md` | 27 |
 | P3 | `01-spec-authoring-guide/97-acceptance-criteria.md` | 22 |
 | **Total** | **3 files** | **83 IDs** |
+
+---
+
+## Update 2026-04-29 (P3 closed)
+
+**Action:** Migrated 22 active legacy IDs in `01-spec-authoring-guide/97-acceptance-criteria.md`:
+- 4 section headers `AC-01..04` → `AT-SPECAUTHORING-G01..G04` (G = group)
+- 18 row IDs `AC-001..018` → `AT-SPECAUTHORING-001..018`
+
+**Cascading edits:**
+- `00-overview.md` line 27: AC-001..018 reference → AT-SPECAUTHORING-001..018
+- `03-required-files.md` lines 125–134: template-example IDs → `AT-EXAMPLE-001..003` (so authors copy the canonical form, not the legacy one)
+- `04-cli-module-template.md` line 152: same template-example treatment
+
+**Lesson:** Template/example pages create a *third* category beyond active-IDs and historical-citations: **forward-looking exemplars**. The right migration is to update them to the canonical form (`AT-EXAMPLE-NNN`) so future authors copy correctly — *not* to leave them legacy and *not* to use real namespaces.
+
+**Real remaining surface for task #2 (after P3 closed):**
+| Priority | File | Active legacy IDs |
+|---|---|---:|
+| P1 | `07-design-system/97-acceptance-criteria.md` | 34 |
+| P2 | `02-coding-guidelines/97-acceptance-criteria.md` | 27 |
+| **Total** | **2 files** | **61 IDs** |
+
+**Cumulative progress on task #2:** 39 of 100 original active IDs migrated (39%).

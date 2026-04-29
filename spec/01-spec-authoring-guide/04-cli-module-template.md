@@ -149,7 +149,7 @@ Consolidate all testable requirements from backend, frontend, and deploy specs:
 ```markdown
 | # | Criterion | Source |
 |---|-----------|--------|
-| AC-001 | CLI starts daemon in background mode within 2 seconds | `01-backend/01-architecture.md` |
+| AT-EXAMPLE-001 | CLI starts daemon in background mode within 2 seconds | `01-backend/01-architecture.md` |
 ```
 
 ### Step 7: Create Consistency Reports

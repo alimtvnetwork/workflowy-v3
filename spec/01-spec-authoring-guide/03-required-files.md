@@ -122,16 +122,14 @@ The health dashboard scores each module on four equally weighted criteria:
 
 | # | Criterion | Source |
 |---|-----------|--------|
-| AC-001 | [Specific, testable requirement] | `01-component.md` |
-| AC-002 | [Another requirement] | `01-component.md` |
-
----
+| AT-EXAMPLE-001 | [Specific, testable requirement] | `01-component.md` |
+| AT-EXAMPLE-002 | [Another requirement] | `01-component.md` |
 
 ## Area 2: [Name]
 
 | # | Criterion | Source |
 |---|-----------|--------|
-| AC-003 | [Requirement] | `02-other.md` |
+| AT-EXAMPLE-003 | [Requirement] | `02-other.md` |
 ```
 
 ### 98-changelog.md Template
