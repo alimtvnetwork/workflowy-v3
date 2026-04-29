@@ -7,7 +7,7 @@
 
 ## Overview
 
-18 testable criteria across 4 areas covering spec structure, naming, content, and tooling.
+19 testable criteria across 4 areas covering spec structure, naming, content, and tooling.
 
 ---
 
@@ -44,6 +44,7 @@
 | AT-SPECAUTHORING-013 | Every `00-overview.md` includes Scoring table | `00-overview.md` |
 | AT-SPECAUTHORING-014 | Every `00-overview.md` includes numbered file inventory table | `00-overview.md` |
 | AT-SPECAUTHORING-015 | Every `00-overview.md` includes Cross-References table | `00-overview.md` |
+| AT-SPECAUTHORING-019 | Every top-level `00-overview.md` includes an `## AI Contract` section | `18-ai-contract-template.md` |
 
 ---
 
@@ -189,3 +190,18 @@ Fixtures for every AT row in this file are covered by the global P2g sweep — s
 - **Exempt zones:** fenced code blocks (Scoring inside a code fence does not count as compliance — must be a real section in document body).
 - **Failure mode:** CI emits `<file>: missing Scoring section — every overview MUST carry one of: '## Scoring', '### Scoring', '**Scoring**', or a '| Criterion |' table header. See G-00-OVERVIEW-SCORING-TABLE-PRESENT.` and exits non-zero.
 - **Future companion:** a `G-00-OVERVIEW-SCORING-TABLE-COMPLETE` gate could later enforce specific row presence (e.g. `AI Confidence`, `Ambiguity`, `Health Score`) — deferred until canonical scoring schema is ratified.
+
+---
+
+## Gate `G-00-OVERVIEW-AI-CONTRACT-PRESENT` (CI, hard-fail; WARN-only at sub-overview tier)
+
+- **Purpose:** Every top-level `spec/[0-9][0-9]-*/00-overview.md` MUST carry an `## AI Contract` section so the section's machine-readable input/output/invariants contract is explicit and discoverable. Without this gate, refactors silently lose the AI Contract block and AI implementability regresses (the contract becomes implicit, ungated). Pairs with `G-00-OVERVIEW-SCORING-TABLE-PRESENT` (scoring) and `G-09-OVERVIEW-H1-MATCHES-FOLDER-INDEX` (H1) as the third pillar of the **overview-root contract** trio.
+- **Rule:** the file MUST contain at least one heading line matching `^(##|###)\s+AI Contract\b`. The bare phrase elsewhere in body prose does NOT count — must be a real section heading.
+- **Scope (hard-fail tier):** all 25 top-level `spec/[0-9][0-9]-*/00-overview.md`.
+- **Scope (WARN-only tier):** sub-overview files (`spec/**/<deeper>/00-overview.md`, 125 files). Many sub-sections legitimately defer their AI Contract to the parent overview; gate emits a warning only at this tier so the signal surfaces without blocking. Promotion to hard-fail deferred until a sub-overview AI-Contract sweep is scoped.
+- **Baseline (2026-04-29):** 25 of 25 top-level already compliant — gate ships hard-fail from day 1 with zero violations. Sub-overview baseline: ~2/125 (warn tier only).
+- **Exempt zones:** fenced code blocks (an `## AI Contract` heading inside a code fence does not count as compliance — must be a real section in document body); `spec/00-adrs/` per-ADR files (the per-ADR files use ADR-specific structure; only that folder's own `00-overview.md` is in scope).
+- **SSOT for contract template:** [`./18-ai-contract-template.md`](./18-ai-contract-template.md).
+- **Failure mode (hard-fail tier):** CI emits `<file>: missing AI Contract section — every top-level overview MUST carry an '## AI Contract' (or '### AI Contract') heading. See G-00-OVERVIEW-AI-CONTRACT-PRESENT and 18-ai-contract-template.md.` and exits non-zero.
+- **Failure mode (warn tier):** CI emits `<file>: sub-overview missing AI Contract section (WARN-only) — see G-00-OVERVIEW-AI-CONTRACT-PRESENT.` and continues.
+- **Future companion:** a `G-00-OVERVIEW-AI-CONTRACT-COMPLETE` gate could later enforce specific sub-headings (`Inputs`, `Outputs`, `Invariants`, `Failure modes`) — deferred until canonical contract schema is ratified.
