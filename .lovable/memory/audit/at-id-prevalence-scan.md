@@ -94,3 +94,17 @@ Re-run `/tmp/at_id_scan.py` (logic embedded in 2026-04-29 conversation). Inputs:
 | **Total active** | **4 files** | **90 IDs** |
 
 (Down from 100; the 6 in `03-error-manage/` are now closed; the 4 in `02-coding-guidelines/01-cross-language/` are inline-code citations and should not be touched.)
+
+---
+
+## Update 2026-04-29 (P4 closed)
+
+**Action:** Renamed 7 active `AC-NN` → `AT-CGCS-NN` in `spec/02-coding-guidelines/07-csharp/97-acceptance-criteria.md`. New namespace `AT-CGCS-` registered (now 164 prefixes). No condensed-overview cascade required (csharp section in `00-overview-condensed.md` uses a separate `AC-0N` series for the parent rollup, not csharp-specific IDs).
+
+**Real remaining surface for task #2 (after P4 closed):**
+| Priority | File | Active legacy IDs |
+|---|---|---:|
+| P1 | `07-design-system/97-acceptance-criteria.md` | 34 |
+| P2 | `02-coding-guidelines/97-acceptance-criteria.md` | 27 |
+| P3 | `01-spec-authoring-guide/97-acceptance-criteria.md` | 22 |
+| **Total** | **3 files** | **83 IDs** |
