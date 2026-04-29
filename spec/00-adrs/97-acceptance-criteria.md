@@ -1,7 +1,7 @@
 # ADRs — Acceptance Criteria
 
 > **Version:** 1.9.0
-> **Created:** 2026-04-29 — closes G-08 acceptance-coverage gap (P0 quick-win). **Updated:** 2026-04-29 — v1.1.0..v1.4.0 added AT-ADR-G04..G07; v1.5.0 G08 (ADR-0025); v1.6.0 G09 (ADR-0015); v1.7.0 G10 (ADR-0016); v1.8.0 G11 (ADR-0017); v1.9.0 G12 (ADR-0020); v1.10.0 G13 (ADR-0021); v1.11.0 G14 (ADR-0024) — F-AUDIT-21 CLOSED 7/7; **v1.12.0** appended F-AUDIT-15 closure note (task #2) — empirical density check on 7 v5-flagged scopes returns 0.00% stub markers across all of them; F-AUDIT-15 is a false-positive cascade of the same pre-#44c parser bug as F-AUDIT-25 and is CLOSED.
+> **Created:** 2026-04-29 — closes G-08 acceptance-coverage gap (P0 quick-win). **Updated:** 2026-04-29 — v1.1.0..v1.4.0 added AT-ADR-G04..G07; v1.5.0 G08 (ADR-0025); v1.6.0 G09 (ADR-0015); v1.7.0 G10 (ADR-0016); v1.8.0 G11 (ADR-0017); v1.9.0 G12 (ADR-0020); v1.10.0 G13 (ADR-0021); v1.11.0 G14 (ADR-0024) — F-AUDIT-21 CLOSED 7/7; v1.12.0 appended F-AUDIT-15 closure note (task #2); **v1.13.0** added AT-NS-G15 (4 rows AT-NS-SCOPING-*) ratifying `spec/00-scoping.md` corpus boundary SSOT — closes **F-AUDIT-28** (v6 audit MED, +3).
 > **Status:** ✅ SSOT — testable acceptance criteria for the ADR governance scope.
 
 > _Fixture: N/A — pure narrative reference, not a testable criterion._
