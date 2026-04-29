@@ -57,7 +57,7 @@
 
 ## Hard Rules — Enforcement Matrix
 
-Every rule below is **gate-enforced**. The AI MUST NOT propose code that violates any of them.
+Every rule below is **gate-enforced**. The AI MUST NOT propose code that violates any of them (gate G-CG-HARD-RULES).
 
 | # | Rule | Gate | Severity |
 |---|---|---|---|
@@ -65,8 +65,8 @@ Every rule below is **gate-enforced**. The AI MUST NOT propose code that violate
 | R2 | Functions take **at most 3 positional parameters**. Use an options object beyond that. | `max-params: ["error", 3]` + `phpstan-strict-rules`. | Error. |
 | R3 | No nested `if` — flatten via guard clauses or extract a helper. | `sonarjs/no-nested-conditional` + custom PHP rule. | Error. |
 | R4 | No `else` / `else if` — return early instead. | `no-else-return` (with custom extension to ban `else if`). | Error. |
-| R5 | A function's logic body MUST be ≤ **15 lines** (excluding signature, braces, blank lines). | Custom ESLint rule `local/max-logic-lines`. | Error. |
-| R6 | Guard clauses MUST be **positive** — `if (!x) return` not `if (x) { … } else …`. | Custom ESLint rule `local/positive-guards`. | Error. |
+| R5 | A function's logic body MUST be ≤ **15 lines** (excluding signature, braces, blank lines) (gate G-CG-R5-MAX-LOGIC-LINES). | Custom ESLint rule `local/max-logic-lines`. | Error. |
+| R6 | Guard clauses MUST be **positive** — `if (!x) return` not `if (x) { … } else …` (gate G-CG-R6-POSITIVE-GUARDS). | Custom ESLint rule `local/positive-guards`. | Error. |
 | R7 | No `switch` statements — use a dispatch object/`Map<key, handler>`. | `no-restricted-syntax: SwitchStatement`. | Error. |
 | R8 | Every exported function has an explicit return type. | `@typescript-eslint/explicit-function-return-type`. | Error. |
 | R9 | SQLite tables, columns, and indexes are **PascalCase**. Tables singular (`Item`, not `Items_tbl`). | Migration linter `G-04-NAMING`. | Error. |
@@ -74,7 +74,7 @@ Every rule below is **gate-enforced**. The AI MUST NOT propose code that violate
 
 ## Bad / Good Code Pairs
 
-Each pair below is the canonical example for the cited rule. Fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these snippets verbatim.
+Each pair below is the canonical example for the cited rule. Fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these snippets verbatim (gate G-CG-FIXTURE-CITE-VERBATIM).
 
 ### R1 — No `any`
 
@@ -255,7 +255,7 @@ export function onSave(item: Item): void {
 
 ## Anti-Patterns
 
-The AI MUST NOT:
+The AI MUST NOT (gate G-CG-AI-ANTIPATTERN-FORBIDDEN):
 
 | # | Anti-pattern | Why it fails | Gate that catches it |
 |---|---|---|---|
@@ -265,7 +265,7 @@ The AI MUST NOT:
 | 4 | Introduce a `switch` "for performance" | Premature optimization; dispatch tables are O(1) too. | `no-restricted-syntax: SwitchStatement` (R7). |
 | 5 | Replace a guard with a ternary that hides early-return intent | Reduces readability; breaks line-counter heuristics. | Code review checklist (`G-02-NO-RETURN-TERNARY`). |
 
-*All R# ids are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite them by `R<N>`.*
+*All R# ids are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite them by `R<N>` (gate G-CG-FIXTURE-CITE-VERBATIM).*
 
 <!-- AUTO-TOC:START -->
 
@@ -487,4 +487,4 @@ Coding guideline rules in this section are load-bearing because they are ratifie
 - **[ADR-0002 — WordPress plugin + PHP 8.1+ + SQLite](../00-adrs/0002-wp-plugin-php-sqlite-backend.md)** (`Accepted` 2026-04-28) — anchors the PHP 8.1+ floor, SQLite-flavoured DDL, and the WP-plugin folder skeleton conventions referenced from this section.
 - **[ADR-0001 — Singular DDL vs plural prose](../00-adrs/0001-singular-ddl-vs-plural-prose.md)** (`Accepted` 2026-04-28) — anchors the singular-PascalCase identifier rule that all guideline examples assume.
 
-Strict-TS rules (zero `any`, max 3 params, no nested `if`s, 15-line logic limit, pure positive guard clauses) and the SQLite naming rules **MUST NOT** be relaxed without a new ADR superseding the relevant one. See [`spec/00-adrs/00-overview.md`](../00-adrs/00-overview.md).
+Strict-TS rules (zero `any`, max 3 params, no nested `if`s, 15-line logic limit, pure positive guard clauses) and the SQLite naming rules **MUST NOT** be relaxed without a new ADR superseding the relevant one (gate G-CG-ADR-REQUIRED-TO-RELAX). See [`spec/00-adrs/00-overview.md`](../00-adrs/00-overview.md).
