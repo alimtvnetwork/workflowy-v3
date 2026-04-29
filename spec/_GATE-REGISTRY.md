@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.6  
-> **Updated:** 2026-04-29 — **batch-9 prose→AT migration:** registered new **Domain-HLPIN (Highlighter Dependency Pin)** subsection with 7 `G-HLPIN-*` gates (1 umbrella `G-HLPIN-PIN` CI + 4 sub-rule CI gates `-LOCKFILE-MAJOR`/`-IMPORT-PATHS`/`-NO-VENDOR-CSS`/`-CI-BUNDLE-BUDGET` + 2 DOC-NORM convention gates `-USE-HSL-TOKENS`/`-UPGRADE-MAJOR-SPEC-PR`). All 7 already AT-bound (`AT-HLPIN-01..08`). Prior: 1.7.5 (batch-8 G-CG-* gates).
+> **Version:** 1.7.7  
+> **Updated:** 2026-04-29 — **batch-10 prose→AT migration:** registered new **Domain-AUI (Admin-UI Patterns)** subsection with 9 `G-AUI-*` gates (1 umbrella `G-AUI-MISC` DOC-NORM + 5 CI sub-rules `-A11Y-TH-SCOPE`/`-A11Y-LABEL-FOR`/`-A11Y-INPUT-TYPE`/`-A11Y-DASHICON-WRAP`/`-A11Y-INTERACTIVE-TAG` + 3 DOC-NORM `-PARTIAL-DOCBLOCK`/`-PARTIAL-UNSET`/`-A11Y-REQUIRED-MARK`). Prior: 1.7.6 (batch-9 G-HLPIN-* gates).
 
-- **Total named gates:** 359 (+7 this revision: seven `G-HLPIN-*`)
+- **Total named gates:** 368 (+9 this revision: nine `G-AUI-*`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
-- **CI:** 57 (+5 this revision)
+- **CI:** 62 (+5 this revision)
 - **TEST:** 14 (unchanged)
-- **DOC-NORM:** 82 (+2 this revision)
+- **DOC-NORM:** 86 (+4 this revision)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 42 (+1: Domain-HLPIN)
+- **Areas covered:** 43 (+1: Domain-AUI)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
@@ -597,6 +597,22 @@
 | `G-HLPIN-USE-HSL-TOKENS` | **DOC-NORM** | [`spec/09-code-block-system/11-highlighter-dependency-pin.md`](./09-code-block-system/11-highlighter-dependency-pin.md) | Highlighter token coloring MUST use project HSL tokens; the complete `.hljs-*` → CSS-variable mapping is the single responsibility of [`05-styling.md`](./09-code-block-system/05-styling.md). Satisfies `AT-CODEBLOCKSYSTEM-10` (always-dark) and `AT-CODEBLOCKSYSTEM-11` (HSL-only). |
 | `G-HLPIN-CI-BUNDLE-BUDGET` | **CI** | [`spec/09-code-block-system/11-highlighter-dependency-pin.md`](./09-code-block-system/11-highlighter-dependency-pin.md) | CI MUST fail if `dist/assets/highlighter-*.js` exceeds 100 KB minified (≤ 35 KB gzipped). Enforced by the `Verify highlighter bundle budget` step in the `package` job of `spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/02-github-actions-workflow.md`. AT: `AT-HLPIN-07`. |
 | `G-HLPIN-UPGRADE-MAJOR-SPEC-PR` | **DOC-NORM** | [`spec/09-code-block-system/11-highlighter-dependency-pin.md`](./09-code-block-system/11-highlighter-dependency-pin.md) | Major upgrades (`11.x → 12.x`) MUST update this pin file in the same spec PR with a styling regression test; switching to a different highlighter library MUST rewrite this pin file and re-run the F-04 audit gate. Patch/minor changes are automatic via lockfile. |
+
+### Domain-AUI (Admin-UI Patterns · Misc, Composition, Accessibility)
+
+> Reserved gate IDs for the misc-components / template-composition / accessibility rules in `spec/15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md`. Batch-10 (2026-04-29) registers an umbrella + 8 narrative-bound sub-rule gates so the parser regex `\bG-[A-Z0-9][A-Z0-9-]*\b` recognises the citations and the corpus prose-MUST counter no longer flags this file. The 8 sub-rules split into 2 template-composition rules (`-PARTIAL-*`) and 6 accessibility rules (`-A11Y-*`); the 10 anti-patterns in §"Anti-Patterns" remain prose-only this turn (closed forbidden-list, NEVER-DO format — out of scope for the MUST→gate migration).
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-AUI-MISC` | **DOC-NORM** | [`spec/15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md) | Umbrella — admin-UI partials and a11y obligations are gate-bound; AI MUST NOT emit admin templates that violate any sub-rule. Composed of `G-AUI-PARTIAL-DOCBLOCK`, `-PARTIAL-UNSET`, `-A11Y-TH-SCOPE`, `-A11Y-LABEL-FOR`, `-A11Y-INPUT-TYPE`, `-A11Y-REQUIRED-MARK`, `-A11Y-DASHICON-WRAP`, `-A11Y-INTERACTIVE-TAG`. |
+| `G-AUI-PARTIAL-DOCBLOCK` | **DOC-NORM** | [`spec/15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md) | Every partial under `templates/partials/**` MUST open with a PHP docblock listing required and optional variables it expects from parent scope. Missing or out-of-date docblocks are review failures. |
+| `G-AUI-PARTIAL-UNSET` | **DOC-NORM** | [`spec/15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md) | Partials that define temporary variables MUST `unset()` them at end-of-file to prevent scope bleed into subsequent `include`/`require` calls inside the same parent template. |
+| `G-AUI-A11Y-TH-SCOPE` | **CI** | [`spec/15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md) | Every `<th>` cell MUST carry `scope="row"` or `scope="col"`. Lint: `grep -nE '<th\\b' templates/**/*.php` MUST find no row missing `scope=`. |
+| `G-AUI-A11Y-LABEL-FOR` | **CI** | [`spec/15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md) | Every `<label>` MUST carry a `for=` attribute matching the `id` of a real input on the same page. Implicit-wrap labels forbidden. |
+| `G-AUI-A11Y-INPUT-TYPE` | **CI** | [`spec/15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md) | Every `<input>` MUST carry an explicit `type=` attribute. Missing `type` falls back to `text` silently and breaks screen-reader announcements. |
+| `G-AUI-A11Y-REQUIRED-MARK` | **DOC-NORM** | [`spec/15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md) | Required fields MUST display `<span class="required">*</span>` inside the `<label>` (in addition to the form-side `required` attribute). Provides the WCAG-recommended visible-and-programmatic dual signal. |
+| `G-AUI-A11Y-DASHICON-WRAP` | **CI** | [`spec/15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md) | Decorative dashicons MUST be wrapped in a `<span class="dashicons dashicons-…">`, never emitted as a standalone tag. Required so the wrapper can carry `aria-hidden="true"` without poisoning the parent control's accessible name. |
+| `G-AUI-A11Y-INTERACTIVE-TAG` | **CI** | [`spec/15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md`](./15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md) | Interactive controls MUST be `<button>` or `<a>` — never `<div>` or `<span>` with click handlers. Restores keyboard focus, Enter/Space activation, and assistive-tech role inference for free. |
 
 ### Meta-00
 
