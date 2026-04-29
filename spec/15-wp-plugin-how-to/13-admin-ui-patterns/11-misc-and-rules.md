@@ -97,7 +97,7 @@ Extract a partial when:
 
 ### Partial Variable Contract
 
-Every partial MUST document its required and optional variables in a docblock:
+Every partial MUST document its required and optional variables in a docblock (gate `G-AUI-PARTIAL-DOCBLOCK`):
 
 ```php
 /**
@@ -114,18 +114,18 @@ Every partial MUST document its required and optional variables in a docblock:
 
 ### Variable Cleanup
 
-Partials that define temporary variables MUST `unset()` them after rendering to prevent scope bleed into subsequent includes.
+Partials that define temporary variables MUST `unset()` them after rendering to prevent scope bleed into subsequent includes (gate `G-AUI-PARTIAL-UNSET`).
 
 ---
 
 ## Accessibility Rules
 
-1. All `<th>` cells MUST have `scope="row"` or `scope="col"`
-2. All `<label>` elements MUST have a `for` attribute matching an input `id`
-3. All `<input>` elements MUST have a `type` attribute
-4. Required fields MUST show `<span class="required">*</span>` in the label
-5. All dashicons used as icons MUST be inside a `<span>` (not standalone)
-6. Interactive elements MUST be `<button>` or `<a>`, never `<div>` or `<span>`
+1. All `<th>` cells MUST have `scope="row"` or `scope="col"` (gate `G-AUI-A11Y-TH-SCOPE`)
+2. All `<label>` elements MUST have a `for` attribute matching an input `id` (gate `G-AUI-A11Y-LABEL-FOR`)
+3. All `<input>` elements MUST have a `type` attribute (gate `G-AUI-A11Y-INPUT-TYPE`)
+4. Required fields MUST show `<span class="required">*</span>` in the label (gate `G-AUI-A11Y-REQUIRED-MARK`)
+5. All dashicons used as icons MUST be inside a `<span>` (not standalone) (gate `G-AUI-A11Y-DASHICON-WRAP`)
+6. Interactive elements MUST be `<button>` or `<a>`, never `<div>` or `<span>` (gate `G-AUI-A11Y-INTERACTIVE-TAG`)
 7. Modal close buttons use `&times;` character, not an icon font
 
 ---
