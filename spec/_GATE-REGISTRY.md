@@ -529,6 +529,20 @@
 | `G-UPD-03` | **DOC** | [`spec/14-self-update-app-update/99a-worked-example-fixtures.md`](./14-self-update-app-update/99a-worked-example-fixtures.md) | sha256 check after swap system already running unverified code gate G-UPD-03 (order check in update.sh AST) |
 | `G-UPD-04` | **DOC** | [`spec/17-generic-update/99a-worked-example-fixtures.md`](./17-generic-update/99a-worked-example-fixtures.md) | sha256 stored in URL fragment instead of Sha256 field gate G-UPD-04 (regex #sha256=) |
 
+### Domain-AUDIT
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-A4-STREAM-SEPARATION` | **DOC-NORM** | [`spec/31-app/05-conventions/09-audit-log-policy.md`](./31-app/05-conventions/09-audit-log-policy.md) | Activity-feed, operational log, and audit log MUST be physically separate tables. Conflation violates least-privilege, bloats activity-feed pagination, and prevents tamper detection. |
+| `G-A4-FORBIDDEN-CATEGORIES` | **DOC-NORM** | [`spec/31-app/05-conventions/09-audit-log-policy.md`](./31-app/05-conventions/09-audit-log-policy.md) | Item content edits, drag-reorders, search queries, and SSE keepalive metrics MUST NOT be written to the audit log — they belong in the activity feed or operational log. |
+| `G-A4-RETENTION-FLOOR` | **DOC-NORM** | [`spec/31-app/05-conventions/09-audit-log-policy.md`](./31-app/05-conventions/09-audit-log-policy.md) | Records younger than the per-category minimum MUST NOT be deleted, even on owner request — answer `ERR_RETENTION_PROTECTED` (HTTP 409). |
+| `G-A4-RETENTION-CEILING` | **DOC-NORM** | [`spec/31-app/05-conventions/09-audit-log-policy.md`](./31-app/05-conventions/09-audit-log-policy.md) | Records older than the per-category maximum MUST be deleted within 24 h of the cron schedule. No "indefinite" retention. |
+| `G-A4-CANONICAL-JSON` | **DOC-NORM** | [`spec/31-app/05-conventions/09-audit-log-policy.md`](./31-app/05-conventions/09-audit-log-policy.md) | Hash-chain canonical JSON encoding (`JSON_UNESCAPED_SLASHES \| JSON_UNESCAPED_UNICODE \| JSON_PRESERVE_ZERO_FRACTION` + alphabetically sorted keys) MUST be identical between writer and verifier. |
+| `G-A4-BACKUP-BEFORE-PURGE` | **DOC-NORM** | [`spec/31-app/05-conventions/09-audit-log-policy.md`](./31-app/05-conventions/09-audit-log-policy.md) | Backup procedure MUST snapshot the `audit_log` table before the purge cron runs. |
+| `G-A4-COALESCE` | **DOC-NORM** | [`spec/31-app/05-conventions/09-audit-log-policy.md`](./31-app/05-conventions/09-audit-log-policy.md) | When per-minute quota is exceeded for a `(ActorOwnerId, Action)` pair, identical events MUST be merged into a single row with `Metadata.coalescedCount` and `Metadata.coalescedWindowEnd`; first event preserved verbatim. |
+| `G-A4-CLIENT-NO-WRITE` | **DOC-NORM** | [`spec/31-app/05-conventions/09-audit-log-policy.md`](./31-app/05-conventions/09-audit-log-policy.md) | The frontend MUST NOT write audit events directly. All audit writes happen server-side as side-effects of authenticated mutations. |
+| `G-A4-QUERY-CACHE-MAX` | **DOC-NORM** | [`spec/31-app/05-conventions/09-audit-log-policy.md`](./31-app/05-conventions/09-audit-log-policy.md) | Audit query responses MUST be cached for at most 60 s — audit data must always look fresh. |
+
 ### Meta-00
 
 | Gate | Tier | Primary File | Brief |
