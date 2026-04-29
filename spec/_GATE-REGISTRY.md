@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.8  
-> **Updated:** 2026-04-29 — **batch-11 prose→AT migration:** registered new **Domain-RE (Role-Escalation Policy)** subsection with 9 `G-24*` gates (1 umbrella `G-24` CI + 5 sub-rule CI gates `-DC-REQUESTER-DISTINCT`/`-DC-APPROVER-DISTINCT`/`-DC-DIFFERENT-SESSION`/`-DC-FRESH-AUTH`/`-EXPIRY-AT-REQUEST-TIME` + 1 TEST `-REVOCATION-PROPAGATION-60S` + 3 DOC-NORM `-DC-GRANTEE-PRENOTIFY`/`-RENEW-REMINDER`/`-AUDIT-TAXONOMY-COUPLING`). Umbrella `G-24` was already named-but-unregistered in source file's §7. Prior: 1.7.7 (batch-10 G-AUI-* gates).
+> **Version:** 1.7.9  
+> **Updated:** 2026-04-29 — **batch-12 prose→AT migration:** registered new **Domain-BACKUP** subsection with 7 `G-BACKUP-*` gates (1 umbrella `G-BACKUP` CI + 3 CI sub-rules `-TWO-REGIONS`/`-AUDIT-CHAIN-PRESERVE`/`-FATAL-PAGER-ALERT` + 2 TEST `-AUDIT-CHAIN-REWALK`/`-RESTORE-INTEGRITY-CHECK` + 1 DOC-NORM `-AUDIT-REWIND-ACK`). Source file's §10 named its umbrella `G-28` but `G-28-*` is already taken by ADR-0028 (i18n) — collision sidestepped via `G-BACKUP-*`; rename of source callout tracked as F-SCOPE-15-FOLLOWUP. Prior: 1.7.8 (batch-11 G-24* gates).
 
-- **Total named gates:** 377 (+9 this revision: nine `G-24*`)
+- **Total named gates:** 384 (+7 this revision: seven `G-BACKUP-*`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
-- **CI:** 68 (+6 this revision)
-- **TEST:** 15 (+1 this revision)
-- **DOC-NORM:** 89 (+3 this revision)
+- **CI:** 72 (+4 this revision)
+- **TEST:** 17 (+2 this revision)
+- **DOC-NORM:** 90 (+1 this revision)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 44 (+1: Domain-RE)
+- **Areas covered:** 45 (+1: Domain-BACKUP)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
@@ -630,6 +630,20 @@
 | `G-24-EXPIRY-AT-REQUEST-TIME` | **CI** | [`spec/31-app/05-conventions/10-role-escalation-policy.md`](./31-app/05-conventions/10-role-escalation-policy.md) | `Auth::hasRole()` MUST treat any `WorkspaceMember` row with `ExpiresAt < NOW()` as non-existent, regardless of cron-sweep latency. Defense-in-depth against late sweeps; tested via injected clock-skew fixtures. |
 | `G-24-REVOCATION-PROPAGATION-60S` | **TEST** | [`spec/31-app/05-conventions/10-role-escalation-policy.md`](./31-app/05-conventions/10-role-escalation-policy.md) | Every authorization-cache layer (in-process LRU, REST tokens, SSE subscribers, frontend role badge) MUST invalidate within the per-layer deadlines tabled in §5. Any layer not visibly enforcing revocation within 60 s is a P0 bug. Fixture: synthetic revoke-then-replay test. |
 | `G-24-AUDIT-TAXONOMY-COUPLING` | **DOC-NORM** | [`spec/31-app/05-conventions/10-role-escalation-policy.md`](./31-app/05-conventions/10-role-escalation-policy.md) | All ten action codes from §6 (`AUTHZ.ROLE_REQUEST`, `…ROLE_APPROVE`, `…ROLE_DENY`, `…ROLE_DENY_TIMEOUT`, `…ROLE_GRANT`, `…ROLE_RENEW`, `…ROLE_EXPIRE`, `…ROLE_REVOKE`, `…OWNER_TRANSFER`, `…BREAK_GLASS`) MUST land in `09-audit-log-policy.md` §Action Taxonomy v1.1.0 in the same PR. Cross-file coupling enforced by the audit-taxonomy-coverage gate. |
+
+### Domain-BACKUP (Backup & Disaster-Recovery Policy)
+
+> Reserved gate IDs for the backup/DR control-plane invariants in `spec/31-app/05-conventions/14-backup-and-dr-policy.md`. Batch-12 (2026-04-29) registers an umbrella + 6 narrative-bound sub-rule gates covering off-site placement, encryption-before-upload, audit-chain preservation/rewalk/ack, restore-time integrity check, and pager alerting. **Namespace note:** the source file's §10 names its umbrella `G-28 (proposed)`, but `G-28-*` is already owned by ADR-0028 (i18n, 9 gates + 2 superseded). Batch-12 sidesteps the collision by using `G-BACKUP-*`; renaming the source-file callout from `G-28` → `G-BACKUP` is tracked as follow-up finding F-SCOPE-15-FOLLOWUP.
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-BACKUP` | **CI** | [`spec/31-app/05-conventions/14-backup-and-dr-policy.md`](./31-app/05-conventions/14-backup-and-dr-policy.md) | Umbrella — every backup tarball produced by the plugin MUST be off-site-replicated, client-side-encrypted, integrity-verified at restore time, and pager-alerted on fatal events. AI MUST NOT emit a backup code path that violates any sub-rule. Composed of `G-BACKUP-TWO-REGIONS`, `-CLIENT-SIDE-ENCRYPT` (already implicit from §5; reserved), `-AUDIT-CHAIN-PRESERVE`, `-AUDIT-CHAIN-REWALK`, `-AUDIT-REWIND-ACK`, `-RESTORE-INTEGRITY-CHECK`, `-FATAL-PAGER-ALERT`. Implementation script reservation: `scripts/spec-hygiene/28-check-backup-policy-coverage.mjs` (already declared in source §10; numeric prefix retained, but the **gate ID itself is `G-BACKUP`**, NOT `G-28`, to avoid namespace collision with ADR-0028). |
+| `G-BACKUP-TWO-REGIONS` | **CI** | [`spec/31-app/05-conventions/14-backup-and-dr-policy.md`](./31-app/05-conventions/14-backup-and-dr-policy.md) | Daily/Weekly/Monthly/Yearly backups MUST replicate to **at least two geographically separate regions**. Single-region failure MUST NOT block restore. Lifecycle policy in object-storage config encodes this; CI inspects the deployed bucket policy via `aws s3api get-bucket-replication` (or equivalent) and fails on missing/unhealthy replication. |
+| `G-BACKUP-AUDIT-CHAIN-PRESERVE` | **CI** | [`spec/31-app/05-conventions/14-backup-and-dr-policy.md`](./31-app/05-conventions/14-backup-and-dr-policy.md) | Audit-DB backups MUST include the *last hash row* of the live DB at the moment of `\SQLite3::backup()` snapshot. Backups missing the chain tip cannot be re-walked → P0 finding at restore time. |
+| `G-BACKUP-AUDIT-CHAIN-REWALK` | **TEST** | [`spec/31-app/05-conventions/14-backup-and-dr-policy.md`](./31-app/05-conventions/14-backup-and-dr-policy.md) | Restore verifier MUST re-walk the audit hash chain from genesis to last row and produce an `IntegrityHash` that matches the value recorded by the live DB. Tested in restore-drill harness. Composite check: also enforced as restore-procedure step 7. |
+| `G-BACKUP-AUDIT-REWIND-ACK` | **DOC-NORM** | [`spec/31-app/05-conventions/14-backup-and-dr-policy.md`](./31-app/05-conventions/14-backup-and-dr-policy.md) | Restoring an audit DB to a point earlier than the live latest MUST emit `SYSTEM.AUDIT_CHAIN_REWIND` at `fatal` severity on the next live write, AND the operator runbook MUST require explicit acknowledgement before any further audit writes are accepted. |
+| `G-BACKUP-RESTORE-INTEGRITY-CHECK` | **TEST** | [`spec/31-app/05-conventions/14-backup-and-dr-policy.md`](./31-app/05-conventions/14-backup-and-dr-policy.md) | Restore step 6 — `PRAGMA integrity_check` against the decrypted SQLite file MUST return `ok`. Skipping or short-circuiting this check is forbidden (codified in §7 "Forbidden during restore"). Quarterly restore-drill harness exercises both pass and synthetic-corruption paths. |
+| `G-BACKUP-FATAL-PAGER-ALERT` | **CI** | [`spec/31-app/05-conventions/14-backup-and-dr-policy.md`](./31-app/05-conventions/14-backup-and-dr-policy.md) | Every audit row at `fatal` severity in the §9 monitoring table MUST trigger an operator pager alert (PagerDuty/OpsGenie/equivalent). Alert-routing config inspected by CI; missing routing for any `fatal` code in the §9 catalogue is a build failure. |
 
 ### Meta-00
 

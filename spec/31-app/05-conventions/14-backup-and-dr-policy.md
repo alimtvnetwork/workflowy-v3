@@ -99,7 +99,7 @@ A backup that lives on the same disk as the primary is not a backup — it's a d
 
 ### Region rule
 
-Daily/Weekly/Monthly/Yearly backups MUST land in **at least two geographically separate regions** (e.g., `eu-west-1` AND `us-east-1`). A single-region cloud outage MUST NOT block restore.
+Daily/Weekly/Monthly/Yearly backups MUST land in **at least two geographically separate regions** (e.g., `eu-west-1` AND `us-east-1`) — a single-region cloud outage MUST NOT block restore (gate `G-BACKUP-TWO-REGIONS`).
 
 ### Object-storage requirements
 
@@ -137,12 +137,12 @@ Every backup tarball is encrypted **before** leaving the host:
 
 ## 6 — Audit-Log Backup Special Handling
 
-The audit-log DB carries the hash chain (per A-39). Backup MUST preserve chain integrity:
+The audit-log DB carries the hash chain (per A-39). Backup MUST preserve chain integrity (gate `G-BACKUP-AUDIT-CHAIN-PRESERVE`):
 
-1. Backup MUST include the **last hash row** of the live DB AT the moment of `.backup` snapshot.
-2. After restore, the verifier MUST be able to re-walk the chain from genesis to last-row and produce the same `IntegrityHash` as the live DB recorded.
+1. Backup MUST include the **last hash row** of the live DB AT the moment of `.backup` snapshot (gate `G-BACKUP-AUDIT-CHAIN-PRESERVE`).
+2. After restore, the verifier MUST be able to re-walk the chain from genesis to last-row and produce the same `IntegrityHash` as the live DB recorded (gate `G-BACKUP-AUDIT-CHAIN-REWALK`).
 3. WAL-ship of the audit DB is permitted but the daily full is **authoritative** for hash-chain restore (WAL alone cannot prove genesis).
-4. Restoring an audit DB to a point earlier than the latest will trigger a `SYSTEM.AUDIT_CHAIN_REWIND` audit row at `fatal` severity on the next live write — operator MUST acknowledge in runbook.
+4. Restoring an audit DB to a point earlier than the latest will trigger a `SYSTEM.AUDIT_CHAIN_REWIND` audit row at `fatal` severity on the next live write — operator MUST acknowledge in runbook (gate `G-BACKUP-AUDIT-REWIND-ACK`).
 
 ---
 
@@ -155,8 +155,8 @@ The audit-log DB carries the hash chain (per A-39). Backup MUST preserve chain i
 3. **Choose source:** prefer most recent hot snapshot ≤ RPO; fall back to daily full.
 4. **Download** tarball + `.key.enc` from off-site to a clean restore-staging directory.
 5. **Decrypt** with operator-vault KEK; verify SHA-256 in GCM tag.
-6. **`PRAGMA integrity_check`** against decrypted SQLite — MUST return `ok`.
-7. For audit DB: **walk hash chain** from genesis to last row — MUST match recorded `IntegrityHash`.
+6. **`PRAGMA integrity_check`** against decrypted SQLite — MUST return `ok` (gate `G-BACKUP-RESTORE-INTEGRITY-CHECK`).
+7. For audit DB: **walk hash chain** from genesis to last row — MUST match recorded `IntegrityHash` (gate `G-BACKUP-AUDIT-CHAIN-REWALK`).
 8. **Replay WAL** files from after the snapshot timestamp up to the desired RPO point.
 9. **Move** restored files into `wp-content/uploads/workflowy/`.
 10. **Restart** plugin; observe `SYSTEM.RESTORE_COMPLETE` audit row.
@@ -208,7 +208,7 @@ The drill is a **policy gate**, not a nice-to-have. Operators that miss two cons
 
 > All 12 codes added to the **v1.2.0 audit-log backfill batch** (combined: A-40 = 10, A-41 = 9, A-42 = 11, A-43 = 10, A-44 = 12 ⇒ **52 codes total**).
 
-`fatal`-severity events MUST trigger an operator pager alert (PagerDuty / OpsGenie / equivalent). `error` events trigger ticket creation. `warn` events log only.
+`fatal`-severity events MUST trigger an operator pager alert (PagerDuty / OpsGenie / equivalent) (gate `G-BACKUP-FATAL-PAGER-ALERT`). `error` events trigger ticket creation. `warn` events log only.
 
 ---
 
