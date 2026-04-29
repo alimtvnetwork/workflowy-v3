@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-29  
-**Total Files:** 1463  
+**Total Files:** 1464  
 **Top-Level Folders:** 26
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -34,7 +34,7 @@
 - [16-generic-cli](#16-generic-cli) — 45 file(s)
 - [17-generic-update](#17-generic-update) — 13 file(s)
 - [18-spec-issues](#18-spec-issues) — 15 file(s)
-- [31-app](#31-app) — 134 file(s)
+- [31-app](#31-app) — 135 file(s)
 - [32-ui-design](#32-ui-design) — 123 file(s)
 - [33-feedback-report](#33-feedback-report) — 4 file(s)
 - [34-activity-feed](#34-activity-feed) — 4 file(s)
@@ -1371,6 +1371,7 @@
 | [`31-app/04-roadmap/99-consistency-report.md`](./31-app/04-roadmap/99-consistency-report.md) | Consistency Report — 04-roadmap | 1.0.1 | — |
 | [`31-app/04a-fixtures/00-overview.md`](./31-app/04a-fixtures/00-overview.md) | 04 — Fixtures — JSON & Sample Payloads | 1.0.0 | — |
 | [`31-app/04a-fixtures/99-consistency-report.md`](./31-app/04a-fixtures/99-consistency-report.md) | Consistency Report — 04-fixtures | 1.0.0 | — |
+| [`31-app/05-conventions/_LEDGER-G-31-EXEMPTIONS.md`](./31-app/05-conventions/_LEDGER-G-31-EXEMPTIONS.md) | Ledger: G-31 Workflow / Feature / Endpoint Cross-Reference Exemptions | — | — |
 | [`31-app/05-conventions/00-overview.md`](./31-app/05-conventions/00-overview.md) | 05 — Conventions | 1.0.0 | — |
 | [`31-app/05-conventions/01-axios-version-control.md`](./31-app/05-conventions/01-axios-version-control.md) | Axios Version Control Policy | 1.0.0 | — |
 | [`31-app/05-conventions/02-ci-quality-gates.md`](./31-app/05-conventions/02-ci-quality-gates.md) | CI Quality Gates — Convention SSOT | 1.0.0 | — |
@@ -1639,4 +1640,4 @@
 
 ---
 
-*Auto-generated index — 1463 files across 26 top-level folders.*
+*Auto-generated index — 1464 files across 26 top-level folders.*

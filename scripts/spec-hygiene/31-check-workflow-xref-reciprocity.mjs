@@ -163,24 +163,20 @@ import { join } from "node:path";
 // by G-31.5 since v2.4.0 (mirrors G-32.4 in `32-check-ddl-unique-coverage.mjs`).
 // =====================================================================
 
+// In-source allow-list Sets are RESERVED FOR EMERGENCY OVERRIDES only.
+// The canonical entries live in the per-(gate, path) ledger:
+//   spec/31-app/05-conventions/_LEDGER-G-31-EXEMPTIONS.md
+// At module-load time, `loadG31Exemptions()` parses the ledger and unions
+// each row into the matching in-source Set below. See ADR-0024 follow-up
+// (per-gate-path Phase-2 sibling migration) and the proven G-30 pattern in
+// `30-check-at-citation-validity.mjs`.
+
 const WORKFLOWS_EXEMPT = new Set([
-  // "10-migration-execution-flow.md → 02-template-application-flow.md",
-  // (reason: migration is bootstrap-time only; template flow is user-time only)
+  // (in-source override slot — empty; canonical entries in ledger.)
 ]);
 
 const FEATURES_EXEMPT = new Set([
-  // 7 entries below are addendum (`*b`) → cross-domain-peer references.
-  // Each addendum cites a peer for context (e.g. mirror-peer-group rules,
-  // ACL model, base interaction). The peer page would bloat unmanageably
-  // if every addendum that touches it had to be back-linked. Asymmetric
-  // by design. Drained from G-31.6 island-exempt 2026-04-27 (F-future-G31e).
-  "07b-dashboard-view.md → 04-page-content-area.md",          // sister-list-view context cite
-  "08b-sharing-mirror-interaction.md → 09b-mirror-peer-group-model.md", // peer-group identity cite
-  "08b-sharing-mirror-interaction.md → 15-roles-and-permissions.md",    // ACL model cite
-  "11b-trash-reaper.md → 09b-mirror-peer-group-model.md",     // peer-group dissolve rule cite
-  "12b-multi-select-zoom.md → 05-interactions.md",            // base zoom-hotkey cite
-  "12b-multi-select-zoom.md → 09b-mirror-peer-group-model.md", // peer sync inside scope cite
-  "13b-templates-snapshot-semantics.md → 09b-mirror-peer-group-model.md", // mirrors-not-snapshotted cite
+  // (in-source override slot — empty; canonical entries in ledger.)
 ]);
 
 const ENDPOINTS_EXEMPT = new Set([
@@ -215,19 +211,7 @@ const FEATURES_ISLAND_EXEMPT = new Set([
 ]);
 
 const ENDPOINTS_ISLAND_EXEMPT = new Set([
-  // All 9 entries below describe a distinct UI surface with no semantic
-  // peer in the endpoints scope. Each page's natural cross-references
-  // point OUT-of-scope (to features / db-diagram), not to siblings.
-  // Forcing peer links would be artificial. Drained 2026-04-27.
-  "03-layout-structure.md",   // top-level shell; no sibling endpoint depends on it
-  "04-page-content-area.md",  // main outliner surface; standalone
-  "05-interactions.md",       // global interaction catalog; standalone
-  "06-item-context-menu.md",  // context-menu surface; standalone
-  "07-board-view.md",         // board surface; cross-refs go to features
-  "10-today-view.md",         // today surface; cross-refs go to features
-  "12-multi-select.md",       // multi-select surface; cross-refs go to features
-  "13-templates.md",          // templates surface; cross-refs go to features
-  "15b-search.md",             // search surface; cross-refs go to features
+  // (in-source override slot — empty; canonical entries in ledger.)
 ]);
 
 const DB_DIAGRAM_ISLAND_EXEMPT = new Set([
@@ -246,10 +230,7 @@ const WORKFLOWS_HEAD_EXEMPT = new Set([
 ]);
 
 const FEATURES_HEAD_EXEMPT = new Set([
-  // 09a citations are predominantly cross-domain (endpoints, edge-cases, mem://) rather than peer features
-  "09a-mirror-cycle-detection.md",
-  // 14b citations are predominantly cross-domain (src/types, mem://, infra constraint) rather than peer features
-  "14b-offline-queue.md",
+  // (in-source override slot — empty; canonical entries in ledger.)
 ]);
 
 const ENDPOINTS_HEAD_EXEMPT = new Set([
@@ -259,6 +240,61 @@ const ENDPOINTS_HEAD_EXEMPT = new Set([
 const DB_DIAGRAM_HEAD_EXEMPT = new Set([
   // (empty at v2.6.0 — drift surfaced as advisory; cleanup deferred)
 ]);
+
+// =====================================================================
+// Per-(gate, path) ledger loader (Phase-2 sibling of G-30 pattern).
+// Reads `spec/31-app/05-conventions/_LEDGER-G-31-EXEMPTIONS.md`, parses
+// the `## Entries` table, and unions each row into the matching in-source
+// override Set above. Hard-fails on schema violations so a malformed
+// ledger row cannot silently weaken the gate.
+// =====================================================================
+
+const G31_LEDGER_PATH = "spec/31-app/05-conventions/_LEDGER-G-31-EXEMPTIONS.md";
+
+const G31_SCOPE_TO_SETS = {
+  "G-31.1": { peer: WORKFLOWS_EXEMPT,  island: WORKFLOWS_ISLAND_EXEMPT,  head: WORKFLOWS_HEAD_EXEMPT  },
+  "G-31.2": { peer: FEATURES_EXEMPT,   island: FEATURES_ISLAND_EXEMPT,   head: FEATURES_HEAD_EXEMPT   },
+  "G-31.3": { peer: ENDPOINTS_EXEMPT,  island: ENDPOINTS_ISLAND_EXEMPT,  head: ENDPOINTS_HEAD_EXEMPT  },
+  "G-31.4": { peer: DB_DIAGRAM_EXEMPT, island: DB_DIAGRAM_ISLAND_EXEMPT, head: DB_DIAGRAM_HEAD_EXEMPT },
+};
+
+function loadG31Exemptions() {
+  let raw;
+  try {
+    raw = readFileSync(G31_LEDGER_PATH, "utf8");
+  } catch (e) {
+    fail(`G-31 ledger: cannot read ${G31_LEDGER_PATH}: ${e.message}`);
+  }
+  const lines = raw.split("\n");
+  const entriesIdx = lines.findIndex((l) => /^##\s+Entries\s*$/.test(l));
+  if (entriesIdx < 0) fail(`G-31 ledger: missing '## Entries' section`);
+
+  let imported = 0;
+  for (let i = entriesIdx + 1; i < lines.length; i += 1) {
+    const line = lines[i];
+    if (/^##\s/.test(line)) break; // next section
+    if (!line.trim().startsWith("|")) continue;
+    if (/^\|\s*-+/.test(line)) continue; // header separator
+    if (/^\|\s*gate\s*\|/i.test(line)) continue; // header row
+    const cells = line.split("|").slice(1, -1).map((c) => c.trim());
+    if (cells.length < 5) continue;
+    const stripBackticks = (s) => s.replace(/^`(.*)`$/, "$1");
+    const [gate, , entryRaw, rationale] = cells;
+    const entry = stripBackticks(entryRaw);
+    const m = gate.match(/^(G-31\.\d)\.(peer|island|head)$/);
+    if (!m) fail(`G-31 ledger: malformed gate \`${gate}\` at line ${i + 1}`);
+    const [, scopeId, category] = m;
+    const buckets = G31_SCOPE_TO_SETS[scopeId];
+    if (!buckets) fail(`G-31 ledger: unknown scope \`${scopeId}\` at line ${i + 1}`);
+    if (!entry) fail(`G-31 ledger: empty entry at line ${i + 1}`);
+    if (!rationale) fail(`G-31 ledger: empty rationale for \`${entry}\` at line ${i + 1}`);
+    buckets[category].add(entry);
+    imported += 1;
+  }
+  return imported;
+}
+
+const G31_LEDGER_IMPORTED = loadG31Exemptions();
 
 // =====================================================================
 // Scope registry. Order = output order.
@@ -529,6 +565,7 @@ function printRationaleReport(violations) {
   console.log("");
   console.log(`G-31.5 (meta, ERROR) exemption-Set rationale-comment coverage:`);
   console.log(`  allow-lists scanned:                ${ALLOWLIST_NAMES.length} (${ALLOWLIST_NAMES.join(", ")})`);
+  console.log(`  ledger entries imported:            ${G31_LEDGER_IMPORTED} (${G31_LEDGER_PATH})`);
   console.log(`  entries missing rationale:          ${violations.length}`);
 
   if (violations.length === 0) {
