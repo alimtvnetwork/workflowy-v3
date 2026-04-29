@@ -281,9 +281,9 @@ node scripts/spec-hygiene/00-run-all.mjs
 
 ADR-0026 §D6 mandates that every REST/SSE wire payload emit the canonical key `OwnerId` and **never** the DDL spelling `OwnerUserId`. The static gate (regex grep over `spec/31-app/06-endpoints/**`) prevents *spec drift*; this test prevents *runtime drift* — i.e. a future PHP change that bypasses the alias-bridge serializer and emits raw column names.
 
-### Test ID
+### AT-WIRE-EGRESS-01 — PHP serializer egress test (OwnerId canonical)
 
-`AT-WIRE-EGRESS-01` — bound to gate `G-26-WIRE-OWNERID-ONLY` (CI + TEST dual tier; this AT is the TEST half).
+Bound to gate `G-26-WIRE-OWNERID-ONLY` (CI + TEST dual tier; this AT is the TEST half).
 
 ### Setup contract
 
