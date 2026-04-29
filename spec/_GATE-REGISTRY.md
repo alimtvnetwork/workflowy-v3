@@ -1,7 +1,7 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.6.0  
-> **Updated:** 2026-04-29 — Task #11 Phase-3 (per-(gate, path) ledger CI promotion): G-30.2 redundancy advisory now consults each ledger row's `pathGlob` per declaring file via new `isRedundancyExempt(prefix, declaringFile)` + `globToRegExp()` helpers (≤15-line logic per ADR-0007 R3). Path-glob tightening shifted 5 rows from area-roots to specific 97-acceptance-criteria.md / 15-roles-and-permissions.md hosts; all 41 ledger rows now match their real declaring path. Negative test: corrupting AT-INFO- row's pathGlob → all 7 covered citations correctly re-surface as cleanup candidates. Promoted `G-13-LEDGER-PER-GATE-PATH` DOC-NORM → CI. Closes the per-(gate, path) trilogy (Phase-1 schema → Phase-2 migrate → Phase-3 enforce). Prior: 1.5.2 (Phase-2 migration).
+> **Version:** 1.6.1  
+> **Updated:** 2026-04-29 — Per-(gate, path) ledger Phase-2 sibling migration to G-31: created `spec/31-app/05-conventions/_LEDGER-G-31-EXEMPTIONS.md` (18 rows: 7 G-31.2.peer + 9 G-31.3.island + 2 G-31.2.head); twelve in-source allow-list Sets in `31-check-workflow-xref-reciprocity.mjs` reduced to empty emergency-override slots; new `loadG31Exemptions()` parser unions ledger entries at module-load (`gate` column carries `.peer`/`.island`/`.head` sub-category suffix); markdown backticks stripped from cell values; G-31.5 report now prints `ledger entries imported`. Behaviour parity verified (0 ERROR-scope asymmetries pre/post). G-35 inventory regenerated to reflect emptied Sets. Sibling status: ✅ G-30 (41 rows), ✅ G-31 (18 rows), ⏳ G-32 pending. Audit: `.lovable/memory/audit/at-per-gate-path-ledger-phase2-g31.md`. Prior: 1.6.0 (Phase-3 CI promotion).
 
 - **Total named gates:** 310 (unchanged)
 - **CI:** 41 (+1: `G-13-LEDGER-PER-GATE-PATH` promoted from DOC-NORM)
