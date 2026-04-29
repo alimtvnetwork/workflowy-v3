@@ -85,25 +85,15 @@ const COVERAGE_EXEMPT = new Set([
 ]);
 
 // G-32.2 allow-list — index identifiers that legitimately appear in
-// `06-indexes.md` prose without a literal DDL match. Use sparingly; the
-// preferred fix is to register the alias in `sql/00-overview.md` §Index-name
-// aliases (which the runner reads automatically) rather than adding entries
-// here. Format: bare identifier (e.g. `IdxItem_Foo`).
+// `06-indexes.md` prose without a literal DDL match. The canonical
+// entries live in the per-(gate, path) ledger:
+//   spec/31-app/05-conventions/_LEDGER-G-32-EXEMPTIONS.md
+// `loadG32Exemptions()` unions ledger entries into this Set at
+// module-load. The Set below is RESERVED FOR EMERGENCY OVERRIDES only.
+// Sibling pattern: see G-30 (`30-check-at-citation-validity.mjs`) and
+// G-31 (`31-check-workflow-xref-reciprocity.mjs`).
 const REVERSE_EXEMPT = new Set([
-  // Conceptual / "logical" tags used in §Implicit Indexes prose. The actual
-  // index is the autoindex; the Idx* name is doc-only shorthand.
-  "IdxUser_Email",         // logical tag for sqlite_autoindex_User_*
-  "IdxWorkspace_AppDbPath", // logical tag for sqlite_autoindex_Workspace_*
-  // Historic / explicitly-rejected names mentioned in §"Indexes intentionally
-  // NOT created" — the runner cannot tell prose-rejected from prose-claimed
-  // without parsing section headings, so we suppress these by name.
-  "IdxItem_Content",         // §"Indexes NOT created" — FTS5 ships in Phase 2
-  "IdxItem_CreatedAt",       // §"Indexes NOT created" — order is by FractionalIndex, not CreatedAt
-  "IdxComment_AuthorUserId", // §"Indexes NOT created" — "all my comments" is not an MVP view
-  // v2-deprecated names mentioned in the v1.3.0 deprecation note for traceability.
-  "IdxItem_MirrorOfItemId",  // dropped by M-117 (legacy Mirror table)
-  "IdxMirror_SourceItemId",  // dropped by M-117 (legacy Mirror table)
-  "IdxMirror_MirrorItemId",  // dropped by M-117 (legacy Mirror table)
+  // (in-source override slot — empty; canonical entries in ledger.)
 ]);
 
 // G-32.3 allow-list — DDL CREATE INDEX names whose documentation is
