@@ -342,7 +342,7 @@ Fix: route the {Table}.OwnerUserId column through the alias-bridge serializer
 
 The literal substring `[G-26-WIRE-OWNERID-ONLY]` is mandatory so CI log scrapers can attribute failures to the gate without parsing test names.
 
-### Why this is TEST-tier, not CI-tier
+#### Why this is TEST-tier, not CI-tier
 
 The static regex check (`rg "\bOwnerUserId\s*[:?,}]" spec/31-app/06-endpoints`) is the CI half — it runs in milliseconds in pre-commit and catches *spec* drift. The PHPUnit suite is the TEST half — it catches *runtime* drift where the serializer produces output the spec doesn't predict. Both halves are required because the two failure modes are independent.
 
