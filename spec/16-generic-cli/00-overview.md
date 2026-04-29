@@ -90,7 +90,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## Exit-Code Registry
 
-Every CLI subcommand MUST return one of these exit codes. No other values are legal. Codes are stable across versions.
+Every CLI subcommand MUST return one of these exit codes (gate `G-16-EXIT-DOCUMENTED`). No other values are legal. Codes are stable across versions.
 
 | Code | Name | Meaning | When emitted |
 |---|---|---|---|
