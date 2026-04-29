@@ -202,3 +202,15 @@ Path depth corrected from `../../../../../00-adrs/...` to `../../../../00-adrs/.
 - **Registry:** v1.3.5 (gates 306 → 307; CI 36 → 37)
 - **Self-test:** WARN mode green, `CI=true` strict mode green (allow-list covers full baseline)
 - **Suite:** 35/35 checks passing
+
+---
+
+## 2026-04-29 — Cheap-bundle (#16 + #17 + sub-#18)
+
+- **#16 (G-00-OVERVIEW-SCORING-VALUES-FRESH):** Layer-2.6 freshness gate authored at `scripts/spec-hygiene/53-check-scoring-values-fresh.mjs`. WARN at 90 days, hard-fail at 180 (flag flips 2026-07-28). Baseline 21/25 fresh; 4 surfaced WARNs tracked in `.lovable/memory/audit/at-overview-scoring-values-fresh.md`.
+- **#17 (consolidated-guidelines line-94 backfill):** Removed a redundant `## Confidence` prose stub that was double-counting against `G-00-OVERVIEW-SCORING-VALUE-FORMAT` Rule 4 — the canonical 3-row Scoring table at line 40 was already complete. Net delta: -10 lines, dupe Scoring section eliminated.
+- **Sub-#18 (Scoring Rule 3 promotion):** Promoted `G-00-OVERVIEW-SCORING-TABLE-COMPLETE` Rule 3 (Health Score row last) from WARN to hard-fail in `scripts/spec-hygiene/20-check-scoring-table-complete.mjs` lines 140-150 after confirming baseline 25/25 clean.
+- **Note:** Original task #18 (AI-Contract-COMPLETE Rule 3 promotion) is still blocked because that runner doesn't yet exist — pre-existing task #15 must land first.
+- **Renames:** `47-check-adr-consequences-xlink.mjs` → `52-check-adr-consequences-xlink.mjs` (resolved slot collision with `47-drain-ai-contracts.mjs`); all 4 cross-references updated via sed.
+- **Registry:** v1.3.6 (gates 307→308; CI 37→38).
+- **Suite:** 36/36 checks passing (4 non-blocking WARNs from new freshness gate).
