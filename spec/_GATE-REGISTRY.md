@@ -1,10 +1,10 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.3.6  
-> **Updated:** 2026-04-29 — patch (cheap-bundle): (1) authored `scripts/spec-hygiene/53-check-scoring-values-fresh.mjs` and minted gate `G-00-OVERVIEW-SCORING-VALUES-FRESH` (CI, WARN-only, hard-fail flag flips 2026-07-28). Layer-2.6 closes the time-axis gap left by Layer-2.5. Baseline 2026-04-29: 21/25 fresh; 4 overviews lack date metadata — surfaced as actionable WARNs. (2) Promoted `G-00-OVERVIEW-SCORING-TABLE-COMPLETE` Rule 3 (Health Score row last) WARN→hard-fail after confirming baseline 25/25 clean at promotion time. (3) Cleaned a duplicate Scoring block in `spec/12-consolidated-guidelines/00-overview.md` (a "Confidence" prose stub at line 94 was double-counting against Rule 4 of `G-00-OVERVIEW-SCORING-VALUE-FORMAT`; canonical 3-row table at line 40 already complete). Prior: 1.3.5 (G-00-ADR-CONSEQUENCES-XLINK).
+> **Version:** 1.3.7  
+> **Updated:** 2026-04-29 — Task #13 (AI-Contract Layer-2 runner): authored `scripts/spec-hygiene/54-check-ai-contract-complete.mjs` implementing all 5 rules of the previously runner-less gate `G-00-OVERVIEW-AI-CONTRACT-COMPLETE`. Baseline (25 top-level overviews scanned): **Rules 1+2 hard-fail clean (0 fail)**, Rules 3–5 surface 0 / 29 / 36 = 65 WARNs (rule 4: Out-of-Scope bullets without markdown links; rule 5: DoD bullets without `AT-*`/`G-*`/`scripts/…`/`node …` citation). Sub-overviews carved out per Authoring rule §6; fenced code blocks stripped before scanning. Audit ledger: `.lovable/memory/audit/at-overview-ai-contract-complete-gate.md`. Unblocks Roadmap Task #17 (WARN→hard-fail promotion once 65 baseline WARNs drained). Prior: 1.3.6 (Scoring-Values-Fresh + Rule-3 promotion).
 
-- **Total named gates:** 308 (+1: `G-00-OVERVIEW-SCORING-VALUES-FRESH`)
-- **CI:** 38 (+1; one gate `G-26-WIRE-OWNERID-ONLY` is dual-tier)
+- **Total named gates:** 308 (unchanged — gate row already existed; only the runner is new)
+- **CI:** 38 (unchanged — gate was already CI-tier; runner now realises the contract)
 - **TEST:** 14 (unchanged)
 - **DOC-NORM:** 54 (unchanged)
 - **DOC:** 202 (unchanged)
