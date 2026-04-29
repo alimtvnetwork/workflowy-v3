@@ -13,15 +13,18 @@ ssot: spec/01-spec-authoring-guide/18-ai-contract-template.md
 
 | Rule | Description | Tier | Baseline | Current (2026-04-29) |
 |---|---|---|---:|---:|
-| 1 | All 5 subsections present (Purpose, Audience, Expected AI Output, Out of Scope, Definition of Done) | hard-fail | 0 / 25 fail ✅ | 0 ✅ |
+| 1 | All 5 subsections present | hard-fail | 0 / 25 fail ✅ | 0 ✅ |
 | 2 | Canonical order | hard-fail | 0 / 25 fail ✅ | 0 ✅ |
-| 3 | Non-empty bodies (≥10 chars) | WARN | 0 WARN ✅ | 0 ✅ |
-| 4 | Every Out-of-Scope bullet contains a markdown link | WARN | 29 WARN | **0 ✅ (drained 2026-04-29)** |
-| 5 | Every DoD bullet cites `AT-*`, `G-*`, `scripts/…`, or `node …` | WARN | 36 WARN | 36 (Task #13 target) |
+| 3 | Non-empty bodies (≥10 chars) | **hard-fail** (promoted 2026-04-29) | 0 WARN ✅ | 0 ✅ |
+| 4 | Every Out-of-Scope bullet contains a markdown link | **hard-fail** (promoted 2026-04-29) | 29 WARN | **0 ✅ (drained)** |
+| 5 | Every DoD bullet cites `AT-*`, `G-*`, `scripts/…`, or `node …` | **hard-fail** (promoted 2026-04-29) | 36 WARN | **0 ✅ (drained)** |
 
-**Drain log (2026-04-29):** Authored `scripts/spec-hygiene/_oneshot/drain-ai-contract-rule4.mjs` (since deleted) which mechanically converted 27 backtick-wrapped path tokens to markdown links across 14 overviews + appended 2 generic `[owning section](./00-overview.md)` pointers for prose-only bullets. Post-drain link-check caught one `08-file-folder-naming/` reference where the heuristic used `../` (sibling) instead of `./` (child); manually fixed in `02-coding-guidelines/00-overview.md` and its `00-overview-condensed.md` mirror.
+**Drain log (2026-04-29):**
+1. **Rule 4 drain** — `_oneshot/drain-ai-contract-rule4.mjs` (deleted) mechanically converted 27 backtick-wrapped path tokens to markdown links across 14 overviews; appended 2 generic `[owning section](./00-overview.md)` pointers for prose-only bullets. Manual fix for one bad sibling/child path heuristic (`08-file-folder-naming/` is a SUB-folder of `02-coding-guidelines/`, not sibling).
+2. **Rule 5 drain** — `_oneshot/drain-ai-contract-rule5.mjs` (deleted) appended folder-scoped `(`AT-<PREFIX>-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))` citations to 33 uncited DoD bullets across 22 overviews. For the 3 folders without AC files (05-split-db, 06-seedable-config, 11-research), cited an existing `G-*` gate instead. Manual fix for 2 broken `./07-split-db-pattern.md` link suggestions in `05-split-db-architecture` (file doesn't exist; redirected to `01-fundamentals/` and `98-acceptance-criteria.md`).
+3. **Promotion** — Flipped `PROMOTED_HARDFAIL=true` in `scripts/spec-hygiene/54-check-ai-contract-complete.mjs` after final clean-baseline confirmation (all 5 rules hard-fail; full hygiene suite green).
 
-**Total baseline noise: 65 WARNs → 36 WARNs (29 drained).** Rule 4 is now clean and ready for promotion as soon as Rule 5 also drains (Task #14).
+**Final state:** 65 WARNs → **0 WARNs**; gate fully promoted same-day. Layer-2 of the AI-Contract trio is now contractual, not aspirational.
 
 ## Promotion criteria
 
