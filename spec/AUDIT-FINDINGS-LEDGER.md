@@ -77,6 +77,19 @@ Out-of-vocabulary statuses (`Pending`, `WIP`, `Wontfix`, `Deferred`, …) are
 
 ---
 
+## Findings — `F-SCOPE-NN` family (scope/estimate corrections)
+
+Surfaces inflated or outdated effort estimates that distort task prioritization.
+Resolution = corrected baseline + evidence trail.
+
+| ID | Severity | First raised | Status | Resolved by | Evidence |
+|---|---|---|---|---|---|
+| F-SCOPE-01 | LOW | 2026-04-29 (task #6 first attempt) | Resolved | Re-baselined "prose→AT migration" scope from inflated 2,170 to actual 682 non-ADR prose-MUSTs (3.2× over-estimate). ADR clauses (352) excluded as legitimately load-bearing prose. See [Retraction case study #2](#retraction-case-study-2--f-scope-01) | This row + case study below |
+
+**Open count:** 0 — **Resolved:** 1
+
+---
+
 ## Implementation-side findings (`F-IMPL-AUD-NN`)
 
 Audit-v8 (spec-vs-impl, 2026-04-29) raised these against the `src/` scaffold.
