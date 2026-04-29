@@ -7,9 +7,17 @@
  * the exemption manifest's *shape*; this gate consumes the manifest's globs to
  * exclude intentional stubs from the placeholder count, then enforces the cap.
  *
- * Placeholder heuristic (mirrors the 2026-04-29 Gemini-2.5-Pro audit):
- *   - File size < 600 bytes, OR
- *   - File body matches /placeholder|stub|to be defined|TBD|coming soon/i
+ * Placeholder heuristic (refined 2026-04-29 to eliminate false positives —
+ * v1 matched the bare word "placeholder" anywhere, flagging legitimate
+ * technical prose like "extractCodeBlocks() replaces fences with placeholders"
+ * as stubs and inflating F-AUDIT-25 burndown by ~6 phantom files):
+ *   - File size < 600 bytes (very short files are almost always stubs), OR
+ *   - File body matches a stub-context regex requiring an explicit stub
+ *     marker: `TODO:`, `TBD` (followed by `:` / `—` / `-` / EOL),
+ *     `coming soon`, `to be (defined|determined|written|filled)`,
+ *     `Acceptance-Criteria Stub`, `Stub Section`, `<!-- STUB`, or a
+ *     bare-bullet `- placeholder` / `- TODO` line. The bare token
+ *     `placeholder` in narrative prose no longer trips the gate.
  * Applied only to `*.md` files under `spec/`.
  *
  * Exemption-aware: any file matching a `pathGlob` row in
