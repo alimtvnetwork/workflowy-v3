@@ -5,7 +5,7 @@
 > [`G-13-LEDGER-PER-GATE-PATH`](../../_GATE-REGISTRY.md) (planned).
 > **SPEC-ONLY classification:** describes a ledger-row schema; no runtime code.
 > When the gate is mechanized under `scripts/spec-hygiene/`, the
-> implementation MUST validate the same input → output behaviour as
+> implementation MUST (gate G-13-LEDGER-IMPL-PARITY) validate the same input → output behaviour as
 > this fixture against the canonical sample rows below.
 
 ---
