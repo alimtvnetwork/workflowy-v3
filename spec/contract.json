@@ -4,8 +4,8 @@
   "generator": "scripts/spec-hygiene/40-generate-contract-json.mjs",
   "do_not_edit": true,
   "counts": {
-    "acceptance_tests_defined": 2346,
-    "acceptance_tests_orphan_citations": 2,
+    "acceptance_tests_defined": 2365,
+    "acceptance_tests_orphan_citations": 0,
     "endpoints": 48,
     "enums": 22,
     "sections": 25
@@ -6254,6 +6254,10 @@
       "defined_in": "spec/09-code-block-system/97-acceptance-criteria.md",
       "defined_line": 23,
       "cited_in": [
+        {
+          "file": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+          "line": 149
+        },
         {
           "file": "spec/09-code-block-system/00-overview.md",
           "line": 5
@@ -20703,6 +20707,153 @@
       ]
     },
     {
+      "id": "AT-SPECAUTHORING-001",
+      "definition": "Every spec module has `00-overview.md` at root",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 18,
+      "cited_in": [
+        {
+          "file": "spec/01-spec-authoring-guide/00-overview.md",
+          "line": 27
+        },
+        {
+          "file": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+          "line": 4
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECAUTHORING-002",
+      "definition": "Every spec module has `99-consistency-report.md` at root",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 19,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-003",
+      "definition": "CLI modules follow 3-folder pattern (`01-backend/`, `02-frontend/`, `03-deploy/`)",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 20,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-004",
+      "definition": "Subfolders with 3+ files include their own `00-overview.md`",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 21,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-005",
+      "definition": "All files use lowercase kebab-case naming",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 29,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-006",
+      "definition": "All folders use lowercase kebab-case naming",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 30,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-007",
+      "definition": "All spec files have unique numeric sequence prefixes within their folder",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 31,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-008",
+      "definition": "Reserved prefixes (00, 97, 98, 99) used only for their designated purposes",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 32,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-009",
+      "definition": "Every `00-overview.md` includes Version and Updated metadata",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 40,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-010",
+      "definition": "Every `00-overview.md` includes AI Confidence score",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 41,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-011",
+      "definition": "Every `00-overview.md` includes Ambiguity score",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 42,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-012",
+      "definition": "Every `00-overview.md` includes Keywords section",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 43,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-013",
+      "definition": "Every `00-overview.md` includes Scoring table",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 44,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-014",
+      "definition": "Every `00-overview.md` includes numbered file inventory table",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 45,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-015",
+      "definition": "Every `00-overview.md` includes Cross-References table",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 46,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-016",
+      "definition": "All cross-references use relative paths (never root-relative or absolute)",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 55,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-017",
+      "definition": "All linked files include `.md` extension",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 56,
+      "cited_in": []
+    },
+    {
+      "id": "AT-SPECAUTHORING-018",
+      "definition": "Zero broken links reported by dashboard scanner",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 57,
+      "cited_in": [
+        {
+          "file": "spec/01-spec-authoring-guide/00-overview.md",
+          "line": 27
+        }
+      ]
+    },
+    {
+      "id": "AT-SPECAUTHORING-019",
+      "definition": "Every top-level `00-overview.md` includes an `## AI Contract` section",
+      "defined_in": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
+      "defined_line": 47,
+      "cited_in": []
+    },
+    {
       "id": "AT-SPECISSUES-01",
       "definition": "Every audit file follows canonical 5-section format",
       "defined_in": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
@@ -25996,24 +26147,5 @@
       ]
     }
   ],
-  "orphan_at_citations": [
-    {
-      "id": "AT-SPECAUTHORING-001",
-      "citedIn": [
-        {
-          "file": "spec/01-spec-authoring-guide/00-overview.md",
-          "line": 27
-        }
-      ]
-    },
-    {
-      "id": "AT-SPECAUTHORING-018",
-      "citedIn": [
-        {
-          "file": "spec/01-spec-authoring-guide/00-overview.md",
-          "line": 27
-        }
-      ]
-    }
-  ]
+  "orphan_at_citations": []
 }
