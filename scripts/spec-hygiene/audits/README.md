@@ -18,7 +18,7 @@ Counts unformalized prose-MUSTs (MUST/SHALL assertions outside `AT-…` row bloc
 - Excludes blockquoted lines (`> …`): citations of other docs, not new MUSTs.
 - Excludes RFC-2119 priority cells (`| F1 | requirement | MUST |`): tag-style priority markers in tabular requirements convention.
 
-**Authoritative output (2026-04-29, v6):** 547 prose-MUSTs across 254 files.
+**Authoritative output (2026-04-29, v6):** 539 prose-MUSTs across 253 files.
 This is the working baseline for spec-task #6 (prose→AT migration).
 
 **Methodology history** (see `spec/AUDIT-FINDINGS-LEDGER.md`):
@@ -28,6 +28,7 @@ This is the working baseline for spec-task #6 (prose→AT migration).
 - F-SCOPE-05 — v3 (fixture-slot + blockquote exclusions) → 623.
 - F-SCOPE-06 — v4 (bare-form gate citations: `G-40` not just `G-40-…`) → 594.
 - F-SCOPE-07 — v5 (RFC-2119 priority cells in requirements matrices) → 565 → 556 after batch-4 content migration.
-- F-SCOPE-08 — v6 (alphabetic-prefix gate citations: `G-A4-*`, `G-ERR-*`, `G-UPD-*`) → **547** after batch-5 content migration (9 lines bound to 9 new `G-A4-*` gates in `09-audit-log-policy.md`).
+- F-SCOPE-08 — v6 (alphabetic-prefix gate citations: `G-A4-*`, `G-ERR-*`, `G-UPD-*`) → 547 after batch-5 content migration (9 lines bound to 9 new `G-A4-*` gates in `09-audit-log-policy.md`).
+- F-SCOPE-09 — pure content turn (no parser change): batch-6 bound 8 prose-MUSTs in `spec/00-scoping.md` to 9 new/promoted `G-NS-SCOPING-*` gates → **539**.
 
 Run: `node scripts/spec-hygiene/audits/count-prose-musts.mjs`

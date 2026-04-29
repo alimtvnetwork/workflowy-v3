@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.2  
-> **Updated:** 2026-04-29 — **batch-5 prose→AT migration:** registered 9 new `G-A4-*` gates (DOC-NORM) for `spec/31-app/05-conventions/09-audit-log-policy.md` per task #6-batch-5 to provide enforcement bindings for substantive prose-MUSTs. New `Domain-AUDIT` subsection. Prior: 1.7.1 (batch-4 G-16-* gates).
+> **Version:** 1.7.3  
+> **Updated:** 2026-04-29 — **batch-6 prose→AT migration:** registered new `Domain-SCOPING` subsection with 9 `G-NS-SCOPING-*` gates (3 promoting reserved-name gates from `spec/00-scoping.md` §Hygiene Gate to formal registry rows + 6 new DOC-NORM gates for §Classification Vocabulary and §Reclassification Procedure prose-MUSTs). Prior: 1.7.2 (batch-5 G-A4-* gates).
 
-- **Total named gates:** 332 (+9 this revision: nine `G-A4-*`)
+- **Total named gates:** 341 (+9 this revision: nine `G-NS-SCOPING-*`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
 - **CI:** 44
 - **TEST:** 14 (unchanged)
-- **DOC-NORM:** 68 (+9 this revision)
+- **DOC-NORM:** 77 (+9 this revision)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 38 (+1: Domain-AUDIT)
+- **Areas covered:** 39 (+1: Domain-SCOPING)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
@@ -542,6 +542,22 @@
 | `G-A4-COALESCE` | **DOC-NORM** | [`spec/31-app/05-conventions/09-audit-log-policy.md`](./31-app/05-conventions/09-audit-log-policy.md) | When per-minute quota is exceeded for a `(ActorOwnerId, Action)` pair, identical events MUST be merged into a single row with `Metadata.coalescedCount` and `Metadata.coalescedWindowEnd`; first event preserved verbatim. |
 | `G-A4-CLIENT-NO-WRITE` | **DOC-NORM** | [`spec/31-app/05-conventions/09-audit-log-policy.md`](./31-app/05-conventions/09-audit-log-policy.md) | The frontend MUST NOT write audit events directly. All audit writes happen server-side as side-effects of authenticated mutations. |
 | `G-A4-QUERY-CACHE-MAX` | **DOC-NORM** | [`spec/31-app/05-conventions/09-audit-log-policy.md`](./31-app/05-conventions/09-audit-log-policy.md) | Audit query responses MUST be cached for at most 60 s — audit data must always look fresh. |
+
+### Domain-SCOPING
+
+> Reserved gate IDs for the corpus-scoping SSOT. `G-NS-SCOPING-INVENTORY-COMPLETE`, `G-NS-SCOPING-STATUS-VALID`, `G-NS-SCOPING-LEGACY-NO-CITATIONS` already named in `spec/00-scoping.md` §"Hygiene Gate" with reserved CI-future tier per ADR-0031. Batch-6 (2026-04-29) registers them here for parser visibility and adds 5 new DOC-NORM gates for the inline normative claims in §"Classification Vocabulary" and §"Reclassification Procedure".
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-NS-SCOPING-INVENTORY-COMPLETE` | **DOC-NORM** | [`spec/00-scoping.md`](./00-scoping.md) | Every top-level directory and file under `spec/` (excluding `spec/00-scoping.md` itself) MUST appear in exactly one row of the inventory tables. Diff failures (missing rows or orphan files on disk) are CI errors. Future-CI per ADR-0031. |
+| `G-NS-SCOPING-STATUS-VALID` | **DOC-NORM** | [`spec/00-scoping.md`](./00-scoping.md) | Each row's Status column MUST be one of `✅ Active`, `📦 Archived`, `🗑 Legacy`. Free-text statuses are CI errors. Future-CI per ADR-0031. |
+| `G-NS-SCOPING-LEGACY-NO-CITATIONS` | **DOC-NORM** | [`spec/00-scoping.md`](./00-scoping.md) | Files under any 🗑 Legacy directory MUST NOT be cited from any ✅ Active file. Active→Legacy citations are CI errors. Future-CI per ADR-0031. |
+| `G-NS-SCOPING-STATUS-REQUIRED` | **DOC-NORM** | [`spec/00-scoping.md`](./00-scoping.md) | Every top-level entry under `spec/` MUST carry exactly one of the three statuses (`✅ Active`, `📦 Archived`, `🗑 Legacy`). Status-less rows are forbidden. |
+| `G-NS-SCOPING-AI-ACTIVE-CONSUME` | **DOC-NORM** | [`spec/00-scoping.md`](./00-scoping.md) | AI implementer behaviour for `✅ Active` rows: MUST consume; MUST emit code matching its acceptance criteria; MUST flag any cross-scope contradictions. |
+| `G-NS-SCOPING-AI-ARCHIVED-NOEMIT` | **DOC-NORM** | [`spec/00-scoping.md`](./00-scoping.md) | AI implementer behaviour for `📦 Archived` rows: MAY consult for rationale; MUST NOT treat as a directive for new code. |
+| `G-NS-SCOPING-AI-LEGACY-NOCONSUME` | **DOC-NORM** | [`spec/00-scoping.md`](./00-scoping.md) | AI implementer behaviour for `🗑 Legacy` rows: MUST NOT consume; MUST NOT emit code from; treat any feature-spec citation of a Legacy file as a stale reference and surface as a content bug. |
+| `G-NS-SCOPING-NO-SILENT-RECLASS` | **DOC-NORM** | [`spec/00-scoping.md`](./00-scoping.md) | A scope's status MUST NOT be silently changed. Reclassification requires a new ADR following the §"Reclassification Procedure" steps. |
+| `G-NS-SCOPING-RECLASS-ADR-COUPLING` | **DOC-NORM** | [`spec/00-scoping.md`](./00-scoping.md) | The reclassification ADR MUST cite this file and the row being changed; once `Accepted`, both files MUST land in the same PR. |
 
 ### Meta-00
 
