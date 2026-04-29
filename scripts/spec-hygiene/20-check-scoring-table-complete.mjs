@@ -11,9 +11,12 @@
  *        - "AI Confidence" OR "AI Implementability" (case-insensitive)
  *        - "Ambiguity" (case-insensitive)
  *        - "Health Score" OR "Overall" OR "Total" (case-insensitive)
- *   2. Numeric scores parseable (WARN) — each canonical row line MUST contain
- *      either a percentage (\d{1,3}%), a fraction (\d{1,3}/\d{1,3}), or a
- *      letter grade (\b[A-F][+\-]?\b). Pure prose ("looks good") forbidden.
+ *   2. Health Score has parseable numeric (HARD-FAIL) — the Health Score /
+ *      Overall / Total row line MUST contain either a percentage (\d{1,3}%),
+ *      a fraction (\d{1,3}/\d{1,3}), or a letter grade (\b[A-F][+\-]?\b).
+ *      AI Confidence / Ambiguity rows are exempt — their canonical values
+ *      are tokens (per Layer-2.5 gate G-00-OVERVIEW-SCORING-VALUE-FORMAT),
+ *      not numerics. (Rule narrowed 2026-04-29 after runner authoring.)
  *   3. Health Score is the last row (WARN) — when a `| Criterion |` table is
  *      used, the Health Score / Overall / Total row MUST appear AFTER the
  *      AI Confidence and Ambiguity rows.
