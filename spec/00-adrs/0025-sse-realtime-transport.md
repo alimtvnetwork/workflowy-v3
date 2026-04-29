@@ -108,6 +108,9 @@ reconnects succeed.
 - Some corporate proxies buffer `text/event-stream` → mitigated by
   the heartbeat (D6) and 503-fallback polling (D8).
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/31-app/06-endpoints/ (SSE)`](../31-app/06-endpoints/).
+
 ## Alternatives Considered
 
 1. **WebSocket via Ratchet/ReactPHP sidecar.** Rejected — requires a

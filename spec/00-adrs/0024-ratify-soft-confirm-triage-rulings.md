@@ -72,6 +72,9 @@ per-item section headers (§§ #01, #03, #17) MAY retain their original
   requires a full ADR cycle (Proposed → Accepted + supersede).
 - Adds 3 more gate IDs to the CI matrix.
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/18-spec-issues/`](../18-spec-issues/).
+
 ## Alternatives Considered
 
 1. **Leave as soft-confirm indefinitely.** Rejected — soft-confirm was

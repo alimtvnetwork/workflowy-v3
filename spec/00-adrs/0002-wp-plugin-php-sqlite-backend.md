@@ -100,6 +100,9 @@ re-anchoring (mirroring the explicit "Gates Touched" section below).
 - Some realtime patterns (true bidirectional WebSocket fan-out) are not
   natural in PHP-FPM; we accept SSE-only as the streaming primitive.
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/15-wp-plugin-how-to/`](../15-wp-plugin-how-to/).
+
 ## Alternatives Considered
 
 1. **Lovable Cloud / Supabase managed backend** — rejected. Forces a

@@ -143,6 +143,9 @@ governed by this ADR, only keys.
   legal shapes for the `Errors` key (absent vs present). Static
   schema validators must encode both.
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/).
+
 ## Alternatives Considered
 
 1. **JSend** (`{ status: "success" | "fail" | "error", data }`) —

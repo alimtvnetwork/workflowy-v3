@@ -122,6 +122,9 @@ needs re-anchoring.
   ceremony; we accept the velocity tax in exchange for never silently
   doing a major upgrade.
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/31-app/`](../31-app/), [`spec/02-coding-guidelines/02-typescript/`](../02-coding-guidelines/02-typescript/).
+
 ## Alternatives Considered
 
 1. **Next.js (App Router) + React 19** — rejected. Next.js's server

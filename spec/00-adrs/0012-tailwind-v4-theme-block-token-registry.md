@@ -195,6 +195,9 @@ This rule lives in ADR-0012 (not ADR-0028) because it is a **styling-system inva
   runtime via inline style on the root element, or (b) ship as a new
   ADR-amended token. No `style={{ color: pickedHex }}` shortcut.
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/32-ui-design/`](../32-ui-design/), [`spec/07-design-system/`](../07-design-system/).
+
 ## Alternatives Considered
 
 1. **Tailwind v3 + `tailwind.config.ts`** — rejected: v4's CSS-first

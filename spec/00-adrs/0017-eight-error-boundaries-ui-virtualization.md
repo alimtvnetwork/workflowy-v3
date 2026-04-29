@@ -121,6 +121,9 @@ Manual `IntersectionObserver` rolls or `react-window` are forbidden.
 - Drag-and-drop across virtualized rows is non-trivial (D5 makes
   this an explicit requirement, not a bug to be discovered later).
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/31-app/`](../31-app/), [`spec/32-ui-design/`](../32-ui-design/).
+
 ## Alternatives Considered
 
 1. **Single root `AppErrorBoundary` only** — rejected: any crash in

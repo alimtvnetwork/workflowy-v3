@@ -131,6 +131,9 @@ MAY remain inline.
   (`isDefined`, `isMissing`, …) before any guard can be written.
   This helper module becomes a load-bearing dependency.
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/02-coding-guidelines/02-typescript/`](../02-coding-guidelines/02-typescript/).
+
 ## Alternatives Considered
 
 1. **Leave rules in prose only** — rejected: ADR-0003 already

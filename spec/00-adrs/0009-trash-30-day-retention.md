@@ -152,6 +152,9 @@ ADR before any spec edit may introduce them:
   batch (e.g. 10 000) or a lower-traffic schedule requires a new ADR;
   no operator-runtime tuning.
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/31-app/ (Trash logic)`](../31-app/).
+
 ## Alternatives Considered
 
 1. **Hard-delete on user click (no soft-delete)** — rejected: removes

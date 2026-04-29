@@ -193,6 +193,9 @@ query opts in via `is:trashed` or `is:complete`.
   semantic specificity may end up in the same bucket. Acceptable
   trade-off — full BM25 in v1 was rejected as the SLA risk.
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/31-app/ (search)`](../31-app/).
+
 ## Alternatives Considered
 
 1. **Full BM25 / TF-IDF** — rejected for v1: requires a real inverted

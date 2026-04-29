@@ -131,6 +131,9 @@ as plain `string` MUST be corrected as a follow-up:
 - Tagged error class (`InvalidIdError`) is a new export the team
   must remember to import in catch blocks.
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/31-app/`](../31-app/), [`spec/02-coding-guidelines/02-typescript/`](../02-coding-guidelines/02-typescript/).
+
 ## Alternatives Considered
 
 1. **Plain `string` everywhere (status quo of the spec)** —
