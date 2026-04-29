@@ -205,3 +205,28 @@ Fixtures for every AT row in this file are covered by the global P2g sweep — s
 - **Failure mode (hard-fail tier):** CI emits `<file>: missing AI Contract section — every top-level overview MUST carry an '## AI Contract' (or '### AI Contract') heading. See G-00-OVERVIEW-AI-CONTRACT-PRESENT and 18-ai-contract-template.md.` and exits non-zero.
 - **Failure mode (warn tier):** CI emits `<file>: sub-overview missing AI Contract section (WARN-only) — see G-00-OVERVIEW-AI-CONTRACT-PRESENT.` and continues.
 - **Future companion:** a `G-00-OVERVIEW-AI-CONTRACT-COMPLETE` gate could later enforce specific sub-headings (`Inputs`, `Outputs`, `Invariants`, `Failure modes`) — deferred until canonical contract schema is ratified.
+
+---
+
+## Gate `G-13-AUDIT-RUNNER-CONTRACT` (CI, hard-fail)
+
+- **Purpose:** The spec-hygiene runner (`scripts/spec-hygiene/00-run-all.mjs`) is the **single CI entry point** for every named spec gate. Without an enforced contract, individual checks can be silently dropped from the runner array, regress to non-zero exits being swallowed, or be added under the wrong tier — and the gate registry's "CI" tier label becomes a lie. This gate locks the runner's invariants so the registry's tier classification is trustworthy.
+- **AT row:** `AT-SPECAUTHORING-020` — Audit-runner contract. Every `**CI**`-tier gate in `spec/_GATE-REGISTRY.md` MUST be backed by a concrete checker script wired into `scripts/spec-hygiene/00-run-all.mjs`'s `checks` array, and the runner MUST aggregate non-zero exits via `process.exit(1)`.
+- **Rules (all hard-fail):**
+  1. **Single entry point** — `scripts/spec-hygiene/00-run-all.mjs` MUST exist, be executable as `node scripts/spec-hygiene/00-run-all.mjs`, and own a top-level `checks` array of string entries.
+  2. **Aggregated exit** — runner MUST end with `if (failed > 0) { ...; process.exit(1); }` so a single check failure fails the whole runner. Bare `process.exit(0)` after the loop is forbidden.
+  3. **No silent skips** — runner MUST NOT contain `try`/`catch` around the per-script `spawnSync` that swallows non-zero exits without incrementing `failed`. `continue` on error without counting is forbidden.
+  4. **Script existence** — every entry in `checks` (token before first whitespace) MUST resolve to an existing file on disk. Stale entries pointing at deleted scripts MUST fail.
+  5. **CI workflow binding** — `.github/workflows/spec-hygiene.yml` MUST invoke `node scripts/spec-hygiene/00-run-all.mjs` (not individual checks). Per-script invocation in CI is forbidden — single entry point only.
+  6. **Numeric prefix discipline** — every checker filename in `scripts/spec-hygiene/` matching `^\d{2}-` is a candidate; only `00-run-all.mjs` and helper scripts (whitelist: `04-generate-index.mjs`, `10-fix-related-blocks.mjs`, `11-generate-auto-toc.mjs`, `13-generate-at-stubs.mjs`, `14-split-oversized-files.mjs`, `40-generate-contract-json.mjs`, `41-generate-skeletons.mjs`, `43-generate-condensed-overviews.mjs`, `44-fix-feature-block-format.mjs`, `45-append-p13-orphan-stubs.mjs`, `49-fixture-stub-generator.mjs`, `50-append-fixtures-to-condensed.mjs`, `51-thicken-f-overviews.mjs`, `99-convert-headers.mjs`, `35-allow-list-inventory.mjs`) are exempt. Every other `\d{2}-check-*.mjs` MUST appear in the `checks` array.
+- **Scope:** runner file (`scripts/spec-hygiene/00-run-all.mjs`), CI workflow (`.github/workflows/spec-hygiene.yml`), and the gate registry's `**CI**`-tier rows.
+- **Baseline (2026-04-29):** runner exists, aggregates exits via `process.exit(1)` (line 55), and wires 32 checker scripts. CI workflow invokes the runner. **Clean baseline — gate ships hard-fail from day 1.**
+- **Failure modes:**
+  - `scripts/spec-hygiene/00-run-all.mjs: missing or unreadable — see G-13-AUDIT-RUNNER-CONTRACT rule 1`
+  - `scripts/spec-hygiene/00-run-all.mjs: aggregated exit missing — runner MUST call process.exit(1) on failure. Rule 2.`
+  - `scripts/spec-hygiene/00-run-all.mjs: silent skip detected (try/catch around spawnSync without failed++) — Rule 3.`
+  - `scripts/spec-hygiene/00-run-all.mjs: stale entry '<path>' — file does not exist. Rule 4.`
+  - `.github/workflows/spec-hygiene.yml: missing 'node scripts/spec-hygiene/00-run-all.mjs' invocation — Rule 5.`
+  - `scripts/spec-hygiene/<NN>-check-<name>.mjs: orphan checker — exists on disk but missing from 00-run-all.mjs checks array. Rule 6.`
+- **SSOT:** `.lovable/memory/audit/at-audit-runner-contract.md`.
+- **Future companion:** `G-13-AUDIT-RUNNER-PARITY` (deferred) would assert the runner's `checks` array length matches the count of `**CI**`-tier rows in `_GATE-REGISTRY.md` (currently 33 CI tier vs 32 runner entries — 1-row delta is the **G-13-AUDIT-RUNNER-CONTRACT** meta-gate itself, which is enforced by file-existence rather than a dedicated checker).
