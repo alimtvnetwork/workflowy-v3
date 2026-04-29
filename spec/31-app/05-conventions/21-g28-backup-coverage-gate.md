@@ -13,12 +13,12 @@
 This is the **tenth and final** drift-detector in the CI cluster (siblings: G-19 workflow, G-20 pre-commit, G-21 gate-discovery, G-22 error-code catalogue, G-23 audit-log coverage, G-24 role-escalation, G-25 token lifecycle, G-26 MFA, G-27 data-export). G-28 watches **seven distinct backup/DR surfaces** that policy v1.0.0 introduced together:
 
 1. **SQLite backup-API exclusivity** — no source file may use `copy()`, `\file_put_contents()` reading from `*.sqlite`, or shell `cp`/`rsync` of `*.sqlite` to perform backups; only `Backup\SqliteBackup::dump()` (which wraps `\SQLite3::backup()`) is permitted.
-2. **Tarball encryption-before-upload pairing** — every object-storage upload call (`S3Client::putObject`, `Storage::upload`, `aws s3 cp` shell-out) whose source is a backup tarball MUST be preceded (within 30 lines, same scope) by `Crypto::aesGcmEncrypt()`.
-3. **Object-storage client config hardening** — every `S3Client` instantiation (or wrapper) MUST declare `'encryption' => 'AES256'`, `'acl' => 'private'`, AND a `https://` endpoint literal.
+2. **Tarball encryption-before-upload pairing** — every object-storage upload call (`S3Client::putObject`, `Storage::upload`, `aws s3 cp` shell-out) whose source is a backup tarball MUST (gate G-BACKUP-CLIENT-SIDE-ENCRYPT) be preceded (within 30 lines, same scope) by `Crypto::aesGcmEncrypt()`.
+3. **Object-storage client config hardening** — every `S3Client` instantiation (or wrapper) MUST (gate G-BACKUP-S3-CONFIG-HARDENED) declare `'encryption' => 'AES256'`, `'acl' => 'private'`, AND a `https://` endpoint literal.
 4. **Sensitive-file exclusion from backups** — no code path that builds a backup tarball may include `wp-config.php` or any path matching `/auth_key|secret|password/i` in its file list.
-5. **Restore integrity verification pairing** — every `Restore\Engine::swap()` call (or equivalent live-DB swap) MUST be preceded (within 50 lines, same scope) by BOTH a `PRAGMA integrity_check` execution AND an `AuditChain::reWalk()` call.
-6. **Drill-scheduler cadence presence** — `wp-plugin/Backup/DrillScheduler.php` MUST exist and contain a literal `cadence` constant or property equal to `90` days (or `90 * DAY_IN_SECONDS` / `7776000` seconds equivalent).
-7. **Schedule ↔ cron parity** — the §3 backup schedule table (WAL-ship 15 min / hot 1 h / daily / weekly / monthly / yearly 7 y) MUST match the cron entries declared in the plugin install hook (`wp-plugin/Lifecycle/Install.php`) byte-for-byte (every spec row → one cron entry; every cron entry → one spec row).
+5. **Restore integrity verification pairing** — every `Restore\Engine::swap()` call (or equivalent live-DB swap) MUST (gates G-BACKUP-RESTORE-INTEGRITY-CHECK + G-BACKUP-RESTORE-AUDIT-REWALK) be preceded (within 50 lines, same scope) by BOTH a `PRAGMA integrity_check` execution AND an `AuditChain::reWalk()` call.
+6. **Drill-scheduler cadence presence** — `wp-plugin/Backup/DrillScheduler.php` MUST (gate G-BACKUP-DRILL-CADENCE-90D) exist and contain a literal `cadence` constant or property equal to `90` days (or `90 * DAY_IN_SECONDS` / `7776000` seconds equivalent).
+7. **Schedule ↔ cron parity** — the §3 backup schedule table (WAL-ship 15 min / hot 1 h / daily / weekly / monthly / yearly 7 y) MUST (gate G-BACKUP-SCHEDULE-CRON-PARITY) match the cron entries declared in the plugin install hook (`wp-plugin/Lifecycle/Install.php`) byte-for-byte (every spec row → one cron entry; every cron entry → one spec row).
 
 Without G-28, any of seven regressions could silently merge:
 
