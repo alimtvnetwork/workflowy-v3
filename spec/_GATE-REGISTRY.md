@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.10  
-> **Updated:** 2026-04-29 — **batch-13 prose→AT migration:** registered new **Domain-ERRCODE** subsection with 8 `G-ERRCODE-*` gates (1 umbrella `G-ERRCODE` CI + 6 CI sub-rules `-RUNTIME-AGNOSTIC`/`-SEVERITY-INTRINSIC`/`-HTTPSTATUS-PARITY`/`-INTERCEPTOR-SWITCHES-ON-CODE`/`-UNKNOWN-FUNNEL`/`-I18N-MESSAGEKEY-LOOKUP` + 1 DOC-NORM `-DEPRECATION-GRACE`). Disjoint from existing `G-ERR-*` (envelope shape) and `G-22-REGISTRY-LOCKSTEP` (registry-build). Pre-flight namespace check applied (lesson from F-SCOPE-15). Prior: 1.7.9 (batch-12 G-BACKUP-* gates).
+> **Version:** 1.7.11  
+> **Updated:** 2026-04-29 — **batch-14 prose→AT migration:** registered 7 new `G-13-*` sub-gates in **ADR-0013** section (`-OVERVIEW-ARCHETYPE-EMIT`, `-DAG-EXACT-MIRROR`, `-BRANCH-PROTECTION-MIRROR`, `-SIGN-REQUIRED-ON-TAG`, `-ANTIPATTERN-COMPLIANCE`, `-FIXTURE-STRING-PARITY`, `-FOLDER-PLACEMENT`) covering all 7 prose-MUSTs in `spec/13-cicd-pipeline-workflows/00-overview.md`. All DOC-NORM tier (gate-table consumers / spec-shape claims). Pre-flight namespace check applied (G-13-* family was already established with 16 sibling gates; no collisions). Prior: 1.7.10 (batch-13 G-ERRCODE-* gates).
 
-- **Total named gates:** 392 (+8 this revision: eight `G-ERRCODE-*`)
+- **Total named gates:** 399 (+7 this revision: seven `G-13-*`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
-- **CI:** 79 (+7 this revision)
+- **CI:** 79 (unchanged)
 - **TEST:** 17 (unchanged)
-- **DOC-NORM:** 91 (+1 this revision)
+- **DOC-NORM:** 98 (+7 this revision)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 46 (+1: Domain-ERRCODE)
+- **Areas covered:** 46 (unchanged)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
