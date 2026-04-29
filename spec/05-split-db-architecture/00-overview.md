@@ -54,8 +54,8 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 - Backup and DR — see [`spec/31-app/05-conventions/14-backup-and-dr-policy.md`](../31-app/05-conventions/14-backup-and-dr-policy.md)
 
 **Definition of Done** —
-- Every cross-DB join is documented and goes through a repo, not raw SQL
-- Split decision matrix in `07-split-db-pattern.md` is reachable from each domain folder
+- Every cross-DB join is documented and goes through a repo, not raw SQL (`G-04-DB-SPLIT-PATTERN` — see [`07-split-db-pattern.md`](./07-split-db-pattern.md))
+- Split decision matrix in `07-split-db-pattern.md` is reachable from each domain folder (`G-04-DB-SPLIT-PATTERN` — see [`07-split-db-pattern.md`](./07-split-db-pattern.md))
 - Every `AT-SPLITDB-*` row in `97-acceptance-criteria.md` passes (filled in P2 backfill)
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 

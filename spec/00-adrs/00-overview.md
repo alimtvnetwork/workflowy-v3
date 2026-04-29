@@ -22,8 +22,8 @@
 
 **Definition of Done** —
 - New file passes gates `G-00-ADR-SHAPE`, `G-00-ADR-NUMBERING`, `G-00-ADR-STATUS`, `G-00-ADR-SUPERSEDE`
-- If superseding, the older ADR's `## Status` flips to `Superseded by ADR-NNNN` in the **same** change
-- Both index tables (`spec/00-adrs/00-overview.md` §Index + `spec/00-overview.md` rollup) are updated in lock-step
+- If superseding, the older ADR's `## Status` flips to `Superseded by ADR-NNNN` in the **same** change (`AT-ADR-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
+- Both index tables (`spec/00-adrs/00-overview.md` §Index + `spec/00-overview.md` rollup) are updated in lock-step (`AT-ADR-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 ### Scoring

@@ -17,7 +17,7 @@
 - Authoritative rule definitions — those live in [`spec/02-coding-guidelines/`](../02-coding-guidelines/00-overview.md). Do not re-declare rules here.
 
 **Definition of Done** —
-- Every rule mentioned has a back-link to its canonical home in `02-coding-guidelines/`
+- Every rule mentioned has a back-link to its canonical home in `02-coding-guidelines/` (`AT-CONSOLIDATEDGUIDELINES-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
 - Zero contradictions between this folder and `02-coding-guidelines/` (gate planned: G-41 cross-doc rule reciprocity)
 - Every `AT-CONSOLIDATEDGUIDELINES-*` row in `97-acceptance-criteria.md` passes (filled in P2 backfill)
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0

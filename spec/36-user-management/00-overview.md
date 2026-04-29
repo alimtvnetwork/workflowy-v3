@@ -60,7 +60,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 **Definition of Done** —
 - Every surface in [`./01-account-and-settings.md`](./01-account-and-settings.md) §1–§6 has at least one `AT-USR-*` row in `97-acceptance-criteria.md` (filled in P2).
 - Every endpoint in `./01-account-and-settings.md` §REST Surface Summary appears in [`spec/31-app/06-endpoints/`](../31-app/06-endpoints/00-overview.md) and is verified by `scripts/spec-hygiene/29-check-endpoint-matrix-coverage.mjs`.
-- Roles are stored in the dedicated `UserRole` table (FR-2) and validated server-side via `hasRole(userId, role)` (FR-6) — never read from `localStorage`/`sessionStorage`.
+- Roles are stored in the dedicated `UserRole` table (FR-2) and validated server-side via `hasRole(userId, role)` (FR-6) — never read from `localStorage`/`sessionStorage`. (`AT-USERMANAGEMENT-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0.
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

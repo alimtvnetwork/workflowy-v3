@@ -20,9 +20,9 @@
 - WordPress core hardening / hosting → [`spec/13-cicd-pipeline-workflows/`](../13-cicd-pipeline-workflows/) + `23-operator-runbooks/`.
 
 **Definition of Done** —
-- Every endpoint listed in `spec/contract.json` has a controller method whose name matches the generated stub in `skeletons/php/RestRoutes.generated.php`.
+- Every endpoint listed in `spec/contract.json` has a controller method whose name matches the generated stub in `skeletons/php/RestRoutes.generated.php`. (`AT-WPROOT-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
 - Every `AT-WPPLUGIN-*` row in `97-acceptance-criteria.md` has a passing PHPUnit test of the same id.
-- Every enum used in handler signatures resolves to a class in `wp-plugin/src/Enums/` whose cases match `skeletons/php/Enums.generated.php`.
+- Every enum used in handler signatures resolves to a class in `wp-plugin/src/Enums/` whose cases match `skeletons/php/Enums.generated.php`. (`AT-WPROOT-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0.
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

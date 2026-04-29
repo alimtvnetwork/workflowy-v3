@@ -18,8 +18,8 @@
 - Markdown parsing — see [`spec/08-docs-viewer-ui/`](../08-docs-viewer-ui/00-overview.md)
 
 **Definition of Done** —
-- Highlighter loads lazily; no chunk added to the initial bundle
-- Copy button announces success via aria-live region
+- Highlighter loads lazily; no chunk added to the initial bundle (`AT-CODEBLOCKSYSTEM-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
+- Copy button announces success via aria-live region (`AT-CODEBLOCKSYSTEM-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
 - `AT-CODEBLOCKSYSTEM-01` through `AT-CODEBLOCKSYSTEM-18` from `97-acceptance-criteria.md` pass
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 

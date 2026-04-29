@@ -48,7 +48,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 - Active rules — rules MUST live in their owning section, not here ([owning section](./00-overview.md))
 
 **Definition of Done** —
-- Every audit file ends with a "Resolution" section pointing to the spec change that closed it
+- Every audit file ends with a "Resolution" section pointing to the spec change that closed it (`AT-APP-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
 - Every `AT-APP-37`+ row in `97-acceptance-criteria.md` passes (range bounded once §11 backfill lands; tracked by `11-content-audit-at-app-coverage.md`)
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 

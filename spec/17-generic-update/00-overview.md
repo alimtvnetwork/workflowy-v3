@@ -49,7 +49,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 - Plugin self-update — that is [`14-self-update-app-update/`](../14-self-update-app-update/) and consumes this contract
 
 **Definition of Done** —
-- Every update implementation declares its rollback strategy explicitly
+- Every update implementation declares its rollback strategy explicitly (`AT-GENERICUPDATE-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
 - Every `AT-GENERICUPDATE-*` row in `97-acceptance-criteria.md` passes (filled in P2 backfill)
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 

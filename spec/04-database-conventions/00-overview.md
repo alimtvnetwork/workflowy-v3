@@ -65,7 +65,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 **Definition of Done** —
 - Every table has UNIQUE coverage documented in `06-indexes.md` (gate G-32)
 - Every endpoint returns the universal envelope (`AT-ENV-01`, `AT-ENV-02`)
-- Every column name is `snake_case`; every TS field is `camelCase` (gate in `02-coding-guidelines`)
+- Every column name is `snake_case`; every TS field is `camelCase` (gate in `02-coding-guidelines`) (`AT-DATABASECONVENTIONS-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
 - Every `AT-DATABASECONVENTIONS-*` row in `97-acceptance-criteria.md` passes (filled in P2 backfill)
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
