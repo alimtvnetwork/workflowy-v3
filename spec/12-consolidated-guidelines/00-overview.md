@@ -91,18 +91,6 @@
 ---
 
 
-## Scoring
-
-| Dimension | Value |
-|---|---|
-| AI Confidence | Very High |
-| Ambiguity | None |
-| Health Score | 100% (A+) |
-
-> Backfilled 2026-04-29 — replaces legacy `Production-Ready · Ambiguity: None` prose line with canonical 3-row Scoring table per `G-00-OVERVIEW-SCORING-TABLE-COMPLETE` + `G-00-OVERVIEW-SCORING-VALUE-FORMAT`. `Production-Ready` token mapped to `Very High` per Layer-2.5 gate Rule 2.
-
----
-
 ## Purpose
 
 > 🔴 **MANDATORY — AI AGENTS MUST READ THIS**
