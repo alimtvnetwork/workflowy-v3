@@ -14,13 +14,13 @@ This file remedies that by making scope status **machine-checkable** and **first
 
 ## Classification Vocabulary
 
-Every top-level entry under `spec/` MUST carry exactly one of these three statuses:
+Every top-level entry under `spec/` MUST carry exactly one of these three statuses (gate G-NS-SCOPING-STATUS-REQUIRED):
 
 | Status | Meaning | AI Implementer Behaviour | Audit Behaviour |
 |---|---|---|---|
-| ✅ **Active** | In-scope for the current WorkFlowy WP-plugin product. SSOT. | MUST consume; MUST emit code matching its acceptance criteria; MUST flag any cross-scope contradictions. | Counted in implementability score; placeholder/density caps enforced; ATs CI-gated. |
-| 📦 **Archived** | Historical decision record, completed work, or solved-issue log. Read-only after archival date. | MAY consult for rationale; MUST NOT treat as a directive for new code. | Excluded from implementability score; placeholder caps not enforced; CI gates may continue to assert immutability. |
-| 🗑 **Legacy** | Inherited from a prior product (browser-extension / Go-binary CLI deploy pipeline) before the 2026-04-25 backend decision. **Out of scope for WorkFlowy.** Retained only because deletion would lose institutional knowledge. | MUST NOT consume; MUST NOT emit code from; if a feature spec cites a Legacy file, treat the citation as a stale reference and surface it as a content bug. | Excluded from implementability score (per `mem://preferences/spec-implementability-percentage` weighting); placeholder caps not enforced; AT counts not credited. |
+| ✅ **Active** | In-scope for the current WorkFlowy WP-plugin product. SSOT. | MUST consume; MUST emit code matching its acceptance criteria; MUST flag any cross-scope contradictions (gate G-NS-SCOPING-AI-ACTIVE-CONSUME). | Counted in implementability score; placeholder/density caps enforced; ATs CI-gated. |
+| 📦 **Archived** | Historical decision record, completed work, or solved-issue log. Read-only after archival date. | MAY consult for rationale; MUST NOT treat as a directive for new code (gate G-NS-SCOPING-AI-ARCHIVED-NOEMIT). | Excluded from implementability score; placeholder caps not enforced; CI gates may continue to assert immutability. |
+| 🗑 **Legacy** | Inherited from a prior product (browser-extension / Go-binary CLI deploy pipeline) before the 2026-04-25 backend decision. **Out of scope for WorkFlowy.** Retained only because deletion would lose institutional knowledge. | MUST NOT consume; MUST NOT emit code from; if a feature spec cites a Legacy file, treat the citation as a stale reference and surface it as a content bug (gate G-NS-SCOPING-AI-LEGACY-NOCONSUME). | Excluded from implementability score (per `mem://preferences/spec-implementability-percentage` weighting); placeholder caps not enforced; AT counts not credited. |
 
 ## Corpus Inventory (2026-04-29)
 
@@ -92,18 +92,18 @@ Every top-level entry under `spec/` MUST carry exactly one of these three status
 
 ## Reclassification Procedure
 
-A scope's status MUST NOT be silently changed. To reclassify any entry:
+A scope's status MUST NOT be silently changed (gate G-NS-SCOPING-NO-SILENT-RECLASS). To reclassify any entry:
 
 1. Author a new ADR under `spec/00-adrs/` titled `ADR-NNNN: Reclassify <scope> from <old> to <new>`.
-2. The ADR MUST cite this file and the row being changed.
-3. Once the ADR reaches `Accepted`, update this file in the same PR — both files MUST land together.
+2. The ADR MUST cite this file and the row being changed (gate G-NS-SCOPING-RECLASS-ADR-COUPLING).
+3. Once the ADR reaches `Accepted`, update this file in the same PR — both files MUST land together (gate G-NS-SCOPING-RECLASS-ADR-COUPLING).
 4. Update the row's `First-classified` column to the reclassification date and add a `Reclassified` column note.
 
 **Forbidden:** Silent edits, memory-only reclassifications, side-channel notes to audits.
 
 ## Hygiene Gate (G-NS-SCOPING-INVENTORY)
 
-A new hygiene runner under `scripts/spec-hygiene/` MUST be authored to enforce:
+A new hygiene runner under `scripts/spec-hygiene/` MUST be authored to enforce (gate G-NS-SCOPING-INVENTORY-COMPLETE):
 
 - **G-NS-SCOPING-INVENTORY-COMPLETE** — Every top-level directory and file under `spec/` (excluding `spec/00-scoping.md` itself) MUST appear in exactly one row of the inventory tables above. Diff failures (missing rows or orphan files on disk) are CI errors.
 - **G-NS-SCOPING-STATUS-VALID** — Each row's Status column MUST be one of `✅ Active`, `📦 Archived`, `🗑 Legacy`. Free-text statuses are CI errors.
