@@ -22,6 +22,25 @@ export type ItemId = Brand<string, "ItemId">;
 export type OwnerId = Brand<string, "OwnerId">;
 
 /**
+ * Fractional-index sort key — base-62, lexicographically ordered STRING.
+ *
+ * SSOT: ADR-0016 (`spec/00-adrs/0016-fractional-index-sort-order.md`) +
+ * core memory line 11: "SortOrder is a fractional-index STRING (base-62,
+ * lexicographic), never a number."
+ *
+ * Why a string, not a number:
+ *   - O(1) midpoint inserts: `between("a","b") === "aU"` (no sibling rewrites).
+ *   - Lexicographic compare matches insertion intent across clients.
+ *   - Survives offline-queue replay (ADR-0023) without renumbering races.
+ *
+ * Branded so a raw string cannot be passed where a fractional key is required.
+ * The `between(a,b)` algorithm + alphabet live in a future `src/lib/sortKey.ts`
+ * (lands with F-IMPL-03 reorder/DnD work); the type alone is shipped now to
+ * unblock the loader/queue contract per audit-v8 finding F-IMPL-AUD-02.
+ */
+export type SortKey = Brand<string, "SortKey">;
+
+/**
  * All possible item types in the outliner.
  *
  * SSOT: `spec/20-enums-index.md` §3.5 + `spec/32-ui-design/02-state-and-data/03-data-types.md`.
