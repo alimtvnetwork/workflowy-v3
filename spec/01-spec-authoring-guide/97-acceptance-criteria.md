@@ -287,3 +287,31 @@ Fixtures for every AT row in this file are covered by the global P2g sweep — s
   - AI Contract body: `G-00-OVERVIEW-AI-CONTRACT-COMPLETE` (hard-fail rules 1+2; WARN rules 3–5)
   - Scoring body: **this gate** (WARN-only until backfill)
   - H1 has no Layer-2 (it's a single-line presence-only contract by design)
+
+---
+
+## Gate `G-00-OVERVIEW-SCORING-VALUE-FORMAT` (CI, WARN-only at mint)
+
+- **Purpose:** `G-00-OVERVIEW-SCORING-TABLE-COMPLETE` (Layer-2) only enforces that the canonical rows exist with *some* parseable numeric score. It does NOT enforce that values follow a single canonical shape. Today the corpus mixes ten distinct value forms — `95% (A)`, `100/100 (A+)`, `100/100`, `Production-Ready`, `Production-Ready ✅`, `High`, `Low 🟢`, `None`, `Medium`, etc. — making programmatic aggregation by `health-dashboard.md` and the future score-aggregator brittle (each consumer must hand-roll a parser per shape). This Layer-2.5 gate locks one canonical value shape per canonical row so a single regex can extract scores corpus-wide.
+- **AT row:** `AT-SPECAUTHORING-023` — Every canonical Scoring row's value cell MUST match the row-specific canonical regex below.
+- **Canonical value shapes:**
+  - **Health Score / Overall / Total** → `^\d{1,3}%\s\([A-F][+\-]?\)$` (e.g. `95% (A)`, `100% (A+)`, `88% (B+)`). Decoration (`✅`, emoji, trailing prose) FORBIDDEN. Fraction form `100/100` FORBIDDEN — use percentage. Bare grade `(A+)` without `\d%` FORBIDDEN.
+  - **AI Confidence / AI Implementability** → one of the 5 canonical tokens, exact case, no decoration: `Very High`, `High`, `Medium`, `Low`, `Very Low`. Legacy `Production-Ready` mapped to `Very High`. Trailing emoji (`✅`, `🟢`) FORBIDDEN.
+  - **Ambiguity** → one of the 5 canonical tokens, exact case, no decoration: `None`, `Low`, `Medium`, `High`, `Very High`. Trailing emoji FORBIDDEN.
+- **Rules:**
+  1. **Health Score canonical shape** — within the Scoring section block, the Health Score / Overall / Total row's value cell MUST match `^\d{1,3}%\s\([A-F][+\-]?\)$` after trimming whitespace. (WARN at mint.)
+  2. **AI Confidence canonical token** — value cell MUST be one of the 5 tokens above, exact case, no trailing emoji or parenthetical. Legacy `Production-Ready` is auto-mapped to `Very High` by the linter (WARN with auto-fix suggestion). (WARN at mint.)
+  3. **Ambiguity canonical token** — value cell MUST be one of the 5 tokens above, exact case, no trailing emoji. (WARN at mint.)
+- **Scope:** all 25 top-level `spec/[0-9][0-9]-*/00-overview.md`. Sub-overview tier out of scope.
+- **Baseline (2026-04-29, mint day):** value-format violations across the 25 overviews:
+  - **Health Score** non-canonical: 4 files use `100/100 (A+)` or `100/100` denominator form (`03`, `05`, `06`, `07`). 21 files compliant (`95% (A)` shape).
+  - **AI Confidence** non-canonical: 4 files use `Production-Ready` (`03`, `05`, `06`) or `Production-Ready ✅` (`07`); 1 file (`12`) has prose trailer `High (folder is a stable redirect map; rules live in canonical sources)`. 20 files compliant.
+  - **Ambiguity** non-canonical: 1 file (`07`) has emoji trailer `Low 🟢`. 24 files compliant.
+  - **Total dirty cells:** 10 across 5 files. Gate is WARN-only until a normalization sweep brings the corpus to 25/25 clean per row.
+- **Promotion criteria (WARN → hard-fail):** all three rules promote independently to hard-fail when their respective dirty count reaches 0/25 in a clean CI run. Health Score (4 dirty) is the highest-priority sweep candidate because it's the row most likely to be machine-parsed.
+- **Exempt zones:** fenced code blocks; `14-scoring-metrics.md` schema-defining tables.
+- **Failure modes (WARN-only):**
+  - `<file>: Health Score value '<actual>' does not match canonical '\d{1,3}% (A-F[+-]?)' — Rule 1 (WARN). Suggest: '<auto-fix>'.`
+  - `<file>: AI Confidence value '<actual>' is not one of {Very High, High, Medium, Low, Very Low} — Rule 2 (WARN). Suggest: '<auto-fix>'.`
+  - `<file>: Ambiguity value '<actual>' is not one of {None, Low, Medium, High, Very High} — Rule 3 (WARN). Suggest: '<auto-fix>'.`
+- **SSOT:** [`./14-scoring-metrics.md`](./14-scoring-metrics.md). Audit ledger: `.lovable/memory/audit/at-overview-scoring-value-format-gate.md`.
