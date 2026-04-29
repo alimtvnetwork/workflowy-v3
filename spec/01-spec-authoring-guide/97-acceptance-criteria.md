@@ -261,3 +261,29 @@ Fixtures for every AT row in this file are covered by the global P2g sweep — s
 - **Trio status:** This gate completes the **overview-root contract trio's content-completeness layer**:
   - Layer 1 (presence): `G-09-OVERVIEW-H1-MATCHES-FOLDER-INDEX` (H1), `G-00-OVERVIEW-SCORING-TABLE-PRESENT` (Scoring), `G-00-OVERVIEW-AI-CONTRACT-PRESENT` (AI Contract heading).
   - Layer 2 (completeness): **this gate** (AI Contract body schema). A future `G-00-OVERVIEW-SCORING-TABLE-COMPLETE` would mirror this for Scoring rows.
+
+---
+
+## Gate `G-00-OVERVIEW-SCORING-TABLE-COMPLETE` (CI, WARN-only initial)
+
+- **Purpose:** `G-00-OVERVIEW-SCORING-TABLE-PRESENT` (Layer 1) only enforces that a Scoring section exists. It does NOT enforce that the table contains the canonical rows. Without this gate, a Scoring section can pass `…-PRESENT` with arbitrary or missing rows, and the per-section quality signal (AI Confidence, Ambiguity, Health Score) is unreliable across the spec corpus. This gate locks the canonical 3-row schema so `health-dashboard.md` and any future score-aggregator can rely on positional/named row presence. Mirrors `G-00-OVERVIEW-AI-CONTRACT-COMPLETE` for the Scoring side of the trio's Layer-2.
+- **AT row:** `AT-SPECAUTHORING-022` — Every top-level overview's Scoring section MUST contain three canonical row tokens: **AI Confidence** (or **AI Implementability**), **Ambiguity**, and **Health Score** (or **Overall** / **Total**).
+- **Rules:**
+  1. **Three canonical row tokens present** — within the Scoring section block (from `^(##|###)\s+Scoring\b` / `^\*\*Scoring\*\*` / `^\| Criterion \|` to next `^## ` heading or EOF), the block MUST contain at least one occurrence of each:
+     - `AI Confidence` OR `AI Implementability` (case-insensitive)
+     - `Ambiguity` (case-insensitive)
+     - `Health Score` OR `Overall` OR `Total` (case-insensitive)
+  2. **Numeric scores parseable** — each canonical row MUST be followed in the same line (or adjacent table cell) by either a percentage (`\d{1,3}\s*%`) or a fraction (`\d{1,3}\s*/\s*\d{1,3}`) or a letter grade (`\b[A-F][+-]?\b`). Pure prose ("looks good", "high") is forbidden as a score value.
+  3. **Health Score is the last row** — when a table form is used (`^\| Criterion \|`), the Health Score / Overall / Total row MUST appear after AI Confidence and Ambiguity rows (it is the aggregate; it logically comes last).
+- **Scope:** all 25 top-level `spec/[0-9][0-9]-*/00-overview.md`. Sub-overview tier is out of scope (Scoring lives at section root only — same scope as `…-PRESENT`).
+- **Baseline (2026-04-29):** **0 of 25 fully compliant** — 19/25 carry AI Confidence + Ambiguity rows but lack a `Health Score` / `Overall` / `Total` aggregate row; 6/25 (`00-adrs`, `01-spec-authoring-guide`, `03-error-manage`, `05-split-db-architecture`, `06-seedable-config-architecture`, `07-design-system`) lack the canonical Scoring schema entirely. Gate ships **WARN-only from day 1**; promotion to hard-fail deferred until a Scoring-schema backfill sweep is scoped (target: add the missing aggregate row to the 19, then author full Scoring sections for the 6).
+- **Exempt zones:** fenced code blocks (a `Health Score` token inside a `\`\`\`` fence does not count); `spec/01-spec-authoring-guide/14-scoring-metrics.md` if it ever defines the schema with example tables (gate scope is overviews only).
+- **Failure modes (WARN-only):**
+  - `<file>: Scoring table missing canonical row '<name>' — see G-00-OVERVIEW-SCORING-TABLE-COMPLETE rule 1 and 14-scoring-metrics.md.`
+  - `<file>: Scoring row '<name>' has no parseable numeric score — Rule 2 (WARN).`
+  - `<file>: Health Score row appears before AI Confidence/Ambiguity — Rule 3 (WARN).`
+- **SSOT:** [`./14-scoring-metrics.md`](./14-scoring-metrics.md) (canonical row names + score schema). Audit ledger: `.lovable/memory/audit/at-overview-scoring-complete-gate.md`.
+- **Trio Layer-2 status (complete after this mint):**
+  - AI Contract body: `G-00-OVERVIEW-AI-CONTRACT-COMPLETE` (hard-fail rules 1+2; WARN rules 3–5)
+  - Scoring body: **this gate** (WARN-only until backfill)
+  - H1 has no Layer-2 (it's a single-line presence-only contract by design)
