@@ -3,7 +3,7 @@
 > **Version:** 1.6.8  
 > **Updated:** 2026-04-29 — **Gate-graduation ledger seeded.** Sibling file [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md) now consolidates the flip-criteria + target-date for all 8 WARN-only gates in this registry (`G-NS-STATUS-IN-LEGEND`, `G-NS-ADR-MUST-HAS-AT`, `G-01-DOD-CONDENSED-MIRRORS-OVERVIEW`, `G-00-OVERVIEW-AI-CONTRACT-PRESENT` sub-tier, `G-00-OVERVIEW-AI-CONTRACT-COMPLETE` rules-3-to-5, `G-00-ADR-CONSEQUENCES-XLINK` (already drained — flip-eligible NOW), `G-00-AT-FIX-COMPANION-SHAPE`, `G-00-PLACEHOLDER-DENSITY`). Single grep now answers "which gates are still soft?" — eliminates registry scan. Closes the gate-tracking gap surfaced after this cycle's #57/#58/#59 trio. Prior: 1.6.7 (re-audit v3 ratified + companion-fixture pattern formalised + hygiene baseline GREEN).
 
-- **Total named gates:** 314 (unchanged this revision; ledger is metadata)
+- **Total named gates:** 315 (+1 this revision: `G-00-GRADUATION-LEDGER-FRESH`)
 - **WARN-only gates:** 8 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
 - **CI:** 43
 - **TEST:** 14 (unchanged)
