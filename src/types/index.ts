@@ -149,3 +149,21 @@ export function asItemId(raw: string): ItemId {
   if (raw.length === 0) throw new Error("ItemId cannot be empty");
   return raw as ItemId;
 }
+
+/**
+ * Construct a SortKey from a raw fractional-index string.
+ *
+ * Use only at trust boundaries (DB rows, API envelope decode, queue replay).
+ * Throws on empty input AND on any character outside the base-62 alphabet
+ * `[0-9A-Za-z]` — the alphabet is fixed by ADR-0016 and out-of-band keys
+ * would break lexicographic compare across clients.
+ */
+const SORT_KEY_PATTERN = /^[0-9A-Za-z]+$/;
+
+export function asSortKey(raw: string): SortKey {
+  if (raw.length === 0) throw new Error("SortKey cannot be empty");
+  if (!SORT_KEY_PATTERN.test(raw)) {
+    throw new Error("SortKey must be base-62 [0-9A-Za-z] per ADR-0016");
+  }
+  return raw as SortKey;
+}
