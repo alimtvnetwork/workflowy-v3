@@ -1,10 +1,10 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.2.3  
-> **Updated:** 2026-04-29 — patch: `G-09-OVERVIEW-H1-MATCHES-FOLDER-INDEX` flipped from WARN-only conditional → **hard-fail mandatory** (Phase 3 active). Phase 2 H1-prefix sweep authored `# NN — Title` form in 24 overview files; baseline now 25 of 25 compliant. Audit ledger: `.lovable/memory/audit/at-h1-prefix-sweep.md`. Gate count unchanged (no new gate; existing one promoted). Prior: 1.2.2 (G-09 minted WARN-conditional), 1.2.1 (G-01-DOD-NO-NN-PLACEHOLDER + G-01-DOD-CONDENSED-MIRRORS-OVERVIEW), 1.2.0 (G-NS-ADR-MUST-HAS-AT), 1.1.9 (G-NS-STATUS-IN-LEGEND), 1.1.8 (G-NS-NO-DEPRECATED-ALIAS), 1.1.7 (G-01-AT-ID-FORMAT-CANONICAL), 1.1.6 (G-13-LEDGER-NUMBERING-CONTIGUOUS), 1.1.5 (G-13-LEDGER-ROW-COUNT-PARITY), 1.1.4 (G-13-PLACEHOLDER-TOKEN-PARITY), 1.1.3 (§5.1 reconciliation), 1.1.2 (G-26-WIRE-OWNERID-ONLY dual tier), 1.1.1 (added the gate), 1.1.0 (20 new gates from ADR-0012 §D7, ADR-0027, ADR-0028).  
+> **Version:** 1.2.4  
+> **Updated:** 2026-04-29 — patch: +1 gate `G-00-OVERVIEW-SCORING-TABLE-PRESENT` (CI, hard-fail; clean baseline 25/25). Sub-overview H1-prefix sweep authored `# NN — Title` form in **119 sub-overview files** (depth ≥3, numeric folders); G-09 Phase-3 mandate now spans all 144 numeric-folder overviews (was 25). 6 non-numeric sub-folders (`consolidated-review-guide`, `app-issues`, `diagrams`, two `skeletons`, `sql`) scope-exempt. Audit ledger: `.lovable/memory/audit/at-sub-overview-h1-and-scoring-gate.md`. Prior: 1.2.3 (G-09 → Phase 3), 1.2.2 (G-09 minted WARN-conditional), 1.2.1 (G-01-DOD-NO-NN-PLACEHOLDER + G-01-DOD-CONDENSED-MIRRORS-OVERVIEW), 1.2.0 (G-NS-ADR-MUST-HAS-AT), 1.1.9 (G-NS-STATUS-IN-LEGEND), 1.1.8 (G-NS-NO-DEPRECATED-ALIAS), 1.1.7 (G-01-AT-ID-FORMAT-CANONICAL), 1.1.6 (G-13-LEDGER-NUMBERING-CONTIGUOUS), 1.1.5 (G-13-LEDGER-ROW-COUNT-PARITY), 1.1.4 (G-13-PLACEHOLDER-TOKEN-PARITY), 1.1.3 (§5.1 reconciliation), 1.1.2 (G-26-WIRE-OWNERID-ONLY dual tier), 1.1.1 (added the gate), 1.1.0 (20 new gates from ADR-0012 §D7, ADR-0027, ADR-0028).  
 
-- **Total named gates:** 300 (unchanged — `G-09-…` promoted in place)
-- **CI:** 31 (unchanged; one gate `G-26-WIRE-OWNERID-ONLY` is dual-tier: counted under both CI and TEST; `G-09-OVERVIEW-H1-MATCHES-FOLDER-INDEX` is now hard-fail mandatory)
+- **Total named gates:** 301 (was 300 — +1 `G-00-OVERVIEW-SCORING-TABLE-PRESENT`)
+- **CI:** 32 (was 31 — +1 above; one gate `G-26-WIRE-OWNERID-ONLY` is dual-tier: counted under both CI and TEST)
 - **TEST:** 14 (unchanged)
 - **DOC-NORM:** 54 (unchanged)
 - **DOC:** 202 (unchanged)
