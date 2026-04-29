@@ -33,6 +33,7 @@
 
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
+import { globToRegExp } from './_lib/per-gate-path-ledger.mjs';
 
 const ROOT = process.cwd();
 const MANIFEST = join(ROOT, 'spec', '_AUDIT-EXEMPTIONS.md');
