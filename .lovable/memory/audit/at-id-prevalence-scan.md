@@ -195,7 +195,7 @@ Path depth corrected from `../../../../../00-adrs/...` to `../../../../00-adrs/.
 
 ## 2026-04-29 — Task #12: G-00-ADR-CONSEQUENCES-XLINK runner authored
 
-- **Author:** scripts/spec-hygiene/47-check-adr-consequences-xlink.mjs
+- **Author:** scripts/spec-hygiene/52-check-adr-consequences-xlink.mjs
 - **Gate:** `G-00-ADR-CONSEQUENCES-XLINK` minted CI / WARN-only
 - **Baseline:** 28/28 ADRs allow-listed (none cite downstream scope from Consequences); ledger at `spec/00-adrs/_LEDGER-G-00-ADR-CONSEQUENCES-XLINK-BASELINE.md` (90-day TTL, hard-fail 2026-07-28)
 - **AT impact:** AT-ADR-009 promoted from "(planned)" to fully-bound row in `spec/00-adrs/97-acceptance-criteria.md`
