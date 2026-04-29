@@ -58,6 +58,7 @@ const ROOT = process.cwd();
 const LEDGER = join(ROOT, 'spec', '_GATE-GRADUATION-LEDGER.md');
 const REGISTRY = join(ROOT, 'spec', '_GATE-REGISTRY.md');
 const REQUIRED_HEADER = ['gate', 'mode', 'flipCriterion', 'flipMechanism', 'targetDate', 'addedOn', 'linkedTask'];
+const GRADUATED_HEADER = ['gate', 'graduatedOn', 'priorMode', 'newMode', 'evidence', 'flipCommit', 'linkedTasks'];
 const VALID_MODES = new Set(['WARN', 'HARD-FAIL']);
 const GATE_RE = /^G-(NS|\d{2})-[A-Z0-9-]+$/;
 // Note: tokens authored as concatenated literals so this very file does not
@@ -123,17 +124,38 @@ function validateRow(row, idx, registryGates) {
   return errs.map((e) => `  row ${idx + 1}: ${e}`);
 }
 
-function countGraduated(src) {
+function extractGraduated(src) {
   const lines = src.split('\n');
-  const h2 = lines.findIndex((l) => /^## Graduated entries\s*$/.test(l));
-  if (h2 < 0) return 0;
-  let n = 0;
-  for (let i = h2 + 1; i < lines.length; i += 1) {
+  const h2Idx = lines.findIndex((l) => /^## Graduated entries\s*$/.test(l));
+  if (h2Idx < 0) return { present: false, rows: [] };
+  const dup = lines.slice(h2Idx + 1).findIndex((l) => /^## Graduated entries\s*$/.test(l));
+  if (dup >= 0) throw new Error('L10 violated: duplicate "## Graduated entries" H2');
+  const headerLine = lines.slice(h2Idx + 1, h2Idx + 12).find((l) => l.includes('|') && /\bgate\b/i.test(l));
+  if (!headerLine) return { present: true, rows: [] };
+  const header = parseHeader(headerLine);
+  const headerOk = GRADUATED_HEADER.every((c, i) => header[i] === c);
+  if (!headerOk) throw new Error(`L11 violated: graduated header is [${header.join('|')}], expected [${GRADUATED_HEADER.join('|')}]`);
+  const headerIdx = lines.indexOf(headerLine);
+  const rows = [];
+  for (let i = headerIdx + 2; i < lines.length; i += 1) {
     const l = lines[i];
-    if (!l.trim() || l.startsWith('#')) continue;
-    if (l.startsWith('|') && !/^\|\s*-+/.test(l) && !/\bgate\b/.test(l) && /G-/.test(l)) n += 1;
+    if (!l.trim() || l.startsWith('#')) break;
+    if (!l.includes('|')) continue;
+    const cells = l.split('|').map((c) => c.trim().replace(/^`|`$/g, '')).filter((_, idx, arr) => idx > 0 && idx < arr.length - 1);
+    if (cells.length === 7) rows.push({ gate: cells[0], graduatedOn: cells[1], priorMode: cells[2], newMode: cells[3], evidence: cells[4], flipCommit: cells[5], linkedTasks: cells[6] });
   }
-  return n;
+  return { present: true, rows };
+}
+
+function validateGraduatedRow(row, idx, registryGates) {
+  const errs = [];
+  if (!GATE_RE.test(row.gate)) errs.push(`L12: gate ID malformed "${row.gate}"`);
+  else if (!registryGates.has(row.gate)) errs.push(`L12: gate "${row.gate}" not found in _GATE-REGISTRY.md`);
+  if (!ISO_DATE.test(row.graduatedOn)) errs.push(`L13: graduatedOn must be ISO YYYY-MM-DD (got "${row.graduatedOn}")`);
+  if (!/^WARN\b/.test(row.priorMode)) errs.push(`L14: priorMode must start with WARN (got "${row.priorMode}")`);
+  if (!/^HARD-FAIL\b/.test(row.newMode)) errs.push(`L14: newMode must start with HARD-FAIL (got "${row.newMode}")`);
+  if (!row.linkedTasks.trim()) errs.push(`L11: linkedTasks cell must not be empty`);
+  return errs.map((e) => `  graduated row ${idx + 1}: ${e}`);
 }
 
 function main() {
