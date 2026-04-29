@@ -290,7 +290,9 @@ Fixtures for every AT row in this file are covered by the global P2g sweep — s
 
 ---
 
-## Gate `G-00-OVERVIEW-SCORING-VALUE-FORMAT` (CI, hard-fail rules 1+2+3)
+## Gate `G-00-OVERVIEW-SCORING-VALUE-FORMAT` (CI, hard-fail rules 1+2+3+4)
+
+- **Runner:** [`scripts/spec-hygiene/18-check-scoring-value-format.mjs`](../../scripts/spec-hygiene/18-check-scoring-value-format.mjs) — wired into [`scripts/spec-hygiene/00-run-all.mjs`](../../scripts/spec-hygiene/00-run-all.mjs) (slot 18, between `16-check-tailwind-tokens` and `19-check-runbook-staleness`). Exit code 1 on any violation; emits `<file>:<line>: <message>` per finding so failures are click-jumpable in CI logs.
 
 - **Purpose:** `G-00-OVERVIEW-SCORING-TABLE-COMPLETE` (Layer-2) only enforces that the canonical rows exist with *some* parseable numeric score. It does NOT enforce that values follow a single canonical shape. Pre-mint the corpus mixed ten distinct value forms — `95% (A)`, `100/100 (A+)`, `100/100`, `Production-Ready`, `Production-Ready ✅`, `High (rationale prose…)`, `Low 🟢`, etc. — making programmatic aggregation by `health-dashboard.md` and the future score-aggregator brittle. This Layer-2.5 gate locks one canonical value shape per canonical row so a single regex per row can extract scores corpus-wide.
 - **AT row:** `AT-SPECAUTHORING-023` — Every canonical Scoring row's value cell MUST match the row-specific canonical regex below.
