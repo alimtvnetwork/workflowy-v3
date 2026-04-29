@@ -571,6 +571,19 @@
 | `G-39-R3-SLASH-INLINE` | **CI** | [`spec/01-spec-authoring-guide/21-feature-block-format.md`](./01-spec-authoring-guide/21-feature-block-format.md) | Slash commands MUST appear inline as `` `/command` `` backtick-wrapped. Bare `/command` outside backticks forbidden. URL paths (`/wp-json/…`, `/api/…`, `/items/…`) exempt. AT: `AT-F8-03`. |
 | `G-39-R4-SEARCH-OPERATORS` | **CI** | [`spec/01-spec-authoring-guide/21-feature-block-format.md`](./01-spec-authoring-guide/21-feature-block-format.md) | Search operators (`is:todo`, `in:Inbox`, `has:note`, `tag:#work`, `due:7d`, …) MUST be backtick-wrapped wherever they appear in prose. Bare operators forbidden. AT: `AT-F8-04`. |
 
+### Domain-CG (Coding Guidelines · Hard Rules)
+
+> Reserved gate IDs for the Coding Guidelines Hard-Rules enforcement matrix in `spec/02-coding-guidelines/00-overview.md` §"Hard Rules". The ESLint/PHPStan rule names cited in the matrix's Gate column (`@typescript-eslint/no-explicit-any`, `local/max-logic-lines`, etc.) are the underlying linter implementations; the `G-CG-RN` IDs are the spec-side handles binding each rule row to the AT layer (`AT-CG-G01..G05`). Batch-8 (2026-04-29) registers the umbrella + 2 sub-rule gates load-bearing in this turn; remaining R1/R2/R3/R4/R7/R8/R9/R10 reserved for future batches as their narrative prose surfaces.
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-CG-HARD-RULES` | **CI** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | Umbrella — every rule in the §"Hard Rules" enforcement matrix is gate-enforced via the linker shown in the Gate column; the AI MUST NOT propose code that violates any of them. Composed of `G-CG-R1..R10` sub-rules. |
+| `G-CG-R5-MAX-LOGIC-LINES` | **CI** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | A function's logic body MUST be ≤ 15 lines (excluding signature, braces, blank lines). Implementation: custom ESLint rule `local/max-logic-lines`. |
+| `G-CG-R6-POSITIVE-GUARDS` | **CI** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | Guard clauses MUST be positive — `if (!x) return` not `if (x) { … } else …`. Implementation: custom ESLint rule `local/positive-guards`. |
+| `G-CG-FIXTURE-CITE-VERBATIM` | **DOC-NORM** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | Bad/Good code-pair snippets in §"Bad / Good Code Pairs" are canonical examples; fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite them verbatim by `R<N>` id. R# ids are load-bearing — renaming requires superseding ADR. |
+| `G-CG-AI-ANTIPATTERN-FORBIDDEN` | **DOC-NORM** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | The 5 anti-patterns in §"Anti-Patterns" are the closed set the AI MUST NOT do. Each row cites its catching gate (`G-02-RULE-HAS-GATE`, `G-02-PAIRED-EXAMPLES`, `G-02-NO-DISABLE`, R7's `no-restricted-syntax`, `G-02-NO-RETURN-TERNARY`). |
+| `G-CG-ADR-REQUIRED-TO-RELAX` | **DOC-NORM** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | Strict-TS rules (zero `any`, max 3 params, no nested `if`s, 15-line logic limit, pure positive guard clauses) and SQLite naming rules MUST NOT be relaxed without a new ADR superseding the relevant one (ADR-0001/ADR-0002 lineage). |
+
 ### Meta-00
 
 | Gate | Tier | Primary File | Brief |
