@@ -240,6 +240,24 @@ This is the **third** scope-correction in 3 turns (F-SCOPE-01 → 02 → 03), ea
 
 ---
 
+### Retraction case study #5 — F-SCOPE-05
+
+**Discovery context.** Task #6-batch-1c per F-SCOPE-03 picked the new top hit (`spec/97a-acceptance-criteria-fixtures.md`, 11 prose-MUSTs). Manual inspection of every flagged line revealed all 11 were false positives: 10 sat in canonical fixture-table slot rows (`| **Negative assertion** |`, `| **Then** |`, …) inside the file's "Pattern 1..10" catalogue, and 1 sat in a blockquoted citation of `19-acceptance-criteria-io-table.md`. None were unformalized prose-MUSTs.
+
+**Why v2 missed them.** v2's heading-stack walk only excluded `MUST` lines under headings citing `AT-…-`. But canonical patterns referenced *by* ATs (the entire purpose of `97a-acceptance-criteria-fixtures.md`) live under `### Pattern N — <name>` headings without AT identifiers — by design, since they're templates, not ATs. The fixture-table slot label (`| **Negative assertion** |`, etc.) is the AT-shape signal at row level, not heading level. v2 also ignored markdown blockquote semantics: a `> MUST` line is by definition quoting another doc, not asserting a new norm.
+
+**Resolution.** v3 (`scripts/spec-hygiene/audits/count-prose-musts.mjs` lines 25–48) adds two skip clauses:
+1. `FIXTURE_SLOT_RE` — matches the closed set of canonical slot labels per format SSOT.
+2. `^\s*>\s` — skips blockquoted lines.
+
+**Methodology lessons.**
+- **Format SSOT compliance ≠ heading citation.** The format SSOT (`19-acceptance-criteria-io-table.md`) defines AT-shape at *row level* via slot labels. Counters that only inspect heading nesting will systematically over-count files that use the canonical pattern catalogue idiom (`spec/97a-…-fixtures.md` files).
+- **Blockquote semantics matter.** Markdown's `> ` prefix is the standard "this is a quotation" signal. Any normative-keyword counter that ignores it will double-count every cross-doc citation.
+- **4 methodologies = real convergence.** Cluster `[623, 682, 697, 724]` σ ≈ 38 (6.1% of mean). The current best estimate is **623**, but the 95% CI per σ is ±76, suggesting at least one more methodology bug is plausible. Continue treating each batch attempt as a methodology probe until 3 consecutive batches produce zero new F-SCOPE-NN entries.
+- **Streak-watch exception triggered correctly.** The "parser-fix counts as content when it eliminates a false-positive content finding" exception applied here: the v3 fix eliminated 11 false-positive prose-MUSTs in the targeted file (and 74 across the corpus) without editing the file. This was a real content-finding closure, not a tooling lap.
+
+---
+
 
 ## Related
 
