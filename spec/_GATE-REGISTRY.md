@@ -1,13 +1,13 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.6.9  
-> **Updated:** 2026-04-29 — **ADR-0032 license-decision gate registered.** Added `G-32-LICENSE-FILES-PRESENT` (CI, WARN-only) per task #52c follow-through to ADR-0032 ratification (task #52). Gate enforces ADR-0032 D1–D3 (root `LICENSE` GPL-2.0-or-later, `LICENSE-SPEC` CC-BY-4.0, `TRADEMARK.md`). Runner skeleton at `scripts/spec-hygiene/75-check-license-files-present.mjs` (warn-only until first F-IMPL cycle lands the files); graduation entry seeded in `_GATE-GRADUATION-LEDGER.md` v1.2.0 with `targetDate: 2026-09-30` and `flipCriterion: 3 required files present at repo root for ≥7 consecutive CI runs`. Prior: 1.6.8 (gate-graduation ledger seeded).
+> **Version:** 1.7.0  
+> **Updated:** 2026-04-29 — **batch-3 prose→AT migration:** registered 4 new G-03-* gates (`G-03-CODE-LOAD-BEARING`, `G-03-FRONTEND-STATUS-PRIMARY`, `G-03-MIDDLEWARE`, `G-03-RETRY-AFTER`, all DOC-NORM) per task #6-batch-3 to provide enforcement bindings for the 9 substantive prose-MUSTs in `spec/03-error-manage/00-overview.md`. Prior: 1.6.9 (G-32-LICENSE-FILES-PRESENT).
 
-- **Total named gates:** 317 (+1 this revision: `G-32-LICENSE-FILES-PRESENT`)
+- **Total named gates:** 321 (+4 this revision: `G-03-CODE-LOAD-BEARING`, `G-03-FRONTEND-STATUS-PRIMARY`, `G-03-MIDDLEWARE`, `G-03-RETRY-AFTER`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
 - **CI:** 44
 - **TEST:** 14 (unchanged)
-- **DOC-NORM:** 53 (unchanged)
+- **DOC-NORM:** 57 (+4 this revision)
 - **DOC:** 202 (unchanged)
 - **Areas covered:** 37 (unchanged)
 - **Areas covered:** 37 (unchanged)
@@ -51,6 +51,10 @@
 | `G-03-NO-BARE-THROW` | **CI** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Throw a bare xception / Error without errorCode Caller cannot branch on cause; observability cannot bucket. |
 | `G-03-NO-LEAK` | **DOC** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Leak stack traces or SQL into Message Information disclosure; violates security review. |
 | `G-03-STATUS-CONSISTENT` | **DOC** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Set Status: "Success" while the Errors array is non-empty Self-contradicting envelope; clients double-render. |
+| `G-03-CODE-LOAD-BEARING` | **DOC-NORM** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | All `Code` values shown in 00-overview canonical envelopes are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings. Drift forbidden. |
+| `G-03-FRONTEND-STATUS-PRIMARY` | **DOC-NORM** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Frontend detection logic MUST use HTTP status codes (2xx) as the primary indicator, NOT response body fields. Cross-ref AT-RESTAPIFORMAT-06..08. |
+| `G-03-MIDDLEWARE` | **DOC-NORM** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Central `ErrorMiddleware` MUST: (1) resolve Category from `ErrorCode::categoryOf`; (2) map category → HTTP status; (3) append `RequestId`; (4) strip stack traces unless `WORKFLOWY_DEBUG=1`. |
+| `G-03-RETRY-AFTER` | **DOC-NORM** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Only `TransientError` is eligible for client-side retry; the response MUST include `Retry-After` (seconds). Other categories MUST NOT include `Retry-After`. |
 
 ### ADR-0004
 

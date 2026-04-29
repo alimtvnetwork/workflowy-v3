@@ -68,7 +68,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## Error Taxonomy
 
-Every error in WorkFlowy MUST be classified into exactly one of these four categories. Category drives HTTP status, retry policy, and observability routing.
+Every error in WorkFlowy MUST be classified into exactly one of these four categories (gate `G-22-REGISTRY-LOCKSTEP` enforces PHP↔TS category lock-step). Category drives HTTP status, retry policy, and observability routing.
 
 | Category | HTTP status | Retryable? | Examples | Routing |
 |---|---|---|---|---|
@@ -78,9 +78,9 @@ Every error in WorkFlowy MUST be classified into exactly one of these four categ
 | **`ServerError`**     | 500       | **No** — bug, requires fix. | `INTERNAL`, `INVARIANT_VIOLATION`. | Logged at `error`; pages on-call. |
 
 **Rules:**
-- Every entry in `wp-plugin/includes/Errors/ErrorCode.php` MUST declare its category via the `Category` enum.
-- The HTTP status is derived from the category — handlers MUST NOT set status independently.
-- Only `TransientError` is eligible for client-side retry; the response MUST include `Retry-After` (seconds).
+- Every entry in `wp-plugin/includes/Errors/ErrorCode.php` MUST declare its category via the `Category` enum (gate `G-03-CODE-FORMAT`).
+- The HTTP status is derived from the category — handlers MUST NOT set status independently (gate `G-03-ENVELOPE-ONLY`).
+- Only `TransientError` is eligible for client-side retry; the response MUST include `Retry-After` (seconds) (gate `G-03-RETRY-AFTER`).
 - The category is mirrored in `src/types/errors.ts` and validated by gate `G-22` (PHP↔TS lock-step).
 
 ## Error-Code Registry Rules
@@ -95,7 +95,7 @@ Every error in WorkFlowy MUST be classified into exactly one of these four categ
 
 ## Anti-Patterns
 
-The AI MUST NOT:
+Anti-patterns enumerated below; each row binds to a specific enforcement gate (gates `G-03-NO-BARE-THROW`, `G-03-ENVELOPE-ONLY`, `G-22-REGISTRY-LOCKSTEP`, `G-03-STATUS-CONSISTENT`, `G-03-CODE-ASCII`, `G-03-NO-LEAK`). The AI MUST NOT do any of:
 
 | # | Anti-pattern | Why it fails | Gate that catches it |
 |---|---|---|---|
@@ -191,13 +191,13 @@ throw new DomainError(
 );
 ```
 
-The framework's central `ErrorMiddleware` MUST:
+The framework's central `ErrorMiddleware` MUST (gate `G-03-MIDDLEWARE`):
 1. Resolve `Category` from `ErrorCode::categoryOf($code)`.
 2. Map category → HTTP status via the taxonomy table.
 3. Append `RequestId` from the current request scope.
 4. Strip stack traces in production; include them only when `WORKFLOWY_DEBUG=1`.
 
-*All `Code` values shown are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings.*
+*All `Code` values shown are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings (gate `G-03-CODE-LOAD-BEARING`).*
 
 <!-- AUTO-TOC:START -->
 
@@ -263,7 +263,7 @@ Before claiming any API endpoint works, verify **both directions**:
 
 ### 2. Response Format Standardization
 
-All backend APIs MUST return the Universal Response Envelope (see [02-error-architecture/05-response-envelope/](./02-error-architecture/05-response-envelope/00-overview.md)):
+All backend APIs MUST return the Universal Response Envelope (gate `G-03-ENVELOPE-ONLY`; cross-ref `AT-RESTAPIFORMAT-06`, `AT-RESTAPIFORMAT-07`, `AT-RESTAPIFORMAT-08`; see [02-error-architecture/05-response-envelope/](./02-error-architecture/05-response-envelope/00-overview.md)):
 
 ```json
 {
@@ -275,7 +275,7 @@ All backend APIs MUST return the Universal Response Envelope (see [02-error-arch
 
 ### 3. HTTP Status as Primary Indicator
 
-Frontend detection logic MUST use HTTP status codes (2xx) as the primary indicator, NOT response body fields.
+Frontend detection logic MUST use HTTP status codes (2xx) as the primary indicator, NOT response body fields (gate `G-03-FRONTEND-STATUS-PRIMARY`).
 
 ### 4. Structured Error Architecture
 
