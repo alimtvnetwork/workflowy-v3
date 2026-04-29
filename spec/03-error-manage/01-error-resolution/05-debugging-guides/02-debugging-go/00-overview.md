@@ -1,4 +1,4 @@
-# Go Debugging Guide
+# 02 — Go Debugging Guide
 
 
 > **Version:** 1.0.0

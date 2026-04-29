@@ -1,4 +1,4 @@
-# Error Modal — Reusable React Components (Index)
+# 02 — Error Modal — Reusable React Components (Index)
 
 
 > **Parent:** [Error Modal Spec](../00-overview.md)  

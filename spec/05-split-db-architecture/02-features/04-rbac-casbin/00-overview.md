@@ -1,4 +1,4 @@
-# Split DB Architecture: Role-Based Access Control (RBAC) with Casbin
+# 04 — Split DB Architecture: Role-Based Access Control (RBAC) with Casbin
 
 
 > **Version:** 3.1.0  

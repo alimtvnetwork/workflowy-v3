@@ -1,4 +1,4 @@
-# Split DB Architecture — Features Index
+# 02 — Split DB Architecture — Features Index
 
 
 > **Updated:** 2026-04-16

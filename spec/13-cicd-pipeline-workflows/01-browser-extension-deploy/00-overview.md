@@ -1,4 +1,4 @@
-# Browser Extension Deploy — Overview
+# 01 — Browser Extension Deploy — Overview
 
 
 > **Version:** 3.1.0  

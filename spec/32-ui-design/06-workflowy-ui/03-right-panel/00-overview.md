@@ -1,4 +1,4 @@
-# Phase 3 — Right-Side Panel (Handbook + Hotkeys + What's New)
+# 03 — Phase 3 — Right-Side Panel (Handbook + Hotkeys + What's New)
 
 
 > **Status:** ⏳ Ready to author

@@ -1,4 +1,4 @@
-# Phase 16 — Error Handling & Diagnostics Extraction
+# 16 — Phase 16 — Error Handling & Diagnostics Extraction
 ## Scoring
 
 | Criterion | Status |

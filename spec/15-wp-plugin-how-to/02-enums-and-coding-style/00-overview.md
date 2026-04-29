@@ -1,4 +1,4 @@
-# Phase 2 — Enums and Coding Style
+# 02 — Phase 2 — Enums and Coding Style
 ## Keywords
 
 `wp-plugin-how-to` · `enums-and-coding-style` · `phase` · `enums`

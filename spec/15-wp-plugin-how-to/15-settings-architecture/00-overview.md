@@ -1,4 +1,4 @@
-# Phase 15 — Settings Architecture
+# 15 — Phase 15 — Settings Architecture
 
 
 > **Created:** 2026-04-09

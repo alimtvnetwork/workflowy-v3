@@ -1,4 +1,4 @@
-# Error Code Registry
+# 03 — Error Code Registry
 
 > **Version:** 3.1.0  
 > **Updated:** 2026-04-16  

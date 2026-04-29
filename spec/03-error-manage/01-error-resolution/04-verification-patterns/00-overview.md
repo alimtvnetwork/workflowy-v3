@@ -1,4 +1,4 @@
-# Verification Patterns
+# 04 — Verification Patterns
 
 > **Version:** 3.1.0  
 **Status:** Active  

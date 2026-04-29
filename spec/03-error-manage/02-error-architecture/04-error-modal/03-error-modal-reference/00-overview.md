@@ -1,4 +1,4 @@
-# Error Modal — Frontend Specification (Index)
+# 03 — Error Modal — Frontend Specification (Index)
 
 
 > **Parent:** [Error Modal Spec](../00-overview.md)  

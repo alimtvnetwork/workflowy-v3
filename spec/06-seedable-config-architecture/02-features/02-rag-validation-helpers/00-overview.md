@@ -1,4 +1,4 @@
-# RAG Configuration Validation Helpers
+# 02 — RAG Configuration Validation Helpers
 
 
 > **Version:** 3.1.0  

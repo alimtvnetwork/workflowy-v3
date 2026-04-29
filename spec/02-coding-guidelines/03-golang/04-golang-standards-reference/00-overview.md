@@ -1,4 +1,4 @@
-# Golang Coding Standards
+# 04 — Golang Coding Standards
 
 > **Version:** 3.1.0  
 > **Updated:** 2026-04-16  

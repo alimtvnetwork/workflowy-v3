@@ -1,4 +1,4 @@
-# Error Architecture
+# 02 — Error Architecture
 
 > **Version:** 3.1.0  
 > **Updated:** 2026-04-16  

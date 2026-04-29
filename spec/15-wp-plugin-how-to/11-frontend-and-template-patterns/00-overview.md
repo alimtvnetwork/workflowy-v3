@@ -1,4 +1,4 @@
-# Phase 11 — Frontend & Template Patterns (Overview)
+# 11 — Phase 11 — Frontend & Template Patterns (Overview)
 ## Keywords
 
 `wp-plugin-how-to` · `frontend-and-template-patterns` · `phase` · `frontend`

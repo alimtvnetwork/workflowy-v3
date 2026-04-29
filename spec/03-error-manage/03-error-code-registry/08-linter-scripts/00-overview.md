@@ -1,4 +1,4 @@
-# Linter Scripts
+# 08 — Linter Scripts
 
 > **Version:** 3.1.0  
 **Status:** Active  

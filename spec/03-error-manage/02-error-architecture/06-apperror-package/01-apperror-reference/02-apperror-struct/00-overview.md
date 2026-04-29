@@ -1,4 +1,4 @@
-# AppError Struct & Methods — Overview
+# 02 — AppError Struct & Methods — Overview
 
 
 > **Parent:** [AppError Package Reference](../00-overview.md)  

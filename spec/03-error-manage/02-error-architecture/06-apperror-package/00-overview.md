@@ -1,4 +1,4 @@
-# AppError Package
+# 06 — AppError Package
 
 > **Version:** 3.1.0  
 **Status:** Active  

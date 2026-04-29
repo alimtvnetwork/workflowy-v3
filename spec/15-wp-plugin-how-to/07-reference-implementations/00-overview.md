@@ -1,4 +1,4 @@
-# Phase 7 — Complete Reference Implementations
+# 07 — Phase 7 — Complete Reference Implementations
 ## Keywords
 
 `wp-plugin-how-to` · `reference-implementations` · `phase` · `complete`

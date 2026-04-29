@@ -1,4 +1,4 @@
-# Phase 12 — WordPress Plugin Design System (Overview)
+# 12 — Phase 12 — WordPress Plugin Design System (Overview)
 
 
 > **Created:** 2026-04-09  

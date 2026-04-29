@@ -1,4 +1,4 @@
-# Verbose Logging — Overview
+# 16 — Verbose Logging — Overview
 
 
 > **Parent:** [16-generic-cli](../00-overview.md)  

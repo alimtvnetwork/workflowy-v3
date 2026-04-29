@@ -1,4 +1,4 @@
-# Phase 8 — App Shell (Themes, Fonts, Settings, App Menu)
+# 08 — Phase 8 — App Shell (Themes, Fonts, Settings, App Menu)
 
 
 > **Version:** 1.0.0

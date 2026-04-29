@@ -1,4 +1,4 @@
-# Go Binary Deploy — Overview
+# 02 — Go Binary Deploy — Overview
 
 
 > **Version:** 3.1.0  

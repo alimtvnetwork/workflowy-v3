@@ -1,4 +1,4 @@
-# Endpoints — Master Index
+# 06 — Endpoints — Master Index
 
 > **Version:** 1.0.0
 > **Updated:** 2026-04-26 (UTC+8)

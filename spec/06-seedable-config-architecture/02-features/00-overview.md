@@ -1,4 +1,4 @@
-# Seedable Config Architecture — Features Index
+# 02 — Seedable Config Architecture — Features Index
 
 
 > **Updated:** 2026-04-16
