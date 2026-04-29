@@ -346,7 +346,7 @@ The literal substring `[G-26-WIRE-OWNERID-ONLY]` is mandatory so CI log scrapers
 
 The static regex check (`rg "\bOwnerUserId\s*[:?,}]" spec/31-app/06-endpoints`) is the CI half — it runs in milliseconds in pre-commit and catches *spec* drift. The PHPUnit suite is the TEST half — it catches *runtime* drift where the serializer produces output the spec doesn't predict. Both halves are required because the two failure modes are independent.
 
-### Cross-references
+#### Cross-references
 
 - ADR-0026 §D6 — wire-boundary canonicalisation rule.
 - Gate Registry v1.1.1 entry `G-26-WIRE-OWNERID-ONLY` (`spec/_GATE-REGISTRY.md`).
