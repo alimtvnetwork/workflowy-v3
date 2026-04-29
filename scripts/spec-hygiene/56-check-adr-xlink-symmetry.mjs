@@ -36,9 +36,13 @@ function decisionSection(text) {
 }
 
 function slugify(heading) {
+  // GitHub-flavoured slug (approx): lowercase, strip punctuation EXCEPT
+  // ASCII alphanumerics, spaces, hyphens, underscores; collapse spaces → '-'.
+  // Em/en dashes, em-dash, slash, colon, '?', '.', '`', emoji → removed.
   return heading
     .toLowerCase()
-    .replace(/[^\w\s-]/g, '')
+    .replace(/[\u2013\u2014]/g, '') // en-dash, em-dash → removed
+    .replace(/[^\p{L}\p{N}\s_-]/gu, '') // strip non-letter/digit (incl. emoji, punct)
     .trim()
     .replace(/\s+/g, '-');
 }
