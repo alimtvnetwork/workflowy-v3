@@ -1,10 +1,10 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.1.8  
-> **Updated:** 2026-04-29 — patch: +1 gate `G-NS-NO-DEPRECATED-ALIAS` (CI; `Spec-Authoring` area). Hard-fails any new AT row using one of the 17 deprecated namespace aliases catalogued in `.lovable/memory/audit/at-namespace-synonym-audit.md` (e.g. `AT-DESIGNSYSTEM-`, `AT-MIRRORS-`, `AT-CODINGGUIDELINES-`). Same code-span/fenced-block carve-out as `G-01-AT-ID-FORMAT-CANONICAL`. Prior: 1.1.7 (G-01-AT-ID-FORMAT-CANONICAL), 1.1.6 (G-13-LEDGER-NUMBERING-CONTIGUOUS), 1.1.5 (G-13-LEDGER-ROW-COUNT-PARITY), 1.1.4 (G-13-PLACEHOLDER-TOKEN-PARITY), 1.1.3 (§5.1 reconciliation), 1.1.2 (G-26-WIRE-OWNERID-ONLY dual tier), 1.1.1 (added the gate), 1.1.0 (20 new gates from ADR-0012 §D7, ADR-0027, ADR-0028).  
+> **Version:** 1.1.9  
+> **Updated:** 2026-04-29 — patch: +1 gate `G-NS-STATUS-IN-LEGEND` (CI, WARN-only initial mode; `Spec-Authoring` area). Reduces 46-value `**Status:**` drift to a closed 9-value enum (`DRAFT|REVIEW|CANONICAL|COMPANION|DISPATCH|DEFERRED|DEPRECATED|REDIRECT|ARCHIVED`). SSOT: `spec/01-spec-authoring-guide/20-status-legend.md`; audit: `.lovable/memory/audit/at-status-legend-audit.md`. Hard-fails when P3 status sweep retires legacy values. Prior: 1.1.8 (G-NS-NO-DEPRECATED-ALIAS), 1.1.7 (G-01-AT-ID-FORMAT-CANONICAL), 1.1.6 (G-13-LEDGER-NUMBERING-CONTIGUOUS), 1.1.5 (G-13-LEDGER-ROW-COUNT-PARITY), 1.1.4 (G-13-PLACEHOLDER-TOKEN-PARITY), 1.1.3 (§5.1 reconciliation), 1.1.2 (G-26-WIRE-OWNERID-ONLY dual tier), 1.1.1 (added the gate), 1.1.0 (20 new gates from ADR-0012 §D7, ADR-0027, ADR-0028).  
 ...
-- **Total named gates:** 295 (was 294 — +1 `G-NS-NO-DEPRECATED-ALIAS`)
-- **CI:** 26 (was 25 — +1 `G-NS-NO-DEPRECATED-ALIAS`; one gate `G-26-WIRE-OWNERID-ONLY` is dual-tier: counted under both CI and TEST)
+- **Total named gates:** 296 (was 295 — +1 `G-NS-STATUS-IN-LEGEND`)
+- **CI:** 27 (was 26 — +1 `G-NS-STATUS-IN-LEGEND`; WARN-only until P3 status sweep; one gate `G-26-WIRE-OWNERID-ONLY` is dual-tier: counted under both CI and TEST)
 - **TEST:** 14 (unchanged)
 - **DOC-NORM:** 54 (unchanged)
 - **DOC:** 202 (unchanged)
