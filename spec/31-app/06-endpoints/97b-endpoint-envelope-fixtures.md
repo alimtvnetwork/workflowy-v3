@@ -294,7 +294,7 @@ Bound to gate `G-26-WIRE-OWNERID-ONLY` (CI + TEST dual tier; this AT is the TEST
 | HTTP layer | `WP_REST_Request` instances dispatched through `rest_do_request()`; no live HTTP server required. |
 | Auth context | A test user with `wp_set_current_user()`; role grants read on every fixture row. |
 
-### Endpoints exercised (MUST cover all)
+#### Endpoints exercised (MUST cover all)
 
 The test MUST issue one request per endpoint whose response payload, per the corresponding section above, contains an owner-bearing object. As of v1.0.0 this set is exhaustively:
 
