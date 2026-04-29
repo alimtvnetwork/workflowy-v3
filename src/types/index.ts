@@ -57,10 +57,41 @@ export type ItemType =
   | "todo"
   | "numbered"
   | "board"
-  | "dashboard"
   | "quote"
   | "code"
-  | "divider";
+  | "divider"
+  | "callout";
+
+/**
+ * Exhaustive guard — call from a `default` switch arm to make adding a new
+ * ItemType a compile error at every call site that branches on it.
+ *
+ * Per ADR-0015 (12 closed ItemTypes). `dashboard` is intentionally absent:
+ * it is a VIEW, not an item type (audit-v8 finding F-IMPL-AUD-04).
+ */
+export function assertNeverItemType(value: never): never {
+  throw new Error(`Unhandled ItemType: ${String(value)}`);
+}
+
+/** Frozen set of valid ItemType strings — single source of truth for runtime checks. */
+export const ITEM_TYPES: ReadonlySet<ItemType> = new Set<ItemType>([
+  "bullet",
+  "h1",
+  "h2",
+  "h3",
+  "paragraph",
+  "todo",
+  "numbered",
+  "board",
+  "quote",
+  "code",
+  "divider",
+  "callout",
+]);
+
+export function isItemType(raw: string): raw is ItemType {
+  return ITEM_TYPES.has(raw as ItemType);
+}
 
 /** Core item as stored in the database. */
 export interface Item {
