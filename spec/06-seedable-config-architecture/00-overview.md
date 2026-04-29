@@ -56,7 +56,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 **Definition of Done** —
 - Every config key has a default value, a type, and a validator
 - Re-running the seeder is idempotent — no duplicate rows, no overwritten user values
-- _AT rows pending — see this section's  once authored_
+- Every `AT-SEEDABLECONFIG-*` row in `97-acceptance-criteria.md` passes (filled in P2 backfill)
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
