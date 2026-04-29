@@ -70,7 +70,7 @@ export interface Item {
   readonly richContent: string | null;
   readonly note: string | null;
   readonly itemType: ItemType;
-  readonly sortOrder: number;
+  readonly sortOrder: SortKey;
   readonly isCompleted: boolean;
   readonly isCollapsed: boolean;
   readonly dateAssigned: string | null;
