@@ -1,8 +1,8 @@
 # Gate Graduation Ledger
 
-> **Version:** 1.1.0
+> **Version:** 1.2.0
 > **Created:** 2026-04-29 (UTC+8) — answers task #35 (gate-graduation tracking gap surfaced after #57/#58/#59 trio).
-> **Updated:** 2026-04-29 — **F-AUDIT-26 RESOLVED.** Tightened 3 vague flipCriteria (rows for `G-01-DOD-CONDENSED-MIRRORS-OVERVIEW`, `G-00-OVERVIEW-AI-CONTRACT-PRESENT` sub-tier, `G-00-OVERVIEW-AI-CONTRACT-COMPLETE` rules 3–5) to measurable predicates with concrete count/regex/CI-window thresholds; assigned linkedTask IDs #46/#47/#48 (was `none yet`). Per audit-v4 finding F-AUDIT-26 (severity MED, +3pts).
+> **Updated:** 2026-04-29 — **task #52c: registered `G-32-LICENSE-FILES-PRESENT`** as 9th WARN-only entry, following ADR-0032 ratification (task #52). Prior: 1.1.0 — F-AUDIT-26 RESOLVED (3 vague flipCriteria tightened).
 > **Status:** Active — single source of truth for every WARN-only hygiene gate's flip criteria + target date.
 > **Parent:** [`_GATE-REGISTRY.md`](./_GATE-REGISTRY.md)
 > **Authoritative pattern:** [ADR-0031](./00-adrs/0031-warn-only-strict-flip-pattern.md) — "Warn-only-with-STRICT-flip" gate-graduation pattern.
@@ -46,6 +46,7 @@ A WARN-only gate that lacks a documented **flip criterion** drifts into permanen
 | `G-00-OVERVIEW-AI-CONTRACT-COMPLETE` | WARN (rules 3–5 only; rules 1–2 already HARD) | rules 3 + 4 + 5 WARN count = 0 across all 25 top-level overviews for ≥7 consecutive CI runs (current: WARN count emitted by `54-check-ai-contract-complete.mjs` lines 168, format `[WARN] … N bullet(s)` per rule) | flip the 3 rule flags in `54-check-ai-contract-complete.mjs` from WARN to FAIL | 2026-08-31 | 2026-04-29 | #48 (rules 3–5 content sweep) |
 | `G-00-AT-FIX-COMPANION-SHAPE` | WARN | `spec/_LEDGER-G-00-AT-FIX-COMPANION-SHAPE-BASELINE.md` row count = 0 (current: 19) | delete WARN branch in runner | 2026-05-13 | 2026-04-29 | #28 follow-up |
 | `G-00-PLACEHOLDER-DENSITY` | WARN | global density ≤8% AND no scope >15% (current: 11.8%, 8 scopes >15%) | set `STRICT = true` in `59-check-placeholder-density.mjs` | 2026-07-29 | 2026-04-29 | #2/#3/#4/#7, #33 |
+| `G-32-LICENSE-FILES-PRESENT` | WARN | 3 required files present at repo root (`LICENSE` GPL-2.0-or-later full text, `LICENSE-SPEC` CC-BY-4.0 full text, `TRADEMARK.md`) for ≥7 consecutive CI runs (current: 0/3 — runner is skeleton, files land in first F-IMPL cycle) | flip `STRICT = true` in `scripts/spec-hygiene/75-check-license-files-present.mjs` | 2026-09-30 | 2026-04-29 | #52c (this row); ADR-0032 ratification (#52); F-IMPL-AUD-03 batch (file landing) |
 
 ---
 
