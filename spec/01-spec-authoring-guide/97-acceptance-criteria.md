@@ -82,3 +82,24 @@ Fixtures for every AT row in this file are covered by the global P2g sweep — s
 - **Exempt zones (lint MUST strip before regex):** fenced code blocks (```` ``` ````) and inline `code spans` (single backticks). This carve-out exists because guidance docs legitimately quote legacy IDs as illustrative bad-examples.
 - **Failure mode:** CI lint emits `<file>:<line>: non-canonical AT-ID '<token>'` and exits non-zero.
 - **Enforceable since:** 2026-04-29 (legacy `AC-NNN` sweep closed at 0/2,387 — no exemption list required).
+
+---
+
+## Gate `G-NS-NO-DEPRECATED-ALIAS` (CI, hard-fail)
+
+- **Purpose:** Prevent re-introduction of any of the 17 namespace aliases catalogued in the 2026-04-29 namespace synonym audit. Without this gate, the canonical/alias drift catalogued there will silently regrow as new ATs are authored.
+- **SSOT for alias list:** [`.lovable/memory/audit/at-namespace-synonym-audit.md`](../../.lovable/memory/audit/at-namespace-synonym-audit.md) (canonical/alias ledger, §1).
+- **Forbidden alias namespaces (17):**
+  `AT-DESIGNSYSTEM-`, `AT-UIDS-`, `AT-MIRRORS-`, `AT-WORKFLOW-`,
+  `AT-CODINGGUIDELINES-`, `AT-MASTERCODINGGUIDELINES-`, `AT-ERRORMANAGE-`,
+  `AT-RESTAPICONVENTIONS-`, `AT-TYPESCRIPT-`, `AT-GOLANG-`, `AT-PHP-`,
+  `AT-ENUMSPECIFICATION-`, `AT-OPERATORRUNBOOKS-`, `AT-RATE-`,
+  `AT-VISUALRENDER-`, `AT-CONSOLIDATEDREVIEWGUIDE-`,
+  *(17th slot reserved for next audit pass)*.
+- **Canonical replacements:** see audit ledger §1 (one-to-one mapping).
+- **Scope:** `spec/**/97-acceptance-criteria.md` and `spec/**/97a-acceptance-criteria-fixtures.md`.
+- **Exempt zones (lint MUST strip before scan):** fenced code blocks (```` ``` ````) and inline `code spans`. Same carve-out logic as `G-01-AT-ID-FORMAT-CANONICAL`.
+- **Legacy exemption:** Existing rows that already use a deprecated alias are listed in `spec/_LEDGER-G-NS-LEGACY-EXEMPT.md` (dated allow-list, max 90-day TTL per `scripts/spec-hygiene/34-check-allow-list-age.mjs`). Any AT row NOT on the allow-list MUST use the canonical namespace.
+- **Failure mode:** CI lint emits `<file>:<line>: deprecated namespace alias '<alias>-' — use canonical '<canonical>-' (audit ledger §1)` and exits non-zero.
+- **Promotion path:** As the P3 namespace consolidation sweep migrates aliased rows to canonical, entries are removed from the allow-list. Gate becomes 100% enforceable (zero exemptions) when the legacy ledger is empty.
+- **Distinct-pair guard:** The lint MUST NOT flag the 10 ratified distinct-but-confusable pairs (audit ledger §2: `AT-FIX-`/`AT-FIXTURE-`, `AT-INT-`/`AT-INTERACT-`, `AT-INFO-`/`AT-INFOMODEL-`, `AT-STATE-`/`AT-UISTATE-`, `AT-SR-`/`AT-USR-`, `AT-TR-`/`AT-TRASH-`, `AT-MS-`/`AT-MULTISELECT-`, `AT-WF-` parent vs `AT-WFxx-` children, `AT-CG-` parent vs `AT-CGxx-` children, `AT-WPPLUGIN-`/`AT-WPPLUGINDEPLOY-`). These are explicitly allow-listed.
