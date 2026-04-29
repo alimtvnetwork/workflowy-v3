@@ -208,6 +208,36 @@ A 2nd consecutive estimate-correction in 1 cycle is empirical proof that *single
 
 ---
 
+### Retraction case study #4 — F-SCOPE-03
+
+**Source:** Self-imposed task #6-batch-1b (2026-04-29) — second attempt at the prose→AT migration following F-SCOPE-02's pivot to `spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md` (14 alleged prose-MUSTs).
+**Original claim:** *"97b contains 14 real prose-MUSTs requiring AT migration."*
+**Severity:** MED (the bug invalidated the F-SCOPE-02 corpus baseline of 724, not just one file's count)
+**Outcome:** **Methodology bug discovered and patched in same pass.** True count was **0** real prose-MUSTs in 97b once heading hierarchy was repaired; the 14 were false positives caused by a `### `-as-sibling structural mistake combined with a single-step heading-walk in the v1 counter.
+
+#### Evidence trail
+
+1. **Structural mistake in 97b:** `### AT-WIRE-EGRESS-01 — PHP serializer egress test` at line 284 was followed by 7 sibling `### ` headings (`Setup contract`, `Endpoints exercised`, `Assertion contract`, `Drift guard`, `Failure messages`, `Why this is TEST-tier`, `Cross-references`) — all of which were *semantic* children of the AT but *syntactic* siblings. Per markdown convention, that means each sibling is its own scope.
+2. **v1 counter bug:** `/tmp/count-prose-musts.mjs` walked upward to the *first* `### `/`## ` heading and stopped. For lines 297/316/etc., the first ancestor was the sibling sub-heading (`### Assertion contract`), not the AT heading 4–10 lines higher. The "AT-block check" therefore returned false even though the AT was the correct semantic ancestor.
+3. **Two-axis fix applied:**
+   - **Spec side:** demoted 7 sibling `### ` to `#### ` in 97b (lines 288, 297, 316, 326, 332, 345, 349). Pure structural change — zero content edits, zero AT-WIRE-EGRESS-01 semantic change.
+   - **Tooling side:** authored `/tmp/count-prose-musts-v2.mjs` that maintains a heading **stack** (popping descendants on each new heading) and returns true if *any* ancestor frame cites `AT-…-`. This is the correct algorithm for nested-heading semantics.
+4. **Re-count under v2 + after fix:** 97b real prose-MUSTs = **0** (was 14). Corpus total: 724 → **697** (Δ –27 — the bug was over-counting in 13 other files too, not just 97b).
+
+#### Why this matters for F-AUDIT-30
+
+This is the **third** scope-correction in 3 turns (F-SCOPE-01 → 02 → 03), each invalidating the prior. Convergence is now plausible because 3 independent methodologies bracket the true value: 682 (v1 line-scoped, F-SCOPE-01), 724 (v1 single-walk, F-SCOPE-02), 697 (v2 stack-walk, F-SCOPE-03). The cluster `[682, 697, 724]` has σ ≈ 17, so **697 ± 30** is a defensible planning figure. F-AUDIT-30's "discoverability of resolution evidence" generalizes here to "convergence of measurement methodologies" — both require permanent ledger entries with reproducible derivation.
+
+#### Lessons (codified for future planning)
+
+- **Heading-walk algorithms MUST traverse the full ancestor stack.** Stopping at the first heading found gives wrong answers whenever spec authors use sibling headings to organize children of a named AT (a common-enough pattern that 14/14 cases in 97b hit it).
+- **Spec hygiene rule (proposed):** an `AT-…-` heading SHOULD have all its children at strictly deeper heading levels (`####` if AT is `###`). Sibling sub-sections ambiguate scope and break automated tooling. **Candidate gate name:** `G-00-AT-CHILDREN-NESTED-DEEPER` — DOC tier, can promote to CI once a runner exists.
+- **Methodology bugs are MED severity, not LOW.** F-SCOPE-01 and -02 were LOW (single-file estimate noise). F-SCOPE-03 invalidates an entire baseline figure across 287 files. Severity should track blast radius, not turn-of-discovery.
+- **Convergence is a quality signal.** When 3 methodologies cluster (σ < 5%), trust the cluster median. When they diverge (σ > 20%), at least one is broken — debug methodology before banking the figure. The current cluster σ ≈ 2.4% supports the 697 baseline.
+- **Structural fixes count as content migration.** The 14-line "migration" in 97b touched zero AT semantics — pure heading-level demotion — yet it eliminated 14 prose-MUSTs from the corpus. This validates the "promote-to-AT-scope-via-nesting" pattern as a high-leverage migration technique distinct from the line-by-line rewriting the original task #6 envisioned.
+
+---
+
 
 ## Related
 
