@@ -166,6 +166,9 @@ singleton. Wrappers MUST NOT:
   the pinned-deps SSOT entry, and a validator regression test.
   Cost is intentional: the security guarantee depends on it.
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/02-coding-guidelines/02-typescript/`](../02-coding-guidelines/02-typescript/), [`spec/31-app/`](../31-app/).
+
 ## Alternatives Considered
 
 1. **Native `fetch` only (no client library)** — rejected: forces

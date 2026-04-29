@@ -112,6 +112,9 @@ column directly; such fixtures MUST carry an inline comment
 - ~~`09b-mirror-peer-group-model.md` R-5 and AT-MPG-09 now contain a stale 2-tier rule referencing `OwnerUserId`.~~ **Resolved 2026-04-28** — R-5 prose, AT-MPG-09, and §6.1 SQL pseudocode all migrated/annotated to canonical `OwnerId` with cross-link to the column-level Spec↔DDL Alias Bridge. AUDIT-07 closed.
 - One additional gate ID per call site (3 new gates; now 5 with `G-26-OWNER-ID-CANONICAL` and `G-26-WIRE-OWNERID-ONLY`).
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/04-database-conventions/`](../04-database-conventions/), [`spec/31-app/`](../31-app/).
+
 ## Alternatives Considered
 
 1. **Keep three resolvers, accept drift as documentation-only.**

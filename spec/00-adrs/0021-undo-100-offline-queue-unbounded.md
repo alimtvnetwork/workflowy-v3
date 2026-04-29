@@ -129,6 +129,9 @@ undo cap 100 (in-memory, per-tab); offline queue unbounded
 - Memory file `mem://features/editor-core` is now stale on this
   line and must be rewritten as a follow-up.
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/31-app/ (undo + offline queue)`](../31-app/).
+
 ## Alternatives Considered
 
 1. **Persist undo to IndexedDB across reloads** — rejected:

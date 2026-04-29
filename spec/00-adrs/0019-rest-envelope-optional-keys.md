@@ -220,6 +220,9 @@ enforce D9 in addition to D8.
   null permitted inside `Navigation.NextPage`/`PrevPage`) can
   surprise readers — D3 calls this out explicitly to mitigate.
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/).
+
 ## Alternatives Considered
 
 1. **Always-present, `null` when empty** — rejected: forces every

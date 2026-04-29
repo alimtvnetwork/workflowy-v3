@@ -173,6 +173,9 @@ Deferred (require a superseding ADR before introduction):
   sweeper (D4), but adds steady write volume. Acceptable cost for
   exactly-once semantics.
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/31-app/ (offline queue)`](../31-app/).
+
 ## Alternatives Considered
 
 1. **CRDT (e.g. Yjs / Automerge) instead of LWW** — rejected:

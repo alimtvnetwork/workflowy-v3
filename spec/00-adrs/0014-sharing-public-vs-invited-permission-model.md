@@ -230,6 +230,9 @@ Deferred (require a superseding ADR before introduction):
   `Comment` tier; D10 keeps it explicitly deferred rather than
   bolted on ad-hoc.
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/31-app/ (sharing)`](../31-app/).
+
 ## Alternatives Considered
 
 1. **Single `Role` enum across workspace and item levels** —

@@ -123,6 +123,9 @@ exists to prevent.
 - Pinning forbids the easy "use HeadlessUI for this one combobox"
   reflex many React devs have.
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/32-ui-design/`](../32-ui-design/).
+
 ## Alternatives Considered
 
 1. **No lock — pick whatever fits per feature** — rejected: the

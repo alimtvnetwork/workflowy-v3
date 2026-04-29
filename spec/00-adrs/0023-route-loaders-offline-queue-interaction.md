@@ -92,6 +92,9 @@ component — all writes go through a route `action` or fetcher `action`.
 - Cold-offline `OfflineColdStartShell` requires a dedicated shell
   component per top-level route (~6 components).
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/31-app/ (loaders ↔ queue)`](../31-app/).
+
 ## Alternatives Considered
 
 1. **Loaders fetch directly from server, queue handles writes only.**

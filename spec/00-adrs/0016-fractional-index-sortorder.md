@@ -123,6 +123,9 @@ to enforce the standard child-listing query path.
   (e.g. `fractional-indexing`, `mudder`) instead of writing
   `(a + b) / 2`; hand-rolling the string-midpoint is bug-prone.
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/31-app/ (SortOrder)`](../31-app/).
+
 ## Alternatives Considered
 
 1. **Numeric `(A+B)/2` (current `editor-core` memory)** — rejected:

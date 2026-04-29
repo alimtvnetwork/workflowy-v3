@@ -137,6 +137,9 @@ hard violation; the offending type MUST be replaced with `Node` or a
   search) must implement pagination from day one rather than
   shipping a "render-all" v0.
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/31-app/ (Item interface)`](../31-app/).
+
 ## Alternatives Considered
 
 1. **Per-view interfaces (`Card`, `Tile`, `BoardCell`, …)** — rejected:

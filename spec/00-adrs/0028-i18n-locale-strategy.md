@@ -204,6 +204,9 @@ This uses the same write path as every other mutation — no special-case egress
 
 ---
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/32-ui-design/ (i18n locale)`](../32-ui-design/).
+
 ## 4. Compliance Gates
 
 | Gate ID | Severity | Description |

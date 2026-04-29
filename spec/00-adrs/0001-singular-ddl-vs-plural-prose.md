@@ -82,6 +82,9 @@ treat plural English nouns as **prose aliases only**.
 - Promoting a column to a table now requires the ADR ceremony — a small
   but real velocity tax for the right reasons.
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/04-database-conventions/`](../04-database-conventions/).
+
 ## Alternatives Considered
 
 1. **Plural DDL identifiers (`Items`, `Users`, `Favorites`)** — rejected.

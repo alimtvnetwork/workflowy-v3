@@ -130,6 +130,9 @@ duplicated stroke styles), and the design-token contract in ADR-0012
   update that ships with `@radix-ui/react-icons` would create
   tension; D3's allow-list would need a supersede.
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/31-app/`](../31-app/), [`spec/32-ui-design/`](../32-ui-design/).
+
 ## Alternatives Considered
 
 1. **Allow react-router v6 indefinitely** — rejected: v6's lack of

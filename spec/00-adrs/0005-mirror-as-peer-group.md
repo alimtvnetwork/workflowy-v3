@@ -134,6 +134,9 @@ every gate, workflow page, AT, and migration that needs re-anchoring.
   first peer in a search result) must have their own deterministic
   rule (typically: lexicographic on `ItemId`).
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/31-app/ (mirror peer-group)`](../31-app/).
+
 ## Alternatives Considered
 
 1. **Mirror as `ItemType` with `MirrorOfItemId` FK** (Model 1) —

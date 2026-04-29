@@ -129,6 +129,9 @@ At p95 write rate (50 mutations/sec across all users on a single host), the ring
 
 ---
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/31-app/06-endpoints/`](../31-app/06-endpoints/).
+
 ## 4. Compliance Gates
 
 | Gate ID | Severity | Description |

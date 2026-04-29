@@ -84,6 +84,9 @@ shown in D1. CI MUST fail any PR that desyncs the three.
 - `mem://features/core-mechanics` is currently out of lockstep (lists
   `mirror` instead of `dashboard`) and must be corrected as a follow-up.
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/20-enums-index.md`](../20-enums-index.md).
+
 ## Alternatives Considered
 
 1. **Open set with plugin-registered types** — rejected because every

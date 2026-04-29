@@ -76,6 +76,9 @@ that cite the same SQL.
   diverge by one letter across the alias bridge — minor cognitive
   overhead for new contributors.
 
+
+**Spec impact** — Downstream sections affected by this decision: [`spec/04-database-conventions/`](../04-database-conventions/).
+
 ## Alternatives Considered
 
 1. **Keep plural-table SQL grandfathered indefinitely** — rejected:
