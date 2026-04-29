@@ -84,3 +84,30 @@ Each rule promotes WARN → hard-fail independently when its dirty count reaches
 | 2.5 (value shapes) | n/a | **`G-00-OVERVIEW-SCORING-VALUE-FORMAT`** (this gate, all WARN) | n/a — bodies are prose |
 
 Layer-2.5 has no AI Contract counterpart by design: AI Contract subsection bodies are free-form prose, not parseable cells.
+
+---
+
+## Post-sweep update (2026-04-29, same day as mint)
+
+**Status:** WARN-only → **hard-fail rules 1+2+3** (single-day promotion).
+
+**Sweep actions (10 cells across 5 files):**
+
+| File | Row | Before | After |
+|------|-----|--------|-------|
+| `03-error-manage` | AI Confidence | `Production-Ready` | `Very High` |
+| `03-error-manage` | Health Score | `100/100 (A+)` | `100% (A+)` |
+| `05-split-db-architecture` | AI Confidence | `Production-Ready` | `Very High` |
+| `05-split-db-architecture` | Health Score | `100/100 (A+)` | `100% (A+)` |
+| `06-seedable-config-architecture` | AI Confidence | `Production-Ready` | `Very High` |
+| `06-seedable-config-architecture` | Health Score | `100/100 (A+)` | `100% (A+)` |
+| `07-design-system` | AI Confidence | `Production-Ready ✅` | `Very High` |
+| `07-design-system` | Ambiguity | `Low 🟢` | `Low` |
+| `07-design-system` | Health Score | `100/100` | `100% (A+)` |
+| `12-consolidated-guidelines` | AI Confidence | `High (folder is a stable redirect map; rules live in canonical sources)` | `High` (rationale moved to `> **AI Confidence rationale:**` blockquote below table) |
+
+**Verification:** `awk` linter walking the first `^(##|###)\s+Scoring\b` block per file across all 25 top-level overviews — **zero violations**.
+
+**Scope tightening:** the linter restricts to the **first** Scoring block per file. This was needed because `08-docs-viewer-ui`, `34-activity-feed`, and `36-user-management` each carry a second `## Scoring` heading with per-feature criterion grids (e.g. `| Ambiguity | 10% | Clear requirements |`) that share row names but encode different semantics. Task #17 (dedupe) will rename those to `## Per-Feature Scoring` or move them under a different heading; until then, the "first block" scope keeps the gate precise without false-flagging legitimate authoring patterns.
+
+**Trio Layer-2.5 status:** Scoring side complete with hard-fail across all 3 rules. AI Contract has no Layer-2.5 by design (subsection bodies are free-form prose, not parseable cells).
