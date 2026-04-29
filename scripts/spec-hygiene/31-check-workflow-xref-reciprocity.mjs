@@ -452,7 +452,8 @@ function findAsymmetries(scope, files, matrix) {
       if (a === b) continue;
       if (matrix[a].has(b) && !matrix[b].has(a)) {
         const key = `${a} → ${b}`;
-        if (scope.exemptions.has(key)) continue;
+        const host = `${scope.dir}/${a}`; // Phase-3 host = declaring file
+        if (isG31Exempt(scope.id, "peer", key, host)) continue;
         out.push({ from: a, to: b });
       }
     }
