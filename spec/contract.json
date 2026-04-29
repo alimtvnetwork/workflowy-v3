@@ -5,7 +5,7 @@
   "do_not_edit": true,
   "counts": {
     "acceptance_tests_defined": 2374,
-    "acceptance_tests_orphan_citations": 1,
+    "acceptance_tests_orphan_citations": 0,
     "endpoints": 48,
     "enums": 22,
     "sections": 25
@@ -26272,15 +26272,5 @@
       ]
     }
   ],
-  "orphan_at_citations": [
-    {
-      "id": "AT-XYZ-04",
-      "citedIn": [
-        {
-          "file": "spec/AUDIT-FINDINGS-LEDGER.md",
-          "line": 196
-        }
-      ]
-    }
-  ]
+  "orphan_at_citations": []
 }
