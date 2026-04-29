@@ -166,6 +166,16 @@ function main() {
   if (rows.length === 0) return fail('ledger has zero entries — empty ledger renders the gate moot');
   const registryGates = loadRegistryGates();
   const allErrs = rows.flatMap((r, i) => validateRow(r, i, registryGates));
+  let graduatedRows = [];
+  try {
+    const grad = extractGraduated(src);
+    graduatedRows = grad.rows;
+    allErrs.push(...graduatedRows.flatMap((r, i) => validateGraduatedRow(r, i, registryGates)));
+    const activeIds = new Set(rows.map((r) => r.gate));
+    for (const g of graduatedRows) {
+      if (activeIds.has(g.gate)) allErrs.push(`  L15: gate "${g.gate}" appears in BOTH ## Entries and ## Graduated entries (mutual exclusion violated)`);
+    }
+  } catch (e) { allErrs.push(`  ${e.message}`); }
   if (allErrs.length > 0) {
     console.error(`[G-00-GRADUATION-LEDGER-FRESH] ✗ ${allErrs.length} validation error(s):`);
     for (const e of allErrs) console.error(e);
@@ -173,8 +183,7 @@ function main() {
     return 1;
   }
   const warnCount = rows.filter((r) => r.mode.split(/\s+/)[0] === 'WARN').length;
-  const graduated = countGraduated(src);
-  ok(`tracking ${warnCount} WARN gate(s); ${graduated} graduated`);
+  ok(`tracking ${warnCount} WARN gate(s); ${graduatedRows.length} graduated`);
   return 0;
 }
 
