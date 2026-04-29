@@ -235,7 +235,7 @@ export function resolveHotkey(
   );
   if (candidates.length === 0) return null;
   const gated = candidates.filter((h) => (h.when ? h.when(ctx) : true));
-  if (gated.length === 1) return gated[0];
+  if (gated.length === 1) return gated[0] ?? null;
   if (gated.length === 0) return null;
   throw new Error(
     `Ambiguous hotkey resolution in scope "${scope}": ${gated.map((g) => g.id).join(", ")}`,
