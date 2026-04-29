@@ -62,13 +62,13 @@ function stripFences(txt) {
 
 function extractAiContractBlock(txt) {
   // From `## AI Contract` to the next H2 (`^## `) or EOF.
-  const m = txt.match(/^##\s+AI Contract\s*$([\s\S]*?)(?=^##\s|\Z)/m);
+  const m = txt.match(/^##\s+AI Contract\s*$([\s\S]*?)(?=\n##\s|$(?![\s\S]))/m);
   return m ? m[1] : null;
 }
 
 function parseSubsections(block) {
   // Split on `**<Name>**` markers; capture name + body until next marker.
-  const re = /\*\*(Purpose|Audience|Expected AI Output|Out of Scope|Definition of Done)\*\*\s*([\s\S]*?)(?=\n\s*\*\*(?:Purpose|Audience|Expected AI Output|Out of Scope|Definition of Done)\*\*|\Z)/g;
+  const re = /\*\*(Purpose|Audience|Expected AI Output|Out of Scope|Definition of Done)\*\*\s*([\s\S]*?)(?=\n\s*\*\*(?:Purpose|Audience|Expected AI Output|Out of Scope|Definition of Done)\*\*|$(?![\s\S]))/g;
   const found = [];
   let m;
   while ((m = re.exec(block)) !== null) {
