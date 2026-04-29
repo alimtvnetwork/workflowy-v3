@@ -30,7 +30,7 @@ This file is the single source of truth for those decisions.
 | Library | **`highlight.js`** | MIT, mature, tree-shakable, no peer deps, no Web-Worker requirement |
 | Package | `highlight.js` (npm) | NOT `@highlightjs/cdn-assets`, NOT `react-highlight`, NOT `react-syntax-highlighter` |
 | Version range | `^11.10.0` | v11 is the current major; `^` allows patch + minor within v11 only |
-| Resolved version (lockfile) | Pinned in `bun.lock` | Runtime regeneration MUST NOT cross majors |
+| Resolved version (lockfile) | Pinned in `bun.lock` | Runtime regeneration MUST NOT cross majors (gate `G-HLPIN-LOCKFILE-MAJOR`) |
 | Import strategy | **Core + per-language** registration | Full bundle is ~500KB; core + 11 langs ≈ ~80KB |
 | Theme | **Project HSL tokens only** (NO vendor `.css` import) | Vendor themes ship hex colors and break the `--primary`/`--accent` token system |
 | SSR | Not required (Vite SPA) | But the library is SSR-safe if needed later |
@@ -49,7 +49,7 @@ This file is the single source of truth for those decisions.
 
 ## Canonical Import Paths
 
-All imports MUST use these exact paths. Relative paths, namespace imports (`import * as hljs`), and CDN URLs are forbidden.
+All imports MUST use these exact paths (gate `G-HLPIN-IMPORT-PATHS`). Relative paths, namespace imports (`import * as hljs`), and CDN URLs are forbidden.
 
 ```ts
 // src/lib/highlighter/index.ts
@@ -111,7 +111,7 @@ Languages **not** in this table render via `hljs.highlightAuto` or fall back to 
 
 ## Theme Strategy: Tokens, Not Vendor CSS
 
-**MUST NOT import** any of:
+**MUST NOT import** any of (gate `G-HLPIN-NO-VENDOR-CSS`):
 ```ts
 // ❌ FORBIDDEN
 import 'highlight.js/styles/github-dark.css';
@@ -119,7 +119,7 @@ import 'highlight.js/styles/atom-one-dark.css';
 // ...any other highlight.js styles
 ```
 
-**MUST use** project HSL tokens. The complete `.hljs-*` → CSS-variable mapping is the **single responsibility of [`05-styling.md`](./05-styling.md)**. This file does not duplicate that ruleset; it only enforces the policy that vendor CSS is forbidden and project tokens are mandatory.
+**MUST use** project HSL tokens (gate `G-HLPIN-USE-HSL-TOKENS`). The complete `.hljs-*` → CSS-variable mapping is the **single responsibility of [`05-styling.md`](./05-styling.md)**. This file does not duplicate that ruleset; it only enforces the policy that vendor CSS is forbidden and project tokens are mandatory.
 
 This satisfies **AT-CODEBLOCKSYSTEM-10** (always-dark code blocks) and **AT-CODEBLOCKSYSTEM-11** (HSL-only colors).
 
@@ -134,7 +134,7 @@ This satisfies **AT-CODEBLOCKSYSTEM-10** (always-dark code blocks) and **AT-CODE
 | Total highlighter footprint | **≤ 100 KB minified, ≤ 35 KB gzipped** | Vite's gzip column |
 | Theme CSS (project) | ≤ 4 KB | `wc -c src/styles/code-block.css` |
 
-CI MUST fail if `dist/assets/highlighter-*.js` exceeds 100 KB minified. Add to the `package` job in [`spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/02-github-actions-workflow.md`](../13-cicd-pipeline-workflows/18-wp-plugin-deploy/02-github-actions-workflow.md):
+CI MUST fail if `dist/assets/highlighter-*.js` exceeds 100 KB minified (gate `G-HLPIN-CI-BUNDLE-BUDGET`). Add to the `package` job in [`spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/02-github-actions-workflow.md`](../13-cicd-pipeline-workflows/18-wp-plugin-deploy/02-github-actions-workflow.md):
 
 ```yaml
 - name: Verify highlighter bundle budget
@@ -151,10 +151,10 @@ CI MUST fail if `dist/assets/highlighter-*.js` exceeds 100 KB minified. Add to t
 |-------------|----------|
 | Patch (`11.10.0 → 11.10.1`) | Automatic via lockfile update; CI must pass |
 | Minor (`11.10.x → 11.11.0`) | Manual review; check release notes for token-name changes |
-| Major (`11.x → 12.x`) | Spec PR; this file MUST be updated; styling regression test required |
-| Switching library | Spec PR; this file MUST be rewritten; F-04 audit gate re-runs |
+| Major (`11.x → 12.x`) | Spec PR; this file MUST be updated; styling regression test required (gate `G-HLPIN-UPGRADE-MAJOR-SPEC-PR`) |
+| Switching library | Spec PR; this file MUST be rewritten; F-04 audit gate re-runs (gate `G-HLPIN-UPGRADE-MAJOR-SPEC-PR`) |
 
-Drift between `package.json` `^11.10.0` and the lockfile-resolved version MUST NOT cross a major.
+Drift between `package.json` `^11.10.0` and the lockfile-resolved version MUST NOT cross a major (gate `G-HLPIN-LOCKFILE-MAJOR`).
 
 ---
 
