@@ -1,7 +1,7 @@
 # ADRs — Acceptance Criteria
 
-> **Version:** 1.0.0
-> **Created:** 2026-04-29 — closes G-08 acceptance-coverage gap (P0 quick-win).
+> **Version:** 1.1.0
+> **Created:** 2026-04-29 — closes G-08 acceptance-coverage gap (P0 quick-win). **Updated:** 2026-04-29 — v1.1.0 added AT-ADR-G04 (ADR-0029 ledger shared-lib, 5 rows: AT-29-D1/D3/D4×3).
 > **Status:** ✅ SSOT — testable acceptance criteria for the ADR governance scope.
 
 > _Fixture: N/A — pure narrative reference, not a testable criterion._
