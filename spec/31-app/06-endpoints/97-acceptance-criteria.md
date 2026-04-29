@@ -171,3 +171,16 @@ node scripts/spec-hygiene/00-run-all.mjs
 - Given/When/Then prose
 - JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../../04-database-conventions/06-rest-api-format/).
 - A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
+
+---
+
+### AT-WIRE-EGRESS-01 — PHP serializer egress test (OwnerId canonical wire key)
+
+**Canonical definition:** [`97b-endpoint-envelope-fixtures.md` §AT-WIRE-EGRESS-01](./97b-endpoint-envelope-fixtures.md#at-wire-egress-01--php-serializer-egress-test-ownerid-canonical) — registered here per APP-FIX-14 / G-30 (every cited AT MUST resolve to a heading in a `97-acceptance-criteria.md` file in scope).
+
+**Bound gate:** `G-26-WIRE-OWNERID-ONLY` (CI + TEST dual tier; this AT is the TEST half).
+
+**Coverage source:** [`16-endpoint-at-matrix.md`](./16-endpoint-at-matrix.md) `Owner` column (33 owner-bearing endpoints as of v1.2.0).
+
+**One-line assertion:** Every owner-bearing REST/SSE response payload emits the canonical key `OwnerId` and **never** the DDL spelling `OwnerUserId`, verified by PHPUnit dispatch through `rest_do_request()` against an in-memory SQLite fixture seeded with at least one row per owner-bearing table. Authority: [ADR-0026 §D6](../../00-adrs/0026-lww-canonical-tiebreak.md).
+
