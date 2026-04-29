@@ -81,6 +81,7 @@ export const HOTKEYS: ReadonlyArray<HotkeyBinding> = [
     scope: "itemRow",
     description: "Split item at caret; text after caret becomes new sibling",
     specRef: "spec/31-app/01-features/05-interactions.md#L24",
+    when: (ctx) => ctx.itemContentIsEmpty === false,
   },
   {
     id: "ItemNewSibling",
@@ -88,6 +89,7 @@ export const HOTKEYS: ReadonlyArray<HotkeyBinding> = [
     scope: "itemRow",
     description: "Create empty sibling below when item is empty",
     specRef: "spec/31-app/01-features/05-interactions.md#L25",
+    when: (ctx) => ctx.itemContentIsEmpty === true,
   },
   {
     id: "ItemIndent",
