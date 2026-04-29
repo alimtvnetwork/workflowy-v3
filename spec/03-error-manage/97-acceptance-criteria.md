@@ -1,7 +1,7 @@
 # Error Management — Acceptance Criteria
 
-> **Version:** 3.1.0  
-> **Updated:** 2026-04-16
+> **Version:** 3.2.0  
+> **Updated:** 2026-04-29 — renamed `AC-01..06` → `AT-ERRMANAGE-01..06` to conform to canonical AT-ID format (audit task #20; `00-overview-condensed.md` updated in lock-step). New AT-ERRMANAGE-NN namespace registered.
 
 ---
 
