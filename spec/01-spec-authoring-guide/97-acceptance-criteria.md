@@ -120,3 +120,16 @@ Fixtures for every AT row in this file are covered by the global P2g sweep — s
 - **WARN-only initial mode:** Gate ships emitting warnings only. Hard-fail flag flips when the P3 status sweep retires the legacy 46 values (target: legacy count 0).
 - **Failure mode (hard-fail mode):** CI emits `<file>:<line>: non-canonical status '<value>' — see spec/01-spec-authoring-guide/20-status-legend.md §2 for canonical mapping` and exits non-zero.
 - **Promotion path:** WARN → HARD when `rg -c '\*\*Status:\*\*\s*(Curated|Active|Complete|...)' spec/` returns 0.
+
+---
+
+## Gate `G-NS-ADR-MUST-HAS-AT` (CI, hard-fail; WARN-only initial mode)
+
+- **Purpose:** Prevent ADR prose orphaning. As of 2026-04-29, **23 of 29 ADRs (79%)** contain ≥5 `MUST`/`SHALL` rules but are cited by **zero** `97-acceptance-criteria.md` files (285 orphaned MUSTs total). Without this gate, the AUDIT-03 backfill (#1) would have to be manually scoped each pass.
+- **Rule:** Every ADR file in `spec/00-adrs/` whose body contains ≥5 occurrences of `\b(MUST|SHALL)\b` (counted outside fenced code blocks and inline backticks) MUST be cited by at least one row in some `spec/**/97-acceptance-criteria.md` file using the canonical citation form `ADR-NNNN` or a path link to the ADR file.
+- **Threshold rationale:** 5 MUSTs is the empirical floor below which ADR prose is typically a context note rather than enforceable obligation. ADRs with <5 MUSTs (currently ADR-00, 0001, 0002, 0003, 0006) are exempt from this gate but remain CANONICAL.
+- **Audit ledger:** [`.lovable/memory/audit/at-prose-must-shall-sweep.md`](../../.lovable/memory/audit/at-prose-must-shall-sweep.md) — full coverage matrix.
+- **Failure mode (hard-fail mode):** CI emits `spec/00-adrs/<adr>.md: ADR has <N> MUST/SHALL rules but zero AT citations — author at least one structured AT row in a 97-acceptance-criteria.md file (see legend §1 for canonical statuses)` and exits non-zero.
+- **WARN-only initial mode:** Gate ships with the 23 currently-uncited ADRs allow-listed in `spec/_LEDGER-G-NS-ADR-COVERAGE.md` (TTL 90 days). Each AT row added under the AUDIT-03 backfill removes its target ADR from the allow-list. Hard-fail flag flips when the allow-list is empty.
+- **Exempt zones (lint MUST strip before MUST/SHALL counting):** fenced code blocks (```` ``` ````) and inline `code spans` — same carve-out as the other `G-NS-*` gates.
+- **Distinct-ADR guard:** A single AT row citing multiple ADRs (e.g. `per ADR-0020 + ADR-0026`) covers each cited ADR independently. Citation count is per-ADR, not per-row.
