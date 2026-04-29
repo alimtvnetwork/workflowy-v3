@@ -11909,14 +11909,14 @@
     {
       "id": "AT-FOO-07",
       "definition": "Validates …  STATUS: DEFERRED (blocked on ADR-0027 Phase 2)",
-      "defined_in": "spec/01-spec-authoring-guide/20-status-legend.md",
+      "defined_in": "spec/01-spec-authoring-guide/22-status-legend.md",
       "defined_line": 112,
       "cited_in": []
     },
     {
       "id": "AT-FOO-12",
       "definition": "…  STATUS: ARCHIVED (see 99-consistency-report.md §3.2)",
-      "defined_in": "spec/01-spec-authoring-guide/20-status-legend.md",
+      "defined_in": "spec/01-spec-authoring-guide/22-status-legend.md",
       "defined_line": 113,
       "cited_in": []
     },
