@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.4  
-> **Updated:** 2026-04-29 — **batch-7 prose→AT migration:** registered new **Spec-Authoring · F8 Feature-Block Format** subsection with 5 `G-39*` gates (1 umbrella CI gate + 4 sub-rule CI gates) — promotes the inline-cited `G-39` (and 4 implicit R1–R4 sub-rules) to formal registry rows. Cross-linked to `AT-F8-01..04`. Prior: 1.7.3 (batch-6 G-NS-SCOPING-* gates).
+> **Version:** 1.7.5  
+> **Updated:** 2026-04-29 — **batch-8 prose→AT migration:** registered new **Domain-CG (Coding Guidelines · Hard Rules)** subsection with 6 `G-CG-*` gates (1 umbrella `G-CG-HARD-RULES` CI + 2 sub-rule CI gates `G-CG-R5-MAX-LOGIC-LINES`/`G-CG-R6-POSITIVE-GUARDS` + 3 DOC-NORM convention gates `G-CG-FIXTURE-CITE-VERBATIM`/`G-CG-AI-ANTIPATTERN-FORBIDDEN`/`G-CG-ADR-REQUIRED-TO-RELAX`). R1/R2/R3/R4/R7/R8/R9/R10 sub-gates reserved for future batches. Prior: 1.7.4 (batch-7 G-39* gates).
 
-- **Total named gates:** 346 (+5 this revision: `G-39`, `G-39-R1-ROW-SHAPE`, `G-39-R2-SHORTCUT-PLACEMENT`, `G-39-R3-SLASH-INLINE`, `G-39-R4-SEARCH-OPERATORS`)
+- **Total named gates:** 352 (+6 this revision: six `G-CG-*`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
-- **CI:** 49 (+5 this revision)
+- **CI:** 52 (+3 this revision)
 - **TEST:** 14 (unchanged)
-- **DOC-NORM:** 77 (unchanged)
+- **DOC-NORM:** 80 (+3 this revision)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 40 (+1: Spec-Authoring · F8)
+- **Areas covered:** 41 (+1: Domain-CG)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
@@ -570,6 +570,19 @@
 | `G-39-R2-SHORTCUT-PLACEMENT` | **CI** | [`spec/01-spec-authoring-guide/21-feature-block-format.md`](./01-spec-authoring-guide/21-feature-block-format.md) | When a feature carries a shortcut, it MUST appear at end of line, backtick-wrapped, prefixed `Shortcut:`. Multiple shortcuts comma-separated inside one backtick group. The shortcut MUST also appear in the canonical hotkey table (`spec/31-app/01-features/05-interactions.md`). AT: `AT-F8-02`. |
 | `G-39-R3-SLASH-INLINE` | **CI** | [`spec/01-spec-authoring-guide/21-feature-block-format.md`](./01-spec-authoring-guide/21-feature-block-format.md) | Slash commands MUST appear inline as `` `/command` `` backtick-wrapped. Bare `/command` outside backticks forbidden. URL paths (`/wp-json/…`, `/api/…`, `/items/…`) exempt. AT: `AT-F8-03`. |
 | `G-39-R4-SEARCH-OPERATORS` | **CI** | [`spec/01-spec-authoring-guide/21-feature-block-format.md`](./01-spec-authoring-guide/21-feature-block-format.md) | Search operators (`is:todo`, `in:Inbox`, `has:note`, `tag:#work`, `due:7d`, …) MUST be backtick-wrapped wherever they appear in prose. Bare operators forbidden. AT: `AT-F8-04`. |
+
+### Domain-CG (Coding Guidelines · Hard Rules)
+
+> Reserved gate IDs for the Coding Guidelines Hard-Rules enforcement matrix in `spec/02-coding-guidelines/00-overview.md` §"Hard Rules". The ESLint/PHPStan rule names cited in the matrix's Gate column (`@typescript-eslint/no-explicit-any`, `local/max-logic-lines`, etc.) are the underlying linter implementations; the `G-CG-RN` IDs are the spec-side handles binding each rule row to the AT layer (`AT-CG-G01..G05`). Batch-8 (2026-04-29) registers the umbrella + 2 sub-rule gates load-bearing in this turn; remaining R1/R2/R3/R4/R7/R8/R9/R10 reserved for future batches as their narrative prose surfaces.
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-CG-HARD-RULES` | **CI** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | Umbrella — every rule in the §"Hard Rules" enforcement matrix is gate-enforced via the linker shown in the Gate column; the AI MUST NOT propose code that violates any of them. Composed of `G-CG-R1..R10` sub-rules. |
+| `G-CG-R5-MAX-LOGIC-LINES` | **CI** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | A function's logic body MUST be ≤ 15 lines (excluding signature, braces, blank lines). Implementation: custom ESLint rule `local/max-logic-lines`. |
+| `G-CG-R6-POSITIVE-GUARDS` | **CI** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | Guard clauses MUST be positive — `if (!x) return` not `if (x) { … } else …`. Implementation: custom ESLint rule `local/positive-guards`. |
+| `G-CG-FIXTURE-CITE-VERBATIM` | **DOC-NORM** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | Bad/Good code-pair snippets in §"Bad / Good Code Pairs" are canonical examples; fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite them verbatim by `R<N>` id. R# ids are load-bearing — renaming requires superseding ADR. |
+| `G-CG-AI-ANTIPATTERN-FORBIDDEN` | **DOC-NORM** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | The 5 anti-patterns in §"Anti-Patterns" are the closed set the AI MUST NOT do. Each row cites its catching gate (`G-02-RULE-HAS-GATE`, `G-02-PAIRED-EXAMPLES`, `G-02-NO-DISABLE`, R7's `no-restricted-syntax`, `G-02-NO-RETURN-TERNARY`). |
+| `G-CG-ADR-REQUIRED-TO-RELAX` | **DOC-NORM** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | Strict-TS rules (zero `any`, max 3 params, no nested `if`s, 15-line logic limit, pure positive guard clauses) and SQLite naming rules MUST NOT be relaxed without a new ADR superseding the relevant one (ADR-0001/ADR-0002 lineage). |
 
 ### Meta-00
 

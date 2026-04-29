@@ -1,11 +1,13 @@
 #!/usr/bin/env node
-// AT-block-aware prose-MUST counter (v6 — handles heading nesting + fixture slots
-// + bare gate citations (numeric AND alphabetic prefixes) + RFC-2119 priority cells).
+// AT-block-aware prose-MUST counter (v7 — handles heading nesting + fixture slots
+// + bare gate citations (numeric AND alphabetic prefixes) + RFC-2119 priority cells
+// + fenced-code-block skip).
 // A line is "in an AT block" if ANY ancestor heading (walking up through ALL
 // ###/####/## levels) cites `AT-…-`. v3 added fixture-slot/blockquote skips,
 // v4 added bare-form gate citations, v5 added RFC-2119 priority cells, v6
 // (F-SCOPE-08) broadened bare-form gate regex to accept alphabetic prefixes
-// like `G-A4-…`, `G-ERR-…`, `G-UPD-…`, `G-SPLIT-…`.
+// like `G-A4-…`, `G-ERR-…`, `G-UPD-…`, `G-SPLIT-…`. v7 (F-SCOPE-11) skips
+// fenced code blocks (```/~~~) — code/ASCII-art/figures are not prose claims.
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 
@@ -32,8 +34,16 @@ const FIXTURE_SLOT_RE = /^\|\s*\*\*(Negative assertion|Then|Side effects|Given|W
 function countFile(file) {
   const lines = readFileSync(file, "utf8").split("\n");
   const stack = []; // {level, citesAT}
+  let inFence = false;
   let n = 0;
   for (const ln of lines) {
+    // v7 (F-SCOPE-11, batch-8): skip fenced code blocks. Lines inside ```…```
+    // (any info-string) are CODE/EXAMPLES/FIGURES, not prose normative claims.
+    // Triple-backtick (or triple-tilde) toggles state. Heading detection still
+    // skipped while inside a fence — fences cannot contain real headings.
+    const fence = /^[ \t]*(```|~~~)/.test(ln);
+    if (fence) { inFence = !inFence; continue; }
+    if (inFence) continue;
     const h = ln.match(/^(#{2,6})\s+(.+)$/);
     if (h) {
       const level = h[1].length;
@@ -70,5 +80,5 @@ for (const file of walk("spec")) {
 
 const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
 for (const [f, n] of sorted.slice(0, 15)) console.log(`${n}\t${f}`);
-console.log(`---\nTotal real prose-MUSTs (v6 + alphabetic-prefix gate-aware): ${total}`);
+console.log(`---\nTotal real prose-MUSTs (v7 + fenced-code-block skip): ${total}`);
 console.log(`Files with ≥1 prose-MUST: ${sorted.length}`);
