@@ -236,9 +236,9 @@ try {
 
 | Metric | Value |
 |--------|-------|
-| AI Confidence | Production-Ready |
+| AI Confidence | Very High |
 | Ambiguity | Low |
-| Health Score | 100/100 (A+) |
+| Health Score | 100% (A+) |
 
 ---
 

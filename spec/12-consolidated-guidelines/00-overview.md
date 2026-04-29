@@ -46,9 +46,11 @@
 | Ambiguity assigned | ✅ |
 | Keywords present | ✅ |
 | Scoring table present | ✅ |
-| AI Confidence | High (folder is a stable redirect map; rules live in canonical sources) |
+| AI Confidence | High |
 | Ambiguity | Low |
 | Health Score | 97% (A+) |
+
+> **AI Confidence rationale:** folder is a stable redirect map; rules live in canonical sources (per `G-00-OVERVIEW-SCORING-VALUE-FORMAT` Rule 2 — prose trailers MUST live outside the value cell).
 
 ---
 
