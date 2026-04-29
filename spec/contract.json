@@ -4,8 +4,8 @@
   "generator": "scripts/spec-hygiene/40-generate-contract-json.mjs",
   "do_not_edit": true,
   "counts": {
-    "acceptance_tests_defined": 2352,
-    "acceptance_tests_orphan_citations": 18,
+    "acceptance_tests_defined": 2365,
+    "acceptance_tests_orphan_citations": 0,
     "endpoints": 48,
     "enums": 22,
     "sections": 25
@@ -5544,6 +5544,60 @@
       "cited_in": []
     },
     {
+      "id": "AT-CGCS-01",
+      "definition": "Naming & Conventions",
+      "defined_in": "spec/02-coding-guidelines/07-csharp/97-acceptance-criteria.md",
+      "defined_line": 8,
+      "cited_in": [
+        {
+          "file": "spec/02-coding-guidelines/07-csharp/97-acceptance-criteria.md",
+          "line": 4
+        }
+      ]
+    },
+    {
+      "id": "AT-CGCS-02",
+      "definition": "Method Design",
+      "defined_in": "spec/02-coding-guidelines/07-csharp/97-acceptance-criteria.md",
+      "defined_line": 21,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CGCS-03",
+      "definition": "Boolean Flag Splitting",
+      "defined_in": "spec/02-coding-guidelines/07-csharp/97-acceptance-criteria.md",
+      "defined_line": 29,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CGCS-04",
+      "definition": "Error Handling",
+      "defined_in": "spec/02-coding-guidelines/07-csharp/97-acceptance-criteria.md",
+      "defined_line": 36,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CGCS-05",
+      "definition": "Type Safety",
+      "defined_in": "spec/02-coding-guidelines/07-csharp/97-acceptance-criteria.md",
+      "defined_line": 44,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CGCS-06",
+      "definition": "Async Patterns",
+      "defined_in": "spec/02-coding-guidelines/07-csharp/97-acceptance-criteria.md",
+      "defined_line": 52,
+      "cited_in": []
+    },
+    {
+      "id": "AT-CGCS-07",
+      "definition": "LINQ Usage",
+      "defined_in": "spec/02-coding-guidelines/07-csharp/97-acceptance-criteria.md",
+      "defined_line": 58,
+      "cited_in": []
+    },
+    {
       "id": "AT-CGSA-01",
       "definition": "Every supported language (8) has a dedicated linter spec under `spec/02-coding-guidelines/01-cross-language/16-static-analysis/`.",
       "defined_in": "spec/02-coding-guidelines/01-cross-language/16-static-analysis/97-acceptance-criteria.md",
@@ -10327,6 +10381,53 @@
           "line": 6
         }
       ]
+    },
+    {
+      "id": "AT-ERRMANAGE-01",
+      "definition": "Structured Error Response",
+      "defined_in": "spec/03-error-manage/97-acceptance-criteria.md",
+      "defined_line": 8,
+      "cited_in": [
+        {
+          "file": "spec/03-error-manage/97-acceptance-criteria.md",
+          "line": 4
+        }
+      ]
+    },
+    {
+      "id": "AT-ERRMANAGE-02",
+      "definition": "Frontend-Backend Verification Protocol",
+      "defined_in": "spec/03-error-manage/97-acceptance-criteria.md",
+      "defined_line": 22,
+      "cited_in": []
+    },
+    {
+      "id": "AT-ERRMANAGE-03",
+      "definition": "Retrospective Document Structure",
+      "defined_in": "spec/03-error-manage/97-acceptance-criteria.md",
+      "defined_line": 35,
+      "cited_in": []
+    },
+    {
+      "id": "AT-ERRMANAGE-04",
+      "definition": "Verification Pattern Application",
+      "defined_in": "spec/03-error-manage/97-acceptance-criteria.md",
+      "defined_line": 43,
+      "cited_in": []
+    },
+    {
+      "id": "AT-ERRMANAGE-05",
+      "definition": "Debugging Guide Coverage",
+      "defined_in": "spec/03-error-manage/97-acceptance-criteria.md",
+      "defined_line": 51,
+      "cited_in": []
+    },
+    {
+      "id": "AT-ERRMANAGE-06",
+      "definition": "Quick Resolution",
+      "defined_in": "spec/03-error-manage/97-acceptance-criteria.md",
+      "defined_line": 59,
+      "cited_in": []
     },
     {
       "id": "AT-ERRORCODEREGISTRY-01",
@@ -26046,176 +26147,5 @@
       ]
     }
   ],
-  "orphan_at_citations": [
-    {
-      "id": "AT-CGCS-01",
-      "citedIn": [
-        {
-          "file": "spec/02-coding-guidelines/07-csharp/97-acceptance-criteria.md",
-          "line": 4
-        },
-        {
-          "file": "spec/02-coding-guidelines/07-csharp/97-acceptance-criteria.md",
-          "line": 8
-        }
-      ]
-    },
-    {
-      "id": "AT-CGCS-02",
-      "citedIn": [
-        {
-          "file": "spec/02-coding-guidelines/07-csharp/97-acceptance-criteria.md",
-          "line": 21
-        }
-      ]
-    },
-    {
-      "id": "AT-CGCS-03",
-      "citedIn": [
-        {
-          "file": "spec/02-coding-guidelines/07-csharp/97-acceptance-criteria.md",
-          "line": 29
-        }
-      ]
-    },
-    {
-      "id": "AT-CGCS-04",
-      "citedIn": [
-        {
-          "file": "spec/02-coding-guidelines/07-csharp/97-acceptance-criteria.md",
-          "line": 36
-        }
-      ]
-    },
-    {
-      "id": "AT-CGCS-05",
-      "citedIn": [
-        {
-          "file": "spec/02-coding-guidelines/07-csharp/97-acceptance-criteria.md",
-          "line": 44
-        }
-      ]
-    },
-    {
-      "id": "AT-CGCS-06",
-      "citedIn": [
-        {
-          "file": "spec/02-coding-guidelines/07-csharp/97-acceptance-criteria.md",
-          "line": 52
-        }
-      ]
-    },
-    {
-      "id": "AT-CGCS-07",
-      "citedIn": [
-        {
-          "file": "spec/02-coding-guidelines/07-csharp/97-acceptance-criteria.md",
-          "line": 58
-        }
-      ]
-    },
-    {
-      "id": "AT-ERRMANAGE-01",
-      "citedIn": [
-        {
-          "file": "spec/03-error-manage/97-acceptance-criteria.md",
-          "line": 4
-        },
-        {
-          "file": "spec/03-error-manage/97-acceptance-criteria.md",
-          "line": 8
-        }
-      ]
-    },
-    {
-      "id": "AT-ERRMANAGE-02",
-      "citedIn": [
-        {
-          "file": "spec/03-error-manage/97-acceptance-criteria.md",
-          "line": 22
-        }
-      ]
-    },
-    {
-      "id": "AT-ERRMANAGE-03",
-      "citedIn": [
-        {
-          "file": "spec/03-error-manage/97-acceptance-criteria.md",
-          "line": 35
-        }
-      ]
-    },
-    {
-      "id": "AT-ERRMANAGE-04",
-      "citedIn": [
-        {
-          "file": "spec/03-error-manage/97-acceptance-criteria.md",
-          "line": 43
-        }
-      ]
-    },
-    {
-      "id": "AT-ERRMANAGE-05",
-      "citedIn": [
-        {
-          "file": "spec/03-error-manage/97-acceptance-criteria.md",
-          "line": 51
-        }
-      ]
-    },
-    {
-      "id": "AT-ERRMANAGE-06",
-      "citedIn": [
-        {
-          "file": "spec/03-error-manage/97-acceptance-criteria.md",
-          "line": 59
-        }
-      ]
-    },
-    {
-      "id": "AT-FOO-01",
-      "citedIn": [
-        {
-          "file": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
-          "line": 142
-        }
-      ]
-    },
-    {
-      "id": "AT-SPECAUTHORING-020",
-      "citedIn": [
-        {
-          "file": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
-          "line": 214
-        }
-      ]
-    },
-    {
-      "id": "AT-SPECAUTHORING-021",
-      "citedIn": [
-        {
-          "file": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
-          "line": 239
-        }
-      ]
-    },
-    {
-      "id": "AT-SPECAUTHORING-022",
-      "citedIn": [
-        {
-          "file": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
-          "line": 270
-        }
-      ]
-    },
-    {
-      "id": "AT-SPECAUTHORING-023",
-      "citedIn": [
-        {
-          "file": "spec/01-spec-authoring-guide/97-acceptance-criteria.md",
-          "line": 299
-        }
-      ]
-    }
-  ]
+  "orphan_at_citations": []
 }

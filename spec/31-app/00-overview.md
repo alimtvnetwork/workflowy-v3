@@ -121,7 +121,7 @@ Everything else under `01-features/` is a deeper view on a single feature; do no
 | L6 | Mirrors reference the canonical source only — never a mirror of a mirror. | §1.3 |
 | L7 | Deleted items live in **Trash for 30 days** before hard delete. | `01-features/11-trash-view.md` |
 | L8 | Roles live in a **separate table** (never on profile/users). All authorization checks go through a single PHP helper `Auth::hasRole($userId, $role)` (server-side, never client-trusted). | `01-features/15-roles-and-permissions.md` |
-| L9 | Backend runtime is **WordPress plugin (PHP 8.1+ + SQLite via PDO)**. No Node, Postgres, Supabase. Realtime is delivered via WP-native **Server-Sent Events (SSE)** with a 5 s poll fallback — never WebSockets, never Postgres LISTEN/NOTIFY. | `mem://constraints/backend-runtime-deferred` |
+| L9 | Backend runtime is **WordPress plugin (PHP 8.1+ + SQLite via PDO)**. No Node, Postgres, Supabase **at the backend / API layer**. The frontend build & dev-server (Vite + React + TypeScript per ADR-0003) runs on Node and is *not* covered by this prohibition — Node is forbidden as a *runtime API host*, not as a *build tool*. Realtime is delivered via WP-native **Server-Sent Events (SSE)** with a 5 s poll fallback — never WebSockets, never Postgres LISTEN/NOTIFY. | `mem://constraints/backend-runtime-deferred`, [ADR-0003](../00-adrs/0003-react-19-ts-strict-frontend.md) |
 
 Violating any load-bearing rule is a **rejected implementation**.
 

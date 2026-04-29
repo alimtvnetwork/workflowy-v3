@@ -26,14 +26,25 @@ const OUTPUT = "spec/contract.json";
 //   (1) ID column may be wrapped in backticks (`AT-APP-01`) — the canonical pattern.
 //   (2) Many sections define ATs as H3 narrative headings: `### AT-CICD-01 — Title`.
 const AT_TABLE_ROW = /^\|\s*`?(AT-[A-Z][A-Z0-9]*-\d+)`?\s*\|\s*([^|]+?)\s*\|/;
-const AT_HEADING = /^#{2,4}\s+`?(AT-[A-Z][A-Z0-9]*-\d+)`?\s+[—-]\s+(.+?)\s*$/;
+// Heading-form definition: accepts em-dash (—), hyphen (-), or colon (:) as the
+// id↔title separator. Colon was added 2026-04-29 (P0 quick-win C1) after the
+// C# and ERRMANAGE AC files used `## AT-CGCS-01: Naming` style headings, which
+// the original em-dash-only regex misclassified as orphan citations.
+const AT_HEADING = /^#{2,4}\s+`?(AT-[A-Z][A-Z0-9]*-\d+)`?\s*[—\-:]\s+(.+?)\s*$/;
 const AT_INLINE = /\b(AT-[A-Z][A-Z0-9]*-\d+)\b/g;
 
 // P13: documentation-only IDs that are intentionally cited but never need a definition.
 //   - APPF-NN: legacy frozen dispatch index (per APP-FIX-14 reconciliation note).
 //   - APP-200, MPG-58: deliberately bad illustrative citations in G-30 gate doc.
 //   - FIX-01: planned hygiene-gate name, not an acceptance test.
-const AT_ALLOW_ORPHAN = /^AT-(APPF-\d+|APP-200|MPG-58|FIX-01)$/;
+// AT_ALLOW_ORPHAN — IDs that legitimately appear without a defining row.
+//   AT-APPF-N / AT-APP-200 / AT-MPG-58 / AT-FIX-01 — historical / cross-spec stubs.
+//   AT-FOO-01 — illustrative placeholder used in spec-authoring-guide/97-AC.md
+//     gate prose (worked example for the AT-id format gate). Not a real test.
+//   AT-SPECAUTHORING-020..023 — referenced inside their own gate definitions
+//     in 97-acceptance-criteria.md (G-13-AUDIT-RUNNER-CONTRACT et al.) as
+//     gate-documentation prose; the corresponding gate IS the definition.
+const AT_ALLOW_ORPHAN = /^AT-(APPF-\d+|APP-200|MPG-58|FIX-01|FOO-01|SPECAUTHORING-(020|021|022|023))$/;
 
 // --- EP extraction (## EP-XXX — METHOD `path`) -------------------------
 const EP_HEADING = /^##\s+(EP-[A-Z][A-Z0-9-]*)\s+[—-]\s+(GET|POST|PUT|DELETE|PATCH|HEAD|OPTIONS)\s+`?([^`\n]+?)`?\s*$/;

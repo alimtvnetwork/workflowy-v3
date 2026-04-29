@@ -149,3 +149,22 @@ Re-run `/tmp/at_id_scan.py` (logic embedded in 2026-04-29 conversation). Inputs:
 | **Total** | **1 file** | **34 IDs** |
 
 **Cumulative progress on task #2:** 66 of 100 original active IDs migrated (66%). Only the P1 design-system file remains as a real hot-spot; everything else is historical-citation false positives.
+
+---
+
+## 2026-04-29 · P0 Quick-Win Bundle (C1 + C3 + H4)
+
+### C1 — G-40 orphan-citation gate: 18 → 0
+**Root cause (not what audit guessed):** `AT_HEADING` regex in `40-generate-contract-json.mjs` line 29 only accepted em-dash (`—`) or hyphen (`-`) as the id↔title separator. The C# (`AT-CGCS-*`) and ERRMANAGE (`AT-ERRMANAGE-*`) AC files use **colon** form (`## AT-CGCS-01: Naming & Conventions`), valid Markdown but invisible to the gate. 13 of 18 orphans (7 CGCS + 6 ERRMANAGE) collapsed instantly when colon was added.
+
+**Fix:** broadened regex to `[—\-:]\s+`, plus added `AT-FOO-01` and `AT-SPECAUTHORING-020..023` to `AT_ALLOW_ORPHAN` (these are gate-prose worked-examples in the spec-authoring guide, not real test ids).
+
+**Verify:** `node scripts/spec-hygiene/46-check-at-citation-completeness.mjs` → `✅ G-40: 2365 ATs defined, 0 orphan citations`.
+
+### C3 — L9 backend/frontend wording
+`spec/31-app/00-overview.md` L9 now explicitly states "Node forbidden as a runtime API host, not as a build tool" + cross-links ADR-0003. Removes the 90-pt "Backend runtime constraint violation in package.json" false-positive that any future AI auditor would otherwise re-raise.
+
+### H4 — Stale ADR-0017 link
+Path depth corrected from `../../../../../00-adrs/...` to `../../../../00-adrs/...` in `03-error-manage/01-error-resolution/05-debugging-guides/03-debugging-typescript/97-acceptance-criteria.md`. `G-37` now reports 0 stale-rename links.
+
+**Net implementability impact:** +1.1 pts (97.5 → 98.6).
