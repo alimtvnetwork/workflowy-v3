@@ -1,7 +1,7 @@
 # State Management Architecture
 
-> **Version:** 1.0.0  
-> **Updated:** 2026-04-27 (UTC+8)  
+> **Version:** 1.1.0  
+> **Updated:** 2026-04-29 (UTC+8) — v1.1.0: D9 + `useOfflineQueueStore` rows fixed to mandate **IndexedDB** for the offline queue per ADR-0021 (localStorage was a v1.0.0 contradiction; AT-STATE-08 already cited the correct rule). v1.0.0: initial AUDIT-AI-06 closure.  
 > **Status:** ✅ SSOT for state orchestration (AUDIT-AI-06 closure)  
 > **Parent:** [`./00-overview.md`](./00-overview.md)
 
