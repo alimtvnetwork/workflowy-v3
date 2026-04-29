@@ -51,7 +51,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 **Out of Scope** —
 - Audit log for compliance — see operator runbooks in [`spec/15-wp-plugin-how-to/23-operator-runbooks/`](../15-wp-plugin-how-to/23-operator-runbooks/)
-- Email/push notifications — covered separately by `spec/36-user-management/`
+- Email/push notifications — covered separately by [`spec/36-user-management/`](../36-user-management/)
 
 **Definition of Done** —
 - Every feed row is reachable from at least one user-visible mutation flow

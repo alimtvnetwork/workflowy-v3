@@ -19,9 +19,9 @@
 - Mermaid error-flow diagram already in `02-error-architecture/00-overview.md` (P8) is the binding visual contract.
 
 **Out of Scope** —
-- HTTP-layer concerns (CORS, auth-401 origin) → `15-wp-plugin-how-to/14-rest-api-conventions/`.
-- Retry/backoff strategy → `31-app/01-features/14-concurrency-and-sync.md`.
-- Logging/observability sinks → `13-cicd-pipeline-workflows/`.
+- HTTP-layer concerns (CORS, auth-401 origin) → [`15-wp-plugin-how-to/14-rest-api-conventions/`](../15-wp-plugin-how-to/14-rest-api-conventions/).
+- Retry/backoff strategy → [`31-app/01-features/14-concurrency-and-sync.md`](../31-app/01-features/14-concurrency-and-sync.md).
+- Logging/observability sinks → [`13-cicd-pipeline-workflows/`](../13-cicd-pipeline-workflows/).
 
 **Definition of Done** —
 - Every code in `03-error-code-registry/` has: a PHP enum case, a TS type, a fixture file, and an `AT-ERRORMANAGE-*` row covering its trigger.

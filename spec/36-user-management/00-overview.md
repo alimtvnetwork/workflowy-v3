@@ -52,8 +52,8 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 **Out of Scope** —
 - Per-item sharing ACLs → [`spec/31-app/01-features/08-share-dialog.md`](../31-app/01-features/08-share-dialog.md) F4 appendix and `mem://features/sharing-model`.
-- OAuth provider integration (Google / Apple / GitHub sign-in) — deferred post-v1.
-- Multi-tenant org hierarchy, federated identity (SAML/SSO), real-time presence cursors — explicitly excluded in §Scope below.
+- OAuth provider integration (Google / Apple / GitHub sign-in) — deferred post-v1. ([owning section](./00-overview.md))
+- Multi-tenant org hierarchy, federated identity (SAML/SSO), real-time presence cursors — explicitly excluded in §Scope below. ([owning section](./00-overview.md))
 - Docs corpus rendering for Help / Handbook → [`spec/08-docs-viewer-ui/`](../08-docs-viewer-ui/00-overview.md).
 - REST envelope shape → [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/00-overview.md).
 

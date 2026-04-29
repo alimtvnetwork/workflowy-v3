@@ -45,7 +45,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 - `spec/18-spec-issues/<NN>-<audit-name>.md` — one file per audit, dated and versioned
 
 **Out of Scope** —
-- Active rules — rules MUST live in their owning section, not here
+- Active rules — rules MUST live in their owning section, not here ([owning section](./00-overview.md))
 
 **Definition of Done** —
 - Every audit file ends with a "Resolution" section pointing to the spec change that closed it

@@ -46,7 +46,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 - Per-domain implementations under `wp-plugin/includes/<Domain>/<Domain>Updater.php`
 
 **Out of Scope** —
-- Plugin self-update — that is `14-self-update-app-update/` and consumes this contract
+- Plugin self-update — that is [`14-self-update-app-update/`](../14-self-update-app-update/) and consumes this contract
 
 **Definition of Done** —
 - Every update implementation declares its rollback strategy explicitly

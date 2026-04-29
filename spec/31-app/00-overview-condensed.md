@@ -19,10 +19,10 @@
 - Fixtures: one JSON envelope per endpoint listed in `06-endpoints/` under `04a-fixtures/`.
 
 **Out of Scope** —
-- Visual styling tokens → `07-design-system/` and `32-ui-design/03-design-system/`.
-- WP-plugin scaffolding (composer, autoload) → `15-wp-plugin-how-to/`.
-- REST envelope rules → `04-database-conventions/06-rest-api-format/`.
-- Coding-rule enforcement → `02-coding-guidelines/`.
+- Visual styling tokens → [`07-design-system/`](../07-design-system/) and `32-ui-design/03-design-system/`.
+- WP-plugin scaffolding (composer, autoload) → [`15-wp-plugin-how-to/`](../15-wp-plugin-how-to/).
+- REST envelope rules → [`04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/).
+- Coding-rule enforcement → [`02-coding-guidelines/`](../02-coding-guidelines/).
 
 **Definition of Done** —
 - Every endpoint in `06-endpoints/` has a controller + a TS client method + a fixture + an `AT-*` test.
@@ -193,8 +193,7 @@ Testable acceptance criteria for the App domain. Each criterion is independently
 | ID | Criterion | Source |
 |----|-----------|--------|
 | `AT-APP-47` | An inviter without `Admin` on the target item attempting to grant access receives **HTTP 403** and no rows are written to `ItemGrants` or `PendingInvites`. | `02-workflows/03-share-invite-flow.md` (was `AT-WF-SHARE-01`) |
-| `AT-APP-48` | Sharing with an existing account at role `Edit` returns **HTTP 201**, inserts an `ItemGrants` row with `AcceptedAt = NULL`, and delivers an SSE `share-granted` event to the inviter within **1 s**. | `02-workflows/03-share-invite-flow.md` (was `AT-WF-SHARE-02`) |
-| `AT-APP-49` | Sharing with a non-existent email returns **HTTP 201** and inserts a `P
+| `AT-APP-48` | Sharing with an existing account at role `Edit` returns **HTTP 201**, inserts an `ItemGrants` row with `AcceptedAt = NULL`, and delivers an SSE `share-granted` event to the inviter within **1 s**. | `02-workflows/03-share
 
 _… truncated at 17000 chars to fit AI auditor cap …_
 

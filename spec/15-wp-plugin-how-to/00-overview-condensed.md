@@ -17,9 +17,9 @@
 - All responses MUST conform to the PascalCase envelope (`Status`/`Attributes`/`Results` mandatory) per `spec/04-database-conventions/06-rest-api-format/`.
 
 **Out of Scope** —
-- Frontend React code → `spec/32-ui-design/`.
-- REST envelope shape itself → `spec/04-database-conventions/06-rest-api-format/`.
-- WordPress core hardening / hosting → `spec/13-cicd-pipeline-workflows/` + `23-operator-runbooks/`.
+- Frontend React code → [`spec/32-ui-design/`](../32-ui-design/).
+- REST envelope shape itself → [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/).
+- WordPress core hardening / hosting → [`spec/13-cicd-pipeline-workflows/`](../13-cicd-pipeline-workflows/) + `23-operator-runbooks/`.
 
 **Definition of Done** —
 - Every endpoint listed in `spec/contract.json` has a controller method whose name matches the generated stub in `skeletons/php/RestRoutes.generated.php`.
@@ -193,10 +193,6 @@ node scripts/spec-hygiene/00-run-all.mjs
 - [`../06-seedable-config-architecture/01-fundamentals/97-acceptance-criteria.md`](../06-seedable-config-architecture/01-fundamentals/97-acceptance-criteria.md) — Seedable config defaults
 - [`../19-glossary.md`](../19-glossary.md) — Terminology SSOT
 - [`../20-enums-index.md`](../20-enums-index.md) — Enum registry
-- [`mem://constraints/backend-runtime-deferred`](mem://constraints/backend-runtime-deferred) — Frontend-runtime decoupling
-
----
-
-*Curated 2026-04-25 — closes batch-21 roll-up. 
+- [`mem://constraints/backend-runtime-deferred`](mem://constraints/backe
 
 _… truncated at 17000 chars to fit AI auditor cap …_

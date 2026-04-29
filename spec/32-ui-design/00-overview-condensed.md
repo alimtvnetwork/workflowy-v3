@@ -19,10 +19,10 @@
 - All code obeys strict-TS rules from `mem://constraints/coding-guidelines`.
 
 **Out of Scope** —
-- Product behavior + acceptance criteria → `31-app/`.
-- Backend (PHP) → `15-wp-plugin-how-to/`.
-- Visual tokens → `07-design-system/`.
-- REST envelope shape → `04-database-conventions/06-rest-api-format/`.
+- Product behavior + acceptance criteria → [`31-app/`](../31-app/).
+- Backend (PHP) → [`15-wp-plugin-how-to/`](../15-wp-plugin-how-to/).
+- Visual tokens → [`07-design-system/`](../07-design-system/).
+- REST envelope shape → [`04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/).
 
 **Definition of Done** —
 - Every TS interface in `skeletons/ts/api-client.generated.ts` has a real implementation in `src/api/`.

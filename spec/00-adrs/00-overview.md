@@ -17,8 +17,8 @@
 - Updated `## Index` table in this file **and** the rollup table in `spec/00-overview.md` — both in the same change
 
 **Out of Scope** —
-- Implementation code — see the spec section the ADR locks (e.g. `spec/04-database-conventions/`)
-- Cosmetic copy edits, single-subsection clarifications, and tooling preferences with no `G-*` gate attached
+- Implementation code — see the spec section the ADR locks (e.g. [`spec/04-database-conventions/`](../04-database-conventions/))
+- Cosmetic copy edits, single-subsection clarifications, and tooling preferences with no `G-*` gate attached ([owning section](./00-overview.md))
 
 **Definition of Done** —
 - New file passes gates `G-00-ADR-SHAPE`, `G-00-ADR-NUMBERING`, `G-00-ADR-STATUS`, `G-00-ADR-SUPERSEDE`

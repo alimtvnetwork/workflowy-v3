@@ -55,10 +55,10 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 - Fixtures: one JSON envelope per endpoint listed in `06-endpoints/` under `04a-fixtures/`.
 
 **Out of Scope** —
-- Visual styling tokens → `07-design-system/` and `32-ui-design/03-design-system/`.
-- WP-plugin scaffolding (composer, autoload) → `15-wp-plugin-how-to/`.
-- REST envelope rules → `04-database-conventions/06-rest-api-format/`.
-- Coding-rule enforcement → `02-coding-guidelines/`.
+- Visual styling tokens → [`07-design-system/`](../07-design-system/) and `32-ui-design/03-design-system/`.
+- WP-plugin scaffolding (composer, autoload) → [`15-wp-plugin-how-to/`](../15-wp-plugin-how-to/).
+- REST envelope rules → [`04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/).
+- Coding-rule enforcement → [`02-coding-guidelines/`](../02-coding-guidelines/).
 
 **Definition of Done** —
 - Every endpoint in `06-endpoints/` has a controller + a TS client method + a fixture + an `AT-*` test.
@@ -173,7 +173,7 @@ For UI rendering decisions (colors, fonts, spacing, animations), the SSOT is [`.
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`00-overview-condensed.md`](./00-overview-condensed.md) | Condensed Overview — `spec/31-app/` (P11) | 304 |
+| 1 | [`00-overview-condensed.md`](./00-overview-condensed.md) | Condensed Overview — `spec/31-app/` (P11) | 303 |
 | 2 | [`01-features/`](./01-features/00-overview.md) | 01 — Features | subfolder |
 | 3 | [`02-workflows/`](./02-workflows/00-overview.md) | 02 — Workflows | subfolder |
 | 4 | [`03-edge-cases/`](./03-edge-cases/00-overview.md) | 03 — Edge Cases | subfolder |

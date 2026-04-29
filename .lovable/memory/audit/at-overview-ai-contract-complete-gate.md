@@ -11,15 +11,17 @@ ssot: spec/01-spec-authoring-guide/18-ai-contract-template.md
 
 ## Baseline (2026-04-29)
 
-| Rule | Description | Tier | Baseline |
-|---|---|---|---:|
-| 1 | All 5 subsections present (Purpose, Audience, Expected AI Output, Out of Scope, Definition of Done) | hard-fail | **0 / 25 fail** ✅ |
-| 2 | Canonical order | hard-fail | **0 / 25 fail** ✅ |
-| 3 | Non-empty bodies (≥10 chars) | WARN | **0 WARN** ✅ |
-| 4 | Every Out-of-Scope bullet contains a markdown link | WARN | **29 WARN** across 14 files |
-| 5 | Every DoD bullet cites `AT-*`, `G-*`, `scripts/…`, or `node …` | WARN | **36 WARN** across ~20 files |
+| Rule | Description | Tier | Baseline | Current (2026-04-29) |
+|---|---|---|---:|---:|
+| 1 | All 5 subsections present (Purpose, Audience, Expected AI Output, Out of Scope, Definition of Done) | hard-fail | 0 / 25 fail ✅ | 0 ✅ |
+| 2 | Canonical order | hard-fail | 0 / 25 fail ✅ | 0 ✅ |
+| 3 | Non-empty bodies (≥10 chars) | WARN | 0 WARN ✅ | 0 ✅ |
+| 4 | Every Out-of-Scope bullet contains a markdown link | WARN | 29 WARN | **0 ✅ (drained 2026-04-29)** |
+| 5 | Every DoD bullet cites `AT-*`, `G-*`, `scripts/…`, or `node …` | WARN | 36 WARN | 36 (Task #13 target) |
 
-**Total baseline noise: 65 WARNs.** Sentinel-marker regex confirmed all top-level overviews carry the canonical 5-subsection schema in canonical order from day 1 (no Rule 1/2 promotion gap).
+**Drain log (2026-04-29):** Authored `scripts/spec-hygiene/_oneshot/drain-ai-contract-rule4.mjs` (since deleted) which mechanically converted 27 backtick-wrapped path tokens to markdown links across 14 overviews + appended 2 generic `[owning section](./00-overview.md)` pointers for prose-only bullets. Post-drain link-check caught one `08-file-folder-naming/` reference where the heuristic used `../` (sibling) instead of `./` (child); manually fixed in `02-coding-guidelines/00-overview.md` and its `00-overview-condensed.md` mirror.
+
+**Total baseline noise: 65 WARNs → 36 WARNs (29 drained).** Rule 4 is now clean and ready for promotion as soon as Rule 5 also drains (Task #14).
 
 ## Promotion criteria
 
