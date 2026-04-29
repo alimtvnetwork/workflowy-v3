@@ -163,24 +163,20 @@ import { join } from "node:path";
 // by G-31.5 since v2.4.0 (mirrors G-32.4 in `32-check-ddl-unique-coverage.mjs`).
 // =====================================================================
 
+// In-source allow-list Sets are RESERVED FOR EMERGENCY OVERRIDES only.
+// The canonical entries live in the per-(gate, path) ledger:
+//   spec/31-app/05-conventions/_LEDGER-G-31-EXEMPTIONS.md
+// At module-load time, `loadG31Exemptions()` parses the ledger and unions
+// each row into the matching in-source Set below. See ADR-0024 follow-up
+// (per-gate-path Phase-2 sibling migration) and the proven G-30 pattern in
+// `30-check-at-citation-validity.mjs`.
+
 const WORKFLOWS_EXEMPT = new Set([
-  // "10-migration-execution-flow.md → 02-template-application-flow.md",
-  // (reason: migration is bootstrap-time only; template flow is user-time only)
+  // (in-source override slot — empty; canonical entries in ledger.)
 ]);
 
 const FEATURES_EXEMPT = new Set([
-  // 7 entries below are addendum (`*b`) → cross-domain-peer references.
-  // Each addendum cites a peer for context (e.g. mirror-peer-group rules,
-  // ACL model, base interaction). The peer page would bloat unmanageably
-  // if every addendum that touches it had to be back-linked. Asymmetric
-  // by design. Drained from G-31.6 island-exempt 2026-04-27 (F-future-G31e).
-  "07b-dashboard-view.md → 04-page-content-area.md",          // sister-list-view context cite
-  "08b-sharing-mirror-interaction.md → 09b-mirror-peer-group-model.md", // peer-group identity cite
-  "08b-sharing-mirror-interaction.md → 15-roles-and-permissions.md",    // ACL model cite
-  "11b-trash-reaper.md → 09b-mirror-peer-group-model.md",     // peer-group dissolve rule cite
-  "12b-multi-select-zoom.md → 05-interactions.md",            // base zoom-hotkey cite
-  "12b-multi-select-zoom.md → 09b-mirror-peer-group-model.md", // peer sync inside scope cite
-  "13b-templates-snapshot-semantics.md → 09b-mirror-peer-group-model.md", // mirrors-not-snapshotted cite
+  // (in-source override slot — empty; canonical entries in ledger.)
 ]);
 
 const ENDPOINTS_EXEMPT = new Set([
