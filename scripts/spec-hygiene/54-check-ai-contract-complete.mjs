@@ -67,11 +67,13 @@ function extractAiContractBlock(txt) {
 }
 
 function parseSubsections(block) {
-  // Split on `**<Name>**` markers; capture name + body until next marker.
-  const re = /\*\*(Purpose|Audience|Expected AI Output|Out of Scope|Definition of Done)\*\*\s*([\s\S]*?)(?=\n\s*\*\*(?:Purpose|Audience|Expected AI Output|Out of Scope|Definition of Done)\*\*|$(?![\s\S]))/g;
+  // Append sentinel so last subsection's body terminates cleanly.
+  const scan = block + "\n\n**END**\n";
+  const re = /\*\*(Purpose|Audience|Expected AI Output|Out of Scope|Definition of Done|END)\*\*\s*([\s\S]*?)(?=\n\s*\*\*(?:Purpose|Audience|Expected AI Output|Out of Scope|Definition of Done|END)\*\*)/g;
   const found = [];
   let m;
-  while ((m = re.exec(block)) !== null) {
+  while ((m = re.exec(scan)) !== null) {
+    if (m[1] === "END") continue;
     found.push({ name: m[1], body: m[2].trim(), index: m.index });
   }
   return found;
