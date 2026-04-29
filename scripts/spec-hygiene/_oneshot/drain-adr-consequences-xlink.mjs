@@ -58,7 +58,7 @@ function processAdr(file, num) {
   // Locate ## Consequences and the next H2.
   let start = -1, end = -1;
   for (let i = 0; i < lines.length; i++) {
-    if (start === -1 && /^##\s+Consequences\s*$/.test(lines[i])) { start = i; continue; }
+    if (start === -1 && /^##\s+(?:\d+\.\s+)?Consequences\s*$/.test(lines[i])) { start = i; continue; }
     if (start !== -1 && /^##\s+/.test(lines[i])) { end = i; break; }
   }
   if (start === -1) { console.log(`? ${file}: no ## Consequences`); return; }
