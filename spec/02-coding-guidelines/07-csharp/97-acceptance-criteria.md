@@ -1,7 +1,7 @@
 # C# Coding Standards — Acceptance Criteria
 
-> **Version:** 3.1.0  
-> **Updated:** 2026-04-16
+> **Version:** 3.2.0  
+> **Updated:** 2026-04-29 — renamed `AC-01..07` → `AT-CGCS-01..07` to conform to canonical AT-ID format (audit task #20). New AT-CGCS- namespace registered. No external cross-references found (csharp had no condensed-overview duplication, unlike `03-error-manage`).
 
 ---
 
