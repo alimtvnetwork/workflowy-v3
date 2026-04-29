@@ -1173,7 +1173,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 456
+          "line": 458
         }
       ]
     },
@@ -1865,7 +1865,7 @@
       "cited_in": [
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 446
+          "line": 448
         },
         {
           "file": "spec/_LEDGER-G-NS-ADR-COVERAGE.md",
