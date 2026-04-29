@@ -1,10 +1,10 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.2.0  
-> **Updated:** 2026-04-29 — patch: +1 gate `G-NS-ADR-MUST-HAS-AT` (CI, WARN-only initial mode; `Spec-Authoring` area). Every ADR with ≥5 `MUST`/`SHALL` rules MUST be cited by at least one `97-acceptance-criteria.md` row. 23 ADRs (285 orphaned MUSTs) allow-listed in `spec/_LEDGER-G-NS-ADR-COVERAGE.md`; ADR-0026 closed today via `AT-APP-108..110` (-21 orphans). Audit: `.lovable/memory/audit/at-prose-must-shall-sweep.md`. Prior: 1.1.9 (G-NS-STATUS-IN-LEGEND), 1.1.8 (G-NS-NO-DEPRECATED-ALIAS), 1.1.7 (G-01-AT-ID-FORMAT-CANONICAL), 1.1.6 (G-13-LEDGER-NUMBERING-CONTIGUOUS), 1.1.5 (G-13-LEDGER-ROW-COUNT-PARITY), 1.1.4 (G-13-PLACEHOLDER-TOKEN-PARITY), 1.1.3 (§5.1 reconciliation), 1.1.2 (G-26-WIRE-OWNERID-ONLY dual tier), 1.1.1 (added the gate), 1.1.0 (20 new gates from ADR-0012 §D7, ADR-0027, ADR-0028).  
-...
-- **Total named gates:** 297 (was 296 — +1 `G-NS-ADR-MUST-HAS-AT`)
-- **CI:** 28 (was 27 — +1 `G-NS-ADR-MUST-HAS-AT`; WARN-only until AUDIT-03 backfill empties allow-list; one gate `G-26-WIRE-OWNERID-ONLY` is dual-tier: counted under both CI and TEST)
+> **Version:** 1.2.1  
+> **Updated:** 2026-04-29 — patch: +2 gates `G-01-DOD-NO-NN-PLACEHOLDER` (CI, hard-fail) and `G-01-DOD-CONDENSED-MIRRORS-OVERVIEW` (CI, WARN-only) closing the Definition-of-Done range sweep (P2 task #2). 13 non-testable DoD bullets normalized across 12 files (11 `AT-FOO-NN` placeholders + 2 broken empty-xref bullets). Canonical replacement form: `Every \`AT-FOO-*\` row in \`97-acceptance-criteria.md\` passes`. Audit ledger: `.lovable/memory/audit/at-dod-range-sweep.md`. Prior: 1.2.0 (G-NS-ADR-MUST-HAS-AT), 1.1.9 (G-NS-STATUS-IN-LEGEND), 1.1.8 (G-NS-NO-DEPRECATED-ALIAS), 1.1.7 (G-01-AT-ID-FORMAT-CANONICAL), 1.1.6 (G-13-LEDGER-NUMBERING-CONTIGUOUS), 1.1.5 (G-13-LEDGER-ROW-COUNT-PARITY), 1.1.4 (G-13-PLACEHOLDER-TOKEN-PARITY), 1.1.3 (§5.1 reconciliation), 1.1.2 (G-26-WIRE-OWNERID-ONLY dual tier), 1.1.1 (added the gate), 1.1.0 (20 new gates from ADR-0012 §D7, ADR-0027, ADR-0028).  
+
+- **Total named gates:** 299 (was 297 — +2 `G-01-DOD-NO-NN-PLACEHOLDER`, `G-01-DOD-CONDENSED-MIRRORS-OVERVIEW`)
+- **CI:** 30 (was 28 — +2 above; `G-01-DOD-CONDENSED-MIRRORS-OVERVIEW` is WARN-only initial mode; one gate `G-26-WIRE-OWNERID-ONLY` is dual-tier: counted under both CI and TEST)
 - **TEST:** 14 (unchanged)
 - **DOC-NORM:** 54 (unchanged)
 - **DOC:** 202 (unchanged)
