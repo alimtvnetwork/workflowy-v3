@@ -26,22 +26,22 @@ does not hide behind a green ✅.
 |------|-----------|------------|--------:|-------------:|
 | G-30 | G-30.2 | `REDUNDANCY_ALLOWLIST` | 0 | 0 ✅ |
 | G-31 | G-31.1 | `WORKFLOWS_EXEMPT` | 0 | 0 ✅ |
-| G-31 | G-31.2 | `FEATURES_EXEMPT` | 7 | 0 ✅ |
+| G-31 | G-31.2 | `FEATURES_EXEMPT` | 0 | 0 ✅ |
 | G-31 | G-31.3 | `ENDPOINTS_EXEMPT` | 0 | 0 ✅ |
 | G-31 | G-31.4 | `DB_DIAGRAM_EXEMPT` | 0 | 0 ✅ |
 | G-31 | G-31.6 | `WORKFLOWS_ISLAND_EXEMPT` | 0 | 0 ✅ |
 | G-31 | G-31.6 | `FEATURES_ISLAND_EXEMPT` | 0 | 0 ✅ |
-| G-31 | G-31.6 | `ENDPOINTS_ISLAND_EXEMPT` | 9 | 0 ✅ |
+| G-31 | G-31.6 | `ENDPOINTS_ISLAND_EXEMPT` | 0 | 0 ✅ |
 | G-31 | G-31.6 | `DB_DIAGRAM_ISLAND_EXEMPT` | 0 | 0 ✅ |
 | G-31 | G-31.7 | `WORKFLOWS_HEAD_EXEMPT` | 0 | 0 ✅ |
-| G-31 | G-31.7 | `FEATURES_HEAD_EXEMPT` | 2 | 0 ✅ |
+| G-31 | G-31.7 | `FEATURES_HEAD_EXEMPT` | 0 | 0 ✅ |
 | G-31 | G-31.7 | `ENDPOINTS_HEAD_EXEMPT` | 0 | 0 ✅ |
 | G-31 | G-31.7 | `DB_DIAGRAM_HEAD_EXEMPT` | 0 | 0 ✅ |
 | G-32 | G-32.1 | `COVERAGE_EXEMPT` | 0 | 0 ✅ |
 | G-32 | G-32.2 | `REVERSE_EXEMPT` | 8 | 0 ✅ |
 | G-32 | G-32.3 | `NONUNIQUE_EXEMPT` | 0 | 0 ✅ |
 | G-32 | G-32.5 | `PARITY_EXEMPT` | 0 | 0 ✅ |
-| **TOTAL** | — | **17 lists** | **26** | **0** |
+| **TOTAL** | — | **17 lists** | **8** | **0** |
 
 ## G-30 — AT Citation Validity
 
@@ -63,7 +63,7 @@ _(empty)_
 
 *asymmetric cross-flow links by design.*
 
-Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:166`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L166)
+Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:174`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L174)
 
 _(empty)_
 
@@ -71,23 +71,15 @@ _(empty)_
 
 *asymmetric feature cross-refs by design.*
 
-Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:171`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L171)
+Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:178`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L178)
 
-| # | Entry | Rationale |
-|---|-------|-----------|
-| 1 | `07b-dashboard-view.md → 04-page-content-area.md` | sister-list-view context cite |
-| 2 | `08b-sharing-mirror-interaction.md → 09b-mirror-peer-group-model.md` | peer-group identity cite |
-| 3 | `08b-sharing-mirror-interaction.md → 15-roles-and-permissions.md` | ACL model cite |
-| 4 | `11b-trash-reaper.md → 09b-mirror-peer-group-model.md` | peer-group dissolve rule cite |
-| 5 | `12b-multi-select-zoom.md → 05-interactions.md` | base zoom-hotkey cite |
-| 6 | `12b-multi-select-zoom.md → 09b-mirror-peer-group-model.md` | peer sync inside scope cite |
-| 7 | `13b-templates-snapshot-semantics.md → 09b-mirror-peer-group-model.md` | mirrors-not-snapshotted cite |
+_(empty)_
 
 ### `ENDPOINTS_EXEMPT` (G-31.3)
 
 *asymmetric endpoint cross-refs by design.*
 
-Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:186`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L186)
+Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:182`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L182)
 
 _(empty)_
 
@@ -95,7 +87,7 @@ _(empty)_
 
 *asymmetric db-diagram cross-refs by design.*
 
-Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:190`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L190)
+Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:186`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L186)
 
 _(empty)_
 
@@ -103,7 +95,7 @@ _(empty)_
 
 *workflow files with no peer cross-refs (legitimate).*
 
-Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:203`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L203)
+Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:199`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L199)
 
 _(empty)_
 
@@ -111,7 +103,7 @@ _(empty)_
 
 *feature files with no peer cross-refs (legitimate).*
 
-Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:207`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L207)
+Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:203`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L203)
 
 _(empty)_
 
@@ -119,25 +111,15 @@ _(empty)_
 
 *endpoint files with no peer cross-refs (legitimate).*
 
-Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:217`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L217)
+Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:213`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L213)
 
-| # | Entry | Rationale |
-|---|-------|-----------|
-| 1 | `03-layout-structure.md` | top-level shell; no sibling endpoint depends on it |
-| 2 | `04-page-content-area.md` | main outliner surface; standalone |
-| 3 | `05-interactions.md` | global interaction catalog; standalone |
-| 4 | `06-item-context-menu.md` | context-menu surface; standalone |
-| 5 | `07-board-view.md` | board surface; cross-refs go to features |
-| 6 | `10-today-view.md` | today surface; cross-refs go to features |
-| 7 | `12-multi-select.md` | multi-select surface; cross-refs go to features |
-| 8 | `13-templates.md` | templates surface; cross-refs go to features |
-| 9 | `15b-search.md` | search surface; cross-refs go to features |
+_(empty)_
 
 ### `DB_DIAGRAM_ISLAND_EXEMPT` (G-31.6)
 
 *db-diagram files with no peer cross-refs (legitimate).*
 
-Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:233`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L233)
+Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:217`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L217)
 
 _(empty)_
 
@@ -145,7 +127,7 @@ _(empty)_
 
 *workflow files using non-canonical related-section heading.*
 
-Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:244`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L244)
+Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:228`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L228)
 
 _(empty)_
 
@@ -153,18 +135,15 @@ _(empty)_
 
 *feature files using non-canonical related-section heading.*
 
-Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:248`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L248)
+Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:232`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L232)
 
-| # | Entry | Rationale |
-|---|-------|-----------|
-| 1 | `09a-mirror-cycle-detection.md` | 09a citations are predominantly cross-domain (endpoints, edge-cases, mem://) rather than peer featu… |
-| 2 | `14b-offline-queue.md` | 14b citations are predominantly cross-domain (src/types, mem://, infra constraint) rather than peer… |
+_(empty)_
 
 ### `ENDPOINTS_HEAD_EXEMPT` (G-31.7)
 
 *endpoint files using non-canonical related-section heading.*
 
-Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:255`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L255)
+Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:236`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L236)
 
 _(empty)_
 
@@ -172,7 +151,7 @@ _(empty)_
 
 *db-diagram files using non-canonical related-section heading.*
 
-Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:259`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L259)
+Source: [`scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs:240`](../../../scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs#L240)
 
 _(empty)_
 
