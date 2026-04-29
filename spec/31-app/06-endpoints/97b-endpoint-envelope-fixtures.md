@@ -285,7 +285,7 @@ ADR-0026 §D6 mandates that every REST/SSE wire payload emit the canonical key `
 
 Bound to gate `G-26-WIRE-OWNERID-ONLY` (CI + TEST dual tier; this AT is the TEST half).
 
-### Setup contract
+#### Setup contract
 
 | Item | Specification |
 |---|---|
@@ -294,7 +294,7 @@ Bound to gate `G-26-WIRE-OWNERID-ONLY` (CI + TEST dual tier; this AT is the TEST
 | HTTP layer | `WP_REST_Request` instances dispatched through `rest_do_request()`; no live HTTP server required. |
 | Auth context | A test user with `wp_set_current_user()`; role grants read on every fixture row. |
 
-### Endpoints exercised (MUST cover all)
+#### Endpoints exercised (MUST cover all)
 
 The test MUST issue one request per endpoint whose response payload, per the corresponding section above, contains an owner-bearing object. As of v1.0.0 this set is exhaustively:
 
@@ -313,7 +313,7 @@ The test MUST issue one request per endpoint whose response payload, per the cor
 
 The full enumeration MUST be derived programmatically from `16-endpoint-at-matrix.md` so adding a new endpoint does not silently bypass the test (see "Drift guard" below).
 
-### Assertion contract (MUST all hold)
+#### Assertion contract (MUST all hold)
 
 For each endpoint response `R`:
 
@@ -323,13 +323,13 @@ For each endpoint response `R`:
 4. **A4 — Round-trip stability.** Re-encoding the response JSON and decoding it MUST yield byte-identical key sets (no PHP `stdClass` → `array` rename surprises that swallow the casing check).
 5. **A5 — Error envelope.** Trigger one `403`/`404` response per endpoint. Assert A1–A4 still hold on the error envelope (the `Errors.Backend[]` stack trace MAY contain the DDL spelling `OwnerUserId` since stack frames quote raw SQL — the assertion MUST scope the recursive scan to *keys only*, not string values).
 
-### Drift guard
+#### Drift guard
 
 A2 alone is insufficient if a future endpoint forgets to expose owner identity. The test MUST therefore **also** assert:
 
 - **A6 — Coverage parity.** The list of endpoints exercised by this test MUST equal `endpoints_with_owner_column(16-endpoint-at-matrix.md)`. The matrix file is the SSOT; the test reads it at boot and fails if any matrix row marked `Owner: yes` lacks a corresponding test case.
 
-### Failure messages (specified)
+#### Failure messages (specified)
 
 When an assertion fails, the test MUST emit:
 
@@ -342,11 +342,11 @@ Fix: route the {Table}.OwnerUserId column through the alias-bridge serializer
 
 The literal substring `[G-26-WIRE-OWNERID-ONLY]` is mandatory so CI log scrapers can attribute failures to the gate without parsing test names.
 
-### Why this is TEST-tier, not CI-tier
+#### Why this is TEST-tier, not CI-tier
 
 The static regex check (`rg "\bOwnerUserId\s*[:?,}]" spec/31-app/06-endpoints`) is the CI half — it runs in milliseconds in pre-commit and catches *spec* drift. The PHPUnit suite is the TEST half — it catches *runtime* drift where the serializer produces output the spec doesn't predict. Both halves are required because the two failure modes are independent.
 
-### Cross-references
+#### Cross-references
 
 - ADR-0026 §D6 — wire-boundary canonicalisation rule.
 - Gate Registry v1.1.1 entry `G-26-WIRE-OWNERID-ONLY` (`spec/_GATE-REGISTRY.md`).
