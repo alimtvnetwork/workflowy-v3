@@ -67,7 +67,12 @@ const SKIP_PATH = (p) =>
   // §3.4 negative fixture in the AT-31-* fixtures file demonstrates the
   // forbidden `flipMechanism = "TBD"` PR-rejection case by name. Same
   // category-error carve-out as ADR-0031 above.
-  p.endsWith("/00-adrs/97a-acceptance-criteria-fixtures.md");
+  p.endsWith("/00-adrs/97a-acceptance-criteria-fixtures.md") ||
+  // The exemption manifest itself catalogs the forbidden tokens it exempts
+  // (rationale text on data-catalog rows necessarily quotes `TBD`/`stub`
+  // as the literal data being declared). Self-referential SSOT carve-out.
+  // (Added 2026-04-29 with task #32 _root thickening.)
+  p.endsWith("/_AUDIT-EXEMPTIONS.md");
 
 
 const ALLOW_LINE = (line) =>
