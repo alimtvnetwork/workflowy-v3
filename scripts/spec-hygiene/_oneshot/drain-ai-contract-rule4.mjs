@@ -27,6 +27,10 @@ const FILES = [
   "spec/17-generic-update/00-overview.md",
   "spec/18-spec-issues/00-overview.md",
   "spec/31-app/00-overview.md",
+  "spec/32-ui-design/00-overview.md",
+  "spec/33-feedback-report/00-overview.md",
+  "spec/34-activity-feed/00-overview.md",
+  "spec/36-user-management/00-overview.md",
 ];
 
 // Per-file relative-link prefix to convert `spec/X/...` or `NN-x/...` correctly.
