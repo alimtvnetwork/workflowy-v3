@@ -1,10 +1,10 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.3.5  
-> **Updated:** 2026-04-29 — patch: authored `scripts/spec-hygiene/52-check-adr-consequences-xlink.mjs` and minted gate `G-00-ADR-CONSEQUENCES-XLINK` (CI, WARN-only). Closes the planned-runner reference embedded in `AT-ADR-009`. Baseline 28/28 ADRs allow-listed at `spec/00-adrs/_LEDGER-G-00-ADR-CONSEQUENCES-XLINK-BASELINE.md` (90-day TTL); ledger drained by Consequences-enrichment sweep. Heuristic: a "downstream xlink" is any markdown link in the Consequences section pointing into a non-ADR `spec/` path (relative `../<scope>/` or absolute `spec/<scope>/`); sibling ADR links (`NNNN-*.md`) do not count. Self-tested: WARN mode green, strict mode green (allow-list covers full baseline). Prior: 1.3.4 (Layer-2 Scoring runner). 
+> **Version:** 1.3.6  
+> **Updated:** 2026-04-29 — patch (cheap-bundle): (1) authored `scripts/spec-hygiene/53-check-scoring-values-fresh.mjs` and minted gate `G-00-OVERVIEW-SCORING-VALUES-FRESH` (CI, WARN-only, hard-fail flag flips 2026-07-28). Layer-2.6 closes the time-axis gap left by Layer-2.5. Baseline 2026-04-29: 21/25 fresh; 4 overviews lack date metadata — surfaced as actionable WARNs. (2) Promoted `G-00-OVERVIEW-SCORING-TABLE-COMPLETE` Rule 3 (Health Score row last) WARN→hard-fail after confirming baseline 25/25 clean at promotion time. (3) Cleaned a duplicate Scoring block in `spec/12-consolidated-guidelines/00-overview.md` (a "Confidence" prose stub at line 94 was double-counting against Rule 4 of `G-00-OVERVIEW-SCORING-VALUE-FORMAT`; canonical 3-row table at line 40 already complete). Prior: 1.3.5 (G-00-ADR-CONSEQUENCES-XLINK).
 
-- **Total named gates:** 307 (+1: `G-00-ADR-CONSEQUENCES-XLINK`)
-- **CI:** 37 (+1; one gate `G-26-WIRE-OWNERID-ONLY` is dual-tier)
+- **Total named gates:** 308 (+1: `G-00-OVERVIEW-SCORING-VALUES-FRESH`)
+- **CI:** 38 (+1; one gate `G-26-WIRE-OWNERID-ONLY` is dual-tier)
 - **TEST:** 14 (unchanged)
 - **DOC-NORM:** 54 (unchanged)
 - **DOC:** 202 (unchanged)
