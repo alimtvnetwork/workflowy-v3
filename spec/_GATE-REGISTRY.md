@@ -545,6 +545,19 @@
 | `G-SPLIT-03` | **DOC** | [`spec/05-split-db-architecture/99a-worked-example-fixtures.md`](./05-split-db-architecture/99a-worked-example-fixtures.md) | Editing db-split.json without atomic rename gate G-SPLIT-03 (file-watch test) |
 | `G-SPLIT-04` | **DOC** | [`spec/05-split-db-architecture/99a-worked-example-fixtures.md`](./05-split-db-architecture/99a-worked-example-fixtures.md) | DETACH while transaction is open SQLite native error → gate G-SPLIT-04 |
 
+### Domain-TOKLC
+
+> **Namespace note:** the source file `spec/31-app/05-conventions/18-g25-token-lifecycle-coverage-gate.md` reserves the umbrella `G-25` per the legacy CI gate-catalogue, but the `G-25-*` registry namespace is owned by ADR-0021 (queue/undo) and ADR-0025 (SSE). Same F-SCOPE-15 / F-SCOPE-20 collision pattern. The token-lifecycle sub-rules below use the non-colliding `G-TOKLC-*` prefix; the source file's umbrella callout (`G-25` token-lifecycle) is preserved as a CI-runner identity but does not appear in the registry as `G-25-*` to avoid namespace overlap. Source-callout rename tracked as F-SCOPE-28-FOLLOWUP.
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-TOKLC-ISSUANCE-AUDIT-PAIRED` | **CI** | [`spec/31-app/05-conventions/18-g25-token-lifecycle-coverage-gate.md`](./31-app/05-conventions/18-g25-token-lifecycle-coverage-gate.md) | Every `Auth::issueAccessToken()` MUST be preceded ≤30 lines by `Audit::log('AUTH.LOGIN_SUCCESS' \| 'AUTH.TOKEN_REFRESH', …)` (axis 2). |
+| `G-TOKLC-REVOCATION-AUDIT-PAIRED` | **CI** | [`spec/31-app/05-conventions/18-g25-token-lifecycle-coverage-gate.md`](./31-app/05-conventions/18-g25-token-lifecycle-coverage-gate.md) | Every `Auth::revokeFamily()` MUST be paired ≤30 lines with `AUTH.LOGOUT*` / `AUTH.PASSWORD_CHANGE` / `AUTHZ.REFRESH_REUSE` / `ADMIN.USER_DISABLE` (axis 3). |
+| `G-TOKLC-REFRESH-PATH-SCOPED` | **CI** | [`spec/31-app/05-conventions/18-g25-token-lifecycle-coverage-gate.md`](./31-app/05-conventions/18-g25-token-lifecycle-coverage-gate.md) | Refresh route file MUST contain literal `'cookie_path' => '/wp-json/workflowy/v1/auth/refresh'` (axis 4). |
+| `G-TOKLC-REFRESH-COOKIE-HARDENED` | **CI** | [`spec/31-app/05-conventions/18-g25-token-lifecycle-coverage-gate.md`](./31-app/05-conventions/18-g25-token-lifecycle-coverage-gate.md) | Every `Set-Cookie: refresh=…` emitter MUST include `HttpOnly` + `Secure` + `SameSite=Strict` in the same statement (axis 5). |
+| `G-TOKLC-REFRESH-PATH-LITERAL-PRESENT` | **DOC-NORM** | [`spec/31-app/05-conventions/18-g25-token-lifecycle-coverage-gate.md`](./31-app/05-conventions/18-g25-token-lifecycle-coverage-gate.md) | When refresh route is declared via attribute (not array literal), file MUST still contain the literal `cookie_path` string for grep-ability (Edge Case 5). |
+| `G-TOKLC-COOKIE-DELETION-FLAGS-MATCH` | **CI** | [`spec/31-app/05-conventions/18-g25-token-lifecycle-coverage-gate.md`](./31-app/05-conventions/18-g25-token-lifecycle-coverage-gate.md) | Cookie-deletion calls (`setcookie('refresh', '', time()-3600)`) MUST set `Secure`/`HttpOnly`/`SameSite=Strict` identically to issuance (Edge Case 7). |
+
 ### Domain-UPD
 
 | Gate | Tier | Primary File | Brief |
