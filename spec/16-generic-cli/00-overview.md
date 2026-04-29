@@ -121,7 +121,7 @@ When the same setting can come from multiple sources, the CLI MUST resolve in th
 | 2 | Environment variable | `WORKFLOWY_LIMIT=50` | Prefix `WORKFLOWY_` + UPPER_SNAKE of flag name. |
 | 3 | Per-project config | `./.workflowy/config.json` | Found by walking up from CWD. |
 | 4 | User config | `$XDG_CONFIG_HOME/workflowy/config.json` | Falls back to `~/.config/workflowy/`. |
-| 5 (lowest) | Built-in default | declared in `flag.Define()` | MUST be a value, never `nil`. |
+| 5 (lowest) | Built-in default | declared in `flag.Define()` | MUST be a value, never `nil` (gate `G-16-FLAG-PRECEDENCE`). |
 
 **Rules:**
 - Boolean flags: `--no-foo` always overrides `--foo` regardless of order on the command line (last-no-wins is forbidden — too surprising).
