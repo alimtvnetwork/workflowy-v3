@@ -35,12 +35,12 @@ Until ADR-0032 lands:
 
 ---
 
-## Open questions (to be answered by ADR-0032)
+## Open questions (ratified by ADR-0032 — pending migration)
 
-The following decisions are deliberately deferred. Each question must resolve
-to a measurable, non-vague criterion before the ADR can graduate (see
-[`spec/00-adrs/0031-warn-only-strict-flip-pattern.md`](./00-adrs/0031-warn-only-strict-flip-pattern.md)
-§D3 for the predicate-quality rule).
+ADR-0032 (`Proposed`, 2026-04-29) ratifies all five questions below. They
+remain listed here verbatim for audit-trail continuity; the resolution
+column was added in v1.2.0. Final closure (rewrite to v2.0.0 with this
+section deleted) happens at migration step 5 — see ADR-0032 §Consequences.
 
 | # | Question | Constraint |
 |---|---|---|
