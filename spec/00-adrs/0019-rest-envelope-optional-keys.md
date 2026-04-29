@@ -35,9 +35,9 @@ client code across endpoints.
 ## Decision
 
 **D1 — Omit, never null.** Optional envelope keys (`Navigation`,
-`Errors`, `MethodsStack`) MUST be **omitted entirely** from the
+`Errors`, `MethodsStack`) MUST (gate G-04-OPTIONAL-OMIT-NEVER-NULL) be **omitted entirely** from the
 response body when their content does not apply. Emitting
-`"Navigation": null` is forbidden. Clients MUST treat key
+`"Navigation": null` is forbidden. Clients MUST (gate G-04-OPTIONAL-OMIT-NEVER-NULL) treat key
 presence as the truth signal:
 
 ```ts
@@ -54,13 +54,13 @@ type Envelope<T> = {
 The `object | null` typing in
 `spec/04-database-conventions/06-rest-api-format/04-language-implementation.md`
 line 69 is hereby **superseded** by the optional-property typing
-above and MUST be corrected as a follow-up.
+above and MUST (gate G-04-OPTIONAL-OMIT-NEVER-NULL) be corrected as a follow-up.
 
 **D2 — `Navigation` presence rule.** Present **iff** the endpoint is
 list-shaped AND `Attributes.IsMultiple === true` AND
 `Attributes.TotalRecords > Attributes.PerPage`. Single-resource
 GETs, deletes (`Results: []`), and exhausted last-page list responses
-(no further page) MUST omit `Navigation` entirely.
+(no further page) MUST (gate G-04-NAVIGATION-PRESENCE) omit `Navigation` entirely.
 
 **D3 — `Navigation` shape (page-based, full URLs).** The pagination
 model is **page-based** with full absolute URLs:
@@ -76,14 +76,14 @@ type NavigationBlock = {
 - Cursor-based pagination is **forbidden** at the envelope level.
 - Offset-based query strings (`?offset=N&limit=M`) are forbidden;
   use `?page=N&perPage=M`.
-- `NextPage` / `PrevPage` MUST be absolute URLs (scheme + host),
+- `NextPage` / `PrevPage` MUST (gate G-04-NAVIGATION-PAGE-BASED) be absolute URLs (scheme + host),
   not relative paths, so a captured response can be replayed
   without context. Inside `NavigationBlock`, `null` IS permitted on
   `NextPage`/`PrevPage` (this is the only legal `null` in the
   envelope's optional layer).
 
 **D4 — `Errors` presence rule.** Present **iff**
-`Attributes.HasAnyErrors === true`. The two MUST stay in lockstep —
+`Attributes.HasAnyErrors === true`. The two MUST (gate G-04-ERRORS-LOCKSTEP) stay in lockstep —
 a `true` flag with omitted `Errors`, or an `Errors` block with
 `HasAnyErrors: false`, are both protocol violations.
 
@@ -99,9 +99,9 @@ type ErrorsBlock = {
 };
 ```
 
-- All four sub-keys MUST be present when `Errors` is present
+- All four sub-keys MUST (gate G-04-ERRORS-FOUR-KEYS-REQUIRED) be present when `Errors` is present
   (no nested optional-key cascade).
-- `Backend` / `Frontend` arrays MAY be empty `[]` but MUST NOT be
+- `Backend` / `Frontend` arrays MAY be empty `[]` but MUST NOT (gate G-04-ERRORS-FOUR-KEYS-REQUIRED) be
   omitted.
 - Frame strings follow `"<file>:<line> <method>"` format
   (e.g. `"handlers.go:92 handleGetTransaction"`).
@@ -110,12 +110,12 @@ type ErrorsBlock = {
 
 **D6 — `MethodsStack` presence rule.** Present **iff** the WP plugin
 config flag `debug.methods_stack` (or equivalent runtime toggle) is
-enabled for the responding request. Production responses MUST omit
-this key. The toggle MUST default to `false`.
+enabled for the responding request. Production responses MUST (gate G-04-METHODSSTACK-DEBUG-ONLY) omit
+this key. The toggle MUST (gate G-04-METHODSSTACK-DEBUG-ONLY) default to `false`.
 
 **D7 — `MethodsStack` shape.** Debug call-chain trace; structure
 deferred to `spec/04-database-conventions/06-rest-api-format/`
-implementation, but MUST be a JSON object (not an array) with at
+implementation, but MUST (gate G-04-METHODSSTACK-DEBUG-ONLY) be a JSON object (not an array) with at
 minimum:
 
 ```ts
@@ -126,11 +126,11 @@ type MethodsStackBlock = {
 };
 ```
 
-Production builds MUST strip the toggle path entirely (D6 + tree-shake)
+Production builds MUST (gate G-04-METHODSSTACK-DEBUG-ONLY) strip the toggle path entirely (D6 + tree-shake)
 so the shape cannot leak.
 
 **D8 — Attributes ↔ optional-key invariants.** The following
-invariants MUST hold in every response and SHOULD be enforced by a
+invariants MUST (gate G-04-ENVELOPE-VALIDATOR) hold in every response and SHOULD be enforced by a
 shared envelope validator:
 
 | `Attributes` field | Optional key linkage |
@@ -149,13 +149,13 @@ named root-level optional keys (`Navigation`, `Errors`,
 the response — at any nesting depth inside `Results`, `Errors`,
 `MethodsStack`, or any sub-object — the rule **inverts**:
 
-| Field shape | Empty value MUST be |
+| Field shape | Empty value MUST (gate G-04-NESTED-ARRAY-NEVER-NULL) be |
 |---|---|
 | Root-level optional envelope key (`Navigation` / `Errors` / `MethodsStack`) | **omitted** (D1) |
 | Any array-valued field (incl. `Children`, `Tags`, `Mentions`, `Frames`, `Backend`, `Frontend`, `CloserLinks`, `DelegatedServiceErrorStack`, `MirrorPeers`, `MultiSelectIds`, …) | `[]` — **never** `null`, **never** omitted |
 | Any object-valued sub-field declared in the type | present with its required sub-keys; if optional, MAY be omitted but **never** `null` |
 | Any scalar-valued sub-field (string/number/boolean) declared as nullable in the type | `null` permitted (e.g., `NavigationBlock.NextPage` per D3) |
-| Any scalar-valued sub-field declared as non-nullable | MUST be present with a defined value |
+| Any scalar-valued sub-field declared as non-nullable | MUST (gate G-04-NESTED-DECLARED-FIELD-PRESENT) be present with a defined value |
 
 **Worked example** (single GET, leaf node, no errors, no debug):
 
@@ -188,7 +188,7 @@ the response — at any nesting depth inside `Results`, `Errors`,
 | `"Errors": { "BackendMessage": "x" }` (with `Backend`/`Frontend`/`DelegatedServiceErrorStack` missing) | All four sub-keys present, arrays may be `[]` | D5 — no nested optional cascade |
 | `"NextPage": ""` (empty string for last page) | `"NextPage": null` | D3 — scalar nullable fields use `null`, not sentinel strings |
 
-The shared envelope validator (`G-04-ENVELOPE-VALIDATOR`) MUST
+The shared envelope validator (`G-04-ENVELOPE-VALIDATOR`) MUST (gate G-04-ENVELOPE-VALIDATOR)
 enforce D9 in addition to D8.
 
 
