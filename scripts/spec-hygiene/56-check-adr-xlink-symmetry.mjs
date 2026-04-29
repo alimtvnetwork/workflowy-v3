@@ -49,11 +49,14 @@ function slugify(heading) {
 }
 
 function findAnchorLine(lines, anchor) {
-  // Match GitHub-style auto-slug from any heading line (#, ##, ###, …).
   for (let i = 0; i < lines.length; i++) {
     const h = lines[i].match(/^#{1,6}\s+(.+?)\s*$/);
     if (!h) continue;
-    if (slugify(h[1]) === anchor) return i;
+    // Explicit `{#explicit-id}` attribute (kramdown/pandoc syntax) wins.
+    const explicit = h[1].match(/\{#([^}]+)\}\s*$/);
+    if (explicit && explicit[1] === anchor) return i;
+    const headingText = h[1].replace(/\s*\{#[^}]+\}\s*$/, '');
+    if (slugify(headingText) === anchor) return i;
   }
   return -1;
 }
