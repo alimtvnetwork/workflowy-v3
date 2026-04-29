@@ -219,3 +219,26 @@ export function matches(event: KeyboardEvent, combo: KeyCombo): boolean {
   if (Boolean(combo.alt) !== event.altKey) return false;
   return event.key === combo.key;
 }
+
+/**
+ * Resolve which binding fires for this event in this scope+context.
+ * Returns `null` when none match. When multiple structural matches exist
+ * (same scope+combo), `when` predicates MUST disambiguate to exactly one.
+ */
+export function resolveHotkey(
+  event: KeyboardEvent,
+  scope: HotkeyScope,
+  ctx: WhenContext,
+): HotkeyBinding | null {
+  const candidates = HOTKEYS.filter(
+    (h) => h.scope === scope && matches(event, h.combo),
+  );
+  if (candidates.length === 0) return null;
+  const gated = candidates.filter((h) => (h.when ? h.when(ctx) : true));
+  if (gated.length === 1) return gated[0];
+  if (gated.length === 0) return null;
+  throw new Error(
+    `Ambiguous hotkey resolution in scope "${scope}": ${gated.map((g) => g.id).join(", ")}`,
+  );
+}
+
