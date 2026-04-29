@@ -1,7 +1,7 @@
 ---
 slug: allow-list-inventory
 version: 1.0.0
-updated: 2026-04-27
+updated: 2026-04-29
 parent: ./02-ci-quality-gates.md
 status: generated
 generator: scripts/spec-hygiene/35-allow-list-inventory.mjs
@@ -24,7 +24,7 @@ does not hide behind a green ✅.
 
 | Gate | Sub-check | Allow-list | Entries | Unrationaled |
 |------|-----------|------------|--------:|-------------:|
-| G-30 | G-30.2 | `REDUNDANCY_ALLOWLIST` | 41 | 0 ✅ |
+| G-30 | G-30.2 | `REDUNDANCY_ALLOWLIST` | 0 | 0 ✅ |
 | G-31 | G-31.1 | `WORKFLOWS_EXEMPT` | 0 | 0 ✅ |
 | G-31 | G-31.2 | `FEATURES_EXEMPT` | 7 | 0 ✅ |
 | G-31 | G-31.3 | `ENDPOINTS_EXEMPT` | 0 | 0 ✅ |
@@ -41,7 +41,7 @@ does not hide behind a green ✅.
 | G-32 | G-32.2 | `REVERSE_EXEMPT` | 8 | 0 ✅ |
 | G-32 | G-32.3 | `NONUNIQUE_EXEMPT` | 0 | 0 ✅ |
 | G-32 | G-32.5 | `PARITY_EXEMPT` | 0 | 0 ✅ |
-| **TOTAL** | — | **17 lists** | **67** | **0** |
+| **TOTAL** | — | **17 lists** | **26** | **0** |
 
 ## G-30 — AT Citation Validity
 
@@ -51,51 +51,9 @@ does not hide behind a green ✅.
 
 *open-prefix declarations exempt from redundancy ERROR.*
 
-Source: [`scripts/spec-hygiene/30-check-at-citation-validity.mjs:111`](../../../scripts/spec-hygiene/30-check-at-citation-validity.mjs#L111)
+Source: [`scripts/spec-hygiene/30-check-at-citation-validity.mjs:123`](../../../scripts/spec-hygiene/30-check-at-citation-validity.mjs#L123)
 
-| # | Entry | Rationale |
-|---|-------|-----------|
-| 1 | `AT-FOO-` | Doc-example placeholder (02-ci-quality-gates.md) |
-| 2 | `AT-WORKFLOWS-` | 02-workflows/97 future canonical index |
-| 3 | `AT-ROADMAP-` | 04-roadmap/97 future canonical index |
-| 4 | `AT-ENDPOINTS-` | 06-endpoints/97 future canonical index |
-| 5 | `AT-DBDIAGRAM-` | 07-db-diagram/97 future canonical index |
-| 6 | `AT-INFO-` | ↔ AT-INFOMODEL-NN (F15 alias closure) |
-| 7 | `AT-MIRROR-` | ↔ AT-MIRRORS-NN (F15 alias closure) |
-| 8 | `AT-MULTI-` | ↔ AT-MULTISELECT-NN (F20 alias closure) |
-| 9 | `AT-BOARD-` | F20 identity closure |
-| 10 | `AT-CONCURRENCY-` | F20 identity closure |
-| 11 | `AT-CTXMENU-` | F20 identity closure |
-| 12 | `AT-INTERACT-` | F20 identity closure |
-| 13 | `AT-LAYOUT-` | F20 identity closure |
-| 14 | `AT-PAGE-` | F20 identity closure |
-| 15 | `AT-ROLES-` | F20 identity closure |
-| 16 | `AT-SHARE-` | F20 identity closure |
-| 17 | `AT-TEMPLATES-` | F20 identity closure |
-| 18 | `AT-TODAY-` | F20 identity closure |
-| 19 | `AT-TRASH-` | F20 identity closure |
-| 20 | `AT-MULTISELECT-` | 12-multi-select source-file prefix (canonical: AT-APP-17..18) |
-| 21 | `AT-INFOMODEL-` | 01-information-model source-file prefix (canonical: AT-APP-01..05) |
-| 22 | `AT-MIRRORS-` | 09-mirrors source-file prefix (canonical: AT-APP-24) |
-| 23 | `AT-DV-` | 07b-dashboard-view inline (canonical: AT-APP-68..75) |
-| 24 | `AT-SM-` | 08b-sharing-mirror-interaction inline (canonical: AT-APP-76..80) |
-| 25 | `AT-MPG-` | 09b-mirror-peer-group-model inline (canonical: AT-APP-58..67) |
-| 26 | `AT-TR-` | 11b-trash-reaper inline (canonical: AT-APP-81..85) |
-| 27 | `AT-MZ-` | 12b-multi-select-zoom inline (canonical: AT-APP-86..91) |
-| 28 | `AT-TPL-` | 13b-templates-snapshot-semantics inline (canonical: AT-APP-92..96) |
-| 29 | `AT-OQ-` | 14b-offline-queue inline (canonical: AT-APP-97..102) |
-| 30 | `AT-SR-` | 16-search-ranking inline (canonical: AT-APP-103..107) |
-| 31 | `AT-WF-MIGRATE-` | → AT-APP-66, 67 (10-migration-execution-flow) |
-| 32 | `AT-WF-CREATE-` | → AT-APP-58, 59, 62, 66, 67 (09-mirror-create-flow) |
-| 33 | `AT-WF-REAPER-` | → AT-APP-81..85 (05-trash-reaper-flow) |
-| 34 | `AT-WF-SEARCH-` | → AT-APP-103..107 (06-search-query-flow) |
-| 35 | `AT-WF-REPLAY-` | → AT-APP-97..102 (07-sync-replay-flow) |
-| 36 | `AT-WF-DETACH-` | → AT-APP-60..65 subset (08-mirror-detach-flow) |
-| 37 | `AT-WF-TEMPLATE-` | → AT-APP-43..46 (02-template-application-flow) |
-| 38 | `AT-WF-SHARE-` | → AT-APP-47..51 (03-share-invite-flow) |
-| 39 | `AT-WF-RESTORE-` | → AT-APP-52..57 (04-trash-restore-flow) |
-| 40 | `AT-APP-` | CANONICAL AT family (97-acceptance-criteria.md) |
-| 41 | `AT-APPF-` | FROZEN legacy dispatch column (APP-FIX-14) |
+_(empty)_
 
 ## G-31 — Cross-Reference Reciprocity
 

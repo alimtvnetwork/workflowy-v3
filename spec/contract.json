@@ -1292,6 +1292,10 @@
       "defined_line": 28,
       "cited_in": [
         {
+          "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
+          "line": 42
+        },
+        {
           "file": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
           "line": 5
         },
@@ -1314,10 +1318,6 @@
         {
           "file": "spec/31-app/05-conventions/23-g30-at-citation-validity-gate.md",
           "line": 92
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 78
         },
         {
           "file": "spec/31-app/06-endpoints/01-information-model.md",
@@ -1664,6 +1664,14 @@
       "defined_line": 240,
       "cited_in": [
         {
+          "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
+          "line": 51
+        },
+        {
+          "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
+          "line": 55
+        },
+        {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 49
         },
@@ -1690,14 +1698,6 @@
         {
           "file": "spec/31-app/02-workflows/06-search-query-flow.md",
           "line": 126
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 87
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 91
         },
         {
           "file": "spec/31-app/06-endpoints/15b-search.md",
@@ -2087,12 +2087,12 @@
       "defined_line": 64,
       "cited_in": [
         {
-          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
-          "line": 42
+          "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
+          "line": 41
         },
         {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 77
+          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
+          "line": 42
         },
         {
           "file": "spec/31-app/06-endpoints/08-share-dialog.md",
@@ -2259,16 +2259,16 @@
       "defined_line": 86,
       "cited_in": [
         {
+          "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
+          "line": 43
+        },
+        {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 37
         },
         {
           "file": "spec/31-app/03-edge-cases/01-edge-cases.md",
           "line": 68
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 79
         },
         {
           "file": "spec/31-app/06-endpoints/11-trash-view.md",
@@ -2779,6 +2779,10 @@
       "defined_line": 130,
       "cited_in": [
         {
+          "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
+          "line": 58
+        },
+        {
           "file": "spec/18-spec-issues/09-app-folder-re-audit-2026-04-26.md",
           "line": 83
         },
@@ -2805,10 +2809,6 @@
         {
           "file": "spec/31-app/02-workflows/97-acceptance-criteria.md",
           "line": 21
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 94
         },
         {
           "file": "spec/31-app/97c-acceptance-criteria-fixtures.md",
@@ -2883,6 +2883,10 @@
       "defined_line": 139,
       "cited_in": [
         {
+          "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
+          "line": 59
+        },
+        {
           "file": "spec/31-app/02-workflows/00-overview.md",
           "line": 108
         },
@@ -2893,10 +2897,6 @@
         {
           "file": "spec/31-app/02-workflows/97-acceptance-criteria.md",
           "line": 22
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 95
         },
         {
           "file": "spec/31-app/97c-acceptance-criteria-fixtures.md",
@@ -2979,6 +2979,10 @@
       "defined_line": 149,
       "cited_in": [
         {
+          "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
+          "line": 60
+        },
+        {
           "file": "spec/31-app/02-workflows/00-overview.md",
           "line": 109
         },
@@ -2989,10 +2993,6 @@
         {
           "file": "spec/31-app/02-workflows/97-acceptance-criteria.md",
           "line": 23
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 96
         },
         {
           "file": "spec/31-app/97c-acceptance-criteria-fixtures.md",
@@ -3111,6 +3111,14 @@
       "defined_line": 160,
       "cited_in": [
         {
+          "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
+          "line": 46
+        },
+        {
+          "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
+          "line": 53
+        },
+        {
           "file": "spec/13-cicd-pipeline-workflows/scripts-as-spec/per-gate-path-ledger-schema.md",
           "line": 125
         },
@@ -3141,14 +3149,6 @@
         {
           "file": "spec/31-app/02-workflows/09-mirror-create-flow.md",
           "line": 153
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 82
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 89
         },
         {
           "file": "spec/31-app/06-endpoints/09b-mirror-peer-group.md",
@@ -3219,6 +3219,10 @@
       "defined_line": 162,
       "cited_in": [
         {
+          "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
+          "line": 57
+        },
+        {
           "file": "spec/31-app/02-workflows/00-overview.md",
           "line": 95
         },
@@ -3233,10 +3237,6 @@
         {
           "file": "spec/31-app/02-workflows/08-mirror-detach-flow.md",
           "line": 125
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 93
         },
         {
           "file": "spec/31-app/06-endpoints/09b-mirror-peer-group.md",
@@ -3399,6 +3399,10 @@
       "defined_line": 168,
       "cited_in": [
         {
+          "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
+          "line": 52
+        },
+        {
           "file": "spec/31-app/02-workflows/00-overview.md",
           "line": 5
         },
@@ -3441,10 +3445,6 @@
         {
           "file": "spec/31-app/02-workflows/10-migration-execution-flow.md",
           "line": 186
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 88
         },
         {
           "file": "spec/31-app/97c-acceptance-criteria-fixtures.md",
@@ -3491,12 +3491,12 @@
       "defined_line": 175,
       "cited_in": [
         {
-          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
-          "line": 34
+          "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
+          "line": 44
         },
         {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 80
+          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
+          "line": 34
         },
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
@@ -3619,12 +3619,12 @@
       "defined_line": 188,
       "cited_in": [
         {
-          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
-          "line": 36
+          "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
+          "line": 45
         },
         {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 81
+          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
+          "line": 36
         },
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
@@ -3699,6 +3699,14 @@
       "defined_line": 198,
       "cited_in": [
         {
+          "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
+          "line": 47
+        },
+        {
+          "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
+          "line": 54
+        },
+        {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 41
         },
@@ -3713,14 +3721,6 @@
         {
           "file": "spec/31-app/02-workflows/05-trash-reaper-flow.md",
           "line": 123
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 83
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 90
         },
         {
           "file": "spec/31-app/06-endpoints/11b-trash-reaper.md",
@@ -3863,12 +3863,12 @@
       "defined_line": 208,
       "cited_in": [
         {
-          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
-          "line": 43
+          "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
+          "line": 48
         },
         {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 84
+          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
+          "line": 43
         },
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
@@ -3951,12 +3951,12 @@
       "defined_line": 219,
       "cited_in": [
         {
-          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
-          "line": 45
+          "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
+          "line": 49
         },
         {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 85
+          "file": "spec/31-app/01-features/97-acceptance-criteria.md",
+          "line": 45
         },
         {
           "file": "spec/31-app/97-acceptance-criteria.md",
@@ -4031,6 +4031,14 @@
           "line": 24
         },
         {
+          "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
+          "line": 50
+        },
+        {
+          "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
+          "line": 56
+        },
+        {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 47
         },
@@ -4049,14 +4057,6 @@
         {
           "file": "spec/31-app/02-workflows/07-sync-replay-flow.md",
           "line": 139
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 86
-        },
-        {
-          "file": "spec/31-app/05-conventions/26-allow-list-inventory.md",
-          "line": 92
         },
         {
           "file": "spec/31-app/06-endpoints/14b-sync-replay.md",

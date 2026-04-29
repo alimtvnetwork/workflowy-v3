@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-29  
-**Total Files:** 1462  
+**Total Files:** 1463  
 **Top-Level Folders:** 26
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -16,7 +16,7 @@
 ## Table of Contents
 
 - [00-adrs](#00-adrs) — 35 file(s)
-- [01-spec-authoring-guide](#01-spec-authoring-guide) — 26 file(s)
+- [01-spec-authoring-guide](#01-spec-authoring-guide) — 27 file(s)
 - [02-coding-guidelines](#02-coding-guidelines) — 310 file(s)
 - [03-error-manage](#03-error-manage) — 191 file(s)
 - [04-database-conventions](#04-database-conventions) — 17 file(s)
@@ -88,6 +88,7 @@
 
 | File | Title | Version | Status |
 |------|-------|---------|--------|
+| [`01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md`](./01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md) | Ledger — `G-30-AT-CITATION-VALIDITY` exemptions (per-(gate, path), Phase 2) | — | — |
 | [`01-spec-authoring-guide/00-overview.md`](./01-spec-authoring-guide/00-overview.md) | 01 — Spec Authoring Guide | 4.1.0 | Active |
 | [`01-spec-authoring-guide/01-folder-structure.md`](./01-spec-authoring-guide/01-folder-structure.md) | Folder Structure | 3.1.0 | — |
 | [`01-spec-authoring-guide/02-naming-conventions.md`](./01-spec-authoring-guide/02-naming-conventions.md) | Naming Conventions | 3.4.0 | Draft |
@@ -1638,4 +1639,4 @@
 
 ---
 
-*Auto-generated index — 1462 files across 26 top-level folders.*
+*Auto-generated index — 1463 files across 26 top-level folders.*
