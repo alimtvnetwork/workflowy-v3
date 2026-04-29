@@ -20,10 +20,10 @@ the original in-source comment; see SSOT §G-30.2 + F27 task log):
 | gate | pathGlob | entry | rationale | addedOn |
 |---|---|---|---|---|
 | G-30-AT-CITATION-VALIDITY | spec/31-app/01-features/97-acceptance-criteria.md | AT-FOO- | (a) Future-licensing — doc-example placeholder cited by 02-ci-quality-gates.md | 2026-04-29 |
-| G-30-AT-CITATION-VALIDITY | spec/31-app/01-features/97-acceptance-criteria.md | AT-WORKFLOWS- | (a) Future-licensing — 02-workflows/97 future canonical index reservation | 2026-04-29 |
-| G-30-AT-CITATION-VALIDITY | spec/31-app/01-features/97-acceptance-criteria.md | AT-ROADMAP- | (a) Future-licensing — 04-roadmap/97 future canonical index reservation | 2026-04-29 |
-| G-30-AT-CITATION-VALIDITY | spec/31-app/01-features/97-acceptance-criteria.md | AT-ENDPOINTS- | (a) Future-licensing — 06-endpoints/97 future canonical index reservation | 2026-04-29 |
-| G-30-AT-CITATION-VALIDITY | spec/31-app/01-features/97-acceptance-criteria.md | AT-DBDIAGRAM- | (a) Future-licensing — 07-db-diagram/97 future canonical index reservation | 2026-04-29 |
+| G-30-AT-CITATION-VALIDITY | spec/31-app/02-workflows/97-acceptance-criteria.md | AT-WORKFLOWS- | (a) Future-licensing — 02-workflows/97 future canonical index reservation | 2026-04-29 |
+| G-30-AT-CITATION-VALIDITY | spec/31-app/04-roadmap/97-acceptance-criteria.md | AT-ROADMAP- | (a) Future-licensing — 04-roadmap/97 future canonical index reservation | 2026-04-29 |
+| G-30-AT-CITATION-VALIDITY | spec/31-app/06-endpoints/97-acceptance-criteria.md | AT-ENDPOINTS- | (a) Future-licensing — 06-endpoints/97 future canonical index reservation | 2026-04-29 |
+| G-30-AT-CITATION-VALIDITY | spec/31-app/07-db-diagram/97-acceptance-criteria.md | AT-DBDIAGRAM- | (a) Future-licensing — 07-db-diagram/97 future canonical index reservation | 2026-04-29 |
 | G-30-AT-CITATION-VALIDITY | spec/31-app/01-features/97-acceptance-criteria.md | AT-INFO- | (b) F15 alias closure to AT-INFOMODEL-NN; row kept for convention | 2026-04-29 |
 | G-30-AT-CITATION-VALIDITY | spec/31-app/01-features/97-acceptance-criteria.md | AT-MIRROR- | (b) F15 alias closure to AT-MIRRORS-NN; row kept for convention | 2026-04-29 |
 | G-30-AT-CITATION-VALIDITY | spec/31-app/01-features/97-acceptance-criteria.md | AT-MULTI- | (b) F20 alias closure to AT-MULTISELECT-NN; row kept for convention | 2026-04-29 |
@@ -33,7 +33,7 @@ the original in-source comment; see SSOT §G-30.2 + F27 task log):
 | G-30-AT-CITATION-VALIDITY | spec/31-app/01-features/97-acceptance-criteria.md | AT-INTERACT- | (b) F20 identity closure; row kept for convention documentation | 2026-04-29 |
 | G-30-AT-CITATION-VALIDITY | spec/31-app/01-features/97-acceptance-criteria.md | AT-LAYOUT- | (b) F20 identity closure; row kept for convention documentation | 2026-04-29 |
 | G-30-AT-CITATION-VALIDITY | spec/31-app/01-features/97-acceptance-criteria.md | AT-PAGE- | (b) F20 identity closure; row kept for convention documentation | 2026-04-29 |
-| G-30-AT-CITATION-VALIDITY | spec/31-app/01-features/97-acceptance-criteria.md | AT-ROLES- | (b) F20 identity closure; row kept for convention documentation | 2026-04-29 |
+| G-30-AT-CITATION-VALIDITY | spec/31-app/01-features/15-roles-and-permissions.md | AT-ROLES- | (b) F20 identity closure; row kept for convention documentation | 2026-04-29 |
 | G-30-AT-CITATION-VALIDITY | spec/31-app/01-features/97-acceptance-criteria.md | AT-SHARE- | (b) F20 identity closure; row kept for convention documentation | 2026-04-29 |
 | G-30-AT-CITATION-VALIDITY | spec/31-app/01-features/97-acceptance-criteria.md | AT-TEMPLATES- | (b) F20 identity closure; row kept for convention documentation | 2026-04-29 |
 | G-30-AT-CITATION-VALIDITY | spec/31-app/01-features/97-acceptance-criteria.md | AT-TODAY- | (b) F20 identity closure; row kept for convention documentation | 2026-04-29 |
