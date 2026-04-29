@@ -42,13 +42,13 @@ remain listed here verbatim for audit-trail continuity; the resolution
 column was added in v1.2.0. Final closure (rewrite to v2.0.0 with this
 section deleted) happens at migration step 5 — see ADR-0032 §Consequences.
 
-| # | Question | Constraint |
-|---|---|---|
-| Q1 | Open-source license for the plugin? (Candidates: GPL-2.0-or-later for WP-ecosystem compatibility, MIT for permissiveness, AGPL-3.0 for SaaS-protective copyleft.) | WP plugin distribution requires GPL-compatible license per WordPress.org guidelines. |
-| Q2 | Same license for the frontend, or split? | If split, the boundary must be a hard module boundary (separate package, separate repo, or separate `LICENSE` file with explicit scope). |
-| Q3 | License for the spec corpus? (Candidates: CC-BY-4.0, CC-BY-SA-4.0, proprietary.) | Must be compatible with quoting fixtures verbatim in derived AT documentation. |
-| Q4 | Contributor License Agreement (CLA) required? | If yes, must use a published template (e.g. Apache ICLA) — no ad-hoc text. |
-| Q5 | Trademark policy for the project name? | Separate from copyright license; defaults to "all rights reserved" until explicitly granted. |
+| # | Question | Constraint | Resolution (ADR-0032) |
+|---|---|---|---|
+| Q1 | Open-source license for the plugin? (Candidates: GPL-2.0-or-later for WP-ecosystem compatibility, MIT for permissiveness, AGPL-3.0 for SaaS-protective copyleft.) | WP plugin distribution requires GPL-compatible license per WordPress.org guidelines. | **GPL-2.0-or-later** |
+| Q2 | Same license for the frontend, or split? | If split, the boundary must be a hard module boundary (separate package, separate repo, or separate `LICENSE` file with explicit scope). | **Same license, no split** (frontend ships embedded in plugin's `assets/`) |
+| Q3 | License for the spec corpus? (Candidates: CC-BY-4.0, CC-BY-SA-4.0, proprietary.) | Must be compatible with quoting fixtures verbatim in derived AT documentation. | **CC-BY-4.0** for `spec/`; **GPL-2.0-or-later** for `scripts/` |
+| Q4 | Contributor License Agreement (CLA) required? | If yes, must use a published template (e.g. Apache ICLA) — no ad-hoc text. | **No CLA** (inbound = outbound per GitHub ToS §D.6) |
+| Q5 | Trademark policy for the project name? | Separate from copyright license; defaults to "all rights reserved" until explicitly granted. | **Common-law trademark reserved**; `TRADEMARK.md` required at flip time |
 
 ---
 
