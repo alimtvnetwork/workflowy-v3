@@ -1,8 +1,8 @@
 # Gate Graduation Ledger
 
-> **Version:** 1.1.0
+> **Version:** 1.2.0
 > **Created:** 2026-04-29 (UTC+8) — answers task #35 (gate-graduation tracking gap surfaced after #57/#58/#59 trio).
-> **Updated:** 2026-04-29 — **F-AUDIT-26 RESOLVED.** Tightened 3 vague flipCriteria (rows for `G-01-DOD-CONDENSED-MIRRORS-OVERVIEW`, `G-00-OVERVIEW-AI-CONTRACT-PRESENT` sub-tier, `G-00-OVERVIEW-AI-CONTRACT-COMPLETE` rules 3–5) to measurable predicates with concrete count/regex/CI-window thresholds; assigned linkedTask IDs #46/#47/#48 (was `none yet`). Per audit-v4 finding F-AUDIT-26 (severity MED, +3pts).
+> **Updated:** 2026-04-29 — **task #52c: registered `G-32-LICENSE-FILES-PRESENT`** as 9th WARN-only entry, following ADR-0032 ratification (task #52). Prior: 1.1.0 — F-AUDIT-26 RESOLVED (3 vague flipCriteria tightened).
 > **Status:** Active — single source of truth for every WARN-only hygiene gate's flip criteria + target date.
 > **Parent:** [`_GATE-REGISTRY.md`](./_GATE-REGISTRY.md)
 > **Authoritative pattern:** [ADR-0031](./00-adrs/0031-warn-only-strict-flip-pattern.md) — "Warn-only-with-STRICT-flip" gate-graduation pattern.
