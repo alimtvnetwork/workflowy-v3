@@ -61,6 +61,7 @@
 import { readFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { join, resolve, dirname, relative } from "node:path";
 import { fileURLToPath } from "node:url";
+import { walkLedger, buildGlobMap, isExempt } from "./_lib/per-gate-path-ledger.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -96,16 +97,22 @@ const CONSUMER_EXCLUDED = new Set([
 // rationale via its required `rationale` column.
 const G30_LEDGER_PATH = "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md";
 
+// Phase-3 ledger consumption via shared `_lib/per-gate-path-ledger.mjs`.
+// Gate cell shape for G-30: literal `G-30-AT-CITATION-VALIDITY` (single
+// gate, no sub-categories). The shared walker hard-fails on schema
+// violations (empty pathGlob/entry/rationale).
+function parseG30GateCell(gate, lineNo) {
+  if (gate !== "G-30-AT-CITATION-VALIDITY") {
+    fail(`G-30 ledger: malformed gate \`${gate}\` at line ${lineNo} (expected literal G-30-AT-CITATION-VALIDITY)`);
+  }
+  return {};
+}
+
 function loadG30RedundancyExemptions(ledgerPath) {
-  let text;
-  try { text = readFileSync(ledgerPath, "utf8"); }
-  catch { return { entries: new Set(), rows: [] }; }
   const rows = [];
   const entries = new Set();
-  const lineRe = /^\|\s*G-30-AT-CITATION-VALIDITY\s*\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|\s*(\d{4}-\d{2}-\d{2})\s*\|\s*$/gm;
-  for (const m of text.matchAll(lineRe)) {
-    const row = { gate: "G-30-AT-CITATION-VALIDITY", pathGlob: m[1].trim(), entry: m[2].trim(), rationale: m[3].trim(), addedOn: m[4].trim() };
-    if (row.rationale.startsWith("Removed ")) continue;
+  for (const row of walkLedger({ ledgerPath, parseGateCell: parseG30GateCell, fail })) {
+    if (row.rationale.startsWith("Removed ")) continue; // soft-deleted historical row
     rows.push(row);
     entries.add(row.entry);
   }
@@ -126,30 +133,20 @@ const REDUNDANCY_ALLOWLIST = new Set([
   ...REDUNDANCY_ALLOWLIST_INSOURCE,
 ]);
 
-// Phase-3 path-glob matcher: minimal POSIX-glob → RegExp converter
-// supporting `**` (any path), `*` (any filename segment), literal chars.
-// Logic kept ≤15 lines per ADR-0007 R3.
-function globToRegExp(glob) {
-  const escaped = glob.replace(/[.+^${}()|[\]\\]/g, "\\$&");
-  const pattern = escaped.replace(/\*\*/g, "::DS::").replace(/\*/g, "[^/]*").replace(/::DS::/g, ".*");
-  return new RegExp(`^${pattern}$`);
-}
-const LEDGER_GLOBS_BY_ENTRY = new Map();
-for (const r of LEDGER_ROWS) {
-  if (!LEDGER_GLOBS_BY_ENTRY.has(r.entry)) LEDGER_GLOBS_BY_ENTRY.set(r.entry, []);
-  LEDGER_GLOBS_BY_ENTRY.get(r.entry).push(globToRegExp(r.pathGlob));
-}
+const LEDGER_GLOBS_BY_ENTRY = buildGlobMap(LEDGER_ROWS, (r) => r.entry);
 
 // Path-aware exemption check. Returns true iff:
 //   (a) entry exists in REDUNDANCY_ALLOWLIST_INSOURCE (path-agnostic), OR
 //   (b) entry has ≥1 ledger row whose pathGlob matches the declaring file.
 // Falls back to path-agnostic LEDGER_ENTRIES.has when declaringFile is "".
 function isRedundancyExempt(entry, declaringFile) {
-  if (REDUNDANCY_ALLOWLIST_INSOURCE.has(entry)) return true;
-  const globs = LEDGER_GLOBS_BY_ENTRY.get(entry);
-  if (!globs) return false;
-  if (!declaringFile) return true;
-  return globs.some((re) => re.test(declaringFile));
+  return isExempt({
+    overrideSet: REDUNDANCY_ALLOWLIST,
+    entry,
+    key: entry,
+    globMap: LEDGER_GLOBS_BY_ENTRY,
+    hostFile: declaringFile,
+  });
 }
 
 // G-30.2 advisory is DEFAULT-ON as of v1.4.0 (F28). The redundancy queue

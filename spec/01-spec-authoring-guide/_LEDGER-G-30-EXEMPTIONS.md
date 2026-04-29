@@ -15,7 +15,12 @@ the original in-source comment; see SSOT §G-30.2 + F27 task log):
 - **(b) CONVENTION-DOCUMENTATION** — open-prefix row retained as a Coverage-Map / Open-prefix-declarations entry that documents the naming scheme even though every concrete cited ID is registered via a closed declaration elsewhere (F15 + F20 closures kept the prefix rows intentionally).
 - **(c) NAMESPACE-PLACEHOLDER** — feature files whose citations either map 1:1 to closed canonical `AT-APP-NN` rows or have zero current citations because the feature's ATs live fully under a different prefix.
 
-## Exemption rows
+## Entries
+
+<!-- Section name canonicalised 2026-04-29 (Task #12 shared-lib refactor):
+     was `## Exemption rows`. The shared `_lib/per-gate-path-ledger.mjs`
+     walker matches `^## Entries$` per Phase-1 schema fixture. -->
+
 
 | gate | pathGlob | entry | rationale | addedOn |
 |---|---|---|---|---|

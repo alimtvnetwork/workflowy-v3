@@ -64,6 +64,7 @@
  */
 
 import { readFileSync, statSync } from "node:fs";
+import { walkLedger, buildGlobMap, isExempt } from "./_lib/per-gate-path-ledger.mjs";
 
 const SCHEMA_FILES = [
   "spec/31-app/07-db-diagram/sql/01-root-schema.sql",
@@ -135,68 +136,39 @@ function fail(msg, code = 2) {
   process.exit(code);
 }
 
-// Phase-3 path-glob matcher (mirrors G-30/G-31; ≤15-line logic per ADR-0007 R3).
-function globToRegExp(glob) {
-  const escaped = glob.replace(/[.+^${}()|[\]\\]/g, "\\$&");
-  const pattern = escaped.replace(/\*\*/g, "::DS::").replace(/\*/g, "[^/]*").replace(/::DS::/g, ".*");
-  return new RegExp(`^${pattern}$`);
+// Phase-3 ledger consumption via shared `_lib/per-gate-path-ledger.mjs`.
+// Gate cell shape for G-32: `G-32.<n>.<category>` where category ∈
+// {coverage, reverse, nonunique, parity}. The shared walker hard-fails on
+// schema violations (empty pathGlob, empty entry, empty rationale).
+function parseG32GateCell(gate, lineNo) {
+  const m = gate.match(/^G-32\.\d+\.(coverage|reverse|nonunique|parity)$/);
+  if (!m) fail(`G-32 ledger: malformed gate \`${gate}\` at line ${lineNo}`);
+  return { category: m[1] };
 }
 
-// Phase-3: per-(category, entry) → list of compiled pathGlob regexes.
-const G32_GLOBS_BY_KEY = new Map();
 function g32Key(category, entry) { return `${category}::${entry}`; }
 
 function loadG32Exemptions() {
-  let raw;
-  try {
-    raw = readFileSync(G32_LEDGER_PATH, "utf8");
-  } catch (e) {
-    fail(`G-32 ledger: cannot read ${G32_LEDGER_PATH}: ${e.message}`);
+  const rows = [];
+  for (const row of walkLedger({ ledgerPath: G32_LEDGER_PATH, parseGateCell: parseG32GateCell, fail })) {
+    G32_CATEGORY_TO_SET[row.parsed.category].add(row.entry);
+    rows.push(row);
   }
-  const lines = raw.split("\n");
-  const entriesIdx = lines.findIndex((l) => /^##\s+Entries\s*$/.test(l));
-  if (entriesIdx < 0) fail(`G-32 ledger: missing '## Entries' section`);
-
-  const stripBackticks = (s) => s.replace(/^`(.*)`$/, "$1");
-  let imported = 0;
-  for (let i = entriesIdx + 1; i < lines.length; i += 1) {
-    const line = lines[i];
-    if (/^##\s/.test(line)) break;
-    if (!line.trim().startsWith("|")) continue;
-    if (/^\|\s*-+/.test(line)) continue;
-    if (/^\|\s*gate\s*\|/i.test(line)) continue;
-    const cells = line.split("|").slice(1, -1).map((c) => c.trim());
-    if (cells.length < 5) continue;
-    const [gate, pathGlobRaw, entryRaw, rationale] = cells;
-    const pathGlob = stripBackticks(pathGlobRaw);
-    const entry = stripBackticks(entryRaw);
-    const m = gate.match(/^G-32\.\d+\.(coverage|reverse|nonunique|parity)$/);
-    if (!m) fail(`G-32 ledger: malformed gate \`${gate}\` at line ${i + 1}`);
-    const category = m[1];
-    if (!entry) fail(`G-32 ledger: empty entry at line ${i + 1}`);
-    if (!pathGlob) fail(`G-32 ledger: empty pathGlob for \`${entry}\` at line ${i + 1}`);
-    if (!rationale) fail(`G-32 ledger: empty rationale for \`${entry}\` at line ${i + 1}`);
-    G32_CATEGORY_TO_SET[category].add(entry);
-    const key = g32Key(category, entry);
-    if (!G32_GLOBS_BY_KEY.has(key)) G32_GLOBS_BY_KEY.set(key, []);
-    G32_GLOBS_BY_KEY.get(key).push(globToRegExp(pathGlob));
-    imported += 1;
-  }
-  return imported;
+  return { rows, count: rows.length };
 }
 
-const G32_LEDGER_IMPORTED = loadG32Exemptions();
+const G32_LEDGER = loadG32Exemptions();
+const G32_LEDGER_IMPORTED = G32_LEDGER.count;
+const G32_GLOBS_BY_KEY = buildGlobMap(G32_LEDGER.rows, (r) => g32Key(r.parsed.category, r.entry));
 
-// Phase-3 path-aware exemption check. Returns true iff:
-//   (a) entry exists in the in-source override Set (path-agnostic), AND
-//       has no ledger row → emergency hotfix; OR
-//   (b) entry has ≥1 ledger row whose pathGlob matches the host file.
 function isG32Exempt(category, entry, hostFile) {
-  if (!G32_CATEGORY_TO_SET[category].has(entry)) return false;
-  const globs = G32_GLOBS_BY_KEY.get(g32Key(category, entry));
-  if (!globs) return true;
-  if (!hostFile) return true;
-  return globs.some((re) => re.test(hostFile));
+  return isExempt({
+    overrideSet: G32_CATEGORY_TO_SET[category],
+    entry,
+    key: g32Key(category, entry),
+    globMap: G32_GLOBS_BY_KEY,
+    hostFile,
+  });
 }
 
 
