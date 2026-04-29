@@ -48,17 +48,17 @@ P59 closes this gap.
 
 ### D1 — Tailwind CSS v4 via `@tailwindcss/vite`, no `tailwind.config.ts`
 
-The project MUST use **Tailwind CSS v4** via the
+The project MUST (gate G-32-NO-TAILWIND-CONFIG) use **Tailwind CSS v4** via the
 `@tailwindcss/vite` plugin. The pinned versions are
 `tailwindcss@^4.2.2` and `@tailwindcss/vite@^4.2.2`, governed by
 `spec/02-coding-guidelines/01-cross-language/30-pinned-dependency-matrix.md`.
 
-A `tailwind.config.ts` (or `.js` / `.cjs` / `.mjs`) file MUST NOT
+A `tailwind.config.ts` (or `.js` / `.cjs` / `.mjs`) file MUST NOT (gate G-32-NO-TAILWIND-CONFIG)
 exist in the repository. v4 is **CSS-first**; configuration lives in
 the `@theme` block (D2). Reintroducing a JS/TS config file is a hard
 violation of `G-32-NO-TAILWIND-CONFIG`.
 
-A second styling system MUST NOT be added: SCSS modules,
+A second styling system MUST NOT (gate G-32-NO-SECOND-STYLING-SYSTEM) be added: SCSS modules,
 `styled-components`, Emotion, `vanilla-extract`, plain CSS modules,
 and inline `style={{ ... }}` for tokenisable properties (color,
 spacing, radius, shadow, font, breakpoint) are all **forbidden**.
@@ -66,13 +66,13 @@ spacing, radius, shadow, font, breakpoint) are all **forbidden**.
 Inline `style={{ ... }}` MAY be used for **dynamic non-tokenisable**
 values only (e.g. computed `transform: translateX(${pixels}px)` for
 drag positioning, `width: ${percent}%` for a progress bar). Static
-values MUST go through Tailwind utilities.
+values MUST (gate G-32-NO-SECOND-STYLING-SYSTEM) go through Tailwind utilities.
 
 ### D2 — `@theme` block in `src/index.css` is the sole token registry
 
-Every design token MUST be declared inside the **single** `@theme { … }`
+Every design token MUST (gate G-32-TOKEN-REGISTRY) be declared inside the **single** `@theme { … }`
 block in `src/index.css`. No other file may declare design tokens.
-Tokens MUST cover:
+Tokens MUST (gate G-32-TOKEN-REGISTRY) cover:
 
 - Colors (semantic: `--background`, `--foreground`, `--primary`,
   `--primary-foreground`, `--secondary`, `--muted`, `--accent`,
@@ -83,14 +83,14 @@ Tokens MUST cover:
 - Breakpoints (`sm: 640px`, `md: 768px`, `lg: 1024px`, `xl: 1280px`,
   per memory `theme`; a 5th tier requires an ADR amendment).
 
-Light / dark theme switching MUST be implemented by re-declaring the
+Light / dark theme switching MUST (gate G-32-DARK-MODE-PARITY) be implemented by re-declaring the
 **same token names** under a `:root[data-theme="dark"]` (or `.dark`)
 scope inside the same `src/index.css`. Adding a parallel
 `src/themes/dark.css` or similar is forbidden.
 
 ### D3 — All color tokens MUST be authored as HSL, no exceptions
 
-Color tokens MUST use HSL component values without the `hsl()`
+Color tokens MUST (gate G-32-HSL-ONLY-TOKENS) use HSL component values without the `hsl()`
 wrapper, e.g.:
 
 ```css
@@ -107,14 +107,14 @@ NOT:
 --primary: oklch(0.21 0.04 270); /* ❌ oklch */
 ```
 
-Consumers MUST wrap with `hsl(var(--token))` or
+Consumers MUST (gate G-32-HSL-ONLY-TOKENS) wrap with `hsl(var(--token))` or
 `hsl(var(--token) / <alpha-value>)` at the use site (Tailwind v4 emits
 this automatically for `bg-primary`, `text-primary`, etc.). The
 no-wrapper authoring rule is what makes the alpha-channel form work.
 
 ### D4 — No raw colors in components
 
-Component code MUST NOT contain raw color values. Forbidden, with
+Component code MUST NOT (gate G-32-NO-RAW-COLORS) contain raw color values. Forbidden, with
 examples:
 
 | Forbidden | Replace with |
@@ -127,20 +127,20 @@ examples:
 **Out of scope** (NOT a violation): generated `src/components/ui/*`
 files (shadcn) that the user has explicitly configured to use
 specific Tailwind utility names — these are regenerable and follow
-the shadcn upstream conventions; they MUST already resolve to
+the shadcn upstream conventions; they MUST (gate G-32-NO-RAW-COLORS) already resolve to
 semantic tokens in their template.
 
 ### D5 — Component variants compose against semantic tokens, never raw
 
-shadcn-style variants (e.g. `cva(...)`) MUST reference semantic
+shadcn-style variants (e.g. `cva(...)`) MUST (gate G-32-VARIANT-SEMANTIC-ONLY) reference semantic
 classes (`bg-primary`, `text-primary-foreground`,
-`border-input`, `ring-ring`) and MUST NOT inline raw colors or
+`border-input`, `ring-ring`) and MUST NOT (gate G-32-VARIANT-SEMANTIC-ONLY) inline raw colors or
 arbitrary-value classes. A variant whose only difference is a raw
 color is a hard violation of `G-32-VARIANT-SEMANTIC-ONLY`.
 
 ### D6 — Dark-mode parity is mandatory for every new token
 
-Every new token added under `:root` MUST also be declared under the
+Every new token added under `:root` MUST (gate G-32-DARK-MODE-PARITY) also be declared under the
 dark-theme scope in the same change (or explicitly documented as
 intentionally identical, e.g. `--bullet`). A token that exists in
 light but not in dark fails `G-32-DARK-MODE-PARITY` (already cited by
@@ -148,7 +148,7 @@ ADR-0003).
 
 ### D7 — Logical properties are mandatory; physical directional utilities are forbidden
 
-WorkFlowy supports RTL locales (`ar` initially per ADR-0028 D4). Every directional spacing, alignment, or inset utility in component code MUST use the **logical** Tailwind v4 form so that the UI flips automatically with `<html dir="rtl">`:
+WorkFlowy supports RTL locales (`ar` initially per ADR-0028 D4). Every directional spacing, alignment, or inset utility in component code MUST (gate G-12-LOGICAL-MARGINS-PADDING) use the **logical** Tailwind v4 form so that the UI flips automatically with `<html dir="rtl">`:
 
 | Forbidden (physical) | Required (logical) | Rationale |
 |---|---|---|
@@ -161,11 +161,11 @@ WorkFlowy supports RTL locales (`ar` initially per ADR-0028 D4). Every direction
 
 **Exceptions** (physical utilities allowed):
 1. **Block-axis** utilities (`pt-*`/`pb-*`/`mt-*`/`mb-*`/`top-*`/`bottom-*`/`text-center`) are direction-agnostic and remain physical.
-2. **Icons that imply direction** (chevrons, undo arrows) MUST stay physical and use `rtl:rotate-180` to mirror — they encode semantic direction, not text-flow direction. (Anchored by ADR-0028 D6 §4.)
-3. **shadcn-vendored components** under `src/components/ui/` are grandfathered until each is touched; PRs touching such a file MUST migrate any physical utilities in the same change (`G-12-LOGICAL-*` gates fire on the diff, not on legacy lines).
+2. **Icons that imply direction** (chevrons, undo arrows) MUST (gate G-12-LOGICAL-INSET) stay physical and use `rtl:rotate-180` to mirror — they encode semantic direction, not text-flow direction. (Anchored by ADR-0028 D6 §4.)
+3. **shadcn-vendored components** under `src/components/ui/` are grandfathered until each is touched; PRs touching such a file MUST (gate G-12-LOGICAL-MARGINS-PADDING) migrate any physical utilities in the same change (`G-12-LOGICAL-*` gates fire on the diff, not on legacy lines).
 4. **Third-party CSS** (TipTap default styles, lucide-react SVGs) is out of scope — wrap in WorkFlowy components that apply logical utilities.
 
-**Authoring rule:** when a component genuinely depends on a hard left/right (e.g. a left-side gutter that must NOT flip in RTL because it visually encodes elapsed time on a left-anchored timeline), the component MUST add the comment `/* a11y-rtl-exempt: <reason> */` immediately above the offending utility. ESLint reads the comment to suppress the gate; missing comment = build fail.
+**Authoring rule:** when a component genuinely depends on a hard left/right (e.g. a left-side gutter that must NOT flip in RTL because it visually encodes elapsed time on a left-anchored timeline), the component MUST (gate G-12-LOGICAL-MARGINS-PADDING) add the comment `/* a11y-rtl-exempt: <reason> */` immediately above the offending utility. ESLint reads the comment to suppress the gate; missing comment = build fail.
 
 This rule lives in ADR-0012 (not ADR-0028) because it is a **styling-system invariant** — every component author needs it regardless of whether they touch i18n code. ADR-0028 D6 cites this section as the authority.
 
