@@ -1,13 +1,13 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.12  
-> **Updated:** 2026-04-29 — **batch-15 prose→AT migration:** registered 5 new `G-13-FIXTURE-SHAPE-*` sub-gates (`-6-SECTIONS`, `-EVOLUTION-LINK`, `-PHASE2-LANG-TAG`, `-PHASE3-GATE-CITED`, `-PHASE4-BACKLINK`) covering 7 prose-MUSTs in `spec/13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md`. All DOC-NORM tier; all sub-rules of the existing umbrella `G-13-FIXTURE-AS-SPEC-SHAPE`. Pre-flight namespace check OK (16 sibling gates already in `G-13-*` family). Prior: 1.7.11 (batch-14 G-13 sub-gates).
+> **Version:** 1.7.13  
+> **Updated:** 2026-04-29 — **batch-16 prose→AT migration:** registered 8 new `G-13-LEDGER-*` sub-gates (`-IMPL-PARITY`, `-RUNNER-FILTER`, `-FIVE-COLUMN-SCHEMA`, `-SCHEMA-SHAPE`, `-GATE-EXISTENCE`, `-GLOB-NON-EMPTY`, `-RATIONALE-PROSE`, `-RUNNER-CLEAN-OUTPUT`) covering 8 prose-MUSTs in `spec/13-cicd-pipeline-workflows/scripts-as-spec/per-gate-path-ledger-schema.md`. All DOC-NORM tier; sub-rules of the existing umbrella `G-13-LEDGER-PER-GATE-PATH` (CI). Pre-flight namespace check OK (24 sibling gates already in `G-13-*` family, no collisions). Prior: 1.7.12 (batch-15 G-13-FIXTURE-SHAPE-* sub-gates).
 
-- **Total named gates:** 404 (+5 this revision: five `G-13-FIXTURE-SHAPE-*`)
+- **Total named gates:** 412 (+8 this revision: eight `G-13-LEDGER-*`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
 - **CI:** 79 (unchanged)
 - **TEST:** 17 (unchanged)
-- **DOC-NORM:** 103 (+5 this revision)
+- **DOC-NORM:** 111 (+8 this revision)
 - **DOC:** 202 (unchanged)
 - **Areas covered:** 46 (unchanged)
 - **Areas covered:** 37 (unchanged)
