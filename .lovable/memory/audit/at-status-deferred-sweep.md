@@ -8,7 +8,7 @@ type: feature
 
 **Date:** 2026-04-29 (UTC+8)
 **Trigger:** Task #3 — Tag "Out-of-scope" ATs with `STATUS: DEFERRED` (+5 pts)
-**Legend SSOT:** [`spec/01-spec-authoring-guide/20-status-legend.md`](../../../spec/01-spec-authoring-guide/20-status-legend.md) §3
+**Legend SSOT:** [`spec/01-spec-authoring-guide/22-status-legend.md`](../../../spec/01-spec-authoring-guide/22-status-legend.md) §3
 **Companion gate:** `G-NS-STATUS-IN-LEGEND` (CI, WARN-only)
 
 ---

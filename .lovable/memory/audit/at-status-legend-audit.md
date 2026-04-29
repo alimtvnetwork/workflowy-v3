@@ -8,7 +8,7 @@ type: feature
 
 **Date:** 2026-04-29 (UTC+8)
 **Trigger:** Task #2 — Standardize AT status legend (+6 pts)
-**SSOT (canonical legend):** [`spec/01-spec-authoring-guide/20-status-legend.md`](../../../spec/01-spec-authoring-guide/20-status-legend.md)
+**SSOT (canonical legend):** [`spec/01-spec-authoring-guide/22-status-legend.md`](../../../spec/01-spec-authoring-guide/22-status-legend.md)
 
 ---
 

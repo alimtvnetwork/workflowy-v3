@@ -182,8 +182,7 @@ section if no anchor is targeted) back to the ADR's `§Dn` clause.
       `target_anchor` heading. If `target_anchor` is empty, the
       back-link MUST appear in the file's first H2 section.
 3. Fail CI listing any one-way link with the recommended fix
-   (`add reciprocal: in <target_path> add ">  Ratified by [ADR-NNNN
-   §Dn](…)"`).
+   (`add reciprocal: in <target_path> add "> Ratified by [ADR-NNNN §Dn](URL)"`).
 
 **Exemptions.**
 
@@ -196,7 +195,7 @@ section if no anchor is targeted) back to the ADR's `§Dn` clause.
 **Reference implementation precedent.** ADR-0024 §§ D1/D2/D3 link to
 `.lovable/question-and-ambiguity/00-triage-summary.md` `### #01/#03/#17`,
 which in turn each carry an inline
-`> ✅ Ratified by [ADR-0024 §Dn](…)` blockquote (added 2026-04-28). This
+`> ✅ Ratified by [ADR-0024 §Dn](URL)` blockquote (added 2026-04-28). This
 is the canonical "symmetric round-trip" shape the gate enforces.
 
 **Frozen reference algorithm:**
