@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.5  
-> **Updated:** 2026-04-29 — **batch-8 prose→AT migration:** registered new **Domain-CG (Coding Guidelines · Hard Rules)** subsection with 6 `G-CG-*` gates (1 umbrella `G-CG-HARD-RULES` CI + 2 sub-rule CI gates `G-CG-R5-MAX-LOGIC-LINES`/`G-CG-R6-POSITIVE-GUARDS` + 3 DOC-NORM convention gates `G-CG-FIXTURE-CITE-VERBATIM`/`G-CG-AI-ANTIPATTERN-FORBIDDEN`/`G-CG-ADR-REQUIRED-TO-RELAX`). R1/R2/R3/R4/R7/R8/R9/R10 sub-gates reserved for future batches. Prior: 1.7.4 (batch-7 G-39* gates).
+> **Version:** 1.7.6  
+> **Updated:** 2026-04-29 — **batch-9 prose→AT migration:** registered new **Domain-HLPIN (Highlighter Dependency Pin)** subsection with 7 `G-HLPIN-*` gates (1 umbrella `G-HLPIN-PIN` CI + 4 sub-rule CI gates `-LOCKFILE-MAJOR`/`-IMPORT-PATHS`/`-NO-VENDOR-CSS`/`-CI-BUNDLE-BUDGET` + 2 DOC-NORM convention gates `-USE-HSL-TOKENS`/`-UPGRADE-MAJOR-SPEC-PR`). All 7 already AT-bound (`AT-HLPIN-01..08`). Prior: 1.7.5 (batch-8 G-CG-* gates).
 
-- **Total named gates:** 352 (+6 this revision: six `G-CG-*`)
+- **Total named gates:** 359 (+7 this revision: seven `G-HLPIN-*`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
-- **CI:** 52 (+3 this revision)
+- **CI:** 57 (+5 this revision)
 - **TEST:** 14 (unchanged)
-- **DOC-NORM:** 80 (+3 this revision)
+- **DOC-NORM:** 82 (+2 this revision)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 41 (+1: Domain-CG)
+- **Areas covered:** 42 (+1: Domain-HLPIN)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
@@ -583,6 +583,20 @@
 | `G-CG-FIXTURE-CITE-VERBATIM` | **DOC-NORM** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | Bad/Good code-pair snippets in §"Bad / Good Code Pairs" are canonical examples; fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite them verbatim by `R<N>` id. R# ids are load-bearing — renaming requires superseding ADR. |
 | `G-CG-AI-ANTIPATTERN-FORBIDDEN` | **DOC-NORM** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | The 5 anti-patterns in §"Anti-Patterns" are the closed set the AI MUST NOT do. Each row cites its catching gate (`G-02-RULE-HAS-GATE`, `G-02-PAIRED-EXAMPLES`, `G-02-NO-DISABLE`, R7's `no-restricted-syntax`, `G-02-NO-RETURN-TERNARY`). |
 | `G-CG-ADR-REQUIRED-TO-RELAX` | **DOC-NORM** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | Strict-TS rules (zero `any`, max 3 params, no nested `if`s, 15-line logic limit, pure positive guard clauses) and SQLite naming rules MUST NOT be relaxed without a new ADR superseding the relevant one (ADR-0001/ADR-0002 lineage). |
+
+### Domain-HLPIN (Highlighter Dependency Pin)
+
+> Reserved gate IDs for the highlight.js dependency-pin SSOT in `spec/09-code-block-system/11-highlighter-dependency-pin.md` (closes audit gap F-04). All 8 sub-rules already have an enforcing AT (`AT-HLPIN-01..08`); batch-9 (2026-04-29) registers the umbrella + 6 narrative-bound sub-rule gates so the parser regex `\bG-[A-Z0-9][A-Z0-9-]*\b` recognises the citations and the corpus prose-MUST counter no longer flags the pin file.
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-HLPIN-PIN` | **CI** | [`spec/09-code-block-system/11-highlighter-dependency-pin.md`](./09-code-block-system/11-highlighter-dependency-pin.md) | Umbrella — `highlight.js ^11.10.0` is the locked syntax-highlighter; forbidden alternatives (Shiki, Prism, react-syntax-highlighter, starry-night, CDN imports) MUST NOT appear in `package.json` or `src/`. Composed of `G-HLPIN-LOCKFILE-MAJOR`, `-IMPORT-PATHS`, `-NO-VENDOR-CSS`, `-USE-HSL-TOKENS`, `-CI-BUNDLE-BUDGET`, `-UPGRADE-MAJOR-SPEC-PR`. Verifications: `AT-HLPIN-01..08`. |
+| `G-HLPIN-LOCKFILE-MAJOR` | **CI** | [`spec/09-code-block-system/11-highlighter-dependency-pin.md`](./09-code-block-system/11-highlighter-dependency-pin.md) | The lockfile-resolved `highlight.js` version MUST NOT cross a major (must remain within `^11.x`). Drift between `package.json` `^11.10.0` and `bun.lock` resolved version that crosses a major is a CI error. AT: `AT-HLPIN-02`. |
+| `G-HLPIN-IMPORT-PATHS` | **CI** | [`spec/09-code-block-system/11-highlighter-dependency-pin.md`](./09-code-block-system/11-highlighter-dependency-pin.md) | All `highlight.js` imports MUST use the canonical paths in §"Canonical Import Paths" — `highlight.js/lib/core` for the engine and `highlight.js/lib/languages/<name>` for each registered language. Relative paths, namespace imports (`import * as hljs`), bare `from 'highlight.js'` (full bundle), and CDN URLs are forbidden. AT: `AT-HLPIN-05`, `AT-HLPIN-08`. |
+| `G-HLPIN-NO-VENDOR-CSS` | **CI** | [`spec/09-code-block-system/11-highlighter-dependency-pin.md`](./09-code-block-system/11-highlighter-dependency-pin.md) | Code MUST NOT import any `highlight.js/styles/*` vendor stylesheet. Vendor themes ship hex colors and break the project's HSL-token system. AT: `AT-HLPIN-04`. |
+| `G-HLPIN-USE-HSL-TOKENS` | **DOC-NORM** | [`spec/09-code-block-system/11-highlighter-dependency-pin.md`](./09-code-block-system/11-highlighter-dependency-pin.md) | Highlighter token coloring MUST use project HSL tokens; the complete `.hljs-*` → CSS-variable mapping is the single responsibility of [`05-styling.md`](./09-code-block-system/05-styling.md). Satisfies `AT-CODEBLOCKSYSTEM-10` (always-dark) and `AT-CODEBLOCKSYSTEM-11` (HSL-only). |
+| `G-HLPIN-CI-BUNDLE-BUDGET` | **CI** | [`spec/09-code-block-system/11-highlighter-dependency-pin.md`](./09-code-block-system/11-highlighter-dependency-pin.md) | CI MUST fail if `dist/assets/highlighter-*.js` exceeds 100 KB minified (≤ 35 KB gzipped). Enforced by the `Verify highlighter bundle budget` step in the `package` job of `spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/02-github-actions-workflow.md`. AT: `AT-HLPIN-07`. |
+| `G-HLPIN-UPGRADE-MAJOR-SPEC-PR` | **DOC-NORM** | [`spec/09-code-block-system/11-highlighter-dependency-pin.md`](./09-code-block-system/11-highlighter-dependency-pin.md) | Major upgrades (`11.x → 12.x`) MUST update this pin file in the same spec PR with a styling regression test; switching to a different highlighter library MUST rewrite this pin file and re-run the F-04 audit gate. Patch/minor changes are automatic via lockfile. |
 
 ### Meta-00
 
