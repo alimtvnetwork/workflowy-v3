@@ -4,6 +4,9 @@
 > **Created:** 2026-04-29 — closes G-08 acceptance-coverage gap (P0 quick-win).
 > **Status:** ✅ SSOT — testable acceptance criteria for the ADR governance scope.
 
+> _Fixture: N/A — pure narrative reference, not a testable criterion._
+
+
 ---
 
 ## Overview
