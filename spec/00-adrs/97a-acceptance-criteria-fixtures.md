@@ -250,22 +250,28 @@ This file pairs every AT row added in `97-acceptance-criteria.md` v1.1.0 (AT-ADR
 # Per-AT verification:
 node scripts/spec-hygiene/48-check-ledger-uses-shared-lib.mjs  # AT-29-D1 / D4×3
 node scripts/spec-hygiene/57-check-audit-exemption-review.mjs  # AT-30-I1..I8
+node scripts/spec-hygiene/60-check-graduation-ledger-fresh.mjs # AT-31-D2
+node scripts/spec-hygiene/61-check-graduation-ledger-date-drift.mjs # AT-31-D5 / D5-OVERDUE / D7
+node scripts/spec-hygiene/38-check-ambiguous-wording.mjs       # AT-31-D3 (vague-token leg)
 # AT-29-D3 is owned by G-13-LEDGER-PER-GATE-PATH (existing runner).
+# AT-31-D1 / D4 / D6 / PROTOCOL are DOC-tier (reviewer-enforced; future CI candidates per task #42).
 
 # Full suite:
-node scripts/spec-hygiene/00-run-all.mjs                       # all gates incl. #48 + #57
+node scripts/spec-hygiene/00-run-all.mjs                       # all gates incl. #38, #48, #57, #60, #61
 ```
 
 ---
 
 ## Related
 
-- [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) — AT row catalogue (AT-ADR-G01..G05)
+- [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) — AT row catalogue (AT-ADR-G01..G06)
 - [`0029-per-gate-path-ledger-shared-lib.md`](./0029-per-gate-path-ledger-shared-lib.md) — §6 cites AT-29-* inline
 - [`0030-audit-exemption-manifest.md`](./0030-audit-exemption-manifest.md) — §D1..D3 cites AT-30-* inline
+- [`0031-warn-only-strict-flip-pattern.md`](./0031-warn-only-strict-flip-pattern.md) — §6 cites AT-31-* inline
 - [`../_AUDIT-EXEMPTIONS.md`](../_AUDIT-EXEMPTIONS.md) — singleton manifest under enforcement
+- [`../_GATE-GRADUATION-LEDGER.md`](../_GATE-GRADUATION-LEDGER.md) — singleton ledger under enforcement (row schema implements AT-31-D2..D5)
 - [`../97a-acceptance-criteria-fixtures.md`](../97a-acceptance-criteria-fixtures.md) — corpus-wide P2g sweep (Pattern 1 covers AT-ADR-G01..G03)
 - [`../01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](../01-spec-authoring-guide/19-acceptance-criteria-io-table.md) — Format SSOT
-- [`../_GATE-REGISTRY.md`](../_GATE-REGISTRY.md) — gate↔AT bindings (rows for AT-29-* and AT-30-* live here)
+- [`../_GATE-REGISTRY.md`](../_GATE-REGISTRY.md) — gate↔AT bindings (rows for AT-29-*, AT-30-*, AT-31-* live here)
 
-*Created 2026-04-29 — closes AT-FIX-01 fixture-deficit for ADR-0029 and ADR-0030 acceptance rows. 13 fixtures (5 AT-29-* + 8 AT-30-*) ratified.*
+*Created 2026-04-29 — closes AT-FIX-01 fixture-deficit for ADR-0029, ADR-0030, and **ADR-0031** acceptance rows. **22 fixtures** (5 AT-29-* + 8 AT-30-* + 9 AT-31-*) ratified.*
