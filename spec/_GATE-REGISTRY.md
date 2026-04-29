@@ -440,7 +440,7 @@
 | Gate | Tier | Primary File | Brief |
 |------|------|--------------|-------|
 | `G-01-AT-ID-FORMAT-CANONICAL` | **CI** | [`spec/01-spec-authoring-guide/97-acceptance-criteria.md`](./01-spec-authoring-guide/97-acceptance-criteria.md) | Every acceptance-test ID in `spec/**/97-acceptance-criteria.md` MUST match `^AT-[A-Z][A-Z0-9]*(-[A-Z0-9]+)*-[GA-Z]?[0-9]{2,3}$`. Legacy `AC-NNN` form is forbidden (sweep closed 2026-04-29 at 0/2,387). Carve-out: matches inside fenced code blocks (```…```) and inline `code spans` are exempt — the lint MUST strip those before regex application. Failure mode: CI lint reports each offending file:line with the offending token. |
-
+| `G-NS-NO-DEPRECATED-ALIAS` | **CI** | [`spec/01-spec-authoring-guide/97-acceptance-criteria.md`](./01-spec-authoring-guide/97-acceptance-criteria.md) | Forbids any new AT row using one of the 17 deprecated namespace aliases (`AT-DESIGNSYSTEM-`, `AT-UIDS-`, `AT-MIRRORS-`, `AT-WORKFLOW-`, `AT-CODINGGUIDELINES-`, `AT-MASTERCODINGGUIDELINES-`, `AT-ERRORMANAGE-`, `AT-RESTAPICONVENTIONS-`, `AT-TYPESCRIPT-`, `AT-GOLANG-`, `AT-PHP-`, `AT-ENUMSPECIFICATION-`, `AT-OPERATORRUNBOOKS-`, `AT-RATE-`, `AT-VISUALRENDER-`, `AT-CONSOLIDATEDREVIEWGUIDE-`, `AT-SR-`-collision-with-`AT-SERVERRESPONSE-` TBD). Canonical SSOT: `.lovable/memory/audit/at-namespace-synonym-audit.md`. Same code-span/fenced-block carve-out as `G-01-AT-ID-FORMAT-CANONICAL`. Failure mode: CI lint reports each offending file:line and points to canonical. Existing legacy rows are exempted via dated allow-list (`spec/_LEDGER-G-NS-LEGACY-EXEMPT.md`) until P3 consolidation sweep retires them. |
 ### Domain-API
 
 | Gate | Tier | Primary File | Brief |
