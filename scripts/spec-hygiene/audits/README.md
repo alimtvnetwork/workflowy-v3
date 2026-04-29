@@ -18,7 +18,7 @@ Counts unformalized prose-MUSTs (MUST/SHALL assertions outside `AT-…` row bloc
 - Excludes blockquoted lines (`> …`): citations of other docs, not new MUSTs.
 - Excludes RFC-2119 priority cells (`| F1 | requirement | MUST |`): tag-style priority markers in tabular requirements convention.
 
-**Authoritative output (2026-04-29, v7):** 499 prose-MUSTs across 244 files.
+**Authoritative output (2026-04-29, v7):** 491 prose-MUSTs across 243 files.
 This is the working baseline for spec-task #6 (prose→AT migration).
 
 **Methodology history** (see `spec/AUDIT-FINDINGS-LEDGER.md`):
@@ -32,5 +32,6 @@ This is the working baseline for spec-task #6 (prose→AT migration).
 - F-SCOPE-09 — pure content turn (no parser change): batch-6 bound 8 prose-MUSTs in `spec/00-scoping.md` to 9 new/promoted `G-NS-SCOPING-*` gates → 539.
 - F-SCOPE-10 — pure content turn: batch-7 bound 8 prose-MUSTs in `spec/01-spec-authoring-guide/21-feature-block-format.md` to 5 new `G-39*` CI gates (umbrella + 4 sub-rules) → 531.
 - F-SCOPE-11 — v7 (fenced-code-block skip: triple-backtick/triple-tilde info-string agnostic) eliminated 25 false positives corpus-wide. Combined with batch-8 content migration (7 prose-MUSTs in `spec/02-coding-guidelines/00-overview.md` bound to 6 new `G-CG-*` gates) → **499**.
+- F-SCOPE-12 — pure content migration, no parser change. Batch-9 bound 8 prose-MUSTs in `spec/09-code-block-system/11-highlighter-dependency-pin.md` to 7 new `G-HLPIN-*` gates (Domain-HLPIN). Δ –8 = exact match → **491**. Third consecutive zero-parser-drift batch.
 
 Run: `node scripts/spec-hygiene/audits/count-prose-musts.mjs`
