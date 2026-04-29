@@ -101,48 +101,54 @@ node scripts/spec-hygiene/00-run-all.mjs
 
 ---
 
-## P13 stub rows
+## P13 backfilled rows
 
-> Auto-appended by [`scripts/spec-hygiene/45-append-p13-orphan-stubs.mjs`](../../scripts/spec-hygiene/45-append-p13-orphan-stubs.mjs) on 2026-04-28 to close orphan AT citations surfaced by [`40-generate-contract-json.mjs`](../../scripts/spec-hygiene/40-generate-contract-json.mjs). Each row is a **placeholder definition** — replace the body with concrete Given/When/Then + JSON fixture during P2 (I/O table conversion). Do **not** delete a row without first removing every citation of its ID elsewhere in spec/.
+> Originally auto-appended by [`scripts/spec-hygiene/45-append-p13-orphan-stubs.mjs`](../../scripts/spec-hygiene/45-append-p13-orphan-stubs.mjs) on 2026-04-28 to close orphan AT citations surfaced by [`40-generate-contract-json.mjs`](../../scripts/spec-hygiene/40-generate-contract-json.mjs). Backfilled with concrete Given/When/Then + JSON envelope on 2026-04-29 under task #44 (F-AUDIT-25 burndown). Do **not** delete a row without first removing every citation of its ID elsewhere in spec/.
 
 ### AT-USR-01 — Settings panel auto-save
 
-📝 **P13-stub.** Definition pending. Replace this block with:
-- Given/When/Then prose
-- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/).
-- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
+**Given** an authenticated user has the Settings panel open at `/account` and edits the `displayName` field from `"Ada"` to `"Ada L."`.
+**When** the input loses focus (blur) OR 800ms elapse since last keystroke (whichever first).
+**Then** the client issues `POST /wp-json/workflowy/v1/me` with `{"DisplayName":"Ada L."}` and the server returns `Status: "ok"`, `Attributes: {"DisplayName":"Ada L.","UpdatedAt":"<ISO8601>"}`, `Results: null` per the envelope SSOT in [`../04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). The change MUST be reflected in the in-memory user store within one render frame; on HTTP 5xx the previous value is restored and an error toast is shown.
+
+**Verifying test:** `AT-USR-01-settings-auto-save.spec.ts` (Vitest, frontend) — asserts blur+debounce semantics; PHPUnit companion `AT_USR_01_settings_auto_save_test.php` asserts the REST handler envelope.
 
 ### AT-USR-03 — Set password flow
 
-📝 **P13-stub.** Definition pending. Replace this block with:
-- Given/When/Then prose
-- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/).
-- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
+**Given** an authenticated user opens the "Set Password" dialog on `/account/security`.
+**When** they submit `{currentPassword: "<current>", newPassword: "<new>", confirmPassword: "<new>"}` with `<new>` satisfying the corpus password policy (min 12 chars, ≥1 letter, ≥1 digit).
+**Then** the client issues `POST /wp-json/workflowy/v1/me/password` and the server returns `Status: "ok"`, `Attributes: {"PasswordChangedAt":"<ISO8601>","SessionsRevoked":<int>}`, `Results: null`. All other active sessions for the user MUST be revoked atomically. On `currentPassword` mismatch the server returns `Status: "error"` with `Errors: [{Code: "AUTH_INVALID_CURRENT_PASSWORD", Field: "currentPassword"}]` and HTTP 401; rate-limited to 5 attempts per 15min per user per IP.
+
+**Verifying test:** `AT-USR-03-set-password.spec.ts` + `AT_USR_03_set_password_test.php`.
 
 ### AT-USR-09 — Restore from backup
 
-📝 **P13-stub.** Definition pending. Replace this block with:
-- Given/When/Then prose
-- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/).
-- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
+**Given** an authenticated user has at least one backup snapshot listed under `GET /me/backups` (returning `Results: [{Id, CreatedAt, ItemCount, SizeBytes}, …]`).
+**When** they trigger restore for snapshot `{id}` via `POST /wp-json/workflowy/v1/me/backups/{id}/restore`.
+**Then** the server (a) creates an auto-safety snapshot of current state (recorded as `SafetySnapshotId` in the response), (b) replaces the user's item tree with the snapshot contents within a single SQLite transaction, and (c) returns `Status: "ok"`, `Attributes: {"RestoredFromId":"<id>","SafetySnapshotId":"<id>","ItemsRestored":<int>,"RestoredAt":"<ISO8601>"}`, `Results: null`. Concurrent edits during restore MUST be rejected with `Status: "error"`, `Errors: [{Code: "RESTORE_IN_PROGRESS"}]` and HTTP 409.
+
+**Verifying test:** `AT-USR-09-restore-backup.spec.ts` + `AT_USR_09_restore_backup_test.php`.
 
 ### AT-USR-11 — Theme selection persistence
 
-📝 **P13-stub.** Definition pending. Replace this block with:
-- Given/When/Then prose
-- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/).
-- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
+**Given** an authenticated user is on `/account/appearance` with the current theme `"system"`.
+**When** they select theme `"dark"` from the radio group.
+**Then** the client issues `POST /wp-json/workflowy/v1/me` with `{"Theme":"dark"}`, the server returns `Status: "ok"`, `Attributes: {"Theme":"dark","UpdatedAt":"<ISO8601>"}`, `Results: null`, and the value MUST persist across browser reloads AND propagate to other tabs of the same user via the SSE channel `/stream/user/{id}` (per ADR-0025) within ≤2s. Allowed values: `"light"`, `"dark"`, `"system"`; any other value returns HTTP 400 with `Errors: [{Code: "INVALID_THEME", Field: "Theme"}]`.
+
+**Verifying test:** `AT-USR-11-theme-persistence.spec.ts` (asserts SSE cross-tab propagation) + `AT_USR_11_theme_persistence_test.php`.
 
 ### AT-USR-14 — Referrals
 
-📝 **P13-stub.** Definition pending. Replace this block with:
-- Given/When/Then prose
-- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/).
-- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
+**Given** an authenticated user opens `/account/referrals`.
+**When** the page mounts and issues `GET /wp-json/workflowy/v1/me/referrals`.
+**Then** the server returns `Status: "ok"`, `Attributes: {"ReferralUrl":"https://workflowy.example/r/<userSlug>","ReferralCode":"<8-char base62>"}`, `Results: [{Email, JoinedAt, Status: "pending"|"active"|"churned"}, …]` where `Results` is empty on first load. The `ReferralUrl` MUST be deterministic per user and remain stable across sessions; the `ReferralCode` MUST NOT collide across users (enforced by SQLite UNIQUE constraint on `referral_codes.code`).
+
+**Verifying test:** `AT-USR-14-referrals.spec.ts` + `AT_USR_14_referrals_test.php`.
 
 ### AT-USR-15 — Help / Report a bug
 
-📝 **P13-stub.** Definition pending. Replace this block with:
-- Given/When/Then prose
-- JSON request + envelope-shaped response (PascalCase `Status`/`Attributes`/`Results`) per [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/).
-- A pointer to the test that enforces it (Vitest or PHPUnit), test name **MUST** start with this AT id.
+**Given** an authenticated user clicks "Report a Bug" from the Help menu.
+**When** they submit `{Title: "<≤120 chars>", Body: "<≤4000 chars>", Severity: "low"|"medium"|"high", IncludeDiagnostics: true|false}` via `POST /wp-json/workflowy/v1/feedback`.
+**Then** the server (a) creates a feedback row in `wp_workflowy_feedback`, (b) when `IncludeDiagnostics: true` attaches the user's last-50 SSE-event log + browser/OS UA string (no item content), and (c) returns `Status: "ok"`, `Attributes: {"FeedbackId":"<uuid>","CreatedAt":"<ISO8601>"}`, `Results: null`. Rate-limited to 10 submissions per user per hour; on cap returns HTTP 429 with `Errors: [{Code: "FEEDBACK_RATE_LIMIT","RetryAfterSec":<int>}]`.
+
+**Verifying test:** `AT-USR-15-feedback-submit.spec.ts` + `AT_USR_15_feedback_submit_test.php`.

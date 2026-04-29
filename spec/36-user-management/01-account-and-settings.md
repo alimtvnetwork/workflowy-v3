@@ -96,18 +96,20 @@ All endpoints below use the canonical PascalCase envelope (`Status`, `Attributes
 
 ---
 
-## Acceptance-Criteria Stub
+## Acceptance-Criteria Planning Matrix
 
-Concrete `AT-USR-*` rows land in this section's `97-acceptance-criteria.md` during P2 (I/O table conversion). Each surface above contributes at least one row:
+Concrete `AT-USR-*` rows are authored in this section's [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) under the canonical I/O-table format defined by [`spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](../01-spec-authoring-guide/19-acceptance-criteria-io-table.md). Each surface listed below MUST contribute at least one row; rows MUST cite the WordPress REST endpoint from §6 above and use the PascalCase response envelope (`Status` / `Attributes` / `Results`) defined in [`../04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/).
 
-| Surface | Planned AT-USR-* range |
-|---|---|
-| Settings Panel + auto-save | AT-USR-01..02 |
-| Set Password / Change Email / MFA / Delete Account | AT-USR-03..08 |
-| Restore from Backup / Export All | AT-USR-09..10 |
-| Theme / Daily Email Summary / Labs | AT-USR-11..13 |
-| Referrals | AT-USR-14 |
-| Help / Report a Bug / Handbook Panel | AT-USR-15..17 |
+| Surface | Authored AT-USR-* range | Status |
+|---|---|---|
+| Settings Panel + auto-save | AT-USR-01..02 | AT-USR-01 authored (2026-04-29) |
+| Set Password / Change Email / MFA / Delete Account | AT-USR-03..08 | AT-USR-03 authored (2026-04-29) |
+| Restore from Backup / Export All | AT-USR-09..10 | AT-USR-09 authored (2026-04-29) |
+| Theme / Daily Email Summary / Labs | AT-USR-11..13 | AT-USR-11 authored (2026-04-29) |
+| Referrals | AT-USR-14 | AT-USR-14 authored (2026-04-29) |
+| Help / Report a Bug / Handbook Panel | AT-USR-15..17 | AT-USR-15 authored (2026-04-29) |
+
+Each authored row carries a Given/When/Then prose, a JSON request body, an envelope-shaped response, and a `linkedTest` pointer whose name begins with the AT id. Unfilled ranges are tracked under task #44 (F-AUDIT-25 burndown) and surface as orphan AT citations in [`scripts/spec-hygiene/40-generate-contract-json.mjs`](../../scripts/spec-hygiene/40-generate-contract-json.mjs) until backfilled.
 
 ---
 
