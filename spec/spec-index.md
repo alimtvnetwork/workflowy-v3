@@ -6,8 +6,8 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-29  
-**Total Files:** 1462  
-**Top-Level Folders:** 26
+**Total Files:** 1463  
+**Top-Level Folders:** 27
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
 
@@ -16,6 +16,7 @@
 ## Table of Contents
 
 - [00-adrs](#00-adrs) — 35 file(s)
+- [01-features](#01-features) — 1 file(s)
 - [01-spec-authoring-guide](#01-spec-authoring-guide) — 26 file(s)
 - [02-coding-guidelines](#02-coding-guidelines) — 310 file(s)
 - [03-error-manage](#03-error-manage) — 191 file(s)
@@ -83,6 +84,12 @@
 | [`00-adrs/0027-sse-multiworker-shared-ring-buffer.md`](./00-adrs/0027-sse-multiworker-shared-ring-buffer.md) | ADR-0027 — SSE Multi-Worker Shared Ring Buffer (SQLite WAL-Backed) | — | Accepted |
 | [`00-adrs/0028-i18n-locale-strategy.md`](./00-adrs/0028-i18n-locale-strategy.md) | ADR-0028 — i18n Locale Strategy (Library, Fallback Chain, RTL) | — | Accepted |
 | [`00-adrs/97-acceptance-criteria.md`](./00-adrs/97-acceptance-criteria.md) | ADRs — Acceptance Criteria | 1.0.0 | — |
+
+## 01-features
+
+| File | Title | Version | Status |
+|------|-------|---------|--------|
+| [`01-features/_LEDGER-G-30-EXEMPTIONS.md`](./01-features/_LEDGER-G-30-EXEMPTIONS.md) | Ledger — `G-30-AT-CITATION-VALIDITY` exemptions (per-(gate, path), Phase 2) | — | — |
 
 ## 01-spec-authoring-guide
 
@@ -1638,4 +1645,4 @@
 
 ---
 
-*Auto-generated index — 1462 files across 26 top-level folders.*
+*Auto-generated index — 1463 files across 27 top-level folders.*
