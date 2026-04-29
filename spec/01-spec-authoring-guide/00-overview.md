@@ -1,7 +1,7 @@
 # Spec Authoring Guide
 
-> **Version:** 4.0.0 (split into sibling files 2026-04-20)
-> **Updated:** 2026-04-20
+> **Version:** 4.1.0 (split into sibling files 2026-04-20)
+> **Updated:** 2026-04-29 — added `### Scoring` table to AI Contract block (closes audit issue #9 residual; `01-` was the last of 25 top-level overviews lacking it).
 > **Status:** Active
 
 
@@ -26,6 +26,17 @@
 - AT IDs introduced are reachable from `spec/contract.json` (gate G-40)
 - `AC-001` through `AC-018` from `97-acceptance-criteria.md` pass
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
+
+### Scoring
+
+| Dimension | Weight | Criterion |
+|---|---:|---|
+| AI Contract completeness | 25 | Purpose / Audience / Expected AI Output / Out of Scope / Definition of Done all present |
+| Folder & file numbering | 20 | Two-digit folder prefix; `00-overview.md` + `97-acceptance-criteria.md` + `97a-…-fixtures.md` present |
+| AT-ID format | 20 | Every row uses `AT-<SECTION>-NN`; no legacy `AC-NNN`; IDs reachable from `spec/contract.json` |
+| RFC-2119 wording | 15 | MUST / SHOULD / MAY used per RFC 2119; no ambiguous "should ideally"-style hedges (gate G-38) |
+| Placeholder hygiene | 10 | No `_TODO(P1)_` / `TBD` / `FIXME` / `XXX` outside the gate G-38 allow-list |
+| Cross-reference integrity | 10 | All relative links resolve (gate G-03); xrefs symmetric where required |
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
 
