@@ -3,7 +3,7 @@
 > **Version:** 1.6.7  
 > **Updated:** 2026-04-29 — **Re-audit v3 ratified + companion-fixture pattern formalised + hygiene baseline GREEN.** Audit baseline lifted 67 → 70 (RISKY tier-stable) per Gemini-2.5-Pro re-audit v3 (`/mnt/documents/spec-ai-implementability-audit-v3.json`); scope `00-adrs` lifted 50 → 65 (+15) crediting ADR-0029/0030 ratification + AT-29-* (5 rows) + AT-30-I1..I8 (8 rows) + sibling fixture file `spec/00-adrs/97a-acceptance-criteria-fixtures.md` (175 lines, 13 I/O fixtures). F-AUDIT-31 RESOLVED by gate `G-00-AUDIT-EXEMPTION-REVIEW`. New finding F-AUDIT-32 (LOW, implicit AC/fixture pairing) RESOLVED in same cycle by formalising the `97a-acceptance-criteria-fixtures.md` companion-file pattern in `spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md` (4 trigger conditions, required shape, AT-FIX-01 pairing rule, naming + placement rules, discoverability requirement). ADR-0029 + ADR-0030 `## Consequences` gained downstream `spec/` xlinks (clears `G-00-ADR-CONSEQUENCES-XLINK` for both ADRs without ledger entry). 2 stray `file:///mnt/documents/...` absolute links converted to plain-text artifact references — full hygiene suite now reports `✅ All spec-hygiene checks passed` (first GREEN baseline this cycle). AT-FIX-01 pairing: 125 → 126 paired AC files. Open: F-AUDIT-15 (172 placeholders), F-AUDIT-21 (ADR AT:MUST 0.11), F-AUDIT-24 (24 meta-spec TODOs). Prior: 1.6.6 (ADR-0030 + `G-00-AUDIT-EXEMPTION-REVIEW`).
 
-- **Total named gates:** 312 (+1: `G-00-AUDIT-EXEMPTION-REVIEW`)
+- **Total named gates:** 314 (+3 in cycle: `G-00-AUDIT-EXEMPTION-REVIEW`, `G-00-AT-FIX-COMPANION-SHAPE`, `G-00-PLACEHOLDER-DENSITY`)
 - **CI:** 43 (+1)
 - **TEST:** 14 (unchanged)
 - **DOC-NORM:** 53 (unchanged)
