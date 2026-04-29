@@ -30,11 +30,11 @@ these 9; free-form prose statuses are forbidden.
 | `DRAFT` | Authoring in progress; not yet reviewed. Subject to breaking changes. | Pre-review |
 | `REVIEW` | Author-complete; awaiting peer review or ADR ratification. | In review |
 | `CANONICAL` | Reviewed, ratified, and is the SSOT for its topic. **Default for shipped specs.** | Active |
-| `COMPANION` | Concrete companion to a CANONICAL parent (e.g. `97a-…-fixtures.md` files). MUST cite parent. | Active |
+| `COMPANION` | Concrete companion to a CANONICAL parent (e.g. `97a-…-fixtures.md` files). MUST (gate G-NS-STATUS-COMPANION-CITES-PARENT) cite parent. | Active |
 | `DISPATCH` | Meta-index that delegates ATs to numbered children (e.g. `spec/18-spec-issues/97-…`). No ATs of its own by design. | Active |
 | `DEFERRED` | Out-of-scope for current release; tracked but not implemented. | Parked |
-| `DEPRECATED` | Superseded by a newer canonical file. MUST cite successor in front-matter. | Sunsetting |
-| `REDIRECT` | Stub that redirects to a canonical file. Body MUST be ≤10 lines. | Sunsetting |
+| `DEPRECATED` | Superseded by a newer canonical file. MUST (gate G-NS-STATUS-DEPRECATED-CITES-SUCCESSOR) cite successor in front-matter. | Sunsetting |
+| `REDIRECT` | Stub that redirects to a canonical file. Body MUST (gate G-NS-STATUS-REDIRECT-BODY-CAP) be ≤10 lines. | Sunsetting |
 | `ARCHIVED` | Historical record; do not modify. Excluded from hygiene gates. | Terminal |
 
 **Forbidden:** any other free-form value (`Active`, `Curated`, `Complete`,
