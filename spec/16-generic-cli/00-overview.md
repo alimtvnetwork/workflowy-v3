@@ -108,7 +108,7 @@ Every CLI subcommand MUST return one of these exit codes (gate `G-16-EXIT-DOCUME
 
 **Rules:**
 - Exit `0` is **only** valid when every assertion passed. Partial success uses `10`.
-- A subcommand MUST document which subset of the registry it can return.
+- A subcommand MUST document which subset of the registry it can return (gate `G-16-EXIT-DOCUMENTED`).
 - The hygiene gate `G-16-EXIT-DOCUMENTED` rejects help text that lists an undocumented code.
 
 ## Flag-Precedence Rules
