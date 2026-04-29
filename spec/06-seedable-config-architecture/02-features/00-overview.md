@@ -33,10 +33,10 @@
 | # | File | Title | Lines |
 |---|------|-------|-------|
 | 1 | [`01-rag-chunk-settings.md`](./01-rag-chunk-settings.md) | RAG Chunk Configuration Settings | 356 |
-| 2 | [`02-rag-validation-helpers/`](./02-rag-validation-helpers/00-overview.md) | RAG Configuration Validation Helpers | subfolder |
-| 3 | [`03-rag-validation-tests/`](./03-rag-validation-tests/00-overview.md) | RAG Validation Helpers: Unit Test Specification | subfolder |
+| 2 | [`02-rag-validation-helpers/`](./02-rag-validation-helpers/00-overview.md) | 02 — RAG Configuration Validation Helpers | subfolder |
+| 3 | [`03-rag-validation-tests/`](./03-rag-validation-tests/00-overview.md) | 03 — RAG Validation Helpers: Unit Test Specification | subfolder |
 | 4 | [`04-rag-test-coverage-matrix.md`](./04-rag-test-coverage-matrix.md) | RAG Validation Test Coverage Matrix | 266 |
-| 5 | [`05-validation-data-seeding/`](./05-validation-data-seeding/00-overview.md) | Validation Data Seeding Pattern | subfolder |
+| 5 | [`05-validation-data-seeding/`](./05-validation-data-seeding/00-overview.md) | 05 — Validation Data Seeding Pattern | subfolder |
 
 <!-- AUTO-TOC:END -->
 

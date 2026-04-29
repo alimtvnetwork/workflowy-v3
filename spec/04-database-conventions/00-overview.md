@@ -92,7 +92,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 | 3 | [`03-orm-and-views.md`](./03-orm-and-views.md) | ORM Usage and Database Views | 218 |
 | 4 | [`04-testing-strategy.md`](./04-testing-strategy.md) | Database Testing Strategy | 280 |
 | 5 | [`05-relationship-diagrams.md`](./05-relationship-diagrams.md) | Database Relationship Diagrams | 351 |
-| 6 | [`06-rest-api-format/`](./06-rest-api-format/00-overview.md) | REST API Response Format | subfolder |
+| 6 | [`06-rest-api-format/`](./06-rest-api-format/00-overview.md) | 06 — REST API Response Format | subfolder |
 | 7 | [`07-split-db-pattern.md`](./07-split-db-pattern.md) | Split DB Pattern | 315 |
 
 <!-- AUTO-TOC:END -->

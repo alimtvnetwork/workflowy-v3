@@ -61,28 +61,28 @@
 |---|------|-------|-------|
 | 1 | [`00-overview-condensed.md`](./00-overview-condensed.md) | Condensed Overview — `spec/15-wp-plugin-how-to/` (P11) | 203 |
 | 2 | [`01-foundation-and-architecture.md`](./01-foundation-and-architecture.md) | Phase 1 — Foundation and Architecture | 160 |
-| 3 | [`02-enums-and-coding-style/`](./02-enums-and-coding-style/00-overview.md) | Phase 2 — Enums and Coding Style | subfolder |
+| 3 | [`02-enums-and-coding-style/`](./02-enums-and-coding-style/00-overview.md) | 02 — Phase 2 — Enums and Coding Style | subfolder |
 | 4 | [`03-traits-and-composition.md`](./03-traits-and-composition.md) | Phase 3 — Traits and Composition | 356 |
-| 5 | [`04-logging-and-error-handling/`](./04-logging-and-error-handling/00-overview.md) | Phase 4 — Logging and Error Handling | subfolder |
-| 6 | [`05-helpers-responses-and-integration/`](./05-helpers-responses-and-integration/00-overview.md) | Phase 5 — Helpers, Response Envelope, and Integration | subfolder |
+| 5 | [`04-logging-and-error-handling/`](./04-logging-and-error-handling/00-overview.md) | 04 — Phase 4 — Logging and Error Handling | subfolder |
+| 6 | [`05-helpers-responses-and-integration/`](./05-helpers-responses-and-integration/00-overview.md) | 05 — Phase 5 — Helpers, Response Envelope, and Integration | subfolder |
 | 7 | [`06-input-validation-patterns.md`](./06-input-validation-patterns.md) | Phase 6 — Input Validation Patterns | 352 |
-| 8 | [`07-reference-implementations/`](./07-reference-implementations/00-overview.md) | Phase 7 — Complete Reference Implementations | subfolder |
-| 9 | [`08-wordpress-integration-patterns/`](./08-wordpress-integration-patterns/00-overview.md) | Phase 8 — WordPress Integration Patterns | subfolder |
-| 10 | [`09-testing-patterns/`](./09-testing-patterns/00-overview.md) | Phase 9 — Testing Patterns | subfolder |
-| 11 | [`10-deployment-patterns/`](./10-deployment-patterns/00-overview.md) | Phase 10 — Deployment Patterns (Overview) | subfolder |
-| 12 | [`11-frontend-and-template-patterns/`](./11-frontend-and-template-patterns/00-overview.md) | Phase 11 — Frontend & Template Patterns (Overview) | subfolder |
-| 13 | [`12-design-system/`](./12-design-system/00-overview.md) | Phase 12 — WordPress Plugin Design System (Overview) | subfolder |
-| 14 | [`13-admin-ui-patterns/`](./13-admin-ui-patterns/00-overview.md) | Phase 13 — Admin UI Patterns (Overview) | subfolder |
-| 15 | [`14-rest-api-conventions/`](./14-rest-api-conventions/00-overview.md) | Phase 14 — REST API Conventions (Overview) | subfolder |
-| 16 | [`15-settings-architecture/`](./15-settings-architecture/00-overview.md) | Phase 15 — Settings Architecture | subfolder |
-| 17 | [`16-error-handling-extraction/`](./16-error-handling-extraction/00-overview.md) | Phase 16 — Error Handling & Diagnostics Extraction | subfolder |
+| 8 | [`07-reference-implementations/`](./07-reference-implementations/00-overview.md) | 07 — Phase 7 — Complete Reference Implementations | subfolder |
+| 9 | [`08-wordpress-integration-patterns/`](./08-wordpress-integration-patterns/00-overview.md) | 08 — Phase 8 — WordPress Integration Patterns | subfolder |
+| 10 | [`09-testing-patterns/`](./09-testing-patterns/00-overview.md) | 09 — Phase 9 — Testing Patterns | subfolder |
+| 11 | [`10-deployment-patterns/`](./10-deployment-patterns/00-overview.md) | 10 — Phase 10 — Deployment Patterns (Overview) | subfolder |
+| 12 | [`11-frontend-and-template-patterns/`](./11-frontend-and-template-patterns/00-overview.md) | 11 — Phase 11 — Frontend & Template Patterns (Overview) | subfolder |
+| 13 | [`12-design-system/`](./12-design-system/00-overview.md) | 12 — Phase 12 — WordPress Plugin Design System (Overview) | subfolder |
+| 14 | [`13-admin-ui-patterns/`](./13-admin-ui-patterns/00-overview.md) | 13 — Phase 13 — Admin UI Patterns (Overview) | subfolder |
+| 15 | [`14-rest-api-conventions/`](./14-rest-api-conventions/00-overview.md) | 14 — Phase 14 — REST API Conventions (Overview) | subfolder |
+| 16 | [`15-settings-architecture/`](./15-settings-architecture/00-overview.md) | 15 — Phase 15 — Settings Architecture | subfolder |
+| 17 | [`16-error-handling-extraction/`](./16-error-handling-extraction/00-overview.md) | 16 — Phase 16 — Error Handling & Diagnostics Extraction | subfolder |
 | 18 | [`17-data-file-patterns.md`](./17-data-file-patterns.md) | Phase 17 — Data File Patterns | 358 |
 | 19 | [`18-frontend-javascript-patterns.md`](./18-frontend-javascript-patterns.md) | Phase 18 — Frontend JavaScript Patterns | 317 |
-| 20 | [`19-micro-orm-and-root-db/`](./19-micro-orm-and-root-db/00-overview.md) | Phase 19 — Micro-ORM and Cross-Plugin Root Database | subfolder |
-| 21 | [`20-end-to-end-walkthrough/`](./20-end-to-end-walkthrough/00-overview.md) | Phase 20 — End-to-End Walkthrough: Building "Task Tracker" from Scratch | subfolder |
+| 20 | [`19-micro-orm-and-root-db/`](./19-micro-orm-and-root-db/00-overview.md) | 19 — Phase 19 — Micro-ORM and Cross-Plugin Root Database | subfolder |
+| 21 | [`20-end-to-end-walkthrough/`](./20-end-to-end-walkthrough/00-overview.md) | 20 — Phase 20 — End-to-End Walkthrough: Building "Task Tracker" from Scratch | subfolder |
 | 22 | [`21-ping-endpoint.md`](./21-ping-endpoint.md) | Phase 21 — Ping Endpoint | 342 |
 | 23 | [`22-quick-start.md`](./22-quick-start.md) | Phase 00 — Quick Start Guide | 250 |
-| 24 | [`23-operator-runbooks/`](./23-operator-runbooks/00-overview.md) | 16 — Operator Runbooks | subfolder |
+| 24 | [`23-operator-runbooks/`](./23-operator-runbooks/00-overview.md) | 23 — 16 — Operator Runbooks | subfolder |
 | 25 | [`24-local-dev-harness.md`](./24-local-dev-harness.md) | Phase 24 — Local WordPress Development Harness | 288 |
 
 <!-- AUTO-TOC:END -->

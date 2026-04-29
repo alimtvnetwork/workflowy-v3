@@ -16,8 +16,8 @@
 | # | File | Title | Lines |
 |---|------|-------|-------|
 | 1 | [`01-debugging-php.md`](./01-debugging-php.md) | PHP Debugging Guide | 314 |
-| 2 | [`02-debugging-go/`](./02-debugging-go/00-overview.md) | Go Debugging Guide | subfolder |
-| 3 | [`03-debugging-typescript/`](./03-debugging-typescript/00-overview.md) | TypeScript/React Debugging Guide | subfolder |
+| 2 | [`02-debugging-go/`](./02-debugging-go/00-overview.md) | 02 — Go Debugging Guide | subfolder |
+| 3 | [`03-debugging-typescript/`](./03-debugging-typescript/00-overview.md) | 03 — TypeScript/React Debugging Guide | subfolder |
 
 <!-- AUTO-TOC:END -->
 

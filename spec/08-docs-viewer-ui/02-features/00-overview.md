@@ -39,7 +39,7 @@
 | 4 | [`04-keyboard-navigation.md`](./04-keyboard-navigation.md) | Feature: Keyboard Navigation | 32 |
 | 5 | [`05-copy-markdown.md`](./05-copy-markdown.md) | Feature: Copy Markdown Button | 23 |
 | 6 | [`06-ui-theme-animations.md`](./06-ui-theme-animations.md) | Feature: UI Theme, Colors & Animations | 242 |
-| 7 | [`07-visual-rendering-guide/`](./07-visual-rendering-guide/00-overview.md) | Feature: Visual Rendering & Component Guide — Overview | subfolder |
+| 7 | [`07-visual-rendering-guide/`](./07-visual-rendering-guide/00-overview.md) | 07 — Feature: Visual Rendering & Component Guide — Overview | subfolder |
 | 8 | [`08-shortcuts-overlay.md`](./08-shortcuts-overlay.md) | Feature: Shortcuts Help Overlay | 34 |
 
 <!-- AUTO-TOC:END -->

@@ -208,9 +208,9 @@ The framework's central `ErrorMiddleware` MUST:
 | # | File | Title | Lines |
 |---|------|-------|-------|
 | 1 | [`00-overview-condensed.md`](./00-overview-condensed.md) | Condensed Overview — `spec/03-error-manage/` (P11) | 261 |
-| 2 | [`01-error-resolution/`](./01-error-resolution/00-overview.md) | Error Resolution | subfolder |
-| 3 | [`02-error-architecture/`](./02-error-architecture/00-overview.md) | Error Architecture | subfolder |
-| 4 | [`03-error-code-registry/`](./03-error-code-registry/00-overview.md) | Error Code Registry | subfolder |
+| 2 | [`01-error-resolution/`](./01-error-resolution/00-overview.md) | 01 — Error Resolution | subfolder |
+| 3 | [`02-error-architecture/`](./02-error-architecture/00-overview.md) | 02 — Error Architecture | subfolder |
+| 4 | [`03-error-code-registry/`](./03-error-code-registry/00-overview.md) | 03 — Error Code Registry | subfolder |
 
 <!-- AUTO-TOC:END -->
 

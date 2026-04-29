@@ -34,18 +34,18 @@
 
 ## 2. Section inventory (one-line summary per file/folder)
 
-- **`01-cross-language/`** — Cross-Language Coding Guidelines · **Status:** Active
-- **`02-typescript/`** — TypeScript Standards · **Status:** Active
-- **`03-golang/`** — Golang Standards · **Status:** Active
-- **`04-php/`** — PHP Standards · | Criterion | Status |
-- **`05-rust/`** — Rust Coding Standards · **Status:** Active
-- **`06-ai-optimization/`** — AI Optimization · `coding-guidelines` · `ai-optimization` · `optimization`
-- **`07-csharp/`** — C# Coding Standards · **Status:** Active
-- **`08-file-folder-naming/`** — File & Folder Naming Conventions · **Status:** Active
-- **`09-powershell-integration/`** — PowerShell Integration · `coding-guidelines` · `powershell-integration` · `powershell` · `integration`
-- **`10-research/`** — Research · `coding-guidelines` · `research`
-- **`11-security/`** — Security Guidelines · **Status:** Active
-- **`22-app-issues/`** — App Issues · `coding-guidelines` · `app-issues` · `app` · `issues`
+- **`01-cross-language/`** — 01 — Cross-Language Coding Guidelines · **Status:** Active
+- **`02-typescript/`** — 02 — TypeScript Standards · **Status:** Active
+- **`03-golang/`** — 03 — Golang Standards · **Status:** Active
+- **`04-php/`** — 04 — PHP Standards · | Criterion | Status |
+- **`05-rust/`** — 05 — Rust Coding Standards · **Status:** Active
+- **`06-ai-optimization/`** — 06 — AI Optimization · `coding-guidelines` · `ai-optimization` · `optimization`
+- **`07-csharp/`** — 07 — C# Coding Standards · **Status:** Active
+- **`08-file-folder-naming/`** — 08 — File & Folder Naming Conventions · **Status:** Active
+- **`09-powershell-integration/`** — 09 — PowerShell Integration · `coding-guidelines` · `powershell-integration` · `powershell` · `integration`
+- **`10-research/`** — 10 — Research · `coding-guidelines` · `research`
+- **`11-security/`** — 11 — Security Guidelines · **Status:** Active
+- **`22-app-issues/`** — 22 — App Issues · `coding-guidelines` · `app-issues` · `app` · `issues`
 - **`consolidated-review-guide/`** — Consolidated Code Review Guide (Overview) · `coding-guidelines` · `consolidated-review-guide` · `pr-review-checklist` · `code-review` · `disambiguation`
 - **`consolidated-review-guide-condensed.md`** — Consolidated Review Guide — Condensed · - Function body: **≤ 15 lines** (target 8–10)
 
@@ -59,8 +59,8 @@ _No endpoints defined directly in this section._
 
 # Coding Guidelines — Acceptance Criteria
 
-> **Version:** 3.1.0  
-> **Updated:** 2026-04-16
+> **Version:** 3.2.0  
+> **Updated:** 2026-04-29 — renamed 5 section headers `AC-01..05` → `AT-CG-G01..G05` and 22 row IDs `AC-001..022` → `AT-CG-001..022` (audit task #20, P2 hot-spot closed). Cascading rename applied to `00-overview-condensed.md` (same 27 IDs duplicated). New `AT-CG-` namespace registered. **27 active legacy IDs migrated.**
 
 ---
 

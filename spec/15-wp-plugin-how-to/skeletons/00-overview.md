@@ -1,6 +1,6 @@
 # WP-Plugin Reference Skeletons (P7)
 
-> **Generated:** 2026-04-28
+> **Generated:** 2026-04-29
 > **Generator:** [`scripts/spec-hygiene/41-generate-skeletons.mjs`](../../../scripts/spec-hygiene/41-generate-skeletons.mjs)
 > **Source:** [`spec/contract.json`](../../contract.json)
 > **Status:** Active reference (auto-regenerated; do NOT hand-edit `*.generated.php`)
@@ -14,7 +14,7 @@
 **Audience** — WP-plugin implementer (when spec-only mode exits) + reviewer.
 
 **Expected AI Output** —
-- [`php/Enums.generated.php`](./php/Enums.generated.php) — one PHP `enum: string` per contract enum (23 enums)
+- [`php/Enums.generated.php`](./php/Enums.generated.php) — one PHP `enum: string` per contract enum (22 enums)
 - [`php/RestRoutes.generated.php`](./php/RestRoutes.generated.php) — `register_rest_route` calls + handler stubs for every endpoint (48 endpoints)
 
 **Out of Scope** —
@@ -33,7 +33,7 @@
 
 | File | Contents | Lines (approx.) |
 |------|----------|-----------------|
-| `php/Enums.generated.php` | 23 PHP `enum: string` declarations | ~149 |
+| `php/Enums.generated.php` | 22 PHP `enum: string` declarations | ~135 |
 | `php/RestRoutes.generated.php` | `RestRoutes` class with register() + 48 handler stubs | ~596 |
 
 ---

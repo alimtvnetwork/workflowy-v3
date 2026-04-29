@@ -16,7 +16,7 @@
 |---|------|-------|-------|
 | 1 | [`01-information-model.md`](./01-information-model.md) | Endpoints — 01 Information Model (Items CRUD) | 119 |
 | 2 | [`02-personas.md`](./02-personas.md) | Endpoints — 02 Personas | 42 |
-| 3 | [`03-layout-structure.md`](./03-layout-structure.md) | Endpoints — 03 Layout Structure | 33 |
+| 3 | [`03-layout-structure.md`](./03-layout-structure.md) | Endpoints — 03 Layout Structure | 34 |
 | 4 | [`04-page-content-area.md`](./04-page-content-area.md) | Endpoints — 04 Page Content Area | 34 |
 | 5 | [`05-interactions.md`](./05-interactions.md) | Endpoints — 05 Interactions | 39 |
 | 6 | [`06-item-context-menu.md`](./06-item-context-menu.md) | Endpoints — 06 Item Context Menu | 75 |
@@ -29,7 +29,7 @@
 | 13 | [`13-templates.md`](./13-templates.md) | Endpoints — 13 Templates | 78 |
 | 14 | [`14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) | Endpoints — 14 Concurrency & Sync (Realtime Transport) | 75 |
 | 15 | [`15-roles-and-permissions.md`](./15-roles-and-permissions.md) | Endpoints — 15 Roles & Permissions | 61 |
-| 16 | [`16-endpoint-at-matrix.md`](./16-endpoint-at-matrix.md) | Endpoint ↔ Acceptance-Test Cross-Reference Matrix | 114 |
+| 16 | [`16-endpoint-at-matrix.md`](./16-endpoint-at-matrix.md) | Endpoint ↔ Acceptance-Test Cross-Reference Matrix | 118 |
 
 <!-- AUTO-TOC:END -->
 

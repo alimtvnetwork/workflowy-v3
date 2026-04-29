@@ -72,7 +72,7 @@ docs-viewer, typography, ubuntu, poppins, syntax-highlighting, highlight-js, ful
 | # | File | Title | Lines |
 |---|------|-------|-------|
 | 1 | [`01-fundamentals.md`](./01-fundamentals.md) | Docs Viewer UI — Fundamentals | 92 |
-| 2 | [`02-features/`](./02-features/00-overview.md) | Docs Viewer UI — Features Index | subfolder |
+| 2 | [`02-features/`](./02-features/00-overview.md) | 02 — Docs Viewer UI — Features Index | subfolder |
 
 <!-- AUTO-TOC:END -->
 

@@ -15,10 +15,10 @@
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`01-enum-specification/`](./01-enum-specification/00-overview.md) | Enum Specification | subfolder |
-| 2 | [`02-boolean-standards/`](./02-boolean-standards/00-overview.md) | Go Boolean Standards — Overview | subfolder |
+| 1 | [`01-enum-specification/`](./01-enum-specification/00-overview.md) | 01 — Enum Specification | subfolder |
+| 2 | [`02-boolean-standards/`](./02-boolean-standards/00-overview.md) | 02 — Go Boolean Standards — Overview | subfolder |
 | 3 | [`03-httpmethod-enum.md`](./03-httpmethod-enum.md) | HttpMethod Enum — `pkg/enums/httpmethodtype/variant.go` | 249 |
-| 4 | [`04-golang-standards-reference/`](./04-golang-standards-reference/00-overview.md) | Golang Coding Standards | subfolder |
+| 4 | [`04-golang-standards-reference/`](./04-golang-standards-reference/00-overview.md) | 04 — Golang Coding Standards | subfolder |
 | 5 | [`05-defer-rules.md`](./05-defer-rules.md) | Go Defer Rules | 96 |
 | 6 | [`06-string-slice-internals.md`](./06-string-slice-internals.md) | Go String & Slice Internals | 68 |
 | 7 | [`07-code-severity-taxonomy.md`](./07-code-severity-taxonomy.md) | Code Severity Taxonomy | 68 |

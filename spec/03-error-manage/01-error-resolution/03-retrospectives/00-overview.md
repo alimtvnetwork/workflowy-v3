@@ -16,7 +16,7 @@
 | # | File | Title | Lines |
 |---|------|-------|-------|
 | 1 | [`01-health-endpoint-mismatch.md`](./01-health-endpoint-mismatch.md) | 01 — Health Endpoint Format Mismatch | 160 |
-| 2 | [`02-retry-debounce-dedup-fixes/`](./02-retry-debounce-dedup-fixes/00-overview.md) | Retry, Debounce & Deduplication Fixes — Full Retrospective | subfolder |
+| 2 | [`02-retry-debounce-dedup-fixes/`](./02-retry-debounce-dedup-fixes/00-overview.md) | 02 — Retry, Debounce & Deduplication Fixes — Full Retrospective | subfolder |
 | 3 | [`03-zip-finalization-before-return.md`](./03-zip-finalization-before-return.md) | 03-zip-finalization-before-return | 146 |
 | 4 | [`04-activation-endpoint-mismatch.md`](./04-activation-endpoint-mismatch.md) | 04-activation-endpoint-mismatch | 83 |
 

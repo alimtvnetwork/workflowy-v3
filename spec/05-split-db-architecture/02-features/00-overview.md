@@ -32,11 +32,11 @@
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`01-cli-examples/`](./01-cli-examples/00-overview.md) | CLI Examples — Overview | subfolder |
+| 1 | [`01-cli-examples/`](./01-cli-examples/00-overview.md) | 01 — CLI Examples — Overview | subfolder |
 | 2 | [`02-reset-api-standard.md`](./02-reset-api-standard.md) | Split DB Architecture: Reset API Standard | 335 |
 | 3 | [`03-database-flow-diagrams.md`](./03-database-flow-diagrams.md) | Split DB Architecture: Complete Database Flow Diagram | 358 |
-| 4 | [`04-rbac-casbin/`](./04-rbac-casbin/00-overview.md) | Split DB Architecture: Role-Based Access Control (RBAC) with Casbin | subfolder |
-| 5 | [`05-user-scoped-isolation/`](./05-user-scoped-isolation/00-overview.md) | Split DB Architecture: User-Scoped Isolation | subfolder |
+| 4 | [`04-rbac-casbin/`](./04-rbac-casbin/00-overview.md) | 04 — Split DB Architecture: Role-Based Access Control (RBAC) with Casbin | subfolder |
+| 5 | [`05-user-scoped-isolation/`](./05-user-scoped-isolation/00-overview.md) | 05 — Split DB Architecture: User-Scoped Isolation | subfolder |
 
 <!-- AUTO-TOC:END -->
 

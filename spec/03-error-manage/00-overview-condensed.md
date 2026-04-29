@@ -37,9 +37,9 @@
 
 ## 2. Section inventory (one-line summary per file/folder)
 
-- **`01-error-resolution/`** — Error Resolution · <!-- AUTO-TOC:START -->
-- **`02-error-architecture/`** — Error Architecture · <!-- AUTO-TOC:START -->
-- **`03-error-code-registry/`** — Error Code Registry · **Scope:** Cross-project utility
+- **`01-error-resolution/`** — 01 — Error Resolution · <!-- AUTO-TOC:START -->
+- **`02-error-architecture/`** — 02 — Error Architecture · <!-- AUTO-TOC:START -->
+- **`03-error-code-registry/`** — 03 — Error Code Registry · **Scope:** Cross-project utility
 - **`structure.md`** — 04-error-manage — Structure Summary · **Generated:** 2026-03-31
 
 ## 3. Contract.json slice
@@ -52,8 +52,8 @@ _No endpoints defined directly in this section._
 
 # Error Management — Acceptance Criteria
 
-> **Version:** 3.1.0  
-> **Updated:** 2026-04-16
+> **Version:** 3.2.0  
+> **Updated:** 2026-04-29 — renamed `AC-01..06` → `AT-ERRMANAGE-01..06` to conform to canonical AT-ID format (audit task #20; `00-overview-condensed.md` updated in lock-step). New AT-ERRMANAGE-NN namespace registered.
 
 ---
 

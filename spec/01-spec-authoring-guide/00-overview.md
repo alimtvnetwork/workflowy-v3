@@ -60,7 +60,7 @@
 |---|------|-------|-------|
 | 1 | [`01-folder-structure.md`](./01-folder-structure.md) | Folder Structure | 267 |
 | 2 | [`02-naming-conventions.md`](./02-naming-conventions.md) | Naming Conventions | 195 |
-| 3 | [`03-required-files.md`](./03-required-files.md) | Required Files | 225 |
+| 3 | [`03-required-files.md`](./03-required-files.md) | Required Files | 223 |
 | 4 | [`04-cli-module-template.md`](./04-cli-module-template.md) | CLI Module Template | 222 |
 | 5 | [`05-app-project-template.md`](./05-app-project-template.md) | App / WordPress Project Template | 222 |
 | 6 | [`06-non-cli-module-template.md`](./06-non-cli-module-template.md) | Non-CLI Module Template | 188 |
@@ -78,7 +78,8 @@
 | 18 | [`18-ai-contract-template.md`](./18-ai-contract-template.md) | AI Contract Header — Canonical Template | 113 |
 | 19 | [`19-acceptance-criteria-io-table.md`](./19-acceptance-criteria-io-table.md) | Acceptance-Criteria I/O Table — Authoring Guide | 114 |
 | 20 | [`20-rfc-2119-wording-policy.md`](./20-rfc-2119-wording-policy.md) | RFC-2119 Wording Policy (SSOT) | 88 |
-| 21 | [`21-feature-block-format.md`](./21-feature-block-format.md) | Workflowy Feature-Reference Appendix — Block Format SSOT (F8) | 126 |
+| 21 | [`20-status-legend.md`](./20-status-legend.md) | Spec Status Legend (SSOT) | 139 |
+| 22 | [`21-feature-block-format.md`](./21-feature-block-format.md) | Workflowy Feature-Reference Appendix — Block Format SSOT (F8) | 126 |
 
 <!-- AUTO-TOC:END -->
 

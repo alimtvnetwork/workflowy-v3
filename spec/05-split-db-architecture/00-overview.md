@@ -219,8 +219,8 @@ try {
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`01-fundamentals/`](./01-fundamentals/00-overview.md) | Split Database Architecture — Fundamentals (Overview) | subfolder |
-| 2 | [`02-features/`](./02-features/00-overview.md) | Split DB Architecture — Features Index | subfolder |
+| 1 | [`01-fundamentals/`](./01-fundamentals/00-overview.md) | 01 — Split Database Architecture — Fundamentals (Overview) | subfolder |
+| 2 | [`02-features/`](./02-features/00-overview.md) | 02 — Split DB Architecture — Features Index | subfolder |
 
 <!-- AUTO-TOC:END -->
 

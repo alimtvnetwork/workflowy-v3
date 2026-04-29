@@ -15,10 +15,10 @@
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`01-issues-and-fixes-log/`](./01-issues-and-fixes-log/00-overview.md) | Issues & Fixes Log — Historical Reference | subfolder |
-| 2 | [`02-boolean-principles/`](./02-boolean-principles/00-overview.md) | Boolean Principles | subfolder |
-| 3 | [`03-casting-elimination-patterns/`](./03-casting-elimination-patterns/00-overview.md) | Casting Elimination Patterns | subfolder |
-| 4 | [`04-code-style/`](./04-code-style/00-overview.md) | Cross-Language Code Style — Braces, Nesting, Spacing & Function Size | subfolder |
+| 1 | [`01-issues-and-fixes-log/`](./01-issues-and-fixes-log/00-overview.md) | 01 — Issues & Fixes Log — Historical Reference | subfolder |
+| 2 | [`02-boolean-principles/`](./02-boolean-principles/00-overview.md) | 02 — Boolean Principles | subfolder |
+| 3 | [`03-casting-elimination-patterns/`](./03-casting-elimination-patterns/00-overview.md) | 03 — Casting Elimination Patterns | subfolder |
+| 4 | [`04-code-style/`](./04-code-style/00-overview.md) | 04 — Cross-Language Code Style — Braces, Nesting, Spacing & Function Size | subfolder |
 | 5 | [`05-cross-spec-contradiction-checks.md`](./05-cross-spec-contradiction-checks.md) | Cross-Spec Contradiction Check Process | 161 |
 | 6 | [`06-cyclomatic-complexity.md`](./06-cyclomatic-complexity.md) | Cross-Language Rule: Reduce Cyclomatic Complexity to Near-Zero | 339 |
 | 7 | [`07-database-naming.md`](./07-database-naming.md) | Cross-Language Database Naming Convention — PascalCase | 313 |
@@ -29,8 +29,8 @@
 | 12 | [`12-no-negatives.md`](./12-no-negatives.md) | Cross-Language Rule: No Raw Negations — Use Positive Guard Functions | 315 |
 | 13 | [`13-strict-typing.md`](./13-strict-typing.md) | Strict Typing — Cross-Language Type Declaration Rules | 319 |
 | 14 | [`14-test-naming-and-structure.md`](./14-test-naming-and-structure.md) | Cross-Language Rule: Test Naming & Structure | 375 |
-| 15 | [`15-master-coding-guidelines/`](./15-master-coding-guidelines/00-overview.md) | Master Coding Guidelines | subfolder |
-| 16 | [`16-static-analysis/`](./16-static-analysis/00-overview.md) | Cross-Language Static Analysis & Linter Enforcement | subfolder |
+| 15 | [`15-master-coding-guidelines/`](./15-master-coding-guidelines/00-overview.md) | 15 — Master Coding Guidelines | subfolder |
+| 16 | [`16-static-analysis/`](./16-static-analysis/00-overview.md) | 16 — Cross-Language Static Analysis & Linter Enforcement | subfolder |
 | 17 | [`17-regex-usage-guidelines.md`](./17-regex-usage-guidelines.md) | Regex Usage Guidelines | 97 |
 | 18 | [`18-code-mutation-avoidance.md`](./18-code-mutation-avoidance.md) | Code Mutation Avoidance | 117 |
 | 19 | [`19-null-pointer-safety.md`](./19-null-pointer-safety.md) | Null Pointer Safety | 135 |
@@ -41,7 +41,7 @@
 | 24 | [`24-boolean-flag-methods.md`](./24-boolean-flag-methods.md) | Boolean Flag Method Splitting | 197 |
 | 25 | [`25-generic-return-types.md`](./25-generic-return-types.md) | Generic Return Types — No interface{}/any/object Returns | 247 |
 | 26 | [`26-magic-values-and-immutability.md`](./26-magic-values-and-immutability.md) | Magic Values, Immutability & Class-First Design | 356 |
-| 27 | [`27-types-folder-convention/`](./27-types-folder-convention/00-overview.md) | Types Folder Convention & Common Type Aliases — Overview | subfolder |
+| 27 | [`27-types-folder-convention/`](./27-types-folder-convention/00-overview.md) | 27 — Types Folder Convention & Common Type Aliases — Overview | subfolder |
 | 28 | [`28-slug-conventions.md`](./28-slug-conventions.md) | Slug Conventions | 219 |
 | 29 | [`29-lazy-evaluation-patterns.md`](./29-lazy-evaluation-patterns.md) | Lazy Evaluation Patterns | 156 |
 | 30 | [`30-pinned-dependency-matrix.md`](./30-pinned-dependency-matrix.md) | Pinned Dependency Matrix | 68 |
