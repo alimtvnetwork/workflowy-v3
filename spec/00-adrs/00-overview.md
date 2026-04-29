@@ -1,8 +1,43 @@
 # Architecture Decision Records (ADRs)
 
-> **Version:** 1.0.0
-> **Created:** 2026-04-28
+> **Version:** 1.1.0
+> **Created:** 2026-04-28 · **Updated:** 2026-04-29 — added AI Contract block + Scoring table (audit issue #9: missing Scoring table; broader fix: full AI Contract was absent).
 > **Status:** ✅ SSOT — every load-bearing scope/architecture decision lives here.
+
+---
+
+## AI Contract
+
+**Purpose** — Lock load-bearing scope/architecture decisions in append-only ADR files so spec gates (`G-04-*`, `G-13-*`, `G-00-ADR-*`) have a stable referent and silent drift is impossible.
+
+**Audience** — Spec authors, reviewers, and any AI implementer asked to "amend the rule" before changing code.
+
+**Expected AI Output** —
+- `spec/00-adrs/NNNN-kebab-case-title.md` with the 8 required sections (see "Required sections" below)
+- Updated `## Index` table in this file **and** the rollup table in `spec/00-overview.md` — both in the same change
+
+**Out of Scope** —
+- Implementation code — see the spec section the ADR locks (e.g. `spec/04-database-conventions/`)
+- Cosmetic copy edits, single-subsection clarifications, and tooling preferences with no `G-*` gate attached
+
+**Definition of Done** —
+- New file passes gates `G-00-ADR-SHAPE`, `G-00-ADR-NUMBERING`, `G-00-ADR-STATUS`, `G-00-ADR-SUPERSEDE`
+- If superseding, the older ADR's `## Status` flips to `Superseded by ADR-NNNN` in the **same** change
+- Both index tables (`spec/00-adrs/00-overview.md` §Index + `spec/00-overview.md` rollup) are updated in lock-step
+- `node scripts/spec-hygiene/00-run-all.mjs` exits 0
+
+### Scoring
+
+| Dimension | Weight | Criterion |
+|---|---:|---|
+| Section completeness | 30 | All 8 required sections present in declared order |
+| Status correctness | 20 | `Status` is one of 5 enum values; `Accepted` required for any `G-*` citation |
+| Numbering integrity | 15 | Zero-padded 4-digit, monotonic, never reused |
+| Supersede lock-step | 15 | New ADR + older ADR's status update land in the same commit |
+| Index freshness | 10 | Both index tables match files on disk |
+| Alternatives rigour | 10 | `## Alternatives Considered` lists ≥2 options with rejection rationale |
+
+> Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
 
 ---
 
