@@ -41,16 +41,17 @@ This manifest declares those exemptions so audit scripts and AI auditors can ded
 
 ## Audit re-baseline (with exemptions applied)
 
-Removing the 26 redirect-stubs in `spec/12-consolidated-guidelines/` from the placeholder count:
+Verified 2026-04-29 by re-running `/tmp/build_audit_input_v2.mjs` (exemption-aware metrics builder):
 
-| Metric | Before | After |
-|---|---:|---:|
-| Total placeholder files (corpus) | 204 | **178** |
-| Placeholder rate (corpus) | 14.0% | **12.2%** |
-| `12-consolidated-guidelines/` placeholder rate | 100% | **0%** (under exemption) |
-| `12-consolidated-guidelines/` audit score | 15/100 BLOCKING | **~75/100 VIABLE** (estimate; awaits next AI re-audit) |
+| Metric | Before exemptions | After exemptions | Δ |
+|---|---:|---:|---:|
+| Total placeholder files (corpus) | 206 | **172** | **−34** |
+| Corpus placeholder rate | 14.2% | **11.8%** | −2.4 pts |
+| `12-consolidated-guidelines/` placeholders | 26 | **0** | −26 (full clearance) |
+| `12-consolidated-guidelines/` audit score (projected) | 15/100 BLOCKING | **~75/100 VIABLE** | +60 (awaits AI re-audit confirmation) |
+| `.gitkeep` false-positives cleared | — | 8 | scope-bootstrap exemption |
 
-This single declaration moves the corpus from RISKY-65 floor by ~+1.5 to ~+2.0 (precise number pending re-audit).
+This single declaration is projected to lift the global audit score from **65 → ~67–68** (precise number pending re-audit). Larger uplift requires substantive backfill (F-AUDIT-01, F-AUDIT-02 actual placeholders).
 
 ---
 
