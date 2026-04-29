@@ -328,9 +328,9 @@ Algorithm SSOT lives at [`16-g23-audit-log-coverage-gate.md`](./16-g23-audit-log
 
 ## 10 · Frontend Contract
 
-- The frontend MUST NOT attempt to write audit events directly. All audit writes happen server-side as side-effects of authenticated mutations.
+- The frontend MUST NOT attempt to write audit events directly (gate G-A4-CLIENT-NO-WRITE). All audit writes happen server-side as side-effects of authenticated mutations.
 - The frontend MAY query `EP-AUDIT-LIST` for the user's own records and render them under Settings → Security → Activity.
-- Audit query responses MUST be cached for at most 60 s (audit data must always look fresh).
+- Audit query responses MUST be cached for at most 60 s (gate G-A4-QUERY-CACHE-MAX) — audit data must always look fresh.
 
 ---
 
