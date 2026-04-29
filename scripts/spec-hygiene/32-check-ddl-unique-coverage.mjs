@@ -415,10 +415,15 @@ function normaliseAutoindex(name) {
   return m ? m[1] : name;
 }
 
+// G-32.2 host = the doc file that claims the index name. Currently a
+// single file (`06-indexes.md`) is the sole scanner input; threaded
+// through Phase-3 so the per-row pathGlob is enforced per claim.
+const G32_REVERSE_HOST = "spec/31-app/07-db-diagram/06-indexes.md";
+
 function findFabricatedIndexes(docNames, ddlNames) {
   const fab = [];
   for (const name of docNames) {
-    if (REVERSE_EXEMPT.has(name)) continue;
+    if (isG32Exempt("reverse", name, G32_REVERSE_HOST)) continue;
     const probe = normaliseAutoindex(name);
     if (ddlNames.has(probe) || ddlNames.has(name)) continue;
     fab.push(name);
