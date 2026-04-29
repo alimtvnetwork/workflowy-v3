@@ -68,7 +68,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## Error Taxonomy
 
-Every error in WorkFlowy MUST be classified into exactly one of these four categories. Category drives HTTP status, retry policy, and observability routing.
+Every error in WorkFlowy MUST be classified into exactly one of these four categories (gate `G-22-REGISTRY-LOCKSTEP` enforces PHP↔TS category lock-step). Category drives HTTP status, retry policy, and observability routing.
 
 | Category | HTTP status | Retryable? | Examples | Routing |
 |---|---|---|---|---|
