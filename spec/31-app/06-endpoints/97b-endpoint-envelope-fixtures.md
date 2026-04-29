@@ -313,7 +313,7 @@ The test MUST issue one request per endpoint whose response payload, per the cor
 
 The full enumeration MUST be derived programmatically from `16-endpoint-at-matrix.md` so adding a new endpoint does not silently bypass the test (see "Drift guard" below).
 
-### Assertion contract (MUST all hold)
+#### Assertion contract (MUST all hold)
 
 For each endpoint response `R`:
 
