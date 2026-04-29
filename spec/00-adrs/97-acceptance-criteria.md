@@ -1,7 +1,7 @@
 # ADRs — Acceptance Criteria
 
-> **Version:** 1.3.0
-> **Created:** 2026-04-29 — closes G-08 acceptance-coverage gap (P0 quick-win). **Updated:** 2026-04-29 — v1.1.0 added AT-ADR-G04 (ADR-0029 ledger shared-lib, 5 rows: AT-29-D1/D3/D4×3); v1.2.0 added AT-ADR-G05 (ADR-0030 audit-exemption manifest, 8 rows: AT-30-I1..I8); **v1.3.0** added AT-ADR-G06 (ADR-0031 warn-only-with-STRICT-flip pattern, 8 rows: AT-31-D1..D7 + AT-31-PROTOCOL).
+> **Version:** 1.4.0
+> **Created:** 2026-04-29 — closes G-08 acceptance-coverage gap (P0 quick-win). **Updated:** 2026-04-29 — v1.1.0 added AT-ADR-G04 (ADR-0029 ledger shared-lib, 5 rows: AT-29-D1/D3/D4×3); v1.2.0 added AT-ADR-G05 (ADR-0030 audit-exemption manifest, 8 rows: AT-30-I1..I8); v1.3.0 added AT-ADR-G06 (ADR-0031 warn-only-with-STRICT-flip pattern, 8 rows: AT-31-D1..D7 + AT-31-PROTOCOL); **v1.4.0** added AT-ADR-G07 (ADR-0023 loader↔queue contract, 8 rows: AT-23-L1/A1/S1/D4/R1/L2/A2/F1) — closes F-AUDIT-27 (HIGH).
 > **Status:** ✅ SSOT — testable acceptance criteria for the ADR governance scope.
 
 > _Fixture: N/A — pure narrative reference, not a testable criterion._
@@ -102,6 +102,24 @@ The criteria are grouped into 3 categories: **shape** (file structure),
 | AT-31-PROTOCOL-COOLING-WINDOW | The 6-step flip protocol §D6.1 MUST verify `flipCriterion` true for **7 consecutive CI runs** before steps 2–6. Skipping this step is forbidden. | [`0031-warn-only-strict-flip-pattern.md`](./0031-warn-only-strict-flip-pattern.md) §D6 | DOC (reviewer; CI tracking via ledger note column — future) |
 
 ---
+
+## AT-ADR-G07: ADR-0023 — loader↔queue contract
+
+> Ratifies the 8 acceptance tests cited inline by [`0023-route-loaders-offline-queue-interaction.md`](./0023-route-loaders-offline-queue-interaction.md) §"Gates Touched". Closes **F-AUDIT-27** (HIGH — recalibrated audit v5: avoidance of high-impact ADR-AT pair authoring; first ratification of the load-bearing loader↔queue ADR per memory `mem://architecture/adr-invariants-15-25`). Each row below maps 1:1 to a `G-23-*` gate; rows marked `DOC` are reviewer-checklist until the CI runner is authored (tracked separately in the gate registry).
+
+| # | Criterion | Source | Gate |
+|---|-----------|--------|------|
+| AT-23-L1-LOADER-MIRROR-FIRST | Every React Router v7 `loader` MUST resolve from the IndexedDB local mirror before any network I/O. Loader bodies MUST NOT contain `fetch(`, `axios.`, or any `import` from `src/lib/api/*` egress modules — only mirror reads via `src/lib/mirror/loaders/*`. Violation = loader breaks the 16 ms p95 budget AND renders blank screens when offline. | [`0023-route-loaders-offline-queue-interaction.md`](./0023-route-loaders-offline-queue-interaction.md) §Decision D1 + Gates Touched §1 | `G-23-LOADER-MIRROR-FIRST` |
+| AT-23-A1-ACTION-ENQUEUE-ONLY | Every React Router v7 `action` MUST commit a single IDB transaction that writes BOTH the optimistic mirror update AND the queue entry. Direct server calls (`fetch`/`axios`) inside action bodies are forbidden — the queue worker is the sole egress per ADR-0010 FIFO contract. | [`0023-route-loaders-offline-queue-interaction.md`](./0023-route-loaders-offline-queue-interaction.md) §Decision D2 + Gates Touched §2 | `G-23-ACTION-ENQUEUE-ONLY` |
+| AT-23-S1-COLD-OFFLINE-SHELL | The root loader MUST return the `OfflineColdStartShell` sentinel (typed `{ Status: "OfflineColdStart"; Attributes: {}; Results: [] }` per ADR-0019 envelope) when (a) the IDB mirror is empty AND (b) `navigator.onLine === false`. Throwing to an error boundary in this state is forbidden — the cold-offline shell renders a neutral landing UI, not an error page. | [`0023-route-loaders-offline-queue-interaction.md`](./0023-route-loaders-offline-queue-interaction.md) §Decision D3 + Gates Touched §3 | `G-23-COLD-OFFLINE-SHELL` |
+| AT-23-D4-WARM-LOADER-16MS | Warm-start loader p95 latency (mirror hit, no revalidation network call) MUST be ≤ 16 ms (one frame at 60 Hz) measured by the loader-perf harness over a 1000-loader sample. The 16 ms ceiling is non-negotiable: a slower loader stalls navigation and triggers the visible-spinner threshold. | [`0023-route-loaders-offline-queue-interaction.md`](./0023-route-loaders-offline-queue-interaction.md) §Decision D4 + Gates Touched §4 | `G-23-WARM-LOADER-16MS` (DOC; perf harness pending) |
+| AT-23-R1-RECONNECT-LOCK | The queue worker MUST hold an exclusive Web Lock (`navigator.locks.request('queue-drain', { mode: 'exclusive' }, …)`) for the entire reconnect drain. Concurrent loader revalidation MUST acquire the same lock in `'shared'` mode and yield until the drain completes. This guarantees create-then-rename ordering survives reconnect. | [`0023-route-loaders-offline-queue-interaction.md`](./0023-route-loaders-offline-queue-interaction.md) §Decision D5 + Gates Touched §5 | `G-23-RECONNECT-LOCK` |
+| AT-23-L2-LOADER-NO-MUTATE | Loaders MUST NOT call any queue-public API (`enqueue`, `flush`, `cancel`) and MUST NOT write to the mirror outside the React Router revalidation cache. Read-only purity is required so revalidation can be canceled mid-flight without leaving partial state. | [`0023-route-loaders-offline-queue-interaction.md`](./0023-route-loaders-offline-queue-interaction.md) §Decision D6 + Gates Touched §6 | `G-23-LOADER-NO-MUTATE` |
+| AT-23-A2-ACTION-NO-THROW | Actions MUST resolve with a typed Status envelope (`{ Status: "Ok" \| "ValidationFailed" \| "QueueFull" \| "Unauthorized"; Attributes; Results; Errors? }`) and MUST NOT throw to the error boundary. The boundary catches loader errors only — action failures are routed to inline form UI per ADR-0017 boundary partitioning. | [`0023-route-loaders-offline-queue-interaction.md`](./0023-route-loaders-offline-queue-interaction.md) §Decision D7 + Gates Touched §7 | `G-23-ACTION-NO-THROW` |
+| AT-23-F1-FETCHER-SAME-PATH | `useFetcher().submit()` calls MUST route through the identical mirror+queue IDB transaction used by route actions. A separate egress path for fetcher submissions is forbidden — divergent paths break FIFO ordering when a fetcher submit interleaves with a navigation-action submit on the same item. | [`0023-route-loaders-offline-queue-interaction.md`](./0023-route-loaders-offline-queue-interaction.md) §Decision D8 + Gates Touched §8 | `G-23-FETCHER-SAME-PATH` |
+
+---
+
 
 
 
