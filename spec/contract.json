@@ -1293,7 +1293,7 @@
       "cited_in": [
         {
           "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
-          "line": 42
+          "line": 47
         },
         {
           "file": "spec/18-spec-issues/97a-acceptance-criteria-fixtures.md",
@@ -1665,11 +1665,11 @@
       "cited_in": [
         {
           "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
-          "line": 51
+          "line": 56
         },
         {
           "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
-          "line": 55
+          "line": 60
         },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
@@ -2088,7 +2088,7 @@
       "cited_in": [
         {
           "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
-          "line": 41
+          "line": 46
         },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
@@ -2260,7 +2260,7 @@
       "cited_in": [
         {
           "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
-          "line": 43
+          "line": 48
         },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
@@ -2780,7 +2780,7 @@
       "cited_in": [
         {
           "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
-          "line": 58
+          "line": 63
         },
         {
           "file": "spec/18-spec-issues/09-app-folder-re-audit-2026-04-26.md",
@@ -2884,7 +2884,7 @@
       "cited_in": [
         {
           "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
-          "line": 59
+          "line": 64
         },
         {
           "file": "spec/31-app/02-workflows/00-overview.md",
@@ -2980,7 +2980,7 @@
       "cited_in": [
         {
           "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
-          "line": 60
+          "line": 65
         },
         {
           "file": "spec/31-app/02-workflows/00-overview.md",
@@ -3112,11 +3112,11 @@
       "cited_in": [
         {
           "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
-          "line": 46
+          "line": 51
         },
         {
           "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
-          "line": 53
+          "line": 58
         },
         {
           "file": "spec/13-cicd-pipeline-workflows/scripts-as-spec/per-gate-path-ledger-schema.md",
@@ -3220,7 +3220,7 @@
       "cited_in": [
         {
           "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
-          "line": 57
+          "line": 62
         },
         {
           "file": "spec/31-app/02-workflows/00-overview.md",
@@ -3400,7 +3400,7 @@
       "cited_in": [
         {
           "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
-          "line": 52
+          "line": 57
         },
         {
           "file": "spec/31-app/02-workflows/00-overview.md",
@@ -3492,7 +3492,7 @@
       "cited_in": [
         {
           "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
-          "line": 44
+          "line": 49
         },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
@@ -3620,7 +3620,7 @@
       "cited_in": [
         {
           "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
-          "line": 45
+          "line": 50
         },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
@@ -3700,11 +3700,11 @@
       "cited_in": [
         {
           "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
-          "line": 47
+          "line": 52
         },
         {
           "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
-          "line": 54
+          "line": 59
         },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
@@ -3864,7 +3864,7 @@
       "cited_in": [
         {
           "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
-          "line": 48
+          "line": 53
         },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
@@ -3952,7 +3952,7 @@
       "cited_in": [
         {
           "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
-          "line": 49
+          "line": 54
         },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
@@ -4032,11 +4032,11 @@
         },
         {
           "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
-          "line": 50
+          "line": 55
         },
         {
           "file": "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md",
-          "line": 56
+          "line": 61
         },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
