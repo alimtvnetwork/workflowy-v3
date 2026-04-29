@@ -1,12 +1,12 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.5.0  
-> **Updated:** 2026-04-29 — Task #18 (cheap polish bundle): (a) **`G-00-ADR-XLINK-SYMMETRY` Phase-2 promotion DOC-NORM → CI** via new mechanized runner [`scripts/spec-hygiene/56-check-adr-xlink-symmetry.mjs`](../scripts/spec-hygiene/56-check-adr-xlink-symmetry.mjs) implementing the frozen fixture-as-spec PLUS anchor-locality (±8 lines around the matching heading; explicit `{#id}` attributes honored). All 4 baseline pairs pass clean; negative test verified (locality=2 + corrupted §D1 → ANCHOR-LOCALITY violation surfaced). Wired into `00-run-all.mjs`. Ledger updated to v2.0 Phase-2. (b) Refined generic `[owning section](./00-overview.md)` pointer in `spec/00-adrs/00-overview.md` Out-of-Scope §2 to specific destinations (coding-guidelines + gate-registry). Prior: 1.4.1 (regex-anchor sweep).
+> **Version:** 1.5.1  
+> **Updated:** 2026-04-29 — Task #11 (per-(gate, path) ledger schema spec, Phase-1): minted new gate `G-13-LEDGER-PER-GATE-PATH` (DOC-NORM, fixture-as-spec). New fixture-as-spec at [`spec/13-cicd-pipeline-workflows/scripts-as-spec/per-gate-path-ledger-schema.md`](./13-cicd-pipeline-workflows/scripts-as-spec/per-gate-path-ledger-schema.md) freezes the canonical 5-column ledger schema (`gate` × `pathGlob` × `entry` × `rationale` × `addedOn`), validation rules (gate-existence / glob-non-empty / no-overlap-info / rationale-prose / date-monotonicity), shared `loadPerGatePathLedger` helper contract, golden-input test fixture, and the 3-phase strictness roadmap (P1 spec → P2 migrate `REDUNDANCY_ALLOWLIST` → P3 promote to CI). Closes Task #18 polish bundle. Prior: 1.5.0 (xlink-symmetry Phase-2 promotion).
 
-- **Total named gates:** 309 (unchanged — `G-00-ADR-XLINK-SYMMETRY` already counted)
-- **CI:** 40 (+1: `G-00-ADR-XLINK-SYMMETRY` promoted from DOC-NORM)
+- **Total named gates:** 310 (+1: `G-13-LEDGER-PER-GATE-PATH`)
+- **CI:** 40 (unchanged)
 - **TEST:** 14 (unchanged)
-- **DOC-NORM:** 53 (−1: `G-00-ADR-XLINK-SYMMETRY` promoted)
+- **DOC-NORM:** 54 (+1: `G-13-LEDGER-PER-GATE-PATH`)
 - **DOC:** 202 (unchanged)
 - **Areas covered:** 37 (unchanged)
 
