@@ -87,7 +87,7 @@ or `go for implementation`. They are recorded here for traceability.
 |---|---|---|---|---|
 | F-IMPL-AUD-02 | HIGH | `Item.sortOrder: number` violates ADR-0016 (must be base-62 string) | Resolved | Closed under `exit spec-only` exception (AUD-02 task) — `src/types/index.ts` now exposes branded `SortKey` + `asSortKey()` constructor |
 | F-IMPL-AUD-03 | HIGH | `src/main.tsx` uses `BrowserRouter` instead of RRv7 data-router (ADR-0023) | Open | Deferred — requires `exit spec-only` |
-| F-IMPL-AUD-04 | LOW | `"dashboard"` in `ItemType` allegedly violates ADR-0015 | Retracted | Re-read of ADR-0015 confirms `"dashboard"` is canonical (12-type set). AUD-04 task instead formalized `ITEM_TYPES` registry + `assertNeverItemType` exhaustive-switch trap |
+| F-IMPL-AUD-04 | LOW | `"dashboard"` in `ItemType` allegedly violates ADR-0015 | Retracted | See [Retraction case study #1](#retraction-case-study-1--f-impl-aud-04) below |
 | F-IMPL-AUD-05 | MED | `Enter` key collision in `itemRow` scope (`ItemSplit` vs `ItemNewSibling`) | Resolved | AUD-05 task: added `WhenContext` predicate to `HotkeyBinding` + `resolveHotkey()` dispatcher + uniqueness/mutual-exclusion hygiene tests |
 | F-IMPL-AUD-06 | LOW | 8 `.gitkeep.ts` files leak into TS pipeline | Open | Deferred — requires `exit spec-only`; rename to `.gitkeep` |
 
