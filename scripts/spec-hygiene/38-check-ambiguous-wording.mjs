@@ -63,7 +63,11 @@ const SKIP_PATH = (p) =>
   // offenders is the same category error as for `00-overview.md` above.
   // (Added 2026-04-29 with ADR-0031 landing; mirrored row in
   // `_AUDIT-EXEMPTIONS.md` cites F-SPEC-13 + F-AUDIT-26 closure.)
-  p.endsWith("/0031-warn-only-strict-flip-pattern.md");
+  p.endsWith("/0031-warn-only-strict-flip-pattern.md") ||
+  // §3.4 negative fixture in the AT-31-* fixtures file demonstrates the
+  // forbidden `flipMechanism = "TBD"` PR-rejection case by name. Same
+  // category-error carve-out as ADR-0031 above.
+  p.endsWith("/00-adrs/97a-acceptance-criteria-fixtures.md");
 
 
 const ALLOW_LINE = (line) =>
