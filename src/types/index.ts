@@ -43,10 +43,14 @@ export type SortKey = Brand<string, "SortKey">;
 /**
  * All possible item types in the outliner.
  *
- * SSOT: `spec/20-enums-index.md` §3.5 + `spec/32-ui-design/02-state-and-data/03-data-types.md`.
- * Lowercase per DB column convention. 12 distinct types.
+ * SSOT: ADR-0015 (`spec/00-adrs/0015-twelve-itemtypes-enum.md`) — closed set
+ * of exactly **12** lowercase values. `board` and `dashboard` are render-mode
+ * ItemTypes (D4): the parent's ItemType chooses how its CHILDREN render, while
+ * the item itself still renders as a normal node.
  *
- * NOTE: `dashboard` is a VIEW, not an item type — do not add it here.
+ * `mirror` is NOT here (D3) — mirroring is a peer-group relation, not a type.
+ *
+ * Adding/removing a value requires a new ADR superseding 0015.
  */
 export type ItemType =
   | "bullet"
@@ -57,23 +61,20 @@ export type ItemType =
   | "todo"
   | "numbered"
   | "board"
+  | "dashboard"
   | "quote"
   | "code"
-  | "divider"
-  | "callout";
+  | "divider";
 
 /**
- * Exhaustive guard — call from a `default` switch arm to make adding a new
- * ItemType a compile error at every call site that branches on it.
- *
- * Per ADR-0015 (12 closed ItemTypes). `dashboard` is intentionally absent:
- * it is a VIEW, not an item type (audit-v8 finding F-IMPL-AUD-04).
+ * Exhaustive guard — call from a `default` switch arm so adding a new
+ * ItemType becomes a compile error at every branching call site.
  */
 export function assertNeverItemType(value: never): never {
   throw new Error(`Unhandled ItemType: ${String(value)}`);
 }
 
-/** Frozen set of valid ItemType strings — single source of truth for runtime checks. */
+/** Frozen set of valid ItemType strings — SSOT for runtime validation. */
 export const ITEM_TYPES: ReadonlySet<ItemType> = new Set<ItemType>([
   "bullet",
   "h1",
@@ -83,12 +84,13 @@ export const ITEM_TYPES: ReadonlySet<ItemType> = new Set<ItemType>([
   "todo",
   "numbered",
   "board",
+  "dashboard",
   "quote",
   "code",
   "divider",
-  "callout",
 ]);
 
+/** Type guard for arbitrary strings (use at API/DB boundaries). */
 export function isItemType(raw: string): raw is ItemType {
   return ITEM_TYPES.has(raw as ItemType);
 }
