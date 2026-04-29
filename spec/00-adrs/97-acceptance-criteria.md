@@ -70,7 +70,7 @@ The criteria are grouped into 3 categories: **shape** (file structure),
 
 ## AT-ADR-G05: ADR-0030 — audit exemption manifest
 
-> Ratifies the 8 acceptance tests cited inline by [`0030-audit-exemption-manifest.md`](./0030-audit-exemption-manifest.md) §6. All eight are enforced by CI gate `G-00-AUDIT-EXEMPTION-REVIEW` ([`scripts/spec-hygiene/57-check-audit-exemption-review.mjs`](../../scripts/spec-hygiene/57-check-audit-exemption-review.mjs)). Closes [F-AUDIT-31](file:///mnt/documents/spec-ai-implementability-audit-v2.json) (LOW — surfaced by re-audit v2).
+> Ratifies the 8 acceptance tests cited inline by [`0030-audit-exemption-manifest.md`](./0030-audit-exemption-manifest.md) §6. All eight are enforced by CI gate `G-00-AUDIT-EXEMPTION-REVIEW` ([`scripts/spec-hygiene/57-check-audit-exemption-review.mjs`](../../scripts/spec-hygiene/57-check-audit-exemption-review.mjs)). Closes **F-AUDIT-31** (LOW — surfaced by re-audit v2; artifact: `/mnt/documents/spec-ai-implementability-audit-v2.json`).
 
 | # | Criterion | Source | Gate |
 |---|-----------|--------|------|
