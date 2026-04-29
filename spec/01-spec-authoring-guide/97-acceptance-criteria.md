@@ -1,7 +1,7 @@
 # Spec Authoring Guide — Acceptance Criteria
 
-> **Version:** 3.1.0  
-> **Updated:** 2026-04-16
+> **Version:** 3.2.0  
+> **Updated:** 2026-04-29 — renamed 4 section headers `AC-01..04` → `AT-SPECAUTHORING-G01..G04` and 18 row IDs `AC-001..018` → `AT-SPECAUTHORING-001..018` (audit task #20, P3 hot-spot closed). Cascading refs in `00-overview.md` updated; template-example IDs in `03-required-files.md` and `04-cli-module-template.md` migrated to `AT-EXAMPLE-NNN`. **22 active legacy IDs migrated; new `AT-SPECAUTHORING-` namespace registered.**
 
 ---
 
