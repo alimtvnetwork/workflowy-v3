@@ -323,7 +323,7 @@ For each endpoint response `R`:
 4. **A4 — Round-trip stability.** Re-encoding the response JSON and decoding it MUST yield byte-identical key sets (no PHP `stdClass` → `array` rename surprises that swallow the casing check).
 5. **A5 — Error envelope.** Trigger one `403`/`404` response per endpoint. Assert A1–A4 still hold on the error envelope (the `Errors.Backend[]` stack trace MAY contain the DDL spelling `OwnerUserId` since stack frames quote raw SQL — the assertion MUST scope the recursive scan to *keys only*, not string values).
 
-### Drift guard
+#### Drift guard
 
 A2 alone is insufficient if a future endpoint forgets to expose owner identity. The test MUST therefore **also** assert:
 
