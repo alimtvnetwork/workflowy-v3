@@ -168,3 +168,25 @@ Re-run `/tmp/at_id_scan.py` (logic embedded in 2026-04-29 conversation). Inputs:
 Path depth corrected from `../../../../../00-adrs/...` to `../../../../00-adrs/...` in `03-error-manage/01-error-resolution/05-debugging-guides/03-debugging-typescript/97-acceptance-criteria.md`. `G-37` now reports 0 stale-rename links.
 
 **Net implementability impact:** +1.1 pts (97.5 → 98.6).
+
+---
+
+## 2026-04-29 · Micro-bundle (#15 G-01 + #14 G-38 + #13 G-03)
+
+### G-01 numbering — 30 errors → 0
+- **28 ADR-prefix false-positives**: ADR folder uses 4-digit `0001-…` per industry convention, not the 2-digit spec rule. Added blanket exempt for `spec/00-adrs/**` to `01-check-numbering.mjs`.
+- **Duplicate-`00`**: `00-adrs/` folder vs `00-overview.md` — same exempt covers it.
+- **Genuine duplicate `20-`** surfaced after ADR exempt: `20-rfc-2119-wording-policy.md` ↔ `20-status-legend.md`. Renamed the latter to `22-status-legend.md` (21- was taken). Updated 5 cross-refs (registry, AC file, overview, 2 audit ledgers); spec-index.md auto-regenerated.
+
+### G-03 broken links — 3 → 0
+- `spec/20-enums-index.md` ×2 referenced `0015-closed-itemtype-taxonomy.md` (wrong filename). Real file is `0015-twelve-itemtypes-enum.md`. Bulk-replaced.
+- `spec/00-adrs/_INDEX_AUTOMATION.md` had `[text](…)` placeholders inside multi-line backtick spans the inline-code-stripper (`/`[^`]*`/`) couldn't span. Replaced `(…)` → `(URL)` (literal placeholder).
+
+### G-38 ambiguous-wording — 3 → 0
+- ADR-0028 line 232: `consider splitting` → `SHOULD be split` (RFC-2119).
+- `_GATE-REGISTRY.md` line 443: `TBD` → `pending §17 reconciliation per ADR-0024`.
+- `01-spec-authoring-guide/00-overview.md` line 37: literally documents the gate's forbidden phrases — added that file to G-38 `SKIP_PATH` allow-list (parallel to existing `20-rfc-2119-wording-policy.md` exemption).
+
+**Net runner state:** 7 → 4 failing. Remaining: G-08 (00-adrs/ AC file), G-13 (cascade from G-08), G-15 (ItemType enum-sync), G-30 (7 unregistered AT citations).
+
+**Implementability impact:** +1.0 pts (98.6 → 99.6).
