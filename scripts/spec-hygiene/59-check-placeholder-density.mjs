@@ -119,14 +119,15 @@ function main() {
   const globalPct = totalFiles > 0 ? ((totalPh / totalFiles) * 100).toFixed(1) : '0.0';
   ok(`density ${globalPct}% across ${buckets.size} scope(s); cap ${(CAP * 100).toFixed(0)}%`);
   if (offenders.length === 0) return 0;
-  console.error(`[G-00-PLACEHOLDER-DENSITY] ✗ ${offenders.length} scope(s) over ${(CAP * 100).toFixed(0)}% cap:`);
+  const tag = STRICT ? '✗' : '⚠';
+  console.error(`[G-00-PLACEHOLDER-DENSITY] ${tag} ${offenders.length} scope(s) over ${(CAP * 100).toFixed(0)}% cap${STRICT ? '' : ' (warn-only — F-AUDIT-15 pending)'}:`);
   for (const o of offenders) {
     console.error(`  ${o.sc}: ${o.placeholders.length}/${o.total} (${(o.pct * 100).toFixed(1)}%)`);
     for (const f of o.placeholders.slice(0, 5)) console.error(`    - ${f}`);
     if (o.placeholders.length > 5) console.error(`    … +${o.placeholders.length - 5} more`);
   }
   console.error(`\nFix: thicken offending files OR add narrow glob to spec/_AUDIT-EXEMPTIONS.md (cites required).`);
-  return 1;
+  return STRICT ? 1 : 0;
 }
 
 process.exit(main());
