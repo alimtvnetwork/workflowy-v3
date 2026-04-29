@@ -86,15 +86,15 @@ const CONSUMER_EXCLUDED = new Set([
 
 // G-30.2 — open-prefix redundancy advisory.
 // MIGRATED 2026-04-29 (Task #11, Phase 2): exemption rows now live in
-//   spec/01-features/_LEDGER-G-30-EXEMPTIONS.md
+//   spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md
 // per the per-(gate, path) ledger schema (see Phase-1 fixture
 // spec/13-cicd-pipeline-workflows/scripts-as-spec/per-gate-path-ledger-schema.md).
 // The in-source Set is now empty and reserved for emergency in-source
 // additions only — the canonical source is the ledger. The G-30.3 meta
 // rationale check still inspects this Set (it trivially passes when
-// empty) and the new G-30.4 sibling check (added below) validates the
-// ledger's rationale column is non-empty per row.
-const G30_LEDGER_PATH = "spec/01-features/_LEDGER-G-30-EXEMPTIONS.md";
+// empty); the per-(gate, path) ledger schema enforces non-empty
+// rationale via its required `rationale` column.
+const G30_LEDGER_PATH = "spec/01-spec-authoring-guide/_LEDGER-G-30-EXEMPTIONS.md";
 
 function loadG30RedundancyExemptions(ledgerPath) {
   let text;
