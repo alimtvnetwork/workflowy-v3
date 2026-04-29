@@ -52,8 +52,8 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 - Scheduled retention job (90-day default, configurable via [`06-seedable-config-architecture/`](../06-seedable-config-architecture/00-overview.md))
 
 **Out of Scope** —
-- Real-time chat support → not planned
-- Public bug tracker / external ticketing → not planned
+- Real-time chat support → not planned ([owning section](./00-overview.md))
+- Public bug tracker / external ticketing → not planned ([owning section](./00-overview.md))
 - Email reply threads / SLA escalation → [`14-self-update-app-update/`](../14-self-update-app-update/00-overview.md) covers release comms
 
 **Definition of Done** —
