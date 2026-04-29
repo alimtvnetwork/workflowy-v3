@@ -29,7 +29,7 @@ code path performs the resolution.
 
 ## Decision
 
-**D1 — Canonical comparator (MUST).** The LWW resolver MUST compare
+**D1 — Canonical comparator (MUST).** The LWW resolver MUST (gate G-26-LWW-CANONICAL-COMPARATOR) compare
 candidates in this exact order, returning the **greater** as the
 winner:
 
@@ -40,7 +40,7 @@ compare(a, b) =
   3. a.ItemId              ASC    (lower opaque-string ID wins)  // ADR-0020 brand
 ```
 
-All three keys are mandatory; comparison MUST short-circuit at the
+All three keys are mandatory; comparison MUST (gate G-26-LWW-CANONICAL-COMPARATOR) short-circuit at the
 first non-equal tier. Strings are compared **lexicographically over
 the wire-regex alphabet `[A-Za-z0-9_-]`** (ASCII byte order is
 sufficient — the regex excludes locale-sensitive characters).
@@ -48,8 +48,8 @@ sufficient — the regex excludes locale-sensitive characters).
 **D2 — Naming alignment (MUST).** The user/owner key in the
 comparator is **`OwnerId`** (per ADR-0020 branded type). The legacy
 spelling `OwnerUserId` (used in `09b-mirror-peer-group-model.md` R-5
-and AT-MPG-09) MUST be treated as an **alias** of `OwnerId` and is
-catalogued in the [column-level Spec↔DDL Alias Bridge](../04-database-conventions/00-overview.md#alias-bridge-columns) (4 tables: `Item`, `Template`, `Tag`, `Workspace`). New writes MUST use
+and AT-MPG-09) MUST (gate G-26-OWNER-ID-CANONICAL) be treated as an **alias** of `OwnerId` and is
+catalogued in the [column-level Spec↔DDL Alias Bridge](../04-database-conventions/00-overview.md#alias-bridge-columns) (4 tables: `Item`, `Template`, `Tag`, `Workspace`). New writes MUST (gate G-26-OWNER-ID-CANONICAL) use
 `OwnerId`. **Housekeeping closure (2026-04-28):** `09b-mirror-peer-group-model.md` R-5 prose has been migrated to canonical `OwnerId` with a forward-pointer to the column-level bridge; the lone residual `OwnerUserId` in §6.1 SQL pseudocode is whitelisted per §D6 and carries an inline annotation. The alias bridge remains load-bearing for storage-layer fixtures and DDL.
 
 **D3 — Three-site ratification (MUST).** The same comparator applies
@@ -63,38 +63,37 @@ to:
   `ItemId` ASC tie at tier 3 covers the case where two clients
   simultaneously generate the same fractional-index string.
 
-Implementations MUST NOT keep three separate resolvers. There MUST be
+Implementations MUST NOT (gate G-26-LWW-CANONICAL-COMPARATOR) keep three separate resolvers. There MUST (gate G-26-LWW-CANONICAL-COMPARATOR) be
 **one** function `resolveLWW(a, b)` (or its PHP/SQL equivalent) used
 by every call site.
 
-**D4 — Server clock authority (MUST).** `ServerTs` MUST be assigned
+**D4 — Server clock authority (MUST).** `ServerTs` MUST (gate G-26-LWW-NO-CLIENT-TS) be assigned
 by the SQLite `strftime('%Y-%m-%dT%H:%M:%fZ', 'now')` expression at
-the moment of the `UPDATE`. Client-supplied `clientTs` MUST NOT
+the moment of the `UPDATE`. Client-supplied `clientTs` MUST NOT (gate G-26-LWW-NO-CLIENT-TS)
 participate in the comparator (per ADR-0010 D3, restated for
 emphasis).
 
 **D5 — Determinism guarantee (MUST).** For any two candidate writes
-`a` and `b`, the comparator MUST return a **strict** ordering — never
+`a` and `b`, the comparator MUST (gate G-26-LWW-STRICT-ORDERING) return a **strict** ordering — never
 "equal". Equality at tier 3 (same `ItemId`) means `a == b` and is
 mathematically impossible for two distinct writes (since `ItemId` is
 the primary key). If the resolver ever observes equality at all three
-tiers, it MUST raise a hard error to the boundary defined in
+tiers, it MUST (gate G-26-LWW-STRICT-ORDERING) raise a hard error to the boundary defined in
 ADR-0017; silent acceptance is forbidden.
 
 **D6 — Wire-boundary canonicalisation (MUST).** All REST/SSE wire
-payloads MUST emit the canonical key **`OwnerId`**. The DDL spelling
+payloads MUST (gate G-26-WIRE-OWNERID-ONLY) emit the canonical key **`OwnerId`**. The DDL spelling
 `OwnerUserId` is permitted **only** in: (a) `*.sql` DDL files,
 (b) `07-db-diagram/` ERD/index/migration tables, (c) SQL pseudocode
-inside workflow specs. The PHP serializer layer MUST translate
+inside workflow specs. The PHP serializer layer MUST (gate G-26-WIRE-OWNERID-ONLY) translate
 `Templates.OwnerUserId`, `Items.OwnerUserId`, etc. → wire `OwnerId` at
 the `EP-*` boundary (alias-bridge per D2 applied at egress, not at the
 storage layer). Endpoint specs (`spec/31-app/06-endpoints/**`),
-fixtures (`04a-fixtures/**`), and SSE frame schemas (ADR-0025) MUST
-NOT expose `OwnerUserId` in any documented `Results` shape, JSON
+fixtures (`04a-fixtures/**`), and SSE frame schemas (ADR-0025) MUST NOT (gate G-26-WIRE-OWNERID-ONLY) expose `OwnerUserId` in any documented `Results` shape, JSON
 example, or TypeScript wire type. **Exception:** fixtures explicitly
 labelled "matches `Item` SQL row" (i.e. storage-layer fixtures, not
 wire fixtures) MAY retain `OwnerUserId` since they document the DDL
-column directly; such fixtures MUST carry an inline comment
+column directly; such fixtures MUST (gate G-26-WIRE-OWNERID-ONLY) carry an inline comment
 `// DDL-mirror fixture; wire egress translates to OwnerId per ADR-0026 D6`.
 
 ## Consequences
