@@ -242,6 +242,59 @@ const DB_DIAGRAM_HEAD_EXEMPT = new Set([
 ]);
 
 // =====================================================================
+// Per-(gate, path) ledger loader (Phase-2 sibling of G-30 pattern).
+// Reads `spec/31-app/05-conventions/_LEDGER-G-31-EXEMPTIONS.md`, parses
+// the `## Entries` table, and unions each row into the matching in-source
+// override Set above. Hard-fails on schema violations so a malformed
+// ledger row cannot silently weaken the gate.
+// =====================================================================
+
+const G31_LEDGER_PATH = "spec/31-app/05-conventions/_LEDGER-G-31-EXEMPTIONS.md";
+
+const G31_SCOPE_TO_SETS = {
+  "G-31.1": { peer: WORKFLOWS_EXEMPT,  island: WORKFLOWS_ISLAND_EXEMPT,  head: WORKFLOWS_HEAD_EXEMPT  },
+  "G-31.2": { peer: FEATURES_EXEMPT,   island: FEATURES_ISLAND_EXEMPT,   head: FEATURES_HEAD_EXEMPT   },
+  "G-31.3": { peer: ENDPOINTS_EXEMPT,  island: ENDPOINTS_ISLAND_EXEMPT,  head: ENDPOINTS_HEAD_EXEMPT  },
+  "G-31.4": { peer: DB_DIAGRAM_EXEMPT, island: DB_DIAGRAM_ISLAND_EXEMPT, head: DB_DIAGRAM_HEAD_EXEMPT },
+};
+
+function loadG31Exemptions() {
+  let raw;
+  try {
+    raw = readFileSync(G31_LEDGER_PATH, "utf8");
+  } catch (e) {
+    fail(`G-31 ledger: cannot read ${G31_LEDGER_PATH}: ${e.message}`);
+  }
+  const lines = raw.split("\n");
+  const entriesIdx = lines.findIndex((l) => /^##\s+Entries\s*$/.test(l));
+  if (entriesIdx < 0) fail(`G-31 ledger: missing '## Entries' section`);
+
+  let imported = 0;
+  for (let i = entriesIdx + 1; i < lines.length; i += 1) {
+    const line = lines[i];
+    if (/^##\s/.test(line)) break; // next section
+    if (!line.trim().startsWith("|")) continue;
+    if (/^\|\s*-+/.test(line)) continue; // header separator
+    if (/^\|\s*gate\s*\|/i.test(line)) continue; // header row
+    const cells = line.split("|").slice(1, -1).map((c) => c.trim());
+    if (cells.length < 5) continue;
+    const [gate, , entry, rationale] = cells;
+    const m = gate.match(/^(G-31\.\d)\.(peer|island|head)$/);
+    if (!m) fail(`G-31 ledger: malformed gate \`${gate}\` at line ${i + 1}`);
+    const [, scopeId, category] = m;
+    const buckets = G31_SCOPE_TO_SETS[scopeId];
+    if (!buckets) fail(`G-31 ledger: unknown scope \`${scopeId}\` at line ${i + 1}`);
+    if (!entry) fail(`G-31 ledger: empty entry at line ${i + 1}`);
+    if (!rationale) fail(`G-31 ledger: empty rationale for \`${entry}\` at line ${i + 1}`);
+    buckets[category].add(entry);
+    imported += 1;
+  }
+  return imported;
+}
+
+const G31_LEDGER_IMPORTED = loadG31Exemptions();
+
+// =====================================================================
 // Scope registry. Order = output order.
 // =====================================================================
 
