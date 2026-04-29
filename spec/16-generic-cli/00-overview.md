@@ -113,7 +113,7 @@ Every CLI subcommand MUST return one of these exit codes (gate `G-16-EXIT-DOCUME
 
 ## Flag-Precedence Rules
 
-When the same setting can come from multiple sources, the CLI MUST resolve in this exact order (highest wins):
+When the same setting can come from multiple sources, the CLI MUST resolve in this exact order (highest wins) (gate `G-16-FLAG-PRECEDENCE`):
 
 | Rank | Source | Example | Notes |
 |---|---|---|---|
