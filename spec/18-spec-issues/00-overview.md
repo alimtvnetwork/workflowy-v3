@@ -49,7 +49,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 **Definition of Done** —
 - Every audit file ends with a "Resolution" section pointing to the spec change that closed it
-- `AT-APP-37` through `AT-APP-NN` from `97-acceptance-criteria.md` pass
+- Every `AT-APP-37`+ row in `97-acceptance-criteria.md` passes (range bounded once §11 backfill lands; tracked by `11-content-audit-at-app-coverage.md`)
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

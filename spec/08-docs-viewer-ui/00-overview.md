@@ -17,7 +17,7 @@
 **Definition of Done** —
 - Every link in a rendered spec file resolves (no client-side 404s)
 - Anchor links scroll-restore correctly on back/forward navigation
-- `AT-DOCSVIEWERUI-01` through `AT-DOCSVIEWERUI-NN` from `97-acceptance-criteria.md` pass
+- Every `AT-DOCSVIEWERUI-*` row in `97-acceptance-criteria.md` passes (filled in P2 backfill)
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

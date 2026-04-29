@@ -53,7 +53,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 **Definition of Done** —
 - Every update is atomic — failure rolls back to the previous version with zero data loss
 - Update server URL is config-driven, never hardcoded
-- `AT-SELFUPDATEAPPUPDATE-01` through `AT-SELFUPDATEAPPUPDATE-NN` from `97-acceptance-criteria.md` pass
+- Every `AT-SELFUPDATEAPPUPDATE-*` row in `97-acceptance-criteria.md` passes (filled in P2 backfill)
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

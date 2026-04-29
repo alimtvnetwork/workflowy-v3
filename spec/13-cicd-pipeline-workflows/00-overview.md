@@ -53,7 +53,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 **Definition of Done** —
 - Every archetype has a working reference YAML committed under `.github/workflows/`
 - Every workflow runs `node scripts/spec-hygiene/00-run-all.mjs` as a required check
-- `AT-CICD-01` through `AT-CICD-NN` from `97-acceptance-criteria.md` pass
+- Every `AT-CICD-*` row in `97-acceptance-criteria.md` passes (filled in P2 backfill)
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

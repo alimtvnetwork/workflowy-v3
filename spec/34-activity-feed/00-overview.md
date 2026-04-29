@@ -56,7 +56,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 **Definition of Done** —
 - Every feed row is reachable from at least one user-visible mutation flow
 - Feed query respects RLS / per-user scoping
-- `AT-ACTIVITYFEED-01` through `AT-ACTIVITYFEED-NN` from `97-acceptance-criteria.md` pass
+- Every `AT-ACTIVITYFEED-*` row in `97-acceptance-criteria.md` passes (filled in P2 backfill)
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
