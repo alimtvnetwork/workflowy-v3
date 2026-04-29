@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-29  
-**Total Files:** 1461  
+**Total Files:** 1462  
 **Top-Level Folders:** 26
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -28,7 +28,7 @@
 - [10-powershell-integration](#10-powershell-integration) — 26 file(s)
 - [11-research](#11-research) — 2 file(s)
 - [12-consolidated-guidelines](#12-consolidated-guidelines) — 26 file(s)
-- [13-cicd-pipeline-workflows](#13-cicd-pipeline-workflows) — 48 file(s)
+- [13-cicd-pipeline-workflows](#13-cicd-pipeline-workflows) — 49 file(s)
 - [14-self-update-app-update](#14-self-update-app-update) — 34 file(s)
 - [15-wp-plugin-how-to](#15-wp-plugin-how-to) — 224 file(s)
 - [16-generic-cli](#16-generic-cli) — 45 file(s)
@@ -949,6 +949,7 @@
 | [`13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md`](./13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md) | Fixture-as-spec — `fixture-as-spec-shape-audit` algorithm | — | Frozen |
 | [`13-cicd-pipeline-workflows/scripts-as-spec/ledger-numbering-contiguous-lint.md`](./13-cicd-pipeline-workflows/scripts-as-spec/ledger-numbering-contiguous-lint.md) | Ledger Numbering Contiguity Lint — Frozen Audit Algorithm | 1.0.0 | Live |
 | [`13-cicd-pipeline-workflows/scripts-as-spec/ledger-row-count-lint.md`](./13-cicd-pipeline-workflows/scripts-as-spec/ledger-row-count-lint.md) | Ledger Row-Count Lint — Frozen Audit Algorithm | 1.0.0 | Live |
+| [`13-cicd-pipeline-workflows/scripts-as-spec/per-gate-path-ledger-schema.md`](./13-cicd-pipeline-workflows/scripts-as-spec/per-gate-path-ledger-schema.md) | Fixture-as-spec — `per-gate-path-ledger-schema` | — | Frozen |
 | [`13-cicd-pipeline-workflows/scripts-as-spec/placeholder-token-parity-audit.md`](./13-cicd-pipeline-workflows/scripts-as-spec/placeholder-token-parity-audit.md) | Fixture-as-spec — `placeholder-token-parity-audit` algorithm | — | Frozen |
 | [`13-cicd-pipeline-workflows/scripts-as-spec/README.md`](./13-cicd-pipeline-workflows/scripts-as-spec/README.md) | `scripts-as-spec/` — Executable specifications for CI gates | — | — |
 | [`13-cicd-pipeline-workflows/scripts-as-spec/xlink-symmetry-audit.md`](./13-cicd-pipeline-workflows/scripts-as-spec/xlink-symmetry-audit.md) | Fixture-as-spec — `xlink-symmetry-audit` algorithm | — | Frozen |
@@ -1617,7 +1618,7 @@
 
 | File | Title | Version | Status |
 |------|-------|---------|--------|
-| [`_GATE-REGISTRY.md`](./_GATE-REGISTRY.md) | Gate Registry — Master Index of `G-*` Compliance Gates | 1.5.0 | — |
+| [`_GATE-REGISTRY.md`](./_GATE-REGISTRY.md) | Gate Registry — Master Index of `G-*` Compliance Gates | 1.5.1 | — |
 | [`_LEDGER-G-13-BACKLINK-EXEMPT.md`](./_LEDGER-G-13-BACKLINK-EXEMPT.md) | Ledger — `G-13-FIXTURE-AS-SPEC-SHAPE` Phase-4 Backlink Exemptions | — | Live |
 | [`_LEDGER-G-NS-ADR-COVERAGE.md`](./_LEDGER-G-NS-ADR-COVERAGE.md) | Ledger — `G-NS-ADR-MUST-HAS-AT` Coverage Allow-list | 1.0.0 | DEFERRED |
 | [`_LEDGER-G-NS-LEGACY-EXEMPT.md`](./_LEDGER-G-NS-LEGACY-EXEMPT.md) | Ledger — `G-NS-NO-DEPRECATED-ALIAS` Legacy Exemptions | 1.0.0 | Active |
@@ -1637,4 +1638,4 @@
 
 ---
 
-*Auto-generated index — 1461 files across 26 top-level folders.*
+*Auto-generated index — 1462 files across 26 top-level folders.*
