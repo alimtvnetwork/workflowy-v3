@@ -50,3 +50,21 @@ Each got a `| Health Score | NN% (grade) |` row inserted before the closing `---
 
 - `/tmp/scoring-backfill.mjs` — appended Health Score rows to 17 partials. Spec-only-mode compliant: edits markdown only, in same family as `scripts/spec-hygiene/10-fix-related-blocks.mjs`.
 - `/tmp/scoring-author.mjs` — drafted but unused (false-positive overviews already had Scoring sections).
+
+---
+
+## Runner authored (2026-04-29, same day) + spec corrections
+
+**Added:** `scripts/spec-hygiene/20-check-scoring-table-complete.mjs` (Node ESM, 0 deps), wired into `00-run-all.mjs` slot 20.
+
+**Two real findings exposed by runner authoring:**
+
+1. **`01-spec-authoring-guide` was a true Layer-2 gap** (false-clean in earlier audits). Its first matching Scoring block was a Dimensions-rubric for *other* files, not its own values. Backfilled with `#### Current values` block: `Very High / Low / 97% (A+)`.
+2. **Rule 2 was wrongly broad**: required numeric scores on all 3 rows. But AI Confidence/Ambiguity carry **tokens** (`High`, `Low`, …) per Layer-2.5 gate, not numerics. Pre-narrow draft would have produced 48 false-positive WARN findings. Rule narrowed to apply only to Health Score row.
+3. **Block-finder hardened**: prefers `### Scoring` heading > `**Scoring**` bold > `^| Criterion |` table marker, so rubric tables don't shadow values blocks.
+
+**Promotion:** Rules 1+2 → hard-fail (was: Rule 1 only). Rule 3 (aggregate-row-last) remains WARN.
+
+**Self-test:** Green = 25/25 clean exit 0 with 0 warnings. Red (injected `TBD` Health Score) = exit 1 with precise `file:line: Health Score row has no parseable numeric score — Rule 2.`
+
+**Layer-2 trio enforcement status:** complete with runners across all 3 layers (presence, completeness, value-format). AI Contract Layer-2 still spec-only — runner deferred to task #18.

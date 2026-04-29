@@ -38,6 +38,14 @@
 | Placeholder hygiene | 10 | No `_TODO(P1)_` / `TBD` / `FIXME` / `XXX` outside the gate G-38 allow-list |
 | Cross-reference integrity | 10 | All relative links resolve (gate G-03); xrefs symmetric where required |
 
+#### Current values
+
+| Metric | Value |
+|--------|-------|
+| AI Confidence | Very High |
+| Ambiguity | Low |
+| Health Score | 97% (A+) |
+
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
 
 ---

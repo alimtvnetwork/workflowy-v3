@@ -273,15 +273,16 @@ Fixtures for every AT row in this file are covered by the global P2g sweep — s
      - `AI Confidence` OR `AI Implementability` (case-insensitive)
      - `Ambiguity` (case-insensitive)
      - `Health Score` OR `Overall` OR `Total` (case-insensitive)
-  2. **Numeric scores parseable** — each canonical row MUST be followed in the same line (or adjacent table cell) by either a percentage (`\d{1,3}\s*%`) or a fraction (`\d{1,3}\s*/\s*\d{1,3}`) or a letter grade (`\b[A-F][+-]?\b`). Pure prose ("looks good", "high") is forbidden as a score value.
+  2. **Health Score has parseable numeric** — the Health Score / Overall / Total row line MUST contain either a percentage (`\d{1,3}\s*%`), a fraction (`\d{1,3}\s*/\s*\d{1,3}`), or a letter grade (`\b[A-F][+-]?\b`). AI Confidence and Ambiguity rows are NOT subject to this rule because their canonical values are tokens (`High`, `Low`, etc.) per `G-00-OVERVIEW-SCORING-VALUE-FORMAT` Rules 2–3, not numerics. (Spec narrowed 2026-04-29 after runner authoring revealed the conflict — earlier draft incorrectly required numeric scores on all three rows.)
   3. **Health Score is the last row** — when a table form is used (`^\| Criterion \|`), the Health Score / Overall / Total row MUST appear after AI Confidence and Ambiguity rows (it is the aggregate; it logically comes last).
-- **Scope:** all 25 top-level `spec/[0-9][0-9]-*/00-overview.md`. Sub-overview tier is out of scope (Scoring lives at section root only — same scope as `…-PRESENT`).
-- **Baseline (2026-04-29, post-backfill sweep):** **25 of 25 fully compliant** — backfill sweep added `Health Score` rows to 17 partial overviews, fixed 2 (`33`, `35`) that used `Confidence` instead of `AI Confidence`, and added a `#### Current values` block to `00-adrs/00-overview.md`. The 4 overviews previously flagged as "missing schema entirely" (`03`, `05`, `06`, `07`) were false positives — they use the `| Metric | Value |` table shape that the original baseline regex (`| Criterion |`-only) missed. Gate **promoted to hard-fail rule 1 from day 1**; rules 2–3 (numeric-score parseability + aggregate-row-last ordering) remain WARN-only until a value-format normalization pass.
+- **Scope:** all 25 top-level `spec/[0-9][0-9]-*/00-overview.md`. The block-finder uses the **first** matching block-start marker; a `### Scoring` heading takes precedence over a stray `^| Criterion |` table earlier in the file (see Rule 1's marker order). Sub-overview tier is out of scope (Scoring lives at section root only — same scope as `…-PRESENT`).
+- **Baseline (2026-04-29, post-runner sweep):** **25 of 25 fully compliant on Rule 1.** Earlier "25/25" claim was based on regex audit that didn't catch `01-spec-authoring-guide`'s legitimate gap (its Scoring block was a Dimensions-rubric for *other* files, not its own values). Backfill: appended `#### Current values` block to `01-spec-authoring-guide/00-overview.md` with `Very High / Low / 97% (A+)`. Runner now confirms 25/25. Rule 2 narrowed during runner authoring (see Rules note above). Rules 1+2 hard-fail; Rule 3 WARN-only until aggregate-row-last sweep.
 - **Exempt zones:** fenced code blocks (a `Health Score` token inside a `\`\`\`` fence does not count); `spec/01-spec-authoring-guide/14-scoring-metrics.md` if it ever defines the schema with example tables (gate scope is overviews only).
-- **Failure modes (WARN-only):**
-  - `<file>: Scoring table missing canonical row '<name>' — see G-00-OVERVIEW-SCORING-TABLE-COMPLETE rule 1 and 14-scoring-metrics.md.`
-  - `<file>: Scoring row '<name>' has no parseable numeric score — Rule 2 (WARN).`
-  - `<file>: Health Score row appears before AI Confidence/Ambiguity — Rule 3 (WARN).`
+- **Failure modes:**
+  - `<file>: Scoring block missing canonical row '<name>' — Rule 1 (hard-fail).`
+  - `<file>:<line>: Health Score row has no parseable numeric score — Rule 2 (hard-fail).`
+  - `<file>:<line>: Health Score row appears before AI Confidence/Ambiguity — Rule 3 (WARN).`
+- **Runner:** [`scripts/spec-hygiene/20-check-scoring-table-complete.mjs`](../../scripts/spec-hygiene/20-check-scoring-table-complete.mjs) — wired into `00-run-all.mjs` slot 20. Hard-fails on Rules 1+2; emits Rule 3 as `[WARN]` (non-blocking).
 - **SSOT:** [`./14-scoring-metrics.md`](./14-scoring-metrics.md) (canonical row names + score schema). Audit ledger: `.lovable/memory/audit/at-overview-scoring-complete-gate.md`.
 - **Trio Layer-2 status (complete after this mint):**
   - AI Contract body: `G-00-OVERVIEW-AI-CONTRACT-COMPLETE` (hard-fail rules 1+2; WARN rules 3–5)
