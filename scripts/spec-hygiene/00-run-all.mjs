@@ -47,6 +47,7 @@ const checks = [
   "scripts/spec-hygiene/58-check-at-fix-companion-shape.mjs",
   "scripts/spec-hygiene/59-check-placeholder-density.mjs",
   "scripts/spec-hygiene/_tests/59.test.mjs",
+  "scripts/spec-hygiene/60-check-graduation-ledger-fresh.mjs",
   "scripts/spec-hygiene/52-check-adr-consequences-xlink.mjs",
   "scripts/spec-hygiene/53-check-scoring-values-fresh.mjs",
   "scripts/spec-hygiene/54-check-ai-contract-complete.mjs",
