@@ -1173,7 +1173,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 455
+          "line": 456
         }
       ]
     },
@@ -1865,7 +1865,7 @@
       "cited_in": [
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 445
+          "line": 446
         },
         {
           "file": "spec/_LEDGER-G-NS-ADR-COVERAGE.md",
@@ -3110,6 +3110,10 @@
       "defined_in": "spec/31-app/97-acceptance-criteria.md",
       "defined_line": 160,
       "cited_in": [
+        {
+          "file": "spec/13-cicd-pipeline-workflows/scripts-as-spec/per-gate-path-ledger-schema.md",
+          "line": 125
+        },
         {
           "file": "spec/31-app/01-features/97-acceptance-criteria.md",
           "line": 5
