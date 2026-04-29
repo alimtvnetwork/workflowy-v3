@@ -1,11 +1,9 @@
 #!/usr/bin/env node
-// AT-block-aware prose-MUST counter (v2 — handles heading nesting).
+// AT-block-aware prose-MUST counter (v3 — handles heading nesting + fixture slots).
 // A line is "in an AT block" if ANY ancestor heading (walking up through ALL
-// ###/####/## levels) cites `AT-…-`. The v1 bug was stopping at the first
-// heading found — but `#### Assertion contract` is a child of `### AT-WIRE-EGRESS-01`.
-//
-// Algorithm: maintain a stack of (level, citesAT) for the heading hierarchy.
-// At every line, the line is "in an AT block" if any frame in the stack is true.
+// ###/####/## levels) cites `AT-…-`. v1 bug: stopped at first heading found
+// (sub-headings shadowed AT parent). v3 adds: skip canonical fixture-table
+// slot rows (already AT-shaped per format SSOT) + skip blockquote citations.
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 
