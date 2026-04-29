@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.4  
-> **Updated:** 2026-04-29 — **batch-7 prose→AT migration:** registered new **Spec-Authoring · F8 Feature-Block Format** subsection with 5 `G-39*` gates (1 umbrella CI gate + 4 sub-rule CI gates) — promotes the inline-cited `G-39` (and 4 implicit R1–R4 sub-rules) to formal registry rows. Cross-linked to `AT-F8-01..04`. Prior: 1.7.3 (batch-6 G-NS-SCOPING-* gates).
+> **Version:** 1.7.5  
+> **Updated:** 2026-04-29 — **batch-8 prose→AT migration:** registered new **Domain-CG (Coding Guidelines · Hard Rules)** subsection with 6 `G-CG-*` gates (1 umbrella `G-CG-HARD-RULES` CI + 2 sub-rule CI gates `G-CG-R5-MAX-LOGIC-LINES`/`G-CG-R6-POSITIVE-GUARDS` + 3 DOC-NORM convention gates `G-CG-FIXTURE-CITE-VERBATIM`/`G-CG-AI-ANTIPATTERN-FORBIDDEN`/`G-CG-ADR-REQUIRED-TO-RELAX`). R1/R2/R3/R4/R7/R8/R9/R10 sub-gates reserved for future batches. Prior: 1.7.4 (batch-7 G-39* gates).
 
-- **Total named gates:** 346 (+5 this revision: `G-39`, `G-39-R1-ROW-SHAPE`, `G-39-R2-SHORTCUT-PLACEMENT`, `G-39-R3-SLASH-INLINE`, `G-39-R4-SEARCH-OPERATORS`)
+- **Total named gates:** 352 (+6 this revision: six `G-CG-*`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
-- **CI:** 49 (+5 this revision)
+- **CI:** 52 (+3 this revision)
 - **TEST:** 14 (unchanged)
-- **DOC-NORM:** 77 (unchanged)
+- **DOC-NORM:** 80 (+3 this revision)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 40 (+1: Spec-Authoring · F8)
+- **Areas covered:** 41 (+1: Domain-CG)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
