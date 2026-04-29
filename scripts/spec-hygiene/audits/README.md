@@ -18,7 +18,7 @@ Counts unformalized prose-MUSTs (MUST/SHALL assertions outside `AT-…` row bloc
 - Excludes blockquoted lines (`> …`): citations of other docs, not new MUSTs.
 - Excludes RFC-2119 priority cells (`| F1 | requirement | MUST |`): tag-style priority markers in tabular requirements convention.
 
-**Authoritative output (2026-04-29, v7):** 491 prose-MUSTs across 243 files.
+**Authoritative output (2026-04-29, v7):** 483 prose-MUSTs across 242 files.
 This is the working baseline for spec-task #6 (prose→AT migration).
 
 **Methodology history** (see `spec/AUDIT-FINDINGS-LEDGER.md`):
@@ -33,5 +33,6 @@ This is the working baseline for spec-task #6 (prose→AT migration).
 - F-SCOPE-10 — pure content turn: batch-7 bound 8 prose-MUSTs in `spec/01-spec-authoring-guide/21-feature-block-format.md` to 5 new `G-39*` CI gates (umbrella + 4 sub-rules) → 531.
 - F-SCOPE-11 — v7 (fenced-code-block skip: triple-backtick/triple-tilde info-string agnostic) eliminated 25 false positives corpus-wide. Combined with batch-8 content migration (7 prose-MUSTs in `spec/02-coding-guidelines/00-overview.md` bound to 6 new `G-CG-*` gates) → **499**.
 - F-SCOPE-12 — pure content migration, no parser change. Batch-9 bound 8 prose-MUSTs in `spec/09-code-block-system/11-highlighter-dependency-pin.md` to 7 new `G-HLPIN-*` gates (Domain-HLPIN). Δ –8 = exact match → **491**. Third consecutive zero-parser-drift batch.
+- F-SCOPE-13 — pure content migration, no parser change. Batch-10 bound 8 prose-MUSTs in `spec/15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md` to 9 new `G-AUI-*` gates (Domain-AUI). Δ –8 = exact match → **483**. Fourth consecutive zero-parser-drift batch; first batch where source file had no pre-existing AT/gate scaffold.
 
 Run: `node scripts/spec-hygiene/audits/count-prose-musts.mjs`
