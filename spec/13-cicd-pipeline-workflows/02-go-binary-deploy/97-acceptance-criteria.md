@@ -2,7 +2,7 @@
 
 > **Version:** 1.0.0
 > **Updated:** 2026-04-26 (UTC+8) — populated from scaffold (polish #3, A-26 wave-2). v0.1.0 was auto-generated stub.
-> **Status:** Curated — 8 testable criteria
+> **Status:** DEFERRED (out-of-scope for current WP-plugin stack; preserved as canonical SSOT for future Go-binary deploy — see legend §2 mapping)
 > **Scope:** ⚠️ **Out-of-scope for the current stack** (chosen runtime is WordPress plugin per S003 / `mem://constraints/backend-runtime-deferred`). Preserved as the canonical SSOT for any future Go-binary deployment effort and as the sibling pattern referenced by [`spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/`](../18-wp-plugin-deploy/00-overview.md).
 > **Parent:** [`00-overview.md`](./00-overview.md)
 

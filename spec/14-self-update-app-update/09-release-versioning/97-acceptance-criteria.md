@@ -2,7 +2,7 @@
 
 > **Version:** 1.0.0
 > **Updated:** 2026-04-26 (UTC+8) — populated from scaffold (polish #3, A-26 wave-2). v0.1.0 was auto-generated stub.
-> **Status:** Curated — 12 testable criteria
+> **Status:** DEFERRED (parent self-update folder Go-binary; WP plugin uses WP versioning — see legend §2 mapping)
 > **Scope:** ⚠️ **Out-of-scope for the current stack** (parent self-update folder is Go-binary; WP plugin uses WordPress's own version mechanism — see [`spec/15-wp-plugin-how-to/10-deployment-patterns/`](../../15-wp-plugin-how-to/10-deployment-patterns/00-overview.md) for the active versioning rules). Preserved as canonical SSOT for any future Go-binary product.
 > **Parent:** [`00-overview.md`](./00-overview.md)
 

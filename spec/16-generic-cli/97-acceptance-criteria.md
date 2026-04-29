@@ -2,7 +2,7 @@
 
 > **Version:** 2.0.0
 > **Updated:** 2026-04-26 (UTC+8) — populated from scaffold (polish #3, A-26 wave-2). v1.0.0 was scaffold.
-> **Status:** Curated rollup — 14 testable criteria
+> **Status:** DEFERRED (out-of-scope for current WP-plugin stack; preserved as canonical SSOT for future Go CLI tool — see legend §2 mapping)
 > **Scope:** ⚠️ **Out-of-scope for the current stack** (Generic CLI is a Go-binary tooling pattern; the WP plugin runtime does not ship a CLI to end users — admin actions live in WP-Admin per [`spec/15-wp-plugin-how-to/13-admin-ui-patterns/`](../15-wp-plugin-how-to/13-admin-ui-patterns/00-overview.md)). Preserved as canonical SSOT for any future Go CLI tool.
 > **Parent:** [`00-overview.md`](./00-overview.md)
 

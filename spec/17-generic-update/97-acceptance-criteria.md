@@ -2,7 +2,7 @@
 
 > **Version:** 2.0.0
 > **Updated:** 2026-04-26 (UTC+8) — populated from scaffold (polish #3, A-26 wave-2). v1.0.0 was scaffold.
-> **Status:** Curated — 9 testable criteria
+> **Status:** DEFERRED (Go-binary self-update pattern; out-of-scope for WP-plugin stack — see legend §2 mapping)
 > **Scope:** ⚠️ **Out-of-scope for the current stack** (Go-binary self-update pattern; WP plugin uses the WordPress update mechanism — see [`spec/15-wp-plugin-how-to/10-deployment-patterns/`](../15-wp-plugin-how-to/10-deployment-patterns/00-overview.md) for the active flow). This folder is the **generic** version of [`spec/14-self-update-app-update/`](../14-self-update-app-update/00-overview.md) — kept as a slimmer reference for forks/embedders. Preserved as canonical SSOT for any future Go-binary product.
 > **Parent:** [`00-overview.md`](./00-overview.md)
 

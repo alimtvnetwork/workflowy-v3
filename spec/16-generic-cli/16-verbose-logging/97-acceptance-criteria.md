@@ -2,7 +2,7 @@
 
 > **Version:** 1.0.0
 > **Updated:** 2026-04-26 (UTC+8) — populated from scaffold (polish #3, A-26 wave-2). v0.1.0 was auto-generated stub.
-> **Status:** Curated — 8 testable criteria
+> **Status:** DEFERRED (parent generic-CLI folder out-of-scope for current stack — see legend §2 mapping)
 > **Scope:** ⚠️ **Out-of-scope for the current stack** (parent generic-CLI folder is Go-tooling). Preserved as canonical SSOT for any future Go CLI tool.
 > **Parent:** [`00-overview.md`](./00-overview.md)
 
