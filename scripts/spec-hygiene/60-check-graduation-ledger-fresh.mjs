@@ -53,6 +53,7 @@
 
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { splitMdRow, splitMdHeader } from './_lib/md-table.mjs';
 
 const ROOT = process.cwd();
 const LEDGER = join(ROOT, 'spec', '_GATE-GRADUATION-LEDGER.md');
