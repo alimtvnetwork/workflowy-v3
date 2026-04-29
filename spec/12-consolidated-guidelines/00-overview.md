@@ -91,12 +91,6 @@
 ---
 
 
-## Confidence
-
-Production-Ready · Ambiguity: None
-
----
-
 ## Purpose
 
 > 🔴 **MANDATORY — AI AGENTS MUST READ THIS**

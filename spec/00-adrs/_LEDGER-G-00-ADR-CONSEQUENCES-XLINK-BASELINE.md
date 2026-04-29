@@ -4,7 +4,7 @@
 > **Created:** 2026-04-29 (UTC+8)
 > **Status:** DEFERRED (allow-list active until ADR Consequences-enrichment sweep closes; 90-day TTL per `scripts/spec-hygiene/34-check-allow-list-age.mjs`)
 > **Gate:** `G-00-ADR-CONSEQUENCES-XLINK` (CI, WARN-only initial mode)
-> **Runner:** [`scripts/spec-hygiene/47-check-adr-consequences-xlink.mjs`](../../scripts/spec-hygiene/47-check-adr-consequences-xlink.mjs)
+> **Runner:** [`scripts/spec-hygiene/52-check-adr-consequences-xlink.mjs`](../../scripts/spec-hygiene/52-check-adr-consequences-xlink.mjs)
 > **AT:** [`AT-ADR-009`](./97-acceptance-criteria.md)
 
 ---
@@ -69,8 +69,8 @@ flag in the runner).
 
 ```bash
 # Re-run gate (warn-only outside CI; strict in CI)
-node scripts/spec-hygiene/47-check-adr-consequences-xlink.mjs
-CI=true node scripts/spec-hygiene/47-check-adr-consequences-xlink.mjs   # strict mode
+node scripts/spec-hygiene/52-check-adr-consequences-xlink.mjs
+CI=true node scripts/spec-hygiene/52-check-adr-consequences-xlink.mjs   # strict mode
 
 # Count remaining allow-list entries (target: 0)
 grep -cE '^\| ADR-[0-9]+' spec/00-adrs/_LEDGER-G-00-ADR-CONSEQUENCES-XLINK-BASELINE.md
@@ -78,4 +78,4 @@ grep -cE '^\| ADR-[0-9]+' spec/00-adrs/_LEDGER-G-00-ADR-CONSEQUENCES-XLINK-BASEL
 
 ---
 
-*Companion to gate `G-00-ADR-CONSEQUENCES-XLINK`, runner `scripts/spec-hygiene/47-check-adr-consequences-xlink.mjs`, and AT-ADR-009.*
+*Companion to gate `G-00-ADR-CONSEQUENCES-XLINK`, runner `scripts/spec-hygiene/52-check-adr-consequences-xlink.mjs`, and AT-ADR-009.*

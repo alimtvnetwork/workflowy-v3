@@ -137,12 +137,13 @@ function checkFile(file) {
     );
   }
 
-  // Rule 3 (WARN) — Health Score row is last among the three.
+  // Rule 3 (HARD-FAIL, promoted 2026-04-29) — Health Score row is last among
+  // the three. Baseline 25/25 clean at promotion time; gate locks today's order.
   if (aiLine !== -1 && amLine !== -1 && hsLine !== -1) {
     if (hsLine < aiLine || hsLine < amLine) {
-      warnings.push(
+      hardFails.push(
         `${file}:${hsLine + 1}: Health Score row appears before AI Confidence ` +
-        `(line ${aiLine + 1}) and/or Ambiguity (line ${amLine + 1}) — Rule 3 (WARN).`
+        `(line ${aiLine + 1}) and/or Ambiguity (line ${amLine + 1}) — Rule 3.`
       );
     }
   }
