@@ -42,6 +42,19 @@ export interface KeyCombo {
   readonly key: string;
 }
 
+/**
+ * Runtime context passed to a binding's `when` predicate.
+ * Kept intentionally narrow — extend only when a binding needs more.
+ */
+export interface WhenContext {
+  readonly itemContentIsEmpty?: boolean;
+  readonly caretAtEnd?: boolean;
+  readonly hasSelection?: boolean;
+}
+
+/** Predicate gating a binding within its (scope, combo) cell. */
+export type WhenPredicate = (ctx: WhenContext) => boolean;
+
 /** Single binding entry. */
 export interface HotkeyBinding {
   readonly id: HotkeyId;
@@ -49,6 +62,12 @@ export interface HotkeyBinding {
   readonly scope: HotkeyScope;
   readonly description: string;
   readonly specRef: string;
+  /**
+   * Optional discriminator. When two bindings share the same (scope, combo),
+   * each MUST declare a `when` predicate, and the predicates MUST be mutually
+   * exclusive for any given `WhenContext`. Enforced by uniqueness test.
+   */
+  readonly when?: WhenPredicate;
 }
 
 /**
