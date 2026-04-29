@@ -84,8 +84,9 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 | AI Contract filled | ✅ |
 | Keywords present | ✅ |
 | AC file curated (`AT-ENFORCEMENTRULES-01..14`) | ✅ |
-| Confidence | High |
+| AI Confidence | High |
 | Ambiguity | Low |
+| Health Score | 88% (B+) |
 
 ---
 
