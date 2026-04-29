@@ -1,13 +1,13 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.6.9  
-> **Updated:** 2026-04-29 — **ADR-0032 license-decision gate registered.** Added `G-32-LICENSE-FILES-PRESENT` (CI, WARN-only) per task #52c follow-through to ADR-0032 ratification (task #52). Gate enforces ADR-0032 D1–D3 (root `LICENSE` GPL-2.0-or-later, `LICENSE-SPEC` CC-BY-4.0, `TRADEMARK.md`). Runner skeleton at `scripts/spec-hygiene/75-check-license-files-present.mjs` (warn-only until first F-IMPL cycle lands the files); graduation entry seeded in `_GATE-GRADUATION-LEDGER.md` v1.2.0 with `targetDate: 2026-09-30` and `flipCriterion: 3 required files present at repo root for ≥7 consecutive CI runs`. Prior: 1.6.8 (gate-graduation ledger seeded).
+> **Version:** 1.7.0  
+> **Updated:** 2026-04-29 — **batch-3 prose→AT migration:** registered 4 new G-03-* gates (`G-03-CODE-LOAD-BEARING`, `G-03-FRONTEND-STATUS-PRIMARY`, `G-03-MIDDLEWARE`, `G-03-RETRY-AFTER`, all DOC-NORM) per task #6-batch-3 to provide enforcement bindings for the 9 substantive prose-MUSTs in `spec/03-error-manage/00-overview.md`. Prior: 1.6.9 (G-32-LICENSE-FILES-PRESENT).
 
-- **Total named gates:** 317 (+1 this revision: `G-32-LICENSE-FILES-PRESENT`)
+- **Total named gates:** 321 (+4 this revision: `G-03-CODE-LOAD-BEARING`, `G-03-FRONTEND-STATUS-PRIMARY`, `G-03-MIDDLEWARE`, `G-03-RETRY-AFTER`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
 - **CI:** 44
 - **TEST:** 14 (unchanged)
-- **DOC-NORM:** 53 (unchanged)
+- **DOC-NORM:** 57 (+4 this revision)
 - **DOC:** 202 (unchanged)
 - **Areas covered:** 37 (unchanged)
 - **Areas covered:** 37 (unchanged)
