@@ -1,13 +1,13 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.11  
-> **Updated:** 2026-04-29 — **batch-14 prose→AT migration:** registered 7 new `G-13-*` sub-gates in **ADR-0013** section (`-OVERVIEW-ARCHETYPE-EMIT`, `-DAG-EXACT-MIRROR`, `-BRANCH-PROTECTION-MIRROR`, `-SIGN-REQUIRED-ON-TAG`, `-ANTIPATTERN-COMPLIANCE`, `-FIXTURE-STRING-PARITY`, `-FOLDER-PLACEMENT`) covering all 7 prose-MUSTs in `spec/13-cicd-pipeline-workflows/00-overview.md`. All DOC-NORM tier (gate-table consumers / spec-shape claims). Pre-flight namespace check applied (G-13-* family was already established with 16 sibling gates; no collisions). Prior: 1.7.10 (batch-13 G-ERRCODE-* gates).
+> **Version:** 1.7.12  
+> **Updated:** 2026-04-29 — **batch-15 prose→AT migration:** registered 5 new `G-13-FIXTURE-SHAPE-*` sub-gates (`-6-SECTIONS`, `-EVOLUTION-LINK`, `-PHASE2-LANG-TAG`, `-PHASE3-GATE-CITED`, `-PHASE4-BACKLINK`) covering 7 prose-MUSTs in `spec/13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md`. All DOC-NORM tier; all sub-rules of the existing umbrella `G-13-FIXTURE-AS-SPEC-SHAPE`. Pre-flight namespace check OK (16 sibling gates already in `G-13-*` family). Prior: 1.7.11 (batch-14 G-13 sub-gates).
 
-- **Total named gates:** 399 (+7 this revision: seven `G-13-*`)
+- **Total named gates:** 404 (+5 this revision: five `G-13-FIXTURE-SHAPE-*`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
 - **CI:** 79 (unchanged)
 - **TEST:** 17 (unchanged)
-- **DOC-NORM:** 98 (+7 this revision)
+- **DOC-NORM:** 103 (+5 this revision)
 - **DOC:** 202 (unchanged)
 - **Areas covered:** 46 (unchanged)
 - **Areas covered:** 37 (unchanged)
