@@ -242,6 +242,10 @@ Testable acceptance criteria for the App domain. Each criterion is independently
 | `AT-APP-105` | A query matching both Title (weight 1.0) and Note (weight 0.4) of different items ranks the Title-match higher. | `01-features/16-search-ranking.md` (was `AT-SR-03`) |
 | `AT-APP-106` | Soft-deleted items (`DeletedAt IS NOT NULL`) are excluded from search results. | `01-features/16-search-ranking.md` (was `AT-SR-04`) |
 | `AT-APP-107` | Search respects sharing: a user only sees results they have at least `View` permission on (per AT-APP-23). | `01-features/16-search-ranking.md` (was `AT-SR-05`) |
+| `AT-APP-108` | LWW canonical comparator (per ADR-0026 D1) compares `(ServerTs DESC, OwnerId ASC, ItemId ASC)` in this exact order, short-circuits at the first non-equal tier, and uses ASCII-byte lexicographic ordering over the wire-regex alphabet `[A-Za-z0-9_-]`. | `spec/00-adrs/0026-lww-canonical-tiebreak.md` (D1) |
+| `AT-APP-109` | All three LWW comparator keys (`ServerTs`, `OwnerId`, `ItemId`) are mandatory; an LWW resolver that compares only one or two tiers MUST fail this gate. The owner-key spelling is canonically `OwnerId` (per ADR-0020 brand) — `OwnerUserId` is forbidden in any new resolver code or fixture. | `spec/00-adrs/0026-lww-canonical-tiebreak.md` (D1, D2) |
+| `AT-APP-110` | LWW resolution is bit-identical across every code path (server, offline-queue worker, SSE replay) — given the same two candidates, all three sites MUST return the same winner. Contradictory tie-break keys in any spec site (e.g. `OwnerUserId ASC` vs `OwnerId ASC`) MUST be flagged by the spec-hygiene gate. | `spec/00-adrs/0026-lww-canonical-tiebreak.md` (Context, D2) |
+| `AT-APP-111` | Every ADR with ≥5 `MUST`/`SHALL` rules in its body MUST be cited by at least one `97-acceptance-criteria.md` row. Enforced by `G-NS-ADR-MUST-HAS-AT` (CI, WARN-only initial mode). | `spec/_GATE-REGISTRY.md` (G-NS-ADR-MUST-HAS-AT); `.lovable/memory/audit/at-prose-must-shall-sweep.md` |
 
 
 ---
