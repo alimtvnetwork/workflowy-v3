@@ -135,6 +135,17 @@ function fail(msg, code = 2) {
   process.exit(code);
 }
 
+// Phase-3 path-glob matcher (mirrors G-30/G-31; ≤15-line logic per ADR-0007 R3).
+function globToRegExp(glob) {
+  const escaped = glob.replace(/[.+^${}()|[\]\\]/g, "\\$&");
+  const pattern = escaped.replace(/\*\*/g, "::DS::").replace(/\*/g, "[^/]*").replace(/::DS::/g, ".*");
+  return new RegExp(`^${pattern}$`);
+}
+
+// Phase-3: per-(category, entry) → list of compiled pathGlob regexes.
+const G32_GLOBS_BY_KEY = new Map();
+function g32Key(category, entry) { return `${category}::${entry}`; }
+
 function loadG32Exemptions() {
   let raw;
   try {
@@ -156,20 +167,38 @@ function loadG32Exemptions() {
     if (/^\|\s*gate\s*\|/i.test(line)) continue;
     const cells = line.split("|").slice(1, -1).map((c) => c.trim());
     if (cells.length < 5) continue;
-    const [gate, , entryRaw, rationale] = cells;
+    const [gate, pathGlobRaw, entryRaw, rationale] = cells;
+    const pathGlob = stripBackticks(pathGlobRaw);
     const entry = stripBackticks(entryRaw);
     const m = gate.match(/^G-32\.\d+\.(coverage|reverse|nonunique|parity)$/);
     if (!m) fail(`G-32 ledger: malformed gate \`${gate}\` at line ${i + 1}`);
     const category = m[1];
     if (!entry) fail(`G-32 ledger: empty entry at line ${i + 1}`);
+    if (!pathGlob) fail(`G-32 ledger: empty pathGlob for \`${entry}\` at line ${i + 1}`);
     if (!rationale) fail(`G-32 ledger: empty rationale for \`${entry}\` at line ${i + 1}`);
     G32_CATEGORY_TO_SET[category].add(entry);
+    const key = g32Key(category, entry);
+    if (!G32_GLOBS_BY_KEY.has(key)) G32_GLOBS_BY_KEY.set(key, []);
+    G32_GLOBS_BY_KEY.get(key).push(globToRegExp(pathGlob));
     imported += 1;
   }
   return imported;
 }
 
 const G32_LEDGER_IMPORTED = loadG32Exemptions();
+
+// Phase-3 path-aware exemption check. Returns true iff:
+//   (a) entry exists in the in-source override Set (path-agnostic), AND
+//       has no ledger row → emergency hotfix; OR
+//   (b) entry has ≥1 ledger row whose pathGlob matches the host file.
+function isG32Exempt(category, entry, hostFile) {
+  if (!G32_CATEGORY_TO_SET[category].has(entry)) return false;
+  const globs = G32_GLOBS_BY_KEY.get(g32Key(category, entry));
+  if (!globs) return true;
+  if (!hostFile) return true;
+  return globs.some((re) => re.test(hostFile));
+}
+
 
 function readOrFail(path) {
   try {
