@@ -40,7 +40,7 @@ appears. This is too coarse — a prefix legitimately reserved for
 
 ## Canonical row schema
 
-Each ledger MUST contain a markdown table with EXACTLY these 5 columns
+Each ledger MUST (gate G-13-LEDGER-FIVE-COLUMN-SCHEMA) contain a markdown table with EXACTLY these 5 columns
 in this order:
 
 | `gate` | `pathGlob` | `entry` | `rationale` | `addedOn` |
