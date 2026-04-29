@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { asItemId, asOwnerId } from "./index";
+import { asItemId, asOwnerId, asSortKey } from "./index";
 
 /**
  * Branded ID constructors must reject empty strings (trust-boundary
