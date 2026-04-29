@@ -15,35 +15,36 @@
 | # | File | Title | Lines |
 |---|------|-------|-------|
 | 1 | [`00-adrs/`](./00-adrs/00-overview.md) | 00 — Architecture Decision Records (ADRs) | subfolder |
-| 2 | [`01-spec-authoring-guide/`](./01-spec-authoring-guide/00-overview.md) | 01 — Spec Authoring Guide | subfolder |
-| 3 | [`02-coding-guidelines/`](./02-coding-guidelines/00-overview.md) | 02 — Coding Guidelines | subfolder |
-| 4 | [`03-error-manage/`](./03-error-manage/00-overview.md) | 03 — Error Management Specification | subfolder |
-| 5 | [`04-database-conventions/`](./04-database-conventions/00-overview.md) | 04 — Database Conventions | subfolder |
-| 6 | [`05-split-db-architecture/`](./05-split-db-architecture/00-overview.md) | 05 — Split Database Architecture | subfolder |
-| 7 | [`06-seedable-config-architecture/`](./06-seedable-config-architecture/00-overview.md) | 06 — Seedable Config Architecture + Changelog Versioning (also known as CW Config) | subfolder |
-| 8 | [`07-design-system/`](./07-design-system/00-overview.md) | 07 — AI-Adaptable Design System | subfolder |
-| 9 | [`08-docs-viewer-ui/`](./08-docs-viewer-ui/00-overview.md) | 08 — Docs Viewer UI — Overview | subfolder |
-| 10 | [`09-code-block-system/`](./09-code-block-system/00-overview.md) | 09 — Code Block System | subfolder |
-| 11 | [`10-powershell-integration/`](./10-powershell-integration/00-overview.md) | 10 — PowerShell Integration for Project Runner | subfolder |
-| 12 | [`11-research/`](./11-research/00-overview.md) | 11 — Research | subfolder |
-| 13 | [`12-consolidated-guidelines/`](./12-consolidated-guidelines/00-overview.md) | 12 — Consolidated Guidelines — Redirect Index | subfolder |
-| 14 | [`13-cicd-pipeline-workflows/`](./13-cicd-pipeline-workflows/00-overview.md) | 13 — CI/CD Pipeline Workflows | subfolder |
-| 15 | [`14-self-update-app-update/`](./14-self-update-app-update/00-overview.md) | 14 — Self-Update & App Update | subfolder |
-| 16 | [`15-wp-plugin-how-to/`](./15-wp-plugin-how-to/00-overview.md) | 15 — WordPress Plugin How-To | subfolder |
-| 17 | [`16-generic-cli/`](./16-generic-cli/00-overview.md) | 16 — Generic CLI Creation Guidelines — Overview | subfolder |
-| 18 | [`17-generic-update/`](./17-generic-update/00-overview.md) | 17 — Generic Update | subfolder |
-| 19 | [`18-spec-issues/`](./18-spec-issues/00-overview.md) | 18 — Spec Issues | subfolder |
-| 20 | [`19-glossary.md`](./19-glossary.md) | Glossary — Cross-Spec Terminology SSOT | 118 |
-| 21 | [`20-enums-index.md`](./20-enums-index.md) | Enums Index — Cross-Language Registry | 178 |
-| 22 | [`21-ai-readiness-audit-round-2.md`](./21-ai-readiness-audit-round-2.md) | AI-Readiness Audit Report — Round 2 (post C/M/H/L tier completion) | 138 |
-| 23 | [`22-contract-json.md`](./22-contract-json.md) | `spec/contract.json` — Machine-Readable Spec Contract | 104 |
-| 24 | [`23-ai-build-walkthrough.md`](./23-ai-build-walkthrough.md) | AI Build Walkthrough — End-to-End Smoke Test (P9) | 240 |
-| 25 | [`31-app/`](./31-app/00-overview.md) | 31 — App | subfolder |
-| 26 | [`32-ui-design/`](./32-ui-design/00-overview.md) | 32 — UI Design | subfolder |
-| 27 | [`33-feedback-report/`](./33-feedback-report/00-overview.md) | 33 — Feedback Report — Feature Spec | subfolder |
-| 28 | [`34-activity-feed/`](./34-activity-feed/00-overview.md) | 34 — Activity Feed — Feature Spec | subfolder |
-| 29 | [`35-enforcement-rules/`](./35-enforcement-rules/00-overview.md) | 35 — Enforcement Rules — Spec | subfolder |
-| 30 | [`36-user-management/`](./36-user-management/00-overview.md) | 36 — User Management — Feature Spec | subfolder |
+| 2 | [`00-scoping.md`](./00-scoping.md) | 00 — Spec Corpus Scoping | 125 |
+| 3 | [`01-spec-authoring-guide/`](./01-spec-authoring-guide/00-overview.md) | 01 — Spec Authoring Guide | subfolder |
+| 4 | [`02-coding-guidelines/`](./02-coding-guidelines/00-overview.md) | 02 — Coding Guidelines | subfolder |
+| 5 | [`03-error-manage/`](./03-error-manage/00-overview.md) | 03 — Error Management Specification | subfolder |
+| 6 | [`04-database-conventions/`](./04-database-conventions/00-overview.md) | 04 — Database Conventions | subfolder |
+| 7 | [`05-split-db-architecture/`](./05-split-db-architecture/00-overview.md) | 05 — Split Database Architecture | subfolder |
+| 8 | [`06-seedable-config-architecture/`](./06-seedable-config-architecture/00-overview.md) | 06 — Seedable Config Architecture + Changelog Versioning (also known as CW Config) | subfolder |
+| 9 | [`07-design-system/`](./07-design-system/00-overview.md) | 07 — AI-Adaptable Design System | subfolder |
+| 10 | [`08-docs-viewer-ui/`](./08-docs-viewer-ui/00-overview.md) | 08 — Docs Viewer UI — Overview | subfolder |
+| 11 | [`09-code-block-system/`](./09-code-block-system/00-overview.md) | 09 — Code Block System | subfolder |
+| 12 | [`10-powershell-integration/`](./10-powershell-integration/00-overview.md) | 10 — PowerShell Integration for Project Runner | subfolder |
+| 13 | [`11-research/`](./11-research/00-overview.md) | 11 — Research | subfolder |
+| 14 | [`12-consolidated-guidelines/`](./12-consolidated-guidelines/00-overview.md) | 12 — Consolidated Guidelines — Redirect Index | subfolder |
+| 15 | [`13-cicd-pipeline-workflows/`](./13-cicd-pipeline-workflows/00-overview.md) | 13 — CI/CD Pipeline Workflows | subfolder |
+| 16 | [`14-self-update-app-update/`](./14-self-update-app-update/00-overview.md) | 14 — Self-Update & App Update | subfolder |
+| 17 | [`15-wp-plugin-how-to/`](./15-wp-plugin-how-to/00-overview.md) | 15 — WordPress Plugin How-To | subfolder |
+| 18 | [`16-generic-cli/`](./16-generic-cli/00-overview.md) | 16 — Generic CLI Creation Guidelines — Overview | subfolder |
+| 19 | [`17-generic-update/`](./17-generic-update/00-overview.md) | 17 — Generic Update | subfolder |
+| 20 | [`18-spec-issues/`](./18-spec-issues/00-overview.md) | 18 — Spec Issues | subfolder |
+| 21 | [`19-glossary.md`](./19-glossary.md) | Glossary — Cross-Spec Terminology SSOT | 118 |
+| 22 | [`20-enums-index.md`](./20-enums-index.md) | Enums Index — Cross-Language Registry | 178 |
+| 23 | [`21-ai-readiness-audit-round-2.md`](./21-ai-readiness-audit-round-2.md) | AI-Readiness Audit Report — Round 2 (post C/M/H/L tier completion) | 138 |
+| 24 | [`22-contract-json.md`](./22-contract-json.md) | `spec/contract.json` — Machine-Readable Spec Contract | 104 |
+| 25 | [`23-ai-build-walkthrough.md`](./23-ai-build-walkthrough.md) | AI Build Walkthrough — End-to-End Smoke Test (P9) | 240 |
+| 26 | [`31-app/`](./31-app/00-overview.md) | 31 — App | subfolder |
+| 27 | [`32-ui-design/`](./32-ui-design/00-overview.md) | 32 — UI Design | subfolder |
+| 28 | [`33-feedback-report/`](./33-feedback-report/00-overview.md) | 33 — Feedback Report — Feature Spec | subfolder |
+| 29 | [`34-activity-feed/`](./34-activity-feed/00-overview.md) | 34 — Activity Feed — Feature Spec | subfolder |
+| 30 | [`35-enforcement-rules/`](./35-enforcement-rules/00-overview.md) | 35 — Enforcement Rules — Spec | subfolder |
+| 31 | [`36-user-management/`](./36-user-management/00-overview.md) | 36 — User Management — Feature Spec | subfolder |
 
 <!-- AUTO-TOC:END -->
 

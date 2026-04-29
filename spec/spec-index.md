@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-29  
-**Total Files:** 1472  
+**Total Files:** 1475  
 **Top-Level Folders:** 26
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -15,7 +15,7 @@
 
 ## Table of Contents
 
-- [00-adrs](#00-adrs) — 39 file(s)
+- [00-adrs](#00-adrs) — 40 file(s)
 - [01-spec-authoring-guide](#01-spec-authoring-guide) — 27 file(s)
 - [02-coding-guidelines](#02-coding-guidelines) — 310 file(s)
 - [03-error-manage](#03-error-manage) — 191 file(s)
@@ -40,7 +40,7 @@
 - [34-activity-feed](#34-activity-feed) — 4 file(s)
 - [35-enforcement-rules](#35-enforcement-rules) — 4 file(s)
 - [36-user-management](#36-user-management) — 5 file(s)
-- [root](#root) — 20 file(s)
+- [root](#root) — 22 file(s)
 
 ---
 
@@ -85,7 +85,8 @@
 | [`00-adrs/0029-per-gate-path-ledger-shared-lib.md`](./00-adrs/0029-per-gate-path-ledger-shared-lib.md) | ADR-0029 — Per-(Gate, Path) Ledger Consumers MUST Use the Shared Library | — | Accepted |
 | [`00-adrs/0030-audit-exemption-manifest.md`](./00-adrs/0030-audit-exemption-manifest.md) | ADR-0030 — Audit Exemption Manifest is the Sole False-Positive Channel | — | Accepted |
 | [`00-adrs/0031-warn-only-strict-flip-pattern.md`](./00-adrs/0031-warn-only-strict-flip-pattern.md) | ADR-0031 — Warn-Only-with-STRICT-Flip is the Sole Gate-Graduation Pattern | — | Accepted |
-| [`00-adrs/97-acceptance-criteria.md`](./00-adrs/97-acceptance-criteria.md) | ADRs — Acceptance Criteria | 1.3.0 | — |
+| [`00-adrs/0032-license-decision.md`](./00-adrs/0032-license-decision.md) | ADR-0032: License decision and ratification | — | — |
+| [`00-adrs/97-acceptance-criteria.md`](./00-adrs/97-acceptance-criteria.md) | ADRs — Acceptance Criteria | 1.15.0 | — |
 | [`00-adrs/97a-acceptance-criteria-fixtures.md`](./00-adrs/97a-acceptance-criteria-fixtures.md) | Spec — `00-adrs` Acceptance Criteria I/O Fixtures (ADR-0029 + ADR-0030) | 1.1.0 | Normative |
 
 ## 01-spec-authoring-guide
@@ -942,7 +943,7 @@
 | [`13-cicd-pipeline-workflows/18-wp-plugin-deploy/03-update-server-contract.md`](./13-cicd-pipeline-workflows/18-wp-plugin-deploy/03-update-server-contract.md) | 03.03 — Update Server Contract (CI/CD Bridge) | 1.0.0 | — |
 | [`13-cicd-pipeline-workflows/18-wp-plugin-deploy/04-version-sync.md`](./13-cicd-pipeline-workflows/18-wp-plugin-deploy/04-version-sync.md) | 03.04 — Version Synchronization (`package.json` → PHP) | 1.0.0 | — |
 | [`13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md`](./13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md) | WP-Plugin Deploy — Acceptance Criteria | 1.0.0 | — |
-| [`13-cicd-pipeline-workflows/97-acceptance-criteria.md`](./13-cicd-pipeline-workflows/97-acceptance-criteria.md) | CI/CD Pipeline Workflows — Acceptance Criteria | 2.0.0 | — |
+| [`13-cicd-pipeline-workflows/97-acceptance-criteria.md`](./13-cicd-pipeline-workflows/97-acceptance-criteria.md) | CI/CD Pipeline Workflows — Acceptance Criteria | 2.0.0 | RETIRED |
 | [`13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md`](./13-cicd-pipeline-workflows/97a-acceptance-criteria-fixtures.md) | CICD Pipeline Workflows — Acceptance Criteria I/O Fixtures | 1.0.0 | Concrete |
 | [`13-cicd-pipeline-workflows/99-consistency-report.md`](./13-cicd-pipeline-workflows/99-consistency-report.md) | Consistency Report — CI/CD Pipeline Workflows | 3.1.0 | — |
 | [`13-cicd-pipeline-workflows/README.md`](./13-cicd-pipeline-workflows/README.md) | 09 — Pipeline Specifications | — | — |
@@ -1410,7 +1411,7 @@
 | [`31-app/05-conventions/30-g37-stale-relative-link-gate.md`](./31-app/05-conventions/30-g37-stale-relative-link-gate.md) | G-37 — Stale Relative-Link Gate (Algorithm SSOT) | 1.0.0 | — |
 | [`31-app/05-conventions/31-wp-plugin-folder-skeleton.md`](./31-app/05-conventions/31-wp-plugin-folder-skeleton.md) | WP-Plugin Folder Skeleton — SSOT | 1.0.0 | Spec |
 | [`31-app/05-conventions/32-sse-php-implementation.md`](./31-app/05-conventions/32-sse-php-implementation.md) | Convention 23 — PHP SSE Implementation Pattern | 1.0.0 | Active |
-| [`31-app/05-conventions/33-state-management-architecture.md`](./31-app/05-conventions/33-state-management-architecture.md) | State Management Architecture | 1.0.0 | — |
+| [`31-app/05-conventions/33-state-management-architecture.md`](./31-app/05-conventions/33-state-management-architecture.md) | State Management Architecture | 1.1.0 | — |
 | [`31-app/05-conventions/97-acceptance-criteria.md`](./31-app/05-conventions/97-acceptance-criteria.md) | Conventions — Acceptance Criteria | 1.0.0 | — |
 | [`31-app/05-conventions/99-consistency-report.md`](./31-app/05-conventions/99-consistency-report.md) | Consistency Report — 05-conventions | 1.0.1 | — |
 | [`31-app/06-endpoints/00-overview.md`](./31-app/06-endpoints/00-overview.md) | 06 — Endpoints — Master Index | 1.0.0 | — |
@@ -1626,13 +1627,14 @@
 | File | Title | Version | Status |
 |------|-------|---------|--------|
 | [`_AUDIT-EXEMPTIONS.md`](./_AUDIT-EXEMPTIONS.md) | Spec Audit — Heuristic Exemptions Manifest | 1.0.0 | Active |
-| [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md) | Gate Graduation Ledger | 1.1.0 | Active |
-| [`_GATE-REGISTRY.md`](./_GATE-REGISTRY.md) | Gate Registry — Master Index of `G-*` Compliance Gates | 1.6.8 | — |
+| [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md) | Gate Graduation Ledger | 1.2.0 | Active |
+| [`_GATE-REGISTRY.md`](./_GATE-REGISTRY.md) | Gate Registry — Master Index of `G-*` Compliance Gates | 1.6.9 | — |
 | [`_LEDGER-G-00-AT-FIX-COMPANION-SHAPE-BASELINE.md`](./_LEDGER-G-00-AT-FIX-COMPANION-SHAPE-BASELINE.md) | Ledger — `G-00-AT-FIX-COMPANION-SHAPE` Baseline Allow-list | 1.0.0 | ACTIVE |
 | [`_LEDGER-G-13-BACKLINK-EXEMPT.md`](./_LEDGER-G-13-BACKLINK-EXEMPT.md) | Ledger — `G-13-FIXTURE-AS-SPEC-SHAPE` Phase-4 Backlink Exemptions | — | Live |
 | [`_LEDGER-G-NS-ADR-COVERAGE.md`](./_LEDGER-G-NS-ADR-COVERAGE.md) | Ledger — `G-NS-ADR-MUST-HAS-AT` Coverage Allow-list | 1.0.0 | DEFERRED |
 | [`_LEDGER-G-NS-LEGACY-EXEMPT.md`](./_LEDGER-G-NS-LEGACY-EXEMPT.md) | Ledger — `G-NS-NO-DEPRECATED-ALIAS` Legacy Exemptions | 1.0.0 | Active |
 | [`00-overview.md`](./00-overview.md) | Specification Root — AI Entrypoint | 1.0.0 | Active |
+| [`00-scoping.md`](./00-scoping.md) | 00 — Spec Corpus Scoping | — | Authoritative |
 | [`19-glossary.md`](./19-glossary.md) | Glossary — Cross-Spec Terminology SSOT | 1.1.0 | Active |
 | [`20-enums-index.md`](./20-enums-index.md) | Enums Index — Cross-Language Registry | 1.2.0 | Active |
 | [`21-ai-readiness-audit-round-2.md`](./21-ai-readiness-audit-round-2.md) | AI-Readiness Audit Report — Round 2 (post C/M/H/L tier completion) | 2.0.0 | — |
@@ -1640,12 +1642,13 @@
 | [`23-ai-build-walkthrough.md`](./23-ai-build-walkthrough.md) | AI Build Walkthrough — End-to-End Smoke Test (P9) | 1.0.0 | Active |
 | [`97a-acceptance-criteria-fixtures.md`](./97a-acceptance-criteria-fixtures.md) | Spec — P2g Remainder Acceptance Criteria I/O Fixtures (Sweep) | 1.0.0 | Normative |
 | [`99-consistency-report.md`](./99-consistency-report.md) | Consistency Report: Spec Root | 3.1.0 | — |
+| [`AUDIT-FINDINGS-LEDGER.md`](./AUDIT-FINDINGS-LEDGER.md) | Audit Findings Ledger | 1.0.0 | Authoritative |
 | [`folder-structure-root.md`](./folder-structure-root.md) | Folder Structure Root — Redirect | — | — |
 | [`health-dashboard.md`](./health-dashboard.md) | Project-Wide Spec Health Dashboard | — | — |
-| [`licensing-strategy.md`](./licensing-strategy.md) | Licensing Strategy | 1.1.0 | Draft |
+| [`licensing-strategy.md`](./licensing-strategy.md) | Licensing Strategy | 1.2.0 | Awaiting |
 | [`readme.md`](./readme.md) | Specifications Index | 1.1.0 | — |
 | [`spec-index.md`](./spec-index.md) | Spec File Index — Auto-Generated | — | — |
 
 ---
 
-*Auto-generated index — 1472 files across 26 top-level folders.*
+*Auto-generated index — 1475 files across 26 top-level folders.*

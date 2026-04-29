@@ -5,7 +5,7 @@
   "do_not_edit": true,
   "counts": {
     "acceptance_tests_defined": 2374,
-    "acceptance_tests_orphan_citations": 0,
+    "acceptance_tests_orphan_citations": 1,
     "endpoints": 48,
     "enums": 22,
     "sections": 25
@@ -1173,7 +1173,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 458
+          "line": 459
         }
       ]
     },
@@ -1402,6 +1402,14 @@
         {
           "file": "spec/00-adrs/0016-fractional-index-sortorder.md",
           "line": 67
+        },
+        {
+          "file": "spec/00-adrs/97-acceptance-criteria.md",
+          "line": 166
+        },
+        {
+          "file": "spec/00-adrs/97-acceptance-criteria.md",
+          "line": 166
         },
         {
           "file": "spec/31-app/00-overview.md",
@@ -1865,7 +1873,7 @@
       "cited_in": [
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 448
+          "line": 449
         },
         {
           "file": "spec/_LEDGER-G-NS-ADR-COVERAGE.md",
@@ -3517,6 +3525,10 @@
         {
           "file": "spec/31-app/97d-acceptance-criteria-fixtures.md",
           "line": 11
+        },
+        {
+          "file": "spec/AUDIT-FINDINGS-LEDGER.md",
+          "line": 194
         }
       ]
     },
@@ -5937,9 +5949,9 @@
     },
     {
       "id": "AT-CICD-14",
-      "definition": "Go-Binary archetype reference",
+      "definition": "Go-Binary archetype reference (RETIRED)",
       "defined_in": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
-      "defined_line": 116,
+      "defined_line": 117,
       "cited_in": [
         {
           "file": "spec/13-cicd-pipeline-workflows/97-acceptance-criteria.md",
@@ -8483,6 +8495,10 @@
         {
           "file": "spec/00-adrs/0017-eight-error-boundaries-ui-virtualization.md",
           "line": 179
+        },
+        {
+          "file": "spec/00-adrs/97-acceptance-criteria.md",
+          "line": 180
         }
       ]
     },
@@ -16865,6 +16881,10 @@
           "line": 197
         },
         {
+          "file": "spec/00-adrs/97-acceptance-criteria.md",
+          "line": 215
+        },
+        {
           "file": "spec/31-app/01-features/14b-offline-queue.md",
           "line": 88
         },
@@ -21463,7 +21483,12 @@
       "definition": "After 24 h offline, the `useOfflineQueueStore` survives reload via **IndexedDB** (per ADR-0021 — localStorage is forbidden), and replays in FIFO order on the next `online` event. (D9)",
       "defined_in": "spec/31-app/05-conventions/33-state-management-architecture.md",
       "defined_line": 263,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/31-app/05-conventions/33-state-management-architecture.md",
+          "line": 4
+        }
+      ]
     },
     {
       "id": "AT-TEMPLATES-01",
@@ -24510,6 +24535,10 @@
         {
           "file": "spec/36-user-management/01-account-and-settings.md",
           "line": 105
+        },
+        {
+          "file": "spec/36-user-management/01-account-and-settings.md",
+          "line": 105
         }
       ]
     },
@@ -24517,8 +24546,12 @@
       "id": "AT-USR-03",
       "definition": "Set password flow",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
-      "defined_line": 115,
+      "defined_line": 116,
       "cited_in": [
+        {
+          "file": "spec/36-user-management/01-account-and-settings.md",
+          "line": 106
+        },
         {
           "file": "spec/36-user-management/01-account-and-settings.md",
           "line": 106
@@ -24529,8 +24562,12 @@
       "id": "AT-USR-09",
       "definition": "Restore from backup",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
-      "defined_line": 122,
+      "defined_line": 124,
       "cited_in": [
+        {
+          "file": "spec/36-user-management/01-account-and-settings.md",
+          "line": 107
+        },
         {
           "file": "spec/36-user-management/01-account-and-settings.md",
           "line": 107
@@ -24541,8 +24578,12 @@
       "id": "AT-USR-11",
       "definition": "Theme selection persistence",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
-      "defined_line": 129,
+      "defined_line": 132,
       "cited_in": [
+        {
+          "file": "spec/36-user-management/01-account-and-settings.md",
+          "line": 108
+        },
         {
           "file": "spec/36-user-management/01-account-and-settings.md",
           "line": 108
@@ -24553,8 +24594,12 @@
       "id": "AT-USR-14",
       "definition": "Referrals",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
-      "defined_line": 136,
+      "defined_line": 140,
       "cited_in": [
+        {
+          "file": "spec/36-user-management/01-account-and-settings.md",
+          "line": 109
+        },
         {
           "file": "spec/36-user-management/01-account-and-settings.md",
           "line": 109
@@ -24565,8 +24610,12 @@
       "id": "AT-USR-15",
       "definition": "Help / Report a bug",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
-      "defined_line": 143,
+      "defined_line": 148,
       "cited_in": [
+        {
+          "file": "spec/36-user-management/01-account-and-settings.md",
+          "line": 110
+        },
         {
           "file": "spec/36-user-management/01-account-and-settings.md",
           "line": 110
@@ -26223,5 +26272,15 @@
       ]
     }
   ],
-  "orphan_at_citations": []
+  "orphan_at_citations": [
+    {
+      "id": "AT-XYZ-04",
+      "citedIn": [
+        {
+          "file": "spec/AUDIT-FINDINGS-LEDGER.md",
+          "line": 196
+        }
+      ]
+    }
+  ]
 }
