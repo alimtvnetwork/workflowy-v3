@@ -563,6 +563,7 @@ function printRationaleReport(violations) {
   console.log("");
   console.log(`G-31.5 (meta, ERROR) exemption-Set rationale-comment coverage:`);
   console.log(`  allow-lists scanned:                ${ALLOWLIST_NAMES.length} (${ALLOWLIST_NAMES.join(", ")})`);
+  console.log(`  ledger entries imported:            ${G31_LEDGER_IMPORTED} (${G31_LEDGER_PATH})`);
   console.log(`  entries missing rationale:          ${violations.length}`);
 
   if (violations.length === 0) {
