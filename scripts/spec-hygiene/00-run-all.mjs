@@ -56,6 +56,8 @@ const checks = [
   "scripts/spec-hygiene/54-check-ai-contract-complete.mjs",
   "scripts/spec-hygiene/55-check-runner-regex-anchors.mjs",
   "scripts/spec-hygiene/56-check-adr-xlink-symmetry.mjs",
+  "scripts/spec-hygiene/74-check-audit-findings-ledger.mjs",
+  "scripts/spec-hygiene/75-check-license-files-present.mjs",
   "scripts/spec-hygiene/04-generate-index.mjs",
 ];
 
