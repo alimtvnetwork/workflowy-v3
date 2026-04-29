@@ -1,7 +1,7 @@
 # ADRs — Acceptance Criteria
 
-> **Version:** 1.2.0
-> **Created:** 2026-04-29 — closes G-08 acceptance-coverage gap (P0 quick-win). **Updated:** 2026-04-29 — v1.1.0 added AT-ADR-G04 (ADR-0029 ledger shared-lib, 5 rows: AT-29-D1/D3/D4×3); v1.2.0 added AT-ADR-G05 (ADR-0030 audit-exemption manifest, 8 rows: AT-30-I1..I8).
+> **Version:** 1.3.0
+> **Created:** 2026-04-29 — closes G-08 acceptance-coverage gap (P0 quick-win). **Updated:** 2026-04-29 — v1.1.0 added AT-ADR-G04 (ADR-0029 ledger shared-lib, 5 rows: AT-29-D1/D3/D4×3); v1.2.0 added AT-ADR-G05 (ADR-0030 audit-exemption manifest, 8 rows: AT-30-I1..I8); **v1.3.0** added AT-ADR-G06 (ADR-0031 warn-only-with-STRICT-flip pattern, 8 rows: AT-31-D1..D7 + AT-31-PROTOCOL).
 > **Status:** ✅ SSOT — testable acceptance criteria for the ADR governance scope.
 
 > _Fixture: N/A — pure narrative reference, not a testable criterion._
@@ -84,6 +84,25 @@ The criteria are grouped into 3 categories: **shape** (file structure),
 | AT-30-I8-VISIBILITY | Every CI run MUST print `matched/total (pct%)` so reviewers can detect drift in PR output. | [`0030-audit-exemption-manifest.md`](./0030-audit-exemption-manifest.md) §D3 | `G-00-AUDIT-EXEMPTION-REVIEW` |
 
 ---
+
+## AT-ADR-G06: ADR-0031 — warn-only-with-STRICT-flip gate-graduation pattern
+
+> Ratifies the 8 acceptance tests cited inline by [`0031-warn-only-strict-flip-pattern.md`](./0031-warn-only-strict-flip-pattern.md) §6. Six are CI-enforced (gates `G-00-GRADUATION-LEDGER-FRESH`, `G-00-GRADUATION-LEDGER-DATE-DRIFT`, `G-38-AMBIGUOUS-WORDING`); two are DOC-tier (reviewer-enforced, future CI candidates). Closes **F-SPEC-13** (MED — surfaced by spec-vs-impl audit 2026-04-29) and **F-AUDIT-26** (MED — surfaced by re-audit v4; artifact: `/mnt/documents/spec-ai-implementability-audit-v4.json`).
+
+| # | Criterion | Source | Gate |
+|---|-----------|--------|------|
+| AT-31-D1-CLOSED-MODES | Every hygiene runner under `scripts/spec-hygiene/[0-9][0-9]-*.mjs` whose top-level docstring declares a `STRICT` constant MUST set it to literal `true` or `false` — no expressions, no `process.env` reads. | [`0031-warn-only-strict-flip-pattern.md`](./0031-warn-only-strict-flip-pattern.md) §D1 | DOC (reviewer; future CI candidate — promote when 4th non-literal STRICT appears) |
+| AT-31-D2-LEDGER-COVERAGE | Every `_GATE-REGISTRY.md` row whose description contains the literal `**WARN-only**` MUST appear as a row in `_GATE-GRADUATION-LEDGER.md` §Entries (or §Graduated entries). Conversely, every ledger row MUST cite a registry-known gate. | [`0031-warn-only-strict-flip-pattern.md`](./0031-warn-only-strict-flip-pattern.md) §D2 | `G-00-GRADUATION-LEDGER-FRESH` |
+| AT-31-D3-MEASURABLE-PREDICATE | Every §Entries row's `flipCriterion` cell MUST contain at least one of the 5 grammar markers: `count =`, `≤`, `consecutive CI`, `targetDate <`, OR a compound `AND`/`OR` joining two such clauses. Forbidden vague tokens (`eventually`, `to-be-determined`, the three-letter unspecified-marker, `next pass`, `event-driven`, `someday`) MUST NOT appear. | [`0031-warn-only-strict-flip-pattern.md`](./0031-warn-only-strict-flip-pattern.md) §D3 | `G-38-AMBIGUOUS-WORDING` (vague-token rejection) + DOC (grammar shape; future CI as `G-00-GRADUATION-LEDGER-CRITERION-SHAPE` once 4th predicate variant emerges) |
+| AT-31-D4-FLIP-MECHANISM-CITES-RUNNER | Every §Entries row's `flipMechanism` cell MUST cite a runner path matching `scripts/spec-hygiene/[0-9][0-9]-*.mjs` OR a ledger filename matching `_LEDGER-G-*-EXEMPTIONS.md` (for ledger-driven gates per ADR-0029). | [`0031-warn-only-strict-flip-pattern.md`](./0031-warn-only-strict-flip-pattern.md) §D4 | DOC (reviewer; future CI candidate — promote when 4th non-runner mechanism appears) |
+| AT-31-D5-ISO-DATE | Every §Entries row's `targetDate` MUST match `YYYY-MM-DD` AND MUST NOT be `< addedOn`. | [`0031-warn-only-strict-flip-pattern.md`](./0031-warn-only-strict-flip-pattern.md) §D5 | `G-00-GRADUATION-LEDGER-DATE-DRIFT` |
+| AT-31-D5-OVERDUE-FAIL | When `targetDate < today` for any §Entries row, gate #61 MUST exit 1 with stderr matching `/G-00-GRADUATION-LEDGER-DATE-DRIFT.*overdue/`. Meta-test at [`scripts/spec-hygiene/_tests/61.test.mjs`](../../scripts/spec-hygiene/_tests/61.test.mjs) locks the visibility-line contract. | [`0031-warn-only-strict-flip-pattern.md`](./0031-warn-only-strict-flip-pattern.md) §D5 | `G-00-GRADUATION-LEDGER-DATE-DRIFT` |
+| AT-31-D6-PROTOCOL-COMPLETE | A graduation PR MUST modify all 3 of: (a) the runner per `flipMechanism`, (b) `_GATE-GRADUATION-LEDGER.md` (row moved to §Graduated entries with `graduatedOn` cell appended), (c) `_GATE-REGISTRY.md` (WARN-only parenthetical removed). PRs missing any leg MUST be rejected. | [`0031-warn-only-strict-flip-pattern.md`](./0031-warn-only-strict-flip-pattern.md) §D6 | DOC (reviewer; future CI as task #42 — `Graduated entries` L10 validation in gate #60) |
+| AT-31-D7-NO-RETROACTIVE-DATES | A new §Entries row whose `targetDate < addedOn` MUST be rejected at PR time. Date-sanity branch of gate #61 enforces. | [`0031-warn-only-strict-flip-pattern.md`](./0031-warn-only-strict-flip-pattern.md) §D7 | `G-00-GRADUATION-LEDGER-DATE-DRIFT` |
+| AT-31-PROTOCOL-COOLING-WINDOW | The 6-step flip protocol §D6.1 MUST verify `flipCriterion` true for **7 consecutive CI runs** before steps 2–6. Skipping this step is forbidden. | [`0031-warn-only-strict-flip-pattern.md`](./0031-warn-only-strict-flip-pattern.md) §D6 | DOC (reviewer; CI tracking via ledger note column — future) |
+
+---
+
 
 
 - Gates `G-00-ADR-SHAPE`, `G-00-ADR-NUMBERING`, `G-00-ADR-STATUS`, `G-00-ADR-SUPERSEDE`, and `G-13-ADR-INDEX-CASCADE` are already implemented in `scripts/spec-hygiene/`.
