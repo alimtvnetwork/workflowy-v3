@@ -135,3 +135,30 @@ Layer-2.5 has no AI Contract counterpart by design: AI Contract subsection bodie
 **Trio Layer-2.5 final state:**
 - Scoring side: 4 hard-fail rules (value shapes ×3 + single-section invariant).
 - AI Contract side: no Layer-2.5 by design (subsection bodies are free-form prose).
+
+---
+
+## Runner wired (2026-04-29, same day)
+
+**Added:** `scripts/spec-hygiene/18-check-scoring-value-format.mjs` (Node ESM, 0 deps).
+
+**Implementation notes:**
+- Glob: `spec/[0-9][0-9]-*/00-overview.md` via `readdirSync` + `TOP_LEVEL_RE = /^[0-9]{2}-/` filter (matches the gate's stated scope).
+- Strips fenced code blocks (` ``` `) before heading enumeration so a `## Scoring` *inside* a code fence doesn't false-flag (matches gate's "exempt zones" clause).
+- Detects all `^(##|###)\s+Scoring(\s|$)/` headings and runs Rules 1–3 inside each block; Rule 4 (single section per file) checks heading count.
+- Emits `<file>:<line>: <message>` for each finding (click-jumpable in CI logs).
+- Exit code 1 on any violation; runner aggregates via `failed += 1` per `00-run-all.mjs` line 50.
+
+**Self-test results:**
+- Green path: `node scripts/spec-hygiene/18-check-scoring-value-format.mjs` → exit 0, "25/25 top-level overviews clean".
+- Red path: temp-injected `100/100` into `03-error-manage`'s Health Score → exit 1 with message `spec/03-error-manage/00-overview.md:237: Health Score value '100/100' does not match canonical '\d{1,3}% (A-F[+-]?)' — Rule 1 (see G-00-OVERVIEW-SCORING-VALUE-FORMAT).` File restored after test.
+
+**Wired position:** `00-run-all.mjs` slot 18, between `16-check-tailwind-tokens.mjs` and `19-check-runbook-staleness.mjs`. This satisfies `G-13-AUDIT-RUNNER-CONTRACT` Rule 6 (every `\d{2}-check-*.mjs` MUST appear in the `checks` array).
+
+**Layer-2.5 trio status:** complete with runner. The overview-root contract trio is now fully enforced by 6 named gates with runners across 3 layers:
+
+| Layer | H1 | Scoring | AI Contract |
+|-------|----|----|----|
+| 1 (presence) | `G-09-OVERVIEW-H1-MATCHES-FOLDER-INDEX` ✅ | `G-00-OVERVIEW-SCORING-TABLE-PRESENT` ✅ | `G-00-OVERVIEW-AI-CONTRACT-PRESENT` ✅ |
+| 2 (rows / subsections) | n/a | `G-00-OVERVIEW-SCORING-TABLE-COMPLETE` ✅ | `G-00-OVERVIEW-AI-CONTRACT-COMPLETE` ✅ |
+| 2.5 (value shapes / single-section) | n/a | **`G-00-OVERVIEW-SCORING-VALUE-FORMAT`** ✅ (this gate, runner: `18-check-scoring-value-format.mjs`) | n/a — bodies are prose |
