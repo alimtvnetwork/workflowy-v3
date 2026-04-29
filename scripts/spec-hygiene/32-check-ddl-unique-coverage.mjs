@@ -112,10 +112,64 @@ const NONUNIQUE_EXEMPT = new Set([
 const PARITY_EXEMPT = new Set([
   // "IdxFoo_Bar:predicate",  // rationale: doc paraphrases predicate for clarity
 ]);
+
+// =====================================================================
+// Per-(gate, path) ledger loader (Phase-2 sibling #3 of G-30/G-31).
+// Reads `spec/31-app/05-conventions/_LEDGER-G-32-EXEMPTIONS.md`, parses
+// the `## Entries` table, and unions each row into the matching in-source
+// override Set above. Hard-fails on schema violations so a malformed
+// ledger row cannot silently weaken the gate.
+// =====================================================================
+
+const G32_LEDGER_PATH = "spec/31-app/05-conventions/_LEDGER-G-32-EXEMPTIONS.md";
+
+const G32_CATEGORY_TO_SET = {
+  coverage:  COVERAGE_EXEMPT,
+  reverse:   REVERSE_EXEMPT,
+  nonunique: NONUNIQUE_EXEMPT,
+  parity:    PARITY_EXEMPT,
+};
+
 function fail(msg, code = 2) {
   console.error(`G-32 runner error: ${msg}`);
   process.exit(code);
 }
+
+function loadG32Exemptions() {
+  let raw;
+  try {
+    raw = readFileSync(G32_LEDGER_PATH, "utf8");
+  } catch (e) {
+    fail(`G-32 ledger: cannot read ${G32_LEDGER_PATH}: ${e.message}`);
+  }
+  const lines = raw.split("\n");
+  const entriesIdx = lines.findIndex((l) => /^##\s+Entries\s*$/.test(l));
+  if (entriesIdx < 0) fail(`G-32 ledger: missing '## Entries' section`);
+
+  const stripBackticks = (s) => s.replace(/^`(.*)`$/, "$1");
+  let imported = 0;
+  for (let i = entriesIdx + 1; i < lines.length; i += 1) {
+    const line = lines[i];
+    if (/^##\s/.test(line)) break;
+    if (!line.trim().startsWith("|")) continue;
+    if (/^\|\s*-+/.test(line)) continue;
+    if (/^\|\s*gate\s*\|/i.test(line)) continue;
+    const cells = line.split("|").slice(1, -1).map((c) => c.trim());
+    if (cells.length < 5) continue;
+    const [gate, , entryRaw, rationale] = cells;
+    const entry = stripBackticks(entryRaw);
+    const m = gate.match(/^G-32\.\d+\.(coverage|reverse|nonunique|parity)$/);
+    if (!m) fail(`G-32 ledger: malformed gate \`${gate}\` at line ${i + 1}`);
+    const category = m[1];
+    if (!entry) fail(`G-32 ledger: empty entry at line ${i + 1}`);
+    if (!rationale) fail(`G-32 ledger: empty rationale for \`${entry}\` at line ${i + 1}`);
+    G32_CATEGORY_TO_SET[category].add(entry);
+    imported += 1;
+  }
+  return imported;
+}
+
+const G32_LEDGER_IMPORTED = loadG32Exemptions();
 
 function readOrFail(path) {
   try {
