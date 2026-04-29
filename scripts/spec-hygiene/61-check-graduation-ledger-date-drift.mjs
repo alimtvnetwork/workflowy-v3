@@ -24,6 +24,7 @@
 
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { splitMdRow } from './_lib/md-table.mjs';
 
 const ROOT = process.cwd();
 const LEDGER = join(ROOT, 'spec', '_GATE-GRADUATION-LEDGER.md');
@@ -45,7 +46,7 @@ function extractRows(src) {
     const l = lines[i];
     if (!l.trim() || l.startsWith('#')) break;
     if (!l.includes('|')) continue;
-    const cells = l.split('|').map((c) => c.trim().replace(/^`|`$/g, '')).filter((_, idx, arr) => idx > 0 && idx < arr.length - 1);
+    const cells = splitMdRow(l);
     if (cells.length === 7) rows.push({ gate: cells[0], mode: cells[1], targetDate: cells[4] });
   }
   return rows;
