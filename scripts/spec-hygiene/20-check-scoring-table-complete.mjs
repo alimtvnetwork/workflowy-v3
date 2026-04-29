@@ -75,15 +75,22 @@ function stripFencedCodeBlocks(lines) {
 }
 
 function findScoringBlock(lines) {
-  // Returns { start, end } indices (inclusive) of the first Scoring block,
-  // or null if none. Block ends at next `^## ` heading or EOF.
-  for (let i = 0; i < lines.length; i += 1) {
-    if (SCORING_BLOCK_START_RE.test(lines[i]) === false) continue;
-    let end = lines.length - 1;
-    for (let j = i + 1; j < lines.length; j += 1) {
-      if (NEXT_HEADING_RE.test(lines[j])) { end = j - 1; break; }
+  // Prefer a real `^(##|###)\s+Scoring\b` heading. Fall back to `**Scoring**`
+  // bold marker, then `^| Criterion |` table marker. This avoids selecting a
+  // stray `| Criterion |` rubric table that precedes the actual values block.
+  const HEADING_RE = /^(##|###)\s+Scoring(\s|$)/i;
+  const BOLD_RE = /^\*\*Scoring\*\*/i;
+  const TABLE_RE = /^\|\s*Criterion\s*\|/i;
+
+  for (const probe of [HEADING_RE, BOLD_RE, TABLE_RE]) {
+    for (let i = 0; i < lines.length; i += 1) {
+      if (probe.test(lines[i]) === false) continue;
+      let end = lines.length - 1;
+      for (let j = i + 1; j < lines.length; j += 1) {
+        if (NEXT_HEADING_RE.test(lines[j])) { end = j - 1; break; }
+      }
+      return { start: i, end };
     }
-    return { start: i, end };
   }
   return null;
 }
@@ -117,12 +124,14 @@ function checkFile(file) {
   if (amLine === -1) hardFails.push(`${file}: Scoring block missing canonical row 'Ambiguity' — Rule 1.`);
   if (hsLine === -1) hardFails.push(`${file}: Scoring block missing canonical row 'Health Score' — Rule 1.`);
 
-  // Rule 2 (WARN) — each canonical row has a parseable numeric score.
-  for (const [label, idx] of [["AI Confidence", aiLine], ["Ambiguity", amLine], ["Health Score", hsLine]]) {
-    if (idx === -1) continue;
-    if (SCORE_VALUE_RE.test(lines[idx]) === false) {
-      warnings.push(`${file}:${idx + 1}: row '${label}' has no parseable numeric score — Rule 2 (WARN).`);
-    }
+  // Rule 2 (HARD-FAIL, narrowed 2026-04-29) — Health Score row carries a
+  // parseable numeric. AI Confidence / Ambiguity rows carry tokens (per
+  // Layer-2.5 gate G-00-OVERVIEW-SCORING-VALUE-FORMAT), not numerics, so
+  // they're exempt from Rule 2.
+  if (hsLine !== -1 && SCORE_VALUE_RE.test(lines[hsLine]) === false) {
+    hardFails.push(
+      `${file}:${hsLine + 1}: Health Score row has no parseable numeric score — Rule 2.`
+    );
   }
 
   // Rule 3 (WARN) — Health Score row is last among the three.
