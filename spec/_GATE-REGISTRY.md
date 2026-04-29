@@ -1,11 +1,11 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.6.8  
-> **Updated:** 2026-04-29 — **Gate-graduation ledger seeded.** Sibling file [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md) now consolidates the flip-criteria + target-date for all 8 WARN-only gates in this registry (`G-NS-STATUS-IN-LEGEND`, `G-NS-ADR-MUST-HAS-AT`, `G-01-DOD-CONDENSED-MIRRORS-OVERVIEW`, `G-00-OVERVIEW-AI-CONTRACT-PRESENT` sub-tier, `G-00-OVERVIEW-AI-CONTRACT-COMPLETE` rules-3-to-5, `G-00-ADR-CONSEQUENCES-XLINK` (already drained — flip-eligible NOW), `G-00-AT-FIX-COMPANION-SHAPE`, `G-00-PLACEHOLDER-DENSITY`). Single grep now answers "which gates are still soft?" — eliminates registry scan. Closes the gate-tracking gap surfaced after this cycle's #57/#58/#59 trio. Prior: 1.6.7 (re-audit v3 ratified + companion-fixture pattern formalised + hygiene baseline GREEN).
+> **Version:** 1.6.9  
+> **Updated:** 2026-04-29 — **ADR-0032 license-decision gate registered.** Added `G-32-LICENSE-FILES-PRESENT` (CI, WARN-only) per task #52c follow-through to ADR-0032 ratification (task #52). Gate enforces ADR-0032 D1–D3 (root `LICENSE` GPL-2.0-or-later, `LICENSE-SPEC` CC-BY-4.0, `TRADEMARK.md`). Runner skeleton at `scripts/spec-hygiene/75-check-license-files-present.mjs` (warn-only until first F-IMPL cycle lands the files); graduation entry seeded in `_GATE-GRADUATION-LEDGER.md` v1.2.0 with `targetDate: 2026-09-30` and `flipCriterion: 3 required files present at repo root for ≥7 consecutive CI runs`. Prior: 1.6.8 (gate-graduation ledger seeded).
 
-- **Total named gates:** 316 (+1 this revision: `G-00-GRADUATION-LEDGER-DATE-DRIFT`; +meta-test `_tests/60.test.mjs`)
-- **WARN-only gates:** 8 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
-- **CI:** 43
+- **Total named gates:** 317 (+1 this revision: `G-32-LICENSE-FILES-PRESENT`)
+- **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
+- **CI:** 44
 - **TEST:** 14 (unchanged)
 - **DOC-NORM:** 53 (unchanged)
 - **DOC:** 202 (unchanged)
