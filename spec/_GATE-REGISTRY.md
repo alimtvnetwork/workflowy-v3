@@ -1,13 +1,13 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.13  
-> **Updated:** 2026-04-29 — **batch-16 prose→AT migration:** registered 8 new `G-13-LEDGER-*` sub-gates (`-IMPL-PARITY`, `-RUNNER-FILTER`, `-FIVE-COLUMN-SCHEMA`, `-SCHEMA-SHAPE`, `-GATE-EXISTENCE`, `-GLOB-NON-EMPTY`, `-RATIONALE-PROSE`, `-RUNNER-CLEAN-OUTPUT`) covering 8 prose-MUSTs in `spec/13-cicd-pipeline-workflows/scripts-as-spec/per-gate-path-ledger-schema.md`. All DOC-NORM tier; sub-rules of the existing umbrella `G-13-LEDGER-PER-GATE-PATH` (CI). Pre-flight namespace check OK (24 sibling gates already in `G-13-*` family, no collisions). Prior: 1.7.12 (batch-15 G-13-FIXTURE-SHAPE-* sub-gates).
+> **Version:** 1.7.14  
+> **Updated:** 2026-04-29 — **batch-17 prose→AT migration:** registered 6 new `G-BACKUP-*` sub-gates (`-CLIENT-SIDE-ENCRYPT` promoted from reserved, `-S3-CONFIG-HARDENED`, `-NO-SENSITIVE-IN-TARBALL`, `-RESTORE-AUDIT-REWALK`, `-DRILL-CADENCE-90D`, `-SCHEDULE-CRON-PARITY`) covering 7 prose-MUSTs in `spec/31-app/05-conventions/21-g28-backup-coverage-gate.md`. All CI tier (umbrella `G-BACKUP` is CI). **Pre-flight namespace check caught a critical collision:** the source file labelled itself "G-28" but the `G-28-*` namespace is fully owned by ADR-0028 (i18n). Used the existing `G-BACKUP-*` family established by F-SCOPE-15 instead — this batch effectively closes the §axis-content portion of `F-SCOPE-15-FOLLOWUP` (axis prose now cites `G-BACKUP-*`; only the file-title and §Reserved Gate ID line still say "G-28"). Existing `G-BACKUP-RESTORE-INTEGRITY-CHECK` reused for axis 5 first half (PRAGMA pairing); axis 1 (SQLite-API exclusivity) reuses umbrella `G-BACKUP` (no per-axis MUST in source — the rule is in code-block algorithm only). Prior: 1.7.13 (batch-16 G-13-LEDGER-* sub-gates).
 
-- **Total named gates:** 412 (+8 this revision: eight `G-13-LEDGER-*`)
+- **Total named gates:** 418 (+6 this revision: six `G-BACKUP-*`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
-- **CI:** 79 (unchanged)
+- **CI:** 85 (+6 this revision)
 - **TEST:** 17 (unchanged)
-- **DOC-NORM:** 111 (+8 this revision)
+- **DOC-NORM:** 111 (unchanged)
 - **DOC:** 202 (unchanged)
 - **Areas covered:** 46 (unchanged)
 - **Areas covered:** 37 (unchanged)
