@@ -1,4 +1,4 @@
-# Activity Feed — Feature Spec
+# 34 — Activity Feed — Feature Spec
 
 <!-- P24-RUBRIC-SELFCHECK -->
 ## Audit-Rubric Self-Check (P24)

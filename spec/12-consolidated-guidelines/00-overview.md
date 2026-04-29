@@ -1,4 +1,4 @@
-# Consolidated Guidelines — Redirect Index
+# 12 — Consolidated Guidelines — Redirect Index
 
 > **Version:** 4.1.0
 > **Updated:** 2026-04-26 (UTC+8) — collapsed duplicate Scoring block; added disambiguation vs `02-coding-guidelines/consolidated-review-guide/` (closes F-AUD30-09).

@@ -1,5 +1,5 @@
 
-# Coding Guidelines
+# 02 — Coding Guidelines
 
 
 > **Version:** 3.2.0  

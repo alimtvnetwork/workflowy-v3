@@ -1,4 +1,4 @@
-# Spec Authoring Guide
+# 01 — Spec Authoring Guide
 
 > **Version:** 4.1.0 (split into sibling files 2026-04-20)
 > **Updated:** 2026-04-29 — added `### Scoring` table to AI Contract block (closes audit issue #9 residual; `01-` was the last of 25 top-level overviews lacking it).

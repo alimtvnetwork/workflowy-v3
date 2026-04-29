@@ -1,4 +1,4 @@
-# Split Database Architecture
+# 05 — Split Database Architecture
 
 <!-- P24-RUBRIC-SELFCHECK -->
 ## Audit-Rubric Self-Check (P24)

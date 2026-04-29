@@ -1,4 +1,4 @@
-# Seedable Config Architecture + Changelog Versioning (also known as CW Config)
+# 06 — Seedable Config Architecture + Changelog Versioning (also known as CW Config)
 
 <!-- P24-RUBRIC-SELFCHECK -->
 ## Audit-Rubric Self-Check (P24)

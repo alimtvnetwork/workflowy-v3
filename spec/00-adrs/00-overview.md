@@ -1,4 +1,4 @@
-# Architecture Decision Records (ADRs)
+# 00 — Architecture Decision Records (ADRs)
 
 > **Version:** 1.1.0
 > **Created:** 2026-04-28 · **Updated:** 2026-04-29 — added AI Contract block + Scoring table (audit issue #9: missing Scoring table; broader fix: full AI Contract was absent).

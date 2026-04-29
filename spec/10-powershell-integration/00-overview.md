@@ -1,4 +1,4 @@
-# PowerShell Integration for Project Runner
+# 10 — PowerShell Integration for Project Runner
 
 <!-- P24-RUBRIC-SELFCHECK -->
 ## Audit-Rubric Self-Check (P24)

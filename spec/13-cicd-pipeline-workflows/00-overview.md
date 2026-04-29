@@ -1,4 +1,4 @@
-# CI/CD Pipeline Workflows
+# 13 — CI/CD Pipeline Workflows
 
 <!-- P24-RUBRIC-SELFCHECK -->
 ## Audit-Rubric Self-Check (P24)
