@@ -143,9 +143,9 @@ This file pairs every AT row added in `97-acceptance-criteria.md` v1.1.0 (AT-ADR
 |------|-------|
 | **Given** | Manifest passes I1–I7. |
 | **When** | Gate `#57` runs in a CI environment. |
-| **Expected exit** | `0` AND stdout MUST contain a line matching `/G-00-AUDIT-EXEMPTION-REVIEW PASS \d+\/\d+ rows? \(\d+\.\d+% of corpus matched\)/`. |
-| **Then (positive)** | Reviewers can grep PR CI logs for `% of corpus matched` to detect drift (e.g., a sudden jump from 3.4% → 12% triggers human review). |
-| **Negative fixture** | A gate revision that silently drops the visibility line MUST be rejected by a meta-test at `scripts/spec-hygiene/_tests/57.test.mjs` (planned follow-up; absence of the test file is in scope for AT-29-style sweeps). Until that file exists, AT-30-I8 is enforced indirectly by reviewer convention: PR templates require pasting the matched-rows line. |
+| **Expected exit** | `0` AND stdout MUST contain a line matching `/matches?\s+\d+\/\d+\s+files?\s+\(\d+(?:\.\d+)?%\)/` (e.g. `[G-00-AUDIT-EXEMPTION-REVIEW] ✓ 8 exemption row(s) valid; matches 53/1513 files (3.5%)`). |
+| **Then (positive)** | Reviewers can grep PR CI logs for `matches N/M files (P.P%)` to detect drift (e.g., a sudden jump from 3.4% → 12% triggers human review). |
+| **Negative fixture** | A gate revision that silently drops the visibility line MUST be rejected by the meta-test at [`scripts/spec-hygiene/_tests/57.test.mjs`](../../scripts/spec-hygiene/_tests/57.test.mjs) (authored 2026-04-29, wired into `00-run-all.mjs`). Negative-tested by tampering line 125 of the runner to omit the match-count substring → meta-test exits `1` with stderr `FAIL AT-30-I8: runner stdout missing visibility line matching /matches N/M files (P.P%)/`; restoring → exit `0`. |
 
 ---
 
