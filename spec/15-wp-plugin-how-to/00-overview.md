@@ -15,9 +15,9 @@
 - All responses MUST conform to the PascalCase envelope (`Status`/`Attributes`/`Results` mandatory) per `spec/04-database-conventions/06-rest-api-format/`.
 
 **Out of Scope** —
-- Frontend React code → `spec/32-ui-design/`.
-- REST envelope shape itself → `spec/04-database-conventions/06-rest-api-format/`.
-- WordPress core hardening / hosting → `spec/13-cicd-pipeline-workflows/` + `23-operator-runbooks/`.
+- Frontend React code → [`spec/32-ui-design/`](../32-ui-design/).
+- REST envelope shape itself → [`spec/04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/).
+- WordPress core hardening / hosting → [`spec/13-cicd-pipeline-workflows/`](../13-cicd-pipeline-workflows/) + `23-operator-runbooks/`.
 
 **Definition of Done** —
 - Every endpoint listed in `spec/contract.json` has a controller method whose name matches the generated stub in `skeletons/php/RestRoutes.generated.php`.

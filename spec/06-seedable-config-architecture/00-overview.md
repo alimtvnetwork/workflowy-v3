@@ -50,7 +50,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 - `wp-plugin/includes/Migration/SeedConfigMigration.php` — first-run seeder
 
 **Out of Scope** —
-- Secrets management — secrets stay in `wp-config.php`, never in the seed JSON
+- Secrets management — secrets stay in `wp-config.php`, never in the seed JSON ([owning section](./00-overview.md))
 - Per-user UI preferences — see [`spec/36-user-management/01-account-and-settings.md`](../36-user-management/01-account-and-settings.md)
 
 **Definition of Done** —

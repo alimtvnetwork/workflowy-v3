@@ -43,7 +43,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 - `scripts/lib/cli.mjs` — Node-side equivalent
 
 **Out of Scope** —
-- Script-specific business logic — that lives in the script itself
+- Script-specific business logic — that lives in the script itself ([owning section](./00-overview.md))
 
 **Definition of Done** —
 - Every script supports `--help`, `--json`, and `--verbose`

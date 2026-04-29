@@ -55,10 +55,10 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 - Fixtures: one JSON envelope per endpoint listed in `06-endpoints/` under `04a-fixtures/`.
 
 **Out of Scope** —
-- Visual styling tokens → `07-design-system/` and `32-ui-design/03-design-system/`.
-- WP-plugin scaffolding (composer, autoload) → `15-wp-plugin-how-to/`.
-- REST envelope rules → `04-database-conventions/06-rest-api-format/`.
-- Coding-rule enforcement → `02-coding-guidelines/`.
+- Visual styling tokens → [`07-design-system/`](../07-design-system/) and `32-ui-design/03-design-system/`.
+- WP-plugin scaffolding (composer, autoload) → [`15-wp-plugin-how-to/`](../15-wp-plugin-how-to/).
+- REST envelope rules → [`04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/).
+- Coding-rule enforcement → [`02-coding-guidelines/`](../02-coding-guidelines/).
 
 **Definition of Done** —
 - Every endpoint in `06-endpoints/` has a controller + a TS client method + a fixture + an `AT-*` test.

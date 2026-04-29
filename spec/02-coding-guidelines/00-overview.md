@@ -18,9 +18,9 @@
 - Per-AT test in `97-acceptance-criteria.md` enforced by a hygiene script under `scripts/spec-hygiene/`.
 
 **Out of Scope** —
-- Architecture/runtime choices → `mem://architecture/tech-stack` and `15-wp-plugin-how-to/`.
-- REST envelope shape → `04-database-conventions/06-rest-api-format/`.
-- File/folder naming for product features → `08-file-folder-naming/`.
+- Architecture/runtime choices → [`mem://architecture/tech-stack`](mem://architecture/tech-stack) and `15-wp-plugin-how-to/`.
+- REST envelope shape → [`04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/).
+- File/folder naming for product features → [`08-file-folder-naming/`](../08-file-folder-naming/).
 
 **Definition of Done** —
 - Every `AT-CODINGGUIDELINES-*` row in `97-acceptance-criteria.md` is enforced by either a lint rule (config diff) or a hygiene script (script path).

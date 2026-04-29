@@ -17,7 +17,7 @@
 - `spec/11-research/<topic>.md` — research note with explicit "Status: Research" header
 
 **Out of Scope** —
-- Anything normative — once a research file becomes binding, it MUST be moved into a numbered section and given an AT row.
+- Anything normative — once a research file becomes binding, it MUST be moved into a numbered section and given an AT row. ([owning section](./00-overview.md))
 
 **Definition of Done** —
 - Every file in this folder carries `> **Status:** Research (not normative)` in its front-matter
