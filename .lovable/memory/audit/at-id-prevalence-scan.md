@@ -1,0 +1,74 @@
+---
+name: AT-ID Prevalence Scan
+description: Quantifies AT-ID format conformance across all 97-acceptance-criteria.md files; output of audit task #18 on 2026-04-29
+type: reference
+---
+
+# AT-ID Prevalence Scan — 2026-04-29
+
+> Quantifies the audit's task #2 (AT-ID convention sweep) before committing effort.
+
+## Headline
+
+| Metric | Value |
+|---|---:|
+| Total AC files scanned | 123 |
+| Canonical `AT-X-NN` occurrences | 2,317 |
+| Legacy `AC-NNN` occurrences | 100 |
+| **File-level conformance** | **113 / 123 = 91.9 %** |
+
+## File-level breakdown
+
+| Bucket | Count | Notes |
+|---|---:|---|
+| ✓ canonical-only | 113 | No action needed |
+| ✗ legacy-only | 4 | Hot-spots (see below) |
+| ⚠ mixed (both formats coexist) | 2 | Fix mixed first — silent drift risk |
+| ∅ no IDs at all | 4 | Subset of the 54 placeholder pool |
+
+## Hot-spot files (priority order)
+
+| Priority | File | Legacy IDs | Effort |
+|---|---|---:|---|
+| P1 | `07-design-system/97-acceptance-criteria.md` | 34 | s |
+| P2 | `02-coding-guidelines/97-acceptance-criteria.md` | 27 | s |
+| P3 | `01-spec-authoring-guide/97-acceptance-criteria.md` | 22 | s |
+| P4 | `02-coding-guidelines/07-csharp/97-acceptance-criteria.md` | 7 | xs |
+| P5 (mixed) | `03-error-manage/97-acceptance-criteria.md` | 6 legacy / 2 canon | xs |
+| P6 (mixed) | `02-coding-guidelines/01-cross-language/97-acceptance-criteria.md` | 4 legacy / 7 canon | xs |
+
+**Total fix surface: 100 IDs across 6 files** — far smaller than the audit's "+7 pts, s effort" implied; reality is closer to **+6 pts, m effort** (because each rename must also cascade to fixture files, contract.json refs, and any cross-citing overview).
+
+## Cascade impact
+
+Per legacy ID, expected ripple:
+- 1 row in the AC file (definition)
+- 0–2 rows in `97a-acceptance-criteria-fixtures.md` (fixture binding)
+- 0–1 row in `spec/contract.json` (gate G-40 reachability)
+- 0–N citations in sibling overviews / consistency reports
+
+## Bonus finding — namespace sprawl
+
+**162 distinct `AT-<PREFIX>-` namespaces** in use across 113 conforming files. Top 8:
+
+| Count | Prefix |
+|---:|---|
+| 168 | `AT-APP-` |
+| 33 | `AT-WPPLUGINDEPLOY-` |
+| 28 | `AT-DBDIAGRAM-` |
+| 26 | `AT-UIDESIGN-` |
+| 24 | `AT-ENUMS-` |
+| 24 | `AT-ENDPOINTS-` |
+| 23 | `AT-DOCSVIEWERUI-` |
+| 23 | `AT-UIDS-` ⚠ |
+
+`AT-UIDESIGN-` (26) and `AT-UIDS-` (23) both target the `32-ui-design/` folder — likely a synonym split that needs collapsing. Worthy of a follow-up scan: "namespace synonym detection" (Levenshtein ≤2 on prefix names, plus shared folder ancestry).
+
+## Implication for task ranking
+
+- Task #2 (AT-ID sweep) effort downgraded from `+7 / s` → `+6 / m` (cascade work).
+- New task: **#19 Namespace synonym audit** (+2 pts, s) — likely reveals 3–8 collapse candidates.
+
+## How to reproduce
+
+Re-run `/tmp/at_id_scan.py` (logic embedded in 2026-04-29 conversation). Inputs: every `spec/**/97-acceptance-criteria.md`. Regex: `AT-[A-Z0-9]+-\d+` vs `AC-\d+`.
