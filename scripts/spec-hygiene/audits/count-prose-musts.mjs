@@ -1,6 +1,11 @@
 #!/usr/bin/env node
-// Counts prose-MUSTs that are NOT inside an AT-* fixture row block.
-// An AT-* row block = lines from `### \`AT-…\`` heading until next `### ` or `## ` heading.
+// AT-block-aware prose-MUST counter (v2 — handles heading nesting).
+// A line is "in an AT block" if ANY ancestor heading (walking up through ALL
+// ###/####/## levels) cites `AT-…-`. The v1 bug was stopping at the first
+// heading found — but `#### Assertion contract` is a child of `### AT-WIRE-EGRESS-01`.
+//
+// Algorithm: maintain a stack of (level, citesAT) for the heading hierarchy.
+// At every line, the line is "in an AT block" if any frame in the stack is true.
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 
@@ -17,32 +22,34 @@ function walk(dir, acc = []) {
   return acc;
 }
 
-function inAtBlock(lines, idx) {
-  // Walk upward to find the nearest `### ` or `## ` heading; return true if it cites AT-
-  for (let i = idx; i >= 0; i--) {
-    const m = lines[i].match(/^#{2,4}\s+(.+)$/);
-    if (!m) continue;
-    return /AT-[A-Z]+-/.test(m[1]);
+function countFile(file) {
+  const lines = readFileSync(file, "utf8").split("\n");
+  const stack = []; // {level, citesAT}
+  let n = 0;
+  for (const ln of lines) {
+    const h = ln.match(/^(#{2,6})\s+(.+)$/);
+    if (h) {
+      const level = h[1].length;
+      while (stack.length && stack[stack.length - 1].level >= level) stack.pop();
+      stack.push({ level, citesAT: /AT-[A-Z]+-/.test(h[2]) });
+      continue;
+    }
+    if (!/\b(MUST|SHALL)\b/.test(ln)) continue;
+    if (/AT-[A-Z]+-|G-[0-9N][0-9NS]?-/.test(ln)) continue;
+    if (stack.some((f) => f.citesAT)) continue;
+    n++;
   }
-  return false;
+  return n;
 }
 
 const counts = {};
 let total = 0;
 for (const file of walk("spec")) {
-  const lines = readFileSync(file, "utf8").split("\n");
-  let n = 0;
-  for (let i = 0; i < lines.length; i++) {
-    const ln = lines[i];
-    if (!/\b(MUST|SHALL)\b/.test(ln)) continue;
-    if (/AT-[A-Z]+-|G-[0-9N][0-9NS]?-/.test(ln)) continue;
-    if (inAtBlock(lines, i)) continue;
-    n++;
-  }
+  const n = countFile(file);
   if (n > 0) { counts[file] = n; total += n; }
 }
 
 const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
-for (const [f, n] of sorted.slice(0, 20)) console.log(`${n}\t${f}`);
-console.log(`---\nTotal real prose-MUSTs (AT-block-aware): ${total}`);
+for (const [f, n] of sorted.slice(0, 15)) console.log(`${n}\t${f}`);
+console.log(`---\nTotal real prose-MUSTs (v2 nested-aware): ${total}`);
 console.log(`Files with ≥1 prose-MUST: ${sorted.length}`);
