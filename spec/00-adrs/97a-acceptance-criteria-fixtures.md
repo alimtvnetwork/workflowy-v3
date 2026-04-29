@@ -1,10 +1,10 @@
 # Spec — `00-adrs` Acceptance Criteria I/O Fixtures (ADR-0029 + ADR-0030)
 
-> **Version:** 1.0.0
-> **Created:** 2026-04-29 (UTC+8)
+> **Version:** 1.1.0
+> **Created:** 2026-04-29 (UTC+8) — v1.0.0 seeded AT-29-* + AT-30-* fixtures. **Updated:** 2026-04-29 — v1.1.0 added §3 AT-31-* fixtures (9 rows: AT-31-D1..D7 + D5-OVERDUE + PROTOCOL-COOLING-WINDOW) per ADR-0031 §6 + AC v1.3.0.
 > **Status:** Normative companion to [`97-acceptance-criteria.md`](./97-acceptance-criteria.md).
 > **Format SSOT:** [`../01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](../01-spec-authoring-guide/19-acceptance-criteria-io-table.md)
-> **Closes:** AT-FIX-01 deficit for AT-ADR-G04 (5 rows: AT-29-D1/D3/D4×3) and AT-ADR-G05 (8 rows: AT-30-I1..I8). Ratifies fixtures-as-spec for ADR-0029 and ADR-0030.
+> **Closes:** AT-FIX-01 deficit for AT-ADR-G04 (5 rows), AT-ADR-G05 (8 rows), and **AT-ADR-G06 (9 rows: AT-31-D1..D7 + AT-31-D5-OVERDUE + AT-31-PROTOCOL — closes F-SPEC-13 + F-AUDIT-26 fixture leg)**.
 
 ---
 
