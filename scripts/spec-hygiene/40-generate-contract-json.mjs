@@ -26,7 +26,11 @@ const OUTPUT = "spec/contract.json";
 //   (1) ID column may be wrapped in backticks (`AT-APP-01`) — the canonical pattern.
 //   (2) Many sections define ATs as H3 narrative headings: `### AT-CICD-01 — Title`.
 const AT_TABLE_ROW = /^\|\s*`?(AT-[A-Z][A-Z0-9]*-\d+)`?\s*\|\s*([^|]+?)\s*\|/;
-const AT_HEADING = /^#{2,4}\s+`?(AT-[A-Z][A-Z0-9]*-\d+)`?\s+[—-]\s+(.+?)\s*$/;
+// Heading-form definition: accepts em-dash (—), hyphen (-), or colon (:) as the
+// id↔title separator. Colon was added 2026-04-29 (P0 quick-win C1) after the
+// C# and ERRMANAGE AC files used `## AT-CGCS-01: Naming` style headings, which
+// the original em-dash-only regex misclassified as orphan citations.
+const AT_HEADING = /^#{2,4}\s+`?(AT-[A-Z][A-Z0-9]*-\d+)`?\s*[—\-:]\s+(.+?)\s*$/;
 const AT_INLINE = /\b(AT-[A-Z][A-Z0-9]*-\d+)\b/g;
 
 // P13: documentation-only IDs that are intentionally cited but never need a definition.
@@ -120,6 +124,11 @@ walk(ROOT, (file) => {
   if (file.includes("/_archive") || file.endsWith("/spec-index.md")) return;
   // Skip template/example files: they intentionally reference existing AT ids as illustrations.
   if (file.includes("/01-spec-authoring-guide/") && /(template|example|fixtures)\.md$/i.test(file)) return;
+  // P0-quick-win-C1 (2026-04-29): the spec-authoring-guide's own 97-acceptance-criteria.md
+  // contains illustrative `AT-FOO-01` and gate-documentation references like
+  // `AT-SPECAUTHORING-020..023` (used as worked examples in gate prose, not as
+  // AT-row definitions). It is a meta-doc, not a definition site.
+  if (file.endsWith("/01-spec-authoring-guide/97-acceptance-criteria.md")) return;
   // P25: 97a- fixture files ARE valid definition sites (their `## \`AT-X-N\` — title` headings define ATs).
   // (Previously skipped; orphans like AT-SPECISSUES-* were defined only there.)
   // P13 fix: P11-generated condensed overviews include the canonical AC table verbatim.
