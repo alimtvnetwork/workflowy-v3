@@ -1,7 +1,7 @@
 # ADRs — Acceptance Criteria
 
-> **Version:** 1.14.0
-> **Created:** 2026-04-29 — closes G-08 acceptance-coverage gap (P0 quick-win). **Updated:** 2026-04-29 — v1.1.0..v1.11.0 added AT-ADR-G04..G14 (F-AUDIT-21 CLOSED 7/7); v1.12.0 appended F-AUDIT-15 closure note; v1.13.0 added AT-NS-G15 closing F-AUDIT-28; **v1.14.0** appended F-AUDIT-29 closure note — empirical post-#44c re-scan finds 5 files matching, all false-positives (regex literal, code example, rule prose, audit-name, negation prose). Zero genuine stub content in Active scopes. **F-AUDIT-29 CLOSED.**
+> **Version:** 1.15.0
+> **Created:** 2026-04-29 — closes G-08 acceptance-coverage gap (P0 quick-win). **Updated:** 2026-04-29 — v1.1.0..v1.11.0 added AT-ADR-G04..G14 (F-AUDIT-21 CLOSED 7/7); v1.12.0 F-AUDIT-15 closure; v1.13.0 AT-NS-G15 closes F-AUDIT-28; v1.14.0 F-AUDIT-29 closure (5 false-positives); **v1.15.0** F-AUDIT-26 stale-finding closure note — confirms already-resolved status via ledger v1.1.0 + ADR-0031 + 6 evidence artifacts. **All v6 audit findings now closed.**
 > **Status:** ✅ SSOT — testable acceptance criteria for the ADR governance scope.
 
 > _Fixture: N/A — pure narrative reference, not a testable criterion._
