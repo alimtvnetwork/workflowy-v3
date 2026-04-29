@@ -35,22 +35,22 @@ What was still missing: a normative ADR codifying the pattern so that a tenth ga
 
 ### D1 — Closed enumeration of gate launch modes
 
-A new hygiene gate MUST launch in exactly one of two modes:
+A new hygiene gate MUST (AT-31-D1-CLOSED-MODES) launch in exactly one of two modes:
 
 - **HARD-FAIL** (`STRICT = true`) — the corpus is already clean for this invariant at PR time, OR the invariant is so load-bearing that no migration window is acceptable.
 - **WARN-only** (`STRICT = false`) — the corpus has known offenders; the runner emits stderr but exits 0 until graduated.
 
 Inventing a third mode (e.g. "WARN that times-out", "HARD-FAIL with allow-list of N skips") is forbidden. Allow-lists belong in per-(gate, path) ledgers per ADR-0029; exemptions belong in `_AUDIT-EXEMPTIONS.md` per ADR-0030.
 
-### D2 — Every WARN-only gate MUST register in the singleton ledger
+### D2 — Every WARN-only gate MUST (AT-31-D2-LEDGER-COVERAGE) register in the singleton ledger
 
-Within the same change that adds the gate, the author MUST append a row to `spec/_GATE-GRADUATION-LEDGER.md` §Entries. The row MUST satisfy the schema in §Schema of that file (`gate`, `mode`, `flipCriterion`, `flipMechanism`, `targetDate`, `addedOn`, `linkedTask`).
+Within the same change that adds the gate, the author MUST (AT-31-D2-LEDGER-COVERAGE) append a row to `spec/_GATE-GRADUATION-LEDGER.md` §Entries. The row MUST (AT-31-D2-LEDGER-COVERAGE) satisfy the schema in §Schema of that file (`gate`, `mode`, `flipCriterion`, `flipMechanism`, `targetDate`, `addedOn`, `linkedTask`).
 
 A WARN-only gate without a ledger row is forbidden — `G-00-GRADUATION-LEDGER-FRESH` (gate #60) emits an alert when registry-WARN-count ≠ ledger-row-count, and the meta-test at `_tests/60.test.mjs` locks the visibility-line contract.
 
-### D3 — `flipCriterion` MUST be a measurable predicate
+### D3 — `flipCriterion` MUST (AT-31-D3-MEASURABLE-PREDICATE) be a measurable predicate
 
-The cell MUST be parseable as one of:
+The cell MUST (AT-31-D3-MEASURABLE-PREDICATE) be parseable as one of:
 
 - **Count predicate**: `<thing> count = 0` (e.g. `legacy-status count = 0 (current: 46)`).
 - **Ratio/density predicate**: `<metric> ≤ N%` (e.g. `global density ≤8%`).
@@ -60,34 +60,34 @@ The cell MUST be parseable as one of:
 
 Forbidden tokens (enforced by `G-38-AMBIGUOUS-WORDING`): `eventually`, `to-be-determined`, `TBD`, `next pass`, `event-driven`, `someday`. The 2026-04-29 ledger v1.1.0 cycle eliminated the last 3 vague-criterion offenders (rows for `G-01-DOD-CONDENSED-MIRRORS-OVERVIEW`, `G-00-OVERVIEW-AI-CONTRACT-PRESENT` sub-tier, `G-00-OVERVIEW-AI-CONTRACT-COMPLETE` rules 3–5) per F-AUDIT-26.
 
-### D4 — `flipMechanism` MUST name the single edit
+### D4 — `flipMechanism` MUST (AT-31-D4-FLIP-MECHANISM-CITES-RUNNER) name the single edit
 
-A reviewer MUST be able to grep for the edit named in `flipMechanism` and find exactly one location. Canonical phrasings:
+A reviewer MUST (AT-31-D4-FLIP-MECHANISM-CITES-RUNNER) be able to grep for the edit named in `flipMechanism` and find exactly one location. Canonical phrasings:
 
 - `set STRICT = true in <runner-path>` (most common)
 - `delete WARN branch in <runner-path>` (when the warn branch is structurally separate)
 - `flip <N> rule flag(s) in <runner-path>` (multi-rule runners like #54)
 
-`flipMechanism` MUST cite the runner file, not just the gate ID.
+`flipMechanism` MUST (AT-31-D4-FLIP-MECHANISM-CITES-RUNNER) cite the runner file, not just the gate ID.
 
 ### D5 — `targetDate` is an SLA cap, not a guess
 
-The cell MUST be ISO `YYYY-MM-DD`. Semantics:
+The cell MUST (AT-31-D5-ISO-DATE) be ISO `YYYY-MM-DD`. Semantics:
 
-- If the gate is criterion-driven (D3 count = 0), `targetDate` is the **upper bound** by which the criterion MUST be met OR an explicit decision to retire the gate MUST be made.
+- If the gate is criterion-driven (D3 count = 0), `targetDate` is the **upper bound** by which the criterion MUST (AT-31-D5-ISO-DATE) be met OR an explicit decision to retire the gate MUST (AT-31-D5-ISO-DATE) be made.
 - An overdue `targetDate` (`< today`) trips `G-00-GRADUATION-LEDGER-DATE-DRIFT` HARD-FAIL.
 - A `targetDate` within 14 days of today emits a WARN (due-soon shelf).
 
 ### D6 — The 6-step flip protocol (graduation procedure)
 
-When `flipCriterion` becomes true, the graduator MUST execute, in order:
+When `flipCriterion` becomes true, the graduator MUST (AT-31-D6-PROTOCOL-COMPLETE) execute, in order:
 
 1. **Verify cleanly for 7 consecutive CI runs.** Prevents spurious flip on transient wins. Documented in `_GATE-GRADUATION-LEDGER.md` §"Flip protocol".
 2. **Edit the runner per `flipMechanism`.** Usually a single boolean flip.
-3. **Re-run full hygiene suite.** MUST stay green; if any other gate goes red, abort and root-cause.
+3. **Re-run full hygiene suite.** MUST (AT-31-D6-PROTOCOL-COMPLETE) stay green; if any other gate goes red, abort and root-cause.
 4. **Update the ledger.** Move the row from §Entries to §"Graduated entries" with a `graduatedOn` ISO date column appended.
 5. **Update `_GATE-REGISTRY.md`.** Remove the `**WARN-only**` parenthetical from the gate's row description.
-6. **Negative-test.** Deliberately violate the gate's invariant on a throwaway branch — MUST exit 1. If it doesn't, the WARN branch wasn't fully removed; revert and retry.
+6. **Negative-test.** Deliberately violate the gate's invariant on a throwaway branch — MUST (AT-31-D6-PROTOCOL-COMPLETE) exit 1. If it doesn't, the WARN branch wasn't fully removed; revert and retry.
 
 Skipping step 1 (cooling window) or step 6 (negative test) is forbidden — both have been the source of past silent regressions in sibling repos.
 
@@ -123,7 +123,7 @@ Skipping step 1 (cooling window) or step 6 (negative test) is forbidden — both
 ### Downstream xlinks (spec/ scopes locked by this ADR)
 
 - [`../_GATE-GRADUATION-LEDGER.md`](../_GATE-GRADUATION-LEDGER.md) — the singleton ledger under enforcement; row-schema in its §Schema implements D2/D3/D4/D5.
-- [`../_GATE-REGISTRY.md`](../_GATE-REGISTRY.md) — every WARN-only registry row MUST be reachable from the ledger (gate #60).
+- [`../_GATE-REGISTRY.md`](../_GATE-REGISTRY.md) — every WARN-only registry row MUST (AT-31-D2-LEDGER-COVERAGE) be reachable from the ledger (gate #60).
 - [`./97-acceptance-criteria.md`](./97-acceptance-criteria.md) — AT-ADR-G06 cluster (8 rows: AT-31-D1..D7 + AT-31-PROTOCOL).
 - [`./97a-acceptance-criteria-fixtures.md`](./97a-acceptance-criteria-fixtures.md) §3 — AT-31-* I/O fixtures.
 
@@ -171,5 +171,5 @@ The 8 acceptance tests below mirror D1–D7 plus the protocol. All are tagged `A
 
 - **Already complete.** The ledger (`_GATE-GRADUATION-LEDGER.md`) was authored 2026-04-29 v1.0.0 with 8 rows; v1.1.0 (same day) tightened 3 vague flipCriteria per F-AUDIT-26. Gates #60 + #61 with meta-tests landed in the same cycle.
 - **Negative-tested**: tampering a `flipCriterion` cell to `eventually` correctly trips `G-38-AMBIGUOUS-WORDING`; setting `targetDate` to a past date trips gate #61; deleting a registry WARN-only row without removing its ledger entry trips gate #60.
-- **Ledger header xref**: line 7 of `_GATE-GRADUATION-LEDGER.md` currently reads `Authoritative pattern: ADR-0031 (pending)`. A follow-up edit (in this ADR's landing PR) MUST drop the `(pending)` qualifier — that edit is part of this ADR's own rollout, not a future task.
-- **Future scripts:** the 10th WARN-only gate MUST cite ADR-0031 in its `_GATE-REGISTRY.md` row description (replacing the prior practice of inlining flip prose) AND append a row to the ledger. No new ADR per gate.
+- **Ledger header xref**: line 7 of `_GATE-GRADUATION-LEDGER.md` currently reads `Authoritative pattern: ADR-0031 (pending)`. A follow-up edit (in this ADR's landing PR) MUST (AT-31-D6-PROTOCOL-COMPLETE) drop the `(pending)` qualifier — that edit is part of this ADR's own rollout, not a future task.
+- **Future scripts:** the 10th WARN-only gate MUST (AT-31-D2-LEDGER-COVERAGE) cite ADR-0031 in its `_GATE-REGISTRY.md` row description (replacing the prior practice of inlining flip prose) AND append a row to the ledger. No new ADR per gate.
