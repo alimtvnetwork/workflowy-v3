@@ -80,5 +80,5 @@ for (const file of walk("spec")) {
 
 const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
 for (const [f, n] of sorted.slice(0, 15)) console.log(`${n}\t${f}`);
-console.log(`---\nTotal real prose-MUSTs (v6 + alphabetic-prefix gate-aware): ${total}`);
+console.log(`---\nTotal real prose-MUSTs (v7 + fenced-code-block skip): ${total}`);
 console.log(`Files with ≥1 prose-MUST: ${sorted.length}`);
