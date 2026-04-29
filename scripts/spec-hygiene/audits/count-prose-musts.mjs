@@ -1,11 +1,9 @@
 #!/usr/bin/env node
-// AT-block-aware prose-MUST counter (v2 — handles heading nesting).
+// AT-block-aware prose-MUST counter (v3 — handles heading nesting + fixture slots).
 // A line is "in an AT block" if ANY ancestor heading (walking up through ALL
-// ###/####/## levels) cites `AT-…-`. The v1 bug was stopping at the first
-// heading found — but `#### Assertion contract` is a child of `### AT-WIRE-EGRESS-01`.
-//
-// Algorithm: maintain a stack of (level, citesAT) for the heading hierarchy.
-// At every line, the line is "in an AT block" if any frame in the stack is true.
+// ###/####/## levels) cites `AT-…-`. v1 bug: stopped at first heading found
+// (sub-headings shadowed AT parent). v3 adds: skip canonical fixture-table
+// slot rows (already AT-shaped per format SSOT) + skip blockquote citations.
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 
@@ -22,6 +20,13 @@ function walk(dir, acc = []) {
   return acc;
 }
 
+// v3 exclusions (2026-04-29, F-SCOPE-05):
+//   (a) Fixture-table slot rows: `| **Negative assertion** |`, `| **Then** |`,
+//       `| **Side effects** |`, `| **Given** |`, `| **When** |`, `| **Expected …** |`
+//       — these ARE the AT-shaped form per 19-acceptance-criteria-io-table.md SSOT.
+//   (b) Blockquoted lines (`> …`): citations of other docs, not new MUSTs.
+const FIXTURE_SLOT_RE = /^\|\s*\*\*(Negative assertion|Then|Side effects|Given|When|Expected [^*]+|Linter command|Response envelope|Expected stderr regex)\*\*\s*\|/;
+
 function countFile(file) {
   const lines = readFileSync(file, "utf8").split("\n");
   const stack = []; // {level, citesAT}
@@ -37,6 +42,8 @@ function countFile(file) {
     if (!/\b(MUST|SHALL)\b/.test(ln)) continue;
     if (/AT-[A-Z]+-|G-[0-9N][0-9NS]?-/.test(ln)) continue;
     if (stack.some((f) => f.citesAT)) continue;
+    if (FIXTURE_SLOT_RE.test(ln)) continue;
+    if (/^\s*>\s/.test(ln)) continue;
     n++;
   }
   return n;
@@ -51,5 +58,5 @@ for (const file of walk("spec")) {
 
 const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
 for (const [f, n] of sorted.slice(0, 15)) console.log(`${n}\t${f}`);
-console.log(`---\nTotal real prose-MUSTs (v2 nested-aware): ${total}`);
+console.log(`---\nTotal real prose-MUSTs (v3 nested + fixture-slot aware): ${total}`);
 console.log(`Files with ≥1 prose-MUST: ${sorted.length}`);
