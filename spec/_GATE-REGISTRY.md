@@ -1,10 +1,10 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.6.5  
-> **Updated:** 2026-04-29 — **ADR-0029 ratified + enforcing gate added.** New CI gate `G-13-LEDGER-USES-SHARED-LIB` (runner `48-check-ledger-uses-shared-lib.mjs`) mechanically blocks any future ledger consumer from re-implementing `globToRegExp` / `walkLedger` inline or reading `_LEDGER-G-*-EXEMPTIONS.md` files outside the shared lib. Locks in the proven G-30/G-31/G-32 trilogy refactor as architectural rule. 51/51 runners conform. Negative test verified: swapping G-30's lib import → `node:path` re-surfaces violation (exit=1) with file path + ADR-0029 pointer; restoration → green. ADR-0029 declares 5 acceptance tests (AT-29-D1-IMPORT-PRESENT, AT-29-D3-SCHEMA-FROZEN, AT-29-D4-NO-INLINE-GLOBTOREGEXP / WALKLEDGER / DIRECT-LEDGER-READ) and freezes the ledger schema (`## Entries` H2, 5-column `gate | pathGlob | entry | rationale | addedOn`). Audit: `.lovable/memory/audit/at-adr-0029-ledger-shared-lib-gate.md`. Prior: 1.6.4 (shared-lib extraction).
+> **Version:** 1.6.6  
+> **Updated:** 2026-04-29 — **ADR-0030 ratified + audit-exemption manifest gate added.** New CI gate `G-00-AUDIT-EXEMPTION-REVIEW` (runner `57-check-audit-exemption-review.mjs`) enforces 8 invariants on `spec/_AUDIT-EXEMPTIONS.md` (canonical false-positive ledger). Closes F-AUDIT-31 (LOW) from re-audit v2 (`/mnt/documents/spec-ai-implementability-audit-v2.json`). Inaugural manifest exempts 8 path-globbed patterns covering 52/1511 spec files (3.4%, well under 10% reviewer-attention threshold); most impactful: `spec/12-consolidated-guidelines/*.md` redirect-stubs (closes AUD-C-01) lifting that scope from 15 BLOCKING → 80 STRONG in re-audit. Negative test verified: tampering a row to `spec/**` correctly trips I5 (blank-cheque); restoring → green; gate caught a real citation defect (`P22 plan` → `n/a`) on first run. ADR-0030 declares 8 acceptance tests (AT-30-I1..I8). Audit baseline 65 → 67 (RISKY, tier-stable). Prior: 1.6.5 (G-13-LEDGER-USES-SHARED-LIB).
 
-- **Total named gates:** 311 (+1: `G-13-LEDGER-USES-SHARED-LIB`)
-- **CI:** 42 (+1)
+- **Total named gates:** 312 (+1: `G-00-AUDIT-EXEMPTION-REVIEW`)
+- **CI:** 43 (+1)
 - **TEST:** 14 (unchanged)
 - **DOC-NORM:** 53 (unchanged)
 - **DOC:** 202 (unchanged)
