@@ -4,8 +4,11 @@ import {
   getHotkey,
   formatCombo,
   matches,
+  resolveHotkey,
   type HotkeyId,
   type KeyCombo,
+  type HotkeyScope,
+  type WhenContext,
 } from "./hotkeys";
 
 /**
