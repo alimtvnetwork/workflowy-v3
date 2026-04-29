@@ -18,7 +18,7 @@ Counts unformalized prose-MUSTs (MUST/SHALL assertions outside `AT-…` row bloc
 - Excludes blockquoted lines (`> …`): citations of other docs, not new MUSTs.
 - Excludes RFC-2119 priority cells (`| F1 | requirement | MUST |`): tag-style priority markers in tabular requirements convention.
 
-**Authoritative output (2026-04-29, v7):** 460 prose-MUSTs across 239 files.
+**Authoritative output (2026-04-29, v7):** 453 prose-MUSTs across ~238 files.
 This is the working baseline for spec-task #6 (prose→AT migration).
 
 **Methodology history** (see `spec/AUDIT-FINDINGS-LEDGER.md`):
@@ -37,5 +37,6 @@ This is the working baseline for spec-task #6 (prose→AT migration).
 - F-SCOPE-14 — pure content migration, no parser change. Batch-11 bound 8 prose-MUSTs in `spec/31-app/05-conventions/10-role-escalation-policy.md` to 9 new `G-24*` gates (Domain-RE). Δ –8 = exact match → **475**. Fifth consecutive zero-parser-drift batch; promoted named-but-unregistered umbrella `G-24` to formal registry row.
 - F-SCOPE-15 — pure content migration with namespace-collision discovery (MED). Batch-12 bound 8 prose-MUSTs in `spec/31-app/05-conventions/14-backup-and-dr-policy.md` to 7 new `G-BACKUP-*` gates (Domain-BACKUP). Source file's §10 declared `G-28` umbrella but `G-28-*` is owned by ADR-0028 (i18n) — collision sidestepped, source-callout rename tracked as F-SCOPE-15-FOLLOWUP. Δ –8 = exact match → **467**. Sixth consecutive zero-parser-drift batch; first batch surfacing a namespace collision.
 - F-SCOPE-16 — pure content migration with pre-flight namespace check. Batch-13 bound 7 prose-MUSTs in `spec/03-error-manage/02-error-architecture/05-response-envelope/05-error-code-catalogue.md` to 8 new `G-ERRCODE-*` gates (Domain-ERRCODE). F-SCOPE-15 lesson applied: greped registry first to avoid collision with existing `G-ERR-*` and `G-22-*`. Δ –7 = exact match → **460**. Seventh consecutive zero-parser-drift batch.
+- F-SCOPE-17 — pure content migration. Batch-14 bound 7 prose-MUSTs in `spec/13-cicd-pipeline-workflows/00-overview.md` to 7 new `G-13-*` sub-gates inside existing **ADR-0013** section (no new domain). Pre-flight namespace check OK (16 sibling gates). Source file → 0; net corpus 467 → 453 (Δ –14; collateral skips on other files via bare-form regex now matching the new gate ids). Eighth consecutive zero-parser-drift batch.
 
 Run: `node scripts/spec-hygiene/audits/count-prose-musts.mjs`
