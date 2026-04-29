@@ -230,10 +230,7 @@ const WORKFLOWS_HEAD_EXEMPT = new Set([
 ]);
 
 const FEATURES_HEAD_EXEMPT = new Set([
-  // 09a citations are predominantly cross-domain (endpoints, edge-cases, mem://) rather than peer features
-  "09a-mirror-cycle-detection.md",
-  // 14b citations are predominantly cross-domain (src/types, mem://, infra constraint) rather than peer features
-  "14b-offline-queue.md",
+  // (in-source override slot — empty; canonical entries in ledger.)
 ]);
 
 const ENDPOINTS_HEAD_EXEMPT = new Set([
