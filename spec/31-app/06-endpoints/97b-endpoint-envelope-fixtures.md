@@ -329,7 +329,7 @@ A2 alone is insufficient if a future endpoint forgets to expose owner identity. 
 
 - **A6 — Coverage parity.** The list of endpoints exercised by this test MUST equal `endpoints_with_owner_column(16-endpoint-at-matrix.md)`. The matrix file is the SSOT; the test reads it at boot and fails if any matrix row marked `Owner: yes` lacks a corresponding test case.
 
-### Failure messages (specified)
+#### Failure messages (specified)
 
 When an assertion fails, the test MUST emit:
 
