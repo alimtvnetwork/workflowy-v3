@@ -47,6 +47,10 @@ function countFile(file) {
     if (stack.some((f) => f.citesAT)) continue;
     if (FIXTURE_SLOT_RE.test(ln)) continue;
     if (/^\s*>\s/.test(ln)) continue;
+    // v5 (F-SCOPE-07): RFC-2119 priority cells in requirements matrix
+    // (`| F1 | requirement | MUST |`). Per RFC-2119 these are tag-style priority
+    // markers in a tabular requirements convention, not prose normative claims.
+    if (/^\|\s*[A-Z]+[0-9]+\s*\|.*\|\s*(MUST|SHALL|SHOULD|MAY)\s*\|/.test(ln)) continue;
     n++;
   }
   return n;
