@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.2  
-> **Updated:** 2026-04-29 — **batch-5 prose→AT migration:** registered 9 new `G-A4-*` gates (DOC-NORM) for `spec/31-app/05-conventions/09-audit-log-policy.md` per task #6-batch-5 to provide enforcement bindings for substantive prose-MUSTs. New `Domain-AUDIT` subsection. Prior: 1.7.1 (batch-4 G-16-* gates).
+> **Version:** 1.7.3  
+> **Updated:** 2026-04-29 — **batch-6 prose→AT migration:** registered new `Domain-SCOPING` subsection with 9 `G-NS-SCOPING-*` gates (3 promoting reserved-name gates from `spec/00-scoping.md` §Hygiene Gate to formal registry rows + 6 new DOC-NORM gates for §Classification Vocabulary and §Reclassification Procedure prose-MUSTs). Prior: 1.7.2 (batch-5 G-A4-* gates).
 
-- **Total named gates:** 332 (+9 this revision: nine `G-A4-*`)
+- **Total named gates:** 341 (+9 this revision: nine `G-NS-SCOPING-*`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
 - **CI:** 44
 - **TEST:** 14 (unchanged)
-- **DOC-NORM:** 68 (+9 this revision)
+- **DOC-NORM:** 77 (+9 this revision)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 38 (+1: Domain-AUDIT)
+- **Areas covered:** 39 (+1: Domain-SCOPING)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
