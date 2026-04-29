@@ -4,7 +4,7 @@
   "generator": "scripts/spec-hygiene/40-generate-contract-json.mjs",
   "do_not_edit": true,
   "counts": {
-    "acceptance_tests_defined": 2365,
+    "acceptance_tests_defined": 2374,
     "acceptance_tests_orphan_citations": 0,
     "endpoints": 48,
     "enums": 22,
@@ -1104,6 +1104,69 @@
           "line": 12
         }
       ]
+    },
+    {
+      "id": "AT-ADR-001",
+      "definition": "Every ADR file lives under `spec/00-adrs/NNNN-kebab-case-title.md` (4-digit zero-padded prefix).",
+      "defined_in": "spec/00-adrs/97-acceptance-criteria.md",
+      "defined_line": 26,
+      "cited_in": []
+    },
+    {
+      "id": "AT-ADR-002",
+      "definition": "Every ADR file contains the 8 required sections in canonical order: `## Status`, `## Context`, `## Decision`, `## Consequences`, `## Alternatives Considered`, `## Compliance / Enforcement`, `## Related ADRs`, `## References`.",
+      "defined_in": "spec/00-adrs/97-acceptance-criteria.md",
+      "defined_line": 27,
+      "cited_in": []
+    },
+    {
+      "id": "AT-ADR-003",
+      "definition": "The `## Status` line uses one of the closed values: `Accepted`, `Proposed`, `Superseded by ADR-NNNN`, `Deprecated`.",
+      "defined_in": "spec/00-adrs/97-acceptance-criteria.md",
+      "defined_line": 28,
+      "cited_in": []
+    },
+    {
+      "id": "AT-ADR-004",
+      "definition": "When ADR-N supersedes ADR-M, ADR-M's `## Status` MUST flip to `Superseded by ADR-N` in the **same** change.",
+      "defined_in": "spec/00-adrs/97-acceptance-criteria.md",
+      "defined_line": 36,
+      "cited_in": []
+    },
+    {
+      "id": "AT-ADR-005",
+      "definition": "New ADRs MUST update both index tables in lock-step: `spec/00-adrs/00-overview.md` §Index **and** `spec/00-overview.md` rollup.",
+      "defined_in": "spec/00-adrs/97-acceptance-criteria.md",
+      "defined_line": 37,
+      "cited_in": []
+    },
+    {
+      "id": "AT-ADR-006",
+      "definition": "ADR files are append-only — accepted ADRs are never edited in place except for `## Status` flips and `## Related ADRs` back-links.",
+      "defined_in": "spec/00-adrs/97-acceptance-criteria.md",
+      "defined_line": 38,
+      "cited_in": []
+    },
+    {
+      "id": "AT-ADR-007",
+      "definition": "Every load-bearing rule cited by a `G-*` gate MUST trace to an ADR (drained via the `G-NS-ADR-MUST-HAS-AT` allow-list).",
+      "defined_in": "spec/00-adrs/97-acceptance-criteria.md",
+      "defined_line": 46,
+      "cited_in": []
+    },
+    {
+      "id": "AT-ADR-008",
+      "definition": "The ADR-overview AI Contract block MUST contain the 5 required subsections (`Purpose`, `Audience`, `Expected AI Output`, `Out of Scope`, `Definition of Done`) plus a `### Scoring` table.",
+      "defined_in": "spec/00-adrs/97-acceptance-criteria.md",
+      "defined_line": 47,
+      "cited_in": []
+    },
+    {
+      "id": "AT-ADR-009",
+      "definition": "Every ADR with non-trivial downstream impact MUST list at least one `## Consequences` bullet that cross-links to the spec scope it locks (e.g. `spec/04-database-conventions/`).",
+      "defined_in": "spec/00-adrs/97-acceptance-criteria.md",
+      "defined_line": 48,
+      "cited_in": []
     },
     {
       "id": "AT-AIOPTIMIZATION-01",
