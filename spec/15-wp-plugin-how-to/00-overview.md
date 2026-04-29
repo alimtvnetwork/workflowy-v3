@@ -59,7 +59,7 @@
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`00-overview-condensed.md`](./00-overview-condensed.md) | Condensed Overview — `spec/15-wp-plugin-how-to/` (P11) | 203 |
+| 1 | [`00-overview-condensed.md`](./00-overview-condensed.md) | Condensed Overview — `spec/15-wp-plugin-how-to/` (P11) | 199 |
 | 2 | [`01-foundation-and-architecture.md`](./01-foundation-and-architecture.md) | Phase 1 — Foundation and Architecture | 160 |
 | 3 | [`02-enums-and-coding-style/`](./02-enums-and-coding-style/00-overview.md) | 02 — Phase 2 — Enums and Coding Style | subfolder |
 | 4 | [`03-traits-and-composition.md`](./03-traits-and-composition.md) | Phase 3 — Traits and Composition | 356 |
