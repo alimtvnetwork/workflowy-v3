@@ -193,7 +193,7 @@ A task estimate inflated 3.2× perpetuates the same discoverability failure F-AU
 1. **F-SCOPE-01's regex** was `grep -E '\b(MUST|SHALL)\b' | grep -vE 'AT-…|G-…'` — purely line-scoped, no AST-style block awareness.
 2. **Sample line** at `spec/31-app/97d-acceptance-criteria-fixtures.md:19`: `> | **Negative assertion** | Dashboard MUST NOT recurse beyond depth 1; …` — clearly a MUST, no AT- token on the line, but the heading 4 lines above is `### \`AT-APP-68\` — depth=1 only`.
 3. **Block-aware re-count** (`/tmp/count-prose-musts.mjs`, walks upward to nearest `### `/`## ` heading and excludes the row if that heading cites `AT-…-`): 97d falls from 29 → **0**.
-4. **Corpus-wide re-count** with the same methodology: 682 → **724** (some files had non-AT MUSTs the simpler regex was incorrectly suppressing because the AT- token appeared elsewhere on the same line — e.g. `[See AT-XYZ-04] All requests MUST …`).
+4. **Corpus-wide re-count** with the same methodology: 682 → **724** (some files had non-AT MUSTs the simpler regex was incorrectly suppressing because an AT-style token appeared elsewhere on the same line — e.g. a `[See AT-{ID}-{NN}] All requests MUST …` reference where the bracketed pseudo-ID is illustrative only, not a real cited acceptance test).
 
 #### Why this matters for F-AUDIT-30
 
