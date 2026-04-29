@@ -72,3 +72,25 @@ Per legacy ID, expected ripple:
 ## How to reproduce
 
 Re-run `/tmp/at_id_scan.py` (logic embedded in 2026-04-29 conversation). Inputs: every `spec/**/97-acceptance-criteria.md`. Regex: `AT-[A-Z0-9]+-\d+` vs `AC-\d+`.
+
+---
+
+## Update 2026-04-29 (post-fix)
+
+**Action taken:** Renamed 6 active `AC-NN` headers → `AT-ERRMANAGE-NN` in `spec/03-error-manage/97-acceptance-criteria.md` and the lock-step `00-overview-condensed.md` (12 occurrences total). New namespace `AT-ERRMANAGE-` registered (now 163 distinct prefixes).
+
+**Surface unchanged at scan level (mixed=2, legacy-only=4) because:**
+- `spec/03-error-manage/97-acceptance-criteria.md` still contains **2 P13-stub `AT-ERRCODE-NN` rows** (lines 86, 93), so it correctly flips from "mixed (active AC + stub AT)" to "canonical-only" — but the **scan regex also catches `AC-01`/`AC-02` historical citations inside backticks** in `spec/02-coding-guidelines/01-cross-language/97-acceptance-criteria.md` (lines 4, 25). Those are documentation of a closed migration, not active IDs.
+
+**Lesson promoted:** Future gate `G-01-AT-ID-FORMAT-CANONICAL` (task #19) MUST skip inline-code spans — identical to the gate-G-38 carve-out for `_TODO(P1)_` citations (audit issue #10). Without that carve-out, the gate self-fails on its own historical-record prose.
+
+**Real remaining surface for task #2 (AT-ID sweep):**
+| Priority | File | Active legacy IDs |
+|---|---|---:|
+| P1 | `07-design-system/97-acceptance-criteria.md` | 34 |
+| P2 | `02-coding-guidelines/97-acceptance-criteria.md` | 27 |
+| P3 | `01-spec-authoring-guide/97-acceptance-criteria.md` | 22 |
+| P4 | `02-coding-guidelines/07-csharp/97-acceptance-criteria.md` | 7 |
+| **Total active** | **4 files** | **90 IDs** |
+
+(Down from 100; the 6 in `03-error-manage/` are now closed; the 4 in `02-coding-guidelines/01-cross-language/` are inline-code citations and should not be touched.)
