@@ -52,7 +52,31 @@ const SPEC_DIR = join(ROOT, 'spec');
 const MANIFEST = join(SPEC_DIR, '_AUDIT-EXEMPTIONS.md');
 const CAP = 0.15;
 const STRICT = false; // flip to true once F-AUDIT-15 closes
-const PLACEHOLDER_RE = /\b(placeholder|stub|to be defined|TBD|coming soon)\b/i;
+// Stub-context regex — requires an explicit stub marker, not just the bare
+// word "placeholder" or "stub" used in legitimate prose. Each alternative
+// is anchored to a syntactic context that only stubs use:
+//   1. `TODO:` — checklist/note marker
+//   2. `TBD` followed by `:`/`—`/`-` or end-of-line — explicit unknown
+//   3. `coming soon` — stub phrasing
+//   4. `to be (defined|determined|written|filled)` — stub phrasing
+//   5. `Acceptance-Criteria Stub` / `Stub Section` — known stub headings
+//   6. `<!-- STUB` — HTML-comment stub marker
+//   7. `^[\s>*-]*placeholder\b` — bare-bullet "placeholder" line
+//   8. `^[\s>*-]*stub\b` — bare-bullet "stub" line
+const PLACEHOLDER_RE = new RegExp(
+  [
+    'TODO:',
+    'TBD\\s*[:\\-—\\n]',
+    'coming\\s+soon',
+    'to\\s+be\\s+(defined|determined|written|filled)',
+    'Acceptance-Criteria\\s+Stub',
+    'Stub\\s+Section',
+    '<!--\\s*STUB',
+    '^[\\s>*\\-]*placeholder\\b',
+    '^[\\s>*\\-]*stub\\b',
+  ].join('|'),
+  'im',
+);
 const SIZE_THRESHOLD = 600;
 
 function fail(msg) { console.error(`[G-00-PLACEHOLDER-DENSITY] ✗ ${msg}`); return 1; }
