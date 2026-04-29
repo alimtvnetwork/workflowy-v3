@@ -87,7 +87,7 @@ or `go for implementation`. They are recorded here for traceability.
 |---|---|---|---|---|
 | F-IMPL-AUD-02 | HIGH | `Item.sortOrder: number` violates ADR-0016 (must be base-62 string) | Resolved | Closed under `exit spec-only` exception (AUD-02 task) — `src/types/index.ts` now exposes branded `SortKey` + `asSortKey()` constructor |
 | F-IMPL-AUD-03 | HIGH | `src/main.tsx` uses `BrowserRouter` instead of RRv7 data-router (ADR-0023) | Open | Deferred — requires `exit spec-only` |
-| F-IMPL-AUD-04 | LOW | `"dashboard"` in `ItemType` allegedly violates ADR-0015 | Retracted | Re-read of ADR-0015 confirms `"dashboard"` is canonical (12-type set). AUD-04 task instead formalized `ITEM_TYPES` registry + `assertNeverItemType` exhaustive-switch trap |
+| F-IMPL-AUD-04 | LOW | `"dashboard"` in `ItemType` allegedly violates ADR-0015 | Retracted | See [Retraction case study #1](#retraction-case-study-1--f-impl-aud-04) below |
 | F-IMPL-AUD-05 | MED | `Enter` key collision in `itemRow` scope (`ItemSplit` vs `ItemNewSibling`) | Resolved | AUD-05 task: added `WhenContext` predicate to `HotkeyBinding` + `resolveHotkey()` dispatcher + uniqueness/mutual-exclusion hygiene tests |
 | F-IMPL-AUD-06 | LOW | 8 `.gitkeep.ts` files leak into TS pipeline | Open | Deferred — requires `exit spec-only`; rename to `.gitkeep` |
 
@@ -101,6 +101,45 @@ or `go for implementation`. They are recorded here for traceability.
 4. **Counts at the bottom of each table** MUST be hand-updated to match the rows above. The hygiene gate verifies this arithmetic.
 
 ---
+
+## Retraction case studies
+
+Long-form post-mortems for findings flipped to `Retracted`. Each entry is a
+worked example of how a future audit could have resurrected the same false
+positive without this ledger — i.e. empirical evidence that F-AUDIT-30 was a
+real procedural risk, not a hypothetical one.
+
+### Retraction case study #1 — F-IMPL-AUD-04
+
+**Audit:** spec-vs-impl audit-v8 (2026-04-29) — `/mnt/documents/spec-vs-impl-audit-2026-04-29.md`
+**Original claim:** *"`src/types/index.ts` includes `"dashboard"` in the `ItemType` union despite ADR-0015 and internal comments forbidding it. Delete the literal."*
+**Severity at time of raise:** LOW
+**Outcome:** **Retracted in same cycle** — claim was based on misreading ADR-0015.
+
+#### Evidence trail
+
+1. **The ADR actually says** (`spec/00-adrs/0015-twelve-itemtypes-enum.md`): the closed enum has **exactly 12** members and `"dashboard"` is one of them (it backs the dashboard-view feature, see `mem://features/dashboard-view`). The "internal comments forbidding it" the audit cited turned out to be a *route-level* comment forbidding a `/dashboard` URL alias, not a type-level prohibition.
+2. **`mem://index.md` Core** confirms the same: *"12 closed ItemTypes (ADR-0015)"* — and the dashboard-view memory entry references `itemType: "dashboard"` directly.
+3. **Counter-action taken** instead of the (wrong) deletion: AUD-04 task formalized the registry by adding `ITEM_TYPES: ReadonlySet<ItemType>` (SSOT), `isItemType(raw)` type guard, and `assertNeverItemType(value: never)` exhaustive-switch trap to `src/types/index.ts`, plus 11 Vitest cases asserting the 12-type set is closed and complete. This converts a future repeat of the same mis-claim into a compile error rather than a code change.
+
+#### Why this matters for F-AUDIT-30
+
+Without this ledger, audit-v9 (or any future cycle) would have re-scanned
+`src/types/index.ts`, seen `"dashboard"`, and re-raised F-IMPL-AUD-04 as a
+"new" finding — the exact discoverability failure F-AUDIT-30 describes
+(F-AUDIT-26 surviving 2 cycles for the same reason). The retraction is now
+permanent, indexed by ID, and machine-checkable: the hygiene gate
+`scripts/spec-hygiene/74-check-audit-findings-ledger.mjs` will fail any
+future audit that lists `F-IMPL-AUD-04` without `Retracted` status.
+
+#### Lessons (codified for future audits)
+
+- **Audits MUST cite the ADR clause text, not just the ADR number.** A bare *"violates ADR-0015"* with no quoted clause hides misreads. Future audits SHOULD inline the ≤80-char quote that prompted the finding.
+- **When a finding contradicts a Core memory rule** (here: *"12 closed ItemTypes"*), the audit MUST resolve the contradiction in-band before raising — either by retracting the finding or by proposing a Core memory update with explicit before/after.
+- **Closed-set enum changes are content findings, not impl findings.** A claim of the form "delete a member from a closed enum" belongs in a spec-side `F-AUDIT-NN` because it changes the data model, not in `F-IMPL-AUD-NN`. Misclassification was the second error here.
+
+---
+
 
 ## Related
 
