@@ -5,7 +5,7 @@
 
 ---
 
-## AC-01: Naming & Conventions
+## AT-CGCS-01: Naming & Conventions
 
 - [ ] All classes, structs, records use PascalCase (`SnapshotManager`, `UserProfile`)
 - [ ] Interfaces prefixed with `I` (`IUserRepository`, `ILogger`)
@@ -18,7 +18,7 @@
 - [ ] File names match primary type in PascalCase (`SnapshotManager.cs`)
 - [ ] One type per file
 
-## AC-02: Method Design
+## AT-CGCS-02: Method Design
 
 - [ ] No boolean flag parameters that branch method behavior — split into two named methods
 - [ ] Method bodies ≤15 lines (error handling exempt)
@@ -26,14 +26,14 @@
 - [ ] Shared logic between split methods extracted into private helpers
 - [ ] Async methods suffixed with `Async` (`GetUsersAsync()`, `SaveDocumentAsync()`)
 
-## AC-03: Boolean Flag Splitting
+## AT-CGCS-03: Boolean Flag Splitting
 
 - [ ] `Save(doc, isDraft)` → `SaveDraft(doc)` + `PublishDocument(doc)`
 - [ ] `Process(data, isVerbose)` → `ProcessCompact(data)` + `ProcessVerbose(data)`
 - [ ] Options objects with named bool properties are exempt (`Config { Verbose = true }`)
 - [ ] Toggle methods are exempt (`SetEnabled(bool)`)
 
-## AC-04: Error Handling
+## AT-CGCS-04: Error Handling
 
 - [ ] Catch specific exceptions, never bare `catch (Exception)`
 - [ ] No silently swallowed exceptions — log and rethrow or handle explicitly
@@ -41,7 +41,7 @@
 - [ ] `ArgumentNullException` with `nameof()` for null parameter guards
 - [ ] Nullable reference types enabled project-wide (`<Nullable>enable</Nullable>`)
 
-## AC-05: Type Safety
+## AT-CGCS-05: Type Safety
 
 - [ ] No `object` returns — use generics (`T GetValue<T>(string key)`)
 - [ ] No explicit type casts in business logic — use pattern matching (`if (obj is User user)`)
@@ -49,13 +49,13 @@
 - [ ] No magic strings — use enums or typed constants
 - [ ] `switch` expressions with exhaustive matching and `_` default case
 
-## AC-06: Async Patterns
+## AT-CGCS-06: Async Patterns
 
 - [ ] No `.Result` or `.GetAwaiter().GetResult()` — async all the way
 - [ ] Independent async calls use `Task.WhenAll()` not sequential `await`
 - [ ] Async method naming ends with `Async` suffix
 
-## AC-07: LINQ Usage
+## AT-CGCS-07: LINQ Usage
 
 - [ ] LINQ preferred over manual loops for transforms (`Select`, `Where`, `Any`)
 - [ ] Complex LINQ predicates extracted to named methods
@@ -65,7 +65,7 @@
 
 ## Validation
 
-All criteria are testable via code review or static analysis. Each AC maps to rules in:
+All criteria are testable via code review or static analysis. Each AT maps to rules in:
 - [01-naming-and-conventions.md](./01-naming-and-conventions.md)
 - [02-method-design.md](./02-method-design.md)
 - [03-error-handling.md](./03-error-handling.md)
