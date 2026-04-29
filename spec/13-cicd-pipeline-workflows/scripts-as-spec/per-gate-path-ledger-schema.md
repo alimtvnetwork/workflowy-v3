@@ -26,7 +26,7 @@ appears. This is too coarse — a prefix legitimately reserved for
 
 - **Ledger file** — markdown table at `spec/**/_LEDGER-*.md` matching
   the schema below.
-- **Hygiene runner** — any runner that consults the ledger MUST iterate
+- **Hygiene runner** — any runner that consults the ledger MUST (gate G-13-LEDGER-RUNNER-FILTER) iterate
   over rows and apply each row's `gate` + `pathGlob` filter before
   silencing a violation.
 
