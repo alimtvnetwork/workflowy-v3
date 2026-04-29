@@ -275,7 +275,7 @@ All backend APIs MUST return the Universal Response Envelope (gate `G-03-ENVELOP
 
 ### 3. HTTP Status as Primary Indicator
 
-Frontend detection logic MUST use HTTP status codes (2xx) as the primary indicator, NOT response body fields.
+Frontend detection logic MUST use HTTP status codes (2xx) as the primary indicator, NOT response body fields (gate `G-03-FRONTEND-STATUS-PRIMARY`).
 
 ### 4. Structured Error Architecture
 
