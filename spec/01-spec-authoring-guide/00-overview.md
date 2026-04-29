@@ -78,8 +78,8 @@
 | 18 | [`18-ai-contract-template.md`](./18-ai-contract-template.md) | AI Contract Header — Canonical Template | 113 |
 | 19 | [`19-acceptance-criteria-io-table.md`](./19-acceptance-criteria-io-table.md) | Acceptance-Criteria I/O Table — Authoring Guide | 114 |
 | 20 | [`20-rfc-2119-wording-policy.md`](./20-rfc-2119-wording-policy.md) | RFC-2119 Wording Policy (SSOT) | 88 |
-| 21 | [`22-status-legend.md`](./22-status-legend.md) | Spec Status Legend (SSOT) | 139 |
-| 22 | [`21-feature-block-format.md`](./21-feature-block-format.md) | Workflowy Feature-Reference Appendix — Block Format SSOT (F8) | 126 |
+| 21 | [`21-feature-block-format.md`](./21-feature-block-format.md) | Workflowy Feature-Reference Appendix — Block Format SSOT (F8) | 126 |
+| 22 | [`22-status-legend.md`](./22-status-legend.md) | Spec Status Legend (SSOT) | 139 |
 
 <!-- AUTO-TOC:END -->
 
