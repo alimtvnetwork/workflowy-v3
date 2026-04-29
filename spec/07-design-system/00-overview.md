@@ -20,7 +20,7 @@
 **Definition of Done** —
 - Zero raw color classes (`text-white`, `bg-black`, `text-[#…]`) in components (gate G-16)
 - Every token resolves in both `:root` and `.dark` blocks
-- `AT-DESIGNSYSTEM-01` through `AT-DESIGNSYSTEM-NN` from `97-acceptance-criteria.md` pass
+- Every `AT-DESIGNSYSTEM-*` row in `97-acceptance-criteria.md` passes (filled in P2 backfill)
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

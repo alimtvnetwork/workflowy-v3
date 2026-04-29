@@ -54,7 +54,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 **Definition of Done** —
 - Every `.ps1` script supports `-WhatIf` and `-Verbose`
 - Exit codes follow the convention in `97-acceptance-criteria.md`
-- `AT-POWERSHELLINTEGRATION-01` through `AT-POWERSHELLINTEGRATION-NN` from `97-acceptance-criteria.md` pass
+- Every `AT-POWERSHELLINTEGRATION-*` row in `97-acceptance-criteria.md` passes (filled in P2 backfill)
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

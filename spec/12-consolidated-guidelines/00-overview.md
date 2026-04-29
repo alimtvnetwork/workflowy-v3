@@ -19,7 +19,7 @@
 **Definition of Done** —
 - Every rule mentioned has a back-link to its canonical home in `02-coding-guidelines/`
 - Zero contradictions between this folder and `02-coding-guidelines/` (gate planned: G-41 cross-doc rule reciprocity)
-- `AT-CONSOLIDATEDGUIDELINES-01` through `AT-CONSOLIDATEDGUIDELINES-NN` from `97-acceptance-criteria.md` pass
+- Every `AT-CONSOLIDATEDGUIDELINES-*` row in `97-acceptance-criteria.md` passes (filled in P2 backfill)
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

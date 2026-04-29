@@ -133,3 +133,27 @@ Fixtures for every AT row in this file are covered by the global P2g sweep — s
 - **WARN-only initial mode:** Gate ships with the 23 currently-uncited ADRs allow-listed in `spec/_LEDGER-G-NS-ADR-COVERAGE.md` (TTL 90 days). Each AT row added under the AUDIT-03 backfill removes its target ADR from the allow-list. Hard-fail flag flips when the allow-list is empty.
 - **Exempt zones (lint MUST strip before MUST/SHALL counting):** fenced code blocks (```` ``` ````) and inline `code spans` — same carve-out as the other `G-NS-*` gates.
 - **Distinct-ADR guard:** A single AT row citing multiple ADRs (e.g. `per ADR-0020 + ADR-0026`) covers each cited ADR independently. Citation count is per-ADR, not per-row.
+
+---
+
+## Gate `G-01-DOD-NO-NN-PLACEHOLDER` (CI, hard-fail)
+
+- **Purpose:** Enforce template rule §5 (`18-ai-contract-template.md`): every Definition-of-Done bullet MUST be testable. Literal `NN` in an AT-id range (`AT-FOO-01 through AT-FOO-NN`) and empty markdown link text (`see this section's  once authored`) are non-testable placeholders that silently bypass the DoD contract.
+- **Audit ledger:** [`.lovable/memory/audit/at-dod-range-sweep.md`](../../.lovable/memory/audit/at-dod-range-sweep.md) — 13 normalized files (2026-04-29 sweep).
+- **Scope:** any line in `spec/**/00-overview.md` between `**Definition of Done**` and the next `---` / `## ` / `> Authoring`.
+- **Forbidden patterns (regex, applied after stripping fenced code blocks and inline backticks):**
+  - `AT-[A-Z]+-NN` (literal `NN` token in any AT id)
+  - `see this section's\s\s+once authored` (double-space artefact from broken xref template)
+  - `_AT rows pending —` (untestable placeholder prose)
+- **Canonical replacement form:** `Every \`AT-<SECTION>-*\` row in \`97-acceptance-criteria.md\` passes` (optionally followed by ` (filled in P2 backfill)`); concrete numeric ranges (`AT-CODEBLOCKSYSTEM-01 through -18`) are also permitted when all ids in the range exist.
+- **Exempt zones:** non-DoD prose elsewhere in the file (e.g. audit-document table titles like `Content Audit — AT-APP-NN Coverage Completeness`); fenced code blocks; inline `code spans`.
+- **Failure mode:** CI emits `<file>:<line>: non-testable DoD placeholder — see G-01-DOD-NO-NN-PLACEHOLDER and 18-ai-contract-template.md §5` and exits non-zero.
+
+---
+
+## Gate `G-01-DOD-CONDENSED-MIRRORS-OVERVIEW` (CI, WARN-only)
+
+- **Purpose:** Enforce template rule §6 (`18-ai-contract-template.md`): the DoD block lives in the overview *only* — sub-files MUST NOT duplicate it. The `00-overview-condensed.md` sibling is an exception (it intentionally mirrors), but its DoD MUST be byte-identical to `00-overview.md`'s DoD or the two files have silently drifted.
+- **Scope:** every directory containing both `00-overview.md` and `00-overview-condensed.md` (currently 4: `02-coding-guidelines`, `03-error-manage`, `15-wp-plugin-how-to`, `31-app`, `32-ui-design`).
+- **Rule:** the DoD block (between `**Definition of Done**` and the next `---` / `## ` / `> Authoring` line) MUST hash-match across both siblings.
+- **Failure mode (WARN):** CI emits `<dir>: DoD drift between 00-overview.md and 00-overview-condensed.md — re-mirror or delete the condensed copy` and continues. Promotion to hard-fail deferred until next overview-condensation pass.

@@ -50,7 +50,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 **Definition of Done** —
 - Every update implementation declares its rollback strategy explicitly
-- `AT-GENERICUPDATE-01` through `AT-GENERICUPDATE-NN` from `97-acceptance-criteria.md` pass
+- Every `AT-GENERICUPDATE-*` row in `97-acceptance-criteria.md` passes (filled in P2 backfill)
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
