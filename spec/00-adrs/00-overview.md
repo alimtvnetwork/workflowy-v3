@@ -18,7 +18,7 @@
 
 **Out of Scope** —
 - Implementation code — see the spec section the ADR locks (e.g. [`spec/04-database-conventions/`](../04-database-conventions/))
-- Cosmetic copy edits, single-subsection clarifications, and tooling preferences with no `G-*` gate attached ([owning section](./00-overview.md))
+- Cosmetic copy edits, single-subsection clarifications, and tooling preferences with no `G-*` gate attached — handled by the relevant section's contributor guide (e.g. [`spec/02-coding-guidelines/00-overview.md`](../02-coding-guidelines/00-overview.md) for code-style nits, [`spec/_GATE-REGISTRY.md`](../_GATE-REGISTRY.md) for gate-tier shifts that don't change a Decision)
 
 **Definition of Done** —
 - New file passes gates `G-00-ADR-SHAPE`, `G-00-ADR-NUMBERING`, `G-00-ADR-STATUS`, `G-00-ADR-SUPERSEDE`
