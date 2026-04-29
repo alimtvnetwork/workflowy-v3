@@ -19,7 +19,7 @@
 
 **Definition of Done** —
 - Zero raw color classes (`text-white`, `bg-black`, `text-[#…]`) in components (gate G-16)
-- Every token resolves in both `:root` and `.dark` blocks
+- Every token resolves in both `:root` and `.dark` blocks (`AT-DESIGNSYS-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
 - Every `AT-DESIGNSYSTEM-*` row in `97-acceptance-criteria.md` passes (filled in P2 backfill)
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 

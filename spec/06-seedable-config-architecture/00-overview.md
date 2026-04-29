@@ -54,8 +54,8 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 - Per-user UI preferences — see [`spec/36-user-management/01-account-and-settings.md`](../36-user-management/01-account-and-settings.md)
 
 **Definition of Done** —
-- Every config key has a default value, a type, and a validator
-- Re-running the seeder is idempotent — no duplicate rows, no overwritten user values
+- Every config key has a default value, a type, and a validator (`G-06-SEED-IDEMPOTENT` — see [`00-overview.md`](./00-overview.md) §Seeder rules)
+- Re-running the seeder is idempotent — no duplicate rows, no overwritten user values (`G-06-SEED-IDEMPOTENT` — see [`00-overview.md`](./00-overview.md) §Seeder rules)
 - Every `AT-SEEDABLECONFIG-*` row in `97-acceptance-criteria.md` passes (filled in P2 backfill)
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 

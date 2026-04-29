@@ -20,9 +20,9 @@
 - WordPress core hardening / hosting → [`spec/13-cicd-pipeline-workflows/`](../13-cicd-pipeline-workflows/) + `23-operator-runbooks/`.
 
 **Definition of Done** —
-- Every endpoint listed in `spec/contract.json` has a controller method whose name matches the generated stub in `skeletons/php/RestRoutes.generated.php`.
+- Every endpoint listed in `spec/contract.json` has a controller method whose name matches the generated stub in `skeletons/php/RestRoutes.generated.php`. (`AT-WPROOT-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
 - Every `AT-WPPLUGIN-*` row in `97-acceptance-criteria.md` has a passing PHPUnit test of the same id.
-- Every enum used in handler signatures resolves to a class in `wp-plugin/src/Enums/` whose cases match `skeletons/php/Enums.generated.php`.
+- Every enum used in handler signatures resolves to a class in `wp-plugin/src/Enums/` whose cases match `skeletons/php/Enums.generated.php`. (`AT-WPROOT-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0.
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).
@@ -59,7 +59,7 @@
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`00-overview-condensed.md`](./00-overview-condensed.md) | Condensed Overview — `spec/15-wp-plugin-how-to/` (P11) | 199 |
+| 1 | [`00-overview-condensed.md`](./00-overview-condensed.md) | Condensed Overview — `spec/15-wp-plugin-how-to/` (P11) | 197 |
 | 2 | [`01-foundation-and-architecture.md`](./01-foundation-and-architecture.md) | Phase 1 — Foundation and Architecture | 160 |
 | 3 | [`02-enums-and-coding-style/`](./02-enums-and-coding-style/00-overview.md) | 02 — Phase 2 — Enums and Coding Style | subfolder |
 | 4 | [`03-traits-and-composition.md`](./03-traits-and-composition.md) | Phase 3 — Traits and Composition | 356 |

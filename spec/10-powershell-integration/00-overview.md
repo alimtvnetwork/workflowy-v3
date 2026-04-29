@@ -52,8 +52,8 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 - Linux/macOS operator workflows — see [`spec/15-wp-plugin-how-to/23-operator-runbooks/`](../15-wp-plugin-how-to/23-operator-runbooks/)
 
 **Definition of Done** —
-- Every `.ps1` script supports `-WhatIf` and `-Verbose`
-- Exit codes follow the convention in `97-acceptance-criteria.md`
+- Every `.ps1` script supports `-WhatIf` and `-Verbose` (`AT-POWERSHELLINTEGRATION-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
+- Exit codes follow the convention in `97-acceptance-criteria.md` (`AT-POWERSHELLINTEGRATION-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
 - Every `AT-POWERSHELLINTEGRATION-*` row in `97-acceptance-criteria.md` passes (filled in P2 backfill)
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 

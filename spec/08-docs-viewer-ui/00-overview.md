@@ -15,8 +15,8 @@
 - Search ranking — see [`mem://features/search-functionality`](../31-app/01-features/16-search-ranking.md)
 
 **Definition of Done** —
-- Every link in a rendered spec file resolves (no client-side 404s)
-- Anchor links scroll-restore correctly on back/forward navigation
+- Every link in a rendered spec file resolves (no client-side 404s) (`AT-DOCSVIEWERUI-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
+- Anchor links scroll-restore correctly on back/forward navigation (`AT-DOCSVIEWERUI-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
 - Every `AT-DOCSVIEWERUI-*` row in `97-acceptance-criteria.md` passes (filled in P2 backfill)
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 

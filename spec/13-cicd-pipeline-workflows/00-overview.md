@@ -51,7 +51,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 - Release versioning policy — covered by [`spec/14-self-update-app-update/`](../14-self-update-app-update/00-overview.md)
 
 **Definition of Done** —
-- Every archetype has a working reference YAML committed under `.github/workflows/`
+- Every archetype has a working reference YAML committed under `.github/workflows/` (`AT-CICD-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
 - Every workflow runs `node scripts/spec-hygiene/00-run-all.mjs` as a required check
 - Every `AT-CICD-*` row in `97-acceptance-criteria.md` passes (filled in P2 backfill)
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0

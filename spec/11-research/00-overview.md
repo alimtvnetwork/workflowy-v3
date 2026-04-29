@@ -20,7 +20,7 @@
 - Anything normative — once a research file becomes binding, it MUST be moved into a numbered section and given an AT row. ([owning section](./00-overview.md))
 
 **Definition of Done** —
-- Every file in this folder carries `> **Status:** Research (not normative)` in its front-matter
+- Every file in this folder carries `> **Status:** Research (not normative)` in its front-matter (`G-11-RESEARCH-NONNORMATIVE` — see [`00-overview.md`](./00-overview.md))
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

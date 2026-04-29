@@ -54,8 +54,8 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 - Email/push notifications — covered separately by [`spec/36-user-management/`](../36-user-management/)
 
 **Definition of Done** —
-- Every feed row is reachable from at least one user-visible mutation flow
-- Feed query respects RLS / per-user scoping
+- Every feed row is reachable from at least one user-visible mutation flow (`AT-ACTIVITYFEED-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
+- Feed query respects RLS / per-user scoping (`AT-ACTIVITYFEED-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
 - Every `AT-ACTIVITYFEED-*` row in `97-acceptance-criteria.md` passes (filled in P2 backfill)
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 

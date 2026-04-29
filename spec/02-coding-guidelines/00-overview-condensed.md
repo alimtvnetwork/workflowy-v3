@@ -24,7 +24,7 @@
 
 **Definition of Done** —
 - Every `AT-CODINGGUIDELINES-*` row in `97-acceptance-criteria.md` is enforced by either a lint rule (config diff) or a hygiene script (script path).
-- `eslint.config.js` and `wp-plugin/phpstan.neon` parse cleanly and reject every counter-example listed in this section.
+- `eslint.config.js` and `wp-plugin/phpstan.neon` parse cleanly and reject every counter-example listed in this section. (`AT-CG-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0.
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

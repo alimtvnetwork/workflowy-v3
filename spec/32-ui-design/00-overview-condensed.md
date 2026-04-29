@@ -25,9 +25,9 @@
 - REST envelope shape → [`04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/).
 
 **Definition of Done** —
-- Every TS interface in `skeletons/ts/api-client.generated.ts` has a real implementation in `src/api/`.
-- Every feature in `31-app/01-features/` has a corresponding `src/components/<feature>/` folder with at least one component.
-- `bun run lint && bun run typecheck && bun run test` all exit 0.
+- Every TS interface in `skeletons/ts/api-client.generated.ts` has a real implementation in `src/api/`. (`AT-UIDESIGN-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
+- Every feature in `31-app/01-features/` has a corresponding `src/components/<feature>/` folder with at least one component. (`AT-UIDESIGN-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
+- `bun run lint && bun run typecheck && bun run test` all exit 0. (`AT-UIDESIGN-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0.
 
 > Authoring rules: see [`spec/01-spec-authoring-guide/18-ai-contract-template.md`](../01-spec-authoring-guide/18-ai-contract-template.md).

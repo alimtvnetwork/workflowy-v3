@@ -35,7 +35,7 @@ import { join } from "node:path";
 
 const SPEC = "spec";
 const OVERVIEW = "00-overview.md";
-const PROMOTED_HARDFAIL = false; // flips true after baseline drain
+const PROMOTED_HARDFAIL = true; // promoted 2026-04-29 after Tasks #12+#13 drained 65 baseline WARNs to 0
 
 const CANONICAL = [
   "Purpose",

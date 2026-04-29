@@ -46,8 +46,8 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 - Script-specific business logic — that lives in the script itself ([owning section](./00-overview.md))
 
 **Definition of Done** —
-- Every script supports `--help`, `--json`, and `--verbose`
-- Every script returns 0 on success, non-zero on failure, with documented codes
+- Every script supports `--help`, `--json`, and `--verbose` (`AT-GENERICCLI-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
+- Every script returns 0 on success, non-zero on failure, with documented codes (`AT-GENERICCLI-*` — see [`97-acceptance-criteria.md`](./97-acceptance-criteria.md))
 - Every `AT-GENERICCLI-*` row in `97-acceptance-criteria.md` passes (filled in P2 backfill)
 - `node scripts/spec-hygiene/00-run-all.mjs` exits 0
 
