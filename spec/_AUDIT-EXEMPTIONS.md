@@ -38,7 +38,7 @@ This manifest declares those exemptions so audit scripts and AI auditors can ded
 | `spec/36-user-management/.gitkeep` | scope-bootstrap | Same as above. | n/a | 2026-04-29 |
 | `spec/01-spec-authoring-guide/00-overview.md` | policy-definition | The placeholder-hygiene rule itself is documented here. Three `_TODO(P1)_` token mentions appear inside backticked code spans on lines 15/25/38 as the literal token being forbidden. Counting them as placeholders is a category error. | F-AUDIT-24-FALSE-POSITIVE (2026-04-29) | 2026-04-29 |
 | `spec/01-spec-authoring-guide/18-ai-contract-template.md` | policy-definition | Two `TODO(P1)` mentions on lines 100/101 define the convention itself ("Placeholder lines start with `_TODO(P1):_`…"). | F-AUDIT-24-FALSE-POSITIVE (2026-04-29) | 2026-04-29 |
-| `spec/01-spec-authoring-guide/20-rfc-2119-wording-policy.md` | policy-definition | Four mentions on lines 32/33/49/83 catalogue the forbidden tokens (`TBD`/`FIXME`/`XXX`/`TODO`) and their resolution rules — this is the SSOT for the rule itself. | F-AUDIT-24-FALSE-POSITIVE (2026-04-29) | 2026-04-29 |
+| `spec/01-spec-authoring-guide/20-rfc-2119-wording-policy.md` | policy-definition | Four mentions on lines 32/33/49/83 catalogue the forbidden tokens (`to-be-determined` / `fix-this` / `unknown-marker` / `TODO`) and their resolution rules — this is the SSOT for the rule itself. | F-AUDIT-24-FALSE-POSITIVE (2026-04-29) | 2026-04-29 |
 | `spec/02-coding-guidelines/01-cross-language/04-code-style/06-comments-and-documentation.md` | policy-definition | One mention on line 83 inside a code-span example showing the allowed `// TODO(PROJ-123)` form. | F-AUDIT-24-FALSE-POSITIVE (2026-04-29) | 2026-04-29 |
 
 ---
