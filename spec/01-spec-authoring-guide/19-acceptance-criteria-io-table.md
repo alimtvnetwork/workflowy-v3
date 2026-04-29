@@ -96,6 +96,55 @@ Each sub-task is one `next` step, runs the spec hygiene script, and closes when 
 
 ---
 
+## Companion-file pattern: `97a-acceptance-criteria-fixtures.md`
+
+> **Status:** Normative since 2026-04-29. Closes F-AUDIT-32 (audit v3). Established by precedent in `spec/00-adrs/97a-acceptance-criteria-fixtures.md` (AT-29-* + AT-30-*) and the corpus-wide sweep file `spec/97a-acceptance-criteria-fixtures.md` (P2g).
+
+### When to use a sibling fixture file (vs inline `> **AT-… fixture**` blocks)
+
+Use a sibling `97a-acceptance-criteria-fixtures.md` (placed next to its parent `97-acceptance-criteria.md`) when **any** of the following holds:
+
+1. **Fixture verbosity** — the I/O block(s) for any single AT exceed ~10 lines (multi-row tables, multiple negative fixtures, JSON envelopes >5 keys).
+2. **Cross-AT shared setup** — multiple ATs in the same `97-…` file share Given/When state that would otherwise be copy-pasted.
+3. **ADR ratification** — ATs that ratify an ADR's invariants (`AT-NN-*` rows tied to `ADR-NNNN`) MUST live in a sibling file so the ADR's `## Consequences` xlinks (`G-00-ADR-CONSEQUENCES-XLINK`) can point at a single canonical fixture entry.
+4. **Sweep / pattern catalogue** — when one fixture pattern applies across many sibling specs, prefer the corpus-wide sweep file (`spec/97a-acceptance-criteria-fixtures.md`) over duplicating it per scope.
+
+Use **inline `> **AT-… fixture**` blocks** in the parent `97-…` file when:
+
+- The AT has exactly one Given/When/Then triple, ≤6 lines total, no JSON envelope, and no shared setup with sibling ATs.
+
+### Required shape of `97a-acceptance-criteria-fixtures.md`
+
+| Section | Requirement |
+|---------|-------------|
+| **Front-matter** | `## Version`, `## Created`, `## Status`, `## Format SSOT` (link back to **this** file), and `## Closes` (cite F-AUDIT-NN or AT-FIX-NN deficit being resolved). |
+| **`## Scope` table** | Tabular index of every AT cluster covered: columns `\| AT cluster \| Owning ADR/Spec \| Owning gate(s) \| Section below \|`. |
+| **One `## §N — <AT cluster> fixtures` H2 per cluster** | One `### §N.M AT-NN-LABEL` H3 per AT row; each H3 contains the canonical 5-row fixture table from §"Canonical I/O block" above. |
+| **`## Verification` block** | Bash snippet listing the gate runner(s) that enforce these fixtures (e.g. `node scripts/spec-hygiene/57-check-…mjs`). |
+| **`## Related` block** | Backlink to parent `97-acceptance-criteria.md`, owning ADR(s), owning gate registry rows, format SSOT (this file), and the sweep file `../97a-acceptance-criteria-fixtures.md` (if applicable). |
+
+### Pairing rule (enforced by `AT-FIX-01`)
+
+For every AT row in a parent `97-…` or `98-…` file, the gate accepts ONE of:
+
+- (a) Inline `> **AT-… fixture**` block on the next non-blank line, OR
+- (b) Inline `> _Fixture: N/A — pure narrative reference, not a testable criterion._` opt-out, OR
+- (c) Parent file links to a sibling `97a-…-fixtures.md` (in `## Related`) OR to a pattern in the corpus-wide `spec/97a-acceptance-criteria-fixtures.md`.
+
+The third path is the **companion-file pattern** formalised in this section.
+
+### Naming + placement
+
+- **Filename:** literally `97a-acceptance-criteria-fixtures.md` (the trailing `a` distinguishes it from `97-acceptance-criteria.md`; no other suffix is permitted).
+- **Location:** in the **same directory** as its parent `97-acceptance-criteria.md`. Cross-directory pairings are forbidden — use the sweep file instead.
+- **Singleton per scope:** at most one `97a-…` file per directory. Multiple AT clusters share the file via numbered `## §N` sections.
+
+### Discoverability
+
+The parent `97-acceptance-criteria.md` MUST list the companion in its `## Related` section using the literal title `Sibling I/O fixtures for …` so reviewers and the AT-FIX-01 gate can both find it.
+
+---
+
 ## Hygiene gate (added in same PR as P2g closure)
 
 `scripts/spec-hygiene/` will gain check **AT-FIX-01**:
