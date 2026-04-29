@@ -51,6 +51,10 @@
 | `G-03-NO-BARE-THROW` | **CI** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Throw a bare xception / Error without errorCode Caller cannot branch on cause; observability cannot bucket. |
 | `G-03-NO-LEAK` | **DOC** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Leak stack traces or SQL into Message Information disclosure; violates security review. |
 | `G-03-STATUS-CONSISTENT` | **DOC** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Set Status: "Success" while the Errors array is non-empty Self-contradicting envelope; clients double-render. |
+| `G-03-CODE-LOAD-BEARING` | **DOC-NORM** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | All `Code` values shown in 00-overview canonical envelopes are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings. Drift forbidden. |
+| `G-03-FRONTEND-STATUS-PRIMARY` | **DOC-NORM** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Frontend detection logic MUST use HTTP status codes (2xx) as the primary indicator, NOT response body fields. Cross-ref AT-RESTAPIFORMAT-06..08. |
+| `G-03-MIDDLEWARE` | **DOC-NORM** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Central `ErrorMiddleware` MUST: (1) resolve Category from `ErrorCode::categoryOf`; (2) map category → HTTP status; (3) append `RequestId`; (4) strip stack traces unless `WORKFLOWY_DEBUG=1`. |
+| `G-03-RETRY-AFTER` | **DOC-NORM** | [`spec/03-error-manage/00-overview.md`](./03-error-manage/00-overview.md) | Only `TransientError` is eligible for client-side retry; the response MUST include `Retry-After` (seconds). Other categories MUST NOT include `Retry-After`. |
 
 ### ADR-0004
 
