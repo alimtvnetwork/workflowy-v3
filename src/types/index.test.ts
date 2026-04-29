@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { asItemId, asOwnerId } from "./index";
+import { asItemId, asOwnerId, asSortKey } from "./index";
 
 /**
  * Branded ID constructors must reject empty strings (trust-boundary
@@ -23,5 +23,24 @@ describe("asOwnerId()", () => {
 
   it("throws on empty string", () => {
     expect(() => asOwnerId("")).toThrow(/OwnerId cannot be empty/);
+  });
+});
+
+describe("asSortKey()", () => {
+  it("returns the input for valid base-62 strings", () => {
+    expect(asSortKey("aU")).toBe("aU");
+    expect(asSortKey("0")).toBe("0");
+    expect(asSortKey("zzZZ09")).toBe("zzZZ09");
+  });
+
+  it("throws on empty string", () => {
+    expect(() => asSortKey("")).toThrow(/SortKey cannot be empty/);
+  });
+
+  it("throws on out-of-alphabet characters per ADR-0016", () => {
+    expect(() => asSortKey("a-b")).toThrow(/base-62/);
+    expect(() => asSortKey("a.b")).toThrow(/base-62/);
+    expect(() => asSortKey("a b")).toThrow(/base-62/);
+    expect(() => asSortKey("a/b")).toThrow(/base-62/);
   });
 });

@@ -22,6 +22,25 @@ export type ItemId = Brand<string, "ItemId">;
 export type OwnerId = Brand<string, "OwnerId">;
 
 /**
+ * Fractional-index sort key — base-62, lexicographically ordered STRING.
+ *
+ * SSOT: ADR-0016 (`spec/00-adrs/0016-fractional-index-sort-order.md`) +
+ * core memory line 11: "SortOrder is a fractional-index STRING (base-62,
+ * lexicographic), never a number."
+ *
+ * Why a string, not a number:
+ *   - O(1) midpoint inserts: `between("a","b") === "aU"` (no sibling rewrites).
+ *   - Lexicographic compare matches insertion intent across clients.
+ *   - Survives offline-queue replay (ADR-0023) without renumbering races.
+ *
+ * Branded so a raw string cannot be passed where a fractional key is required.
+ * The `between(a,b)` algorithm + alphabet live in a future `src/lib/sortKey.ts`
+ * (lands with F-IMPL-03 reorder/DnD work); the type alone is shipped now to
+ * unblock the loader/queue contract per audit-v8 finding F-IMPL-AUD-02.
+ */
+export type SortKey = Brand<string, "SortKey">;
+
+/**
  * All possible item types in the outliner.
  *
  * SSOT: `spec/20-enums-index.md` §3.5 + `spec/32-ui-design/02-state-and-data/03-data-types.md`.
@@ -51,7 +70,7 @@ export interface Item {
   readonly richContent: string | null;
   readonly note: string | null;
   readonly itemType: ItemType;
-  readonly sortOrder: number;
+  readonly sortOrder: SortKey;
   readonly isCompleted: boolean;
   readonly isCollapsed: boolean;
   readonly dateAssigned: string | null;
@@ -129,4 +148,22 @@ export function asOwnerId(raw: string): OwnerId {
 export function asItemId(raw: string): ItemId {
   if (raw.length === 0) throw new Error("ItemId cannot be empty");
   return raw as ItemId;
+}
+
+/**
+ * Construct a SortKey from a raw fractional-index string.
+ *
+ * Use only at trust boundaries (DB rows, API envelope decode, queue replay).
+ * Throws on empty input AND on any character outside the base-62 alphabet
+ * `[0-9A-Za-z]` — the alphabet is fixed by ADR-0016 and out-of-band keys
+ * would break lexicographic compare across clients.
+ */
+const SORT_KEY_PATTERN = /^[0-9A-Za-z]+$/;
+
+export function asSortKey(raw: string): SortKey {
+  if (raw.length === 0) throw new Error("SortKey cannot be empty");
+  if (!SORT_KEY_PATTERN.test(raw)) {
+    throw new Error("SortKey must be base-62 [0-9A-Za-z] per ADR-0016");
+  }
+  return raw as SortKey;
 }
