@@ -13,10 +13,10 @@
 This is the **seventh** drift-detector in the CI cluster (siblings: G-19 workflow, G-20 pre-commit, G-21 gate-discovery, G-22 error-code catalogue, G-23 audit-log coverage, G-24 role-escalation coverage). G-25 watches **five distinct token-handling surfaces** that policy v1.0.0 introduced together:
 
 1. **Browser-storage prohibition** — no source under `src/` or `wp-plugin/` may call `localStorage.setItem` / `sessionStorage.setItem` / `IndexedDB.put` with a key matching `/token|jwt|refresh|bearer|access/i`.
-2. **Issuance audit pairing** — every `Auth::issueAccessToken()` call MUST be preceded (within the same scope, ≤30 lines) by an `Audit::log('AUTH.LOGIN_SUCCESS', …)` OR `Audit::log('AUTH.TOKEN_REFRESH', …)` call.
-3. **Revocation audit pairing** — every `Auth::revokeFamily()` call MUST be paired (within the same scope, ≤30 lines) with one of `AUTH.LOGOUT*`, `AUTH.PASSWORD_CHANGE`, `AUTHZ.REFRESH_REUSE`, or `ADMIN.USER_DISABLE` audit calls.
-4. **Refresh cookie path-scoping** — the refresh endpoint route declaration MUST contain the literal `'cookie_path' => '/wp-json/workflowy/v1/auth/refresh'` string.
-5. **Refresh cookie hardening** — every `Set-Cookie: refresh=…` emitter MUST include all three flags `HttpOnly`, `Secure`, `SameSite=Strict` in the same statement.
+2. **Issuance audit pairing** — every `Auth::issueAccessToken()` call MUST be preceded (within the same scope, ≤30 lines) by an `Audit::log('AUTH.LOGIN_SUCCESS', …)` OR `Audit::log('AUTH.TOKEN_REFRESH', …)` call. [gate: G-TOKLC-ISSUANCE-AUDIT-PAIRED]
+3. **Revocation audit pairing** — every `Auth::revokeFamily()` call MUST be paired (within the same scope, ≤30 lines) with one of `AUTH.LOGOUT*`, `AUTH.PASSWORD_CHANGE`, `AUTHZ.REFRESH_REUSE`, or `ADMIN.USER_DISABLE` audit calls. [gate: G-TOKLC-REVOCATION-AUDIT-PAIRED]
+4. **Refresh cookie path-scoping** — the refresh endpoint route declaration MUST contain the literal `'cookie_path' => '/wp-json/workflowy/v1/auth/refresh'` string. [gate: G-TOKLC-REFRESH-PATH-SCOPED]
+5. **Refresh cookie hardening** — every `Set-Cookie: refresh=…` emitter MUST include all three flags `HttpOnly`, `Secure`, `SameSite=Strict` in the same statement. [gate: G-TOKLC-REFRESH-COOKIE-HARDENED]
 
 Without G-25, any of five regressions could silently merge:
 
@@ -177,9 +177,9 @@ function auditTokenLifecycleDrift(SourceRoot, RouteFile, TokenKeyPattern, TestFi
 2. **Issuance inside a closure** — `array_map(fn() => Auth::issueAccessToken(), $users)` — the audit call may live in the outer scope. Same-file 30-line window applies; reviewers prefer the issuance to live next to its audit anyway.
 3. **Conditional issuance** — `if ($valid) { Audit::log('AUTH.LOGIN_SUCCESS', …); Auth::issueAccessToken(); }` — both calls in same scope; pairing OK.
 4. **Revocation triggered from a different file than the audit** (e.g. cron sweep calls `Auth::revokeFamily()`, audit is written in the cron's caller) — pairing window is same-file; cron must emit its own audit row in the same file. **Resolution**: the cron sweep emits `AUTH.LOGOUT_TIMEOUT` directly when revoking expired families.
-5. **Refresh route declared via attribute (`#[Route(cookie_path: '...')]`)** instead of array literal — axis 4 string-match misses. **Resolution**: file MUST contain the literal string somewhere — even as a comment if attribute-based — for grep-ability of policy compliance.
+5. **Refresh route declared via attribute (`#[Route(cookie_path: '...')]`)** instead of array literal — axis 4 string-match misses. **Resolution**: file MUST contain the literal string somewhere — even as a comment if attribute-based — for grep-ability of policy compliance. [gate: G-TOKLC-REFRESH-PATH-LITERAL-PRESENT]
 6. **`setcookie` called with array-form options** (`setcookie('refresh', $val, ['httponly' => true, 'secure' => true, 'samesite' => 'Strict'])`) — `extractStatement` walks the multi-line array and the case-insensitive substring check picks up `httponly`, `secure`, `samesite' => 'strict`. ✅
-7. **Cookie deletion** — `setcookie('refresh', '', time() - 3600)` is a delete; technically lacks `Secure`/`HttpOnly` flags depending on style. **Resolution**: deletion calls MUST still set the flags identically (browsers require flag-match for deletion); axis 5 enforces consistently.
+7. **Cookie deletion** — `setcookie('refresh', '', time() - 3600)` is a delete; technically lacks `Secure`/`HttpOnly` flags depending on style. **Resolution**: deletion calls MUST still set the flags identically (browsers require flag-match for deletion); axis 5 enforces consistently. [gate: G-TOKLC-COOKIE-DELETION-FLAGS-MATCH]
 8. **`localStorage.setItem('userPreferences', JSON.stringify({theme:'dark', lastToken:'…'}))`** — key is `userPreferences`, not token-shaped → axis 1 misses. **Resolution**: this is a real risk; document in `97-acceptance-criteria.md` that the regex must be updated whenever a non-obvious key surface emerges. Future enhancement: scan stringified values for JWT shape (`/eyJ[A-Za-z0-9_-]+\./`).
 9. **Test files using real-shaped key for E2E** (`localStorage.setItem('refresh_token', 'fake-jwt')`) — `*.test.*` allow-list exempts them. E2E specs that live under `tests/e2e/` without the `.test.` suffix must be added to the exemption list explicitly.
 
