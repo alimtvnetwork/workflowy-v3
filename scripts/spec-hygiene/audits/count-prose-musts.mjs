@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-// AT-block-aware prose-MUST counter (v3 — handles heading nesting + fixture slots).
+// AT-block-aware prose-MUST counter (v5 — handles heading nesting + fixture slots
+// + bare gate citations + RFC-2119 priority cells).
 // A line is "in an AT block" if ANY ancestor heading (walking up through ALL
-// ###/####/## levels) cites `AT-…-`. v1 bug: stopped at first heading found
-// (sub-headings shadowed AT parent). v3 adds: skip canonical fixture-table
-// slot rows (already AT-shaped per format SSOT) + skip blockquote citations.
+// ###/####/## levels) cites `AT-…-`. v3 added fixture-slot/blockquote skips,
+// v4 added bare-form gate citations, v5 adds RFC-2119 priority-cell skip.
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 
