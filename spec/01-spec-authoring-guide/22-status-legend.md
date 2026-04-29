@@ -18,7 +18,7 @@ long-tail variants like `D-grade`, `WARN-only`, `Spec Ready`, `Live since …`,
 
 This drift makes status filtering, triage, and the planned DOC-tier sweep
 mechanically impossible. This file defines **the closed enum of 9 canonical
-status values**. Every spec file's `**Status:**` line MUST resolve to one of
+status values**. Every spec file's `**Status:**` line MUST (gate G-NS-STATUS-IN-LEGEND) resolve to one of
 these 9; free-form prose statuses are forbidden.
 
 ---
