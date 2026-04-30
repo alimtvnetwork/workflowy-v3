@@ -31,9 +31,9 @@
 | U2 | Paste a URL | Auto-detect and make it a clickable link. | Editor / paste handler |
 | U3 | Empty content area (brand-new user) | Show onboarding hint: "Start typing to create your first item" with a subtle animation. | Empty-state component |
 | U4 | Drag-and-drop onto itself | Do nothing — no visual change, no error. | DnD handler |
-| U5 | Move item into its own child/descendant | MUST block with error toast: "Cannot move item into its own children." | Move-validation guard |
-| U6 | Exceed free-tier limit (250 items) | MUST block new item creation. Toast: "Item limit reached. Upgrade to Pro for unlimited items." with an upgrade button. | Quota guard (pre-write) |
-| U7 | Very deep nesting (20+ levels) | MUST have a performance guard — virtualize rendering. Only render visible items plus a small buffer. Indent is visually capped at 20 levels. | Tree renderer |
+| U5 | Move item into its own child/descendant | MUST block with error toast: "Cannot move item into its own children." (gate `G-EDGE-U5-CYCLE-BLOCK`) | Move-validation guard |
+| U6 | Exceed free-tier limit (250 items) | MUST block new item creation. Toast: "Item limit reached. Upgrade to Pro for unlimited items." with an upgrade button (gate `G-EDGE-U6-QUOTA-BLOCK`). | Quota guard (pre-write) |
+| U7 | Very deep nesting (20+ levels) | MUST have a performance guard — virtualize rendering. Only render visible items plus a small buffer. Indent is visually capped at 20 levels (gate `G-EDGE-U7-DEPTH-VIRTUALIZE`, 3-tier sub-rule under `G-17-VIRTUALIZE-1000` per ADR-0017 §virtualization-threshold). | Tree renderer |
 
 ---
 
