@@ -163,6 +163,17 @@ These terms are load-bearing in the seven post-v7 ADRs and are referenced from `
 
 **Exemption process:** A file may use a forbidden term inside a quoted requirement, audit finding, or third-party API name by wrapping the offending word in backticks and adding `<!-- vague-exempt: <reason> -->` on the same line. The hygiene gate skips backtick-wrapped occurrences.
 
+**Standing cohort exemptions (auto-skipped by `G-LINT-VAGUE-MODIFIERS`):** the following four cohorts are systemically false-positive and are excluded from F-SPEC-14 density counting without per-line annotation. Cohort additions require a ledger entry in `spec/AMBIGUITY-LEDGER.md`.
+
+| Cohort | Pattern | Rationale | Approx. corpus count |
+|---|---|---|---|
+| Paired-example markers | `// ✅ GOOD`, `// ❌ BAD`, `// ✅ Good`, `// ❌ Bad` (incl. `-- ✅`/`-- ❌` in SQL examples, `# ✅`/`# ❌` in Python/PowerShell) | Canonical teaching convention enforced by `G-02-PAIRED-EXAMPLES`. The word "Good" is a marker label, not subjective prose. | ~91 occurrences across ~11 files |
+| YAML/CI keyword `fail-fast` | Literal GitHub Actions matrix strategy key | Library API name, no substitution possible | 4 occurrences |
+| TypeScript pattern name `proper enum`/`proper enums`/`proper type` | Defined rule name in `02-coding-guidelines/02-typescript/08-typescript-standards-reference/03-no-magic-values.md` | Rule-name reference, not subjective judgment | ~6 occurrences |
+| Tier-name `Simple` (capitalized) | Defined tier label in modal-tier (`spec/15-wp-plugin-how-to/13-admin-ui-patterns/06-modal-anatomy.md`) and issue-tier (`spec/01-spec-authoring-guide/05-app-project-template.md`) taxonomies | Capitalized = tier name; lowercase free-prose still triggers | ~5 occurrences |
+| Test-runner mode `short/fast mode` | `go test -short` / Vitest `--bail` flag references | Standard test-runner flag names | 2 occurrences |
+| WP admin scheme `Modern` | WordPress core admin color scheme literal name (alongside Default/Light/Blue/Coffee/etc.) | Library API name | 1 occurrence (backtick-fenced) |
+
 **Resolution path for legacy occurrences:** Tracked under `F-SPEC-14` in `spec/AUDIT-FINDINGS-LEDGER.md`. Bind sweeps proceed batch-wise; pre-commit hook blocks NEW occurrences from 2026-04-30 forward (`G-LINT-VAGUE-MODIFIERS` enforcing-mode = `block-new`, `warn-existing`).
 
 ---

@@ -48,7 +48,7 @@ background: linear-gradient(180deg, var(--riseup-primary-light, #3b82f6), var(--
 
 ## Dark Mode & WordPress Admin Color Schemes
 
-WordPress ships with multiple admin color schemes (Default, Light, Modern, Blue, Coffee, Ectoplasm, Midnight, Ocean, Sunrise). Plugins MUST adapt gracefully to at least the dark schemes to avoid unreadable UI.
+WordPress ships with multiple admin color schemes (Default, Light, `Modern` <!-- vague-exempt: WP-scheme-name -->, Blue, Coffee, Ectoplasm, Midnight, Ocean, Sunrise). Plugins MUST adapt to at least the dark schemes (Midnight, Ocean, Coffee, Ectoplasm) so text contrast meets WCAG AA (≥4.5:1 for body, ≥3:1 for large text) — verified via the `G-12-WP-DARK-SCHEME-CONTRAST` gate.
 
 ### Strategy: Override tokens per color scheme
 

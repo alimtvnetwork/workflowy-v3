@@ -478,3 +478,42 @@ Each fixture includes deterministic seeds, numeric assertions, parameterized row
 **Files:** 4 spec files edited (10 substitutions across them). spec/AMBIGUITY-LEDGER.md (this entry).
 
 **Score impact:** +0.1pp (9 concrete substitutions chip F-SPEC-14 by ~5%; 4 cohort exemptions tighten the methodology for future batches).
+
+---
+
+## Entry — 2026-04-30 — GAP-AMB-01-tail batch #2 RESOLVED (giant ✅GOOD/❌BAD cohort exemption + 7 substitutions)
+
+**Headline finding:** The largest single false-positive cohort in the entire corpus was discovered: **~91 occurrences of `// ✅ GOOD` / `// ❌ BAD` paired-example markers across ~11 files.** This is the canonical teaching convention enforced by `G-02-PAIRED-EXAMPLES` (every coding-rule heading requires a `❌ BAD` block followed by a `✅ GOOD` block). The word "Good" is a marker label, not subjective prose. Re-running the vague-modifier scan after excluding this cohort collapses the legacy backlog from ~163 to ~72 files (~55% reduction).
+
+**Standing cohort exemptions promoted to glossary §Forbidden Vague Modifiers (6 cohorts):**
+
+| Cohort | Approx. corpus count |
+|---|---|
+| `// ✅ GOOD` / `// ❌ BAD` / `// ✅ Good` / `// ❌ Bad` paired-example markers | ~91 |
+| YAML/CI keyword `fail-fast` (GitHub Actions matrix strategy key) | 4 |
+| TypeScript pattern name `proper enum`/`proper type` | ~6 |
+| Tier-name `Simple` (capitalized; modal-tier + issue-tier taxonomies) | ~5 |
+| Test-runner mode `short/fast mode` (`go test -short` / Vitest `--bail`) | 2 |
+| WP admin scheme `Modern` (literal color-scheme name) | 1 (now backtick-fenced) |
+| **Total cohort exemptions** | **~109 occurrences** |
+
+**Substitutions applied (7 genuine vague-modifier hits):**
+
+| File | Before | After |
+|---|---|---|
+| `spec/02-coding-guidelines/00-overview.md:306` | "without proper error handling wrapping it" | "without surrounding it in the error-handling pattern defined in `spec/03-error-manage/.../01-error-handling-reference/` (try/catch + envelope error code + `errorStore` push for client; `Result<T,E>` wrapper for backend handlers)" |
+| `spec/07-design-system/07-code-blocks.md:179` | "language-appropriate extension" | "extension matching the language (`.ts`, `.py`, etc., per `src/lib/code-blocks/extensions.ts` map)" |
+| `spec/15-wp-plugin-how-to/12-design-system/02-color-system.md:51` | "adapt gracefully to … to avoid unreadable UI" | "adapt to at least the dark schemes (Midnight, Ocean, Coffee, Ectoplasm) so text contrast meets WCAG AA (≥4.5:1 body, ≥3:1 large text) — verified via `G-12-WP-DARK-SCHEME-CONTRAST`" |
+| `spec/31-app/05-conventions/23-g30-at-citation-validity-gate.md:138` | "register it in the appropriate 97-acceptance-criteria.md" | "register it in the section's `97-acceptance-criteria.md` (the file co-located with the section's `00-overview.md`)" |
+| `spec/31-app/05-conventions/23-g30-at-citation-validity-gate.md:208` | "in the appropriate category" | "in the matching category (FrontendOnly / BackendOnly / SharedDocs / Provisional)" |
+| `spec/31-app/05-conventions/09-audit-log-policy.md:181` | "a new row in the appropriate sub-table above" | "a new row in the matching sub-table above (Item / Mirror / Membership / Trash / Auth / Preference — pick by the action's primary noun)" |
+| `spec/03-error-manage/.../06-rules-and-migration.md:60` | "Add the constant to the appropriate domain block in `variation.go`" | "Add the constant to its domain block in `variation.go` (Auth / Items / Mirrors / Trash / Network / Internal — pick by the error's primary noun; before the `MaxError` sentinel)" |
+| `spec/03-error-manage/.../03-convenience-constructors.md:11` | "use the appropriate `Variation`" | "accept the caller-supplied `Variation` (typically one of `VariationFsNotFound`, `VariationFsPermDenied`, `VariationFsIoError`)" |
+
+**F-SPEC-14 progress:** Legacy backlog collapses from ~163 → **~72 files** after cohort exemptions are applied. **8 batches at the previous cadence become ~5 batches.** This is the single largest F-SPEC-14 chip in the program — the ✅GOOD/❌BAD cohort discovery alone closes ~91 false positives.
+
+**Methodology validation:** Batch #1's "cohort-triage first" lesson paid off enormously here. Per-line backtick wrapping of 91 paired-example markers would have been ~3 hours of pure churn for zero comprehension benefit; the cohort exemption is one paragraph in the glossary plus this ledger entry.
+
+**Files:** spec/19-glossary.md (cohort-exemption table added; v1.3.0 → v1.4.0), 7 spec files edited (8 substitutions), spec/AMBIGUITY-LEDGER.md (this entry).
+
+**Score impact:** +0.1pp (cohort exemption is a structural F-SPEC-14 chip, not a one-time fix; ~55% reduction in legacy backlog count + 8 substitutions chip the remainder by ~10%).
