@@ -158,8 +158,6 @@ echo "✅ PASS: Axios version $CURRENT is compliant"
 
 If a new Axios version needs to be adopted, the following 6-step procedure MUST be followed (binds `G-32-AXIOS-UPGRADE-PROCEDURE`):
 
-If a new Axios version needs to be adopted:
-
 1. **Security review** — Verify the new version against known CVEs
 2. **Changelog audit** — Read the full Axios changelog for breaking changes
 3. **Isolated testing** — Test in a branch with full integration test suite
