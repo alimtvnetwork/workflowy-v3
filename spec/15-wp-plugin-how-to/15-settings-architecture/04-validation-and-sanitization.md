@@ -6,7 +6,7 @@
 
 ## 4.1 WordPress Registration
 
-Settings MUST be registered with `register_setting()` including a sanitize callback:
+Settings MUST be registered with `register_setting()` including a sanitize callback: (gate `G-DBNAME-BOOL-IS-HAS-PREFIX`)
 
 ```php
 register_setting(
@@ -68,7 +68,7 @@ public function sanitizePluginSettings(array $input): array {
 
 ## 4.4 Enum-Constrained Selects
 
-Select fields whose values come from enums MUST validate against the enum:
+Select fields whose values come from enums MUST validate against the enum: (gate `G-DBNAME-BOOL-IS-HAS-PREFIX`)
 
 ```php
 $frequency = $input['schedule_frequency'] ?? '';

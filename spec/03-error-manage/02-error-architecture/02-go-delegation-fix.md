@@ -8,7 +8,7 @@
 
 ## What Must Change
 
-When a handler in the Go backend makes an HTTP request to a downstream/delegated service and receives a **non-2xx response**, the envelope builder **MUST** populate:
+When a handler in the Go backend makes an HTTP request to a downstream/delegated service and receives a **non-2xx response**, the envelope builder **MUST** populate: (gate `G-ERR-04`)
 
 ### 1. `Attributes.RequestDelegatedAt` (string)
 
@@ -20,7 +20,7 @@ envelope.Attributes.RequestDelegatedAt = delegatedUrl
 // e.g. "https://demoat.attoproperty.com.au/wp-json/riseup-asia-uploader/v1/snapshots/providers"
 ```
 
-**Rule:** This field MUST be set for **every** delegated request — even successful ones. It tells the frontend that a 3rd-party hop occurred.
+**Rule:** This field MUST be set for **every** delegated request — even successful ones. It tells the frontend that a 3rd-party hop occurred (gate `G-ERR-04`).
 
 ---
 

@@ -61,7 +61,7 @@
 
 ## Staggered Row Animation
 
-Table rows MUST use staggered delays for entrance:
+Table rows MUST use staggered delays for entrance: (gate `G-ADR-0003-FRONTEND-STACK-LOCK`)
 
 ```css
 .wp-list-table tbody tr {
@@ -90,7 +90,7 @@ Table rows MUST use staggered delays for entrance:
 
 ## Animation Rules
 
-1. Every page MUST re-declare the keyframes it uses (pages load CSS independently)
+1. Every page MUST re-declare the keyframes it uses (pages load CSS independently) (gate `G-ADR-0003-FRONTEND-STACK-LOCK`)
 2. `infinite` animations are reserved for: spinners, live indicators, and alert pulses
 3. Entrance animations use `both` fill mode for staggered delays
 4. Hover animations are NEVER `infinite` — they are state transitions only

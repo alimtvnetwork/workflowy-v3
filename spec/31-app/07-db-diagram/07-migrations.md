@@ -8,7 +8,7 @@
 
 ## What this file contains
 
-The order in which schema migrations MUST be applied to bring a fresh SQLite file to the current schema. Each migration is atomic, idempotent (`IF NOT EXISTS`), and reversible (a paired `down` migration exists in the implementation).
+The order in which schema migrations MUST be applied to bring a fresh SQLite file to the current schema. Each migration is atomic, idempotent (`IF NOT EXISTS`), and reversible (a paired `down` migration exists in the implementation) (gate `G-ADR-0001-AMENDMENT-REQUIRED`).
 
 > **Numbering**: `M-NNN-{db}-{verb}-{noun}.sql` where `{db}` is `root` or `app`. Numbers are append-only and never reused.
 
@@ -114,7 +114,7 @@ flowchart TD
 | 2 | Every `up` migration has a paired `down` migration | Enables rollback during dev / failed deploys |
 | 3 | Lookup table seeds use explicit IDs (`INSERT INTO RoleType (RoleTypeId, Name) VALUES (1, 'admin')`) | Stable IDs across environments |
 | 4 | Never `ALTER TABLE … DROP COLUMN` on a live table — write a new migration that creates a new table, copies data, swaps names | SQLite ALTER limitations |
-| 5 | A schema-changing migration MUST bump the App DB's `PRAGMA user_version` | Lets the bootstrap know which migration to run next |
+| 5 | A schema-changing migration MUST bump the App DB's `PRAGMA user_version` | Lets the bootstrap know which migration to run next (gate `G-ADR-0001-AMENDMENT-REQUIRED`) |
 | 6 | Never edit a migration after it has been merged | Append-only — write a new migration to fix mistakes |
 
 ---

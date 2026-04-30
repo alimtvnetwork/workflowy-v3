@@ -24,7 +24,7 @@
 
 ---
 
-## Required sections (every post-mortem MUST have these — A-44 §7 step 12)
+## Required sections (every post-mortem MUST have these — A-44 §7 step 12) (gate `G-BACKUP-POSTMORTEM-CONTENT`)
 
 ### 1. Root cause
 What failed in production. Concrete, blameless, evidence-linked.
@@ -42,7 +42,7 @@ Why this snapshot generation, not a newer or older one.
 Explicit acknowledgement that the audit chain was rewound, with the affected hash range.
 
 ### 6. Action items to prevent recurrence
-Each action item MUST have: owner, due date, ticket id, and one of `prevent` / `detect` / `recover` as its category.
+Each action item MUST have: owner, due date, ticket id, and one of `prevent` / `detect` / `recover` as its category (gate `G-BACKUP-POSTMORTEM-CONTENT`).
 
 ---
 

@@ -8,7 +8,7 @@
 
 ## Overview
 
-All **custom** database table names and column names MUST use **PascalCase** across every language in the project. This ensures consistency with the cross-language enum specification, JSON API responses, and TypeScript frontend types.
+All **custom** database table names and column names MUST use **PascalCase** across every language in the project. This ensures consistency with the cross-language enum specification, JSON API responses, and TypeScript frontend types (gate `G-DBNAME-PK-TABLENAMEID`).
 
 **WordPress core tables** (e.g., `wp_posts`, `wp_options`, `wp_usermeta`) are **strictly exempt** — they retain their native `snake_case` naming as managed by WordPress itself.
 
@@ -94,7 +94,7 @@ Abbreviations are NOT fully capitalized — only the first letter is uppercase:
 
 ### Rule 5: WordPress Core — Exempt
 
-Any interaction with WordPress core tables MUST use WordPress's native naming:
+Any interaction with WordPress core tables MUST use WordPress's native naming: (gate `G-DBNAME-PK-TABLENAMEID`)
 
 ```php
 // ✅ WordPress core — snake_case required

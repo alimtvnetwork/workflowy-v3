@@ -16,7 +16,7 @@ Two utility packages eliminate raw `os`/`io` calls from application code:
 | `pathutil` | Boolean guard functions for file/directory existence checks | `bool` — positive-named, no `!` needed |
 | `fileutil` | File I/O wrappers that return `apperror.Result[T]` | `apperror.Result[T]` — no raw `error` escaping |
 
-**Rule:** Application code MUST NOT call `os.Open`, `os.Stat`, `os.ReadFile`, `os.WriteFile`, `os.MkdirAll`, or `os.Remove` directly. Use the corresponding `pathutil` or `fileutil` wrapper.
+**Rule:** Application code MUST NOT call `os.Open`, `os.Stat`, `os.ReadFile`, `os.WriteFile`, `os.MkdirAll`, or `os.Remove` directly. Use the corresponding `pathutil` or `fileutil` wrapper (gate `G-02-NO-ANY`).
 
 ---
 
@@ -96,7 +96,7 @@ if !isValid {
 | Dir writable | `IsDirWritable` | `IsDirReadonly` |
 | Path absolute | `IsPathAbsolute` | `IsPathRelative` |
 
-**Rule:** Every `Is<Thing>` MUST have its negation counterpart so callers never write `!pathutil.Is<Thing>()`.
+**Rule:** Every `Is<Thing>` MUST have its negation counterpart so callers never write `!pathutil.Is<Thing>()` (gate `G-DBNAME-BOOL-POSITIVE-ONLY`).
 
 ---
 

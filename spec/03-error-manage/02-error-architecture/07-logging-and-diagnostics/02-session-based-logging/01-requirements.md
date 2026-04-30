@@ -14,9 +14,9 @@
 | F4 | Sensitive headers must be redacted before storage | MUST |
 | F5 | Sessions must be retrievable via API | MUST |
 | F6 | Sessions must be filterable by method, path, status | SHOULD |
-| F7 | Error sessions must be easily identifiable | MUST |
+| F7 | Error sessions must be easily identifiable | MUST (gate `G-LOG-SESSION-FNREQS`) |
 | F8 | Sessions must auto-expire after retention period | SHOULD |
-| F9 | Session logging must be toggleable via config | MUST |
+| F9 | Session logging must be toggleable via config | MUST (gate `G-LOG-SESSION-FNREQS`) |
 | F10 | Health check endpoints must be excluded | MUST |
 | F11 | Delegated request metadata must be captured when proxying | MUST |
 | F12 | Session ID must be linkable to error envelope `Attributes.SessionId` | MUST |

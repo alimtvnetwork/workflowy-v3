@@ -27,6 +27,6 @@ function stopAutoRefresh() {
 ## Rules
 
 - Default interval: **30 seconds**
-- Auto-refresh MUST stop when modal is open
-- Auto-refresh MUST stop when user is interacting (e.g., selecting text)
+- Auto-refresh MUST stop when modal is open (gate `G-ADR-0003-FRONTEND-STACK-LOCK`)
+- Auto-refresh MUST stop when user is interacting (e.g., selecting text) (gate `G-ADR-0003-FRONTEND-STACK-LOCK`)
 - Toggle state persists via a UI switch (see Phase 13 — Toggle Switch)

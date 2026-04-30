@@ -176,8 +176,8 @@ At the user-set bar ('mediocre AI, zero follow-up, 100% intent match'), every ac
 
 ## GAP-AMB-01-106..120 — Cross-domain bind batch (2026-04-30)
 
-**Action:** 15 files bound across feature SSE/sync surfaces, security/audit conventions (5 files), state-management, and 3 DB-diagram ERD files. 30 bindings; zero new gates.
+**Action:** 15 files bound across ADR index automation, DB-diagram migrations, WP plugin design system / admin-ui patterns / settings validation / error-handling auto-refresh / operator runbooks, scripts-as-spec README, error-manage architecture (4 files), and TS/Go/cross-language coding guidelines (3 files). 31 bindings; zero new gates.
 
-**Files:** 31-app/01-features/{08-share-dialog,09b-mirror-peer-group-model,10-today-view,11-trash-view,13-templates,14-concurrency-and-sync}, 31-app/05-conventions/{09-audit-log-policy,11-session-token-lifecycle,13-data-export-policy,15-g22-error-code-catalogue-gate,16-g23-audit-log-coverage-gate,33-state-management-architecture}, 31-app/07-db-diagram/{00-overview,01-master-erd,03-app-db-erd}.
+**Files:** 00-adrs/_INDEX_AUTOMATION, 31-app/07-db-diagram/07-migrations, 15-wp-plugin-how-to/{12-design-system/05-animation-library, 13-admin-ui-patterns/04-table-patterns, 15-settings-architecture/04-validation-and-sanitization, 16-error-handling-extraction/07-auto-refresh, 23-operator-runbooks/03-post-mortem-template}, 13-cicd-pipeline-workflows/scripts-as-spec/README, 03-error-manage/02-error-architecture/{02-go-delegation-fix, 05-response-envelope/04-response-envelope-reference, 06-apperror-package/01-apperror-reference/06-serialization-and-guards, 07-logging-and-diagnostics/02-session-based-logging/01-requirements}, 02-coding-guidelines/{01-cross-language/07-database-naming, 02-typescript/09-promise-await-patterns, 03-golang/08-pathutil-fileutil-spec}.
 
-**Result:** Unbacked **276 → ?** (see audit).
+**Result:** Unbacked **246 → 214** (-32). Coverage **91.64% → 92.72%** (+1.08 pp).
