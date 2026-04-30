@@ -1,11 +1,11 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.36  
-> **Updated:** 2026-04-30 — **batch-44 (NEW-21 closure):** registered new auditor `scripts/spec-hygiene/77-check-orphan-must-citations.mjs` and gate `G-00-ORPHAN-MUST-CITATION-ADJACENCY` (WARN-only). Closes the false-NEGATIVE class surfaced by the batch-42 process incident: the MUST counter credits a binding only when the gate token lives on the same physical line as the MUST keyword; soft-wrapped paragraphs with citation on an adjacent line are silently dropped. New auditor walks every `spec/*.md` and emits a WARN for every MUST line that lacks a same-line citation BUT has one elsewhere in the same Markdown paragraph. **Inaugural baseline: 18 WARN across 16 files.** Wired into `scripts/spec-hygiene/00-run-all.mjs` between 76- and 04-. Per project memory rule: "parser-fix counts as content when it eliminates a false-positive content finding" — this fix eliminates a false-NEGATIVE class (counter wrongly credits an authored binding as unbound), satisfying the rule's intent and resetting the streak counter to 0 consecutive tooling. Prior: 1.7.35 (batch-43 Domain-MIGRATE seed).
+> **Version:** 1.7.37  
+> **Updated:** 2026-04-30 — **batch-44 (Domain-04 fortification):** registered 4 new DOC-NORM gates under ADR-0004 area binding the 4 unbound prose-MUSTs in `spec/04-database-conventions/00-overview.md`: `G-04-AI-CONVENTIONS-RETAINED` (anchors the §"AI Agents Must Commit Database Rules to Memory" block), `G-04-ALIAS-BRIDGE-PR-COMPLETE` (PR-discipline sub-rule of `G-04-ALIAS-DDL-CANONICAL`), `G-04-NO-DDL-PLURAL-ALIASES` (forbids derived-identifier plural leakage; distinct from `G-04-NO-DDL-PLURALS` which forbids base-table plurals), and `G-04-WIRE-USES-WIRE-SPELLING` (generalises `G-26-WIRE-OWNERID-ONLY` across the entire column-level alias-bridge table). All 4 gates DOC-NORM at seed; promotion to CI deferred until `scripts/spec-hygiene/check-ddl-naming.mjs` exists (NEW-15) — extends to alias-bridge audit. Bare-MUST count 328 → 324 (Δ −4 exact). Closes 39th consecutive zero-drift batch. Streak counter: 1 consecutive content batch (NEW-21 parser-fix counted as content per memory rule). Prior: 1.7.36 (NEW-21 parser-hardening auditor + WARN gate).
 
-- **Total named gates:** 504 (+1 this revision)
-- **WARN-only gates:** 11 (+1 this revision)
-- **CI:** 138 (+1 this revision; counts the new WARN-only gate per existing convention)
+- **Total named gates:** 508 (+4 this revision)
+- **WARN-only gates:** 11 (unchanged)
+- **CI:** 138 (unchanged)
 - **TEST:** 20 (unchanged)
 - **DOC-NORM:** 141 (unchanged)
 - **DOC:** 202 (unchanged)
