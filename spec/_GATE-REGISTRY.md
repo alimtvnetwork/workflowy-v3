@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.22  
-> **Updated:** 2026-04-30 — **batch-31 prose→AT migration:** seeded **Domain-USER** with **22 new gates** binding all 21 prose-MUSTs in `spec/36-user-management/97-acceptance-criteria.md` (16 curated AT-USERMANAGEMENT-* rows + 5 P13-backfilled AT-USR-* story flows). Tier mix: 16 CI + 3 TEST + 3 DOC-NORM. Pre-flight namespace check: zero prior `G-USER-*` rows — clean greenfield. Distinct from `Domain-RE` (role-escalation lifecycle) which governs *changes* to assignments under dual-control; `Domain-USER` governs *baseline schema, helpers, hashing, sessions, admin tooling, and GDPR* invariants. Prior: 1.7.21 (batch-30 G-BACKUP-* DR runbook coverage).
+> **Version:** 1.7.23  
+> **Updated:** 2026-04-30 — **batch-32 prose→AT migration:** hybrid 5-reuse + 1-new on `spec/31-app/01-features/15-roles-and-permissions.md`, leveraging the freshly-seeded **Domain-USER** namespace from batch-31. Reused: `G-USER-HASROLE-CENTRAL` ×2 (L203 canPerform chokepoint + L313 fail-closed 403), `G-USER-ROLES-SEPARATE-TABLE` ×2 (L226 storage contract + L370 system-prompt mandate), `G-USER-HASROLE-SECURITY-DEFINER` ×1 (L242 server-side helper). New: `G-USER-ROLE-RANK-INTEGER` (CI, L325 — sub-rule of `G-USER-ROLE-ENUM-CLOSED`, forbids string comparison of role hierarchy). Pre-flight namespace check: `G-USER-ROLE-RANK-*` slot empty. **First batch reaping cross-file payoff from a Domain-* seeding investment** — Domain-USER now binds 2 source files in 2 consecutive batches with zero new namespace overhead. Prior: 1.7.22 (batch-31 Domain-USER seed).
 
-- **Total named gates:** 445 (+22 this revision: twenty-two `G-USER-*`)
+- **Total named gates:** 446 (+1 this revision: `G-USER-ROLE-RANK-INTEGER`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
-- **CI:** 105 (+16 this revision)
-- **TEST:** 20 (+3 this revision)
-- **DOC-NORM:** 115 (+3 this revision)
+- **CI:** 106 (+1 this revision)
+- **TEST:** 20 (unchanged)
+- **DOC-NORM:** 115 (unchanged)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 47 (+1 this revision: Domain-USER)
+- **Areas covered:** 47 (unchanged — Domain-USER reused)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
@@ -762,6 +762,7 @@
 | `G-USER-PK-INTEGER-AUTOINC` | **CI** | [`spec/36-user-management/97-acceptance-criteria.md`](./36-user-management/97-acceptance-criteria.md) | `User` table MUST use `UserId INTEGER PRIMARY KEY AUTOINCREMENT` (FR-1). UUID PKs forbidden — they break per-user shard joins. Verified by AT-USERMANAGEMENT-01. |
 | `G-USER-ROLES-SEPARATE-TABLE` | **CI** | [`spec/36-user-management/97-acceptance-criteria.md`](./36-user-management/97-acceptance-criteria.md) | Roles MUST live in a separate `UserRole(UserId, Role)` table; storing role columns directly on `User` is a Code-Red privilege-escalation bug per `mem://constraints/coding-guidelines`. Verified by AT-USERMANAGEMENT-02. |
 | `G-USER-ROLE-ENUM-CLOSED` | **CI** | [`spec/36-user-management/97-acceptance-criteria.md`](./36-user-management/97-acceptance-criteria.md) | The `Role` enum MUST be exactly `{User, Editor, Admin}`. Magic-string roles forbidden; new roles require enum + capability matrix + AT update in one PR. Verified by AT-USERMANAGEMENT-03. |
+| `G-USER-ROLE-RANK-INTEGER` | **CI** | [`spec/31-app/01-features/15-roles-and-permissions.md`](./31-app/01-features/15-roles-and-permissions.md) | Role comparisons ("at least") MUST use the integer rank from `spec/20-enums-index.md` §3 (`Owner=4 > Admin=3 > Edit=2 > View=1 > PublicView=0`). String comparison forbidden — magic-string mismatches silently downgrade authorization. Sub-rule of `G-USER-ROLE-ENUM-CLOSED`. Verified by `Auth::hasRole()` rank lookup table + AT-ROLES-05 (View+Edit inheritance returns Edit per §Inheritance rule 2). |
 | `G-USER-CAPABILITY-MATRIX-SSOT` | **DOC-NORM** | [`spec/36-user-management/97-acceptance-criteria.md`](./36-user-management/97-acceptance-criteria.md) | The capability matrix in `00-overview.md` MUST be the SSOT. Code MUST NOT introduce ad-hoc capabilities not listed there. Verified by AT-USERMANAGEMENT-04 + matrix-parity audit. |
 | `G-USER-HASROLE-CENTRAL` | **CI** | [`spec/36-user-management/97-acceptance-criteria.md`](./36-user-management/97-acceptance-criteria.md) | All RBAC checks MUST go through `hasRole(userId, role)`. Inline `user.role === 'Admin'` comparisons forbidden — un-auditable. Verified by AT-USERMANAGEMENT-05 + ripgrep scan in §Verification. |
 | `G-USER-HASROLE-SECURITY-DEFINER` | **CI** | [`spec/36-user-management/97-acceptance-criteria.md`](./36-user-management/97-acceptance-criteria.md) | `hasRole` MUST query `UserRole` table (NOT session cache) for privilege-elevation checks. Session cache is read-only for UI rendering. Verified by AT-USERMANAGEMENT-06. |
