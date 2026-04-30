@@ -124,7 +124,7 @@ This file pins the sequence. Each step cites the SSOT that governs its rule.
 
 ## Idempotency
 
-Mirror create is **conditionally idempotent** — replays of the *same* request shape with the *same* `X-WorkFlowy-Idempotency-Key` MUST return the original response, not insert a second peer. Implementation:
+Mirror create is **conditionally idempotent** — replays of the *same* request shape with the *same* `X-WorkFlowy-Idempotency-Key` MUST return the original response, not insert a second peer (gate `G-MCREATE-IDEMPOTENT-REPLAY`). Implementation:
 
 - The handler SHOULD persist `(idempotencyKey, userId) → response` in `ProcessedMutations` for **24 h** (per `14-concurrency-and-sync.md`).
 - Without an idempotency key, two near-simultaneous create requests with the *same* `(sourceItemId, targetParentId)` will both succeed and produce **two distinct peers under the same parent** — this matches Workflowy's behavior (the user explicitly invoked "Mirror to…" twice). The picker UI MUST debounce the submit button to prevent accidental double-submit.
