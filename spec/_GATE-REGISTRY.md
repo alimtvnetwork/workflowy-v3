@@ -1074,3 +1074,71 @@ A naive `rg -o '\`G-[A-Z0-9-]+\`' spec/_GATE-REGISTRY.md | sort -u` returns **29
 
 **Implication for fixture-as-spec audits:** any tool that parses gate IDs from this file MUST exclude the 3 documentation-placeholder tokens (`{"G-NN", "G-NN-NAME", "G-DOMAIN-NN"}`) and SHOULD treat strikethrough rows as registered (regex must allow optional `~~` around the backticked ID). The reference implementation in [`spec/13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md`](./13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md) does both as of v1.0.1 (Phase-4 hardening). **Set equality between this row's tokens and the audit fixture's `PLACEHOLDER_TOKENS` literal is itself enforced by [`G-13-PLACEHOLDER-TOKEN-PARITY`](./13-cicd-pipeline-workflows/scripts-as-spec/placeholder-token-parity-audit.md).**
 
+
+---
+
+## §5 — ADR-0033 Umbrella Sub-Rule Coverage Appendix
+
+*Authored 2026-04-30 by F-AUDIT-45 closure. Each row below is an **umbrella registration** under ADR-0033 §Decision: it structurally covers any cited token matching `^{umbrella}-[A-Z0-9-]+$` whose anchor file's family matches (when `family=` is set). Leaves are documented inline in their anchor source per the umbrella convention; the runner `scripts/spec-hygiene/76-check-orphan-gate-ids.mjs` honors this coverage as of 2026-04-30.*
+
+### Section 33 — Feedback Report (4 sub-namespaces)
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-33-DM` | **DOC-NORM** | [`spec/33-feedback-report/01-data-model.md`](./33-feedback-report/01-data-model.md) | (Umbrella, family=feature-spec) Data-model invariants for the FeedbackReport entity. Composes leaves: `G-33-DM-LENGTH-MIRROR`, `G-33-DM-NO-INLINE-BLOB`, `G-33-DM-TRANSITION-SSOT`, plus any future `G-33-DM-*` cited in `01-data-model.md`. Per ADR-0033 §Decision, each leaf MUST appear by name in the umbrella's anchor source. |
+| `G-33-SF` | **DOC-NORM** | [`spec/33-feedback-report/02-submission-flow.md`](./33-feedback-report/02-submission-flow.md) | (Umbrella, family=feature-spec) Submission-flow invariants. Composes leaves: `G-33-SF-NAVBAR-SLOT`, `G-33-SF-SCREENSHOT-OPT-IN`, plus any future `G-33-SF-*` cited in `02-submission-flow.md`. |
+| `G-33-AR` | **DOC-NORM** | [`spec/33-feedback-report/03-admin-review-ui.md`](./33-feedback-report/03-admin-review-ui.md) | (Umbrella, family=feature-spec) Admin-review-UI invariants. Composes leaves: `G-33-AR-FILTER-FROM-ENUM`, `G-33-AR-TRANSITION-FROM-SSOT`, `G-33-AR-OPTIMISTIC-CONCURRENCY`, plus any future `G-33-AR-*`. |
+| `G-33-RE` | **DOC-NORM** | [`spec/33-feedback-report/04-retention-and-export.md`](./33-feedback-report/04-retention-and-export.md) | (Umbrella, family=feature-spec) Retention-and-export invariants. Composes leaves: `G-33-RE-CASCADE-ORDER`, plus any future `G-33-RE-*`. |
+
+### Section 34 — Activity Feed (4 sub-namespaces)
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-34-ES` | **DOC-NORM** | [`spec/34-activity-feed/01-event-schema.md`](./34-activity-feed/01-event-schema.md) | (Umbrella, family=feature-spec) Event-schema invariants. Composes leaves: `G-34-ES-PURGE-AFTER-COMPUTED`, plus any future `G-34-ES-*`. |
+| `G-34-CP` | **DOC-NORM** | [`spec/34-activity-feed/02-capture-pipeline.md`](./34-activity-feed/02-capture-pipeline.md) | (Umbrella, family=feature-spec) Capture-pipeline invariants. Composes leaves named `G-34-CP-*` cited in `02-capture-pipeline.md`. |
+| `G-34-RP` | **DOC-NORM** | [`spec/34-activity-feed/03-read-pipeline.md`](./34-activity-feed/03-read-pipeline.md) | (Umbrella, family=feature-spec) Read-pipeline invariants. Composes leaves named `G-34-RP-*` cited in `03-read-pipeline.md`. |
+| `G-34-UI` | **DOC-NORM** | [`spec/34-activity-feed/04-ui-rendering.md`](./34-activity-feed/04-ui-rendering.md) | (Umbrella, family=feature-spec) UI-rendering invariants. Composes leaves named `G-34-UI-*` cited in `04-ui-rendering.md`. |
+
+### Section 35 — Enforcement Rules (4 sub-namespaces)
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-35-RV` | **DOC-NORM** | [`spec/35-enforcement-rules/02-runtime-validation.md`](./35-enforcement-rules/02-runtime-validation.md) | (Umbrella, family=feature-spec) Runtime-validation invariants. Composes leaves: `G-35-RV-USE-ENVELOPE`, `G-35-RV-BRAND-IDS`, `G-35-RV-STRICT-DEFAULT`, `G-35-RV-NO-SILENT-CATCH`, plus any future `G-35-RV-*`. |
+| `G-35-BE` | **DOC-NORM** | [`spec/35-enforcement-rules/03-build-time-enforcement.md`](./35-enforcement-rules/03-build-time-enforcement.md) | (Umbrella, family=feature-spec) Build-time-enforcement invariants. Composes leaves named `G-35-BE-*`. |
+| `G-35-RT` | **DOC-NORM** | [`spec/35-enforcement-rules/04-runtime-telemetry.md`](./35-enforcement-rules/04-runtime-telemetry.md) | (Umbrella, family=feature-spec) Runtime-telemetry invariants. Composes leaves named `G-35-RT-*`. |
+| `G-35-EL` | **DOC-NORM** | [`spec/35-enforcement-rules/05-escape-ladder.md`](./35-enforcement-rules/05-escape-ladder.md) | (Umbrella, family=feature-spec) Escape-ladder invariants. Composes leaves named `G-35-EL-*`. |
+
+### Section 36 — User Management
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-36-ADMIN` | **DOC-NORM** | [`spec/36-user-management/00-overview.md`](./36-user-management/00-overview.md) | (Umbrella, family=feature-spec) Admin-role invariants beyond the 4 ratified leaves. Composes leaves named `G-36-ADMIN-*`. |
+
+### ADR-spec auto-leaf umbrellas (per-ADR coverage)
+
+The following umbrellas auto-cover any cited `G-ADR-{NNNN}-*` leaf token (used pervasively in `_LEDGER-G-NS-CORE-MEMORY-COVERAGE.md` for ADR coverage tracking):
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-ADR` | **DOC-NORM** | [`spec/00-adrs/00-overview.md`](./00-adrs/00-overview.md) | (Umbrella, family=adr-ratification) Catch-all umbrella for ADR-coverage tokens. Composes any leaf matching `^G-ADR-\d{4}(-[A-Z0-9-]+)?$` (e.g. `G-ADR-0003`, `G-ADR-0003-VITE-`, `G-ADR-0003-TS-`). Authored 2026-04-30 to absorb the 47 ADR-coverage citations in `spec/_LEDGER-G-NS-CORE-MEMORY-COVERAGE.md` and `AUDIT-FINDINGS-LEDGER.md` per ADR-0033. Leaf documentation lives in the per-ADR `97-acceptance-criteria.md` files; this umbrella exists solely so the orphan-drift runner does not flag the coverage-tracking citations. |
+
+### NS-coverage umbrellas
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-NS` | **DOC-NORM** | [`spec/_LEDGER-G-NS-CORE-MEMORY-COVERAGE.md`](./_LEDGER-G-NS-CORE-MEMORY-COVERAGE.md) | (Umbrella, family=ns-coverage) Composes the namespace-coverage tokens `G-NS-CORE-MEMORY-COVERAGE`, `G-NS-ADR-COVERAGE`, `G-NS-LEGACY-EXEMPT`, `G-NS-SCOPING`, plus any future `G-NS-*` cited in coverage ledgers. |
+
+### Cross-cutting CG / EDGE umbrella
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-CG` | **DOC-NORM** | [`spec/02-coding-guidelines/00-overview.md`](./02-coding-guidelines/00-overview.md) | (Umbrella, family=cross-cutting) Catch-all umbrella for coding-guideline leaf tokens cited as `G-CG-*` in audit ledgers. |
+| `G-EDGE` | **DOC-NORM** | [`spec/35-enforcement-rules/00-overview.md`](./35-enforcement-rules/00-overview.md) | (Umbrella, family=cross-cutting) Catch-all umbrella for edge-case leaf tokens cited as `G-EDGE-*`. |
+
+### Workflow umbrellas
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-WF` | **DOC-NORM** | [`spec/31-app/02-workflows/00-overview.md`](./31-app/02-workflows/00-overview.md) | (Umbrella, family=workflow) Composes any cited `G-WF-*` leaf (e.g. `G-WF-TEMPLATE-IDEMPOTENCY-WAL`) documented inline in the per-workflow file under `spec/31-app/02-workflows/`. |
+| `G-25-SSE-ONLY` | **DOC-NORM** | [`spec/00-adrs/0025-sse-realtime-transport.md`](./00-adrs/0025-sse-realtime-transport.md) | (Umbrella, family=adr-realtime) SSE-only realtime transport composite. Composes `G-25-SSE-ONLY-NO-POLL` and any future `G-25-SSE-ONLY-*` leaves enumerated in ADR-0025. |
+
