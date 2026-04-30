@@ -54,10 +54,11 @@
 ## EP-BULK-COMPLETE — POST `items/bulk/complete`
 
 - **Auth**: `user` with write on every item.
-- **Request body**: `{ Ids: string[], Completed: boolean }`.
-- **Success (200)** `Results`: `{ UpdatedCount: number }`.
-- **Errors**: `ERR_FORBIDDEN`, `ERR_LIMIT_EXCEEDED`.
-- **Side effects**: emits SSE `items.updated`.
+- **Request body**: `{ Ids: string[], IsCompleted: boolean, ClientCompletedAt?: string }` — same fidelity contract as `EP-ITEMS-COMPLETE` (see [`06-item-context-menu.md`](./06-item-context-menu.md) §EP-ITEMS-COMPLETE). `ClientCompletedAt` is **required when `IsCompleted: true`** and applies uniformly to all `Ids` (one bulk action = one user-action timestamp). Per-item LWW still applies independently per §14.2: items whose `CompletedAtUpdatedAt > ClientCompletedAt` are silently skipped (counted in `LwwSkippedCount`, not in `UpdatedCount`).
+- **Success (200)** `Results`: `{ UpdatedCount: number, LwwSkippedCount: number }`.
+- **Errors**: `ERR_FORBIDDEN`, `ERR_LIMIT_EXCEEDED`, `ERR_INVALID_TIMESTAMP`.
+- **Side effects**: writes `IsCompleted`, `CompletedAt`, `CompletedAtUpdatedAt`, `CompletedAtUpdatedBy` on each accepted item. Emits one SSE `item-updated` per accepted item with `ChangedFields: ["IsCompleted", "CompletedAt"]` (per-item, atomic with the row write — see §14.5.6). **No** aggregate `items.updated` event is emitted; the bulk operation fans out per-item to keep replay/cursor semantics uniform.
+- **Forbidden**: `{ Ids, Completed: boolean }` (the legacy shape) — same rejection as the singular endpoint `[gate: G-EP-COMPLETE-CLIENT-TS-REQUIRED]`.
 
 ---
 
