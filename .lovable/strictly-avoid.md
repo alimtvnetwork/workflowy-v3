@@ -40,7 +40,13 @@
 
 ## Memory
 - ❌ **Never overwrite memory files in full** when only adding new content — preserve existing entries.
-- ❌ **Never add a memory file** without updating `.lovable/memory/index.md`.
+- ❌ **Never add a memory file** without updating the canonical memory index at **`mem://index.md`** (the SSOT loaded into every AI prompt as `<memory/index>`).
+
+> **Amendment 2026-04-30 (NEW-13-FOLLOWUP Task O):** the prior rule referenced
+> the on-disk path `.lovable/memory/index.md`. That on-disk file was a parallel
+> SSOT that drifted from `mem://index.md` (eliminated by Task M as a redirect
+> stub, then by Task O as a deletion). The canonical registry now lives
+> exclusively in the `mem://` virtual namespace.
 
 ---
 
