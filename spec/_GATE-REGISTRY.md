@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.23  
-> **Updated:** 2026-04-30 — **batch-32 prose→AT migration:** hybrid 5-reuse + 1-new on `spec/31-app/01-features/15-roles-and-permissions.md`, leveraging the freshly-seeded **Domain-USER** namespace from batch-31. Reused: `G-USER-HASROLE-CENTRAL` ×2 (L203 canPerform chokepoint + L313 fail-closed 403), `G-USER-ROLES-SEPARATE-TABLE` ×2 (L226 storage contract + L370 system-prompt mandate), `G-USER-HASROLE-SECURITY-DEFINER` ×1 (L242 server-side helper). New: `G-USER-ROLE-RANK-INTEGER` (CI, L325 — sub-rule of `G-USER-ROLE-ENUM-CLOSED`, forbids string comparison of role hierarchy). Pre-flight namespace check: `G-USER-ROLE-RANK-*` slot empty. **First batch reaping cross-file payoff from a Domain-* seeding investment** — Domain-USER now binds 2 source files in 2 consecutive batches with zero new namespace overhead. Prior: 1.7.22 (batch-31 Domain-USER seed).
+> **Version:** 1.7.24  
+> **Updated:** 2026-04-30 — **batch-33 prose→AT migration:** seeded **Domain-EXPORT** with **7 new CI gates** binding all 8 prose-MUSTs (6 axes + 2 escape-routes; one axis binds twice) in `spec/31-app/05-conventions/20-g27-export-coverage-gate.md`. **Fourth namespace-collision recurrence** caught by F-SCOPE-15/20/28 pattern: source title "G-27" but `G-27-*` namespace owned by ADR-0027 (SSE shared ring). New namespace `Domain-EXPORT` adopted; source-callout rename tracked as F-SCOPE-37-FOLLOWUP. Tier mix: 7 CI (every axis has a runnable ripgrep pattern). Prior: 1.7.23 (batch-32 G-USER-ROLE-RANK-INTEGER cross-file reuse).
 
-- **Total named gates:** 446 (+1 this revision: `G-USER-ROLE-RANK-INTEGER`)
+- **Total named gates:** 453 (+7 this revision: seven `G-EXPORT-*`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
-- **CI:** 106 (+1 this revision)
+- **CI:** 113 (+7 this revision)
 - **TEST:** 20 (unchanged)
 - **DOC-NORM:** 115 (unchanged)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 47 (unchanged — Domain-USER reused)
+- **Areas covered:** 48 (+1 this revision: Domain-EXPORT)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
@@ -782,6 +782,20 @@
 | `G-USER-THEME-SSE-CROSSTAB` | **TEST** | [`spec/36-user-management/97-acceptance-criteria.md`](./36-user-management/97-acceptance-criteria.md) | Theme changes MUST persist across reloads AND propagate to other tabs of the same user via `/stream/user/{id}` (per ADR-0025) within ≤2s. Allowed values: `{light, dark, system}`. Verified by AT-USR-11. |
 | `G-USER-REFERRAL-DETERMINISTIC` | **CI** | [`spec/36-user-management/97-acceptance-criteria.md`](./36-user-management/97-acceptance-criteria.md) | `ReferralUrl` MUST be deterministic per user and stable across sessions. Verified by AT-USR-14. |
 | `G-USER-REFERRAL-UNIQUE` | **CI** | [`spec/36-user-management/97-acceptance-criteria.md`](./36-user-management/97-acceptance-criteria.md) | `ReferralCode` MUST NOT collide across users; enforced by SQLite UNIQUE constraint on `referral_codes.code`. Verified by AT-USR-14. |
+
+### Domain-EXPORT (Data-Export Drift Detector · 6 Surfaces)
+
+> Reserved gate IDs for the data-export coverage drift-detector rooted at `spec/31-app/05-conventions/20-g27-export-coverage-gate.md`. **Fourth namespace-collision recurrence** (precedents F-SCOPE-15, F-SCOPE-20, F-SCOPE-28): source file's title says "G-27" per legacy `02-ci-quality-gates.md` catalogue, but `G-27-*` registry namespace is owned by ADR-0027 (SSE shared ring). Pre-flight namespace check: `G-EXPORT-*` slot empty. Batch-33 (2026-04-30) seeds 7 gates covering all 6 axes (1 axis fires from 2 separate prose-MUSTs: install-hook presence + escape-route correction both bind to `G-EXPORT-HTACCESS-INSTALL-DENY`). All gates are **CI** tier — every axis has a runnable ripgrep pattern in §Algorithm of the source file. Source-callout rename (`G-27` → `G-EXPORT` in title + Reserved-Gate-ID line) tracked as **F-SCOPE-37-FOLLOWUP**.
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-EXPORT-ROUTE-MFA-RATELIMIT` | **CI** | [`spec/31-app/05-conventions/20-g27-export-coverage-gate.md`](./31-app/05-conventions/20-g27-export-coverage-gate.md) | (Axis 1) Every `register_rest_route` declaring an `/export/*` path MUST call BOTH `Mfa::requireFreshness(300)` (literal 300, 5-minute MFA) AND `RateLimit::bucket('export', …)` inside its callback. Forgotten MFA → unauthenticated bulk extraction. See Edge Case 9 (literal 300 enforced). |
+| `G-EXPORT-DISK-WRITE-ENCRYPTED` | **CI** | [`spec/31-app/05-conventions/20-g27-export-coverage-gate.md`](./31-app/05-conventions/20-g27-export-coverage-gate.md) | (Axis 2) Every `file_put_contents` / `fwrite` / `move_uploaded_file` whose destination matches `wp-content/workflowy-exports/` MUST be preceded (within 30 lines, same scope) by `Crypto::aesGcmEncrypt()`. Wrappers like `Storage::write` count via their internal call (Edge Case 2). Plaintext at-rest = breach-class regression. |
+| `G-EXPORT-SERIALIZER-REDACT-FIRST` | **CI** | [`spec/31-app/05-conventions/20-g27-export-coverage-gate.md`](./31-app/05-conventions/20-g27-export-coverage-gate.md) | (Axis 3) Every JSON/OPML/Markdown/HTML serializer file under `wp-plugin/Export/Serializers/` MUST call `Redactor::redactForViewer($item, $viewerId)` before any `echo`/`return`/`fwrite` of the §6 redactable fields (`Owner`, `SharedWith`, `Comments`, …). Sub-rule `G-EXPORT-SERIALIZER-ARRAY-ACCESS` covers the getter-bypass escape (Edge Case 3). |
+| `G-EXPORT-SERIALIZER-ARRAY-ACCESS` | **CI** | [`spec/31-app/05-conventions/20-g27-export-coverage-gate.md`](./31-app/05-conventions/20-g27-export-coverage-gate.md) | (Axis 3 escape-route) Serializers MUST use array-access form (`$item['Owner']`) for redactable fields, never object-getter form (`$item->getOwner()`) — the latter bypasses Axis 3's static regex. Sub-rule of `G-EXPORT-SERIALIZER-REDACT-FIRST`. Verified by Edge Case 3. |
+| `G-EXPORT-FORMAT-REGISTRY-SEALED` | **CI** | [`spec/31-app/05-conventions/20-g27-export-coverage-gate.md`](./31-app/05-conventions/20-g27-export-coverage-gate.md) | (Axis 4) `Export\FormatRegistry::ALLOWED` mutations may only appear in `wp-plugin/Export/FormatRegistry.php`. No other file may write to that constant or `array_push` to that array. PHP reflection-based mutation is undetectable here but already banned by project conventions (Edge Case 4). |
+| `G-EXPORT-HTACCESS-INSTALL-DENY` | **CI** | [`spec/31-app/05-conventions/20-g27-export-coverage-gate.md`](./31-app/05-conventions/20-g27-export-coverage-gate.md) | (Axis 5) The plugin install/activation hook (canonical: `wp-plugin/Lifecycle/Install.php`) MUST contain a literal write of `.htaccess` under `wp-content/workflowy-exports/` containing `Deny from all` or `Require all denied`. Escape-route (Edge Case 5): if deny logic lives in a separate file, the canonical hook MUST `require_once` it — same gate fires both prose-MUSTs (L19 + L213). |
+| `G-EXPORT-SIGNED-URL-EMAIL-ONLY` | **CI** | [`spec/31-app/05-conventions/20-g27-export-coverage-gate.md`](./31-app/05-conventions/20-g27-export-coverage-gate.md) | (Axis 6) No `Logger::*()` / `error_log()` / `var_dump` / non-email REST response body may emit a string matching `/wp-json/workflowy/v1/exports/[a-f0-9]{32,}/download`. Only `Email::send*()` callers may handle the signed URL. Inline `// g27-allow: email-only logger` exemption documented for the Edge Case 7 closure-in-Email::send false-positive class. |
 
 ---
 
