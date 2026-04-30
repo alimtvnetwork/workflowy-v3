@@ -31,9 +31,9 @@
 | U2 | Paste a URL | Auto-detect and make it a clickable link. | Editor / paste handler |
 | U3 | Empty content area (brand-new user) | Show onboarding hint: "Start typing to create your first item" with a subtle animation. | Empty-state component |
 | U4 | Drag-and-drop onto itself | Do nothing — no visual change, no error. | DnD handler |
-| U5 | Move item into its own child/descendant | MUST block with error toast: "Cannot move item into its own children." | Move-validation guard |
-| U6 | Exceed free-tier limit (250 items) | MUST block new item creation. Toast: "Item limit reached. Upgrade to Pro for unlimited items." with an upgrade button. | Quota guard (pre-write) |
-| U7 | Very deep nesting (20+ levels) | MUST have a performance guard — virtualize rendering. Only render visible items plus a small buffer. Indent is visually capped at 20 levels. | Tree renderer |
+| U5 | Move item into its own child/descendant | MUST block with error toast: "Cannot move item into its own children." (gate `G-EDGE-U5-CYCLE-BLOCK`) | Move-validation guard |
+| U6 | Exceed free-tier limit (250 items) | MUST block new item creation. Toast: "Item limit reached. Upgrade to Pro for unlimited items." with an upgrade button (gate `G-EDGE-U6-QUOTA-BLOCK`). | Quota guard (pre-write) |
+| U7 | Very deep nesting (20+ levels) | MUST have a performance guard — virtualize rendering. Only render visible items plus a small buffer. Indent is visually capped at 20 levels (gate `G-EDGE-U7-DEPTH-VIRTUALIZE`, 3-tier sub-rule under `G-17-VIRTUALIZE-1000` per ADR-0017 §virtualization-threshold). | Tree renderer |
 
 ---
 
@@ -62,7 +62,7 @@
 
 | # | Scenario | Expected Behavior | Owning features |
 |---|----------|-------------------|-----------------|
-| X1 | Delete item that has mirrors | MUST show warning dialog: "This item has X mirrors. Deleting will break those references." Options: "Delete anyway" or "Cancel". Mirrors become broken references with recovery options (convert to independent item or delete the mirror). On delete, `Mirrors.BrokenAt` is set per LWW (see [`14-concurrency-and-sync.md`](../01-features/14-concurrency-and-sync.md) §14.4). | `06-item-context-menu.md` + `09-mirrors.md` + `11-trash-view.md` + `14-concurrency-and-sync.md` §14.4 |
+| X1 | Delete item that has mirrors | MUST show warning dialog: "This item has X mirrors. Deleting will break those references." Options: "Delete anyway" or "Cancel". Mirrors become broken references with recovery options (convert to independent item or delete the mirror). On delete, `Mirrors.BrokenAt` is set per LWW (see [`14-concurrency-and-sync.md`](../01-features/14-concurrency-and-sync.md) §14.4) (gate `G-EDGE-X1-MIRROR-DELETE-WARN`, 3-tier sub-rule under `G-ADR-0005-PEER-GROUP-MODEL`). | `06-item-context-menu.md` + `09-mirrors.md` + `11-trash-view.md` + `14-concurrency-and-sync.md` §14.4 |
 | X2 | Share item with children | Sharing MUST cascade to all descendants automatically (`AT-APP-25`). | `08-share-dialog.md` + `01-information-model.md` §1.3 |
 | X3 | Edit on an item just deleted by another user | Reject with toast "Item was deleted by {user}; restore from Trash to keep editing". | `11-trash-view.md` + `14-concurrency-and-sync.md` |
 | X4 | Create mirror of a mirror | Should mirror the canonical source item, not create a nested mirror chain (`AT-APP-24`). | `09-mirrors.md` |
