@@ -416,7 +416,7 @@ spec/powershell-integration/
 ```
 
 Tell the AI:
-> "Follow the spec at `spec/powershell-integration/` to add the PowerShell build runner. Create a `powershell.json` config for my project structure. Enable pnpm PnP for disk-efficient package management."
+> "Follow the spec at `spec/powershell-integration/` to add the PowerShell build runner. Create a `powershell.json` config for my project structure. Enable pnpm PnP for shared-store package management (70–90% disk reduction vs npm)."
 
 ---
 
