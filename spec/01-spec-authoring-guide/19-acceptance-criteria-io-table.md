@@ -19,7 +19,7 @@ Existing acceptance-criteria rows describe behaviour in prose ("MUST be hashed w
 
 ## Mandatory format
 
-Every leaf criterion (one that an implementer can write a single test for) MUST appear as **two adjacent rows** in the file:
+Every leaf criterion (one that an implementer can write a single test for) MUST appear as **two adjacent rows** in the file (gate `G-AT-IO-TWO-ROW-PAIRING`):
 
 1. The **prose row** (legacy two-column shape: `ID | Criterion | Source`) — kept verbatim for back-references.
 2. A **fixture block** immediately under the prose row, using the canonical I/O table below.
