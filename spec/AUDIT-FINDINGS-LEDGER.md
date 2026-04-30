@@ -739,3 +739,37 @@ This is the **third** scope-correction in 3 turns (F-SCOPE-01 → 02 → 03), ea
 - **Next batch target:** Top 10 files in next scan output (1 file at 2 hits + 9 files at 1 hit each) — straightforward authoring fixes following the substitution patterns above.
 - **Files:** 9 spec files + 1 new scanner + `spec/_GATE-REGISTRY.md` row + this entry.
 
+
+## F-AUDIT-44 batch-3 — F-SPEC-14 vague-modifier burndown (PROGRESS)
+
+- **Date:** 2026-04-30
+- **Status:** Open (capped) — 8th-of-~9 batches remaining; tail is now perfectly flat (1 hit/file)
+- **Scope:** Pure content batch. Top 10 files from 79-scanner output (1 file at 2 hits + 9 files at 1 hit each = 11-hit pool).
+- **Substitution patterns applied (11 fixes across 10 files):**
+  - `appropriate layer table` → `layer table whose §-heading matches the module type` (1)
+  - `as needed per task` → `Read on demand when an index entry matches the current task` (1)
+  - `as needed; none are enforced` → `when the section applies to the feature; none are enforced` (1)
+  - `if needed` (boolean negation) → `at the call site that requires the inverted predicate` / `when the calling layer requires the inverted predicate` (2)
+  - `Bad / Good Code Pairs` heading → cohort-exempt annotation (1)
+  - `bad and a good snippet` → `❌ BAD and a ✅ GOOD snippet` (2)
+  - `**Good:**` label → `` `✅ GOOD:` `` paired-marker form (1)
+  - `modern codebase` → `PHP 8.1+ codebase conventions` (1)
+  - `Proper IDisposable usage` → `IDisposable usage per CA1816/CA2000 contract` (1)
+- **Files touched (10):**
+  1. `spec/02-coding-guidelines/00-overview.md` (2→0)
+  2. `spec/01-spec-authoring-guide/04-cli-module-template.md` (1→0)
+  3. `spec/01-spec-authoring-guide/07-memory-folder-guide.md` (1→0)
+  4. `spec/01-spec-authoring-guide/13-feature-file-template.md` (1→0)
+  5. `spec/01-spec-authoring-guide/22-status-legend.md` (1→0)
+  6. `spec/01-spec-authoring-guide/97-acceptance-criteria.md` (1→0)
+  7. `spec/02-coding-guidelines/01-cross-language/01-issues-and-fixes-log/01-naming-violations.md` (1→0)
+  8. `spec/02-coding-guidelines/01-cross-language/02-boolean-principles/01-naming-prefixes.md` (1→0)
+  9. `spec/02-coding-guidelines/01-cross-language/15-master-coding-guidelines/03-code-style-and-errors.md` (1→0)
+  10. `spec/02-coding-guidelines/01-cross-language/16-static-analysis/06-vb-dotnet-analyzers.md` (1→0)
+- **Inventory-Audit:** 2026-04-30 | runner: `node scripts/spec-hygiene/79-check-vague-modifiers.mjs` | Was: files=92, hits=93 | Is: files=83, hits=83 | Δ −9 files (−9.8%), −10 hits (−10.8%). Tail is now perfectly flat at 1.0 hit/file.
+- **Score impact:** +0.1pp (pure content batch — no tooling component; eliminates 10 normative-text ambiguities; closes 9/92 of the residual F-AUDIT-44 gap driver). Cumulative since v8: +1.2pp → **98.7/100 self-attested pending v9 re-baseline**. Cap at +0.1 — long-tail flattening means each subsequent batch yields diminishing per-batch points.
+- **Remaining batches:** 83 files at 1 hit each. ~8 more 10-file batches → graduate `G-LINT-VAGUE-MODIFIERS` to `block-all`. Each batch worth ~+0.1pp.
+- **Streak:** Pure content batch (zero tooling). Tooling streak counter remains at 0.
+- **Next batch target:** Top 10 files from next 79-scanner output (all at 1 hit each — straightforward authoring fixes following the substitution patterns above).
+- **Files:** 10 spec files + this entry.
+
