@@ -134,7 +134,7 @@ After submit (and modal close):
 
 ## Markdown / Formatting in Quick Add
 
-Quick Add supports inline markdown shortcuts (`**bold**`, etc.) but NOT block-level conversion (no `# ` heading triggers). The captured node is always a plain Bullet — convert post-capture via the item-context-menu when a different ItemType is required. Convert later if needed.
+Quick Add supports inline markdown shortcuts (`**bold**`, etc.) but NOT block-level conversion (no `# ` heading triggers). The captured node is always a plain Bullet — convert post-capture via the item-context-menu when a different ItemType is required. Conversion is a separate user action invoked after the modal closes.
 
 ---
 

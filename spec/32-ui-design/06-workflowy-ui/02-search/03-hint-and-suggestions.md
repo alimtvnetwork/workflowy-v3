@@ -49,7 +49,7 @@ Each tab populates Region 3 with a chip list. Chips are clickable AND keyboard-n
 - `me`, `others`. Insert as standalone tokens.
 
 ### 2.6 More
-- `is:`, `has:`, `in:`, `text:`, `link:`, `highlight:`. Each opens Region 4 with the appropriate value picker.
+- `is:`, `has:`, `in:`, `text:`, `link:`, `highlight:`. Each opens Region 4 with the operator-specific value picker (enum-list for `is:`/`has:`, tree-picker for `in:`, free-text for `text:`/`link:`/`highlight:`).
 
 ---
 

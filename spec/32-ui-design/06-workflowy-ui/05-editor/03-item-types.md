@@ -55,7 +55,7 @@ Icons are from `lucide-react`. Stroke width 1.75. Size 16px (menus) or 14px (sug
 | 11 | Mirror | `mirror` | `Repeat2` | Two-way sync indicator |
 | 12 | Template | `template` | `LayoutTemplate` | — |
 
-Additional related icons (used in bullet rows, not item types proper):
+Additional related icons (used in bullet rows, not members of the 12 closed `ItemType` enum from ADR-0015):
 
 | Role | Lucide component | Used by |
 |------|------------------|---------|
