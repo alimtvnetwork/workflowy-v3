@@ -1,13 +1,13 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.31  
-> **Updated:** 2026-04-30 — **batch-39:** extended **Domain-UPD** (Generic Update Pattern) with 5 new gates binding 5 bare prose-MUSTs in `spec/17-generic-update/00-overview.md`. **First non-greenfield batch in 8 batches** — chose Domain-UPD extension over yet another greenfield seed because (a) the source file already cited 6 unregistered orphan `G-17-*` tokens (pending **F-SCOPE-44-FOLLOWUP** sub-rule sweep), and (b) Domain-UPD only had 4 prior `G-UPD-NN` numeric rows — none of which were extensible. Added: `G-UPD-CONTRACT-IMPLEMENTS` (CI), `G-UPD-STRATEGY-EXACTLY-ONE` (CI), `G-UPD-NOROLLBACK-THROWS` (CI), `G-UPD-ANTIPATTERNS-FORBIDDEN` (DOC-NORM umbrella), `G-UPD-FIXTURES-EXACT-STRINGS` (CI). Tier mix: 4 CI + 1 DOC-NORM. Prior: 1.7.30 (batch-38 Domain-DATAFILE seed).
+> **Version:** 1.7.32  
+> **Updated:** 2026-04-30 — **batch-40:** extended **Domain-PS1** (PowerShell Integration) with 4 new gates binding 5 bare prose-MUSTs in `spec/10-powershell-integration/00-overview.md` (the 5th MUST cites the pre-existing `G-10-USE-FILE-FLAG`). Added: `G-10-RULES-CONFORMANCE` (DOC-NORM umbrella over 7 sub-rule gates), `G-10-ESCAPE-PS-INPUT` (CI, PHPStan rule on `PowerShellRunner::buildCommand`), `G-10-ANTIPATTERNS-FORBIDDEN` (DOC-NORM umbrella over the 7 anti-pattern gates), `G-10-EXIT-CODE-FIXTURE-CITATION` (CI, hygiene grep). Tier mix: 2 CI + 2 DOC-NORM. Second consecutive non-greenfield batch (extension over seed) — Domain-PS1 already had 9 prior `G-10-*` gates, all 7 anti-pattern leaves now composed by the new umbrella. Prior: 1.7.31 (batch-39 Domain-UPD extension).
 
-- **Total named gates:** 484 (+5 this revision)
+- **Total named gates:** 488 (+4 this revision)
 - **WARN-only gates:** 10 (unchanged)
-- **CI:** 132 (+4 this revision)
+- **CI:** 134 (+2 this revision)
 - **TEST:** 20 (unchanged)
-- **DOC-NORM:** 127 (+1 this revision)
+- **DOC-NORM:** 129 (+2 this revision)
 - **DOC:** 202 (unchanged)
 - **Areas covered:** 51 (unchanged)
 - **Areas covered:** 37 (unchanged)
@@ -123,6 +123,10 @@
 | `G-10-NO-WRITE-HOST` | **DOC** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | Use Write-Host for script output Bypasses stdout — PHP captures nothing, JSON parse fails. |
 | `G-10-STDOUT-PURE` | **DOC** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | Mixing JSON and free text on stdout is a hard error caught by G-10-STDOUT-PURE. |
 | `G-10-USE-FILE-FLAG` | **CI** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | Build the command line as a string in PHP and pass via -Command PowerShell injection via unescaped item titles. |
+| `G-10-RULES-CONFORMANCE` | **DOC-NORM** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | Umbrella: every PS1 script invoked by the WP plugin MUST follow the Parameter-Binding Rules table (composes G-10-CMDLET-BINDING, G-10-ERROR-STOP, G-10-NO-WRITE-HOST, G-10-NO-HARDCODE-PATH, G-10-NO-IEX, G-10-STDOUT-PURE, G-10-USE-FILE-FLAG). |
+| `G-10-ESCAPE-PS-INPUT` | **CI** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | PHP-side strings interpolated into PS1 invocations MUST go through `[Management.Automation.Language.CodeGeneration]::EscapeSingleQuotedStringContent` — enforced by PHPStan rule on `PowerShellRunner::buildCommand()`. Prevents PS injection via item content. |
+| `G-10-ANTIPATTERNS-FORBIDDEN` | **DOC-NORM** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | Umbrella: the 7 anti-patterns in the "Anti-Patterns" table MUST NOT appear in any PS1 script (composes G-10-NO-WRITE-HOST, G-10-CMDLET-BINDING, G-10-NO-HARDCODE-PATH, G-10-USE-FILE-FLAG, G-10-ERROR-STOP, G-10-STDOUT-PURE, G-10-NO-IEX). |
+| `G-10-EXIT-CODE-FIXTURE-CITATION` | **CI** | [`spec/10-powershell-integration/00-overview.md`](./10-powershell-integration/00-overview.md) | Every fixture row in `97a-acceptance-criteria-fixtures.md` referencing a PowerShell exit code MUST cite a verbatim `PS1-10-NN` string from the exit-code registry table — enforced by hygiene grep gate. |
 
 ### ADR-0011
 
