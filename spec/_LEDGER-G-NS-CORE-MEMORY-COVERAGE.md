@@ -117,7 +117,7 @@ This ledger remedies that by making the Core↔Gate mapping **first-class and ve
 
 | Status | Count | % |
 |---|---|---|
-| ✅ Registered gate(s) | 21 | 81% |
+| ✅ Registered gate(s) | 20 | 77% |
 | 📋 RESERVED slot (ADR-0031 pattern) | 0 | 0% |
 | 📝 Memory-only-by-design (procedural) + script-enforced | 6 | 23% |
 | **Total Core sub-rules mapped** | **26** | **100%** |
@@ -135,7 +135,7 @@ This ledger remedies that by making the Core↔Gate mapping **first-class and ve
 7. ~~**J1** — WebSocket/long-poll ban.~~ **CLOSED 2026-04-30 — pre-existing `G-25-TRANSPORT-SSE-ONLY` covers it.**
 8. **C1** — Version-pin gate for Vite/React/TS (NEW-25 covers this).
 
-**Closure progress:** ALL 4 originally-listed RESERVED slots now closed — 3 by discovery (F-AUDIT-34 false-positive cascade, instances #1–3) and 1 by gate authoring (GAPCLOSE-B2, registry v1.7.46). PLUS instance #4 of F-AUDIT-34 closed F3 by discovery (250-cap was always covered by `G-31-VIEW-250-CAP`). True coverage: 21/26 sub-rules registered (81%) + 0 RESERVED + 6 procedural-or-script (23%). Only 3 partial-coverage notes remain (E1/G1/C1) — each is a known sub-clause gap, not a RESERVED slot. Core↔Gate ledger is now **structurally complete + 81%-registered**.
+**Closure progress:** ALL 4 originally-listed RESERVED slots now closed — 3 by discovery (F-AUDIT-34 false-positive cascade, instances #1–3) and 1 by gate authoring (GAPCLOSE-B2, registry v1.7.46). PLUS instance #4 of F-AUDIT-34 strengthened F3 from "partial" to "fully covered" (5 additional sibling gates discovered: `G-31-VIEW-250-CAP`, `G-31-NO-PARALLEL-NODE`, `G-31-NODE-ID-PERSISTENT`, `G-14-QUEUE-INDEPENDENT-OF-VIEW-CAP`, `G-35-NO-SILENT-TRUNCATION`, `G-EDGE-U6-QUOTA-BLOCK`). Registered count unchanged at 20/26 (77%) because F3 already counted as ✅ in v1 — the discovery upgrades the row from "✅ partial" to "✅ excellent". Only 3 remaining partial-coverage notes (E1/G1/C1) — each is a known sub-clause gap, not a RESERVED slot. Core↔Gate ledger is now **structurally complete**.
 
 ### v1 cross-walk methodology error (root-cause)
 
