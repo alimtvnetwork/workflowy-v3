@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.34  
-> **Updated:** 2026-04-30 — **batch-42:** extended **Domain-13** (CI-CD Test Corpus) with 5 new gates binding all 5 prose-MUSTs in `spec/13-cicd-pipeline-workflows/scripts-as-spec/_TEST-CORPUS/README.md`. Added: `G-13-CORPUS-FROZEN-INPUTS` (DOC-NORM), `G-13-CORPUS-RUNNER-CONTRACT` (DOC-NORM — closes deferred-mint note at L78 of source file), `G-13-CORPUS-BANNER-FOUR-FIELDS` (DOC-NORM, sub-rule of RUNNER-CONTRACT), `G-13-CORPUS-BODY-MINIMAL` (DOC-NORM), `G-13-CORPUS-NO-RUNTIME-IMPORT` (CI grep gate). Tier mix: 4 DOC-NORM + 1 CI. Third consecutive non-greenfield extension — Domain-13 already held 6 prior `G-13-FIXTURE-*` gates. Strategic: closes a self-acknowledged deferred mint (RUNNER-CONTRACT was explicitly named-but-not-registered in the source file, last of its kind in this domain). Prior: 1.7.33 (batch-41 Domain-LAYOUT seed).
+> **Version:** 1.7.35  
+> **Updated:** 2026-04-30 — **batch-43:** seeded greenfield **Domain-MIGRATE** (v1→v2 Schema Migration Bootstrap) with 5 gates binding all 5 prose-MUSTs in `spec/31-app/02-workflows/10-migration-execution-flow.md` (L46 cron-lock-acquire, L147 workspace-independence, L151 inflight-503-retry-after, L154 raw-sql-only, L160 observability-log-lines). Tier mix: 2 CI + 3 DOC-NORM. **Eleventh corpus-wide greenfield Domain.** CI promotion runner for the 3 DOC-NORM gates filed as **NEW-22** (`scripts/spec-hygiene/check-migration-bootstrap.mjs` — runtime telemetry harness). Closes the last 5-MUST file in the corpus — densest remaining files now sit at 4 MUSTs. Prior: 1.7.34 (batch-42 Domain-13 extension).
 
-- **Total named gates:** 498 (+5 this revision)
+- **Total named gates:** 503 (+5 this revision)
 - **WARN-only gates:** 10 (unchanged)
-- **CI:** 135 (+1 this revision)
+- **CI:** 137 (+2 this revision)
 - **TEST:** 20 (unchanged)
-- **DOC-NORM:** 138 (+4 this revision)
+- **DOC-NORM:** 141 (+3 this revision)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 52 (unchanged)
+- **Areas covered:** 53 (+1 this revision)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
@@ -884,6 +884,18 @@
 | `G-LAYOUT-RESPONSIVE-SIDEBAR-MODE` | **DOC-NORM** | [`spec/31-app/01-features/03-layout-structure.md`](./31-app/01-features/03-layout-structure.md) | Sidebar MUST switch behavior at the mobile/desktop breakpoint: **overlay** (with dimmed backdrop) on mobile, **side-by-side** (page content reflows) on desktop. Single-mode-everywhere implementations forbidden. |
 | `G-LAYOUT-DROPDOWN-GROUP-DIVIDERS` | **DOC-NORM** | [`spec/31-app/01-features/03-layout-structure.md`](./31-app/01-features/03-layout-structure.md) | The Settings Menu (⋮) dropdown MUST render visual dividers (`<DropdownMenuSeparator>`) between each logical group enumerated in §2.4 (Resources / Account / etc). Flat ungrouped lists forbidden. |
 | `G-LAYOUT-SIDEBAR-WIDTH-240` | **DOC-NORM** | [`spec/31-app/01-features/03-layout-structure.md`](./31-app/01-features/03-layout-structure.md) | Sidebar panel width MUST be ~240px (canonical token, tolerance ±8px). Keyboard shortcut **^L** (Ctrl+L) MUST toggle open/close. |
+
+### Domain-MIGRATE (v1→v2 Schema Migration Bootstrap)
+
+> Reserved gate IDs for the per-workspace v1→v2 schema-migration bootstrap defined in `spec/31-app/02-workflows/10-migration-execution-flow.md`. Eleventh corpus-wide greenfield Domain seed. Tier mix: 2 CI + 3 DOC-NORM. CI promotion rationale: HTTP-status assertions (G-MIGRATE-INFLIGHT-503-RETRY-AFTER) and raw-SQL grep (G-MIGRATE-RAW-SQL-ONLY) are scriptable today; the other 3 require runtime telemetry harnesses (filed as **NEW-22** — `scripts/spec-hygiene/check-migration-bootstrap.mjs`).
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-MIGRATE-CRON-LOCK-ACQUIRE` | **DOC-NORM** | [`spec/31-app/02-workflows/10-migration-execution-flow.md`](./31-app/02-workflows/10-migration-execution-flow.md) | The migration bootstrap MUST acquire the per-workspace cron lock (shared with the trash reaper, `05-trash-reaper-flow.md`) before starting any work on a workspace. Without the lock, two long-running crons can race on the same SQLite file and produce `database is locked` errors at best, corruption at worst. |
+| `G-MIGRATE-WORKSPACE-INDEPENDENCE` | **DOC-NORM** | [`spec/31-app/02-workflows/10-migration-execution-flow.md`](./31-app/02-workflows/10-migration-execution-flow.md) | Each workspace migrates independently — `FAILED_EXECUTION` for `W₁` MUST NOT prevent `W₂` from migrating. Aborting the whole batch on a single workspace's failure is forbidden. The bootstrap is a fan-out, not an all-or-nothing transaction. |
+| `G-MIGRATE-INFLIGHT-503-RETRY-AFTER` | **CI** | [`spec/31-app/02-workflows/10-migration-execution-flow.md`](./31-app/02-workflows/10-migration-execution-flow.md) | While the per-workspace cron lock is held by the migration worker, the runtime REST handler MUST return **HTTP 503 + Retry-After** on mirror-create attempts against that workspace. `HTTP 200` or proceeding with the create is forbidden. Enforced by integration test asserting status code + presence of `Retry-After` header. Sibling to the post-migration `HTTP 410` rule (covered by `AT-APP-67`). |
+| `G-MIGRATE-RAW-SQL-ONLY` | **CI** | [`spec/31-app/02-workflows/10-migration-execution-flow.md`](./31-app/02-workflows/10-migration-execution-flow.md) | Migration INSERTs MUST run as raw SQL — no `Auth::hasRole` checks, no SSE side-effects, no idempotency-key bookkeeping. Re-using the runtime REST handler's PHP path is forbidden (would trip per-request RBAC, double-emit SSE, and double-write idempotency rows). Enforced via grep gate scanning `wp-plugin/src/Migration/` for forbidden symbols (`Auth::`, `SseEmitter::`, `IdempotencyStore::`). |
+| `G-MIGRATE-OBSERVABILITY-LOG-LINES` | **DOC-NORM** | [`spec/31-app/02-workflows/10-migration-execution-flow.md`](./31-app/02-workflows/10-migration-execution-flow.md) | The bootstrap MUST emit (at minimum) the structured log-line set enumerated in §Observability of source file (`migration.batch.start`, `migration.workspace.preflight`, `migration.workspace.complete`, `migration.batch.complete`, plus failure variants), each tagged with the global `MigrationBatchId` (UUID generated at step 3). Missing any of these lines blinds operators to mid-flight state. |
 
 ---
 
