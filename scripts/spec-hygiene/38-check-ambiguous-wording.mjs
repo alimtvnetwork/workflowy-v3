@@ -86,7 +86,13 @@ const SKIP_PATH = (p) =>
   // subject of the AT (e.g. "AT-31-D3 forbids the token 'TBD'"); they
   // necessarily quote what they prohibit. Same category-error carve-out as
   // ADR-0031 itself. (Added 2026-04-30 with F-AUDIT-47.)
-  p.endsWith("/00-adrs/97-acceptance-criteria.md");
+  p.endsWith("/00-adrs/97-acceptance-criteria.md") ||
+  // The audit-findings ledger archives every closed finding's narrative,
+  // which routinely quotes the forbidden tokens as the literal subject of
+  // the closure (e.g. "F-AUDIT-47 fixed `next pass (consider adding ...)`").
+  // Same archival carve-out as AMBIGUITY-LEDGER.md above. (Added 2026-04-30
+  // with F-SCOPE-40-FOLLOWUP batch-2.)
+  p.endsWith("/AUDIT-FINDINGS-LEDGER.md");
 
 
 const ALLOW_LINE = (line) =>
