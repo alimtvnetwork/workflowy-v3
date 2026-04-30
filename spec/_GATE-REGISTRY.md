@@ -301,6 +301,8 @@
 | `G-21-REBALANCE-TRIGGER-64B` | **DOC** | [`spec/00-adrs/0016-fractional-index-sortorder.md`](./00-adrs/0016-fractional-index-sortorder.md) | - G-21-REBALANCE-TRIGGER-64B — enforces D5 trigger (64-byte key |
 | `G-21-SORTORDER-BASE62-ALPHABET` | **DOC** | [`spec/00-adrs/0016-fractional-index-sortorder.md`](./00-adrs/0016-fractional-index-sortorder.md) | - G-21-SORTORDER-BASE62-ALPHABET — enforces D2 (0-9A-Za-z |
 | `G-21-SORTORDER-STRING-ONLY` | **DOC** | [`spec/00-adrs/0016-fractional-index-sortorder.md`](./00-adrs/0016-fractional-index-sortorder.md) | - G-21-SORTORDER-STRING-ONLY — enforces D1 (Item.SortOrder is |
+| `G-21-BETWEEN-PSEUDOCODE-PARITY` | **DOC-NORM** | [`spec/00-adrs/0016-fractional-index-sortorder.md`](./00-adrs/0016-fractional-index-sortorder.md) | Every backend (PHP, TS) MUST produce byte-identical output to the §Algorithms reference for the 8 canonical fixture vectors (A1 firstChild, A2 append, A3 prepend, A4 between including adjacent/gap≥2/LAST-wrap cases). Closes the GAP-ALG-01 ambiguity around `between(a,b)` adjacent-digit handling. |
+| `G-21-BETWEEN-PRECOND` | **DOC-NORM** | [`spec/00-adrs/0016-fractional-index-sortorder.md`](./00-adrs/0016-fractional-index-sortorder.md) | `between(a,b)` callers MUST guarantee `a < b` lexicographically; passing `a >= b` is undefined behaviour and MUST be rejected by the implementation (assert/throw). Sub-rule of `G-21-BETWEEN-PSEUDOCODE-PARITY`. |
 
 ### ADR-0022
 
