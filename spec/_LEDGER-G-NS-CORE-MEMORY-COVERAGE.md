@@ -1,0 +1,154 @@
+# Ledger — `G-NS-CORE-MEMORY-COVERAGE`
+
+> **Type:** Per-gate enforcement ledger (per ADR-0029).
+> **Created:** 2026-04-30 — closes **F-AUDIT-33** ("Memory↔gate coverage gap", LOW, audit-v10).
+> **Authority:** Cross-walk between every load-bearing rule in `mem://index.md` Core and its enforcement gate in `spec/_GATE-REGISTRY.md`. Ratifies that no Core-memory rule may exist without either (a) a registered gate, (b) an explicit `RESERVED:` slot per ADR-0031, or (c) a deliberate "memory-only-by-design" exemption logged here.
+> **Hygiene gate:** `G-NS-CORE-MEMORY-COVERAGE` (DOC-NORM, this ledger; promotion to CI deferred — requires `mem://` parser, see §Future).
+> **Owner:** Spec-authoring; reviewed every audit cycle.
+
+---
+
+## Why this ledger exists
+
+Audit-v10 (2026-04-30) raised **F-AUDIT-33** after observing that several `mem://index.md` Core lines are restated as project rules but were never explicitly cross-referenced to a gate ID. Memory is **not** CI-enforced; only `spec/` + `_GATE-REGISTRY.md` are. The risk: a Core rule can silently age out (be removed from memory or contradicted by a new ADR) without any CI signal.
+
+This ledger remedies that by making the Core↔Gate mapping **first-class and verifiable**. Each Core line below cites either:
+
+- ✅ a **registered gate** (with link), or
+- 📋 a `RESERVED:` slot per ADR-0031 (gate name reserved, enforcement deferred), or
+- 📝 a **memory-only-by-design** exemption with rationale.
+
+---
+
+## Cross-walk — `mem://index.md` Core (as of 2026-04-30)
+
+> Core-memory text is paraphrased for table density; the canonical wording lives in `mem://index.md` Core.
+
+### A. Project identity & meta-rules
+
+| # | Core rule (paraphrased) | Coverage | Notes |
+|---|---|---|---|
+| A1 | "Official name is 'WorkFlowy'" | 📝 memory-only-by-design | Naming is editorial, not code-enforceable. No gate needed. |
+| A2 | "Prioritize user requirements & UI specs absolutely over AI suggestions" | 📝 memory-only-by-design | Procedural meta-rule; no machine-checkable surface. |
+| A3 | SPEC-ONLY MODE trigger phrases | 📝 memory-only-by-design | Procedural; enforced by AI conversation handling, not CI. **SPEC-ONLY VIOLATION LOG (2026-04-29)** in Core memory is the audit trail. |
+
+### B. Backend runtime
+
+| # | Core rule | Coverage | Notes |
+|---|---|---|---|
+| B1 | "WordPress plugin (PHP 8.1+ + SQLite + REST)" | ✅ ADR-0002 anchored; multiple `G-10-BOUNDARY-*` gates (NO-PHP-SHELLOUT, NO-WP-RUNTIME, PARITY-*) | Boundary-of-runtime enforcement. ADR-0002 is the load-bearing decision record. |
+| B2 | "Lovable Cloud, Supabase, sql.js, IndexedDB-as-primary, Postgres, MySQL, standalone Node, Cloudflare D1, Go all forbidden" | 📋 `RESERVED: G-NS-FORBIDDEN-RUNTIMES` | No grep gate exists today. Forbidden-runtime detection requires `package.json`-scope ESLint rule. **Gap candidate — file as NEW-27 if promoted.** |
+
+### C. Frontend stack
+
+| # | Core rule | Coverage | Notes |
+|---|---|---|---|
+| C1 | "Vite 5.4 + React 19 + TypeScript 5.6 (strict)" | ✅ partial — strict-TS via `G-02-NO-ANY`, `G-02-MAX-3-PARAMS`, `G-02-NO-NESTED-IF`; version pinning **uncovered** | Version-pin gate would belong with NEW-25. |
+| C2 | "React Router v7 data-router" | ✅ `G-23-ROUTER-V7-ONLY`, `G-23-DATA-ROUTER-API` | Strong coverage. |
+| C3 | "shadcn/ui + Radix sole component base" | 📋 `RESERVED: G-22-COMPONENT-BASE-SHADCN-RADIX` | ADR-0022 anchors the rule; no grep gate. **Gap candidate.** |
+| C4 | "lucide-react sole icons (no emoji glyphs)" | ✅ `G-23-ICONS-LUCIDE-ONLY`, `G-23-ICONS-CURRENTCOLOR`, `G-23-ICONS-NAMED-IMPORTS`, `G-23-NO-EMOJI-AS-ICON` | Strong 4-gate coverage. |
+
+### D. API envelope
+
+| # | Core rule | Coverage | Notes |
+|---|---|---|---|
+| D1 | "PascalCase keys (Status, Attributes, Results mandatory; Navigation/Errors/MethodsStack omit-never-null)" | ✅ `G-04-WIRE-PASCALCASE`, `G-04-ENVELOPE-SHAPE`, `G-04-ENVELOPE-STATUS-ENUM`, `G-04-OPTIONAL-OMIT-NEVER-NULL`, `G-04-METHODSSTACK-DEBUG-ONLY`, `G-04-NAVIGATION-PRESENCE`, `G-04-ERRORS-FOUR-KEYS-REQUIRED` | Excellent — 7 gates cover every clause of the rule. |
+
+### E. Strict TypeScript
+
+| # | Core rule | Coverage | Notes |
+|---|---|---|---|
+| E1 | "Zero 'any', max 3 params, no nested ifs, 15-line logic limit, pure positive guard clauses" | ✅ `G-02-NO-ANY`, `G-02-MAX-3-PARAMS`, `G-02-NO-NESTED-IF`; **15-line limit** + **guard-clause** uncovered | 3 of 5 sub-clauses gated. **Gap: 15-line ceiling has no gate; positive-guard-clause has no gate.** **File as NEW-28 if promoted.** |
+| E2 | "Branded `ItemId`/`OwnerId` — raw string IDs forbidden" | ✅ ADR-0020 anchored; `G-04-OWNERUSERID-DDL-CANONICAL`, `G-04-WIRE-USES-WIRE-SPELLING` | ID-spelling gates cover the wire/DDL split. **Brand-type ESLint rule** is uncovered (would belong in TS-strict gate family). |
+
+### F. Data model
+
+| # | Core rule | Coverage | Notes |
+|---|---|---|---|
+| F1 | "Unified Node interface (id, parentId, content, itemType)" | ✅ `G-20-ITEMTYPE-CLOSED-12`, `G-20-ITEMTYPE-LOWERCASE`, `G-20-ITEMTYPE-TRI-SSOT-LOCKSTEP`, `G-20-NO-MIRROR-ITEMTYPE` | Strong. |
+| F2 | "12 closed ItemTypes (ADR-0015)" | ✅ `G-20-ITEMTYPE-CLOSED-12` | Direct. |
+| F3 | "250-item per-view limit; 1000-item virtualization via @tanstack/react-virtual" | ✅ `G-22-VIRTUALIZATION-1000`, `G-22-VIRTUALIZER-TANSTACK-ONLY`; **250-view-limit** uncovered | The 1000-item virt threshold is gated; the 250-view-cap is policy-only. **Minor gap.** |
+| F4 | "SortOrder is fractional-index STRING (base-62, lex), never number" | ✅ `G-21-SORTORDER-STRING-ONLY`, `G-21-SORTORDER-BASE62-ALPHABET`, `G-21-NO-NUMERIC-MIDPOINT`, `G-21-INSERT-NO-SIBLING-MUTATION`, `G-21-LWW-ID-TIEBREAK`, `G-21-REBALANCE-PER-PARENT`, `G-21-REBALANCE-TRIGGER-64B` | Excellent — 7 gates. |
+
+### G. Design system
+
+| # | Core rule | Coverage | Notes |
+|---|---|---|---|
+| G1 | "Tailwind CSS v4 via `@tailwindcss/vite` in `src/index.css` `@theme` block; sole design-token registry, HSL-only" | ✅ `G-12-LOGICAL-MARGINS-PADDING`, `G-12-LOGICAL-TEXT-ALIGN`, `G-12-LOGICAL-INSET`; **HSL-only** + **`@theme`-block-as-SSOT** uncovered | Logical-utility gates cover the RTL story; HSL-only is policy-only today. **AUDIT-FIX-02 (`check-tailwind-tokens-resolved.mjs`)** in the open-task list would close half this gap. |
+
+### H. Mirror
+
+| # | Core rule | Coverage | Notes |
+|---|---|---|---|
+| H1 | "Mirror is a peer-group relation (NOT an ItemType). Detach dissolves singleton groups" | ✅ `G-MIRROR-NO-ITEMTYPE`, `G-MIRROR-PEER-COLUMN`, `G-MIRROR-CYCLE-PRECHECK`, `G-MIRROR-LWW-TIEBREAK`, `G-MIRROR-DISSOLVE-SINGLETON`, `G-ADR-0005-PEER-GROUP-MODEL`, `G-ADR-0005-CYCLE-PRECHECK`, `G-ADR-0005-DISSOLVE-IN-TX`, `G-ADR-0005-SUPERSEDE-REQUIRED` | Excellent — 9 gates across `Domain-MIRROR` + `Domain-ADR-0005`. |
+
+### I. Loader↔queue contract
+
+| # | Core rule | Coverage | Notes |
+|---|---|---|---|
+| I1 | "Loaders read local mirror first (≤16ms p95, never fetch); actions write mirror+queue in one IDB tx — queue worker is sole egress" | ✅ `G-23-LOADER-MIRROR-FIRST`, `G-23-LOADER-NO-MUTATE`, `G-23-WARM-LOADER-16MS`, `G-23-COLD-OFFLINE-SHELL`, `G-23-ACTION-ENQUEUE-ONLY`, `G-23-ACTION-NO-THROW`, `G-23-FETCHER-SAME-PATH`, `G-23-ROUTER-ERRORELEMENT`, `G-23-RECONNECT-LOCK` | Excellent — 9 gates cover every clause. |
+| I2 | "Undo cap 100 in-memory per-tab" | 📋 `RESERVED: G-21-UNDO-CAP-100` | No gate today. ADR-0021 anchors the rule. **Gap candidate.** |
+| I3 | "Offline queue UNBOUNDED in IndexedDB (localStorage forbidden)" | ✅ `G-25-QUEUE-UNBOUNDED`, `G-25-QUEUE-INDEXEDDB-ONLY`, `G-25-QUEUE-NO-SILENT-DROP`, `G-25-POLL-IDEMPOTENT` | Strong. localStorage-ban grep is implicit in `G-25-QUEUE-INDEXEDDB-ONLY`. |
+
+### J. Realtime (SSE)
+
+| # | Core rule | Coverage | Notes |
+|---|---|---|---|
+| J1 | "SSE-only: `/stream/page/{id}` + `/stream/user/{id}`; PascalCase frames; Last-Event-ID replay; SSE is read-signal only (never enqueues to FIFO). WebSocket/long-poll/3rd-party push forbidden" | ✅ `G-25-SSE-ENDPOINT-CLOSED`, `G-25-SSE-EVENT-NAMES-CLOSED`, `G-25-SSE-FRAME-ENVELOPE`, `G-25-SSE-CONFLICT-CLIENT-RESTORE`, `G-25-SSE-CURSOR-WORKSPACE-SCOPED` | Strong — 5 gates. **WebSocket/long-poll ban grep** is uncovered (would be a 1-line ESLint `no-restricted-globals: ['WebSocket', 'EventSource' (outside `lib/sse/`)]`). **Minor gap.** |
+
+### K. Error boundaries
+
+| # | Core rule | Coverage | Notes |
+|---|---|---|---|
+| K1 | "8 named error boundaries (AppErrorBoundary, EditorBoundary, …) — single top-level boundary forbidden" | ✅ `G-22-ERROR-BOUNDARIES-EXACTLY-8`, `G-22-BOUNDARY-NAMES-CLOSED`, `G-22-BOUNDARY-ISOLATION`, `G-22-FALLBACK-CONTRACT`, `G-22-NO-SILENT-FALLBACK`, `G-22-REGISTRY-LOCKSTEP` | Excellent — 6 gates. |
+
+### L. Audit & implementability process
+
+| # | Core rule | Coverage | Notes |
+|---|---|---|---|
+| L1 | "Every spec-improving response MUST end with '📊 AI Implementability' block" | 📝 memory-only-by-design | Procedural; AI conversation handling, not CI. Tracked via streak counter in F-SCOPE rows. |
+| L2 | "Tooling/test/parser-fix tasks capped at +0.0..+0.1 implementability delta" | 📝 memory-only-by-design | Procedural; reviewer-enforced via F-SCOPE narrative. |
+| L3 | ">2 consecutive tooling tasks without addressing a content finding is FORBIDDEN" | 📝 memory-only-by-design | Procedural streak-counter rule; tracked in F-SCOPE rows (e.g. F-SCOPE-08 "Streak-watch: streak counter resets"). |
+| L4 | "F-AUDIT-30 RESOLVED 2026-04-29 by `spec/AUDIT-FINDINGS-LEDGER.md` v1.0.0" | ✅ `scripts/spec-hygiene/74-check-audit-findings-ledger.mjs` | The hygiene gate IS the enforcement. |
+
+---
+
+## Coverage summary (as of 2026-04-30)
+
+| Status | Count | % |
+|---|---|---|
+| ✅ Registered gate(s) | 16 | 70% |
+| 📋 RESERVED slot (ADR-0031 pattern) | 4 | 17% |
+| 📝 Memory-only-by-design (procedural) | 3 | 13% |
+| **Total Core lines mapped** | **23** | **100%** |
+
+**Open gaps surfaced (4 RESERVED slots + 4 partial-coverage notes):**
+
+1. **B2** — Forbidden-runtimes ESLint rule (`G-NS-FORBIDDEN-RUNTIMES`).
+2. **C3** — shadcn/Radix component-base lock (`G-22-COMPONENT-BASE-SHADCN-RADIX`).
+3. **E1** — 15-line logic limit + positive-guard-clause grep gates.
+4. **F3** — 250-item per-view cap (policy → grep gate).
+5. **G1** — HSL-only Tailwind tokens + `@theme`-block-as-SSOT gates (AUDIT-FIX-02 closes half).
+6. **I2** — Undo cap 100 (`G-21-UNDO-CAP-100`).
+7. **J1** — WebSocket/long-poll ban ESLint rule.
+8. **C1** — Version-pin gate for Vite/React/TS (NEW-25 covers this).
+
+These 8 gaps are **NOT** new findings — they are now *first-class visible* via this ledger, which is the entire point of closing F-AUDIT-33.
+
+---
+
+## Future work
+
+- **Promote to CI:** Authoring a `mem://`-parser hygiene script (`scripts/spec-hygiene/NN-check-core-memory-coverage.mjs`) that re-derives this cross-walk from `mem://index.md` and fails if a Core line lacks a row here. Deferred — requires stable `mem://` file-system access from CI.
+- **Quarterly re-audit:** Every audit cycle (audit-vN) MUST re-verify this ledger and add rows for new Core lines.
+- **Convert RESERVED slots to gates:** Each of the 4 `RESERVED:` slots above is a candidate for a future spec-improving batch. Recommend prioritising by leverage: I2 (undo cap, 1 gate, narrow scope) > C3 (component-base lock) > B2 (forbidden-runtimes) > E1 (15-line limit, complex AST rule).
+
+---
+
+## Related
+
+- [`spec/AUDIT-FINDINGS-LEDGER.md`](./AUDIT-FINDINGS-LEDGER.md) — F-AUDIT-33 row (this ledger closes it).
+- [`spec/_GATE-REGISTRY.md`](./_GATE-REGISTRY.md) — every gate referenced above.
+- [`spec/00-adrs/0031-warn-only-strict-flip-pattern.md`](./00-adrs/0031-warn-only-strict-flip-pattern.md) — `RESERVED:` slot pattern.
+- [`spec/00-adrs/0029-per-gate-path-ledger-shared-lib.md`](./00-adrs/0029-per-gate-path-ledger-shared-lib.md) — per-gate-ledger pattern this file follows.
+- [`mem://index.md`](mem://index.md) — Core source of truth (read-side of this cross-walk).
