@@ -94,7 +94,7 @@ This ledger remedies that by making the Core↔Gate mapping **first-class and ve
 
 | # | Core rule | Coverage | Notes |
 |---|---|---|---|
-| J1 | "SSE-only: `/stream/page/{id}` + `/stream/user/{id}`; PascalCase frames; Last-Event-ID replay; SSE is read-signal only (never enqueues to FIFO). WebSocket/long-poll/3rd-party push forbidden" | ✅ `G-25-SSE-ENDPOINT-CLOSED`, `G-25-SSE-EVENT-NAMES-CLOSED`, `G-25-SSE-FRAME-ENVELOPE`, `G-25-SSE-CONFLICT-CLIENT-RESTORE`, `G-25-SSE-CURSOR-WORKSPACE-SCOPED` | Strong — 5 gates. **WebSocket/long-poll ban grep** is uncovered (would be a 1-line ESLint `no-restricted-globals: ['WebSocket', 'EventSource' (outside `lib/sse/`)]`). **Minor gap.** |
+| J1 | "SSE-only: `/stream/page/{id}` + `/stream/user/{id}`; PascalCase frames; Last-Event-ID replay; SSE is read-signal only (never enqueues to FIFO). WebSocket/long-poll/3rd-party push forbidden" | ✅ `G-25-TRANSPORT-SSE-ONLY` (DOC, anchors ADR-0025 §Gates Touched line 132 "no WebSocket / long-poll / 3rd-party push"), `G-25-SSE-ENDPOINT-CLOSED`, `G-25-SSE-EVENT-NAMES-CLOSED`, `G-25-SSE-FRAME-ENVELOPE`, `G-25-SSE-LAST-EVENT-ID`, `G-25-SSE-READ-ONLY-SIGNAL`, `G-25-SSE-HEARTBEAT-15S`, `G-25-SSE-CONFLICT-CLIENT-RESTORE`, `G-25-SSE-CURSOR-WORKSPACE-SCOPED`, `G-25-SSE-WORKER-CAP`, `G-25-SSE-REJECTED-NO-EMIT`, `G-25-SSE-TX-ATOMIC-EMIT` | Excellent — 12 gates. **Originally classified as "minor gap" in v1 of this ledger** (cross-walk missed `G-25-TRANSPORT-SSE-ONLY` despite it being explicitly cited in ADR-0025 §Gates Touched line 132). GAPCLOSE-J1 retracted as unnecessary. See F-AUDIT-34. |
 
 ### K. Error boundaries
 
