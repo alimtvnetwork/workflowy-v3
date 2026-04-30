@@ -6,11 +6,12 @@
 
 > **All systems (Go backend, PHP WordPress plugin, React frontend) MUST conform to this structure.** (gate `G-ERR-05`)
 
-> **Machine-readable peers (gate `G-CON-01-OPENAPI-PARITY`):**
+> **Machine-readable peers (gates `G-CON-01-OPENAPI-PARITY` + `G-CON-02-TYPES-PARITY`):**
 > - JSON Schema 2020-12 SSOT — [`envelope.schema.json`](./envelope.schema.json)
-> - OpenAPI 3.1 mirror — [`openapi.envelope.yaml`](./openapi.envelope.yaml) *(GAP-CON-01, 2026-04-30 — first standalone OpenAPI artifact in the corpus)*
+> - OpenAPI 3.1 mirror — [`openapi.envelope.yaml`](./openapi.envelope.yaml) *(GAP-CON-01, 2026-04-30)*
+> - TypeScript interface peer — [`envelope.types.ts`](./envelope.types.ts) *(GAP-CON-02, 2026-04-30 — branded `ItemId`/`OwnerId`/`SortOrder` per ADR-0020/ADR-0016)*
 >
-> Both files MUST stay byte-shape-equivalent to the prose contract below; drift between any of the three requires updating all three in the same commit.
+> All three files MUST stay byte-shape-equivalent to the prose contract below; drift between any of them requires updating all three in the same commit.
 
 ## Top-Level Fields
 
