@@ -233,3 +233,16 @@ At the user-set bar ('mediocre AI, zero follow-up, 100% intent match'), every ac
 **Result:** Highest-risk hallucination surface in the system (per ADR-0005 §Consequences "closes the highest-risk hallucination surface") is now executable. The detach-dissolves-singleton rule, previously prose-only, is now expressed as transactional pseudocode that splits into 3 outcomes (`detach-shrink`, `detach-dissolve`, invariant-violation raise) and is testable byte-for-byte across PHP+TS.
 
 **Remaining ALG queue:** GAP-ALG-05 undo cap eviction (ADR-0021).
+
+
+---
+
+## GAP-ALG-05 — Undo cap eviction pseudocode promotion (2026-04-30) — ALG TRACK COMPLETE
+
+**Action:** ADR-0021 promoted from prose-only D1–D5 to normative §Algorithms with 6 procedures (U1 pushAction with redo invalidation + FIFO eviction at 100, U2 undo emits compensating mutation per D3, U3 redo re-emits original op, U4 onTabReload clears both stacks per D1+D4, U5 enqueueOfflineMutation quota-aware with hard-error banner per D2+D5, U6 cross-tab isolation forbidden-wiring contract per D1) + 8-row canonical fixture table covering cap eviction, redo invalidation, compensating-mutation contract, replay semantics, reload behaviour, per-tab isolation, quota hard-error, and empty-stack no-ops. Two new DOC-NORM gates: `G-25-UNDO-PSEUDOCODE-PARITY` (umbrella, family=adr-undo-queue per F-AUDIT-34 cross-walk to disambiguate from `family=adr-sse`) + `G-25-UNDO-NEGATIVE-TESTS` (sub-rule for 5 forbidden patterns: localStorage undo writes / BroadcastChannel-undo / queue-cap constants / silent quota catch / unpaired undo without enqueue).
+
+**Files:** spec/00-adrs/0021-undo-100-offline-queue-unbounded.md (+~140 lines), spec/_GATE-REGISTRY.md (+2 rows in G-25 family).
+
+**Result:** Final algorithm-track task complete. All 5 ADR algorithms (between, LWW, FIFO, dissolve, undo-eviction) now have executable pseudocode + canonical fixture vectors + paired negative-test gates. The "5 missing algorithm pseudocode blocks" informal finding category is fully closed. Total content added across ALG-01..05: ~620 lines of pseudocode + 37 fixture vectors + 10 new DOC-NORM gates.
+
+**Remaining queue (post-ALG):** GAP-CON-01..03 (OpenAPI YAML + TS interfaces + JSON Schemas), GAP-AMB-01-tail (long-tail bind sweep), GAP-AMB-02..05 (vague modifiers, glossary, fixtures, conflicts), GAP-DOC-01..02 (Mermaid + plan.md), GAP-LED-01 (24 Medium audit findings).

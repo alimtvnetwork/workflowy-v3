@@ -102,6 +102,147 @@ conflict resolution." This MUST be rewritten to reflect D1 + D2 (gate G-25-UNDO-
 undo cap 100 (in-memory, per-tab); offline queue unbounded
 (IndexedDB per ADR-0010, no `localStorage`).
 
+## Algorithms (Normative Pseudocode)
+
+> Gate `G-25-UNDO-PSEUDOCODE-PARITY` — every TS implementation (and any
+> future port) MUST produce byte-identical observable behaviour for the
+> canonical fixture vectors below. Tested against
+> `spec/31-app/97a-acceptance-criteria-fixtures.md` §Undo.
+
+**Type contract.**
+- `UndoEntry = { Id: string, Op: string, Inverse: object, EnqueuedClientMutationId?: string, Ts: string }`
+- `UndoState = { undo: UndoEntry[], redo: UndoEntry[] }` — both stacks held in tab-scoped React/Zustand state. No persistence (D1).
+- `UNDO_CAP = 100` — hard constant; gate `G-25-UNDO-CAP-100` regex-fails any local override.
+- All operations are synchronous in-memory mutations; no I/O.
+
+### U1 — `pushAction(state, entry) -> state`  (D1 + D3 redo invalidation)
+
+```
+# Called after every atomic user action — text edit (debounced 500ms),
+# structural move, completion toggle, bulk op, etc.
+
+# Step 1: redo invalidation (D1 last bullet — "any new action MUST clear redo").
+state.redo = []                               # gate G-25-UNDO-CAP-100
+
+# Step 2: append to undo head.
+state.undo.push(entry)
+
+# Step 3: FIFO eviction at cap (D1: "101st action drops the oldest").
+while len(state.undo) > UNDO_CAP:
+    state.undo.shift()                        # drop OLDEST (head); silent per D1
+
+return state
+```
+
+### U2 — `undo(state) -> { state, compensating: Mutation | None }`  (D3)
+
+```
+# User pressed Ctrl/Cmd+Z. Pops undo head, pushes onto redo, emits compensating mutation.
+if len(state.undo) == 0:
+    return { state, compensating: None }      # nothing to undo; UI no-op
+
+entry = state.undo.pop()
+state.redo.push(entry)                        # redo grows from undo's pop
+
+# D3: undo MUST enqueue a compensating mutation onto the offline queue
+# — it does NOT mutate or pop the original from the queue.
+compensating = buildMutationFromInverse(entry.Inverse)
+return { state, compensating }
+```
+
+### U3 — `redo(state) -> { state, replay: Mutation | None }`  (D1, D4)
+
+```
+# User pressed Ctrl/Cmd+Shift+Z. Pops redo head, pushes back onto undo.
+if len(state.redo) == 0:
+    return { state, replay: None }            # nothing to redo
+
+entry = state.redo.pop()
+state.undo.push(entry)
+# Cap re-applies on undo growth; redo never grows past UNDO_CAP either
+# because it can only ever hold what was previously in undo (≤ UNDO_CAP).
+while len(state.undo) > UNDO_CAP:
+    state.undo.shift()
+
+replay = buildMutationFromOp(entry.Op)        # re-emit the original mutation
+return { state, replay }
+```
+
+### U4 — `onTabReload() -> UndoState`  (D1, D4)
+
+```
+# Reload kills all history per D1 ("MUST NOT persist across reloads") and
+# D4 (stale-redo bug class). Data is preserved (queue + server); history is not.
+return { undo: [], redo: [] }
+# Implementation: do NOT subscribe to localStorage / IndexedDB / sessionStorage
+# for any 'undo' or 'redo' key. Gate G-25-UNDO-IN-MEMORY-ONLY enforces.
+```
+
+### U5 — `enqueueOfflineMutation(queueDb, mutation)`  (D2 — quota-aware, no silent drop)
+
+```
+# Bridges D2 (unbounded queue + hard-error on quota) with D5 (80% soft warning).
+# This procedure is called by every action layer write (per ADR-0023 same-tx contract)
+# and by U2's compensating mutation emission.
+
+try:
+    BEGIN IDB TX (readwrite, ['mutationQueue'])
+        queueDb.mutationQueue.add(mutation)   # autoIncrement assigns LocalSeq (ADR-0010 C1)
+    COMMIT
+except QuotaExceededError as err:
+    # D2: silent drop FORBIDDEN. Surface hard error banner; pause further mutations.
+    showHardErrorBanner('Local storage full — reconnect to sync, or free space')
+    pauseFurtherMutations()                   # gate G-25-QUEUE-NO-SILENT-DROP
+    raise                                     # propagate so the action-layer rolls back
+    # NOTE: do NOT shrink the queue, do NOT drop oldest, do NOT switch to localStorage.
+
+# D5 soft warning (implementation guidance, not a gate).
+estimate = await navigator.storage.estimate()
+if estimate.usage / estimate.quota >= 0.80:
+    showSoftWarningBanner('Local storage 80% full — reconnect soon')
+```
+
+### U6 — Cross-tab isolation (D1 — per-tab scope)
+
+```
+# Forbidden wiring (gate G-25-UNDO-PER-TAB):
+#   ✗ new BroadcastChannel('undo')
+#   ✗ new SharedWorker(...) for undo state
+#   ✗ window.addEventListener('storage', ...) coupling undo across tabs
+#
+# Required wiring: undo state lives ONLY in the per-tab Zustand store.
+# Two tabs of the same account hold two independent UndoState instances.
+```
+
+### Canonical fixture vectors (parity test)
+
+Each row exercises one D1–D5 invariant. Failure of any row fails
+`G-25-UNDO-PSEUDOCODE-PARITY`.
+
+| # | Scenario | Initial state | Action | Expected post-state |
+|---|---|---|---|---|
+| 1 | **Cap at 100 — FIFO eviction** | `undo=[a1..a100]`, `redo=[]` | `pushAction(a101)` | `undo=[a2..a101]` (a1 evicted), `redo=[]`. Length stays 100. |
+| 2 | **Redo invalidation on new action** | `undo=[a1,a2]`, `redo=[r1,r2]` | `pushAction(a3)` | `undo=[a1,a2,a3]`, `redo=[]` (cleared per D1). |
+| 3 | **Undo emits compensating mutation** | `undo=[a1]`, `redo=[]` | `undo()` | `undo=[]`, `redo=[a1]`, returns `compensating=mutationFrom(a1.Inverse)`. Original queue entry NOT popped (D3). |
+| 4 | **Redo re-emits original op** | `undo=[]`, `redo=[a1]` | `redo()` | `undo=[a1]`, `redo=[]`, returns `replay=mutationFrom(a1.Op)`. |
+| 5 | **Reload clears both stacks** | `undo=[a1..a50]`, `redo=[r1..r10]` | `onTabReload()` | `undo=[]`, `redo=[]`. Queue + server data unchanged (D4). |
+| 6 | **Per-tab isolation** | Tab-A `undo=[a1]`; Tab-B `undo=[b1]` | Tab-A `pushAction(a2)` | Tab-A `undo=[a1,a2]`; Tab-B `undo=[b1]` (no cross-tab propagation per D1). |
+| 7 | **Quota exceeded → hard error** | IDB at quota | `enqueueOfflineMutation(m)` | `QuotaExceededError` propagated; banner shown; `pauseFurtherMutations()` invoked; queue NOT shrunk (D2). |
+| 8 | **Empty stack no-ops** | `undo=[]`, `redo=[]` | `undo()` then `redo()` | Both return `{compensating:None}` / `{replay:None}`; state unchanged; UI no-op. |
+
+**Negative-test obligations (gate `G-25-UNDO-NEGATIVE-TESTS`).**
+Implementations MUST also assert: (a) `localStorage.setItem(/undo|redo/, ...)`
+appears nowhere in client source (regex CI fail per
+`G-25-UNDO-IN-MEMORY-ONLY`); (b) no `BroadcastChannel('undo'…)` /
+`new SharedWorker` / `'storage'` event listener wires undo state across
+tabs (per `G-25-UNDO-PER-TAB`); (c) no constant named `MAX_QUEUE_SIZE`
+/ `QUEUE_CAP` / `OFFLINE_LIMIT` exists in the queue module (per
+`G-25-QUEUE-UNBOUNDED`); (d) no `try { ... } catch (QuotaExceededError)
+{ /* silent */ }` pattern (per `G-25-QUEUE-NO-SILENT-DROP`); (e) every
+`undo()` call site MUST be paired with a downstream
+`enqueueOfflineMutation(compensating)` invocation (per
+`G-25-UNDO-COMPENSATING-ENQUEUE`).
+
 ## Consequences
 
 **Positive**
