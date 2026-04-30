@@ -265,7 +265,7 @@ progress := cloner.NewProgress(len(repos), quietFlag)
 When quiet mode is active:
 
 - All `Begin`, `Done`, `Fail`, and `PrintSummary` calls are no-ops
-- Internal counters still increment (for programmatic access if needed)
+- Internal counters still increment (so callers using `--quiet` with `--json-summary` still get accurate totals)
 - Stdout data output (JSON, CSV) is unaffected
 
 ---

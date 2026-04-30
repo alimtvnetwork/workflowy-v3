@@ -28,7 +28,7 @@ As a product designer, I want a single source of truth for who the app is for, s
 - **Goal**: Share a branch of their outline with controlled permissions, receive comments, and keep everything synced.
 
 ### 0.3 Tertiary Persona — The Quick Capture User
-- **Who**: Anyone who needs a fast scratchpad — developers jotting TODOs, students capturing lecture notes, writers brainstorming.
+- **Who**: Anyone who needs a low-latency scratchpad (≤500 ms cold-open to first keystroke) — developers jotting TODOs, students capturing lecture notes, writers brainstorming.
 - **Pain point**: Apps take too long to open or require too many clicks to start writing.
 - **Goal**: Open the app and start typing immediately. Organize later.
 

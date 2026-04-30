@@ -107,8 +107,7 @@ A complete terminal report follows this structure, in order:
 └─────────────────────────────────────────┘
 ```
 
-Each section is **independently optional**. A simple command might only emit
-sections 1 + 2 + 3. A full scan emits all seven.
+Each section is **independently optional**. A read-only command (e.g. `status`, `version`) emits only sections 1 + 2 + 3; a full scan emits all seven.
 
 ---
 

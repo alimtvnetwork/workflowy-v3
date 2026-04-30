@@ -256,7 +256,7 @@ concrete examples. Adapt syntax to your target language.
 |-----------|--------|
 | Consistency over cleverness | Predictable patterns across all commands |
 | Convention over configuration | Sensible defaults; config is optional |
-| Fail fast, fail clearly | Bad input → immediate error with actionable message |
+| Fail-fast, fail clearly | Bad input → immediate error (exit code 2 within 100 ms) with actionable message |
 | One responsibility per unit | Each file, function, and package does one thing |
 | No magic strings | Every literal in a constants package |
 | Self-documenting | Help text, version, and examples built into the binary |
