@@ -7,7 +7,7 @@
 
 ## Overview
 
-Rules for designing database schemas that are efficient, maintainable, and correctly normalized. Covers key sizing, primary key strategy, normalization, and the Split DB pattern.
+Rules for designing database schemas that meet defined performance budgets, are maintainable per the SQLite naming-conventions guide, and are correctly normalized to 3NF (with documented denormalization exceptions). Covers key sizing, primary key strategy, normalization, and the Split DB pattern.
 
 ---
 
