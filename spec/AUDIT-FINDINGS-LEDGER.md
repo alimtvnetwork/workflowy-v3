@@ -586,3 +586,24 @@ This is the **third** scope-correction in 3 turns (F-SCOPE-01 → 02 → 03), ea
 - [`spec/18-spec-issues/00-overview.md`](./18-spec-issues/00-overview.md) — per-folder audit dashboard
 - [`/mnt/documents/spec-ai-implementability-audit-v7.json`](../mnt/documents/spec-ai-implementability-audit-v7.json) — v7 audit artifact (raised F-AUDIT-30)
 - [`mem://index.md`](mem://index.md) — Core rules referencing this ledger
+
+---
+
+## F-AUDIT-43 — Process Complexity Assumes Advanced AI Cognition
+
+- **Source:** Gemini-2.5-Pro v8 audit (2026-04-30) — `/mnt/documents/spec-audit-v8.json`
+- **Original severity:** 8/10 (high) — blocked full compliance
+- **Status:** **CLOSED** 2026-04-30
+- **Resolution:** Created `spec/00-ai-onboarding-ssot.md` v1.0.0 — single canonical AI onboarding document synthesizing the top 15 methodological lessons from the F-SCOPE-* / F-AUDIT-* / F-SPEC-14 / GAP-AMB / GAP-AC-AUTHOR ledger histories into:
+  - §1 — 7-item mandatory pre-flight checklist (C-01..C-07) covering spec-only mode, scorecard rule, tooling-cap, strict-filter inventory, cohort-triage, gate-namespace pre-flight, and ledger ownership split.
+  - §2 — Top-15 anti-pattern → pattern table (L-01..L-15) with origin-finding citations.
+  - §3 — Three decision trees (vague-modifier triage, gate-creation, finding-closure).
+  - §4 — 12 hard-stop forbidden operations (F-01..F-12) including spec-only-mode enforcement and ADR-0015..0025 invariants.
+  - §5 — Scorecard formula reminder.
+  - §6 — Cross-references.
+- **Mechanism that closes the finding:** A mediocre AI agent now has a single flat checklist to consult instead of being expected to synthesize ledger history on demand. The Gemini auditor's prescription was: *"Create a single, canonical 'onboarding' document for AI agents (e.g., `spec/00-ai-onboarding-ssot.md`) that synthesizes the top 10-15 methodological lessons from the historical ledgers into a prescriptive checklist."* — implemented verbatim with 15 lessons (top of recommended range).
+- **Inventory-Audit:** 2026-04-30 | new file scan | Was: 0 SSOT files | Is: 1 SSOT file (`spec/00-ai-onboarding-ssot.md`, 100% of recommended scope).
+- **Verification path:** Auto-TOC runner will index the file on next pass; no gate required (the file IS the gate's checklist).
+- **Remaining after closure:** Per Gemini, "the risk that the AI fails to follow the checklist still remains, but it's significantly lower as the key information is centralized and part of its immediate prompt context." Future enhancement: cite `spec/00-ai-onboarding-ssot.md` in the agent system prompt.
+- **Score impact:** +1.5pp expected (Gemini-projected); requires v9 re-baseline to ratify.
+- **Files:** `spec/00-ai-onboarding-ssot.md` (created, 188 lines), `spec/AUDIT-FINDINGS-LEDGER.md` (this entry).
