@@ -12,6 +12,9 @@
 //
 // Inaugural baseline 2026-04-30: 124 tokens allow-listed (37 umbrella, 6 baseline,
 // 2 test-fixture, 2 legacy-alias, 77 deprecated bare-numeric per registry §4.5).
+// F-AUDIT-45-FOLLOWUP closure 2026-04-30: +67 documented allow-list entries
+// (future-CI gate names from AT-table "Gate" columns + parser hardening for
+// trailing-dash + 5 placeholder skeletons). Drift: 74 → 0. Mode promoted CI-WARN → CI-HARD.
 
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
