@@ -194,7 +194,7 @@ This step applies **only** to Tier 0 (audit DB). For Tier 1/2/3/4, skip to step 
   --to=latest
 ```
 
-The output MUST be `chain ok, N rows verified, last_hash=<hex>`.
+The output MUST be `chain ok, N rows verified, last_hash=<hex>` `[gate: G-BACKUP-AUDIT-CHAIN-REWALK]`.
 
 If the chain is broken:
 1. **Do NOT proceed.** A broken chain in a backup means either the backup itself is tampered, OR the live DB before backup was already tampered.
