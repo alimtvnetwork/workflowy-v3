@@ -107,7 +107,7 @@ const NodeSchema = z.object({ Id: ItemIdSchema, Content: z.string() }).strict();
 
 ### R5 — Failure handling is enum-typed
 
-A parse failure at a boundary MUST throw a `BoundaryParseError` that maps to one of the canonical error codes (`USR-35-PARSE`, `USR-35-ENVELOPE`, `USR-35-BRAND`). Silent recovery (try/catch returning `null`) is forbidden.
+A parse failure at a boundary MUST throw a `BoundaryParseError` that maps to one of the canonical error codes (`USR-35-PARSE`, `USR-35-ENVELOPE`, `USR-35-BRAND`). Silent recovery (try/catch returning `null`) is forbidden. `[gate: G-35-RV-NO-SILENT-CATCH · AT: AT-RV-05]`
 
 ```ts
 import { BoundaryParseError, ErrorCode } from '@/lib/errors';
