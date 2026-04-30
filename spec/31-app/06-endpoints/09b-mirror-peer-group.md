@@ -42,15 +42,15 @@
 
 - **Auth**: `user` with write on `id`'s parent.
 - **Request body**: `{}` (no params).
-- **Success (200)** `Results`: `{ Item: Item, GroupDissolved: boolean, RemainingPeerCount: number }`.
+- **Success (200)** `Results`: `{ Item: Item, IsGroupDissolved: boolean, RemainingPeerCount: number }` (boolean field carries `Is` prefix per coding-guidelines boolean naming convention).
 - **Behaviour**:
   - Removes `id` from `MirrorPeerGroups`. The detached item becomes a free-standing canonical Item with its current content snapshot.
-  - **Singleton dissolution**: if exactly one peer remains after detach, that peer is also removed from the group and the `MirrorPeerGroups` row is hard-deleted (`GroupDissolved = true`). A peer group of one is meaningless per `mem://features/mirroring`.
+  - **Singleton dissolution**: if exactly one peer remains after detach, that peer is also removed from the group and the `MirrorPeerGroups` row is hard-deleted (`IsGroupDissolved = true`). A peer group of one is meaningless per `mem://features/mirroring`.
 - **Errors**: `ERR_NOT_FOUND`, `ERR_FORBIDDEN`, `ERR_NOT_MIRRORED`.
 - **Side effects**:
   - Emits SSE `mirror-broken` on `mirror-group:{groupId}` to surviving peers.
   - Emits SSE `item-updated` on `item:{id}` (now standalone).
-  - If `GroupDissolved = true`, emits a second `mirror-broken` for the lone surviving peer.
+  - If `IsGroupDissolved = true`, emits a second `mirror-broken` for the lone surviving peer.
 - **AC refs**: `AT-APP-61`, `AT-APP-63`, `AT-APP-64`.
 
 ---

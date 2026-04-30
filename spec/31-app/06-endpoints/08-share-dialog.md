@@ -31,7 +31,7 @@
 ## EP-SHARES-LIST — GET `items/{id}/shares`
 
 - **Auth**: `user` with read access on the item (any role can see who else has access).
-- **Success (200)** `Results`: `{ Grants: Share[], PublicSlug?: string, PublicEnabled: boolean }`.
+- **Success (200)** `Results`: `{ Grants: Share[], PublicSlug?: string, IsPublicEnabled: boolean }` (boolean field carries `Is` prefix per coding-guidelines boolean naming convention).
 - **Errors**: `ERR_NOT_FOUND`, `ERR_FORBIDDEN`.
 - **Side effects**: none.
 
@@ -70,8 +70,8 @@
 ## EP-SHARES-PUBLIC — POST `items/{id}/shares/public`
 
 - **Auth**: `owner`.
-- **Request body**: `{ Enabled: boolean }`.
-- **Success (200)** `Results`: `{ Enabled: boolean, PublicSlug?: string }` (slug present only when `Enabled=true`).
+- **Request body**: `{ IsEnabled: boolean }` (boolean field carries `Is` prefix per coding-guidelines boolean naming convention; legacy `Enabled` shape rejected by the request validator `[gate: G-EP-BOOL-PREFIX]`).
+- **Success (200)** `Results`: `{ IsEnabled: boolean, PublicSlug?: string }` (slug present only when `IsEnabled = true`).
 - **Errors**: `ERR_NOT_FOUND`, `ERR_FORBIDDEN`.
 - **Side effects**: rotates the public slug whenever enabled→disabled→enabled. Anyone holding an old slug loses access immediately. Emits SSE `share-granted` (public variant).
 - **AC refs**: `AT-APP-17`.

@@ -179,7 +179,7 @@ erDiagram
         INTEGER RowsDeleted
         INTEGER BatchCount
         INTEGER DurationMs
-        BOOLEAN DryRun
+        BOOLEAN IsDryRun
     }
 ```
 

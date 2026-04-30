@@ -127,13 +127,13 @@ Each `Results` row has `TrashedAt`, `OriginalParentId`, `DaysUntilPurge` (≤ 30
 `Results` is an array of mirror rows in the same group as `source`.
 
 ### EP-MIRRORS-DELETE — `DELETE /mirrors/{id}`
-**Response:** `Results: []`. If the deletion leaves a singleton group, the group is dissolved (per `mem://features/mirroring`); fixture includes `Attributes.GroupDissolved: true`.
+**Response:** `Results: []`. If the deletion leaves a singleton group, the group is dissolved (per `mem://features/mirroring`); fixture includes `Attributes.IsGroupDissolved: true` (renamed 2026-04-30 from `GroupDissolved` per F-AUD42-13 boolean-prefix convention).
 
 ### EP-MIRRORS-GROUP-GET — `GET /items/{id}/mirror-group`
 **Response:** `Results: [{ "GroupId": "G01...", "PeerIds": ["01H...","01M..."], "PeerCount": 2 }]`.
 
 ### EP-MIRRORS-DETACH — `POST /items/{id}/mirror-detach`
-**Response:** `Results: [{ "Id": "01H...", "GroupId": null, "DetachedAt": "..." }]`, `Attributes.GroupDissolved: true|false`.
+**Response:** `Results: [{ "Id": "01H...", "GroupId": null, "DetachedAt": "..." }]`, `Attributes.IsGroupDissolved: true|false`.
 
 ---
 
@@ -232,7 +232,7 @@ data: { "Status": {...}, "Attributes": {...}, "Results": [ { "EventId":"E01...",
 ## Reaper, Search (rows 42–44)
 
 ### EP-REAPER-RUN — `POST /admin/trash/reaper/run`
-**Request:** `{ "DryRun": false }`
+**Request:** `{ "IsDryRun": false }` (renamed 2026-04-30 from `DryRun` per F-AUD42-13 boolean-prefix convention).
 **Response:** `Results: [{ "RunId": "R01...", "PurgedCount": 17, "StartedAt":"...", "FinishedAt":"..." }]`.
 
 ### EP-REAPER-RUNS-LIST — `GET /admin/trash/reaper/runs`
