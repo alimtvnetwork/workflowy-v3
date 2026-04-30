@@ -282,6 +282,12 @@ Authored `spec/35-enforcement-rules/02-runtime-validation.md` (closed list of 5 
 
 ---
 
+### Progress note 2026-04-30 — GAP-A2 (batch 3/4) closed
+
+Authored `spec/35-enforcement-rules/03-eslint-rule-authoring.md` (closed plugin layout, canonical rule template, naming convention `no-*`/`require-*`/`prefer-*-over-*`, RuleTester template with ≥3+≥3 case minimum, 3-step registration, severity policy, 7 anti-patterns, 3 AT binds, full `no-localstorage` worked example). All 7 prose MUSTs gate-bound (`G-35-EL-PLUGIN-LAYOUT`, `-USE-CREATOR`, `-MEANINGFUL-DOCS`, `-NAMING`, `-RULE-TESTER`, `-FULL-REGISTRATION`, `-NO-OFF`) — zero bare-MUST regression. Parent overview row 03 now ✅. 1 of 4 enforcement-rules sub-specs still pending (04-boundary-enforcement).
+
+---
+
 
 ## Retraction case studies
 
