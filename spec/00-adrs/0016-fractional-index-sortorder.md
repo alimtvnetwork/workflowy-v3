@@ -59,8 +59,11 @@ characters above U+007E.
   `A < K < B`. The standard algorithm: walk both keys digit-by-digit;
   on the first differing position, pick the midpoint digit; if no
   midpoint exists (adjacent digits like `"a"` and `"b"`), append a
-  midpoint suffix to `A`. Reference algorithm:
-  `mudder.js` / Figma's fractional-indexing crate.
+  midpoint suffix to `A`. **Reference pseudocode in §"Algorithms" below
+  is normative** (gate `G-21-BETWEEN-PSEUDOCODE-PARITY`); any
+  implementation MUST produce identical output for the canonical
+  fixture vectors. Reference library: `mudder.js` / Figma's
+  fractional-indexing crate.
 
 **D4 — Stability.** Inserting an item between siblings MUST mutate
 **only** the new item's `SortOrder`. Sibling rows MUST remain untouched
