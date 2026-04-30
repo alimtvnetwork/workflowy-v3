@@ -59,7 +59,7 @@ The G-38 gate intentionally skips:
 |----|-----------|--------|
 | `AT-RFC2119-01` | Active spec files contain zero bare `TBD` / `FIXME` / `XXX` outside the allow-list. | `scripts/spec-hygiene/38-check-ambiguous-wording.mjs` |
 | `AT-RFC2119-02` | Active spec files contain zero soft-language phrases ("we could", "perhaps", "possibly", "ideally", "preferably", "may want to", "might want", "should consider"). | same script |
-| `AT-RFC2119-03` | RFC-2119 keywords carrying normative weight MUST be uppercase. | reviewer judgement; lower-case use is non-normative |
+| `AT-RFC2119-03` | RFC-2119 keywords carrying normative weight MUST be uppercase. | reviewer judgement; lower-case use is non-normative — gate `G-WORDING-UPPERCASE` |
 
 ---
 
