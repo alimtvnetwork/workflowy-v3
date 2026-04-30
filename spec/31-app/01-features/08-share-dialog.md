@@ -170,7 +170,7 @@ As an owner, I want to share an outline branch with specific people at the right
 - **Share Status Pill** — Items with any active share render a `share-status-pill` on the row (see [`./01-information-model.md`](./01-information-model.md)).
 - **Shared with Me** — Sidebar group listing every item the current user has been invited to. Click to navigate; the breadcrumb shows the share-root only (ancestors above are hidden because the user has no permission to see them).
 
-> **Reconciliation note (F7 candidate):** the public-link URL pattern (`https://workflowy.app/s/<token>`) is taken verbatim from the Workflowy spec for parity. WorkFlowy's WP-plugin backend MUST host the equivalent at `/wp-json/workflowy/v1/s/<token>` and serve a server-rendered viewer for unauthenticated visitors. Tracked under `.lovable/question-and-ambiguity/`.
+(gate **G-NS-NO-DEPRECATED-ALIAS**) > **Reconciliation note (F7 candidate):** the public-link URL pattern (`https://workflowy.app/s/<token>`) is taken verbatim from the Workflowy spec for parity. WorkFlowy's WP-plugin backend MUST host the equivalent at `/wp-json/workflowy/v1/s/<token>` and serve a server-rendered viewer for unauthenticated visitors. Tracked under `.lovable/question-and-ambiguity/`.
 
 ---
 
@@ -228,7 +228,7 @@ As an owner, I want to share an outline branch with specific people at the right
 
 ### SSE Frames Emitted (read-signal only, ADR-0025)
 
-`ShareCreated`, `ShareUpdated`, `ShareRevoked` on `/stream/page/{id}` and/or `/stream/user/{id}`. SSE MUST NOT enqueue to the FIFO (read-signal only).
+(gate **G-25-SSE-ENDPOINT-CLOSED**) `ShareCreated`, `ShareUpdated`, `ShareRevoked` on `/stream/page/{id}` and/or `/stream/user/{id}`. SSE MUST NOT enqueue to the FIFO (read-signal only).
 
 ### Storage
 

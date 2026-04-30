@@ -27,7 +27,7 @@ This file is the **single canonical answer** to "where does this piece of state 
 | D6 | **Mirror propagation** | (a) **TanStack Query cache patch** on local edit + (b) **SSE push** for cross-tab/cross-user, with **last-write-wins per the canonical 3-tier comparator `(ServerTs DESC, OwnerId ASC, ItemId ASC)`** ([ADR-0026](../../00-adrs/0026-lww-canonical-tiebreak.md) §D1) | Local edits feel instant (a); cross-session correctness comes from authoritative server stream (b); the 3-tier comparator removes all ambiguity including the `(ts, owner)` second-tie case |
 | D7 | **Optimistic mutations** | Always-on for: rename, complete-toggle, indent/outdent, drag-reorder, tag toggle. **Off** for: share invites, role changes, template apply | Edit-grade ops need <16 ms feel; permission-grade ops are rare and need confirmation |
 | D8 | **Undo/redo** | Local Zustand stack of inverse `Mutation` records, capped at 100 entries per `zoomedItemId` | Per-zoom stack mirrors WorkFlowy's behaviour and bounds memory |
-| D9 | **Offline queue** | Zustand-persisted (**IndexedDB** per [ADR-0021](../../00-adrs/0021-undo-100-offline-queue-unbounded.md) §D2 — `localStorage` is FORBIDDEN) UNBOUNDED FIFO of pending `Mutation` records, flushed on `online` event | Survives reload across browser-storage quota cycles; replays in order; idempotent because every mutation has client-generated `MutationId`. `QuotaExceededError` MUST raise a hard error banner — silent drop is forbidden. |
+| D9 | **Offline queue** | Zustand-persisted (**IndexedDB** per [ADR-0021] <!-- (gate **G-25-QUEUE-INDEXEDDB-ONLY**) -->(../../00-adrs/0021-undo-100-offline-queue-unbounded.md) §D2 — `localStorage` is FORBIDDEN) UNBOUNDED FIFO of pending `Mutation` records, flushed on `online` event | Survives reload across browser-storage quota cycles; replays in order; idempotent because every mutation has client-generated `MutationId`. `QuotaExceededError` MUST raise a hard error banner — silent drop is forbidden. |
 
 > **Caveat**: D1, D2, D6 are sensible industry defaults but **the user has not yet explicitly confirmed them**. Until confirmation, treat them as DRAFT. If the user picks differently (e.g. Jotai), only the libraries change — the **state-ownership map** below is library-agnostic.
 
@@ -207,7 +207,7 @@ flowchart TB
 | R1 | **Components never call `fetch` directly.** They go through a hook (`use*`). | Bypass means no caching, no rollback, no SSE invalidation. |
 | R2 | **No piece of server state is duplicated into Zustand.** Read from `queryClient`. | Two sources of truth diverge after the first SSE push. |
 | R3 | **No `useState` for cross-component data.** Lift to a Zustand slice. | Prop-drilling chains break under refactor. |
-| R4 | **Mutation handlers MUST be idempotent** (`mutationId` = client-generated UUID). | Replay from offline queue creates duplicates. |
+| R4 | **Mutation handlers MUST be idempotent** (`mutationId` = client-generated UUID) <!-- (gate **G-25-POLL-IDEMPOTENT**) -->. | Replay from offline queue creates duplicates. |
 | R5 | **The SSE listener is registered exactly once,** inside `<RealtimeProvider>`. | Multiple listeners cause N× invalidations per event. |
 | R6 | **Optimistic patches always snapshot before mutating** so rollback is exact. | Failed mutations leave the cache in a half-applied state. |
 | R7 | **`useUndoStore` is per `zoomedItemId`,** never global. | Undo across zooms produces user-confusing jumps. |

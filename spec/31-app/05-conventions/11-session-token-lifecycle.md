@@ -33,7 +33,7 @@ Without this SSOT, AI implementers will re-invent JWT lifetimes, leak refresh to
 | **SSEToken** | Single-use ticket for `EventSource` connection | **30 seconds** to connect; channel lives until `AccessToken` expiry | URL query param `?ticket=…` | `SseTicketStore` (one-shot, deleted on first use) | No (used once) |
 | **CsrfToken** | Double-submit cookie for state-changing forms | Bound to `WPSession` lifetime | Readable cookie + `X-WF-CSRF` header | Stateless HMAC of session ID + secret | Yes (browser, on POST/PUT/DELETE) |
 
-> **Forbidden:** `localStorage`, `sessionStorage`, or `IndexedDB` for any token. `RefreshToken` MUST NEVER be readable by JS.
+(gate **G-25-QUEUE-INDEXEDDB-ONLY**, applied as token-storage exclusion invariant) > **Forbidden:** `localStorage`, `sessionStorage`, or `IndexedDB` for any token. `RefreshToken` MUST NEVER be readable by JS.
 
 ---
 
@@ -123,7 +123,7 @@ When **either** timer fires, the token is invalid. The client behavior:
 | `RefreshToken` absolute expired (`401 ERR_AUTH_REFRESH_ABSOLUTE`) | Redirect to `/login` with `reason=session_max_age` |
 | `AUTHZ.REFRESH_REUSE` (family revoked) | Show "your session was terminated for security" + redirect to `/login` |
 
-> **Single-retry rule:** the auto-refresh interceptor MUST attempt refresh **at most once** per original request. Two consecutive 401s ⇒ hard logout.
+(gate **G-17-NO-SWALLOW**) > **Single-retry rule:** the auto-refresh interceptor MUST attempt refresh **at most once** per original request. Two consecutive 401s ⇒ hard logout.
 
 ---
 

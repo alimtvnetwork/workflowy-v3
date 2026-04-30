@@ -30,7 +30,7 @@ As a daily planner, I want a single screen that shows everything due today plus 
 
 ## Settings Keys (Seedable Config)
 
-> **Why this section:** Today View consumes `userTimezone` from settings (see Inputs §). Per [`spec/06-seedable-config-architecture/`](../../06-seedable-config-architecture/00-overview.md) + [`spec/15-wp-plugin-how-to/15-settings-architecture/`](../../15-wp-plugin-how-to/15-settings-architecture/00-overview.md), the timezone key MUST be enum-backed, defaulted, sanitized, and grouped — never read via a bare string.
+(gate **G-24-FAVORITES-TABLE-ONLY**) > **Why this section:** Today View consumes `userTimezone` from settings (see Inputs §). Per [`spec/06-seedable-config-architecture/`](../../06-seedable-config-architecture/00-overview.md) + [`spec/15-wp-plugin-how-to/15-settings-architecture/`](../../15-wp-plugin-how-to/15-settings-architecture/00-overview.md), the timezone key MUST be enum-backed, defaulted, sanitized, and grouped — never read via a bare string.
 
 | Setting | `OptionNameType` enum case | Default | Sanitizer | Group | Storage |
 |---------|---------------------------|---------|-----------|-------|---------|
@@ -171,7 +171,7 @@ As a daily planner, I want a single screen that shows everything due today plus 
 
 ### SSE Frames Emitted (read-signal only, ADR-0025)
 
-`ItemUpdated`, `TodayBucketChanged` on `/stream/page/{id}` and/or `/stream/user/{id}`. SSE MUST NOT enqueue to the FIFO.
+(gate **G-25-SSE-ENDPOINT-CLOSED**) `ItemUpdated`, `TodayBucketChanged` on `/stream/page/{id}` and/or `/stream/user/{id}`. SSE MUST NOT enqueue to the FIFO.
 
 ### Storage
 

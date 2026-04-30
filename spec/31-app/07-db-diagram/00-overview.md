@@ -62,12 +62,12 @@ If a diagram contradicts any of those, the diagram is wrong — not the SSOT.
 | # | Rule | Source |
 |---|------|--------|
 | D1 | **Split DB**: identity (`User`, `Workspace`, `WorkspaceMember`) lives in **Root DB**. All item content (`Items`, `Tags`, `Comments`, …) lives in **App DB** (one file per workspace). | [`../01-features/01-information-model.md`](../01-features/01-information-model.md) §Storage |
-| D2 | **No cross-DB joins.** Workspace lookup → switch SQLite connection → query App DB. Diagrams MUST visually separate the two DBs. | Same |
+| D2 | **No cross-DB joins.** Workspace lookup → switch SQLite connection → query App DB. Diagrams MUST visually se <!-- (gate **G-24-DDL-SINGULAR-LOCKED**) -->parate the two DBs. | Same |
 | D3 | All table names are **PascalCase singular** (`Item`, not `Items` — even though feature SSOTs use the plural `Items` informally, the canonical SQL table name follows `04-database-conventions/01-naming-conventions.md`). PK = `{TableName}Id`. | [`../../04-database-conventions/01-naming-conventions.md`](../../04-database-conventions/01-naming-conventions.md) |
 | D4 | **No UUID PKs.** All PKs are `INTEGER AUTOINCREMENT`. The 10-year row estimate per table dictates `SMALLINT` / `INTEGER` / `BIGINT`. | [`../../04-database-conventions/02-schema-design.md`](../../04-database-conventions/02-schema-design.md) §1 |
 | D5 | **Soft delete via timestamp** (`DeletedAt TEXT NULL`), never via boolean `IsDeleted`. The Trash view is a query over `DeletedAt IS NOT NULL`. | [`../../04-database-conventions/01-naming-conventions.md`](../../04-database-conventions/01-naming-conventions.md) Rule 7 |
 | D6 | **Roles in their own table.** `UserRole` (Root DB) is the only place where role-to-user assignments exist — never on `User` or `Profile`. | `mem://constraints/coding-guidelines` + L8 in [`../00-overview.md`](../00-overview.md) |
-| D7 | **Mirrors point at canonical only.** A mirror's `MirrorOfItemId` MUST reference an `Item` whose own `MirrorOfItemId IS NULL`. No mirror-of-mirror. Diagrams MUST annotate this constraint. | [`../01-features/09-mirrors.md`](../01-features/09-mirrors.md) §L6 |
+| D7 | **Mirrors point at canonical only.** A mirror's `MirrorOfItemId` MUST reference an `Item` whose own `MirrorO <!-- (gate **G-24-DDL-SINGULAR-LOCKED**) -->fItemId IS NULL`. No mirror-of-mirror. Diagrams MUST annotate this constraint. | [`../01-features/09-mirrors.md`](../01-features/09-mirrors.md) §L6 |
 
 ---
 

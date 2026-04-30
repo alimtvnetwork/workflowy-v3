@@ -227,14 +227,14 @@ erDiagram
 
 ## Key constraints not visible in Mermaid
 
-These constraints exist but Mermaid `erDiagram` cannot render them. They are normative — every implementation MUST enforce them.
+(gate **G-24-DDL-SINGULAR-LOCKED**) These constraints exist but Mermaid `erDiagram` cannot render them. They are normative — every implementation MUST enforce them.
 
 | # | Constraint | Where enforced |
 |---|------------|----------------|
 | C1 | `Item.MirrorOfItemId IS NOT NULL` ⇒ the referenced row's `MirrorOfItemId IS NULL` (no mirror-of-mirror, D7) | DB trigger or app-layer check |
 | C2 | `Item.ParentItemId` cycle prevention (an item cannot be its own ancestor) | App-layer check on `EP-ITEMS-MOVE` |
 | C3 | `Item.DeletedAt > date('now', '-30 days')` for restoreable items; older rows are hard-deleted by daily reaper | Background job |
-| C4 | `WorkspaceMember` MUST always have ≥ 1 row with `WorkspaceRoleTypeId = Owner` per workspace | App-layer check on `EP-ROLES-REVOKE` |
+| C4 | `WorkspaceMember` MUST always have ≥ 1 row with `WorkspaceRoleTypeId = Owner` per workspace <!-- (gate **G-24-DDL-SINGULAR-LOCKED**) --> | App-layer check on `EP-ROLES-REVOKE` |
 | C5 | `Share.GranteeUserId` XOR `Share.GranteeEmail` — exactly one is non-NULL until invite is accepted | DB `CHECK` constraint |
 | C6 | `ItemTag` UNIQUE `(ItemId, TagId)` — no duplicate tag assignments | DB UNIQUE index |
 | C7 | `WorkspaceMember` UNIQUE `(UserId, WorkspaceId)` — a user joins a workspace once | DB UNIQUE index |

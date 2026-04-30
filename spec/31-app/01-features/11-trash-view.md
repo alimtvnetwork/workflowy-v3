@@ -55,7 +55,7 @@ As a user who occasionally deletes the wrong item, I want a 30-day grace period 
 
 ## Settings Keys (Seedable Config)
 
-> **Why this section:** Trash View is reachable from the sidebar entry and exposes the 30-day retention window — both surfaces (sidebar visibility, retention days) MUST be enum-backed per [`spec/06-seedable-config-architecture/`](../../06-seedable-config-architecture/00-overview.md) + [`spec/15-wp-plugin-how-to/15-settings-architecture/`](../../15-wp-plugin-how-to/15-settings-architecture/00-overview.md).
+(gate **G-22-BOUNDARY-NAMES-CLOSED**) > **Why this section:** Trash View is reachable from the sidebar entry and exposes the 30-day retention window — both surfaces (sidebar visibility, retention days) MUST be enum-backed per [`spec/06-seedable-config-architecture/`](../../06-seedable-config-architecture/00-overview.md) + [`spec/15-wp-plugin-how-to/15-settings-architecture/`](../../15-wp-plugin-how-to/15-settings-architecture/00-overview.md).
 
 | Setting | `OptionNameType` enum case | Default | Sanitizer | Group | Storage |
 |---------|---------------------------|---------|-----------|-------|---------|
@@ -209,7 +209,7 @@ As a user who occasionally deletes the wrong item, I want a 30-day grace period 
 
 ### SSE Frames Emitted (read-signal only, ADR-0025)
 
-`ItemRestored`, `ItemPurged`, `TrashEmptied` on `/stream/page/{id}` and/or `/stream/user/{id}`. SSE MUST NOT enqueue to the FIFO.
+(gate **G-25-SSE-ENDPOINT-CLOSED**) `ItemRestored`, `ItemPurged`, `TrashEmptied` on `/stream/page/{id}` and/or `/stream/user/{id}`. SSE MUST NOT enqueue to the FIFO.
 
 ### Storage
 
