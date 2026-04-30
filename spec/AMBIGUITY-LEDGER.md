@@ -181,3 +181,16 @@ At the user-set bar ('mediocre AI, zero follow-up, 100% intent match'), every ac
 **Files:** 00-adrs/_INDEX_AUTOMATION, 31-app/07-db-diagram/07-migrations, 15-wp-plugin-how-to/{12-design-system/05-animation-library, 13-admin-ui-patterns/04-table-patterns, 15-settings-architecture/04-validation-and-sanitization, 16-error-handling-extraction/07-auto-refresh, 23-operator-runbooks/03-post-mortem-template}, 13-cicd-pipeline-workflows/scripts-as-spec/README, 03-error-manage/02-error-architecture/{02-go-delegation-fix, 05-response-envelope/04-response-envelope-reference, 06-apperror-package/01-apperror-reference/06-serialization-and-guards, 07-logging-and-diagnostics/02-session-based-logging/01-requirements}, 02-coding-guidelines/{01-cross-language/07-database-naming, 02-typescript/09-promise-await-patterns, 03-golang/08-pathutil-fileutil-spec}.
 
 **Result:** Unbacked **246 → 214** (-32). Coverage **91.64% → 92.72%** (+1.08 pp).
+
+
+---
+
+## GAP-ALG-01 — `between()` pseudocode promotion (2026-04-30)
+
+**Action:** ADR-0016 promoted from prose-only D3 to normative §Algorithms section with 6 pseudocode procedures (A1 firstChild, A2 append, A3 prepend, A4 between [4 phases], A5 nextKey dispatch, A6 rebalance) + 8-row canonical fixture vector table. Two new DOC-NORM gates registered: `G-21-BETWEEN-PSEUDOCODE-PARITY` (umbrella — backends MUST match fixtures byte-for-byte) and `G-21-BETWEEN-PRECOND` (sub-rule — `a < b` callable contract).
+
+**Files:** spec/00-adrs/0016-fractional-index-sortorder.md (+~110 lines), spec/_GATE-REGISTRY.md (+2 rows under §ADR-0021 family).
+
+**Result:** Largest remaining content-gap closed. Previously, all four PHP/TS implementers attempting `between("a", "b")` would silently diverge (some return `"aV"`, others `"am"`, others extend differently); now byte-parity is testable. Addresses the implementability finding category that v7 baseline left as informal "5 missing algorithms".
+
+**Remaining ALG queue:** GAP-ALG-02 LWW tiebreak (ADR-0026), GAP-ALG-03 FIFO replay (ADR-0010), GAP-ALG-04 peer-group dissolve (ADR-0005), GAP-ALG-05 undo cap eviction (ADR-0021).

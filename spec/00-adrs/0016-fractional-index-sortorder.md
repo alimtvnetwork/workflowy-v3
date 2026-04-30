@@ -59,8 +59,11 @@ characters above U+007E.
   `A < K < B`. The standard algorithm: walk both keys digit-by-digit;
   on the first differing position, pick the midpoint digit; if no
   midpoint exists (adjacent digits like `"a"` and `"b"`), append a
-  midpoint suffix to `A`. Reference algorithm:
-  `mudder.js` / Figma's fractional-indexing crate.
+  midpoint suffix to `A`. **Reference pseudocode in §"Algorithms" below
+  is normative** (gate `G-21-BETWEEN-PSEUDOCODE-PARITY`); any
+  implementation MUST produce identical output for the canonical
+  fixture vectors. Reference library: `mudder.js` / Figma's
+  fractional-indexing crate.
 
 **D4 — Stability.** Inserting an item between siblings MUST mutate
 **only** the new item's `SortOrder`. Sibling rows MUST remain untouched
@@ -95,6 +98,129 @@ field as `"SortOrder": "a0V"` (PascalCase key, string value).
 SQLite column: `SortOrder TEXT NOT NULL` (singular DDL per ADR-0001).
 Index: `CREATE INDEX Item_ParentId_SortOrder ON Item(ParentId, SortOrder)`
 to enforce the standard child-listing query path.
+
+## Algorithms (Normative Pseudocode)
+
+> Gate `G-21-BETWEEN-PSEUDOCODE-PARITY` — every backend (PHP, TS) and
+> any future port MUST produce byte-identical output to this reference
+> for the canonical fixture vectors in
+> `spec/31-app/97a-acceptance-criteria-fixtures.md` §SortOrder.
+
+**Alphabet (D2).** `ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"`
+(length 62). `ZERO = ALPHABET[0] = "0"`. `LAST = ALPHABET[61] = "z"`.
+Helpers: `digitAt(s, i)` returns `s[i]` if `i < len(s)` else `ZERO`.
+`indexOf(c)` returns the position of `c` in `ALPHABET`.
+`midDigit(lo, hi)` returns `ALPHABET[(lo + hi) // 2]` (integer division).
+
+### A1 — `firstChild() -> string`
+
+```
+return "a0"            # D3 first-child literal
+```
+
+### A2 — `append(prevKey: string) -> string`
+
+```
+return prevKey + "1"   # D3: append next-after-zero digit
+```
+
+### A3 — `prepend(nextKey: string) -> string`
+
+```
+# Decrement next.last digit toward ZERO; if already ZERO, descend.
+i = len(nextKey) - 1
+while i >= 0 and nextKey[i] == ZERO:
+    i -= 1
+if i < 0:
+    return "Z" + nextKey            # all-zero fallback per D3
+prefix = nextKey[0:i]
+mid    = ALPHABET[indexOf(nextKey[i]) - 1]
+return prefix + mid + LAST           # padded so result < nextKey
+```
+
+### A4 — `between(a: string, b: string) -> string`  (CORE)
+
+```
+# Precondition (gate G-21-BETWEEN-PRECOND): a < b lexicographically.
+assert a < b
+
+i = 0
+prefix = ""
+
+# Phase 1: walk shared prefix.
+while digitAt(a, i) == digitAt(b, i):
+    prefix = prefix + digitAt(a, i)
+    i += 1
+
+ai = indexOf(digitAt(a, i))
+bi = indexOf(digitAt(b, i))
+
+# Phase 2: gap >= 2 → midpoint digit fits between ai and bi.
+if bi - ai >= 2:
+    return prefix + midDigit(ai, bi)
+
+# Phase 3: adjacent digits (bi == ai + 1). Keep a's digit, extend a's tail.
+prefix = prefix + digitAt(a, i)
+i += 1
+
+# Phase 4: walk a's tail; while a[j] == LAST, append and advance.
+while True:
+    aj = indexOf(digitAt(a, i))
+    if aj < 61:
+        return prefix + ALPHABET[(aj + 62) // 2]   # midDigit(aj, 62)
+    prefix = prefix + LAST
+    i += 1
+    # Termination: a is finite; eventually digitAt(a, i) == ZERO → returns prefix + "V".
+```
+
+**Termination & bounds.** Phase 1 ≤ `min(len(a), len(b))` iterations.
+Phase 4 ≤ `len(a) + 1` iterations (`digitAt` returns `ZERO` past
+end-of-string). Worst-case key growth per insert: `+1` byte; the
+64-byte cap (gate `G-21-REBALANCE-TRIGGER-64B`) bounds the total.
+
+### A5 — `nextKey(parentChildren, position) -> string`  (single dispatch)
+
+```
+n = len(parentChildren)
+if n == 0:                  return firstChild()
+if position == 0:           return prepend(parentChildren[0].SortOrder)
+if position >= n:           return append(parentChildren[n-1].SortOrder)
+return between(parentChildren[position-1].SortOrder,
+               parentChildren[position].SortOrder)
+```
+
+### A6 — `rebalance(parentId)` (D5 enforcement)
+
+```
+# Triggered when nextKey() would exceed 64 bytes OR consecutive
+# midpoint-suffix appends to same prefix exceed 6 (gate G-21-REBALANCE-TRIGGER-64B).
+children = SELECT * FROM Item WHERE ParentId = parentId ORDER BY SortOrder ASC
+BEGIN TRANSACTION
+    for i, child in enumerate(children):
+        if i < 62:
+            newKey = "a" + ALPHABET[i]
+        else:
+            newKey = "a" + ALPHABET[i // 62] + ALPHABET[i % 62]
+        if child.SortOrder != newKey:
+            UPDATE Item SET SortOrder = newKey WHERE Id = child.Id
+    INSERT INTO AuditEvent (Type, ParentId) VALUES ('SortOrderRebalanced', parentId)
+COMMIT
+```
+
+### Canonical fixture vectors (parity test)
+
+| # | Call | Expected output |
+|---|---|---|
+| 1 | `firstChild()` | `"a0"` |
+| 2 | `append("a0")` | `"a01"` |
+| 3 | `prepend("a0")` | `"Za0"` (degenerate fallback) |
+| 4 | `between("a0", "a1")` | `"a0V"` |
+| 5 | `between("a0", "a2")` | `"a1"` |
+| 6 | `between("a", "b")` | `"aV"` |
+| 7 | `between("a0V", "a1")` | `"a0k"` |
+| 8 | `between("az", "b0")` | `"azV"` |
+
+Implementations failing any row fail `G-21-BETWEEN-PSEUDOCODE-PARITY`.
 
 ## Consequences
 
