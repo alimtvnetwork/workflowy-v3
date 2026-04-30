@@ -95,3 +95,19 @@ At the user-set bar ('mediocre AI, zero follow-up, 100% intent match'), every ac
 - **GAP-AMB-01-01..30** — bind top-30 actionable files (ranked above)
 - **GAP-AMB-02** — vague-modifier sweep (queued)
 - **GAP-AMB-03** — undefined-term audit against `spec/19-glossary.md` (queued)
+
+
+---
+
+## GAP-AMB-01-31..45 — Architecture Anchors batch bind (2026-04-30)
+
+**Action:** Bound the recurring "Architecture Anchors (load-bearing ADRs)" template across **22 feature files** in `spec/31-app/01-features/`. The template repeats ADR-0023 / ADR-0017 / ADR-0025 cross-link bullets verbatim; each bullet now cites its umbrella gates inline.
+
+**Bindings inserted (template-wide):**
+- ADR-0023 bullet → gates **G-23-LOADER-MIRROR-FIRST**, **G-23-LOADER-NO-MUTATE**, **G-23-ACTION-ENQUEUE-ONLY**
+- ADR-0017 bullet → gates **G-22-ERROR-BOUNDARIES-EXACTLY-8**, **G-22-BOUNDARY-NAMES-CLOSED**, **G-22-BOUNDARY-ISOLATION**
+- ADR-0025 bullet → gates **G-25-SSE-ENDPOINT-CLOSED**, **G-25-SSE-CURSOR-WORKSPACE-SCOPED**
+
+**Files modified (22):** `01-information-model.md`, `04-page-content-area.md`, `05-interactions.md`, `06-item-context-menu.md`, `07-board-view.md`, `07b-dashboard-view.md`, `08-share-dialog.md`, `08b-sharing-mirror-interaction.md`, `09-mirrors.md`, `09a-mirror-cycle-detection.md`, `09b-mirror-peer-group-model.md`, `10-today-view.md`, `11-trash-view.md`, `11b-trash-reaper.md`, `12-multi-select.md`, `12b-multi-select-zoom.md`, `13-templates.md`, `13b-templates-snapshot-semantics.md`, `14-concurrency-and-sync.md`, `14b-offline-queue.md`, `15-roles-and-permissions.md`, `16-search-ranking.md`.
+
+**Result:** Unbacked clauses **471 → 432** (-39, -8.3%). Backed coverage **84.0% → 85.3%**.
