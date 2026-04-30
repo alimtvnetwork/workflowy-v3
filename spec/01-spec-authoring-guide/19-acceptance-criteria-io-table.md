@@ -1,22 +1,25 @@
 # Acceptance-Criteria I/O Table — Authoring Guide
 
-> **Version:** 1.0.0
+> **Version:** 1.1.0
 > **Created:** 2026-04-28 (UTC+8)
-> **Status:** Normative — all `97-acceptance-criteria.md` files MUST use this format for new criteria; legacy criteria are converted incrementally per plan step **P2**.
+> **Updated:** 2026-04-30 — Bound 5 prose-MUSTs to new `G-AT-IO-*` namespace gates (batch-35).
+> **Status:** Normative — all `97-acceptance-criteria.md` files MUST use this format for new criteria; legacy criteria are converted incrementally per plan step **P2**. (Gate `G-AT-IO-FORMAT-MANDATED-ALL`)
 > **Parent:** [`00-overview.md`](./00-overview.md)
 > **Spawned by:** `.lovable/plans/00-active.md` § P2.
+
+**Reserved Gate IDs (this file):** `G-AT-IO-FORMAT-MANDATED-ALL`, `G-AT-IO-TWO-ROW-PAIRING`, `G-AT-IO-JSON-LITERAL-VALID`, `G-AT-IO-ENVELOPE-CONFORM`, `G-AT-IO-RELATED-ENVELOPE-XLINK` — see [`spec/_GATE-REGISTRY.md`](../_GATE-REGISTRY.md) §Domain-AT-IO.
 
 ---
 
 ## Purpose
 
-Existing acceptance-criteria rows describe behaviour in prose ("MUST be hashed with Argon2id"). That is testable by a human reviewer but **not** by an AI implementer that needs to write the test. P2 closes the gap by requiring every AT row to be paired with a **concrete I/O fixture**: deterministic Given / When / Then plus literal request/response JSON where applicable.
+Existing acceptance-criteria rows describe behaviour in prose ("MUST be hashed with Argon2id") (illustrative legacy quote — gate `G-AT-IO-FORMAT-MANDATED-ALL` makes the format mandate normative). That is testable by a human reviewer but **not** by an AI implementer that needs to write the test. P2 closes the gap by requiring every AT row to be paired with a **concrete I/O fixture**: deterministic Given / When / Then plus literal request/response JSON where applicable.
 
 ---
 
 ## Mandatory format
 
-Every leaf criterion (one that an implementer can write a single test for) MUST appear as **two adjacent rows** in the file:
+Every leaf criterion (one that an implementer can write a single test for) MUST appear as **two adjacent rows** in the file (gate `G-AT-IO-TWO-ROW-PAIRING`):
 
 1. The **prose row** (legacy two-column shape: `ID | Criterion | Source`) — kept verbatim for back-references.
 2. A **fixture block** immediately under the prose row, using the canonical I/O table below.
@@ -40,8 +43,8 @@ Every leaf criterion (one that an implementer can write a single test for) MUST 
 ### Field rules
 
 - **Given / When / Then** — single-line, imperative, no hedging vocabulary (`should`, `may`, `consider` are forbidden inside fixtures; reserve those for the prose row when the rule is genuinely soft).
-- **Request body / Response envelope** — when present they MUST be valid JSON literals (parseable by `JSON.parse`). Use realistic example IDs (`"itm_01HXYZ…"`), not `<placeholder>` strings.
-- **Response envelope** — MUST conform to `spec/04-database-conventions/06-rest-api-format/` (PascalCase keys, mandatory `Status` / `Attributes` / `Results`).
+- **Request body / Response envelope** — when present they MUST be valid JSON literals (parseable by `JSON.parse`) — gate `G-AT-IO-JSON-LITERAL-VALID`. Use realistic example IDs (`"itm_01HXYZ…"`), not `<placeholder>` strings.
+- **Response envelope** — MUST conform to `spec/04-database-conventions/06-rest-api-format/` (PascalCase keys, mandatory `Status` / `Attributes` / `Results`) — gate `G-AT-IO-ENVELOPE-CONFORM`.
 - **Side effects** and **Negative assertion** — required for any AT that mutates state. For pure read-only or pure-UI ATs, write `none` rather than omitting the row.
 - **N/A rows** are collapsed (omit the entire row) only for `Request body` and `Response envelope`. The other five rows are mandatory.
 
@@ -157,6 +160,6 @@ Until P2g lands, the check runs in **report-only** mode and tallies coverage in 
 
 ## Related
 
-- `spec/04-database-conventions/06-rest-api-format/` — envelope spec the JSON rows MUST conform to.
+- `spec/04-database-conventions/06-rest-api-format/` — envelope spec the JSON rows MUST conform to (gate `G-AT-IO-RELATED-ENVELOPE-XLINK` enforces this backlink's presence).
 - `spec/01-spec-authoring-guide/14-scoring-metrics.md` — testability + determinism dimensions that this format unblocks (audit projects testability 21 → 55, determinism 21 → 50).
 - `.lovable/plans/00-active.md` § P2, P3, P9 — plan steps that depend on this format.
