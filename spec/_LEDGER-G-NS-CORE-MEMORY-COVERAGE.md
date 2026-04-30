@@ -67,7 +67,7 @@ This ledger remedies that by making the Core↔Gate mapping **first-class and ve
 |---|---|---|---|
 | F1 | "Unified Node interface (id, parentId, content, itemType)" | ✅ `G-20-ITEMTYPE-CLOSED-12`, `G-20-ITEMTYPE-LOWERCASE`, `G-20-ITEMTYPE-TRI-SSOT-LOCKSTEP`, `G-20-NO-MIRROR-ITEMTYPE` | Strong. |
 | F2 | "12 closed ItemTypes (ADR-0015)" | ✅ `G-20-ITEMTYPE-CLOSED-12` | Direct. |
-| F3 | "250-item per-view limit; 1000-item virtualization via @tanstack/react-virtual" | ✅ `G-22-VIRTUALIZATION-1000`, `G-22-VIRTUALIZER-TANSTACK-ONLY`; **250-view-limit** uncovered | The 1000-item virt threshold is gated; the 250-view-cap is policy-only. **Minor gap.** |
+| F3 | "250-item per-view limit; 1000-item virtualization via @tanstack/react-virtual" | ✅ `G-22-VIRTUALIZATION-1000`, `G-22-VIRTUALIZER-TANSTACK-ONLY`, `G-31-VIEW-250-CAP`, `G-31-NO-PARALLEL-NODE`, `G-31-NODE-ID-PERSISTENT`, `G-14-QUEUE-INDEPENDENT-OF-VIEW-CAP`, `G-35-NO-SILENT-TRUNCATION`, `G-EDGE-U6-QUOTA-BLOCK` (8 gates total — the 250-view-cap is anchored at ADR-0008 §D4 not ADR-0017, discovered 2026-04-30 during GAPCLOSE-F3 prep, see F-AUDIT-34 fourth recurrence) | Excellent coverage on both halves. **Originally classified as "minor gap (250-view-limit uncovered)" in v1 of this ledger** (cross-walk grep targeted `G-22-` namespace only, missed `G-31-VIEW-250-CAP` which lives in the `G-31-` ADR-0008 namespace). GAPCLOSE-F3 retracted; no registry change required. |
 | F4 | "SortOrder is fractional-index STRING (base-62, lex), never number" | ✅ `G-21-SORTORDER-STRING-ONLY`, `G-21-SORTORDER-BASE62-ALPHABET`, `G-21-NO-NUMERIC-MIDPOINT`, `G-21-INSERT-NO-SIBLING-MUTATION`, `G-21-LWW-ID-TIEBREAK`, `G-21-REBALANCE-PER-PARENT`, `G-21-REBALANCE-TRIGGER-64B` | Excellent — 7 gates. |
 
 ### G. Design system
@@ -113,7 +113,7 @@ This ledger remedies that by making the Core↔Gate mapping **first-class and ve
 
 ---
 
-## Coverage summary (as of 2026-04-30, post-GAPCLOSE-B2 — sole RESERVED slot closed)
+## Coverage summary (as of 2026-04-30, post-GAPCLOSE-F3-RETRACTION + F-AUDIT-34 instance #4)
 
 | Status | Count | % |
 |---|---|---|
@@ -124,18 +124,18 @@ This ledger remedies that by making the Core↔Gate mapping **first-class and ve
 
 > Counts re-derived 2026-04-30 by `scripts/spec-hygiene/78-check-core-memory-coverage-ledger.mjs` (NEW-27). **All originally-listed RESERVED slots now resolved** (3 by discovery via F-AUDIT-34 retractions, 1 by gate authoring via GAPCLOSE-B2). Earlier "23 lines" figure conflated mem-index Core lines (≈14) with mapped sub-rules (26).
 
-**Open gaps remaining (0 RESERVED slots + 4 partial-coverage notes):**
+**Open gaps remaining (0 RESERVED slots + 3 partial-coverage notes):**
 
 1. ~~**B2** — Forbidden-runtimes.~~ **CLOSED 2026-04-30 — `G-10-FORBIDDEN-RUNTIMES` (DOC-NORM) registered by GAPCLOSE-B2; registry v1.7.46.**
-2. ~~**C3** — shadcn/Radix component-base lock.~~ **CLOSED 2026-04-30 — pre-existing `G-26-*` family (5 gates) covers it (F-AUDIT-34 third recurrence).**
+2. ~~**C3** — shadcn/Radix component-base lock.~~ **CLOSED 2026-04-30 — pre-existing `G-26-*` family (5 gates) covers it (F-AUDIT-34 instance #3).**
 3. **E1** — 15-line logic limit + positive-guard-clause grep gates (partial coverage).
-4. **F3** — 250-item per-view cap (policy → grep gate).
+4. ~~**F3** — 250-item per-view cap.~~ **CLOSED 2026-04-30 — pre-existing `G-31-VIEW-250-CAP` + 4 sibling gates cover it (F-AUDIT-34 instance #4; gate lives in ADR-0008 namespace, not ADR-0017).**
 5. **G1** — HSL-only Tailwind tokens + `@theme`-block-as-SSOT gates (AUDIT-FIX-02 closes half).
 6. ~~**I2** — Undo cap 100.~~ **CLOSED 2026-04-30 — pre-existing `G-25-UNDO-CAP-100` covers it.**
 7. ~~**J1** — WebSocket/long-poll ban.~~ **CLOSED 2026-04-30 — pre-existing `G-25-TRANSPORT-SSE-ONLY` covers it.**
 8. **C1** — Version-pin gate for Vite/React/TS (NEW-25 covers this).
 
-**Closure progress:** ALL 4 originally-listed RESERVED slots now closed — 3 by discovery (F-AUDIT-34 false-positive cascade, instances #1-3) and 1 by gate authoring (GAPCLOSE-B2, registry v1.7.46). True coverage: 20/26 sub-rules registered (77%) + 0 RESERVED + 6 procedural-or-script (23%). Only 4 partial-coverage notes remain (E1/F3/G1/C1) — each is a known sub-clause gap, not a RESERVED slot. Core↔Gate ledger is now **structurally complete**.
+**Closure progress:** ALL 4 originally-listed RESERVED slots now closed — 3 by discovery (F-AUDIT-34 false-positive cascade, instances #1–3) and 1 by gate authoring (GAPCLOSE-B2, registry v1.7.46). PLUS instance #4 of F-AUDIT-34 strengthened F3 from "partial" to "fully covered" (5 additional sibling gates discovered: `G-31-VIEW-250-CAP`, `G-31-NO-PARALLEL-NODE`, `G-31-NODE-ID-PERSISTENT`, `G-14-QUEUE-INDEPENDENT-OF-VIEW-CAP`, `G-35-NO-SILENT-TRUNCATION`, `G-EDGE-U6-QUOTA-BLOCK`). Registered count unchanged at 20/26 (77%) because F3 already counted as ✅ in v1 — the discovery upgrades the row from "✅ partial" to "✅ excellent". Only 3 remaining partial-coverage notes (E1/G1/C1) — each is a known sub-clause gap, not a RESERVED slot. Core↔Gate ledger is now **structurally complete**.
 
 ### v1 cross-walk methodology error (root-cause)
 
