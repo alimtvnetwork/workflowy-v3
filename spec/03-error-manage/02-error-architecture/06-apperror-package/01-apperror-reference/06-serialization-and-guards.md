@@ -138,7 +138,7 @@ func truncateData(data []byte, maxLen int) string {
 
 ## 12. Result Guard Rule — Mandatory Error Check Before Value Access
 
-Every call site that receives a `Result[T]`, `ResultSlice[T]`, or `ResultMap[K, V]` (Go) or `DbResult`, `DbResultSet`, `DbExecResult` (PHP) **MUST** check `HasError()` / `hasError()` or `IsSafe()` / `isSafe()` before calling `.Value()` / `.value()`, `.Items()` / `.items()`, or `.Get()`. Accessing the contained value without a guard is a **spec violation**.
+Every call site that receives a `Result[T]`, `ResultSlice[T]`, or `ResultMap[K, V]` (Go) or `DbResult`, `DbResultSet`, `DbExecResult` (PHP) **MUST** check `HasError()` / `hasError()` or `IsSafe()` / `isSafe()` before calling `.Value()` / `.value()`, `.Items()` / `.items()`, or `.Get()`. Accessing the contained value without a guard is a **spec violation** (gate `G-ERR-05`).
 
 **Principle:** No error may ever be swallowed. If a result carries an error, it must be explicitly handled — logged, returned, or propagated. The framework-level accessor should log immediately when called on an errored result, reducing diagnostic steps.
 
@@ -263,7 +263,7 @@ if result.IsFailed {
 }
 ```
 
-> **Rule:** Any struct with an `IsSuccess` field MUST also expose an `IsFailed` field (or method). Code must use `IsFailed` instead of `!IsSuccess`. This follows the universal no-negation-operator rule.
+> **Rule:** Any struct with an `IsSuccess` field MUST also expose an `IsFailed` field (or method). Code must use `IsFailed` instead of `!IsSuccess`. This follows the universal no-negation-operator rule (gate `G-DBNAME-BOOL-IS-HAS-PREFIX`).
 
 > **Rule:** `HasError()` is the only guard needed for Result error checking. Business-level success/failure flags on the contained value (e.g. `.IsSuccess`) are a separate concern and must not be combined into the Result guard expression. If you need to check domain-level outcomes, do so **after** the `HasError()` guard, on the unwrapped value.
 

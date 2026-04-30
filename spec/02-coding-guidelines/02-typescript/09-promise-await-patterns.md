@@ -41,11 +41,11 @@ async function getData(): Promise<Data> {
 
 ---
 
-## 3. Independent Promises MUST Run in Parallel — 🔴 CODE RED
+## 3. Independent Promises MUST Run in Parallel — 🔴 CODE RED (gate `G-13-DAG-PARALLEL`)
 
 > **Severity: CODE RED** — Sequential `await` on independent promises is an **automatic rejection** in code review. No exceptions.
 
-When multiple async operations are **not dependent on each other**, they **MUST** be executed in parallel using `Promise.all`. Sequential `await` on independent calls wastes time proportional to the number of calls — a 3-call sequence takes 3× longer than parallel execution.
+When multiple async operations are **not dependent on each other**, they **MUST** be executed in parallel using `Promise.all`. Sequential `await` on independent calls wastes time proportional to the number of calls — a 3-call sequence takes 3× longer than parallel execution (gate `G-13-DAG-PARALLEL`).
 
 ### How to Decide
 

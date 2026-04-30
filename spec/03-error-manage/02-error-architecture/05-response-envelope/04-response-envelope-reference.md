@@ -4,7 +4,7 @@
 > **Version:** 3.1.0  
 > **Updated:** 2026-04-16  
 
-> **All systems (Go backend, PHP WordPress plugin, React frontend) MUST conform to this structure.**
+> **All systems (Go backend, PHP WordPress plugin, React frontend) MUST conform to this structure.** (gate `G-ERR-05`)
 
 ## Top-Level Fields
 
@@ -194,7 +194,7 @@ Present only when debug/traversal mode is enabled in config.
 
 ### Boolean Fields
 
-All boolean fields in API responses **MUST** use a prefix:
+All boolean fields in API responses **MUST** use a prefix: (gate `G-DBNAME-BOOL-IS-HAS-PREFIX`)
 - **`Is`** — for state/identity booleans (e.g., `IsSuccess`, `IsFailed`, `IsSingle`, `IsMultiple`, `IsEmpty`, `IsActive`)
 - **`Has`** — for presence booleans (e.g., `HasAnyErrors`)
 

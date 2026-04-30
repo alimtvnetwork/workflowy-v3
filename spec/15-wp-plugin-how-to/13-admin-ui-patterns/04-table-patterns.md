@@ -32,7 +32,7 @@ All data tables use WordPress `wp-list-table widefat fixed striped`:
 
 ## Column Width Definitions
 
-Column widths MUST be defined in page-specific CSS using `.column-{name}` classes:
+Column widths MUST be defined in page-specific CSS using `.column-{name}` classes: (gate `G-ADR-0003-FRONTEND-STACK-LOCK`)
 
 ```css
 .riseup-admin.riseup-agents .column-name    { width: 20%; }
@@ -45,7 +45,7 @@ Column widths MUST be defined in page-specific CSS using `.column-{name}` classe
 
 ## Date Group Headers
 
-Tables with chronological data MUST insert date group separator rows when the date changes:
+Tables with chronological data MUST insert date group separator rows when the date changes: (gate `G-ADR-0003-FRONTEND-STACK-LOCK`)
 
 ```php
 <?php

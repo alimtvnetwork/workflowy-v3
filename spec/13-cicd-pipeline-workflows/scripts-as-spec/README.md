@@ -2,7 +2,7 @@
 
 > **Purpose.** When a gate is mechanizable but not yet shipped as a CI
 > workflow under `spec/13-cicd-pipeline-workflows/`, its **algorithm
-> MUST be frozen here** as a fixture-as-spec. The frozen markdown is
+> MUST be frozen here** as a fixture-as-spec. The frozen markdown is (gate `G-13-FIXTURE-AS-SPEC-SHAPE`)
 > the load-bearing source: any later CI implementation is a derivative
 > and must produce identical input → output behaviour.
 
@@ -18,7 +18,7 @@ for gate algorithms specifically:
 - Its **acceptance baseline** is captured in a sibling
   `_LEDGER-*.md` next to the gate definition.
 - Its **CI workflow** (when shipped) lives elsewhere under
-  `spec/13-cicd-pipeline-workflows/` and MUST cite this fixture as
+  `spec/13-cicd-pipeline-workflows/` and MUST cite this fixture as (gate `G-13-FIXTURE-AS-SPEC-SHAPE`)
   its specification.
 
 ## Contents (2026-04-28)

@@ -24,7 +24,7 @@ the binding protocol that closes that gap.
 
 ## When to update the index
 
-You **MUST** update both index tables in the **same change** as any of:
+You **MUST** update both index tables in the **same change** as any of: (gate `G-00-ADR-XLINK-SYMMETRY`)
 
 | Trigger | Action on index |
 |---|---|
@@ -34,7 +34,7 @@ You **MUST** update both index tables in the **same change** as any of:
 | Reject a `Proposed` ADR | Update the row's `Status` to `Rejected`; do **not** delete the row, do **not** reuse the number |
 | Deprecate an `Accepted` ADR with no successor | Update `Status` to `Deprecated`; row remains for history |
 
-You **MUST NOT** update either index for:
+You **MUST NOT** update either index for: (gate `G-00-ADR-XLINK-SYMMETRY`)
 
 - Cosmetic edits to an ADR's body (typos, link fixes, formatting).
 - Adding/removing the `_TEMPLATE.md` file (excluded from numbering and
@@ -55,7 +55,7 @@ Source of truth for **all** ADR rows. Required columns, in order:
 
 | ADR | Title | Status | Date |
 
-- `ADR` cell **MUST** be a markdown link
+- `ADR` cell **MUST** be a markdown link (gate `G-00-ADR-XLINK-SYMMETRY`)
   `[``NNNN``](./NNNN-kebab-case-title.md)`.
 - `Status` cell **MUST** be one of the 5 enum values from the lifecycle
   (`Proposed`, `Accepted`, `Superseded by ADR-NNNN`, `Rejected`,
