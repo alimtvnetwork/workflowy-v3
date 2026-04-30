@@ -300,6 +300,12 @@ Authored `spec/34-activity-feed/01-event-schema.md` (full DDL with `CHECK` const
 
 ---
 
+### Progress note 2026-04-30 — GAP-A3 (batch 2/4) closed
+
+Authored `spec/34-activity-feed/02-capture-pipeline.md` (closed 5-stage pipeline Intent→Capture→Persist→Replay→Broadcast, full `captureEvent` chokepoint with atomic IDB transaction, injected-clock pattern for testability, idempotency via `(ActorUserId, EventType, TargetItemId, OccurredAt)` unique index + `ON CONFLICT DO NOTHING`, server-side re-validation rule, SSE read-only enforcement, 9 anti-patterns, 4 AT binds). All 9 prose MUSTs gate-bound (`G-34-CP-CHOKEPOINT`, `-NO-SKIP-CHOKEPOINT`, `-INJECTED-CLOCK`, `-ATOMIC-WRITE`, `-VALIDATE-BEFORE-WRITE`, `-SINGLE-QUEUE`, `-SERVER-REVALIDATE`, `-SSE-READ-ONLY`, `-IDEMPOTENT-INSERT`) — zero bare-MUST regression. Parent overview row 02 now ✅. 2 of 4 activity-feed sub-specs still pending (03-feed-ui, 04-retention-and-purge).
+
+---
+
 
 ## Retraction case studies
 
