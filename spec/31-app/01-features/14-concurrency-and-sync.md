@@ -196,7 +196,7 @@ On client startup OR SSE drop:
 
 | Layer | Tables | Notes |
 |-------|--------|-------|
-| **Root DB** | `SyncCursor` (per-user last-seen server timestamp) | Used to resume SSE / poll across reconnects, regardless of which App DB the user is viewing. |
+| **Root DB** | `SyncCursor` (per-user last-seen server timestamp) | Used to resume SSE across reconnects (sent as `Last-Event-Id` header), regardless of which App DB the user is viewing. |
 | **App DB** (per workspace) | `Items` + `Mirrors` (LWW field-level columns: `<Field>UpdatedAt`, `<Field>UpdatedBy`), `MutationLog` (server-assigned `ServerTs`, client-supplied `ClientAttemptedAt`) | All conflict resolution happens *inside* one App DB. The LWW algorithm in §14.2 reads/writes only this layer. |
 | **Cross-DB joins** | **Forbidden.** | A mutation in one workspace's App DB never references another workspace. SSE channel is keyed by `(UserId, WorkspaceId)`. |
 
