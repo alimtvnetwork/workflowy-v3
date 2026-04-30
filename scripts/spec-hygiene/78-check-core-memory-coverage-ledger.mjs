@@ -48,6 +48,7 @@ function loadRegistry() {
 function classifyRow(coverageCell) {
   if (RESERVED_RE.test(coverageCell)) return "reserved";
   if (PROCEDURAL_RE.test(coverageCell)) return "procedural";
+  if (SCRIPT_RE.test(coverageCell)) return "script";
   return "registered";
 }
 
@@ -78,8 +79,9 @@ function checkRow(row, registryGates) {
   const klass = classifyRow(row.coverage);
   if (klass === "procedural") return klass;
   if (klass === "reserved") return klass;
+  if (klass === "script") return klass;
   const cited = extractGateIds(row.coverage).filter(g => !g.startsWith("RESERVED"));
-  if (cited.length === 0) fail(`${row.id}: no gate cited and not RESERVED/procedural`);
+  if (cited.length === 0) fail(`${row.id}: no gate cited and not RESERVED/procedural/script`);
   const missing = cited.filter(g => !gateExists(g, registryGates));
   if (missing.length > 0) fail(`${row.id}: cites non-existent gates: ${missing.join(", ")}`);
   return klass;
@@ -101,10 +103,11 @@ function main() {
   const registryGates = loadRegistry();
   const rows = parseRows(text);
   if (rows.length < 20) fail(`parsed too few rows: ${rows.length} (expected ≥20 Core lines)`);
-  const counts = { registered: 0, reserved: 0, procedural: 0 };
+  const counts = { registered: 0, reserved: 0, procedural: 0, script: 0 };
   for (const row of rows) counts[checkRow(row, registryGates)] += 1;
-  checkSummary(text, counts);
-  console.log(`OK: ${rows.length} Core rules cross-walked; ${counts.registered} registered, ${counts.reserved} RESERVED, ${counts.procedural} procedural; ${registryGates.size} registry gates loaded`);
+  const procTotal = counts.procedural + counts.script;
+  checkSummary(text, { registered: counts.registered, reserved: counts.reserved, procedural: procTotal });
+  console.log(`OK: ${rows.length} Core rules cross-walked; ${counts.registered} registered, ${counts.reserved} RESERVED, ${counts.procedural} procedural, ${counts.script} script-enforced; ${registryGates.size} registry gates loaded`);
 }
 
 main();
