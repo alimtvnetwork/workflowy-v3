@@ -28,7 +28,7 @@ cssClass() → match($this) {...}           variantInfoMap[variant].CssClass
 
 **Why info-object in Go?**
 - Go has no `match` expression — `switch` is verbose for per-variant metadata
-- A single map lookup is more efficient than multiple switch statements
+- A single map lookup (O(1) hash) replaces an N-branch switch (O(N) worst case for non-jump-table compilation)
 - The info struct is compile-time typed — missing fields are caught immediately
 - Adding a new metadata field requires changing one struct + one map, not N methods
 
