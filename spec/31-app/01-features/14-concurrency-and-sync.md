@@ -46,7 +46,7 @@ On incoming mutation M for Item I, field F:
   6. Broadcast accepted state on the realtime channel for I.
 ```
 
-Clients receiving a conflict response MUST:
+Clients receiving a conflict response MUST `[gate: G-25-SSE-CONFLICT-CLIENT-RESTORE]`:
 1. Replace their optimistic local value with the server's winning value.
 2. Show "Restored remote change" banner with the winning user's avatar.
 3. Offer **Undo** (5 s) which submits a fresh write of the local value (subject to the same algorithm).
@@ -127,7 +127,7 @@ On incoming write W setting Mirrors.BrokenAt = X (X may be NULL or a timestamp):
 
 ### 14.5.2 Event Name Vocabulary (closed set)
 
-Every SSE message has an `event:` line drawn from this list. Unknown events MUST be ignored by the client (forward-compatible).
+Every SSE message has an `event:` line drawn from this list. Unknown events MUST be ignored by the client (forward-compatible) `[gate: G-25-SSE-EVENT-NAMES-CLOSED]`.
 
 | Event | When emitted | `data:` payload (JSON) |
 |-------|--------------|------------------------|
@@ -146,7 +146,7 @@ Every SSE message has an `event:` line drawn from this list. Unknown events MUST
 
 ### 14.5.3 `id:` Field — Resume Cursor
 
-Every event line MUST include `id: {ServerTs}` where `ServerTs` is the integer UTC millisecond stamp from §14.2. The browser auto-sends the last received id as `Last-Event-Id` on reconnect; the server uses it for replay (§14.5.1). The client MUST NOT compare `id` values across workspaces — the cursor is scoped per `(UserId, WorkspaceId)` and stored in the Root DB `SyncCursor` table (per §Storage).
+Every event line MUST include `id: {ServerTs}` `[gate: G-25-SSE-LAST-EVENT-ID]` where `ServerTs` is the integer UTC millisecond stamp from §14.2. The browser auto-sends the last received id as `Last-Event-Id` on reconnect; the server uses it for replay (§14.5.1). The client MUST NOT compare `id` values across workspaces `[gate: G-25-SSE-CURSOR-WORKSPACE-SCOPED]` — the cursor is scoped per `(UserId, WorkspaceId)` and stored in the Root DB `SyncCursor` table (per §Storage).
 
 ### 14.5.4 Poll Fallback Endpoint
 
@@ -160,7 +160,7 @@ When SSE is unavailable (proxy strips `text/event-stream`, mobile background, `c
 | Response shape | `{ Events: Event[], Cursor: ServerTs, HasMore: boolean }` where each `Event` matches one row of §14.5.2 (with an extra `Event: 'item-updated' \| ...` discriminator key in place of the SSE `event:` line). |
 | `HasMore = true` | Client polls again immediately (without 5 s wait) until drained. |
 | Empty result | `{ Events: [], Cursor: <unchanged>, HasMore: false }`. Cursor never moves backward. |
-| Idempotency | Two polls with the same `since` MUST return identical bytes (modulo new events past the cursor). |
+| Idempotency | Two polls with the same `since` MUST return identical bytes (modulo new events past the cursor) `[gate: G-25-POLL-IDEMPOTENT]`. |
 
 **Forbidden:** long-poll (server holds the request open) — that's a poor approximation of SSE and breaks the 5 s SLA. Use proper SSE when available; otherwise short-poll only.
 
@@ -178,8 +178,8 @@ On client startup OR SSE drop:
 
 ### 14.5.6 Server Emission Rules (normative)
 
-- A successful §14.2 LWW write MUST emit exactly **one** SSE event in the same transaction commit phase (no separate publish step that can drift).
-- Failed (rejected) writes MUST NOT emit any event.
+- A successful §14.2 LWW write MUST emit exactly **one** SSE event in the same transaction commit phase (no separate publish step that can drift) `[gate: G-25-SSE-TX-ATOMIC-EMIT]`.
+- Failed (rejected) writes MUST NOT emit any event `[gate: G-25-SSE-REJECTED-NO-EMIT]`.
 - The `ChangedFields` array in `item-updated` lists **only** the fields whose `<Field>UpdatedAt` advanced; unchanged fields (e.g. tie-break loser fields) are excluded.
 - `ActorUserId = 'system'` for reaper / cascade writes (consistent with §14.4 `BrokenAtUpdatedBy`).
 - Cross-workspace events are **never** emitted on a workspace stream; the SSE channel is keyed by `(UserId, WorkspaceId)`.
@@ -272,7 +272,7 @@ On client startup OR SSE drop:
 
 ## Component Contract
 
-> **Note:** None of these components exist yet — paths are the planned implementation order (aspirational, not normative). The disclaimer mirrors `01-information-model.md` L149 and feeds the global component-contract map (M-3). AI implementers MUST NOT treat the paths as binding imports.
+> **Note:** None of these components exist yet — paths are the planned implementation order (aspirational, not normative). The disclaimer mirrors `01-information-model.md` L149 and feeds the global component-contract map (M-3). AI implementers MUST NOT treat the paths as binding imports `[gate: G-APP-ASPIRATIONAL-PATH-NONBINDING]`.
 
 | Surface | Component path | `data-testid` | Acceptance tests |
 |---------|---------------|---------------|------------------|
