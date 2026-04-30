@@ -948,3 +948,13 @@ This is the **third** scope-correction in 3 turns (F-SCOPE-01 → 02 → 03), ea
 - **G-38 occurrences:** 39 → 39 (unchanged net — alias retained inline; only canonical-name promotion). Of 39 remaining: 11 in ADR-0031 + ADR fixtures (stderr-regex bound), 5 in registry/exemption rows (require atomic registry update), 4 in scanner stderr (`runner` lines 121/125), 4 in audit-ledger historical rows, 15 in retrospective scripts (`47-drain`, `48-add-antipatterns`, `60-check`, `76-check`, `audits/README.md`).
 - **Verification:** Vague-modifier gate (graduated `block-all`) still passes 0/0. Ambiguous-wording gate exit unchanged (1, 27 hits — all pre-existing in registry/ADR/AMBIGUITY-LEDGER, none introduced by this batch; baseline confirmed via stash-compare).
 - **Batch-2 plan:** Atomic update of (a) runner stderr label `G-38:` → `G-WORDING-AMBIGUOUS-LINT:` + (b) ADR-0031 §6 negative-fixture regex + (c) `_GATE-REGISTRY.md` legacy-alias note removal + (d) `_GATE-GRADUATION-LEDGER.md` row.
+
+### F-AUDIT-47 — CLOSED (2026-04-30)
+- **Trigger:** Surfaced incidentally during F-SCOPE-40-FOLLOWUP batch-1 verification — `38-check-ambiguous-wording.mjs` was exiting 1 with 27 hits (predates session). Triage: 26 false positives (definitional/SSOT files quoting forbidden tokens as data), 1 real content hit.
+- **Real content fix (1):** `spec/31-app/06-endpoints/16-endpoint-at-matrix.md` L113 — replaced `next pass (consider adding ...)` with deterministic deferral predicate: "deferred until `EP-BOARD-GET` gains write semantics or a separate `AT-WIRE-EGRESS-01` reference is added by a future ADR".
+- **Parser-fix (3 SKIP_PATH entries added to `38-check-ambiguous-wording.mjs`):**
+  - `_GATE-REGISTRY.md` — wording-policy rows literally enumerate the forbidden tokens as data (same carve-out class as `_AUDIT-EXEMPTIONS.md`). Eliminates 20 false positives.
+  - `AMBIGUITY-LEDGER.md` — archival decision log; same carve-out as `/18-spec-issues/`. Eliminates 1 false positive.
+  - `00-adrs/97-acceptance-criteria.md` — ATs document forbidden tokens as literal subject (e.g. AT-31-D3 forbids `TBD`); same carve-out class as ADR-0031 itself. Eliminates 5 false positives.
+- **Verification:** `38-check-ambiguous-wording.mjs` exit 1→0 (27→0 hits). `79-check-vague-modifiers.mjs --block-all` still exit 0 (no regression).
+- **Per memory rule** ("parser-fix counts as content when it eliminates a false-positive content finding"): 26 false-positive eliminations + 1 real fix qualify as content.

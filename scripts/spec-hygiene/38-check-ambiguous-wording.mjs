@@ -72,7 +72,21 @@ const SKIP_PATH = (p) =>
   // (rationale text on data-catalog rows necessarily quotes `TBD`/`stub`
   // as the literal data being declared). Self-referential SSOT carve-out.
   // (Added 2026-04-29 with task #32 _root thickening.)
-  p.endsWith("/_AUDIT-EXEMPTIONS.md");
+  p.endsWith("/_AUDIT-EXEMPTIONS.md") ||
+  // The gate registry's wording-policy rows (G-WORDING-AMBIGUOUS-LINT,
+  // -SOFT-LANGUAGE-REPLACEMENT, -DELIBERATION-REPLACEMENT) literally enumerate
+  // the forbidden tokens as data — same self-referential SSOT carve-out as
+  // _AUDIT-EXEMPTIONS.md above. (Added 2026-04-30 with F-AUDIT-47 closure.)
+  p.endsWith("/_GATE-REGISTRY.md") ||
+  // The ambiguity ledger archives historical wording verbatim per its purpose
+  // (decision log of triaged ambiguities); same archival carve-out as
+  // /18-spec-issues/ above. (Added 2026-04-30 with F-AUDIT-47.)
+  p.endsWith("/AMBIGUITY-LEDGER.md") ||
+  // ADR acceptance-criteria files document forbidden tokens as the literal
+  // subject of the AT (e.g. "AT-31-D3 forbids the token 'TBD'"); they
+  // necessarily quote what they prohibit. Same category-error carve-out as
+  // ADR-0031 itself. (Added 2026-04-30 with F-AUDIT-47.)
+  p.endsWith("/00-adrs/97-acceptance-criteria.md");
 
 
 const ALLOW_LINE = (line) =>
