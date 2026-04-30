@@ -143,7 +143,7 @@ The WorkFlowy frontend **MUST** be implemented as a single Vite 5.4 project, wri
 
 ## Gates Touched
 
-- **New gates:** `(none — this ADR ratifies pre-existing gates)`
+- **New gates:** `G-ADR-0003-FRONTEND-STACK-LOCK` (DOC-NORM umbrella), `G-ADR-0003-VITE-5_4-PINNED` (DOC-NORM), `G-ADR-0003-REACT-19-PINNED` (DOC-NORM), `G-ADR-0003-TS-5_6-STRICT` (DOC-NORM), `G-ADR-0003-TAILWIND-V4-THEME-BLOCK` (DOC-NORM, layered under `G-12-LOGICAL-MARGINS-PADDING` family — 3-tier sub-rule chain), `G-ADR-0003-NO-TAILWIND-CONFIG-FILE` (CI grep gate), `G-ADR-0003-AMENDMENT-REQUIRED` (DOC-NORM, mirrors `G-ADR-0001-AMENDMENT-REQUIRED`)
 - **Modified gates (now load-bearing via this ADR):**
   - `G-32-NO-RAW-COLORS` (Tailwind v4 `@theme` token enforcement; see
     `spec/32-ui-design/00-overview.md` Worked Example)
