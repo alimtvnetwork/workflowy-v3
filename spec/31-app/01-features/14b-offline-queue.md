@@ -144,3 +144,12 @@ The 6 acceptance tests **AT-OQ-01 … AT-OQ-06** are defined under the existing 
 - **Local storage:** SQLite mirror — concrete tech deferred per `mem://constraints/backend-runtime-deferred`.
 - **Queue type:** `SaveStatus` enum surfaced via [`src/types/index.ts`](../../../src/types/index.ts).
 - **Sync companion:** all LWW + tiebreak rules delegated to [14-concurrency-and-sync.md §14.2](./14-concurrency-and-sync.md); this addendum specifies durability + replay only.
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** queue_ledger (IDB mirror) → app.nodes on flush
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

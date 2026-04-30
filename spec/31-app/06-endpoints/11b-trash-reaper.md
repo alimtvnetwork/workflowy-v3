@@ -61,3 +61,12 @@
 | Retention policy (30 d hard delete) | `mem://features/trash-logic` |
 | Schema | [`../07-db-diagram/sql/02-app-schema.sql`](../07-db-diagram/sql/02-app-schema.sql) — `ReaperRuns` |
 | User-facing trash API | [`./11-trash-view.md`](./11-trash-view.md) |
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** trash (>30d purge)
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

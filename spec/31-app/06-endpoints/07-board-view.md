@@ -59,3 +59,12 @@
 |-------|------|
 | Board model | [`../01-features/07-board-view.md`](../01-features/07-board-view.md) |
 | Kanban behavior | `mem://features/board-view` |
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** nodes (board children), node_view_state
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

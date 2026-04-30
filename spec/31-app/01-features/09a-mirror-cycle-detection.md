@@ -201,3 +201,12 @@ If the query returns a row → reject with `ERR_CYCLE`.
 | Concurrency rules | [14-concurrency-and-sync.md](./14-concurrency-and-sync.md) |
 | Edge-case catalog | [`../03-edge-cases/01-edge-cases.md`](../03-edge-cases/01-edge-cases.md) |
 | ← Mirror peer-group data model (forward link from) | [`./09b-mirror-peer-group-model.md`](./09b-mirror-peer-group-model.md) |
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** mirror_groups, nodes
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

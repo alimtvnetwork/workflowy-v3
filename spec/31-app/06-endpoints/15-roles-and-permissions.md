@@ -67,3 +67,12 @@
 | User-roles table pattern | [`../../00-overview.md`](../../00-overview.md) |
 | ← Persona role checks (forward link from) | [`./02-personas.md`](./02-personas.md) |
 | ← Share-dialog role assignment (forward link from) | [`./08-share-dialog.md`](./08-share-dialog.md) |
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: cross-db]`
+- **Tables:** root.workspace_members + app.shares
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

@@ -84,3 +84,12 @@
 |-------|------|
 | Template serialization | `mem://features/templates` |
 | Apply flow | [`../02-workflows/02-template-application-flow.md`](../02-workflows/02-template-application-flow.md) |
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: cross-db]`
+- **Tables:** root.templates + app.nodes (apply)
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

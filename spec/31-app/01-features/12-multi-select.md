@@ -211,3 +211,12 @@ When N ≥ 2 items are selected via Shift/Cmd-click (or keyboard range), the flo
 - `mem://features/multi-select` — Shift/Cmd-click bulk-operation rules
 - [`./14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) — ← Concurrency + sync rules (forward link from)
 - [12b-multi-select-zoom.md](./12b-multi-select-zoom.md) — addendum: zoom interaction when ≥2 items selected
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** nodes (bulk), trash
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

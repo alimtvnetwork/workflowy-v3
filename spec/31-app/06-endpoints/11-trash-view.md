@@ -75,3 +75,12 @@
 | Retention policy | `mem://features/trash-logic` |
 | Mirror breakage on purge | [`../01-features/14-concurrency-and-sync.md`](../01-features/14-concurrency-and-sync.md) §14.4 |
 | ← Background reaper job (forward link from) | [`./11b-trash-reaper.md`](./11b-trash-reaper.md) |
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** trash, nodes
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

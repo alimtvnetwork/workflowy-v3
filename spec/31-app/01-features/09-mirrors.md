@@ -253,3 +253,12 @@ For cleaner UX, use only **"Mirror To…"** in the context menu (one unified act
 - [`./12-multi-select.md`](./12-multi-select.md) — ← Multi-select bulk ops (forward link from)
 - [`./13-templates.md`](./13-templates.md) — ← Templates (forward link from)
 - [`./14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) — ← Concurrency + sync rules (forward link from)
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** mirror_groups, nodes
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

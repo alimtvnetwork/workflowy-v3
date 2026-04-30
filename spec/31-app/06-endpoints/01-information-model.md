@@ -123,3 +123,12 @@
 | Item interface | `mem://architecture/data-model` |
 | Fractional index rules | `mem://features/editor-core` |
 | Conflict resolution | [`../01-features/14-concurrency-and-sync.md`](../01-features/14-concurrency-and-sync.md) |
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** nodes, mirror_groups, item_types
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

@@ -368,3 +368,12 @@ stateDiagram-v2
 - [../18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md](../../18-spec-issues/12-ai-readiness-audit-round-4-2026-04-27.md#audit-ai-07) — closes AUDIT-AI-07
 - `mem://features/mirroring` — peer-group memory rule
 - [`./16-search-ranking.md`](./16-search-ranking.md) — ← Search ranking (forward link from)
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** mirror_groups, nodes
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

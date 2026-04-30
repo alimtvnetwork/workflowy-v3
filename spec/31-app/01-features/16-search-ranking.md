@@ -295,3 +295,12 @@ All error responses follow the canonical envelope (per ADR-0004): `{ Status: "er
 | AT-SR-09 | SSE `item.updated` for an item in the open result list updates the row in place WITHOUT issuing a new `GET /search` | §SSE Contract |
 | AT-SR-10 | Cross-workspace fan-out: search returns hits from all workspaces in `WorkspaceMember`, none from foreign workspaces | §Perm Contract |
 | AT-SR-11 | `Limit > 50` is clamped client-side; server still rejects with `ERR_LIMIT_EXCEEDED` if bypassed | §Errors |
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** search_index, nodes
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

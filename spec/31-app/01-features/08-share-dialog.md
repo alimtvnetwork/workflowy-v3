@@ -185,3 +185,12 @@ As an owner, I want to share an outline branch with specific people at the right
 - [`./14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) — ← Concurrency + sync rules (forward link from)
 - [`./15-roles-and-permissions.md`](./15-roles-and-permissions.md) — ← Roles + permissions (forward link from)
 - [08b-sharing-mirror-interaction.md](./08b-sharing-mirror-interaction.md) — addendum: how share grants interact with mirror peer-group membership
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: cross-db]`
+- **Tables:** root.share_invites + app.shares (orchestrated)
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

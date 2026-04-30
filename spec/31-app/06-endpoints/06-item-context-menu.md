@@ -86,3 +86,12 @@
 |-------|------|
 | Allowed-transition matrix | [`../01-features/06-item-context-menu.md`](../01-features/06-item-context-menu.md) |
 | Tag rules | `mem://features/search-functionality` |
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** nodes, mirror_groups, trash
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

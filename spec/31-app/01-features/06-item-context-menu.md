@@ -269,3 +269,12 @@ Typing `/` at the start of an empty item (or after a space) opens the slash menu
 - [03-edge-cases/01-edge-cases.md](../03-edge-cases/01-edge-cases.md) — global edge-case index
 - [`./07-board-view.md`](./07-board-view.md) — ← Board view (forward link from)
 - [`./12-multi-select.md`](./12-multi-select.md) — ← Multi-select bulk ops (forward link from)
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** nodes, mirror_groups, trash
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

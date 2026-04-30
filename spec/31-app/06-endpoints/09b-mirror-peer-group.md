@@ -63,3 +63,12 @@
 | Per-instance ACLs (independent) | [`../01-features/08b-sharing-mirror-interaction.md`](../01-features/08b-sharing-mirror-interaction.md) |
 | Schema | `MirrorPeerGroups` table in [`../07-db-diagram/sql/02-app-schema.sql`](../07-db-diagram/sql/02-app-schema.sql) |
 | SSE event vocab | [`./14-concurrency-and-sync.md`](./14-concurrency-and-sync.md) — `mirror-broken`, `mirror-healed` |
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** nodes
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

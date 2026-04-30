@@ -81,3 +81,12 @@
 | ← Mirror peer-group events (forward link from) | [`./09b-mirror-peer-group.md`](./09b-mirror-peer-group.md) |
 | ← Trash soft-delete / restore events (forward link from) | [`./11-trash-view.md`](./11-trash-view.md) |
 | ← Sync replay buffer consumers (forward link from) | [`./14b-sync-replay.md`](./14b-sync-replay.md) |
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** queue_ledger, nodes, lww_meta
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

@@ -175,3 +175,12 @@ As a user who occasionally deletes the wrong item, I want a 30-day grace period 
 - [`./13-templates.md`](./13-templates.md) — ← Templates (forward link from)
 - [`./16-search-ranking.md`](./16-search-ranking.md) — ← Search ranking (forward link from)
 - [11b-trash-reaper.md](./11b-trash-reaper.md) — addendum: reaper cron + 30-day hard-delete sweep detail
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** trash, nodes
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

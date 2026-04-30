@@ -128,3 +128,12 @@ The 5 acceptance tests **AT-SM-01 … AT-SM-05** are defined in §4 above. This 
 - **Storage:** `Permissions` table — composite key `(ItemId, GranteeId)`.
 - **Mutation hook:** `useShareStore.grant()` / `useShareStore.revoke()` — per-instance, never group-wide.
 - **Sync source:** content fan-out reuses the existing peer-group propagation in `09b-mirror-peer-group-model.md`; this addendum adds **no new code surface** beyond per-instance ACL semantics.
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: cross-db]`
+- **Tables:** root.share_invites + app.shares + app.mirror_groups
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.
