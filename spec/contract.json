@@ -1173,7 +1173,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 502
+          "line": 516
         }
       ]
     },
@@ -1873,7 +1873,7 @@
       "cited_in": [
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 492
+          "line": 506
         },
         {
           "file": "spec/_LEDGER-G-NS-ADR-COVERAGE.md",
@@ -1968,7 +1968,7 @@
         },
         {
           "file": "spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md",
-          "line": 62
+          "line": 65
         },
         {
           "file": "spec/31-app/97a-acceptance-criteria-fixtures.md",
@@ -3489,6 +3489,14 @@
         {
           "file": "spec/31-app/97c-acceptance-criteria-fixtures.md",
           "line": 384
+        },
+        {
+          "file": "spec/AUDIT-FINDINGS-LEDGER.md",
+          "line": 131
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 902
         }
       ]
     },
@@ -3528,7 +3536,7 @@
         },
         {
           "file": "spec/AUDIT-FINDINGS-LEDGER.md",
-          "line": 224
+          "line": 298
         }
       ]
     },
@@ -6437,7 +6445,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 655
+          "line": 677
         }
       ]
     },
@@ -6453,7 +6461,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 655
+          "line": 677
         }
       ]
     },
@@ -11570,11 +11578,11 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 622
+          "line": 644
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 627
+          "line": 649
         }
       ]
     },
@@ -11586,7 +11594,7 @@
       "cited_in": [
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 628
+          "line": 650
         }
       ]
     },
@@ -11598,7 +11606,7 @@
       "cited_in": [
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 629
+          "line": 651
         }
       ]
     },
@@ -11610,7 +11618,7 @@
       "cited_in": [
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 630
+          "line": 652
         }
       ]
     },
@@ -14381,11 +14389,11 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 647
+          "line": 669
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 651
+          "line": 673
         }
       ]
     },
@@ -14401,7 +14409,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 652
+          "line": 674
         }
       ]
     },
@@ -14429,7 +14437,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 654
+          "line": 676
         }
       ]
     },
@@ -14445,7 +14453,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 653
+          "line": 675
         }
       ]
     },
@@ -14473,7 +14481,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 656
+          "line": 678
         }
       ]
     },
@@ -14493,7 +14501,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 653
+          "line": 675
         }
       ]
     },
@@ -14998,7 +15006,7 @@
       "cited_in": [
         {
           "file": "spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md",
-          "line": 52
+          "line": 55
         },
         {
           "file": "spec/31-app/01-features/05-interactions.md",
@@ -19364,22 +19372,27 @@
       "id": "AT-RFC2119-01",
       "definition": "Active spec files contain zero bare `TBD` / `FIXME` / `XXX` outside the allow-list.",
       "defined_in": "spec/01-spec-authoring-guide/20-rfc-2119-wording-policy.md",
-      "defined_line": 58,
+      "defined_line": 60,
       "cited_in": []
     },
     {
       "id": "AT-RFC2119-02",
       "definition": "Active spec files contain zero soft-language phrases (\"we could\", \"perhaps\", \"possibly\", \"ideally\", \"preferably\", \"may want to\", \"might want\", \"should consider\").",
       "defined_in": "spec/01-spec-authoring-guide/20-rfc-2119-wording-policy.md",
-      "defined_line": 59,
+      "defined_line": 61,
       "cited_in": []
     },
     {
       "id": "AT-RFC2119-03",
       "definition": "RFC-2119 keywords carrying normative weight MUST be uppercase.",
       "defined_in": "spec/01-spec-authoring-guide/20-rfc-2119-wording-policy.md",
-      "defined_line": 60,
-      "cited_in": []
+      "defined_line": 62,
+      "cited_in": [
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 856
+        }
+      ]
     },
     {
       "id": "AT-ROLES-01",
@@ -19510,6 +19523,10 @@
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
           "line": 352
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 787
         }
       ]
     },
@@ -22860,7 +22877,7 @@
       "cited_in": [
         {
           "file": "spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md",
-          "line": 53
+          "line": 56
         }
       ]
     },
@@ -24249,11 +24266,11 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 758
+          "line": 780
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 762
+          "line": 784
         }
       ]
     },
@@ -24273,7 +24290,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 763
+          "line": 785
         }
       ]
     },
@@ -24293,7 +24310,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 764
+          "line": 786
         }
       ]
     },
@@ -24313,7 +24330,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 765
+          "line": 788
         }
       ]
     },
@@ -24333,7 +24350,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 766
+          "line": 789
         }
       ]
     },
@@ -24353,7 +24370,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 767
+          "line": 790
         }
       ]
     },
@@ -24373,7 +24390,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 768
+          "line": 791
         }
       ]
     },
@@ -24393,7 +24410,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 769
+          "line": 792
         }
       ]
     },
@@ -24413,7 +24430,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 770
+          "line": 793
         }
       ]
     },
@@ -24433,7 +24450,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 771
+          "line": 794
         }
       ]
     },
@@ -24453,7 +24470,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 772
+          "line": 795
         }
       ]
     },
@@ -24473,7 +24490,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 773
+          "line": 796
         }
       ]
     },
@@ -24493,7 +24510,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 774
+          "line": 797
         }
       ]
     },
@@ -24513,7 +24530,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 775
+          "line": 798
         }
       ]
     },
@@ -24533,7 +24550,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 776
+          "line": 799
         }
       ]
     },
@@ -24561,7 +24578,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 777
+          "line": 800
         }
       ]
     },
@@ -24694,11 +24711,11 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 758
+          "line": 780
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 778
+          "line": 801
         }
       ]
     },
@@ -24718,7 +24735,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 779
+          "line": 802
         }
       ]
     },
@@ -24738,7 +24755,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 780
+          "line": 803
         }
       ]
     },
@@ -24758,7 +24775,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 781
+          "line": 804
         }
       ]
     },
@@ -24778,11 +24795,11 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 782
+          "line": 805
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 783
+          "line": 806
         }
       ]
     },
@@ -26264,7 +26281,7 @@
       "cited_in": [
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 750
+          "line": 772
         }
       ]
     },
@@ -26280,7 +26297,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 749
+          "line": 771
         }
       ]
     },
@@ -26313,7 +26330,7 @@
       "cited_in": [
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 752
+          "line": 774
         }
       ]
     },
@@ -26332,7 +26349,7 @@
       "cited_in": [
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 753
+          "line": 775
         }
       ]
     },
@@ -26351,7 +26368,7 @@
       "cited_in": [
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 751
+          "line": 773
         }
       ]
     },

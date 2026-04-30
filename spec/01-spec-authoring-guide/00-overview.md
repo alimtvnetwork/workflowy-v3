@@ -76,8 +76,8 @@
 | 16 | [`16-lovable-folder.md`](./16-lovable-folder.md) | The `.lovable/` Folder Guide | 103 |
 | 17 | [`17-quick-start-and-enforcement.md`](./17-quick-start-and-enforcement.md) | AI Quick Start & Folder Structure Enforcement | 125 |
 | 18 | [`18-ai-contract-template.md`](./18-ai-contract-template.md) | AI Contract Header — Canonical Template | 113 |
-| 19 | [`19-acceptance-criteria-io-table.md`](./19-acceptance-criteria-io-table.md) | Acceptance-Criteria I/O Table — Authoring Guide | 163 |
-| 20 | [`20-rfc-2119-wording-policy.md`](./20-rfc-2119-wording-policy.md) | RFC-2119 Wording Policy (SSOT) | 88 |
+| 19 | [`19-acceptance-criteria-io-table.md`](./19-acceptance-criteria-io-table.md) | Acceptance-Criteria I/O Table — Authoring Guide | 166 |
+| 20 | [`20-rfc-2119-wording-policy.md`](./20-rfc-2119-wording-policy.md) | RFC-2119 Wording Policy (SSOT) | 90 |
 | 21 | [`21-feature-block-format.md`](./21-feature-block-format.md) | Workflowy Feature-Reference Appendix — Block Format SSOT (F8) | 126 |
 | 22 | [`22-status-legend.md`](./22-status-legend.md) | Spec Status Legend (SSOT) | 139 |
 
