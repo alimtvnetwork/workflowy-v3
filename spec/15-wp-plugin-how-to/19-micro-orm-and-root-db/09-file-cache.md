@@ -39,7 +39,7 @@ The primary method is `getManifest()`, which builds a complete file manifest for
 $manifest = $fileCache->getManifest($pluginSlug, $pluginDir, $ignoreRules);
 // Returns: [
 //   'Files'    => [ ['path' => '...', 'hash' => '...', 'modifiedAt' => '...', 'size' => 123], ... ],
-//   'Cached'   => 42,    // Files resolved from cache (fast)
+//   'Cached'   => 42,    // Files resolved from cache (~5 ms / file lookup)
 //   'Computed'  => 3,     // Files that needed fresh MD5 computation
 //   'Removed'   => 1,     // Stale cache entries pruned
 // ]
