@@ -96,7 +96,7 @@ class Database {
 | `ensureSchemaVersionTable()` | Creates `schema_version` table if missing |
 | `getCurrentSchemaVersion()` | `SELECT MAX(version)` from schema_version |
 | `recordMigration($version)` | Inserts version + UTC timestamp after successful migration |
-| `getPdo()` | Returns PDO (triggers lazy init if needed) |
+| `getPdo()` | Returns PDO (triggers lazy init when the static `$pdo` property is null) |
 | `isReady()` | Boolean: is PDO connected? |
 
 ### ConvenienceTrait — Thin PDO wrappers

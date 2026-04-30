@@ -118,7 +118,7 @@ body.admin-color-midnight .pluginname-admin .wp-list-table tbody tr:nth-child(ev
 |--------|------|---------------|
 | Default | Light | No |
 | Light | Light | No |
-| Modern | Light | No |
+| `Modern` | Light | No |
 | Blue | Light | No |
 | Coffee | **Dark** | **Yes** |
 | Ectoplasm | **Dark** | **Yes** |

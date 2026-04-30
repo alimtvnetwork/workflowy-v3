@@ -20,7 +20,7 @@
 ---
 
 
-> **Purpose:** Define how to write PHP templates, compose them from reusable partials, enforce file size limits, and optionally integrate React.js with Tailwind CSS for modern admin UIs. Covers asset enqueuing, source maps, and production builds.
+> **Purpose:** Define how to write PHP templates, compose them from reusable partials, enforce file size limits, and optionally integrate React 19 with Tailwind CSS v4 admin UIs. Covers asset enqueuing, source maps, and production builds.
 > **Audience:** AI code generators and human developers.
 > **Prerequisite:** Phases 1–10 must be read first.
 > **Parent:** [../00-overview.md](../00-overview.md)
