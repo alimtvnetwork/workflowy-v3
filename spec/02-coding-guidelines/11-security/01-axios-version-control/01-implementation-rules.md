@@ -47,11 +47,14 @@ Axios MUST be declared with an **exact version** — no range symbols allowed. (
 { "axios": "latest" }      // Tag — unpredictable
 ```
 
-### 1.2 Lock File Enforcement
+### 1.2 Lock File Enforcement — gate `G-32-AXIOS-LOCK-MATCH` · AT `AT-AXIOS-02`
+
+The following lock-file invariants MUST hold (binds `G-32-AXIOS-LOCK-MATCH`):
 
 - `package-lock.json` / `bun.lock` MUST reflect the exact pinned version
-- After any install, verify the resolved version matches the declared version
-- If a lock file drift is detected, regenerate the lock file from the pinned version
+- After any install, the resolved version MUST match the declared version
+- The resolved version MUST NOT equal any entry in the blocked set defined in `00-overview.md` (currently `1.14.1`, `0.30.4`)
+- If a lock file drift is detected, the lock file MUST be regenerated from the pinned version
 
 ---
 
