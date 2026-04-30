@@ -127,7 +127,7 @@ Defines **reusable enforcement patterns** that codify the project's strict-typin
 | # | Planned File | Description | Status |
 |---|--------------|-------------|--------|
 | 01 | [`01-generic-return-types.md`](./01-generic-return-types.md) | Rules for generic-first function signatures (no `unknown`/`any` returns) | ✅ **Authored 2026-04-30** |
-| 02 | `02-runtime-validation.md` | When to add Zod schemas; canonical schema layout | Pending |
+| 02 | [`02-runtime-validation.md`](./02-runtime-validation.md) | When to add Zod schemas; canonical schema layout | ✅ **Authored 2026-04-30** |
 | 03 | `03-eslint-rule-authoring.md` | How to add a new rule to `eslint-plugins/coding-guidelines/` | Pending |
 | 04 | `04-boundary-enforcement.md` | Validating data at module boundaries (API, storage, IPC) | Pending |
 

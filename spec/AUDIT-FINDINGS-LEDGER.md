@@ -276,6 +276,12 @@ Authored `spec/35-enforcement-rules/01-generic-return-types.md` (5 rules R1–R5
 
 ---
 
+### Progress note 2026-04-30 — GAP-A2 (batch 2/4) closed
+
+Authored `spec/35-enforcement-rules/02-runtime-validation.md` (closed list of 5 trust boundaries B1–B5, 5 rules R1–R5, 7 anti-patterns, 4 AT binds, full loader worked example). All 6 prose MUSTs gate-bound (`G-35-RV-PARSE-AT-BOUNDARY`, `-USE-ENVELOPE`, `-BRAND-IDS`, `-SCHEMA-COLOCATION`, `-STRICT-DEFAULT`, `-NO-SILENT-CATCH`) — zero bare-MUST regression. Defines the canonical `EnvelopeSchema` and `parseResponse` shape that every B1 consumer MUST use. Parent overview row 02 now ✅. 2 of 4 enforcement-rules sub-specs still pending (03-eslint-rule-authoring, 04-boundary-enforcement).
+
+---
+
 
 ## Retraction case studies
 
