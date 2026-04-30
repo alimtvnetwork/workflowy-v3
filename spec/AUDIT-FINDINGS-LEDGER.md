@@ -220,6 +220,30 @@ Permanent index of every spec-improving or spec-vs-impl audit cycle. Each row li
 
 **Procedural note.** Audit-v9 honored spec-only mode end-to-end. Per the SPEC-ONLY VIOLATION LOG in core memory, AUD-02/AUD-04/AUD-05 (audit-v8 era) breached spec-only mode by editing `src/`; this audit deliberately did not — both critical findings are filed Open and deferred to `exit spec-only` rather than fixed in-band.
 
+### Audit-v10 summary (2026-04-30, spec-vs-impl re-sweep)
+
+**Methodology.** Re-ran the audit-v9 ripgrep probe matrix and added one new probe pair: (a) `grep -nE "(text-h1|text-bullet|mb-md|--font-size-h1|--font-size-bullet|--spacing-md)" src/index.css` and (b) full read of the `@theme inline { … }` block. Goal: close the audit-v9 inline-assumption A2 ("Tailwind v4 `@theme` block presence flagged UNKNOWN") with a verifiable PASS/FAIL.
+
+**Key probe results (delta vs audit-v9).**
+- `--font-size-h1: 1.5rem`, `--font-size-bullet: 0.9375rem`, `--spacing-md: 8px` all present in `src/index.css` `@theme inline` block (lines 50, 61, 64). Tailwind v4 auto-generates `text-h1`, `text-bullet`, `mb-md` utilities from these tokens. **Closes A2 with PASS.**
+- All other audit-v9 probe results re-verified unchanged: 0 EventSource, 0 IndexedDB, 0 ErrorBoundary, 0 createBrowserRouter usages.
+
+**Findings raised (1).**
+- **F-AUDIT-33** (LOW): memory↔gate coverage gap — see row in `F-AUDIT-NN` family table above.
+
+**Findings reaffirmed without re-numbering (4).** Per Update Protocol §1, F-IMPL-AUD-03/06/07/08 are **not re-raised**. All four remain Open from prior cycles and continue to await `exit spec-only`. All four were re-verified by audit-v10 probes.
+
+**Findings retracted in-pass (1).** The audit narrative's finding #03 ("unverified Tailwind classes in `Home.tsx`") was retracted same-pass after probe (a) above confirmed `--font-size-h1`, `--font-size-bullet`, `--spacing-md` are all registered. No ledger row created (same-pass false-positive convention per Update Protocol §1).
+
+**Findings NOT raised (consciously) — and why.**
+- *Hotkeys scope wiring (audit-v10 narrative #08):* not promoted because `src/lib/hotkeys.ts` was not opened in this pass; deferred to a future targeted hotkey-domain audit. Tracked as inline assumption only.
+- *Branded `ItemId`/`OwnerId` enforcement (narrative #06):* superseded by F-IMPL-AUD-02 (already Resolved) — no new row needed.
+- *`.gitkeep.ts` files (narrative #09):* duplicate of F-IMPL-AUD-06 (Open) — no new row.
+
+**Composite score: 39/100** across the 10-axis rubric (vs audit-v9's 28/100 across 12 axes). The score lift vs v9 is **not** a real implementation improvement — `src/` did not change between the two audits. The lift comes from (a) closing the Tailwind UNKNOWN to PASS (was depressing the consistency-with-spec axis), (b) the 10-axis vs 12-axis rubric weighting differs. Both audits agree the implementation is pre-Phase-1 scaffold-only and that the gating issue is the SPEC-ONLY MODE deferral.
+
+**Procedural note.** Audit-v10 honored spec-only mode end-to-end. Read-only probes only; no `src/` edits. Spec edits in this turn (this row + F-AUDIT-33) are spec-corpus-only and explicitly permitted by the Core memory's spec-only mode allowlist.
+
 ---
 
 ## Update protocol — extended (audit cycles)
