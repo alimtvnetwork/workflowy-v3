@@ -179,4 +179,6 @@ These terms are load-bearing in the seven post-v7 ADRs and are referenced from `
 
 ---
 
+*Glossary v1.3.0 — 2026-04-30: Added ADR-0023..0028 Runtime Vocabulary section (26 terms: loader↔queue contract, local mirror, queue worker, ClientMutationId, undo cap, offline queue, LWW tiebreak, peer group, singleton dissolution, SSE read-signal, Last-Event-ID replay, cold gap, ring buffer, ServerSeq, TTL reaper, producer completeness, detection chain, regional-language fold, fallback chain, RTL locale, logical CSS, typed i18n keys, branded ID, SortOrder, envelope, named error boundary). Closes GAP-AMB-03b.*
+
 *Glossary v1.2.0 — 2026-04-30: Added Forbidden Vague Modifiers table (closes GAP-AMB-02 + collapses GAP-AMB-01-tail enforcement path; F-SPEC-14 now has normative substitution table + grandfather rule).*
