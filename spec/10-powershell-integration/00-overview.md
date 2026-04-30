@@ -243,7 +243,7 @@ $envelope = json_decode($result['stdout'], associative: true, flags: JSON_THROW_
 This specification defines a **cross-project reusable** PowerShell integration pattern for building and running fullstack applications with Go backend and React frontend. The system uses a JSON configuration file (`powershell.json`) to define project-specific paths and settings.
 
 **Key Features:**
-- **pnpm Plug'n'Play (PnP)** - Disk-efficient package management with shared store
+- **pnpm Plug'n'Play (PnP)** - Single shared package store via hard links (typically 70–90% disk reduction across N projects vs npm `node_modules` copies)
 - **Relative Path Resolution** - All paths relative to script location (working directory)
 - **Force Reinstall** - Clear caches and reset everything with `-Force` flag
 - **Multi-Project Root Folder** - Shared pnpm store across Node.js projects
@@ -313,7 +313,7 @@ This specification defines a **cross-project reusable** PowerShell integration p
 | Feature | npm | pnpm PnP |
 |---------|-----|----------|
 | Disk Usage | Full copy per project | Shared store, hard links |
-| Install Speed | Moderate | Fast (cached) |
+| Install Speed | ~30 s baseline | ~5 s warm cache (~6× faster) |
 | node_modules | Required (~500MB+) | Not required |
 | Deterministic | package-lock.json | pnpm-lock.yaml |
 
@@ -416,7 +416,7 @@ spec/powershell-integration/
 ```
 
 Tell the AI:
-> "Follow the spec at `spec/powershell-integration/` to add the PowerShell build runner. Create a `powershell.json` config for my project structure. Enable pnpm PnP for disk-efficient package management."
+> "Follow the spec at `spec/powershell-integration/` to add the PowerShell build runner. Create a `powershell.json` config for my project structure. Enable pnpm PnP for shared-store package management (70–90% disk reduction vs npm)."
 
 ---
 

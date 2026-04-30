@@ -28,7 +28,7 @@ cssClass() → match($this) {...}           variantInfoMap[variant].CssClass
 
 **Why info-object in Go?**
 - Go has no `match` expression — `switch` is verbose for per-variant metadata
-- A single map lookup is more efficient than multiple switch statements
+- A single map lookup (O(1) hash) replaces an N-branch switch (O(N) worst case for non-jump-table compilation)
 - The info struct is compile-time typed — missing fields are caught immediately
 - Adding a new metadata field requires changing one struct + one map, not N methods
 
@@ -176,7 +176,7 @@ var variantInfoMap = map[Variant]VariantInfo{
 
 | Concern | Source |
 |---------|--------|
-| `String()` / `Parse()` | `variantLabels` array (fast, index-based) |
+| `String()` / `Parse()` | `variantLabels` array (O(1) index lookup) |
 | Rich metadata (icon, CSS, description) | `variantInfoMap` map |
 | `Label()` | Delegates to `Info().Label` (same value as `variantLabels` entry) |
 
@@ -191,7 +191,7 @@ var variantInfoMap = map[Variant]VariantInfo{
 | Enum only needs `String()` / `Parse()` / `Is*()` | **Plain enum** — `variantLabels` only |
 | Enum has 2+ metadata fields (icon, CSS, description, sort) | **Info-object** — add `VariantInfo` + `variantInfoMap` |
 | Metadata is used in UI rendering or API responses | **Info-object** — always |
-| Enum is a simple internal discriminator | **Plain enum** — keep it simple |
+| Enum has only `String()`/`Parse()` and no per-variant metadata fields | **Plain enum** — no info-object overhead |
 
 ---
 
