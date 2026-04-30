@@ -232,3 +232,12 @@ No special admin logic required — the tree model handles everything naturally.
 - [09-mirrors.md](./09-mirrors.md) — mirror-card semantics
 - [03-edge-cases/01-edge-cases.md](../03-edge-cases/01-edge-cases.md) — board edge-case rows
 - [07b-dashboard-view.md](./07b-dashboard-view.md) — sister card-grid view (same data, different layout)
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** nodes (board children), node_view_state
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

@@ -366,3 +366,12 @@ sequenceDiagram
 - `mem://features/offline-resilience` — offline queue + reconnect replay
 - [`./09a-mirror-cycle-detection.md`](./09a-mirror-cycle-detection.md) — ← Mirror cycle-detection algorithm (forward link from)
 - [`./14b-offline-queue.md`](./14b-offline-queue.md) — ← Offline FIFO queue (forward link from)
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** queue_ledger, nodes, lww_meta
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

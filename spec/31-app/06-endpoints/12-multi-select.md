@@ -78,3 +78,12 @@
 |-------|------|
 | Multi-select rules | [`../01-features/12-multi-select.md`](../01-features/12-multi-select.md) |
 | Bulk semantics | `mem://features/multi-select` |
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** nodes (bulk), trash
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

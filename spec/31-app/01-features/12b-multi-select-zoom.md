@@ -142,3 +142,12 @@ The 6 acceptance tests **AT-MZ-01 … AT-MZ-06** are defined in §5 above. This 
 - **State location:** client-only zustand slice (e.g. `useZoomStore.virtualScope`); never persisted, never serialised to URL.
 - **Identity:** `virtual:<sessionId>` synthetic node id; not a valid `Items.Id`; FK constraints are bypassed because no DB write occurs.
 - **State machine:** as defined in §3; transitions are pure UI events with no DB side-effects.
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** nodes (bulk under zoom root)
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

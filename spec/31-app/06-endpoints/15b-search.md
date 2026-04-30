@@ -67,3 +67,12 @@
 | Ranking algorithm | `mem://features/search-functionality` |
 | FTS5 virtual table | [`../07-db-diagram/sql/03-app-indexes.sql`](../07-db-diagram/sql/03-app-indexes.sql) |
 | Tie-break index | `IdxItem_LiveByUpdatedAt` (partial, `DeletedAt IS NULL`) |
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** search_index, nodes
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

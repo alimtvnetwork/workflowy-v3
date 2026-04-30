@@ -125,3 +125,12 @@ The 5 acceptance tests **AT-TPL-01 … AT-TPL-05** are defined in §3 above. Thi
 - **Storage:** `Templates.PayloadJson` (full subtree, JSON-serialised).
 - **Instantiation surface:** server-side procedure (DFS clone) — no client orchestrates the multi-row insert.
 - **Trash interaction:** templates are unaffected by the reaper (per `11b` AT cross-link); independent lifecycle.
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: cross-db]`
+- **Tables:** root.templates (read) + app.nodes (write)
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

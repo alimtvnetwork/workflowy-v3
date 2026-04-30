@@ -233,3 +233,12 @@ Each swatch: small circle. Currently selected color has a ring border. Hover: sl
 - [03-edge-cases/01-edge-cases.md](../03-edge-cases/01-edge-cases.md) — paste / nesting / network rows
 - [`./07-board-view.md`](./07-board-view.md) — ← Board view (forward link from)
 - [`./10-today-view.md`](./10-today-view.md) — ← Today view (forward link from)
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** nodes (read), node_view_state
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

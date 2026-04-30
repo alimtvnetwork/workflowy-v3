@@ -40,3 +40,12 @@ The page content area is a rendering view over the item tree. All mutations rout
 |-------|------|
 | Rendering rules | [`../01-features/04-page-content-area.md`](../01-features/04-page-content-area.md) |
 | 250-item virtualization cap | `mem://architecture/data-model` |
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** nodes (read), node_view_state
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

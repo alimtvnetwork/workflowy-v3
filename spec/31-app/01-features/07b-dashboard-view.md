@@ -146,3 +146,12 @@ The 8 acceptance tests **AT-DV-01 … AT-DV-08** are defined in §6 above. This 
 - **Test-id:** `turn-into-dashboard` (context-menu action) per [`spec/32-ui-design/01-architecture/05-component-contract-map.md`](../../32-ui-design/01-architecture/05-component-contract-map.md).
 - **State store:** `useTreeStore.updateContent()` (title edits) + `useTreeStore.toggleCompleted()` (checkbox) + `useTreeStore.reorder()` (drag) — same hooks as outline view; Dashboard introduces no new mutation surface.
 - **Op envelope:** every card-level mutation produces exactly one `Op.Update` (or `Op.Insert` for new cards) targeting the child row.
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** nodes (depth=1 children)
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

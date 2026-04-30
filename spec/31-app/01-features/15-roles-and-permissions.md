@@ -393,3 +393,12 @@ public function handleMoveItem(\WP_REST_Request $req): \WP_REST_Response
 ---
 
 *Roles & Permissions spec v1.0.0 — closes audit finding F-04. Runtime-agnostic. 2026-04-25 (UTC+8).*
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: cross-db]`
+- **Tables:** root.workspace_members + app.shares
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

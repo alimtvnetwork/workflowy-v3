@@ -78,3 +78,12 @@
 | Offline queue semantics | `mem://features/offline-resilience` |
 | LWW conflict rules | [`../01-features/14-concurrency-and-sync.md`](../01-features/14-concurrency-and-sync.md) §14.4 |
 | Comparison index | `IdxItem_UpdatedAt` |
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** queue_ledger, sse_cursor
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

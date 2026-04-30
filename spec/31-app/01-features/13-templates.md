@@ -212,3 +212,12 @@ User clicks "Make template" in the item context menu → a dialog opens to name 
 - [11-trash-view.md](./11-trash-view.md) — apply blocked inside trash
 - `mem://features/templates` — serialized snapshot rules
 - [13b-templates-snapshot-semantics.md](./13b-templates-snapshot-semantics.md) — addendum: snapshot-vs-link semantics + mirror-flattening rules
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: cross-db]`
+- **Tables:** root.templates + app.nodes (apply)
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

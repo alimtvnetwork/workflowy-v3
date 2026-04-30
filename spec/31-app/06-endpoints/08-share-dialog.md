@@ -84,3 +84,12 @@
 |-------|------|
 | Share roles | [`../01-features/15-roles-and-permissions.md`](../01-features/15-roles-and-permissions.md) |
 | Public-link semantics | `mem://features/sharing-model` |
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: cross-db]`
+- **Tables:** root.share_invites + app.shares (orchestrated)
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

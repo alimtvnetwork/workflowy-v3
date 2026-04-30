@@ -173,3 +173,12 @@ The 5 acceptance tests **AT-TR-01 … AT-TR-05** are defined in §5 above. This 
 - **Predicate SQL:** as in §2; batch size 1,000; idempotent.
 - **Audit surface:** `ReaperRuns` table (per `mem://features/trash-logic` + `spec/31-app/07-db-diagram/03-app-db-erd.md`).
 - **No client surface:** entirely server-side; no React component, no API endpoint exposed to clients.
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** trash (>30d purge)
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

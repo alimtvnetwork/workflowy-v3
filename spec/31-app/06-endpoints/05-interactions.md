@@ -45,3 +45,12 @@ Interactions are an input layer; the contract is in `01-information-model.md`. D
 |-------|------|
 | Keyboard contract | [`../01-features/05-interactions.md`](../01-features/05-interactions.md) |
 | Editor undo/redo | `mem://features/editor-core` |
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** nodes, sort_order_seq
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.

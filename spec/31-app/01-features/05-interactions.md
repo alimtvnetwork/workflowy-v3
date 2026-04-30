@@ -194,3 +194,12 @@ As a power user, I want every common action — split a line, indent, move, comp
 - [06-item-context-menu.md](./06-item-context-menu.md) — pointer alternative for the same actions
 - [03-edge-cases/01-edge-cases.md](../03-edge-cases/01-edge-cases.md) — drag/drop, paste, offline edge cases
 - [`./12-multi-select.md`](./12-multi-select.md) — ← Multi-select bulk ops (forward link from)
+
+---
+
+## Database Scope
+
+- **Anchor:** [`07-db-diagram/00b-split-db-anchor.md`](../07-db-diagram/00b-split-db-anchor.md)
+- **Scope:** `[db-scope: app]`
+- **Tables:** nodes, sort_order_seq
+- **Cross-DB JOINs:** forbidden (split-DB invariant). Cross-DB orchestration, if any, follows ADR-0019.
