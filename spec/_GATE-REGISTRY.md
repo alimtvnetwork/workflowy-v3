@@ -585,6 +585,13 @@
 | `G-MIRROR-NO-ITEMTYPE` | **DOC** | [`spec/00-overview.md`](./00-overview.md) | Enforces ADR-0005 — Mirror is a peer-group relation (not an ItemType). |
 | `G-MIRROR-PEER-COLUMN` | **DOC** | [`spec/00-adrs/0005-mirror-as-peer-group.md`](./00-adrs/0005-mirror-as-peer-group.md) | - G-MIRROR-PEER-COLUMN — Item.PeerGroupId is the only |
 
+### Domain-RUNBOOK
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-RUNBOOK-CITES-POLICY` | **DOC-NORM** | [`spec/15-wp-plugin-how-to/23-operator-runbooks/00-overview.md`](./15-wp-plugin-how-to/23-operator-runbooks/00-overview.md) | Every operator runbook MUST cite the policy SSOT it implements via a forward link in the runbook header (machine-checkable: `_(matches A-XX vYY.ZZ.W)_` annotation present and resolvable). Anchored §"Distinction from policy SSOTs"; back-link from policy SSOT is OPTIONAL. Runner: extension to `scripts/spec-hygiene/19-check-runbook-staleness.mjs` (already wired into `npm run spec:check`). |
+| `G-RUNBOOK-DRILLED` | **DOC** | [`spec/15-wp-plugin-how-to/23-operator-runbooks/00-overview.md`](./15-wp-plugin-how-to/23-operator-runbooks/00-overview.md) | Every runbook MUST be drilled at the cadence its referenced policy SSOT requires (e.g. A-44 DR drill = quarterly). Drill cadence MUST appear in the runbook footer; drill log MUST be referenced. PR-review gate; no executable runner (audit-trail enforced via runbook authoring template). Anchored §"Authoring rules" rule 6. |
+
 ### Domain-SPLIT
 
 | Gate | Tier | Primary File | Brief |
