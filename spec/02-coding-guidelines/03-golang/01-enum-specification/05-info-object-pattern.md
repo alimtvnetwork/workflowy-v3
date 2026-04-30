@@ -56,7 +56,7 @@ type VariantInfo struct {
 - Struct name: `VariantInfo` (always this name, in every enum package)
 - All fields are **exported** (PascalCase)
 - Fields are value types only — no pointers, no interfaces
-- Add fields as needed per domain — not every enum needs all fields
+- Add fields when the domain requires the metadata — not every enum needs all fields
 
 ---
 

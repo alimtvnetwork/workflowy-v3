@@ -17,7 +17,7 @@ The runtime + tooling dependencies below are the **only versions** allowed in th
 | `react-router-dom` | `^7.13.2` | v7 data-router API; v6 not allowed |
 | `axios` | `1.14.0` **or** `0.30.3` (exact) | Security pin — see `scripts/validate-axios-version.ts` |
 | `@tanstack/react-query` | `^5.95.2` | v5 query API |
-| `lucide-react` | `^0.460.0` | Icon library — only icon source allowed (corrected 2026-04-25; v1.x was a 2020 prerelease missing modern icons) |
+| `lucide-react` | `^0.460.0` | Icon library — only icon source allowed (corrected 2026-04-25; v1.x was a 2020 prerelease missing the post-2023 icon set) |
 | `framer-motion` | `^12.38.0` | Motion primitives |
 | `class-variance-authority` | `^0.7.1` | Variant authoring for shadcn components |
 | `clsx` | `^2.1.1` | Class composition |

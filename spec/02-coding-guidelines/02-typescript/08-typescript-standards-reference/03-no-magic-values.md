@@ -80,4 +80,4 @@ enum ActivityType {
 }
 ```
 
-**Rule:** Never use string union types (`"a" | "b"`) — always use proper `enum` with PascalCase values and a `Type` suffix on the enum name.
+**Rule:** Never use string union types (`"a" | "b"`) — always use a `proper enum` (per `02-coding-guidelines/02-typescript/` rule name) with PascalCase values and a `Type` suffix on the enum name.

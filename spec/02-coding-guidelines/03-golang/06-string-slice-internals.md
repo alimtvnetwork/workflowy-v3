@@ -26,7 +26,7 @@ type StringHeader struct {
 
 **Implications:**
 - Passing a string to a function copies the header (16 bytes) but **not** the data
-- No need to pass `*string` for read-only use — it's already efficient
+- No need to pass `*string` for read-only use — Go strings are immutable headers (16 bytes on 64-bit) and pass-by-value is O(1)
 - Strings are immutable — any modification creates a new allocation
 
 **References:**

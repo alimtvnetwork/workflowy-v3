@@ -53,7 +53,7 @@ Maps cross-language coding guidelines to **ESLint rules** for **Node.js server-s
 
 | # | Guideline | ESLint Rule | Plugin | Severity | Notes |
 |---|-----------|-------------|--------|----------|-------|
-| 12 | No callback pattern — use async/await | `no-callback-in-promise`, `prefer-promise-reject-errors` | eslint-plugin-promise | `error` | Modern async only |
+| 12 | No callback pattern — use async/await | `no-callback-in-promise`, `prefer-promise-reject-errors` | eslint-plugin-promise | `error` | ES2017+ async/await only |
 | 13 | Always handle promise rejections | `@typescript-eslint/no-floating-promises` | typescript-eslint | `error` | Must `await` or `.catch()` |
 | 14 | No `require()` — use ES modules | `@typescript-eslint/no-require-imports` | typescript-eslint | `error` | ESM only |
 | 15 | No `process.exit()` in libraries | `n/no-process-exit` | eslint-plugin-n | `error` | Only allowed in CLI entry points |

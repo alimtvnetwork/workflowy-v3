@@ -144,7 +144,7 @@ async function fetchData(): Promise<Result<Data>> {
 
 ## 5. References
 
-- [Promises or Async-Await (Better Programming)](https://betterprogramming.pub/should-i-use-promises-or-async-await-126ab5c98789)
+- [Promises or Async-Await (`Better Programming`)](https://betterprogramming.pub/should-i-use-promises-or-async-await-126ab5c98789)
 - [Difference Between Promise and Async Await (GeeksForGeeks)](https://www.geeksforgeeks.org/difference-between-promise-and-async-await-in-node-js/)
 - [Promise.all vs Multiple Await (Stack Overflow)](https://stackoverflow.com/questions/45285129)
 
