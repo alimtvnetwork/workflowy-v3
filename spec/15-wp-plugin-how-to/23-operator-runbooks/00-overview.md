@@ -22,6 +22,19 @@
 
 ---
 
+## 0. Gate Bindings (Normative Index)
+
+This folder overview is the **primary file** for the two MUST-bound gates below. Every numbered MUST in this file is anchored to exactly one gate; runners cite the gate, not the prose.
+
+| Gate | Tier | Anchors §  | AT(s) | Brief |
+|------|------|-----------|-------|-------|
+| `G-RUNBOOK-CITES-POLICY` | **DOC-NORM** | "Distinction from policy SSOTs" | `AT-RUNBOOK-01` | Every runbook MUST carry a forward-link annotation `_(matches A-XX vYY.ZZ.W)_` to the policy SSOT it implements. Runner: extension to `scripts/spec-hygiene/19-check-runbook-staleness.mjs`. |
+| `G-RUNBOOK-DRILLED` | **DOC** | "Authoring rules" rule 6 | `AT-RUNBOOK-02` | Every runbook MUST be drilled at the cadence its policy SSOT requires; cadence MUST appear in the runbook footer with a drill-log reference. PR-review gate; no executable runner. |
+
+> Illustrative quotes of policy-SSOT prose elsewhere in this overview (e.g. `"integrity check MUST pass"` in §Purpose, `"Integrity check MUST pass before mounting."` in the §Distinction table) are **examples of policy-SSOT style**, not normative requirements of this runbook overview — they are deliberately quoted so as not to introduce duplicate normative obligations.
+
+---
+
 ## Purpose
 
 This folder contains **executable operational procedures** — concrete commands, file paths, environment variables, and decision points — that translate the policy SSOTs in `spec/31-app/05-conventions/` into actions a human operator runs at 03:00 during an incident.
@@ -35,7 +48,7 @@ A **policy SSOT** says *what* must happen ("integrity check MUST pass"). A **run
 | **Policy SSOT** | `spec/31-app/05-conventions/` | Implementers, auditors | Normative prose, MUST/MAY | "Integrity check MUST pass before mounting." |
 | **Runbook** | `spec/15-wp-plugin-how-to/16-operator-runbooks/` | On-call operators | Imperative steps with copy-paste commands | `sqlite3 /var/restore/staging.sqlite 'PRAGMA integrity_check;' \| grep -q '^ok$'` |
 
-A runbook MUST cite the policy SSOT it implements (forward link). The policy SSOT MAY cite the runbook (back link, optional).
+A runbook MUST cite the policy SSOT it implements (forward link). The policy SSOT MAY cite the runbook (back link, optional). [gate: `G-RUNBOOK-CITES-POLICY` · AT: `AT-RUNBOOK-01`]
 
 ## Files
 
@@ -51,7 +64,7 @@ A runbook MUST cite the policy SSOT it implements (forward link). The policy SSO
 3. **Every branch is explicit.** "If X, go to step N. Else continue."
 4. **Every failure mode lists its rollback.** No silent abort.
 5. **Every runbook ends with a post-mortem template link.**
-6. **Every runbook MUST be drilled** at the cadence its policy SSOT requires.
+6. **Every runbook MUST be drilled** at the cadence its policy SSOT requires. [gate: `G-RUNBOOK-DRILLED` · AT: `AT-RUNBOOK-02`]
 7. **No filler prose.** Steps only.
 
 ## Hygiene gate
