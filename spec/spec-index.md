@@ -6,7 +6,7 @@
 > Any manual changes will be overwritten on the next run.
 
 **Generated:** 2026-04-30  
-**Total Files:** 1475  
+**Total Files:** 1477  
 **Top-Level Folders:** 26
 
 > **How to search:** Use `Ctrl+F` / `Cmd+F` to search by keyword, file name, or title.
@@ -15,7 +15,7 @@
 
 ## Table of Contents
 
-- [00-adrs](#00-adrs) — 40 file(s)
+- [00-adrs](#00-adrs) — 41 file(s)
 - [01-spec-authoring-guide](#01-spec-authoring-guide) — 27 file(s)
 - [02-coding-guidelines](#02-coding-guidelines) — 310 file(s)
 - [03-error-manage](#03-error-manage) — 191 file(s)
@@ -40,7 +40,7 @@
 - [34-activity-feed](#34-activity-feed) — 4 file(s)
 - [35-enforcement-rules](#35-enforcement-rules) — 4 file(s)
 - [36-user-management](#36-user-management) — 5 file(s)
-- [root](#root) — 22 file(s)
+- [root](#root) — 23 file(s)
 
 ---
 
@@ -86,6 +86,7 @@
 | [`00-adrs/0030-audit-exemption-manifest.md`](./00-adrs/0030-audit-exemption-manifest.md) | ADR-0030 — Audit Exemption Manifest is the Sole False-Positive Channel | — | Accepted |
 | [`00-adrs/0031-warn-only-strict-flip-pattern.md`](./00-adrs/0031-warn-only-strict-flip-pattern.md) | ADR-0031 — Warn-Only-with-STRICT-Flip is the Sole Gate-Graduation Pattern | — | Accepted |
 | [`00-adrs/0032-license-decision.md`](./00-adrs/0032-license-decision.md) | ADR-0032: License decision and ratification | — | — |
+| [`00-adrs/0033-umbrella-composes-orphan-sub-rules.md`](./00-adrs/0033-umbrella-composes-orphan-sub-rules.md) | ADR-0033: Umbrella Gates Compose Orphan Sub-Rule Tokens | — | — |
 | [`00-adrs/97-acceptance-criteria.md`](./00-adrs/97-acceptance-criteria.md) | ADRs — Acceptance Criteria | 1.15.0 | — |
 | [`00-adrs/97a-acceptance-criteria-fixtures.md`](./00-adrs/97a-acceptance-criteria-fixtures.md) | Spec — `00-adrs` Acceptance Criteria I/O Fixtures (ADR-0029 + ADR-0030) | 1.1.0 | Normative |
 
@@ -1628,10 +1629,11 @@
 |------|-------|---------|--------|
 | [`_AUDIT-EXEMPTIONS.md`](./_AUDIT-EXEMPTIONS.md) | Spec Audit — Heuristic Exemptions Manifest | 1.0.0 | Active |
 | [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md) | Gate Graduation Ledger | 1.2.0 | Active |
-| [`_GATE-REGISTRY.md`](./_GATE-REGISTRY.md) | Gate Registry — Master Index of `G-*` Compliance Gates | 1.7.41 | — |
+| [`_GATE-REGISTRY.md`](./_GATE-REGISTRY.md) | Gate Registry — Master Index of `G-*` Compliance Gates | 1.7.47 | — |
 | [`_LEDGER-G-00-AT-FIX-COMPANION-SHAPE-BASELINE.md`](./_LEDGER-G-00-AT-FIX-COMPANION-SHAPE-BASELINE.md) | Ledger — `G-00-AT-FIX-COMPANION-SHAPE` Baseline Allow-list | 1.0.0 | ACTIVE |
 | [`_LEDGER-G-13-BACKLINK-EXEMPT.md`](./_LEDGER-G-13-BACKLINK-EXEMPT.md) | Ledger — `G-13-FIXTURE-AS-SPEC-SHAPE` Phase-4 Backlink Exemptions | — | Live |
 | [`_LEDGER-G-NS-ADR-COVERAGE.md`](./_LEDGER-G-NS-ADR-COVERAGE.md) | Ledger — `G-NS-ADR-MUST-HAS-AT` Coverage Allow-list | 1.0.0 | DEFERRED |
+| [`_LEDGER-G-NS-CORE-MEMORY-COVERAGE.md`](./_LEDGER-G-NS-CORE-MEMORY-COVERAGE.md) | Ledger — `G-NS-CORE-MEMORY-COVERAGE` | — | — |
 | [`_LEDGER-G-NS-LEGACY-EXEMPT.md`](./_LEDGER-G-NS-LEGACY-EXEMPT.md) | Ledger — `G-NS-NO-DEPRECATED-ALIAS` Legacy Exemptions | 1.0.0 | Active |
 | [`00-overview.md`](./00-overview.md) | Specification Root — AI Entrypoint | 1.0.0 | Active |
 | [`00-scoping.md`](./00-scoping.md) | 00 — Spec Corpus Scoping | — | Authoritative |
@@ -1651,4 +1653,4 @@
 
 ---
 
-*Auto-generated index — 1475 files across 26 top-level folders.*
+*Auto-generated index — 1477 files across 26 top-level folders.*
