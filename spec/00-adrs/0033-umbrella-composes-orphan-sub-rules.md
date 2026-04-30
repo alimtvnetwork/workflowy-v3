@@ -24,6 +24,20 @@ Authors MUST NOT use this rule to silence genuine missing gates: a leaf token wh
 
 **Same-number umbrella disambiguation (added 2026-04-30 per F-AUDIT-39).** When a `G-{NN}` numeric prefix is reserved by ≥2 distinct registries (e.g. `G-24` reserved by both `spec/00-adrs/0024-…` AND `spec/31-app/05-conventions/02-ci-quality-gates.md`), every umbrella row sharing that number MUST disambiguate via a `family=` qualifier in the `(Umbrella)` marker — e.g. `(Umbrella, family=adr-ratification)` vs `(Umbrella, family=convention-drift)`. The runner MUST scope leaf coverage to the umbrella whose `family=` matches the leaf's anchor file path (path prefix `spec/00-adrs/` → `family=adr-…`; path prefix `spec/31-app/05-conventions/` → `family=convention-drift`; etc.). Leaf names within a `(family=X)` cluster MUST NOT collide with leaf names in a sibling `(family=Y)` cluster sharing the same `G-{NN}` prefix; collisions MUST be resolved by renaming the newer leaf with a family-suffix (e.g. `G-24-PRIVILEGE-MUTATION-GATED-DRIFT` when bound after an existing `G-24-PRIVILEGE-MUTATION-GATED` already lives under `family=adr-ratification`). Authors MUST run the F-AUDIT-34 5-step cross-walk against BOTH families before binding any new `G-{NN}-*` leaf when `G-{NN}` is double-reserved.
 
+**Multi-family parallel umbrellas (added 2026-04-30 per F-AUDIT-49 closure, this ADR amendment §A1).** A double-reserved `G-{NN}` prefix MAY register **multiple parallel `(Umbrella, family=X)` rows — one per anchor-family that hosts ≥1 composing leaf** — instead of forcing all leaves into a single family's anchor folder. Each parallel row MUST:
+
+1. Use a distinct `family=X` qualifier matching exactly one entry in the runner's `familyOfPath()` mapping.
+2. Inline-enumerate ONLY the leaves it covers (the leaves anchored under its `family=` path-prefix); leaves under a sibling family's path-prefix MUST be enumerated in the sibling row, not this one.
+3. Cite the same anchor ADR / convention file as its `Primary File` if the rule is shared, or its own family's anchor file if the rule has family-specific subclauses.
+4. NOT introduce leaf-name collisions (the family-suffix rule above still applies across all parallel rows).
+
+A leaf whose anchor file path matches NO registered `familyOfPath()` family (e.g. `spec/19-glossary.md`, `spec/31-app/06-endpoints/`) is **cross-cutting** and remains uncovered by any `family=X` umbrella. Cross-cutting leaves MUST either: (a) be hoisted to a registered-family anchor file by moving the rule's primary definition there; OR (b) be authored as standalone registry rows (no umbrella shortcut); OR (c) remain in the runner's `ALLOWED` set with an explicit `// cross-cutting cite` comment citing this §A1.
+
+This amendment supersedes the prior implicit assumption that a `G-{NN}` prefix could host only one umbrella row total. It does NOT relax the 5-step cross-walk requirement or the leaf-collision rule.
+
+**Worked example (G-24, 2026-04-30 batch):** `G-24` is double-reserved (ADR-0024 + 31-app/05-conventions). Current state ships ONE umbrella row `(Umbrella, family=convention-drift)` covering `G-24-DC-*` and the role-escalation lifecycle leaves. A future batch MAY register a second parallel row `(Umbrella, family=adr-ratification)` covering `G-24-AUDIT-SCORE-FROZEN` and the soft-confirm-triage leaves anchored under `spec/00-adrs/0024-…`. The 5 cross-cutting `G-24-*` leaves cited from `spec/19-glossary.md` and `spec/31-app/06-endpoints/` (`G-24-PRIVILEGE-MUTATION-GATED`, `G-24-PRIVILEGE-MUTATION-GATED-DRIFT`, `G-24-ALIAS-BRIDGE-AUTHORITY`, `G-24-TRIAGE-BANNER-PRESENT`, `G-24-NO-SINGLETON-GROUPS`) remain in the runner's `ALLOWED` set per option (c) above, since their anchor files are unmapped families.
+
+
 ## Consequences
 
 **Positive**
