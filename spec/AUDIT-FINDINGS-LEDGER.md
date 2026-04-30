@@ -55,8 +55,9 @@ Out-of-vocabulary statuses (`Pending`, `WIP`, `Wontfix`, `Deferred`, …) are
 | F-AUDIT-30 | MED | v7 | Resolved | This ledger + hygiene gate #74 | [`spec/AUDIT-FINDINGS-LEDGER.md`](./AUDIT-FINDINGS-LEDGER.md), [`scripts/spec-hygiene/74-check-audit-findings-ledger.mjs`](../scripts/spec-hygiene/74-check-audit-findings-ledger.mjs) |
 | F-AUDIT-31 | MED | v6 | Resolved | ADR-0030 audit-exemption manifest | [`spec/00-adrs/0030-audit-exemption-manifest.md`](./00-adrs/0030-audit-exemption-manifest.md) |
 | F-AUDIT-32 | LOW | v6 | Resolved | `_GATE-REGISTRY` row + `AT-FIX-COMPANION-SHAPE` baseline | [`spec/_GATE-REGISTRY.md`](./_GATE-REGISTRY.md), [`spec/_LEDGER-G-00-AT-FIX-COMPANION-SHAPE-BASELINE.md`](./_LEDGER-G-00-AT-FIX-COMPANION-SHAPE-BASELINE.md) |
+| F-AUDIT-33 | LOW | audit-v10 (2026-04-30) | Open | Memory↔gate coverage gap: several `mem://index.md` Core rules (e.g. "lucide-react sole icons", "HSL-only Tailwind tokens") are restated in memory but lack a confirmed enforcement gate in `_GATE-REGISTRY.md`. Memory drifts silently — Core rules can age out without CI surfacing it. Fix: produce a Core↔Gate coverage ledger (`_LEDGER-G-NS-CORE-MEMORY-COVERAGE.md`) cross-walking each Core line to a gate ID or to a `RESERVED:` slot per ADR-0031. — |
 
-**Open count:** 0 — **Resolved:** 10 — **Stale:** 1 — **Retracted:** 1
+**Open count:** 1 — **Resolved:** 11 — **Stale:** 1 — **Retracted:** 1
 
 ---
 
