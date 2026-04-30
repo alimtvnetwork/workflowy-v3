@@ -74,7 +74,7 @@ This ledger remedies that by making the Core↔Gate mapping **first-class and ve
 
 | # | Core rule | Coverage | Notes |
 |---|---|---|---|
-| G1 | "Tailwind CSS v4 via `@tailwindcss/vite` in `src/index.css` `@theme` block; sole design-token registry, HSL-only" | ✅ `G-12-LOGICAL-MARGINS-PADDING`, `G-12-LOGICAL-TEXT-ALIGN`, `G-12-LOGICAL-INSET`; **HSL-only** + **`@theme`-block-as-SSOT** uncovered | Logical-utility gates cover the RTL story; HSL-only is policy-only today. **AUDIT-FIX-02 (`check-tailwind-tokens-resolved.mjs`)** in the open-task list would close half this gap. |
+| G1 | "Tailwind CSS v4 via `@tailwindcss/vite` in `src/index.css` `@theme` block; sole design-token registry, HSL-only" | ✅ `G-12-LOGICAL-MARGINS-PADDING`, `G-12-LOGICAL-TEXT-ALIGN`, `G-12-LOGICAL-INSET`, `G-32-HSL-ONLY-TOKENS`, `G-32-TOKEN-REGISTRY`, `G-32-NO-TAILWIND-CONFIG`, `G-32-NO-INLINE-STYLE`, `G-32-NO-RAW-COLORS`, `G-32-SEMANTIC-NAMING`, `G-32-VARIANT-SEMANTIC-ONLY`, `G-32-NO-SECOND-STYLING-SYSTEM`, `G-ADR-0003-TAILWIND-V4-THEME-BLOCK`, `G-ADR-0003-NO-TAILWIND-CONFIG-FILE` (12 gates total — HSL-only + `@theme`-SSOT both fully covered under `G-32-*` ADR-0012 namespace + `G-ADR-0003-*`, discovered 2026-04-30 during GAPCLOSE-G1 prep, see F-AUDIT-34 fifth recurrence / F-AUDIT-36) | Excellent coverage on all three sub-clauses (HSL-only, `@theme`-SSOT, Tailwind-v4-via-vite). **Originally classified as "uncovered" in v1 of this ledger** (cross-walk grep targeted `G-12-*` namespace only, missed the entire `G-32-*` overload that historically owns ADR-0012 D2/D3 gates — same false-positive pattern as B2/C3/F3/I2/J1). GAPCLOSE-G1 retracted; AUDIT-FIX-02 is now a polish-tooling task (raises grep enforcement of existing DOC gates), not a coverage closer. No registry change required. |
 
 ### H. Mirror
 
@@ -113,7 +113,7 @@ This ledger remedies that by making the Core↔Gate mapping **first-class and ve
 
 ---
 
-## Coverage summary (as of 2026-04-30, post-GAPCLOSE-F3-RETRACTION + F-AUDIT-34 instance #4)
+## Coverage summary (as of 2026-04-30, post-GAPCLOSE-G1-RETRACTION + F-AUDIT-34 instance #5)
 
 | Status | Count | % |
 |---|---|---|
@@ -124,22 +124,22 @@ This ledger remedies that by making the Core↔Gate mapping **first-class and ve
 
 > Counts re-derived 2026-04-30 by `scripts/spec-hygiene/78-check-core-memory-coverage-ledger.mjs` (NEW-27). **All originally-listed RESERVED slots now resolved** (3 by discovery via F-AUDIT-34 retractions, 1 by gate authoring via GAPCLOSE-B2). Earlier "23 lines" figure conflated mem-index Core lines (≈14) with mapped sub-rules (26).
 
-**Open gaps remaining (0 RESERVED slots + 3 partial-coverage notes):**
+**Open gaps remaining (0 RESERVED slots + 2 partial-coverage notes):**
 
 1. ~~**B2** — Forbidden-runtimes.~~ **CLOSED 2026-04-30 — `G-10-FORBIDDEN-RUNTIMES` (DOC-NORM) registered by GAPCLOSE-B2; registry v1.7.46.**
 2. ~~**C3** — shadcn/Radix component-base lock.~~ **CLOSED 2026-04-30 — pre-existing `G-26-*` family (5 gates) covers it (F-AUDIT-34 instance #3).**
 3. **E1** — 15-line logic limit + positive-guard-clause grep gates (partial coverage).
 4. ~~**F3** — 250-item per-view cap.~~ **CLOSED 2026-04-30 — pre-existing `G-31-VIEW-250-CAP` + 4 sibling gates cover it (F-AUDIT-34 instance #4; gate lives in ADR-0008 namespace, not ADR-0017).**
-5. **G1** — HSL-only Tailwind tokens + `@theme`-block-as-SSOT gates (AUDIT-FIX-02 closes half).
+5. ~~**G1** — HSL-only Tailwind tokens + `@theme`-SSOT.~~ **CLOSED 2026-04-30 — pre-existing `G-32-*` family (9 gates) + `G-ADR-0003-TAILWIND-V4-THEME-BLOCK` cover it (F-AUDIT-34 instance #5 / F-AUDIT-36; gates live in `G-32-*` overload namespace, not `G-12-*`).**
 6. ~~**I2** — Undo cap 100.~~ **CLOSED 2026-04-30 — pre-existing `G-25-UNDO-CAP-100` covers it.**
 7. ~~**J1** — WebSocket/long-poll ban.~~ **CLOSED 2026-04-30 — pre-existing `G-25-TRANSPORT-SSE-ONLY` covers it.**
 8. **C1** — Version-pin gate for Vite/React/TS (NEW-25 covers this).
 
-**Closure progress:** ALL 4 originally-listed RESERVED slots now closed — 3 by discovery (F-AUDIT-34 false-positive cascade, instances #1–3) and 1 by gate authoring (GAPCLOSE-B2, registry v1.7.46). PLUS instance #4 of F-AUDIT-34 strengthened F3 from "partial" to "fully covered" (5 additional sibling gates discovered: `G-31-VIEW-250-CAP`, `G-31-NO-PARALLEL-NODE`, `G-31-NODE-ID-PERSISTENT`, `G-14-QUEUE-INDEPENDENT-OF-VIEW-CAP`, `G-35-NO-SILENT-TRUNCATION`, `G-EDGE-U6-QUOTA-BLOCK`). Registered count unchanged at 20/26 (77%) because F3 already counted as ✅ in v1 — the discovery upgrades the row from "✅ partial" to "✅ excellent". Only 3 remaining partial-coverage notes (E1/G1/C1) — each is a known sub-clause gap, not a RESERVED slot. Core↔Gate ledger is now **structurally complete**.
+**Closure progress:** ALL 4 originally-listed RESERVED slots now closed — 3 by discovery (F-AUDIT-34 false-positive cascade, instances #1–3) and 1 by gate authoring (GAPCLOSE-B2, registry v1.7.46). Instance #4 strengthened F3 from "partial" to "fully covered". Instance #5 (F-AUDIT-36) strengthened G1 from "partial" to "fully covered" (9 `G-32-*` sibling gates discovered: `G-32-HSL-ONLY-TOKENS`, `G-32-TOKEN-REGISTRY`, `G-32-NO-TAILWIND-CONFIG`, `G-32-NO-INLINE-STYLE`, `G-32-NO-RAW-COLORS`, `G-32-SEMANTIC-NAMING`, `G-32-VARIANT-SEMANTIC-ONLY`, `G-32-NO-SECOND-STYLING-SYSTEM`, `G-32-DARK-MODE-PARITY`). Registered count unchanged at 20/26 (77%) because G1 already counted as ✅ in v1 — the discovery upgrades the row from "✅ partial" to "✅ excellent". **Only 2 remaining partial-coverage notes (E1/C1)** — each is a known sub-clause gap, not a RESERVED slot. Core↔Gate ledger is now **structurally complete**.
 
 ### v1 cross-walk methodology error (root-cause)
 
-The v1 cross-walk used per-namespace greps (`G-21-UNDO`, `G-NS-WEBSOCKET`, `G-22-COMPONENT-BASE`) that assumed gate names match Core-rule topics 1:1. **They don't.** The `G-25-*` family historically absorbs both SSE rules AND undo/queue rules together (ADR-0025 §Gates Touched cross-references undo gates as siblings); the `G-26-*` family covers all component-base rules even though ADR-0022 might suggest a `G-22-` namespace. Future cross-walks MUST grep by **ADR anchor** (`spec/00-adrs/0021-`, `spec/00-adrs/0022-`, `spec/00-adrs/0025-`) AND by **rule keyword** (`undo`, `WebSocket`, `shadcn`, `Radix`, `cap.*100`) — not by gate-name namespace alone. **Three instances now confirm this is a systemic v1 methodology defect, not isolated cases — NEW-27 (registry-cross-walk hygiene gate) is the durable fix.**
+The v1 cross-walk used per-namespace greps (`G-21-UNDO`, `G-NS-WEBSOCKET`, `G-22-COMPONENT-BASE`, `G-12-HSL`) that assumed gate names match Core-rule topics 1:1. **They don't.** The `G-25-*` family historically absorbs both SSE rules AND undo/queue rules together (ADR-0025 §Gates Touched cross-references undo gates as siblings); the `G-26-*` family covers all component-base rules even though ADR-0022 might suggest a `G-22-` namespace; the `G-32-*` overload (registry NOTE: "G-32-* prefix is overloaded across ADR-0011/ADR-0012/ADR-0032 + 32-ui-design — pre-existing convention; no rename") owns all ADR-0012 D2/D3 gates even though `G-12-*` exists for the same ADR's D7 logical-utility gates. Future cross-walks MUST grep by **ADR anchor** (`spec/00-adrs/0021-`, `spec/00-adrs/0022-`, `spec/00-adrs/0025-`, `spec/00-adrs/0012-`) AND by **rule keyword** (`undo`, `WebSocket`, `shadcn`, `Radix`, `cap.*100`, `HSL`, `@theme`) — not by gate-name namespace alone. **Five instances now confirm this is a systemic v1 methodology defect, not isolated cases — NEW-27 (registry-cross-walk hygiene gate) is the durable fix.**
 
 ---
 
