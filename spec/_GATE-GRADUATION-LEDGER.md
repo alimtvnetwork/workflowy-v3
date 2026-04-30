@@ -48,6 +48,7 @@ A WARN-only gate that lacks a documented **flip criterion** drifts into permanen
 | `G-00-PLACEHOLDER-DENSITY` | WARN | global density ≤8% AND no scope >15% (current: 11.8%, 8 scopes >15%) | set `STRICT = true` in `59-check-placeholder-density.mjs` | 2026-07-29 | 2026-04-29 | #2/#3/#4/#7, #33 |
 | `G-32-LICENSE-FILES-PRESENT` | WARN | 3 required files present at repo root (`LICENSE` GPL-2.0-or-later full text, `LICENSE-SPEC` CC-BY-4.0 full text, `TRADEMARK.md`) for ≥7 consecutive CI runs (current: 0/3 — runner is skeleton, files land in first F-IMPL cycle) | flip `STRICT = true` in `scripts/spec-hygiene/75-check-license-files-present.mjs` | 2026-09-30 | 2026-04-29 | #52c (this row); ADR-0032 ratification (#52); F-IMPL-AUD-03 batch (file landing) |
 | `G-00-ORPHAN-GATE-ID-DRIFT` | WARN | drift count ≤ 5 (current: 63 cite-only-no-row sub-rule tokens) OR ADR adopting umbrella-coverage rule (treat `G-NN-…` as covered by `G-NN`) | flip `process.exit(0)` to `process.exit(1)` in drift branch of `76-check-orphan-gate-ids.mjs` | 2026-05-14 | 2026-04-30 | #6-batch-37 (NEW-12 closure) |
+| `G-00-ORPHAN-MUST-CITATION-ADJACENCY` | WARN | total WARN count = 0 for ≥2 consecutive weeks (current: 18 across 16 files; baseline established 2026-04-30) | flip `process.exit(0)` to `process.exit(1)` at end of `77-check-orphan-must-citations.mjs` when totalWarn > 0 | 2026-05-28 | 2026-04-30 | #6-batch-44 (NEW-21 closure) |
 
 ---
 
