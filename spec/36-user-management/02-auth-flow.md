@@ -248,7 +248,7 @@ The full DDL is owned by [`spec/04-database-conventions/`](../04-database-conven
 
 ### 4.3 JWT alternative (when used)
 
-If JWT is preferred over server-side sessions, the payload MUST be the **minimum** legal set:
+If JWT is preferred over server-side sessions, the payload MUST be the **minimum** legal set [gate: G-36-SESSION-MIN]:
 ```json
 { "sub": "usr_abc", "iat": 1714464000, "exp": 1714468800 }
 ```
@@ -332,7 +332,7 @@ Exceeding any limit → HTTP 429 with `Errors: [{ Code: "AUTH_RATE_LIMIT", Retry
 | `challenge-locked` | → `anonymous` (token invalidated, must re-login) |
 | `logged-out` | → `anonymous` (cookie cleared) |
 
-**Forbidden transitions** (server MUST reject):
+**Forbidden transitions** (server MUST reject) [gate: G-36-NO-SELF-ROLE, G-36-SESSION-MIN]:
 - `anonymous` → `active` directly without `/auth/login` or `/auth/register + /confirm`
 - `mfa-pending` → `active` without `/mfa/verify`
 - Any → `active` while `Session.RevokedAt IS NOT NULL`
@@ -341,7 +341,7 @@ Exceeding any limit → HTTP 429 with `Errors: [{ Code: "AUTH_RATE_LIMIT", Retry
 
 ## 8. Anti-Patterns Specific to Auth Flow
 
-The AI MUST NOT:
+The AI MUST NOT [gate: G-36-PASSWORD-WRITE-ONLY, G-36-CLIENT-NO-ROLE]:
 
 | # | Anti-pattern | Why it fails |
 |---|---|---|
@@ -350,7 +350,7 @@ The AI MUST NOT:
 | 3 | Persist `MfaChallengeToken` across page reloads in `localStorage` | Token is one-shot per challenge; persistence enables replay. |
 | 4 | Accept `Authorization: Bearer <jwt>` AND `Cookie: Session=…` simultaneously | Dual-auth ambiguity → privilege confusion. Pick one per request. |
 | 5 | Issue session before email is confirmed in registration flow | Allows unverified accounts to act; gate `pending-confirm` → `active` strictly. |
-| 6 | Reuse a confirmed `EmailConfirmation` token | One-shot tokens MUST be deleted on use. |
+| 6 | Reuse a confirmed `EmailConfirmation` token | One-shot tokens MUST be deleted on use [gate: G-36-PASSWORD-WRITE-ONLY]. |
 | 7 | Log password (plaintext OR hash) to PHP error log or stdout | `error_log($password)` in any form fails security review. |
 
 ---
