@@ -607,3 +607,21 @@ This is the **third** scope-correction in 3 turns (F-SCOPE-01 → 02 → 03), ea
 - **Remaining after closure:** Per Gemini, "the risk that the AI fails to follow the checklist still remains, but it's significantly lower as the key information is centralized and part of its immediate prompt context." Future enhancement: cite `spec/00-ai-onboarding-ssot.md` in the agent system prompt.
 - **Score impact:** +1.5pp expected (Gemini-projected); requires v9 re-baseline to ratify.
 - **Files:** `spec/00-ai-onboarding-ssot.md` (created, 188 lines), `spec/AUDIT-FINDINGS-LEDGER.md` (this entry).
+
+---
+
+## F-AUDIT-45 — 63 Cited-but-Unregistered "Orphan" Gate IDs
+
+- **Source:** Gemini-2.5-Pro v8 audit (2026-04-30)
+- **Original severity:** 6/10 (medium) — blocked full compliance
+- **Status:** **SUBSTANTIALLY CLOSED** 2026-04-30 (drift reduced 320 → 74, −77%)
+- **Inventory correction:** Original "63 orphans" estimate from v8 was stale; actual pre-fix drift was **320 tokens** (5× the v8 number — confirms F-AUDIT-32 inventory-drift hypothesis).
+- **Resolution (3-part fix):**
+  1. **Runner extension** — `scripts/spec-hygiene/76-check-orphan-gate-ids.mjs` extended to honor ADR-0033 §Decision: parses `(Umbrella)` and `(Umbrella, family=X)` markers from `_GATE-REGISTRY.md` rows; auto-covers any leaf token matching `^{umbrella}-[A-Z0-9-]+$` whose anchor file's family matches. Also added L-07 ledger-file exemption (`AUDIT-FINDINGS-LEDGER`, `AMBIGUITY-LEDGER`, `_GATE-GRADUATION-LEDGER`, `_LEDGER-*`, `18-spec-issues/`).
+  2. **`familyOfPath()` mapping** — extended from 3 paths to 7: `spec/00-adrs/` → `adr-ratification`; `spec/31-app/05-conventions/` → `convention-drift`; `spec/31-app/02-workflows/` → `workflow`; `spec/15-wp-plugin-how-to/` → `wp-plugin`; `spec/3[3-6]-` → `feature-spec`; `spec/02-coding-guidelines/` + `spec/35-enforcement-rules/` → `cross-cutting`.
+  3. **`_GATE-REGISTRY.md` §5 appendix** — registered 19 new umbrella rows: 4 for §33 (G-33-DM/SF/AR/RE), 4 for §34 (G-34-ES/CP/RP/UI), 4 for §35 (G-35-RV/BE/RT/EL), 1 for §36 (G-36-ADMIN), 1 each for cross-cutting (G-ADR, G-NS, G-CG, G-EDGE, G-WF, G-25-SSE-ONLY).
+- **Hard-fail flip:** Runner now supports `ORPHAN_GATE_HARD_FAIL=1` env var → exits 1 on drift>0. Graduation criterion bumped per ADR-0033 from "drift ≤ 5" to "drift = 0". Currently WARN-only; flip to hard-fail when remaining 74 leaves resolved.
+- **Inventory-Audit:** 2026-04-30 | runner-output-scan | Was: drift=320 | Is: drift=74 | umbrella-covered: 181 | ledger-exempt: 47 | Δ −246 tokens (77% reduction).
+- **Remaining 74 tokens:** Mostly bare-namespace shorthand cites (e.g. `G-26-WIRE`, `G-04-WIRE`, `G-EXPORT`, `G-WPDEPLOY`, `G-A11Y`) and a handful of true new-leaf orphans in §35/§36 that need either umbrella-row creation or registration. Tracked as **F-AUDIT-45-FOLLOWUP** for next pass.
+- **Score impact:** +1.0pp expected (Gemini-projected; high-leverage Class-A blocker resolved); requires v9 re-baseline to ratify.
+- **Files:** `scripts/spec-hygiene/76-check-orphan-gate-ids.mjs` (runner extension, ADR-0033 logic + ledger exemption + hard-fail mode), `spec/_GATE-REGISTRY.md` (§5 appendix with 19 umbrella rows), `spec/AUDIT-FINDINGS-LEDGER.md` (this entry).
