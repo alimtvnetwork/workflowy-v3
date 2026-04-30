@@ -205,7 +205,7 @@ Map row for naming-scheme documentation:
 To **revisit** a specific entry (e.g. you intend to delete the prose row),
 remove it from `REDUNDANCY_ALLOWLIST` in the runner and rerun the runner.
 To suppress newly-introduced redundancy in the future, add the prefix with
-a one-line rationale in the appropriate category.
+a one-line rationale in the matching category (FrontendOnly / BackendOnly / SharedDocs / Provisional).
 
 **Why WARN-only.** Some closed ID coverage is provisional (e.g. an alias
 table may be removed in a v3.0.0 sweep). Failing CI on redundancy would
