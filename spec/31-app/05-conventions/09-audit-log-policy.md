@@ -178,7 +178,7 @@ The `Audit::action()` PHP helper resolves `DOT.UPPER_CASE` shorthand to the cano
 
 G-23 verifies every `Audit::action(<shorthand>)` call resolves to a row in §2.1; unmapped shorthand fails CI.
 
-> Adding a new action requires (a) a new row in the appropriate sub-table above, (b) a translation key under `errors.audit.*` in i18n table, and (c) an acceptance test under `97-acceptance-criteria.md` (`AT-AUDIT-*`).
+> Adding a new action requires (a) a new row in the matching sub-table above (Item / Mirror / Membership / Trash / Auth / Preference — pick by the action's primary noun), (b) a translation key under `errors.audit.*` in i18n table, and (c) an acceptance test under `97-acceptance-criteria.md` (`AT-AUDIT-*`).
 
 ### 2.2 · Forbidden categories
 
