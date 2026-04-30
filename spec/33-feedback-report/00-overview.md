@@ -135,7 +135,7 @@ Specification for the in-app feedback and bug-report feature in WorkFlowy. Lets 
 | 01 | [`01-data-model.md`](./01-data-model.md) | `FeedbackReport` table schema (PascalCase, `FeedbackReportId` PK), enums, transition matrix, Diagnostics shape | ✅ **Authored 2026-04-30** |
 | 02 | [`02-submission-flow.md`](./02-submission-flow.md) | Form UX, validation, optimistic submission | ✅ **Authored 2026-04-30** |
 | 03 | [`03-admin-review-ui.md`](./03-admin-review-ui.md) | Inbox, filters, status transitions | ✅ **Authored 2026-04-30** |
-| 04 | `04-retention-and-export.md` | Retention policy, CSV export, GDPR | Pending |
+| 04 | [`04-retention-and-export.md`](./04-retention-and-export.md) | Retention policy, CSV export, GDPR | ✅ **Authored 2026-04-30** |
 
 ---
 
