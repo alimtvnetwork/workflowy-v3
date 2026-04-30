@@ -154,7 +154,9 @@ echo "✅ PASS: Axios version $CURRENT is compliant"
 
 ---
 
-## 5. Version Upgrade Procedure
+## 5. Version Upgrade Procedure — gate `G-32-AXIOS-UPGRADE-PROCEDURE` · AT `AT-AXIOS-04`
+
+If a new Axios version needs to be adopted, the following 6-step procedure MUST be followed (binds `G-32-AXIOS-UPGRADE-PROCEDURE`):
 
 If a new Axios version needs to be adopted:
 
