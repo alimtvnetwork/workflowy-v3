@@ -110,13 +110,13 @@ node scripts/spec-hygiene/00-run-all.mjs
 
 ## Fixtures
 
-This SSOT is gate-enforced — the script's pass/fail output IS the fixture, in the same lint-shape pattern as G-38. No separate fixtures file is needed; covered by the global P2g sweep — see [`../97a-acceptance-criteria-fixtures.md`](../97a-acceptance-criteria-fixtures.md).
+This SSOT is gate-enforced — the script's pass/fail output IS the fixture, in the same lint-shape pattern as `G-WORDING-AMBIGUOUS-LINT` (legacy alias `G-38`). No separate fixtures file is needed; covered by the global P2g sweep — see [`../97a-acceptance-criteria-fixtures.md`](../97a-acceptance-criteria-fixtures.md).
 
 ---
 
 ## Related
 
-- [`./20-rfc-2119-wording-policy.md`](./20-rfc-2119-wording-policy.md) — Sister SSOT for keyword discipline (G-38)
+- [`./20-rfc-2119-wording-policy.md`](./20-rfc-2119-wording-policy.md) — Sister SSOT for keyword discipline (`G-WORDING-AMBIGUOUS-LINT`, legacy alias `G-38`)
 - [`./19-acceptance-criteria-io-table.md`](./19-acceptance-criteria-io-table.md) — Fixture format SSOT
 - [`../../.lovable/plans/archive/09-f07-reconciliation.md`](../../.lovable/plans/archive/09-f07-reconciliation.md) — F7 reconciliation log
 

@@ -27,7 +27,7 @@ Every spec sentence that defines behavior MUST be unambiguous to both AI agents 
 
 ---
 
-## Forbidden phrases (gated by G-38)
+## Forbidden phrases (gated by `G-WORDING-AMBIGUOUS-LINT`, legacy alias `G-38`)
 
 | Phrase | Replace with |
 |--------|--------------|
@@ -42,7 +42,7 @@ Every spec sentence that defines behavior MUST be unambiguous to both AI agents 
 
 ## Allow-listed exemptions
 
-The G-38 gate intentionally skips:
+The `G-WORDING-AMBIGUOUS-LINT` (legacy alias `G-38`) gate intentionally skips:
 
 - `spec/18-spec-issues/**` — audits document past wording verbatim.
 - `spec/**/_archive*/**` — archived content is frozen.
