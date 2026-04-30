@@ -3,8 +3,8 @@
 > **API Contract:** See [`spec/31-app/06-endpoints/14-concurrency-and-sync.md`](../06-endpoints/14-concurrency-and-sync.md) for the endpoint surface that backs this feature (request/response envelopes, status codes, error shapes). Bidirectional cross-link added 2026-04-30 to close **F-AUD42-04** (App-folder audit Phase 5).
 
 
-> **Version:** 1.8.0
-> **Updated:** 2026-04-27 — Linked addendum `14b-offline-queue.md` (full local mirror, FIFO replay, field-level LWW with server timestamp + OwnerId tie-break) and sibling `16-search-ranking.md`. Prior: 2026-04-27 — Polish: added AT-CONCURRENCY-16..22 covering §14.5 SSE contract (endpoint handshake, event frame format, Last-Event-Id resume/replay, cursor-overflow backpressure, poll-fallback shape, transactional emission atomicity, forbidden-transports CI guard) plus 7 matching Component Contract rows (planned WP plugin paths). Closes re-audit §4 item 3. Prior: 2026-04-26 — Re-audit residual fix: §14.2 + §14.4 pseudocode PascalCase'd per Casing Layers rule (closes residual F-08). Prior: 2026-04-26 — Round-3 AUDIT-06: §14.5 SSE Transport Contract added. Prior: 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename. Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer. Prior: 2026-04-26 — APP-FIX-09: §14.4 `Mirrors.BrokenAt` LWW rule. v1.2.0 added Storage section. v1.1.0 pinned transport to WP-native SSE + poll fallback.
+> **Version:** 1.9.0
+> **Updated:** 2026-04-30 — **F-AUD42-10 (HIGH)**: removed 5 s polling fallback contract (§14.5.4, AT-CONCURRENCY-20, cursor-overflow `resumeWith:'poll'`, L18 transport sentence, diagram fallback rect, `PollEndpoint.php` component, `G-25-POLL-IDEMPOTENT` gate) — ADR-0025 mandates **SSE-only**, no polling/long-poll/WebSocket. Replaced with: SSE-drop → exponential-backoff reconnect using `Last-Event-Id`; cursor-overflow → client triggers a fresh REST snapshot fetch via the loader (per ADR-0023 loader↔queue contract), then re-opens SSE. Prior: 2026-04-27 — Linked addendum `14b-offline-queue.md`. Prior: 2026-04-27 — Polish: added AT-CONCURRENCY-16..22. Prior: 2026-04-26 — Re-audit residual fix: §14.2 + §14.4 pseudocode PascalCase'd. Prior: 2026-04-26 — Round-3 AUDIT-06: §14.5 SSE Transport Contract added. Prior: 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename. Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer. Prior: 2026-04-26 — APP-FIX-09: §14.4 `Mirrors.BrokenAt` LWW rule. v1.2.0 added Storage section. v1.1.0 pinned transport to WP-native SSE.
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 > **Addendum:** [`14b-offline-queue.md`](./14b-offline-queue.md) — Offline full local mirror + FIFO replay + LWW resolution.
@@ -15,7 +15,7 @@
 
 This file is the **single source of truth** for how concurrent edits resolve across tabs, devices, and collaborators. Every other feature (mirrors, sharing, multi-select, today, board) defers to the rules here. The MVP strategy is **field-level Last-Write-Wins (LWW)** keyed by **server-issued timestamp** with a deterministic tie-break, plus a visible "Restored remote change" banner whenever a local edit is overwritten. CRDT/OT is out of scope for MVP.
 
-**Transport (per `00-overview.md` L9):** Real-time delivery uses **WP-native Server-Sent Events (SSE)** on a long-lived `text/event-stream` endpoint, with a **5 s polling fallback** when SSE is unavailable (proxy buffering, mobile background, etc.). WebSockets, Postgres `LISTEN/NOTIFY`, and external pub/sub services are explicitly out of scope. Wherever this spec says "realtime channel `item:<id>`" or "realtime broadcast", read it as: *the WP plugin's SSE multiplexer pushes a JSON event over the open SSE connection scoped to that item, OR the next 5 s poll surfaces it*.
+**Transport (per `00-overview.md` L9 and ADR-0025):** Real-time delivery is **SSE-only** — WP-native Server-Sent Events on a long-lived `text/event-stream` endpoint (`/stream/page/{id}` and `/stream/user/{id}`). When SSE is temporarily unavailable (proxy buffering, mobile background, transient network), the client performs **exponential-backoff reconnect** using `Last-Event-Id` for replay; it does **not** poll. WebSockets, long-poll, short-poll, Postgres `LISTEN/NOTIFY`, Redis pub/sub, Pusher, Ably, and Supabase Realtime are explicitly out of scope `[gate: G-25-SSE-ONLY-NO-POLL]`. Wherever this spec says "realtime channel `item:<id>`" or "realtime broadcast", read it as: *the WP plugin's SSE multiplexer pushes a JSON event over the open SSE connection scoped to that item; on disconnect the client reconnects with `Last-Event-Id` and the server replays missed events*.
 
 ## User Story
 
@@ -113,7 +113,7 @@ On incoming write W setting Mirrors.BrokenAt = X (X may be NULL or a timestamp):
 
 ## 14.5 SSE Transport Contract (Round-3 AUDIT-06)
 
-> **Why this section:** §14.1–§14.4 specify the **behavior** of conflict resolution but leave the **wire format** unspecified. Without a fixed transport contract, an implementer must invent event names, payload shapes, resume semantics, and the poll-fallback endpoint — and any guess will diverge from peer code (server-side reaper, mirror broadcaster, offline replay queue) that all consume the same channel. This section pins those choices. SSOT for runtime: WordPress plugin (PHP + SQLite, per `mem://constraints/backend-runtime-deferred`); SSOT for "no WebSockets/Pusher": `00-overview.md` L9.
+> **Why this section:** §14.1–§14.4 specify the **behavior** of conflict resolution but leave the **wire format** unspecified. Without a fixed transport contract, an implementer must invent event names, payload shapes, and resume semantics — and any guess will diverge from peer code (server-side reaper, mirror broadcaster, offline replay queue) that all consume the same channel. This section pins those choices. SSOT for runtime: WordPress plugin (PHP + SQLite, per `mem://constraints/backend-runtime-deferred`); SSOT for "SSE-only, no polling/WebSockets": `00-overview.md` L9 + **ADR-0025**.
 
 ### 14.5.1 SSE Endpoint
 
@@ -126,7 +126,7 @@ On incoming write W setting Mirrors.BrokenAt = X (X may be NULL or a timestamp):
 | Heartbeat | Comment line `:hb\n\n` every **15 s**. Client treats absence > 30 s as a drop. |
 | Initial replay | On connect, server replays all events with `ServerTs > Last-Event-Id` (if header present) up to the current cursor, then streams live. |
 | Server-side `retry:` | `5000` (ms). Client honors browser default if absent. |
-| Backpressure | If the client falls > 1000 events behind, server closes with `event: cursor-overflow` carrying `{ resumeWith: 'poll' }`. Client switches to §14.5.4 poll fallback until next page load. |
+| Backpressure | If the client falls > 1000 events behind, server closes with `event: cursor-overflow` carrying `{ ResumeWith: 'snapshot' }`. Client MUST trigger a fresh REST snapshot fetch via the loader (ADR-0023 loader↔queue contract) and then re-open SSE with the new cursor. **Polling is forbidden** `[gate: G-25-SSE-ONLY-NO-POLL]`. |
 
 ### 14.5.2 Event Name Vocabulary (closed set)
 
@@ -142,7 +142,7 @@ Every SSE message has an `event:` line drawn from this list. Unknown events MUST
 | `share-granted` | New row in `Shares` table | `{ ItemId, WorkspaceId, GranteeUserId, Permission, ServerTs, ActorUserId }` |
 | `share-revoked` | `Shares` row removed or `RevokedAt` set | `{ ItemId, WorkspaceId, GranteeUserId, ServerTs, ActorUserId }` |
 | `presence` | Optional avatar dot per §14.1 | `{ ItemId, WorkspaceId, UserId, State: 'editing' \| 'viewing' \| 'idle' }` — non-authoritative; clients MAY drop on overload |
-| `cursor-overflow` | Backpressure (see §14.5.1) | `{ resumeWith: 'poll' }` — client switches to poll mode |
+| `cursor-overflow` | Backpressure (see §14.5.1) | `{ ResumeWith: 'snapshot' }` — client MUST fetch a fresh REST snapshot via the loader, then re-open SSE (no polling) |
 | `:hb` (comment, not `event:`) | Every 15 s | empty — keepalive only |
 
 **Forbidden:** ad-hoc event names (`update`, `change`, `notify`, `broadcast`); JSON envelope keys outside the schemas above; nesting (no event carries another event); binary frames.
@@ -151,21 +151,16 @@ Every SSE message has an `event:` line drawn from this list. Unknown events MUST
 
 Every event line MUST include `id: {ServerTs}` `[gate: G-25-SSE-LAST-EVENT-ID]` where `ServerTs` is the integer UTC millisecond stamp from §14.2. The browser auto-sends the last received id as `Last-Event-Id` on reconnect; the server uses it for replay (§14.5.1). The client MUST NOT compare `id` values across workspaces `[gate: G-25-SSE-CURSOR-WORKSPACE-SCOPED]` — the cursor is scoped per `(UserId, WorkspaceId)` and stored in the Root DB `SyncCursor` table (per §Storage).
 
-### 14.5.4 Poll Fallback Endpoint
+### 14.5.4 Disconnect Recovery (SSE-only — no polling)
 
-When SSE is unavailable (proxy strips `text/event-stream`, mobile background, `cursor-overflow`), the client polls every **5000 ms**:
+Per **ADR-0025**, polling is forbidden in all forms (short-poll, long-poll, server-managed long-poll). When the SSE connection drops or backpressure fires, recovery is one of two paths only:
 
-| Aspect | Value |
-|--------|-------|
-| URL | `GET /wp-json/workflowy/v1/sync/poll?workspaceId={WorkspaceId}&since={LastServerTs}` |
-| Auth | Same as §14.5.1 |
-| Response `Content-Type` | `application/json` |
-| Response shape | `{ Events: Event[], Cursor: ServerTs, HasMore: boolean }` where each `Event` matches one row of §14.5.2 (with an extra `Event: 'item-updated' \| ...` discriminator key in place of the SSE `event:` line). |
-| `HasMore = true` | Client polls again immediately (without 5 s wait) until drained. |
-| Empty result | `{ Events: [], Cursor: <unchanged>, HasMore: false }`. Cursor never moves backward. |
-| Idempotency | Two polls with the same `since` MUST return identical bytes (modulo new events past the cursor) `[gate: G-25-POLL-IDEMPOTENT]`. |
+| Trigger | Recovery |
+|---------|----------|
+| Transient drop (network blip, proxy idle, mobile background ≤ N s) | Client reconnects to the same SSE endpoint with header `Last-Event-Id: {cursor}`. Server replays buffered events with `ServerTs > cursor` (per §14.5.1 *Initial replay*), then resumes live streaming. Reconnect uses **exponential backoff**: 1 s, 2 s, 4 s, 8 s, capped at 30 s, with ±20 % jitter. |
+| `cursor-overflow` event (client > 1000 events behind) | Client MUST (a) abandon the SSE connection, (b) call the loader to fetch a fresh REST snapshot of the affected page/workspace (ADR-0023), (c) advance `SyncCursor` to the snapshot's `ServerTs`, then (d) re-open SSE with the new `Last-Event-Id`. The snapshot is a **one-shot REST request**, not a polling loop. |
 
-**Forbidden:** long-poll (server holds the request open) — that's a poor approximation of SSE and breaks the 5 s SLA. Use proper SSE when available; otherwise short-poll only.
+**Forbidden** `[gate: G-25-SSE-ONLY-NO-POLL]`: any periodic GET to a `/sync/*` endpoint, any long-poll (server holds the request open), any `setInterval`-driven sync probe, any "SSE-unavailable so fall back to polling" branch. If SSE cannot be established at all (e.g. proxy strips `text/event-stream`), the client surfaces an offline indicator and continues from the local mirror until SSE recovers — it does **not** poll.
 
 ### 14.5.5 Client Reconnect & Replay Algorithm
 
@@ -174,9 +169,12 @@ On client startup OR SSE drop:
   1. Read SyncCursor for (UserId, WorkspaceId) from Root DB → cursor.
   2. Open SSE with header Last-Event-Id: cursor.
   3. On each event: apply locally (per §14.2 / §14.4); update cursor = event.id.
-  4. On any of: cursor-overflow event, 30 s without heartbeat, or 3 SSE failures within 60 s
-       → switch to poll mode (§14.5.4); set a 60 s probe to retry SSE.
-  5. On successful SSE re-open: stop polling.
+  4. On disconnect: reconnect with exponential backoff (1s → 2s → 4s → 8s → cap 30s, ±20% jitter)
+       carrying Last-Event-Id: cursor. Never poll.
+  5. On `cursor-overflow` event: fetch fresh REST snapshot via loader (ADR-0023);
+       advance cursor to snapshot.ServerTs; re-open SSE with new Last-Event-Id.
+  6. While SSE is unreachable: show offline indicator; keep reading from local mirror.
+       Do NOT start any polling loop.
 ```
 
 ### 14.5.6 Server Emission Rules (normative)
@@ -189,7 +187,7 @@ On client startup OR SSE drop:
 
 ### 14.5.7 Forbidden Transports (reaffirmed)
 
-❌ WebSockets · ❌ Pusher · ❌ Ably · ❌ Supabase Realtime · ❌ Postgres `LISTEN/NOTIFY` · ❌ Redis pub/sub · ❌ Server-managed long-poll · ❌ Custom binary protocol · ❌ Multiple parallel SSE connections per workspace.
+❌ WebSockets · ❌ Pusher · ❌ Ably · ❌ Supabase Realtime · ❌ Postgres `LISTEN/NOTIFY` · ❌ Redis pub/sub · ❌ Long-poll (server-held) · ❌ Short-poll (`setInterval` GETs to `/sync/*`) · ❌ Any periodic sync probe of any kind · ❌ Custom binary protocol · ❌ Multiple parallel SSE connections per workspace.
 
 ---
 
@@ -268,10 +266,10 @@ On client startup OR SSE drop:
 | AT-CONCURRENCY-16 | Authenticated client opens `GET /wp-json/workflowy/v1/sse?WorkspaceId={id}` | Connection established | Response is `Content-Type: text/event-stream`, `X-Accel-Buffering: no`, no proxy buffering; first line within 1 s is `event: heartbeat` | `sse-endpoint-handshake` |
 | AT-CONCURRENCY-17 | SSE stream open | Server sends an `item-updated` event | Frame contains `event: item-updated`, `id: {ServerTs}` (integer ms), and a JSON `data:` payload with `{ItemId, Fields, ServerTs}`; `id` is monotonically non-decreasing across all events on the stream | `sse-event-frame` |
 | AT-CONCURRENCY-18 | Client lost connection at `Last-Event-Id: 1700000000123` | Client reconnects with that header | Server replays every event with `ServerTs > 1700000000123` for that `(UserId, WorkspaceId)`, in order, before resuming live emission | `sse-resume-replay` |
-| AT-CONCURRENCY-19 | Client falls > 1000 events behind | Server detects backpressure | Server emits `event: cursor-overflow` with `data: {"resumeWith":"poll"}` then closes the connection; client switches to §14.5.4 poll fallback until next page load | `sse-cursor-overflow` |
-| AT-CONCURRENCY-20 | SSE unavailable (proxy strips `text/event-stream`) | Client polls `GET /wp-json/workflowy/v1/sync/poll?Cursor={ts}&WorkspaceId={id}` every 5000 ms | Response shape is `{Events: Event[], Cursor: ServerTs, HasMore: boolean}`; each `Event` carries an `Event` discriminator key matching the §14.5.2 vocabulary; no long-polling (server returns immediately) | `sse-poll-fallback` |
+| AT-CONCURRENCY-19 | Client falls > 1000 events behind | Server detects backpressure | Server emits `event: cursor-overflow` with `data: {"ResumeWith":"snapshot"}` then closes the connection; client fetches a fresh REST snapshot via the loader (ADR-0023) and re-opens SSE with the snapshot's `ServerTs` as `Last-Event-Id` — **no polling loop is started** | `sse-cursor-overflow` |
+| AT-CONCURRENCY-20 | SSE connection drops mid-session (network blip, proxy idle) | Client reconnects to the same SSE endpoint with `Last-Event-Id: {cursor}` using exponential backoff 1 s → 2 s → 4 s → 8 s (cap 30 s, ±20 % jitter) | Server replays events with `ServerTs > cursor`, then resumes live streaming; client never issues a `/sync/poll` GET (no such endpoint exists per ADR-0025); CI gate `G-25-SSE-ONLY-NO-POLL` finds zero polling code paths | `sse-reconnect-backoff` |
 | AT-CONCURRENCY-21 | A successful §14.2 LWW write commits in workspace W | Same DB transaction commits | Exactly **one** SSE event is emitted on the `(UserId, WorkspaceId=W)` channel in the same commit phase; the event is **never** broadcast on any other workspace's channel | `sse-emission-atomic` |
-| AT-CONCURRENCY-22 | Implementation review of the realtime layer | Code search for forbidden transports | Zero references to WebSockets, Pusher, Ably, Supabase Realtime, Postgres `LISTEN/NOTIFY`, Redis pub/sub, server-managed long-poll, custom binary protocols, or multiple parallel SSE connections per workspace (§14.5.7) | `sse-forbidden-transports` |
+| AT-CONCURRENCY-22 | Implementation review of the realtime layer | Code search for forbidden transports | Zero references to WebSockets, Pusher, Ably, Supabase Realtime, Postgres `LISTEN/NOTIFY`, Redis pub/sub, long-poll, short-poll, `setInterval` sync probes, custom binary protocols, or multiple parallel SSE connections per workspace (§14.5.7) | `sse-forbidden-transports` |
 
 ## Component Contract
 
@@ -295,7 +293,7 @@ On client startup OR SSE drop:
 | SSE event framer | `wp-plugin/Sync/EventFramer.php` | `sse-event-frame` | AT-CONCURRENCY-17 |
 | SSE resume/replay buffer | `wp-plugin/Sync/ResumeBuffer.php` | `sse-resume-replay` | AT-CONCURRENCY-18 |
 | Cursor-overflow detector | `wp-plugin/Sync/BackpressureGuard.php` | `sse-cursor-overflow` | AT-CONCURRENCY-19 |
-| Poll-fallback endpoint | `wp-plugin/Sync/PollEndpoint.php` | `sse-poll-fallback` | AT-CONCURRENCY-20 |
+| SSE reconnect (exponential-backoff, `Last-Event-Id`) | `src/lib/sync/SseReconnector.ts` | `sse-reconnect-backoff` | AT-CONCURRENCY-20 |
 | Transactional emit hook | `wp-plugin/Sync/TransactionalEmitter.php` | `sse-emission-atomic` | AT-CONCURRENCY-21 |
 | Forbidden-transport guard (CI) | `scripts/spec-hygiene/forbidden-transports.mjs` | `sse-forbidden-transports` | AT-CONCURRENCY-22 |
 
@@ -303,33 +301,41 @@ On client startup OR SSE drop:
 
 ---
 
-## Diagram — SSE / Poll Handshake (P8)
+## Diagram — SSE Handshake & Recovery (P8, ADR-0025 SSE-only)
 
 ```mermaid
 sequenceDiagram
     autonumber
     participant Client as React Client
     participant API as WP-Plugin REST
-    participant SSE as EP-SYNC-STREAM
+    participant SSE as EP-STREAM-PAGE / EP-STREAM-USER
     participant DB as SQLite
 
-    Client->>API: GET /items (initial fetch)
+    Client->>API: GET /items (initial loader fetch, ADR-0023)
     API->>DB: SELECT * FROM Item WHERE UpdatedAt > ?
     DB-->>API: rows + max(UpdatedAt)
     API-->>Client: { Results, Attributes.Cursor }
 
     rect rgba(120, 200, 120, 0.15)
-        note over Client,SSE: Online path — SSE preferred
-        Client->>SSE: GET /sync/stream?since=<Cursor> (text/event-stream)
-        SSE-->>Client: event: change { id, field, value, UpdatedAt }
-        SSE-->>Client: event: heartbeat { ts } (every 25s)
+        note over Client,SSE: Steady state — SSE only (no polling)
+        Client->>SSE: GET /stream/page/{id} (text/event-stream, Last-Event-Id: Cursor)
+        SSE-->>Client: event: item-updated { id, ChangedFields, ServerTs }
+        SSE-->>Client: :hb (heartbeat every 15s)
     end
 
     rect rgba(220, 180, 120, 0.15)
-        note over Client,API: Fallback — polling on SSE failure
-        Client->>API: GET /sync/poll?since=<Cursor> (every 5s)
-        API->>DB: SELECT * WHERE UpdatedAt > Cursor
+        note over Client,SSE: Recovery — exponential backoff reconnect (NO polling)
+        SSE--xClient: connection dropped
+        Client->>SSE: reconnect (1s → 2s → 4s → 8s, cap 30s, ±20% jitter)<br/>with Last-Event-Id: Cursor
+        SSE-->>Client: replays events ServerTs > Cursor, then resumes live
+    end
+
+    rect rgba(220, 200, 120, 0.15)
+        note over Client,API: Backpressure — cursor-overflow → one-shot snapshot (NO polling)
+        SSE-->>Client: event: cursor-overflow { ResumeWith: 'snapshot' }
+        Client->>API: GET /items (one-shot snapshot via loader)
         API-->>Client: { Results, Attributes.Cursor (advanced) }
+        Client->>SSE: re-open with new Last-Event-Id
     end
 
     rect rgba(220, 120, 120, 0.15)
