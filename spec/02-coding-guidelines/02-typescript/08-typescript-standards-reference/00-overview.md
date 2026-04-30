@@ -35,7 +35,7 @@
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`01-generics-first.md`](./01-generics-first.md) | 1. Generics First — The Cardinal Rule | 66 |
+| 1 | [`01-generics-first.md`](./01-generics-first.md) | 1. Generics First — The Cardinal Rule | 68 |
 | 2 | [`02-zero-any-policy.md`](./02-zero-any-policy.md) | 2. Zero Tolerance for `any` and Untyped Patterns | 60 |
 | 3 | [`03-no-magic-values.md`](./03-no-magic-values.md) | 3. No Magic Strings, No Magic Numbers | 84 |
 | 4 | [`04-common-pattern-rules.md`](./04-common-pattern-rules.md) | 4. Specific Type Rules for Common Patterns | 61 |

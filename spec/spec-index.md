@@ -113,8 +113,8 @@
 | [`01-spec-authoring-guide/16-lovable-folder.md`](./01-spec-authoring-guide/16-lovable-folder.md) | The `.lovable/` Folder Guide | — | — |
 | [`01-spec-authoring-guide/17-quick-start-and-enforcement.md`](./01-spec-authoring-guide/17-quick-start-and-enforcement.md) | AI Quick Start & Folder Structure Enforcement | — | — |
 | [`01-spec-authoring-guide/18-ai-contract-template.md`](./01-spec-authoring-guide/18-ai-contract-template.md) | AI Contract Header — Canonical Template | 1.0.0 | Active |
-| [`01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](./01-spec-authoring-guide/19-acceptance-criteria-io-table.md) | Acceptance-Criteria I/O Table — Authoring Guide | 1.0.0 | Normative |
-| [`01-spec-authoring-guide/20-rfc-2119-wording-policy.md`](./01-spec-authoring-guide/20-rfc-2119-wording-policy.md) | RFC-2119 Wording Policy (SSOT) | 1.0.0 | — |
+| [`01-spec-authoring-guide/19-acceptance-criteria-io-table.md`](./01-spec-authoring-guide/19-acceptance-criteria-io-table.md) | Acceptance-Criteria I/O Table — Authoring Guide | 1.1.0 | Normative |
+| [`01-spec-authoring-guide/20-rfc-2119-wording-policy.md`](./01-spec-authoring-guide/20-rfc-2119-wording-policy.md) | RFC-2119 Wording Policy (SSOT) | 1.1.0 | — |
 | [`01-spec-authoring-guide/21-feature-block-format.md`](./01-spec-authoring-guide/21-feature-block-format.md) | Workflowy Feature-Reference Appendix — Block Format SSOT (F8) | 1.0.0 | — |
 | [`01-spec-authoring-guide/22-status-legend.md`](./01-spec-authoring-guide/22-status-legend.md) | Spec Status Legend (SSOT) | 1.0.0 | Canonical |
 | [`01-spec-authoring-guide/97-acceptance-criteria.md`](./01-spec-authoring-guide/97-acceptance-criteria.md) | Spec Authoring Guide — Acceptance Criteria | 3.2.0 | — |
@@ -1492,7 +1492,7 @@
 | [`32-ui-design/04-editor/97-acceptance-criteria.md`](./32-ui-design/04-editor/97-acceptance-criteria.md) | Editor (UI) — Acceptance Criteria | 2.0.0 | Curated |
 | [`32-ui-design/04-editor/99-consistency-report.md`](./32-ui-design/04-editor/99-consistency-report.md) | Consistency Report — 04-editor | 1.0.1 | — |
 | [`32-ui-design/05-quality/00-overview.md`](./32-ui-design/05-quality/00-overview.md) | 05 — Quality | 1.0.0 | — |
-| [`32-ui-design/05-quality/01-accessibility.md`](./32-ui-design/05-quality/01-accessibility.md) | Accessibility Requirements | 1.1.0 | — |
+| [`32-ui-design/05-quality/01-accessibility.md`](./32-ui-design/05-quality/01-accessibility.md) | Accessibility Requirements | 1.2.0 | — |
 | [`32-ui-design/05-quality/02-performance.md`](./32-ui-design/05-quality/02-performance.md) | Performance and Scale Proof Targets | 1.1.0 | — |
 | [`32-ui-design/05-quality/03-loading-empty-error-states.md`](./32-ui-design/05-quality/03-loading-empty-error-states.md) | Loading, Empty, and Error States | 1.1.0 | — |
 | [`32-ui-design/05-quality/97-acceptance-criteria.md`](./32-ui-design/05-quality/97-acceptance-criteria.md) | Quality — Acceptance Criteria | 2.0.0 | Curated |
@@ -1628,7 +1628,7 @@
 |------|-------|---------|--------|
 | [`_AUDIT-EXEMPTIONS.md`](./_AUDIT-EXEMPTIONS.md) | Spec Audit — Heuristic Exemptions Manifest | 1.0.0 | Active |
 | [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md) | Gate Graduation Ledger | 1.2.0 | Active |
-| [`_GATE-REGISTRY.md`](./_GATE-REGISTRY.md) | Gate Registry — Master Index of `G-*` Compliance Gates | 1.7.22 | — |
+| [`_GATE-REGISTRY.md`](./_GATE-REGISTRY.md) | Gate Registry — Master Index of `G-*` Compliance Gates | 1.7.38 | — |
 | [`_LEDGER-G-00-AT-FIX-COMPANION-SHAPE-BASELINE.md`](./_LEDGER-G-00-AT-FIX-COMPANION-SHAPE-BASELINE.md) | Ledger — `G-00-AT-FIX-COMPANION-SHAPE` Baseline Allow-list | 1.0.0 | ACTIVE |
 | [`_LEDGER-G-13-BACKLINK-EXEMPT.md`](./_LEDGER-G-13-BACKLINK-EXEMPT.md) | Ledger — `G-13-FIXTURE-AS-SPEC-SHAPE` Phase-4 Backlink Exemptions | — | Live |
 | [`_LEDGER-G-NS-ADR-COVERAGE.md`](./_LEDGER-G-NS-ADR-COVERAGE.md) | Ledger — `G-NS-ADR-MUST-HAS-AT` Coverage Allow-list | 1.0.0 | DEFERRED |

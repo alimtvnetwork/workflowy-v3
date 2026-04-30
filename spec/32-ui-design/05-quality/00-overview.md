@@ -33,7 +33,7 @@
 
 | # | File | Title | Lines |
 |---|------|-------|-------|
-| 1 | [`01-accessibility.md`](./01-accessibility.md) | Accessibility Requirements | 20 |
+| 1 | [`01-accessibility.md`](./01-accessibility.md) | Accessibility Requirements | 22 |
 | 2 | [`02-performance.md`](./02-performance.md) | Performance and Scale Proof Targets | 19 |
 | 3 | [`03-loading-empty-error-states.md`](./03-loading-empty-error-states.md) | Loading, Empty, and Error States | 62 |
 
