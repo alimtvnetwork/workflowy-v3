@@ -270,6 +270,12 @@ Authored `spec/36-user-management/04-admin-ui.md` (admin UI sub-spec — 5 surfa
 
 ---
 
+### Progress note 2026-04-30 — GAP-A2 (batch 1/4) closed
+
+Authored `spec/35-enforcement-rules/01-generic-return-types.md` (5 rules R1–R5, 6 anti-patterns, 4 AT binds, 1 worked example). All 5 prose MUSTs gate-bound (`G-35-RT-NO-ANY`, `-NO-UNKNOWN`, `-NO-PHANTOM`, `-PRESERVE-BRAND`, `-DISCRIMINATED-UNION`) — zero bare-MUST regression. Parent overview "Pending Sub-Specs" table updated; row 01 now ✅. 3 of 4 enforcement-rules sub-specs still pending (02-runtime-validation, 03-eslint-rule-authoring, 04-boundary-enforcement).
+
+---
+
 
 ## Retraction case studies
 
