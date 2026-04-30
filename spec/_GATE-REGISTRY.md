@@ -723,7 +723,21 @@
 | `G-00-ADR-XLINK-SYMMETRY` | **DOC-NORM** | [`spec/00-adrs/_INDEX_AUTOMATION.md`](./00-adrs/_INDEX_AUTOMATION.md) | Outbound links from an Accepted ADR's `## Decision` section to non-ADR repo files MUST have a reciprocal back-link at the linked anchor. Reference precedent: ADR-0024 §D1/D2/D3 ↔ triage `### #01/#03/#17`. |
 | `G-00-ADR-CONSEQUENCES-XLINK` | **DOC** | [`spec/00-adrs/_INDEX_AUTOMATION.md`](./00-adrs/_INDEX_AUTOMATION.md) | Sibling-advisory to `G-00-ADR-XLINK-SYMMETRY`. Outbound links from an Accepted ADR's `## Consequences` section that contain an action verb (must/requires/add/update/migrate/backfill/rename/remove) SHOULD have a reciprocal back-link. WARN-only; promotes to DOC-NORM at ≥10 baseline pairs. |
 
+### Domain-WPDEPLOY (WP-Plugin Release Pipeline · Pipeline & Artifact Invariants)
+
+> Reserved gate IDs for the WP-plugin CI/CD archetype overview in `spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/00-overview.md`. Distinct from `G-13-*` (CI/CD generic conventions) and `G-10-BOUNDARY-*` (PowerShell↔PHP boundary). Batch-28 (2026-04-29) registers 6 gates covering the P1–P9 load-bearing rules and the per-step stage rule. All sub-gates have direct AT-WPPLUGINDEPLOY-* fixture coverage in `./97-acceptance-criteria.md`.
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-WPDEPLOY-VITE-IN-ASSETS-DIST` | **CI** | [`spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/00-overview.md`](./13-cicd-pipeline-workflows/18-wp-plugin-deploy/00-overview.md) | (P2) The compiled Vite `dist/` MUST be copied into the plugin's `assets/dist/` directory inside the release ZIP. Verified by AT-WPPLUGINDEPLOY-05 (`unzip -l … grep -qE "assets/dist/assets/index-.*\.(js\|css)"`). Broken path = 404 console errors on plugin activation. |
+| `G-WPDEPLOY-ZIP-FLAT-LAYOUT` | **CI** | [`spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/00-overview.md`](./13-cicd-pipeline-workflows/18-wp-plugin-deploy/00-overview.md) | (P4) The release ZIP MUST contain a single top-level folder `workflowy/` with `workflowy.php` at its root — no double-nesting. Verified by AT-WPPLUGINDEPLOY-04 + ZIP integrity Gate 1/3 in workflow. WP rejects double-nested plugin ZIPs at install time. |
+| `G-WPDEPLOY-ARTIFACT-NAME-PATTERN` | **CI** | [`spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/00-overview.md`](./13-cicd-pipeline-workflows/18-wp-plugin-deploy/00-overview.md) | (P7) The release artifact MUST be named exactly `workflowy-v{semver}.zip`. The self-update endpoint (`info.json` `download_url`) is derived from this pattern; deviation breaks in-plugin updates. Verified by `meta.zip-name` step in `02-github-actions-workflow.md` + AT-WPPLUGINDEPLOY-13. |
+| `G-WPDEPLOY-SHA256-SIDECAR` | **CI** | [`spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/00-overview.md`](./13-cicd-pipeline-workflows/18-wp-plugin-deploy/00-overview.md) | (P8) Every release MUST publish a SHA-256 checksum sidecar `workflowy-v{semver}.zip.sha256` alongside the ZIP. Required for self-update integrity verification (rollback-on-mismatch). Verified by AT-WPPLUGINDEPLOY-09 (`sha256sum -c`) + ZIP integrity Gate 8. |
+| `G-WPDEPLOY-CI-GATES-BLOCK-PACKAGE` | **CI** | [`spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/00-overview.md`](./13-cicd-pipeline-workflows/18-wp-plugin-deploy/00-overview.md) | (P9) Hygiene gates (TypeScript build, ESLint, `bun audit --severity high`, PHPStan, PHPUnit) MUST pass before the `package` job runs. Enforced via `needs: ci-gates` in `release.yml`. Verified by AT-WPPLUGINDEPLOY-11. Failed gate = aborted release; never publish broken artifacts. |
+| `G-WPDEPLOY-STAGE-PER-STEP` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/00-overview.md`](./13-cicd-pipeline-workflows/18-wp-plugin-deploy/00-overview.md) | Each of the 8 pipeline stages (CHECKOUT, CI GATES, FRONTEND, PHP DEPS, ASSEMBLE, PACKAGE, CHECKSUM, RELEASE) MUST appear as a separate GitHub Actions job step so failures are individually attributable in the run log. Collapsing stages into a single shell script breaks observability and is a P1 finding. |
+
 ---
+
 
 ## 4. Maintenance Rules
 
