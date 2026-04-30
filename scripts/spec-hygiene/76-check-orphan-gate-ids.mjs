@@ -234,11 +234,11 @@ for (const [tok, occs] of cited) {
 }
 
 const HARD_FAIL = process.env.ORPHAN_GATE_SOFT !== "1";
-// G-00-UMBRELLA-LEAVES-DESCRIBED inaugural baseline 2026-04-30: 164 undescribed
-// leaves. Mode is WARN-only until burndown reaches 0 (mirrors the staged
-// graduation pattern of G-00-ORPHAN-GATE-ID-DRIFT and G-00-ORPHAN-MUST-CITATION-ADJACENCY).
-// Promote to HARD by setting UMBRELLA_LEAVES_DESCRIBED_HARD=1.
-const LEAVES_HARD = process.env.UMBRELLA_LEAVES_DESCRIBED_HARD === "1";
+// G-00-UMBRELLA-LEAVES-DESCRIBED graduated 2026-04-30 (NEW-13-FOLLOWUP Task L):
+// inaugural baseline 164 → 0 burndown via per-umbrella `Composes …` clause
+// backfill across 14 rows. Mode promoted WARN → HARD-FAIL (default). Escape
+// hatch: UMBRELLA_LEAVES_DESCRIBED_SOFT=1 reverts to WARN for emergency rollback.
+const LEAVES_HARD = process.env.UMBRELLA_LEAVES_DESCRIBED_SOFT !== "1";
 if (drift.length === 0 && undescribed.length === 0) {
   console.log("OK: no orphan gate-ID drift, no undescribed umbrella leaves (G-00-UMBRELLA-LEAVES-DESCRIBED active).");
   process.exit(0);
