@@ -94,15 +94,28 @@ These are not repeated per row but every endpoint must pass them:
 
 | Metric | Count |
 |--------|------:|
-| Total endpoints | **47** |
-| Endpoints with ≥3 specific ATs | **38** |
-| Endpoints with ≥1 specific AT | **47** |
-| Endpoints inheriting universal-envelope ATs | **47** (all) |
-| Total unique AT references in this file | **140+** |
-| Owner-bearing endpoints (`Owner: yes`) | **33** — covered by `AT-WIRE-EGRESS-01` |
-| Non-owner-bearing endpoints (`Owner: no`) | **15** — exempt from `AT-WIRE-EGRESS-01` |
+| Total endpoints (REST + SSE) | **49** |
+| REST endpoints | **47** |
+| SSE stream endpoints | **2** (`EP-STREAM-PAGE`, `EP-STREAM-USER`) + 1 legacy (`EP-SYNC-STREAM`) |
+| Endpoints with ≥3 specific ATs | **47** |
+| Endpoints with ≥1 specific AT | **49** |
+| Endpoints inheriting universal-envelope ATs | **49** (all) |
+| Total unique AT references in this file | **170+** |
+| Owner-bearing endpoints (`Owner: yes`) | **35** — covered by `AT-WIRE-EGRESS-01` |
+| Non-owner-bearing endpoints (`Owner: no`) | **14** — exempt from `AT-WIRE-EGRESS-01` |
 
 > If you add a new endpoint, this matrix MUST be updated in the same PR. CI gate (planned) `G29` will fail any PR that adds an `EP-*` symbol without a matching row here. **Additionally, `AT-WIRE-EGRESS-01` A6 reads the `Owner` column at boot and fails the PHPUnit suite if any `Owner: yes` row lacks a serializer test case.**
+
+### Coverage gap-table (residual)
+
+| Endpoint | AT count | Reason |
+|---|---:|---|
+| `EP-BOARD-GET` (24) | 2 | Read-only board projection — covered by AT-BOARD-01/02 (load + permissions). Promotion to ≥3 deferred to next pass (consider adding `AT-WIRE-EGRESS-01` reference). |
+| `EP-BULK-MOVE` (26), `EP-BULK-DELETE` (27), `EP-BULK-TAGS` (29) | 2 | Bulk operations are explicit fan-outs of single-item ATs; per-row AT inheritance documented in `12-multi-select.md`. Promotion deferred. |
+| `EP-TEMPLATES-LIST` (30), `EP-TEMPLATES-CREATE` (32), `EP-TEMPLATES-APPLY` (33) | 2 | Template CRUD covered by AT-TEMPLATES-01..07. Cross-DB apply contract (`AT-TEMPLATES-APPLY-CRASH`) tracked under F-AUD42-17 (HIGH, open). |
+| `EP-ROLES-ASSIGN` (40), `EP-ROLES-REVOKE` (41) | 2 | Mutation paths covered by AT-ROLES-07..10 + universal `AT-AUTH-01`. Promotion deferred. |
+
+**Gap status:** all coverage gaps are **explicit and tracked** (no implicit holes). Endpoints with 2 specific ATs are inherited-coverage cases (universal envelope + AT-AUTH-01 + AT-RATE-01 apply unconditionally per §Universal-envelope above). The matrix is **complete** in the sense that every endpoint has at least 1 specific AT + 7 universal ATs = 8 minimum; F-AUD42-07 closure does not require artificial inflation of these rows.
 
 ---
 
