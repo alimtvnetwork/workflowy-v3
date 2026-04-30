@@ -773,3 +773,28 @@ This is the **third** scope-correction in 3 turns (F-SCOPE-01 → 02 → 03), ea
 - **Next batch target:** Top 10 files from next 79-scanner output (all at 1 hit each — straightforward authoring fixes following the substitution patterns above).
 - **Files:** 10 spec files + this entry.
 
+
+## F-AUDIT-44 batch-4 — F-SPEC-14 vague-modifier burndown (PROGRESS)
+
+- **Date:** 2026-04-30
+- **Status:** Open (capped) — 7th-of-~9 remaining batches; tail still flat at 1.0 hit/file
+- **Scope:** Pure content batch. 10 files at 1 hit each = 10-hit pool.
+- **Substitution patterns applied (10 fixes across 10 files):**
+  - `"looks good" or "all tests pass"` → backtick-wrapped (cohort-exempt by quote convention) (1)
+  - `Modern async only` → `ES2017+ async/await only` (1)
+  - `language-appropriate linter` → `per-language linter declared in the language-tools matrix (cite)` (1)
+  - `even if the logic is simple` → `even when each individual branch body is ≤15 lines (the logic-block budget)` (1)
+  - `keep callers simple` → `keep caller cyclomatic complexity ≤10` (1)
+  - `missing modern icons` → `missing the post-2023 icon set` (1)
+  - `proper enum` (rule-name reference) → `` `proper enum` `` backtick-wrapped + cohort cite (1)
+  - `(Better Programming)` book title → backtick-wrapped (cohort: API-name/proper-noun) (1)
+  - `Add fields as needed per domain` → `Add fields when the domain requires the metadata` (1)
+  - `it's already efficient` → `Go strings are immutable headers (16 bytes on 64-bit) and pass-by-value is O(1)` (1)
+- **Files touched (10):** `01-spec-authoring-guide/97-acceptance-criteria.md` · `cross-language/16-static-analysis/07-nodejs-eslint.md` · `…/09-ci-pipeline-quality-gate/00-overview.md` · `cross-language/20-nesting-resolution-patterns.md` · `cross-language/29-lazy-evaluation-patterns.md` · `cross-language/30-pinned-dependency-matrix.md` · `02-typescript/08-typescript-standards-reference/03-no-magic-values.md` · `02-typescript/09-promise-await-patterns.md` · `03-golang/01-enum-specification/05-info-object-pattern.md` · `03-golang/06-string-slice-internals.md`
+- **Inventory-Audit:** 2026-04-30 | runner: `node scripts/spec-hygiene/79-check-vague-modifiers.mjs` | Was: files=83, hits=83 | Is: files=73, hits=73 | Δ −10 files (−12.0%), −10 hits (−12.0%). Tail remains flat at 1.0 hit/file.
+- **Score impact:** +0.1pp (pure content batch). Cumulative since v8: +1.3pp → **98.8/100 self-attested pending v9 re-baseline**. Cap at +0.1 — diminishing per-batch yield as tail flattens.
+- **Remaining batches:** 73 files at 1 hit each. ~7 more 10-file batches → graduate `G-LINT-VAGUE-MODIFIERS` to `block-all`.
+- **Streak:** Pure content batch. Tooling streak = 0.
+- **Next batch target:** Top 10 of remaining 73 files (PHP enums, naming, php-standards-reference cluster).
+- **Files:** 10 spec files + this entry.
+
