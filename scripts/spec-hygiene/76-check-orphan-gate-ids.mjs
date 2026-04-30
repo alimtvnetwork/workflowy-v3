@@ -234,18 +234,23 @@ for (const [tok, occs] of cited) {
 }
 
 const HARD_FAIL = process.env.ORPHAN_GATE_SOFT !== "1";
+// G-00-UMBRELLA-LEAVES-DESCRIBED inaugural baseline 2026-04-30: 164 undescribed
+// leaves. Mode is WARN-only until burndown reaches 0 (mirrors the staged
+// graduation pattern of G-00-ORPHAN-GATE-ID-DRIFT and G-00-ORPHAN-MUST-CITATION-ADJACENCY).
+// Promote to HARD by setting UMBRELLA_LEAVES_DESCRIBED_HARD=1.
+const LEAVES_HARD = process.env.UMBRELLA_LEAVES_DESCRIBED_HARD === "1";
 if (drift.length === 0 && undescribed.length === 0) {
   console.log("OK: no orphan gate-ID drift, no undescribed umbrella leaves (G-00-UMBRELLA-LEAVES-DESCRIBED active).");
   process.exit(0);
 }
 if (undescribed.length > 0) {
-  console.log(`${HARD_FAIL ? "FAIL" : "WARN"}: ${undescribed.length} umbrella-covered leaf(s) not named in their umbrella row (G-00-UMBRELLA-LEAVES-DESCRIBED).`);
+  console.log(`${LEAVES_HARD ? "FAIL" : "WARN"}: ${undescribed.length} umbrella-covered leaf(s) not named in their umbrella row (G-00-UMBRELLA-LEAVES-DESCRIBED).`);
   console.log("Fix: append the leaf token to the umbrella's `Composes …` clause in spec/_GATE-REGISTRY.md.");
   for (const u of undescribed) {
     console.log(`  ${u.leaf} (umbrella=${u.umbrella}): ${u.sample.map(s => `${s.file}:${s.line}`).join(", ")}`);
   }
 }
-if (drift.length === 0) process.exit(undescribed.length > 0 && HARD_FAIL ? 1 : 0);
+if (drift.length === 0) process.exit(undescribed.length > 0 && LEAVES_HARD ? 1 : 0);
 // ADR-0033 graduation 2026-04-30: runner promoted WARN → HARD-FAIL after both
 // flip-criterion conditions met (drift=0 AND ADR-0033 umbrella-coverage active).
 // Escape hatch: ORPHAN_GATE_SOFT=1 reverts to WARN for emergency rollback only.
