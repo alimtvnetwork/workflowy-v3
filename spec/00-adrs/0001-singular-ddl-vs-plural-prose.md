@@ -30,13 +30,12 @@ P32, P37, and P40 already reference this rule from
 `spec/04-database-conventions/00-overview.md`,
 `spec/31-app/06-endpoints/03-layout-structure.md`, and the `31-app`
 overview/feature/endpoint backlinks. Those references currently say
-"MUST first amend via ADR" — that phrase is only enforceable once an
+"MUST first amend via ADR" (per `G-ADR-0001-AMENDMENT-REQUIRED`) — that phrase is only enforceable once an
 actual ADR exists. This ADR is that anchor.
 
 ## Decision
 
-The spec **MUST** treat all DDL identifiers as **singular PascalCase** and
-treat plural English nouns as **prose aliases only**.
+The spec **MUST** treat all DDL identifiers as **singular PascalCase** and treat plural English nouns as **prose aliases only** — enforced by `G-04-NO-DDL-PLURALS` (DDL side) + `G-04-ALIAS-DDL-CANONICAL` (alias-bridge side).
 
 - DDL tables and columns are **always singular PascalCase**:
   `Item`, `User`, `MirrorGroup`, `MirrorMember`, `Template`,
@@ -51,15 +50,12 @@ treat plural English nouns as **prose aliases only**.
   used inside `Results` (e.g. `Results.Items`) are **collection aliases**
   over the singular `Item` table — they do **not** imply a separate `Items`
   table.
-- AT **fixtures** (JSON / SQL under `97a-`/`97b-`/…) **MUST** use the
-  canonical singular identifier in payloads and queries.
+- AT **fixtures** (JSON / SQL under `97a-`/`97b-`/…) **MUST** use the canonical singular identifier in payloads and queries — enforced by `G-ADR-0001-FIXTURE-SINGULAR-DDL` (sub-rule of `G-04-NO-DDL-PLURALS` scoped to the fixture corpus).
 - **Favorites** is a column (`Item.IsFavorite`), not a table. Reads use
   `EP-ITEMS-LIST?includeFavorites=1`; writes use `EP-ITEMS-UPDATE
   { "IsFavorite": true }`. **No `EP-FAVORITES-*` endpoint family exists.**
 - **Content** is a column (`Item.Content`), not a table.
-- Any change to this rule (e.g. promoting `Favorite` to a real table)
-  **MUST** be ratified by a new ADR that supersedes this one — never by
-  silent prose drift, endpoint addition, or migration.
+- Any change to this rule (e.g. promoting `Favorite` to a real table) **MUST** be ratified by a new ADR that supersedes this one — never by silent prose drift, endpoint addition, or migration. Enforced by `G-ADR-0001-AMENDMENT-REQUIRED` (umbrella) which composes `G-ADR-0001-NO-SILENT-DRIFT` (forbids prose-only relaxation) — both load-bearing for the §"Forbidden families" lock at L117–118.
 
 ## Consequences
 
@@ -104,7 +100,7 @@ treat plural English nouns as **prose aliases only**.
 
 ## Gates Touched
 
-- **New gates:** `(none — gates pre-existed; this ADR ratifies them)`
+- **New gates:** `G-ADR-0001-AMENDMENT-REQUIRED` (DOC-NORM umbrella), `G-ADR-0001-NO-SILENT-DRIFT` (DOC-NORM, sub-rule), `G-ADR-0001-FIXTURE-SINGULAR-DDL` (DOC-NORM, sub-rule of `G-04-NO-DDL-PLURALS` scoped to `97a-/97b-` fixture corpus)
 - **Modified gates:** `G-04-ALIAS-DDL-CANONICAL` (now load-bearing),
   `G-04-NO-DDL-PLURALS` (now load-bearing)
 - **Endpoints locked:**

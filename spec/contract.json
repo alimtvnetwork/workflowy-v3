@@ -3496,7 +3496,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 907
+          "line": 918
         }
       ]
     },
@@ -3536,7 +3536,7 @@
         },
         {
           "file": "spec/AUDIT-FINDINGS-LEDGER.md",
-          "line": 299
+          "line": 300
         }
       ]
     },
@@ -6445,7 +6445,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 682
+          "line": 693
         }
       ]
     },
@@ -6461,7 +6461,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 682
+          "line": 693
         }
       ]
     },
@@ -14389,11 +14389,11 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 674
+          "line": 685
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 678
+          "line": 689
         }
       ]
     },
@@ -14409,7 +14409,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 679
+          "line": 690
         }
       ]
     },
@@ -14437,7 +14437,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 681
+          "line": 692
         }
       ]
     },
@@ -14453,7 +14453,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 680
+          "line": 691
         }
       ]
     },
@@ -14481,7 +14481,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 683
+          "line": 694
         }
       ]
     },
@@ -14501,7 +14501,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 680
+          "line": 691
         }
       ]
     },
@@ -19390,7 +19390,7 @@
       "cited_in": [
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 861
+          "line": 872
         }
       ]
     },
@@ -19526,7 +19526,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 792
+          "line": 803
         }
       ]
     },
@@ -24266,11 +24266,11 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 785
+          "line": 796
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 789
+          "line": 800
         }
       ]
     },
@@ -24290,7 +24290,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 790
+          "line": 801
         }
       ]
     },
@@ -24310,7 +24310,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 791
+          "line": 802
         }
       ]
     },
@@ -24330,7 +24330,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 793
+          "line": 804
         }
       ]
     },
@@ -24350,7 +24350,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 794
+          "line": 805
         }
       ]
     },
@@ -24370,7 +24370,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 795
+          "line": 806
         }
       ]
     },
@@ -24390,7 +24390,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 796
+          "line": 807
         }
       ]
     },
@@ -24410,7 +24410,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 797
+          "line": 808
         }
       ]
     },
@@ -24430,7 +24430,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 798
+          "line": 809
         }
       ]
     },
@@ -24450,7 +24450,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 799
+          "line": 810
         }
       ]
     },
@@ -24470,7 +24470,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 800
+          "line": 811
         }
       ]
     },
@@ -24490,7 +24490,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 801
+          "line": 812
         }
       ]
     },
@@ -24510,7 +24510,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 802
+          "line": 813
         }
       ]
     },
@@ -24530,7 +24530,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 803
+          "line": 814
         }
       ]
     },
@@ -24550,7 +24550,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 804
+          "line": 815
         }
       ]
     },
@@ -24578,7 +24578,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 805
+          "line": 816
         }
       ]
     },
@@ -24711,11 +24711,11 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 785
+          "line": 796
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 806
+          "line": 817
         }
       ]
     },
@@ -24735,7 +24735,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 807
+          "line": 818
         }
       ]
     },
@@ -24755,7 +24755,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 808
+          "line": 819
         }
       ]
     },
@@ -24775,7 +24775,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 809
+          "line": 820
         }
       ]
     },
@@ -24795,11 +24795,11 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 810
+          "line": 821
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 811
+          "line": 822
         }
       ]
     },
@@ -26281,7 +26281,7 @@
       "cited_in": [
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 777
+          "line": 788
         }
       ]
     },
@@ -26297,7 +26297,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 776
+          "line": 787
         }
       ]
     },
@@ -26330,7 +26330,7 @@
       "cited_in": [
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 779
+          "line": 790
         }
       ]
     },
@@ -26349,7 +26349,7 @@
       "cited_in": [
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 780
+          "line": 791
         }
       ]
     },
@@ -26368,7 +26368,7 @@
       "cited_in": [
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 778
+          "line": 789
         }
       ]
     },

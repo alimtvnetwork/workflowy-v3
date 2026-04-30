@@ -1,13 +1,13 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.38  
-> **Updated:** 2026-04-30 — **batch-45 (Domain-CG TypeScript-standards fortification — first 4-MUST tier bind in CG sub-tree):** registered 5 new DOC-NORM gates binding all 4 unbound prose-MUSTs in `spec/02-coding-guidelines/02-typescript/08-typescript-standards-reference/01-generics-first.md` (R1.1 reusable-fn, R1.2 api-envelope, R1.3 collection-util, R1.4 hook-factory) plus an umbrella that composes them: `G-CG-TS-GENERICS-FIRST` (umbrella, composes with `G-02-NO-ANY` escape-hatch forbidder), `G-CG-TS-GEN-REUSABLE-FN`, `G-CG-TS-GEN-API-ENVELOPE` (sub-rule layered under `G-19-PASCALCASE-KEYS` + `G-04-WIRE-USES-WIRE-SPELLING` — 3-tier sub-rule chain, second of its kind in two consecutive batches), `G-CG-TS-GEN-COLLECTION-UTIL`, `G-CG-TS-GEN-HOOK-FACTORY`. **Bare-MUST count 324 → 320 (Δ −4 exact).** Closes 39th consecutive zero-drift batch. Streak counter: 2 consecutive content batches. Prior: 1.7.37 (Domain-04 fortification).
+> **Version:** 1.7.39  
+> **Updated:** 2026-04-30 — **batch-46 (Domain-ADR-0001 anchor — second consecutive 4-MUST density-tier bind, first ADR-anchor area):** registered 3 new DOC-NORM gates binding all 4 prose-MUSTs in `spec/00-adrs/0001-singular-ddl-vs-plural-prose.md` (L33 cross-ref restatement, L38 §"Decision" headline, L54 fixture rule, L61 amendment rule): `G-ADR-0001-AMENDMENT-REQUIRED` (umbrella), `G-ADR-0001-NO-SILENT-DRIFT` (sub-rule of umbrella, CI promotion via **NEW-24**), `G-ADR-0001-FIXTURE-SINGULAR-DDL` (3-tier sub-rule under `G-04-NO-DDL-PLURALS` — **third consecutive batch landing an explicit umbrella-composes-leaves chain**). L38 §"Decision" headline reuses pre-existing `G-04-NO-DDL-PLURALS` + `G-04-ALIAS-DDL-CANONICAL` (no new gate needed — the structural enforcers already cover it; ADR adds the same-line citation). **Bare-MUST count 320 → 316 (Δ −4 exact).** Closes 40th consecutive zero-drift batch. Streak counter: 3 consecutive content batches. Prior: 1.7.38 (Domain-CG TypeScript-standards fortification).
 
-- **Total named gates:** 514 (+5 this revision)
+- **Total named gates:** 517 (+3 this revision)
 - **WARN-only gates:** 11 (unchanged)
 - **CI:** 138 (unchanged)
 - **TEST:** 20 (unchanged)
-- **DOC-NORM:** 151 (+5 this revision)
+- **DOC-NORM:** 154 (+3 this revision)
 - **DOC:** 202 (unchanged)
 - **Areas covered:** 53 (unchanged)
 - **Areas covered:** 37 (unchanged)
@@ -668,6 +668,17 @@
 | `G-CG-TS-GEN-API-ENVELOPE` | **DOC-NORM** | [`spec/02-coding-guidelines/02-typescript/08-typescript-standards-reference/01-generics-first.md`](./02-coding-guidelines/02-typescript/08-typescript-standards-reference/01-generics-first.md) | R1.2 — API response types MUST use the generic `RawEnvelope<T>` envelope (PascalCase keys per ADR-0004 / ADR-0019); a non-generic `Results: unknown[]` is forbidden. Sub-rule layered under `G-19-PASCALCASE-KEYS` (envelope shape) and `G-04-WIRE-USES-WIRE-SPELLING` (key spelling). |
 | `G-CG-TS-GEN-COLLECTION-UTIL` | **DOC-NORM** | [`spec/02-coding-guidelines/02-typescript/08-typescript-standards-reference/01-generics-first.md`](./02-coding-guidelines/02-typescript/08-typescript-standards-reference/01-generics-first.md) | R1.3 — Collection utilities (`buildQuery`, mappers, reducers) MUST be generic over the input record shape; loose `Record<string, string \| number \| undefined>` parameters are forbidden when the call site has a known literal-keyed shape. |
 | `G-CG-TS-GEN-HOOK-FACTORY` | **DOC-NORM** | [`spec/02-coding-guidelines/02-typescript/08-typescript-standards-reference/01-generics-first.md`](./02-coding-guidelines/02-typescript/08-typescript-standards-reference/01-generics-first.md) | R1.4 — Hook factories (`useApiQuery`, `useResource`, etc.) MUST propagate the result generic to the caller; `{ data: unknown }` returns are forbidden — the caller's type assertion would defeat the strict-TS regime. |
+
+### Domain-ADR-0001 (Singular DDL vs Plural Prose Anchor)
+
+> Reserved gate IDs for the binding rule SSOT in `spec/00-adrs/0001-singular-ddl-vs-plural-prose.md`. Pre-existing area `Domain-04` already houses the structural enforcers (`G-04-NO-DDL-PLURALS`, `G-04-ALIAS-DDL-CANONICAL`); this Domain-ADR-0001 block houses the ADR-anchor gates that bind the §"Decision" prose-MUSTs which restate-and-extend those structural rules at the ADR ceremony level. Batch-46 (2026-04-30) registers the umbrella + 2 sub-rules. The 3-tier sub-rule chain `G-04-NO-DDL-PLURALS` → `G-ADR-0001-FIXTURE-SINGULAR-DDL` makes this the **third consecutive batch landing an explicit umbrella-composes-leaves chain** (after batch-44 `G-04-OWNERUSERID-DDL-CANONICAL` and batch-45 `G-CG-TS-GEN-API-ENVELOPE`).
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-ADR-0001-AMENDMENT-REQUIRED` | **DOC-NORM** | [`spec/00-adrs/0001-singular-ddl-vs-plural-prose.md`](./00-adrs/0001-singular-ddl-vs-plural-prose.md) | Umbrella — any change to the singular-DDL-vs-plural-prose rule (e.g. promoting `Favorite` to a real table, adding an `EP-FAVORITES-*` family, renaming `Item` → `Items`) MUST be ratified by a new ADR that supersedes ADR-0001 — never by silent prose drift, endpoint addition, or migration. Composes `G-ADR-0001-NO-SILENT-DRIFT`. The "MUST first amend via ADR" phrase used by P32/P37/P40 cross-references resolves here. |
+| `G-ADR-0001-NO-SILENT-DRIFT` | **DOC-NORM** | [`spec/00-adrs/0001-singular-ddl-vs-plural-prose.md`](./00-adrs/0001-singular-ddl-vs-plural-prose.md) | Sub-rule of `G-ADR-0001-AMENDMENT-REQUIRED` — forbids prose-only relaxation of the rule (e.g. a downstream overview adding "Favorites can also live in their own table" without a superseding ADR). Failure mode: any spec PR that touches an `EP-FAVORITES-*` / `EP-CONTENT-*` reference, or introduces a plural DDL identifier in a `97a-`/`97b-` fixture, MUST cite a superseding ADR in its description or the PR is blocked. CI promotion deferred until `scripts/spec-hygiene/check-adr-supersede-on-forbidden-token.mjs` exists (filed as **NEW-24**). |
+| `G-ADR-0001-FIXTURE-SINGULAR-DDL` | **DOC-NORM** | [`spec/00-adrs/0001-singular-ddl-vs-plural-prose.md`](./00-adrs/0001-singular-ddl-vs-plural-prose.md) | Sub-rule of `G-04-NO-DDL-PLURALS` scoped to the AT fixture corpus (`spec/**/97a-acceptance-criteria-fixtures.md`, `97b-…`, fixture JSON/SQL embeds). Fixture payloads and queries MUST use the canonical singular identifier (`Item`, `User`, `MirrorGroup`); plural DDL identifiers in fixture context are forbidden even when the surrounding prose pluralizes the alias. CI promotion deferred to **NEW-15** (`check-ddl-naming.mjs`) which already covers this surface — no new tooling required for promotion, only scope-extension. |
+
 
 ### Domain-HLPIN (Highlighter Dependency Pin)
 
