@@ -52,7 +52,7 @@ Add a changelog entry **before** creating a release branch or tag. The entry mus
 
 1. Open `CHANGELOG.md`
 2. Insert a new `## v<version>` section at the top (below any header)
-3. Add bullets under the appropriate subsection (`Added`, `Fixed`, `Changed`)
+3. Add bullets under the matching Keep-a-Changelog subsection per change kind: new capability → `Added`; bug repair → `Fixed`; behavior/API modification → `Changed`; pending removal → `Deprecated`; completed removal → `Removed`; vulnerability patch → `Security`. Create the subsection on first use; omit empty subsections.
 4. Commit the changelog update as part of the release preparation
 
 ### Example Workflow

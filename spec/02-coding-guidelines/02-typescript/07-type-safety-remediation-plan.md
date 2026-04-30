@@ -212,7 +212,7 @@ Replace all `Record<string, unknown>` params and `request<unknown>` calls with t
 | `useDashboardStats.ts` | 65, 71 | `(data as any).entries` | Type the publish history response properly |
 | `useDashboardStats.ts` | 77, 84, 88, 89 | `(e: any)`, `(s: any)`, `(p: any)` | Use typed array callbacks with `ErrorHistoryRecord`, `Site`, `Plugin` |
 | `useTheme.ts` | 91 | `(appearance as any).sidebarTheme` | Add `sidebarTheme` to the `Settings.appearance` interface |
-| `Dashboard.tsx` | 66 | `getQueryData<any>` | Use `getQueryData<DashboardStats>` with proper type |
+| `Dashboard.tsx` | 66 | `getQueryData<any>` | Use `getQueryData<DashboardStats>` (the typed return shape from `useDashboardStats`); never `<any>` or `<unknown>` |
 | `BackendSection.tsx` | 368, 383, 402, 465–467 | Multiple `any` | Create typed `StackFrame` interface for Go/PHP frames |
 
 ---

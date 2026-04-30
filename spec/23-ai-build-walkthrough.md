@@ -9,7 +9,7 @@
 
 ## AI Contract
 
-**Purpose** — Prove that the spec + `contract.json` + P7 skeletons are sufficient for an AI agent to one-shot a complete vertical slice (spec → PHP route → React component) **without reading any source code**, citing only stable IDs (`AT-*`, `EP-*`, enum names, mem:// pointers). If a step here cannot be executed verbatim by an AI, the spec has a gap and the failing step's `Required SSOT` row is the bug.
+**Purpose** — Prove that the spec + `contract.json` + P7 skeletons let an AI agent one-shot a complete vertical slice (spec → PHP route → React component) **without reading any source code**, citing only stable IDs (`AT-*`, `EP-*`, enum names, mem:// pointers). Pass criterion: every step below resolves to ≥1 cited SSOT row whose `Required SSOT` cell is non-empty AND the cited file exists at the stated path. If any step cannot be executed verbatim under that criterion, the spec has a gap and the failing step's `Required SSOT` row is the bug.
 
 **Audience** — Any AI agent or human implementer building their first WorkFlowy feature; spec auditor running P10.
 
