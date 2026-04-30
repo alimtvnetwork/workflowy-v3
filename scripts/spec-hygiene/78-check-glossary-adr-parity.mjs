@@ -23,7 +23,7 @@
  *
  * Pure positive guard clauses, no nested ifs, max 15-line bodies.
  */
-import { readFileSync, writeFileSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync, readdirSync } from "node:fs";
 import { createHash } from "node:crypto";
 import { join } from "node:path";
 
@@ -62,7 +62,7 @@ function findAdrFile(adrId) {
 
 function readDirSafe(dir) {
   if (!existsSync(dir)) return [];
-  return require("node:fs").readdirSync(dir);
+  return readdirSync(dir);
 }
 
 function hashNormativeSections(adrFile) {
