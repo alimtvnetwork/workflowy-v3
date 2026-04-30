@@ -36,7 +36,7 @@ Every spec sentence that defines behavior MUST be unambiguous to both AI agents 
 | "we could", "perhaps", "possibly" | `MAY` (if optional) or `MUST` (if required) — gate `G-WORDING-SOFT-LANGUAGE-REPLACEMENT` |
 | "may want to", "might want" | `SHOULD` |
 | "ideally", "preferably" | `SHOULD` |
-| "should consider" | `MUST evaluate` (if mandatory deliberation) or `MAY evaluate` |
+| "should consider" | `MUST evaluate` (if mandatory deliberation) or `MAY evaluate` — gate `G-WORDING-DELIBERATION-REPLACEMENT` |
 
 ---
 
