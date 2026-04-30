@@ -100,7 +100,7 @@ The spec **MUST** treat all DDL identifiers as **singular PascalCase** and treat
 
 ## Gates Touched
 
-- **New gates:** `(none — gates pre-existed; this ADR ratifies them)`
+- **New gates:** `G-ADR-0001-AMENDMENT-REQUIRED` (DOC-NORM umbrella), `G-ADR-0001-NO-SILENT-DRIFT` (DOC-NORM, sub-rule), `G-ADR-0001-FIXTURE-SINGULAR-DDL` (DOC-NORM, sub-rule of `G-04-NO-DDL-PLURALS` scoped to `97a-/97b-` fixture corpus)
 - **Modified gates:** `G-04-ALIAS-DDL-CANONICAL` (now load-bearing),
   `G-04-NO-DDL-PLURALS` (now load-bearing)
 - **Endpoints locked:**
