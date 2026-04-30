@@ -117,6 +117,9 @@ function auditFile(file) {
     if (FIXTURE_SLOT_RE.test(ln)) continue;
     if (/^\s*>\s/.test(ln)) continue;
     if (RFC2119_CELL_RE.test(ln)) continue;
+    // F-SCOPE-49 burndown 2026-04-30: gate-summary table HEADER rows
+    // (`| Gate id | MUST | Tier |...`) are column titles, not bindings — exempt.
+    if (/^\|\s*Gate\s*id\s*\|\s*MUST\s*\|\s*Tier\b/i.test(ln)) continue;
 
     // Same-paragraph adjacency check — the false-negative class.
     const pIdx = lineToPara[i];
