@@ -934,3 +934,10 @@ This is the **third** scope-correction in 3 turns (F-SCOPE-01 → 02 → 03), ea
 - Patched 10 files: 31-app/01-features/18, 31-app/03-edge-cases/02, 31-app/04-roadmap/01+03, 31-app/05-conventions/02+04+14, 31-app/06-endpoints/14b, 32-ui-design/01+03.
 - Substitutions: `suitable for Siri / lock-screen widgets` → format constraints (≤10 items, title only); `fast, minimal` → `low-latency (≤500 ms cold-open)`; `proper color contrast` → WCAG 2.2 AA ratios; cookie attrs `HttpOnly + Secure + SameSite=Lax` wrapped in backticks; `keeps CI fast` → `single-pass (≤30 s overhead per gate)`; `fail fast` → `fail-fast (exit ≠0 within first 30 s)`; `nice-to-have` → `optional`; `appropriate topics` → enumerated SSE topics per ADR-0025; `fast hot-reload` → `sub-second hot-reload (HMR ≤200 ms vs Webpack/CRA 2–5 s)`; `proper contrast` → WCAG 2.2 AA ratios.
 - Residue: 20 → 7 files / 7 hits (93% of original 100-file residue closed).
+
+### F-AUDIT-44 batch-12 FINAL — CLOSED (2026-04-30)
+- Patched 7 final files: 32-ui-design (accessibility, search/03, search-archive, editor/03, calendar/02), 35-enforcement-rules/97, 36-user-management/97.
+- Substitutions: `proper tree roles with expanded/collapsed states announced` → explicit ARIA `role="tree"` + `role="treeitem"` + `aria-expanded` + live-region; `appropriate value picker` → operator-specific picker types enumerated; `appropriate v2 file` → "filename matches the same numbered prefix"; `item types proper` → "members of the 12 closed `ItemType` enum"; `Convert later if needed` → "Conversion is a separate user action invoked after the modal closes"; `fast-check` → backticked library name; `prevent efficient joins` → "INTEGER PKs enable B-tree index lookups in O(log n) with 8-byte keys vs UUID's 16-byte string comparison".
+- **Residue: 7 → 0 files / 0 hits. 100% closed.**
+- **Gate graduated:** `G-LINT-VAGUE-MODIFIERS` mode `block-new` → `block-all` in `spec/_GATE-REGISTRY.md`. CI now fails on any occurrence.
+- **F-AUDIT-44 status: CLOSED.** 12-batch burndown total: 109 → 0 occurrences over 6 hours of work.
