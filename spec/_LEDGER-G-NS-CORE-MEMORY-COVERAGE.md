@@ -45,7 +45,7 @@ This ledger remedies that by making the Core↔Gate mapping **first-class and ve
 |---|---|---|---|
 | C1 | "Vite 5.4 + React 19 + TypeScript 5.6 (strict)" | ✅ partial — strict-TS via `G-02-NO-ANY`, `G-02-MAX-3-PARAMS`, `G-02-NO-NESTED-IF`; version pinning **uncovered** | Version-pin gate would belong with NEW-25. |
 | C2 | "React Router v7 data-router" | ✅ `G-23-ROUTER-V7-ONLY`, `G-23-DATA-ROUTER-API` | Strong coverage. |
-| C3 | "shadcn/ui + Radix sole component base" | 📋 `RESERVED: G-22-COMPONENT-BASE-SHADCN-RADIX` | ADR-0022 anchors the rule; no grep gate. **Gap candidate.** |
+| C3 | "shadcn/ui + Radix sole component base" | ✅ `G-26-COMPONENT-BASE-SHADCN-RADIX`, `G-26-NO-MIXED-COMPONENT-BASES`, `G-26-NO-SHADCN-RUNTIME-DEP`, `G-26-RADIX-MATRIX-PINNED`, `G-26-SHADCN-PATCHES-TRACKED` (2 DOC + 3 DOC-NORM, pre-existing — discovered 2026-04-30 during GAPCLOSE-C3 prep, see F-AUDIT-34 third recurrence) | Anchors ADR-0022 §D1/D4/D6. **Originally mis-classified as RESERVED in v1 of this ledger** (cross-walk grep targeted `G-22-` namespace only, missed `G-26-*` family that historically groups all component-base rules). GAPCLOSE-C3 retracted; no registry change required. |
 | C4 | "lucide-react sole icons (no emoji glyphs)" | ✅ `G-23-ICONS-LUCIDE-ONLY`, `G-23-ICONS-CURRENTCOLOR`, `G-23-ICONS-NAMED-IMPORTS`, `G-23-NO-EMOJI-AS-ICON` | Strong 4-gate coverage. |
 
 ### D. API envelope
@@ -113,31 +113,31 @@ This ledger remedies that by making the Core↔Gate mapping **first-class and ve
 
 ---
 
-## Coverage summary (as of 2026-04-30, post-GAPCLOSE-I2-RETRACTION + J1-RETRACTION)
+## Coverage summary (as of 2026-04-30, post-GAPCLOSE-I2/J1/C3-RETRACTION)
 
 | Status | Count | % |
 |---|---|---|
-| ✅ Registered gate(s) | 18 | 78% |
-| 📋 RESERVED slot (ADR-0031 pattern) | 2 | 9% |
+| ✅ Registered gate(s) | 19 | 83% |
+| 📋 RESERVED slot (ADR-0031 pattern) | 1 | 4% |
 | 📝 Memory-only-by-design (procedural) | 3 | 13% |
 | **Total Core lines mapped** | **23** | **100%** |
 
-**Open gaps remaining (2 RESERVED slots + 4 partial-coverage notes):**
+**Open gaps remaining (1 RESERVED slot + 4 partial-coverage notes):**
 
 1. **B2** — Forbidden-runtimes ESLint rule (`G-NS-FORBIDDEN-RUNTIMES`).
-2. **C3** — shadcn/Radix component-base lock (`G-22-COMPONENT-BASE-SHADCN-RADIX`).
+2. ~~**C3** — shadcn/Radix component-base lock.~~ **CLOSED 2026-04-30 — pre-existing `G-26-*` family (5 gates) covers it (cross-walk error in v1 of this ledger; F-AUDIT-34 third recurrence).**
 3. **E1** — 15-line logic limit + positive-guard-clause grep gates (partial coverage).
 4. **F3** — 250-item per-view cap (policy → grep gate).
 5. **G1** — HSL-only Tailwind tokens + `@theme`-block-as-SSOT gates (AUDIT-FIX-02 closes half).
-6. ~~**I2** — Undo cap 100.~~ **CLOSED 2026-04-30 — pre-existing `G-25-UNDO-CAP-100` covers it (cross-walk error in v1 of this ledger).**
-7. ~~**J1** — WebSocket/long-poll ban.~~ **CLOSED 2026-04-30 — pre-existing `G-25-TRANSPORT-SSE-ONLY` covers it (cross-walk error in v1 of this ledger).**
+6. ~~**I2** — Undo cap 100.~~ **CLOSED 2026-04-30 — pre-existing `G-25-UNDO-CAP-100` covers it.**
+7. ~~**J1** — WebSocket/long-poll ban.~~ **CLOSED 2026-04-30 — pre-existing `G-25-TRANSPORT-SSE-ONLY` covers it.**
 8. **C1** — Version-pin gate for Vite/React/TS (NEW-25 covers this).
 
-**Closure progress:** 2 of 4 originally-listed RESERVED slots closed by **discovery** (not by new gates) — both were pre-existing in the registry but mis-classified by the v1 cross-walk grep. Filed as F-AUDIT-34 (false-positive cascade). Real net result: coverage was always 18/23 (78%), not 16/23 (70%) as v1 reported. Remaining 2 RESERVED + 4 partial-coverage notes are still first-class visible.
+**Closure progress:** 3 of 4 originally-listed RESERVED slots closed by **discovery** (not by new gates) — all three were pre-existing in the registry but mis-classified by the v1 cross-walk grep. Filed as F-AUDIT-34 (false-positive cascade, now 3 instances). Real net result: coverage was always 19/23 (83%), not 16/23 (70%) as v1 reported. Remaining 1 RESERVED + 4 partial-coverage notes are still first-class visible.
 
 ### v1 cross-walk methodology error (root-cause)
 
-The v1 cross-walk used per-namespace greps (`G-21-UNDO`, `G-NS-WEBSOCKET`) that assumed gate names match Core-rule topics 1:1. **They don't.** The `G-25-*` family historically absorbs both SSE rules AND undo/queue rules together (because ADR-0025 §Gates Touched explicitly cross-references undo gates as siblings to transport gates). Future cross-walks MUST grep by **ADR anchor** (`spec/00-adrs/0021-`, `spec/00-adrs/0025-`) AND by **rule keyword** (`undo`, `WebSocket`, `cap.*100`) — not by gate-name namespace alone.
+The v1 cross-walk used per-namespace greps (`G-21-UNDO`, `G-NS-WEBSOCKET`, `G-22-COMPONENT-BASE`) that assumed gate names match Core-rule topics 1:1. **They don't.** The `G-25-*` family historically absorbs both SSE rules AND undo/queue rules together (ADR-0025 §Gates Touched cross-references undo gates as siblings); the `G-26-*` family covers all component-base rules even though ADR-0022 might suggest a `G-22-` namespace. Future cross-walks MUST grep by **ADR anchor** (`spec/00-adrs/0021-`, `spec/00-adrs/0022-`, `spec/00-adrs/0025-`) AND by **rule keyword** (`undo`, `WebSocket`, `shadcn`, `Radix`, `cap.*100`) — not by gate-name namespace alone. **Three instances now confirm this is a systemic v1 methodology defect, not isolated cases — NEW-27 (registry-cross-walk hygiene gate) is the durable fix.**
 
 ---
 
@@ -145,7 +145,7 @@ The v1 cross-walk used per-namespace greps (`G-21-UNDO`, `G-NS-WEBSOCKET`) that 
 
 - **Promote to CI:** Authoring a `mem://`-parser hygiene script (`scripts/spec-hygiene/NN-check-core-memory-coverage.mjs`) that re-derives this cross-walk from `mem://index.md` and fails if a Core line lacks a row here. Deferred — requires stable `mem://` file-system access from CI.
 - **Quarterly re-audit:** Every audit cycle (audit-vN) MUST re-verify this ledger and add rows for new Core lines.
-- **Convert RESERVED slots to gates:** Each of the 4 `RESERVED:` slots above is a candidate for a future spec-improving batch. Recommend prioritising by leverage: I2 (undo cap, 1 gate, narrow scope) > C3 (component-base lock) > B2 (forbidden-runtimes) > E1 (15-line limit, complex AST rule).
+- **Convert RESERVED slots to gates:** Sole remaining candidate is B2 (forbidden-runtimes). E1/F3/G1 are partial-coverage strengthening candidates.
 
 ---
 
