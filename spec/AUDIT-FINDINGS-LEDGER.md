@@ -264,6 +264,12 @@ Permanent index of every spec-improving or spec-vs-impl audit cycle. Each row li
 
 ---
 
+### Progress note 2026-04-30 — GAP-A1c closed
+
+Authored `spec/36-user-management/04-admin-ui.md` (admin UI sub-spec — 5 surfaces, 10 endpoints, 5 AT binds, 6 admin-UI-specific anti-patterns). All 6 prose MUSTs in the new file are gate-bound (`G-36-ADMIN-UI-GUARD`, `-NO-CACHE`, `-NO-SELF`, `-INVITE-VALIDATE`, `-AUDIT-PAIR`, `-DESTRUCTIVE-CONFIRM`) — zero bare-MUST regression. `00-overview.md` "Pending Sub-Specs" table updated; row 04 now ✅. With this batch, all 4 user-management sub-spec rows are authored (01 anchored in DDL, 02/03/04 inline). Closes the user-mgmt placeholder cluster from F-AUDIT-41.
+
+---
+
 
 ## Retraction case studies
 
