@@ -110,7 +110,7 @@ public static function requireRole(int $userId, AppRole $role): void {
 }
 ```
 
-Every REST handler that requires authorization MUST call `requireRole` as its first executable line after argument validation. The thrown `DomainError` is caught by the central error-mapping middleware and rendered into the canonical envelope:
+Every REST handler that requires authorization MUST call `requireRole` as its first executable line after argument validation [gate: G-36-VIA-HAS-ROLE]. The thrown `DomainError` is caught by the central error-mapping middleware and rendered into the canonical envelope:
 
 ```json
 {
@@ -168,7 +168,7 @@ The `CapabilityMatrix::*Caps()` factories are **generated** from `00-overview.md
 | `ViewActivityAudit` | row 7 |
 | `BulkPurgeTrash` | row 8 |
 
-Adding a row to the matrix WITHOUT adding a `Capability` enum value (or vice-versa) MUST fail `scripts/spec-hygiene/07-extract-contract-map.mjs --capabilities` with `CAP_NOT_IN_MATRIX: <name>`.
+Adding a row to the matrix WITHOUT adding a `Capability` enum value (or vice-versa) MUST fail `scripts/spec-hygiene/07-extract-contract-map.mjs --capabilities` with `CAP_NOT_IN_MATRIX: <name>` [gate: G-USER-CAPABILITY-MATRIX-SSOT].
 
 ---
 
