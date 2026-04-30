@@ -1,13 +1,13 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.46  
-> **Updated:** 2026-04-30 — **GAPCLOSE-B2 LANDED:** authored `G-10-FORBIDDEN-RUNTIMES` (DOC-NORM) anchoring ADR-0002 §Decision lines 50-65 + Core memory line "Lovable Cloud, Supabase, sql.js, IndexedDB-as-primary, Postgres, MySQL, standalone Node, Cloudflare D1, Go all forbidden". Closes Core↔Gate ledger row B2 — sole remaining RESERVED slot. **F-AUDIT-34 anti-recurrence methodology applied:** grepped registry by ADR anchor (`0002-`) AND rule keywords (`Supabase|sql.js|Cloudflare|forbidden|runtime`) before authoring; confirmed zero duplicate. Sibling to `G-10-BOUNDARY-*` cluster. Net effect: gate count 537 (+1 vs v1.7.45). Prior: 1.7.45 (GAPCLOSE-I2/J1 retraction).
+> **Version:** 1.7.47  
+> **Updated:** 2026-04-30 — **NEW-13 LANDED:** authored ADR-0033 (umbrella gates compose orphan sub-rule tokens) + new gate `G-00-UMBRELLA-COMPOSES-LEAVES` (DOC-NORM, anchors ADR-0033 §Decision). Resolves the 12 corpus-proven umbrella chains identified by F-SCOPE-41/44/50: rather than enumerate the 63 cited-but-unregistered sub-rule tokens as standalone rows, declare that an umbrella row marked `(Umbrella)` structurally covers any cited `{umbrella}-{leaf}`. Runner extension to `76-check-orphan-gate-ids.mjs` deferred to **NEW-13-FOLLOWUP** (tooling). **F-AUDIT-34 cross-walk applied:** grepped `G-.*SUB-RULE`, `sub-rule sweep`, ADR-0026..0032 anchors — zero existing gate covers the umbrella-composes-leaves rule. Net effect: gate count 538 (+1 vs v1.7.46), DOC-NORM 174 (+1). Prior: 1.7.46 (GAPCLOSE-B2 LANDED).
 
-- **Total named gates:** 537 (+1 vs v1.7.45)
+- **Total named gates:** 538 (+1 vs v1.7.46)
 - **WARN-only gates:** 11 (unchanged)
 - **CI:** 139 (unchanged)
 - **TEST:** 20 (unchanged)
-- **DOC-NORM:** 173 (+1 vs v1.7.45)
+- **DOC-NORM:** 174 (+1 vs v1.7.46)
 - **DOC:** 202 (unchanged)
 - **Areas covered:** 56 (unchanged)
 - **Areas covered:** 37 (unchanged)
