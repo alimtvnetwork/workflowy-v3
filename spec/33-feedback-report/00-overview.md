@@ -130,12 +130,12 @@ Specification for the in-app feedback and bug-report feature in WorkFlowy. Lets 
 
 ## Pending Sub-Specs
 
-| # | Planned File | Description |
-|---|--------------|-------------|
-| 01 | `01-data-model.md` | `Feedback` table schema (PascalCase, `FeedbackId` PK) |
-| 02 | `02-submission-flow.md` | Form UX, validation, optimistic submission |
-| 03 | `03-admin-review-ui.md` | Inbox, filters, status transitions |
-| 04 | `04-retention-and-export.md` | Retention policy, CSV export, GDPR |
+| # | Planned File | Description | Status |
+|---|--------------|-------------|--------|
+| 01 | [`01-data-model.md`](./01-data-model.md) | `FeedbackReport` table schema (PascalCase, `FeedbackReportId` PK), enums, transition matrix, Diagnostics shape | ✅ **Authored 2026-04-30** |
+| 02 | `02-submission-flow.md` | Form UX, validation, optimistic submission | Pending |
+| 03 | `03-admin-review-ui.md` | Inbox, filters, status transitions | Pending |
+| 04 | `04-retention-and-export.md` | Retention policy, CSV export, GDPR | Pending |
 
 ---
 
