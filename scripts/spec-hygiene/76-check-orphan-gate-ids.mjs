@@ -24,7 +24,6 @@ const REG_PATH = "spec/_GATE-REGISTRY.md";
 // — these are NOT citations and MUST NOT count toward drift.
 const PLACEHOLDERS = new Set([
   "G-NN", "G-NN-NAME", "G-DOMAIN-NN", "G-ADR-NNNN",
-  "G-00-UMBRELLA-LEAVES-DESCRIBED",
   // Family/skeleton mentions in prose — see spec/31-app/05-conventions/02-ci-quality-gates.md §reserved
   "G-09", "G-2X", "G-3X", "G-26-", "G-41",
   // Bare ADR-namespace mention in §0033 examples
@@ -112,7 +111,7 @@ function walk(dir, acc = []) {
 
 const reg = readFileSync(REG_PATH, "utf8");
 const registered = new Set();
-const umbrellas = []; // [{ token, family|null }]
+const umbrellas = []; // [{ token, family|null, describedLeaves: Set<string> }]
 for (const line of reg.split("\n")) {
   const rowMatch = line.match(/^\|\s*~?~?`(G-[A-Z0-9][A-Z0-9-]*)`/);
   if (!rowMatch) continue;
@@ -120,7 +119,18 @@ for (const line of reg.split("\n")) {
   registered.add(tok);
   // ADR-0033: umbrella row marker `(Umbrella)` or `(Umbrella, family=X)` in Description.
   const um = line.match(/\(Umbrella(?:,\s*family=([a-z0-9-]+))?\)/i);
-  if (um) umbrellas.push({ token: tok, family: um[1] ?? null });
+  if (um) {
+    // G-00-UMBRELLA-LEAVES-DESCRIBED (NEW-13-FOLLOWUP, Task C):
+    // parse every `G-…` token in this row's Description and treat the
+    // subset matching `^{tok}-[A-Z0-9-]+$` as the author-described leaves.
+    const describedLeaves = new Set();
+    for (const m of line.matchAll(GATE_RE)) {
+      const leaf = NORMALISE(m[0]);
+      if (leaf === tok) continue;
+      if (leaf.startsWith(tok + "-")) describedLeaves.add(leaf);
+    }
+    umbrellas.push({ token: tok, family: um[1] ?? null, describedLeaves });
+  }
 }
 
 // ADR-0033 §Decision: leaf-anchor file path → family mapping.
@@ -194,14 +204,56 @@ for (const [tok, occs] of cited) {
 drift.sort((a, b) => b.count - a.count);
 
 console.log(`registered=${registered.size}  cited=${cited.size}  allow-listed=${ALLOWED.size}  umbrellas=${umbrellas.length}  umbrella-covered=${umbrellaCovered}  drift=${drift.length}`);
-if (drift.length === 0) {
-  console.log("OK: no orphan gate-ID drift (ADR-0033 umbrella coverage active).");
+
+// G-00-UMBRELLA-LEAVES-DESCRIBED (Task C): for each umbrella, every cited
+// non-ledger leaf token covered structurally MUST also appear by name in the
+// umbrella's row Description. This guarantees AI readers can discover the
+// full leaf set from the registry alone, without scanning the corpus.
+const undescribed = []; // [{ umbrella, leaf, sample }]
+for (const [tok, occs] of cited) {
+  if (registered.has(tok)) continue;
+  if (ALLOWED.has(tok)) continue;
+  const nonLedger = occs.filter(o => o.file !== REG_PATH && !isLedgerFile(o.file));
+  if (nonLedger.length === 0) continue;
+  for (const u of umbrellas) {
+    if (!tok.startsWith(u.token + "-")) continue;
+    const leafPart = tok.slice(u.token.length + 1);
+    if (!/^[A-Z0-9-]+$/.test(leafPart)) continue;
+    // family-scope match (mirrors umbrellaCovers)
+    const familyMatch = nonLedger.some(o => {
+      if (u.family === null) return true;
+      const occFamily = familyOfPath(o.file);
+      return occFamily && u.family === occFamily;
+    });
+    if (!familyMatch) continue;
+    if (!u.describedLeaves.has(tok)) {
+      undescribed.push({ umbrella: u.token, leaf: tok, sample: nonLedger.slice(0, 2) });
+    }
+    break;
+  }
+}
+
+const HARD_FAIL = process.env.ORPHAN_GATE_SOFT !== "1";
+// G-00-UMBRELLA-LEAVES-DESCRIBED inaugural baseline 2026-04-30: 164 undescribed
+// leaves. Mode is WARN-only until burndown reaches 0 (mirrors the staged
+// graduation pattern of G-00-ORPHAN-GATE-ID-DRIFT and G-00-ORPHAN-MUST-CITATION-ADJACENCY).
+// Promote to HARD by setting UMBRELLA_LEAVES_DESCRIBED_HARD=1.
+const LEAVES_HARD = process.env.UMBRELLA_LEAVES_DESCRIBED_HARD === "1";
+if (drift.length === 0 && undescribed.length === 0) {
+  console.log("OK: no orphan gate-ID drift, no undescribed umbrella leaves (G-00-UMBRELLA-LEAVES-DESCRIBED active).");
   process.exit(0);
 }
+if (undescribed.length > 0) {
+  console.log(`${LEAVES_HARD ? "FAIL" : "WARN"}: ${undescribed.length} umbrella-covered leaf(s) not named in their umbrella row (G-00-UMBRELLA-LEAVES-DESCRIBED).`);
+  console.log("Fix: append the leaf token to the umbrella's `Composes …` clause in spec/_GATE-REGISTRY.md.");
+  for (const u of undescribed) {
+    console.log(`  ${u.leaf} (umbrella=${u.umbrella}): ${u.sample.map(s => `${s.file}:${s.line}`).join(", ")}`);
+  }
+}
+if (drift.length === 0) process.exit(undescribed.length > 0 && LEAVES_HARD ? 1 : 0);
 // ADR-0033 graduation 2026-04-30: runner promoted WARN → HARD-FAIL after both
 // flip-criterion conditions met (drift=0 AND ADR-0033 umbrella-coverage active).
 // Escape hatch: ORPHAN_GATE_SOFT=1 reverts to WARN for emergency rollback only.
-const HARD_FAIL = process.env.ORPHAN_GATE_SOFT !== "1";
 console.log(`${HARD_FAIL ? "FAIL" : "WARN"}: ${drift.length} cite-only-no-row gate ID(s) detected after ADR-0033 umbrella coverage applied.`);
 console.log("Either:");
 console.log("  (a) register the gate in spec/_GATE-REGISTRY.md, OR");
