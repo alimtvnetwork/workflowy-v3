@@ -306,6 +306,12 @@ Authored `spec/34-activity-feed/02-capture-pipeline.md` (closed 5-stage pipeline
 
 ---
 
+### Progress note 2026-04-30 — GAP-A3 (batch 3/4) closed
+
+Authored `spec/34-activity-feed/03-feed-ui.md` (2 routes both under `<ActivityBoundary>`, 3 components C1/C2/C3, exhaustive `RowByType` dispatcher matching the closed 8-EventType enum via TS `Record<EventType,…>`, 30-day restore-window enforcement (hidden, not disabled), SSE callback restricted to `router.revalidate()` only, 8 anti-patterns, 4 AT binds). All 7 prose MUSTs gate-bound (`G-34-UI-NAMED-BOUNDARY`, `-MIRROR-FIRST`, `-CURSOR-VALIDATE`, `-EXHAUSTIVE-DISPATCHER`, `-RESTORE-VIA-CAPTURE`, `-RESTORE-WINDOW`, `-SSE-INVALIDATE-ONLY`) — zero bare-MUST regression. Parent overview row 03 now ✅. 1 of 4 activity-feed sub-specs still pending (04-retention-and-purge).
+
+---
+
 
 ## Retraction case studies
 
