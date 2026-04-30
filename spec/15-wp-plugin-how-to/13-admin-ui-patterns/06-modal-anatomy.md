@@ -6,7 +6,7 @@
 
 ## Modal Wrapper Partial
 
-All modals MUST use the `modal-wrapper.php` partial for consistency:
+(gate **G-22-BOUNDARY-NAMES-CLOSED**) All modals MUST use the `modal-wrapper.php` partial for consistency:
 
 ```php
 <?php
@@ -38,7 +38,7 @@ include __DIR__ . '/partials/shared/modal-wrapper.php';
 
 ## Variable Cleanup
 
-The partial MUST `unset()` all modal variables after rendering to prevent bleed into subsequent includes:
+The partial MUST `unset()` all modal variables after rendering to prevent bleed into subsequent includes (gate **G-22-BOUNDARY-ISOLATION**):
 
 ```php
 unset($modalId, $modalTitle, $modalIcon, $modalIconColor, 
@@ -60,7 +60,7 @@ unset($modalId, $modalTitle, $modalIcon, $modalIconColor,
 
 ## Modal Rendering (Inline vs Partial)
 
-Simple modals that don't need the partial (e.g., legacy templates) may use inline HTML but MUST follow the same class structure:
+Simple modals that don't need the partial (e.g., legacy templates) may use inline HTML but MUST follow the same class st (gate **G-22-BOUNDARY-NAMES-CLOSED**)ructure:
 
 ```php
 <div id="my-modal" class="riseup-modal" style="display: none;">

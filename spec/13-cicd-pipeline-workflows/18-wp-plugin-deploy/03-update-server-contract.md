@@ -15,7 +15,7 @@ This file is the **CI/CD-side view** of the self-hosted update server contract. 
 
 ## Pipeline Output Required by the Updater
 
-After a successful release (stage 8), three URLs MUST resolve:
+(gate **G-13-PUBLISH-NEEDS-SIGN**) After a successful release (stage 8), three URLs MUST resolve:
 
 | URL | Content-Type | Purpose |
 |-----|--------------|---------|
@@ -29,7 +29,7 @@ For self-hosted setups, `updates.workflowy.example` typically redirects (301) to
 
 ## `info.json` Shape (CI-produced)
 
-The release pipeline MUST emit (or trigger emission of) a JSON manifest matching this exact schema. Field names use `snake_case` per the WP-plugin convention.
+(gate **G-13-PUBLISH-NEEDS-SIGN**) The release pipeline MUST emit (or trigger emission of) a JSON manifest matching this exact schema. Field names use `snake_case` per the WP-plugin convention.
 
 ```json
 {
@@ -72,7 +72,7 @@ These gates run **after** the release workflow completes — typically as a foll
 | 4 | Checksum verifies | `curl -fs $download_url -o tmp.zip && curl -fs $checksum_url \| sha256sum -c` exits 0 |
 | 5 | PHP version compatible | `jq -r .requires_php info.json` ≤ live WP test site's PHP version |
 
-Failure of any gate MUST trigger a release rollback alert (delete the GitHub Release, retain the tag for forensics).
+(gate **G-17-ROLLBACK-DECLARED**) Failure of any gate MUST trigger a release rollback alert (delete the GitHub Release, retain the tag for forensics).
 
 ---
 

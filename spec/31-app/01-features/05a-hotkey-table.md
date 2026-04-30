@@ -28,7 +28,7 @@
 
 ## Purpose
 
-A flat, machine-parseable table of every keyboard shortcut. The implementation file `src/lib/interactions/useGlobalKeys.ts` (planned) and the future `src/lib/hotkeys.ts` MUST register exactly these bindings — drift is detected by a hygiene check (`scripts/spec-hygiene/17-check-hotkeys.mjs`, see A-20-extension).
+(gate **G-22-BOUNDARY-NAMES-CLOSED**) A flat, machine-parseable table of every keyboard shortcut. The implementation file `src/lib/interactions/useGlobalKeys.ts` (planned) and the future `src/lib/hotkeys.ts` MUST register exactly these bindings — drift is detected by a hygiene check (`scripts/spec-hygiene/17-check-hotkeys.mjs`, see A-20-extension).
 
 The prose context for each shortcut lives in [`05-interactions.md`](./05-interactions.md) §4.1–4.4. This file is the **canonical machine source**; if the two disagree, this table wins.
 
@@ -177,7 +177,7 @@ The Action ID is the registry key in the planned `src/lib/hotkeys.ts` map; multi
 | Zoom in / zoom out | ⌘. / ⌘, | Ctrl+. / Ctrl+, | Page-root navigation. |
 | Undo / Redo | ⌘Z / ⌘+Shift+Z | Ctrl+Z / Ctrl+Y | Global mutation stack. |
 
-> **Reconciliation note (F7 candidate):** every row above MUST appear in the canonical AT-HK-* table at the top of this file. Any drift is a hygiene violation and should be flagged in the F7 reconciliation pass.
+> **Reconciliation note (F7 candidate):** every row above MUST appear in the canonical AT-HK-* table at the top of this (gate **G-22-BOUNDARY-NAMES-CLOSED**) file. Any drift is a hygiene violation and should be flagged in the F7 reconciliation pass.
 
 ---
 
@@ -199,4 +199,4 @@ The Action ID is the registry key in the planned `src/lib/hotkeys.ts` map; multi
 
 - **Routes introduced by this feature:** None.
 - **N/A justification:** Closed enum table — no write surface; hotkeys dispatch to other features' routes.
-- **Compliance:** Satisfies F-AUD42-25 (API axis) by explicit declaration. Any future write route added here MUST follow the PascalCase envelope (ADR-0004/0019), egress via queue worker (ADR-0023), and bind to a named error boundary (ADR-0017).
+- **Compliance:** Satisfies F-AUD42-25 (API axis) by explicit declaration. Any future write route added here MUST follow (gate **G-23-DATA-ROUTER-API**) the PascalCase envelope (ADR-0004/0019), egress via queue worker (ADR-0023), and bind to a named error boundary (ADR-0017).

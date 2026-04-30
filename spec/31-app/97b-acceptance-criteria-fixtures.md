@@ -28,7 +28,7 @@
 > | **Then** | `Items.DeletedAt` set to server now; row hidden from tree view; visible in Trash view. |
 > | **Response envelope** | `{ "Status":200, "Attributes":{ "Soft":true }, "Results":[ { "Id":"itm_A", "DeletedAt":"2026-04-28T12:00:00Z" } ] }` |
 > | **Side effects** | SSE `item-deleted` frame `{ "Id":"itm_A" }`; `AuditLog` row `event="item.deleted"`. |
-> | **Negative assertion** | Row `itm_A` MUST still exist in `Items` table (`SELECT COUNT(*) FROM Item WHERE Id='itm_A'` → 1); no `DROP` / hard `DELETE FROM Item` issued. |
+> | **Negative assertion** (gate **G-13-FIXTURE-AS-SPEC-SHAPE**) | Row `itm_A` MUST still exist in `Items` table (`SELECT COUNT(*) FROM Item WHERE Id='itm_A'` → 1); no `DROP` / hard `DELETE FROM Item` issued. |
 
 ---
 
@@ -54,7 +54,7 @@
 > | **Then** | Transaction ROLLBACKs; no row's `ParentId` is updated. |
 > | **Response envelope** | `{ "Status":409, "Attributes":{}, "Results":[], "Errors":[ { "Code":"E_BULK_PARTIAL_FAILURE", "FailedId":"itm_B" } ] }` |
 > | **Side effects** | Zero SSE `item-updated` frames emitted; zero `AuditLog` rows for this operation. |
-> | **Negative assertion** | `itm_A` and `itm_C` MUST NOT be moved even though their individual operations would have succeeded. |
+> | **Negative assertion** (gate **G-13-FIXTURE-AS-SPEC-SHAPE**) | `itm_A` and `itm_C` MUST NOT be moved even though their individual operations would have succeeded. |
 
 ---
 
@@ -79,7 +79,7 @@
 > | **Then** | `itm_A.DeletedAt` cleared; `itm_A.Id` unchanged; `itm_A.ParentId="itm_P"`; children `itm_A1`, `itm_A2` reappear with their original IDs and parent pointers. |
 > | **Response envelope** | `{ "Status":200, "Attributes":{ "RestoredCount":3 }, "Results":[ { "Id":"itm_A", "ParentId":"itm_P", "DeletedAt":null } ] }` |
 > | **Side effects** | SSE `item-restored` per restored row; `AuditLog` rows `event="item.restored"`. |
-> | **Negative assertion** | No new IDs minted; `itm_A1.Id` and `itm_A2.Id` MUST equal their pre-delete values. |
+> | **Negative assertion** (gate **G-13-FIXTURE-AS-SPEC-SHAPE**) | No new IDs minted; `itm_A1.Id` and `itm_A2.Id` MUST equal their pre-delete values. |
 
 ---
 

@@ -9,7 +9,7 @@
 
 ## AI Contract
 
-**Purpose** — Provide ready-to-copy PHP 8.1+ skeleton classes (enums + REST route registrar) derived from the canonical contract. While spec-only mode is active, these files are normative samples that demonstrate the exact shape a WP-plugin implementer MUST follow.
+(gate **G-13-FIXTURE-AS-SPEC-SHAPE**) **Purpose** — Provide ready-to-copy PHP 8.1+ skeleton classes (enums + REST route registrar) derived from the canonical contract. While spec-only mode is active, these files are normative samples that demonstrate the exact shape a WP-plugin implementer MUST follow.
 
 **Audience** — WP-plugin implementer (when spec-only mode exits) + reviewer.
 
@@ -23,8 +23,8 @@
 - DB layer — covered separately by [`19-micro-orm-and-root-db/`](../19-micro-orm-and-root-db/00-overview.md)
 
 **Definition of Done** —
-- Every enum in `spec/contract.json` MUST have a matching `case` in `Enums.generated.php`
-- Every endpoint in `spec/contract.json` MUST have a matching `register_rest_route` call in `RestRoutes.generated.php`
+- Every enum in `spec/contract.json` MUST have a matching `case` in `Enums.generated.php` (gate **G-13-FIXTURE-AS-SPEC-SHAPE**)
+- Every endpoint in `spec/contract.json` MUST have a matching `register_rest_route` call in `RestRoutes.generated.php` (gate **G-13-FIXTURE-AS-SPEC-SHAPE**)
 - `node scripts/spec-hygiene/41-generate-skeletons.mjs` exits 0
 
 ---

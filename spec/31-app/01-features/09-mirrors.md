@@ -76,7 +76,7 @@ These properties are shared via the canonical source — editing ANY mirror upda
 
 | Element | Specification |
 |---------|---------------|
-| Mirror badge | Every mirrored item MUST show a small diamond (◇) icon next to its content. |
+| Mirror badge | Every mirrored item MUST show a small diamond (◇) icon next to its content. (gate **G-22-BOUNDARY-NAMES-CLOSED**) |
 | Mirror hover tooltip | On hovering the diamond badge: "This is a mirror. Changes here update the original item and all other mirrors." |
 | Mirror creation notice | One-time toast shown when creating a mirror: **"Mirrors stay synced. Duplicates do not."** This single sentence is critical for user understanding. |
 | Mirror source indicator | In the item context menu's metadata section, mirrored items show: "Mirrored from: {source item title}" with a clickable link to zoom to the source. |
@@ -233,7 +233,7 @@ For cleaner UX, use only **"Mirror To…"** in the context menu (one unified act
 - Children are shared: adding/removing/moving a child under any peer is reflected under all peers.
 - Per-instance state (collapse, zoom, share ACL) is independent per peer (see [`./08b-sharing-mirror-interaction.md`](./08b-sharing-mirror-interaction.md)).
 
-> **Reconciliation note (F7 candidate):** Workflowy's UI says "create a mirror **of** this item"; WorkFlowy says "create a peer **for** this item". Copy strings in components MUST follow WorkFlowy's vocabulary. Catch-up linter check planned in `scripts/spec-hygiene/` (F7).
+(gate **G-NS-NO-DEPRECATED-ALIAS**) > **Reconciliation note (F7 candidate):** Workflowy's UI says "create a mirror **of** this item"; WorkFlowy says "create a peer **for** this item". Copy strings in components MUST follow WorkFlowy's vocabulary. Catch-up linter check planned in `scripts/spec-hygiene/` (F7).
 
 ---
 
@@ -295,7 +295,7 @@ For cleaner UX, use only **"Mirror To…"** in the context menu (one unified act
 
 ### SSE Frames Emitted (read-signal only, ADR-0025)
 
-`MirrorGroupCreated`, `MirrorAttached`, `MirrorDetached`, `MirrorGroupDissolved` on `/stream/page/{id}` and/or `/stream/user/{id}`. SSE MUST NOT enqueue to the FIFO (read-signal only).
+(gate **G-25-SSE-ENDPOINT-CLOSED**) `MirrorGroupCreated`, `MirrorAttached`, `MirrorDetached`, `MirrorGroupDissolved` on `/stream/page/{id}` and/or `/stream/user/{id}`. SSE MUST NOT enqueue to the FIFO (read-signal only).
 
 ### Storage
 

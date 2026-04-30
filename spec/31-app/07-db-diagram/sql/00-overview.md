@@ -9,7 +9,7 @@
 
 ## Naming Bridge — DDL ↔ spec prose
 
-> **Read this if you bounce between SQL files and feature specs.** The DDL is the implementation ground truth; spec prose uses Workflowy-style aliases. **This section is the single SSOT for DDL↔prose aliases** — every cross-doc reference (e.g. `03-app-db-erd.md`, `06-indexes.md`, `04-feature-slices.md`, `07-migrations.md`) MUST link here rather than restate the mappings.
+(gate **G-24-DDL-SINGULAR-LOCKED**) > **Read this if you bounce between SQL files and feature specs.** The DDL is the implementation ground truth; spec prose uses Workflowy-style aliases. **This section is the single SSOT for DDL↔prose aliases** — every cross-doc reference (e.g. `03-app-db-erd.md`, `06-indexes.md`, `04-feature-slices.md`, `07-migrations.md`) MUST link here rather than restate the mappings.
 
 ### Tables & columns
 
@@ -75,7 +75,7 @@ These are the failure modes the AI must NOT introduce:
 | `DATETIME` / `TIMESTAMP` | `TEXT` storing ISO-8601 (`YYYY-MM-DDTHH:MM:SS.sssZ`) | SQLite stores datetimes as TEXT under the hood; explicit TEXT prevents driver coercion bugs |
 | `VARCHAR(n)` / `CHAR(n)` | `TEXT` (no length suffix) | SQLite ignores length on TEXT; suffix lies about enforcement |
 | `AUTO_INCREMENT` | `INTEGER PRIMARY KEY` (autoincrements automatically as ROWID alias) | MySQL syntax; SQLite uses `AUTOINCREMENT` only when gap-free IDs are mandatory |
-| `ON DELETE CASCADE` without `PRAGMA foreign_keys = ON;` | Schema MUST start with `PRAGMA foreign_keys = ON;` | SQLite ships with FKs **disabled** by default — every connection must enable |
+| `ON DELETE CASCADE` without `PRAGMA foreign_keys = ON;` | Schema MUST start with `PRAGMA foreign_keys = ON;` (gate **G-24-DDL-SINGULAR-LOCKED**) | SQLite ships with FKs **disabled** by default — every connection must enable |
 | `ENUM(...)` column type | `INTEGER FK → {Lookup}Type` table | SQLite has no native enum; lookup tables + FKs are the canonical pattern |
 | `ALTER TABLE ... DROP COLUMN` (pre 3.35) | Use migration recipe in [`../07-migrations.md`](../07-migrations.md) | Older SQLite builds lack DROP COLUMN; rebuild-and-copy required |
 
@@ -108,7 +108,7 @@ public static function install(\PDO $pdo, string $kind): void {
 
 ## Verification
 
-A green install MUST satisfy these queries (the harness from [`../../../15-wp-plugin-how-to/24-local-dev-harness.md`](../../../15-wp-plugin-how-to/24-local-dev-harness.md) runs them automatically):
+(gate **G-24-DDL-SINGULAR-LOCKED**) A green install MUST satisfy these queries (the harness from [`../../../15-wp-plugin-how-to/24-local-dev-harness.md`](../../../15-wp-plugin-how-to/24-local-dev-harness.md) runs them automatically):
 
 ```sql
 -- (1) FKs are on

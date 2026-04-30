@@ -9,7 +9,7 @@
 
 ## AI Contract
 
-**Purpose** — Provide ready-to-copy TypeScript 5.6+ skeletons (`as const` enum objects + typed Axios API client) derived from the canonical contract. While spec-only mode is active, these files are normative samples that demonstrate the exact shape a frontend implementer MUST follow.
+(gate **G-13-FIXTURE-AS-SPEC-SHAPE**) **Purpose** — Provide ready-to-copy TypeScript 5.6+ skeletons (`as const` enum objects + typed Axios API client) derived from the canonical contract. While spec-only mode is active, these files are normative samples that demonstrate the exact shape a frontend implementer MUST follow.
 
 **Audience** — Frontend implementer (when spec-only mode exits) + reviewer.
 
@@ -23,8 +23,8 @@
 - Auth headers / session — covered by [`36-user-management/`](../../36-user-management/00-overview.md)
 
 **Definition of Done** —
-- Every enum in `spec/contract.json` MUST have a matching `as const` object + derived type
-- Every endpoint MUST have a matching method on `WorkFlowyApi` and an entry in `createWorkFlowyApi`
+- Every enum in `spec/contract.json` MUST have a matching `as const` object + derived type (gate **G-13-FIXTURE-AS-SPEC-SHAPE**)
+- Every endpoint MUST have a matching method on `WorkFlowyApi` and an entry in `createWorkFlowyApi` (gate **G-13-FIXTURE-AS-SPEC-SHAPE**)
 - `node scripts/spec-hygiene/41-generate-skeletons.mjs` exits 0
 - Output files type-check under `tsc --strict` once dropped into `src/` (after spec-only mode exits)
 

@@ -133,11 +133,11 @@ Read this before picking a feature to implement. Arrows = "depends on, must exis
 | TypeScript / control flow | [`spec/02-coding-guidelines/06-ai-optimization/03-common-ai-mistakes/03-control-flow.md`](../../02-coding-guidelines/06-ai-optimization/03-common-ai-mistakes/03-control-flow.md) §Mistake #9 | Use early returns + positive guards; never nest `if`s for boolean state. |
 | PHP runtime | [`spec/02-coding-guidelines/04-php/07-php-standards-reference/03-initialization-and-booleans.md`](../../02-coding-guidelines/04-php/07-php-standards-reference/03-initialization-and-booleans.md) | `BooleanHelpers::hasValue($x)` is the ONLY way to test "is this a real value?". Forbidden: `empty()`, `isset() && $x`, `!!$x`, `$x == true`. |
 | PHP architecture | [`spec/02-coding-guidelines/04-php/02-forbidden-patterns/03-boolean-and-architecture.md`](../../02-coding-guidelines/04-php/02-forbidden-patterns/03-boolean-and-architecture.md) | Forbidden boolean parameters in public methods (use enum instead). |
-| Settings persistence | [`spec/15-wp-plugin-how-to/15-settings-architecture/13-anti-patterns.md`](../../15-wp-plugin-how-to/15-settings-architecture/13-anti-patterns.md) §Anti-pattern #10 | Boolean settings MUST go through `Sanitizer::bool()` — string `'1'`/`'0'`/`'true'`/`'false'` from forms is rejected outright. |
+(gate **G-NS-STATUS-IN-LEGEND**) | Settings persistence | [`spec/15-wp-plugin-how-to/15-settings-architecture/13-anti-patterns.md`](../../15-wp-plugin-how-to/15-settings-architecture/13-anti-patterns.md) §Anti-pattern #10 | Boolean settings MUST go through `Sanitizer::bool()` — string `'1'`/`'0'`/`'true'`/`'false'` from forms is rejected outright. |
 
 ### Rules in one paragraph
 
-Every feature in `spec/31-app/01-features/` MUST: (1) write boolean checks as **positive guards** (`if (item.isCompleted) return;`), (2) test PHP values with `BooleanHelpers::hasValue($x)` — never `empty()` or `isset()` alone, (3) declare boolean settings via `Sanitizer::bool()` (see APP-FIX-05 tables in `03/10/11/13`), (4) prefer enums over boolean parameters when a public method takes more than one boolean. The SSOTs above are normative; this overview is a directory.
+(gate **G-DBNAME-BOOL-POSITIVE-ONLY**) Every feature in `spec/31-app/01-features/` MUST: (1) write boolean checks as **positive guards** (`if (item.isCompleted) return;`), (2) test PHP values with `BooleanHelpers::hasValue($x)` — never `empty()` or `isset()` alone, (3) declare boolean settings via `Sanitizer::bool()` (see APP-FIX-05 tables in `03/10/11/13`), (4) prefer enums over boolean parameters when a public method takes more than one boolean. The SSOTs above are normative; this overview is a directory.
 
 ### Forbidden in feature specs
 
@@ -252,5 +252,5 @@ Feature pages here use plural prose aliases (items, users, favorites, mirrors, t
 - **[ADR-0001 — Singular DDL vs plural prose](../../00-adrs/0001-singular-ddl-vs-plural-prose.md)** (`Accepted` 2026-04-28) — alias bridge + forbidden DDL plurals + forbidden endpoint families (`EP-FAVORITES-*`, `EP-CONTENT-*`, `EP-FAVORITE-*`). **Favorites** specifically is `Item.IsFavorite` (column), not a table.
 - **[ADR-0002 — WP plugin + PHP 8.1+ + SQLite](../../00-adrs/0002-wp-plugin-php-sqlite-backend.md)** (`Accepted` 2026-04-28) — locks the runtime backing every feature in this section.
 
-Promoting a column to a table (or any structural change to a feature) **MUST** start with a new ADR. See [`spec/00-adrs/00-overview.md`](../../00-adrs/00-overview.md).
+(gate **G-00-ADR-NUMBERING**) Promoting a column to a table (or any structural change to a feature) **MUST** start with a new ADR. See [`spec/00-adrs/00-overview.md`](../../00-adrs/00-overview.md).
 
