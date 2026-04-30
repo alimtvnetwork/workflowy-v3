@@ -28,6 +28,7 @@ const ROW_RE = /^\| ([A-Z]\d+) \| "([^"]+)" \| (.+?) \| (.+?) \|\s*$/;
 const GATE_ID_RE = /`(G-[A-Z0-9-]+(?:\*)?)`/g;
 const RESERVED_RE = /`RESERVED:\s*(G-[A-Z0-9-]+)`/;
 const PROCEDURAL_RE = /memory-only-by-design/;
+const SCRIPT_RE = /`scripts\/spec-hygiene\/[\w.-]+\.mjs`/;
 const REGISTRY_GATE_RE = /^\|\s*`(G-[A-Z0-9-]+)`\s*\|/gm;
 
 function fail(msg) {
