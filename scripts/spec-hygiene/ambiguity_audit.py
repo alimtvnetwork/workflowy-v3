@@ -11,7 +11,7 @@ from collections import defaultdict
 
 SPEC = Path("spec")
 NORMATIVE = re.compile(r'\b(MUST NOT|SHALL NOT|MUST|SHALL|REQUIRED)\b')
-AT_ID    = re.compile(r'\b(AT-[A-Z0-9][A-Z0-9_-]{2,}|G-[0-9]{2}-[A-Z0-9_-]+|gate\s+G-)\b')
+AT_ID    = re.compile(r'\b(AT-[A-Z0-9][A-Z0-9_-]{2,}|G-[A-Z0-9][A-Z0-9_-]{2,}|gate\s+G-|gate\s+\*\*G-)\b')
 HEADING  = re.compile(r'^#{1,6}\s')
 CODE_FENCE = re.compile(r'^```')
 
