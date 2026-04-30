@@ -1,5 +1,8 @@
 # Mirror Specification
 
+> **API Contract:** See [`spec/31-app/06-endpoints/09-mirrors.md`](../06-endpoints/09-mirrors.md) for the endpoint surface that backs this feature (request/response envelopes, status codes, error shapes). Bidirectional cross-link added 2026-04-30 to close **F-AUD42-04** (App-folder audit Phase 5).
+
+
 > **Version:** 2.5.0
 > **Updated:** 2026-04-27 — Linked authoritative model `09b-mirror-peer-group-model.md` (Workflowy parity: peer-group, not source/copy). Prose below describes legacy source-of-truth model; `09b` overrides on conflict and is being folded into a future v3.0.0. Prior: 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)

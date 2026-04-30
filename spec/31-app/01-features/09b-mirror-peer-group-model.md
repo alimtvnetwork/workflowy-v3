@@ -1,5 +1,8 @@
 # Mirror Peer-Group Model — SSOT
 
+> **API Contract:** See [`spec/31-app/06-endpoints/09b-mirror-peer-group.md`](../06-endpoints/09b-mirror-peer-group.md) for the endpoint surface that backs this feature (request/response envelopes, status codes, error shapes). Bidirectional cross-link added 2026-04-30 to close **F-AUD42-04** (App-folder audit Phase 5).
+
+
 > **Version:** 1.1.0
 > **Created:** 2026-04-27 (UTC+8) — Authored from user-confirmed Workflowy parity (chat: mirror semantics clarification, 2026-04-27).
 > **v1.1.0:** 2026-04-27 — Renamed AT prefix `AT-MGP-` → `AT-MPG-` (Mirror Peer Group). Per Ambiguity #02 user resolution. Global rename across 8 files: this SSOT, `97-acceptance-criteria.md` ×2, `02-ci-quality-gates.md`, `23-g30-at-citation-validity-gate.md`, `26-allow-list-inventory.md`, `30-check-at-citation-validity.mjs`, `05-component-contract-map.md`. 61 occurrences total.

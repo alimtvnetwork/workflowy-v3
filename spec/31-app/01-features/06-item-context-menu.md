@@ -1,5 +1,8 @@
 # Item Context Menu (⋮)
 
+> **API Contract:** See [`spec/31-app/06-endpoints/06-item-context-menu.md`](../06-endpoints/06-item-context-menu.md) for the endpoint surface that backs this feature (request/response envelopes, status codes, error shapes). Bidirectional cross-link added 2026-04-30 to close **F-AUD42-04** (App-folder audit Phase 5).
+
+
 > **Version:** 2.5.1
 > **Updated:** 2026-04-26 — Re-audit residual fix: enum-source link added to §5.1 Turn-Into table per Casing Layers rule (closes residual F-02). Prior: 2026-04-26 — Round-3 AUDIT-03: clarified Board / Dashboard rows as `ItemType` values with child-rendering effect (NOT separate VIEW modes); link to taxonomy doc. Prior: 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)

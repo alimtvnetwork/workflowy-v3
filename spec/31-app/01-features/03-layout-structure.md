@@ -1,5 +1,8 @@
 # Layout Structure
 
+> **API Contract:** See [`spec/31-app/06-endpoints/03-layout-structure.md`](../06-endpoints/03-layout-structure.md) for the endpoint surface that backs this feature (request/response envelopes, status codes, error shapes). Bidirectional cross-link added 2026-04-30 to close **F-AUD42-04** (App-folder audit Phase 5).
+
+
 > **Version:** 2.4.0
 > **Updated:** 2026-04-26 — Round-3 AUDIT-03: handbook line clarifies Board / Dashboard "view" = child-rendering effect of `ItemType`, not separate VIEW modes. Prior: 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-05: Settings Keys (Seedable Config) section added (closes audit F-04 for this file). v2.1.0 added Enum Sources callout.
 > **Parent:** [00-overview.md](./00-overview.md)

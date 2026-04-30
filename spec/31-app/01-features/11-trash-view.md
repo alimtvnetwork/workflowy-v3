@@ -1,5 +1,8 @@
 # Trash View Specification
 
+> **API Contract:** See [`spec/31-app/06-endpoints/11-trash-view.md`](../06-endpoints/11-trash-view.md) for the endpoint surface that backs this feature (request/response envelopes, status codes, error shapes). Bidirectional cross-link added 2026-04-30 to close **F-AUD42-04** (App-folder audit Phase 5).
+
+
 > **Version:** 2.5.0
 > **Updated:** 2026-04-27 — Linked addendum `11b-trash-reaper.md` (daily 03:00 UTC cron, hard-delete cascade rules, `ReaperRuns` log). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-05: Settings Keys (Seedable Config) section added (closes audit F-04 for this file). v2.2.0 added Realtime Transport callout.
 > **Parent:** [00-overview.md](./00-overview.md)

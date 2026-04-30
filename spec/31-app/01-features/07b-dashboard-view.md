@@ -1,5 +1,8 @@
 # Dashboard View Specification
 
+> **API Contract:** See [`spec/31-app/06-endpoints/07-board-view.md`](../06-endpoints/07-board-view.md) for the endpoint surface that backs this feature (request/response envelopes, status codes, error shapes). Bidirectional cross-link added 2026-04-30 to close **F-AUD42-04** (App-folder audit Phase 5).
+
+
 > **Version:** 1.0.0
 > **Created:** 2026-04-27 — Closes B2 confidence gap (Dashboard rendering). Sister spec to [`07-board-view.md`](./07-board-view.md).
 > **Parent:** [00-overview.md](./00-overview.md)

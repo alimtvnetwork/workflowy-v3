@@ -1,5 +1,8 @@
 # Information Model Foundations
 
+> **API Contract:** See [`spec/31-app/06-endpoints/01-information-model.md`](../06-endpoints/01-information-model.md) for the endpoint surface that backs this feature (request/response envelopes, status codes, error shapes). Bidirectional cross-link added 2026-04-30 to close **F-AUD42-04** (App-folder audit Phase 5).
+
+
 > **Version:** 2.3.0
 > **Updated:** 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-02: Storage section added (closes audit F-03 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)

@@ -1,5 +1,8 @@
 # Concurrency & Sync
 
+> **API Contract:** See [`spec/31-app/06-endpoints/14-concurrency-and-sync.md`](../06-endpoints/14-concurrency-and-sync.md) for the endpoint surface that backs this feature (request/response envelopes, status codes, error shapes). Bidirectional cross-link added 2026-04-30 to close **F-AUD42-04** (App-folder audit Phase 5).
+
+
 > **Version:** 1.8.0
 > **Updated:** 2026-04-27 — Linked addendum `14b-offline-queue.md` (full local mirror, FIFO replay, field-level LWW with server timestamp + OwnerId tie-break) and sibling `16-search-ranking.md`. Prior: 2026-04-27 — Polish: added AT-CONCURRENCY-16..22 covering §14.5 SSE contract (endpoint handshake, event frame format, Last-Event-Id resume/replay, cursor-overflow backpressure, poll-fallback shape, transactional emission atomicity, forbidden-transports CI guard) plus 7 matching Component Contract rows (planned WP plugin paths). Closes re-audit §4 item 3. Prior: 2026-04-26 — Re-audit residual fix: §14.2 + §14.4 pseudocode PascalCase'd per Casing Layers rule (closes residual F-08). Prior: 2026-04-26 — Round-3 AUDIT-06: §14.5 SSE Transport Contract added. Prior: 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename. Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer. Prior: 2026-04-26 — APP-FIX-09: §14.4 `Mirrors.BrokenAt` LWW rule. v1.2.0 added Storage section. v1.1.0 pinned transport to WP-native SSE + poll fallback.
 > **Parent:** [00-overview.md](./00-overview.md)

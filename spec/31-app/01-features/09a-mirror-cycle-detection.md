@@ -1,5 +1,8 @@
 # Mirror Cycle Detection — Algorithm Spec
 
+> **API Contract:** See [`spec/31-app/06-endpoints/09-mirrors.md`](../06-endpoints/09-mirrors.md) for the endpoint surface that backs this feature (request/response envelopes, status codes, error shapes). Bidirectional cross-link added 2026-04-30 to close **F-AUD42-04** (App-folder audit Phase 5).
+
+
 > **Version:** 1.1.0
 > **Updated:** 2026-04-27 (UTC+8) — Reshaped Component Contract to canonical `Surface | Component path | data-testid | Acceptance tests` schema (was `Concern | Path | Function`); each row now wires `mirror-cycle-error` testid to AT-MIRRORS-08. Closes hygiene check `07-extract-contract-map.mjs`. Algorithm signatures preserved as a §Note below the table. Prior: 2026-04-26 (UTC+8) — initial spec.
 > **Parent:** [09-mirrors.md](./09-mirrors.md)
