@@ -54,7 +54,7 @@ func Toggle() apperror.BoolResult { ... }
 ## 6. Summary Checklist
 
 ```
-□ types/ folder exists at project root (or language-appropriate location)
+□ types/ folder exists at the language-idiomatic root: Go → `types/` next to `main.go`; TypeScript → `src/types/`; PHP → `src/Types/` (PSR-4 namespace `App\Types`); Rust → `src/types/mod.rs`
 □ One type/enum/alias group per file — filename matches type name
 □ Common enums defined: ContentType, HttpMethod, HttpStatus, Environment
 □ Result[T] aliases created for any specialization used 3+ times

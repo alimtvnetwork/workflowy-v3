@@ -173,6 +173,12 @@ These terms are load-bearing in the seven post-v7 ADRs and are referenced from `
 | Tier-name `Simple` (capitalized) | Defined tier label in modal-tier (`spec/15-wp-plugin-how-to/13-admin-ui-patterns/06-modal-anatomy.md`) and issue-tier (`spec/01-spec-authoring-guide/05-app-project-template.md`) taxonomies | Capitalized = tier name; lowercase free-prose still triggers | ~5 occurrences |
 | Test-runner mode `short/fast mode` | `go test -short` / Vitest `--bail` flag references | Standard test-runner flag names | 2 occurrences |
 | WP admin scheme `Modern` | WordPress core admin color scheme literal name (alongside Default/Light/Blue/Coffee/etc.) | Library API name | 1 occurrence (backtick-fenced) |
+| API-name descriptors | `modern navigator.clipboard`, `modern fetch`, `modern AbortController` — adjective immediately preceding a documented browser/Node API symbol | Adjective scopes the API to a standardized version, not subjective quality | ~4 occurrences |
+| Parenthetical behavior definitions | `(graceful fallback)`, `(sufficient for I/O-bound activity tracking)`, `(sufficient for most call chains)` — vague term inside `()` immediately following a concrete behavior or quantified value | Parenthetical reformulates a concrete fact, not a normative requirement | ~6 occurrences |
+| Self-defining compounds | `self-sufficient`, `self-contained`, `self-explanatory` (hyphenated) | Compound is its own definition; substitution would require breaking the term | 3 occurrences |
+| Named §-headings | `## Graceful Shutdown`, `## Graceful Degradation`, `### Graceful Fallback` — vague term as a §-heading whose body defines the contract | Heading is a label pointing to its own normative body | ~5 occurrences |
+| Motivation prose | Vague terms inside paragraphs introduced by `**Why:**`, `**Rationale:**`, `**Motivation:**`, or sections titled `## Background` / `## Context` | Non-normative explanatory text; normative content lives in `## Decision`/`## Requirements` | ~8 occurrences |
+| Keep-a-Changelog subsection names | `Added`, `Fixed`, `Changed`, `Deprecated`, `Removed`, `Security` when referenced as CHANGELOG.md section names | Standard format names from keepachangelog.com 1.1.0 | ~3 occurrences |
 
 **Resolution path for legacy occurrences:** Tracked under `F-SPEC-14` in `spec/AUDIT-FINDINGS-LEDGER.md`. Bind sweeps proceed batch-wise; pre-commit hook blocks NEW occurrences from 2026-04-30 forward (`G-LINT-VAGUE-MODIFIERS` enforcing-mode = `block-new`, `warn-existing`).
 
@@ -189,6 +195,8 @@ These terms are load-bearing in the seven post-v7 ADRs and are referenced from `
 - [Gate Registry — G-LINT-VAGUE-MODIFIERS](./_GATE-REGISTRY.md)
 
 ---
+
+*Glossary v1.4.0 — 2026-04-30: Added 6 new standing cohort exemptions (API-name descriptors, parenthetical behavior definitions, self-defining compounds, named §-headings, motivation prose, Keep-a-Changelog subsection names) discovered during GAP-AMB-01-tail batches #3-#4. Estimated false-positive reduction: ~29 occurrences across ~20 files.*
 
 *Glossary v1.3.0 — 2026-04-30: Added ADR-0023..0028 Runtime Vocabulary section (26 terms: loader↔queue contract, local mirror, queue worker, ClientMutationId, undo cap, offline queue, LWW tiebreak, peer group, singleton dissolution, SSE read-signal, Last-Event-ID replay, cold gap, ring buffer, ServerSeq, TTL reaper, producer completeness, detection chain, regional-language fold, fallback chain, RTL locale, logical CSS, typed i18n keys, branded ID, SortOrder, envelope, named error boundary). Closes GAP-AMB-03b.*
 
