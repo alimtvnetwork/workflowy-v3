@@ -23,9 +23,9 @@ This sub-spec is the **primary file** for the four MUST-bound gates below. Every
 
 ## 1. Dependency Declaration
 
-### 1.1 Exact Version Pinning (Mandatory)
+### 1.1 Exact Version Pinning (Mandatory) — gate `G-32-AXIOS-EXACT-PIN` · AT `AT-AXIOS-01`
 
-Axios MUST be declared with an **exact version** — no range symbols allowed.
+Axios MUST be declared with an **exact version** — no range symbols allowed. (Binds `G-32-AXIOS-EXACT-PIN`.)
 
 #### ✅ Correct
 
