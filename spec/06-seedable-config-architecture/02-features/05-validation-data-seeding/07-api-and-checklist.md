@@ -20,7 +20,7 @@ GET /api/v1/config/validation/:category/:key
 
 ## Checklist for New Validation Data
 
-- [ ] Define in `config.seed.json` under appropriate category
+- [ ] Define in `config.seed.json` under the matching top-level category key (`validation`, `defaults`, `limits`, `enums`, or `feature_flags` — pick by the data's primary purpose; create a new top-level key only via ADR)
 - [ ] Bump config version (minor for new setting)
 - [ ] Add changelog entry
 - [ ] Create Go accessor using `ValidationDataService`
