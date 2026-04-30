@@ -1,5 +1,12 @@
 # Endpoints — 02 Personas
 
+## Database Routing
+
+**N/A** — persona reference only; no endpoint surface.
+
+> **Audit cite:** Section added 2026-04-30 to close **F-AUD42-01** (App-folder audit Phase 4). Per ADR-0019 split-DB rules.
+
+
 > **Version:** 1.0.0
 > **Updated:** 2026-04-26 (UTC+8)
 > **Parent:** [`./00-overview.md`](./00-overview.md)

@@ -1,5 +1,14 @@
 # Endpoints — 04 Page Content Area
 
+## Database Routing
+
+**Read:** App DB (per-workspace; one SQLite file per workspace) — `Items` (current page subtree).
+**Write:** App DB (per-workspace; one SQLite file per workspace) — `Items` (content edits, item-type changes).
+**Cross-page navigation:** loader reads next page from App DB via the loader↔queue contract (ADR-0023).
+
+> **Audit cite:** Section added 2026-04-30 to close **F-AUD42-01** (App-folder audit Phase 4). Per ADR-0019 split-DB rules.
+
+
 > **Version:** 1.0.0
 > **Updated:** 2026-04-26 (UTC+8)
 > **Parent:** [`./00-overview.md`](./00-overview.md)

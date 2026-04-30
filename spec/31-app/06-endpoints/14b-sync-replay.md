@@ -1,5 +1,14 @@
 # Endpoints — 14b Sync Replay (Offline Queue)
 
+## Database Routing
+
+**Read:** App DB (per-workspace; one SQLite file per workspace) — `Items` for replay-after-restart materialization.
+**Write:** App DB (per-workspace; one SQLite file per workspace) — drained queue mutations write to `Items` per the originating endpoint's routing.
+**Client mirror:** IndexedDB (per ADR-0021/0023; not a server DB).
+
+> **Audit cite:** Section added 2026-04-30 to close **F-AUD42-01** (App-folder audit Phase 4). Per ADR-0019 split-DB rules.
+
+
 > **Version:** 1.0.0
 > **Updated:** 2026-04-27 (UTC+8)
 > **Parent:** [`./00-overview.md`](./00-overview.md)

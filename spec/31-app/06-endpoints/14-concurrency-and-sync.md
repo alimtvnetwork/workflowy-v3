@@ -1,5 +1,14 @@
 # Endpoints — 14 Concurrency & Sync (Realtime Transport)
 
+## Database Routing
+
+**Read:** App DB (per-workspace; one SQLite file per workspace) — `Items.UpdatedAt` per workspace for SSE `/stream/page/{id}` event-cursor diff. **Read:** Root DB (per-user / workspace-membership scope) — workspace membership for `/stream/user/{id}` fan-out.
+**Write:** none from sync (reads only). Mutation endpoints write per their own routing.
+**Polling fallback:** see F-AUD42-10 (open contradiction with ADR-0025).
+
+> **Audit cite:** Section added 2026-04-30 to close **F-AUD42-01** (App-folder audit Phase 4). Per ADR-0019 split-DB rules.
+
+
 > **Version:** 1.2.0
 > **Updated:** 2026-04-26 (UTC+8) — v1.2.0 corrected event vocabulary drift: removed non-existent `item-created` (creation is `item-updated` on a new ID), added missing `mirror-healed` per §14.5.2 SSOT (closes F-AUD30-07). v1.1.0 aligned event vocabulary to canonical hyphen notation per §14.5.2 (closes content-audit drift)
 > **Parent:** [`./00-overview.md`](./00-overview.md)

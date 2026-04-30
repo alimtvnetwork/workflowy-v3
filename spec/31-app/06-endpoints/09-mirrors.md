@@ -1,5 +1,14 @@
 # Endpoints — 09 Mirrors
 
+## Database Routing
+
+**Read:** App DB (per-workspace; one SQLite file per workspace) — `Items`, `MirrorGroup`, `MirrorMember`.
+**Write:** App DB (per-workspace; one SQLite file per workspace) — `MirrorGroup` + `MirrorMember` (peer-group create / detach).
+**Root DB:** untouched.
+
+> **Audit cite:** Section added 2026-04-30 to close **F-AUD42-01** (App-folder audit Phase 4). Per ADR-0019 split-DB rules.
+
+
 > **Version:** 1.0.0
 > **Updated:** 2026-04-26 (UTC+8)
 > **Parent:** [`./00-overview.md`](./00-overview.md)

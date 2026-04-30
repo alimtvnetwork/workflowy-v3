@@ -1,5 +1,14 @@
 # Endpoints — 08 Share Dialog
 
+## Database Routing
+
+**Read:** Root DB (per-user / workspace-membership scope) — `Share`, `PendingInvites`, `WorkspaceMember`. **Read:** App DB (per-workspace; one SQLite file per workspace) — `Items` (target item metadata only).
+**Write:** Root DB (per-user / workspace-membership scope) — `Share` (grants), `PendingInvites` (email invites).
+**Cross-DB joins:** Forbidden. Item ID validation reads App DB; grant write lands in Root DB in a separate transaction.
+
+> **Audit cite:** Section added 2026-04-30 to close **F-AUD42-01** (App-folder audit Phase 4). Per ADR-0019 split-DB rules.
+
+
 > **Version:** 1.0.0
 > **Updated:** 2026-04-26 (UTC+8)
 > **Parent:** [`./00-overview.md`](./00-overview.md)

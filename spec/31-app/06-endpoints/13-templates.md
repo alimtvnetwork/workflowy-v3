@@ -1,5 +1,14 @@
 # Endpoints — 13 Templates
 
+## Database Routing
+
+**Read:** Root DB (per-user / workspace-membership scope) — `Template.SnapshotJson` (catalog).
+**Write:** Root DB (per-user / workspace-membership scope) — `Template` (save).  **Write:** App DB (per-workspace; one SQLite file per workspace) — `Items` (apply: expand snapshot into target workspace).
+**Cross-DB joins:** Forbidden. Two transactions, never joined. See F-AUD42-17 for crash/idempotency contract (open).
+
+> **Audit cite:** Section added 2026-04-30 to close **F-AUD42-01** (App-folder audit Phase 4). Per ADR-0019 split-DB rules.
+
+
 > **Version:** 1.0.0
 > **Updated:** 2026-04-26 (UTC+8)
 > **Parent:** [`./00-overview.md`](./00-overview.md)

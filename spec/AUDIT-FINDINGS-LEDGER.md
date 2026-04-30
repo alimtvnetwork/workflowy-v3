@@ -82,7 +82,7 @@ Out-of-vocabulary statuses (`Pending`, `WIP`, `Wontfix`, `Deferred`, …) are
 | F-AUD30-03 | LOW | spec/18-spec-issues/10-content-audit-endpoints-and-db-diagram.md | Resolved | [`spec/18-spec-issues/10-content-audit-endpoints-and-db-diagram.md`](./18-spec-issues/10-content-audit-endpoints-and-db-diagram.md) |
 | F-AUD30-07 | MED | spec/18-spec-issues/11-content-audit-at-app-coverage.md | Resolved | Canonical 9-name SSE event set restored — see [`spec/18-spec-issues/11-content-audit-at-app-coverage.md`](./18-spec-issues/11-content-audit-at-app-coverage.md) |
 | F-AUD30-09 | LOW | spec/18-spec-issues/11-content-audit-at-app-coverage.md | Resolved | [`spec/18-spec-issues/11-content-audit-at-app-coverage.md`](./18-spec-issues/11-content-audit-at-app-coverage.md) |
-| F-AUD42-01 | CRITICAL | spec/18-spec-issues/12-app-folder-audit-2026-04-30.md (P4) | Open | All 24 endpoint files in `spec/31-app/06-endpoints/` lack DB-routing declarations (Root DB vs App DB). Compounds with F-AUD42-04. — [`spec/31-app/06-endpoints/`](./31-app/06-endpoints/) |
+| F-AUD42-01 | CRITICAL | spec/18-spec-issues/12-app-folder-audit-2026-04-30.md (P4) | Resolved | All 19 substantive endpoint files in `spec/31-app/06-endpoints/` now have a `## Database Routing` section declaring Root DB / App DB reads + writes + cross-DB-join policy. Injected 2026-04-30 (AUD-REMEDIATE-CRIT step 2). The 5 admin/index files (00-overview, 16-at-matrix, 97, 97b, 99) are correctly exempt. — [`spec/31-app/06-endpoints/06-item-context-menu.md`](./31-app/06-endpoints/06-item-context-menu.md) |
 | F-AUD42-02 | CRITICAL | spec/18-spec-issues/12-app-folder-audit-2026-04-30.md (P4) | Open | 10 of 18 feature files lack DB-routing tables (info-model, share-dialog, mirrors family, trash-reaper, multi-select, search-ranking). — [`spec/31-app/01-features/`](./31-app/01-features/) |
 | F-AUD42-03 | CRITICAL | spec/18-spec-issues/12-app-folder-audit-2026-04-30.md (P3) | Open | ItemType case drift across spec — same enum appears as `'Bullet'`, `'Board'`, `'board'`, `'dashboard'`, `'Root'`. ADR-0015 declares 12 closed ItemTypes; no canonical-casing enumeration exists. — [`spec/31-app/01-features/07-board-view.md:143`](./31-app/01-features/07-board-view.md) |
 | F-AUD42-04 | CRITICAL | spec/18-spec-issues/12-app-folder-audit-2026-04-30.md (P5) | Resolved | 23 feature files now cross-link to sibling endpoint via `> **API Contract:**` banner injected 2026-04-30 (AUD-REMEDIATE-CRIT step 1). Bidirectional traceability restored. — [`spec/31-app/01-features/06-item-context-menu.md`](./31-app/01-features/06-item-context-menu.md) |
@@ -110,7 +110,7 @@ Out-of-vocabulary statuses (`Pending`, `WIP`, `Wontfix`, `Deferred`, …) are
 | F-AUD42-26 | HIGH | spec/18-spec-issues/12-app-folder-audit-2026-04-30.md (P1) | Open | Numbering gaps / sibling sub-features off-pattern (Phase-1 structural). — [`spec/31-app/`](./31-app/) |
 | F-AUD42-27 | HIGH | spec/18-spec-issues/12-app-folder-audit-2026-04-30.md (P1) | Open | `99-consistency-report.md` claims contradict actual file state in subdirs. — [`spec/31-app/99-consistency-report.md`](./31-app/99-consistency-report.md) |
 
-**Open count:** 26 — **Resolved:** 9
+**Open count:** 25 — **Resolved:** 10
 
 ---
 
