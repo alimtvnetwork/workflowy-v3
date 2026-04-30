@@ -64,7 +64,7 @@
 
 ## Overview
 
-All enum-like constants MUST use **PHP 8.1+ native backed enums** with proper namespaces.
+All enum-like constants MUST use **PHP 8.1+ native backed enums** under the PSR-4 namespace declared in the plugin's `composer.json` (`autoload.psr-4`).
 The old pattern of `class FooEnum { public const BAR = '...'; }` and `define()` constants
 is **deprecated** and must be migrated.
 

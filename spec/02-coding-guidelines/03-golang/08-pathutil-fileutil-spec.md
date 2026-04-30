@@ -236,7 +236,7 @@ func (s *ExportService) SaveExport(dir, name string, data []byte) apperror.Resul
 | Need | Use | Why |
 |------|-----|-----|
 | "Does this path exist?" (boolean check) | `pathutil.IsFileExists` / `pathutil.IsDir` | No error propagation needed |
-| "Open/read/write a file" (I/O operation) | `fileutil.Open` / `fileutil.ReadAll` / `fileutil.WriteFile` | Returns `apperror.Result[T]` with proper error codes |
+| "Open/read/write a file" (I/O operation) | `fileutil.Open` / `fileutil.ReadAll` / `fileutil.WriteFile` | Returns `apperror.Result[T]` with codes from the E1000–E9999 range |
 | "Guard clause before I/O" | `pathutil` check → early return → `fileutil` operation | Boolean guard first, then typed I/O |
 | "Clean up a temp file" | `pathutil.Remove` | Fire-and-forget cleanup at stdlib boundary |
 

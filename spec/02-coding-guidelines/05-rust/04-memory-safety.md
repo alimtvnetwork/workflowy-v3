@@ -55,7 +55,7 @@ fn parse_browser_title(title: &String) -> Option<TabInfo> { ... }
 
 ## Lifetime Guidelines
 
-### Keep lifetimes simple — avoid naming when elision works
+### Keep lifetimes elision-only — avoid naming when the borrow checker accepts elision
 
 ```rust
 // ✅ Correct — elision handles this

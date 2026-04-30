@@ -134,7 +134,7 @@ respondSuccess(w, StatusResponse{Status: "ok"})
 | Connection refused | Check `server.Addr = ":8080"` (not `localhost:8080`) |
 | 404 on base URL | Add handler for `/api/v1` route |
 | Response format mismatch | Use `respondSuccess()` helper |
-| CORS errors | Add CORS middleware with proper headers |
+| CORS errors | Add CORS middleware setting `Access-Control-Allow-Origin`, `-Methods`, `-Headers`, `-Credentials` per RFC 6454 |
 | Database locked | `db.SetMaxOpenConns(1)` + WAL mode |
 
 ### Profiling (pprof)

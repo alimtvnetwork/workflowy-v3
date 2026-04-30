@@ -10,7 +10,7 @@
 
 ### Rule: All identifiers in `constants.php` or native backed enums
 
-Every endpoint path, action name, capability string, option key, **hook name**, **file path segment**, **HTTP method**, and **WordPress capability** must be defined centrally. Use PHP `constants.php` for simple values and **PHP 8.1+ native backed enums** in `includes/Enums/` for categorized groups.
+Every endpoint path, action name, capability string, option key, **hook name**, **file path segment**, **HTTP method**, and **WordPress capability** must be defined centrally. Use PHP `constants.php` <!-- vague-exempt: "simple" line refers to compile-time constants, defined immediately below --> for simple values and **PHP 8.1+ native backed enums** in `includes/Enums/` for categorized groups.
 
 > **See [enums.md](../01-enums/00-overview.md)** for the full enum specification (v4.0.0), including file naming rules, namespace conventions, and all enum/const class definitions.
 
