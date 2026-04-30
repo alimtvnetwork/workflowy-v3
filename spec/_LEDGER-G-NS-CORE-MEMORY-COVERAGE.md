@@ -113,27 +113,31 @@ This ledger remedies that by making the Core↔Gate mapping **first-class and ve
 
 ---
 
-## Coverage summary (as of 2026-04-30, post-GAPCLOSE-I2)
+## Coverage summary (as of 2026-04-30, post-GAPCLOSE-I2-RETRACTION + J1-RETRACTION)
 
 | Status | Count | % |
 |---|---|---|
-| ✅ Registered gate(s) | 17 | 74% |
-| 📋 RESERVED slot (ADR-0031 pattern) | 3 | 13% |
+| ✅ Registered gate(s) | 18 | 78% |
+| 📋 RESERVED slot (ADR-0031 pattern) | 2 | 9% |
 | 📝 Memory-only-by-design (procedural) | 3 | 13% |
 | **Total Core lines mapped** | **23** | **100%** |
 
-**Open gaps remaining (3 RESERVED slots + 4 partial-coverage notes):**
+**Open gaps remaining (2 RESERVED slots + 4 partial-coverage notes):**
 
 1. **B2** — Forbidden-runtimes ESLint rule (`G-NS-FORBIDDEN-RUNTIMES`).
 2. **C3** — shadcn/Radix component-base lock (`G-22-COMPONENT-BASE-SHADCN-RADIX`).
-3. **E1** — 15-line logic limit + positive-guard-clause grep gates.
+3. **E1** — 15-line logic limit + positive-guard-clause grep gates (partial coverage).
 4. **F3** — 250-item per-view cap (policy → grep gate).
 5. **G1** — HSL-only Tailwind tokens + `@theme`-block-as-SSOT gates (AUDIT-FIX-02 closes half).
-6. ~~**I2** — Undo cap 100 (`G-21-UNDO-CAP-100`).~~ **CLOSED 2026-04-30 by GAPCLOSE-I2.**
-7. **J1** — WebSocket/long-poll ban ESLint rule.
+6. ~~**I2** — Undo cap 100.~~ **CLOSED 2026-04-30 — pre-existing `G-25-UNDO-CAP-100` covers it (cross-walk error in v1 of this ledger).**
+7. ~~**J1** — WebSocket/long-poll ban.~~ **CLOSED 2026-04-30 — pre-existing `G-25-TRANSPORT-SSE-ONLY` covers it (cross-walk error in v1 of this ledger).**
 8. **C1** — Version-pin gate for Vite/React/TS (NEW-25 covers this).
 
-**Closure progress:** 1 of 4 RESERVED slots closed in same-day follow-through. Remaining 3 RESERVED + 4 partial-coverage notes remain first-class visible.
+**Closure progress:** 2 of 4 originally-listed RESERVED slots closed by **discovery** (not by new gates) — both were pre-existing in the registry but mis-classified by the v1 cross-walk grep. Filed as F-AUDIT-34 (false-positive cascade). Real net result: coverage was always 18/23 (78%), not 16/23 (70%) as v1 reported. Remaining 2 RESERVED + 4 partial-coverage notes are still first-class visible.
+
+### v1 cross-walk methodology error (root-cause)
+
+The v1 cross-walk used per-namespace greps (`G-21-UNDO`, `G-NS-WEBSOCKET`) that assumed gate names match Core-rule topics 1:1. **They don't.** The `G-25-*` family historically absorbs both SSE rules AND undo/queue rules together (because ADR-0025 §Gates Touched explicitly cross-references undo gates as siblings to transport gates). Future cross-walks MUST grep by **ADR anchor** (`spec/00-adrs/0021-`, `spec/00-adrs/0025-`) AND by **rule keyword** (`undo`, `WebSocket`, `cap.*100`) — not by gate-name namespace alone.
 
 ---
 
