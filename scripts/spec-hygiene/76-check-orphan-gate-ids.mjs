@@ -101,17 +101,34 @@ for (const f of walk("spec")) {
   }
 }
 
+// ADR-0033 §Decision + L-07 (AI Onboarding SSOT): historical ledger files
+// describe past findings and may name gate-IDs that no longer exist or are
+// pre-resolution. They are NOT spec-normative citations. Exempt their occurrences.
+const LEDGER_PREFIXES = [
+  "spec/AUDIT-FINDINGS-LEDGER.md",
+  "spec/AMBIGUITY-LEDGER.md",
+  "spec/_GATE-GRADUATION-LEDGER.md",
+];
+function isLedgerFile(p) {
+  if (LEDGER_PREFIXES.includes(p)) return true;
+  return /^spec\/_LEDGER-/.test(p) || /\/18-spec-issues\//.test(p);
+}
+
 const drift = [];
 let umbrellaCovered = 0;
+let ledgerExempt = 0;
 for (const [tok, occs] of cited) {
   if (registered.has(tok)) continue;
   if (ALLOWED.has(tok)) continue;
   const nonRegistry = occs.filter(o => o.file !== REG_PATH);
   if (nonRegistry.length === 0) continue;
-  // ADR-0033: at least one occurrence covered by an umbrella → token is covered.
-  const covered = nonRegistry.some(o => umbrellaCovers(tok, o.file));
+  // L-07: ledger-file occurrences are historical, not normative citations.
+  const nonLedger = nonRegistry.filter(o => !isLedgerFile(o.file));
+  if (nonLedger.length === 0) { ledgerExempt++; continue; }
+  // ADR-0033: at least one non-ledger occurrence covered by an umbrella → token is covered.
+  const covered = nonLedger.some(o => umbrellaCovers(tok, o.file));
   if (covered) { umbrellaCovered++; continue; }
-  drift.push({ tok, count: nonRegistry.length, sample: nonRegistry.slice(0, 3) });
+  drift.push({ tok, count: nonLedger.length, sample: nonLedger.slice(0, 3) });
 }
 drift.sort((a, b) => b.count - a.count);
 
