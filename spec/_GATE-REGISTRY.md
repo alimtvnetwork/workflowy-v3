@@ -1,13 +1,13 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.36  
-> **Updated:** 2026-04-30 — **batch-44 (NEW-21 closure):** registered new auditor `scripts/spec-hygiene/77-check-orphan-must-citations.mjs` and gate `G-00-ORPHAN-MUST-CITATION-ADJACENCY` (WARN-only). Closes the false-NEGATIVE class surfaced by the batch-42 process incident: the MUST counter credits a binding only when the gate token lives on the same physical line as the MUST keyword; soft-wrapped paragraphs with citation on an adjacent line are silently dropped. New auditor walks every `spec/*.md` and emits a WARN for every MUST line that lacks a same-line citation BUT has one elsewhere in the same Markdown paragraph. **Inaugural baseline: 18 WARN across 16 files.** Wired into `scripts/spec-hygiene/00-run-all.mjs` between 76- and 04-. Per project memory rule: "parser-fix counts as content when it eliminates a false-positive content finding" — this fix eliminates a false-NEGATIVE class (counter wrongly credits an authored binding as unbound), satisfying the rule's intent and resetting the streak counter to 0 consecutive tooling. Prior: 1.7.35 (batch-43 Domain-MIGRATE seed).
+> **Version:** 1.7.37  
+> **Updated:** 2026-04-30 — **batch-44 (Domain-04 fortification):** registered 5 new DOC-NORM gates under ADR-0004 area binding the unbound prose-MUSTs in `spec/04-database-conventions/00-overview.md`: `G-04-AI-CONVENTIONS-RETAINED` (anchors the §"AI Agents Must Commit Database Rules to Memory" block — note: blockquote-skipped by counter, so does not appear in bare-MUST tally but IS load-bearing prose), `G-04-ALIAS-BRIDGE-PR-COMPLETE` (PR-discipline sub-rule of `G-04-ALIAS-DDL-CANONICAL`), `G-04-NO-DDL-PLURAL-ALIASES` (forbids derived-identifier plural leakage; distinct from `G-04-NO-DDL-PLURALS`), `G-04-WIRE-USES-WIRE-SPELLING` (generalises `G-26-WIRE-OWNERID-ONLY` across the entire column-level alias-bridge table), and `G-04-OWNERUSERID-DDL-CANONICAL` (two-part conjunction binding the §"Adding a new table whose owner-of-record FK" rule). All 5 DOC-NORM at seed; promotion to CI deferred until `scripts/spec-hygiene/check-ddl-naming.mjs` exists (NEW-15). **Bare-MUST count 328 → 324 (Δ −4 exact).** Closes 39th consecutive zero-drift batch. Streak counter: 1 consecutive content batch (NEW-21 parser-fix counted as content per memory rule). Prior: 1.7.36 (NEW-21 parser-hardening auditor + WARN gate).
 
-- **Total named gates:** 504 (+1 this revision)
-- **WARN-only gates:** 11 (+1 this revision)
-- **CI:** 138 (+1 this revision; counts the new WARN-only gate per existing convention)
+- **Total named gates:** 509 (+5 this revision)
+- **WARN-only gates:** 11 (unchanged)
+- **CI:** 138 (unchanged)
 - **TEST:** 20 (unchanged)
-- **DOC-NORM:** 141 (unchanged)
+- **DOC-NORM:** 146 (+5 this revision)
 - **DOC:** 202 (unchanged)
 - **Areas covered:** 53 (unchanged)
 - **Areas covered:** 37 (unchanged)
@@ -60,6 +60,8 @@
 
 | Gate | Tier | Primary File | Brief |
 |------|------|--------------|-------|
+| `G-04-AI-CONVENTIONS-RETAINED` | **DOC-NORM** | [`spec/04-database-conventions/00-overview.md`](./04-database-conventions/00-overview.md) | AI agents MUST retain the 5 mandatory DB rules (singular table names, PascalCase identifiers, `{TableName}Id` PK, FK = exact PK name, `Is/Has`-prefix positive booleans) across every schema, migration, model, and query they generate. Anchors the §"AI Agents Must Commit Database Rules to Memory" block. Conformance audited by review checklist + spot-check of generated DDL. |
+| `G-04-ALIAS-BRIDGE-PR-COMPLETE` | **DOC-NORM** | [`spec/04-database-conventions/00-overview.md`](./04-database-conventions/00-overview.md) | Every new spec term that introduces a plural-prose↔singular-DDL alias MUST be added to the §"Spec↔DDL Alias Bridge (canonical)" table in the **same PR** that introduces the term. Prevents alias-table staleness; sub-rule of `G-04-ALIAS-DDL-CANONICAL`. |
 | `G-04-ALIAS-DDL-CANONICAL` | **DOC-NORM** | [`spec/00-adrs/0001-singular-ddl-vs-plural-prose.md`](./00-adrs/0001-singular-ddl-vs-plural-prose.md) | and G-04-ALIAS-DDL-CANONICAL (every alias must map to a real DDL |
 | `G-04-ENVELOPE-DEBUG-FLAG` | **DOC** | [`spec/00-adrs/0004-rest-envelope-pascalcase.md`](./00-adrs/0004-rest-envelope-pascalcase.md) | - G-04-ENVELOPE-DEBUG-FLAG — MethodsStack present iff |
 | `G-04-ENVELOPE-NO-EMPTY-ERRORS` | **DOC** | [`spec/00-adrs/0004-rest-envelope-pascalcase.md`](./00-adrs/0004-rest-envelope-pascalcase.md) | - G-04-ENVELOPE-NO-EMPTY-ERRORS — Errors key absent on success. |
@@ -75,9 +77,12 @@
 | `G-04-NAVIGATION-PRESENCE` | **DOC** | [`spec/00-adrs/0019-rest-envelope-optional-keys.md`](./00-adrs/0019-rest-envelope-optional-keys.md) | - G-04-NAVIGATION-PRESENCE — enforces D2 (presence iff |
 | `G-04-NESTED-ARRAY-NEVER-NULL` | **DOC** | [`spec/00-adrs/0019-rest-envelope-optional-keys.md`](./00-adrs/0019-rest-envelope-optional-keys.md) | - G-04-NESTED-ARRAY-NEVER-NULL — enforces D9 (any declared |
 | `G-04-NESTED-DECLARED-FIELD-PRESENT` | **DOC** | [`spec/00-adrs/0019-rest-envelope-optional-keys.md`](./00-adrs/0019-rest-envelope-optional-keys.md) | - G-04-NESTED-DECLARED-FIELD-PRESENT — enforces D9 (declared |
+| `G-04-NO-DDL-PLURAL-ALIASES` | **DOC-NORM** | [`spec/04-database-conventions/00-overview.md`](./04-database-conventions/00-overview.md) | The DDL side of the alias bridge MUST NOT acquire a plural alias. Forbids names like `Items_view`, `ItemsAll`, `Users_v`, `Sessions_v2`. Distinct from `G-04-NO-DDL-PLURALS` (which forbids plural base-table names): this gate forbids plural **derived** identifiers (views, materialised tables, generated indexes) from leaking plural forms back into the DDL canon. Sub-rule of `G-04-ALIAS-DDL-CANONICAL`. |
 | `G-04-NO-DDL-PLURALS` | **DOC** | [`spec/00-adrs/0006-migrate-spec-sql-to-singular-ddl.md`](./00-adrs/0006-migrate-spec-sql-to-singular-ddl.md) | 5. Gate G-04-NO-DDL-PLURALS is hereby promoted from |
 | `G-04-OPTIONAL-OMIT-NEVER-NULL` | **DOC** | [`spec/00-adrs/0019-rest-envelope-optional-keys.md`](./00-adrs/0019-rest-envelope-optional-keys.md) | - G-04-OPTIONAL-OMIT-NEVER-NULL — enforces D1 (no |
+| `G-04-OWNERUSERID-DDL-CANONICAL` | **DOC-NORM** | [`spec/04-database-conventions/00-overview.md`](./04-database-conventions/00-overview.md) | Every new table whose owner-of-record FK references `User.UserId` MUST name the FK column `OwnerUserId` in DDL (matching the existing 4-table convention: `Item`, `Template`, `Tag`, `Workspace`) AND MUST appear as a row in the §"Spec↔DDL Alias Bridge (column-level)" table so the wire-egress translator stays exhaustive. Two-part conjunction: DDL-spelling lock + bridge-row presence. Sub-rule of `G-04-WIRE-USES-WIRE-SPELLING`. |
 | `G-04-WIRE-PASCALCASE` | **DOC** | [`spec/00-adrs/0019-rest-envelope-optional-keys.md`](./00-adrs/0019-rest-envelope-optional-keys.md) | - Modified gates: G-04-WIRE-PASCALCASE (ADR-0004) clarified |
+| `G-04-WIRE-USES-WIRE-SPELLING` | **DOC-NORM** | [`spec/04-database-conventions/00-overview.md`](./04-database-conventions/00-overview.md) | Every non-DDL context (REST/SSE wire payloads, TypeScript wire types, endpoint examples, prose `Results` shapes) MUST use the **wire spelling** from the §"Spec↔DDL Alias Bridge (column-level)" table — never the DDL spelling. Currently: `OwnerId` on the wire, `OwnerUserId` in DDL. Sub-rule of `G-26-WIRE-OWNERID-ONLY`; this gate generalises the rule across the whole alias-bridge table so future column additions inherit the wire-only invariant automatically. |
 
 ### ADR-0005
 
