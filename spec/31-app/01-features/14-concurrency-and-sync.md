@@ -46,7 +46,7 @@ On incoming mutation M for Item I, field F:
   6. Broadcast accepted state on the realtime channel for I.
 ```
 
-Clients receiving a conflict response MUST:
+Clients receiving a conflict response MUST `[gate: G-25-SSE-CONFLICT-CLIENT-RESTORE]`:
 1. Replace their optimistic local value with the server's winning value.
 2. Show "Restored remote change" banner with the winning user's avatar.
 3. Offer **Undo** (5 s) which submits a fresh write of the local value (subject to the same algorithm).
