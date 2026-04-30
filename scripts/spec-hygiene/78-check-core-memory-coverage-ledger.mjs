@@ -25,7 +25,7 @@ import { readFileSync, existsSync } from "node:fs";
 const LEDGER = "spec/_LEDGER-G-NS-CORE-MEMORY-COVERAGE.md";
 const REGISTRY = "spec/_GATE-REGISTRY.md";
 const ROW_RE = /^\| ([A-Z]\d+) \| "([^"]+)" \| (.+?) \| (.+?) \|\s*$/;
-const GATE_ID_RE = /`(G-[A-Z0-9-]+)`/g;
+const GATE_ID_RE = /`(G-[A-Z0-9-]+(?:\*)?)`/g;
 const RESERVED_RE = /`RESERVED:\s*(G-[A-Z0-9-]+)`/;
 const PROCEDURAL_RE = /memory-only-by-design/;
 const REGISTRY_GATE_RE = /^\|\s*`(G-[A-Z0-9-]+)`\s*\|/gm;
@@ -66,13 +66,20 @@ function parseRows(text) {
   return rows;
 }
 
+function gateExists(cited, registryGates) {
+  if (!cited.endsWith("*")) return registryGates.has(cited);
+  const prefix = cited.slice(0, -1);
+  for (const g of registryGates) if (g.startsWith(prefix)) return true;
+  return false;
+}
+
 function checkRow(row, registryGates) {
   const klass = classifyRow(row.coverage);
   if (klass === "procedural") return klass;
   if (klass === "reserved") return klass;
   const cited = extractGateIds(row.coverage).filter(g => !g.startsWith("RESERVED"));
   if (cited.length === 0) fail(`${row.id}: no gate cited and not RESERVED/procedural`);
-  const missing = cited.filter(g => !registryGates.has(g));
+  const missing = cited.filter(g => !gateExists(g, registryGates));
   if (missing.length > 0) fail(`${row.id}: cites non-existent gates: ${missing.join(", ")}`);
   return klass;
 }
