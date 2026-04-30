@@ -14,7 +14,7 @@ Measures how ready the specification is for an AI agent to implement the describ
 | Tier | Icon | Meaning | When to Use |
 |------|------|---------|-------------|
 | **Production-Ready** | ✅ | Specs are complete, unambiguous, and fully implementable | All interfaces defined, acceptance criteria explicit, error codes mapped |
-| **High** | 🟢 | Minor gaps exist but AI can proceed with reasonable assumptions | Most sections complete; a few edge cases undefined |
+| **High** | 🟢 | Minor gaps exist but AI can proceed with ≤2 documented assumptions per file | Most sections complete; a few edge cases undefined |
 | **Medium** | 🟡 | Significant gaps; AI will need clarification or make risky assumptions | Missing types, partial acceptance criteria, unclear validation rules |
 | **Low** | 🔴 | Major sections missing; do NOT attempt implementation | No interfaces, no acceptance criteria, vague requirements |
 
@@ -24,7 +24,7 @@ Measures how ready the specification is for an AI agent to implement the describ
 
 ## Ambiguity
 
-Measures how much interpretation is required. **Lower tiers are better.**
+Measures how much interpretation is required. **Lower tiers indicate higher implementability (per F-AUDIT-44 scorecard scale).**
 
 | Tier | Icon | Meaning | When to Use |
 |------|------|---------|-------------|

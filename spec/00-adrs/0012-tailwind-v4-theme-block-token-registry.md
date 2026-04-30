@@ -119,7 +119,7 @@ examples:
 
 | Forbidden | Replace with |
 |---|---|
-| `className="text-white bg-black"` | `className="text-background bg-foreground"` (or the appropriate semantic) |
+| `className="text-white bg-black"` | `className="text-background bg-foreground"` (or the matching semantic token from `@theme` block, ADR-0012 §3) |
 | `className="bg-[#0F172A]"` | semantic class backed by a `@theme` token |
 | `className="text-[hsl(222,47%,11%)]"` | semantic class backed by a `@theme` token |
 | `style={{ color: "red" }}` for static color | semantic class backed by a `--destructive` token |
@@ -209,7 +209,7 @@ This rule lives in ADR-0012 (not ADR-0028) because it is a **styling-system inva
    the registry across N files, breaks the Tailwind utility surface
    that the entire shadcn ecosystem depends on, and provides no
    ergonomic dark-mode swap.
-3. **`oklch()` color authoring (modern, perceptually uniform)** —
+3. **`oklch()` color authoring (CSS Color Module Level 4, perceptually uniform)** —
    rejected for v1: incompatible with the existing
    `hsl(var(--token) / <alpha>)` consumer pattern and with
    shadcn's HSL-assumed templates. Reconsider in a superseding ADR

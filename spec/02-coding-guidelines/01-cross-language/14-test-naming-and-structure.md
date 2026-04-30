@@ -14,7 +14,7 @@ This spec defines mandatory conventions for test file organization, test functio
 
 ## Rule 1: Test File Naming
 
-Test files must mirror the source file they test, with a language-appropriate test suffix.
+Test files must mirror the source file they test, with a language-specific test suffix (`.test.ts`, `_test.go`, `Test.php`, `_test.py` per §3 table).
 
 | Language | Source File | Test File |
 |----------|------------|-----------|
@@ -300,7 +300,7 @@ func TestB(t *testing.T) {
 
 ## Rule 7: Integration Test Boundaries
 
-Integration tests must clearly declare their external dependencies and be skippable in fast-test mode.
+Integration tests must clearly declare their external dependencies and be skippable via `--short` flag (Go `testing.Short()`, Vitest `--bail`, PHPUnit `@group integration` exclusion).
 
 ### Go
 

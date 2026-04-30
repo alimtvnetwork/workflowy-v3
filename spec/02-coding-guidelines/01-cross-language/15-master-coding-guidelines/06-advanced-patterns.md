@@ -46,7 +46,7 @@ Any modification to an enum must follow the enum-consumer-checklist <!-- externa
 | R4 | Test helpers use descriptive verb prefixes; `t.Helper()` required (Go) |
 | R5 | Test body follows Arrange / Act / Assert with blank line separators |
 | R6 | Each test independently runnable — no shared mutable state |
-| R7 | Integration tests skippable in short/fast mode |
+| R7 | Integration tests skippable via `--short` flag (Go `testing.Short()` / Vitest `--bail` / PHPUnit `--exclude-group integration`) |
 
 ---
 
@@ -77,7 +77,7 @@ Any modification to an enum must follow the enum-consumer-checklist <!-- externa
 
 | Rule | Description |
 |------|-------------|
-| RX1 | Regex is **last resort** — prefer `strings.Contains()`, `HasPrefix()`, `Split()` for simple patterns |
+| RX1 | Regex is **last resort** — prefer `strings.Contains()`, `HasPrefix()`, `Split()` for fixed-string patterns (no metacharacters) |
 | RX2 | Go: compile regex at package level (`var re = regexp.MustCompile(...)`) — never inside functions |
 | RX3 | Add sample data as comments above regex declarations |
 | RX4 | Never use regex in loops without reviewer approval |

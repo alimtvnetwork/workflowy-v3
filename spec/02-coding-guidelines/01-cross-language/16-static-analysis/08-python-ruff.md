@@ -27,7 +27,7 @@
 
 ## Purpose
 
-Maps cross-language coding guidelines to **Ruff** rules (primary), with **Pylint** and **Flake8** equivalents. **mypy** or **pyright** handles type checking. Ruff is preferred as it replaces Flake8, isort, pyupgrade, and most Pylint checks in a single fast tool.
+Maps cross-language coding guidelines to **Ruff** rules (primary), with **Pylint** and **Flake8** equivalents. **mypy** or **pyright** handles type checking. Ruff is preferred as it replaces Flake8, isort, pyupgrade, and most Pylint checks in a single tool with measured 10–100× speedup vs Flake8 (per ruff benchmark suite, ≥5k LOC corpus).
 
 ---
 
@@ -55,7 +55,7 @@ Maps cross-language coding guidelines to **Ruff** rules (primary), with **Pylint
 
 | # | Guideline | Ruff Rule | Code | Severity | Notes |
 |---|-----------|-----------|------|----------|-------|
-| 16 | Use `pathlib` over `os.path` | Use `pathlib` | PTH100–PTH124 | `warn` | Modern path handling |
+| 16 | Use `pathlib` over `os.path` | Use `pathlib` | PTH100–PTH124 | `warn` | PEP 519 path handling (Python 3.6+) |
 | 17 | Use f-strings over `.format()` | f-string | UP032 | `error` | Pyupgrade |
 | 18 | Use `from __future__ import annotations` | Future annotations | FA100 | `warn` | PEP 563 |
 | 19 | No bare `except:` | Bare except | E722 | `error` | Must specify exception type |

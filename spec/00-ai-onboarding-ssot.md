@@ -10,7 +10,7 @@
 
 ## Purpose
 
-A mediocre AI agent (GPT-3.5-class) cannot synthesize hundreds of historical findings on demand. This file collapses the load-bearing methodological lessons into a flat, prescriptive checklist. **Recite §1 before any spec-touching task. Apply §2–§4 as appropriate.**
+A mediocre AI agent (GPT-3.5-class) cannot synthesize hundreds of historical findings on demand. This file collapses the load-bearing methodological lessons into a flat, prescriptive checklist. **Recite §1 before any spec-touching task. Apply §2–§4 when its trigger condition matches (per the decision tree in §3).**
 
 If you skip this file, you WILL repeat a known-resolved methodological error. The ledgers exist to prove every item below was learned the hard way.
 
@@ -39,7 +39,7 @@ Each lesson cites the originating finding; consult that row in `spec/AUDIT-FINDI
 | **L-01** | **Counting methodology** | Claim "57 files affected" without specifying the filter | State filter inline: "~95 files matching `\b(appropriate\|reasonable\|...)\b` excluding ledgers/audits/ADRs" | F-SCOPE-* series, F-AUDIT-32 |
 | **L-02** | **Parser robustness** | Use literal `## Decision` string match | Use regex `^##\s+(?:\d+\.\s+)?Decision\s*$` to allow numbered ADR templates | Runner-78 fix 2026-04-30, F-AUDIT-33 |
 | **L-03** | **Gate IDs are SSOT** | Cite `G-FOO-BAR` in spec without registering it | Register every gate in `_GATE-REGISTRY.md` BEFORE first citation; orphans go through ADR-0033 umbrella resolution | F-AUDIT-45, F-SCOPE-41/44/57 |
-| **L-04** | **Vague modifiers** | Write "appropriate", "fast", "robust", "seamless" in normative text | Substitute with quantified value, named pattern, or matrix; if cohort-exempt, leave + tag | F-SPEC-14, glossary v1.2.0–v1.4.0 |
+| **L-04** | **Vague modifiers** | Write `appropriate`, `fast`, `robust`, `seamless` (backtick-wrapped here as quoted examples) in normative text | Substitute with quantified value, named pattern, or matrix; if cohort-exempt, leave + tag | F-SPEC-14, glossary v1.2.0–v1.4.0 |
 | **L-05** | **Cohort exemptions are catalogued** | Re-flag `## Graceful Shutdown` as a vague-modifier violation | Check `spec/19-glossary.md` cohort table (10 patterns); 6 added in batches #3–#4 | GAP-AMB-01-tail batch #4 |
 | **L-06** | **Score self-grading bias** | Self-report 100/100 capped without external review | Trigger Gemini-2.5-Pro re-baseline every 10 deltas OR every 7 days | F-AUDIT-35, GAP-REBASE-01 |
 | **L-07** | **Inventory drift compounds** | Trust closure claims without re-scan | Add `Inventory-Audit: <date> | filter | Was: X | Is: Y` row on every closure | F-AUDIT-32 |

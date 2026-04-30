@@ -32,7 +32,7 @@
 
 ## Adding New Enum Cases — Checklist
 
-1. **Add the case** to the appropriate enum in `includes/Enums/`.
+1. **Add the case** to the matching enum in `includes/Enums/` (per §3 enum-class taxonomy).
 2. **Ensure `isEqual()` exists** — it should already be there; verify.
 3. **Add a PHPDoc comment** if the case is non-obvious.
 4. **If PathSubdirType:** Add a corresponding typed accessor to `PathHelper`.
@@ -41,7 +41,7 @@
 7. **If CapabilityType:** Update all `current_user_can()` calls.
 8. **If HttpMethodType:** Update all `register_rest_route()` calls.
 9. **If EndpointType:** Add the case, then use `->route()` in route registration. Update all callers.
-10. **If ErrorType:** Add to the appropriate group array AND to `TYPE_LABELS`.
+10. **If ErrorType:** Add to the matching group array (per `ErrorType::GROUPS` map) AND to `TYPE_LABELS`.
 11. **If WpErrorCodeType:** Update all `new WP_Error()` calls and `$this->envelope->error()` code parameters.
 12. **Never skip the enum** — even for "one-time" usage.
 13. **Use `isEqual()` for all comparisons** — never raw `===` at call sites.

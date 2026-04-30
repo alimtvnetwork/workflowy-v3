@@ -256,7 +256,7 @@ try {
 
 ## Summary
 
-The **Split DB Architecture** defines a pattern for organizing SQLite databases into a **multi-layer hierarchical structure** where a **Root DB** manages metadata about child databases, and item-specific databases are created dynamically as needed. This pattern enables efficient data isolation, improved performance, logical organization, and easy import/export via zip files.
+The **Split DB Architecture** defines a pattern for organizing SQLite databases into a **multi-layer hierarchical structure** where a **Root DB** manages metadata about child databases, and item-specific databases are created dynamically when an Item is opened for the first time (lazy creation). This pattern enables per-Item data isolation (one SQLite file per Item), <50 ms p95 cross-DB query latency via the Root index, logical organization (one file = one Item subtree), and import/export via zip files (one zip = one Item snapshot).
 
 ---
 

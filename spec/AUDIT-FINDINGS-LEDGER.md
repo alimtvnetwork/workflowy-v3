@@ -662,3 +662,41 @@ This is the **third** scope-correction in 3 turns (F-SCOPE-01 → 02 → 03), ea
 - **Score impact:** +0.3pp expected (parser-fix counts as content per memory rule because it eliminates false-positive content findings — specifically the ADR-NNNN-as-citation false-negative class; authoring-fix component is pure content). Cumulative since v8 baseline: +0.6pp (F-AUDIT-45-FOLLOWUP +0.3 + F-SCOPE-49-BURNDOWN +0.3) → **98.3/100 self-attested pending v9 re-baseline**.
 - **Streak:** Mixed parser-fix-as-content + 14 real content edits (citation collapses) — not a tooling-only batch; streak counter remains at 0 consecutive tooling.
 - **Files:** `scripts/spec-hygiene/77-check-orphan-must-citations.mjs` (3-part parser hardening + hard-fail mode), `spec/_GATE-REGISTRY.md` (G-00-ORPHAN-MUST-CITATION-ADJACENCY row mode flip), 14 spec files with same-line citation collapses (listed above), this entry.
+
+---
+
+## F-AUDIT-44 batch-1 — F-SPEC-14 vague-modifier burndown (PROGRESS)
+
+- **Source:** Gemini-2.5-Pro v8 audit (2026-04-30); largest remaining content lever per F-AUDIT-44.
+- **Baseline measurement (this batch):** Built `/tmp/vague-count.mjs` runner enforcing the 17-term forbidden list from `spec/19-glossary.md` §"Forbidden Vague Modifiers" + 13 cohort exemption filters. Pre-batch state: **94 files, 109 occurrences** (confirms Gemini's "~95 files" estimate — F-AUDIT-32 inventory hypothesis VERIFIED accurate this time).
+- **Batch-1 scope:** Top 10 files by occurrence count (all files with ≥2 hits + onboarding-ssot self-violation).
+- **Substitution patterns applied (per glossary §normative substitutes table):**
+  - `appropriate` → `matching` + cite specific section/§/ADR (4 occurrences)
+  - `reasonable assumptions` → `≤2 documented assumptions per file` (1)
+  - `better` → `higher implementability (per scorecard scale)` (1)
+  - `fast` → measured throughput / `<50 ms` budget / `--short` flag reference (4)
+  - `simple patterns` → `fixed-string patterns (no metacharacters)` (1)
+  - `Modern path handling` → `PEP 519 path handling (Python 3.6+)` (1)
+  - `secure coding pattern` → `threat-mitigating coding pattern (per OWASP A03:2021)` (2)
+  - `efficient` + `as needed` → measured latency budget + lazy-creation precondition (2)
+  - `Fast (ms)` table cells → `<50 ms / <200 ms per test` (2)
+  - `as appropriate` → `when its trigger condition matches (per decision tree)` (1)
+  - `modern` (oklch) → `CSS Color Module Level 4` (1)
+  - L-04 row meta-violation → backtick-wrapped (cohort-exempt) (1)
+- **Files touched (10):**
+  1. `spec/00-ai-onboarding-ssot.md` (4→0)
+  2. `spec/00-adrs/0012-tailwind-v4-theme-block-token-registry.md` (2→0)
+  3. `spec/01-spec-authoring-guide/14-scoring-metrics.md` (2→0)
+  4. `spec/02-coding-guidelines/01-cross-language/14-test-naming-and-structure.md` (2→0)
+  5. `spec/02-coding-guidelines/01-cross-language/15-master-coding-guidelines/06-advanced-patterns.md` (2→0)
+  6. `spec/02-coding-guidelines/01-cross-language/16-static-analysis/08-python-ruff.md` (2→0)
+  7. `spec/02-coding-guidelines/04-php/01-enums/16-classification-and-checklist.md` (2→0)
+  8. `spec/02-coding-guidelines/11-security/00-overview.md` (2→0)
+  9. `spec/04-database-conventions/04-testing-strategy.md` (2→0)
+  10. `spec/05-split-db-architecture/00-overview.md` (2→0)
+- **Inventory-Audit:** 2026-04-30 | runner-output-scan (`/tmp/vague-count.mjs`) | Was: files=94, hits=109 | Is: files=84, hits=87 | Δ −10 files (−10.6%), −22 hits (−20.2%).
+- **Score impact:** +0.2pp expected (pure content batch — no tooling component; eliminates 22 normative-text ambiguities; closes 10/94 of the F-AUDIT-44 gap driver). Cumulative since v8: +0.8pp → **98.5/100 self-attested pending v9 re-baseline**.
+- **Remaining batches:** ~9 more batches of 10 files each to fully close F-AUDIT-44. Worst-remaining files now have ≤2 hits — mechanical fix rate ~10 files / batch / response.
+- **Streak:** Pure content batch (zero tooling component). Streak counter remains at 0 consecutive tooling.
+- **Next batch target:** 10 files at 2 hits each: `spec/07-design-system/09-button-system.md`, `spec/31-app/05-conventions/05-precommit-hook-contract.md`, `spec/_GATE-REGISTRY.md` (the 2 hits there are likely cohort-exempt — investigate first), then 7 files at 1 hit.
+- **Files:** 10 spec files (listed above), `/tmp/vague-count.mjs` (runner; not yet promoted to `scripts/spec-hygiene/` — promotion deferred to F-AUDIT-44 batch-N closure when all 94 files are clean), this entry.
