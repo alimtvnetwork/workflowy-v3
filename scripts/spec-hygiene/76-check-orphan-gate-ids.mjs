@@ -17,8 +17,20 @@ import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 
 const REG_PATH = "spec/_GATE-REGISTRY.md";
-const PLACEHOLDERS = new Set(["G-NN", "G-NN-NAME", "G-DOMAIN-NN", "G-ADR-NNNN", "G-00-UMBRELLA-LEAVES-DESCRIBED"]);
+// Placeholder/skeleton tokens used in prose ("see G-NN", "G-2X family", "G-09 reserved")
+// — these are NOT citations and MUST NOT count toward drift.
+const PLACEHOLDERS = new Set([
+  "G-NN", "G-NN-NAME", "G-DOMAIN-NN", "G-ADR-NNNN",
+  "G-00-UMBRELLA-LEAVES-DESCRIBED",
+  // Family/skeleton mentions in prose — see spec/31-app/05-conventions/02-ci-quality-gates.md §reserved
+  "G-09", "G-2X", "G-3X", "G-26-", "G-41",
+  // Bare ADR-namespace mention in §0033 examples
+  "G-00-ADR", "G-28-NO",
+]);
+// L-09 (parser robustness): trim trailing dash from token captures
+// (e.g. "G-26-style" tokenises as "G-26-" — must normalise before lookup).
 const GATE_RE = /\bG-[A-Z0-9][A-Z0-9-]*\b/g;
+const NORMALISE = (t) => t.replace(/-+$/, "");
 
 // Documented allow-list (do NOT shrink without a new ADR / registry §4.5 amendment).
 // Categories captured for review-time grepability.
