@@ -4,6 +4,8 @@
 
 `Accepted` — 2026-04-28
 
+> **Machine-readable peer (gate `G-CON-03-SSE-FRAME-SCHEMA`):** [`sse-frame.schema.json`](./sse-frame.schema.json) — JSON Schema 2020-12 `oneOf` over the 7 closed event variants (GAP-CON-03, 2026-04-30). Frame bodies emitted on `/stream/page/{pageId}` and `/stream/user/{ownerId}` MUST validate against this schema; the `event:` line MUST equal the body's `Event` field byte-for-byte (gate `G-CON-03-SSE-EVENT-LINE-PARITY`).
+
 ## Context
 
 Spec acceptance criteria (e.g., `spec/01-spec-authoring-guide/19-…`) already

@@ -1,0 +1,208 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://riseup.asia/schemas/sse-frame/v1.0.0",
+  "title": "WorkFlowy SSE Frame Envelope",
+  "description": "Normative JSON Schema for every frame body emitted on the SSE channels `/stream/page/{pageId}` and `/stream/user/{ownerId}` per ADR-0025. Frame bodies are PascalCase JSON objects carried in the `data:` field of `text/event-stream` payloads. The `event:` line value MUST equal the body's `Event` field value (gate G-CON-03-SSE-EVENT-LINE-PARITY). The closed event-name set is owned by ADR-0025 §D2 and enforced by `G-25-SSE-EVENT-NAMES-CLOSED`.\n\nFrames are READ-SIGNAL only — they MUST NOT enqueue to the offline FIFO replay queue (ADR-0023 §D1, gate `G-25-SSE-READ-ONLY-SIGNAL`).",
+  "$comment": "Discriminator: the `Event` field selects the variant. Implementations MUST validate the union and reject unknown event names with the `resync` recovery contract from ADR-0025 §D4.",
+  "oneOf": [
+    { "$ref": "#/$defs/ItemCreatedFrame" },
+    { "$ref": "#/$defs/ItemUpdatedFrame" },
+    { "$ref": "#/$defs/ItemMovedFrame" },
+    { "$ref": "#/$defs/ItemTrashedFrame" },
+    { "$ref": "#/$defs/MirrorLinkedFrame" },
+    { "$ref": "#/$defs/MirrorDetachedFrame" },
+    { "$ref": "#/$defs/ResyncFrame" }
+  ],
+
+  "$defs": {
+    "ItemId": {
+      "type": "string",
+      "pattern": "^[0-9A-HJKMNP-TV-Z]{26}$",
+      "description": "ULID-shaped ItemId per ADR-0020. In TS this is the branded `ItemId` type from envelope.types.ts."
+    },
+    "OwnerId": {
+      "type": "string",
+      "pattern": "^[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "PeerGroupId": {
+      "type": "string",
+      "pattern": "^[0-9A-HJKMNP-TV-Z]{26}$"
+    },
+    "SortOrder": {
+      "type": "string",
+      "pattern": "^[0-9A-Za-z]+$",
+      "description": "Fractional-index base-62 string per ADR-0016. Lexicographic sort = visual sort. NEVER cast to number."
+    },
+    "ServerSeq": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Monotonically increasing per-channel sequence. Mirrors the SSE `id:` line value (also used as `Last-Event-ID` on reconnect per ADR-0025 §D4)."
+    },
+    "ServerTs": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 server-minted timestamp. SOLE timestamp consulted by the LWW guard (ADR-0026); client `clientTs` is ignored — gate `G-26-LWW-NO-CLIENT-TS`."
+    },
+    "ItemType": {
+      "type": "string",
+      "enum": [
+        "bullet", "todo", "note", "board", "column", "card",
+        "dashboard", "mirror", "template", "search", "embed", "separator"
+      ],
+      "description": "Closed enum of 12 ItemTypes per ADR-0015. The `mirror` slot is legacy; new items use the peer-group model (ADR-0005)."
+    },
+
+    "ItemCreatedFrame": {
+      "type": "object",
+      "required": ["Event", "ServerSeq", "ServerTs", "Id", "ParentId", "OwnerId", "ItemType", "Content", "SortOrder"],
+      "additionalProperties": false,
+      "properties": {
+        "Event":     { "const": "item.created" },
+        "ServerSeq": { "$ref": "#/$defs/ServerSeq" },
+        "ServerTs":  { "$ref": "#/$defs/ServerTs" },
+        "Id":        { "$ref": "#/$defs/ItemId" },
+        "ParentId":  {
+          "oneOf": [
+            { "$ref": "#/$defs/ItemId" },
+            { "type": "null" }
+          ],
+          "description": "null only for root nodes."
+        },
+        "OwnerId":     { "$ref": "#/$defs/OwnerId" },
+        "ItemType":    { "$ref": "#/$defs/ItemType" },
+        "Content":     { "type": "string" },
+        "SortOrder":   { "$ref": "#/$defs/SortOrder" },
+        "PeerGroupId": { "$ref": "#/$defs/PeerGroupId" }
+      }
+    },
+
+    "ItemUpdatedFrame": {
+      "type": "object",
+      "required": ["Event", "ServerSeq", "ServerTs", "Id", "Patch"],
+      "additionalProperties": false,
+      "properties": {
+        "Event":     { "const": "item.updated" },
+        "ServerSeq": { "$ref": "#/$defs/ServerSeq" },
+        "ServerTs":  { "$ref": "#/$defs/ServerTs" },
+        "Id":        { "$ref": "#/$defs/ItemId" },
+        "Patch": {
+          "type": "object",
+          "additionalProperties": false,
+          "minProperties": 1,
+          "description": "Sparse patch — only the changed fields. PascalCase keys per ADR-0004.",
+          "properties": {
+            "Content":     { "type": "string" },
+            "ItemType":    { "$ref": "#/$defs/ItemType" },
+            "PeerGroupId": {
+              "oneOf": [
+                { "$ref": "#/$defs/PeerGroupId" },
+                { "type": "null" }
+              ],
+              "description": "null when the item left a peer group via detach (singleton dissolve, ADR-0005)."
+            }
+          }
+        }
+      }
+    },
+
+    "ItemMovedFrame": {
+      "type": "object",
+      "required": ["Event", "ServerSeq", "ServerTs", "Id", "ParentId", "SortOrder"],
+      "additionalProperties": false,
+      "description": "Pure structural move — `Id` is stable; only `ParentId` and/or `SortOrder` change (per ADR data-model §move semantics).",
+      "properties": {
+        "Event":     { "const": "item.moved" },
+        "ServerSeq": { "$ref": "#/$defs/ServerSeq" },
+        "ServerTs":  { "$ref": "#/$defs/ServerTs" },
+        "Id":        { "$ref": "#/$defs/ItemId" },
+        "ParentId": {
+          "oneOf": [
+            { "$ref": "#/$defs/ItemId" },
+            { "type": "null" }
+          ]
+        },
+        "SortOrder": { "$ref": "#/$defs/SortOrder" }
+      }
+    },
+
+    "ItemTrashedFrame": {
+      "type": "object",
+      "required": ["Event", "ServerSeq", "ServerTs", "Id", "TrashedAt"],
+      "additionalProperties": false,
+      "description": "Soft-delete to trash (30-day retention per mem://features/trash-logic).",
+      "properties": {
+        "Event":     { "const": "item.trashed" },
+        "ServerSeq": { "$ref": "#/$defs/ServerSeq" },
+        "ServerTs":  { "$ref": "#/$defs/ServerTs" },
+        "Id":        { "$ref": "#/$defs/ItemId" },
+        "TrashedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+
+    "MirrorLinkedFrame": {
+      "type": "object",
+      "required": ["Event", "ServerSeq", "ServerTs", "PeerGroupId", "MemberIds"],
+      "additionalProperties": false,
+      "description": "Two or more items joined a peer group, OR a new pair was created. Carries the FULL current member set per ADR-0005 §M2 (never a delta) so clients reconcile by replacement.",
+      "properties": {
+        "Event":       { "const": "mirror.linked" },
+        "ServerSeq":   { "$ref": "#/$defs/ServerSeq" },
+        "ServerTs":    { "$ref": "#/$defs/ServerTs" },
+        "PeerGroupId": { "$ref": "#/$defs/PeerGroupId" },
+        "MemberIds": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/ItemId" },
+          "description": "MUST contain ≥2 ItemIds — `mirror.linked` for a singleton is forbidden (singletons are dissolved per ADR-0005 §M3, gate `G-MIRROR-DISSOLVE-SINGLETON`). Use `mirror.detached` to signal dissolution."
+        }
+      }
+    },
+
+    "MirrorDetachedFrame": {
+      "type": "object",
+      "required": ["Event", "ServerSeq", "ServerTs", "PeerGroupId", "DetachedId", "Outcome"],
+      "additionalProperties": false,
+      "description": "An item left a peer group. `Outcome` discriminates the post-detach group state per ADR-0005 §M3.",
+      "properties": {
+        "Event":       { "const": "mirror.detached" },
+        "ServerSeq":   { "$ref": "#/$defs/ServerSeq" },
+        "ServerTs":    { "$ref": "#/$defs/ServerTs" },
+        "PeerGroupId": { "$ref": "#/$defs/PeerGroupId" },
+        "DetachedId":  { "$ref": "#/$defs/ItemId" },
+        "Outcome": {
+          "type": "string",
+          "enum": ["detach-shrink", "detach-dissolve"],
+          "description": "`detach-shrink`: group still has ≥2 members; PeerGroupId persists. `detach-dissolve`: group fell to 1 member, so the singleton's PeerGroupId was set to NULL in the same transaction (ADR-0005 §M3, gate `G-ADR-0005-DISSOLVE-IN-TX`)."
+        },
+        "RemainingIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/ItemId" },
+          "description": "MUST be present when `Outcome=detach-shrink` (lists ≥2 surviving member IDs). MUST be absent or empty when `Outcome=detach-dissolve`."
+        }
+      }
+    },
+
+    "ResyncFrame": {
+      "type": "object",
+      "required": ["Event", "ServerSeq", "ServerTs", "Reason"],
+      "additionalProperties": false,
+      "description": "Cold-gap recovery frame per ADR-0025 §D4. The server emits exactly ONE `resync` frame when `Last-Event-ID + 1` is no longer in the 5-minute ring buffer. The client MUST respond by tearing down its local view of the channel and triggering a full REST snapshot reload — it MUST NOT continue applying subsequent SSE frames until the snapshot completes (gate `G-25-SSE-LAST-EVENT-ID`).",
+      "properties": {
+        "Event":     { "const": "resync" },
+        "ServerSeq": { "$ref": "#/$defs/ServerSeq" },
+        "ServerTs":  { "$ref": "#/$defs/ServerTs" },
+        "Reason": {
+          "type": "string",
+          "enum": ["cold-gap", "ring-buffer-expired", "server-restart"],
+          "description": "Diagnostic only — clients MUST NOT branch behaviour on Reason; the recovery action is identical for all three."
+        },
+        "ChannelKind": {
+          "type": "string",
+          "enum": ["page", "user"],
+          "description": "Echoes which endpoint family triggered the resync — informational."
+        }
+      }
+    }
+  }
+}

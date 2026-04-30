@@ -281,3 +281,22 @@ At the user-set bar ('mediocre AI, zero follow-up, 100% intent match'), every ac
 **Result:** **Contract trifecta complete** — the envelope now has prose + JSON Schema + OpenAPI + TypeScript representation, with byte-shape parity enforced by 5 cross-peer gates (`G-CON-01-OPENAPI-PARITY`, `G-CON-01-OPENAPI-PASCALCASE`, `G-CON-02-TYPES-PARITY`, `G-CON-02-TYPES-PASCALCASE`, `G-CON-02-TYPES-BRANDED-IDS`). Implementability impact: any AI building a frontend handler can now `import type { Envelope, Node, ItemId } from "spec/.../envelope.types.ts"`, get full structural narrowing through the type guards, and be statically prevented from leaking raw string IDs into payload positions — the single most common ADR-0020 violation pattern. The first-CON-track now closes 3 contract-shape coin-flips simultaneously: "what's the wire shape?" (JSON Schema), "what's the path inventory?" (OpenAPI), "what types do I import?" (TS).
 
 **Remaining CON queue:** GAP-CON-03 (JSON Schemas for SSE frame types per ADR-0025: `/stream/page/{id}` + `/stream/user/{id}` PascalCase frame envelopes with Last-Event-ID semantics).
+
+
+---
+
+## GAP-CON-03 — SSE frame JSON Schema (2026-04-30) — CON TRACK COMPLETE
+
+**Action:** Authored `spec/00-adrs/sse-frame.schema.json` (~190 lines, JSON Schema 2020-12) as the first standalone realtime-contract artifact. Single-file `oneOf` discriminated by `Event` over the 7 closed ADR-0025 §D2 event variants: `ItemCreatedFrame`, `ItemUpdatedFrame` (sparse Patch), `ItemMovedFrame` (Id stable / ParentId+SortOrder mutate), `ItemTrashedFrame` (30-day retention contract), `MirrorLinkedFrame` (≥2 members, replacement semantics), `MirrorDetachedFrame` (Outcome ∈ {detach-shrink, detach-dissolve} per ADR-0005 §M3), `ResyncFrame` (cold-gap recovery per ADR-0025 §D4 — single emission, full snapshot reload). Reuses ULID/base-62 patterns from envelope.types.ts; intentionally OMITS `ClientTs` from every variant per ADR-0026 (LWW guard MUST NOT consult client timestamps).
+
+**Gates registered:** Four new DOC-NORM rows in `spec/_GATE-REGISTRY.md`:
+- `G-CON-03-SSE-FRAME-SCHEMA` — umbrella requiring every emitted frame to validate against the closed `oneOf` set; composes `G-25-SSE-EVENT-NAMES-CLOSED` by promoting prose enumeration to executable validation.
+- `G-CON-03-SSE-EVENT-LINE-PARITY` — sub-rule: SSE `event:` line MUST equal body's `Event` field byte-for-byte; mismatch is a producer bug; client MAY trigger `resync`.
+- `G-CON-03-SSE-PASCALCASE` — sub-rule: PascalCase property names everywhere; documents the deliberate convention split (PascalCase keys vs lowercase.dot event-name vocabulary).
+- `G-CON-03-SSE-LWW-NO-CLIENT-TS` — sub-rule enforcing ADR-0026 at the schema level: `additionalProperties: false` on every variant means no implementation can leak `ClientTs` onto the wire.
+
+**Files:** spec/00-adrs/sse-frame.schema.json (NEW, ~190 lines), spec/00-adrs/0025-sse-realtime-transport.md (banner block added under Status linking to schema), spec/_GATE-REGISTRY.md (+4 rows in new G-CON-03 family).
+
+**Result:** **CON track complete.** Three contract surfaces (envelope, payload, realtime) are now fully machine-readable. Total contract artifacts authored across CON-01..03: OpenAPI 3.1 YAML (envelope, ~340 lines), TypeScript interface peer with branded IDs (envelope+Node, ~230 lines), JSON Schema for SSE frames (~190 lines), and 9 cross-peer parity gates (`G-CON-01-OPENAPI-PARITY`/`-PASCALCASE`, `G-CON-02-TYPES-PARITY`/`-PASCALCASE`/`-BRANDED-IDS`, `G-CON-03-SSE-FRAME-SCHEMA`/`-EVENT-LINE-PARITY`/`-PASCALCASE`/`-LWW-NO-CLIENT-TS`). Implementability impact: every wire-shape coin-flip in the system now has at least one machine-readable answer. The remaining unbacked clauses are concentrated in long-tail prose (164 files at 1 unbacked each) and meta-categories (vague modifiers, glossary, fixtures, conflicts) — none on load-bearing protocol surfaces.
+
+**Remaining queue (post-CON):** GAP-AMB-01-tail (long-tail bind sweep), GAP-AMB-02..05 (vague modifiers, glossary, fixtures, conflicts), GAP-DOC-01..02 (Mermaid + plan.md), GAP-LED-01 (24 Medium audit findings). **Strong recommendation: trigger GAP-REBASE-01 next** — the contract trifecta + SSE schema is a meaningful enough delta over the v7 95/100 baseline to justify a fresh Gemini-2.5-Pro rebase before any further long-tail work.
