@@ -898,3 +898,28 @@ This is the **third** scope-correction in 3 turns (F-SCOPE-01 → 02 → 03), ea
 - **Next batch target:** Top 10 of remaining 36 files (wp-plugin-how-to + admin-ui clusters).
 - **Files:** 10 spec files + this entry.
 
+
+## F-AUDIT-44 batch-9 — F-SPEC-14 vague-modifier burndown (PROGRESS)
+
+- **Date:** 2026-04-30
+- **Status:** Open (capped) — 2nd-of-~3 remaining batches; entering homestretch
+- **Scope:** Pure content batch. 10 files at 1 hit each; entire `spec/15-wp-plugin-how-to/` cluster burndown.
+- **Substitution patterns applied (10 fixes; 9 net closures):**
+  - `appropriate HTTP status codes` → `HTTP status code matching the failure category (401 missing-creds, 403 insufficient-cap)` (1)
+  - `if needed` (lazy init) → `when the static $pdo property is null` (1)
+  - `Fail fast` → `Fail-fast` (cohort-exempt term form) (1)
+  - `modern admin UIs` → `React 19 with Tailwind CSS v4 admin UIs` (1)
+  - `produce better output` → `produce higher-fidelity output (measurably fewer hallucinated symbols)` (1)
+  - `| Modern |` → `` | `Modern` | `` (cohort-exempt: WP admin scheme literal name) (1)
+  - `proper margins` → `WP-admin-default 20 px top + 10 px right page margins` (1)
+  - `simple forms` → `single-column forms (≤4 fields)` (1)
+  - `simple exports` → `parameterless exports` (1)
+  - `Cache if needed` → `Cache when read >100×/request` (1)
+- **Files touched (10):** entire wp-plugin-how-to cluster: traits-and-composition · helpers/database-and-split-db · input-validation-patterns · frontend-and-template-patterns/00-overview · frontend-and-template-patterns/01-file-size-limits · design-system/02-color-system · admin-ui-patterns/01-page-layout · admin-ui-patterns/06-modal-anatomy · rest-api-conventions/03-http-methods · 17a-data-file-validation-and-checklist
+- **Inventory-Audit:** 2026-04-30 | runner: `node scripts/spec-hygiene/79-check-vague-modifiers.mjs` | Was: files=36, hits=36 | Is: files=27, hits=27 | Δ −9 files (−25.0%), −9 hits (−25.0%).
+- **Score impact:** +0.1pp (pure content). Cumulative since v8: +1.8pp → **99.3/100 self-attested pending v9 re-baseline**.
+- **Remaining batches:** 27 files. ~3 more 10-file batches → graduate `G-LINT-VAGUE-MODIFIERS` to `block-all`.
+- **Streak:** Pure content batch. Tooling streak = 0.
+- **Next batch target:** Top 10 of remaining 27 files.
+- **Files:** 10 spec files + this entry.
+
