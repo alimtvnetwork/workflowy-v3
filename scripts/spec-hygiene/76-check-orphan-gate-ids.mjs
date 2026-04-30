@@ -73,6 +73,13 @@ const ALLOWED = new Set([
   "G-20-HELPER-CONTRACT","G-20-WIRE-PLAIN-STRING","G-20-SPEC-CONSISTENCY-SWEEP",
   "G-21-REDO-INVALIDATION",
   "G-23-LOADER-NO-FETCH","G-23-MIRROR-QUEUE-ATOMIC","G-23-WORKER-SOLE-EGRESS",
+  // G-24-* cross-cutting leaves: cited from spec/00-adrs/, spec/19-glossary.md,
+  // spec/31-app/06-endpoints/ — NOT under family=convention-drift anchor folder.
+  // Per ADR-0033 §Decision (same-number disambiguation), the G-24 umbrella's
+  // family= scope intentionally excludes them; they remain ALLOWED as cross-
+  // cutting cites until either (a) a second umbrella row with a different
+  // family= is added, or (b) ADR-0033 is amended to permit family-agnostic
+  // umbrellas for non-double-reserved namespaces.
   "G-24-PRIVILEGE-MUTATION-GATED","G-24-PRIVILEGE-MUTATION-GATED-DRIFT",
   "G-24-ALIAS-BRIDGE-AUTHORITY","G-24-TRIAGE-BANNER-PRESENT","G-24-NO-SINGLETON-GROUPS",
   "G-25-SSE-ONLY-NO-POLL","G-25-SSE-AUTH","G-25-SSE-NEVER-ENQUEUES",
