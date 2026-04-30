@@ -43,7 +43,7 @@
 ## EP-ITEMS-COMPLETE — POST `items/{id}/complete`
 
 - **Auth**: `user` with write access.
-- **Request body**: `{ IsCompleted: boolean, ClientCompletedAt?: string }` where `ClientCompletedAt` is an ISO-8601 UTC timestamp captured at the moment the user clicked the checkbox on the client. It is **required when `IsCompleted: true`** to preserve user-action fidelity through offline-queue replay (the queue worker may flush the action minutes/hours after the click — see ADR-0023). When `IsCompleted: false`, `ClientCompletedAt` MUST be omitted (the server clears the column).
+- **Request body**: `{ IsCompleted: boolean, ClientCompletedAt?: string }` where `ClientCompletedAt` is an ISO-8601 UTC timestamp captured at the moment the user clicked the checkbox on the client. It is **required when `IsCompleted: true`** to preserve user-action fidelity through offline-queue replay (the queue worker may flush the action minutes/hours after the click — see ADR-0023). When `IsCompleted: false`, `ClientCompletedAt` MUST be omitted (the server clears the column) (per ADR-0023 §queue-replay).
 - **Server semantics** (normative):
   - `IsCompleted: true` → server sets `Items.IsCompleted = 1` and `Items.CompletedAt = MIN(ClientCompletedAt, ServerNow)` (clamped — never accepts future timestamps; falls back to `ServerNow` if `ClientCompletedAt` is absent or > `ServerNow + 5s` skew tolerance).
   - `IsCompleted: false` → server sets `Items.IsCompleted = 0` and `Items.CompletedAt = NULL` (uncomplete clears history; if you need to preserve prior completions for analytics, that lives in `CompletionLog` per §14.5.6 transactional-emit, not on the row).

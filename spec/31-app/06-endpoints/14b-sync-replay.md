@@ -44,7 +44,7 @@
     ]
   }
   ```
-  - `Mutations` MUST be in **FIFO order** as queued on the client (per `mem://features/offline-resilience`).
+  - `Mutations` MUST be in **FIFO order** as queued on the client (per `mem://features/offline-resilience`) (per AT-APP-100 + ADR-0023).
   - Max **500 mutations per batch**; clients chunk larger queues.
 - **Success (200)** `Results`:
   ```json

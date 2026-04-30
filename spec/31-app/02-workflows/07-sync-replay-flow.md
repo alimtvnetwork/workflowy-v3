@@ -123,10 +123,10 @@ This file pins the sequence. Each step cites the SSOT that governs its rule.
 ## Forbidden in implementations
 
 - ❌ Parallel drain (multiple concurrent `POST /sync/replay` from the same client). Breaks FIFO and corrupts cross-mutation causality. Use a client-side mutex.
-- ❌ Dequeuing on 5xx or network error. The mutation MUST stay at the head until the server confirms acceptance OR rejection.
+- ❌ Dequeuing on 5xx or network error. The mutation MUST stay at the head until the server confirms acceptance OR rejection (per AT-APP-100 FIFO contract).
 - ❌ Skipping the LWW guard (`<field>UpdatedAt < serverNow`). Older offline edits would clobber newer online edits.
 - ❌ Emitting SSE before `ProcessedMutations` insert + COMMIT. The SSE may otherwise arrive at peers before the mutation is durable.
-- ❌ Ignoring `lww-lost` responses. The local mirror MUST revert; otherwise the optimistic state diverges silently.
+- ❌ Ignoring `lww-lost` responses. The local mirror MUST revert; otherwise the optimistic state diverges silently (per AT-APP-100 LWW reversion).
 - ❌ Using wall-clock `clientTs` for LWW. `ServerTs` is canonical (AT-APP-100). `clientTs` is for diagnostic telemetry only.
 - ❌ Storing the queue in `localStorage`. `localStorage` is synchronous and capped at 5 MB; a long offline period will overflow. Use IndexedDB (AT-APP-102).
 

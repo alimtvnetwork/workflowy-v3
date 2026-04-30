@@ -15,7 +15,7 @@
 
 Mechanize the symmetry check that `G-00-ADR-XLINK-SYMMETRY` mandates:
 every outbound link from an Accepted ADR's `## Decision` section to a
-non-ADR repo file MUST have a reciprocal back-link.
+non-ADR repo file MUST have a reciprocal back-link (gate `G-00-ADR-XLINK-SYMMETRY`).
 
 ## Inputs
 
