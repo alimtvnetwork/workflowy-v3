@@ -25,7 +25,7 @@
 
 ## Purpose
 
-Defines a **standard CI pipeline structure** and **quality gate** that applies to all 8 supported languages. Every repository MUST run the language-appropriate linter, type checker, formatter, and SonarQube analysis as blocking PR checks. This document is the single source of truth for CI enforcement.
+Defines a **standard CI pipeline structure** and **quality gate** that applies to all 8 supported languages. Every repository MUST run the per-language linter declared in the language-tools matrix (`spec/02-coding-guidelines/01-cross-language/16-static-analysis/00-overview.md` §Tools), type checker, formatter, and SonarQube analysis as blocking PR checks. This document is the single source of truth for CI enforcement.
 
 ---
 

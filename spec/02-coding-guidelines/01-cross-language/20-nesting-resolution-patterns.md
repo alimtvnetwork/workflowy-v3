@@ -9,7 +9,7 @@
 
 ## 1. Principle
 
-**Multiple nesting or branching makes code complex**, even if the logic is simple. Nesting increases cyclomatic complexity, complicates unit testing, and reduces maintainability. **Zero nested `if` is the target.**
+**Multiple nesting or branching makes code complex**, even when each individual branch body is ≤15 lines (the logic-block budget). Nesting increases cyclomatic complexity, complicates unit testing, and reduces maintainability. **Zero nested `if` is the target.**
 
 **Exception:** One loop with a single `if` inside is acceptable. But not multiple `if` statements.
 
