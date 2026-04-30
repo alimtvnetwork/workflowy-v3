@@ -166,7 +166,7 @@ The project follows the **Split DB** pattern: multiple small SQLite databases pe
 | Portable | Single file per database, easy to backup/copy |
 | Isolation | Domain failures don't cascade |
 | Performance | Each DB has its own WAL, no lock contention across domains |
-| Testable | In-memory mode for fast tests |
+| Testable | In-memory mode (`:memory:` URI) for tests <50 ms p95 setup |
 
 > See [07-split-db-pattern.md](./07-split-db-pattern.md) for the full Split DB specification including directory layout, DB registry, cross-domain rules, and migration strategy.
 
