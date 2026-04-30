@@ -81,7 +81,7 @@ export const EnvelopeSchema = <TRow extends z.ZodTypeAny>(rowSchema: TRow) =>
 
 ### R3 — Branded IDs are Zod-branded
 
-The Zod schema MUST mint the brand at the parse boundary, so downstream code receives an already-branded value.
+The Zod schema MUST mint the brand at the parse boundary, so downstream code receives an already-branded value. `[gate: G-35-RV-BRAND-IDS · AT: AT-RV-03]`
 
 ```ts
 // src/lib/schemas/branded.schema.ts
