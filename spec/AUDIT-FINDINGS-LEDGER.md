@@ -189,6 +189,7 @@ Permanent index of every spec-improving or spec-vs-impl audit cycle. Each row li
 | audit-v7 | 2026-04-29 | spec-implementability (Gemini-2.5-Pro) | spec/ end-to-end | F-AUDIT-30 | 0 | [`/mnt/documents/spec-ai-implementability-audit-v7.json`](../mnt/documents/spec-ai-implementability-audit-v7.json) (score 95, tier EXCELLENT) |
 | audit-v8 | 2026-04-29 | spec-vs-impl | `src/` scaffold v0.37.0 | F-IMPL-AUD-02..06 | 3 (-03, -06, then +AUD-06 refusal) | [`/mnt/documents/spec-vs-impl-audit-2026-04-29.md`](../mnt/documents/spec-vs-impl-audit-2026-04-29.md) |
 | **audit-v9** | **2026-04-30** | **spec-vs-impl (deeper sweep)** | `src/` v0.37.0 + `package.json` + missing `wp-plugin/` arm | **F-IMPL-AUD-07, F-IMPL-AUD-08** | 5 (carries -03, -06 + adds -07, -08, retains AUD-06 refusal) | (inline conversation; weighted score 28/100, tier CRITICAL-INCOMPLETE) |
+| **audit-v10** | **2026-04-30** | **spec-vs-impl (re-sweep + Tailwind verify)** | `src/` (full tree) + `src/index.css` `@theme` block (first verification) + `mem://index.md` Core | **F-AUDIT-33** (memory↔gate coverage) | 6 (carries -03/-06/-07/-08, adds F-AUDIT-33; AUD-v10 also Retracts the "unverified Tailwind classes" claim that was almost raised — verified PASS) | [`/mnt/documents/spec-vs-impl-audit-2026-04-30.md`](../mnt/documents/spec-vs-impl-audit-2026-04-30.md) (composite 39/100) |
 
 ### Audit-v9 summary (2026-04-30, spec-vs-impl)
 
