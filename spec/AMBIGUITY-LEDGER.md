@@ -263,3 +263,21 @@ At the user-set bar ('mediocre AI, zero follow-up, 100% intent match'), every ac
 **Result:** First standalone machine-readable contract artifact in the corpus that is not a JSON Schema. The envelope now has triple representation: prose (reference doc) + JSON Schema 2020-12 (validation SSOT) + OpenAPI 3.1 (path-aware client/server codegen surface). Implementability impact: removes the largest remaining "where do I look up the wire shape?" coin-flip for any AI generating handlers, axios interceptors, or PHP REST routes — they can now consume one of three peer artifacts and `G-CON-01-OPENAPI-PARITY` guarantees they agree.
 
 **Remaining CON queue:** GAP-CON-02 (TypeScript interface exports for envelope + Node, target `spec/03-error-manage/.../envelope.types.ts`), GAP-CON-03 (JSON Schemas for SSE frame types per ADR-0025).
+
+
+---
+
+## GAP-CON-02 — TypeScript interface peer (2026-04-30) — contract trifecta complete
+
+**Action:** Authored `spec/03-error-manage/02-error-architecture/05-response-envelope/envelope.types.ts` (~230 lines) as the third machine-readable peer of the envelope, alongside the JSON Schema SSOT and the OpenAPI mirror. Six sections: (§1) branded primitives `ItemId` / `OwnerId` / `SortOrder` / `PeerGroupId` / `ClientMutationId` via unique-symbol intersection — sole runtime ID idiom across the corpus per ADR-0020; (§2) closed enums `ItemType` (12 values, ADR-0015) + `MutationOp` (6 values, ADR-0010); (§3) full envelope tree as `Envelope<TResult>` generic with omit-never-null optionality matching JSON Schema `required`; (§4) reference payload shapes `Node` and `QueuedMutation<TPayload>`; (§5) normative type guards `isSuccess` / `isFailed` / `hasErrors` / `isPaginated` / `isSingle` / `isEmpty` (signatures are part of the contract); (§6) `parseItemId` / `parseOwnerId` / `parseSortOrder` / `parsePeerGroupId` / `parseClientMutationId` constructors as the sole sanctioned `as <Brand>` cast sites with documented ULID and base-62 regexes.
+
+**Gates registered:** Three new DOC-NORM rows in `spec/_GATE-REGISTRY.md`:
+- `G-CON-02-TYPES-PARITY` — umbrella requiring byte-shape equivalence between `envelope.types.ts`, `envelope.schema.json`, and `openapi.envelope.yaml`; vendored runtime copy under `src/types/envelope.types.ts` MUST be regenerated, never hand-edited.
+- `G-CON-02-TYPES-PASCALCASE` — sub-rule enforcing PascalCase property names across every `interface`/`type` declaration (with explicit allow-list excluding utility identifiers).
+- `G-CON-02-TYPES-BRANDED-IDS` — sub-rule promoting ADR-0020 from prose to a CI-checkable lint regex; `as ItemId|OwnerId|PeerGroupId|SortOrder|ClientMutationId` casts MUST hard-fail outside the dedicated parser file.
+
+**Files:** spec/03-error-manage/02-error-architecture/05-response-envelope/envelope.types.ts (NEW, ~230 lines), spec/03-error-manage/02-error-architecture/05-response-envelope/04-response-envelope-reference.md (banner block updated to cite all 3 peers), spec/_GATE-REGISTRY.md (+3 rows in G-CON-02 family).
+
+**Result:** **Contract trifecta complete** — the envelope now has prose + JSON Schema + OpenAPI + TypeScript representation, with byte-shape parity enforced by 5 cross-peer gates (`G-CON-01-OPENAPI-PARITY`, `G-CON-01-OPENAPI-PASCALCASE`, `G-CON-02-TYPES-PARITY`, `G-CON-02-TYPES-PASCALCASE`, `G-CON-02-TYPES-BRANDED-IDS`). Implementability impact: any AI building a frontend handler can now `import type { Envelope, Node, ItemId } from "spec/.../envelope.types.ts"`, get full structural narrowing through the type guards, and be statically prevented from leaking raw string IDs into payload positions — the single most common ADR-0020 violation pattern. The first-CON-track now closes 3 contract-shape coin-flips simultaneously: "what's the wire shape?" (JSON Schema), "what's the path inventory?" (OpenAPI), "what types do I import?" (TS).
+
+**Remaining CON queue:** GAP-CON-03 (JSON Schemas for SSE frame types per ADR-0025: `/stream/page/{id}` + `/stream/user/{id}` PascalCase frame envelopes with Last-Event-ID semantics).
