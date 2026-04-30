@@ -156,5 +156,8 @@ for (const { file, warns } of perFile) {
 console.log(`---`);
 console.log(`Orphan-MUST-citation WARN total: ${totalWarn}`);
 console.log(`Files with ≥1 WARN: ${perFile.length}`);
-console.log(`Mode: WARN-only (always exits 0). Graduation: hard-fail when total reaches 0 for 2 consecutive weeks.`);
+// F-SCOPE-49 burndown 2026-04-30: graduated to HARD-FAIL after drift reached 0.
+// Runner exits 1 if any WARN exists; ORPHAN_MUST_WARN_ONLY=1 retains legacy behavior.
+console.log(`Mode: HARD-FAIL (graduated 2026-04-30). Set ORPHAN_MUST_WARN_ONLY=1 to bypass.`);
+if (totalWarn > 0 && process.env.ORPHAN_MUST_WARN_ONLY !== "1") process.exit(1);
 process.exit(0);
