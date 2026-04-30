@@ -184,9 +184,114 @@ The 5 acceptance tests **AT-SR-01 … AT-SR-05** are defined under the existing 
 |---------|---------------|---------------|------------------|
 | Server-side ranker | `wp-plugin/src/Search/Ranker.php` | n/a (server-side) | AT-SR-01, AT-SR-02, AT-SR-03 |
 | Coarse-grain bucket strategy | `wp-plugin/src/Search/BucketStrategy.php` | n/a (server-side) | AT-SR-04, AT-SR-05 |
+| Search overlay (FE) | `src/components/search/SearchOverlay.tsx` | `search-overlay` | AT-SR-06, AT-SR-07 |
+| Search input | `src/components/search/SearchInput.tsx` | `search-input` | AT-SR-06 |
+| Result list | `src/components/search/SearchResults.tsx` | `search-results` | AT-SR-07 |
+| Recent items panel | `src/components/search/SearchRecent.tsx` | `search-recent` | AT-INTERACT-13 |
 
 ### Notes
 
 - **Ranking site:** server-side query handler (no client-side re-rank).
 - **Determinism contract:** identical `(query, DB snapshot)` MUST produce byte-identical ordering (per **I-SR-01**).
 - **Perf SLA:** sub-300 ms for ≥5,000-item datasets per `mem://features/search-functionality`; enforced via the 5-bucket coarse-grain strategy (no full BM25 in MVP).
+
+---
+
+## Backend Contract (BE)
+
+| Aspect | Specification |
+|---|---|
+| Handler | `wp-plugin/src/Search/Ranker.php::rank(Query $q, ItemSet $candidates): RankedList` |
+| Bucket strategy | `wp-plugin/src/Search/BucketStrategy.php::bucket(int $score): int` returns `floor($score / 20)` clamped to `[0,5]`. |
+| Operator parser | `wp-plugin/src/Search/QueryParser.php::parse(string $raw): ParsedQuery` — emits AST of `{terms, filters[], excludes[], groupingOp}`. |
+| FTS engine | SQLite **FTS5** virtual table `Items_fts(Content, Note)` (per ADR-0019 App-DB schema). |
+| Ranking inputs | `Items.UpdatedAt`, `Items.OwnerId`, `Items.ItemType`, `Items.Favorite`, `ItemTags.Tag`, `Items.DeletedAt` (filter), `Items.CompletedAt` (filter). |
+| Side effects | **None.** Read-only against App DB. No FIFO writes. No SSE emission. |
+| Cross-workspace fan-out | Sequential per accessible App DB (per `WorkspaceMember` from Root DB); merge happens application-side after per-DB rank. **Cross-DB joins forbidden** (ADR-0019). |
+| Error contract | See **§Errors** below. |
+
+## Frontend Contract (FE)
+
+| Aspect | Specification |
+|---|---|
+| Trigger | `Cmd/Ctrl+K` global hotkey (per `src/lib/hotkeys.ts` registry) OR sidebar/navbar `search-button` click. |
+| Surface | `SearchOverlay` portal anchored at app root; uses `EditorBoundary` sibling — NOT inside it (per ADR-0017 named-boundary table). |
+| Debounce | 150 ms typing debounce before issuing `GET /search`. Empty query short-circuits to `SearchRecent`. |
+| Loader | React-Router v7 loader at `/search` (overlay route) reads local mirror **first** (per ADR-0023 loader↔queue contract); on cache miss issues `GET /search`. **Never bypasses the local mirror.** |
+| Result rendering | Virtualised via `@tanstack/react-virtual` when result count > 250 (per ADR-0017 1000-item virtualisation). 250-item viewport cap enforced (**I-SR-04**). |
+| Empty / loading / error states | `<SearchEmpty/>`, `<SearchSkeleton/>` (shadcn `Skeleton`), `<SearchError/>` (renders `Errors[0].Code` + retry button). |
+| Highlight rendering | `Snippet` HTML uses `<mark>` tags only; sanitised by DOMPurify before insertion. |
+| Keyboard nav | `↑/↓` cycles `search-results` rows; `Enter` opens; `Esc` closes overlay (per AT-INTERACT-10..13). |
+| No client-side re-rank | The FE MUST render the order returned by the server verbatim. Re-sorting client-side is **forbidden** (preserves I-SR-01 determinism contract). |
+
+## Database Contract (DB) — extended
+
+Already declared in §Database Routing above. Additional schema specifics:
+
+| Object | Definition | Notes |
+|---|---|---|
+| `Items_fts` | `CREATE VIRTUAL TABLE Items_fts USING fts5(Content, Note, content='Items', content_rowid='RowId');` | App DB. Triggered insert/update/delete from `Items`. |
+| `IdxItem_LiveByUpdatedAt` | `CREATE INDEX … ON Items(UpdatedAt DESC) WHERE DeletedAt IS NULL` | Partial index for recency tiebreak inside buckets. |
+| `IdxItemTags_Tag` | `CREATE INDEX … ON ItemTags(Tag, ItemId)` | For `#tag` operator. |
+| Rank query shape | `SELECT … FROM Items_fts JOIN Items ON … WHERE … ORDER BY bucket DESC, UpdatedAt DESC, OwnerId ASC LIMIT 250` | Single statement per App DB; no recursive CTEs. |
+
+## Endpoint Contract (EP)
+
+The single endpoint backing this feature is **EP-SEARCH-QUERY** — full request/response/error envelope is the SSOT in [`spec/31-app/06-endpoints/15b-search.md`](../06-endpoints/15b-search.md). Summary:
+
+| Field | Value |
+|---|---|
+| Method + path | `GET /search` (per WP REST namespace `wp-json/workflowy/v1/search`) |
+| Auth | `user` (server filters to readable items) |
+| Required query params | `Q` (1–256 chars) |
+| Optional query params | `Scope`, `Types`, `IncludeTrashed`, `Limit` (≤ 50, default 25), `Cursor` |
+| Response envelope | PascalCase `{ Status, Attributes, Results: { Hits[], NextCursor, TookMs } }` (per ADR-0004) |
+| Per-hit shape | `{ Item, Score, MatchKind, FieldWeight, Snippet }` |
+| Error codes | `ERR_QUERY_TOO_SHORT`, `ERR_QUERY_TOO_LONG`, `ERR_FORBIDDEN`, `ERR_LIMIT_EXCEEDED` |
+| Performance budget | P95 ≤ 150 ms for workspaces ≤ 100k items |
+
+## SSE / Realtime Contract
+
+| Aspect | Specification |
+|---|---|
+| Stream emission | **None.** Search is read-only and does NOT emit any SSE frame on `/stream/page/{id}` or `/stream/user/{id}` (per ADR-0025: SSE is read-signal only). |
+| Stream consumption | Search results may become **stale** when an SSE frame (`item.updated`, `item.deleted`, `item.created`) arrives while the overlay is open. The overlay MUST re-validate its result set against the local mirror on every relevant SSE frame and re-render impacted rows in place. |
+| No re-fetch on SSE | The overlay MUST NOT re-issue `GET /search` on every SSE frame — only re-read the local mirror (per ADR-0023 loader-reads-mirror-first rule). A full re-query is allowed only when the user re-submits the query. |
+| Last-Event-ID | Not applicable — search does not produce a stream. |
+
+## Permissions Contract (Perm)
+
+| Capability | Rule |
+|---|---|
+| Visibility | A hit appears in the result list **only if** the caller has at least `read` permission on the `Item` (per `15-roles-and-permissions.md`). Server-side filter; never client-side. |
+| Scope-restricted query | If `Scope` is supplied and the caller lacks `read` on the scope item → `ERR_FORBIDDEN` (no partial result). |
+| Cross-workspace fan-out | Limited to App DBs whose workspace appears in the caller's `WorkspaceMember` rows. Foreign workspaces are silently skipped (no error). |
+| Trashed-item access | `IncludeTrashed=true` only surfaces trash items the caller could see when they were live (read or higher). |
+| Mirror-instance permission | Each mirror peer-group instance is permission-checked independently; instances in workspaces the caller cannot read are filtered out (the peer group may appear as a smaller set than its true size). |
+| Sensitive content | Notes (`Items.Note`) inherit the parent item's permission; no separate ACL. |
+
+## Errors
+
+All error responses follow the canonical envelope (per ADR-0004): `{ Status: "error", Errors: [{ Code, Message, Field? }] }`. `Errors` is **omit-never-null**.
+
+| Code | Trigger | HTTP | Recovery |
+|---|---|---|---|
+| `ERR_QUERY_TOO_SHORT` | `Q` length < 1 (after trim) | 400 | FE shows hint "Type at least 1 character" in `<SearchEmpty/>`. |
+| `ERR_QUERY_TOO_LONG` | `Q` length > 256 | 400 | FE truncates input to 256 in `SearchInput` before submit (defence-in-depth); server still validates. |
+| `ERR_FORBIDDEN` | Caller lacks `read` on `Scope` item | 403 | FE renders `<SearchError/>` with "You don't have access to that page" + retry without `Scope`. |
+| `ERR_LIMIT_EXCEEDED` | `Limit > 50` | 400 | FE clamps to 50 client-side; server enforces. |
+| `ERR_INTERNAL` | FTS5 query failure / SQLite I/O error | 500 | FE shows generic "Search is temporarily unavailable" + retry button. Server logs full error per ADR-0007 logging rules. |
+| `ERR_RATE_LIMITED` | > 30 queries / minute / user (per WP plugin throttle) | 429 | FE displays cooldown countdown derived from `Retry-After` header. |
+
+> No partial results: every error response has empty/absent `Results`. The `Status: "error"` envelope is mutually exclusive with `Status: "success"`.
+
+## Acceptance Tests — extended
+
+| AT ID | Summary | Source |
+|-------|---------|--------|
+| AT-SR-06 | `Cmd/Ctrl+K` opens overlay; empty query renders `search-recent`; `Esc` closes | §FE Contract + AT-INTERACT-10..13 |
+| AT-SR-07 | Result row keyboard nav (`↑/↓` cycles, `Enter` opens, focus visible) | §FE Contract |
+| AT-SR-08 | `ERR_FORBIDDEN` on unreadable `Scope` returns 403 with empty `Results` and one entry in `Errors[]` | §Errors |
+| AT-SR-09 | SSE `item.updated` for an item in the open result list updates the row in place WITHOUT issuing a new `GET /search` | §SSE Contract |
+| AT-SR-10 | Cross-workspace fan-out: search returns hits from all workspaces in `WorkspaceMember`, none from foreign workspaces | §Perm Contract |
+| AT-SR-11 | `Limit > 50` is clamped client-side; server still rejects with `ERR_LIMIT_EXCEEDED` if bypassed | §Errors |
