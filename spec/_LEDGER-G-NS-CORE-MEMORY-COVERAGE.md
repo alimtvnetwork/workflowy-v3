@@ -37,7 +37,7 @@ This ledger remedies that by making the Core↔Gate mapping **first-class and ve
 | # | Core rule | Coverage | Notes |
 |---|---|---|---|
 | B1 | "WordPress plugin (PHP 8.1+ + SQLite + REST)" | ✅ ADR-0002 anchored; multiple `G-10-BOUNDARY-*` gates (NO-PHP-SHELLOUT, NO-WP-RUNTIME, PARITY-*) | Boundary-of-runtime enforcement. ADR-0002 is the load-bearing decision record. |
-| B2 | "Lovable Cloud, Supabase, sql.js, IndexedDB-as-primary, Postgres, MySQL, standalone Node, Cloudflare D1, Go all forbidden" | 📋 `RESERVED: G-NS-FORBIDDEN-RUNTIMES` | No grep gate exists today. Forbidden-runtime detection requires `package.json`-scope ESLint rule. **Gap candidate — file as NEW-27 if promoted.** |
+| B2 | "Lovable Cloud, Supabase, sql.js, IndexedDB-as-primary, Postgres, MySQL, standalone Node, Cloudflare D1, Go all forbidden" | ✅ `G-10-FORBIDDEN-RUNTIMES` (DOC-NORM, registered 2026-04-30 by GAPCLOSE-B2; registry v1.7.46) | Anchors ADR-0002 §Decision lines 50-65. 9 forbidden primary-runtime choices enumerated; detection surface specified for future CI promotion (`scripts/spec-hygiene/NN-check-forbidden-runtimes.mjs`); offline-mirror IndexedDB carve-out preserved. F-AUDIT-34 anti-recurrence methodology applied. |
 
 ### C. Frontend stack
 
@@ -113,21 +113,21 @@ This ledger remedies that by making the Core↔Gate mapping **first-class and ve
 
 ---
 
-## Coverage summary (as of 2026-04-30, post-GAPCLOSE-I2/J1/C3-RETRACTION + NEW-27 hygiene gate)
+## Coverage summary (as of 2026-04-30, post-GAPCLOSE-B2 — sole RESERVED slot closed)
 
 | Status | Count | % |
 |---|---|---|
-| ✅ Registered gate(s) | 19 | 73% |
-| 📋 RESERVED slot (ADR-0031 pattern) | 1 | 4% |
+| ✅ Registered gate(s) | 20 | 77% |
+| 📋 RESERVED slot (ADR-0031 pattern) | 0 | 0% |
 | 📝 Memory-only-by-design (procedural) + script-enforced | 6 | 23% |
 | **Total Core sub-rules mapped** | **26** | **100%** |
 
-> Counts re-derived 2026-04-30 by `scripts/spec-hygiene/78-check-core-memory-coverage-ledger.mjs` (NEW-27). Earlier "23 lines" figure conflated mem-index Core lines (≈14) with mapped sub-rules (26).
+> Counts re-derived 2026-04-30 by `scripts/spec-hygiene/78-check-core-memory-coverage-ledger.mjs` (NEW-27). **All originally-listed RESERVED slots now resolved** (3 by discovery via F-AUDIT-34 retractions, 1 by gate authoring via GAPCLOSE-B2). Earlier "23 lines" figure conflated mem-index Core lines (≈14) with mapped sub-rules (26).
 
-**Open gaps remaining (1 RESERVED slot + 4 partial-coverage notes):**
+**Open gaps remaining (0 RESERVED slots + 4 partial-coverage notes):**
 
-1. **B2** — Forbidden-runtimes ESLint rule (`G-NS-FORBIDDEN-RUNTIMES`).
-2. ~~**C3** — shadcn/Radix component-base lock.~~ **CLOSED 2026-04-30 — pre-existing `G-26-*` family (5 gates) covers it (cross-walk error in v1 of this ledger; F-AUDIT-34 third recurrence).**
+1. ~~**B2** — Forbidden-runtimes.~~ **CLOSED 2026-04-30 — `G-10-FORBIDDEN-RUNTIMES` (DOC-NORM) registered by GAPCLOSE-B2; registry v1.7.46.**
+2. ~~**C3** — shadcn/Radix component-base lock.~~ **CLOSED 2026-04-30 — pre-existing `G-26-*` family (5 gates) covers it (F-AUDIT-34 third recurrence).**
 3. **E1** — 15-line logic limit + positive-guard-clause grep gates (partial coverage).
 4. **F3** — 250-item per-view cap (policy → grep gate).
 5. **G1** — HSL-only Tailwind tokens + `@theme`-block-as-SSOT gates (AUDIT-FIX-02 closes half).
@@ -135,7 +135,7 @@ This ledger remedies that by making the Core↔Gate mapping **first-class and ve
 7. ~~**J1** — WebSocket/long-poll ban.~~ **CLOSED 2026-04-30 — pre-existing `G-25-TRANSPORT-SSE-ONLY` covers it.**
 8. **C1** — Version-pin gate for Vite/React/TS (NEW-25 covers this).
 
-**Closure progress:** 3 of 4 originally-listed RESERVED slots closed by **discovery** (not by new gates) — all three were pre-existing in the registry but mis-classified by the v1 cross-walk grep. Filed as F-AUDIT-34 (false-positive cascade, now 3 instances). Real net result: coverage was always 19/23 (83%), not 16/23 (70%) as v1 reported. Remaining 1 RESERVED + 4 partial-coverage notes are still first-class visible.
+**Closure progress:** ALL 4 originally-listed RESERVED slots now closed — 3 by discovery (F-AUDIT-34 false-positive cascade, instances #1-3) and 1 by gate authoring (GAPCLOSE-B2, registry v1.7.46). True coverage: 20/26 sub-rules registered (77%) + 0 RESERVED + 6 procedural-or-script (23%). Only 4 partial-coverage notes remain (E1/F3/G1/C1) — each is a known sub-clause gap, not a RESERVED slot. Core↔Gate ledger is now **structurally complete**.
 
 ### v1 cross-walk methodology error (root-cause)
 
