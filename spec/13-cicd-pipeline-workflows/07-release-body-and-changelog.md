@@ -108,7 +108,7 @@ curl -fsSL https://github.com/<repo>/releases/download/<version>/install.sh | ba
 
 ### Manual download
 
-Download the appropriate archive for your platform from the assets below,
+Download the archive matching your platform/architecture (`linux-amd64`, `linux-arm64`, `darwin-amd64`, `darwin-arm64`, `windows-amd64`) from the assets below,
 extract, and place the binary in your PATH.
 
 ## Assets
