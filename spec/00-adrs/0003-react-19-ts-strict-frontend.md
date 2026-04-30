@@ -31,10 +31,7 @@ anchor.
 
 ## Decision
 
-The WorkFlowy frontend **MUST** be implemented as a single Vite 5.4
-project, written in TypeScript 5.6 with `strict: true`, rendered by
-React 19, and styled with Tailwind CSS v4 consumed via the
-`@tailwindcss/vite` plugin from a single `src/index.css` `@theme` block.
+The WorkFlowy frontend **MUST** be implemented as a single Vite 5.4 project, written in TypeScript 5.6 with `strict: true`, rendered by React 19, and styled with Tailwind CSS v4 consumed via the `@tailwindcss/vite` plugin from a single `src/index.css` `@theme` block — enforced by `G-ADR-0003-FRONTEND-STACK-LOCK` (umbrella) which composes `G-ADR-0003-VITE-5_4-PINNED`, `G-ADR-0003-REACT-19-PINNED`, `G-ADR-0003-TS-5_6-STRICT`, `G-ADR-0003-TAILWIND-V4-THEME-BLOCK`.
 
 **Allowed (load-bearing):**
 
@@ -49,11 +46,7 @@ React 19, and styled with Tailwind CSS v4 consumed via the
   pure positive guard clauses, max 2 boolean operands, multi-line
   method chains) are formally ratified by **ADR-0007** (R1–R7) — see
   `spec/02-coding-guidelines/00-overview.md` for worked examples.
-- **Styling:** Tailwind CSS **v4** via `@tailwindcss/vite`. All design
-  tokens MUST live inside the `@theme { … }` block in
-  `src/index.css`. No second styling system (no SCSS modules,
-  styled-components, Emotion, vanilla-extract, plain CSS modules) may
-  be introduced.
+- **Styling:** Tailwind CSS **v4** via `@tailwindcss/vite`. All design tokens MUST live inside the `@theme { … }` block in `src/index.css` — enforced by `G-ADR-0003-TAILWIND-V4-THEME-BLOCK` (sub-rule of stack umbrella, layered under existing `G-12-LOGICAL-MARGINS-PADDING` token-system family). No second styling system (no SCSS modules, styled-components, Emotion, vanilla-extract, plain CSS modules) may be introduced.
 - **HTTP client:** Axios — version pinned per
   `spec/31-app/05-conventions/01-axios-version-control.md`. Any
   additional client (fetch wrapper, ky, ofetch, …) is forbidden in
@@ -78,15 +71,10 @@ React 19, and styled with Tailwind CSS v4 consumed via the
   styled-components, Emotion, vanilla-extract, plain CSS modules,
   CSS-in-JS at runtime, inline `style={{…}}` for design-token
   values.
-- **Tailwind v4 anti-config:** the legacy `tailwind.config.{js,ts}`
-  file MUST NOT be reintroduced — token customisation lives in the
-  `@theme` block inside `src/index.css` only.
+- **Tailwind v4 anti-config:** the legacy `tailwind.config.{js,ts}` file MUST NOT be reintroduced — token customisation lives in the `@theme` block inside `src/index.css` only. Enforced by `G-ADR-0003-NO-TAILWIND-CONFIG-FILE` (CI grep gate scanning repo root for `tailwind.config.{js,ts,mjs,cjs}`).
 - **Second test runner** in the same package as Vitest.
 
-**Migration constraint:** any change to the allowed/forbidden lists
-above MUST be ratified by a new ADR that supersedes this one and that
-enumerates every gate, convention page, and design-token file that
-needs re-anchoring.
+**Migration constraint:** any change to the allowed/forbidden lists above MUST be ratified by a new ADR that supersedes this one and that enumerates every gate, convention page, and design-token file that needs re-anchoring — enforced by `G-ADR-0003-AMENDMENT-REQUIRED` (mirrors `G-ADR-0001-AMENDMENT-REQUIRED` pattern; second consecutive ADR-anchor area to land an explicit amendment-gate).
 
 ## Consequences
 
@@ -155,7 +143,7 @@ needs re-anchoring.
 
 ## Gates Touched
 
-- **New gates:** `(none — this ADR ratifies pre-existing gates)`
+- **New gates:** `G-ADR-0003-FRONTEND-STACK-LOCK` (DOC-NORM umbrella), `G-ADR-0003-VITE-5_4-PINNED` (DOC-NORM), `G-ADR-0003-REACT-19-PINNED` (DOC-NORM), `G-ADR-0003-TS-5_6-STRICT` (DOC-NORM), `G-ADR-0003-TAILWIND-V4-THEME-BLOCK` (DOC-NORM, layered under `G-12-LOGICAL-MARGINS-PADDING` family — 3-tier sub-rule chain), `G-ADR-0003-NO-TAILWIND-CONFIG-FILE` (CI grep gate), `G-ADR-0003-AMENDMENT-REQUIRED` (DOC-NORM, mirrors `G-ADR-0001-AMENDMENT-REQUIRED`)
 - **Modified gates (now load-bearing via this ADR):**
   - `G-32-NO-RAW-COLORS` (Tailwind v4 `@theme` token enforcement; see
     `spec/32-ui-design/00-overview.md` Worked Example)
