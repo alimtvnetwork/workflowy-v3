@@ -941,3 +941,10 @@ This is the **third** scope-correction in 3 turns (F-SCOPE-01 → 02 → 03), ea
 - **Residue: 7 → 0 files / 0 hits. 100% closed.**
 - **Gate graduated:** `G-LINT-VAGUE-MODIFIERS` mode `block-new` → `block-all` in `spec/_GATE-REGISTRY.md`. CI now fails on any occurrence.
 - **F-AUDIT-44 status: CLOSED.** 12-batch burndown total: 109 → 0 occurrences over 6 hours of work.
+
+### F-SCOPE-40-FOLLOWUP batch-1 of 2 (2026-04-30)
+- **Scope:** Rename `G-38` → `G-WORDING-AMBIGUOUS-LINT` in **safe** callsites only (runner banner comments + spec authoring-guide prose). Stderr text + ADR-0031 fixture regex (`/G-38: \d+ ambiguous-wording occurrence\(s\).*flipCriterion/`) deferred to batch-2 (must change atomically with the runner output string).
+- **Files touched (5):** `scripts/spec-hygiene/38-check-ambiguous-wording.mjs` L3+L56+L62 (code comments only); `spec/01-spec-authoring-guide/00-overview.md` L25+L37+L38 (DoD + Scoring rubric); `spec/01-spec-authoring-guide/20-rfc-2119-wording-policy.md` L30+L45 (heading + allow-list intro); `spec/01-spec-authoring-guide/21-feature-block-format.md` L113+L119 (Fixtures + Related). Pattern: `(gated by G-38)` → `(gated by `G-WORDING-AMBIGUOUS-LINT`, legacy alias `G-38`)`.
+- **G-38 occurrences:** 39 → 39 (unchanged net — alias retained inline; only canonical-name promotion). Of 39 remaining: 11 in ADR-0031 + ADR fixtures (stderr-regex bound), 5 in registry/exemption rows (require atomic registry update), 4 in scanner stderr (`runner` lines 121/125), 4 in audit-ledger historical rows, 15 in retrospective scripts (`47-drain`, `48-add-antipatterns`, `60-check`, `76-check`, `audits/README.md`).
+- **Verification:** Vague-modifier gate (graduated `block-all`) still passes 0/0. Ambiguous-wording gate exit unchanged (1, 27 hits — all pre-existing in registry/ADR/AMBIGUITY-LEDGER, none introduced by this batch; baseline confirmed via stash-compare).
+- **Batch-2 plan:** Atomic update of (a) runner stderr label `G-38:` → `G-WORDING-AMBIGUOUS-LINT:` + (b) ADR-0031 §6 negative-fixture regex + (c) `_GATE-REGISTRY.md` legacy-alias note removal + (d) `_GATE-GRADUATION-LEDGER.md` row.
