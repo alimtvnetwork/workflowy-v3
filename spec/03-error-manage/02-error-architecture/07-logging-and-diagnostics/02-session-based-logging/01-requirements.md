@@ -4,6 +4,8 @@
 
 ## 1.1 Functional Requirements
 
+> All F1..F13 rows below are bound by gate **`G-LOG-SESSION-FNREQS`** (umbrella, CI; family=`logging-coverage`). Each row is a leaf assertion under that umbrella; rows with `SHOULD` priority are advisory leaves under the same umbrella.
+
 | ID | Requirement | Priority |
 |----|-------------|----------|
 | F1 | Every API request must be assigned a unique session ID | MUST |
