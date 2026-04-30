@@ -160,7 +160,7 @@ When SSE is unavailable (proxy strips `text/event-stream`, mobile background, `c
 | Response shape | `{ Events: Event[], Cursor: ServerTs, HasMore: boolean }` where each `Event` matches one row of §14.5.2 (with an extra `Event: 'item-updated' \| ...` discriminator key in place of the SSE `event:` line). |
 | `HasMore = true` | Client polls again immediately (without 5 s wait) until drained. |
 | Empty result | `{ Events: [], Cursor: <unchanged>, HasMore: false }`. Cursor never moves backward. |
-| Idempotency | Two polls with the same `since` MUST return identical bytes (modulo new events past the cursor). |
+| Idempotency | Two polls with the same `since` MUST return identical bytes (modulo new events past the cursor) `[gate: G-25-POLL-IDEMPOTENT]`. |
 
 **Forbidden:** long-poll (server holds the request open) — that's a poor approximation of SSE and breaks the 5 s SLA. Use proper SSE when available; otherwise short-poll only.
 
