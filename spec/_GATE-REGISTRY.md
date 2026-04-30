@@ -1048,6 +1048,7 @@
 | Gate ID | Tier | Enforces | Source / Substitution Table |
 |---|---|---|---|
 | `G-LINT-VAGUE-MODIFIERS` | LINT | Forbids 15 listed vague modifiers (`appropriate`, `reasonable`, `fast`, `efficient`, `proper`, `suitable`, `good`, `better`, `nice`, `optimal`, `robust`, `scalable`, `secure`, `simple`, `modern`, `handle gracefully`, `as needed`) in spec prose. **Mode:** `block-new` for files modified after 2026-04-30; `warn-existing` for legacy occurrences (tracked under F-SPEC-14). Backtick-wrapped + `<!-- vague-exempt: <reason> -->` annotation skipped. | [`spec/19-glossary.md`](./19-glossary.md) §Forbidden Vague Modifiers |
+| `G-DOC-01-DIAGRAM-ADR-PARITY` | DOC-NORM | Any PR modifying an ADR cited in `spec/24-sequence-diagrams.md` MUST also patch the corresponding diagram in the same PR, or attach `<!-- diagram-defer: <reason> -->` to the ADR. Currently covers ADR-0004/0017/0019/0020/0021/0023/0024/0025/0027/0028 (10 ADRs across 4 diagrams). | [`spec/24-sequence-diagrams.md`](./24-sequence-diagrams.md) §5 |
 
 ---
 

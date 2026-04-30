@@ -378,3 +378,22 @@ Each fixture includes deterministic seeds, numeric assertions, parameterized row
 **Files:** spec/00-adrs/97-acceptance-criteria.md (AT-ADR-G28-DETECTION-ORDER rewritten, +closure note; net +25 lines, v1.16.0 → v1.17.0).
 
 **Score impact:** +0.2pp (eliminates a confirmed-conflict signal that was about to ledger-promote; tightens the AT with one additional regression-guard assertion + latency budget + auth-skip case).
+
+---
+
+## Entry — 2026-04-30 — GAP-DOC-01 RESOLVED (4 sequence diagrams authored)
+
+**Action:** Created `spec/24-sequence-diagrams.md` (v1.0.0, 4 Mermaid sequence diagrams) covering the four most cross-referenced runtime flows:
+
+1. **Auth Handshake** — login → envelope decode → branded `OwnerId` → IDB session + locale persistence → router mount. Pulls together ADR-0004/0017/0019/0020/0021/0023.
+2. **Mutation → Queue → Sync** — read path (loader from mirror, ≤16 ms), write path (single IDB tx mirror+queue), worker egress (LWW conflict + backoff), SSE read-signal revalidation. Pulls together ADR-0023/0024/0025; cites GAP-CON-02 branded types.
+3. **SSE Cold-Gap Recovery** — TTL reaper → cold-gap detect → single `resync` frame + close → fresh reconnect; warm-replay branch. Pulls together ADR-0025/0027 + GAP-CON-03 schema.
+4. **Locale Boot Order** — 5-tier detection, RTL `dir` set before first paint, router-mount ordering. Locks down the AT-ADR-G28-DETECTION-ORDER scenarios visually; reinforces F-AMB-04a closure (no localStorage anywhere in the chain).
+
+**Parity gate:** Registered `G-DOC-01-DIAGRAM-ADR-PARITY` (DOC-NORM tier) in `_GATE-REGISTRY.md` §4a. Any PR modifying an ADR cited in the diagrams file MUST patch the corresponding diagram in the same PR or attach a `<!-- diagram-defer: -->` annotation. Currently covers 10 ADRs (0004/0017/0019/0020/0021/0023/0024/0025/0027/0028).
+
+**Out-of-scope deferrals documented:** drag-and-drop sort-key arithmetic, multi-select bulk ops, search ranking, trash/restore — each with explicit promotion trigger.
+
+**Files:** spec/24-sequence-diagrams.md (NEW, ~250 lines), spec/_GATE-REGISTRY.md §4a (+1 row).
+
+**Score impact:** +0.2pp (comprehension-density improvement; collapses 10 ADR-cross-reads into 4 visual SSOTs; F-SPEC-14 unaffected — diagrams have no vague modifiers).
