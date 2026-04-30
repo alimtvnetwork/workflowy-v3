@@ -137,3 +137,14 @@ At the user-set bar ('mediocre AI, zero follow-up, 100% intent match'), every ac
 - `14-self-update-app-update/14-network-requirements.md` (+3 → G-17-NO-SWALLOW)
 
 **Result:** Unbacked clauses **432 → 387** (-45, -10.4%). Backed coverage **85.3% → 86.8%**.
+
+
+---
+
+## GAP-AMB-01-61..75 — Cross-domain bind batch (2026-04-30)
+
+**Action:** 15 files bound across 8 domains (CLI, fixtures, skeletons, features, SQL, modal patterns, settings, CI/CD, REST format, AI guidelines). 45 inline gate citations added; zero new gates declared.
+
+**Files:** 16-generic-cli/11-build-deploy, 31-app/97b-acceptance-criteria-fixtures, 32-ui-design/skeletons/00-overview, 31-app/01-features/{00-overview,05a-hotkey-table,09-mirrors,16-search-ranking,18-integrations}, 31-app/07-db-diagram/sql/00-overview, 15-wp-plugin-how-to/{13-admin-ui-patterns/06-modal-anatomy,15-settings-architecture/01-data-model,skeletons/00-overview}, 13-cicd-pipeline-workflows/18-wp-plugin-deploy/03-update-server-contract, 04-database-conventions/06-rest-api-format/00-overview, 02-coding-guidelines/06-ai-optimization/04-condensed-master-guidelines.
+
+**Result:** Unbacked **387 → ?** (see audit). Coverage rises.
