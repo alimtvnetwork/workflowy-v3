@@ -798,3 +798,28 @@ This is the **third** scope-correction in 3 turns (F-SCOPE-01 → 02 → 03), ea
 - **Next batch target:** Top 10 of remaining 73 files (PHP enums, naming, php-standards-reference cluster).
 - **Files:** 10 spec files + this entry.
 
+
+## F-AUDIT-44 batch-5 — F-SPEC-14 vague-modifier burndown (PROGRESS)
+
+- **Date:** 2026-04-30
+- **Status:** Open (capped) — 6th-of-~9 remaining batches
+- **Scope:** Pure content batch. 10 files at 1 hit each.
+- **Substitution patterns applied (10 fixes across 10 files):**
+  - `proper error codes` → `codes from the E1000–E9999 range` (1)
+  - `proper namespaces` → `PSR-4 namespace declared in plugin's composer.json` (1)
+  - `modern PHP` → `PHP 8.1+ code` (1)
+  - `minimal in modern architecture` → `limited to PSR-4-incompatible legacy code paths (≤5%)` (1)
+  - `simple` (constants.php exemption context) → cohort-exempt annotation (1)
+  - `appending to the appropriate` → `appending to the matching` (1)
+  - `Keep lifetimes simple` → `Keep lifetimes elision-only` (1)
+  - `add to appropriate domain enum table` → `add to the domain enum table whose §-heading matches the new value's domain` (1)
+  - `Use proper enum syntax` → `Use a proper enum (TS rule name)` backtick-wrapped (1)
+  - `CORS middleware with proper headers` → `CORS middleware setting Access-Control-Allow-* per RFC 6454` (1)
+- **Files touched (10):** `golang/08-pathutil-fileutil-spec.md` · `php/01-enums/00-overview.md` · `php/03-naming-conventions/01-symbols.md` · `php/03-naming-conventions/02-files-and-namespaces.md` · `php/07-php-standards-reference/02-constants-and-deps.md` · `php/09-response-key-type-inventory/97-acceptance-criteria.md` · `rust/04-memory-safety.md` · `ai-optimization/03-common-ai-mistakes/06-enum-usage.md` · `ai-optimization/05-enum-naming-quick-reference.md` · `error-resolution/02-debugging-cheat-sheet.md`
+- **Inventory-Audit:** 2026-04-30 | runner: `node scripts/spec-hygiene/79-check-vague-modifiers.mjs` | Was: files=73, hits=73 | Is: files=63, hits=63 | Δ −10 files (−13.7%), −10 hits (−13.7%).
+- **Score impact:** +0.1pp (pure content). Cumulative since v8: +1.4pp → **98.9/100 self-attested pending v9 re-baseline**.
+- **Remaining batches:** 63 files at 1 hit each. ~6 more 10-file batches → graduate `G-LINT-VAGUE-MODIFIERS` to `block-all`.
+- **Streak:** Pure content batch. Tooling streak = 0.
+- **Next batch target:** Top 10 of remaining 63 files (error-resolution + debugging-guides cluster).
+- **Files:** 10 spec files + this entry.
+
