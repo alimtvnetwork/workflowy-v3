@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.25  
-> **Updated:** 2026-04-30 — **batch-34 prose→AT migration:** seeded **Domain-A11Y** (App-Level Accessibility) with **5 new gates** binding all 5 prose-MUSTs in `spec/32-ui-design/05-quality/01-accessibility.md` (Labels, Tree-semantics, Color-contrast, Reduced-motion, Tooltips). Greenfield namespace; pre-flight collision check confirmed `G-A11Y-*` slot empty (distinct from `G-AUI-A11Y-*` which is admin-UI / WP-template-partials scope). Tier mix: 4 CI (axe-core / AST runnable) + 1 DOC-NORM (`G-A11Y-TREE-ROLES` = ARIA semantic-shape, validated by component review). Prior: 1.7.24 (batch-33 Domain-EXPORT seed + namespace-collision recurrence #4).
+> **Version:** 1.7.26  
+> **Updated:** 2026-04-30 — **batch-35 prose→AT migration:** seeded **Domain-AT-IO** (Acceptance-Test I/O Format · Meta-Spec Authoring) with **5 new gates** binding all 5 prose-MUSTs in `spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md` (Format-mandate, Two-row pairing, JSON literal validity, Envelope conformance, Related envelope-spec backlink). **Sixth corpus-wide greenfield Domain seed**; pre-flight check confirmed `G-AT-IO-*` slot empty (sibling `G-00-AT-FIX-COMPANION-SHAPE` intentionally distinct — file-shape vs in-fixture format). Tier mix: 4 CI (regex / `JSON.parse` / link-check) + 1 DOC-NORM (`-FORMAT-MANDATED-ALL` corpus-wide policy enforced operationally by AT-FIX-01 + reviewer attention). Prior: 1.7.25 (batch-34 Domain-A11Y greenfield seed).
 
-- **Total named gates:** 458 (+5 this revision: five `G-A11Y-*`)
+- **Total named gates:** 463 (+5 this revision: five `G-AT-IO-*`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
-- **CI:** 117 (+4 this revision)
+- **CI:** 121 (+4 this revision)
 - **TEST:** 20 (unchanged)
-- **DOC-NORM:** 116 (+1 this revision)
+- **DOC-NORM:** 117 (+1 this revision)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 49 (+1 this revision: Domain-A11Y)
+- **Areas covered:** 50 (+1 this revision: Domain-AT-IO)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
