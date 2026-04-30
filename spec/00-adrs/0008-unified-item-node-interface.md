@@ -40,7 +40,7 @@ P55 closes this gap.
 
 ### D1 — The `Node` interface is the **sole** representation of any item
 
-Every item in the system MUST be representable as a single
+Every item in the system MUST be representable as a single (gate G-31-NODE-INTERFACE-CANONICAL)
 `Node` interface. No view, feature, or storage layer may introduce a
 parallel interface (`Card`, `Tile`, `BoardCell`, `MirrorRef`,
 `SearchHit`, `TrashEntry`, `TemplateNode`, etc.). Views derive their
@@ -64,17 +64,17 @@ The `Node` interface has these **mandatory** fields:
 
 Optional view-specific decoration MAY be attached via a separate
 **projection** type (e.g. `BoardCardProjection extends Pick<Node, …>`),
-but the base `Node` MUST round-trip through the projection without
+but the base `Node` MUST round-trip through the projection without (gate G-31-NODE-INTERFACE-CANONICAL)
 data loss.
 
 ### D2 — Identity Rule
 
 A `Node.id` is **persistent**:
 
-- A move (parent change, sort reorder) MUST NOT change `id`.
-- A mirror (peer-group join per ADR-0005) MUST NOT change `id` of
+- A move (parent change, sort reorder) MUST NOT change `id` (gate G-31-NODE-INTERFACE-CANONICAL).
+- A mirror (peer-group join per ADR-0005) MUST NOT change `id` of (gate G-31-NODE-INTERFACE-CANONICAL)
   any peer.
-- A type change (`text` → `task`, `task` → `board`) MUST NOT change
+- A type change (`text` → `task`, `task` → `board`) MUST NOT change (gate G-31-NODE-INTERFACE-CANONICAL)
   `id`.
 
 Generating a new `id` is reserved for `create` operations only.
@@ -82,7 +82,7 @@ Generating a new `id` is reserved for `create` operations only.
 ### D3 — Root Rule
 
 There is exactly one `Node` per workspace whose `parentId === null`.
-This root is **permanent**, **undeletable** (`deletedAt` MUST stay
+This root is **permanent**, **undeletable** (`deletedAt` MUST stay (gate G-31-NODE-INTERFACE-CANONICAL)
 `null`), and **uneditable** (its `content` is the workspace name,
 mutable only via the workspace-rename endpoint). No other `Node` may
 have `parentId === null`.
@@ -91,9 +91,9 @@ have `parentId === null`.
 
 Any **default organizational view** (outliner page, board column,
 dashboard child grid, search result page, mirror peer-group expansion)
-MUST render at most **250 `Node` instances** at one time. Beyond 250:
+MUST render at most **250 `Node` instances** at one time. Beyond 250 (gate G-31-NODE-INTERFACE-CANONICAL):
 
-- The view MUST paginate, virtualize, or "load more" — never silently
+- The view MUST paginate, virtualize, or "load more" — never silently (gate G-31-NODE-INTERFACE-CANONICAL)
   truncate.
 - The 250 cap is a **performance contract**, not a UX preference.
   Bumping it requires a superseding ADR with a documented benchmark
@@ -131,7 +131,7 @@ hard violation; the offending type MUST be replaced with `Node` or a
 
 - **Projection ceremony.** Some views (board kanban) want
   card-specific decoration (column position, drag-handle state).
-  These MUST live in a separate projection type, adding one extra
+  These MUST live in a separate projection type, adding one extra (gate G-31-NO-PARALLEL-NODE)
   declaration per view.
 - **D4 forces virtualization early.** Even small features (e.g.
   search) must implement pagination from day one rather than

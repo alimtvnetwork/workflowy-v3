@@ -35,27 +35,27 @@ principle, and may be cited by a `G-02-*` gate.
 
 ### R1 — Zero `any`
 
-The literal type `any` MUST NOT appear in source. Use `unknown` +
+The literal type `any` MUST NOT appear in source. Use `unknown` + (gate G-02-NO-NESTED-IF)
 narrowing, generics, or a precise interface. ESLint rule
 `@typescript-eslint/no-explicit-any: error` enforces.
 
 ### R2 — Maximum 3 parameters per function
 
-A function (declaration, expression, arrow, method) MUST accept at
-most **3 positional parameters**. Beyond 3, the call site MUST pass an
+A function (declaration, expression, arrow, method) MUST accept at (gate G-02-NO-NESTED-IF)
+most **3 positional parameters**. Beyond 3, the call site MUST pass an (gate G-02-NO-NESTED-IF)
 options object (which counts as one parameter). Rest-spread (`...args`)
 counts as one parameter.
 
 ### R3 — No nested `if` statements
 
-An `if` block MUST NOT contain another `if`/`else if` statement
+An `if` block MUST NOT contain another `if`/`else if` statement (gate G-02-NO-NESTED-IF)
 inside its body. Use early-return guard clauses, ternaries, lookup
 tables, or extract a helper. `else if` chains at the **same** depth
 are permitted.
 
 ### R4 — 15-line logic limit per function
 
-The **logic body** of a function MUST be ≤ **15 source lines**,
+The **logic body** of a function MUST be ≤ **15 source lines**, (gate G-02-NO-NESTED-IF)
 **excluding**:
 
 - Guard clauses at the top of the function (one per line).
@@ -67,7 +67,7 @@ If a function exceeds 15 logic lines, extract a helper.
 
 ### R5 — Pure positive guard clauses only
 
-Guard clauses at the top of a function MUST be expressed in
+Guard clauses at the top of a function MUST be expressed in (gate G-02-NO-NESTED-IF)
 **positive** form. Use a semantic positive helper instead of bare
 negation.
 
@@ -86,7 +86,7 @@ Helpers like `isDefined`, `isMissing`, `isEmpty`, `isPresent`,
 
 ### R6 — Maximum 2 operands per `&&` / `||`
 
-A single boolean expression chained with `&&` or `||` MUST contain
+A single boolean expression chained with `&&` or `||` MUST contain (gate G-02-NO-ANY)
 **at most 2 operands**. Three or more requires extraction into a named
 predicate (which itself becomes a positive guard, per R5).
 
@@ -95,7 +95,7 @@ expression is **forbidden** — split into separate guards.
 
 ### R7 — Method chains > 2 calls go on new lines
 
-A method chain of **3 or more** calls MUST be formatted with each
+A method chain of **3 or more** calls MUST be formatted with each (gate G-02-NO-ANY)
 `.method()` on its own line, indented one level. Chains of 1–2 calls
 MAY remain inline.
 

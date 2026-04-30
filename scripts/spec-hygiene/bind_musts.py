@@ -30,11 +30,12 @@ CODE_FENCE = re.compile(r'^```')
 
 # Per-ADR fallback umbrella gate — verified to exist in the ADR file itself
 UMBRELLA = {
-    'spec/00-adrs/0013-search-relevance-then-recency-ranking.md': 'G-16-RANKING-HYBRID-BUCKETED',
-    'spec/00-adrs/0018-react-router-v7-data-router-and-lucide-react-only.md': 'G-23-ROUTER-V7-ONLY',
-    'spec/00-adrs/0009-trash-30-day-retention.md': 'G-11-TRASH-30-DAY-WINDOW',
-    'spec/00-adrs/0010-offline-fifo-replay-queue.md': 'G-14-QUEUE-FIFO-LOCALSEQ',
-    'spec/00-adrs/0011-axios-only-http-client.md': 'G-32-AXIOS-ONLY',
+    'spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md': 'G-26-WIRE-OWNERID-ONLY',
+    'spec/00-adrs/0014-sharing-public-vs-invited-permission-model.md': 'G-15-DEFAULT-PRIVATE',
+    'spec/00-adrs/0020-branded-itemid-ownerid.md': 'G-24-IDS-MUST-BE-BRANDED',
+    'spec/00-adrs/0008-unified-item-node-interface.md': 'G-31-NODE-INTERFACE-CANONICAL',
+    'spec/00-adrs/0021-undo-100-offline-queue-unbounded.md': 'G-25-UNDO-CAP-100',
+    'spec/00-adrs/0007-strict-typescript-rules.md': 'G-02-NO-ANY',
 }
 
 def nearest_gate_above(lines, idx, fallback):

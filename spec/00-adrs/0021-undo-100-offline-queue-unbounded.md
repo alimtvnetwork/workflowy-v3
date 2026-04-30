@@ -36,7 +36,7 @@ also lacks ratification.
 **D1 — Undo / redo stack: 100 actions, in-memory, per-tab.**
 - Maximum stack depth: **100 actions** for both undo and redo
   legs (200 entries total at peak).
-- Storage: in-memory only (React/Zustand state); MUST NOT persist
+- Storage: in-memory only (React/Zustand state); MUST NOT persist (gate G-25-UNDO-CAP-100)
   across reloads.
 - Granularity: one entry per atomic user action (text edit
   debounced at 500ms idle, structural move, completion toggle,
@@ -44,27 +44,27 @@ also lacks ratification.
   the action-classification rules.
 - Overflow policy: FIFO eviction — when a 101st action is
   pushed, the oldest entry is dropped silently.
-- Scope: per-browser-tab. Two tabs of the same account MUST NOT
+- Scope: per-browser-tab. Two tabs of the same account MUST NOT (gate G-25-UNDO-CAP-100)
   share an undo stack (avoids cross-tab undo of edits the user
   cannot see).
-- Redo invalidation: any new action MUST clear the redo stack
+- Redo invalidation: any new action MUST clear the redo stack (gate G-25-UNDO-CAP-100)
   (standard editor semantics).
 
 **D2 — Offline mutation queue: unbounded; full-mirror, durable.**
 The "500-action offline local queue" rule in
-`mem://features/editor-core` is **superseded** and MUST be
+`mem://features/editor-core` is **superseded** and MUST be (gate G-25-UNDO-CAP-100)
 removed.
 - Capacity: **unbounded** in spec; bounded only by the IndexedDB
   storage quota of the user's browser (typically hundreds of MB).
 - Storage substrate: **IndexedDB** per ADR-0010, with a single
   ordered store keyed by client-generated monotonic
   `LocalSeq: number` (FIFO ordering invariant).
-- Persistence: MUST survive tab close, OS crash, and browser
+- Persistence: MUST survive tab close, OS crash, and browser (gate G-25-UNDO-CAP-100)
   process restart (IndexedDB durability default).
-- `localStorage` MUST NOT be used as the queue substrate
+- `localStorage` MUST NOT be used as the queue substrate (gate G-25-UNDO-CAP-100)
   (5–10 MB synchronous limit, no transactional semantics).
 - Eviction: there is no eviction. If IndexedDB quota is exceeded
-  (`QuotaExceededError`), the client MUST surface a hard error
+  (`QuotaExceededError`), the client MUST surface a hard error (gate G-25-UNDO-CAP-100)
   banner ("Local storage full — reconnect to sync, or free space")
   and pause further mutations until either reconnect drains the
   queue or the user clears storage. Silent drop is forbidden.
@@ -76,7 +76,7 @@ queue are **independent layers**:
 - The offline queue represents server intent ("apply this
   mutation when reconnected"); it is purely additive and is
   drained by reconnect, not by undo.
-- An undo MUST enqueue a new compensating mutation onto the
+- An undo MUST enqueue a new compensating mutation onto the (gate G-25-UNDO-CAP-100)
   offline queue (not pop the original). This guarantees the
   server sees the same operational sequence the user
   performed locally.
@@ -98,7 +98,7 @@ threshold is implementation guidance, not a gate.
 **D6 — Memory rule correction.** `mem://features/editor-core`
 line 7 currently reads "100-action undo/redo stack. 500-action
 offline local queue (localStorage) with automatic replay and
-conflict resolution." This MUST be rewritten to reflect D1 + D2:
+conflict resolution." This MUST be rewritten to reflect D1 + D2 (gate G-25-UNDO-CAP-100):
 undo cap 100 (in-memory, per-tab); offline queue unbounded
 (IndexedDB per ADR-0010, no `localStorage`).
 

@@ -31,7 +31,7 @@ as F-06 (2026-04-25 deferral note). However:
 ## Decision
 
 **D1 — Branded opaque-string types are mandatory.** Every entity ID
-in the TypeScript codebase MUST be a branded string, never a raw
+in the TypeScript codebase MUST be a branded string, never a raw (gate G-24-IDS-MUST-BE-BRANDED)
 `string`. The two ratified brands are:
 
 ```ts
@@ -42,11 +42,11 @@ export type ItemId  = Brand<string, "ItemId">;
 export type OwnerId = Brand<string, "OwnerId">;
 ```
 
-Additional brands (e.g. `MirrorId`, `ShareId`, `RoleId`) MUST follow
-the same pattern and MUST be added to `src/types/index.ts` (single
+Additional brands (e.g. `MirrorId`, `ShareId`, `RoleId`) MUST follow (gate G-24-IDS-MUST-BE-BRANDED)
+the same pattern and MUST be added to `src/types/index.ts` (single (gate G-24-IDS-MUST-BE-BRANDED)
 SSOT for branded ID types).
 
-**D2 — Construction only at trust boundaries.** Branded values MUST
+**D2 — Construction only at trust boundaries.** Branded values MUST (gate G-24-IDS-MUST-BE-BRANDED)
 be constructed exclusively via the `as<Brand>()` helper functions
 (`asItemId`, `asOwnerId`, …) at three trust boundaries:
 
@@ -60,25 +60,25 @@ be constructed exclusively via the `as<Brand>()` helper functions
    queue) — replay code and local-mirror reads convert at load.
 
 `as Foo` cast syntax (`raw as ItemId`) outside the helper functions
-is **forbidden** — CI MUST flag it. Helper bodies are the only
-place a cast appears, and they MUST validate (currently: non-empty
+is **forbidden** — CI MUST flag it. Helper bodies are the only (gate G-24-IDS-MUST-BE-BRANDED)
+place a cast appears, and they MUST validate (currently: non-empty (gate G-24-IDS-MUST-BE-BRANDED)
 length; D4 below extends this).
 
 **D3 — Runtime shape closes deferral.** `ItemId` and `OwnerId` runtime
 values are **opaque ASCII strings** matching `^[A-Za-z0-9_-]{8,64}$`
 on the wire and in storage. The exact generator is implementation
-choice (UUID v4, UUID v7, ULID, `itm_<ulid>` prefix, etc.) but MUST
+choice (UUID v4, UUID v7, ULID, `itm_<ulid>` prefix, etc.) but MUST (gate G-24-IDS-MUST-BE-BRANDED)
 satisfy:
 - ASCII-safe (no Unicode, no path-unsafe characters);
 - length 8–64 bytes inclusive;
 - collision-resistant at scale (≥ 2^64 entropy);
 - lexicographically sortable is **preferred** but not required.
 
-Constructor helpers (D2) MUST validate the regex on construction and
+Constructor helpers (D2) MUST validate the regex on construction and (gate G-24-IDS-MUST-BE-BRANDED)
 throw a typed error on violation (current implementation only checks
 non-empty — this is the extension point).
 
-**D4 — Helper contract.** The `as<Brand>()` functions MUST:
+**D4 — Helper contract.** The `as<Brand>()` functions MUST (gate G-24-IDS-MUST-BE-BRANDED):
 - accept `string` (not `unknown`);
 - validate per D3 (regex match + length 8–64);
 - throw a tagged error (`InvalidIdError`) on violation, never
@@ -93,7 +93,7 @@ construct, so the WP plugin treats IDs as `string` with a
 runtime regex check matching D3.
 
 **D6 — Spec consistency sweep.** All spec lines that type ID fields
-as plain `string` MUST be corrected as a follow-up:
+as plain `string` MUST be corrected as a follow-up (gate G-24-IDS-MUST-BE-BRANDED):
 - `spec/02-coding-guidelines/00-overview.md` line 96/100
   (`parentId: string, ownerId: string` → branded).
 - `spec/01-spec-authoring-guide/13-feature-file-template.md` line 45

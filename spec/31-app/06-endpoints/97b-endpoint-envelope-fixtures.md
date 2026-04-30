@@ -290,13 +290,13 @@ Bound to gate `G-26-WIRE-OWNERID-ONLY` (CI + TEST dual tier; this AT is the TEST
 | Item | Specification |
 |---|---|
 | Test runner | PHPUnit 10+ (matches WP-plugin tooling already specified in the backend stack). |
-| Fixture DB | An in-memory SQLite database seeded by `spec/31-app/04a-fixtures/generate.py` (the 217-item DDL-mirror artifact). The seed MUST include at least one `Items` row, one `Templates` row, and one `Tags` row — every table whose DDL contains an `OwnerUserId` column. |
+| Fixture DB | An in-memory SQLite database seeded by `spec/31-app/04a-fixtures/generate.py` (the 217-item DDL-mirror artifact). The seed MUST include at least one `Items` row, one `Templates` row, and one `Tags` row — every table whose DDL contains an `OwnerUserId` column. | (gate G-26-WIRE-OWNERID-ONLY)
 | HTTP layer | `WP_REST_Request` instances dispatched through `rest_do_request()`; no live HTTP server required. |
 | Auth context | A test user with `wp_set_current_user()`; role grants read on every fixture row. |
 
-#### Endpoints exercised (MUST cover all)
+#### Endpoints exercised (MUST cover all) (gate G-26-WIRE-OWNERID-ONLY)
 
-The test MUST issue one request per endpoint whose response payload, per the corresponding section above, contains an owner-bearing object. As of v1.0.0 this set is exhaustively:
+The test MUST issue one request per endpoint whose response payload, per the corresponding section above, contains an owner-bearing object. As of v1.0.0 this set is exhaustively (gate G-26-WIRE-OWNERID-ONLY):
 
 | Endpoint | Response field carrying owner identity |
 |---|---|
@@ -311,23 +311,23 @@ The test MUST issue one request per endpoint whose response payload, per the cor
 | `EP-SHARES-LIST` | `Results[].OwnerId` of the shared root |
 | `EP-MIRRORS-LIST` | `Results[].OwnerId` of each peer |
 
-The full enumeration MUST be derived programmatically from `16-endpoint-at-matrix.md` so adding a new endpoint does not silently bypass the test (see "Drift guard" below).
+The full enumeration MUST be derived programmatically from `16-endpoint-at-matrix.md` so adding a new endpoint does not silently bypass the test (see "Drift guard" below) (gate G-26-WIRE-OWNERID-ONLY).
 
-#### Assertion contract (MUST all hold)
+#### Assertion contract (MUST all hold) (gate G-26-WIRE-OWNERID-ONLY)
 
 For each endpoint response `R`:
 
-1. **A1 — Canonical key present.** Every object in `R` that originated from a DB row with an `OwnerUserId` column MUST contain a string field named exactly `OwnerId`. JSON path traversal — recursion required because `Results.Templates[]` is two levels deep.
-2. **A2 — DDL spelling absent.** A recursive scan of the entire JSON-decoded response (`Status`, `Attributes`, `Results`, `Navigation`, `Errors`, `MethodsStack`) MUST find **zero** keys named `OwnerUserId` — case-sensitive exact match. Any hit fails the test with the JSON path of the offending key.
-3. **A3 — Brand shape.** Every emitted `OwnerId` MUST satisfy the ADR-0020 wire regex `^[A-Za-z0-9_-]{8,64}$`. Numeric primary keys (e.g. integer `1` from the DDL-mirror fixture) MUST be rejected — the serializer MUST translate to the opaque-string brand.
-4. **A4 — Round-trip stability.** Re-encoding the response JSON and decoding it MUST yield byte-identical key sets (no PHP `stdClass` → `array` rename surprises that swallow the casing check).
-5. **A5 — Error envelope.** Trigger one `403`/`404` response per endpoint. Assert A1–A4 still hold on the error envelope (the `Errors.Backend[]` stack trace MAY contain the DDL spelling `OwnerUserId` since stack frames quote raw SQL — the assertion MUST scope the recursive scan to *keys only*, not string values).
+1. **A1 — Canonical key present.** Every object in `R` that originated from a DB row with an `OwnerUserId` column MUST contain a string field named exactly `OwnerId`. JSON path traversal — recursion required because `Results.Templates[]` is two levels deep (gate G-26-WIRE-OWNERID-ONLY).
+2. **A2 — DDL spelling absent.** A recursive scan of the entire JSON-decoded response (`Status`, `Attributes`, `Results`, `Navigation`, `Errors`, `MethodsStack`) MUST find **zero** keys named `OwnerUserId` — case-sensitive exact match. Any hit fails the test with the JSON path of the offending key (gate G-26-WIRE-OWNERID-ONLY).
+3. **A3 — Brand shape.** Every emitted `OwnerId` MUST satisfy the ADR-0020 wire regex `^[A-Za-z0-9_-]{8,64}$`. Numeric primary keys (e.g. integer `1` from the DDL-mirror fixture) MUST be rejected — the serializer MUST translate to the opaque-string brand (gate G-26-WIRE-OWNERID-ONLY).
+4. **A4 — Round-trip stability.** Re-encoding the response JSON and decoding it MUST yield byte-identical key sets (no PHP `stdClass` → `array` rename surprises that swallow the casing check) (gate G-26-WIRE-OWNERID-ONLY).
+5. **A5 — Error envelope.** Trigger one `403`/`404` response per endpoint. Assert A1–A4 still hold on the error envelope (the `Errors.Backend[]` stack trace MAY contain the DDL spelling `OwnerUserId` since stack frames quote raw SQL — the assertion MUST scope the recursive scan to *keys only*, not string values) (gate G-26-WIRE-OWNERID-ONLY).
 
 #### Drift guard
 
-A2 alone is insufficient if a future endpoint forgets to expose owner identity. The test MUST therefore **also** assert:
+A2 alone is insufficient if a future endpoint forgets to expose owner identity. The test MUST therefore **also** assert (gate G-26-WIRE-OWNERID-ONLY):
 
-- **A6 — Coverage parity.** The list of endpoints exercised by this test MUST equal `endpoints_with_owner_column(16-endpoint-at-matrix.md)`. The matrix file is the SSOT; the test reads it at boot and fails if any matrix row marked `Owner: yes` lacks a corresponding test case.
+- **A6 — Coverage parity.** The list of endpoints exercised by this test MUST equal `endpoints_with_owner_column(16-endpoint-at-matrix.md)`. The matrix file is the SSOT; the test reads it at boot and fails if any matrix row marked `Owner: yes` lacks a corresponding test case (gate G-26-WIRE-OWNERID-ONLY).
 
 #### Failure messages (specified)
 
