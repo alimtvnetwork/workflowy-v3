@@ -159,3 +159,14 @@ At the user-set bar ('mediocre AI, zero follow-up, 100% intent match'), every ac
 **Files:** 02-coding-guidelines/{04-php/03-naming-conventions/03-array-keys, 03-golang/01-enum-specification/05-info-object-pattern, 03-golang/04-golang-standards-reference/03-database-and-structs, 02-typescript/08-typescript-standards-reference/{03-no-magic-values,08-discriminated-unions}, 01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/06-exemptions-and-checklist}, 22-contract-json, 00-adrs/{0002-wp-plugin-php-sqlite-backend,0028-i18n-locale-strategy}, 01-spec-authoring-guide/{00-overview,09-exceptions,10-mandatory-linter-infrastructure,12-file-length-cap,14-scoring-metrics}, 09-code-block-system/03-syntax-highlighting.
 
 **Result:** Unbacked **342 → ?** (see audit). Coverage rises further.
+
+
+---
+
+## GAP-AMB-01-91..105 — Cross-domain bind batch (2026-04-30) — 90% milestone
+
+**Action:** 15 files bound across research, consolidated guidelines, CI/CD changelog, self-update, WP plugin, generic-update, ATs, UI rich-text/tokens, and 5 feature files. 30 bindings; zero new gates.
+
+**Files:** 11-research/00-overview, 12-consolidated-guidelines/00-overview, 13-cicd-pipeline-workflows/13-changelog-integration, 14-self-update-app-update/00-overview, 15-wp-plugin-how-to/{18-frontend-javascript-patterns,24-local-dev-harness}, 17-generic-update/07-console-safe-handoff, 31-app/97-acceptance-criteria, 32-ui-design/{04-editor/01-rich-text-format, 06-workflowy-ui/02-search/11-design-tokens}, 31-app/01-features/{01-information-model,03-layout-structure,04-page-content-area,06-item-context-menu,07-board-view}.
+
+**Result:** Unbacked **306 → ?** (see audit). Crosses 90% threshold → unlocks GAP-REBASE-01.
