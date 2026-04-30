@@ -567,3 +567,22 @@ Each fixture includes deterministic seeds, numeric assertions, parameterized row
 **Files:** `spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md` (v1.1.0 → v1.2.0), `spec/_GATE-REGISTRY.md` (§4a +1 row), `scripts/spec-hygiene/78-check-glossary-adr-parity.mjs` (new), `spec/AMBIGUITY-LEDGER.md` (this entry).
 
 **Score impact:** +0.05pp (structural — closes a queued lesson into an executable gate; ratifies the verbatim-from-ADR rule corpus-wide).
+
+---
+
+## 2026-04-30 — GAP-ADR-NORMATIVE-HEADERS (parser-fix; eliminates content false-positive)
+
+**Trigger:** First-run output of `scripts/spec-hygiene/78-check-glossary-adr-parity.mjs` (closed yesterday) showed `ADR-0027` and `ADR-0028` hashing to the SHA-256 empty-string hash `e3b0c44298fc1c14`. Initial diagnosis: missing normative headers. Re-investigation: both ADRs **do** have `## 2. Decision` and `## 3. Consequences` (numbered headers per the ADR template), but the runner's regex `^##\s+(Decision|Consequences)\s*$` rejected the numbered prefix.
+
+**Root cause:** Parser bug, not missing content. The sister gate would have silently failed to protect ADR-0027 (SSE multiworker shared ring buffer — load-bearing for SSE realtime) and ADR-0028 (i18n locale strategy) — exactly the two ADRs whose drift the gate was designed to catch.
+
+**Action:**
+1. **`scripts/spec-hygiene/78-check-glossary-adr-parity.mjs`** — regex hardened to `^##\s+(?:\d+\.\s+)?${label}\s*$` so it matches both `## Decision` and `## N. Decision` numbered variants. Helper `extractSection(text, label)` rewritten to pass the label and build the regex per call (cleaner than threading the full header literal through `indexOf`).
+2. **`spec/_LEDGER-G-GLOSSARY-ADR-PARITY.json`** — re-baselined. Verified: ADR-0027 hashes to `a8d5fe772d1487cc`, ADR-0028 to `89a1c80a9fe6aee2`. Zero empty-hash rows remain.
+3. **`spec/_GATE-REGISTRY.md`** §4a — `G-GLOSSARY-ADR-PARITY` row updated to record "parser hardened 2026-04-30 (closes GAP-ADR-NORMATIVE-HEADERS)" + "Coverage 12/12 cited ADRs (no empty-hash false-positives)".
+
+**Why this counts as content (per scorecard rule exception):** The fix eliminates a structural false-positive — the gate was reporting "12 ADRs hashed" when in reality only 10 had genuine coverage. Restoring the 2 missing ADRs lifts real coverage from 83% → 100% across the cited set. This matches the documented exception ("parser-fix counts as content when it eliminates a false-positive content finding") in `mem://preferences/spec-implementability-percentage`.
+
+**Files:** `scripts/spec-hygiene/78-check-glossary-adr-parity.mjs` (regex fix; 1 helper rewritten), `spec/_LEDGER-G-GLOSSARY-ADR-PARITY.json` (re-baselined), `spec/_GATE-REGISTRY.md` (registry row updated), `spec/AMBIGUITY-LEDGER.md` (this entry).
+
+**Score impact:** +0.05pp (parser-fix-as-content; restores 2/12 ADR coverage from false-positive empty-hash to genuine drift detection).

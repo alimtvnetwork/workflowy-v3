@@ -72,16 +72,18 @@ function hashNormativeSections(adrFile) {
 }
 
 function extractNormativeSections(text) {
-  const headers = ["## Decision", "## Consequences"];
+  const labels = ["Decision", "Consequences"];
   const out = [];
-  for (const header of headers) out.push(extractSection(text, header));
+  for (const label of labels) out.push(extractSection(text, label));
   return out.filter(Boolean).join("\n---\n");
 }
 
-function extractSection(text, header) {
-  const idx = text.indexOf(header);
-  if (idx < 0) return "";
-  const after = text.slice(idx + header.length);
+function extractSection(text, label) {
+  const re = new RegExp(`^##\\s+(?:\\d+\\.\\s+)?${label}\\s*$`, "m");
+  const match = text.match(re);
+  if (!match) return "";
+  const idx = text.indexOf(match[0]);
+  const after = text.slice(idx + match[0].length);
   const next = after.search(/^##\s+/m);
   return next < 0 ? after.trim() : after.slice(0, next).trim();
 }
