@@ -124,7 +124,7 @@ Comprehensive database design and implementation conventions covering naming, sc
 
 > 🔴 **MANDATORY — AI Agents Must Commit Database Rules to Memory**
 >
-> After reading this document, you **MUST** retain and enforce these database conventions in every schema, migration, model, and query you generate:
+> After reading this document, you **MUST** retain and enforce these database conventions in every schema, migration, model, and query you generate (gate `G-04-AI-CONVENTIONS-RETAINED`):
 >
 > 1. **Singular table names** — `User`, `Project`, `Transaction` — never plural (`Users`, `Projects`)
 > 2. **PascalCase everything** — tables, columns, indexes, views, JSON response fields
@@ -161,13 +161,13 @@ Whenever a spec sentence uses a plural domain noun, it refers to the singular DD
 | `Favorites`       | `Favorite`            | Table-level; no shell endpoint owns it (see `31-app/06-endpoints/03-layout-structure.md`). |
 
 **Rules:**
-- New spec terms MUST be added to this table in the same PR that introduces them.
-- The DDL side MUST NOT acquire a plural alias (no `Items_view`, no `ItemsAll`).
+- New spec terms MUST be added to this table in the same PR that introduces them (gate `G-04-ALIAS-BRIDGE-PR-COMPLETE`).
+- The DDL side MUST NOT acquire a plural alias (no `Items_view`, no `ItemsAll`) (gate `G-04-NO-DDL-PLURAL-ALIASES`).
 - Endpoint payloads serialise the **DDL** name for **table-level** terms (`Item`, `Title`) — clients receive singular keys. **Column-level wire keys are governed separately by the column-level bridge below (per ADR-0026 §D6) — NOT all DDL column names appear unchanged on the wire.**
 
 ### Spec↔DDL Alias Bridge (column-level — wire egress) {#alias-bridge-columns}
 
-ADR-0026 §D6 mandates that the PHP serializer translate certain DDL column names to canonical wire keys at egress. The DDL spelling is load-bearing inside `*.sql`, `07-db-diagram/`, SQL pseudocode, and the three explicitly-DDL-mirror fixture artifacts (`spec/31-app/04a-fixtures/{00-overview.md, generate.py, item-tree-217.json}`); every other context — REST/SSE wire payloads, TypeScript wire types, endpoint examples, prose `Results` shapes — MUST use the wire spelling.
+ADR-0026 §D6 mandates that the PHP serializer translate certain DDL column names to canonical wire keys at egress. The DDL spelling is load-bearing inside `*.sql`, `07-db-diagram/`, SQL pseudocode, and the three explicitly-DDL-mirror fixture artifacts (`spec/31-app/04a-fixtures/{00-overview.md, generate.py, item-tree-217.json}`); every other context — REST/SSE wire payloads, TypeScript wire types, endpoint examples, prose `Results` shapes — MUST use the wire spelling (gate `G-04-WIRE-USES-WIRE-SPELLING`).
 
 | DDL column (storage truth) | Wire key (PascalCase canonical) | Tables carrying this column | Authority |
 |---|---|---|---|
