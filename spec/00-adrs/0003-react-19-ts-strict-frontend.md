@@ -71,15 +71,10 @@ The WorkFlowy frontend **MUST** be implemented as a single Vite 5.4 project, wri
   styled-components, Emotion, vanilla-extract, plain CSS modules,
   CSS-in-JS at runtime, inline `style={{…}}` for design-token
   values.
-- **Tailwind v4 anti-config:** the legacy `tailwind.config.{js,ts}`
-  file MUST NOT be reintroduced — token customisation lives in the
-  `@theme` block inside `src/index.css` only.
+- **Tailwind v4 anti-config:** the legacy `tailwind.config.{js,ts}` file MUST NOT be reintroduced — token customisation lives in the `@theme` block inside `src/index.css` only. Enforced by `G-ADR-0003-NO-TAILWIND-CONFIG-FILE` (CI grep gate scanning repo root for `tailwind.config.{js,ts,mjs,cjs}`).
 - **Second test runner** in the same package as Vitest.
 
-**Migration constraint:** any change to the allowed/forbidden lists
-above MUST be ratified by a new ADR that supersedes this one and that
-enumerates every gate, convention page, and design-token file that
-needs re-anchoring.
+**Migration constraint:** any change to the allowed/forbidden lists above MUST be ratified by a new ADR that supersedes this one and that enumerates every gate, convention page, and design-token file that needs re-anchoring — enforced by `G-ADR-0003-AMENDMENT-REQUIRED` (mirrors `G-ADR-0001-AMENDMENT-REQUIRED` pattern; second consecutive ADR-anchor area to land an explicit amendment-gate).
 
 ## Consequences
 
