@@ -157,6 +157,62 @@ or `go for implementation`. They are recorded here for traceability.
 
 ---
 
+## Audit cycles index
+
+Permanent index of every spec-improving or spec-vs-impl audit cycle. Each row links to the cycle's findings (by ID prefix) and to its summary artifact (if any). Future audits MUST consult this index before raising a "new" finding — duplicates of any prior cycle's claims must cite the prior ID and explain why the prior closure no longer applies.
+
+| Cycle | Date | Type | Subject scope | Findings raised | Open at close | Artifact |
+|---|---|---|---|---|---|---|
+| audit-v1 | 2026-04-22 | spec-implementability | spec/ corpus baseline | F-AUDIT-01..05 | 0 | (inline, score 65) |
+| audit-v2 | 2026-04-23 | spec-implementability | spec/ + memory | F-AUDIT-06..09 | 0 | (inline, score 67) |
+| audit-v3 | 2026-04-24 | spec-implementability | spec/ + ADRs | F-AUDIT-10..14 | 0 | (inline, score 70) |
+| audit-v4 | 2026-04-26 | spec-implementability | spec/ + tooling | F-AUDIT-15..20 | 0 | (inline, score 82) |
+| audit-v5 | 2026-04-27 | spec-implementability | spec/ + gate registry | F-AUDIT-21..24 | 0 | (inline, score 80) |
+| audit-v6 | 2026-04-28 | spec-implementability | spec/ + scoping SSOT | F-AUDIT-25..29 | 0 | (inline, score 91) |
+| audit-v7 | 2026-04-29 | spec-implementability (Gemini-2.5-Pro) | spec/ end-to-end | F-AUDIT-30 | 0 | [`/mnt/documents/spec-ai-implementability-audit-v7.json`](../mnt/documents/spec-ai-implementability-audit-v7.json) (score 95, tier EXCELLENT) |
+| audit-v8 | 2026-04-29 | spec-vs-impl | `src/` scaffold v0.37.0 | F-IMPL-AUD-02..06 | 3 (-03, -06, then +AUD-06 refusal) | [`/mnt/documents/spec-vs-impl-audit-2026-04-29.md`](../mnt/documents/spec-vs-impl-audit-2026-04-29.md) |
+| **audit-v9** | **2026-04-30** | **spec-vs-impl (deeper sweep)** | `src/` v0.37.0 + `package.json` + missing `wp-plugin/` arm | **F-IMPL-AUD-07, F-IMPL-AUD-08** | 5 (carries -03, -06 + adds -07, -08, retains AUD-06 refusal) | (inline conversation; weighted score 28/100, tier CRITICAL-INCOMPLETE) |
+
+### Audit-v9 summary (2026-04-30, spec-vs-impl)
+
+**Methodology.** Static cross-reference of registered gates (474 in registry v1.7.29) against implementation surfaces, plus 6 ripgrep probes (`EventSource`, `IndexedDB`/`idb`, `localStorage`, `ErrorBoundary`, `createBrowserRouter`/`RouterProvider`, `ItemType`/`ItemId`) and a `find src -type f` enumeration. Read-only — no `src/` edits, no spec edits during the audit pass itself; followups (this row + F-IMPL-AUD-07/08) were filed in spec-only mode per the standard procedure.
+
+**Key probe results.**
+- `find src -type f` → **26 files** (17 `.ts` + 8 `.tsx` + 1 `.css`)
+- `find src -name '.gitkeep.ts'` → **8** (carries F-IMPL-AUD-06)
+- `rg -l "EventSource|/stream/" src/` → **0** (closes ADR-0025 — no SSE client)
+- `rg -l "IndexedDB|idb|localStorage" src/` → **0** (closes ADR-0023 — no queue worker, no mirror)
+- `rg -l "ErrorBoundary" src/` → **0** (closes ADR-0017 — no boundaries)
+- `rg -n "createBrowserRouter|RouterProvider" src/` → **0** (closes RRv7 data-router invariant)
+- `package.json` lacks `@tanstack/react-virtual` (ADR-0017 1000-item virtualization) and `idb` (ADR-0023 IDB tx)
+
+**Findings raised (2).**
+- **F-IMPL-AUD-07** (CRITICAL): implementation skeleton — see row above.
+- **F-IMPL-AUD-08** (CRITICAL): backend runtime entirely absent — see row above.
+
+**Findings reaffirmed without re-numbering (2).** Per Update Protocol §1, F-IMPL-AUD-03 (BrowserRouter vs RRv7 data-router) and F-IMPL-AUD-06 (8 `.gitkeep.ts`) are **not re-raised** — both remain Open from audit-v8 and continue to await `exit spec-only`. Both were re-verified by audit-v9 probes (rgs above) and carry forward unchanged.
+
+**Findings NOT raised (consciously) — and why.**
+- *Tailwind v4 `@theme` block presence:* flagged UNKNOWN (severity 5/10) but not promoted to a ledger row because verifying requires reading `src/index.css`, which no audit probe in this pass did. Tracked instead as inline assumption A2 in the audit narrative.
+- *`framer-motion` ungoverned:* flagged severity 5/10 but not promoted to a ledger row because the absence of a `G-MOTION-*` namespace is a **spec gap** (filed as **NEW-NN: animation governance ADR**), not an implementation gap.
+- *`axios@1.14.0`, React 19, Vite 5.4, RR v7, Tailwind v4 versions:* all PASS; no row needed.
+- *Branded `ItemId`/`OwnerId` defined-but-unused:* not a violation (they exist; consumers don't yet) — collapses into F-IMPL-AUD-07.
+
+**Weighted score: 28/100** across 12 rubric dimensions (see audit narrative). Worst dimensions: backend runtime (0), scalability/performance (5), edge-case handling (5), error handling (5), requirement coverage (5). Best: missing/ambiguous reqs (75 — spec itself is 95% AI-implementable per audit-v7), consistency-with-spec (70 — stack/versions match exactly), procedural compliance (80 — read-only audit honored spec-only mode).
+
+**Procedural note.** Audit-v9 honored spec-only mode end-to-end. Per the SPEC-ONLY VIOLATION LOG in core memory, AUD-02/AUD-04/AUD-05 (audit-v8 era) breached spec-only mode by editing `src/`; this audit deliberately did not — both critical findings are filed Open and deferred to `exit spec-only` rather than fixed in-band.
+
+---
+
+## Update protocol — extended (audit cycles)
+
+5. **Adding a new audit cycle:** append a row to the Audit cycles index above with a unique `audit-vN` identifier. Bump N monotonically. Cycles are append-only; never renumber.
+6. **Cycle artifacts:** spec-implementability cycles SHOULD emit a JSON artifact under `/mnt/documents/spec-ai-implementability-audit-vN.json`; spec-vs-impl cycles MAY emit a Markdown narrative under `/mnt/documents/spec-vs-impl-audit-YYYY-MM-DD.md`, otherwise cite "(inline conversation)" in the Artifact column.
+7. **Reaffirmation rule:** when a cycle re-verifies a prior Open finding without changes, do NOT re-number; cite the prior ID in the new cycle's summary instead. Re-numbering an unchanged finding is a procedural error caught by reviewers.
+
+---
+
+
 ## Retraction case studies
 
 Long-form post-mortems for findings flipped to `Retracted`. Each entry is a
