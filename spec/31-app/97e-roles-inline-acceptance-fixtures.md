@@ -65,7 +65,7 @@
 
 > | Slot | Value |
 > |------|-------|
-> | **Given** | `itm_X.PublicSlug = "abc123"`; `itm_X.PublicEnabled = true`. |
+> | **Given** | `itm_X.PublicSlug = "abc123"`; `itm_X.IsPublicEnabled = true` (renamed 2026-04-30 from `PublicEnabled` per F-AUD42-13 boolean-prefix convention). |
 > | **When** | Anonymous browser visits `/p/abc123`. |
 > | **Response envelope** | `{ "Status":200, "Attributes":{ "Public":true, "ResolvedRole":"PublicView" }, "Results":[ { "Id":"itm_X", "Title":"…", "Content":"…" } ] }` |
 > | **Then** | `data-testid="public-view-banner"` rendered; no comment, share, or edit affordances; no auth cookie required. |
