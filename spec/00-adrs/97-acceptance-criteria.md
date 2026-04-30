@@ -443,26 +443,39 @@ Result: **0 matches** in the entries table (the only hits are in the §"Forbidde
 
 **Gate:** `G-28-DETECTION-ORDER` (TEST tier, ADR-0028 §D3)
 
-- **Given:** Detection chain (per ADR-0028 §D3): `1) URL ?lang=`, `2) localStorage 'i18nextLng'` **[NOTE: this tier MUST be replaced with IndexedDB read per ADR-0021 forbid-localStorage rule — open follow-up F-AMB-04a]**, `3) Cookie 'i18nextLng'`, `4) navigator.language`, `5) DEFAULT_LOCALE = 'en'`. `SUPPORTED_LOCALES = ['en', 'de', 'fr']`.
-- **When:** Test parameterizes 6 scenarios:
+- **Given:** Detection chain (per ADR-0028 §D3, **canonical 5-tier order**): `1) URL ?locale=`, `2) User profile OwnerSettings.PreferredLocale (REST, authenticated boots only)`, `3) IndexedDB 'i18nLocale' key (under app DB, NOT localStorage — ADR-0021)`, `4) navigator.language + navigator.languages[]`, `5) Hard fallback 'en'`. `SUPPORTED_LOCALES = ['en', 'es', 'fr', 'de', 'ja', 'ar']` per §D4.
+- **When:** Test parameterizes 7 scenarios:
 
-  | # | URL | Storage | Cookie | navigator | Expected resolved | Tier hit |
+  | # | URL `?locale=` | OwnerSettings (auth) | IndexedDB | navigator | Expected resolved | Tier hit |
   |---|---|---|---|---|---|---|
-  | 1 | `?lang=fr` | `de` | `de` | `de-DE` | `fr` | URL |
-  | 2 | (none) | `de` | `fr` | `en-US` | `de` | Storage |
-  | 3 | (none) | (none) | `fr` | `en-US` | `fr` | Cookie |
-  | 4 | (none) | (none) | (none) | `de-CH` | `de` | navigator (regional → language fold) |
-  | 5 | (none) | (none) | (none) | `ja-JP` | `en` | DEFAULT (unsupported) |
-  | 6 | `?lang=zh` | `de` | (none) | `en-US` | `de` | URL miss → Storage (unsupported URL value MUST fall through, NOT be honoured) |
+  | 1 | `fr` | `de` | `de` | `de-DE` | `fr` | 1 — URL |
+  | 2 | (none) | `de` | `ja` | `en-US` | `de` | 2 — OwnerSettings |
+  | 3 | (none) | (unauthenticated) | `ja` | `en-US` | `ja` | 3 — IndexedDB (tier 2 skipped on anon) |
+  | 4 | (none) | (unauthenticated) | (empty) | `de-CH` | `de` | 4 — navigator (regional → language fold) |
+  | 5 | (none) | (unauthenticated) | (empty) | `ko-KR` | `en` | 5 — hard fallback (unsupported) |
+  | 6 | `zh` | `de` | (empty) | `en-US` | `de` | 1 miss → 2 — unsupported URL value MUST fall through, NOT be honoured |
+  | 7 | `ar` | `en` | `en` | `en-US` | `ar` | 1 — URL (RTL locale; cross-checks `G-28-RTL-DIR-ATTR` fires) |
 
-- **Then:** All 6 rows MUST pass; tier resolution MUST stop at the first match in `SUPPORTED_LOCALES`; unsupported values MUST fall through (scenario 6); resolution MUST complete BEFORE React Router boot (asserted via boot-sequence spy per ADR-0028 §D3).
+- **Then:**
+  1. All 7 rows MUST pass; tier resolution MUST stop at the first match in `SUPPORTED_LOCALES`.
+  2. Unsupported values MUST fall through (scenario 6).
+  3. Resolution MUST complete in <5 ms p95 BEFORE React Router boot (asserted via boot-sequence spy + `performance.now()` deltas per ADR-0028 §D3 boot sequence).
+  4. Tier 2 (OwnerSettings REST) MUST be skipped on anonymous boots (no session token) — assertion via mock auth provider in scenarios 3–5.
+  5. Tier 3 IndexedDB read MUST come from the app DB `i18nLocale` key — fixture asserts NO `localStorage.getItem` call occurs (Vitest spy on `Storage.prototype.getItem` returns `assertNotCalled()`). This pins F-AMB-04a closed.
 
-**Fixture path:** `src/i18n/__tests__/detection-order.test.ts` (Vitest, table-driven).
+**Fixture path:** `src/i18n/__tests__/detection-order.test.ts` (Vitest, table-driven, mock-IDB via `fake-indexeddb`).
 
 ---
 
-### Open follow-up raised by this backfill
+### Closure — F-AMB-04a (false positive, self-introduced)
 
-**F-AMB-04a (LOW):** ADR-0028 §D3 tier 2 specifies `localStorage` as the persistence tier, but ADR-0021 forbids `localStorage` (mandates IndexedDB-only for client persistence). Conflict resolution: ADR-0028 §D3 MUST be amended to read `IndexedDB 'i18n.locale' key` (single-row table) instead of `localStorage 'i18nextLng'`. The detector contract in `src/i18n/detector.ts` MUST be the sole IndexedDB reader for locale; cookie tier preserved as cross-tab signal. **Tracked under GAP-AMB-05** (cross-doc conflict sweep) — promoted from suspected-only to confirmed by this backfill cycle.
+**Status:** **Closed (false positive)** — same day as raised.
 
-**Counts impact:** +7 ATs (ADR ATs ratio improves; resolves the carve-out in `_GATE-REGISTRY.md` §5 third bullet). +1 follow-up (F-AMB-04a, LOW, immediately actionable).
+**Root cause:** AT-ADR-G28-DETECTION-ORDER (v1.16.0, written 2026-04-30) cited a wrong 5-tier chain (URL → localStorage → Cookie → navigator → DEFAULT) imported from a generic `i18next-browser-languagedetector` defaults reference, NOT from ADR-0028 §D3. ADR-0028 §D3 already specifies the canonical chain (URL → OwnerSettings REST → IndexedDB → navigator → 'en') with an explicit `(under the existing app DB, **not** localStorage — ADR-0021)` annotation on tier 3. There was never a real conflict; the AT fixture was wrong.
+
+**Resolution:** Rewrote AT-ADR-G28-DETECTION-ORDER (above) to match ADR-0028 §D3 exactly, including a 7th scenario that asserts NO `localStorage.getItem` call occurs (regression guard). No ADR amendment required.
+
+**Methodology lesson:** When authoring AT fixtures from an ADR, copy the ADR text verbatim into the `Given` clause before parameterizing — do NOT paraphrase from memory of similar libraries. Adding to author-checklist as `AC-AUTHOR-RULE-04` (next coding-guideline pass).
+
+**Counts impact:** +7 ATs from GAP-AMB-04 stand. +0 ADR amendments. F-AMB-04a closed without ledger promotion (caught in same cycle, treated as draft-correction per F-AUDIT-26 precedent).
+
