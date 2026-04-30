@@ -52,7 +52,7 @@ unset($modalId, $modalTitle, $modalIcon, $modalIconColor,
 
 | Size | Max Width | Use Case |
 |------|-----------|----------|
-| Standard | `600px` | Confirmations, simple forms |
+| Standard | `600px` | Confirmations, single-column forms (≤4 fields) |
 | Wide | `800px` | Agent plugins, complex forms |
 | Fullscreen | `1000px` | Error detail with tabs |
 

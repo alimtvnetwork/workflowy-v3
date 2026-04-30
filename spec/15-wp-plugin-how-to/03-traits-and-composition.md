@@ -183,7 +183,7 @@ Authentication uses WordPress Application Passwords via Basic Auth:
 | `checkPluginPermission` | Users with `activate_plugins` capability |
 | `checkStatusPermission` | Any authenticated user |
 
-All authentication failures return a `WP_Error` with appropriate HTTP status codes from `HttpStatusType` and error codes from `WpErrorCodeType`.
+All authentication failures return a `WP_Error` with the HTTP status code from `HttpStatusType` matching the failure category (401 for missing/invalid credentials, 403 for insufficient capability) and the error code from `WpErrorCodeType` matching the failure subtype.
 
 ---
 

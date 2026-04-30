@@ -13,7 +13,7 @@
 2. **Create a corresponding enum** (if the file has keyed groups) in `includes/Enums/`
 3. **Document the schema** — add field descriptions in this spec or a dedicated section
 4. **Read via `file_get_contents` + `json_decode`** — never use `require` or `include` for JSON
-5. **Cache if needed** — for frequently accessed data, cache the decoded array in a static property
+5. **Cache when read >100×/request** — for frequently accessed data, cache the decoded array in a static property
 6. **Never write at runtime** — data files are deployment artifacts, not runtime state
 
 ### Caching Pattern

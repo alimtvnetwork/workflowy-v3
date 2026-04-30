@@ -21,7 +21,7 @@ Every admin page MUST be wrapped in a standard structure:
 </div>
 ```
 
-- `wrap` — WordPress admin wrapper class (required for proper margins)
+- `wrap` — WordPress admin wrapper class (required for the WP-admin-default 20 px top + 10 px right page margins)
 - `riseup-admin` — Plugin namespace for CSS scoping
 - Page-specific class (e.g., `riseup-agents`, `riseup-snapshots`) added when page-level CSS overrides are needed
 

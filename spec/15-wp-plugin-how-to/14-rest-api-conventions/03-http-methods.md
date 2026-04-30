@@ -40,7 +40,7 @@ Does this remove something?
 | Execute action | POST | `POST /plugins/enable` | Actions are not idempotent |
 | Retrieve with complex filters | GET | `GET /logs?action=Upload&from=2026-01-01` | Filters as query params |
 | Upload file | POST | `POST /upload` | Multipart or base64 body |
-| Export/download | GET or POST | `GET /export-self` or `POST /snapshots/export` | GET for simple exports; POST when body specifies parameters |
+| Export/download | GET or POST | `GET /export-self` or `POST /snapshots/export` | GET for parameterless exports; POST when body specifies parameters |
 
 ### When POST is acceptable for reads
 

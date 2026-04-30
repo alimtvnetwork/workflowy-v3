@@ -8,7 +8,7 @@
 
 | Principle | Rule |
 |-----------|------|
-| **Fail fast** | Validate all inputs at the top of the private handler method, before any business logic |
+| **Fail-fast** | Validate all inputs at the top of the private handler method, before any business logic |
 | **Guard clauses** | Each validation is a standalone `if` → `return error`. No nested else chains |
 | **Positive booleans** | Extract every check into a named `$has…` / `$is…` variable |
 | **Structured errors** | All validation failures return a 400 envelope with a human-readable message |
