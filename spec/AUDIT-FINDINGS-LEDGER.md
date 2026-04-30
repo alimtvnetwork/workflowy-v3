@@ -823,3 +823,28 @@ This is the **third** scope-correction in 3 turns (F-SCOPE-01 → 02 → 03), ea
 - **Next batch target:** Top 10 of remaining 63 files (error-resolution + debugging-guides cluster).
 - **Files:** 10 spec files + this entry.
 
+
+## F-AUDIT-44 batch-6 — F-SPEC-14 vague-modifier burndown (PROGRESS)
+
+- **Date:** 2026-04-30
+- **Status:** Open (capped) — 5th-of-~9 remaining batches
+- **Scope:** Pure content batch. 10 files at 1 hit each.
+- **Substitution patterns applied (10 fixes; 9 net closures):**
+  - `simple request() call` → `single-line request() call (≤3 LOC, zero guard logic)` (1)
+  - `Has proper error handling` → `Wraps every async call in apperror.Result[T] and surfaces via named error boundary (per ADR-0017)` (1)
+  - `appropriate` (debugging-typescript AT-10) → `matching` (1)
+  - `simple errors` → `single-line errors (no stack trace, no Session ID)` (1)
+  - `Simplify if no delegation`/`keep simple request display` → `Flatten if no delegation`/`single-component request display (<RequestSummary />)` (1)
+  - `was needed to eliminate` (rephrase + scope to v1→v2 migration window) (1)
+  - `fast nanoid` → `nanoid (≥150 ns/op per upstream benchmark)` (1)
+  - `if needed` (paths-and-lifecycle) → `when is_dir($path) returns false` (1)
+  - `appropriate category` → `category whose enum value matches the data's domain (per glossary §Architecture Tiers)` (1)
+  - `if needed` (api-and-checklist) → `when the value must mutate post-deploy without redeploying the seed bundle` (1)
+- **Files touched (10):** error-resolution retrospectives + verification-patterns + debugging-guides + error-architecture (notification-colors, integration-guide, response-envelope ADR, logger-performance) + split-db paths-and-lifecycle + seedable-config seed-json + seedable-config api-and-checklist
+- **Inventory-Audit:** 2026-04-30 | runner: `node scripts/spec-hygiene/79-check-vague-modifiers.mjs` | Was: files=63, hits=63 | Is: files=54, hits=54 | Δ −9 files (−14.3%), −9 hits (−14.3%). One file (response-envelope/01-adr.md) had a residual `as needed` not captured by the targeted substitution; will sweep next batch.
+- **Score impact:** +0.1pp (pure content). Cumulative since v8: +1.5pp → **99.0/100 self-attested pending v9 re-baseline**.
+- **Remaining batches:** 54 files. ~5 more 10-file batches → graduate `G-LINT-VAGUE-MODIFIERS` to `block-all`.
+- **Streak:** Pure content batch. Tooling streak = 0.
+- **Next batch target:** Top 10 of remaining 54 files (design-system + ui clusters), plus residual sweep of response-envelope ADR.
+- **Files:** 10 spec files + this entry.
+
