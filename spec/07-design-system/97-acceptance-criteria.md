@@ -40,7 +40,7 @@ Testable criteria for validating design system compliance across all components 
 | AT-DESIGNSYS-013 | No JavaScript animation libraries used for visual effects | `06-motion-transitions.md` |
 | AT-DESIGNSYS-014 | `prefers-reduced-motion` media query disables animations | `06-motion-transitions.md` |
 | AT-DESIGNSYS-015 | Link underline sweeps right-to-left on hover | `06-motion-transitions.md` |
-| AT-DESIGNSYS-016 | CTA buttons use slide text animation, not simple color change | `09-button-system.md` |
+| AT-DESIGNSYS-016 | CTA buttons use slide text animation, not single-property `color` change | `09-button-system.md` |
 
 ## Code Blocks
 

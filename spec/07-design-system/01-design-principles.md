@@ -109,7 +109,7 @@ The design system aims for **subtle, responsive, professional** interactions:
 
 | Property | Standard Value | Rationale |
 |----------|---------------|-----------|
-| Hover transition duration | `0.2s` | Fast enough to feel instant, slow enough to be noticed |
+| Hover transition duration | `0.2s` | ≥100 ms (above flicker threshold) and ≤300 ms (below perceived-lag threshold per Nielsen Norman) |
 | Transform transitions | `0.15s` | Slightly faster for positional shifts |
 | Easing | `ease` or `cubic-bezier(0.4, 0, 0.2, 1)` | Natural deceleration |
 | Hover lift | `translateY(-1px)` to `translateY(-2px)` | Subtle depth, never dramatic |

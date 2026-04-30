@@ -61,7 +61,7 @@
 
 | ID | Criterion | Source |
 |----|-----------|--------|
-| AT-SCRIPTREFERENCE-13 | `wpPlugins` config blocks MUST validate against a JSON schema before use; invalid configs MUST fail fast with a pointer to the offending field — silent skip is forbidden. | [`07-wp-plugins-config.md`](./07-wp-plugins-config.md) |
+| AT-SCRIPTREFERENCE-13 | `wpPlugins` config blocks MUST validate against a JSON schema before use; invalid configs MUST fail-fast (≤1 s validation budget) with a pointer to the offending field — silent skip is forbidden. | [`07-wp-plugins-config.md`](./07-wp-plugins-config.md) |
 | AT-SCRIPTREFERENCE-14 | Plugin upload destinations MUST be parameterized via the config — hardcoded WordPress paths in `upload-plugin-*.ps1` are forbidden because they prevent multi-environment use. | [`07-wp-plugins-config.md`](./07-wp-plugins-config.md) |
 
 ---
