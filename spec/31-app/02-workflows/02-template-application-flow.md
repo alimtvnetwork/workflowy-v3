@@ -44,7 +44,7 @@ This file pins the sequence. Each step cites the SSOT that governs its rule.
 1. User clicks "Apply template" on Template T at Item P (parent).
 2. If OptionNameType::TEMPLATE_CONFIRM_APPLY is true → show confirm modal.
 3. Client → POST /api/templates/{T.TemplateId}/apply
-                body: { parentItemId: P.ItemId, asMirror?: bool }
+                body: { ParentItemId: P.ItemId, AsMirror?: boolean }   // PascalCase per ADR-0019; `boolean` per strict TS
 4. PHP handler:
      a. Auth::hasRole($userId, 'Edit', 'Item', P.ItemId) → must be true (else 403).
      b. Open Root DB → SELECT SnapshotJson, WorkspaceId FROM Template WHERE TemplateId = T.
