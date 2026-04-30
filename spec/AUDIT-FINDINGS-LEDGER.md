@@ -200,7 +200,42 @@ or `go for implementation`. They are recorded here for traceability.
 | F-IMPL-AUD-07 | **CRITICAL** | **Implementation skeleton — 0 of 12 ItemTypes wired, 0 routes, 0 boundaries, 0 SSE client, 0 queue worker, no virtualization lib** | Open | Audit-v9 (2026-04-30): `find src -type f` = 26 files (17 .ts + 8 .tsx + 1 .css), of which 8 are `.gitkeep.ts` placeholders and ~15 are shadcn primitives. Only `src/types/index.ts` carries domain logic. Probes confirmed: `rg "EventSource\|/stream/" src/` → 0; `rg "IndexedDB\|idb\|localStorage" src/` → 0; `rg "ErrorBoundary" src/` → 0; `rg "createBrowserRouter\|RouterProvider" src/` → 0. `package.json` lacks `@tanstack/react-virtual` and `idb`. Blocks every load-bearing ADR (0017 boundaries+virtualization, 0023 loader↔queue, 0025 SSE). Deferred — requires `exit spec-only` for Phase-1 scaffold. |
 | F-IMPL-AUD-08 | **CRITICAL** | **Backend runtime entirely absent — no WordPress plugin, no PHP, no SQLite DDL, no REST controller, no SSE endpoint** | Open | Audit-v9 (2026-04-30): repository contains zero PHP files and no `wp-content/plugins/*` directory. Per core memory ("Backend RESOLVED 2026-04-25: WordPress plugin (PHP 8.1+ + SQLite + REST)") this is the contracted runtime. Consequence: every gate in Domain-DBNAME (5), Domain-EXPORT (7), Domain-BACKUP, Domain-WPDEPLOY, Domain-USER (22), and the ADR-0004/0019 PascalCase envelope is unenforceable in code; the SSE contract `/stream/page/{id}` returns 404 always; queue worker has no egress target. Deferred — requires `exit spec-only` for new monorepo arm `wp-plugin/workflowy/`. |
 
+> **Cross-walk to spec-vs-impl audit (`/mnt/documents/spec-vs-impl-audit-2026-04-29.md`) — promoted 2026-04-30 by GAP-LED-01:**
+> The spec-vs-impl audit numbered its implementation findings `F-IMPL-01..10` (a parallel numbering to the `F-IMPL-AUD-NN` family above). All 10 are subsumed by `F-IMPL-AUD-07` (frontend skeleton) + `F-IMPL-AUD-08` (backend absent), which are CRITICAL umbrellas covering the same surface area. The 1:1 mapping is recorded for traceability:
+>
+> | Spec-vs-impl ID | Subject | Subsumed by | Status |
+> |---|---|---|---|
+> | F-IMPL-01 | No editor / outliner exists | F-IMPL-AUD-07 | Open (deferred) |
+> | F-IMPL-02 | No backend (WordPress plugin not authored) | F-IMPL-AUD-08 | Open (deferred) |
+> | F-IMPL-03 | No persistence layer (IndexedDB local mirror absent) | F-IMPL-AUD-07 | Open (deferred) |
+> | F-IMPL-04 | No realtime (SSE endpoints + client absent) | F-IMPL-AUD-07 + F-IMPL-AUD-08 | Open (deferred) |
+> | F-IMPL-05 | No authentication / authorization | F-IMPL-AUD-08 | Open (deferred) |
+> | F-IMPL-06 | 12 ItemTypes have no renderers | F-IMPL-AUD-07 | Open (deferred) |
+> | F-IMPL-07 | Mirror peer-group relation unimplemented | F-IMPL-AUD-07 + F-IMPL-AUD-08 | Open (deferred) |
+> | F-IMPL-08 | 8 named error boundaries collapsed to 0 | F-IMPL-AUD-07 | Open (deferred) |
+> | F-IMPL-09 | Hotkey constants exist but no handlers wired | F-IMPL-AUD-07 | Open (deferred) |
+> | F-IMPL-10 | Routing is single-page; no nested resource routes | F-IMPL-AUD-07 (also relates to F-IMPL-AUD-03) | Open (deferred) |
+>
+> **No new IDs are minted** — `F-IMPL-01..10` are aliases of `F-IMPL-AUD-07`/`-08` and resolve at the same `exit spec-only` trigger.
+
 ---
+
+## Findings — `F-SPEC-NN` family (spec-side findings from spec-vs-impl audits)
+
+Audit-v8 (spec-vs-impl, 2026-04-29) raised the rows below against the **spec corpus itself** (distinct from the cross-cycle implementability `F-AUDIT-NN` family above and the per-folder `F-AUDxx-NN` family). Promoted to this ledger 2026-04-30 by GAP-LED-01.
+
+| ID | Severity | Subject | Status | Resolved by | Evidence |
+|---|---|---|---|---|---|
+| F-SPEC-11 | HIGH | ADR AT:MUST ratio 0.11 | Resolved | **Alias of `F-AUDIT-21`** — closed by AT-ADR-G07..G14 (7 ADRs adding ATs). Re-raised under the `F-SPEC-NN` numbering by the spec-vs-impl audit; same evidence applies. | [`spec/00-adrs/97-acceptance-criteria.md#F-AUDIT-21`](./00-adrs/97-acceptance-criteria.md), see F-AUDIT-21 row above |
+| F-SPEC-12 | HIGH | Concentrated placeholder density in critical modules | Resolved | **Alias of `F-AUDIT-25`** — closed by `scripts/spec-hygiene/44-fix-feature-block-format.mjs` parser fix (eliminated false-positive placeholder-density signal in the v6 audit pipeline). Re-raised under the `F-SPEC-NN` numbering by the spec-vs-impl audit; same evidence applies. | [`spec/00-adrs/97-acceptance-criteria.md#F-AUDIT-25`](./00-adrs/97-acceptance-criteria.md), see F-AUDIT-25 row above |
+| F-SPEC-13 | MED | ADR-0031 still pending | Resolved | ADR-0031 (`spec/00-adrs/0031-warn-only-strict-flip-pattern.md`) was authored and ratified after the spec-vs-impl audit snapshot; status transitions to Accepted with `_GATE-GRADUATION-LEDGER.md` v1.1.0 + the warn-only→strict flip pattern fully documented. | [`spec/00-adrs/0031-warn-only-strict-flip-pattern.md`](./00-adrs/0031-warn-only-strict-flip-pattern.md), [`spec/_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md) |
+| F-SPEC-14 | LOW | `_root` scope at 35% placeholder density | Open | Long-tail distributed across ~163 root-level prose files at 1 unbacked clause each; tracked by GAP-AMB-01-tail in the spec-only queue. Each batch closes ~+0.1pp. **Not a single resolvable artifact** — closure requires the GAP-AMB-01-tail sweep to complete, after which density falls below the 30% threshold and the finding flips to Resolved. | [`spec/AMBIGUITY-LEDGER.md`](./AMBIGUITY-LEDGER.md) (corpus totals row showing ~163 files at 1 unbacked) |
+| F-SPEC-15 | LOW | Vague flipCriteria | Resolved | Closed in the same v8 audit cycle that raised it — flipCriteria language was tightened in `spec/_GATE-GRADUATION-LEDGER.md` v1.1.0 with explicit numeric thresholds (`Open findings == 0` / `Reviewer fingerprint distinct from author`) before the audit report was finalized. | [`spec/_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md) |
+
+**Counts:** 5 total · 4 Resolved · 1 Open (F-SPEC-14, GAP-AMB-01-tail blocker) · 0 Stale · 0 Retracted.
+
+---
+
 
 ## Update protocol
 
