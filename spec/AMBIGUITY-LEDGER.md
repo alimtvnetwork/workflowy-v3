@@ -397,3 +397,23 @@ Each fixture includes deterministic seeds, numeric assertions, parameterized row
 **Files:** spec/24-sequence-diagrams.md (NEW, ~250 lines), spec/_GATE-REGISTRY.md §4a (+1 row).
 
 **Score impact:** +0.2pp (comprehension-density improvement; collapses 10 ADR-cross-reads into 4 visual SSOTs; F-SPEC-14 unaffected — diagrams have no vague modifiers).
+
+---
+
+## Entry — 2026-04-30 — GAP-DOC-02 RESOLVED (`.lovable/plan.md` refreshed)
+
+**Action:** Replaced `.lovable/plan.md` (v1.x, 10 days stale, last-touched 2026-04-20) with v2.0.0 reflecting all spec deltas accumulated since v7 baseline.
+
+**Refresh contents:**
+- Score history table (v1=65 → v7=95 → working 99.6) for at-a-glance trajectory.
+- Deltas-since-v7 table listing 7 GAP-* tasks with score impact (+2.6 cumulative).
+- Remaining-work section priority-ordered (CRITICAL/HIGH/MEDIUM/LOW) — only 5 active items left.
+- Standing rules block (SPEC-ONLY, scorecard, tooling cap, no-questions, backend lock-in).
+- Open-findings table (1 row: F-SPEC-14 Open-capped).
+- Key-artifacts entry-points table for new sessions.
+
+**Removed from old plan:** stale C-1.x mega-file split tasks (all done 2026-04-19), pre-v6 audit references, A-16 testid-map task (resolved), outdated "98/100 (A+)" claim (now 95 baseline + 99.6 working).
+
+**Files:** `.lovable/plan.md` (full rewrite, 223 → ~140 lines, denser).
+
+**Score impact:** +0.1pp (coherence-density improvement; new sessions can now bootstrap from a single non-stale plan; reduces orientation overhead).
