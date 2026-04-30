@@ -1,13 +1,13 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.39  
-> **Updated:** 2026-04-30 — **batch-46 (Domain-ADR-0001 anchor — second consecutive 4-MUST density-tier bind, first ADR-anchor area):** registered 3 new DOC-NORM gates binding all 4 prose-MUSTs in `spec/00-adrs/0001-singular-ddl-vs-plural-prose.md` (L33 cross-ref restatement, L38 §"Decision" headline, L54 fixture rule, L61 amendment rule): `G-ADR-0001-AMENDMENT-REQUIRED` (umbrella), `G-ADR-0001-NO-SILENT-DRIFT` (sub-rule of umbrella, CI promotion via **NEW-24**), `G-ADR-0001-FIXTURE-SINGULAR-DDL` (3-tier sub-rule under `G-04-NO-DDL-PLURALS` — **third consecutive batch landing an explicit umbrella-composes-leaves chain**). L38 §"Decision" headline reuses pre-existing `G-04-NO-DDL-PLURALS` + `G-04-ALIAS-DDL-CANONICAL` (no new gate needed — the structural enforcers already cover it; ADR adds the same-line citation). **Bare-MUST count 320 → 316 (Δ −4 exact).** Closes 40th consecutive zero-drift batch. Streak counter: 3 consecutive content batches. Prior: 1.7.38 (Domain-CG TypeScript-standards fortification).
+> **Version:** 1.7.40  
+> **Updated:** 2026-04-30 — **batch-47 (Domain-ADR-0003 anchor — third consecutive 4-MUST density-tier bind, second ADR-anchor area, first batch this runway with a CI-tier gate at seed):** registered 7 new gates (1 CI + 6 DOC-NORM) binding all 4 prose-MUSTs in `spec/00-adrs/0003-react-19-ts-strict-frontend.md` (L34 stack-lock headline, L53 Tailwind v4 `@theme` rule, L82 anti-config rule, L87 amendment rule). Gates: `G-ADR-0003-FRONTEND-STACK-LOCK` (umbrella, composes 6 sub-rules), `G-ADR-0003-VITE-5_4-PINNED`, `G-ADR-0003-REACT-19-PINNED`, `G-ADR-0003-TS-5_6-STRICT`, `G-ADR-0003-TAILWIND-V4-THEME-BLOCK` (3-tier sub-rule under `G-12-LOGICAL-MARGINS-PADDING` family — **fourth consecutive batch landing an explicit umbrella-composes-leaves chain**), `G-ADR-0003-NO-TAILWIND-CONFIG-FILE` (CI grep one-liner), `G-ADR-0003-AMENDMENT-REQUIRED` (mirrors `G-ADR-0001-AMENDMENT-REQUIRED`). **Bare-MUST count 316 → 312 (Δ −4 exact).** Closes 41st consecutive zero-drift batch. Streak counter: 4 consecutive content batches. Prior: 1.7.39 (Domain-ADR-0001 anchor).
 
-- **Total named gates:** 517 (+3 this revision)
+- **Total named gates:** 524 (+7 this revision)
 - **WARN-only gates:** 11 (unchanged)
-- **CI:** 138 (unchanged)
+- **CI:** 139 (+1 this revision)
 - **TEST:** 20 (unchanged)
-- **DOC-NORM:** 154 (+3 this revision)
+- **DOC-NORM:** 160 (+6 this revision)
 - **DOC:** 202 (unchanged)
 - **Areas covered:** 53 (unchanged)
 - **Areas covered:** 37 (unchanged)
