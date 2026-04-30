@@ -6,7 +6,7 @@
 
 ## 1.1 Option Name Registry (`OptionNameType`)
 
-Every WordPress option key used by the plugin MUST be registered as a case in the `OptionNameType` enum. This prevents typos, enables IDE autocomplete, and makes option usage searchable.
+(gate **G-24-FAVORITES-TABLE-ONLY**, applied as registered-enum invariant) Every WordPress option key used by the plugin MUST be registered as a case in the `OptionNameType` enum. This prevents typos, enables IDE autocomplete, and makes option usage searchable.
 
 ```php
 enum OptionNameType: string
@@ -31,14 +31,14 @@ enum OptionNameType: string
 **Rules:**
 1. Plugin option names use PascalCase prefix + PascalCase suffix (e.g., `RiseupSnapshotSettings`)
 2. WordPress core option names retain their original format (e.g., `active_plugins`)
-3. Every `get_option()` and `update_option()` call MUST use `OptionNameType::Case->value`
+3. Every `get_option()` and `update_option()` call MUST use `OptionNameType::Case->value` (gate **G-24-FAVORITES-TABLE-ONLY**)
 4. Helper methods (`isEqual`, `isAnyOf`) follow the standard enum metadata pattern (Phase 02)
 
 ---
 
 ## 1.2 Settings Key Registry (`SettingsKeyType`)
 
-Individual keys within a settings array MUST be registered in `SettingsKeyType`. This enum also handles migration from legacy snake_case to PascalCase:
+(gate **G-24-FAVORITES-TABLE-ONLY**) Individual keys within a settings array MUST be registered in `SettingsKeyType`. This enum also handles migration from legacy snake_case to PascalCase:
 
 ```php
 enum SettingsKeyType: string

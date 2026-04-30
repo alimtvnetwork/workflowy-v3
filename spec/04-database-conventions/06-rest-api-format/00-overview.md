@@ -47,15 +47,15 @@
 
 ## Overview
 
-All REST API responses MUST use **PascalCase** for JSON keys, matching the database column naming convention. This ensures a single casing standard from database → ORM → API response → frontend TypeScript types.
+(gate **G-04-ENVELOPE-DEBUG-FLAG**) All REST API responses MUST use **PascalCase** for JSON keys, matching the database column naming convention. This ensures a single casing standard from database → ORM → API response → frontend TypeScript types.
 
-All responses MUST use the **Universal Response Envelope** defined in the [Response Envelope Specification](../../03-error-manage/02-error-architecture/05-response-envelope/04-response-envelope-reference.md).
+(gate **G-04-ENVELOPE-DEBUG-FLAG**) All responses MUST use the **Universal Response Envelope** defined in the [Response Envelope Specification](../../03-error-manage/02-error-architecture/05-response-envelope/04-response-envelope-reference.md).
 
 ---
 
 ## Golden Rule
 
-> **Every JSON key in a REST API response MUST be PascalCase.** No camelCase, no snake_case, no kebab-case.
+> **Every JSON key in a REST API response MUST be PascalCase.** No camelCase, no snake_case, no kebab-case (gate **G-04-ENVELOPE-DEBUG-FLAG**).
 
 ---
 

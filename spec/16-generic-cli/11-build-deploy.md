@@ -98,9 +98,9 @@ Running `.exe` files hold a file lock and cannot be overwritten.
 
 ### Critical Rules
 
-- Parent MUST use blocking execution (not async)
-- PATH sync MUST use rename-first on Windows
-- Generated scripts MUST NOT contain interactive prompts
+- Parent MUST use blocking execution (not async) (gate **G-16-FLAG-PRECEDENCE**)
+- PATH sync MUST use rename-first on Windows (gate **G-16-FLAG-PRECEDENCE**)
+- Generated scripts MUST NOT contain interactive prompts (gate **G-16-FLAG-STYLE**)
 - Always provide rollback (keep `.old` backup until cleanup)
 
 ### Error Handling

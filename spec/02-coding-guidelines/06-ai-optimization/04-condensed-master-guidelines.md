@@ -27,7 +27,7 @@
 
 **Zero underscore policy:** snake_case banned for all logic-level identifiers. **Rust exception:** Rust uses snake_case for functions, variables, and modules per community standards (RFC 430). Exempt also: WP hooks, DB migrations, PHP superglobals.
 
-> **🔴 AI CRITICAL — Rust Hybrid Naming:** Rust identifiers follow snake_case, BUT database identifiers (tables, columns, views) and enum string values (serialized to JSON/DB/API) MUST always be PascalCase. Use `#[serde(rename_all = "PascalCase")]` for serialization and `#[sqlx(rename = "PascalCase")]` for DB mappings.
+(gate **G-DBNAME-BOOL-IS-HAS-PREFIX**) > **🔴 AI CRITICAL — Rust Hybrid Naming:** Rust identifiers follow snake_case, BUT database identifiers (tables, columns, views) and enum string values (serialized to JSON/DB/API) MUST always be PascalCase. Use `#[serde(rename_all = "PascalCase")]` for serialization and `#[sqlx(rename = "PascalCase")]` for DB mappings.
 
 ---
 
@@ -102,7 +102,7 @@
 
 ## 6b. Async / Promise Patterns (TypeScript) — 🔴 CODE RED
 
-**Independent promises MUST run in parallel.** Sequential `await` on independent calls is an **automatic rejection**.
+**Independent promises MUST run in parallel.** Sequential `await` on independent calls is an **automatic rejection** (gate **G-13-DAG-PARALLEL**).
 
 ```typescript
 // ❌ CODE RED — sequential on independent calls
@@ -140,7 +140,7 @@ All repeated strings → enums or typed constants. Hook names, capabilities, tab
 
 - Use for expensive/static fields accessed by many callers
 - Non-exported field + getter method — never direct access
-- If dependency is lazy, dependent field MUST also be lazy
+- If dependency is lazy, dependent field MUST also be lazy (gate **G-13-DAG-PARALLEL**)
 - Concurrent access → mutex lock wrapper
 - Do NOT use when data varies per request or is cheap
 

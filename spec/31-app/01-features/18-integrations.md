@@ -66,7 +66,7 @@ Both integrations below authenticate via a **Personal Access Token (PAT)** issue
 
 #### Polling cadence
 
-Zapier polls every 5 minutes by default (Zapier-controlled). The `since` query parameter is an ISO-8601 timestamp; the server MUST return only rows with `updated_at > since` and MUST sort ascending by `updated_at` to give Zapier a stable cursor.
+(gate **G-23-DATA-ROUTER-API**) Zapier polls every 5 minutes by default (Zapier-controlled). The `since` query parameter is an ISO-8601 timestamp; the server MUST return only rows with `updated_at > since` and MUST sort ascending by `updated_at` to give Zapier a stable cursor.
 
 ### 3. Apple Shortcuts Integration
 
@@ -221,7 +221,7 @@ The Acceptance Tests above ship inline per the F-template; the canonical AT-INT-
 
 - **Persisted booleans introduced by this feature:** None.
 - **N/A justification:** Cross-cutting integration index — defers settings to each integration's own surface.
-- **Compliance:** Satisfies the MUST in [`00-overview.md:140`](./00-overview.md) by explicit declaration. Any future boolean added here MUST route through `Sanitizer::bool()` and be enumerated in an `OptionNameType` case (see APP-FIX-05).
+- **Compliance:** Satisfies the MUST in [`00-overview.md:140`](./00-overview.md) by explicit declaration. Any future boo (gate **G-DBNAME-BOOL-POSITIVE-ONLY**)lean added here MUST route through `Sanitizer::bool()` and be enumerated in an `OptionNameType` case (see APP-FIX-05).
 
 ---
 
@@ -229,4 +229,4 @@ The Acceptance Tests above ship inline per the F-template; the canonical AT-INT-
 
 - **Routes introduced by this feature:** None.
 - **N/A justification:** Cross-cutting index — write surface deferred to each integration's own page.
-- **Compliance:** Satisfies F-AUD42-25 (API axis) by explicit declaration. Any future write route added here MUST follow the PascalCase envelope (ADR-0004/0019), egress via queue worker (ADR-0023), and bind to a named error boundary (ADR-0017).
+- **Compliance:** Satisfies F-AUD42-25 (API axis) by explicit declaration. Any future write route added here MUST follow (gate **G-23-DATA-ROUTER-API**) the PascalCase envelope (ADR-0004/0019), egress via queue worker (ADR-0023), and bind to a named error boundary (ADR-0017).

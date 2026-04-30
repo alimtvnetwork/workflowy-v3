@@ -255,8 +255,8 @@ The single endpoint backing this feature is **EP-SEARCH-QUERY** — full request
 | Aspect | Specification |
 |---|---|
 | Stream emission | **None.** Search is read-only and does NOT emit any SSE frame on `/stream/page/{id}` or `/stream/user/{id}` (per ADR-0025: SSE is read-signal only). |
-| Stream consumption | Search results may become **stale** when an SSE frame (`item.updated`, `item.deleted`, `item.created`) arrives while the overlay is open. The overlay MUST re-validate its result set against the local mirror on every relevant SSE frame and re-render impacted rows in place. |
-| No re-fetch on SSE | The overlay MUST NOT re-issue `GET /search` on every SSE frame — only re-read the local mirror (per ADR-0023 loader-reads-mirror-first rule). A full re-query is allowed only when the user re-submits the query. |
+(gate **G-25-SSE-ENDPOINT-CLOSED**) | Stream consumption | Search results may become **stale** when an SSE frame (`item.updated`, `item.deleted`, `item.created`) arrives while the overlay is open. The overlay MUST re-validate its result set against the local mirror on every relevant SSE frame and re-render impacted rows in place. |
+(gate **G-25-SSE-ENDPOINT-CLOSED**) | No re-fetch on SSE | The overlay MUST NOT re-issue `GET /search` on every SSE frame — only re-read the local mirror (per ADR-0023 loader-reads-mirror-first rule). A full re-query is allowed only when the user re-submits the query. |
 | Last-Event-ID | Not applicable — search does not produce a stream. |
 
 ## Permissions Contract (Perm)
@@ -327,7 +327,7 @@ All error responses follow the canonical envelope (per ADR-0004): `{ Status: "er
 
 ### SSE Frames Emitted (read-signal only, ADR-0025)
 
-`SearchIndexRebuilt` on `/stream/page/{id}` and/or `/stream/user/{id}`. SSE MUST NOT enqueue to the FIFO.
+(gate **G-25-SSE-ENDPOINT-CLOSED**) `SearchIndexRebuilt` on `/stream/page/{id}` and/or `/stream/user/{id}`. SSE MUST NOT enqueue to the FIFO.
 
 ### Storage
 
