@@ -56,7 +56,7 @@ src/
 
 ### R2 — Envelope schema is load-bearing
 
-Every B1 response MUST be parsed through `EnvelopeSchema(rowSchema)` — never row-by-row directly. The envelope enforces ADR-0004/0019 PascalCase keys (`Status`, `Attributes`, `Results`).
+Every B1 response MUST be parsed through `EnvelopeSchema(rowSchema)` — never row-by-row directly. The envelope enforces ADR-0004/0019 PascalCase keys (`Status`, `Attributes`, `Results`). `[gate: G-35-RV-USE-ENVELOPE · AT: AT-RV-02]`
 
 ```ts
 // src/lib/schemas/envelope.schema.ts
