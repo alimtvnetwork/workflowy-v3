@@ -43,6 +43,8 @@ JavaScript stack traces show where an error occurred but not the full context of
 | F9 | Zero overhead when disabled | MUST |
 | F10 | Integrate with error capture | MUST |
 
+> ↑ All F1..F10 rows above are leaves of gate **`G-LOG-EXEC-FNREQS`** (umbrella, CI; family=`logging-coverage`).
+
 ### 3.2 Non-Functional Requirements
 
 | ID | Requirement | Target |
