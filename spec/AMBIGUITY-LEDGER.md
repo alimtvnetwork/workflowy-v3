@@ -333,3 +333,27 @@ At the user-set bar ('mediocre AI, zero follow-up, 100% intent match'), every ac
 **Files:** spec/19-glossary.md (v1.1.0 → v1.2.0, +44 lines), spec/_GATE-REGISTRY.md (+§4a, 1 new gate row), spec/AUDIT-FINDINGS-LEDGER.md (F-SPEC-14 row updated).
 
 **Score impact:** +0.3pp (cap on accretion is a structural improvement, not a chip; weighted as bounded-future-risk reduction per spec-implementability formula).
+
+---
+
+## Entry — 2026-04-30 — GAP-AMB-04 RESOLVED (ADR-0027/0028 TEST-tier AC backfill)
+
+**Action:** Authored 7 Given/When/Then acceptance fixtures in `spec/00-adrs/97-acceptance-criteria.md` for the TEST-tier gates raised by ADR-0027 (SSE multi-worker shared ring buffer) and ADR-0028 (i18n locale strategy):
+
+| Gate | ADR | Fixture file path |
+|---|---|---|
+| `G-27-RING-TTL-300S` | ADR-0027 §D5 | `tests/sse/RingReaperTtlTest.php` |
+| `G-27-COLD-GAP-RESYNC` | ADR-0027 §D6 | `tests/sse/ColdGapResyncTest.php` |
+| `G-27-MULTIWORKER-REPLAY` | ADR-0027 §D7 | `tests/sse/MultiWorkerReplayTest.php` |
+| `G-28-MISSING-KEY-LOGGED` | ADR-0028 §D5 | `src/i18n/__tests__/missing-key-logging.test.tsx` |
+| `G-28-FALLBACK-CHAIN` | ADR-0028 §D5 | `src/i18n/__tests__/fallback-chain.test.ts` |
+| `G-28-RTL-DIR-ATTR` | ADR-0028 §D6 | `src/i18n/__tests__/rtl-dir-attr.test.tsx` |
+| `G-28-DETECTION-ORDER` | ADR-0028 §D3 | `src/i18n/__tests__/detection-order.test.ts` |
+
+Each fixture includes deterministic seeds, numeric assertions, parameterized rows where appropriate, and a stable `AT-ADR-G27-*` / `AT-ADR-G28-*` test-id matching the gate.
+
+**Side-effect finding:** Authoring AT-ADR-G28-DETECTION-ORDER surfaced **F-AMB-04a (LOW):** ADR-0028 §D3 tier 2 names `localStorage`, but ADR-0021 forbids localStorage. Conflict promoted from suspected to confirmed; resolution path = amend §D3 to `IndexedDB 'i18n.locale'` key. Tracked under GAP-AMB-05 (cross-doc conflict sweep).
+
+**Files:** spec/00-adrs/97-acceptance-criteria.md (+139 lines, v1.16.0), spec/_GATE-REGISTRY.md §5 (carve-out updated to reflect partial closure: 7 of 63 placeholder files now backfilled — the 7 ADR-scoped ones).
+
+**Score impact:** +0.4pp (7 TEST-tier gates flipped from "well-specified but unrunnable" to "fixture-complete", lifting placeholder-density signal in the `_root` scope; F-SPEC-14 chip-down accelerated by 1 file).

@@ -327,3 +327,142 @@ Result: **0 matches** in the entries table (the only hits are in the §"Forbidde
 
 **Tracking:** v7 audit re-run will validate against Gemini-2.5-Pro with explicit pointers to ledger v1.1.0 + ADR-0031 in the audit prompt. Expected outcome: F-AUDIT-26 + F-AUDIT-29 both confirmed closed, score 91 → 99+.
 
+
+
+---
+
+## ADR-0027 / ADR-0028 TEST-tier gate fixtures (v1.16.0, 2026-04-30, task #GAP-AMB-04)
+
+**Closes:** Registry §5 carve-out — "the 7 new TEST-tier gates from ADR-0027 / 0028 are well-specified but won't run until the AC backfill lands." This entry IS the backfill. Each fixture is a Given/When/Then triple in the canonical AT-ADR-NN format with explicit numeric assertions, deterministic seeds, and a stable test-id.
+
+### AT-ADR-G27-RING-TTL-300S — Reaper purges rows older than 300 s
+
+**Gate:** `G-27-RING-TTL-300S` (TEST tier, ADR-0027 §D5)
+
+- **Given:** A fresh `SseRing` SQLite table in WAL mode; `now_unix = T`; reaper cron interval = 60 s; TTL constant = 300 s (per ADR-0027 §D5).
+- **When:** Test seeds 1000 rows with `CreatedAtUnix = T - 301` and 50 rows with `CreatedAtUnix = T - 299`; then invokes `php artisan sse:reap` (or equivalent worker entrypoint) once.
+- **Then:**
+  1. `SELECT COUNT(*) FROM SseRing WHERE CreatedAtUnix < T - 300` MUST equal `0`.
+  2. `SELECT COUNT(*) FROM SseRing WHERE CreatedAtUnix >= T - 300` MUST equal `50`.
+  3. Reaper MUST log one `INFO` line: `sse.reap purged=1000 retained=50 ttl_seconds=300`.
+  4. Test wall-clock budget: ≤500 ms on CI baseline (M1 Mac, 4 cores).
+
+**Fixture path:** `tests/sse/RingReaperTtlTest.php` (PHPUnit, requires `database/sse_ring.sqlite` factory).
+
+---
+
+### AT-ADR-G27-COLD-GAP-RESYNC — Cold-gap reconnect emits exactly one `resync` frame
+
+**Gate:** `G-27-COLD-GAP-RESYNC` (TEST tier, ADR-0027 §D6)
+
+- **Given:** `SseRing` contains rows with `ServerSeq` ∈ [5000, 5100] (oldest = 5000); reaper has purged everything below 5000.
+- **When:** A client connects to `GET /stream/page/{id}` with header `Last-Event-ID: 1`.
+- **Then:**
+  1. Server MUST emit **exactly one** SSE frame with `event: resync` and a body matching `spec/00-adrs/sse-frame.schema.json` `resync` variant.
+  2. Server MUST close the connection (`Connection: close` or end-of-stream) within 50 ms of the frame.
+  3. No `event: item.*` or `event: mirror.*` frames may precede the `resync` frame.
+  4. Response status MUST be `200 OK` (NOT 4xx — cold-gap is a normal recovery path, not an error).
+  5. Frame `Event` field MUST equal the wire-line `event:` value (cross-check with `G-CON-03-SSE-EVENT-LINE-PARITY`).
+
+**Fixture path:** `tests/sse/ColdGapResyncTest.php` (integration test against test PHP-FPM via `symfony/process`).
+
+---
+
+### AT-ADR-G27-MULTIWORKER-REPLAY — 4-worker fan-out preserves order
+
+**Gate:** `G-27-MULTIWORKER-REPLAY` (TEST tier, ADR-0027 §D7)
+
+- **Given:** PHP-FPM pool sized to exactly 4 workers; shared `SseRing` SQLite WAL DB; clean ring (`SELECT COUNT(*) = 0`).
+- **When:** Producer process writes 100 events with `Event = item.updated` and monotonic `ServerSeq` 1..100, distributed via round-robin across the 4 workers (25 each). Then 4 consumer clients connect in turn (one per worker process by `PID` affinity), each with `Last-Event-ID: 0`.
+- **Then:**
+  1. Each of the 4 consumer connections MUST receive **all 100 frames** in `ServerSeq` order 1..100.
+  2. No consumer may see a `ServerSeq` gap (max gap = 1, asserted by adjacent-pair scan).
+  3. No consumer may see a duplicate `ServerSeq` (assert `len(set(seqs)) == 100`).
+  4. Total wall-clock ≤2 s on CI baseline.
+  5. If any consumer disconnects mid-replay, server MUST end its stream cleanly without affecting the other 3.
+
+**Fixture path:** `tests/sse/MultiWorkerReplayTest.php` (uses `symfony/process` to spawn 4 PHP-FPM children + 4 curl-stream consumers).
+
+---
+
+### AT-ADR-G28-MISSING-KEY-LOGGED — Production missing key reports to error pipeline
+
+**Gate:** `G-28-MISSING-KEY-LOGGED` (TEST tier, ADR-0028 §D5)
+
+- **Given:** Production build (`NODE_ENV=production`); `i18n` initialized with `SUPPORTED_LOCALES = ['en', 'de']`; locale = `de`; `de.json` does NOT contain key `pricing.tier.enterprise.cta`; `en.json` DOES contain it (so fallback resolves).
+- **When:** A React component renders `t('pricing.tier.enterprise.cta')`.
+- **Then:**
+  1. Rendered text MUST equal the English fallback value (per fallback chain D5).
+  2. `errorStore` (Zustand store at `src/stores/errorStore.ts`) MUST receive **exactly one** entry with `category = 'Frontend'`, `code = 'i18n.missing_key'`, `attributes = { Key: 'pricing.tier.enterprise.cta', Locale: 'de', FallbackUsed: 'en' }`.
+  3. The entry's `LoggedAtUnix` MUST be within 100 ms of the render call (asserted via `vi.useFakeTimers`).
+  4. In `NODE_ENV=development`, the same scenario MUST throw via the i18next `missingKeyHandler` instead of logging silently (negative test).
+  5. The error MUST NOT bubble to `AppErrorBoundary` — missing-key is a recoverable signal, not a render fault.
+
+**Fixture path:** `src/i18n/__tests__/missing-key-logging.test.tsx` (Vitest + RTL).
+
+---
+
+### AT-ADR-G28-FALLBACK-CHAIN — Per-key resolution walks the 4-tier chain
+
+**Gate:** `G-28-FALLBACK-CHAIN` (TEST tier, ADR-0028 §D5)
+
+- **Given:** Locales: `de-CH` requested; `SUPPORTED_LOCALES = ['en', 'de', 'fr']`; key under test = `nav.search.placeholder`.
+- **When:** Test parameterizes 4 scenarios, each removing the key from a successive tier:
+
+  | Scenario | de-CH.json | de.json | en.json | DEFAULT_KEY | Expected resolved value | Expected logged tier |
+  |---|---|---|---|---|---|---|
+  | A | `"Suchen (CH)"` | `"Suchen"` | `"Search"` | `"???"` | `"Suchen (CH)"` | (none) |
+  | B | (absent) | `"Suchen"` | `"Search"` | `"???"` | `"Suchen"` | `de` |
+  | C | (absent) | (absent) | `"Search"` | `"???"` | `"Search"` | `en` |
+  | D | (absent) | (absent) | (absent) | `"???"` | `"???"` | `default` + `G-28-MISSING-KEY-LOGGED` fires |
+
+- **Then:** All 4 rows MUST pass; resolution order MUST be `regional → language → default-language → DEFAULT_KEY`; no scenario may skip a tier.
+
+**Fixture path:** `src/i18n/__tests__/fallback-chain.test.ts` (Vitest, table-driven).
+
+---
+
+### AT-ADR-G28-RTL-DIR-ATTR — RTL locales set `dir="rtl"` on `<html>` before first paint
+
+**Gate:** `G-28-RTL-DIR-ATTR` (TEST tier, ADR-0028 §D6)
+
+- **Given:** `SUPPORTED_LOCALES` includes `ar` (RTL) and `en` (LTR); `RTL_LOCALES = ['ar', 'he', 'fa', 'ur']` constant in `src/i18n/rtl.ts`.
+- **When:** App boots with detected locale = `ar`.
+- **Then:**
+  1. `document.documentElement.getAttribute('dir')` MUST equal `'rtl'` BEFORE the React Router data-router boots (asserted via a `MutationObserver` set up in the test's `beforeEach`).
+  2. `document.documentElement.getAttribute('lang')` MUST equal `'ar'`.
+  3. Switching locale to `en` at runtime via `i18n.changeLanguage('en')` MUST flip `dir` to `'ltr'` within 1 animation frame (`requestAnimationFrame`).
+  4. No physical CSS properties (`margin-left`, `padding-right`, `text-align: left/right`) may appear in the rendered stylesheet — assertion delegated to `G-12-LOGICAL-MARGINS-PADDING`/`G-12-LOGICAL-TEXT-ALIGN`.
+  5. Negative test: locale `'en'` MUST yield `dir="ltr"`.
+
+**Fixture path:** `src/i18n/__tests__/rtl-dir-attr.test.tsx` (Vitest + jsdom).
+
+---
+
+### AT-ADR-G28-DETECTION-ORDER — Detector evaluates 5 tiers in canonical order
+
+**Gate:** `G-28-DETECTION-ORDER` (TEST tier, ADR-0028 §D3)
+
+- **Given:** Detection chain (per ADR-0028 §D3): `1) URL ?lang=`, `2) localStorage 'i18nextLng'` **[NOTE: this tier MUST be replaced with IndexedDB read per ADR-0021 forbid-localStorage rule — open follow-up F-AMB-04a]**, `3) Cookie 'i18nextLng'`, `4) navigator.language`, `5) DEFAULT_LOCALE = 'en'`. `SUPPORTED_LOCALES = ['en', 'de', 'fr']`.
+- **When:** Test parameterizes 6 scenarios:
+
+  | # | URL | Storage | Cookie | navigator | Expected resolved | Tier hit |
+  |---|---|---|---|---|---|---|
+  | 1 | `?lang=fr` | `de` | `de` | `de-DE` | `fr` | URL |
+  | 2 | (none) | `de` | `fr` | `en-US` | `de` | Storage |
+  | 3 | (none) | (none) | `fr` | `en-US` | `fr` | Cookie |
+  | 4 | (none) | (none) | (none) | `de-CH` | `de` | navigator (regional → language fold) |
+  | 5 | (none) | (none) | (none) | `ja-JP` | `en` | DEFAULT (unsupported) |
+  | 6 | `?lang=zh` | `de` | (none) | `en-US` | `de` | URL miss → Storage (unsupported URL value MUST fall through, NOT be honoured) |
+
+- **Then:** All 6 rows MUST pass; tier resolution MUST stop at the first match in `SUPPORTED_LOCALES`; unsupported values MUST fall through (scenario 6); resolution MUST complete BEFORE React Router boot (asserted via boot-sequence spy per ADR-0028 §D3).
+
+**Fixture path:** `src/i18n/__tests__/detection-order.test.ts` (Vitest, table-driven).
+
+---
+
+### Open follow-up raised by this backfill
+
+**F-AMB-04a (LOW):** ADR-0028 §D3 tier 2 specifies `localStorage` as the persistence tier, but ADR-0021 forbids `localStorage` (mandates IndexedDB-only for client persistence). Conflict resolution: ADR-0028 §D3 MUST be amended to read `IndexedDB 'i18n.locale' key` (single-row table) instead of `localStorage 'i18nextLng'`. The detector contract in `src/i18n/detector.ts` MUST be the sole IndexedDB reader for locale; cookie tier preserved as cross-tab signal. **Tracked under GAP-AMB-05** (cross-doc conflict sweep) — promoted from suspected-only to confirmed by this backfill cycle.
+
+**Counts impact:** +7 ATs (ADR ATs ratio improves; resolves the carve-out in `_GATE-REGISTRY.md` §5 third bullet). +1 follow-up (F-AMB-04a, LOW, immediately actionable).

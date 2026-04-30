@@ -1055,7 +1055,7 @@
 
 - 44 bare `G-NN` references in spec are section pointers, not real gates — excluded from this registry.
 - Heuristic classifier may mis-tier some gates; the 200 DOC-tier rows from the v1.0.0 inventory are still **unaudited** — many likely belong in CI/TEST tiers (e.g. `G-26-LWW-CANONICAL-COMPARATOR` is currently DOC but is enforced in practice). Per-area manual sweep is the largest remaining quality task.
-- ~63 placeholder `97-acceptance-criteria.md` files (AUDIT-03) still empty — their TEST-tier gates show file path but lack runnable fixtures. **As of 2026-04-28 this also affects the 7 new TEST-tier gates from ADR-0027 / 0028** (`G-27-RING-TTL-300S`, `G-27-COLD-GAP-RESYNC`, `G-27-MULTIWORKER-REPLAY`, `G-28-MISSING-KEY-LOGGED`, `G-28-FALLBACK-CHAIN`, `G-28-RTL-DIR-ATTR`, `G-28-DETECTION-ORDER`) — they are well-specified but won't run until the AC backfill lands.
+- ~63 placeholder `97-acceptance-criteria.md` files (AUDIT-03) still empty — their TEST-tier gates show file path but lack runnable fixtures. **2026-04-30 partial closure (GAP-AMB-04):** the 7 TEST-tier gates from ADR-0027 / 0028 (`G-27-RING-TTL-300S`, `G-27-COLD-GAP-RESYNC`, `G-27-MULTIWORKER-REPLAY`, `G-28-MISSING-KEY-LOGGED`, `G-28-FALLBACK-CHAIN`, `G-28-RTL-DIR-ATTR`, `G-28-DETECTION-ORDER`) now have full Given/When/Then fixtures in `spec/00-adrs/97-acceptance-criteria.md` §"ADR-0027 / ADR-0028 TEST-tier gate fixtures" — runnable on first implementation pass. Remaining ~56 placeholder files outside the ADR scope are still pending.
 - Two `G-28-*` rows are intentionally retained as **superseded** (strikethrough) — never delete history per §4 rule 3.
 
 ### 5.1 Citation-vs-row Reconciliation (audited 2026-04-28)
