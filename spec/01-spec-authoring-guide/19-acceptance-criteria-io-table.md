@@ -158,6 +158,54 @@ Until P2g lands, the check runs in **report-only** mode and tallies coverage in 
 
 ---
 
+## Author Checklist (AC-AUTHOR-RULE-01..04)
+
+> **Status:** Normative since 2026-04-30. Numbered author rules MUST be cited verbatim in PR descriptions when adding/modifying any `97-acceptance-criteria.md` row.
+
+| Rule | Statement | Enforced by |
+|---|---|---|
+| **AC-AUTHOR-RULE-01** | Every leaf criterion MUST appear as **two adjacent rows**: prose row + canonical I/O fixture block. | `G-AT-IO-TWO-ROW-PAIRING` |
+| **AC-AUTHOR-RULE-02** | Request body / Response envelope cells MUST be valid JSON literals (`JSON.parse` clean) using realistic IDs (`"itm_01HXYZ…"`), never `<placeholder>` strings. | `G-AT-IO-JSON-LITERAL-VALID` |
+| **AC-AUTHOR-RULE-03** | Response envelope MUST conform to `spec/04-database-conventions/06-rest-api-format/` — PascalCase keys, mandatory `Status`/`Attributes`/`Results`. | `G-AT-IO-ENVELOPE-CONFORM` |
+| **AC-AUTHOR-RULE-04** | When authoring an AT fixture from an ADR, the `Given` clause MUST quote the ADR's normative text **verbatim** (copy-paste from the ADR file) before parameterising. Paraphrasing from memory of similar libraries / standards is forbidden — it is the root cause of the ADR-0027/0028 fixture drift retro-closed in `spec/AMBIGUITY-LEDGER.md` 2026-04-29. | `G-GLOSSARY-ADR-PARITY` (sister gate — see below) |
+
+### AC-AUTHOR-RULE-04 — Verbatim-from-ADR (full rule)
+
+**Trigger:** Any new fixture row in `97-acceptance-criteria.md` or `97a-acceptance-criteria-fixtures.md` whose `## Source` cell cites an ADR (`ADR-NNNN`).
+
+**Procedure:**
+
+1. Open the cited ADR file in a side pane.
+2. Locate the normative paragraph (usually under `## Decision` or `## Consequences`).
+3. Copy the sentence(s) **verbatim** into the fixture's `Given` cell, wrapped in `> ` blockquote markers so the verbatim region is unambiguous to grep.
+4. Append parameterisation **after** the blockquote (e.g., concrete IDs, sample values).
+5. Cite the ADR file path + section anchor as `<!-- verbatim-from: spec/00-adrs/0027-…md#decision -->` HTML comment on the line below the blockquote.
+
+**Negative — paraphrase forbidden:**
+
+```markdown
+> ❌ FORBIDDEN
+> | Given | The SSE ring buffer expires entries after about 5 minutes |
+
+> ✅ REQUIRED
+> | Given | <!-- verbatim-from: spec/00-adrs/0027-sse-ring-buffer.md#decision -->
+> > "Ring TTL = **300 seconds**; reaper runs every **60 seconds**; rows where `CreatedAtUnix < (now - 300)` are deleted."
+> > — ADR-0027 §Decision
+> > Concrete: 1000 stale rows, p95 purge < 500 ms. |
+```
+
+**Why:** The ADR file is the SSOT for normative wording. Paraphrasing decouples the fixture from the ADR's revision history, so when the ADR changes the fixture silently goes stale. Verbatim quoting + the `verbatim-from:` anchor lets `G-GLOSSARY-ADR-PARITY` (and the future `G-AT-IO-VERBATIM-ADR-DRIFT` once promoted) detect drift by hashing the cited substring against the live ADR file.
+
+### Companion gate: `G-GLOSSARY-ADR-PARITY`
+
+**Tier:** DOC-NORM (graduates to LINT once corpus baseline is clean).
+**Source:** `scripts/spec-hygiene/78-check-glossary-adr-parity.mjs`.
+**Audit invariant:** Every glossary entry in `spec/19-glossary.md` whose `Source` column cites `ADR-NNNN` (24 rows in v1.4.0, all in §"ADR-0023..0028 Runtime Vocabulary") MUST have its definition cell updated in the **same commit** as any change to the cited ADR's `## Decision` or `## Consequences` section. Inverse drift detection: if an ADR's normative section changes without a glossary update, the gate fails with `GLOSSARY_DRIFT: <term>` listing the affected term + ADR + commit-hash mismatch.
+
+**Registered in:** [`spec/_GATE-REGISTRY.md`](../_GATE-REGISTRY.md) §4a.
+
+---
+
 ## Related
 
 - `spec/04-database-conventions/06-rest-api-format/` — envelope spec the JSON rows MUST conform to (gate `G-AT-IO-RELATED-ENVELOPE-XLINK` enforces this backlink's presence).
