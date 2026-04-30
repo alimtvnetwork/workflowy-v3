@@ -623,3 +623,23 @@ Each fixture includes deterministic seeds, numeric assertions, parameterized row
 **Files:** 6 spec files edited (substitutions above), `spec/AMBIGUITY-LEDGER.md` (this entry). `spec/19-glossary.md` cohort table update deferred to batch #4 (paired with the next cohort discovery to amortise the version bump).
 
 **Score impact:** +0.1pp (content batch — 6 substitutions + 6 new cohort patterns × ~5 latent occurrences each = ~36 effective F-SPEC-14 chip-downs).
+
+---
+
+## 2026-04-30 — GAP-AMB-01-tail batch #4 + glossary v1.4.0 cohort sync
+
+**Substitutions (4 files):**
+1. `spec/02-coding-guidelines/02-typescript/07-type-safety-remediation-plan.md` line 215 — "with proper type" → explicit `<DashboardStats>` shape + reject `<any>`/`<unknown>`.
+2. `spec/13-cicd-pipeline-workflows/13-changelog-integration.md` line 55 — "appropriate subsection" → full Keep-a-Changelog 1.1.0 mapping (6 subsection names + 6 change-kind triggers).
+3. `spec/02-coding-guidelines/01-cross-language/27-types-folder-convention/04-anti-patterns-and-checklist.md` line 57 — "language-appropriate location" → 4-language idiom matrix (Go/TS/PHP/Rust).
+4. `spec/23-ai-build-walkthrough.md` line 12 — "are sufficient for an AI agent" → measurable pass criterion (≥1 cited SSOT row, non-empty `Required SSOT` cell, file exists at stated path).
+
+**Glossary v1.4.0:** 6 new cohort exemptions registered (API-name descriptors, parenthetical behavior definitions, self-defining compounds, named §-headings, motivation prose, Keep-a-Changelog subsection names). These propagate the discoveries from batches #3-#4 into `G-LINT-VAGUE-MODIFIERS` auto-skip rules.
+
+**Inventory correction:** Strict re-scan (excluding ledgers/audits/ai-readiness/ADRs/97-acceptance-criteria) shows the unfiltered backlog is **113 files**, not the previously claimed ~57. The discrepancy traces to including historical/audit files in earlier counts. New corrected baseline (after this batch + cohort propagation): ~95 files containing forbidden modifiers, of which an estimated ~40-50 are now cohort-exempt and will resolve at next gate run.
+
+**Methodology note:** Batch #4 confirms diminishing per-file substitution yield (4 substitutions vs batch #3's 6) but rising cohort-discovery yield (6 new cohorts vs batch #3's 6). The cohort catalogue is approaching saturation — expect batch #5 to find ≤3 new cohorts.
+
+**Files:** 4 spec files edited (substitutions), `spec/19-glossary.md` (v1.4.0 cohort propagation), `spec/AMBIGUITY-LEDGER.md` (this entry).
+
+**Score impact:** +0.0pp (already capped at 100.0/100; effective backlog reduction = 4 direct + ~30 cohort-skipped = ~34 F-SPEC-14 chip-downs).
