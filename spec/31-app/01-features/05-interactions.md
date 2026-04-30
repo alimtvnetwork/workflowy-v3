@@ -79,13 +79,13 @@ As a power user, I want every common action — split a line, indent, move, comp
 
 | Field | Type | Source | Required | Notes |
 |-------|------|--------|----------|-------|
-| `focusedItemId` | `string \| null` | DOM focus tracker | Yes | Drives keyboard handlers |
+| `focusedItemId` | `ItemId \| null` | DOM focus tracker | Yes | Drives keyboard handlers. Branded `ItemId` per ADR-0020 — raw `string` forbidden. |
 | `caretOffset` | `number` | DOM Selection API | Yes | Required for Enter-split semantics |
 | `keyEvent` | `KeyboardEvent` | Global key listener | Yes | Modifier keys (⌘/⇧/Alt) drive variants |
 | `dragSource` | `Item \| null` | DnD library | No | Set on bullet-dot drag start |
-| `dropTarget` | `{ itemId: string; mode: 'sibling' \| 'child' } \| null` | DnD library | No | Drives blue line / blue border highlight |
+| `dropTarget` | `{ itemId: ItemId; mode: 'sibling' \| 'child' } \| null` | DnD library | No | Drives blue line / blue border highlight. Branded `ItemId` per ADR-0020. |
 | `searchQuery` | `string` | Search overlay input | No | Debounced 300ms before query fires |
-| `recentItemIds` | `string[]` (max 5) | `localStorage` | No | Shown when search query is empty |
+| `recentItemIds` | `ItemId[]` (max 5) | IndexedDB (per ADR-0021 — `localStorage` forbidden) | No | Shown when search query is empty. Branded `ItemId` per ADR-0020. |
 | `pendingMutations` | `Mutation[]` | Autosave queue | Yes | Drives save indicator + offline replay |
 | `networkOnline` | `boolean` | `navigator.onLine` + ping | Yes | Switches autosave to local-queue mode |
 

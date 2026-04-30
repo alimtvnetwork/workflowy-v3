@@ -118,11 +118,11 @@ Each swatch: small circle. Currently selected color has a ring border. Hover: sl
 
 | Field | Type | Source | Required | Notes |
 |-------|------|--------|----------|-------|
-| `currentItemId` | `string \| null` | Router | Yes | `null` = root list |
+| `currentItemId` | `ItemId \| null` | Router | Yes | `null` = root list. Branded `ItemId` per ADR-0020 — raw `string` forbidden. |
 | `items` | `Item[]` | SQLite query (children of `currentItemId`) | Yes | Capped at 250 per view |
-| `expandedIds` | `Set<string>` | Local UI state (persisted) | Yes | Drives ▶/▼ toggle |
-| `selection` | `{ start: number; end: number; itemId: string } \| null` | DOM Selection API | No | Drives floating toolbar visibility |
-| `hoverItemId` | `string \| null` | Pointer state | No | Drives hover-action fade-in |
+| `expandedIds` | `Set<ItemId>` | Local UI state (persisted) | Yes | Drives ▶/▼ toggle. Branded `ItemId` per ADR-0020. |
+| `selection` | `{ start: number; end: number; itemId: ItemId } \| null` | DOM Selection API | No | Drives floating toolbar visibility. Branded `ItemId` per ADR-0020. |
+| `hoverItemId` | `ItemId \| null` | Pointer state | No | Drives hover-action fade-in. Branded `ItemId` per ADR-0020. |
 | `dragState` | `DragState \| null` | DnD library | No | Drives drop-target highlights |
 | `viewMode` | `ViewMode` enum | NavBar toggle | Yes | `List` (this file) or `Board` (see `07-board-view.md`) |
 | `showCompleted` | `boolean` | Settings | Yes | Toggles strikethrough rows |
