@@ -93,7 +93,7 @@ export const OwnerIdSchema = z.string().min(1).brand<'OwnerId'>();
 
 ### R4 — `passthrough()` only on `Attributes` and `Detail`
 
-Most schemas MUST be `.strict()` so unknown keys raise — this catches API drift early. Only `Attributes` (envelope-level metadata) and `Detail` (audit-row JSON) may use `.passthrough()`.
+Most schemas MUST be `.strict()` so unknown keys raise — this catches API drift early. Only `Attributes` (envelope-level metadata) and `Detail` (audit-row JSON) may use `.passthrough()`. `[gate: G-35-RV-STRICT-DEFAULT · AT: AT-RV-04]`
 
 ```ts
 // ❌ Forbidden — silent drift
