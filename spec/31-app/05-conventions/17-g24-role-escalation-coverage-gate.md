@@ -12,10 +12,12 @@
 
 This is the **sixth** drift-detector in the CI cluster (siblings: G-19 workflow, G-20 pre-commit, G-21 gate-discovery, G-22 error-code catalogue, G-23 audit-log coverage). G-24 watches **four distinct privilege-escalation surfaces** that policy v1.0.0 introduced together but which decay independently:
 
-1. **Privilege-mutation gating** — every code path that writes `WorkspaceRole = 'Admin' | 'Owner'` MUST be immediately preceded (within the same scope) by a call to `Escalation::approve()` OR `Escalation::breakGlass()`.
-2. **Break-glass containment** — `Escalation::breakGlass()` MUST exist only inside `wp-plugin/Auth/Escalation.php`. Any reference outside that file is a sandbox escape.
-3. **Expiry sanity** — every `RoleEscalationRequest` insert (i.e. row creation in the request table) MUST set `ExpiresAt` to a value ≤ 24 h from `CreatedAt`.
-4. **Test parity** — every PHP file under `wp-plugin/Auth/Escalation/` MUST have a sibling test file matching `*Test.php` (mirroring the WP-plugin testing convention from `15-wp-plugin-how-to/09-testing-patterns/`).
+1. **Privilege-mutation gating** — every code path that writes `WorkspaceRole = 'Admin' | 'Owner'` MUST be immediately preceded (within the same scope) by a call to `Escalation::approve()` OR `Escalation::breakGlass()`. `[G-24-GATING-APPROVAL-PRECEDENCE]`
+2. **Break-glass containment** — `Escalation::breakGlass()` MUST exist only inside `wp-plugin/Auth/Escalation.php`. Any reference outside that file is a sandbox escape. `[G-24-BREAKGLASS-CONTAINMENT]`
+3. **Expiry sanity** — every `RoleEscalationRequest` insert (i.e. row creation in the request table) MUST set `ExpiresAt` to a value ≤ 24 h from `CreatedAt`. `[G-24-EXPIRY-24H-CEILING]`
+4. **Test parity** — every PHP file under `wp-plugin/Auth/Escalation/` MUST have a sibling test file matching `*Test.php` (mirroring the WP-plugin testing convention from `15-wp-plugin-how-to/09-testing-patterns/`). `[G-24-TEST-PARITY]`
+
+> **Umbrella note** — the four sub-rule tokens above are structurally covered by `G-24-DRIFT-COVERAGE` (Umbrella, family=convention-drift) per ADR-0033 §Decision (NEW-29 same-number disambiguation). The `family=convention-drift` qualifier disambiguates this `G-24` from `ADR-0024`'s DOC-family `G-24-*` namespace.
 
 Without G-24, any of four catastrophic regressions could merge silently:
 
