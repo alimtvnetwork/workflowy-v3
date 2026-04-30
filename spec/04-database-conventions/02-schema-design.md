@@ -37,7 +37,7 @@ How many rows in 10 years?
 | Aspect | INTEGER | UUID |
 |--------|---------|------|
 | Storage | 4 bytes | 16 bytes (4x larger) |
-| Index performance | Fast (sequential) | Slow (random distribution) |
+| Index performance | B-tree O(log n) sequential inserts, no page splits | B-tree O(log n) but ~3× more page splits from random distribution |
 | Readability | Easy to debug | Hard to read |
 | Fragmentation | None | High (random inserts) |
 
