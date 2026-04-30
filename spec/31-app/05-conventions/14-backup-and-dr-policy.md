@@ -185,7 +185,7 @@ A backup that has never been restored is **not a backup**. The drill makes resto
 | Audit row | `SYSTEM.RESTORE_DRILL_PASS` or `SYSTEM.RESTORE_DRILL_FAIL` at `warn`/`error` |
 | Skip allowed? | **No.** Skipping a drill triggers `SYSTEM.RESTORE_DRILL_OVERDUE` at `error` after 100 days since last pass |
 
-The drill is a **policy gate**, not a nice-to-have. Operators that miss two consecutive drills cannot ship to production until a passing drill is recorded.
+The drill is a **policy gate**, not optional. Operators that miss two consecutive drills cannot ship to production until a passing drill is recorded.
 
 ---
 

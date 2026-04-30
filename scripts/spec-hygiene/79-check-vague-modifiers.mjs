@@ -55,7 +55,7 @@ const COHORT_PATTERNS = [
   /\/\/\s*[✅❌]\s*(GOOD|BAD|Good|Bad)/,        // Paired-example markers TS/JS
   /--\s*[✅❌]\s*(GOOD|BAD|Good|Bad)/,           // SQL paired markers
   /#\s*[✅❌]\s*(GOOD|BAD|Good|Bad)/,            // Python/PowerShell markers
-  /\bfail-fast\b/,                                // CI keyword
+  /\bfail-fast\b/i,                               // CI keyword (case-insensitive: "Fail-fast" in headings)
   /\bproper\s+(enum|enums|type)s?\b/,             // TS rule name
   /\bSimple\b/,                                   // Tier name (capitalized)
   /\b(short|fast)\s+mode\b/,                      // Test runner flag

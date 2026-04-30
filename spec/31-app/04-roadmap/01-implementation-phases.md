@@ -65,6 +65,6 @@
 - [ ] PWA support (installable, offline-first)
 - [ ] Performance: virtualized list for 1000+ items
 - [ ] Onboarding flow for new users
-- [ ] Accessibility (screen reader support, keyboard navigation, ARIA attributes, proper color contrast)
+- [ ] Accessibility (screen reader support, keyboard navigation, ARIA attributes, WCAG 2.2 AA color contrast: ≥4.5:1 for body text, ≥3:1 for UI components)
 
 ---

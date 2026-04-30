@@ -8,7 +8,7 @@
 | Technology | Purpose | Why This Over Alternatives |
 |-----------|---------|---------------------------|
 | React 18+ with TypeScript | UI framework with strict type safety | Industry standard, largest ecosystem, best hiring signal for portfolio projects |
-| Vite 5+ | Build tool with fast hot-reload | Significantly faster than Webpack/CRA; near-instant HMR during development |
+| Vite 5+ | Build tool with sub-second hot-reload | HMR ≤200 ms on file save vs Webpack/CRA's 2–5 s rebuild; cold-start ≤2 s on a 500-module project |
 | Tailwind CSS 3+ | Utility-first styling using semantic HSL design tokens | Faster iteration than CSS Modules; design token system prevents style drift |
 | shadcn/ui | Base component library (dropdowns, dialogs, tooltips, popovers, sheets, command palette, scroll areas, separators) | Unstyled/composable — full control over design unlike Material UI or Ant Design |
 | TanStack Query 5+ | Server state management with caching, optimistic updates, and background refetching | Superior cache management vs raw useEffect; built-in optimistic update patterns |
