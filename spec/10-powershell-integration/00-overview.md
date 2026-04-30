@@ -313,7 +313,7 @@ This specification defines a **cross-project reusable** PowerShell integration p
 | Feature | npm | pnpm PnP |
 |---------|-----|----------|
 | Disk Usage | Full copy per project | Shared store, hard links |
-| Install Speed | Moderate | Fast (cached) |
+| Install Speed | ~30 s baseline | ~5 s warm cache (~6× faster) |
 | node_modules | Required (~500MB+) | Not required |
 | Deterministic | package-lock.json | pnpm-lock.yaml |
 
