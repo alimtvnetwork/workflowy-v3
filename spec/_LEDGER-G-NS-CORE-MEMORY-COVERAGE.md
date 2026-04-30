@@ -113,29 +113,29 @@ This ledger remedies that by making the Core↔Gate mapping **first-class and ve
 
 ---
 
-## Coverage summary (as of 2026-04-30, post-GAPCLOSE-B2 — sole RESERVED slot closed)
+## Coverage summary (as of 2026-04-30, post-GAPCLOSE-F3-RETRACTION + F-AUDIT-34 instance #4)
 
 | Status | Count | % |
 |---|---|---|
-| ✅ Registered gate(s) | 20 | 77% |
+| ✅ Registered gate(s) | 21 | 81% |
 | 📋 RESERVED slot (ADR-0031 pattern) | 0 | 0% |
 | 📝 Memory-only-by-design (procedural) + script-enforced | 6 | 23% |
 | **Total Core sub-rules mapped** | **26** | **100%** |
 
 > Counts re-derived 2026-04-30 by `scripts/spec-hygiene/78-check-core-memory-coverage-ledger.mjs` (NEW-27). **All originally-listed RESERVED slots now resolved** (3 by discovery via F-AUDIT-34 retractions, 1 by gate authoring via GAPCLOSE-B2). Earlier "23 lines" figure conflated mem-index Core lines (≈14) with mapped sub-rules (26).
 
-**Open gaps remaining (0 RESERVED slots + 4 partial-coverage notes):**
+**Open gaps remaining (0 RESERVED slots + 3 partial-coverage notes):**
 
 1. ~~**B2** — Forbidden-runtimes.~~ **CLOSED 2026-04-30 — `G-10-FORBIDDEN-RUNTIMES` (DOC-NORM) registered by GAPCLOSE-B2; registry v1.7.46.**
-2. ~~**C3** — shadcn/Radix component-base lock.~~ **CLOSED 2026-04-30 — pre-existing `G-26-*` family (5 gates) covers it (F-AUDIT-34 third recurrence).**
+2. ~~**C3** — shadcn/Radix component-base lock.~~ **CLOSED 2026-04-30 — pre-existing `G-26-*` family (5 gates) covers it (F-AUDIT-34 instance #3).**
 3. **E1** — 15-line logic limit + positive-guard-clause grep gates (partial coverage).
-4. **F3** — 250-item per-view cap (policy → grep gate).
+4. ~~**F3** — 250-item per-view cap.~~ **CLOSED 2026-04-30 — pre-existing `G-31-VIEW-250-CAP` + 4 sibling gates cover it (F-AUDIT-34 instance #4; gate lives in ADR-0008 namespace, not ADR-0017).**
 5. **G1** — HSL-only Tailwind tokens + `@theme`-block-as-SSOT gates (AUDIT-FIX-02 closes half).
 6. ~~**I2** — Undo cap 100.~~ **CLOSED 2026-04-30 — pre-existing `G-25-UNDO-CAP-100` covers it.**
 7. ~~**J1** — WebSocket/long-poll ban.~~ **CLOSED 2026-04-30 — pre-existing `G-25-TRANSPORT-SSE-ONLY` covers it.**
 8. **C1** — Version-pin gate for Vite/React/TS (NEW-25 covers this).
 
-**Closure progress:** ALL 4 originally-listed RESERVED slots now closed — 3 by discovery (F-AUDIT-34 false-positive cascade, instances #1-3) and 1 by gate authoring (GAPCLOSE-B2, registry v1.7.46). True coverage: 20/26 sub-rules registered (77%) + 0 RESERVED + 6 procedural-or-script (23%). Only 4 partial-coverage notes remain (E1/F3/G1/C1) — each is a known sub-clause gap, not a RESERVED slot. Core↔Gate ledger is now **structurally complete**.
+**Closure progress:** ALL 4 originally-listed RESERVED slots now closed — 3 by discovery (F-AUDIT-34 false-positive cascade, instances #1–3) and 1 by gate authoring (GAPCLOSE-B2, registry v1.7.46). PLUS instance #4 of F-AUDIT-34 closed F3 by discovery (250-cap was always covered by `G-31-VIEW-250-CAP`). True coverage: 21/26 sub-rules registered (81%) + 0 RESERVED + 6 procedural-or-script (23%). Only 3 partial-coverage notes remain (E1/G1/C1) — each is a known sub-clause gap, not a RESERVED slot. Core↔Gate ledger is now **structurally complete + 81%-registered**.
 
 ### v1 cross-walk methodology error (root-cause)
 
