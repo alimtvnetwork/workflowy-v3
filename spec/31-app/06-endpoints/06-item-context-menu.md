@@ -43,11 +43,16 @@
 ## EP-ITEMS-COMPLETE — POST `items/{id}/complete`
 
 - **Auth**: `user` with write access.
-- **Request body**: `{ Completed: boolean }`.
-- **Success (200)** `Results`: the updated `Item`.
-- **Errors**: `ERR_NOT_FOUND`, `ERR_FORBIDDEN`.
-- **Side effects**: sets `Completed`, `CompletedAt`. Emits SSE `item-updated`.
-- **AC refs**: `AT-APP-11`.
+- **Request body**: `{ IsCompleted: boolean, ClientCompletedAt?: string }` where `ClientCompletedAt` is an ISO-8601 UTC timestamp captured at the moment the user clicked the checkbox on the client. It is **required when `IsCompleted: true`** to preserve user-action fidelity through offline-queue replay (the queue worker may flush the action minutes/hours after the click — see ADR-0023). When `IsCompleted: false`, `ClientCompletedAt` MUST be omitted (the server clears the column).
+- **Server semantics** (normative):
+  - `IsCompleted: true` → server sets `Items.IsCompleted = 1` and `Items.CompletedAt = MIN(ClientCompletedAt, ServerNow)` (clamped — never accepts future timestamps; falls back to `ServerNow` if `ClientCompletedAt` is absent or > `ServerNow + 5s` skew tolerance).
+  - `IsCompleted: false` → server sets `Items.IsCompleted = 0` and `Items.CompletedAt = NULL` (uncomplete clears history; if you need to preserve prior completions for analytics, that lives in `CompletionLog` per §14.5.6 transactional-emit, not on the row).
+  - `CompletedAt` is governed by §14.2 field-level LWW: a stale `ClientCompletedAt` older than the current `Items.CompletedAtUpdatedAt` is rejected with **no row change** and the existing value is returned.
+- **Success (200)** `Results`: the updated `Item` (carries authoritative `IsCompleted`, `CompletedAt`, `CompletedAtUpdatedAt`, `CompletedAtUpdatedBy`).
+- **Errors**: `ERR_NOT_FOUND`, `ERR_FORBIDDEN`, `ERR_INVALID_TIMESTAMP` (ClientCompletedAt malformed or > ServerNow + 5 s), `ERR_LWW_LOSER` (peer wrote a newer `CompletedAt`; client should refresh).
+- **Side effects**: writes `IsCompleted`, `CompletedAt`, `CompletedAtUpdatedAt`, `CompletedAtUpdatedBy`. Emits exactly one SSE `item-updated` with `ChangedFields: ["IsCompleted", "CompletedAt"]` per §14.5.6 atomic-emit.
+- **Forbidden**: a body shape of `{ Completed: boolean }` alone (without `ClientCompletedAt` when toggling on) — drops user-action fidelity through offline replay and is rejected by the request validator `[gate: G-EP-COMPLETE-CLIENT-TS-REQUIRED]`.
+- **AC refs**: `AT-APP-11` (extend with `AT-APP-11b` covering the offline-replay timestamp-clamp path).
 
 ---
 
