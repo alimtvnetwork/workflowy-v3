@@ -100,7 +100,7 @@ constants.php
 constants-compat.php
 ```
 
-These are exceptions and should be minimal in modern architecture.
+These are exceptions and should be limited to PSR-4-incompatible legacy code paths (≤5% of files).
 
 ---
 

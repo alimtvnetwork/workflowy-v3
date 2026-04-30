@@ -36,7 +36,7 @@ Watch for these signals in AI output:
 
 1. Check [`spec/20-enums-index.md`](../../../20-enums-index.md) for existing enum
 2. If exists: replace string with enum constant
-3. If missing: add to appropriate domain enum table per [`spec/19-glossary.md`](../../../19-glossary.md)
+3. If missing: add to the domain enum table whose §-heading matches the new value's domain per [`spec/19-glossary.md`](../../../19-glossary.md)
 
 ---
 

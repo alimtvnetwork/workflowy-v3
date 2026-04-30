@@ -14,7 +14,7 @@
 | PascalCase values | Enum members/cases use PascalCase (`Production`, not `PRODUCTION` or `production`) |
 | One definition | String representations defined **once**, co-located with the enum type |
 | Exhaustive switch | Every `switch`/`match` on an enum must have a `default` branch |
-| No string unions | Use proper `enum` syntax — never `type Foo = 'a' | 'b'` |
+| No string unions | Use a `proper enum` (TS rule name) — never `type Foo = 'a' | 'b'` |
 
 ---
 
