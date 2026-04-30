@@ -417,3 +417,25 @@ Each fixture includes deterministic seeds, numeric assertions, parameterized row
 **Files:** `.lovable/plan.md` (full rewrite, 223 → ~140 lines, denser).
 
 **Score impact:** +0.1pp (coherence-density improvement; new sessions can now bootstrap from a single non-stale plan; reduces orientation overhead).
+
+---
+
+## Entry — 2026-04-30 — GAP-AMB-03b RESOLVED (ADR-0023..0028 vocabulary)
+
+**Action:** Extended `spec/19-glossary.md` (v1.2.0 → v1.3.0) with a 26-term ADR-0023..0028 Runtime Vocabulary section. Each term cites its authoritative ADR and (where relevant) the enforcing gate.
+
+**Coverage:**
+- **Loader↔queue contract (ADR-0023):** loader↔queue contract, local mirror, queue worker, ClientMutationId.
+- **Persistence (ADR-0021):** undo cap (100 in-memory), offline queue (unbounded IDB).
+- **Mirroring (ADR-0024):** LWW tiebreak, peer group, singleton dissolution.
+- **Realtime (ADR-0025/0027):** SSE read-signal, Last-Event-ID replay, cold gap, ring buffer (SseRing), ServerSeq, TTL reaper, producer completeness.
+- **i18n (ADR-0028):** detection chain (5-tier), regional→language fold, fallback chain, RTL locale, logical CSS properties, typed i18n keys.
+- **Cross-cutting:** branded ID (ADR-0020), SortOrder fractional index (ADR-0016), envelope (ADR-0004/0019), named error boundary (ADR-0017).
+
+**Why this is content-tier (not tooling):** Each entry collapses 1–3 ADR-cross-reads into a single SSOT lookup. New AI sessions can resolve any of the 26 terms without opening the originating ADR — same comprehension-density principle as GAP-DOC-01 sequence diagrams.
+
+**Side-effect:** Surfaces a candidate gate `G-GLOSSARY-ADR-PARITY` — every term that names an ADR MUST stay in sync if the ADR's normative wording changes. Deferred to GAP-AC-AUTHOR-04 batch (paired with the verbatim-from-ADR rule).
+
+**Files:** `spec/19-glossary.md` (+~30 lines, v1.3.0).
+
+**Score impact:** +0.1pp (glossary depth grows 26 terms; comprehension-density chip).
