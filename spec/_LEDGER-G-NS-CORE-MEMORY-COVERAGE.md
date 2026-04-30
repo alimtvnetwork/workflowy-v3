@@ -37,7 +37,7 @@ This ledger remedies that by making the Core↔Gate mapping **first-class and ve
 | # | Core rule | Coverage | Notes |
 |---|---|---|---|
 | B1 | "WordPress plugin (PHP 8.1+ + SQLite + REST)" | ✅ ADR-0002 anchored; multiple `G-10-BOUNDARY-*` gates (NO-PHP-SHELLOUT, NO-WP-RUNTIME, PARITY-*) | Boundary-of-runtime enforcement. ADR-0002 is the load-bearing decision record. |
-| B2 | "Lovable Cloud, Supabase, sql.js, IndexedDB-as-primary, Postgres, MySQL, standalone Node, Cloudflare D1, Go all forbidden" | 📋 `RESERVED: G-NS-FORBIDDEN-RUNTIMES` | No grep gate exists today. Forbidden-runtime detection requires `package.json`-scope ESLint rule. **Gap candidate — file as NEW-27 if promoted.** |
+| B2 | "Lovable Cloud, Supabase, sql.js, IndexedDB-as-primary, Postgres, MySQL, standalone Node, Cloudflare D1, Go all forbidden" | ✅ `G-10-FORBIDDEN-RUNTIMES` (DOC-NORM, registered 2026-04-30 by GAPCLOSE-B2; registry v1.7.46) | Anchors ADR-0002 §Decision lines 50-65. 9 forbidden primary-runtime choices enumerated; detection surface specified for future CI promotion (`scripts/spec-hygiene/NN-check-forbidden-runtimes.mjs`); offline-mirror IndexedDB carve-out preserved. F-AUDIT-34 anti-recurrence methodology applied. |
 
 ### C. Frontend stack
 
@@ -113,16 +113,16 @@ This ledger remedies that by making the Core↔Gate mapping **first-class and ve
 
 ---
 
-## Coverage summary (as of 2026-04-30, post-GAPCLOSE-I2/J1/C3-RETRACTION + NEW-27 hygiene gate)
+## Coverage summary (as of 2026-04-30, post-GAPCLOSE-B2 — sole RESERVED slot closed)
 
 | Status | Count | % |
 |---|---|---|
-| ✅ Registered gate(s) | 19 | 73% |
-| 📋 RESERVED slot (ADR-0031 pattern) | 1 | 4% |
+| ✅ Registered gate(s) | 20 | 77% |
+| 📋 RESERVED slot (ADR-0031 pattern) | 0 | 0% |
 | 📝 Memory-only-by-design (procedural) + script-enforced | 6 | 23% |
 | **Total Core sub-rules mapped** | **26** | **100%** |
 
-> Counts re-derived 2026-04-30 by `scripts/spec-hygiene/78-check-core-memory-coverage-ledger.mjs` (NEW-27). Earlier "23 lines" figure conflated mem-index Core lines (≈14) with mapped sub-rules (26).
+> Counts re-derived 2026-04-30 by `scripts/spec-hygiene/78-check-core-memory-coverage-ledger.mjs` (NEW-27). **All originally-listed RESERVED slots now resolved** (3 by discovery via F-AUDIT-34 retractions, 1 by gate authoring via GAPCLOSE-B2). Earlier "23 lines" figure conflated mem-index Core lines (≈14) with mapped sub-rules (26).
 
 **Open gaps remaining (1 RESERVED slot + 4 partial-coverage notes):**
 
