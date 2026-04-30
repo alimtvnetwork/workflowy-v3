@@ -1,8 +1,8 @@
 # RFC-2119 Wording Policy (SSOT)
 
-> **Version:** 1.1.0
-> **Updated:** 2026-04-30 — Bound 5 prose-MUSTs to new `G-WORDING-*` namespace gates (batch-36); registered formerly-orphan `G-38` as canonical `G-WORDING-AMBIGUOUS-LINT` (legacy alias retained pending F-SCOPE-40-FOLLOWUP rename).
-> **Status:** ✅ Canonical — enforced by `scripts/spec-hygiene/38-check-ambiguous-wording.mjs` (gate `G-WORDING-AMBIGUOUS-LINT`, legacy alias `G-38`)
+> **Version:** 1.2.0
+> **Updated:** 2026-04-30 — F-SCOPE-40-FOLLOWUP batch-2 atomic rename: runner stderr label flipped from legacy `G-38:` to canonical `G-WORDING-AMBIGUOUS-LINT:` in lockstep with ADR-0031 §3.3 negative-fixture regex + `_GATE-REGISTRY.md` row 979. Bound 5 prose-MUSTs to `G-WORDING-*` namespace gates (batch-36, v1.1.0); registered formerly-orphan `G-38` as canonical `G-WORDING-AMBIGUOUS-LINT`.
+> **Status:** ✅ Canonical — enforced by `scripts/spec-hygiene/38-check-ambiguous-wording.mjs` (gate `G-WORDING-AMBIGUOUS-LINT`; legacy alias `G-38` retained only in audit-ledger historical rows + retrospective scripts).
 > **Parent:** [`./00-overview.md`](./00-overview.md)
 
 **Reserved Gate IDs (this file):** `G-WORDING-AMBIGUOUS-LINT`, `G-WORDING-KEYWORD-DEFINITIONS`, `G-WORDING-SOFT-LANGUAGE-REPLACEMENT`, `G-WORDING-DELIBERATION-REPLACEMENT`, `G-WORDING-UPPERCASE` — see [`spec/_GATE-REGISTRY.md`](../_GATE-REGISTRY.md) §Domain-WORDING.

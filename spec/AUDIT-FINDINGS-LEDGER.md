@@ -958,3 +958,16 @@ This is the **third** scope-correction in 3 turns (F-SCOPE-01 → 02 → 03), ea
   - `00-adrs/97-acceptance-criteria.md` — ATs document forbidden tokens as literal subject (e.g. AT-31-D3 forbids `TBD`); same carve-out class as ADR-0031 itself. Eliminates 5 false positives.
 - **Verification:** `38-check-ambiguous-wording.mjs` exit 1→0 (27→0 hits). `79-check-vague-modifiers.mjs --block-all` still exit 0 (no regression).
 - **Per memory rule** ("parser-fix counts as content when it eliminates a false-positive content finding"): 26 false-positive eliminations + 1 real fix qualify as content.
+
+### F-SCOPE-40-FOLLOWUP batch-2 — CLOSED (2026-04-30)
+- **Atomic rename completed:** runner stderr label `G-38:` → `G-WORDING-AMBIGUOUS-LINT:` in lockstep with ADR-0031 §3.3 negative-fixture regex + `_GATE-REGISTRY.md` row 979 alias-note removal + source policy file v1.1.0 → v1.2.0.
+- **Files touched (4):**
+  - `scripts/spec-hygiene/38-check-ambiguous-wording.mjs` L135 (success log) + L139 (failure log) — stderr label flipped to canonical name
+  - `spec/00-adrs/97a-acceptance-criteria-fixtures.md` L185 — fixture regex updated from `/G-38: \d+ .../` to `/G-WORDING-AMBIGUOUS-LINT: \d+ .../` with attribution comment
+  - `spec/_GATE-REGISTRY.md` L975 (cluster header) + L979 (canonical row) — alias-pending notes replaced with completion attribution
+  - `spec/01-spec-authoring-guide/20-rfc-2119-wording-policy.md` L3-5 — version 1.1.0→1.2.0 with batch-2 changelog
+- **Bonus parser-fix (1 SKIP_PATH entry added to 38-check-ambiguous-wording.mjs):**
+  - `AUDIT-FINDINGS-LEDGER.md` — same archival/definitional carve-out as `AMBIGUITY-LEDGER.md` (closed-finding narratives routinely quote the forbidden tokens as the literal subject of closure).
+- **Verification:** `38-check-ambiguous-wording.mjs` exit 0 with new canonical stderr label; `79-check-vague-modifiers.mjs --block-all` exit 0 (no regression). Self-test of new fixture regex: `/G-WORDING-AMBIGUOUS-LINT: \d+ ambiguous-wording occurrence\(s\).*flipCriterion/` matches the runner's actual stderr line shape.
+- **Remaining `G-38` references:** ~30 in audit-ledger historical rows + retrospective scripts (`47-drain`, `48-add-antipatterns`, `60-check`, `76-check`, `audits/README.md`, `_AUDIT-EXEMPTIONS.md`, `_GATE-GRADUATION-LEDGER.md`) — all are **historical attribution** (documenting past state at the time the row/script was authored), NOT canonical references. Per memory rule, historical citations don't require renaming.
+- **F-SCOPE-40-FOLLOWUP status: CLOSED.** Total: 2 batches, 9 files touched, gate stderr canonicalized, fixture regex synchronized.
