@@ -2,7 +2,7 @@
 
 ## Log Context Keys — camelCase
 
-Internal log context array keys (passed to logger calls) MUST use **camelCase**:
+(gate **G-LOG-EXEC-FNREQS**) Internal log context array keys (passed to logger calls) MUST use **camelCase**:
 
 ```php
 // ✅ REQUIRED
@@ -13,7 +13,7 @@ $this->fileLogger->debug('Agent API request', array('agentId' => $id, 'method' =
 
 ## Database Column Keys — PascalCase
 
-Array keys referencing database columns (inserts, updates, WHERE conditions) MUST use **PascalCase** to match the schema:
+(gate **G-DBNAME-BOOL-IS-HAS-PREFIX**) Array keys referencing database columns (inserts, updates, WHERE conditions) MUST use **PascalCase** to match the schema:
 
 ```php
 // ✅ REQUIRED
@@ -22,7 +22,7 @@ $this->db->insert(TableType::Transactions->value, array('PluginSlug' => $slug, '
 
 ## API Response Keys — PascalCase
 
-Array keys in REST API responses (success payloads, error enrichment, health checks) MUST use **PascalCase**:
+(gate **G-04-ENVELOPE-DEBUG-FLAG**) Array keys in REST API responses (success payloads, error enrichment, health checks) MUST use **PascalCase**:
 
 ```php
 // ❌ WRONG — snake_case in API response

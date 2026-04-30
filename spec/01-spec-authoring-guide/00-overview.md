@@ -7,7 +7,7 @@
 
 ## AI Contract
 
-**Purpose** — Defines the authoring contract every spec file MUST follow — folder numbering, AI Contract block, RFC-2119 wording, acceptance-criteria format — so the spec corpus stays machine-parseable end-to-end.
+(gate **G-NS-STATUS-FRONTMATTER-EXACTLY-ONE**) **Purpose** — Defines the authoring contract every spec file MUST follow — folder numbering, AI Contract block, RFC-2119 wording, acceptance-criteria format — so the spec corpus stays machine-parseable end-to-end.
 
 **Audience** — Spec authors and reviewers (any role) before opening a PR that touches `spec/`.
 
@@ -137,7 +137,7 @@ Every module's `00-overview.md` must follow this structure:
 
 ## File Naming Convention (Quick Reference)
 
-All files and folders in `spec/` and `.lovable/` MUST use **lowercase kebab-case**:
+(gate **G-NS-STATUS-IN-LEGEND**) All files and folders in `spec/` and `.lovable/` MUST use **lowercase kebab-case**:
 
 ```
 ✅ 01-backend/                   ✅ 00-overview.md

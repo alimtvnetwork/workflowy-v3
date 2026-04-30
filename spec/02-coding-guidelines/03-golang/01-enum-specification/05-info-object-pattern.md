@@ -103,8 +103,8 @@ var variantInfoMap = map[Variant]VariantInfo{
 
 **Rules:**
 - Map name: `variantInfoMap` (unexported — accessed via methods only)
-- Every variant in `All()` MUST have an entry — enforced by unit test
-- `Invalid` variant MUST have an entry (used as fallback)
+- Every variant in `All()` MUST have an entry — enforced by unit test (gate **G-NS-NO-DEPRECATED-ALIAS**)
+- `Invalid` variant MUST have an entry (used as fallback) (gate **G-NS-NO-DEPRECATED-ALIAS**)
 
 ---
 
@@ -180,7 +180,7 @@ var variantInfoMap = map[Variant]VariantInfo{
 | Rich metadata (icon, CSS, description) | `variantInfoMap` map |
 | `Label()` | Delegates to `Info().Label` (same value as `variantLabels` entry) |
 
-> **Rule:** `variantLabels[v]` and `variantInfoMap[v].Label` MUST return the same string for every variant. Enforce via unit test.
+> **Rule:** `variantLabels[v]` and `variantInfoMap[v].Label` MUST return the same string for every variant (gate **G-NS-NO-DEPRECATED-ALIAS**). Enforce via unit test.
 
 ---
 

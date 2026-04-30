@@ -14,8 +14,8 @@
 **Audience** — DevOps + tooling authors + AI agents executing P7/P9/P10.
 
 **Expected AI Output** —
-- `spec/contract.json` — auto-generated; consumers MUST treat it as read-only
-- Any new tooling MUST read this file (NOT re-parse markdown) for: AT existence checks, EP routing tables, enum value enumeration
+- `spec/contract.json` — auto-generated; consumers MUST treat it as read-only (gate **G-13-FIXTURE-AS-SPEC-SHAPE**)
+- Any new tooling MUST read this file (NOT re-parse markdown) for: AT existence checks, EP routing tables, enum val (gate **G-13-FIXTURE-AS-SPEC-SHAPE**)ue enumeration
 
 **Out of Scope** —
 - Hand-edits to `contract.json` (regenerate via the script)

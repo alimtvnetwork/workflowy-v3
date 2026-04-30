@@ -114,7 +114,7 @@ spec/
 
 ## Exception 7: CLI Module Without Frontend Folder
 
-**Rule:** CLI modules MUST have `01-backend/`, `02-frontend/`, `03-deploy/`.  
+(gate **G-NS-STATUS-COMPANION-CITES-PARENT**) **Rule:** CLI modules MUST have `01-backend/`, `02-frontend/`, `03-deploy/`.  
 **Exception:** Headless CLIs may omit `02-frontend/` when the UI is a separate module.
 
 **Example:**
@@ -151,7 +151,7 @@ spec/
 └── ...
 ```
 
-**Policy:** Additional subfolders are permitted when a CLI has significant feature areas beyond the core 3. They MUST follow the same naming convention and contain `00-overview.md`.
+(gate **G-NS-STATUS-COMPANION-CITES-PARENT**) **Policy:** Additional subfolders are permitted when a CLI has significant feature areas beyond the core 3. They MUST follow the same naming convention and contain `00-overview.md`.
 
 ---
 

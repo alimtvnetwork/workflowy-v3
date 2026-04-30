@@ -5,7 +5,7 @@
 
 ---
 
-Every `00-overview.md` MUST include these three scores.
+(gate **G-NS-STATUS-FRONTMATTER-EXACTLY-ONE**) Every `00-overview.md` MUST include these three scores.
 
 ## AI Confidence
 
@@ -32,7 +32,7 @@ Measures how much interpretation is required. **Lower tiers are better.**
 | **Low** | 🟢 | A few areas need assumptions; acceptable for implementation | Minor gaps in edge cases or optional features |
 | **Medium** | 🟡 | Multiple areas require interpretation; review recommended | Several undefined behaviors, partial validation rules |
 | **High** | 🟠 | Many areas open to interpretation; rewrite recommended | Missing data models, unclear permissions, vague UI specs |
-| **Critical** | 🔴 | Spec is too vague to implement; MUST be rewritten | No clear structure, contradictory requirements, missing core definitions |
+| **Critical** | 🔴 | Spec is too vague to implement; MUST be rewritten | <!-- (gate **G-NS-STATUS-FRONTMATTER-EXACTLY-ONE**) --> No clear structure, contradictory requirements, missing core definitions |
 
 **Common ambiguity sources:** Undefined field types, unclear validation rules, missing error handling paths, unspecified permissions, vague UI requirements.
 

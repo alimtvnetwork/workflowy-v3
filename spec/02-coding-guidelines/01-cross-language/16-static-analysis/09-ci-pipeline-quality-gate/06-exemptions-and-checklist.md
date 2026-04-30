@@ -10,9 +10,9 @@ When a rule must be suppressed:
 
 | Requirement | Description |
 |-------------|-------------|
-| **Inline justification** | Every suppression MUST include a comment explaining why |
-| **PR description** | Exemptions MUST be listed in the PR description |
-| **Time-boxed** | Suppressions MUST include a TODO with a ticket number for removal |
+| **Inline justification** | Every suppression MUST include a comment explaining why | <!-- (gate **G-13-LEDGER-RATIONALE-PROSE**) -->
+| **PR description** | Exemptions MUST be listed in the PR description | <!-- (gate **G-13-LEDGER-RATIONALE-PROSE**) -->
+| **Time-boxed** | Suppressions MUST include a TODO with a ticket number for removal | <!-- (gate **G-13-LEDGER-RATIONALE-PROSE**) -->
 | **No blanket disables** | Never disable a rule for an entire file or project |
 
 ### Suppression Syntax per Language

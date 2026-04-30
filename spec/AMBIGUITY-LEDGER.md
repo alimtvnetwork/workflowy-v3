@@ -148,3 +148,14 @@ At the user-set bar ('mediocre AI, zero follow-up, 100% intent match'), every ac
 **Files:** 16-generic-cli/11-build-deploy, 31-app/97b-acceptance-criteria-fixtures, 32-ui-design/skeletons/00-overview, 31-app/01-features/{00-overview,05a-hotkey-table,09-mirrors,16-search-ranking,18-integrations}, 31-app/07-db-diagram/sql/00-overview, 15-wp-plugin-how-to/{13-admin-ui-patterns/06-modal-anatomy,15-settings-architecture/01-data-model,skeletons/00-overview}, 13-cicd-pipeline-workflows/18-wp-plugin-deploy/03-update-server-contract, 04-database-conventions/06-rest-api-format/00-overview, 02-coding-guidelines/06-ai-optimization/04-condensed-master-guidelines.
 
 **Result:** Unbacked **387 → ?** (see audit). Coverage rises.
+
+
+---
+
+## GAP-AMB-01-76..90 — Cross-domain bind batch (2026-04-30)
+
+**Action:** 15 files bound across PHP/Go/TS coding guidelines, contract.json, ADR-0002/0028, authoring guide (5 files), code-block system. 36 inline gate citations; zero new gates.
+
+**Files:** 02-coding-guidelines/{04-php/03-naming-conventions/03-array-keys, 03-golang/01-enum-specification/05-info-object-pattern, 03-golang/04-golang-standards-reference/03-database-and-structs, 02-typescript/08-typescript-standards-reference/{03-no-magic-values,08-discriminated-unions}, 01-cross-language/16-static-analysis/09-ci-pipeline-quality-gate/06-exemptions-and-checklist}, 22-contract-json, 00-adrs/{0002-wp-plugin-php-sqlite-backend,0028-i18n-locale-strategy}, 01-spec-authoring-guide/{00-overview,09-exceptions,10-mandatory-linter-infrastructure,12-file-length-cap,14-scoring-metrics}, 09-code-block-system/03-syntax-highlighting.
+
+**Result:** Unbacked **342 → ?** (see audit). Coverage rises further.

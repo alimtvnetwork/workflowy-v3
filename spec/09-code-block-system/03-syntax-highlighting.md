@@ -9,7 +9,7 @@
 ## Library
 
 - **highlight.js** — pinned at `^11.10.0` core import (see [`11-highlighter-dependency-pin.md`](./11-highlighter-dependency-pin.md))
-- Theme: **project HSL tokens only** — vendor stylesheets (`highlight.js/styles/*.css`) are FORBIDDEN per the dependency pin. The token-color map below documents which CSS variable each `.hljs-*` class MUST resolve to.
+(gate **G-32-NO-SECOND-STYLING-SYSTEM**) - Theme: **project HSL tokens only** — vendor stylesheets (`highlight.js/styles/*.css`) are FORBIDDEN per the dependency pin. The token-color map below documents which CSS variable each `.hljs-*` class MUST resolve to.
 
 ---
 
@@ -97,7 +97,7 @@ Used for:
 
 ## Syntax Token Colors
 
-All `.hljs-*` and `.tree-*` token colors are mapped to project HSL CSS variables. The **complete CSS ruleset is the single responsibility of [`05-styling.md`](./05-styling.md)** — that file is the SSOT for selectors, exact variables, opacities, and font-style. This file only documents that colors MUST come from project tokens (never vendor stylesheets — see [`11-highlighter-dependency-pin.md`](./11-highlighter-dependency-pin.md)).
+(gate **G-32-NO-SECOND-STYLING-SYSTEM**) All `.hljs-*` and `.tree-*` token colors are mapped to project HSL CSS variables. The **complete CSS ruleset is the single responsibility of [`05-styling.md`](./05-styling.md)** — that file is the SSOT for selectors, exact variables, opacities, and font-style. This file only documents that colors MUST come from project tokens (never vendor stylesheets — see [`11-highlighter-dependency-pin.md`](./11-highlighter-dependency-pin.md)).
 
 ---
 
