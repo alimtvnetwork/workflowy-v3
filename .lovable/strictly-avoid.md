@@ -50,4 +50,7 @@
 
 ---
 
-*Detailed per-rule files (one per rule) live in `.lovable/strictly-avoid/`.*
+*All rules live inline in this file. (The `.lovable/strictly-avoid/` per-rule
+subfolder referenced in earlier drafts was never created; footer pointer
+removed 2026-04-30 by NEW-13-FOLLOWUP Task Q to eliminate documentation-vs-
+reality drift.)*
