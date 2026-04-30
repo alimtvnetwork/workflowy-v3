@@ -33,7 +33,7 @@ Every spec sentence that defines behavior MUST be unambiguous to both AI agents 
 |--------|--------------|
 | `TBD` | A concrete value, OR a `TODO(TICKET-ID)` with an owning ticket, OR a link to the deciding spec section |
 | `FIXME` / `XXX` | `TODO(TICKET-ID)` |
-| "we could", "perhaps", "possibly" | `MAY` (if optional) or `MUST` (if required) |
+| "we could", "perhaps", "possibly" | `MAY` (if optional) or `MUST` (if required) — gate `G-WORDING-SOFT-LANGUAGE-REPLACEMENT` |
 | "may want to", "might want" | `SHOULD` |
 | "ideally", "preferably" | `SHOULD` |
 | "should consider" | `MUST evaluate` (if mandatory deliberation) or `MAY evaluate` |
