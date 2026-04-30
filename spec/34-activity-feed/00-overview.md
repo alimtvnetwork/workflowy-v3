@@ -139,12 +139,13 @@ Specification for **Feature E2 — Activity Feed**: a chronological, filterable 
 
 ## Pending Sub-Specs
 
-| # | Planned File | Description |
-|---|--------------|-------------|
-| 01 | `01-event-schema.md` | `ActivityEvent` table + `EventType` enum |
-| 02 | `02-capture-pipeline.md` | Editor → event emitter wiring |
-| 03 | `03-feed-ui.md` | Filters, pagination, restore action |
-| 04 | `04-retention-and-purge.md` | 30-day policy, purge cron |
+| # | Planned File | Description | Status |
+|---|--------------|-------------|--------|
+| 01 | [`01-event-schema.md`](./01-event-schema.md) | `ActivityEvent` table + `EventType` enum | ✅ **Authored 2026-04-30** |
+| 02 | `02-capture-pipeline.md` | Editor → event emitter wiring | Pending |
+| 03 | `03-feed-ui.md` | Filters, pagination, restore action | Pending |
+| 04 | `04-retention-and-purge.md` | 30-day policy, purge cron | Pending |
+
 
 ---
 

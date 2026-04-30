@@ -294,6 +294,12 @@ Authored `spec/35-enforcement-rules/04-boundary-enforcement.md` (Chokepoint Prin
 
 ---
 
+### Progress note 2026-04-30 — GAP-A3 (batch 1/4) closed
+
+Authored `spec/34-activity-feed/01-event-schema.md` (full DDL with `CHECK` constraint listing exactly 8 EventTypes, 3 indices for page-feed/actor-feed/purge queries, closed `EventType` enum, 8 per-type Zod payload schemas with branded IDs and strict mode, REST envelope sample showing parsed `Payload` not raw `PayloadJson`, cursor-shape regex `^\d{13}_\d+$`, SSE frame format with `Last-Event-ID` replay, 7 anti-patterns, 5 AT binds). All 7 prose MUSTs gate-bound (`G-34-ES-NOT-NULL`, `-PURGE-AFTER-COMPUTED`, `-CLOSED-ENUM`, `-PAYLOAD-VALIDATED`, `-STRICT-PAYLOAD`, `-PARSED-PAYLOAD`, `-CURSOR-SHAPE`) — zero bare-MUST regression. Parent overview row 01 now ✅. 3 of 4 activity-feed sub-specs still pending (02-capture-pipeline, 03-feed-ui, 04-retention-and-purge).
+
+---
+
 
 ## Retraction case studies
 
