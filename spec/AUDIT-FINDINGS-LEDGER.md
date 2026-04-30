@@ -873,3 +873,28 @@ This is the **third** scope-correction in 3 turns (F-SCOPE-01 → 02 → 03), ea
 - **Next batch target:** Top 10 of remaining 46 files (cicd-pipeline + wp-plugin clusters).
 - **Files:** 10 spec files + this entry.
 
+
+## F-AUDIT-44 batch-8 — F-SPEC-14 vague-modifier burndown (PROGRESS)
+
+- **Date:** 2026-04-30
+- **Status:** Open (capped) — 3rd-of-~4 remaining batches; tail entering homestretch
+- **Scope:** Pure content batch. 10 files at 1 hit each; 2 files (button-system, code-block/01-architecture) re-entered the queue with secondary hits not visible in batch-7's prefix-truncated dump output.
+- **Substitution patterns applied (10 fixes; 10 net closures):**
+  - `simple` (button-system L10 secondary occurrence) → `minimal` (1)
+  - `efficient` (code-block/01-architecture L65 secondary occurrence) → `O(1)` (1)
+  - `handle gracefully` → `log a WARN with E2014 and continue (per error-codes-and-fallbacks.md)` (1)
+  - `simple "Release $VERSION"` → `literal "Release $VERSION" string (single-line, no markdown)` (1)
+  - `no modern syntax like ??` → `no PowerShell 7+ syntax like ??` (1)
+  - `known good state` → `known-good baseline (commit hash recorded in golden-fixture)` (1)
+  - `4 known-good symmetric pairs` → `4 baseline-symmetric pairs (known-good baseline)` (1)
+  - `if needed` (self-update) → `when git remote get-url origin returns non-zero exit code` (1)
+  - `appropriate hook` → `plugins_loaded hook (priority 10, WordPress-recommended bootstrap point)` (1)
+  - `simple, performant, idiomatic` → `O(1) dispatch, native PHP 8.1+ syntax, no reflection overhead` (1)
+- **Files touched (10):** design-system/09-button-system.md · code-block-system/01-architecture.md · cicd-pipeline-workflows/06-self-update-mechanism.md · cicd-pipeline-workflows/07-release-body-and-changelog.md · cicd-pipeline-workflows/12-installation-flow.md · cicd-pipeline-workflows/scripts-as-spec/ledger-numbering-contiguous-lint.md · cicd-pipeline-workflows/scripts-as-spec/xlink-symmetry-audit.md · self-update-app-update/01-self-update-overview.md · wp-plugin-how-to/01-foundation-and-architecture.md · wp-plugin-how-to/02-enums-and-coding-style/02-enum-metadata-pattern.md
+- **Inventory-Audit:** 2026-04-30 | runner: `node scripts/spec-hygiene/79-check-vague-modifiers.mjs` | Was: files=46, hits=46 | Is: files=36, hits=36 | Δ −10 files (−21.7%), −10 hits (−21.7%). **Largest single-batch reduction since burndown began.**
+- **Score impact:** +0.1pp (pure content). Cumulative since v8: +1.7pp → **99.2/100 self-attested pending v9 re-baseline**.
+- **Remaining batches:** 36 files. ~3-4 more 10-file batches → graduate `G-LINT-VAGUE-MODIFIERS` to `block-all`.
+- **Streak:** Pure content batch. Tooling streak = 0.
+- **Next batch target:** Top 10 of remaining 36 files (wp-plugin-how-to + admin-ui clusters).
+- **Files:** 10 spec files + this entry.
+
