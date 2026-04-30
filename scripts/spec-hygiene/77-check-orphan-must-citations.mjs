@@ -58,7 +58,9 @@ const SKIP_FILE = (f) =>
 
 const FIXTURE_SLOT_RE = /^\|\s*\*\*(Negative assertion|Then|Side effects|Given|When|Expected [^*]+|Linter command|Response envelope|Expected stderr regex)\*\*\s*\|/;
 const RFC2119_CELL_RE = /^\|\s*[A-Z]+[0-9]+\s*\|.*\|\s*(MUST|SHALL|SHOULD|MAY)\s*\|/;
-const CITATION_RE = /AT-[A-Z]+-|\bG-[A-Z0-9][A-Z0-9-]*\b/;
+// F-SCOPE-49 burndown 2026-04-30: also recognize ADR-NNNN refs as valid same-line
+// citations — they bind a MUST to a load-bearing decision record (parser was missing this class).
+const CITATION_RE = /AT-[A-Z]+-|\bG-[A-Z0-9][A-Z0-9-]*\b|\bADR-\d{4}\b/;
 const MUST_RE = /\b(MUST|SHALL)\b/;
 
 function walk(dir, acc = []) {
