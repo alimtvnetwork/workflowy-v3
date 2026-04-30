@@ -1,16 +1,31 @@
 # Implementation Rules
 
 > **Parent:** [Axios Version Control Policy](./00-overview.md)  
-> **Version:** 1.1.0  
-> **Updated:** 2026-04-02
+> **Version:** 1.2.0  
+> **Updated:** 2026-04-30
+
+---
+
+## 0. Gate Bindings (Normative Index)
+
+This sub-spec is the **primary file** for the four MUST-bound gates below. Every numbered §1–§5 rule that contains a MUST is anchored to exactly one gate; runners cite the gate, not the prose.
+
+| Gate | Tier | Anchors §  | AT(s) | Brief |
+|------|------|-----------|-------|-------|
+| `G-32-AXIOS-EXACT-PIN` | **DOC-NORM** | §1.1 | `AT-AXIOS-01` | `package.json` axios value is an exact semver (no `^`, `~`, `>=`, `*`, `latest`). |
+| `G-32-AXIOS-LOCK-MATCH` | **DOC-NORM** | §1.2 | `AT-AXIOS-02` | `bun.lock` / `package-lock.json` resolved axios version equals the `package.json` declared exact version, and is not in the blocked set (`1.14.1`, `0.30.4`). |
+| `G-32-AXIOS-NO-AUTO-BUMP` | **DOC-NORM** | §2.1, §3.1 | `AT-AXIOS-03`, `AT-AXIOS-04` | Dependabot/Renovate/`npm audit fix`/`npm update` MUST NOT mutate the axios version; PRs that change it without policy citation MUST be rejected. |
+| `G-32-AXIOS-UPGRADE-PROCEDURE` | **DOC-NORM** | §5 | `AT-AXIOS-04` | Any axios version change MUST follow the 6-step upgrade procedure (security review → changelog audit → isolated test → security-lead approval → spec update in `00-overview.md` Approved list → pin + regenerate lock). No shortcut. |
+
+> Runners: `scripts/spec-hygiene/axios-exact-version.mjs` (EXACT-PIN), `scripts/spec-hygiene/axios-blocked-versions.mjs` (LOCK-MATCH), `scripts/spec-hygiene/axios-no-auto-bump.mjs` (NO-AUTO-BUMP). UPGRADE-PROCEDURE has no executable runner — it is a PR-review gate enforced via PR-template citation per `AT-AXIOS-04`.
 
 ---
 
 ## 1. Dependency Declaration
 
-### 1.1 Exact Version Pinning (Mandatory)
+### 1.1 Exact Version Pinning (Mandatory) — gate `G-32-AXIOS-EXACT-PIN` · AT `AT-AXIOS-01`
 
-Axios MUST be declared with an **exact version** — no range symbols allowed.
+Axios MUST be declared with an **exact version** — no range symbols allowed. (Binds `G-32-AXIOS-EXACT-PIN`.)
 
 #### ✅ Correct
 
@@ -32,19 +47,22 @@ Axios MUST be declared with an **exact version** — no range symbols allowed.
 { "axios": "latest" }      // Tag — unpredictable
 ```
 
-### 1.2 Lock File Enforcement
+### 1.2 Lock File Enforcement — gate `G-32-AXIOS-LOCK-MATCH` · AT `AT-AXIOS-02`
+
+The following lock-file invariants MUST hold (binds `G-32-AXIOS-LOCK-MATCH`):
 
 - `package-lock.json` / `bun.lock` MUST reflect the exact pinned version
-- After any install, verify the resolved version matches the declared version
-- If a lock file drift is detected, regenerate the lock file from the pinned version
+- After any install, the resolved version MUST match the declared version
+- The resolved version MUST NOT equal any entry in the blocked set defined in `00-overview.md` (currently `1.14.1`, `0.30.4`)
+- If a lock file drift is detected, the lock file MUST be regenerated from the pinned version
 
 ---
 
 ## 2. Automated Update Tools
 
-### 2.1 Blocked Tools for Axios
+### 2.1 Blocked Tools for Axios — gate `G-32-AXIOS-NO-AUTO-BUMP` · AT `AT-AXIOS-03`
 
-The following tools MUST NOT be allowed to modify the Axios version:
+The following tools MUST NOT be allowed to modify the Axios version (binds `G-32-AXIOS-NO-AUTO-BUMP`):
 
 | Tool | Configuration |
 |------|---------------|
@@ -79,7 +97,7 @@ updates:
 
 ## 3. Code Review Enforcement
 
-### 3.1 Pull Request Checklist
+### 3.1 Pull Request Checklist — gate `G-32-AXIOS-NO-AUTO-BUMP` · AT `AT-AXIOS-04`
 
 Every PR that touches `package.json`, `package-lock.json`, or `bun.lock` MUST be checked for:
 
@@ -136,9 +154,9 @@ echo "✅ PASS: Axios version $CURRENT is compliant"
 
 ---
 
-## 5. Version Upgrade Procedure
+## 5. Version Upgrade Procedure — gate `G-32-AXIOS-UPGRADE-PROCEDURE` · AT `AT-AXIOS-04`
 
-If a new Axios version needs to be adopted:
+If a new Axios version needs to be adopted, the following 6-step procedure MUST be followed (binds `G-32-AXIOS-UPGRADE-PROCEDURE`):
 
 1. **Security review** — Verify the new version against known CVEs
 2. **Changelog audit** — Read the full Axios changelog for breaking changes
