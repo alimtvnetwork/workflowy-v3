@@ -44,7 +44,35 @@ function loadRegistry() {
   const ids = new Set();
   for (const m of text.matchAll(REGISTRY_GATE_RE)) ids.add(m[1]);
   if (ids.size < 100) fail(`registry parsed too few gates: ${ids.size}`);
-  return ids;
+  return { ids, text };
+}
+
+function prefixOf(gateId) {
+  const m = gateId.match(/^G-([A-Z0-9]+)-/);
+  return m ? `G-${m[1]}-` : null;
+}
+
+function buildPrefixAnchorMap(text) {
+  const map = new Map();
+  for (const m of text.matchAll(REGISTRY_ROW_RE)) {
+    const pfx = prefixOf(m[1]);
+    if (!pfx) continue;
+    if (!map.has(pfx)) map.set(pfx, new Set());
+    map.get(pfx).add(m[2]);
+  }
+  return map;
+}
+
+function reportStrict(prefixMap, registryText) {
+  const overlaps = [];
+  for (const [pfx, anchors] of prefixMap) {
+    if (anchors.size < 2) continue;
+    const documented = registryText.includes(`${pfx}*\` prefix is overloaded`);
+    overlaps.push({ pfx, count: anchors.size, documented });
+  }
+  if (overlaps.length === 0) return console.log("STRICT: no namespace overlaps detected");
+  console.log(`STRICT: ${overlaps.length} prefixes span ≥2 anchor sources (advisory — F-AUDIT-34..38 anti-recurrence):`);
+  for (const o of overlaps) console.log(`  ${o.pfx} → ${o.count} anchors${o.documented ? " (documented)" : " ⚠ UNDOCUMENTED — add registry NOTE"}`);
 }
 
 function classifyRow(coverageCell) {
