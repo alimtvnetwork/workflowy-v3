@@ -12,11 +12,13 @@
 
 This is the **eighth** drift-detector in the CI cluster (siblings: G-19 workflow, G-20 pre-commit, G-21 gate-discovery, G-22 error-code catalogue, G-23 audit-log coverage, G-24 role-escalation, G-25 token lifecycle). G-26 watches **five distinct MFA-policy surfaces** that policy v1.0.0 introduced together:
 
-1. **Forbidden-literal prohibition** — no source under `src/` or `wp-plugin/` may contain the literals `'sms'`, `'email_otp'`, `'voice'`, `'remember_mfa'`, `MFA_DISABLED`, or `bypass_mfa` as factor names, cookie names, env-var names, or query parameters.
-2. **Mutation-route freshness declaration** — every PHP route file declaring an HTTP `POST`/`PUT`/`DELETE` handler MUST call either `Mfa::requireFreshness(seconds)` or `Mfa::skipForRead()` (the latter only legal for endpoints policy-marked as read-only mutations like idempotent telemetry).
-3. **Step-up-map parity** — the endpoint→staleness table in `12-mfa-policy.md` §6 MUST match `Auth\Mfa\StepUpMap::MAX_AGE_SECONDS` byte-for-byte (entry count + per-row pattern + seconds value).
-4. **Factor-registry containment** — every call to `mfa_factor_create()` (or its OO equivalent `MfaFactor::create()`) MUST pass a `Kind` argument whose static value is one of `'TOTP'`, `'WebAuthn'`, `'Recovery'`.
-5. **Recovery-code hash strength** — every call to `password_hash` whose first argument is a recovery-code variable (`$code`, `$recoveryCode`, `$recovery_code`) MUST use `PASSWORD_ARGON2ID` as the second argument; `PASSWORD_DEFAULT`, `md5`, `sha1`, `password_hash($_, PASSWORD_BCRYPT, …)` for recovery codes are all forbidden.
+1. **Forbidden-literal prohibition** — no source under `src/` or `wp-plugin/` may contain the literals `'sms'`, `'email_otp'`, `'voice'`, `'remember_mfa'`, `MFA_DISABLED`, or `bypass_mfa` as factor names, cookie names, env-var names, or query parameters. `[G-26-FORBIDDEN-LITERAL]`
+2. **Mutation-route freshness declaration** — every PHP route file declaring an HTTP `POST`/`PUT`/`DELETE` handler MUST call either `Mfa::requireFreshness(seconds)` or `Mfa::skipForRead()` (the latter only legal for endpoints policy-marked as read-only mutations like idempotent telemetry). `[G-26-MUTATION-FRESHNESS]`
+3. **Step-up-map parity** — the endpoint→staleness table in `12-mfa-policy.md` §6 MUST match `Auth\Mfa\StepUpMap::MAX_AGE_SECONDS` byte-for-byte (entry count + per-row pattern + seconds value). `[G-26-STEPUP-MAP-PARITY]`
+4. **Factor-registry containment** — every call to `mfa_factor_create()` (or its OO equivalent `MfaFactor::create()`) MUST pass a `Kind` argument whose static value is one of `'TOTP'`, `'WebAuthn'`, `'Recovery'`. `[G-26-FACTOR-KIND-CLOSED]`
+5. **Recovery-code hash strength** — every call to `password_hash` whose first argument is a recovery-code variable (`$code`, `$recoveryCode`, `$recovery_code`) MUST use `PASSWORD_ARGON2ID` as the second argument; `PASSWORD_DEFAULT`, `md5`, `sha1`, `password_hash($_, PASSWORD_BCRYPT, …)` for recovery codes are all forbidden. `[G-26-RECOVERY-ARGON2ID]`
+
+> **Umbrella note** — the five sub-rule tokens above are structurally covered by `G-26-MFA-DRIFT-COVERAGE` (Umbrella, family=convention-drift) per ADR-0033 §Decision (NEW-29 same-number disambiguation). The `family=convention-drift` qualifier disambiguates this `G-26` from `ADR-0022`'s component-base `G-26-*` namespace AND `ADR-0026`'s LWW `G-26-*` namespace (triple-reserved numeric prefix).
 
 Without G-26, any of five regressions could silently merge:
 
