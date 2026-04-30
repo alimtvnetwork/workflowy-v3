@@ -67,7 +67,7 @@ This ledger remedies that by making the Core↔Gate mapping **first-class and ve
 |---|---|---|---|
 | F1 | "Unified Node interface (id, parentId, content, itemType)" | ✅ `G-20-ITEMTYPE-CLOSED-12`, `G-20-ITEMTYPE-LOWERCASE`, `G-20-ITEMTYPE-TRI-SSOT-LOCKSTEP`, `G-20-NO-MIRROR-ITEMTYPE` | Strong. |
 | F2 | "12 closed ItemTypes (ADR-0015)" | ✅ `G-20-ITEMTYPE-CLOSED-12` | Direct. |
-| F3 | "250-item per-view limit; 1000-item virtualization via @tanstack/react-virtual" | ✅ `G-22-VIRTUALIZATION-1000`, `G-22-VIRTUALIZER-TANSTACK-ONLY`; **250-view-limit** uncovered | The 1000-item virt threshold is gated; the 250-view-cap is policy-only. **Minor gap.** |
+| F3 | "250-item per-view limit; 1000-item virtualization via @tanstack/react-virtual" | ✅ `G-22-VIRTUALIZATION-1000`, `G-22-VIRTUALIZER-TANSTACK-ONLY`, `G-31-VIEW-250-CAP`, `G-31-NO-PARALLEL-NODE`, `G-31-NODE-ID-PERSISTENT`, `G-14-QUEUE-INDEPENDENT-OF-VIEW-CAP`, `G-35-NO-SILENT-TRUNCATION`, `G-EDGE-U6-QUOTA-BLOCK` (8 gates total — the 250-view-cap is anchored at ADR-0008 §D4 not ADR-0017, discovered 2026-04-30 during GAPCLOSE-F3 prep, see F-AUDIT-34 fourth recurrence) | Excellent coverage on both halves. **Originally classified as "minor gap (250-view-limit uncovered)" in v1 of this ledger** (cross-walk grep targeted `G-22-` namespace only, missed `G-31-VIEW-250-CAP` which lives in the `G-31-` ADR-0008 namespace). GAPCLOSE-F3 retracted; no registry change required. |
 | F4 | "SortOrder is fractional-index STRING (base-62, lex), never number" | ✅ `G-21-SORTORDER-STRING-ONLY`, `G-21-SORTORDER-BASE62-ALPHABET`, `G-21-NO-NUMERIC-MIDPOINT`, `G-21-INSERT-NO-SIBLING-MUTATION`, `G-21-LWW-ID-TIEBREAK`, `G-21-REBALANCE-PER-PARENT`, `G-21-REBALANCE-TRIGGER-64B` | Excellent — 7 gates. |
 
 ### G. Design system
