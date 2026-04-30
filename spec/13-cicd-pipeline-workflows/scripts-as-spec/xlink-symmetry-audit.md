@@ -97,7 +97,7 @@ sys.exit(1 if violations else 0)
 ## Test fixtures (golden inputs)
 
 The [baseline ledger](../../00-adrs/_LEDGER-G-00-ADR-XLINK-SYMMETRY-BASELINE.md)
-documents the **4 known-good symmetric pairs** as of 2026-04-28:
+documents the **4 baseline-symmetric pairs** (`known-good` baseline) as of 2026-04-28:
 
 1. `ADR-0024 §D1` ↔ `.lovable/question-and-ambiguity/00-triage-summary.md#01--…`
 2. `ADR-0024 §D2` ↔ `.lovable/question-and-ambiguity/00-triage-summary.md#03--…`

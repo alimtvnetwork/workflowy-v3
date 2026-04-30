@@ -335,7 +335,7 @@ fi
 
 - **Rename-first is mandatory on Windows** — never attempt to overwrite a running binary
 - **Rollback on failure** — if copy fails after all retries, restore the `.old` binary
-- **Best-effort cleanup** — `.old` deletion may fail if locked; handle gracefully
+- **Best-effort cleanup** — `.old` deletion may fail if locked; log a WARN with E2014 and continue (per error-codes-and-fallbacks.md §Best-effort cleanup)
 - **Cross-platform** — rename-first works on all platforms, use it universally
 - **No elevated permissions** — install to user-local directories, not system directories
 - **Version verification** — after update, run `<binary> version` to confirm

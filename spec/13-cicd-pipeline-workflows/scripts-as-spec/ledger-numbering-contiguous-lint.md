@@ -103,7 +103,7 @@ corpus" — the lint operates on a single project-wide ledger, so
 isolation requires the runner-contract gate
 (`G-13-AUDIT-RUNNER-CONTRACT`, pending) to thread an alternate ledger
 path. Until then, this lint is verified by manual review of its
-algorithm against the ledger's known good state.
+algorithm against the ledger's `known-good` baseline (commit hash recorded in the runner's golden-fixture).
 
 ---
 

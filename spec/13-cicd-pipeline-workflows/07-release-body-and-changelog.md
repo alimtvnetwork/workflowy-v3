@@ -56,7 +56,7 @@ echo "$ENTRY" > /tmp/changelog-entry.md
 1. Scan for lines starting with `## `
 2. When the version string is found, start capturing
 3. When the next `## ` heading is found, stop
-4. If no match, fall back to a simple "Release $VERSION" string
+4. If no match, fall back to the literal `"Release $VERSION"` string (single-line, no markdown)
 5. Write to a temp file for multi-line shell compatibility
 
 ### Graceful Fallback
