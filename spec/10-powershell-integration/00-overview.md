@@ -89,7 +89,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## Parameter-Binding Rules
 
-Every PS1 script invoked by the WP plugin MUST follow these rules. The PHP-side `PowerShellRunner` rejects scripts that don't.
+Every PS1 script invoked by the WP plugin MUST follow these rules (umbrella gate `G-10-RULES-CONFORMANCE`). The PHP-side `PowerShellRunner` rejects scripts that don't.
 
 | Rule | Required syntax | Why |
 |---|---|---|
@@ -100,11 +100,11 @@ Every PS1 script invoked by the WP plugin MUST follow these rules. The PHP-side 
 | `$ErrorActionPreference = 'Stop'` is the **second** statement (after `param()`). | Exact string match. | Otherwise non-terminating errors silently produce exit `0`. |
 | Output is **always** `Write-Output` (or implicit return), never `Write-Host`. | `Write-Output $obj` | `Write-Host` writes to the host, not stdout — PHP captures nothing. |
 | Final line is `exit <code>` from the registry below. | `exit 0` / `exit 2` / `exit 7` | Aligns with `16-generic-cli` exit-code registry. |
-| Strings passed from PHP MUST go through `[Management.Automation.Language.CodeGeneration]::EscapeSingleQuotedStringContent` on the PHP side. | N/A in PS1; enforced by `PowerShellRunner::buildCommand()`. | Prevents PS injection via item content. |
+| Strings passed from PHP MUST go through `[Management.Automation.Language.CodeGeneration]::EscapeSingleQuotedStringContent` on the PHP side (gate `G-10-ESCAPE-PS-INPUT`). | N/A in PS1; enforced by `PowerShellRunner::buildCommand()`. | Prevents PS injection via item content. |
 
 ## Argument-Passing Contract (PHP → PS1)
 
-PHP MUST invoke scripts using **named** parameters via `-File`, never `-Command` string concatenation.
+PHP MUST invoke scripts using **named** parameters via `-File`, never `-Command` string concatenation (gate `G-10-USE-FILE-FLAG`).
 
 | Source | Example call | Status |
 |---|---|---|
@@ -124,7 +124,7 @@ Mixing JSON and free text on stdout is a hard error caught by `G-10-STDOUT-PURE`
 
 ## Anti-Patterns
 
-The AI MUST NOT:
+The AI MUST NOT do any of the following (umbrella gate `G-10-ANTIPATTERNS-FORBIDDEN` — composes the 7 sub-rule gates listed below):
 
 | # | Anti-pattern | Why it fails | Gate that catches it |
 |---|---|---|---|
@@ -213,7 +213,7 @@ $envelope = json_decode($result['stdout'], associative: true, flags: JSON_THROW_
 | `PS1-10-09` | `9` | Caller pressed Ctrl-C / received `CancelKeyPress`. |
 | `PS1-10-99` | `1` | Unhandled `[System.Exception]` — bug, page on-call. |
 
-*All values are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings.*
+*All values are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact `PS1-10-NN` strings (gate `G-10-EXIT-CODE-FIXTURE-CITATION`).*
 
 <!-- AUTO-TOC:START -->
 
