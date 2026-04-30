@@ -22,6 +22,8 @@
 | F12 | Session ID must be linkable to error envelope `Attributes.SessionId` | MUST |
 | F13 | Delegated server stack traces must be captured in session | SHOULD |
 
+> ↑ All F1..F13 rows above are leaves of gate **`G-LOG-SESSION-FNREQS`** (umbrella, CI; family=`logging-coverage`). `SHOULD`-priority rows are advisory leaves.
+
 ## 1.2 Non-Functional Requirements
 
 | ID | Requirement | Target |
