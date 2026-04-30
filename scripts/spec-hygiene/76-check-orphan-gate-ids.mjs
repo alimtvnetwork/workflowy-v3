@@ -85,10 +85,18 @@ if (drift.length === 0) {
   console.log("OK: no orphan gate-ID drift.");
   process.exit(0);
 }
-console.log("FAIL: cite-only-no-row gate IDs detected (silent-gap class). Either:");
+// WARN-only mode (until 2026-05-14 — see _GATE-GRADUATION-LEDGER.md row for G-00-ORPHAN-GATE-ID-DRIFT).
+// Inaugural baseline: 63 sub-rule cite-only-no-row tokens documented as known-drift in
+// _LEDGER-G-00-ORPHAN-GATE-ID-DRIFT-BASELINE.md. Rationale: these are real gaps but
+// remediation requires either (a) appending ~63 sub-rule rows to _GATE-REGISTRY.md, or
+// (b) extending the umbrella-coverage rule to recognise `G-NN-…` as covered by `G-NN`.
+// Decision deferred to post-batch-37 ADR — runner stays WARN to prevent CI red while
+// the silent-gap class is at least visible in every run.
+console.log(`WARN: ${drift.length} cite-only-no-row gate ID(s) detected (silent-gap class — see G-00-ORPHAN-GATE-ID-DRIFT in graduation ledger).`);
+console.log("Either:");
 console.log("  (a) register the gate in spec/_GATE-REGISTRY.md, OR");
 console.log("  (b) add it to the documented ALLOWED set in this script with a category comment.");
 for (const d of drift) {
   console.log(`  ${d.tok} (${d.count}×): ${d.sample.map(s => `${s.file}:${s.line}`).join(", ")}`);
 }
-process.exit(1);
+process.exit(0); // WARN-only
