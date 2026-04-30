@@ -43,7 +43,7 @@ This file pins the orchestration sequence. SQL-step authority remains with `07-m
 - The plugin's `wp_options` row `workflowy_schema_version` is `< 2`, OR at least one registered workspace's App DB has `PRAGMA user_version < 2`.
 - The hosting filesystem has **≥ 2× the largest App DB's size** free, for backup files (pre-flight check #4 in `07-migrations.md`).
 - SQLite available to the runtime is **≥ 3.35.0** (required for `ALTER TABLE … DROP COLUMN` in M-117); otherwise the entire batch aborts before any backup is written.
-- No long-running cron is mid-iteration (the trash reaper, per [`05-trash-reaper-flow.md`](./05-trash-reaper-flow.md), uses the same DB; the bootstrap MUST acquire the cron lock before starting).
+- No long-running cron is mid-iteration (the trash reaper, per [`05-trash-reaper-flow.md`](./05-trash-reaper-flow.md), uses the same DB; the bootstrap MUST acquire the cron lock before starting — gate `G-MIGRATE-CRON-LOCK-ACQUIRE`).
 
 ---
 
@@ -144,20 +144,20 @@ The key invariant: **the COMMIT in step 4d is the only irreversible boundary per
 ## Forbidden in implementations
 
 - ❌ Parallelizing per-workspace migration without per-workspace cron locks. Two workers on the same DB file produce SQLite `database is locked` errors at best, corruption at worst.
-- ❌ Aborting the whole batch on a single workspace's failure. Each workspace is independent — `FAILED_EXECUTION` for `W₁` MUST NOT prevent `W₂` from migrating.
+- ❌ Aborting the whole batch on a single workspace's failure. Each workspace is independent — `FAILED_EXECUTION` for `W₁` MUST NOT prevent `W₂` from migrating (gate `G-MIGRATE-WORKSPACE-INDEPENDENCE`).
 - ❌ Skipping the global schema-migration lock (step 3b). Two concurrent activations would race on the snapshot and double-process workspaces.
 - ❌ Bumping `wp_options.workflowy_schema_version = 2` (step 6) before all workspaces are accounted for. Premature marker would skip workspaces in the next bootstrap.
 - ❌ Returning `HTTP 200` on legacy `Mirrors`-table writes after a workspace's migration completes. MUST be **HTTP 410** per `AT-APP-67`.
-- ❌ Returning `HTTP 200` or proceeding with a mirror create on a v1 workspace while migration is mid-flight. MUST be **HTTP 503 + Retry-After** while the per-workspace cron lock is held by the migration worker.
+- ❌ Returning `HTTP 200` or proceeding with a mirror create on a v1 workspace while migration is mid-flight. MUST be **HTTP 503 + Retry-After** while the per-workspace cron lock is held by the migration worker (gate `G-MIGRATE-INFLIGHT-503-RETRY-AFTER`).
 - ❌ Writing the `.pre-v2.bak` to a different volume than the App DB. Filesystem-level atomic-rename rollback requires same-volume placement.
 - ❌ Emitting `migration.complete` SSE per-workspace (would generate N events for one operational action). Emit only the aggregate `migration.batch.complete` at step 6.
-- ❌ Re-using the runtime REST handler's PHP path for the migration's INSERTs. Migration MUST run as raw SQL — no `Auth::hasRole` checks, no SSE side-effects, no idempotency-key bookkeeping.
+- ❌ Re-using the runtime REST handler's PHP path for the migration's INSERTs. Migration MUST run as raw SQL — no `Auth::hasRole` checks, no SSE side-effects, no idempotency-key bookkeeping (gate `G-MIGRATE-RAW-SQL-ONLY`).
 
 ---
 
 ## Observability
 
-The bootstrap MUST emit (at minimum) these structured log lines, each tagged with the global `MigrationBatchId` (a UUID generated at step 3):
+The bootstrap MUST emit (at minimum) these structured log lines, each tagged with the global `MigrationBatchId` (a UUID generated at step 3) — gate `G-MIGRATE-OBSERVABILITY-LOG-LINES`:
 
 | Event | When | Fields |
 |-------|------|--------|
