@@ -928,3 +928,9 @@ This is the **third** scope-correction in 3 turns (F-SCOPE-01 → 02 → 03), ea
 - Patched 10 files: wp-input-validation, generic-cli (00/03/05/17/20-overview), generic-update overview, 31-app features (00/02/03).
 - Substitutions: `Fail fast` → `Fail-fast` (3×, hyphenated keyword); `warn if needed` → explicit WARN-on-default-substitution; `for programmatic access if needed` → `--quiet` + `--json-summary` use case; `simple command` → enumerated read-only commands; `if needed` (repo resolution) → `git remote get-url origin returns non-zero exit code`; `if needed` (split blocks) → "whenever the snippet would otherwise contain identifiers from more than one layer"; `fast scratchpad` → `low-latency scratchpad (≤500 ms cold-open to first keystroke)`; `truncated if needed` → "truncated with ellipsis when its rendered width exceeds the sidebar inner width".
 - Residue: 27 → 20 files / 20 hits (80% of original 100-file residue closed).
+
+### F-AUDIT-44 batch-11 (2026-04-30)
+- Parser-fix: `\bfail-fast\b` allowlist made case-insensitive (eliminated 3 false positives in 15-wp/06, 16-cli/00, 16-cli/03 from batch-10).
+- Patched 10 files: 31-app/01-features/18, 31-app/03-edge-cases/02, 31-app/04-roadmap/01+03, 31-app/05-conventions/02+04+14, 31-app/06-endpoints/14b, 32-ui-design/01+03.
+- Substitutions: `suitable for Siri / lock-screen widgets` → format constraints (≤10 items, title only); `fast, minimal` → `low-latency (≤500 ms cold-open)`; `proper color contrast` → WCAG 2.2 AA ratios; cookie attrs `HttpOnly + Secure + SameSite=Lax` wrapped in backticks; `keeps CI fast` → `single-pass (≤30 s overhead per gate)`; `fail fast` → `fail-fast (exit ≠0 within first 30 s)`; `nice-to-have` → `optional`; `appropriate topics` → enumerated SSE topics per ADR-0025; `fast hot-reload` → `sub-second hot-reload (HMR ≤200 ms vs Webpack/CRA 2–5 s)`; `proper contrast` → WCAG 2.2 AA ratios.
+- Residue: 20 → 7 files / 7 hits (93% of original 100-file residue closed).
