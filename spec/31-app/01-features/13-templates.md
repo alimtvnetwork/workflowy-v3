@@ -74,7 +74,7 @@ User clicks "Make template" in the item context menu → a dialog opens to name 
 | Setting | `OptionNameType` enum case | Default | Sanitizer | Group | Storage |
 |---------|---------------------------|---------|-----------|-------|---------|
 | Show Templates in sidebar | `OptionNameType::SIDEBAR_SHOW_TEMPLATES` → `'workflowy_sidebar_show_templates'` | `true` | `Sanitizer::bool()` | `wf_navigation` | Root DB (per-user) |
-| Default template picker view | `OptionNameType::TEMPLATE_PICKER_VIEW` → `'workflowy_template_picker_view'` | `'recent'` | `Sanitizer::oneOf(['recent','alphabetical','most-used'])` | `wf_templates` | Root DB (per-user) |
+| Default template picker view | `OptionNameType::TEMPLATE_PICKER_VIEW` → `'workflowy_template_picker_view'` | `TemplatePickerViewType::RECENT` | `Sanitizer::enum(TemplatePickerViewType::class)` | `wf_templates` | Root DB (per-user) |
 | Confirm before applying template | `OptionNameType::TEMPLATE_CONFIRM_APPLY` → `'workflowy_template_confirm_apply'` | `true` | `Sanitizer::bool()` | `wf_safety` | Root DB (per-user) |
 | Max templates per workspace | `OptionNameType::TEMPLATE_MAX_PER_WORKSPACE` → `'workflowy_template_max_per_workspace'` | `50` | `Sanitizer::intRange(1, 500)` | `wf_limits` | App DB (per-workspace) |
 
