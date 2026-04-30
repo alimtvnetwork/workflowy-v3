@@ -18,9 +18,9 @@ As a user, I want a consistent navigation chrome that gives me one-click access 
 ---
 
 ### 2.1 Overall Layout
-- The app MUST consist of two main zones: **NavBar** (fixed top bar) and **Page** (scrollable content area below).
-- A collapsible **Sidebar** MUST slide in from the left when the Menu button is clicked.
-- The layout MUST be responsive: sidebar overlays on mobile, side-by-side on desktop.
+- The app MUST consist of two main zones: **NavBar** (fixed top bar) and **Page** (scrollable content area below) (gate `G-LAYOUT-TWO-ZONE-SHELL`).
+- A collapsible **Sidebar** MUST slide in from the left when the Menu button is clicked (gate `G-LAYOUT-SIDEBAR-LEFT-SLIDE`).
+- The layout MUST be responsive: sidebar overlays on mobile, side-by-side on desktop (gate `G-LAYOUT-RESPONSIVE-SIDEBAR-MODE`).
 
 ### 2.2 NavBar — Left Side
 
@@ -46,7 +46,7 @@ As a user, I want a consistent navigation chrome that gives me one-click access 
 
 ### 2.4 Settings Menu (⋮) — Full Dropdown
 
-The dropdown MUST use visual dividers between logical groups.
+The dropdown MUST use visual dividers between logical groups (gate `G-LAYOUT-DROPDOWN-GROUP-DIVIDERS`).
 
 **Group 1 — Resources**
 
@@ -113,7 +113,7 @@ The Handbook is an in-app reference panel accessible from the Settings menu or v
 
 #### 2.5.1 Structure
 
-The sidebar MUST be a ~240px panel that slides in from the left. On mobile, it overlays the content with a dimmed backdrop. Keyboard shortcut: **^L** (Ctrl+L).
+The sidebar MUST be a ~240px panel that slides in from the left. On mobile, it overlays the content with a dimmed backdrop. Keyboard shortcut: **^L** (Ctrl+L) (gate `G-LAYOUT-SIDEBAR-WIDTH-240`).
 
 | Section | Content | Behavior |
 |---------|---------|----------|

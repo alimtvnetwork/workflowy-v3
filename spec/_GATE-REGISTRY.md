@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.32  
-> **Updated:** 2026-04-30 — **batch-40:** extended **Domain-PS1** (PowerShell Integration) with 4 new gates binding 5 bare prose-MUSTs in `spec/10-powershell-integration/00-overview.md` (the 5th MUST cites the pre-existing `G-10-USE-FILE-FLAG`). Added: `G-10-RULES-CONFORMANCE` (DOC-NORM umbrella over 7 sub-rule gates), `G-10-ESCAPE-PS-INPUT` (CI, PHPStan rule on `PowerShellRunner::buildCommand`), `G-10-ANTIPATTERNS-FORBIDDEN` (DOC-NORM umbrella over the 7 anti-pattern gates), `G-10-EXIT-CODE-FIXTURE-CITATION` (CI, hygiene grep). Tier mix: 2 CI + 2 DOC-NORM. Second consecutive non-greenfield batch (extension over seed) — Domain-PS1 already had 9 prior `G-10-*` gates, all 7 anti-pattern leaves now composed by the new umbrella. Prior: 1.7.31 (batch-39 Domain-UPD extension).
+> **Version:** 1.7.33  
+> **Updated:** 2026-04-30 — **batch-41:** seeded greenfield **Domain-LAYOUT** (App Layout Shell) with 5 DOC-NORM gates binding all 5 prose-MUSTs in `spec/31-app/01-features/03-layout-structure.md`. Added: `G-LAYOUT-TWO-ZONE-SHELL`, `G-LAYOUT-SIDEBAR-LEFT-SLIDE`, `G-LAYOUT-RESPONSIVE-SIDEBAR-MODE`, `G-LAYOUT-DROPDOWN-GROUP-DIVIDERS`, `G-LAYOUT-SIDEBAR-WIDTH-240`. Tenth corpus-wide greenfield Domain seed. CI promotion runner filed as **NEW-20** (`scripts/spec-hygiene/check-layout-shell.mjs` — Playwright DOM-snapshot + Tailwind class grep). Tier choice rationale: all 5 are DOM-shape assertions whose canonical enforcement requires a running browser — DOC-NORM at seed; CI after runner. Prior: 1.7.32 (batch-40 Domain-PS1 extension).
 
-- **Total named gates:** 488 (+4 this revision)
+- **Total named gates:** 493 (+5 this revision)
 - **WARN-only gates:** 10 (unchanged)
-- **CI:** 134 (+2 this revision)
+- **CI:** 134 (unchanged)
 - **TEST:** 20 (unchanged)
-- **DOC-NORM:** 129 (+2 this revision)
+- **DOC-NORM:** 134 (+5 this revision)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 51 (unchanged)
+- **Areas covered:** 52 (+1 this revision)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
@@ -867,6 +867,18 @@
 | `G-DATAFILE-COLORS-HEX6-REGEX` | **CI** | [`spec/15-wp-plugin-how-to/17-data-file-patterns.md`](./15-wp-plugin-how-to/17-data-file-patterns.md) | Every leaf string value in `colors.json` MUST match `^#[0-9a-fA-F]{6}$`. Forbids `#abc` (3-digit shorthand), `#abcdef00` (8-digit alpha), `rgb(…)`, `hsl(…)`, named colors. Sub-rule of `G-DATAFILE-COLORS-SCHEMA-CONFORM`. **Note:** distinct from the `--theme`-block HSL-only invariant (ADR-0012) — `colors.json` is the **source-of-truth seed** that gets compiled to HSL tokens at build time; the hex-6 form is the canonical input shape. |
 | `G-DATAFILE-ENDPOINTS-ENUM-PARITY` | **CI** | [`spec/15-wp-plugin-how-to/17-data-file-patterns.md`](./15-wp-plugin-how-to/17-data-file-patterns.md) | Every entry in `endpoints.json` MUST have a corresponding `EndpointType` enum case, AND every `EndpointType` enum case MUST have a corresponding entry in `endpoints.json`. Bidirectional. Same enforcement model as `G-DATAFILE-COLORS-ENUM-PARITY`. Catches the class of bug where REST endpoint registration drifts from the typed router. |
 | `G-DATAFILE-OPENAPI-VERSION-SYNC` | **CI** | [`spec/15-wp-plugin-how-to/17-data-file-patterns.md`](./15-wp-plugin-how-to/17-data-file-patterns.md) | `openapi.json#info.version` MUST equal the version field in `endpoints.json`. Single-string equality check. Catches the class of bug where openapi spec is regenerated but the registry version isn't bumped (or vice versa), causing client SDKs to declare incorrect compatibility. |
+
+### Domain-LAYOUT (App Layout Shell)
+
+> Reserved gate IDs for the app layout shell (NavBar / Sidebar / Page) defined in `spec/31-app/01-features/03-layout-structure.md`. Tenth corpus-wide greenfield Domain. All 5 are DOC-NORM at seed time — promotion to CI deferred until a `scripts/spec-hygiene/check-layout-shell.mjs` runner exists (covers DOM-structure assertions via Playwright snapshot + Tailwind class greps). Tracked as **NEW-20**.
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-LAYOUT-TWO-ZONE-SHELL` | **DOC-NORM** | [`spec/31-app/01-features/03-layout-structure.md`](./31-app/01-features/03-layout-structure.md) | App shell MUST consist of exactly two persistent zones: `<NavBar>` (fixed top bar) and `<Page>` (scrollable content area below). No third sibling permitted at the shell root. |
+| `G-LAYOUT-SIDEBAR-LEFT-SLIDE` | **DOC-NORM** | [`spec/31-app/01-features/03-layout-structure.md`](./31-app/01-features/03-layout-structure.md) | The Sidebar MUST be collapsible and slide in from the **left** edge when the Menu button is clicked. Right-edge or top-edge entry forbidden. |
+| `G-LAYOUT-RESPONSIVE-SIDEBAR-MODE` | **DOC-NORM** | [`spec/31-app/01-features/03-layout-structure.md`](./31-app/01-features/03-layout-structure.md) | Sidebar MUST switch behavior at the mobile/desktop breakpoint: **overlay** (with dimmed backdrop) on mobile, **side-by-side** (page content reflows) on desktop. Single-mode-everywhere implementations forbidden. |
+| `G-LAYOUT-DROPDOWN-GROUP-DIVIDERS` | **DOC-NORM** | [`spec/31-app/01-features/03-layout-structure.md`](./31-app/01-features/03-layout-structure.md) | The Settings Menu (⋮) dropdown MUST render visual dividers (`<DropdownMenuSeparator>`) between each logical group enumerated in §2.4 (Resources / Account / etc). Flat ungrouped lists forbidden. |
+| `G-LAYOUT-SIDEBAR-WIDTH-240` | **DOC-NORM** | [`spec/31-app/01-features/03-layout-structure.md`](./31-app/01-features/03-layout-structure.md) | Sidebar panel width MUST be ~240px (canonical token, tolerance ±8px). Keyboard shortcut **^L** (Ctrl+L) MUST toggle open/close. |
 
 ---
 
