@@ -1,5 +1,14 @@
 # Endpoints — 15 Search
 
+## Database Routing
+
+**Read:** App DB (per-workspace; one SQLite file per workspace) — workspace-scoped FTS over `Items.Content` + `ItemTags`.
+**Cross-workspace search:** fan-out across user's accessible App DBs (`WorkspaceMember` from Root DB → iterate App DBs sequentially). See F-AUD42-16 (open) for fan-out contract.
+**Write:** none.
+
+> **Audit cite:** Section added 2026-04-30 to close **F-AUD42-01** (App-folder audit Phase 4). Per ADR-0019 split-DB rules.
+
+
 > **Version:** 1.0.0
 > **Updated:** 2026-04-27 (UTC+8)
 > **Parent:** [`./00-overview.md`](./00-overview.md)

@@ -1,5 +1,14 @@
 # Endpoints — 12 Multi-Select (Bulk Operations)
 
+## Database Routing
+
+**Read:** Root DB (per-user / workspace-membership scope) for capability checks. **Read:** App DB (per-workspace; one SQLite file per workspace) — `Items` (selection set validation).
+**Write:** App DB (per-workspace; one SQLite file per workspace) — bulk `Items` mutations + `ItemTags` + `Mirrors` in a single transaction per App DB.
+**Cross-workspace selection:** not supported (selection is workspace-scoped).
+
+> **Audit cite:** Section added 2026-04-30 to close **F-AUD42-01** (App-folder audit Phase 4). Per ADR-0019 split-DB rules.
+
+
 > **Version:** 1.0.0
 > **Updated:** 2026-04-26 (UTC+8)
 > **Parent:** [`./00-overview.md`](./00-overview.md)

@@ -1,5 +1,14 @@
 # Endpoints — 15 Roles & Permissions
 
+## Database Routing
+
+**Read:** Root DB (per-user / workspace-membership scope) — `User`, `WorkspaceMember`, `RoleType`, `WorkspaceRoleType`. `Auth::hasRole($userId, $role)` queries Root DB only.
+**Write:** Root DB (per-user / workspace-membership scope) — role grants/revokes (admin only).
+**App DB:** never touched by authz checks (per ADR / cross-DB-joins forbidden).
+
+> **Audit cite:** Section added 2026-04-30 to close **F-AUD42-01** (App-folder audit Phase 4). Per ADR-0019 split-DB rules.
+
+
 > **Version:** 1.0.0
 > **Updated:** 2026-04-26 (UTC+8)
 > **Parent:** [`./00-overview.md`](./00-overview.md)
