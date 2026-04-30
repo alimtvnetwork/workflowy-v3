@@ -151,14 +151,78 @@ if (MODE === "block-all" && totalHits > 0) {
   process.exit(1);
 }
 if (MODE === "block-new") {
-  const newHits = results.filter((r) => {
-    const mtime = statSync(r.rel).mtime;
-    return mtime >= BLOCK_NEW_DATE;
-  });
-  if (newHits.length > 0) {
-    console.error(`\n❌ G-LINT-VAGUE-MODIFIERS (block-new): ${newHits.length} files modified ≥${BLOCK_NEW_DATE.toISOString().slice(0,10)} contain forbidden modifiers`);
-    for (const r of newHits) console.error(`  ${r.rel}  (${r.hits.length} hits)`);
+  const cutoffSec = Math.floor(BLOCK_NEW_DATE.getTime() / 1000);
+  const newOffenders = [];
+  let blameWarnedFiles = 0;
+  for (const r of results) {
+    const lineNumbers = r.hits.map((h) => h.line);
+    const newHitLines = blameNewLines(r.rel, lineNumbers, cutoffSec);
+    if (newHitLines === null) { blameWarnedFiles++; continue; }
+    if (newHitLines.length > 0) {
+      newOffenders.push({ rel: r.rel, lines: newHitLines, hits: r.hits });
+    }
+  }
+  if (blameWarnedFiles > 0) {
+    console.error(`⚠ git-blame unavailable for ${blameWarnedFiles} file(s) — fell back to file mtime gate (set GIT_DIR or run inside a git checkout to enable per-line accuracy)`);
+  }
+  if (newOffenders.length > 0) {
+    console.error(`\n❌ G-LINT-VAGUE-MODIFIERS (block-new, per-line git-blame): ${newOffenders.length} file(s) with HIT LINES authored ≥${BLOCK_NEW_DATE.toISOString().slice(0,10)}`);
+    for (const o of newOffenders) {
+      const sample = o.hits.filter((h) => o.lines.includes(h.line)).slice(0, 3)
+        .map((h) => `L${h.line}:${h.term}`).join(", ");
+      console.error(`  ${o.rel}  (${o.lines.length} new hit-line(s): ${sample}${o.lines.length > 3 ? ", …" : ""})`);
+    }
     process.exit(1);
   }
+  console.log("\n✓ block-new: no hit lines authored on/after cutoff (per-line git-blame).");
 }
 process.exit(0);
+
+/**
+ * Return the subset of `lineNumbers` whose blame author-time is ≥ cutoffSec.
+ * Returns `null` when git-blame is unavailable (untracked file, no git, etc.) —
+ * caller falls back to mtime-based check and emits a WARN.
+ */
+function blameNewLines(relPath, lineNumbers, cutoffSec) {
+  if (lineNumbers.length === 0) return [];
+  try {
+    // Build one `-L N,N` per hit line; --porcelain emits `author-time <epoch>`
+    // per blamed chunk. Single subprocess per file keeps overhead linear.
+    const lArgs = lineNumbers.flatMap((n) => ["-L", `${n},${n}`]);
+    const out = execFileSync("git", ["blame", "--porcelain", ...lArgs, "--", relPath], {
+      encoding: "utf8", stdio: ["ignore", "pipe", "pipe"],
+    });
+    return parseBlamePorcelain(out, lineNumbers, cutoffSec);
+  } catch {
+    // Fallback: file mtime (legacy behavior, less precise)
+    try {
+      const mtimeSec = Math.floor(statSync(relPath).mtime.getTime() / 1000);
+      return mtimeSec >= cutoffSec ? lineNumbers : [];
+    } catch { return null; }
+  }
+}
+
+/**
+ * Parse `git blame --porcelain` output. Each commit-block starts with a header
+ * `<sha> <orig-line> <final-line> <num-lines>`. `author-time <epoch>` follows.
+ * Returns line numbers whose author-time ≥ cutoffSec.
+ */
+function parseBlamePorcelain(out, requestedLines, cutoffSec) {
+  const newLines = [];
+  const lines = out.split("\n");
+  let curFinalLine = null;
+  let curAuthorTime = null;
+  for (const ln of lines) {
+    const header = ln.match(/^[0-9a-f]{40}\s+\d+\s+(\d+)(?:\s+\d+)?$/);
+    if (header) { curFinalLine = parseInt(header[1], 10); continue; }
+    const at = ln.match(/^author-time\s+(\d+)$/);
+    if (at) { curAuthorTime = parseInt(at[1], 10); continue; }
+    if (ln.startsWith("\t") && curFinalLine !== null && curAuthorTime !== null) {
+      if (requestedLines.includes(curFinalLine) && curAuthorTime >= cutoffSec) {
+        newLines.push(curFinalLine);
+      }
+      curFinalLine = null; curAuthorTime = null;
+    }
+  }
+  return newLines;
+}
