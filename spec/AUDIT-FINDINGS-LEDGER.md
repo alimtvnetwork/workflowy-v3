@@ -342,6 +342,8 @@ Authored `spec/33-feedback-report/04-retention-and-export.md` — closes the ent
 
 ---
 
+## Retraction case studies
+
 Long-form post-mortems for findings flipped to `Retracted`. Each entry is a
 worked example of how a future audit could have resurrected the same false
 positive without this ledger — i.e. empirical evidence that F-AUDIT-30 was a
