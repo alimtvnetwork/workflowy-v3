@@ -517,3 +517,31 @@ Each fixture includes deterministic seeds, numeric assertions, parameterized row
 **Files:** spec/19-glossary.md (cohort-exemption table added; v1.3.0 → v1.4.0), 7 spec files edited (8 substitutions), spec/AMBIGUITY-LEDGER.md (this entry).
 
 **Score impact:** +0.1pp (cohort exemption is a structural F-SPEC-14 chip, not a one-time fix; ~55% reduction in legacy backlog count + 8 substitutions chip the remainder by ~10%).
+
+---
+
+## 2026-04-30 — GAP-AMB-04b: P13 orphan stubs reified
+
+**Trigger:** Strict re-audit of "~56 placeholder `97-acceptance-criteria.md` files outside ADR scope" (estimated 2026-04-29). Filter `Status: Pending|Stub|TBD|Placeholder` returned exactly **2** files; deeper inspection of both showed they were already curated to v1.0.0 except for 2 trailing **P13 orphan-stub rows** auto-appended by `scripts/spec-hygiene/45-append-p13-orphan-stubs.mjs` on 2026-04-28.
+
+**True residual placeholder inventory:**
+- `spec/31-app/05-conventions/97-acceptance-criteria.md` §"P13 stub rows" — `AT-AUTH-01`, `AT-RATE-01` (both empty stubs).
+- `spec/31-app/07-db-diagram/97-acceptance-criteria.md` — false positive (the `Status: ✅ Curated` line literally contains the substring "Stub status retired"; no actual stubs present).
+
+**Action:** Promoted both stubs to first-class criteria in new §7 of `spec/31-app/05-conventions/97-acceptance-criteria.md` (v1.0.0 → v1.1.0). Each row now has:
+- Given/When/Then table
+- Negative-case rule (client-trust bypass / silent throttle)
+- Request-body JSON fixture
+- Failure-envelope JSON fixture (PascalCase `Status`/`Attributes`/`Results`/`Errors`)
+- Response headers (verbatim, RFC 6585-conformant for AT-RATE-01)
+- Frontend contract (toast copy + no-auto-retry rule)
+- Test pointers (PHPUnit + Vitest test names starting with the AT id)
+- Cross-references to G-22 / G-24 drift gates and the envelope SSOT
+
+**Total criteria** in the conventions rollup: 199 → **201**.
+
+**Methodology lesson:** The original "~56 placeholders" estimate (carried in the queue since 2026-04-28) over-counted by **27×**. Strict-filter re-audits before scheduling large structural sweeps prevent burning capacity on phantom work. Adding to `mem://preferences/spec-implementability-percentage`: *re-verify scoped inventories with strict status filters before committing to multi-batch backfill plans.*
+
+**Files:** `spec/31-app/05-conventions/97-acceptance-criteria.md` (v1.0.0 → v1.1.0; §7 added, change-log row), `spec/AMBIGUITY-LEDGER.md` (this entry).
+
+**Score impact:** +0.05pp (closes the last named structural backlog item; remaining work is now exclusively long-tail F-SPEC-14 chip-down + the user-blocked re-baseline).
