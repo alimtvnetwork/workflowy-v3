@@ -35,7 +35,7 @@ func GenerateSlug(name string) string {
 
 1. Check if project exists in root.db, create if not
 2. Check if database record exists, create if not
-3. Create directory structure if needed
+3. Create directory structure when `is_dir($path)` returns false
 4. Open SQLite database file
 5. Initialize schema (caller responsibility)
 

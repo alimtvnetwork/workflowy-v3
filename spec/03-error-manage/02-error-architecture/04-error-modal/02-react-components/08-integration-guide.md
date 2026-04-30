@@ -72,7 +72,7 @@ export function unescapeEmbeddedNewlines(text: string): string {
 
 - **Remove PHP-specific code:** `phpStackFrames`, `phpStackTraceLog`, PHP-related UI
 - **Rename "Delegated Server":** Change labels to your architecture (e.g., "API → Microservice")
-- **Simplify if no delegation:** Remove `RequestDetails` 3-hop chain, keep simple request display
+- **Flatten if no delegation:** Remove `RequestDetails` 3-hop chain, keep single-component request display (`<RequestSummary />` only)
 - **Keep the core:** `CapturedError` model, `errorStore`, `GlobalErrorModal` shell, `FrontendSection`, `errorReportGenerator` are fully generic
 
 ---

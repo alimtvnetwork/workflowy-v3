@@ -15,7 +15,7 @@ Users could trigger the publish function multiple times by:
 This caused duplicate ZIP uploads, duplicate activity logs, and race conditions on the remote WordPress site.
 
 ### Root Cause
-No guard existed at the API method level. The publish function was a simple `request()` call that could be invoked any number of times concurrently.
+No guard existed at the API method level. The publish function was a single-line `request()` call (≤3 LOC, zero guard logic) that could be invoked any number of times concurrently.
 
 ### Fix — `src/lib/api/methods.ts`
 ```typescript

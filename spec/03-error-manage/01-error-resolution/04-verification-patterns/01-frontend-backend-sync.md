@@ -53,7 +53,7 @@ cat src/components/shared/BackendStatus.tsx
 **Check for:**
 - ✅ Uses HTTP status code (2xx) as primary indicator
 - ✅ Handles response envelope correctly
-- ✅ Has proper error handling
+- ✅ Wraps every async call in `apperror.Result[T]` and surfaces errors via the named error boundary (per ADR-0017)
 - ✅ Timeout configured appropriately
 
 ### Step 3: Integration Verification

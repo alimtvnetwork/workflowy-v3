@@ -23,7 +23,7 @@ logFunction: (name, args) => {
 - Rolling buffer limits memory (default 100 entries)
 - No deep cloning of arguments
 - Lazy formatting (only on getFormattedChain)
-- ID generation uses fast nanoid
+- ID generation uses `nanoid` (≥150 ns/op per upstream benchmark)
 
 ### 9.3 Benchmarks
 

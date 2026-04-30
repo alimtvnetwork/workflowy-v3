@@ -18,7 +18,7 @@ The platform spans three runtime stacks — a **Go API backend**, a **React SPA 
 - Fragile, per-endpoint parsing logic on the frontend.
 - No structured way to carry diagnostics (stack traces, method chains) from PHP through Go to the browser.
 
-A unified response contract was needed to eliminate these problems without breaking existing consumers during migration.
+A unified response contract was needed to eliminate these problems without breaking existing consumers during the v1→v2 migration window.
 
 ---
 
