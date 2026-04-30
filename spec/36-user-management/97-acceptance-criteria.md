@@ -19,7 +19,7 @@
 
 | ID | Criterion | Source |
 |----|-----------|--------|
-| AT-USERMANAGEMENT-01 | `User` table MUST be singular PascalCase with `UserId` PK as `INTEGER PRIMARY KEY AUTOINCREMENT` (FR-1) — UUID PKs are forbidden because they prevent efficient joins on the per-user shard key. [gate: G-USER-PK-INTEGER-AUTOINC] | [`00-overview.md`](./00-overview.md) |
+| AT-USERMANAGEMENT-01 | `User` table MUST be singular PascalCase with `UserId` PK as `INTEGER PRIMARY KEY AUTOINCREMENT` (FR-1) — UUID PKs are forbidden because INTEGER PKs enable B-tree index lookups in O(log n) with 8-byte keys vs UUID's 16-byte string comparison on the per-user shard key. [gate: G-USER-PK-INTEGER-AUTOINC] | [`00-overview.md`](./00-overview.md) |
 | AT-USERMANAGEMENT-02 | Roles MUST live in a separate `UserRole` table linking `UserId` ↔ `Role` enum (FR-2); storing role columns directly on `User` is a Code-Red privilege-escalation bug per the project memory rule. [gate: G-USER-ROLES-SEPARATE-TABLE] | [`00-overview.md`](./00-overview.md), [`mem://constraints/coding-guidelines`](mem://constraints/coding-guidelines) |
 | AT-USERMANAGEMENT-03 | The `Role` enum MUST be exactly `User`, `Editor`, `Admin`; adding new roles MUST update the enum + capability matrix + this AT — magic-string roles are forbidden. [gate: G-USER-ROLE-ENUM-CLOSED] | [`00-overview.md`](./00-overview.md) |
 

@@ -37,4 +37,4 @@
 
 ## Do NOT edit
 
-This folder is read-only history. All future changes go to the v2 files in the parent folder. If a v1 detail needs to be revived, copy it forward into the appropriate v2 file rather than editing here.
+This folder is read-only history. All future changes go to the v2 files in the parent folder. If a v1 detail needs to be revived, copy it forward into the v2 file whose filename matches the same numbered prefix (e.g. v1/`03-foo.md` → v2/`03-foo.md`) rather than editing here.

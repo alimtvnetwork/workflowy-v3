@@ -12,7 +12,7 @@
 | Labels | All interactive elements MUST have accessible labels (visible text or aria-label) — gate `G-A11Y-INTERACTIVE-LABEL` |
 | Keyboard navigation | Full keyboard support: Tab between sections, arrow keys within lists, Enter to activate, Escape to close |
 | Focus indicators | Visible focus rings on all focusable elements |
-| Tree semantics | Item list MUST use proper tree roles with expanded/collapsed states announced — gate `G-A11Y-TREE-ROLES` |
+| Tree semantics | Item list MUST use ARIA `role="tree"` on the container and `role="treeitem"` with `aria-expanded` (true/false) on each row; expand/collapse state changes MUST be announced via live region — gate `G-A11Y-TREE-ROLES` |
 | Color contrast | MUST meet WCAG 2.1 AA standards (4.5:1 for normal text, 3:1 for large text) — gate `G-A11Y-CONTRAST-WCAG-AA` |
 | Reduced motion | MUST respect user's reduced-motion preference by disabling animations — gate `G-A11Y-REDUCED-MOTION` |
 | Drag-and-drop alternative | Keyboard shortcuts (⌘↑/⌘↓) provide the same reordering capability as drag |

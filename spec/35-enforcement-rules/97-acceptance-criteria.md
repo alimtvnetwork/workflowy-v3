@@ -50,7 +50,7 @@
 | ID | Criterion | Source |
 |----|-----------|--------|
 | AT-ENFORCEMENTRULES-11 | Critical generic helpers MUST have type-tests (e.g., `expectTypeOf` from `expect-type` or vitest's built-in); missing type-tests on generics fail review because runtime tests can't catch type regressions. | [`00-overview.md`](./00-overview.md) |
-| AT-ENFORCEMENTRULES-12 | Critical helpers MUST have property-based tests (e.g., fast-check) covering at least: identity, idempotence (where applicable), and inverse properties; example-only coverage fails review. | [`00-overview.md`](./00-overview.md) |
+| AT-ENFORCEMENTRULES-12 | Critical helpers MUST have property-based tests (e.g., `fast-check`) covering at least: identity, idempotence (where applicable), and inverse properties; example-only coverage fails review. | [`00-overview.md`](./00-overview.md) |
 
 ### Cross-cutting
 
