@@ -1,5 +1,8 @@
 # Roles & Permissions
 
+> **API Contract:** See [`spec/31-app/06-endpoints/15-roles-and-permissions.md`](../06-endpoints/15-roles-and-permissions.md) for the endpoint surface that backs this feature (request/response envelopes, status codes, error shapes). Bidirectional cross-link added 2026-04-30 to close **F-AUD42-04** (App-folder audit Phase 5).
+
+
 > **Version:** 1.6.0
 > **Created:** 2026-04-25 (UTC+8)
 > **Updated:** 2026-04-26 — v1.6.0 atomized Acceptance Tests to canonical inline `AT-ROLES-01..10` prefix per dispatch index, with explicit `AT-APP-21..23` rollup column and frozen `AT-APPF-76..85` legacy column (closes polish #4 prefix-drift). Prior: AUDIT-02a snake_case → PascalCase rename. Prior: APP-FIX-08 aspirational-paths disclaimer. Prior: APP-FIX-04 `Auth::hasRole()` contract. v1.2.0 Storage. v1.1.0 Enum Sources.

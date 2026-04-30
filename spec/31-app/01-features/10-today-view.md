@@ -1,5 +1,8 @@
 # Today View Specification
 
+> **API Contract:** See [`spec/31-app/06-endpoints/10-today-view.md`](../06-endpoints/10-today-view.md) for the endpoint surface that backs this feature (request/response envelopes, status codes, error shapes). Bidirectional cross-link added 2026-04-30 to close **F-AUD42-04** (App-folder audit Phase 5).
+
+
 > **Version:** 2.1.0
 > **Updated:** 2026-04-26 — APP-FIX-05: Settings Keys (Seedable Config) section added (closes audit F-04 for this file).
 > **Parent:** [00-overview.md](./00-overview.md)

@@ -1,5 +1,8 @@
 # Template Application Flow
 
+> **API Contract:** See [`spec/31-app/06-endpoints/13-templates.md`](../06-endpoints/13-templates.md) for the endpoint surface that backs this feature (request/response envelopes, status codes, error shapes). Bidirectional cross-link added 2026-04-30 to close **F-AUD42-04** (App-folder audit Phase 5).
+
+
 > **Version:** 2.4.0
 > **Updated:** 2026-04-27 — Linked addendum `13b-templates-snapshot-semantics.md` (one-shot snapshot copy; no `TemplateId` FK; mirrors collapse on instantiation). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-05: Settings Keys (Seedable Config) section added (closes audit F-04 for this file). v2.1.0 added Storage section.
 > **Parent:** [00-overview.md](./00-overview.md)

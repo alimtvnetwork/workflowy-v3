@@ -1,5 +1,8 @@
 # Board View Specification
 
+> **API Contract:** See [`spec/31-app/06-endpoints/07-board-view.md`](../06-endpoints/07-board-view.md) for the endpoint surface that backs this feature (request/response envelopes, status codes, error shapes). Bidirectional cross-link added 2026-04-30 to close **F-AUD42-04** (App-folder audit Phase 5).
+
+
 > **Version:** 2.6.0
 > **Updated:** 2026-04-27 — Linked sibling SSOT `07b-dashboard-view.md` (same data, depth=1 card-grid presentation). Prior: 2026-04-26 — AUDIT-02a: snake_case → PascalCase rename of DB identifiers in code spans (closes audit F-01 for this file). Prior: 2026-04-26 — APP-FIX-08: aspirational-paths disclaimer added to Component Contract (closes audit F-07 for this file). Prior: 2026-04-26 — APP-FIX-03: Realtime Transport callout added (closes audit F-05 for this file)
 > **Parent:** [00-overview.md](./00-overview.md)
