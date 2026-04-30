@@ -318,6 +318,12 @@ Authored `spec/34-activity-feed/04-retention-and-purge.md` — closes the entire
 
 ---
 
+### Progress note 2026-04-30 — GAP-A4 (batch 1/4) opened
+
+Authored `spec/33-feedback-report/01-data-model.md` — first of 4 sub-specs in the `33-feedback-report/` cluster. Defines the `FeedbackReport` SQLite schema in dedicated `feedback.db` (Split-DB pattern): 11 PascalCase columns, `FeedbackReportId INTEGER PRIMARY KEY AUTOINCREMENT`, three closed enums (`FeedbackType` 4-value, `FeedbackStatus` 6-value with explicit transition matrix), pre-computed `PurgeAfter = SubmittedAt + 90d` column with covering index `IX_FeedbackReport_PurgeAfter`, and a `.strict()` Zod `Diagnostics` sub-shape with hard PII boundary (no `Email`/`IpAddress`/`Token`/`Cookie`/`Content`/`Body` keys; `BreadcrumbPath` capped at 64; `RouteHref` query-string-stripped). Encoded `ALLOWED_TRANSITIONS` as `Record<FeedbackStatus, ReadonlyArray<FeedbackStatus>>` with terminal states (`Resolved`/`WontFix`/`Duplicate`) immutable; admin UI MUST consume this SSOT (no duplicate transition table). Bound 12 MUSTs to gates `G-33-DM-PK-AUTOINCREMENT`, `-OWNERID-BRANDED`, `-ENUM-CLOSED`, `-LENGTH-MIRROR` (CI cross-check SQL↔Zod), `-PURGE-AFTER-COMPUTED`, `-NO-INLINE-BLOB`, `-ENUM-COORDINATED-MIGRATION`, `-TERMINAL-IMMUTABLE`, `-TRANSITION-SSOT`, `-DIAG-STRICT`, `-BREADCRUMB-CAP`, `-DIAG-SCHEMA-SSOT` (full 14-gate family in `_GATE-REGISTRY.md` adds `-ROUTE-NO-QUERY` + `-ENUM-DERIVED-FROM-ZOD`). Linked 4 ATs (`AT-FEEDBACKREPORT-01..04` for schema shape, enum closure, transition matrix rejection, PII rejection at Zod boundary). 6 anti-patterns documented. Parent overview row 01 now ✅. 3 of 4 feedback-report sub-specs still pending (02-submission-flow, 03-admin-review-ui, 04-retention-and-export).
+
+---
+
 ## Retraction case studies
 
 Long-form post-mortems for findings flipped to `Retracted`. Each entry is a
