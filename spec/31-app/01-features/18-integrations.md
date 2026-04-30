@@ -214,3 +214,11 @@ The Acceptance Tests above ship inline per the F-template; the canonical AT-INT-
 **See also:**
 
 - [`../../36-user-management/01-account-and-settings.md`](../../36-user-management/01-account-and-settings.md) — Settings panel hosts the *Integrations* entry point and PAT manager (F5)
+
+---
+
+## Settings Surface
+
+- **Persisted booleans introduced by this feature:** None.
+- **N/A justification:** Cross-cutting integration index — defers settings to each integration's own surface.
+- **Compliance:** Satisfies the MUST in [`00-overview.md:140`](./00-overview.md) by explicit declaration. Any future boolean added here MUST route through `Sanitizer::bool()` and be enumerated in an `OptionNameType` case (see APP-FIX-05).
