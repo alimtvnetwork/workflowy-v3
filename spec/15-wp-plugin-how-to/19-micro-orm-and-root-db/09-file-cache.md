@@ -2,7 +2,7 @@
 
 > **Parent:** [Phase 19 overview](./00-overview.md)
 
-`FileCache` manages MD5-based file hash caching for efficient sync comparisons. It follows the standard **shell class + trait decomposition** pattern.
+`FileCache` manages MD5-based file hash caching to avoid re-hashing unchanged files (target: <5 ms cache-hit lookup vs ~50 ms `md5_file()` cold compute on a 1 MB file). It follows the standard **shell class + trait decomposition** pattern.
 
 ## Architecture
 
