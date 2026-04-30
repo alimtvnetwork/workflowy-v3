@@ -64,7 +64,7 @@ func NewHTTPClient() *http.Client {
 
 ## Proxy Support
 
-The HTTP client MUST respect standard proxy environment variables:
+(gate **G-17-NO-SWALLOW**) The HTTP client MUST respect standard proxy environment variables:
 
 | Variable | Purpose |
 |----------|---------|
@@ -88,7 +88,7 @@ wget -q "$url" -O "$output"
 
 ## Retry Policy
 
-All network requests MUST implement retry with exponential backoff:
+(gate **G-17-NO-SWALLOW**) All network requests MUST implement retry with exponential backoff:
 
 | Parameter | Value |
 |-----------|-------|
@@ -126,7 +126,7 @@ func downloadWithRetry(client *http.Client, url, dest string) error {
 
 ## User-Agent
 
-All HTTP requests MUST include a `User-Agent` header:
+(gate **G-17-NO-SWALLOW**) All HTTP requests MUST include a `User-Agent` header:
 
 ```
 User-Agent: <binary>-updater/<version>

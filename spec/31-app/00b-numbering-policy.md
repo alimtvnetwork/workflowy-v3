@@ -20,12 +20,12 @@
 
 - A primary file MAY have lowercase letter suffixes for **sub-feature splits** that share the parent's domain.
 - Order: `Na` before `Nb` before `Nc`. Skipping a letter (e.g., `Na` then `Nc`) is **forbidden**.
-- A sub-feature MUST cite its parent in the front-matter header: `> **Parent feature:** [...](./NN-parent.md)`.
-- Sub-features inherit the parent's domain — they MUST NOT introduce a new top-level concern (use a new primary number for that).
+- A sub-feature MUST cite its parent in the front-matter header: `> **Parent feature:** [...](./NN-parent.md)` (gate **G-NS-STATUS-COMPANION-CITES-PARENT**).
+- Sub-features inherit the parent's domain — they MUST NOT introduce a new top-level concern (use a new primary number for that) (gate **G-NS-STATUS-COMPANION-CITES-PARENT**).
 
 ### 1.3 Intentional gaps (numbering-skip log)
 
-Gaps in the primary sequence are **allowed** but MUST be enumerated here with rationale. Re-using a skipped number later requires updating this log.
+(gate **G-00-ADR-NUMBERING**, applied here to feature-numbering by analogy) Gaps in the primary sequence are **allowed** but MUST be enumerated here with rationale. Re-using a skipped number later requires updating this log.
 
 | Folder | Skipped # | Successor | Rationale | Date |
 |--------|-----------|-----------|-----------|------|

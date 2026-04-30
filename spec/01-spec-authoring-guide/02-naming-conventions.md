@@ -130,7 +130,7 @@ Some modules contain non-markdown files. These follow relaxed naming:
 
 ## Metadata Header
 
-Every `.md` file MUST begin with a standardized metadata header in **blockquote form**:
+(gate **G-NS-STATUS-FRONTMATTER-EXACTLY-ONE**) Every `.md` file MUST begin with a standardized metadata header in **blockquote form**:
 
 ```markdown
 # Title of the Document
@@ -144,9 +144,9 @@ Every `.md` file MUST begin with a standardized metadata header in **blockquote 
 ### Rules
 
 - **H1 title** — First line, exactly one per file
-- **Blockquote prefix** — Both `Version` and `Updated` lines MUST be prefixed with `> ` (canonical form, matches `mem://docs/specifications`)
+- **Blockquote prefix** — Both `Version` and `Updated` lines MUST be prefixed with `> ` (gate **G-NS-STATUS-FRONTMATTER-EXACTLY-ONE**) (canonical form, matches `mem://docs/specifications`)
 - **Version** — Semantic versioning (Major.Minor.Patch)
-- **Updated** — ISO date format (YYYY-MM-DD). The label MUST be `Updated:` — never `Last Updated:`
+- **Updated** — ISO date format (YYYY-MM-DD). The label MUST be `Updated:` — never `Last Updated:` (gate **G-NS-STATUS-FRONTMATTER-EXACTLY-ONE**)
 - **Horizontal rule** — Separates metadata from content
 
 ### Optional Metadata Fields

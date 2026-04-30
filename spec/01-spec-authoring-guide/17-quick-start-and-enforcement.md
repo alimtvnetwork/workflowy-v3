@@ -9,7 +9,7 @@
 
 > 🔴 **MANDATORY — Commit to Memory Before Implementation**
 >
-> After reading this spec authoring guide and the linked coding guidelines, you **MUST** internalize and retain the following rules in your working memory for the entire session. These are non-negotiable and must be applied to every code change, every file you create, and every review you perform:
+(gate **G-NS-STATUS-IN-LEGEND**) > After reading this spec authoring guide and the linked coding guidelines, you **MUST** internalize and retain the following rules in your working memory for the entire session. These are non-negotiable and must be applied to every code change, every file you create, and every review you perform:
 >
 > 1. **Error Management is the highest priority** — error handling patterns from [03-error-manage/](../03-error-manage/00-overview.md) must be implemented from the very first line of code. Never defer error handling to "later."
 > 2. **Boolean and if/else naming** — follow the strict boolean naming conventions (`is`/`has`/`should` prefixes, positive-only names, no negatives). Extract complex conditions into named variables. See [Coding Guidelines](../02-coding-guidelines/00-overview.md).
@@ -35,7 +35,7 @@
 
 ## Folder Structure Enforcement
 
-When asked to "follow the spec authoring guideline and fix the folder structure," an AI agent MUST perform these steps in order:
+(gate **G-NS-STATUS-IN-LEGEND**) When asked to "follow the spec authoring guideline and fix the folder structure," an AI agent MUST perform these steps in order:
 
 ### Step 1 — Verify Root Structure
 
@@ -69,7 +69,7 @@ When asked to "follow the spec authoring guideline and fix the folder structure,
 3. Run the link scanner: `node linter-scripts/generate-dashboard-data.cjs`
 4. Confirm zero broken links
 
-> **This process is NOT optional.** If inconsistencies exist, they MUST be fixed before any new spec work begins.
+> **This process is NOT optional.** If inconsistencies exist, they MUST be fixed before any new spec work begins (gate **G-NS-STATUS-IN-LEGEND**).
 
 ---
 

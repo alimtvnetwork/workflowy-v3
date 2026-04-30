@@ -15,7 +15,7 @@ Rules for designing database schemas that are efficient, maintainable, and corre
 
 ### 1.1 Always Use Integer Primary Keys
 
-Primary keys MUST be integer-based. Choose the **smallest type** that fits the expected data volume:
+(gate **G-DBNAME-BOOL-IS-HAS-PREFIX**, applied here as DB-naming/typing invariant) Primary keys MUST be integer-based. Choose the **smallest type** that fits the expected data volume:
 
 | Expected Rows (10-year horizon) | Key Type | Range | Storage |
 |--------------------------------|----------|-------|---------|
@@ -86,7 +86,7 @@ Apply the smallest-type principle to ALL columns, not just primary keys:
 
 ### 3.1 The Rule
 
-> **Any column that contains a repeated set of values MUST be extracted into a separate lookup table with a foreign key relationship.**
+> **Any column that contains a repeated set of values MUST be extracted into a separate lookup table with a foreign key relationship (gate **G-24-DDL-SINGULAR-LOCKED**).**
 
 This applies to: status types, file types, category types, role types, priority levels, etc.
 
@@ -183,7 +183,7 @@ All naming conventions (PascalCase) apply equally to MySQL.
 
 ## 5. Schema Documentation
 
-Every database schema MUST be documented with:
+(gate **G-24-DDL-SINGULAR-LOCKED**) Every database schema MUST be documented with:
 
 1. **Table purpose** — one-line description
 2. **Column definitions** — name, type, constraints, description

@@ -8,13 +8,13 @@
 
 ## Purpose
 
-Defines (a) the canonical `.distignore` contract that excludes development files from the release ZIP and (b) the exact directory tree that MUST appear inside `workflowy-v{semver}.zip`.
+(gate **G-10-BOUNDARY-DISTIGNORE-EXCLUDED**) Defines (a) the canonical `.distignore` contract that excludes development files from the release ZIP and (b) the exact directory tree that MUST appear inside `workflowy-v{semver}.zip`.
 
 ---
 
 ## Canonical `.distignore`
 
-This file MUST live at the repository root. Lines starting with `#` are comments; blank lines ignored. Patterns are passed verbatim to `rsync --exclude-from=`.
+This file MUST live at the repository root. Lines starting with `#` are comments; blank lines ignored. (gate **G-10-BOUNDARY-DISTIGNORE-EXCLUDED**) Patterns are passed verbatim to `rsync --exclude-from=`.
 
 ```gitignore
 # === Source-of-truth files (compiled into dist/) ===
@@ -77,7 +77,7 @@ coverage/
 mem/
 ```
 
-> **Rule (P1, P2):** `dist/` is **NOT** excluded — it MUST be present inside `assets/dist/` in the final ZIP. The release script copies it explicitly during stage 5 (Assemble).
+> **Rule (P1, P2):** `dist/` is **NOT** excluded — it MUST be present inside `assets/dist/` in the final ZIP. (gate **G-10-BOUNDARY-DISTIGNORE-EXCLUDED**) The release script copies it explicitly during stage 5 (Assemble).
 
 ---
 

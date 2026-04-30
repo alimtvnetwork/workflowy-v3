@@ -181,11 +181,11 @@ Every coding-guideline AT is satisfied when the following four assertions all ho
 | **Linter command** | The command listed in the prose row's source spec OR — if absent — the project-wide gate: `node scripts/spec-hygiene/00-run-all.mjs && npm run lint && npm run typecheck`. |
 | **Expected exit code** | `0` when the codebase complies; `1` when a violating fixture file is added (used as a meta-test of the rule). |
 | **Expected stderr regex** | `/<RULE-ID>:\s+.+/` matching the rule's documented error format (e.g. `boolean-naming: variable 'flag' must start with is/has/should/can/will`). |
-| **Then** | Adding the rule's negative example (`invalid:` block from the rule meta) MUST produce exit code `1` AND a stderr line that matches the regex. Removing the violation MUST restore exit code `0`. |
+| **Then** | Adding the rule's negative example (`invalid:` block from the rule meta) MUST produce exit code `1` AND a stderr line (gate **G-13-LEDGER-RUNNER-CLEAN-OUTPUT**) that matches the regex. Removing the violation MUST restore exit code `0`. |
 | **Side effects** | none (pure static analysis). |
-| **Negative assertion** | The rule MUST NOT silently pass on its documented `invalid:` example. The rule MUST NOT fail on its documented `valid:` example. |
+| **Negative assertion** | The rule MUST NOT silently pass on its documented `invalid:` example. The rule MUST NOT fail on its documented (gate **G-13-LEDGER-RUNNER-CLEAN-OUTPUT**) `valid:` example. |
 
-This template subsumes every row whose `Criterion` text starts with one of: `MUST … live`, `MUST … start with`, `MUST … be`, `MUST NOT …`, `is forbidden`, `must follow`, `must use`, `must enforce`, `MUST be tagged with`, `MUST be hashed with`. Per `spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md` § "Two AT shapes that opt out of the JSON rows" → row 2.
+(gate **G-13-LEDGER-RUNNER-CLEAN-OUTPUT**) This template subsumes every row whose `Criterion` text starts with one of: `MUST … live`, `MUST … start with`, `MUST … be`, `MUST NOT …`, `is forbidden`, `must follow`, `must use`, `must enforce`, `MUST be tagged with`, `MUST be hashed with`. Per `spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md` § "Two AT shapes that opt out of the JSON rows" → row 2.
 
 ---
 

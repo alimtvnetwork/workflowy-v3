@@ -36,7 +36,7 @@ The prose context for each shortcut lives in [`05-interactions.md`](./05-interac
 
 ## Notation
 
-- **Mod** = `⌘` on macOS, `Ctrl` on Windows/Linux. Implementation MUST detect `navigator.platform`.
+- **Mod** = `⌘` on macOS, `Ctrl` on Windows/Linux. Implementation MUST detect `navigator.platform` (gate **G-22-BOUNDARY-NAMES-CLOSED**).
 - **Shift** = `⇧`. **Alt** = `⌥` (macOS) / `Alt` (other).
 - Key codes follow the W3C UI Events `KeyboardEvent.key` spec (e.g. `Enter`, `Backspace`, `Tab`, `ArrowUp`, `s`).
 - **Scope** values: `global` (anywhere), `editor` (focused inside an item row), `search-overlay` (search modal open), `tree` (tree view focused, no item editing).
@@ -68,7 +68,7 @@ The prose context for each shortcut lives in [`05-interactions.md`](./05-interac
 | HK-19 | `⌘.` | `Ctrl+.` | `.` | `mod` | editor | `item.context-menu` | Open item context menu | — |
 | HK-20 | `Escape` | `Escape` | `Escape` | — | editor | `editor.blur` | Blur editor, focus tree row | — |
 
-**Total: 20 bindings.** Implementation MUST register all 20. Adding an unlisted combo is a hygiene violation; removing one is a regression.
+**Total: 20 bindings.** Implementation MUST register all 20. Adding an unlisted combo is a hygiene violation; removing one is a regression (gate **G-22-BOUNDARY-NAMES-CLOSED** — closed-list contract).
 
 ---
 
