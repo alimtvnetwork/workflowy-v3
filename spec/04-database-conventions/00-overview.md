@@ -174,7 +174,7 @@ ADR-0026 §D6 mandates that the PHP serializer translate certain DDL column name
 | `OwnerUserId`               | `OwnerId`             | `Item`, `Template`, `Tag`, `Workspace` (App DB); `Workspace.OwnerUserId` (Root DB) | ADR-0020 (branded `OwnerId`) + ADR-0026 §D6 |
 
 **Rules (column-level):**
-- Adding a new table whose owner-of-record FK is the user MUST use the DDL spelling `OwnerUserId` (matches existing 4-table convention) **and** MUST appear as a row above so the alias-bridge stays exhaustive.
+- Adding a new table whose owner-of-record FK is the user MUST use the DDL spelling `OwnerUserId` (matches existing 4-table convention) **and** MUST appear as a row above so the alias-bridge stays exhaustive (gate `G-04-OWNERUSERID-DDL-CANONICAL`).
 - The PHP serializer is the **single egress translator**: no view, no ad-hoc REST callback may emit `OwnerUserId` on the wire.
 - The reverse direction (wire `OwnerId` → DDL `OwnerUserId`) applies on REST request **ingress** (e.g. POST/PATCH bodies); see `EP-*` request schemas.
 - Adding a new column to this bridge MUST also: (a) add a CI grep gate ensuring the DDL spelling is absent from `06-endpoints/**`, (b) extend `AT-WIRE-EGRESS-01` to assert the new wire key, (c) bump `_GATE-REGISTRY.md`.
