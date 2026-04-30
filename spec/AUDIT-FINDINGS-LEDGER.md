@@ -110,7 +110,7 @@ Out-of-vocabulary statuses (`Pending`, `WIP`, `Wontfix`, `Deferred`, …) are
 | F-AUD42-26 | HIGH | spec/18-spec-issues/12-app-folder-audit-2026-04-30.md (P1) | Open | Numbering gaps / sibling sub-features off-pattern (Phase-1 structural). — [`spec/31-app/`](./31-app/) |
 | F-AUD42-27 | HIGH | spec/18-spec-issues/12-app-folder-audit-2026-04-30.md (P1) | Open | `99-consistency-report.md` claims contradict actual file state in subdirs. — [`spec/31-app/99-consistency-report.md`](./31-app/99-consistency-report.md) |
 
-**Open count:** 27 — **Resolved:** 8
+**Open count:** 26 — **Resolved:** 9
 
 ---
 
