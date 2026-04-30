@@ -1,6 +1,6 @@
 # WP-Plugin Reference Skeletons (P7)
 
-> **Generated:** 2026-04-29
+> **Generated:** 2026-04-30
 > **Generator:** [`scripts/spec-hygiene/41-generate-skeletons.mjs`](../../../scripts/spec-hygiene/41-generate-skeletons.mjs)
 > **Source:** [`spec/contract.json`](../../contract.json)
 > **Status:** Active reference (auto-regenerated; do NOT hand-edit `*.generated.php`)
