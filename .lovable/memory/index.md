@@ -1,30 +1,37 @@
-# Project Memory
+# Project Memory — REDIRECTED
 
-## Core
-Official name is 'WorkFlowy'. Prioritize user requirements & UI specs absolutely over AI suggestions.
-SPEC TRACK COMPLETE (2026-04-23): all 10 Workflowy phases shipped at v1.0; awaiting user authorization to exit spec-only mode and start P1.1 Bootstrap.
-Backend = WordPress plugin (PHP 8.1+ + SQLite via PDO). REST envelope PascalCase. See `spec/15-wp-plugin-how-to/`. Decision date 2026-04-25.
-Vite, React, TypeScript for frontend. Forbidden: Lovable Cloud, Supabase, sql.js, IndexedDB-as-primary, Postgres, MySQL, Node standalone, Go, Cloudflare D1.
-Strict TS: zero 'any', max 3 params, no nested `if`s, 15-line logic limit, pure positive guard clauses.
-Every item is a unified Node interface (id, parentId, content, itemType). 250-item limit per view.
-Tailwind CSS v4 via @tailwindcss/vite in src/index.css @theme block.
+> **⚠️ This on-disk file is NOT the source of truth.**
+> **Canonical SSOT:** `mem://index.md` (loaded into every AI prompt as `<memory/index>`).
+>
+> **Last sync:** 2026-04-30 by NEW-13-FOLLOWUP Task M (memory-drift sweep).
+> **Reason for redirect:** the on-disk copy drifted across 5 Core invariants and
+> 4 Memories descriptions vs `mem://index.md`. Keeping a parallel SSOT was
+> creating false-negative-class drift (AI could read either copy and proceed
+> on the stale one). Redirect chosen over delete to preserve the
+> `.lovable/strictly-avoid.md` rule "Never add a memory file without updating
+> `.lovable/memory/index.md`" (file presence is treated as a registry marker
+> by the hygiene rule even though no runner currently reads it).
+>
+> **For ALL memory queries — read `mem://index.md` only.**
 
-## Memories
-- [Coding Guidelines](mem://constraints/coding-guidelines) — Strict TypeScript, logic formatting, and SQLite naming rules
-- [Tech Stack](mem://architecture/tech-stack) — Core technologies, API format, strict Axios versioning
-- [Data Model](mem://architecture/data-model) — Unified Item interface, root rules, and node constraints
-- [Specifications](mem://docs/specifications) — Structure and style rules for the spec/ directory
-- [Theme & Design](mem://design/theme) — Breakpoints, error boundaries, and custom CSS tokens
-- [UI Components](mem://design/ui-components) — Specific details for Navbar, Sidebar, Interactions, and Panels
-- [WorkFlowy Model](mem://design/workflowy-model) — Core aesthetic and UX inspiration
-- [Editor Core](mem://features/editor-core) — Drag-and-drop, fractional sorting, rich text sync, undo/redo
-- [Core Mechanics](mem://features/core-mechanics) — 12 distinct item types and infinite nesting
-- [Mirroring](mem://features/mirroring) — Linked instances logic and sync behavior
-- [Board View](mem://features/board-view) — Kanban-style visualization and structural sync
-- [Multi-Select](mem://features/multi-select) — Bulk operations via Shift/Cmd click
-- [Templates](mem://features/templates) — Serialized snapshots for tree structures
-- [Search](mem://features/search-functionality) — Syntax (#tag, is:, type:) and performance targets
-- [Sharing Model](mem://features/sharing-model) — Public and invited-user sharing permissions
-- [Offline Resilience](mem://features/offline-resilience) — Background autosave and local queuing
-- [Trash Logic](mem://features/trash-logic) — 30-day retention policy
-- [App Folder Audit 2026-04-26](mem://audits/app-folder-2026-04-26) — 15 findings (F-01..F-15) + 14 atomic fix phases (APP-FIX-01..14); composite 63/100, blind-AI failure ≈70%
+## Why this exists
+
+The path `.lovable/memory/index.md` is referenced by `.lovable/strictly-avoid.md`
+(Memory section) as the registry that authors must update when adding new
+memory files. That convention pre-dates the migration to the `mem://` virtual
+namespace. Until the strictly-avoid rule is amended (deferred — a future spec
+task), this file MUST exist as a placeholder so the convention check does not
+flag missing-registry. All actual content lives in `mem://`.
+
+## Do NOT add content here
+
+- Adding rules here creates a parallel SSOT — guaranteed drift.
+- Adding "Memories" rows here will not be loaded into AI prompts.
+- The only acceptable edits to this file are: (a) updating the "Last sync"
+  date on a future drift sweep, (b) deleting it once
+  `.lovable/strictly-avoid.md` is amended to drop the on-disk-registry rule.
+
+## Sync stamp
+
+- **Canonical (`mem://index.md`) updated:** 2026-04-30 (post-Task L burndown).
+- **This redirect stamped:** 2026-04-30 by NEW-13-FOLLOWUP Task M.
