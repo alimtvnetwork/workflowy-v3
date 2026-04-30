@@ -207,3 +207,16 @@ At the user-set bar ('mediocre AI, zero follow-up, 100% intent match'), every ac
 **Result:** Second-largest content-gap closed. Previously, three call sites (ADR-0010 offline queue, ADR-0005 mirror peer-group, ADR-0016 SortOrder collision) each had prose-only comparator references; an AI implementer could pick a 2-tier vs 3-tier shape arbitrarily and produce non-deterministic state divergence. Now byte-parity is testable across PHP/TS/SQL.
 
 **Remaining ALG queue:** GAP-ALG-03 FIFO replay (ADR-0010), GAP-ALG-04 peer-group dissolve (ADR-0005), GAP-ALG-05 undo cap eviction (ADR-0021).
+
+
+---
+
+## GAP-ALG-03 — FIFO replay pseudocode promotion (2026-04-30)
+
+**Action:** ADR-0010 promoted from prose-only D1–D5 to normative §Algorithms section with 5 pseudocode procedures (C1 enqueue with same-tx local apply per ADR-0023, C2 tryDrain mutex-guarded loop, C3 drainOne HTTP dispatch with retry-later/lww-lost/idempotent-replay branches, C4 server-side `/sync/replay` handler with idempotency cache + LWW guard SQL, C5 7-day ProcessedMutation sweeper) + 7-row canonical fixture vector table covering FIFO causality, network blip, double-delivery idempotency, LWW loss, triple-tie raise (cross-refs ADR-0026), durability across crash, and stale-op acceptance. Two new DOC-NORM gates: `G-14-REPLAY-PSEUDOCODE-PARITY` (umbrella) + `G-14-REPLAY-NEGATIVE-TESTS` (sub-rule for D1/D2/D3 negative assertions).
+
+**Files:** spec/00-adrs/0010-offline-fifo-replay-queue.md (+~135 lines), spec/_GATE-REGISTRY.md (+2 rows in G-14 family).
+
+**Result:** Third-largest content-gap closed. The offline-queue heart — drained by every reconnect — was previously fully prose; an AI implementer could legitimately drain in parallel, swap LIFO, or skip the LWW guard. Now byte-parity is testable across client TS + server PHP + SQL.
+
+**Remaining ALG queue:** GAP-ALG-04 peer-group dissolve (ADR-0005), GAP-ALG-05 undo cap eviction (ADR-0021).

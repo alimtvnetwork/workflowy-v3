@@ -145,6 +145,155 @@ Deferred (require a superseding ADR before introduction):
   resolver in v1).
 - Encrypted-at-rest queue payloads in IndexedDB.
 
+## Algorithms (Normative Pseudocode)
+
+> Gate `G-14-REPLAY-PSEUDOCODE-PARITY` — every client implementation
+> (TS frontend, future ports) MUST produce byte-identical observable
+> behaviour for the canonical fixture vectors below. Server-side replay
+> handlers MUST honour the matching contracts (idempotency cache,
+> LWW guard, FIFO acknowledgement order). Tested against
+> `spec/31-app/97a-acceptance-criteria-fixtures.md` §FIFO-Replay.
+
+**Type contract.**
+- `Mutation = { LocalSeq: int, ClientMutationId: string, Op: string, Payload: object, ClientTs: string, EnqueuedAt: string }`
+- `ReplayResult = { ClientMutationId: string, Status: 'applied'|'lww-lost'|'conflict'|'idempotent-replay', ServerTs?: string, ServerPayload?: object }`
+- `IDB store: 'mutationQueue'` keyed by `LocalSeq` (autoIncrement); secondary index on `ClientMutationId` for dedup-on-enqueue.
+- `clientMutex: Mutex` — process-wide singleton; `tryDrain` is the only acquirer.
+
+### C1 — `enqueue(op: string, payload: object) -> Mutation`  (D1, D2)
+
+```
+# Called from every action layer write. Single IDB tx; never throws on success.
+mutation = {
+    LocalSeq: <auto-assigned by IDB autoIncrement>,
+    ClientMutationId: uuidv7(),               # globally unique within session
+    Op: op,
+    Payload: payload,
+    ClientTs: ISO8601(now()),                 # diagnostic only — D3 forbids LWW use
+    EnqueuedAt: ISO8601(now()),
+}
+BEGIN IDB TX (readwrite, ['mutationQueue', 'localMirror'])
+    # Optimistic local apply MUST happen in the SAME tx as queue append (ADR-0023).
+    applyToLocalMirror(op, payload)
+    queueStore.add(mutation)                  # autoIncrement assigns LocalSeq
+COMMIT
+schedule(tryDrain)                            # async; mutex-guarded
+return mutation
+```
+
+### C2 — `tryDrain() -> void`  (D1: serialised by client mutex)
+
+```
+if not clientMutex.tryAcquire():
+    return                                    # another drain in flight; D1 forbids parallel
+try:
+    while online():
+        head = queueStore.getFirst()          # ORDER BY LocalSeq ASC LIMIT 1
+        if head is None:
+            return                            # queue drained
+        result = drainOne(head)               # see C3
+        if result == 'retry-later':
+            scheduleRetry(backoff)            # network blip; do NOT pop
+            return
+        # result in {'acked', 'lww-lost', 'idempotent-replay'} → pop and continue
+        queueStore.delete(head.LocalSeq)
+finally:
+    clientMutex.release()
+```
+
+### C3 — `drainOne(m: Mutation) -> 'acked'|'retry-later'|'lww-lost'|'idempotent-replay'`
+
+```
+# One-mutation HTTP round-trip. Server-side contract per D3+D4.
+try:
+    response = POST('/sync/replay', body={
+        ClientMutationId: m.ClientMutationId,
+        Op: m.Op,
+        Payload: m.Payload,
+    }, timeout=30s)
+except NetworkError:
+    return 'retry-later'                      # D2: durability — mutation stays in IDB
+
+# HTTP 200 always; per-mutation Status drives client behaviour.
+if response.Status == 'idempotent-replay':
+    # D4: server returned cached ProcessedMutation.Response.
+    reconcileLocalMirror(response.ServerPayload)
+    return 'idempotent-replay'
+if response.Status == 'lww-lost':
+    # D5: silent revert + "Restored remote change" banner.
+    revertOptimisticApply(m)
+    reconcileLocalMirror(response.ServerPayload)
+    showBanner('restored-remote-change')
+    return 'lww-lost'
+if response.Status == 'applied':
+    reconcileLocalMirror(response.ServerPayload)   # ServerTs now authoritative
+    return 'acked'
+raise UnknownReplayStatus(response.Status)    # routed to AppErrorBoundary (ADR-0017)
+```
+
+### C4 — Server `/sync/replay` handler (D3, D4)  — PHP/SQL pseudocode
+
+```
+# Step 1: idempotency cache lookup (D4).
+cached = SELECT Response FROM ProcessedMutation WHERE ClientMutationId = :cmid
+if cached is not None:
+    return { Status: 'idempotent-replay', ...cached.Response }
+
+# Step 2: LWW guard apply (D3). Field-level UPDATE with `<field>UpdatedAt < serverNow`.
+serverNow = strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
+BEGIN TRANSACTION
+    affected = UPDATE Item
+                  SET <field> = :value,
+                      <field>UpdatedAt = :serverNow,
+                      <field>UpdatedBy = :userId
+                WHERE ItemId = :id
+                  AND (<field>UpdatedAt IS NULL OR <field>UpdatedAt < :serverNow)
+    if affected == 0:
+        # Lost LWW. Re-read the winning row; cache the lost-result for idempotency.
+        winning = SELECT * FROM Item WHERE ItemId = :id
+        response = { Status: 'lww-lost', ServerPayload: winning, ServerTs: serverNow }
+    else:
+        winning = SELECT * FROM Item WHERE ItemId = :id
+        response = { Status: 'applied',  ServerPayload: winning, ServerTs: serverNow }
+    INSERT INTO ProcessedMutation (ClientMutationId, Response, ProcessedAt)
+        VALUES (:cmid, :response_json, :serverNow)
+COMMIT
+return response
+```
+
+### C5 — `ProcessedMutation` sweeper (D4 retention)
+
+```
+# Cron / WP-cron; runs every 6h. Bounded write volume.
+DELETE FROM ProcessedMutation
+ WHERE ProcessedAt < datetime('now', '-7 days')
+```
+
+### Canonical fixture vectors (parity test)
+
+Each scenario lists the queued `LocalSeq` order, the server response per
+mutation, and the asserted post-drain state. Failure of any row fails
+`G-14-REPLAY-PSEUDOCODE-PARITY`.
+
+| # | Scenario | Inputs | Expected drain order & results |
+|---|---|---|---|
+| 1 | **Strict FIFO under causality** | LocalSeq=1 `createChild(P, C)`, LocalSeq=2 `rename(P, "P2")` | Drain in 1→2 order; both `Status='applied'`; final `Item(C).ParentId=P`, `Item(P).Title='P2'`. Reordering forbidden. |
+| 2 | **Network blip mid-drain** | LocalSeq=1 succeeds; LocalSeq=2 throws `NetworkError` | C2 returns; LocalSeq=2 stays in IDB; `tryDrain` retried after backoff replays from LocalSeq=2 only. |
+| 3 | **Double-delivery (idempotency)** | LocalSeq=1 sent twice with same `ClientMutationId` | First call: `Status='applied'`. Second call: `Status='idempotent-replay'` with cached `ServerPayload`; no second `UPDATE` fires. |
+| 4 | **LWW loss** | Offline edit `Title="A"` at ClientTs=T0; concurrent online edit `Title="B"` at ServerTs=T1>T0 already applied | Replay: `Status='lww-lost'`, banner shown, local mirror reverts to `Title="B"`. `affected=0` in SQL. |
+| 5 | **Triple-tie raise (with ADR-0026)** | Two mutations with identical `ServerTs`, `OwnerId`, and `ItemId` reach the comparator | Server raises `LwwTripleTieError` → routed to AppErrorBoundary; mutation NOT marked applied; sweeper does NOT cache the raise. |
+| 6 | **Crash mid-tx (durability)** | `enqueue()` IDB tx commits; tab killed before `tryDrain` runs | On reopen, `mutationQueue` still contains LocalSeq=N; `tryDrain` resumes from head. No mutation lost. |
+| 7 | **Stale op accepted, not rejected** | LocalSeq=1 carries a 7-day-old `ClientTs`; server's row is fresher | Server still applies LWW guard; result is `lww-lost` (D5: stale ops never rejected at queue level). |
+
+**Negative-test obligations (gate `G-14-REPLAY-NEGATIVE-TESTS`).**
+Implementations MUST also assert: (a) `clientTs` field on the wire is
+ignored by the LWW guard — server-side comparator MUST reject any code
+path that compares `clientTs` (D3 enforcement, mirrors
+`G-26-LWW-NO-CLIENT-TS`); (b) parallel `POST /sync/replay` from the same
+session MUST be rejected by the client mutex BEFORE hitting the network
+(D1 enforcement); (c) `localStorage.setItem('mutationQueue', ...)`
+appears nowhere in client source (D2 enforcement, regex CI fail).
+
 ## Consequences
 
 ### Positive
