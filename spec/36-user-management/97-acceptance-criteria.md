@@ -109,7 +109,7 @@ node scripts/spec-hygiene/00-run-all.mjs
 
 **Given** an authenticated user has the Settings panel open at `/account` and edits the `displayName` field from `"Ada"` to `"Ada L."`.
 **When** the input loses focus (blur) OR 800ms elapse since last keystroke (whichever first).
-**Then** the client issues `POST /wp-json/workflowy/v1/me` with `{"DisplayName":"Ada L."}` and the server returns `Status: "ok"`, `Attributes: {"DisplayName":"Ada L.","UpdatedAt":"<ISO8601>"}`, `Results: null` per the envelope SSOT in [`../04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). The change MUST be reflected in the in-memory user store within one render frame; on HTTP 5xx the previous value is restored and an error toast is shown.
+**Then** the client issues `POST /wp-json/workflowy/v1/me` with `{"DisplayName":"Ada L."}` and the server returns `Status: "ok"`, `Attributes: {"DisplayName":"Ada L.","UpdatedAt":"<ISO8601>"}`, `Results: null` per the envelope SSOT in [`../04-database-conventions/06-rest-api-format/`](../04-database-conventions/06-rest-api-format/). The change MUST be reflected in the in-memory user store within one render frame [gate: G-USER-AUTOSAVE-OPTIMISTIC]; on HTTP 5xx the previous value is restored and an error toast is shown.
 
 **Verifying test:** `AT-USR-01-settings-auto-save.spec.ts` (Vitest, frontend) — asserts blur+debounce semantics; PHPUnit companion `AT_USR_01_settings_auto_save_test.php` asserts the REST handler envelope.
 
@@ -117,7 +117,7 @@ node scripts/spec-hygiene/00-run-all.mjs
 
 **Given** an authenticated user opens the "Set Password" dialog on `/account/security`.
 **When** they submit `{currentPassword: "<current>", newPassword: "<new>", confirmPassword: "<new>"}` with `<new>` satisfying the corpus password policy (min 12 chars, ≥1 letter, ≥1 digit).
-**Then** the client issues `POST /wp-json/workflowy/v1/me/password` and the server returns `Status: "ok"`, `Attributes: {"PasswordChangedAt":"<ISO8601>","SessionsRevoked":<int>}`, `Results: null`. All other active sessions for the user MUST be revoked atomically. On `currentPassword` mismatch the server returns `Status: "error"` with `Errors: [{Code: "AUTH_INVALID_CURRENT_PASSWORD", Field: "currentPassword"}]` and HTTP 401; rate-limited to 5 attempts per 15min per user per IP.
+**Then** the client issues `POST /wp-json/workflowy/v1/me/password` and the server returns `Status: "ok"`, `Attributes: {"PasswordChangedAt":"<ISO8601>","SessionsRevoked":<int>}`, `Results: null`. All other active sessions for the user MUST be revoked atomically [gate: G-USER-PWCHANGE-REVOKES-SESSIONS]. On `currentPassword` mismatch the server returns `Status: "error"` with `Errors: [{Code: "AUTH_INVALID_CURRENT_PASSWORD", Field: "currentPassword"}]` and HTTP 401; rate-limited to 5 attempts per 15min per user per IP.
 
 **Verifying test:** `AT-USR-03-set-password.spec.ts` + `AT_USR_03_set_password_test.php`.
 
@@ -125,7 +125,7 @@ node scripts/spec-hygiene/00-run-all.mjs
 
 **Given** an authenticated user has at least one backup snapshot listed under `GET /me/backups` (returning `Results: [{Id, CreatedAt, ItemCount, SizeBytes}, …]`).
 **When** they trigger restore for snapshot `{id}` via `POST /wp-json/workflowy/v1/me/backups/{id}/restore`.
-**Then** the server (a) creates an auto-safety snapshot of current state (recorded as `SafetySnapshotId` in the response), (b) replaces the user's item tree with the snapshot contents within a single SQLite transaction, and (c) returns `Status: "ok"`, `Attributes: {"RestoredFromId":"<id>","SafetySnapshotId":"<id>","ItemsRestored":<int>,"RestoredAt":"<ISO8601>"}`, `Results: null`. Concurrent edits during restore MUST be rejected with `Status: "error"`, `Errors: [{Code: "RESTORE_IN_PROGRESS"}]` and HTTP 409.
+**Then** the server (a) creates an auto-safety snapshot of current state (recorded as `SafetySnapshotId` in the response), (b) replaces the user's item tree with the snapshot contents within a single SQLite transaction, and (c) returns `Status: "ok"`, `Attributes: {"RestoredFromId":"<id>","SafetySnapshotId":"<id>","ItemsRestored":<int>,"RestoredAt":"<ISO8601>"}`, `Results: null`. Concurrent edits during restore MUST be rejected with `Status: "error"`, `Errors: [{Code: "RESTORE_IN_PROGRESS"}]` and HTTP 409 [gate: G-USER-RESTORE-REJECTS-CONCURRENT].
 
 **Verifying test:** `AT-USR-09-restore-backup.spec.ts` + `AT_USR_09_restore_backup_test.php`.
 
@@ -133,7 +133,7 @@ node scripts/spec-hygiene/00-run-all.mjs
 
 **Given** an authenticated user is on `/account/appearance` with the current theme `"system"`.
 **When** they select theme `"dark"` from the radio group.
-**Then** the client issues `POST /wp-json/workflowy/v1/me` with `{"Theme":"dark"}`, the server returns `Status: "ok"`, `Attributes: {"Theme":"dark","UpdatedAt":"<ISO8601>"}`, `Results: null`, and the value MUST persist across browser reloads AND propagate to other tabs of the same user via the SSE channel `/stream/user/{id}` (per ADR-0025) within ≤2s. Allowed values: `"light"`, `"dark"`, `"system"`; any other value returns HTTP 400 with `Errors: [{Code: "INVALID_THEME", Field: "Theme"}]`.
+**Then** the client issues `POST /wp-json/workflowy/v1/me` with `{"Theme":"dark"}`, the server returns `Status: "ok"`, `Attributes: {"Theme":"dark","UpdatedAt":"<ISO8601>"}`, `Results: null`, and the value MUST persist across browser reloads AND propagate to other tabs of the same user via the SSE channel `/stream/user/{id}` (per ADR-0025) within ≤2s [gate: G-USER-THEME-SSE-CROSSTAB]. Allowed values: `"light"`, `"dark"`, `"system"`; any other value returns HTTP 400 with `Errors: [{Code: "INVALID_THEME", Field: "Theme"}]`.
 
 **Verifying test:** `AT-USR-11-theme-persistence.spec.ts` (asserts SSE cross-tab propagation) + `AT_USR_11_theme_persistence_test.php`.
 
@@ -141,7 +141,7 @@ node scripts/spec-hygiene/00-run-all.mjs
 
 **Given** an authenticated user opens `/account/referrals`.
 **When** the page mounts and issues `GET /wp-json/workflowy/v1/me/referrals`.
-**Then** the server returns `Status: "ok"`, `Attributes: {"ReferralUrl":"https://workflowy.example/r/<userSlug>","ReferralCode":"<8-char base62>"}`, `Results: [{Email, JoinedAt, Status: "pending"|"active"|"churned"}, …]` where `Results` is empty on first load. The `ReferralUrl` MUST be deterministic per user and remain stable across sessions; the `ReferralCode` MUST NOT collide across users (enforced by SQLite UNIQUE constraint on `referral_codes.code`).
+**Then** the server returns `Status: "ok"`, `Attributes: {"ReferralUrl":"https://workflowy.example/r/<userSlug>","ReferralCode":"<8-char base62>"}`, `Results: [{Email, JoinedAt, Status: "pending"|"active"|"churned"}, …]` where `Results` is empty on first load. The `ReferralUrl` MUST be deterministic per user and remain stable across sessions [gate: G-USER-REFERRAL-DETERMINISTIC]; the `ReferralCode` MUST NOT collide across users (enforced by SQLite UNIQUE constraint on `referral_codes.code`) [gate: G-USER-REFERRAL-UNIQUE].
 
 **Verifying test:** `AT-USR-14-referrals.spec.ts` + `AT_USR_14_referrals_test.php`.
 
