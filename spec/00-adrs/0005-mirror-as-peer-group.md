@@ -37,7 +37,7 @@ singleton invariant and the LWW tiebreak rule.
 ## Decision
 
 A "mirror" in WorkFlowy **MUST** be implemented as a **peer-group
-relation** over the singular `Item` table. There is **no** `Mirror`
+relation** over the singular `Item` table — gate `G-ADR-0005-PEER-GROUP-MODEL`. There is **no** `Mirror`
 `ItemType` and **no** `MirrorOf*` foreign key.
 
 **Allowed (load-bearing):**
