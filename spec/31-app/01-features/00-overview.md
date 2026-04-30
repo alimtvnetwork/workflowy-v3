@@ -117,7 +117,7 @@ Read this before picking a feature to implement. Arrows = "depends on, must exis
 
 **Forbidden:** snake_case for *new* DB identifiers (e.g. `items.parent_id` is **stale**; canonical form is `Items.ParentId` — see [`05-audit-02a-column-rename.md`](../../18-spec-issues/05-audit-02a-column-rename.md)). The only snake_case identifiers permitted in DB context are WordPress core tables (`wp_posts`, `wp_options`) which are explicitly exempt.
 
-**Rule of thumb for spec authors:** before writing an identifier, ask *"which layer is this?"* and pick the casing from the table. Do not mix layers in the same code block — split into two blocks if needed.
+**Rule of thumb for spec authors:** before writing an identifier, ask *"which layer is this?"* and pick the casing from the table. Do not mix layers in the same code block — split into two blocks whenever the snippet would otherwise contain identifiers from more than one layer.
 
 ---
 

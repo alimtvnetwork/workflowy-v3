@@ -122,7 +122,7 @@ The sidebar MUST be a ~240px panel that slides in from the left. On mobile, it o
 |---------|---------|----------|
 | Collapse/Expand arrow | ← arrow at top-left (when open) or ↗ arrow (when collapsed to mini) | Click toggles sidebar between expanded and collapsed states. |
 | Today shortcut | 📅 "Today" label at top of sidebar | Click navigates to today's dated items view. Always visible at the top of the sidebar. |
-| Home tree | Collapsible tree starting from "Home" as root. Shows the user's top-level nodes with expand/collapse triangles. Each node shows its title, truncated if needed. Special nodes (e.g. Calendar) show their respective icons. | Click on any node zooms to that item. Expand/collapse triangles reveal or hide children inline. The tree mirrors the actual item hierarchy. |
+| Home tree | Collapsible tree starting from "Home" as root. Shows the user's top-level nodes with expand/collapse triangles. Each node shows its title, truncated with ellipsis when its rendered width exceeds the sidebar inner width. Special nodes (e.g. Calendar) show their respective icons. | Click on any node zooms to that item. Expand/collapse triangles reveal or hide children inline. The tree mirrors the actual item hierarchy. |
 | + New node button | Rounded button at bottom of tree: "+ New node" | Click creates a new top-level item under root. The new item gets focus immediately. |
 
 **Note:** The sidebar is a **tree browser** of the user's outline, NOT a static list of Favorites/Recent/Tags. It shows the actual hierarchy starting from "Home", allowing users to browse and navigate their entire outline from the sidebar. Items can be dragged into the sidebar to move them.

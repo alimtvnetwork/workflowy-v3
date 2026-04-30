@@ -82,7 +82,7 @@ func LoadAndMerge(configPath, flagMode, flagOutput string) Config {
 
 | Principle | Detail |
 |-----------|--------|
-| Never crash on missing config | Use defaults, warn if needed |
+| Never crash on missing config | Use defaults; emit a single WARN to stderr when any default is substituted for a missing config key |
 | Flags always win | Explicit user intent overrides everything |
 | Config paths relative to binary | Unless absolute |
 | Default paths in `constants` | `DefaultConfigPath`, `DefaultOutputDir` |
