@@ -28,6 +28,8 @@ JavaScript stack traces show where an error occurred but not the full context of
 
 ### 3.1 Functional Requirements
 
+> All F1..F10 rows below are bound by gate **`G-LOG-EXEC-FNREQS`** (umbrella, CI; family=`logging-coverage`). Each row is a leaf assertion under that umbrella.
+
 | ID | Requirement | Priority |
 |----|-------------|----------|
 | F1 | Track function executions with arguments | MUST |
