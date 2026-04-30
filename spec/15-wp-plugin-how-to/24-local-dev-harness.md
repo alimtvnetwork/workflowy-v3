@@ -29,7 +29,7 @@
 
 ## 1. Purpose
 
-A fresh AI session implementing the WorkFlowy WP plugin **MUST** be able to spin up a working WordPress + SQLite + REST environment in under 5 minutes, with a Vite frontend that talks to it without CORS errors or proxy hallucinations.
+(gate **G-13-HYGIENE-PRESENT**) A fresh AI session implementing the WorkFlowy WP plugin **MUST** be able to spin up a working WordPress + SQLite + REST environment in under 5 minutes, with a Vite frontend that talks to it without CORS errors or proxy hallucinations.
 
 This document is the **Single Source of Truth** for:
 - Which dev-harness tool is canonical (`@wordpress/env`).
@@ -177,7 +177,7 @@ A bare WP install gives you zero items. E2E tests and the 250-item virtualizatio
 
 Writes 217 items across all 12 `ItemType` values, with realistic depth (max 6 levels), 3 mirror pairs, 2 shared workspaces, and 5 trash entries.
 
-**Invariants the seeder MUST satisfy** (assertable):
+(gate **G-13-FIXTURE-STRING-PARITY**) **Invariants the seeder MUST satisfy** (assertable):
 
 | Invariant | Value |
 |-----------|-------|

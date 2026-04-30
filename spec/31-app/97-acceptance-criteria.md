@@ -320,8 +320,8 @@ These are aliases over singular DDL identifiers.
 
 Acceptance Criteria authored here are load-bearing because of:
 
-- **[ADR-0001 — Singular DDL vs plural prose](../00-adrs/0001-singular-ddl-vs-plural-prose.md)** (`Accepted` 2026-04-28) — AT prose **MAY** pluralize for readability, but AT **fixtures** (under `97a-`/`97b-`/…) **MUST** use canonical singular PascalCase DDL identifiers. ATs **MUST NOT** assert against `Favorites` / `Items` / `Contents` tables.
-- **[ADR-0002 — WP plugin + PHP 8.1+ + SQLite](../00-adrs/0002-wp-plugin-php-sqlite-backend.md)** (`Accepted` 2026-04-28) — every AT executes against the WP-plugin runtime; ATs **MUST NOT** assume Postgres, Supabase, IndexedDB-as-primary, or any other forbidden runtime.
+(gate **G-24-DDL-SINGULAR-LOCKED**) - **[ADR-0001 — Singular DDL vs plural prose](../00-adrs/0001-singular-ddl-vs-plural-prose.md)** (`Accepted` 2026-04-28) — AT prose **MAY** pluralize for readability, but AT **fixtures** (under `97a-`/`97b-`/…) **MUST** use canonical singular PascalCase DDL identifiers. ATs **MUST NOT** assert against `Favorites` / `Items` / `Contents` tables.
+(gate **G-10-FORBIDDEN-RUNTIMES**) - **[ADR-0002 — WP plugin + PHP 8.1+ + SQLite](../00-adrs/0002-wp-plugin-php-sqlite-backend.md)** (`Accepted` 2026-04-28) — every AT executes against the WP-plugin runtime; ATs **MUST NOT** assume Postgres, Supabase, IndexedDB-as-primary, or any other forbidden runtime.
 
 ATs that require a structural schema change are **unimplementable** until the relevant ADR is superseded. See [`spec/00-adrs/00-overview.md`](../00-adrs/00-overview.md).
 

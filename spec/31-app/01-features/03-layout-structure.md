@@ -162,7 +162,7 @@ This indicator is hidden for Pro/unlimited users.
 
 ## Settings Keys (Seedable Config)
 
-> **Why this section:** §2.4 Settings Menu and the §3 Settings gear surface five user preferences (theme, font size, default view, show completed, auto-collapse depth). Per [`spec/06-seedable-config-architecture/`](../../06-seedable-config-architecture/00-overview.md) + [`spec/15-wp-plugin-how-to/15-settings-architecture/`](../../15-wp-plugin-how-to/15-settings-architecture/00-overview.md), every settings touchpoint MUST declare its enum-backed key, default, sanitizer, and group. No bare strings.
+(gate **G-24-FAVORITES-TABLE-ONLY**) > **Why this section:** §2.4 Settings Menu and the §3 Settings gear surface five user preferences (theme, font size, default view, show completed, auto-collapse depth). Per [`spec/06-seedable-config-architecture/`](../../06-seedable-config-architecture/00-overview.md) + [`spec/15-wp-plugin-how-to/15-settings-architecture/`](../../15-wp-plugin-how-to/15-settings-architecture/00-overview.md), every settings touchpoint MUST declare its enum-backed key, default, sanitizer, and group. No bare strings.
 
 | Setting | `OptionNameType` enum case | Default | Sanitizer | Group | Storage |
 |---------|---------------------------|---------|-----------|-------|---------|
@@ -287,4 +287,4 @@ This indicator is hidden for Pro/unlimited users.
 
 - **Routes introduced by this feature:** None.
 - **N/A justification:** Pure layout SSOT — no write surface; all interactions delegate to feature files (05/06/etc.).
-- **Compliance:** Satisfies F-AUD42-25 (API axis) by explicit declaration. Any future write route added here MUST follow the PascalCase envelope (ADR-0004/0019), egress via queue worker (ADR-0023), and bind to a named error boundary (ADR-0017).
+- **Compliance:** Satisfies F-AUD42-25 (API axis) by explicit declaration. Any future write route added here MUST f (gate **G-23-DATA-ROUTER-API**)ollow the PascalCase envelope (ADR-0004/0019), egress via queue worker (ADR-0023), and bind to a named error boundary (ADR-0017).

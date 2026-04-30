@@ -254,7 +254,7 @@ Typing `/` at the start of an empty item (or after a space) opens the slash menu
 | `/export` | Open Export dialog. (F4) |
 | `/help` | Open Help panel. (F5) |
 
-> **Reconciliation note (F7 candidate):** every slash command above MUST resolve to either an item-menu entry or an interaction handler. Any command without a binding is a hygiene violation.
+(gate **G-22-BOUNDARY-NAMES-CLOSED**) > **Reconciliation note (F7 candidate):** every slash command above MUST resolve to either an item-menu entry or an interaction handler. Any command without a binding is a hygiene violation.
 
 ---
 
@@ -312,7 +312,7 @@ Typing `/` at the start of an empty item (or after a space) opens the slash menu
 
 ### SSE Frames Emitted (read-signal only, ADR-0025)
 
-`ItemDuplicated`, `ItemMoved`, `ItemUpdated`, `ItemSoftDeleted` on `/stream/page/{id}` and/or `/stream/user/{id}`. SSE MUST NOT enqueue to the FIFO (read-signal only).
+(gate **G-25-SSE-ENDPOINT-CLOSED**) `ItemDuplicated`, `ItemMoved`, `ItemUpdated`, `ItemSoftDeleted` on `/stream/page/{id}` and/or `/stream/user/{id}`. SSE MUST NOT enqueue to the FIFO (read-signal only).
 
 ### Storage
 

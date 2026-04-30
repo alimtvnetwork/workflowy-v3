@@ -219,7 +219,7 @@ No special admin logic required — the tree model handles everything naturally.
 - **Hide Completed (per board)** — Boards honour the global Show/Hide Completed toggle (see [`./06-item-context-menu.md`](./06-item-context-menu.md) F3 appendix); completed cards are dimmed or hidden depending on toggle state.
 - **Convert Board → List** — Item-menu *Convert to Bullet* (or any non-board type) reverts the visualisation to the list renderer. The underlying tree is unchanged. (item-menu)
 
-> **Structural sync:** every board action MUST mutate through the same item CRUD path used by the list renderer — boards are a view, not a separate store. See `mem://features/board-view` for the sync invariant. F7 reconciliation candidate: confirm `card-drop-zone` reorder dispatches the same fractional-sort patch as the list renderer's drag handler.
+(gate **G-23-ACTION-ENQUEUE-ONLY**) > **Structural sync:** every board action MUST mutate through the same item CRUD path used by the list renderer — boards are a view, not a separate store. See `mem://features/board-view` for the sync invariant. F7 reconciliation candidate: confirm `card-drop-zone` reorder dispatches the same fractional-sort patch as the list renderer's drag handler.
 
 ---
 
@@ -273,7 +273,7 @@ No special admin logic required — the tree model handles everything naturally.
 
 ### SSE Frames Emitted (read-signal only, ADR-0025)
 
-`ItemMoved`, `NodeViewStateUpdated` on `/stream/page/{id}` and/or `/stream/user/{id}`. SSE MUST NOT enqueue to the FIFO.
+(gate **G-25-SSE-ENDPOINT-CLOSED**) `ItemMoved`, `NodeViewStateUpdated` on `/stream/page/{id}` and/or `/stream/user/{id}`. SSE MUST NOT enqueue to the FIFO.
 
 ### Storage
 

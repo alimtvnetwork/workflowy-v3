@@ -7,13 +7,13 @@
 
 ### 6A.1 Storage Format
 
-The `rich_content` field stores a **sanitized HTML subset**. The `content` field stores the **plain text equivalent** (all HTML tags stripped). Both fields MUST be kept in sync — every edit to `rich_content` regenerates `content` by stripping tags.
+(gate **G-22-BOUNDARY-NAMES-CLOSED**) The `rich_content` field stores a **sanitized HTML subset**. The `content` field stores the **plain text equivalent** (all HTML tags stripped). Both fields MUST be kept in sync — every edit to `rich_content` regenerates `content` by stripping tags.
 
 When an item has no formatting, `rich_content` is `null` and `content` holds the plain text. When any formatting is applied, `rich_content` is populated and `content` is derived from it.
 
 ### 6A.2 Allowed HTML Tags (Whitelist)
 
-Only the following HTML tags are permitted in `rich_content`. All other tags MUST be stripped on paste and on save.
+(gate **G-22-BOUNDARY-NAMES-CLOSED**) Only the following HTML tags are permitted in `rich_content`. All other tags MUST be stripped on paste and on save.
 
 | Format | HTML Tag | Example |
 |--------|----------|---------|

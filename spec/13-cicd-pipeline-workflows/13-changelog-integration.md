@@ -284,8 +284,8 @@ $ <tool> release info v1.3.0
 
 ## Constraints
 
-- Changelog entry MUST exist before the release branch/tag is created
-- The CI pipeline MUST extract and print the changelog in the release body
+- Changelog entry MUST exist before the release branch/tag is created (gate **G-17-CHANGELOG-MATCH**)
+- The CI pipeline MUST extract and print the changelog in the release body (gate **G-17-CHANGELOG-MATCH**)
 - No hardcoded version strings in the changelog extraction script
 - Changelog format must be parseable by `awk` (line-based, `## v` headers)
 - Date format is `YYYY-MM-DD` (ISO 8601)
