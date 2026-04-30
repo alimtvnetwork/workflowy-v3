@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.26  
-> **Updated:** 2026-04-30 — **batch-35 prose→AT migration:** seeded **Domain-AT-IO** (Acceptance-Test I/O Format · Meta-Spec Authoring) with **5 new gates** binding all 5 prose-MUSTs in `spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md` (Format-mandate, Two-row pairing, JSON literal validity, Envelope conformance, Related envelope-spec backlink). **Sixth corpus-wide greenfield Domain seed**; pre-flight check confirmed `G-AT-IO-*` slot empty (sibling `G-00-AT-FIX-COMPANION-SHAPE` intentionally distinct — file-shape vs in-fixture format). Tier mix: 4 CI (regex / `JSON.parse` / link-check) + 1 DOC-NORM (`-FORMAT-MANDATED-ALL` corpus-wide policy enforced operationally by AT-FIX-01 + reviewer attention). Prior: 1.7.25 (batch-34 Domain-A11Y greenfield seed).
+> **Version:** 1.7.27  
+> **Updated:** 2026-04-30 — **batch-36 prose→AT migration:** seeded **Domain-WORDING** (RFC-2119 Wording Policy · Spec-Lint) with **5 new gates** binding all 5 prose-MUSTs in `spec/01-spec-authoring-guide/20-rfc-2119-wording-policy.md` (Why-clause, MUST-keyword definition, soft-language replacement, deliberation replacement, uppercase). **Seventh corpus-wide greenfield Domain seed.** Pre-flight check confirmed `G-WORDING-*` slot empty; closes orphan reference to `G-38` in source line 5 (legacy alias documented; inline rename tracked as **F-SCOPE-40-FOLLOWUP**). Tier mix: 1 CI umbrella delegating to existing `38-check-ambiguous-wording.mjs` runner + 4 DOC-NORM (meta-vocabulary rows where keywords appear as the *subject of definition*, not as new normative claims). Prior: 1.7.26 (batch-35 Domain-AT-IO meta-spec seed).
 
-- **Total named gates:** 463 (+5 this revision: five `G-AT-IO-*`)
+- **Total named gates:** 468 (+5 this revision: five `G-WORDING-*`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
-- **CI:** 121 (+4 this revision)
+- **CI:** 122 (+1 this revision)
 - **TEST:** 20 (unchanged)
-- **DOC-NORM:** 117 (+1 this revision)
+- **DOC-NORM:** 121 (+4 this revision)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 50 (+1 this revision: Domain-AT-IO)
+- **Areas covered:** 51 (+1 this revision: Domain-WORDING)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
