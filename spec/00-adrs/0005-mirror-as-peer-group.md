@@ -84,7 +84,7 @@ relation** over the singular `Item` table — gate `G-ADR-0005-PEER-GROUP-MODEL`
   `PeerGroupId` column; no separate row exists for the mirror itself).
 - "Group of one" as a persisted state — every mutation that would
   leave a group with one member **MUST** dissolve the group in the
-  same transaction.
+  same transaction — gate `G-ADR-0005-DISSOLVE-IN-TX` (sub-rule of `G-MIRROR-DISSOLVE-SINGLETON`).
 - Read-only mirrors (a peer that propagates writes only one way) —
   symmetry is load-bearing.
 - Any conflict-resolution rule other than LWW-on-`(UpdatedAtUtc,
