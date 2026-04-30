@@ -59,7 +59,7 @@ If any pre-flight fails: **stop**, fix, and start over. Do not continue with wor
 
 ## 2 — Declare the restore (audit row at `fatal`)
 
-This MUST happen **before** any file is touched. It creates the `SYSTEM.RESTORE_INITIATED` audit row that downstream alerting depends on.
+This MUST happen **before** any file is touched `[gate: G-BACKUP-RESTORE-DECLARE-FIRST]`. It creates the `SYSTEM.RESTORE_INITIATED` audit row that downstream alerting depends on.
 
 ```bash
 "$AUDIT_TOOL" log \
