@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.33  
-> **Updated:** 2026-04-30 — **batch-41:** seeded greenfield **Domain-LAYOUT** (App Layout Shell) with 5 DOC-NORM gates binding all 5 prose-MUSTs in `spec/31-app/01-features/03-layout-structure.md`. Added: `G-LAYOUT-TWO-ZONE-SHELL`, `G-LAYOUT-SIDEBAR-LEFT-SLIDE`, `G-LAYOUT-RESPONSIVE-SIDEBAR-MODE`, `G-LAYOUT-DROPDOWN-GROUP-DIVIDERS`, `G-LAYOUT-SIDEBAR-WIDTH-240`. Tenth corpus-wide greenfield Domain seed. CI promotion runner filed as **NEW-20** (`scripts/spec-hygiene/check-layout-shell.mjs` — Playwright DOM-snapshot + Tailwind class grep). Tier choice rationale: all 5 are DOM-shape assertions whose canonical enforcement requires a running browser — DOC-NORM at seed; CI after runner. Prior: 1.7.32 (batch-40 Domain-PS1 extension).
+> **Version:** 1.7.34  
+> **Updated:** 2026-04-30 — **batch-42:** extended **Domain-13** (CI-CD Test Corpus) with 5 new gates binding all 5 prose-MUSTs in `spec/13-cicd-pipeline-workflows/scripts-as-spec/_TEST-CORPUS/README.md`. Added: `G-13-CORPUS-FROZEN-INPUTS` (DOC-NORM), `G-13-CORPUS-RUNNER-CONTRACT` (DOC-NORM — closes deferred-mint note at L78 of source file), `G-13-CORPUS-BANNER-FOUR-FIELDS` (DOC-NORM, sub-rule of RUNNER-CONTRACT), `G-13-CORPUS-BODY-MINIMAL` (DOC-NORM), `G-13-CORPUS-NO-RUNTIME-IMPORT` (CI grep gate). Tier mix: 4 DOC-NORM + 1 CI. Third consecutive non-greenfield extension — Domain-13 already held 6 prior `G-13-FIXTURE-*` gates. Strategic: closes a self-acknowledged deferred mint (RUNNER-CONTRACT was explicitly named-but-not-registered in the source file, last of its kind in this domain). Prior: 1.7.33 (batch-41 Domain-LAYOUT seed).
 
-- **Total named gates:** 493 (+5 this revision)
+- **Total named gates:** 498 (+5 this revision)
 - **WARN-only gates:** 10 (unchanged)
-- **CI:** 134 (unchanged)
+- **CI:** 135 (+1 this revision)
 - **TEST:** 20 (unchanged)
-- **DOC-NORM:** 134 (+5 this revision)
+- **DOC-NORM:** 138 (+4 this revision)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 52 (+1 this revision)
+- **Areas covered:** 52 (unchanged)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
@@ -187,6 +187,11 @@
 | `G-13-FIXTURE-SHAPE-PHASE2-LANG-TAG` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md`](./13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md) | batch-15 prose→AT migration (L184–186): Phase-2 of the shape audit — Algorithm fence MUST declare an info-string from the closed allowlist `{python, bash, sh, javascript, js, typescript, ts}`. Plain ` ``` ` fences (no info-string) and other tags (e.g. `txt`, `yaml`) hard-fail. |
 | `G-13-FIXTURE-SHAPE-PHASE3-GATE-CITED` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md`](./13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md) | batch-15 prose→AT migration (L188–189): Phase-3 of the shape audit — every fixture's banner blockquote MUST cite ≥1 gate ID, AND every cited gate ID MUST resolve to a row in `spec/_GATE-REGISTRY.md` (modulo the 3 documentation-placeholder tokens enforced by `G-13-PLACEHOLDER-TOKEN-PARITY`). |
 | `G-13-FIXTURE-SHAPE-PHASE4-BACKLINK` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md`](./13-cicd-pipeline-workflows/scripts-as-spec/fixture-as-spec-shape-audit.md) | batch-15 prose→AT migration (L192): Phase-4 (FINAL) of the shape audit — for every gate ID cited in a fixture's banner, the corresponding `spec/_GATE-REGISTRY.md` row MUST link back to that fixture file (filename match in the row's primary-file link). Carve-outs go in `_LEDGER-G-13-BACKLINK-EXEMPT.md`. Closes the meta-symmetry loop. |
+| `G-13-CORPUS-FROZEN-INPUTS` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/scripts-as-spec/_TEST-CORPUS/README.md`](./13-cicd-pipeline-workflows/scripts-as-spec/_TEST-CORPUS/README.md) | The `_TEST-CORPUS/` folder MUST contain a frozen corpus of `*-FAIL-*.md` and `*-PASS-*.md` fixtures. Files MUST NOT be modified after their `Status:` date except via a documented review cycle — frozen inputs are the only way to detect regressions in the audit algorithms themselves. |
+| `G-13-CORPUS-RUNNER-CONTRACT` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/scripts-as-spec/_TEST-CORPUS/README.md`](./13-cicd-pipeline-workflows/scripts-as-spec/_TEST-CORPUS/README.md) | The future CI workflow MUST iterate `_TEST-CORPUS/`, parse each fixture's banner for `Phase profile` and `Expected exit`, copy the fixture into a temp directory alongside snapshots of `_GATE-REGISTRY.md` and `_LEDGER-G-13-BACKLINK-EXEMPT.md`, run the target audit at the declared phase, and assert: (1) exit code matches `Expected exit`; (2) every `Expected stdout substring` is present in stdout; (3) PASS fixtures produce no stdout line naming the fixture file. Closes deferred-mint note at L78 of source file. |
+| `G-13-CORPUS-BANNER-FOUR-FIELDS` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/scripts-as-spec/_TEST-CORPUS/README.md`](./13-cicd-pipeline-workflows/scripts-as-spec/_TEST-CORPUS/README.md) | Every test-corpus fixture's banner MUST cite all four fields: (a) target gate ID, (b) phase, (c) expected exit code, (d) expected stdout substring(s). Sub-rule of `G-13-CORPUS-RUNNER-CONTRACT` — without all four fields the runner cannot construct its assertions. |
+| `G-13-CORPUS-BODY-MINIMAL` | **DOC-NORM** | [`spec/13-cicd-pipeline-workflows/scripts-as-spec/_TEST-CORPUS/README.md`](./13-cicd-pipeline-workflows/scripts-as-spec/_TEST-CORPUS/README.md) | The body of every test-corpus fixture MUST be the minimal example that triggers the targeted case — extraneous content dilutes signal and risks tripping unrelated gates. |
+| `G-13-CORPUS-NO-RUNTIME-IMPORT` | **CI** | [`spec/13-cicd-pipeline-workflows/scripts-as-spec/_TEST-CORPUS/README.md`](./13-cicd-pipeline-workflows/scripts-as-spec/_TEST-CORPUS/README.md) | Files under `_TEST-CORPUS/` are inert markdown and MUST NOT be `import`ed or `require`d by any runtime or test code outside the audit-runner harness. Enforced via grep gate scanning `src/`, `wp-plugin/`, and `scripts/` (excluding `scripts/spec-hygiene/audits/`) for path references to `_TEST-CORPUS/`. |
 
 ### ADR-0014
 
