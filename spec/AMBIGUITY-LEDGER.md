@@ -8,10 +8,10 @@
 | Metric | Count | % |
 |---|---|---|
 | Files containing normative clauses | 476 | — |
-| Total normative clauses | 2942 | 100% |
-| Backed (AT- or G- within ±5 lines) | 2335 | 79.4% |
-| **Unbacked** | **607** | **20.6%** |
-| — Exempt registry/ledger prose | 46 | 1.6% |
+| Total normative clauses | 2940 | 100% |
+| Backed (AT- or G- within ±5 lines) | 2318 | 78.8% |
+| **Unbacked** | **622** | **21.2%** |
+| — Exempt registry/ledger prose | 61 | 2.1% |
 | — **Actionable (true findings)** | **561** | **19.1%** |
 
 ## Mediocre-AI implementability impact
@@ -22,8 +22,8 @@ At the user-set bar ('mediocre AI, zero follow-up, 100% intent match'), every ac
 
 | # | Unbacked | File | Top example (line) |
 |---|---|---|---|
-| 1 | 10 | `03-error-manage/02-error-architecture/07-logging-and-diagnostics/01-react-execution-logger.md` | L33: \| F1 \| Track function executions with arguments \| MUST \| |
-| 2 | 10 | `03-error-manage/02-error-architecture/07-logging-and-diagnostics/02-session-based-logging/01-requirements.md` | L9: \| F1 \| Every API request must be assigned a unique session ID \| MUST \| |
+| 1 | 10 | `03-error-manage/02-error-architecture/07-logging-and-diagnostics/01-react-execution-logger.md` | L35: \| F1 \| Track function executions with arguments \| MUST \| |
+| 2 | 10 | `03-error-manage/02-error-architecture/07-logging-and-diagnostics/02-session-based-logging/01-requirements.md` | L11: \| F1 \| Every API request must be assigned a unique session ID \| MUST \| |
 | 3 | 8 | `00-adrs/0024-ratify-soft-confirm-triage-rulings.md` | L32: **D1 — Ratify [#01](../../.lovable/question-and-ambiguity/00-triage-summary.md#01--audit-100100-score-should-b1b4-addend |
 | 4 | 7 | `00-adrs/0015-twelve-itemtypes-enum.md` | L24: values**. It MUST be defined identically in all three SSOTs and consumed |
 | 5 | 7 | `00-adrs/0016-fractional-index-sortorder.md` | L36: `mem://features/editor-core` is hereby **superseded** and MUST be |
@@ -55,11 +55,11 @@ At the user-set bar ('mediocre AI, zero follow-up, 100% intent match'), every ac
 
 ## Exempt registry/ledger files (legitimate prose, no AT needed)
 
+- `AMBIGUITY-LEDGER.md` — 18 clauses (registry/ledger meta-prose)
 - `AUDIT-FINDINGS-LEDGER.md` — 16 clauses (registry/ledger meta-prose)
 - `01-spec-authoring-guide/97-acceptance-criteria.md` — 10 clauses (registry/ledger meta-prose)
 - `00-adrs/_INDEX_AUTOMATION.md` — 9 clauses (registry/ledger meta-prose)
 - `_GATE-GRADUATION-LEDGER.md` — 3 clauses (registry/ledger meta-prose)
-- `AMBIGUITY-LEDGER.md` — 3 clauses (registry/ledger meta-prose)
 - `_LEDGER-G-13-BACKLINK-EXEMPT.md` — 2 clauses (registry/ledger meta-prose)
 - `_LEDGER-G-NS-CORE-MEMORY-COVERAGE.md` — 2 clauses (registry/ledger meta-prose)
 - `_AUDIT-EXEMPTIONS.md` — 1 clauses (registry/ledger meta-prose)
@@ -71,9 +71,9 @@ At the user-set bar ('mediocre AI, zero follow-up, 100% intent match'), every ac
 | `31-app/` | 159 | 65 |
 | `02-coding-guidelines/` | 89 | 53 |
 | `00-adrs/` | 80 | 19 |
+| `(root)/` | 49 | 12 |
 | `15-wp-plugin-how-to/` | 47 | 34 |
 | `03-error-manage/` | 42 | 20 |
-| `(root)/` | 34 | 12 |
 | `01-spec-authoring-guide/` | 29 | 11 |
 | `13-cicd-pipeline-workflows/` | 27 | 14 |
 | `12-consolidated-guidelines/` | 25 | 24 |
