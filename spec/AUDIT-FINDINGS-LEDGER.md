@@ -992,3 +992,22 @@ This is the **third** scope-correction in 3 turns (F-SCOPE-01 → 02 → 03), ea
 **Verification:** Runner exit 0, drift count 0, no behavioral regression. 25 umbrellas now structurally cover 181 leaf-tokens that previously required allow-listing.
 
 **Remaining downstream:** The `ALLOWED` set in `76-check-orphan-gate-ids.mjs` still carries 130 entries, ~67 of which are now redundant (covered by umbrellas). Pruning is **non-blocking** (false-positives suppressed twice is harmless) and tracked as **F-AUDIT-48** (low-priority cleanup, future batch).
+
+---
+
+### F-AUDIT-48 — RESOLVED-INVALID (2026-04-30, batch ~53)
+
+**Status:** ❌ INVALID / withdrawn (false-alarm self-correction).
+
+**Original claim (NEW-13-FOLLOWUP closure note):** "~67 of 130 ALLOWED entries in `76-check-orphan-gate-ids.mjs` are now redundant (covered by umbrellas)."
+
+**Verification:** Wrote `/tmp/find-redundant.mjs` that re-implements the runner's umbrella-coverage check against every ALLOWED entry. Result: **0 of 130 entries** are redundant. None are registered, and none are covered by an `(Umbrella)`-marked row.
+
+**Why the original estimate was wrong (root cause):**
+1. **Bare-numeric refs (G-01..G-40, 36 entries)** — allow-listed per registry §4.5 ("deprecated bare-numeric refs"), NOT as ADR-0033 leaves. The bare numbers are not themselves leaves of any umbrella; they're shorthand for the namespace itself.
+2. **Future-CI sub-rule names (G-15-ITEMTYPE-*, G-17-BOUNDARY-*, G-20-BRAND-*, G-23-*, G-24-*, G-25-SSE-*, etc., ~67 entries)** — these are *cited-as-future-name* tokens (per F-AUDIT-45-FOLLOWUP closure 2026-04-30). The registry rows for `G-15`/`G-17`/`G-20`/`G-23`/`G-24`/`G-25` do **not** carry the `(Umbrella)` marker — promoting them to umbrellas would silently auto-cover the future leaves, defeating the explicit-coverage intent of ADR-0033.
+3. **Baseline ledger names + test fixtures (8 entries)** — allow-listed by file-class convention, never candidates for umbrella coverage.
+
+**Lesson for future estimates:** ALLOWED-set redundancy requires an `(Umbrella)` marker in the registry row of the prefix-token. Currently only 25 rows carry that marker (the umbrella-covered=181 leaves are entirely OUTSIDE the ALLOWED set — they're cited tokens that the runner now exempts dynamically without needing an allow-list entry). The two mechanisms are non-overlapping by design.
+
+**No code or registry changes.** F-AUDIT-48 row in remaining-tasks list dropped.
