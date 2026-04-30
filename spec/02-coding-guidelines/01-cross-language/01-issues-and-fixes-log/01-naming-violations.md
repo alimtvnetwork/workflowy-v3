@@ -43,7 +43,7 @@ $this->fileLogger->warn('Upload conflict', array('duplicateDir' => $path));
 
 **Scope:** All PHP class files  
 **Root Cause:** Legacy WordPress naming convention used `Riseup_` prefix with underscores (e.g., `class Riseup_Upload_Manager`).  
-**Impact:** Violates PSR-4 autoloading, creates inconsistent naming with modern codebase.
+**Impact:** Violates PSR-4 autoloading, creates inconsistent naming with PHP 8.1+ codebase conventions.
 
 **Before (❌):**
 ```php

@@ -82,7 +82,7 @@ Every spec file's front-matter block MUST (gate G-NS-STATUS-FRONTMATTER-EXACTLY-
 line whose value is one of the 9 canonical tokens, optionally followed by a
 free-text qualifier in parentheses (excluded from gate matching).
 
-**Good:**
+`✅ GOOD:`
 ```markdown
 > **Status:** CANONICAL
 > **Status:** CANONICAL (post-AUDIT-03 backfill)

@@ -260,7 +260,7 @@ if publishResult.HasError() {
 }
 ```
 
-> **Rule:** `HasError()` is the single source of truth for failure. Never combine it with `IsSafe() && !Value().Field` conditions — that conflates transport-level errors with business-level validation, which must be handled separately at the domain layer if needed.
+> **Rule:** `HasError()` is the single source of truth for failure. Never combine it with `IsSafe() && !Value().Field` conditions — that conflates transport-level errors with business-level validation, which must be handled separately at the domain layer when the calling layer requires the inverted predicate.
 
 ```php
 // ❌ MISTAKE: Leading backslash on global types
