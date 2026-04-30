@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.27  
-> **Updated:** 2026-04-30 — **batch-36 prose→AT migration:** seeded **Domain-WORDING** (RFC-2119 Wording Policy · Spec-Lint) with **5 new gates** binding all 5 prose-MUSTs in `spec/01-spec-authoring-guide/20-rfc-2119-wording-policy.md` (Why-clause, MUST-keyword definition, soft-language replacement, deliberation replacement, uppercase). **Seventh corpus-wide greenfield Domain seed.** Pre-flight check confirmed `G-WORDING-*` slot empty; closes orphan reference to `G-38` in source line 5 (legacy alias documented; inline rename tracked as **F-SCOPE-40-FOLLOWUP**). Tier mix: 1 CI umbrella delegating to existing `38-check-ambiguous-wording.mjs` runner + 4 DOC-NORM (meta-vocabulary rows where keywords appear as the *subject of definition*, not as new normative claims). Prior: 1.7.26 (batch-35 Domain-AT-IO meta-spec seed).
+> **Version:** 1.7.28  
+> **Updated:** 2026-04-30 — **batch-37 (NEW-12 closure):** registered new standing drift guard `G-00-ORPHAN-GATE-ID-DRIFT` (CI WARN-only until 2026-05-14) — corpus-wide audit invariant ensuring every cited `G-…` token is either registered or in a documented allow-list. **First runtime hygiene gate to detect the silent-gap class** (cite-only-no-row gate IDs that the prose-MUST parser silently treats as valid citations). Inaugural orphan survey: 632 cited tokens, 497 registered, 124 cited-but-unregistered → 61 documented allow-listed (deprecated bare-numeric per §4.5, sub-rule shorthand, baseline ledger names, test fixtures, legacy aliases) + **63 real gaps** (mostly ADR sub-rule citations whose umbrella is registered but enumerated rows are missing). Runner: `scripts/spec-hygiene/76-check-orphan-gate-ids.mjs` (wired into `00-run-all.mjs`). Prior: 1.7.27 (batch-36 Domain-WORDING greenfield seed + first orphan-gate finding `G-38`).
 
-- **Total named gates:** 468 (+5 this revision: five `G-WORDING-*`)
-- **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
-- **CI:** 122 (+1 this revision)
+- **Total named gates:** 469 (+1 this revision: `G-00-ORPHAN-GATE-ID-DRIFT`)
+- **WARN-only gates:** 10 (+1; tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
+- **CI:** 123 (+1 this revision)
 - **TEST:** 20 (unchanged)
-- **DOC-NORM:** 121 (+4 this revision)
+- **DOC-NORM:** 121 (unchanged)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 51 (+1 this revision: Domain-WORDING)
+- **Areas covered:** 51 (unchanged)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
