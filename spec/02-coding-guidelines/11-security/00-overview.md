@@ -28,7 +28,7 @@
 
 ## Purpose
 
-Central location for all **security-related coding guidelines**, policies, and advisory documentation. This module covers dependency security, version pinning policies, vulnerability tracking, and secure coding practices.
+Central location for all **security-domain coding guidelines**, policies, and advisory documentation. This module covers dependency security, version pinning policies, vulnerability tracking, and threat-mitigating coding practices (per OWASP Top 10:2021 + STRIDE categorization).
 
 Any security discussion, advisory, or policy that affects how code is written or dependencies are managed belongs here.
 

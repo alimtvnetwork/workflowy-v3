@@ -27,7 +27,7 @@
 
 ## Purpose
 
-Maps cross-language coding guidelines to **Ruff** rules (primary), with **Pylint** and **Flake8** equivalents. **mypy** or **pyright** handles type checking. Ruff is preferred as it replaces Flake8, isort, pyupgrade, and most Pylint checks in a single fast tool.
+Maps cross-language coding guidelines to **Ruff** rules (primary), with **Pylint** and **Flake8** equivalents. **mypy** or **pyright** handles type checking. Ruff is preferred as it replaces Flake8, isort, pyupgrade, and most Pylint checks in a single tool with measured 10–100× speedup vs Flake8 (per ruff benchmark suite, ≥5k LOC corpus).
 
 ---
 
