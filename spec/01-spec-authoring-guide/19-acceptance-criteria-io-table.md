@@ -13,7 +13,7 @@
 
 ## Purpose
 
-Existing acceptance-criteria rows describe behaviour in prose ("MUST be hashed with Argon2id"). That is testable by a human reviewer but **not** by an AI implementer that needs to write the test. P2 closes the gap by requiring every AT row to be paired with a **concrete I/O fixture**: deterministic Given / When / Then plus literal request/response JSON where applicable.
+Existing acceptance-criteria rows describe behaviour in prose ("MUST be hashed with Argon2id") (illustrative legacy quote — gate `G-AT-IO-FORMAT-MANDATED-ALL` makes the format mandate normative). That is testable by a human reviewer but **not** by an AI implementer that needs to write the test. P2 closes the gap by requiring every AT row to be paired with a **concrete I/O fixture**: deterministic Given / When / Then plus literal request/response JSON where applicable.
 
 ---
 
