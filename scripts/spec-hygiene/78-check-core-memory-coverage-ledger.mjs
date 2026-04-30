@@ -130,7 +130,7 @@ function checkSummary(text, counts) {
 function main() {
   if (!existsSync(LEDGER)) fail(`ledger missing: ${LEDGER}`);
   const text = readFileSync(LEDGER, "utf8");
-  const registryGates = loadRegistry();
+  const { ids: registryGates, text: registryText } = loadRegistry();
   const rows = parseRows(text);
   if (rows.length < 20) fail(`parsed too few rows: ${rows.length} (expected ≥20 Core lines)`);
   const counts = { registered: 0, reserved: 0, procedural: 0, script: 0 };
@@ -138,6 +138,7 @@ function main() {
   const procTotal = counts.procedural + counts.script;
   checkSummary(text, { registered: counts.registered, reserved: counts.reserved, procedural: procTotal });
   console.log(`OK: ${rows.length} Core rules cross-walked; ${counts.registered} registered, ${counts.reserved} RESERVED, ${counts.procedural} procedural, ${counts.script} script-enforced; ${registryGates.size} registry gates loaded`);
+  if (STRICT) reportStrict(buildPrefixAnchorMap(registryText), registryText);
 }
 
 main();
