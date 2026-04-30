@@ -719,6 +719,8 @@
 | `G-MCREATE-CYCLE-CHECK-PER-PEER` | **DOC-NORM** | [`spec/31-app/02-workflows/09-mirror-create-flow.md`](./31-app/02-workflows/09-mirror-create-flow.md) | 3-tier sub-rule under `G-ADR-0005-CYCLE-PRECHECK` — when adding a new peer to an **existing** peer group, the recursive-CTE cycle check from `09a-mirror-cycle-detection.md` §3 MUST be re-run from **each** existing peer in the group, not just from the source `X`. Failure mode: a parent that is a descendant of *another* peer in the group (not `X`) would silently form a cycle through the peer-group relation. The ADR-0005 cycle-precheck parent binds the per-mutation rule; this leaf binds the per-peer iteration rule for the create-existing-group sub-case. |
 
 
+### Domain-HLPIN (Highlighter Dependency Pin)
+
 > Reserved gate IDs for the highlight.js dependency-pin SSOT in `spec/09-code-block-system/11-highlighter-dependency-pin.md` (closes audit gap F-04). All 8 sub-rules already have an enforcing AT (`AT-HLPIN-01..08`); batch-9 (2026-04-29) registers the umbrella + 6 narrative-bound sub-rule gates so the parser regex `\bG-[A-Z0-9][A-Z0-9-]*\b` recognises the citations and the corpus prose-MUST counter no longer flags the pin file.
 
 | Gate | Tier | Primary File | Brief |
