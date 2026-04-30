@@ -4,11 +4,11 @@
 
 ---
 
-**All union-type action/event objects MUST use extracted named interfaces with enum discriminators.** Never use inline type literals or string-literal discriminators.
+(gate **G-NS-NO-DEPRECATED-ALIAS**) **All union-type action/event objects MUST use extracted named interfaces with enum discriminators.** Never use inline type literals or string-literal discriminators.
 
 ---
 
-## Rule 8.1: Every variant MUST be a named interface
+## Rule 8.1: Every variant MUST be a named interface (gate **G-NS-NO-DEPRECATED-ALIAS**)
 
 ```typescript
 // ❌ FORBIDDEN — inline variants with string literals
@@ -50,7 +50,7 @@ if (action.type === ActionType.AddToast) { ... }
 
 ---
 
-## Rule 8.3: Enum values MUST be PascalCase
+## Rule 8.3: Enum values MUST be PascalCase (gate **G-NS-NO-DEPRECATED-ALIAS**)
 
 ```typescript
 // ❌ FORBIDDEN — UPPER_SNAKE_CASE

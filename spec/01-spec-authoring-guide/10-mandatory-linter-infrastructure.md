@@ -38,7 +38,7 @@ IMPORTANT — AI INSTRUCTION:
 
 ## Required Folders
 
-The following folders MUST exist at the **root of the project repository**:
+(gate **G-13-HYGIENE-PRESENT**) The following folders MUST exist at the **root of the project repository**:
 
 | # | Folder | Purpose | Mandatory |
 |---|--------|---------|-----------|
@@ -94,7 +94,7 @@ The following files form the minimum linter infrastructure:
 
 ## Verification Procedure
 
-AI agents and contributors MUST follow this procedure when onboarding a project or starting a validation task:
+(gate **G-13-HYGIENE-PRESENT**) AI agents and contributors MUST follow this procedure when onboarding a project or starting a validation task:
 
 ### Step 1 — Check Folder Existence
 

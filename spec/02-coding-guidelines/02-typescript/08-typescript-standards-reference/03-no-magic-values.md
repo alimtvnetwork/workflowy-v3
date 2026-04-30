@@ -4,7 +4,7 @@
 
 ---
 
-## Rule 3.1: All string literals used as identifiers MUST come from constants or enums
+## Rule 3.1: All string literals used as identifiers MUST come from constants or enums (gate **G-NS-NO-DEPRECATED-ALIAS**)
 
 ```typescript
 // ❌ FORBIDDEN — magic strings
@@ -34,7 +34,7 @@ if (action === SnapshotAction.Create) { ... }
 
 ---
 
-## Rule 3.2: All numeric literals with semantic meaning MUST be named constants
+## Rule 3.2: All numeric literals with semantic meaning MUST be named constants (gate **G-NS-NO-DEPRECATED-ALIAS**)
 
 ```typescript
 // ❌ FORBIDDEN — magic numbers
@@ -54,7 +54,7 @@ setTimeout(fn, POLLING_INTERVAL_MS);
 
 ---
 
-## Rule 3.3: String unions MUST be proper enums with PascalCase values
+## Rule 3.3: String unions MUST be proper enums with PascalCase values (gate **G-NS-NO-DEPRECATED-ALIAS**)
 
 ```typescript
 // ❌ FORBIDDEN — inline string unions

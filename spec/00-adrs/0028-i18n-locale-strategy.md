@@ -64,7 +64,7 @@ src/i18n/
 
 ### D3 — Locale detection (5-tier ordered chain)
 
-The `detector.ts` resolver MUST evaluate tiers **in order**, returning the first match in `SUPPORTED_LOCALES`:
+(gate **G-28-DETECTION-ORDER**) The `detector.ts` resolver MUST evaluate tiers **in order**, returning the first match in `SUPPORTED_LOCALES`:
 
 | # | Source | Storage | Persistence |
 |---|--------|---------|-------------|
@@ -74,7 +74,7 @@ The `detector.ts` resolver MUST evaluate tiers **in order**, returning the first
 | 4 | `navigator.language` + `navigator.languages[]` | Browser | Default |
 | 5 | Hard fallback: `en` | Hard-coded | Always present |
 
-**Constraint:** detection MUST complete **before** the React Router data-router boots, because route loaders (ADR-0023) may need locale-formatted error messages. The boot sequence is:
+(gate **G-28-INTL-EXPLICIT-LOCALE**) **Constraint:** detection MUST complete **before** the React Router data-router boots, because route loaders (ADR-0023) may need locale-formatted error messages. The boot sequence is:
 1. `detectLocale()` → resolves to a `SupportedLocale` literal in <5ms p95 (all 5 tiers are sync except tier 2, which is gated behind a session check and only consulted on authenticated boots).
 2. `await i18n.changeLanguage(locale)` (lazy-loads the namespace JSON for the resolved locale).
 3. `<RouterProvider router={router} />` mounts.

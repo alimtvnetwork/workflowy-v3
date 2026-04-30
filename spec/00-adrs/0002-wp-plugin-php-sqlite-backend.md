@@ -27,7 +27,7 @@ This ADR lifts the memory rule into the spec and locks it.
 
 ## Decision
 
-The WorkFlowy backend **MUST** be implemented as a single **WordPress
+(gate **G-10-FORBIDDEN-RUNTIMES**) The WorkFlowy backend **MUST** be implemented as a single **WordPress
 plugin** running on **PHP 8.1+**, persisting to a **SQLite** database
 file inside the plugin directory, and exposing a **REST** surface using
 the canonical envelope (`Status`, `Attributes`, `Results`, optional
@@ -64,7 +64,7 @@ the canonical envelope (`Status`, `Attributes`, `Results`, optional
   sidecar, BFF). One runtime, one process model, one deploy.
 
 **Migration constraint:** changing any item in either list above
-**MUST** be done by a new ADR that supersedes this one. The new ADR must
+(gate **G-00-ADR-NUMBERING**) **MUST** be done by a new ADR that supersedes this one. The new ADR must
 also enumerate every gate, convention page, and endpoint that needs
 re-anchoring (mirroring the explicit "Gates Touched" section below).
 

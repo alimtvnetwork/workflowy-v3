@@ -5,12 +5,12 @@
 
 ## Rule
 
-Every `.md` file under `spec/` MUST stay within the following thresholds:
+(gate **G-13-HYGIENE-PRESENT**) Every `.md` file under `spec/` MUST stay within the following thresholds:
 
 | Threshold | Lines | Behavior | Action |
 |-----------|-------|----------|--------|
 | Soft (warn) | **>400** | ⚠️ Warning printed to stdout | Plan a split into a same-name subfolder |
-| Hard (fail) | **>600** | ❌ CI fails (exit 1) | MUST split before merge |
+| Hard (fail) | **>600** | ❌ CI fails (exit 1) | MUST split before merge | <!-- (gate **G-13-HYGIENE-PRESENT**) -->
 
 > **2026-04-20 update (L-5):** the hard-cap was tightened from 800 → 600 lines after the H-1 tier split every monolith ≥505 lines. Override only in emergencies via `SPEC_LENGTH_FAIL_AT=800 node scripts/spec-hygiene/05-check-file-length.mjs`.
 

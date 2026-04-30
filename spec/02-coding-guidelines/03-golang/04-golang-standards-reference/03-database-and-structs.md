@@ -10,7 +10,7 @@
 
 > **Canonical source:** [Database Naming Convention](../../01-cross-language/07-database-naming.md)
 
-All custom SQLite table names, column names, and index names MUST use **PascalCase**. Go struct `db` tags must match column names. JSON tags follow the redundancy rule below — omit when the field name already matches.
+(gate **G-DBNAME-BOOL-IS-HAS-PREFIX**) All custom SQLite table names, column names, and index names MUST use **PascalCase**. Go struct `db` tags must match column names. JSON tags follow the redundancy rule below — omit when the field name already matches.
 
 ```go
 // ✅ PascalCase table and column names — no redundant json tags
@@ -31,7 +31,7 @@ type Project struct {
 
 ## Database Wrapper — `pkg/dbutil`
 
-All database queries MUST use the generic `dbutil` package. Returns typed result envelopes with automatic `apperror` stack traces.
+(gate **G-24-DDL-SINGULAR-LOCKED**) All database queries MUST use the generic `dbutil` package. Returns typed result envelopes with automatic `apperror` stack traces.
 
 ### Result Types
 
@@ -66,7 +66,7 @@ res := dbutil.Exec(ctx, db, query, args...)
 
 ### JSON Tags — Omit Redundant Tags
 
-Go's `encoding/json` marshaler uses the **field name** by default. Since all our fields are PascalCase and JSON output is PascalCase, explicit `json:"FieldName"` tags are **redundant** and MUST be omitted. Only add a `json` tag when using `omitempty`:
+(gate **G-04-ENVELOPE-DEBUG-FLAG**) Go's `encoding/json` marshaler uses the **field name** by default. Since all our fields are PascalCase and JSON output is PascalCase, explicit `json:"FieldName"` tags are **redundant** and MUST be omitted. Only add a `json` tag when using `omitempty`:
 
 ```go
 // ❌ WRONG — redundant json tags that repeat the field name
