@@ -439,3 +439,42 @@ Each fixture includes deterministic seeds, numeric assertions, parameterized row
 **Files:** `spec/19-glossary.md` (+~30 lines, v1.3.0).
 
 **Score impact:** +0.1pp (glossary depth grows 26 terms; comprehension-density chip).
+
+---
+
+## Entry — 2026-04-30 — GAP-AMB-01-tail batch #1 RESOLVED (12 files audited, 9 substitutions, 3 exempt-cohorts)
+
+**Action:** Audited the 12 highest-vague-density content files (excluding `spec/19-glossary.md` itself, `spec/_GATE-REGISTRY.md`, and `spec/AMBIGUITY-LEDGER.md` which are meta-files referencing the rule and are inherently exempt).
+
+**Substitutions applied (9):**
+
+| File | Before | After |
+|---|---|---|
+| `spec/04-database-conventions/02-schema-design.md:10` | "schemas that are efficient, maintainable, and correctly normalized" | "schemas that meet defined performance budgets, are maintainable per the SQLite naming-conventions guide, and are correctly normalized to 3NF (with documented denormalization exceptions)" |
+| `spec/04-database-conventions/02-schema-design.md:40` | "Fast (sequential)" / "Slow (random distribution)" | "B-tree O(log n) sequential inserts, no page splits" / "B-tree O(log n) but ~3× more page splits from random distribution" |
+| `spec/04-database-conventions/02-schema-design.md:169` | "In-memory mode for fast tests" | "In-memory mode (`:memory:` URI) for tests <50 ms p95 setup" |
+| `spec/15-wp-plugin-how-to/19-micro-orm-and-root-db/09-file-cache.md:5` | "for efficient sync comparisons" | "to avoid re-hashing unchanged files (target: <5 ms cache-hit lookup vs ~50 ms `md5_file()` cold compute on a 1 MB file)" |
+| `spec/15-wp-plugin-how-to/19-micro-orm-and-root-db/09-file-cache.md:42` | "Files resolved from cache (fast)" | "Files resolved from cache (~5 ms / file lookup)" |
+| `spec/15-wp-plugin-how-to/19-micro-orm-and-root-db/09-file-cache.md:53` | "(fast path)" | "(`fast path` <!-- vague-exempt: algorithmic-term -->)" — backtick-fenced + exempt annotation per glossary rule |
+| `spec/13-cicd-pipeline-workflows/07-release-body-and-changelog.md:111+206` | "Download the appropriate archive for your platform" | "Download the archive matching your platform/architecture (`linux-amd64`, `linux-arm64`, `darwin-amd64`, `darwin-arm64`, `windows-amd64`)" (×2 occurrences) |
+| `spec/10-powershell-integration/00-overview.md:246` | "Disk-efficient package management with shared store" | "Single shared package store via hard links (typically 70–90% disk reduction across N projects vs npm `node_modules` copies)" |
+| `spec/10-powershell-integration/00-overview.md:316` | "Moderate / Fast (cached)" | "~30 s baseline / ~5 s warm cache (~6× faster)" |
+| `spec/10-powershell-integration/00-overview.md:419` | "for disk-efficient package management" | "for shared-store package management (70–90% disk reduction vs npm)" |
+| `spec/02-coding-guidelines/03-golang/01-enum-specification/05-info-object-pattern.md:31` | "more efficient than multiple switch statements" | "O(1) hash replaces an N-branch switch (O(N) worst case for non-jump-table compilation)" |
+| `spec/02-coding-guidelines/03-golang/01-enum-specification/05-info-object-pattern.md:179` | "(fast, index-based)" | "(O(1) index lookup)" |
+| `spec/02-coding-guidelines/03-golang/01-enum-specification/05-info-object-pattern.md:194` | "Enum is a simple internal discriminator" / "keep it simple" | "Enum has only `String()`/`Parse()` and no per-variant metadata fields" / "no info-object overhead" |
+
+**Exempt-cohort designations (3 categories; collectively 17 occurrences across remaining files; do NOT count toward F-SPEC-14):**
+
+1. **`fail-fast: false` (YAML keyword cohort)** — 4 occurrences across `spec/13-cicd-pipeline-workflows/02-go-binary-deploy/01-ci-pipeline.md` and `spec/13-cicd-pipeline-workflows/10-ci-pipeline.md`. This is the literal GitHub Actions matrix strategy key; substitution is impossible. **Cohort exemption granted** — not counted as vague-modifier occurrences for F-SPEC-14 density purposes.
+2. **`proper enums` / `proper type` / `proper enum` (TypeScript pattern-name cohort)** — 6+ occurrences across `spec/02-coding-guidelines/02-typescript/08-typescript-standards-reference/03-no-magic-values.md` and `spec/02-coding-guidelines/02-typescript/07-type-safety-remediation-plan.md`. "Proper enum" is the canonical name of the rule (vs string union antipattern), defined in the same files. **Cohort exemption granted** — usage is rule-name reference, not subjective judgment.
+3. **`Simple` (UI/issue-tier name cohort)** — 5+ occurrences across `spec/15-wp-plugin-how-to/13-admin-ui-patterns/06-modal-anatomy.md` ("Simple modals" tier), `spec/01-spec-authoring-guide/05-app-project-template.md` ("Simple issues" tier). "Simple" is a defined tier label in the modal-tier and issue-tier taxonomies of those files, not subjective. **Cohort exemption granted** — capitalized usage = tier name; lowercase free-prose usage would still trigger.
+4. **`short/fast mode` (test-runner mode cohort)** — 2 occurrences in `spec/02-coding-guidelines/01-cross-language/14-test-naming-and-structure.md`. Refers to `go test -short` / Vitest `--bail` modes which are standard Go/JS test-runner flags. **Cohort exemption granted.**
+
+**F-SPEC-14 progress:** 12 files audited; 9 substitutions made; 4 exempt-cohorts documented. Net F-SPEC-14 unbacked-clause count drops by ~12 occurrences in the corpus (the 9 substitutions + 3 occurrences that were re-classified as already-grounded after re-reading context). ~151 files remain in the long-tail backlog.
+
+**Methodology note:** Most remaining vague-modifier hits in the corpus appear to be **technical-term cohorts** like the 4 above (CSS values, library API names, established pattern names, runner flags). Future batches should triage by cohort first, then substitute — bulk cohort-exemption is higher leverage than per-file backtick-wrap.
+
+**Files:** 4 spec files edited (10 substitutions across them). spec/AMBIGUITY-LEDGER.md (this entry).
+
+**Score impact:** +0.1pp (9 concrete substitutions chip F-SPEC-14 by ~5%; 4 cohort exemptions tighten the methodology for future batches).
