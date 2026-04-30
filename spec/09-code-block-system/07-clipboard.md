@@ -9,7 +9,7 @@
 
 ### Strategy: Fallback-First
 
-The clipboard utility prioritizes the **synchronous `document.execCommand('copy')`** method because it works reliably in sandboxed iframes and non-secure contexts. The modern `navigator.clipboard.writeText` is used only as a secondary fallback.
+The clipboard utility prioritizes the **synchronous `document.execCommand('copy')`** method because it works in sandboxed iframes and non-HTTPS contexts. The `navigator.clipboard.writeText` is used only as a secondary fallback.
 
 ### Flow
 

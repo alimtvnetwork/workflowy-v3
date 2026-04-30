@@ -6,7 +6,7 @@
 
 Application code **must not** call raw `os.Stat`, `os.MkdirAll`, `os.Remove`, `os.ReadFile`, or any `os` package filesystem function directly. Instead, use `pathutil` wrapper functions that:
 
-1. Return `*apperror.AppError` with proper error codes (not raw `error`)
+1. Return `*apperror.AppError` with codes from the E1000–E9999 range (not raw `error`)
 2. Provide positive-named boolean helpers (`IsDir`, `IsDirMissing`, `IsFile`, `IsFileMissing`)
 3. Handle edge cases (permissions, symlinks) consistently
 
@@ -104,7 +104,7 @@ if err == nil && isReady {
 
 ### Required: Use `*apperror.AppError` Methods
 
-`*apperror.AppError` pointer receiver methods are **nil-safe** — calling `HasError()`, `IsDefined()`, or any method on a nil `*AppError` returns the appropriate zero value without panicking. This eliminates the need for raw `err != nil` checks entirely in application code.
+`*apperror.AppError` pointer receiver methods are **nil-safe** — calling `HasError()`, `IsDefined()`, or any method on a nil `*AppError` returns the type-defined zero value (`false` for bool, `0` for int, `""` for string) without panicking. This eliminates the need for raw `err != nil` checks entirely in application code.
 
 ```go
 // ✅ REQUIRED — single error guard, no compound condition

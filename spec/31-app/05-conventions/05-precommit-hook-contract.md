@@ -22,7 +22,7 @@ A future hygiene gate **G-20** (reserved) will detect drift between this contrac
 
 ## User Story
 
-As a contributor about to commit a spec change, I want my local environment to run the same checks CI will run — and to fail fast — so that I never push a commit that wastes CI minutes by failing on a problem I could have caught locally in seconds.
+As a contributor about to commit a spec change, I want my local environment to run the same checks CI will run — and to fail-fast (≤30 s) — so that I never push a commit that wastes CI minutes by failing on a problem I could have caught locally in seconds.
 
 ---
 
@@ -69,7 +69,7 @@ The hook is a POSIX `sh` script (not bash) so it runs on every Unix-like contrib
 
 1. **`set -e`** — abort on first non-zero command.
 2. **Compute staged changes** — `git diff --cached --name-only --diff-filter=ACMR | grep -E '^(spec/|scripts/spec-hygiene/)' || true`
-3. **Short-circuit when irrelevant** — if no spec or hygiene files are staged, `exit 0`. Keeps everyday code commits fast.
+3. **Short-circuit when irrelevant** — if no spec or hygiene files are staged, `exit 0`. Keeps everyday code commits ≤2 s overhead.
 4. **Announce** — `echo "🧪 Spec hygiene pre-commit: running checks…"`
 5. **Run the runner** — exactly one command: `bun run spec:check`. **Do not** invoke `node scripts/spec-hygiene/00-run-all.mjs` directly (per AT-CIGATE-08, single entry point).
 6. **On failure** — print recovery hint including `git commit --no-verify`, then `exit 1`.
