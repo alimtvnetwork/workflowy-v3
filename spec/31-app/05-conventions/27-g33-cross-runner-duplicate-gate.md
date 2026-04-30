@@ -8,6 +8,9 @@ status: active
 
 # G-33 — Cross-Runner Allow-List Duplicate Detector
 
+
+> **Parent:** [`./00-overview.md`](./00-overview.md) — added 2026-04-30 (AUD-REMEDIATE-CRIT-7, F-AUD42-08 closure).
+
 **Runner:** [`scripts/spec-hygiene/33-check-cross-runner-duplicates.mjs`](../../../scripts/spec-hygiene/33-check-cross-runner-duplicates.mjs)
 **Companion reporter:** [G-35](./26-allow-list-inventory.md)
 **Companion meta-gates:** [G-30.3](./23-g30-at-citation-validity-gate.md), [G-31.5](./24-g31-workflow-xref-reciprocity-gate.md), [G-32.4](./25-g32-ddl-unique-coverage-gate.md)

@@ -1,5 +1,8 @@
 # Ledger: G-32 DDL Unique-Coverage Exemptions
 
+
+> **Parent:** [`./00-overview.md`](./00-overview.md) — added 2026-04-30 (AUD-REMEDIATE-CRIT-7, F-AUD42-08 closure).
+
 > **Scope:** Per-(gate, path) exemptions consumed by
 > `scripts/spec-hygiene/32-check-ddl-unique-coverage.mjs` (G-32). Sibling #3
 > of the per-(gate, path) Phase-2 trilogy after G-30 and G-31.

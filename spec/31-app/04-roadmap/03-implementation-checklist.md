@@ -1,5 +1,8 @@
 # Implementation Checklist (per-phase pre-flight)
 
+
+> **Parent:** [`./00-overview.md`](./00-overview.md) — added 2026-04-30 (AUD-REMEDIATE-CRIT-7, F-AUD42-08 closure).
+
 > **Version:** 1.0.0
 > **Updated:** 2026-04-26 (UTC+8) — created in spec-only mode as P1.1 hand-off prep
 > **Purpose:** A per-phase pre-flight checklist the next AI session runs **before writing the first line of code** in each phase of [`01-implementation-phases.md`](./01-implementation-phases.md). Locks the SPEC-ONLY → BUILD transition contract.

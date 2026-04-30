@@ -1,5 +1,8 @@
 # Mirror Cycle Detection — Algorithm Spec
 
+
+> **Parent:** [`./00-overview.md`](./00-overview.md) — added 2026-04-30 (AUD-REMEDIATE-CRIT-7, F-AUD42-08 closure).
+
 > **API Contract:** See [`spec/31-app/06-endpoints/09-mirrors.md`](../06-endpoints/09-mirrors.md) for the endpoint surface that backs this feature (request/response envelopes, status codes, error shapes). Bidirectional cross-link added 2026-04-30 to close **F-AUD42-04** (App-folder audit Phase 5).
 
 
