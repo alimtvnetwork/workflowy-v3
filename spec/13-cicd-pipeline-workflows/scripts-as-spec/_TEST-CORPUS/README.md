@@ -14,8 +14,8 @@
 ## Why this folder exists
 
 A fixture-as-spec algorithm is only as trustworthy as its rejection
-behaviour. Without a frozen corpus of inputs that **MUST** trip each
-algorithm (gate `G-13-CORPUS-FROZEN-INPUTS`), regressions to the algorithm itself can silently turn a
+behaviour. Without a frozen corpus of inputs that **MUST** trip each algorithm (gate `G-13-CORPUS-FROZEN-INPUTS`),
+regressions to the algorithm itself can silently turn a
 real defect into a false negative.
 
 This folder hosts two kinds of files:
@@ -64,11 +64,11 @@ PASS baseline; deferred (not blocking today's coverage).
 
 ## Runner contract (specified, not yet implemented)
 
-A future CI workflow MUST iterate this folder, parse each fixture's
+A future CI workflow MUST iterate this folder (gate `G-13-CORPUS-RUNNER-CONTRACT`), parse each fixture's
 banner for its `Phase profile` and `Expected exit`, copy the fixture
 into a temp directory alongside a snapshot of
 `spec/_GATE-REGISTRY.md` and `spec/_LEDGER-G-13-BACKLINK-EXEMPT.md`,
-run the target audit at the declared phase, and assert (gate `G-13-CORPUS-RUNNER-CONTRACT`):
+run the target audit at the declared phase, and assert:
 
 1. The exit code matches `Expected exit`.
 2. Every substring in `Expected stdout substring` is present in stdout.
@@ -82,15 +82,15 @@ This contract is itself a candidate for a future
 ## How to add a new test fixture
 
 1. Choose `PHASE-N-FAIL-<slug>.md` or `PHASE-N-PASS-<slug>.md`.
-2. Banner MUST cite: target gate ID, phase, expected exit code,
-   expected stdout substring(s) (gate `G-13-CORPUS-BANNER-FOUR-FIELDS`).
+2. Banner MUST cite (gate `G-13-CORPUS-BANNER-FOUR-FIELDS`): target gate ID, phase, expected exit code,
+   expected stdout substring(s).
 3. Body MUST be the minimal example that triggers the case (gate `G-13-CORPUS-BODY-MINIMAL`).
 4. Append a row to the table above.
 
 ## SPEC-ONLY classification
 
-These files are inert markdown. They MUST NOT be `import`ed by runtime
-code (gate `G-13-CORPUS-NO-RUNTIME-IMPORT`). The future runner described above is itself a SPEC-ONLY artifact
+These files are inert markdown. They MUST NOT be `import`ed by runtime code (gate `G-13-CORPUS-NO-RUNTIME-IMPORT`).
+The future runner described above is itself a SPEC-ONLY artifact
 until the `exit spec-only` trigger is invoked.
 
 ## See also
