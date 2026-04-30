@@ -63,7 +63,7 @@ relation** over the singular `Item` table — gate `G-ADR-0005-PEER-GROUP-MODEL`
 - **Cycle prevention:** before any structural mutation that would place
   group `G_a` inside an item belonging to group `G_a` (transitively),
   the operation **MUST** fail with `ENF-MIRROR-CYCLE` per
-  `spec/31-app/01-features/09a-mirror-cycle-detection.md`.
+  `spec/31-app/01-features/09a-mirror-cycle-detection.md` — gate `G-ADR-0005-CYCLE-PRECHECK` (sub-rule of `G-MIRROR-CYCLE-PRECHECK`).
 - **Conflict resolution (LWW tiebreak):** when two peers receive
   conflicting edits during offline replay, the edit with the larger
   `(UpdatedAtUtc, ActorUserId)` tuple wins. `UpdatedAtUtc` is the
