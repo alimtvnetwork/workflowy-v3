@@ -18,6 +18,15 @@
  *   4. the §"Coverage summary" counts (✅ / 📋 RESERVED / 📝 procedural)
  *      match the actual row classifications
  *
+ * `--strict-mode` (advisory, exit 0): emits a namespace-overlap report —
+ *   any `G-{NN}-` prefix whose gate rows span ≥2 distinct anchor paths is
+ *   flagged. Documented overloads (registry NOTE: "prefix is overloaded") are
+ *   marked as such; undocumented overlaps print "⚠ UNDOCUMENTED" so authors
+ *   add a NOTE before the next GAPCLOSE-* cross-walk. Closes the F-AUDIT-34..38
+ *   methodology hardening loop: the seven-instance cascade was caused by
+ *   per-namespace greps missing cross-cutting families (`G-32-*`, `G-CG-*`,
+ *   `G-ADR-NNNN-*`); strict-mode surfaces those at PR-time, not post-hoc.
+ *
  * Pure positive guard clauses, no nested ifs, max 15-line bodies.
  */
 import { readFileSync, existsSync } from "node:fs";
