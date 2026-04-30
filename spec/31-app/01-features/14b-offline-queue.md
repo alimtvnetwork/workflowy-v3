@@ -195,3 +195,33 @@ The 6 acceptance tests **AT-OQ-01 … AT-OQ-06** are defined under the existing 
 ### Endpoint SSOTs
 
 Detailed request/response fixtures live under [`spec/31-app/06-endpoints/`](../06-endpoints/) and [`97b-endpoint-envelope-fixtures.md`](../06-endpoints/97b-endpoint-envelope-fixtures.md).
+
+---
+
+## Depth Coverage (resolves F-AUD42-23 / F-AUD42-24)
+
+> Sub-feature files were flagged thin across UX/Edges/AC axes. This addendum closes those axes with concrete, testable rules.
+
+### UX Specifics
+
+- Offline indicator: lucide `WifiOff` in app header + queued-op count badge.
+- Queued ops are visible in a "Pending sync" panel (read-only; no manual reorder — FIFO is invariant).
+- On reconnect, progress bar shows N/total drained; toast on completion: "All changes synced."
+
+### Edge Cases
+
+- Browser tab closed while offline → queue persists in IndexedDB (unbounded per ADR-0021); next session resumes drain.
+- Op fails server-side after replay (e.g., target item now trashed) → op marked `Status=failed_recoverable`; user sees per-op error in Pending panel with Retry/Discard.
+- Concurrent edit on another client while offline → on replay, LWW conflict detected via IfMatch; conflict resolution per ADR-0024 (server wins, local op moved to "Conflicted" bucket for user review).
+- Storage quota exceeded → ERR_IDB_QUOTA_EXCEEDED; UI blocks new mutations until user reviews/discards old conflicts.
+- Two tabs of same user offline → each has its own queue; on reconnect, both drain to server in their own FIFO (server applies LWW across both).
+
+### Acceptance Tests
+
+- `AT-APP-OQ-01 (FIFO persistence)`
+- `AT-APP-OQ-02 (replay progress UI)`
+- `AT-APP-OQ-03 (conflict bucket)`
+- `AT-APP-OQ-04 (quota guard)`
+- `AT-APP-OQ-05 (multi-tab drain)`
+
+> Every AC above MUST be enumerated in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) with a runnable fixture.

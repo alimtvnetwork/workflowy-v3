@@ -197,3 +197,32 @@ The 8 acceptance tests **AT-DV-01 … AT-DV-08** are defined in §6 above. This 
 ### Endpoint SSOTs
 
 Detailed request/response fixtures live under [`spec/31-app/06-endpoints/`](../06-endpoints/) and [`97b-endpoint-envelope-fixtures.md`](../06-endpoints/97b-endpoint-envelope-fixtures.md).
+
+---
+
+## Depth Coverage (resolves F-AUD42-23 / F-AUD42-24)
+
+> Sub-feature files were flagged thin across UX/Edges/AC axes. This addendum closes those axes with concrete, testable rules.
+
+### UX Specifics
+
+- Card grid uses CSS `grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))` — no manual breakpoints.
+- Empty state: "No children yet — press Enter to create the first card." (icon: lucide `LayoutDashboard`).
+- Inline edit triggers on Enter or click; Esc cancels and reverts; blur commits via debounce 300 ms.
+- Drag handle on hover only (avoids visual noise); reorders via fractional-index string (ADR-0016).
+
+### Edge Cases
+
+- Child count > 250 → switch to virtualized variant (ADR-0017) without changing visual grid.
+- Sibling becomes non-card type (ItemType change to `mirror`/`board`) → row re-renders without unmount; preserves focus.
+- Concurrent edit by other client → SSE `ItemUpdated` patches the field; if user is currently editing, conflict toast offers Keep/Discard.
+- Parent becomes trashed mid-render → `RouteErrorBoundary` redirects to last live ancestor.
+
+### Acceptance Tests
+
+- `AT-APP-DASH-01 (grid auto-fill)`
+- `AT-APP-DASH-02 (inline edit Esc/Enter)`
+- `AT-APP-DASH-03 (virtualization >250)`
+- `AT-APP-DASH-04 (concurrent-edit conflict toast)`
+
+> Every AC above MUST be enumerated in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) with a runnable fixture.

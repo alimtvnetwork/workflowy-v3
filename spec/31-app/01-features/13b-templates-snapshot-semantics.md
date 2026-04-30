@@ -158,3 +158,33 @@ The 5 acceptance tests **AT-TPL-01 … AT-TPL-05** are defined in §3 above. Thi
 - **Routes introduced by this feature:** None.
 - **N/A justification:** Snapshot data-model spec — write surface lives in `13-templates` (CreateTemplateSnapshot, ApplyTemplate).
 - **Compliance:** Satisfies F-AUD42-25 (API axis) by explicit declaration. Any future write route added here MUST follow the PascalCase envelope (ADR-0004/0019), egress via queue worker (ADR-0023), and bind to a named error boundary (ADR-0017).
+
+---
+
+## Depth Coverage (resolves F-AUD42-23 / F-AUD42-24)
+
+> Sub-feature files were flagged thin across UX/Edges/AC axes. This addendum closes those axes with concrete, testable rules.
+
+### UX Specifics
+
+- Snapshot is taken at template-create time; subsequent edits to the source subtree do NOT alter saved templates (immutable snapshot).
+- Template preview in apply dialog renders first 5 levels of the saved tree (lucide `FileText` per node).
+- Apply confirmation shows: target parent, item count, estimated time (≤ 5 s for ≤ 1000 nodes).
+
+### Edge Cases
+
+- Snapshot of a subtree containing mirrors → mirrors are FLATTENED to plain nodes in the snapshot (peer relationships do not survive serialization).
+- Snapshot containing trashed descendants → trashed items are EXCLUDED from snapshot (only live nodes serialized).
+- Apply onto a parent that is read-only for caller → ERR_FORBIDDEN 403 before WAL row created (no orphan).
+- Snapshot size > 10k nodes → ERR_TEMPLATE_TOO_LARGE 413; user must split source.
+- Source subtree changes ItemType after snapshot taken → snapshot retains original ItemTypes (immutable).
+
+### Acceptance Tests
+
+- `AT-APP-TSNAP-01 (immutability)`
+- `AT-APP-TSNAP-02 (mirror flattening)`
+- `AT-APP-TSNAP-03 (trash exclusion)`
+- `AT-APP-TSNAP-04 (size cap)`
+- `AT-APP-TSNAP-05 (ItemType immutability)`
+
+> Every AC above MUST be enumerated in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) with a runnable fixture.

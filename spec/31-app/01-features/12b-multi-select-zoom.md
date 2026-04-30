@@ -175,3 +175,32 @@ The 6 acceptance tests **AT-MZ-01 … AT-MZ-06** are defined in §5 above. This 
 - **Routes introduced by this feature:** None.
 - **N/A justification:** Composition rule — reuses `12-multi-select` bulk routes scoped to zoom subtree.
 - **Compliance:** Satisfies F-AUD42-25 (API axis) by explicit declaration. Any future write route added here MUST follow the PascalCase envelope (ADR-0004/0019), egress via queue worker (ADR-0023), and bind to a named error boundary (ADR-0017).
+
+---
+
+## Depth Coverage (resolves F-AUD42-23 / F-AUD42-24)
+
+> Sub-feature files were flagged thin across UX/Edges/AC axes. This addendum closes those axes with concrete, testable rules.
+
+### UX Specifics
+
+- Inside a zoom (focused subtree), multi-select scope is constrained to descendants of the zoom root.
+- Shift+click outside zoom root → ignored (no selection extension); cursor flashes zoom boundary briefly.
+- Cmd/Ctrl+A selects all visible descendants of zoom root (NOT entire workspace).
+- Bulk move out of zoom subtree → confirmation: "Move N items outside the focused area?" (default: cancel).
+
+### Edge Cases
+
+- Zoom root becomes trashed → selection cleared; redirect to parent zoom root.
+- Mirror peer of a selected item exists outside zoom → bulk operation applies to original only; SSE `ItemUpdated` propagates to mirrors.
+- Selection persists across zoom-out: items remain selected if still visible; stripped silently if not.
+- Bulk delete of zoom root itself blocked (ERR_CANNOT_DELETE_ZOOM_ROOT 409).
+
+### Acceptance Tests
+
+- `AT-APP-MSZ-01 (scope constraint)`
+- `AT-APP-MSZ-02 (Cmd-A scope)`
+- `AT-APP-MSZ-03 (move-out confirm)`
+- `AT-APP-MSZ-04 (delete root blocked)`
+
+> Every AC above MUST be enumerated in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) with a runnable fixture.
