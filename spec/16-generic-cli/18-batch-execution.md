@@ -277,7 +277,7 @@ To add a new batch command (e.g., `batch-test`):
 2. Reuse `loadExecByScope()` or create a similar scope loader
 3. Replace `exec.Command(constants.GitBin, ...)` with the target binary
 4. Follow the same three-outcome model (succeeded/failed/missing)
-5. Add constants to the appropriate constants file
+5. Add constants to the matching constants file (`internal/constants/<binary-name>.go` — one file per target binary, named after the binary; e.g., `git.go`, `npm.go`)
 6. Wire into `dispatch()` in `root.go`
 
 ---

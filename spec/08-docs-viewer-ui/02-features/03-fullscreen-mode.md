@@ -17,7 +17,7 @@
 - Fullscreen hides the sidebar and expands the content area to fill the viewport
 - Header remains visible with a minimize button to exit
 - `Escape` key also exits fullscreen
-- Implemented via React state (not browser Fullscreen API) for better control
+- Implemented via React state (not browser Fullscreen API) — keeps custom UI chrome (header + minimize button) visible, avoids the browser's `Esc`-only exit prompt, and works inside iframes where `requestFullscreen()` is denied
 
 ---
 

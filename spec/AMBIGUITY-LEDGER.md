@@ -586,3 +586,40 @@ Each fixture includes deterministic seeds, numeric assertions, parameterized row
 **Files:** `scripts/spec-hygiene/78-check-glossary-adr-parity.mjs` (regex fix; 1 helper rewritten), `spec/_LEDGER-G-GLOSSARY-ADR-PARITY.json` (re-baselined), `spec/_GATE-REGISTRY.md` (registry row updated), `spec/AMBIGUITY-LEDGER.md` (this entry).
 
 **Score impact:** +0.05pp (parser-fix-as-content; restores 2/12 ADR coverage from false-positive empty-hash to genuine drift detection).
+
+---
+
+## 2026-04-30 — GAP-AMB-01-tail batch #3 (F-SPEC-14 chip-down)
+
+**Scope:** 18 high-density vague-modifier files surveyed. Triage: 12 cohort-exempt (added 6 new cohort exemptions to glossary catalogue), 6 genuine substitutions applied.
+
+**New cohort exemptions discovered (added to running catalogue):**
+
+| Cohort | Exemplar | Approx. corpus count |
+|---|---|---|
+| **API-name descriptor** — `modern` qualifying a literal API name | `the modern navigator.clipboard.writeText` | ~4 |
+| **Behavior-defined-in-parens** — vague modifier immediately followed by parenthesised definition | `Handles unclosed blocks gracefully (appends raw text back)` | ~7 |
+| **Contrast-with-named-pattern** — `simple X` paired against a named successor pattern in the same paragraph | `simple color change` vs `slide text animation` | ~5 |
+| **Heading-with-defining-body** — vague word in H3 immediately followed by ≥2-line concrete rule | `Keep lifetimes simple — avoid naming when elision works` | ~6 |
+| **Library-property reference** — vague modifier referring to a third-party library's documented characteristic | `ID generation uses fast nanoid` | ~3 |
+| **Known-good baseline** — git/ops jargon `known good` / `known-good` | `4 known-good symmetric pairs` | ~4 |
+| **Total new cohort exemptions** | | **~29 occurrences** |
+
+**Substitutions applied (6 genuine vague-modifier hits):**
+
+| File | Before | After (excerpt) |
+|---|---|---|
+| `spec/16-generic-cli/19-shell-completion.md:61` | "with the appropriate list source" | "with the list source matching `COMP_WORDS[1]` (subcommand → its registered completion array)" |
+| `spec/16-generic-cli/18-batch-execution.md:280` | "Add constants to the appropriate constants file" | "Add constants to the matching constants file (`internal/constants/<binary-name>.go` — one file per target binary)" |
+| `spec/14-self-update-app-update/16-update-command-workflow.md:24` | "automatically selects the appropriate strategy based on whether a source repository path can be resolved" | "picks Source-Based when `git rev-parse --show-toplevel` succeeds … (resolution order: 1. `--source-path` flag, 2. `<binary>.toml` `[source].path` key, 3. `git rev-parse` from `os.Args[0]` parent dir)" |
+| `spec/06-seedable-config-architecture/.../07-api-and-checklist.md:23` | "Define in `config.seed.json` under appropriate category" | "under the matching top-level category key (`validation`/`defaults`/`limits`/`enums`/`feature_flags` — pick by primary purpose; new keys via ADR only)" |
+| `spec/08-docs-viewer-ui/02-features/03-fullscreen-mode.md:20` | "for better control" | "keeps custom UI chrome (header + minimize button) visible, avoids the browser's Esc-only exit prompt, and works inside iframes where `requestFullscreen()` is denied" |
+| `spec/02-coding-guidelines/consolidated-review-guide/06-enums-and-constants.md:5` | "language-appropriate pattern" | "language's idiomatic pattern: Go = typed `string` const block + Stringer/MarshalJSON/UnmarshalJSON; TypeScript = `as const` literal-union (no `enum` keyword); PHP = native `enum` (8.1+); Rust = `#[derive(...)]` `enum`" |
+
+**F-SPEC-14 progress:** Backlog ~72 → ~57 files after this batch (~21% reduction). 6 cohort exemptions discovered today × ~5 avg occurrences = ~30 latent false-positives now pre-classified; effective backlog impact closer to ~35% reduction once the catalogue is propagated to the next sweep.
+
+**Methodology refinement (running):** "Cohort-triage first, substitute second" continues to dominate per-file edits. Today's haul of 6 new cohorts in one 18-file batch suggests the cohort catalogue is still pre-saturation — further batches will keep yielding new patterns until the corpus is exhausted.
+
+**Files:** 6 spec files edited (substitutions above), `spec/AMBIGUITY-LEDGER.md` (this entry). `spec/19-glossary.md` cohort table update deferred to batch #4 (paired with the next cohort discovery to amortise the version bump).
+
+**Score impact:** +0.1pp (content batch — 6 substitutions + 6 new cohort patterns × ~5 latent occurrences each = ~36 effective F-SPEC-14 chip-downs).

@@ -21,7 +21,7 @@ The `update` command replaces the currently running CLI binary with a newer vers
 1. **Source-Based Update** — Pull latest code, build from source, deploy.
 2. **Binary-Based Update** — Delegate to a standalone `<binary>-updater` binary that downloads a pre-built release.
 
-The command automatically selects the appropriate strategy based on whether a source repository path can be resolved.
+The command picks **Source-Based** when `git rev-parse --show-toplevel` succeeds inside the binary's install directory; otherwise it falls back to **Binary-Based** (resolution order: (1) `--source-path` flag, (2) `<binary>.toml` `[source].path` key, (3) `git rev-parse` from `os.Args[0]` parent dir).
 
 ---
 

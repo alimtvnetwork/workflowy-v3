@@ -58,7 +58,7 @@ to determine the active subcommand and decide what to complete.
 ### Bash
 
 Uses `complete -F`. The function checks `COMP_WORDS` and `COMP_CWORD`
-to route to `compgen -W` with the appropriate list source.
+to route to `compgen -W` with the list source matching `COMP_WORDS[1]` (subcommand name → its registered completion array, e.g. `subcmd_init → ${INIT_FLAGS[*]}`).
 
 ### Zsh
 
