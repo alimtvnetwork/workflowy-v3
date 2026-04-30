@@ -59,14 +59,14 @@ This is the **third archetype** in this folder, alongside Browser Extension Depl
 | # | Rule | Why |
 |---|------|-----|
 | **P1** | Frontend (`src/`) builds to `dist/` via `vite build` BEFORE PHP packaging starts | The plugin ships pre-compiled JS/CSS — no Node runtime on the WP server |
-| **P2** | The compiled `dist/` MUST be copied into the plugin's `assets/dist/` directory inside the ZIP | WP enqueues files from this path; broken paths = 404 console errors |
+| **P2** | The compiled `dist/` MUST be copied into the plugin's `assets/dist/` directory inside the ZIP `[gate: G-WPDEPLOY-VITE-IN-ASSETS-DIST]` | WP enqueues files from this path; broken paths = 404 console errors |
 | **P3** | `composer install --no-dev --optimize-autoloader` runs AFTER `npm/bun run build` | Locks PHP autoloader to production dependencies only |
-| **P4** | The ZIP MUST be flat: `workflowy/workflowy.php` at root, no double-nesting | WP rejects double-nested plugin ZIPs |
+| **P4** | The ZIP MUST be flat: `workflowy/workflowy.php` at root, no double-nesting `[gate: G-WPDEPLOY-ZIP-FLAT-LAYOUT]` | WP rejects double-nested plugin ZIPs |
 | **P5** | Version SSOT is `package.json` `"version"` field — propagated to plugin header + `PluginConfigType::Version` at build time | Single source prevents version drift between frontend and PHP |
 | **P6** | Tag format `v{semver}` triggers the release workflow (e.g. `v0.34.0`) | Convention shared with all archetypes — see [`../16-shared-conventions.md`](../16-shared-conventions.md) |
-| **P7** | The release artifact MUST be named `workflowy-v{semver}.zip` | The self-update endpoint depends on this exact pattern — see [`./03-update-server-contract.md`](./03-update-server-contract.md) |
-| **P8** | A SHA-256 checksum file (`workflowy-v{semver}.zip.sha256`) MUST accompany every release | Required for self-update integrity verification |
-| **P9** | Hygiene gates (TypeScript build, PHPStan, PHPUnit, vulnerability scan) MUST pass before packaging | Failed gate = aborted release; never publish broken artifacts |
+| **P7** | The release artifact MUST be named `workflowy-v{semver}.zip` `[gate: G-WPDEPLOY-ARTIFACT-NAME-PATTERN]` | The self-update endpoint depends on this exact pattern — see [`./03-update-server-contract.md`](./03-update-server-contract.md) |
+| **P8** | A SHA-256 checksum file (`workflowy-v{semver}.zip.sha256`) MUST accompany every release `[gate: G-WPDEPLOY-SHA256-SIDECAR]` | Required for self-update integrity verification |
+| **P9** | Hygiene gates (TypeScript build, PHPStan, PHPUnit, vulnerability scan) MUST pass before packaging `[gate: G-WPDEPLOY-CI-GATES-BLOCK-PACKAGE]` | Failed gate = aborted release; never publish broken artifacts |
 
 ---
 
@@ -95,7 +95,7 @@ This is the **third archetype** in this folder, alongside Browser Extension Depl
 └──────────────┘   └──────────────┘   └──────────────┘   └──────────────┘
 ```
 
-Each stage MUST be a separate GitHub Actions job step so failures are individually attributable. See [`./02-github-actions-workflow.md`](./02-github-actions-workflow.md) for the complete workflow YAML.
+Each stage MUST be a separate GitHub Actions job step so failures are individually attributable `[gate: G-WPDEPLOY-STAGE-PER-STEP]`. See [`./02-github-actions-workflow.md`](./02-github-actions-workflow.md) for the complete workflow YAML.
 
 ---
 
