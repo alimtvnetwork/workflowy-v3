@@ -127,7 +127,7 @@ On incoming write W setting Mirrors.BrokenAt = X (X may be NULL or a timestamp):
 
 ### 14.5.2 Event Name Vocabulary (closed set)
 
-Every SSE message has an `event:` line drawn from this list. Unknown events MUST be ignored by the client (forward-compatible).
+Every SSE message has an `event:` line drawn from this list. Unknown events MUST be ignored by the client (forward-compatible) `[gate: G-25-SSE-EVENT-NAMES-CLOSED]`.
 
 | Event | When emitted | `data:` payload (JSON) |
 |-------|--------------|------------------------|
