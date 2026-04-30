@@ -124,10 +124,10 @@ This file pins the sequence. Each step cites the SSOT that governs its rule.
 
 ## Idempotency
 
-Mirror create is **conditionally idempotent** — replays of the *same* request shape with the *same* `X-WorkFlowy-Idempotency-Key` MUST return the original response, not insert a second peer. Implementation:
+Mirror create is **conditionally idempotent** — replays of the *same* request shape with the *same* `X-WorkFlowy-Idempotency-Key` MUST return the original response, not insert a second peer (gate `G-MCREATE-IDEMPOTENT-REPLAY`). Implementation:
 
 - The handler SHOULD persist `(idempotencyKey, userId) → response` in `ProcessedMutations` for **24 h** (per `14-concurrency-and-sync.md`).
-- Without an idempotency key, two near-simultaneous create requests with the *same* `(sourceItemId, targetParentId)` will both succeed and produce **two distinct peers under the same parent** — this matches Workflowy's behavior (the user explicitly invoked "Mirror to…" twice). The picker UI MUST debounce the submit button to prevent accidental double-submit.
+- Without an idempotency key, two near-simultaneous create requests with the *same* `(sourceItemId, targetParentId)` will both succeed and produce **two distinct peers under the same parent** — this matches Workflowy's behavior (the user explicitly invoked "Mirror to…" twice). The picker UI MUST debounce the submit button to prevent accidental double-submit (gate `G-MCREATE-DEBOUNCE-SUBMIT`).
 
 The `FOR UPDATE` lock in step 4f serializes group lookup so two concurrent mirrors of the same source never create two `MirrorPeerGroups` rows for it.
 
@@ -138,10 +138,10 @@ The `FOR UPDATE` lock in step 4f serializes group lookup so two concurrent mirro
 - ❌ Performing the cycle check in PHP instead of SQL. Splits the check across two code paths, creates a TOCTOU window where a concurrent move could turn the parent into a descendant between PHP check and INSERT.
 - ❌ Skipping step 4d (cycle check) when `createdGroup = false`. Even reusing an existing group, the new peer's parent must still pass cycle detection.
 - ❌ Creating the `MirrorPeerGroups` row outside the transaction. A failed cycle check would leave an orphan group row.
-- ❌ Inserting the new `Items` row before the `MirrorPeerGroupMembers` row for the source. The source's `PeerGroupId` MUST be set in the same transaction; otherwise the new peer COMMITs with `PeerGroupId` set but the source still NULL — clients render only one badge.
+- ❌ Inserting the new `Items` row before the `MirrorPeerGroupMembers` row for the source. The source's `PeerGroupId` MUST be set in the same transaction; otherwise the new peer COMMITs with `PeerGroupId` set but the source still NULL — clients render only one badge (gate `G-MCREATE-SOURCE-PEERGROUP-IN-TX`, 3-tier sub-rule under `G-ADR-0005-DISSOLVE-IN-TX` family enforcing same-transaction PeerGroupId atomicity).
 - ❌ Emitting `mirrors.created` SSE before COMMIT.
 - ❌ Treating "Mirror to existing peer-group target" as a different endpoint. The same `EP-MIRRORS-CREATE` handles both first-mirror (creates group) and Nth-mirror (reuses group); the `createdGroup` flag in the SSE payload is the only distinction.
-- ❌ Allowing a peer to be created under a parent that is itself a descendant of any *other* peer in the same group (would form a cycle through the peer-group, not just the source subtree). The cycle CTE in step 4d MUST be re-run from each existing peer when adding to an existing group — see [`09a-mirror-cycle-detection.md`](../01-features/09a-mirror-cycle-detection.md) §3.
+- ❌ Allowing a peer to be created under a parent that is itself a descendant of any *other* peer in the same group (would form a cycle through the peer-group, not just the source subtree). The cycle CTE in step 4d MUST be re-run from each existing peer when adding to an existing group — see [`09a-mirror-cycle-detection.md`](../01-features/09a-mirror-cycle-detection.md) §3 (gate `G-MCREATE-CYCLE-CHECK-PER-PEER`, 3-tier sub-rule under `G-ADR-0005-CYCLE-PRECHECK`).
 - ❌ Copying `Items.UpdatedAt` or `Items.ServerTs` from the source. The new peer is a fresh row with `now()` timestamps; LWW operates on per-row stamps.
 
 ---

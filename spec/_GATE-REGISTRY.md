@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.41  
-> **Updated:** 2026-04-30 — **batch-48 (Domain-ADR-0005 anchor — fourth consecutive 4-MUST density-tier bind, third ADR-anchor area, fifth consecutive umbrella-composes-leaves chain):** registered 4 new DOC-NORM gates binding all 4 prose-MUSTs in `spec/00-adrs/0005-mirror-as-peer-group.md` (L39 model headline, L65 cycle precheck, L86 dissolve-in-tx, L94 amendment). Gates: `G-ADR-0005-PEER-GROUP-MODEL` (umbrella, composes 3 sub-rules), `G-ADR-0005-CYCLE-PRECHECK` (3-tier sub-rule under `G-MIRROR-CYCLE-PRECHECK`), `G-ADR-0005-DISSOLVE-IN-TX` (3-tier sub-rule under `G-MIRROR-DISSOLVE-SINGLETON`), `G-ADR-0005-SUPERSEDE-REQUIRED` (sub-rule of `G-ADR-0001-AMENDMENT-REQUIRED`). **Bare-MUST count 312 → 308 (Δ −4 exact).** Closes 42nd consecutive zero-drift batch. Streak counter: 5 consecutive content batches. Prior: 1.7.40 (Domain-ADR-0003 anchor).
+> **Version:** 1.7.42  
+> **Updated:** 2026-04-30 — **batch-49 (Domain-MCREATE seed — fifth consecutive 4-MUST density-tier bind, FIRST workflow-page batch demonstrating ADR-anchor → workflow cascade reuse, sixth consecutive umbrella-composes-leaves chain):** registered 4 new DOC-NORM gates binding all 4 prose-MUSTs in `spec/31-app/02-workflows/09-mirror-create-flow.md` (L127 idempotent-replay, L130 debounce-submit, L141 source-PeerGroupId-in-tx, L144 cycle-check-per-peer). Gates: `G-MCREATE-IDEMPOTENT-REPLAY`, `G-MCREATE-DEBOUNCE-SUBMIT`, `G-MCREATE-SOURCE-PEERGROUP-IN-TX` (3-tier sub-rule under `G-ADR-0005-DISSOLVE-IN-TX` — reuses the gate seeded yesterday in batch-48), `G-MCREATE-CYCLE-CHECK-PER-PEER` (3-tier sub-rule under `G-ADR-0005-CYCLE-PRECHECK` — same reuse). **Bare-MUST count 308 → 304 (Δ −4 exact).** Closes 43rd consecutive zero-drift batch. Streak counter: 6 consecutive content batches. **Pivot rationale:** ADR-anchor runway exhausted earlier than expected — ADRs 0026/0027/0029 were all pre-bound (gates declared inline in §Decision tables). Pivoted to highest-leverage 4-MUST workflow file: mirror-create cascades directly off batch-48's ADR-0005 anchors, providing the canonical demo of the ADR-anchor → workflow-bind reuse pattern. Prior: 1.7.41 (Domain-ADR-0005 anchor).
 
-- **Total named gates:** 528 (+4 this revision)
+- **Total named gates:** 532 (+4 this revision)
 - **WARN-only gates:** 11 (unchanged)
 - **CI:** 139 (unchanged)
 - **TEST:** 20 (unchanged)
-- **DOC-NORM:** 164 (+4 this revision)
+- **DOC-NORM:** 168 (+4 this revision)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 54 (+1 this revision — new Domain-ADR-0005)
+- **Areas covered:** 55 (+1 this revision — new Domain-MCREATE)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
@@ -705,6 +705,18 @@
 | `G-ADR-0005-DISSOLVE-IN-TX` | **DOC-NORM** | [`spec/00-adrs/0005-mirror-as-peer-group.md`](./00-adrs/0005-mirror-as-peer-group.md) | 3-tier sub-rule under `G-MIRROR-DISSOLVE-SINGLETON` — every mutation that would leave a peer group with one member MUST dissolve the group (`UPDATE Item SET PeerGroupId = NULL WHERE PeerGroupId = $groupId`) in the **same transaction** as the triggering mutation. "Group of one" as a persisted state is forbidden. |
 | `G-ADR-0005-SUPERSEDE-REQUIRED` | **DOC-NORM** | [`spec/00-adrs/0005-mirror-as-peer-group.md`](./00-adrs/0005-mirror-as-peer-group.md) | Sub-rule of `G-ADR-0001-AMENDMENT-REQUIRED` — any change to the peer-group model (e.g. introducing a privileged peer, changing tiebreak from LWW to CRDT, allowing groups-of-one) MUST be ratified by a new ADR superseding ADR-0005 that enumerates every gate, workflow page, AT, and migration that needs re-anchoring. NEW-24 will CI-promote alongside ADR-0001 / ADR-0003 amendment gates. |
 
+
+
+### Domain-MCREATE (Mirror Create Workflow)
+
+> Reserved gate IDs for the mirror-create flow SSOT in `spec/31-app/02-workflows/09-mirror-create-flow.md`. Batch-49 (2026-04-30) registers 4 new DOC-NORM gates binding all 4 prose-MUSTs (L127 idempotent-replay, L130 debounce-submit, L141 source-PeerGroupId-in-tx, L144 cycle-check-per-peer). Two of the four gates layer as 3-tier sub-rules under today's `G-ADR-0005-*` chain (`-DISSOLVE-IN-TX`, `-CYCLE-PRECHECK`) — **sixth consecutive batch landing an explicit umbrella-composes-leaves chain**, and **first batch demonstrating a workflow-page-bound sub-rule reusing an ADR-anchor gate from the immediately preceding batch** (validates the ADR-anchor → workflow-bind cascade pattern). The remaining 2 gates are workflow-local (idempotency + UI debouncing) with no parent in any other domain.
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-MCREATE-IDEMPOTENT-REPLAY` | **DOC-NORM** | [`spec/31-app/02-workflows/09-mirror-create-flow.md`](./31-app/02-workflows/09-mirror-create-flow.md) | Replays of an `EP-MIRRORS-CREATE` request carrying the same `X-WorkFlowy-Idempotency-Key` for the same `(userId, sourceItemId, targetParentId)` MUST return the originally-cached `ProcessedMutations` response — never insert a second peer. Implements the conditional-idempotency contract from `14-concurrency-and-sync.md` for the create path specifically. CI promotion deferred to integration-test harness (Phase-1 scaffold). |
+| `G-MCREATE-DEBOUNCE-SUBMIT` | **DOC-NORM** | [`spec/31-app/02-workflows/09-mirror-create-flow.md`](./31-app/02-workflows/09-mirror-create-flow.md) | The "Mirror to…" picker's submit button MUST debounce to prevent accidental double-submit producing duplicate peers under the same parent (since unkeyed identical requests are explicitly allowed by §Idempotency to land twice — UI is the sole guard). Layered under existing UI-norm `G-32-FORM-SUBMIT-DEBOUNCED` family if/when seeded; for now a Domain-MCREATE leaf. |
+| `G-MCREATE-SOURCE-PEERGROUP-IN-TX` | **DOC-NORM** | [`spec/31-app/02-workflows/09-mirror-create-flow.md`](./31-app/02-workflows/09-mirror-create-flow.md) | 3-tier sub-rule under `G-ADR-0005-DISSOLVE-IN-TX` family — when promoting a source `Item` to its first peer-group membership, the source's `Items.PeerGroupId` UPDATE MUST land in the **same transaction** as the new peer's INSERT. Forbidden split-COMMIT state: new peer row has `PeerGroupId` set, source row still NULL → clients render only one ◇ badge. The ADR-0005 dissolve-in-tx parent guards detach symmetry; this leaf guards the create-side symmetry. |
+| `G-MCREATE-CYCLE-CHECK-PER-PEER` | **DOC-NORM** | [`spec/31-app/02-workflows/09-mirror-create-flow.md`](./31-app/02-workflows/09-mirror-create-flow.md) | 3-tier sub-rule under `G-ADR-0005-CYCLE-PRECHECK` — when adding a new peer to an **existing** peer group, the recursive-CTE cycle check from `09a-mirror-cycle-detection.md` §3 MUST be re-run from **each** existing peer in the group, not just from the source `X`. Failure mode: a parent that is a descendant of *another* peer in the group (not `X`) would silently form a cycle through the peer-group relation. The ADR-0005 cycle-precheck parent binds the per-mutation rule; this leaf binds the per-peer iteration rule for the create-existing-group sub-case. |
 
 
 ### Domain-HLPIN (Highlighter Dependency Pin)
