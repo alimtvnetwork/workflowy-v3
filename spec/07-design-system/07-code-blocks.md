@@ -176,7 +176,7 @@ Line numbers scale proportionally: `calc(var(--code-font-size) * 0.7)`.
 
 ### Download Button
 
-- Downloads code as a file with language-appropriate extension
+- Downloads code as a file with extension matching the language (`.ts` for TypeScript, `.py` for Python, etc., per the language→extension map in `src/lib/code-blocks/extensions.ts`)
 - Filename: `code-{id}.{ext}`
 
 ### Fullscreen Button
