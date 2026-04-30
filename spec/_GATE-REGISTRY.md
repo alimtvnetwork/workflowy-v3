@@ -7,7 +7,7 @@
 - **WARN-only gates:** 11 (unchanged)
 - **CI:** 138 (unchanged)
 - **TEST:** 20 (unchanged)
-- **DOC-NORM:** 141 (unchanged)
+- **DOC-NORM:** 145 (+4 this revision)
 - **DOC:** 202 (unchanged)
 - **Areas covered:** 53 (unchanged)
 - **Areas covered:** 37 (unchanged)
