@@ -60,9 +60,9 @@ The following lock-file invariants MUST hold (binds `G-32-AXIOS-LOCK-MATCH`):
 
 ## 2. Automated Update Tools
 
-### 2.1 Blocked Tools for Axios
+### 2.1 Blocked Tools for Axios — gate `G-32-AXIOS-NO-AUTO-BUMP` · AT `AT-AXIOS-03`
 
-The following tools MUST NOT be allowed to modify the Axios version:
+The following tools MUST NOT be allowed to modify the Axios version (binds `G-32-AXIOS-NO-AUTO-BUMP`):
 
 | Tool | Configuration |
 |------|---------------|
