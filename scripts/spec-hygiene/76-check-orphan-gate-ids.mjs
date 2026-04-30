@@ -71,7 +71,11 @@ for (const line of reg.split("\n")) {
 function familyOfPath(filePath) {
   if (filePath.startsWith("spec/00-adrs/")) return "adr-ratification";
   if (filePath.startsWith("spec/31-app/05-conventions/")) return "convention-drift";
+  if (filePath.startsWith("spec/31-app/02-workflows/")) return "workflow";
   if (filePath.startsWith("spec/15-wp-plugin-how-to/")) return "wp-plugin";
+  if (/^spec\/3[3-6]-/.test(filePath)) return "feature-spec";
+  if (filePath.startsWith("spec/02-coding-guidelines/")) return "cross-cutting";
+  if (filePath.startsWith("spec/35-enforcement-rules/")) return "cross-cutting";
   return null;
 }
 
