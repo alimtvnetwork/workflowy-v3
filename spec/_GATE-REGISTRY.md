@@ -60,6 +60,8 @@
 
 | Gate | Tier | Primary File | Brief |
 |------|------|--------------|-------|
+| `G-04-AI-CONVENTIONS-RETAINED` | **DOC-NORM** | [`spec/04-database-conventions/00-overview.md`](./04-database-conventions/00-overview.md) | AI agents MUST retain the 5 mandatory DB rules (singular table names, PascalCase identifiers, `{TableName}Id` PK, FK = exact PK name, `Is/Has`-prefix positive booleans) across every schema, migration, model, and query they generate. Anchors the §"AI Agents Must Commit Database Rules to Memory" block. Conformance audited by review checklist + spot-check of generated DDL. |
+| `G-04-ALIAS-BRIDGE-PR-COMPLETE` | **DOC-NORM** | [`spec/04-database-conventions/00-overview.md`](./04-database-conventions/00-overview.md) | Every new spec term that introduces a plural-prose↔singular-DDL alias MUST be added to the §"Spec↔DDL Alias Bridge (canonical)" table in the **same PR** that introduces the term. Prevents alias-table staleness; sub-rule of `G-04-ALIAS-DDL-CANONICAL`. |
 | `G-04-ALIAS-DDL-CANONICAL` | **DOC-NORM** | [`spec/00-adrs/0001-singular-ddl-vs-plural-prose.md`](./00-adrs/0001-singular-ddl-vs-plural-prose.md) | and G-04-ALIAS-DDL-CANONICAL (every alias must map to a real DDL |
 | `G-04-ENVELOPE-DEBUG-FLAG` | **DOC** | [`spec/00-adrs/0004-rest-envelope-pascalcase.md`](./00-adrs/0004-rest-envelope-pascalcase.md) | - G-04-ENVELOPE-DEBUG-FLAG — MethodsStack present iff |
 | `G-04-ENVELOPE-NO-EMPTY-ERRORS` | **DOC** | [`spec/00-adrs/0004-rest-envelope-pascalcase.md`](./00-adrs/0004-rest-envelope-pascalcase.md) | - G-04-ENVELOPE-NO-EMPTY-ERRORS — Errors key absent on success. |
@@ -75,9 +77,11 @@
 | `G-04-NAVIGATION-PRESENCE` | **DOC** | [`spec/00-adrs/0019-rest-envelope-optional-keys.md`](./00-adrs/0019-rest-envelope-optional-keys.md) | - G-04-NAVIGATION-PRESENCE — enforces D2 (presence iff |
 | `G-04-NESTED-ARRAY-NEVER-NULL` | **DOC** | [`spec/00-adrs/0019-rest-envelope-optional-keys.md`](./00-adrs/0019-rest-envelope-optional-keys.md) | - G-04-NESTED-ARRAY-NEVER-NULL — enforces D9 (any declared |
 | `G-04-NESTED-DECLARED-FIELD-PRESENT` | **DOC** | [`spec/00-adrs/0019-rest-envelope-optional-keys.md`](./00-adrs/0019-rest-envelope-optional-keys.md) | - G-04-NESTED-DECLARED-FIELD-PRESENT — enforces D9 (declared |
+| `G-04-NO-DDL-PLURAL-ALIASES` | **DOC-NORM** | [`spec/04-database-conventions/00-overview.md`](./04-database-conventions/00-overview.md) | The DDL side of the alias bridge MUST NOT acquire a plural alias. Forbids names like `Items_view`, `ItemsAll`, `Users_v`, `Sessions_v2`. Distinct from `G-04-NO-DDL-PLURALS` (which forbids plural base-table names): this gate forbids plural **derived** identifiers (views, materialised tables, generated indexes) from leaking plural forms back into the DDL canon. Sub-rule of `G-04-ALIAS-DDL-CANONICAL`. |
 | `G-04-NO-DDL-PLURALS` | **DOC** | [`spec/00-adrs/0006-migrate-spec-sql-to-singular-ddl.md`](./00-adrs/0006-migrate-spec-sql-to-singular-ddl.md) | 5. Gate G-04-NO-DDL-PLURALS is hereby promoted from |
 | `G-04-OPTIONAL-OMIT-NEVER-NULL` | **DOC** | [`spec/00-adrs/0019-rest-envelope-optional-keys.md`](./00-adrs/0019-rest-envelope-optional-keys.md) | - G-04-OPTIONAL-OMIT-NEVER-NULL — enforces D1 (no |
 | `G-04-WIRE-PASCALCASE` | **DOC** | [`spec/00-adrs/0019-rest-envelope-optional-keys.md`](./00-adrs/0019-rest-envelope-optional-keys.md) | - Modified gates: G-04-WIRE-PASCALCASE (ADR-0004) clarified |
+| `G-04-WIRE-USES-WIRE-SPELLING` | **DOC-NORM** | [`spec/04-database-conventions/00-overview.md`](./04-database-conventions/00-overview.md) | Every non-DDL context (REST/SSE wire payloads, TypeScript wire types, endpoint examples, prose `Results` shapes) MUST use the **wire spelling** from the §"Spec↔DDL Alias Bridge (column-level)" table — never the DDL spelling. Currently: `OwnerId` on the wire, `OwnerUserId` in DDL. Sub-rule of `G-26-WIRE-OWNERID-ONLY`; this gate generalises the rule across the whole alias-bridge table so future column additions inherit the wire-only invariant automatically. |
 
 ### ADR-0005
 
