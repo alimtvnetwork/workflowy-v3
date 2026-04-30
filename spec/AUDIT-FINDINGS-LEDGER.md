@@ -288,6 +288,12 @@ Authored `spec/35-enforcement-rules/03-eslint-rule-authoring.md` (closed plugin 
 
 ---
 
+### Progress note 2026-04-30 — GAP-A2 (batch 4/4) closed → ENTIRE 35-ENFORCEMENT-RULES CLUSTER NOW ✅
+
+Authored `spec/35-enforcement-rules/04-boundary-enforcement.md` (Chokepoint Principle, 5 boundary chokepoint specs B1–B5 with full code, migration path, 8 anti-patterns, 3 AT binds, full B6 "adding a new boundary" worked example). All 7 prose MUSTs gate-bound (`G-35-BE-CHOKEPOINT-IMPORT`, `-EXPORT-NARROW`, `-AXIOS-CHOKEPOINT`, `-IDB-CHOKEPOINT`, `-SSE-CHOKEPOINT`, `-LOADER-PARSE`, `-PROMOTE-OR-REMOVE`) — zero bare-MUST regression. **All 4 enforcement-rules sub-specs (01/02/03/04) are now authored**, closing the entire `35-*` placeholder cluster from F-AUDIT-41. Cumulative impact across the 4-batch cluster: 25 new prose MUSTs added, all gate-bound; 14 anti-patterns formalized; 14 AT binds anchored; 4 worked examples shipped.
+
+---
+
 
 ## Retraction case studies
 
