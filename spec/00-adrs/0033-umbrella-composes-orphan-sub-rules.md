@@ -22,6 +22,8 @@ Authors MUST mark a gate row as an umbrella by including `(Umbrella)` in the Des
 
 Authors MUST NOT use this rule to silence genuine missing gates: a leaf token whose rule is **not** described in the umbrella's anchor source remains an orphan and MUST be authored as its own row.
 
+**Same-number umbrella disambiguation (added 2026-04-30 per F-AUDIT-39).** When a `G-{NN}` numeric prefix is reserved by ≥2 distinct registries (e.g. `G-24` reserved by both `spec/00-adrs/0024-…` AND `spec/31-app/05-conventions/02-ci-quality-gates.md`), every umbrella row sharing that number MUST disambiguate via a `family=` qualifier in the `(Umbrella)` marker — e.g. `(Umbrella, family=adr-ratification)` vs `(Umbrella, family=convention-drift)`. The runner MUST scope leaf coverage to the umbrella whose `family=` matches the leaf's anchor file path (path prefix `spec/00-adrs/` → `family=adr-…`; path prefix `spec/31-app/05-conventions/` → `family=convention-drift`; etc.). Leaf names within a `(family=X)` cluster MUST NOT collide with leaf names in a sibling `(family=Y)` cluster sharing the same `G-{NN}` prefix; collisions MUST be resolved by renaming the newer leaf with a family-suffix (e.g. `G-24-PRIVILEGE-MUTATION-GATED-DRIFT` when bound after an existing `G-24-PRIVILEGE-MUTATION-GATED` already lives under `family=adr-ratification`). Authors MUST run the F-AUDIT-34 5-step cross-walk against BOTH families before binding any new `G-{NN}-*` leaf when `G-{NN}` is double-reserved.
+
 ## Consequences
 
 **Positive**
