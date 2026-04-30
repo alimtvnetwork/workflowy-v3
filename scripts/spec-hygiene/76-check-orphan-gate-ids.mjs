@@ -140,9 +140,10 @@ for (const f of walk("spec")) {
   const lines = readFileSync(f, "utf8").split("\n");
   for (let i = 0; i < lines.length; i++) {
     for (const m of lines[i].matchAll(GATE_RE)) {
-      if (PLACEHOLDERS.has(m[0])) continue;
-      if (!cited.has(m[0])) cited.set(m[0], []);
-      cited.get(m[0]).push({ file: f, line: i + 1 });
+      const tok = NORMALISE(m[0]);
+      if (PLACEHOLDERS.has(tok) || PLACEHOLDERS.has(m[0])) continue;
+      if (!cited.has(tok)) cited.set(tok, []);
+      cited.get(tok).push({ file: f, line: i + 1 });
     }
   }
 }
