@@ -117,7 +117,7 @@ These are the **catch-all** handlers that fire when no component-level handler c
 
 | Duration | When to use |
 |----------|-------------|
-| **default** (~4s) | Success confirmations, info messages, simple errors |
+| **default** (~4s) | Success confirmations, info messages, single-line errors (no stack trace, no Session ID) |
 | **10s** (`10000`) | Any error with "View Details" → Error Modal action |
 | **15s** (`15000`) | Server crashes (E9007), remote 500s requiring log investigation |
 

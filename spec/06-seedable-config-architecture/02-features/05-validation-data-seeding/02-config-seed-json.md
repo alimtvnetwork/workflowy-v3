@@ -2,7 +2,7 @@
 
 > **Parent:** [Validation Data Seeding overview](./00-overview.md)
 
-All validation data lives in the seed JSON file under the appropriate category. The Default value becomes what's loaded into the Root DB on first seed.
+All validation data lives in the seed JSON file under the category whose enum value matches the data's domain (per `spec/19-glossary.md` §Architecture Tiers). The Default value becomes what's loaded into the Root DB on first seed.
 
 ```json
 {

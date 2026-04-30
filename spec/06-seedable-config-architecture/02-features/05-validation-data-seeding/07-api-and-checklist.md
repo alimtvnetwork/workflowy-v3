@@ -25,5 +25,5 @@ GET /api/v1/config/validation/:category/:key
 - [ ] Add changelog entry
 - [ ] Create Go accessor using `ValidationDataService`
 - [ ] Never hardcode the array in source code
-- [ ] Add API endpoint for runtime updates if needed
+- [ ] Add API endpoint for runtime updates when the value must mutate post-deploy without redeploying the seed bundle
 - [ ] Add tests for default values
