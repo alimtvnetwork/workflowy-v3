@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.33  
-> **Updated:** 2026-04-30 — **batch-41:** seeded greenfield **Domain-LAYOUT** (App Layout Shell) with 5 DOC-NORM gates binding all 5 prose-MUSTs in `spec/31-app/01-features/03-layout-structure.md`. Added: `G-LAYOUT-TWO-ZONE-SHELL`, `G-LAYOUT-SIDEBAR-LEFT-SLIDE`, `G-LAYOUT-RESPONSIVE-SIDEBAR-MODE`, `G-LAYOUT-DROPDOWN-GROUP-DIVIDERS`, `G-LAYOUT-SIDEBAR-WIDTH-240`. Tenth corpus-wide greenfield Domain seed. CI promotion runner filed as **NEW-20** (`scripts/spec-hygiene/check-layout-shell.mjs` — Playwright DOM-snapshot + Tailwind class grep). Tier choice rationale: all 5 are DOM-shape assertions whose canonical enforcement requires a running browser — DOC-NORM at seed; CI after runner. Prior: 1.7.32 (batch-40 Domain-PS1 extension).
+> **Version:** 1.7.34  
+> **Updated:** 2026-04-30 — **batch-42:** extended **Domain-13** (CI-CD Test Corpus) with 5 new gates binding all 5 prose-MUSTs in `spec/13-cicd-pipeline-workflows/scripts-as-spec/_TEST-CORPUS/README.md`. Added: `G-13-CORPUS-FROZEN-INPUTS` (DOC-NORM), `G-13-CORPUS-RUNNER-CONTRACT` (DOC-NORM — closes deferred-mint note at L78 of source file), `G-13-CORPUS-BANNER-FOUR-FIELDS` (DOC-NORM, sub-rule of RUNNER-CONTRACT), `G-13-CORPUS-BODY-MINIMAL` (DOC-NORM), `G-13-CORPUS-NO-RUNTIME-IMPORT` (CI grep gate). Tier mix: 4 DOC-NORM + 1 CI. Third consecutive non-greenfield extension — Domain-13 already held 6 prior `G-13-FIXTURE-*` gates. Strategic: closes a self-acknowledged deferred mint (RUNNER-CONTRACT was explicitly named-but-not-registered in the source file, last of its kind in this domain). Prior: 1.7.33 (batch-41 Domain-LAYOUT seed).
 
-- **Total named gates:** 493 (+5 this revision)
+- **Total named gates:** 498 (+5 this revision)
 - **WARN-only gates:** 10 (unchanged)
-- **CI:** 134 (unchanged)
+- **CI:** 135 (+1 this revision)
 - **TEST:** 20 (unchanged)
-- **DOC-NORM:** 134 (+5 this revision)
+- **DOC-NORM:** 138 (+4 this revision)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 52 (+1 this revision)
+- **Areas covered:** 52 (unchanged)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
