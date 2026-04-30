@@ -24,7 +24,6 @@ const REG_PATH = "spec/_GATE-REGISTRY.md";
 // — these are NOT citations and MUST NOT count toward drift.
 const PLACEHOLDERS = new Set([
   "G-NN", "G-NN-NAME", "G-DOMAIN-NN", "G-ADR-NNNN",
-  "G-00-UMBRELLA-LEAVES-DESCRIBED",
   // Family/skeleton mentions in prose — see spec/31-app/05-conventions/02-ci-quality-gates.md §reserved
   "G-09", "G-2X", "G-3X", "G-26-", "G-41",
   // Bare ADR-namespace mention in §0033 examples
