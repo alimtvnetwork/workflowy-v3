@@ -9,26 +9,26 @@
 |---|---|---|
 | Files containing normative clauses | 476 | — |
 | Total normative clauses | 2940 | 100% |
-| Backed (AT- or G- within ±5 lines) | 2318 | 78.8% |
-| **Unbacked** | **622** | **21.2%** |
+| Backed (AT- or G- within ±5 lines) | 2325 | 79.1% |
+| **Unbacked** | **615** | **20.9%** |
 | — Exempt registry/ledger prose | 61 | 2.1% |
-| — **Actionable (true findings)** | **561** | **19.1%** |
+| — **Actionable (true findings)** | **554** | **18.8%** |
 
 ## Mediocre-AI implementability impact
 
-At the user-set bar ('mediocre AI, zero follow-up, 100% intent match'), every actionable unbacked clause is a coin-flip: a strong AI infers correctly, a mediocre AI may diverge. With **19.1% actionable-unbacked**, mediocre-AI score is bounded by `(100 − actionable_unbacked_pct)` ≈ **81/100** before any other factor — well below the v7 strong-AI baseline of 95.
+At the user-set bar ('mediocre AI, zero follow-up, 100% intent match'), every actionable unbacked clause is a coin-flip: a strong AI infers correctly, a mediocre AI may diverge. With **18.8% actionable-unbacked**, mediocre-AI score is bounded by `(100 − actionable_unbacked_pct)` ≈ **81/100** before any other factor — well below the v7 strong-AI baseline of 95.
 
 ## Actionable findings — top 30 (by unbacked count, exempts removed)
 
 | # | Unbacked | File | Top example (line) |
 |---|---|---|---|
-| 1 | 10 | `03-error-manage/02-error-architecture/07-logging-and-diagnostics/01-react-execution-logger.md` | L35: \| F1 \| Track function executions with arguments \| MUST \| |
-| 2 | 10 | `03-error-manage/02-error-architecture/07-logging-and-diagnostics/02-session-based-logging/01-requirements.md` | L11: \| F1 \| Every API request must be assigned a unique session ID \| MUST \| |
-| 3 | 8 | `00-adrs/0024-ratify-soft-confirm-triage-rulings.md` | L32: **D1 — Ratify [#01](../../.lovable/question-and-ambiguity/00-triage-summary.md#01--audit-100100-score-should-b1b4-addend |
-| 4 | 7 | `00-adrs/0015-twelve-itemtypes-enum.md` | L24: values**. It MUST be defined identically in all three SSOTs and consumed |
-| 5 | 7 | `00-adrs/0016-fractional-index-sortorder.md` | L36: `mem://features/editor-core` is hereby **superseded** and MUST be |
-| 6 | 6 | `00-adrs/0017-eight-error-boundaries-ui-virtualization.md` | L30: MUST mount exactly eight independent React error boundaries, each |
-| 7 | 6 | `00-adrs/0030-audit-exemption-manifest.md` | L44: this match") **MUST** live in exactly one file: |
+| 1 | 8 | `00-adrs/0024-ratify-soft-confirm-triage-rulings.md` | L32: **D1 — Ratify [#01](../../.lovable/question-and-ambiguity/00-triage-summary.md#01--audit-100100-score-should-b1b4-addend |
+| 2 | 7 | `00-adrs/0015-twelve-itemtypes-enum.md` | L24: values**. It MUST be defined identically in all three SSOTs and consumed |
+| 3 | 7 | `00-adrs/0016-fractional-index-sortorder.md` | L36: `mem://features/editor-core` is hereby **superseded** and MUST be |
+| 4 | 7 | `03-error-manage/02-error-architecture/07-logging-and-diagnostics/02-session-based-logging/01-requirements.md` | L11: \| F1 \| Every API request must be assigned a unique session ID \| MUST \| |
+| 5 | 6 | `00-adrs/0017-eight-error-boundaries-ui-virtualization.md` | L30: MUST mount exactly eight independent React error boundaries, each |
+| 6 | 6 | `00-adrs/0030-audit-exemption-manifest.md` | L44: this match") **MUST** live in exactly one file: |
+| 7 | 6 | `03-error-manage/02-error-architecture/07-logging-and-diagnostics/01-react-execution-logger.md` | L35: \| F1 \| Track function executions with arguments \| MUST \| |
 | 8 | 5 | `00-adrs/0004-rest-envelope-pascalcase.md` | L37: Every REST response served by the WordPress plugin **MUST** be a |
 | 9 | 5 | `00-adrs/0022-shadcn-radix-component-base.md` | L40: underlying primitive layer.** Components MUST come from one of: |
 | 10 | 5 | `02-coding-guidelines/97a-acceptance-criteria-fixtures.md` | L17: Authoring 363 near-identical fixture blocks would be noise. Instead this file declares **one canonical template** + one  |
@@ -73,7 +73,7 @@ At the user-set bar ('mediocre AI, zero follow-up, 100% intent match'), every ac
 | `00-adrs/` | 80 | 19 |
 | `(root)/` | 49 | 12 |
 | `15-wp-plugin-how-to/` | 47 | 34 |
-| `03-error-manage/` | 42 | 20 |
+| `03-error-manage/` | 35 | 20 |
 | `01-spec-authoring-guide/` | 29 | 11 |
 | `13-cicd-pipeline-workflows/` | 27 | 14 |
 | `12-consolidated-guidelines/` | 25 | 24 |
