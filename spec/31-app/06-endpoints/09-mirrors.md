@@ -28,7 +28,7 @@
 
 ## EP-MIRRORS-CREATE — POST `items/{id}/mirror`
 
-- **Path**: `id` MUST be a **canonical** item (not itself a mirror) per L6. Otherwise `ERR_MIRROR_OF_MIRROR`.
+- **Path**: `id` MUST be a **canonical** item (not itself a mirror) per L6. Otherwise `ERR_MIRROR_OF_MIRROR` (per ADR-0005 mirror-of-mirror invariant).
 - **Auth**: `user` with read on `id` AND write on `TargetParentId`.
 - **Request body**: `{ TargetParentId: string, Position?: 'above' | 'below' | 'end' }`.
 - **Success (201)** `Results`: the new mirror `Item` (a thin row whose `MirrorOf = id`).

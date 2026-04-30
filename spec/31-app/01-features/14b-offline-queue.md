@@ -168,7 +168,7 @@ The 6 acceptance tests **AT-OQ-01 … AT-OQ-06** are defined under the existing 
 
 - **Persisted booleans introduced by this feature:** None.
 - **N/A justification:** Queue is unbounded by ADR-0021/0023 — no user-facing cap toggle.
-- **Compliance:** Satisfies the MUST in [`00-overview.md:140`](./00-overview.md) by explicit declaration. Any future boolean added here MUST route through `Sanitizer::bool()` and be enumerated in an `OptionNameType` case (see APP-FIX-05).
+- **Compliance:** Satisfies the MUST in [`00-overview.md:140`](./00-overview.md) by explicit declaration. Any future boolean added here MUST route through `Sanitizer::bool()` and be enumerated in an `OptionNameType` case (see APP-FIX-05; gate `G-WF-ENUM-NO-STRING-LITERALS`).
 
 ---
 

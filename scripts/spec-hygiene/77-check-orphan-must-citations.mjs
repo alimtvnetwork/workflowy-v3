@@ -49,12 +49,18 @@ import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 
 const SKIP_DIRS = new Set(["00-adrs"]);
+// SKIP_FILE: historical/index/diagram files where MUSTs are quotes/examples,
+// not normative bindings (counter exempts these too). Plus test-corpus FAIL fixtures.
+// F-SCOPE-49 burndown 2026-04-30: added AMBIGUITY-LEDGER, spec-index, sequence-diagrams,
+// glossary, _TEST-CORPUS PHASE-* fixtures, 00-ai-onboarding-ssot (checklist quoting MUSTs).
 const SKIP_FILE = (f) =>
-  /97-acceptance-criteria\.md$|^_GATE-|^_LEDGER-|^AUDIT-/.test(f);
+  /97-acceptance-criteria\.md$|97[a-z]?-acceptance-criteria-fixtures\.md$|^_GATE-|^_LEDGER-|^AUDIT-|^AMBIGUITY-LEDGER\.md$|^spec-index\.md$|^24-sequence-diagrams\.md$|^19-glossary\.md$|^00-ai-onboarding-ssot\.md$|^PHASE-\d+-FAIL-|^README\.md$/.test(f);
 
 const FIXTURE_SLOT_RE = /^\|\s*\*\*(Negative assertion|Then|Side effects|Given|When|Expected [^*]+|Linter command|Response envelope|Expected stderr regex)\*\*\s*\|/;
 const RFC2119_CELL_RE = /^\|\s*[A-Z]+[0-9]+\s*\|.*\|\s*(MUST|SHALL|SHOULD|MAY)\s*\|/;
-const CITATION_RE = /AT-[A-Z]+-|\bG-[A-Z0-9][A-Z0-9-]*\b/;
+// F-SCOPE-49 burndown 2026-04-30: also recognize ADR-NNNN refs as valid same-line
+// citations — they bind a MUST to a load-bearing decision record (parser was missing this class).
+const CITATION_RE = /AT-[A-Z]+-|\bG-[A-Z0-9][A-Z0-9-]*\b|\bADR-\d{4}\b/;
 const MUST_RE = /\b(MUST|SHALL)\b/;
 
 function walk(dir, acc = []) {
@@ -113,6 +119,9 @@ function auditFile(file) {
     if (FIXTURE_SLOT_RE.test(ln)) continue;
     if (/^\s*>\s/.test(ln)) continue;
     if (RFC2119_CELL_RE.test(ln)) continue;
+    // F-SCOPE-49 burndown 2026-04-30: gate-summary table HEADER rows
+    // (`| Gate id | MUST | Tier |...`) are column titles, not bindings — exempt.
+    if (/^\|\s*Gate\s*id\s*\|\s*MUST\s*\|\s*Tier\b/i.test(ln)) continue;
 
     // Same-paragraph adjacency check — the false-negative class.
     const pIdx = lineToPara[i];
@@ -147,5 +156,8 @@ for (const { file, warns } of perFile) {
 console.log(`---`);
 console.log(`Orphan-MUST-citation WARN total: ${totalWarn}`);
 console.log(`Files with ≥1 WARN: ${perFile.length}`);
-console.log(`Mode: WARN-only (always exits 0). Graduation: hard-fail when total reaches 0 for 2 consecutive weeks.`);
+// F-SCOPE-49 burndown 2026-04-30: graduated to HARD-FAIL after drift reached 0.
+// Runner exits 1 if any WARN exists; ORPHAN_MUST_WARN_ONLY=1 retains legacy behavior.
+console.log(`Mode: HARD-FAIL (graduated 2026-04-30). Set ORPHAN_MUST_WARN_ONLY=1 to bypass.`);
+if (totalWarn > 0 && process.env.ORPHAN_MUST_WARN_ONLY !== "1") process.exit(1);
 process.exit(0);

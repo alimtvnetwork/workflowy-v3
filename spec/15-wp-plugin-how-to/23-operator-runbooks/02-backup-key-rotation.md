@@ -14,7 +14,7 @@
 This runbook **rotates the Backup Key-Encryption-Key (KEK)** stored in the operator vault. The KEK encrypts per-tarball Data Encryption Keys (DEKs); the DEKs encrypt the actual SQLite snapshots before they leave the host (per A-44 §5).
 
 **Cadence:** every **90 days** (per A-44 §5.Key-rotation, AT-BACKUP-17).
-**Overlap window:** old KEKs MUST remain available for **2 years** after retirement so monthly archives within retention can still be restored.
+**Overlap window:** old KEKs MUST remain available for **2 years** after retirement so monthly archives within retention can still be restored (per AT-BACKUP-17 retention-overlap clause).
 **Forbidden:** rotating the WordPress `WP_AUTH_KEY` — that is a **different KEK** with a different blast radius (per A-44 §5 row 2). This runbook touches **only** the backup-only KEK.
 
 If you do not know the difference between the backup KEK and `WP_AUTH_KEY`, **stop and call the architect.** Do not guess.

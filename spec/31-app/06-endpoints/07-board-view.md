@@ -27,7 +27,7 @@
 
 ## EP-BOARD-GET — GET `items/{id}/board`
 
-- **Path**: `id` MUST be an `Item` whose `ItemType` is `BoardProject`. Otherwise `ERR_NOT_BOARD`.
+- **Path**: `id` MUST be an `Item` whose `ItemType` is `BoardProject`. Otherwise `ERR_NOT_BOARD` (gate `G-EP-BOARD-PROJECT-ONLY`).
 - **Auth**: `user` with read access.
 - **Request body**: —
 - **Success (200)** `Results`: `{ Columns: BoardColumn[], Cards: Item[] }` where each `BoardColumn = { Id, Title, Order }` and `Cards` are the children grouped by their column-discriminator field (per `07-board-view.md`).

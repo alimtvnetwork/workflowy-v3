@@ -204,7 +204,7 @@ The plugin uses Composer's PSR-4 autoloader. The §1 layout maps to one PSR-4 ro
 ## 4. Naming Rules
 
 1. **Top-level domain folders are PascalCase** (`Auth/`, `Backup/`, `Export/`, …). They double as PSR-4 namespace segments.
-2. **`Routes/` filenames are kebab-case `.php` includes** (e.g. `auth-refresh.php`) because they are loaded procedurally from `workflowy.php`, not autoloaded as classes. Each file MUST contain at most one `register_rest_route()` family.
+2. **`Routes/` filenames are kebab-case `.php` includes** (e.g. `auth-refresh.php`) because they are loaded procedurally from `workflowy.php`, not autoloaded as classes. Each file MUST contain at most one `register_rest_route()` family (gate `G-WP-ROUTES-KEBAB`).
 3. **`Migrations/` filenames are 4-digit-prefixed snake_case** (`0007_rate_limit_buckets.sql`) — forward-only, never edited after merge. The 4-digit width gives 9 999 migrations of headroom.
 4. **`Repository/sql/` filenames are kebab-case `.sql`** (e.g. `cycle-check.sql`), loaded via `file_get_contents(__DIR__ . '/sql/...')` from the parent repository class. **Never** inline SQL strings inside `Repository/*.php`.
 5. **`tests/fixtures/` filenames are free-form** but the directory itself is locked as the test-fixture allow-list root for G-22..G-28.

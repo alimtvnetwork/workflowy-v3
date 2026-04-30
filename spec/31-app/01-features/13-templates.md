@@ -97,7 +97,7 @@ enum TemplatePickerViewType: string {
 ```
 
 - **Wire form:** the string value (e.g., `"recent"`) is what travels in the API envelope and persists in `wp_options`.
-- **PHP form:** all comparisons, branches, and persistence calls MUST use the enum case (`TemplatePickerViewType::RECENT`) — never the bare string.
+- **PHP form:** all comparisons, branches, and persistence calls MUST use the enum case (`TemplatePickerViewType::RECENT`) — never the bare string (gate `G-WF-ENUM-NO-STRING-LITERALS`).
 - **Sanitizer:** `Sanitizer::enum(TemplatePickerViewType::class)` rejects any value not present in the enum cases (returns the default with a logged warning).
 - **Adding a case:** new picker view → add enum case + corresponding UI label + AC fixture in `97-acceptance-criteria.md`. No code path may accept a string outside the enum.
 - **Gate:** `[gate: G-WF-ENUM-NO-STRING-LITERALS]` — static analyzer rejects `Sanitizer::oneOf([...])` calls; only `Sanitizer::enum(EnumClass::class)` is allowed for closed sets.
