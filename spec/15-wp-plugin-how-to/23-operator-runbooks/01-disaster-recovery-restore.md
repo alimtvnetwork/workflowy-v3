@@ -43,7 +43,7 @@ export KEK_VAULT_PATH="/etc/workflowy/kek-vault.gpg"
 export AUDIT_TOOL="/usr/local/bin/wf-audit"   # CLI shipped with plugin
 ```
 
-### Pre-flight checks (all MUST pass before step 2)
+### Pre-flight checks (all MUST pass before step 2) `[gate: G-BACKUP]`
 
 ```bash
 test -d "$STAGING_DIR" || { echo "FATAL: staging dir missing"; exit 1; }
@@ -59,7 +59,7 @@ If any pre-flight fails: **stop**, fix, and start over. Do not continue with wor
 
 ## 2 — Declare the restore (audit row at `fatal`)
 
-This MUST happen **before** any file is touched. It creates the `SYSTEM.RESTORE_INITIATED` audit row that downstream alerting depends on.
+This MUST happen **before** any file is touched `[gate: G-BACKUP-RESTORE-DECLARE-FIRST]`. It creates the `SYSTEM.RESTORE_INITIATED` audit row that downstream alerting depends on.
 
 ```bash
 "$AUDIT_TOOL" log \
@@ -68,7 +68,7 @@ This MUST happen **before** any file is touched. It creates the `SYSTEM.RESTORE_
   --metadata='{"Tier":"'"$RESTORE_TIER"'","WorkspaceId":"'"$RESTORE_WORKSPACE_ID"'","TargetRpoTs":"'"$TARGET_RPO_TS"'","Ticket":"'"$TICKET_ID"'","Operator":"'"$OPERATOR_EMAIL"'"}'
 ```
 
-**Verify:** the command MUST print `audit_id=...`. If it does not, the audit DB itself is unreachable — escalate immediately; you cannot restore safely without an audit trail.
+**Verify:** the command MUST print `audit_id=...` `[gate: G-BACKUP-AUDIT-CHAIN-PRESERVE]`. If it does not, the audit DB itself is unreachable — escalate immediately; you cannot restore safely without an audit trail.
 
 ---
 
@@ -88,7 +88,7 @@ sudo wp --path=/var/www/wordpress workflowy workspace freeze \
   --reason="restore $TICKET_ID"
 ```
 
-**Verify:** subsequent `POST /wp-json/workflowy/v1/items/...` requests for the workspace MUST return `423 Locked` with envelope `{"Status":"error","Errors":[{"Code":"ERR_WORKSPACE_FROZEN"}]}`.
+**Verify:** subsequent `POST /wp-json/workflowy/v1/items/...` requests for the workspace MUST return `423 Locked` with envelope `{"Status":"error","Errors":[{"Code":"ERR_WORKSPACE_FROZEN"}]}` `[gate: G-BACKUP-RESTORE-FREEZE-423]`.
 
 ### Forbidden during restore (per A-44 §7)
 
@@ -194,7 +194,7 @@ This step applies **only** to Tier 0 (audit DB). For Tier 1/2/3/4, skip to step 
   --to=latest
 ```
 
-The output MUST be `chain ok, N rows verified, last_hash=<hex>`.
+The output MUST be `chain ok, N rows verified, last_hash=<hex>` `[gate: G-BACKUP-AUDIT-CHAIN-REWALK]`.
 
 If the chain is broken:
 1. **Do NOT proceed.** A broken chain in a backup means either the backup itself is tampered, OR the live DB before backup was already tampered.
@@ -297,7 +297,7 @@ Email all `Owner` and `Admin` accounts on the affected workspaces:
   --ticket="$TICKET_ID"
 ```
 
-The email template is owned by the i18n SSOT and MUST state:
+The email template is owned by the i18n SSOT and MUST state `[gate: G-BACKUP-RESTORE-NOTIFY-CONTENT]`:
 - The tier restored (in user-readable terms — not "Tier 2")
 - The RPO timestamp (data after this point is lost)
 - Any audit-chain rewind acknowledgement (Tier 0 only)
@@ -305,7 +305,7 @@ The email template is owned by the i18n SSOT and MUST state:
 
 ### Within 7 days
 
-Open a post-mortem from the canonical template at [`spec/15-wp-plugin-how-to/23-operator-runbooks/03-post-mortem-template.md`](./03-post-mortem-template.md), linked from the `SYSTEM.RESTORE_INITIATED` audit row by `Ticket` field. Per A-44 §7 step 12, the post-mortem MUST include:
+Open a post-mortem from the canonical template at [`spec/15-wp-plugin-how-to/23-operator-runbooks/03-post-mortem-template.md`](./03-post-mortem-template.md), linked from the `SYSTEM.RESTORE_INITIATED` audit row by `Ticket` field. Per A-44 §7 step 12, the post-mortem MUST include `[gate: G-BACKUP-POSTMORTEM-CONTENT]`:
 
 - Root cause (what failed in production)
 - Why backups were needed (not: "as a precaution")
