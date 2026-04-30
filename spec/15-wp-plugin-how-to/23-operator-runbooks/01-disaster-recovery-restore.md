@@ -305,7 +305,7 @@ The email template is owned by the i18n SSOT and MUST state `[gate: G-BACKUP-RES
 
 ### Within 7 days
 
-Open a post-mortem from the canonical template at [`spec/15-wp-plugin-how-to/23-operator-runbooks/03-post-mortem-template.md`](./03-post-mortem-template.md), linked from the `SYSTEM.RESTORE_INITIATED` audit row by `Ticket` field. Per A-44 §7 step 12, the post-mortem MUST include:
+Open a post-mortem from the canonical template at [`spec/15-wp-plugin-how-to/23-operator-runbooks/03-post-mortem-template.md`](./03-post-mortem-template.md), linked from the `SYSTEM.RESTORE_INITIATED` audit row by `Ticket` field. Per A-44 §7 step 12, the post-mortem MUST include `[gate: G-BACKUP-POSTMORTEM-CONTENT]`:
 
 - Root cause (what failed in production)
 - Why backups were needed (not: "as a precaution")
