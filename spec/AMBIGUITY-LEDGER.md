@@ -194,3 +194,16 @@ At the user-set bar ('mediocre AI, zero follow-up, 100% intent match'), every ac
 **Result:** Largest remaining content-gap closed. Previously, all four PHP/TS implementers attempting `between("a", "b")` would silently diverge (some return `"aV"`, others `"am"`, others extend differently); now byte-parity is testable. Addresses the implementability finding category that v7 baseline left as informal "5 missing algorithms".
 
 **Remaining ALG queue:** GAP-ALG-02 LWW tiebreak (ADR-0026), GAP-ALG-03 FIFO replay (ADR-0010), GAP-ALG-04 peer-group dissolve (ADR-0005), GAP-ALG-05 undo cap eviction (ADR-0021).
+
+
+---
+
+## GAP-ALG-02 — LWW comparator pseudocode promotion (2026-04-30)
+
+**Action:** ADR-0026 promoted from prose-only D1 comparator to normative §Algorithms section with 5 pseudocode procedures (B1 cmpStr ASCII byte comparator, B2 compareLWW 3-tier, B3 resolveLWW single-resolver, B4 resolveBatch n-way reduce, B5 SQL ORDER BY equivalent) + 6-row canonical fixture vector table covering all 3 tiers + triple-tie raise + negative-test obligations (clientTs ignored, OwnerUserId rejected). Two new DOC-NORM gates registered with explicit `family=adr-lww` qualifier per F-AUDIT-34 5-step cross-walk: `G-26-LWW-PSEUDOCODE-PARITY` (umbrella — backends MUST match fixtures byte-for-byte) and `G-26-LWW-NEGATIVE-TESTS` (sub-rule — D4/D6 enforcement).
+
+**Files:** spec/00-adrs/0026-lww-canonical-tiebreak.md (+~95 lines), spec/_GATE-REGISTRY.md (+2 rows in ADR-0026 family).
+
+**Result:** Second-largest content-gap closed. Previously, three call sites (ADR-0010 offline queue, ADR-0005 mirror peer-group, ADR-0016 SortOrder collision) each had prose-only comparator references; an AI implementer could pick a 2-tier vs 3-tier shape arbitrarily and produce non-deterministic state divergence. Now byte-parity is testable across PHP/TS/SQL.
+
+**Remaining ALG queue:** GAP-ALG-03 FIFO replay (ADR-0010), GAP-ALG-04 peer-group dissolve (ADR-0005), GAP-ALG-05 undo cap eviction (ADR-0021).

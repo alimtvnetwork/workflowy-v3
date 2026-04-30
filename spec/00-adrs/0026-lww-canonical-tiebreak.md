@@ -96,6 +96,109 @@ wire fixtures) MAY retain `OwnerUserId` since they document the DDL
 column directly; such fixtures MUST (gate G-26-WIRE-OWNERID-ONLY) carry an inline comment
 `// DDL-mirror fixture; wire egress translates to OwnerId per ADR-0026 D6`.
 
+## Algorithms (Normative Pseudocode)
+
+> Gate `G-26-LWW-PSEUDOCODE-PARITY` — every backend (PHP, TS, SQL) MUST
+> produce byte-identical winner-selection for the canonical fixture
+> vectors below. Implementations are tested against
+> `spec/31-app/97a-acceptance-criteria-fixtures.md` §LWW.
+
+**Type contract.** A `Candidate` is the minimal record:
+`{ ServerTs: string, OwnerId: string, ItemId: string, Field?: string, Value?: any }`.
+`ServerTs` is ISO-8601 UTC with millisecond precision per D4.
+`OwnerId` and `ItemId` are ADR-0020 branded strings (regex
+`^[A-Za-z0-9_-]{8,64}$`). `Field` / `Value` carry the proposed mutation
+but are NOT comparator inputs.
+
+### B1 — `cmpStr(a: string, b: string) -> int`  (ASCII byte comparator)
+
+```
+# Returns -1 / 0 / +1 — pure ASCII byte order, no locale.
+i = 0
+while i < len(a) and i < len(b):
+    if a[i] != b[i]:
+        return -1 if a[i] < b[i] else +1
+    i += 1
+if len(a) == len(b): return 0
+return -1 if len(a) < len(b) else +1
+```
+
+### B2 — `compareLWW(a: Candidate, b: Candidate) -> int`  (3-tier, total)
+
+```
+# Tier 1: ServerTs DESC (later wall-clock wins → returned as -1 so a sorts first).
+c = cmpStr(a.ServerTs, b.ServerTs)
+if c != 0:
+    return -c                      # invert to make DESC
+
+# Tier 2: OwnerId ASC.
+c = cmpStr(a.OwnerId, b.OwnerId)
+if c != 0:
+    return c
+
+# Tier 3: ItemId ASC.
+c = cmpStr(a.ItemId, b.ItemId)
+if c != 0:
+    return c
+
+# All three tiers equal → triple-tie. D5 forbids silent equality.
+raise LwwTripleTieError(a, b)      # routed to AppErrorBoundary per ADR-0017
+```
+
+### B3 — `resolveLWW(a: Candidate, b: Candidate) -> Candidate`  (single resolver)
+
+```
+# D3: there MUST be exactly one such function across the codebase.
+# Winner = the candidate that compareLWW orders FIRST (i.e. returns < 0 when on the left).
+return a if compareLWW(a, b) < 0 else b
+```
+
+### B4 — `resolveBatch(candidates: List<Candidate>) -> Candidate`  (n-way reduce)
+
+```
+# Used by the offline-queue replay (ADR-0010) when n>2 writes target the same field.
+assert len(candidates) >= 1
+winner = candidates[0]
+for c in candidates[1:]:
+    winner = resolveLWW(winner, c)
+return winner
+```
+
+### B5 — SQL form (SQLite, used by PHP storage layer)
+
+```sql
+-- Equivalent ORDER BY for queue-drain reducers (D6: column is OwnerUserId in DDL,
+-- aliased to OwnerId at wire egress per the alias bridge).
+SELECT *
+  FROM PendingWrite
+ WHERE TargetItemId = :itemId AND TargetField = :field
+ ORDER BY ServerTs DESC,
+          OwnerUserId ASC,                     -- DDL spelling; wire egress = OwnerId
+          ItemId ASC
+ LIMIT 1;
+```
+
+### Canonical fixture vectors (parity test)
+
+Each row: inputs `a` / `b` → expected winner `Id`. The "Tier" column
+documents which tier decided the result (used by negative tests).
+
+| # | a.ServerTs | a.OwnerId | a.ItemId | b.ServerTs | b.OwnerId | b.ItemId | Winner | Tier |
+|---|---|---|---|---|---|---|---|---|
+| 1 | `2026-04-30T10:00:00.001Z` | `usr_AAAA1111` | `itm_X1` | `2026-04-30T10:00:00.000Z` | `usr_BBBB2222` | `itm_X2` | **a** | T1 (ServerTs newer) |
+| 2 | `2026-04-30T10:00:00.000Z` | `usr_AAAA1111` | `itm_X1` | `2026-04-30T10:00:00.001Z` | `usr_BBBB2222` | `itm_X2` | **b** | T1 (ServerTs newer) |
+| 3 | `2026-04-30T10:00:00.000Z` | `usr_AAAA1111` | `itm_X1` | `2026-04-30T10:00:00.000Z` | `usr_BBBB2222` | `itm_X2` | **a** | T2 (OwnerId lower) |
+| 4 | `2026-04-30T10:00:00.000Z` | `usr_BBBB2222` | `itm_X1` | `2026-04-30T10:00:00.000Z` | `usr_AAAA1111` | `itm_X2` | **b** | T2 (OwnerId lower) |
+| 5 | `2026-04-30T10:00:00.000Z` | `usr_AAAA1111` | `itm_X1` | `2026-04-30T10:00:00.000Z` | `usr_AAAA1111` | `itm_X2` | **a** | T3 (ItemId lower) |
+| 6 | `2026-04-30T10:00:00.000Z` | `usr_AAAA1111` | `itm_X1` | `2026-04-30T10:00:00.000Z` | `usr_AAAA1111` | `itm_X1` | **raise** | triple-tie → `LwwTripleTieError` |
+
+**Negative-test obligations (gate `G-26-LWW-NEGATIVE-TESTS`).**
+Implementations MUST also assert: (a) `clientTs` field on either
+candidate is ignored — adding/removing it MUST NOT change the winner
+(D4 enforcement); (b) `OwnerUserId`-spelled input rejected at wire
+boundary — translated to `OwnerId` before comparator entry (D6
+enforcement).
+
 ## Consequences
 
 **Positive**
