@@ -297,7 +297,7 @@ Email all `Owner` and `Admin` accounts on the affected workspaces:
   --ticket="$TICKET_ID"
 ```
 
-The email template is owned by the i18n SSOT and MUST state:
+The email template is owned by the i18n SSOT and MUST state `[gate: G-BACKUP-RESTORE-NOTIFY-CONTENT]`:
 - The tier restored (in user-readable terms — not "Tier 2")
 - The RPO timestamp (data after this point is lost)
 - Any audit-chain rewind acknowledgement (Tier 0 only)
