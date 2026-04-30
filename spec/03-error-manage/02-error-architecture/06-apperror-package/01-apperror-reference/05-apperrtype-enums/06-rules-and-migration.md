@@ -57,7 +57,7 @@ The ecosystem uses **two complementary error code systems**:
 
 ## Adding a New Variant
 
-1. Add the constant to the appropriate domain block in `variation.go` (before `MaxError`)
+1. Add the constant to its domain block in `variation.go` (Auth / Items / Mirrors / Trash / Network / Internal — pick by the error's primary noun; before the `MaxError` sentinel)
 2. Add the `VariantStructure` entry to `variantRegistry` in `variant_registry.go`
 3. Register the code in the [Error Code Registry](../../../../03-error-code-registry/01-registry/)
 4. Update this spec's domain block if adding a new domain range
