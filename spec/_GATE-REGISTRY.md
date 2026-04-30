@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.40  
-> **Updated:** 2026-04-30 — **batch-47 (Domain-ADR-0003 anchor — third consecutive 4-MUST density-tier bind, second ADR-anchor area, first batch this runway with a CI-tier gate at seed):** registered 7 new gates (1 CI + 6 DOC-NORM) binding all 4 prose-MUSTs in `spec/00-adrs/0003-react-19-ts-strict-frontend.md` (L34 stack-lock headline, L53 Tailwind v4 `@theme` rule, L82 anti-config rule, L87 amendment rule). Gates: `G-ADR-0003-FRONTEND-STACK-LOCK` (umbrella, composes 6 sub-rules), `G-ADR-0003-VITE-5_4-PINNED`, `G-ADR-0003-REACT-19-PINNED`, `G-ADR-0003-TS-5_6-STRICT`, `G-ADR-0003-TAILWIND-V4-THEME-BLOCK` (3-tier sub-rule under `G-12-LOGICAL-MARGINS-PADDING` family — **fourth consecutive batch landing an explicit umbrella-composes-leaves chain**), `G-ADR-0003-NO-TAILWIND-CONFIG-FILE` (CI grep one-liner), `G-ADR-0003-AMENDMENT-REQUIRED` (mirrors `G-ADR-0001-AMENDMENT-REQUIRED`). **Bare-MUST count 316 → 312 (Δ −4 exact).** Closes 41st consecutive zero-drift batch. Streak counter: 4 consecutive content batches. Prior: 1.7.39 (Domain-ADR-0001 anchor).
+> **Version:** 1.7.41  
+> **Updated:** 2026-04-30 — **batch-48 (Domain-ADR-0005 anchor — fourth consecutive 4-MUST density-tier bind, third ADR-anchor area, fifth consecutive umbrella-composes-leaves chain):** registered 4 new DOC-NORM gates binding all 4 prose-MUSTs in `spec/00-adrs/0005-mirror-as-peer-group.md` (L39 model headline, L65 cycle precheck, L86 dissolve-in-tx, L94 amendment). Gates: `G-ADR-0005-PEER-GROUP-MODEL` (umbrella, composes 3 sub-rules), `G-ADR-0005-CYCLE-PRECHECK` (3-tier sub-rule under `G-MIRROR-CYCLE-PRECHECK`), `G-ADR-0005-DISSOLVE-IN-TX` (3-tier sub-rule under `G-MIRROR-DISSOLVE-SINGLETON`), `G-ADR-0005-SUPERSEDE-REQUIRED` (sub-rule of `G-ADR-0001-AMENDMENT-REQUIRED`). **Bare-MUST count 312 → 308 (Δ −4 exact).** Closes 42nd consecutive zero-drift batch. Streak counter: 5 consecutive content batches. Prior: 1.7.40 (Domain-ADR-0003 anchor).
 
-- **Total named gates:** 524 (+7 this revision)
+- **Total named gates:** 528 (+4 this revision)
 - **WARN-only gates:** 11 (unchanged)
-- **CI:** 139 (+1 this revision)
+- **CI:** 139 (unchanged)
 - **TEST:** 20 (unchanged)
-- **DOC-NORM:** 160 (+6 this revision)
+- **DOC-NORM:** 164 (+4 this revision)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 53 (unchanged)
+- **Areas covered:** 54 (+1 this revision — new Domain-ADR-0005)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
@@ -692,6 +692,19 @@
 | `G-ADR-0003-TAILWIND-V4-THEME-BLOCK` | **DOC-NORM** | [`spec/00-adrs/0003-react-19-ts-strict-frontend.md`](./00-adrs/0003-react-19-ts-strict-frontend.md) | All design tokens MUST live inside the `@theme { … }` block in `src/index.css`. 3-tier sub-rule layered under existing `G-12-LOGICAL-MARGINS-PADDING` token-system family. Forbidden alternatives: SCSS modules, styled-components, Emotion, vanilla-extract, plain CSS modules, runtime CSS-in-JS, inline `style={{…}}` for token values. |
 | `G-ADR-0003-NO-TAILWIND-CONFIG-FILE` | **CI** | [`spec/00-adrs/0003-react-19-ts-strict-frontend.md`](./00-adrs/0003-react-19-ts-strict-frontend.md) | Repo MUST NOT contain `tailwind.config.{js,ts,mjs,cjs}` at root or in any package — token customisation lives in `src/index.css` `@theme` block only. Implementation: shell grep gate in `00-run-all.mjs` (one-liner — minimal tooling required). The only CI-tier gate registered today in this batch; the rest land DOC-NORM pending NEW-25. |
 | `G-ADR-0003-AMENDMENT-REQUIRED` | **DOC-NORM** | [`spec/00-adrs/0003-react-19-ts-strict-frontend.md`](./00-adrs/0003-react-19-ts-strict-frontend.md) | Any change to the allowed/forbidden frontend-stack lists in §"Decision" MUST be ratified by a new ADR superseding ADR-0003 that enumerates every gate, convention page, and design-token file needing re-anchoring. Mirrors `G-ADR-0001-AMENDMENT-REQUIRED`; a future NEW-24 implementation can scope-extend to cover both ADRs in one tooling pass. |
+
+
+### Domain-ADR-0005 (Mirror as Peer-Group Anchor)
+
+> Reserved gate IDs for the mirror-peer-group SSOT in `spec/00-adrs/0005-mirror-as-peer-group.md`. Mirrors the Domain-ADR-0001 / Domain-ADR-0003 pattern. Batch-48 (2026-04-30) registers 4 new DOC-NORM gates binding all 4 prose-MUSTs (L39 model headline, L65 cycle precheck, L86 dissolve-in-tx, L94 amendment). Two of the new gates layer as 3-tier sub-rules under existing Domain-MIRROR family gates (`G-MIRROR-CYCLE-PRECHECK`, `G-MIRROR-DISSOLVE-SINGLETON`) — **fifth consecutive batch landing an explicit umbrella-composes-leaves chain**. The amendment gate mirrors `G-ADR-0001-AMENDMENT-REQUIRED` / `G-ADR-0003-AMENDMENT-REQUIRED`; NEW-24 will scope-extend to cover all three ADRs in one tooling pass.
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-ADR-0005-PEER-GROUP-MODEL` | **DOC-NORM** | [`spec/00-adrs/0005-mirror-as-peer-group.md`](./00-adrs/0005-mirror-as-peer-group.md) | Umbrella — a "mirror" MUST be a peer-group relation (`Item.PeerGroupId`) over the singular `Item` table; no `Mirror` ItemType, no `MirrorOf*` / `OriginalItemId` / `PrimaryPeerId` FK, no separate `Mirror` table. Composes `G-ADR-0005-CYCLE-PRECHECK`, `G-ADR-0005-DISSOLVE-IN-TX`, `G-ADR-0005-SUPERSEDE-REQUIRED`. Layered under existing `G-MIRROR-NO-ITEMTYPE` / `G-MIRROR-PEER-COLUMN`. |
+| `G-ADR-0005-CYCLE-PRECHECK` | **DOC-NORM** | [`spec/00-adrs/0005-mirror-as-peer-group.md`](./00-adrs/0005-mirror-as-peer-group.md) | 3-tier sub-rule under `G-MIRROR-CYCLE-PRECHECK` — every structural mutation crossing a peer-group boundary MUST run the cycle check from `09a-mirror-cycle-detection.md` and fail with `ENF-MIRROR-CYCLE` before commit. The ADR-anchor variant binds the prose-MUST at the ADR ceremony level; the family gate binds the per-workflow enforcement. |
+| `G-ADR-0005-DISSOLVE-IN-TX` | **DOC-NORM** | [`spec/00-adrs/0005-mirror-as-peer-group.md`](./00-adrs/0005-mirror-as-peer-group.md) | 3-tier sub-rule under `G-MIRROR-DISSOLVE-SINGLETON` — every mutation that would leave a peer group with one member MUST dissolve the group (`UPDATE Item SET PeerGroupId = NULL WHERE PeerGroupId = $groupId`) in the **same transaction** as the triggering mutation. "Group of one" as a persisted state is forbidden. |
+| `G-ADR-0005-SUPERSEDE-REQUIRED` | **DOC-NORM** | [`spec/00-adrs/0005-mirror-as-peer-group.md`](./00-adrs/0005-mirror-as-peer-group.md) | Sub-rule of `G-ADR-0001-AMENDMENT-REQUIRED` — any change to the peer-group model (e.g. introducing a privileged peer, changing tiebreak from LWW to CRDT, allowing groups-of-one) MUST be ratified by a new ADR superseding ADR-0005 that enumerates every gate, workflow page, AT, and migration that needs re-anchoring. NEW-24 will CI-promote alongside ADR-0001 / ADR-0003 amendment gates. |
+
 
 
 ### Domain-HLPIN (Highlighter Dependency Pin)

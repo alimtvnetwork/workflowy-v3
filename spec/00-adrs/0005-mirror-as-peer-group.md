@@ -37,7 +37,7 @@ singleton invariant and the LWW tiebreak rule.
 ## Decision
 
 A "mirror" in WorkFlowy **MUST** be implemented as a **peer-group
-relation** over the singular `Item` table. There is **no** `Mirror`
+relation** over the singular `Item` table — gate `G-ADR-0005-PEER-GROUP-MODEL`. There is **no** `Mirror`
 `ItemType` and **no** `MirrorOf*` foreign key.
 
 **Allowed (load-bearing):**
@@ -63,7 +63,7 @@ relation** over the singular `Item` table. There is **no** `Mirror`
 - **Cycle prevention:** before any structural mutation that would place
   group `G_a` inside an item belonging to group `G_a` (transitively),
   the operation **MUST** fail with `ENF-MIRROR-CYCLE` per
-  `spec/31-app/01-features/09a-mirror-cycle-detection.md`.
+  `spec/31-app/01-features/09a-mirror-cycle-detection.md` — gate `G-ADR-0005-CYCLE-PRECHECK` (sub-rule of `G-MIRROR-CYCLE-PRECHECK`).
 - **Conflict resolution (LWW tiebreak):** when two peers receive
   conflicting edits during offline replay, the edit with the larger
   `(UpdatedAtUtc, ActorUserId)` tuple wins. `UpdatedAtUtc` is the
@@ -84,7 +84,7 @@ relation** over the singular `Item` table. There is **no** `Mirror`
   `PeerGroupId` column; no separate row exists for the mirror itself).
 - "Group of one" as a persisted state — every mutation that would
   leave a group with one member **MUST** dissolve the group in the
-  same transaction.
+  same transaction — gate `G-ADR-0005-DISSOLVE-IN-TX` (sub-rule of `G-MIRROR-DISSOLVE-SINGLETON`).
 - Read-only mirrors (a peer that propagates writes only one way) —
   symmetry is load-bearing.
 - Any conflict-resolution rule other than LWW-on-`(UpdatedAtUtc,
@@ -93,7 +93,7 @@ relation** over the singular `Item` table. There is **no** `Mirror`
 
 **Migration constraint:** any change to the model above MUST be
 ratified by a new ADR that supersedes this one and that enumerates
-every gate, workflow page, AT, and migration that needs re-anchoring.
+every gate, workflow page, AT, and migration that needs re-anchoring — gate `G-ADR-0005-SUPERSEDE-REQUIRED` (sub-rule of `G-ADR-0001-AMENDMENT-REQUIRED`).
 
 ## Consequences
 
