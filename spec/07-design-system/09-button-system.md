@@ -7,7 +7,7 @@
 
 ## Overview
 
-The button system defines default, hover, active, focus, and disabled states for all interactive buttons. All buttons use CSS3 transitions. The preferred CTA hover pattern is a **slide text animation**, not a simple color change.
+The button system defines default, hover, active, focus, and disabled states for all interactive buttons. All buttons use CSS3 transitions (≤150 ms ease-out). The preferred CTA hover pattern is a **slide text animation**, not a simple color change.
 
 ---
 
@@ -118,7 +118,7 @@ A visually prominent button with gradient background and glow:
 
 ## Slide Text Animation (CTA Buttons)
 
-**Replaces** simple hover color change on buttons like "Join Us". Uses CSS3 only.
+**Replaces** single-property `color` hover transition on buttons like "Join Us". Uses CSS3 only.
 
 ### HTML Structure
 

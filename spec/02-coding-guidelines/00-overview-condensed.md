@@ -88,7 +88,7 @@ _No endpoints defined directly in this section._
 | # | Criterion | Source |
 |---|-----------|--------|
 | AT-CG-007 | Connection status enums define all valid states with TypeScript string literals | `02-typescript/` |
-| AT-CG-008 | Type definitions avoid `any` and use proper generic constraints | `02-typescript/` |
+| AT-CG-008 | Type definitions avoid `any` and use generic constraints per `02-typescript/08-typescript-standards-reference/03-no-magic-values.md` | `02-typescript/` |
 | AT-CG-009 | React component patterns follow functional component with hooks style | `02-typescript/` |
 | AT-CG-010 | State management patterns use Zustand stores with typed selectors | `02-typescript/` |
 
@@ -122,7 +122,7 @@ _No endpoints defined directly in this section._
 |---|-----------|--------|
 | AT-CG-019 | Naming conventions follow Rust idioms (snake_case for functions, PascalCase for types) | `05-rust/` |
 | AT-CG-020 | Error handling uses `Result<T, E>` pattern with custom error types | `05-rust/` |
-| AT-CG-021 | Async patterns use tokio runtime with proper cancellation handling | `05-rust/` |
+| AT-CG-021 | Async patterns use tokio runtime with `CancellationToken`-based cancellation per `05-rust/` async guidelines | `05-rust/` |
 | AT-CG-022 | Memory safety patterns documented for FFI boundaries | `05-rust/` |
 
 ---

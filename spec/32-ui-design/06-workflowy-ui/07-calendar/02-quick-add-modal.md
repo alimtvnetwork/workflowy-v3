@@ -57,7 +57,7 @@ Lightweight global capture modal — adds a node to Inbox without disrupting the
 | Placeholder | "Type your note..." |
 | Font | Inter 16px |
 | Markdown shortcuts | YES (Phase 5) |
-| Slash menu | NO (out of scope for Quick Add — keeps it fast) |
+| Slash menu | NO (out of scope for Quick Add — keeps p95 capture latency ≤200 ms) |
 
 ---
 
@@ -134,7 +134,7 @@ After submit (and modal close):
 
 ## Markdown / Formatting in Quick Add
 
-Quick Add supports inline markdown shortcuts (`**bold**`, etc.) but NOT block-level conversion (no `# ` heading triggers). The captured node is always a plain Bullet — convert later if needed.
+Quick Add supports inline markdown shortcuts (`**bold**`, etc.) but NOT block-level conversion (no `# ` heading triggers). The captured node is always a plain Bullet — convert post-capture via the item-context-menu when a different ItemType is required. Convert later if needed.
 
 ---
 

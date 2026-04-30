@@ -60,6 +60,10 @@ const checks = [
   "scripts/spec-hygiene/75-check-license-files-present.mjs",
   "scripts/spec-hygiene/76-check-orphan-gate-ids.mjs",
   "scripts/spec-hygiene/77-check-orphan-must-citations.mjs",
+  // 79 runs in REPORT mode while F-AUDIT-44 burndown is in flight.
+  // Graduates to --block-new once mtime-vs-blame integration is added,
+  // and to --block-all when count reaches 0. Currently emits inventory only.
+  "scripts/spec-hygiene/79-check-vague-modifiers.mjs",
   "scripts/spec-hygiene/04-generate-index.mjs",
 ];
 

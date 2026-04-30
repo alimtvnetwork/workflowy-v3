@@ -1,6 +1,6 @@
 # Phase 00 — Quick Start Guide
 
-> **Purpose:** Condensed onboarding for AI models. Read this first, then dive into individual phases as needed.  
+> **Purpose:** Condensed onboarding for AI models. Read this first, then dive into individual phases when implementing each phase.  
 > **Full index:** [readme.md](readme.md)  
 > **Rule:** Every decision below links to the authoritative phase. When in doubt, the phase document wins.
 
@@ -153,7 +153,7 @@ All API responses use `EnvelopeBuilder` with PascalCase keys:
 
 > [Phase 5](05-helpers-responses-and-integration/00-overview.md) — EnvelopeBuilder API
 
-### Fail-Fast Input Validation
+### Fail-Fast Input Validation <!-- vague-exempt: "Fail-Fast" is a named pattern (cohort: TypeScript pattern name) -->
 
 Guard clauses at the top of every handler. Use enum-based validation.
 
@@ -172,8 +172,8 @@ When adding a feature (e.g., "manage widgets"):
 | 3 | Add `use` statement in `Plugin.php` | [Phase 1, §1.5](01-foundation-and-architecture.md) |
 | 4 | Register routes in `RouteRegistrationTrait` | [Phase 3, §3.6](03-traits-and-composition.md) |
 | 5 | Add input validation guard clauses | [Phase 6](06-input-validation-patterns.md) |
-| 6 | Add database migration if needed | [Phase 8, §8.5](08-wordpress-integration-patterns/05-database-migrations.md) |
-| 7 | Add admin page template if needed (≤200 lines) | [Phase 11](11-frontend-and-template-patterns/00-overview.md) |
+| 6 | Add database migration when schema changes | [Phase 8, §8.5](08-wordpress-integration-patterns/05-database-migrations.md) |
+| 7 | Add admin page template when phase 11 features are in scope (≤200 lines) | [Phase 11](11-frontend-and-template-patterns/00-overview.md) |
 | 8 | Add tests | [Phase 9](09-testing-patterns/00-overview.md) |
 
 > [Phase 5](05-helpers-responses-and-integration/00-overview.md) — Full integration checklist
