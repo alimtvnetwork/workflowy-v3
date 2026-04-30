@@ -246,3 +246,20 @@ At the user-set bar ('mediocre AI, zero follow-up, 100% intent match'), every ac
 **Result:** Final algorithm-track task complete. All 5 ADR algorithms (between, LWW, FIFO, dissolve, undo-eviction) now have executable pseudocode + canonical fixture vectors + paired negative-test gates. The "5 missing algorithm pseudocode blocks" informal finding category is fully closed. Total content added across ALG-01..05: ~620 lines of pseudocode + 37 fixture vectors + 10 new DOC-NORM gates.
 
 **Remaining queue (post-ALG):** GAP-CON-01..03 (OpenAPI YAML + TS interfaces + JSON Schemas), GAP-AMB-01-tail (long-tail bind sweep), GAP-AMB-02..05 (vague modifiers, glossary, fixtures, conflicts), GAP-DOC-01..02 (Mermaid + plan.md), GAP-LED-01 (24 Medium audit findings).
+
+
+---
+
+## GAP-CON-01 — OpenAPI 3.1 envelope contract (2026-04-30) — first standalone OpenAPI artifact
+
+**Action:** Authored `spec/03-error-manage/02-error-architecture/05-response-envelope/openapi.envelope.yaml` (~340 lines, OpenAPI 3.1.0) as the machine-readable peer of the SSOT JSON Schema `envelope.schema.json`. Mirrors the full envelope tree (Status, Attributes, Navigation, Errors, MethodsStack, StackFrame, DelegatedRequestServer) under `components.schemas` with byte-shape parity. Adds 4 representative paths (`/healthz`, `/items/{id}`, `/items`, `/sync/replay`) wired to the envelope, 4 worked examples (single-health, single-item, multiple-items page-2, error-not-found-with-delegated-php), and inline branded-type schemas for `ItemId` / `OwnerId` (ULID pattern, ADR-0020) and `SortOrder` (base-62 fractional-index pattern, ADR-0016) with prose pointers to the TypeScript branding requirement OpenAPI cannot express directly.
+
+**Gates registered:** Two new DOC-NORM rows in `spec/_GATE-REGISTRY.md`:
+- `G-CON-01-OPENAPI-PARITY` — umbrella requiring byte-shape equivalence between `openapi.envelope.yaml` and `envelope.schema.json` (identical required-field sets, property names, enum values, `additionalProperties: false`); composes `G-ERR-05`.
+- `G-CON-01-OPENAPI-PASCALCASE` — sub-rule enforcing PascalCase across every `components.schemas.*.properties` entry per ADR-0004/ADR-0019, with explicit allow-list of OpenAPI structural keys to exclude.
+
+**Files:** spec/03-error-manage/02-error-architecture/05-response-envelope/openapi.envelope.yaml (NEW, ~340 lines), spec/03-error-manage/02-error-architecture/05-response-envelope/04-response-envelope-reference.md (banner block updated to cite both machine-readable peers), spec/_GATE-REGISTRY.md (+2 rows in new G-CON-01 family).
+
+**Result:** First standalone machine-readable contract artifact in the corpus that is not a JSON Schema. The envelope now has triple representation: prose (reference doc) + JSON Schema 2020-12 (validation SSOT) + OpenAPI 3.1 (path-aware client/server codegen surface). Implementability impact: removes the largest remaining "where do I look up the wire shape?" coin-flip for any AI generating handlers, axios interceptors, or PHP REST routes — they can now consume one of three peer artifacts and `G-CON-01-OPENAPI-PARITY` guarantees they agree.
+
+**Remaining CON queue:** GAP-CON-02 (TypeScript interface exports for envelope + Node, target `spec/03-error-manage/.../envelope.types.ts`), GAP-CON-03 (JSON Schemas for SSE frame types per ADR-0025).
