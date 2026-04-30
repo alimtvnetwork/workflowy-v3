@@ -161,3 +161,31 @@ The 5 acceptance tests **AT-SM-01 … AT-SM-05** are defined in §4 above. This 
 - **Routes introduced by this feature:** None.
 - **N/A justification:** Composition contract — no new routes; reuses `08-share-dialog` and `09-mirrors` write surfaces.
 - **Compliance:** Satisfies F-AUD42-25 (API axis) by explicit declaration. Any future write route added here MUST follow the PascalCase envelope (ADR-0004/0019), egress via queue worker (ADR-0023), and bind to a named error boundary (ADR-0017).
+
+---
+
+## Depth Coverage (resolves F-AUD42-23 / F-AUD42-24)
+
+> Sub-feature files were flagged thin across UX/Edges/AC axes. This addendum closes those axes with concrete, testable rules.
+
+### UX Specifics
+
+- Sharing a node that participates in a mirror group → confirmation dialog: "This will share N peers. Continue?" with peer list preview.
+- Mirror peers inherit the share record by reference, not copy — revoking one revokes all (single source of truth).
+- Visual indicator on shared mirrored node: combined icon (lucide `Share2` + `Copy`) in node row.
+
+### Edge Cases
+
+- Share an item, then mirror it later → mirror inherits existing share automatically (no re-confirmation).
+- Detach mirror that was the share origin → share record stays on the surviving peer; `ShareOriginReassigned` SSE frame fires.
+- Detach last peer (singleton group dissolves, ADR mirror peer-group) → share record stays on the now-standalone node; no data loss.
+- Cross-workspace share + mirror → forbidden in v1 (ERR_MIRROR_CROSS_WORKSPACE 409); planned post-MVP.
+
+### Acceptance Tests
+
+- `AT-APP-SHMIR-01 (share→mirror inheritance)`
+- `AT-APP-SHMIR-02 (mirror→share inheritance)`
+- `AT-APP-SHMIR-03 (detach origin reassignment)`
+- `AT-APP-SHMIR-04 (cross-workspace block)`
+
+> Every AC above MUST be enumerated in [`97-acceptance-criteria.md`](./97-acceptance-criteria.md) with a runnable fixture.
