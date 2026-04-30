@@ -82,7 +82,7 @@ User clicks "Make template" in the item context menu → a dialog opens to name 
 - ❌ Hard-coding the `50` cap in PHP — must read `OptionNameType::TEMPLATE_MAX_PER_WORKSPACE`.
 - ❌ Bare `get_option('workflowy_template_picker_view')` — go through the Settings facade.
 - ❌ Skipping the confirm-apply check when the setting is `true`.
-- ❌ String-literal arrays in `Sanitizer::oneOf([...])` — closed enums MUST be PHP `enum` classes (resolves F-AUD42-19).
+(gate **G-NS-NO-DEPRECATED-ALIAS**) - ❌ String-literal arrays in `Sanitizer::oneOf([...])` — closed enums MUST be PHP `enum` classes (resolves F-AUD42-19).
 
 ### `TemplatePickerViewType` enum (closed)
 
@@ -265,7 +265,7 @@ enum TemplatePickerViewType: string {
 
 ### SSE Frames Emitted (read-signal only, ADR-0025)
 
-`TemplateCreated`, `TemplateApplied`, `TemplateDeleted` on `/stream/page/{id}` and/or `/stream/user/{id}`. SSE MUST NOT enqueue to the FIFO.
+(gate **G-25-SSE-ENDPOINT-CLOSED**) `TemplateCreated`, `TemplateApplied`, `TemplateDeleted` on `/stream/page/{id}` and/or `/stream/user/{id}`. SSE MUST NOT enqueue to the FIFO.
 
 ### Storage
 

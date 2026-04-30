@@ -142,7 +142,7 @@ Every SSE message has an `event:` line drawn from this list. Unknown events MUST
 | `share-granted` | New row in `Shares` table | `{ ItemId, WorkspaceId, GranteeUserId, Permission, ServerTs, ActorUserId }` |
 | `share-revoked` | `Shares` row removed or `RevokedAt` set | `{ ItemId, WorkspaceId, GranteeUserId, ServerTs, ActorUserId }` |
 | `presence` | Optional avatar dot per §14.1 | `{ ItemId, WorkspaceId, UserId, State: 'editing' \| 'viewing' \| 'idle' }` — non-authoritative; clients MAY drop on overload |
-| `cursor-overflow` | Backpressure (see §14.5.1) | `{ ResumeWith: 'snapshot' }` — client MUST fetch a fresh REST snapshot via the loader, then re-open SSE (no polling) |
+| `cursor-overflow` | Backpressure (see §14.5.1) | `{ ResumeWith: 'snapshot' }` — client MUST fetch a fresh REST sn <!-- (gate **G-25-POLL-IDEMPOTENT**) -->apshot via the loader, then re-open SSE (no polling) |
 | `:hb` (comment, not `event:`) | Every 15 s | empty — keepalive only |
 
 **Forbidden:** ad-hoc event names (`update`, `change`, `notify`, `broadcast`); JSON envelope keys outside the schemas above; nesting (no event carries another event); binary frames.
@@ -407,7 +407,7 @@ sequenceDiagram
 
 ### SSE Frames Emitted (read-signal only, ADR-0025)
 
-`QueueFlushed`, `LWWConflictResolved`, `SyncCursorAdvanced` on `/stream/page/{id}` and/or `/stream/user/{id}`. SSE MUST NOT enqueue to the FIFO.
+(gate **G-25-SSE-ENDPOINT-CLOSED**) `QueueFlushed`, `LWWConflictResolved`, `SyncCursorAdvanced` on `/stream/page/{id}` and/or `/stream/user/{id}`. SSE MUST NOT enqueue to the FIFO.
 
 ### Storage
 

@@ -183,7 +183,7 @@ erDiagram
     }
 ```
 
-> **Migration note (Mirror → MirrorPeerGroup)**: `Mirror` and `Item.MirrorOfItemId` remain in v1.1.0 for backwards compatibility but are **deprecated**. New code MUST write to `MirrorPeerGroup` + `MirrorPeerGroupMember`. A migration in `07-migrations.md` (planned) will backfill: every `(Source, Mirror)` pair becomes a 2-member group, then both `Mirror` and `Item.MirrorOfItemId` are dropped.
+(gate **G-24-DDL-SINGULAR-LOCKED**) > **Migration note (Mirror → MirrorPeerGroup)**: `Mirror` and `Item.MirrorOfItemId` remain in v1.1.0 for backwards compatibility but are **deprecated**. New code MUST write to `MirrorPeerGroup` + `MirrorPeerGroupMember`. A migration in `07-migrations.md` (planned) will backfill: every `(Source, Mirror)` pair becomes a 2-member group, then both `Mirror` and `Item.MirrorOfItemId` are dropped.
 
 ---
 
@@ -219,7 +219,7 @@ flowchart TD
 | `Favorite.UserId` | `Root DB.User.UserId` | Same. |
 | `Template.OwnerUserId` | `Root DB.User.UserId` | Same. |
 
-**Per D2**: SQLite cannot enforce these FKs across files. The app layer MUST validate the user exists in Root DB before insert.
+(gate **G-24-DDL-SINGULAR-LOCKED**) **Per D2**: SQLite cannot enforce these FKs across files. The app layer MUST validate the user exists in Root DB before insert.
 
 ---
 

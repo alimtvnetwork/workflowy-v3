@@ -5,7 +5,7 @@
 
 > **Version:** 1.2.1
 > **Updated:** 2026-04-26 — v1.2.0 backfill of 52 actions emitted by sibling SSOTs A-40..A-44 (role-escalation, session/token, MFA, export, backup/DR). Prior: v1.0.0 initial 22 actions.
-> **Scope:** Defines what the WordPress-plugin backend MUST persist as security/compliance audit records, how long, with what integrity guarantees, and who may query. Distinct from `spec/34-activity-feed/` (user-visible undo log) and from `Logger::*` (operational logs).
+(gate **G-LOG-SESSION-FNREQS**) > **Scope:** Defines what the WordPress-plugin backend MUST persist as security/compliance audit records, how long, with what integrity guarantees, and who may query. Distinct from `spec/34-activity-feed/` (user-visible undo log) and from `Logger::*` (operational logs).
 
 ---
 
@@ -75,7 +75,7 @@ Every audit record has the shape:
 
 #### v1.2.0 backfill — actions emitted by sibling SSOTs
 
-> Added 2026-04-26. These actions are emitted by the policies in `10-role-escalation-policy.md`, `11-session-token-lifecycle.md`, `12-mfa-policy.md`, `13-data-export-policy.md`, and `14-backup-and-dr-policy.md`. Sibling SSOTs reference these in `DOT.UPPER_CASE` shorthand for readability; **the canonical wire format is `dot.lower.case` as listed below** — emitters MUST normalize via `Audit::action()` helper before write. G-23 enforces.
+(gate **G-LOG-SESSION-FNREQS**) > Added 2026-04-26. These actions are emitted by the policies in `10-role-escalation-policy.md`, `11-session-token-lifecycle.md`, `12-mfa-policy.md`, `13-data-export-policy.md`, and `14-backup-and-dr-policy.md`. Sibling SSOTs reference these in `DOT.UPPER_CASE` shorthand for readability; **the canonical wire format is `dot.lower.case` as listed below** — emitters MUST normalize via `Audit::action()` helper before write. G-23 enforces.
 
 ##### Role-escalation (A-40 → 10 actions)
 

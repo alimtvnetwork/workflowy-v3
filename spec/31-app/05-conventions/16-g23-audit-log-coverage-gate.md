@@ -12,8 +12,8 @@
 
 This is the **fifth** drift-detector in the CI cluster (siblings: G-19 workflow, G-20 pre-commit, G-21 gate-discovery, G-22 error-code catalogue). G-23 watches **two distinct audit surfaces** that policy v1.2.0 introduced together but which decay independently:
 
-1. **Action-name registry drift** — every `Audit::action(<shorthand>)` call in PHP source MUST resolve via the normalization rules in `09-audit-log-policy.md` §2.1 to a row that exists in the §2.1 taxonomy table.
-2. **Handler coverage** — every PHP method matching the mutation surface (`Auth::*`, `Sharing::*`, `Admin::*` excluding pure read methods) MUST contain at least one `AuditLog::write(...)` or `Audit::log(...)` call in the same execution path.
+(gate **G-LOG-SESSION-FNREQS**) 1. **Action-name registry drift** — every `Audit::action(<shorthand>)` call in PHP source MUST resolve via the normalization rules in `09-audit-log-policy.md` §2.1 to a row that exists in the §2.1 taxonomy table.
+(gate **G-LOG-SESSION-FNREQS**) 2. **Handler coverage** — every PHP method matching the mutation surface (`Auth::*`, `Sharing::*`, `Admin::*` excluding pure read methods) MUST contain at least one `AuditLog::write(...)` or `Audit::log(...)` call in the same execution path.
 
 Without G-23, two failure modes go undetected:
 

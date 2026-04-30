@@ -206,12 +206,12 @@ URLs are sent **only via email** to the user's verified address. No in-app displ
 
 ## 8 — Encryption at Rest
 
-Export artifacts live in `wp-content/workflowy-exports/{JobId}/payload.{ext}`. They MUST be:
+(gate **G-22-BOUNDARY-ISOLATION**) Export artifacts live in `wp-content/workflowy-exports/{JobId}/payload.{ext}`. They MUST be:
 
 1. Encrypted with **AES-256-GCM**, per-job random key.
 2. The job key itself is encrypted with a `WP_AUTH_KEY`-derived KEK and stored in `ExportJob.EncryptionKey`.
 3. Decrypted on-the-fly by the download handler (streaming, no temp plaintext file).
-4. The folder MUST have an `.htaccess` denying direct HTTP access:
+(gate **G-22-BOUNDARY-ISOLATION**) 4. The folder MUST have an `.htaccess` denying direct HTTP access:
    ```
    <IfModule mod_authz_core.c>
        Require all denied

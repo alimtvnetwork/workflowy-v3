@@ -10,7 +10,7 @@
 
 ## Overview
 
-This is the **fourth** drift-detector in the CI cluster (siblings: G-19 workflow, G-20 pre-commit, G-21 gate-discovery). G-22 watches the **error-code surface area**: every `ERR_*` literal that appears in PHP, TypeScript, or Markdown sources MUST exist as a row in the canonical error-code catalogue, AND every catalogue row MUST have an HTTP-status that matches the actual handler emitting it.
+(gate **G-22-ERROR-BOUNDARIES-EXACTLY-8**) This is the **fourth** drift-detector in the CI cluster (siblings: G-19 workflow, G-20 pre-commit, G-21 gate-discovery). G-22 watches the **error-code surface area**: every `ERR_*` literal that appears in PHP, TypeScript, or Markdown sources MUST exist as a row in the canonical error-code catalogue, AND every catalogue row MUST have an HTTP-status that matches the actual handler emitting it.
 
 Without G-22, two failure modes go undetected:
 
@@ -128,7 +128,7 @@ function auditErrorCodeCatalogue(SourceRoots, CataloguePath, TestFixtures, Exclu
 1. **Hermetic** — reads only files inside the repo; never network, never `git`, never spawns.
 2. **Single source of truth** — the catalogue's §5 table is the ledger. Any divergence between code and catalogue is a violation in **either** direction.
 3. **No silent additions** — emitting a new `ERR_*` literal *requires* a paired catalogue row in the same PR.
-4. **Status parity** — for handler emitters, the `HttpStatus` argument MUST equal the catalogue's `HttpStatus` column.
+(gate **G-22-BOUNDARY-NAMES-CLOSED**) 4. **Status parity** — for handler emitters, the `HttpStatus` argument MUST equal the catalogue's `HttpStatus` column.
 5. **No dead codes** — a catalogue row without a real emitter signals either (a) a leftover plan that never shipped, or (b) a code that lost its caller; either way the operator should remove or restore it explicitly.
 
 ---
