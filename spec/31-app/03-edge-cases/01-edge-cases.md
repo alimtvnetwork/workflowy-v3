@@ -62,7 +62,7 @@
 
 | # | Scenario | Expected Behavior | Owning features |
 |---|----------|-------------------|-----------------|
-| X1 | Delete item that has mirrors | MUST show warning dialog: "This item has X mirrors. Deleting will break those references." Options: "Delete anyway" or "Cancel". Mirrors become broken references with recovery options (convert to independent item or delete the mirror). On delete, `Mirrors.BrokenAt` is set per LWW (see [`14-concurrency-and-sync.md`](../01-features/14-concurrency-and-sync.md) §14.4). | `06-item-context-menu.md` + `09-mirrors.md` + `11-trash-view.md` + `14-concurrency-and-sync.md` §14.4 |
+| X1 | Delete item that has mirrors | MUST show warning dialog: "This item has X mirrors. Deleting will break those references." Options: "Delete anyway" or "Cancel". Mirrors become broken references with recovery options (convert to independent item or delete the mirror). On delete, `Mirrors.BrokenAt` is set per LWW (see [`14-concurrency-and-sync.md`](../01-features/14-concurrency-and-sync.md) §14.4) (gate `G-EDGE-X1-MIRROR-DELETE-WARN`, 3-tier sub-rule under `G-ADR-0005-PEER-GROUP-MODEL`). | `06-item-context-menu.md` + `09-mirrors.md` + `11-trash-view.md` + `14-concurrency-and-sync.md` §14.4 |
 | X2 | Share item with children | Sharing MUST cascade to all descendants automatically (`AT-APP-25`). | `08-share-dialog.md` + `01-information-model.md` §1.3 |
 | X3 | Edit on an item just deleted by another user | Reject with toast "Item was deleted by {user}; restore from Trash to keep editing". | `11-trash-view.md` + `14-concurrency-and-sync.md` |
 | X4 | Create mirror of a mirror | Should mirror the canonical source item, not create a nested mirror chain (`AT-APP-24`). | `09-mirrors.md` |
