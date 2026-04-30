@@ -1,8 +1,23 @@
 # Implementation Rules
 
 > **Parent:** [Axios Version Control Policy](./00-overview.md)  
-> **Version:** 1.1.0  
-> **Updated:** 2026-04-02
+> **Version:** 1.2.0  
+> **Updated:** 2026-04-30
+
+---
+
+## 0. Gate Bindings (Normative Index)
+
+This sub-spec is the **primary file** for the four MUST-bound gates below. Every numbered §1–§5 rule that contains a MUST is anchored to exactly one gate; runners cite the gate, not the prose.
+
+| Gate | Tier | Anchors §  | AT(s) | Brief |
+|------|------|-----------|-------|-------|
+| `G-32-AXIOS-EXACT-PIN` | **DOC-NORM** | §1.1 | `AT-AXIOS-01` | `package.json` axios value is an exact semver (no `^`, `~`, `>=`, `*`, `latest`). |
+| `G-32-AXIOS-LOCK-MATCH` | **DOC-NORM** | §1.2 | `AT-AXIOS-02` | `bun.lock` / `package-lock.json` resolved axios version equals the `package.json` declared exact version, and is not in the blocked set (`1.14.1`, `0.30.4`). |
+| `G-32-AXIOS-NO-AUTO-BUMP` | **DOC-NORM** | §2.1, §3.1 | `AT-AXIOS-03`, `AT-AXIOS-04` | Dependabot/Renovate/`npm audit fix`/`npm update` MUST NOT mutate the axios version; PRs that change it without policy citation MUST be rejected. |
+| `G-32-AXIOS-UPGRADE-PROCEDURE` | **DOC-NORM** | §5 | `AT-AXIOS-04` | Any axios version change MUST follow the 6-step upgrade procedure (security review → changelog audit → isolated test → security-lead approval → spec update in `00-overview.md` Approved list → pin + regenerate lock). No shortcut. |
+
+> Runners: `scripts/spec-hygiene/axios-exact-version.mjs` (EXACT-PIN), `scripts/spec-hygiene/axios-blocked-versions.mjs` (LOCK-MATCH), `scripts/spec-hygiene/axios-no-auto-bump.mjs` (NO-AUTO-BUMP). UPGRADE-PROCEDURE has no executable runner — it is a PR-review gate enforced via PR-template citation per `AT-AXIOS-04`.
 
 ---
 
