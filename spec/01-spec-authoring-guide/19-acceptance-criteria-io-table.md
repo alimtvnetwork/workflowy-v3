@@ -1,10 +1,13 @@
 # Acceptance-Criteria I/O Table — Authoring Guide
 
-> **Version:** 1.0.0
+> **Version:** 1.1.0
 > **Created:** 2026-04-28 (UTC+8)
-> **Status:** Normative — all `97-acceptance-criteria.md` files MUST use this format for new criteria; legacy criteria are converted incrementally per plan step **P2**.
+> **Updated:** 2026-04-30 — Bound 5 prose-MUSTs to new `G-AT-IO-*` namespace gates (batch-35).
+> **Status:** Normative — all `97-acceptance-criteria.md` files MUST use this format for new criteria; legacy criteria are converted incrementally per plan step **P2**. (Gate `G-AT-IO-FORMAT-MANDATED-ALL`)
 > **Parent:** [`00-overview.md`](./00-overview.md)
 > **Spawned by:** `.lovable/plans/00-active.md` § P2.
+
+**Reserved Gate IDs (this file):** `G-AT-IO-FORMAT-MANDATED-ALL`, `G-AT-IO-TWO-ROW-PAIRING`, `G-AT-IO-JSON-LITERAL-VALID`, `G-AT-IO-ENVELOPE-CONFORM`, `G-AT-IO-RELATED-ENVELOPE-XLINK` — see [`spec/_GATE-REGISTRY.md`](../_GATE-REGISTRY.md) §Domain-AT-IO.
 
 ---
 
