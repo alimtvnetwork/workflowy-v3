@@ -923,3 +923,8 @@ This is the **third** scope-correction in 3 turns (F-SCOPE-01 → 02 → 03), ea
 - **Next batch target:** Top 10 of remaining 27 files.
 - **Files:** 10 spec files + this entry.
 
+
+### F-AUDIT-44 batch-10 (2026-04-30)
+- Patched 10 files: wp-input-validation, generic-cli (00/03/05/17/20-overview), generic-update overview, 31-app features (00/02/03).
+- Substitutions: `Fail fast` → `Fail-fast` (3×, hyphenated keyword); `warn if needed` → explicit WARN-on-default-substitution; `for programmatic access if needed` → `--quiet` + `--json-summary` use case; `simple command` → enumerated read-only commands; `if needed` (repo resolution) → `git remote get-url origin returns non-zero exit code`; `if needed` (split blocks) → "whenever the snippet would otherwise contain identifiers from more than one layer"; `fast scratchpad` → `low-latency scratchpad (≤500 ms cold-open to first keystroke)`; `truncated if needed` → "truncated with ellipsis when its rendered width exceeds the sidebar inner width".
+- Residue: 27 → 20 files / 20 hits (80% of original 100-file residue closed).
