@@ -1,15 +1,17 @@
 # RFC-2119 Wording Policy (SSOT)
 
-> **Version:** 1.0.0
-> **Updated:** 2026-04-28 (UTC+8)
-> **Status:** ✅ Canonical — enforced by `scripts/spec-hygiene/38-check-ambiguous-wording.mjs` (gate G-38)
+> **Version:** 1.1.0
+> **Updated:** 2026-04-30 — Bound 5 prose-MUSTs to new `G-WORDING-*` namespace gates (batch-36); registered formerly-orphan `G-38` as canonical `G-WORDING-AMBIGUOUS-LINT` (legacy alias retained pending F-SCOPE-40-FOLLOWUP rename).
+> **Status:** ✅ Canonical — enforced by `scripts/spec-hygiene/38-check-ambiguous-wording.mjs` (gate `G-WORDING-AMBIGUOUS-LINT`, legacy alias `G-38`)
 > **Parent:** [`./00-overview.md`](./00-overview.md)
+
+**Reserved Gate IDs (this file):** `G-WORDING-AMBIGUOUS-LINT`, `G-WORDING-KEYWORD-DEFINITIONS`, `G-WORDING-SOFT-LANGUAGE-REPLACEMENT`, `G-WORDING-DELIBERATION-REPLACEMENT`, `G-WORDING-UPPERCASE` — see [`spec/_GATE-REGISTRY.md`](../_GATE-REGISTRY.md) §Domain-WORDING.
 
 ---
 
 ## Why
 
-Every spec sentence that defines behavior MUST be unambiguous to both AI agents and human implementers. Words like "should consider", "may want to", "perhaps", "possibly", "ideally", "preferably", "we could", and bare `TBD` / `FIXME` / `XXX` placeholders are forbidden in active spec because they cannot be lint-checked or compiled into acceptance tests.
+Every spec sentence that defines behavior MUST be unambiguous to both AI agents and human implementers (gate `G-WORDING-AMBIGUOUS-LINT`). Words like "should consider", "may want to", "perhaps", "possibly", "ideally", "preferably", "we could", and bare `TBD` / `FIXME` / `XXX` placeholders are forbidden in active spec because they cannot be lint-checked or compiled into acceptance tests.
 
 ---
 
@@ -17,7 +19,7 @@ Every spec sentence that defines behavior MUST be unambiguous to both AI agents 
 
 | Keyword | Meaning | Use when |
 |---------|---------|----------|
-| **MUST** / **MUST NOT** | Absolute requirement / prohibition | Behavior is mandatory; violation is a CI failure |
+| **MUST** / **MUST NOT** | Absolute requirement / prohibition | Behavior is mandatory; violation is a CI failure (gate `G-WORDING-KEYWORD-DEFINITIONS`) |
 | **SHOULD** / **SHOULD NOT** | Strong recommendation; deviation requires written justification | Default behavior with a documented escape hatch |
 | **MAY** / **MAY NOT** | Truly optional behavior | Implementer's choice with no compliance impact |
 
@@ -31,10 +33,10 @@ Every spec sentence that defines behavior MUST be unambiguous to both AI agents 
 |--------|--------------|
 | `TBD` | A concrete value, OR a `TODO(TICKET-ID)` with an owning ticket, OR a link to the deciding spec section |
 | `FIXME` / `XXX` | `TODO(TICKET-ID)` |
-| "we could", "perhaps", "possibly" | `MAY` (if optional) or `MUST` (if required) |
+| "we could", "perhaps", "possibly" | `MAY` (if optional) or `MUST` (if required) — gate `G-WORDING-SOFT-LANGUAGE-REPLACEMENT` |
 | "may want to", "might want" | `SHOULD` |
 | "ideally", "preferably" | `SHOULD` |
-| "should consider" | `MUST evaluate` (if mandatory deliberation) or `MAY evaluate` |
+| "should consider" | `MUST evaluate` (if mandatory deliberation) or `MAY evaluate` — gate `G-WORDING-DELIBERATION-REPLACEMENT` |
 
 ---
 
@@ -57,7 +59,7 @@ The G-38 gate intentionally skips:
 |----|-----------|--------|
 | `AT-RFC2119-01` | Active spec files contain zero bare `TBD` / `FIXME` / `XXX` outside the allow-list. | `scripts/spec-hygiene/38-check-ambiguous-wording.mjs` |
 | `AT-RFC2119-02` | Active spec files contain zero soft-language phrases ("we could", "perhaps", "possibly", "ideally", "preferably", "may want to", "might want", "should consider"). | same script |
-| `AT-RFC2119-03` | RFC-2119 keywords carrying normative weight MUST be uppercase. | reviewer judgement; lower-case use is non-normative |
+| `AT-RFC2119-03` | RFC-2119 keywords carrying normative weight MUST be uppercase. | reviewer judgement; lower-case use is non-normative — gate `G-WORDING-UPPERCASE` |
 
 ---
 
