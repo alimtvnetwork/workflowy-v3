@@ -280,3 +280,11 @@ This indicator is hidden for Pro/unlimited users.
 - [11-trash-view.md](./11-trash-view.md) — destination of Settings → Trash
 - [`./07-board-view.md`](./07-board-view.md) — ← Board view (forward link from)
 - [`./08-share-dialog.md`](./08-share-dialog.md) — ← Share dialog (forward link from)
+
+---
+
+## Backend Write Surface
+
+- **Routes introduced by this feature:** None.
+- **N/A justification:** Pure layout SSOT — no write surface; all interactions delegate to feature files (05/06/etc.).
+- **Compliance:** Satisfies F-AUD42-25 (API axis) by explicit declaration. Any future write route added here MUST follow the PascalCase envelope (ADR-0004/0019), egress via queue worker (ADR-0023), and bind to a named error boundary (ADR-0017).

@@ -167,3 +167,11 @@ The 6 acceptance tests **AT-MZ-01 … AT-MZ-06** are defined in §5 above. This 
 - **Persisted booleans introduced by this feature:** None.
 - **N/A justification:** Composition rule between two interactions — no new settings.
 - **Compliance:** Satisfies the MUST in [`00-overview.md:140`](./00-overview.md) by explicit declaration. Any future boolean added here MUST route through `Sanitizer::bool()` and be enumerated in an `OptionNameType` case (see APP-FIX-05).
+
+---
+
+## Backend Write Surface
+
+- **Routes introduced by this feature:** None.
+- **N/A justification:** Composition rule — reuses `12-multi-select` bulk routes scoped to zoom subtree.
+- **Compliance:** Satisfies F-AUD42-25 (API axis) by explicit declaration. Any future write route added here MUST follow the PascalCase envelope (ADR-0004/0019), egress via queue worker (ADR-0023), and bind to a named error boundary (ADR-0017).

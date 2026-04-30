@@ -150,3 +150,11 @@ The 5 acceptance tests **AT-TPL-01 … AT-TPL-05** are defined in §3 above. Thi
 - **Persisted booleans introduced by this feature:** None.
 - **N/A justification:** Pure data-model spec for snapshot rows — no settings.
 - **Compliance:** Satisfies the MUST in [`00-overview.md:140`](./00-overview.md) by explicit declaration. Any future boolean added here MUST route through `Sanitizer::bool()` and be enumerated in an `OptionNameType` case (see APP-FIX-05).
+
+---
+
+## Backend Write Surface
+
+- **Routes introduced by this feature:** None.
+- **N/A justification:** Snapshot data-model spec — write surface lives in `13-templates` (CreateTemplateSnapshot, ApplyTemplate).
+- **Compliance:** Satisfies F-AUD42-25 (API axis) by explicit declaration. Any future write route added here MUST follow the PascalCase envelope (ADR-0004/0019), egress via queue worker (ADR-0023), and bind to a named error boundary (ADR-0017).
