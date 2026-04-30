@@ -73,8 +73,8 @@ const ALLOWED = new Set([
   "G-20-HELPER-CONTRACT","G-20-WIRE-PLAIN-STRING","G-20-SPEC-CONSISTENCY-SWEEP",
   "G-21-REDO-INVALIDATION",
   "G-23-LOADER-NO-FETCH","G-23-MIRROR-QUEUE-ATOMIC","G-23-WORKER-SOLE-EGRESS",
-  "G-24-PRIVILEGE-MUTATION-GATED","G-24-PRIVILEGE-MUTATION-GATED-DRIFT",
-  "G-24-ALIAS-BRIDGE-AUTHORITY","G-24-TRIAGE-BANNER-PRESENT","G-24-NO-SINGLETON-GROUPS",
+  // G-24-* leaves removed from ALLOWED 2026-04-30: now covered structurally
+  // by `G-24` umbrella row (Umbrella, family=convention-drift) per ADR-0033.
   "G-25-SSE-ONLY-NO-POLL","G-25-SSE-AUTH","G-25-SSE-NEVER-ENQUEUES",
   "G-28-NO-PHYSICAL",
   // Future-CI named in scoping/glossary/auth-guide AT tables (same DOC-tier class)
