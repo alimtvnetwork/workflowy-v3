@@ -43,7 +43,7 @@ def audit_file(path: Path):
         my_para = para_of[i]
         backed = False
         # same paragraph window
-        for j in range(max(0, i-3), min(len(lines), i+6)):
+        for j in range(max(0, i-8), min(len(lines), i+8)):
             if para_of[j] != my_para and j > i+5: break
             if AT_ID.search(lines[j]):
                 backed = True; break
