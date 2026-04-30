@@ -55,8 +55,9 @@ Out-of-vocabulary statuses (`Pending`, `WIP`, `Wontfix`, `Deferred`, …) are
 | F-AUDIT-30 | MED | v7 | Resolved | This ledger + hygiene gate #74 | [`spec/AUDIT-FINDINGS-LEDGER.md`](./AUDIT-FINDINGS-LEDGER.md), [`scripts/spec-hygiene/74-check-audit-findings-ledger.mjs`](../scripts/spec-hygiene/74-check-audit-findings-ledger.mjs) |
 | F-AUDIT-31 | MED | v6 | Resolved | ADR-0030 audit-exemption manifest | [`spec/00-adrs/0030-audit-exemption-manifest.md`](./00-adrs/0030-audit-exemption-manifest.md) |
 | F-AUDIT-32 | LOW | v6 | Resolved | `_GATE-REGISTRY` row + `AT-FIX-COMPANION-SHAPE` baseline | [`spec/_GATE-REGISTRY.md`](./_GATE-REGISTRY.md), [`spec/_LEDGER-G-00-AT-FIX-COMPANION-SHAPE-BASELINE.md`](./_LEDGER-G-00-AT-FIX-COMPANION-SHAPE-BASELINE.md) |
+| F-AUDIT-33 | LOW | audit-v10 (2026-04-30) | Open | Memory↔gate coverage gap: several `mem://index.md` Core rules (e.g. "lucide-react sole icons", "HSL-only Tailwind tokens") are restated in memory but lack a confirmed enforcement gate in `_GATE-REGISTRY.md`. Memory drifts silently — Core rules can age out without CI surfacing it. Fix: produce a Core↔Gate coverage ledger (`_LEDGER-G-NS-CORE-MEMORY-COVERAGE.md`) cross-walking each Core line to a gate ID or to a `RESERVED:` slot per ADR-0031. — |
 
-**Open count:** 0 — **Resolved:** 10 — **Stale:** 1 — **Retracted:** 1
+**Open count:** 1 — **Resolved:** 11 — **Stale:** 1 — **Retracted:** 1
 
 ---
 
@@ -188,6 +189,7 @@ Permanent index of every spec-improving or spec-vs-impl audit cycle. Each row li
 | audit-v7 | 2026-04-29 | spec-implementability (Gemini-2.5-Pro) | spec/ end-to-end | F-AUDIT-30 | 0 | [`/mnt/documents/spec-ai-implementability-audit-v7.json`](../mnt/documents/spec-ai-implementability-audit-v7.json) (score 95, tier EXCELLENT) |
 | audit-v8 | 2026-04-29 | spec-vs-impl | `src/` scaffold v0.37.0 | F-IMPL-AUD-02..06 | 3 (-03, -06, then +AUD-06 refusal) | [`/mnt/documents/spec-vs-impl-audit-2026-04-29.md`](../mnt/documents/spec-vs-impl-audit-2026-04-29.md) |
 | **audit-v9** | **2026-04-30** | **spec-vs-impl (deeper sweep)** | `src/` v0.37.0 + `package.json` + missing `wp-plugin/` arm | **F-IMPL-AUD-07, F-IMPL-AUD-08** | 5 (carries -03, -06 + adds -07, -08, retains AUD-06 refusal) | (inline conversation; weighted score 28/100, tier CRITICAL-INCOMPLETE) |
+| **audit-v10** | **2026-04-30** | **spec-vs-impl (re-sweep + Tailwind verify)** | `src/` (full tree) + `src/index.css` `@theme` block (first verification) + `mem://index.md` Core | **F-AUDIT-33** (memory↔gate coverage) | 6 (carries -03/-06/-07/-08, adds F-AUDIT-33; AUD-v10 also Retracts the "unverified Tailwind classes" claim that was almost raised — verified PASS) | [`/mnt/documents/spec-vs-impl-audit-2026-04-30.md`](../mnt/documents/spec-vs-impl-audit-2026-04-30.md) (composite 39/100) |
 
 ### Audit-v9 summary (2026-04-30, spec-vs-impl)
 
@@ -217,6 +219,30 @@ Permanent index of every spec-improving or spec-vs-impl audit cycle. Each row li
 **Weighted score: 28/100** across 12 rubric dimensions (see audit narrative). Worst dimensions: backend runtime (0), scalability/performance (5), edge-case handling (5), error handling (5), requirement coverage (5). Best: missing/ambiguous reqs (75 — spec itself is 95% AI-implementable per audit-v7), consistency-with-spec (70 — stack/versions match exactly), procedural compliance (80 — read-only audit honored spec-only mode).
 
 **Procedural note.** Audit-v9 honored spec-only mode end-to-end. Per the SPEC-ONLY VIOLATION LOG in core memory, AUD-02/AUD-04/AUD-05 (audit-v8 era) breached spec-only mode by editing `src/`; this audit deliberately did not — both critical findings are filed Open and deferred to `exit spec-only` rather than fixed in-band.
+
+### Audit-v10 summary (2026-04-30, spec-vs-impl re-sweep)
+
+**Methodology.** Re-ran the audit-v9 ripgrep probe matrix and added one new probe pair: (a) `grep -nE "(text-h1|text-bullet|mb-md|--font-size-h1|--font-size-bullet|--spacing-md)" src/index.css` and (b) full read of the `@theme inline { … }` block. Goal: close the audit-v9 inline-assumption A2 ("Tailwind v4 `@theme` block presence flagged UNKNOWN") with a verifiable PASS/FAIL.
+
+**Key probe results (delta vs audit-v9).**
+- `--font-size-h1: 1.5rem`, `--font-size-bullet: 0.9375rem`, `--spacing-md: 8px` all present in `src/index.css` `@theme inline` block (lines 50, 61, 64). Tailwind v4 auto-generates `text-h1`, `text-bullet`, `mb-md` utilities from these tokens. **Closes A2 with PASS.**
+- All other audit-v9 probe results re-verified unchanged: 0 EventSource, 0 IndexedDB, 0 ErrorBoundary, 0 createBrowserRouter usages.
+
+**Findings raised (1).**
+- **F-AUDIT-33** (LOW): memory↔gate coverage gap — see row in `F-AUDIT-NN` family table above.
+
+**Findings reaffirmed without re-numbering (4).** Per Update Protocol §1, F-IMPL-AUD-03/06/07/08 are **not re-raised**. All four remain Open from prior cycles and continue to await `exit spec-only`. All four were re-verified by audit-v10 probes.
+
+**Findings retracted in-pass (1).** The audit narrative's finding #03 ("unverified Tailwind classes in `Home.tsx`") was retracted same-pass after probe (a) above confirmed `--font-size-h1`, `--font-size-bullet`, `--spacing-md` are all registered. No ledger row created (same-pass false-positive convention per Update Protocol §1).
+
+**Findings NOT raised (consciously) — and why.**
+- *Hotkeys scope wiring (audit-v10 narrative #08):* not promoted because `src/lib/hotkeys.ts` was not opened in this pass; deferred to a future targeted hotkey-domain audit. Tracked as inline assumption only.
+- *Branded `ItemId`/`OwnerId` enforcement (narrative #06):* superseded by F-IMPL-AUD-02 (already Resolved) — no new row needed.
+- *`.gitkeep.ts` files (narrative #09):* duplicate of F-IMPL-AUD-06 (Open) — no new row.
+
+**Composite score: 39/100** across the 10-axis rubric (vs audit-v9's 28/100 across 12 axes). The score lift vs v9 is **not** a real implementation improvement — `src/` did not change between the two audits. The lift comes from (a) closing the Tailwind UNKNOWN to PASS (was depressing the consistency-with-spec axis), (b) the 10-axis vs 12-axis rubric weighting differs. Both audits agree the implementation is pre-Phase-1 scaffold-only and that the gating issue is the SPEC-ONLY MODE deferral.
+
+**Procedural note.** Audit-v10 honored spec-only mode end-to-end. Read-only probes only; no `src/` edits. Spec edits in this turn (this row + F-AUDIT-33) are spec-corpus-only and explicitly permitted by the Core memory's spec-only mode allowlist.
 
 ---
 
