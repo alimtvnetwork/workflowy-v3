@@ -55,7 +55,7 @@ Maps cross-language coding guidelines to **Ruff** rules (primary), with **Pylint
 
 | # | Guideline | Ruff Rule | Code | Severity | Notes |
 |---|-----------|-----------|------|----------|-------|
-| 16 | Use `pathlib` over `os.path` | Use `pathlib` | PTH100–PTH124 | `warn` | Modern path handling |
+| 16 | Use `pathlib` over `os.path` | Use `pathlib` | PTH100–PTH124 | `warn` | PEP 519 path handling (Python 3.6+) |
 | 17 | Use f-strings over `.format()` | f-string | UP032 | `error` | Pyupgrade |
 | 18 | Use `from __future__ import annotations` | Future annotations | FA100 | `warn` | PEP 563 |
 | 19 | No bare `except:` | Bare except | E722 | `error` | Must specify exception type |

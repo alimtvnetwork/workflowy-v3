@@ -15,8 +15,8 @@ All database schemas, migrations, and queries MUST be tested. Testing follows a 
 
 | Tier | What It Tests | Database | Speed |
 |------|--------------|----------|-------|
-| **Unit tests** | Schema creation, migrations, constraints, column types | In-memory SQLite (`:memory:`) | Fast (ms) |
-| **Integration tests** | Full CRUD operations, views, relationships, ORM queries | In-memory SQLite (`:memory:`) | Fast (ms) |
+| **Unit tests** | Schema creation, migrations, constraints, column types | In-memory SQLite (`:memory:`) | <50 ms per test |
+| **Integration tests** | Full CRUD operations, views, relationships, ORM queries | In-memory SQLite (`:memory:`) | <200 ms per test |
 
 > **Key insight:** SQLite's in-memory mode (`:memory:`) means both tiers run without touching disk — no test database setup, no cleanup, no Docker containers.
 

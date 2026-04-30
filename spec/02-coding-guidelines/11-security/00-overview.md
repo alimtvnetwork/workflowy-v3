@@ -47,7 +47,7 @@ Any security discussion, advisory, or policy that affects how code is written or
 Add a new subfolder under `11-security/` when:
 
 - A **dependency security vulnerability** is discovered and requires a pinning policy
-- A **secure coding pattern** needs to be documented (e.g., input sanitization, auth token handling)
+- A **threat-mitigating coding pattern** needs to be documented (e.g., input sanitization per OWASP A03:2021, auth token handling per ADR §STRIDE)
 - A **supply chain security** concern arises (e.g., compromised packages)
 - A **security audit** produces findings that should be codified as rules
 
