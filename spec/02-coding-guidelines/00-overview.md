@@ -72,7 +72,7 @@ Every rule below is **gate-enforced**. The AI MUST NOT propose code that violate
 | R9 | SQLite tables, columns, and indexes are **PascalCase**. Tables singular (`Item`, not `Items_tbl`). | Migration linter `G-04-NAMING`. | Error. |
 | R10 | No `console.log` in committed code (use `Log.debug/info/warn/error`). | `no-console`. | Error. |
 
-## Bad / Good Code Pairs
+## Bad / Good Code Pairs <!-- vague-exempt: paired-example marker cohort -->
 
 Each pair below is the canonical example for the cited rule. Fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these snippets verbatim (gate G-CG-FIXTURE-CITE-VERBATIM).
 
@@ -260,7 +260,7 @@ The AI MUST NOT (gate G-CG-AI-ANTIPATTERN-FORBIDDEN):
 | # | Anti-pattern | Why it fails | Gate that catches it |
 |---|---|---|---|
 | 1 | Add a coding rule without a paired automated check | Rule rots — humans won't enforce by review alone. | `G-02-RULE-HAS-GATE` (cross-checks every rule id against ESLint/PHPStan config). |
-| 2 | Cite a rule without **both** a bad and a good snippet | AI consumers can't disambiguate intent. | `G-02-PAIRED-EXAMPLES` (markdown lint: every R# heading needs a `❌` block then a `✅` block). |
+| 2 | Cite a rule without **both** a `❌ BAD` and a `✅ GOOD` snippet | AI consumers can't disambiguate intent. | `G-02-PAIRED-EXAMPLES` (markdown lint: every R# heading needs a `❌` block then a `✅` block). |
 | 3 | Use `// eslint-disable-next-line` to silence a hard rule | Defeats the gate; bug ships. | `G-02-NO-DISABLE` (CI blocks `eslint-disable` of rules in this section). |
 | 4 | Introduce a `switch` "for performance" | Premature optimization; dispatch tables are O(1) too. | `no-restricted-syntax: SwitchStatement` (R7). |
 | 5 | Replace a guard with a ternary that hides early-return intent | Reduces readability; breaks line-counter heuristics. | Code review checklist (`G-02-NO-RETURN-TERNARY`). |

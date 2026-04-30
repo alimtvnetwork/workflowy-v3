@@ -102,7 +102,7 @@ The bridge from spec to code. Maps every UI surface to its component path and `d
 
 ## Optional sections
 
-Use any of these as needed; none are enforced:
+Use any of these when the section applies to the feature; none are enforced:
 
 - `## Overview` — one-paragraph summary at the top.
 - `## User Story` — `As a {persona}, I want {capability}, so that {value}.`

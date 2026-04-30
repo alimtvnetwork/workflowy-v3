@@ -162,7 +162,7 @@ Create `99-consistency-report.md` at each level:
 
 ### Step 8: Update Master Index
 
-Add the new module to `spec/00-overview.md` in the appropriate layer table.
+Add the new module to `spec/00-overview.md` in the layer table whose §-heading matches the module type (CLI / Service / UI / Data).
 
 ---
 

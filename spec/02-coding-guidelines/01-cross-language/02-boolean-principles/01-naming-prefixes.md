@@ -113,7 +113,7 @@ $isNoRecentErrors = empty($errors) || !$hasUnseen;
 $isErrorListClear = empty($errors) || !$hasUnseen;
 ```
 
-### Rule: Name booleans for the **positive semantic state**, then negate only once if needed
+### Rule: Name booleans for the **positive semantic state**, then negate only once at the call site that requires the inverted predicate
 
 ```typescript
 // ❌ AVOID — Raw negation at call site

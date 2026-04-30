@@ -140,7 +140,7 @@ When an AI model first encounters this project, it should read `.lovable/` files
 4. **`memory/index.md`** — Survey all institutional knowledge
 5. **`plan.md`** — Understand current work context
 6. **`suggestions.md`** — See pending improvement ideas
-7. **Individual memory files** — Deep-dive as needed per task
+7. **Individual memory files** — Read on demand when an index entry matches the current task
 
 ---
 

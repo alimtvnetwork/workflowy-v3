@@ -51,7 +51,7 @@ Maps cross-language coding guidelines to **.NET Analyzers**, **StyleCop.Analyzer
 | 14 | No unused variables | .NET Analyzers | IDE0059 | Error | Unnecessary assignment |
 | 15 | No unused imports | .NET Analyzers | IDE0005 | Error | Remove unnecessary `Imports` |
 | 16 | Use `String.IsNullOrEmpty` | .NET Analyzers | CA1820 | Error | Don't compare string length to zero |
-| 17 | Dispose pattern | .NET Analyzers | CA1816, CA2000 | Error | Proper `IDisposable` usage |
+| 17 | Dispose pattern | .NET Analyzers | CA1816, CA2000 | Error | `IDisposable` usage per CA1816/CA2000 contract |
 
 ---
 
