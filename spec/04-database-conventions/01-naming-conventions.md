@@ -34,7 +34,7 @@ Boolean columns follow the same principles as the [cross-language boolean conven
 
 ### Rule 1: Always Use `Is` or `Has` Prefix
 
-Every boolean column MUST start with `Is` or `Has`:
+Every boolean column MUST start with `Is` or `Has` (gate `G-DBNAME-BOOL-IS-HAS-PREFIX`):
 
 ```sql
 -- ✅ CORRECT
@@ -54,7 +54,7 @@ Licensed      BOOLEAN
 
 ### Rule 2: Never Use Negative Boolean Column Names
 
-Boolean columns MUST express the **positive** state. Never name a column as a negation — it causes double-negative confusion in queries and code.
+Boolean columns MUST express the **positive** state (gate `G-DBNAME-BOOL-POSITIVE-ONLY`). Never name a column as a negation — it causes double-negative confusion in queries and code.
 
 ```sql
 -- ❌ FORBIDDEN — negative names
@@ -139,7 +139,7 @@ IsComplete       BOOLEAN NOT NULL DEFAULT 0
 
 ### Rule 6: Always `NOT NULL DEFAULT`
 
-Boolean columns MUST never be nullable. A three-state boolean (`true`/`false`/`NULL`) is a logic bug waiting to happen.
+Boolean columns MUST never be nullable (gate `G-DBNAME-BOOL-NOT-NULL`). A three-state boolean (`true`/`false`/`NULL`) is a logic bug waiting to happen.
 
 ```sql
 -- ❌ WRONG — nullable boolean
@@ -216,7 +216,7 @@ SELECT * FROM User WHERE DeletedAt IS NULL;              -- not deleted
 
 ## Primary Key Naming Pattern
 
-The primary key MUST be named `{TableName}Id` — not just `Id`:
+The primary key MUST be named `{TableName}Id` — not just `Id` (gate `G-DBNAME-PK-TABLENAMEID`):
 
 ```sql
 -- ❌ WRONG — generic Id
@@ -245,7 +245,7 @@ CREATE TABLE TransactionLog (
 
 ## Foreign Key Column Naming
 
-Foreign key columns MUST use the **exact same name** as the primary key they reference:
+Foreign key columns MUST use the **exact same name** as the primary key they reference (gate `G-DBNAME-FK-MIRRORS-PK`):
 
 ```sql
 -- Source table
