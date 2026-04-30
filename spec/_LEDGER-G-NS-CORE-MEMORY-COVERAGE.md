@@ -113,27 +113,27 @@ This ledger remedies that by making the Core↔Gate mapping **first-class and ve
 
 ---
 
-## Coverage summary (as of 2026-04-30)
+## Coverage summary (as of 2026-04-30, post-GAPCLOSE-I2)
 
 | Status | Count | % |
 |---|---|---|
-| ✅ Registered gate(s) | 16 | 70% |
-| 📋 RESERVED slot (ADR-0031 pattern) | 4 | 17% |
+| ✅ Registered gate(s) | 17 | 74% |
+| 📋 RESERVED slot (ADR-0031 pattern) | 3 | 13% |
 | 📝 Memory-only-by-design (procedural) | 3 | 13% |
 | **Total Core lines mapped** | **23** | **100%** |
 
-**Open gaps surfaced (4 RESERVED slots + 4 partial-coverage notes):**
+**Open gaps remaining (3 RESERVED slots + 4 partial-coverage notes):**
 
 1. **B2** — Forbidden-runtimes ESLint rule (`G-NS-FORBIDDEN-RUNTIMES`).
 2. **C3** — shadcn/Radix component-base lock (`G-22-COMPONENT-BASE-SHADCN-RADIX`).
 3. **E1** — 15-line logic limit + positive-guard-clause grep gates.
 4. **F3** — 250-item per-view cap (policy → grep gate).
 5. **G1** — HSL-only Tailwind tokens + `@theme`-block-as-SSOT gates (AUDIT-FIX-02 closes half).
-6. **I2** — Undo cap 100 (`G-21-UNDO-CAP-100`).
+6. ~~**I2** — Undo cap 100 (`G-21-UNDO-CAP-100`).~~ **CLOSED 2026-04-30 by GAPCLOSE-I2.**
 7. **J1** — WebSocket/long-poll ban ESLint rule.
 8. **C1** — Version-pin gate for Vite/React/TS (NEW-25 covers this).
 
-These 8 gaps are **NOT** new findings — they are now *first-class visible* via this ledger, which is the entire point of closing F-AUDIT-33.
+**Closure progress:** 1 of 4 RESERVED slots closed in same-day follow-through. Remaining 3 RESERVED + 4 partial-coverage notes remain first-class visible.
 
 ---
 
