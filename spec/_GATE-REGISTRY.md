@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.43  
-> **Updated:** 2026-04-30 — **batch-50 (Domain-EDGE seed — sixth consecutive 4-MUST density-tier bind, seventh consecutive umbrella-composes-leaves chain, second batch in the ADR-anchor → workflow-bind cascade-reuse pattern):** registered 4 new DOC-NORM gates binding 4 prose-MUSTs in `spec/31-app/03-edge-cases/01-edge-cases.md` (L34 U5 cycle-block, L35 U6 quota-block, L36 U7 depth-virtualize, L65 X1 mirror-delete-warn). Gates: `G-EDGE-U5-CYCLE-BLOCK`, `G-EDGE-U6-QUOTA-BLOCK`, `G-EDGE-U7-DEPTH-VIRTUALIZE` (3-tier sub-rule under `G-17-VIRTUALIZE-1000` per ADR-0017), `G-EDGE-X1-MIRROR-DELETE-WARN` (3-tier sub-rule under `G-ADR-0005-PEER-GROUP-MODEL` — third reuse of an ADR-0005 anchor across batches 48/49/50). **Bare-MUST count 304 → 300 (Δ −4 exact).** Closes 44th consecutive zero-drift batch. **Crosses the psychological 300-bare-MUST corpus floor for the first time.** Streak counter: 7 consecutive content batches. **Pivot rationale:** planned `08-mirror-detach-flow.md` was already at 0 bare-MUSTs (well-bound at authoring time, parallel to mirror-create's prose density). Pivoted to highest-leverage 4-MUST file with multi-feature spread; edge-cases file uses table-row-IDs as gate-name suffixes (U5/U6/U7/X1) for trivial back-traceability. Prior: 1.7.42 (Domain-MCREATE seed).
+> **Version:** 1.7.44  
+> **Updated:** 2026-04-30 — **GAPCLOSE-I2 (Core↔Gate ledger gap-close, ADR-0021 D1 anchor):** promoted `RESERVED: G-21-UNDO-CAP-100` slot (named in `_LEDGER-G-NS-CORE-MEMORY-COVERAGE.md` row I2) to a registered DOC-NORM gate. Anchors the `mem://index.md` Core line "Undo cap 100 in-memory per-tab" against ADR-0021 §Decision D1 ("Maximum stack depth: 100 actions for both undo and redo, in-memory, per-tab"). First gap-close from the audit-v10 cross-walk; closes 1 of 4 RESERVED slots surfaced by F-AUDIT-33 resolution. **No bare-MUST delta** (this is a ledger-driven coverage gate, not a prose-binding migration). Prior: 1.7.43 (Domain-EDGE seed).
 
-- **Total named gates:** 536 (+4 this revision)
+- **Total named gates:** 537 (+1 this revision)
 - **WARN-only gates:** 11 (unchanged)
 - **CI:** 139 (unchanged)
 - **TEST:** 20 (unchanged)
-- **DOC-NORM:** 172 (+4 this revision)
+- **DOC-NORM:** 173 (+1 this revision)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 56 (+1 this revision — new Domain-EDGE)
+- **Areas covered:** 56 (unchanged — `G-21-*` family pre-exists)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
