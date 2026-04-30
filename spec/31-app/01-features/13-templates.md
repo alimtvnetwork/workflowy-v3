@@ -74,7 +74,7 @@ User clicks "Make template" in the item context menu → a dialog opens to name 
 | Setting | `OptionNameType` enum case | Default | Sanitizer | Group | Storage |
 |---------|---------------------------|---------|-----------|-------|---------|
 | Show Templates in sidebar | `OptionNameType::SIDEBAR_SHOW_TEMPLATES` → `'workflowy_sidebar_show_templates'` | `true` | `Sanitizer::bool()` | `wf_navigation` | Root DB (per-user) |
-| Default template picker view | `OptionNameType::TEMPLATE_PICKER_VIEW` → `'workflowy_template_picker_view'` | `'recent'` | `Sanitizer::oneOf(['recent','alphabetical','most-used'])` | `wf_templates` | Root DB (per-user) |
+| Default template picker view | `OptionNameType::TEMPLATE_PICKER_VIEW` → `'workflowy_template_picker_view'` | `TemplatePickerViewType::RECENT` | `Sanitizer::enum(TemplatePickerViewType::class)` | `wf_templates` | Root DB (per-user) |
 | Confirm before applying template | `OptionNameType::TEMPLATE_CONFIRM_APPLY` → `'workflowy_template_confirm_apply'` | `true` | `Sanitizer::bool()` | `wf_safety` | Root DB (per-user) |
 | Max templates per workspace | `OptionNameType::TEMPLATE_MAX_PER_WORKSPACE` → `'workflowy_template_max_per_workspace'` | `50` | `Sanitizer::intRange(1, 500)` | `wf_limits` | App DB (per-workspace) |
 
@@ -82,6 +82,25 @@ User clicks "Make template" in the item context menu → a dialog opens to name 
 - ❌ Hard-coding the `50` cap in PHP — must read `OptionNameType::TEMPLATE_MAX_PER_WORKSPACE`.
 - ❌ Bare `get_option('workflowy_template_picker_view')` — go through the Settings facade.
 - ❌ Skipping the confirm-apply check when the setting is `true`.
+- ❌ String-literal arrays in `Sanitizer::oneOf([...])` — closed enums MUST be PHP `enum` classes (resolves F-AUD42-19).
+
+### `TemplatePickerViewType` enum (closed)
+
+```php
+namespace WorkFlowy\Enums;
+
+enum TemplatePickerViewType: string {
+    case RECENT       = 'recent';
+    case ALPHABETICAL = 'alphabetical';
+    case MOST_USED    = 'most-used';
+}
+```
+
+- **Wire form:** the string value (e.g., `"recent"`) is what travels in the API envelope and persists in `wp_options`.
+- **PHP form:** all comparisons, branches, and persistence calls MUST use the enum case (`TemplatePickerViewType::RECENT`) — never the bare string.
+- **Sanitizer:** `Sanitizer::enum(TemplatePickerViewType::class)` rejects any value not present in the enum cases (returns the default with a logged warning).
+- **Adding a case:** new picker view → add enum case + corresponding UI label + AC fixture in `97-acceptance-criteria.md`. No code path may accept a string outside the enum.
+- **Gate:** `[gate: G-WF-ENUM-NO-STRING-LITERALS]` — static analyzer rejects `Sanitizer::oneOf([...])` calls; only `Sanitizer::enum(EnumClass::class)` is allowed for closed sets.
 
 ---
 
