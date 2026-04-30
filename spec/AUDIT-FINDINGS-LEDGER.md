@@ -1011,3 +1011,27 @@ This is the **third** scope-correction in 3 turns (F-SCOPE-01 → 02 → 03), ea
 **Lesson for future estimates:** ALLOWED-set redundancy requires an `(Umbrella)` marker in the registry row of the prefix-token. Currently only 25 rows carry that marker (the umbrella-covered=181 leaves are entirely OUTSIDE the ALLOWED set — they're cited tokens that the runner now exempts dynamically without needing an allow-list entry). The two mechanisms are non-overlapping by design.
 
 **No code or registry changes.** F-AUDIT-48 row in remaining-tasks list dropped.
+
+---
+
+### NEW-13-FOLLOWUP-tail — `--block-new` per-line git-blame mode (2026-04-30, batch ~54)
+
+**Status:** ✅ CLOSED. Enhancement-class task (no open finding flipped).
+
+**Context:** `scripts/spec-hygiene/79-check-vague-modifiers.mjs` previously implemented `--block-new` using **file mtime**, which produced false positives (legacy hits in files re-touched by unrelated edits). Replaced with per-line `git blame --porcelain` to anchor the cutoff at the **line of introduction**, not the file's last-touched timestamp.
+
+**Implementation:**
+1. **`blameNewLines(relPath, lineNumbers, cutoffSec)`** — single `git blame --porcelain -L N,N -L M,M ...` subprocess per offending file (linear in #files, not #lines).
+2. **`parseBlamePorcelain(out, requestedLines, cutoffSec)`** — pure parser; reads `<sha> <orig> <final> <num>` headers and `author-time <epoch>` rows; emits final-line numbers whose author-time ≥ cutoff.
+3. **Fallback path** — when `git blame` fails (untracked file, shallow clone, no git repo), falls back to mtime-based check and emits a stderr WARN listing affected file count.
+4. **Verbose error output** — names up to 3 specific `Lline:term` samples per offender.
+
+**Verification:**
+- All 3 modes (`report`, `--block-all`, `--block-new`) exit 0 against the current 0-hit corpus.
+- Synthetic parser test (`/tmp/blame-test.mjs`): seeded a 2-line porcelain stream with one pre-cutoff and one post-cutoff author-time; parser correctly returned only the post-cutoff line. ✓
+
+**Why this is content (not pure tooling) per memory rule:** Eliminates the false-positive class where mtime-bumped files with stable legacy hits were spuriously flagged as new accretion. Future authoring sessions get a precise signal aligned with what they actually introduced.
+
+**Gate impact:** `G-LINT-VAGUE-MODIFIERS` already at `block-all` (graduated 2026-04-30). `--block-new` becomes the **complementary forward-looking guard** for branches/forks where the corpus might temporarily drift above 0 — useful in long-lived feature branches before merge.
+
+**Files:** `scripts/spec-hygiene/79-check-vague-modifiers.mjs` (rewrote `--block-new` branch + added 2 helper functions ~50 LOC); this entry.
