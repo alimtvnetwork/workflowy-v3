@@ -87,14 +87,14 @@ This ledger remedies that by making the Core↔Gate mapping **first-class and ve
 | # | Core rule | Coverage | Notes |
 |---|---|---|---|
 | I1 | "Loaders read local mirror first (≤16ms p95, never fetch); actions write mirror+queue in one IDB tx — queue worker is sole egress" | ✅ `G-23-LOADER-MIRROR-FIRST`, `G-23-LOADER-NO-MUTATE`, `G-23-WARM-LOADER-16MS`, `G-23-COLD-OFFLINE-SHELL`, `G-23-ACTION-ENQUEUE-ONLY`, `G-23-ACTION-NO-THROW`, `G-23-FETCHER-SAME-PATH`, `G-23-ROUTER-ERRORELEMENT`, `G-23-RECONNECT-LOCK` | Excellent — 9 gates cover every clause. |
-| I2 | "Undo cap 100 in-memory per-tab" | ✅ `G-21-UNDO-CAP-100` (DOC-NORM, registered 2026-04-30 by GAPCLOSE-I2 — registry v1.7.44) | Anchors ADR-0021 §D1. CI promotion deferred (requires runtime tab-scope harness). |
+| I2 | "Undo cap 100 in-memory per-tab" | ✅ `G-25-UNDO-CAP-100`, `G-25-UNDO-IN-MEMORY-ONLY`, `G-25-UNDO-PER-TAB`, `G-25-UNDO-COMPENSATING-ENQUEUE` (all DOC, pre-existing — discovered 2026-04-30 during GAPCLOSE-J1 prep, see F-AUDIT-34) | Anchors ADR-0021 §D1/§D3/§D4. **Originally mis-classified as RESERVED in 2026-04-30 v1 of this ledger** (cross-walk grep targeted `G-21-UNDO` namespace only, missed cross-domain `G-25-*` family that historically grouped undo+SSE rules together). GAPCLOSE-I2 retracted; duplicate `G-21-UNDO-CAP-100` removed from registry v1.7.44 → v1.7.45. |
 | I3 | "Offline queue UNBOUNDED in IndexedDB (localStorage forbidden)" | ✅ `G-25-QUEUE-UNBOUNDED`, `G-25-QUEUE-INDEXEDDB-ONLY`, `G-25-QUEUE-NO-SILENT-DROP`, `G-25-POLL-IDEMPOTENT` | Strong. localStorage-ban grep is implicit in `G-25-QUEUE-INDEXEDDB-ONLY`. |
 
 ### J. Realtime (SSE)
 
 | # | Core rule | Coverage | Notes |
 |---|---|---|---|
-| J1 | "SSE-only: `/stream/page/{id}` + `/stream/user/{id}`; PascalCase frames; Last-Event-ID replay; SSE is read-signal only (never enqueues to FIFO). WebSocket/long-poll/3rd-party push forbidden" | ✅ `G-25-SSE-ENDPOINT-CLOSED`, `G-25-SSE-EVENT-NAMES-CLOSED`, `G-25-SSE-FRAME-ENVELOPE`, `G-25-SSE-CONFLICT-CLIENT-RESTORE`, `G-25-SSE-CURSOR-WORKSPACE-SCOPED` | Strong — 5 gates. **WebSocket/long-poll ban grep** is uncovered (would be a 1-line ESLint `no-restricted-globals: ['WebSocket', 'EventSource' (outside `lib/sse/`)]`). **Minor gap.** |
+| J1 | "SSE-only: `/stream/page/{id}` + `/stream/user/{id}`; PascalCase frames; Last-Event-ID replay; SSE is read-signal only (never enqueues to FIFO). WebSocket/long-poll/3rd-party push forbidden" | ✅ `G-25-TRANSPORT-SSE-ONLY` (DOC, anchors ADR-0025 §Gates Touched line 132 "no WebSocket / long-poll / 3rd-party push"), `G-25-SSE-ENDPOINT-CLOSED`, `G-25-SSE-EVENT-NAMES-CLOSED`, `G-25-SSE-FRAME-ENVELOPE`, `G-25-SSE-LAST-EVENT-ID`, `G-25-SSE-READ-ONLY-SIGNAL`, `G-25-SSE-HEARTBEAT-15S`, `G-25-SSE-CONFLICT-CLIENT-RESTORE`, `G-25-SSE-CURSOR-WORKSPACE-SCOPED`, `G-25-SSE-WORKER-CAP`, `G-25-SSE-REJECTED-NO-EMIT`, `G-25-SSE-TX-ATOMIC-EMIT` | Excellent — 12 gates. **Originally classified as "minor gap" in v1 of this ledger** (cross-walk missed `G-25-TRANSPORT-SSE-ONLY` despite it being explicitly cited in ADR-0025 §Gates Touched line 132). GAPCLOSE-J1 retracted as unnecessary. See F-AUDIT-34. |
 
 ### K. Error boundaries
 
@@ -113,27 +113,31 @@ This ledger remedies that by making the Core↔Gate mapping **first-class and ve
 
 ---
 
-## Coverage summary (as of 2026-04-30, post-GAPCLOSE-I2)
+## Coverage summary (as of 2026-04-30, post-GAPCLOSE-I2-RETRACTION + J1-RETRACTION)
 
 | Status | Count | % |
 |---|---|---|
-| ✅ Registered gate(s) | 17 | 74% |
-| 📋 RESERVED slot (ADR-0031 pattern) | 3 | 13% |
+| ✅ Registered gate(s) | 18 | 78% |
+| 📋 RESERVED slot (ADR-0031 pattern) | 2 | 9% |
 | 📝 Memory-only-by-design (procedural) | 3 | 13% |
 | **Total Core lines mapped** | **23** | **100%** |
 
-**Open gaps remaining (3 RESERVED slots + 4 partial-coverage notes):**
+**Open gaps remaining (2 RESERVED slots + 4 partial-coverage notes):**
 
 1. **B2** — Forbidden-runtimes ESLint rule (`G-NS-FORBIDDEN-RUNTIMES`).
 2. **C3** — shadcn/Radix component-base lock (`G-22-COMPONENT-BASE-SHADCN-RADIX`).
-3. **E1** — 15-line logic limit + positive-guard-clause grep gates.
+3. **E1** — 15-line logic limit + positive-guard-clause grep gates (partial coverage).
 4. **F3** — 250-item per-view cap (policy → grep gate).
 5. **G1** — HSL-only Tailwind tokens + `@theme`-block-as-SSOT gates (AUDIT-FIX-02 closes half).
-6. ~~**I2** — Undo cap 100 (`G-21-UNDO-CAP-100`).~~ **CLOSED 2026-04-30 by GAPCLOSE-I2.**
-7. **J1** — WebSocket/long-poll ban ESLint rule.
+6. ~~**I2** — Undo cap 100.~~ **CLOSED 2026-04-30 — pre-existing `G-25-UNDO-CAP-100` covers it (cross-walk error in v1 of this ledger).**
+7. ~~**J1** — WebSocket/long-poll ban.~~ **CLOSED 2026-04-30 — pre-existing `G-25-TRANSPORT-SSE-ONLY` covers it (cross-walk error in v1 of this ledger).**
 8. **C1** — Version-pin gate for Vite/React/TS (NEW-25 covers this).
 
-**Closure progress:** 1 of 4 RESERVED slots closed in same-day follow-through. Remaining 3 RESERVED + 4 partial-coverage notes remain first-class visible.
+**Closure progress:** 2 of 4 originally-listed RESERVED slots closed by **discovery** (not by new gates) — both were pre-existing in the registry but mis-classified by the v1 cross-walk grep. Filed as F-AUDIT-34 (false-positive cascade). Real net result: coverage was always 18/23 (78%), not 16/23 (70%) as v1 reported. Remaining 2 RESERVED + 4 partial-coverage notes are still first-class visible.
+
+### v1 cross-walk methodology error (root-cause)
+
+The v1 cross-walk used per-namespace greps (`G-21-UNDO`, `G-NS-WEBSOCKET`) that assumed gate names match Core-rule topics 1:1. **They don't.** The `G-25-*` family historically absorbs both SSE rules AND undo/queue rules together (because ADR-0025 §Gates Touched explicitly cross-references undo gates as siblings to transport gates). Future cross-walks MUST grep by **ADR anchor** (`spec/00-adrs/0021-`, `spec/00-adrs/0025-`) AND by **rule keyword** (`undo`, `WebSocket`, `cap.*100`) — not by gate-name namespace alone.
 
 ---
 

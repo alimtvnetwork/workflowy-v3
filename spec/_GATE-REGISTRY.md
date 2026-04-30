@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.44  
-> **Updated:** 2026-04-30 — **GAPCLOSE-I2 (Core↔Gate ledger gap-close, ADR-0021 D1 anchor):** promoted `RESERVED: G-21-UNDO-CAP-100` slot (named in `_LEDGER-G-NS-CORE-MEMORY-COVERAGE.md` row I2) to a registered DOC-NORM gate. Anchors the `mem://index.md` Core line "Undo cap 100 in-memory per-tab" against ADR-0021 §Decision D1 ("Maximum stack depth: 100 actions for both undo and redo, in-memory, per-tab"). First gap-close from the audit-v10 cross-walk; closes 1 of 4 RESERVED slots surfaced by F-AUDIT-33 resolution. **No bare-MUST delta** (this is a ledger-driven coverage gate, not a prose-binding migration). Prior: 1.7.43 (Domain-EDGE seed).
+> **Version:** 1.7.45  
+> **Updated:** 2026-04-30 — **GAPCLOSE-I2 RETRACTED + GAPCLOSE-J1 PRE-EMPTIVELY RETRACTED (false-positive cascade fix):** during GAPCLOSE-J1 prep work, discovered that (a) `G-25-UNDO-CAP-100` (DOC, line 370) already exists and anchors the same ADR-0021 D1 Core line as the just-added `G-21-UNDO-CAP-100`, making the latter a duplicate; and (b) `G-25-TRANSPORT-SSE-ONLY` (DOC, line 369) already enforces "no WebSocket / long-poll / 3rd-party push" per ADR-0025 §Gates Touched line 132, making GAPCLOSE-J1 unnecessary. **Removed duplicate `G-21-UNDO-CAP-100` row.** Net effect: gate count returns to 536 (–1 vs v1.7.44; same as v1.7.43). Root cause: GAPCLOSE-I2's pre-flight grep targeted `G-21-UNDO` namespace only, missing the cross-domain `G-25-*` family that historically absorbed undo/queue rules together with SSE rules. Filed as **F-AUDIT-34** (LOW, false-positive cascade — see audit ledger). This counts as **content work under the parser-fix exception** (eliminates a real false-positive content finding from yesterday's work). Prior: 1.7.44 (now retracted).
 
-- **Total named gates:** 537 (+1 this revision)
+- **Total named gates:** 536 (–1 vs v1.7.44; restored to v1.7.43 baseline)
 - **WARN-only gates:** 11 (unchanged)
 - **CI:** 139 (unchanged)
 - **TEST:** 20 (unchanged)
-- **DOC-NORM:** 173 (+1 this revision)
+- **DOC-NORM:** 172 (–1 vs v1.7.44; restored)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 56 (unchanged — `G-21-*` family pre-exists)
+- **Areas covered:** 56 (unchanged)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
@@ -300,7 +300,6 @@
 | `G-21-REBALANCE-TRIGGER-64B` | **DOC** | [`spec/00-adrs/0016-fractional-index-sortorder.md`](./00-adrs/0016-fractional-index-sortorder.md) | - G-21-REBALANCE-TRIGGER-64B — enforces D5 trigger (64-byte key |
 | `G-21-SORTORDER-BASE62-ALPHABET` | **DOC** | [`spec/00-adrs/0016-fractional-index-sortorder.md`](./00-adrs/0016-fractional-index-sortorder.md) | - G-21-SORTORDER-BASE62-ALPHABET — enforces D2 (0-9A-Za-z |
 | `G-21-SORTORDER-STRING-ONLY` | **DOC** | [`spec/00-adrs/0016-fractional-index-sortorder.md`](./00-adrs/0016-fractional-index-sortorder.md) | - G-21-SORTORDER-STRING-ONLY — enforces D1 (Item.SortOrder is |
-| `G-21-UNDO-CAP-100` | **DOC-NORM** | [`spec/00-adrs/0021-undo-100-offline-queue-unbounded.md`](./00-adrs/0021-undo-100-offline-queue-unbounded.md) | Enforces ADR-0021 §Decision D1: undo and redo stacks each capped at exactly 100 actions, in-memory only, scoped per-tab. Cross-tab undo is forbidden (D1 §"avoids cross-tab undo of edits the user…"). Reload clears both stacks (D4 — intentional, per "persisting undo across reloads opens"). Sub-rule note: this gate is the per-tab in-memory counterpart to `G-25-QUEUE-UNBOUNDED` (offline queue is the persisted, unbounded sibling). Promotion to CI deferred — requires runtime tab-scope enforcement harness. Anchors `mem://index.md` Core line and closes I2 in [`_LEDGER-G-NS-CORE-MEMORY-COVERAGE.md`](./_LEDGER-G-NS-CORE-MEMORY-COVERAGE.md). |
 
 ### ADR-0022
 
