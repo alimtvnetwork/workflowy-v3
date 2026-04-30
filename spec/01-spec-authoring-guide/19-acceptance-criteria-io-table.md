@@ -43,8 +43,8 @@ Every leaf criterion (one that an implementer can write a single test for) MUST 
 ### Field rules
 
 - **Given / When / Then** — single-line, imperative, no hedging vocabulary (`should`, `may`, `consider` are forbidden inside fixtures; reserve those for the prose row when the rule is genuinely soft).
-- **Request body / Response envelope** — when present they MUST be valid JSON literals (parseable by `JSON.parse`). Use realistic example IDs (`"itm_01HXYZ…"`), not `<placeholder>` strings.
-- **Response envelope** — MUST conform to `spec/04-database-conventions/06-rest-api-format/` (PascalCase keys, mandatory `Status` / `Attributes` / `Results`).
+- **Request body / Response envelope** — when present they MUST be valid JSON literals (parseable by `JSON.parse`) — gate `G-AT-IO-JSON-LITERAL-VALID`. Use realistic example IDs (`"itm_01HXYZ…"`), not `<placeholder>` strings.
+- **Response envelope** — MUST conform to `spec/04-database-conventions/06-rest-api-format/` (PascalCase keys, mandatory `Status` / `Attributes` / `Results`) — gate `G-AT-IO-ENVELOPE-CONFORM`.
 - **Side effects** and **Negative assertion** — required for any AT that mutates state. For pure read-only or pure-UI ATs, write `none` rather than omitting the row.
 - **N/A rows** are collapsed (omit the entire row) only for `Request body` and `Response envelope`. The other five rows are mandatory.
 
