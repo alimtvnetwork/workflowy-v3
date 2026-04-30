@@ -1,6 +1,6 @@
 {
   "$schema": "https://workflowy.local/spec/contract.schema.json",
-  "generated_at": "2026-04-29",
+  "generated_at": "2026-04-30",
   "generator": "scripts/spec-hygiene/40-generate-contract-json.mjs",
   "do_not_edit": true,
   "counts": {
@@ -1173,7 +1173,7 @@
         },
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 459
+          "line": 502
         }
       ]
     },
@@ -1873,7 +1873,7 @@
       "cited_in": [
         {
           "file": "spec/_GATE-REGISTRY.md",
-          "line": 449
+          "line": 492
         },
         {
           "file": "spec/_LEDGER-G-NS-ADR-COVERAGE.md",
@@ -3528,7 +3528,7 @@
         },
         {
           "file": "spec/AUDIT-FINDINGS-LEDGER.md",
-          "line": 194
+          "line": 224
         }
       ]
     },
@@ -6434,6 +6434,10 @@
         {
           "file": "spec/09-code-block-system/11-highlighter-dependency-pin.md",
           "line": 124
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 655
         }
       ]
     },
@@ -6446,6 +6450,10 @@
         {
           "file": "spec/09-code-block-system/11-highlighter-dependency-pin.md",
           "line": 124
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 655
         }
       ]
     },
@@ -11555,28 +11563,56 @@
       "definition": "Every appendix feature row in the 15 in-scope files matches `**Title** — Description.` (R1).",
       "defined_in": "spec/01-spec-authoring-guide/21-feature-block-format.md",
       "defined_line": 95,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/AUDIT-FINDINGS-LEDGER.md",
+          "line": 96
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 622
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 627
+        }
+      ]
     },
     {
       "id": "AT-F8-02",
       "definition": "Every appendix line that mentions a shortcut ends with a backticked shortcut token (R2).",
       "defined_in": "spec/01-spec-authoring-guide/21-feature-block-format.md",
       "defined_line": 96,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 628
+        }
+      ]
     },
     {
       "id": "AT-F8-03",
       "definition": "Every slash command in appendix prose is backtick-wrapped (R3).",
       "defined_in": "spec/01-spec-authoring-guide/21-feature-block-format.md",
       "defined_line": 97,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 629
+        }
+      ]
     },
     {
       "id": "AT-F8-04",
       "definition": "Every search operator in appendix prose is backtick-wrapped (R4).",
       "defined_in": "spec/01-spec-authoring-guide/21-feature-block-format.md",
       "defined_line": 98,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 630
+        }
+      ]
     },
     {
       "id": "AT-FEEDBACKREPORT-01",
@@ -14342,6 +14378,14 @@
         {
           "file": "spec/09-code-block-system/11-highlighter-dependency-pin.md",
           "line": 165
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 647
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 651
         }
       ]
     },
@@ -14354,6 +14398,10 @@
         {
           "file": "spec/09-code-block-system/11-highlighter-dependency-pin.md",
           "line": 166
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 652
         }
       ]
     },
@@ -14378,6 +14426,10 @@
         {
           "file": "spec/09-code-block-system/11-highlighter-dependency-pin.md",
           "line": 168
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 654
         }
       ]
     },
@@ -14390,6 +14442,10 @@
         {
           "file": "spec/09-code-block-system/11-highlighter-dependency-pin.md",
           "line": 169
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 653
         }
       ]
     },
@@ -14414,6 +14470,10 @@
         {
           "file": "spec/09-code-block-system/11-highlighter-dependency-pin.md",
           "line": 171
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 656
         }
       ]
     },
@@ -14430,6 +14490,10 @@
         {
           "file": "spec/09-code-block-system/11-highlighter-dependency-pin.md",
           "line": 172
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 653
         }
       ]
     },
@@ -16297,11 +16361,11 @@
         },
         {
           "file": "spec/00-adrs/0026-lww-canonical-tiebreak.md",
-          "line": 112
+          "line": 111
         },
         {
           "file": "spec/00-adrs/0026-lww-canonical-tiebreak.md",
-          "line": 112
+          "line": 111
         },
         {
           "file": "spec/32-ui-design/01-architecture/05-component-contract-map.md",
@@ -18987,6 +19051,10 @@
       "defined_line": 39,
       "cited_in": [
         {
+          "file": "spec/03-error-manage/00-overview.md",
+          "line": 266
+        },
+        {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 39
         },
@@ -19001,6 +19069,10 @@
         {
           "file": "spec/97a-acceptance-criteria-fixtures.md",
           "line": 175
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 55
         }
       ]
     },
@@ -19010,6 +19082,10 @@
       "defined_in": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
       "defined_line": 40,
       "cited_in": [
+        {
+          "file": "spec/03-error-manage/00-overview.md",
+          "line": 266
+        },
         {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 40
@@ -19026,6 +19102,10 @@
       "defined_in": "spec/04-database-conventions/06-rest-api-format/97-acceptance-criteria.md",
       "defined_line": 41,
       "cited_in": [
+        {
+          "file": "spec/03-error-manage/00-overview.md",
+          "line": 266
+        },
         {
           "file": "spec/04-database-conventions/00-overview.md",
           "line": 41
@@ -24143,7 +24223,7 @@
     },
     {
       "id": "AT-USERMANAGEMENT-01",
-      "definition": "`User` table MUST be singular PascalCase with `UserId` PK as `INTEGER PRIMARY KEY AUTOINCREMENT` (FR-1) — UUID PKs are forbidden because they prevent efficient joins on the per-user shard key.",
+      "definition": "`User` table MUST be singular PascalCase with `UserId` PK as `INTEGER PRIMARY KEY AUTOINCREMENT` (FR-1) — UUID PKs are forbidden because they prevent efficient joins on the per-user shard key. [gate: G-USER-PK-INTEGER-AUTOINC]",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 22,
       "cited_in": [
@@ -24162,12 +24242,24 @@
         {
           "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
           "line": 11
+        },
+        {
+          "file": "spec/AUDIT-FINDINGS-LEDGER.md",
+          "line": 117
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 758
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 762
         }
       ]
     },
     {
       "id": "AT-USERMANAGEMENT-02",
-      "definition": "Roles MUST live in a separate `UserRole` table linking `UserId` ↔ `Role` enum (FR-2); storing role columns directly on `User` is a Code-Red privilege-escalation bug per the project memory rule.",
+      "definition": "Roles MUST live in a separate `UserRole` table linking `UserId` ↔ `Role` enum (FR-2); storing role columns directly on `User` is a Code-Red privilege-escalation bug per the project memory rule. [gate: G-USER-ROLES-SEPARATE-TABLE]",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 23,
       "cited_in": [
@@ -24178,12 +24270,16 @@
         {
           "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
           "line": 18
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 763
         }
       ]
     },
     {
       "id": "AT-USERMANAGEMENT-03",
-      "definition": "The `Role` enum MUST be exactly `User`, `Editor`, `Admin`; adding new roles MUST update the enum + capability matrix + this AT — magic-string roles are forbidden.",
+      "definition": "The `Role` enum MUST be exactly `User`, `Editor`, `Admin`; adding new roles MUST update the enum + capability matrix + this AT — magic-string roles are forbidden. [gate: G-USER-ROLE-ENUM-CLOSED]",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 24,
       "cited_in": [
@@ -24194,12 +24290,16 @@
         {
           "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
           "line": 25
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 764
         }
       ]
     },
     {
       "id": "AT-USERMANAGEMENT-04",
-      "definition": "The capability matrix in `00-overview.md` MUST be the SSOT — code MUST NOT introduce ad-hoc capabilities not listed; new capabilities require updating the matrix first.",
+      "definition": "The capability matrix in `00-overview.md` MUST be the SSOT — code MUST NOT introduce ad-hoc capabilities not listed; new capabilities require updating the matrix first. [gate: G-USER-CAPABILITY-MATRIX-SSOT]",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 30,
       "cited_in": [
@@ -24210,12 +24310,16 @@
         {
           "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
           "line": 31
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 765
         }
       ]
     },
     {
       "id": "AT-USERMANAGEMENT-05",
-      "definition": "All RBAC checks MUST go through the central `hasRole(userId, role)` helper (FR-6) — inline role comparisons (`if (user.role === 'Admin')`) are forbidden because they're un-auditable.",
+      "definition": "All RBAC checks MUST go through the central `hasRole(userId, role)` helper (FR-6) — inline role comparisons (`if (user.role === 'Admin')`) are forbidden because they're un-auditable. [gate: G-USER-HASROLE-CENTRAL]",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 31,
       "cited_in": [
@@ -24226,12 +24330,16 @@
         {
           "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
           "line": 38
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 766
         }
       ]
     },
     {
       "id": "AT-USERMANAGEMENT-06",
-      "definition": "`hasRole` MUST be the security-definer pattern: it MUST query the `UserRole` table (NOT a session cache) for privilege-elevation checks, even though session cache may be used for UI rendering.",
+      "definition": "`hasRole` MUST be the security-definer pattern: it MUST query the `UserRole` table (NOT a session cache) for privilege-elevation checks, even though session cache may be used for UI rendering. [gate: G-USER-HASROLE-SECURITY-DEFINER]",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 32,
       "cited_in": [
@@ -24242,12 +24350,16 @@
         {
           "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
           "line": 45
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 767
         }
       ]
     },
     {
       "id": "AT-USERMANAGEMENT-07",
-      "definition": "Auth MUST support password + optional WebAuthn passkey (FR-3); password-only auth without a documented passkey upgrade path fails review.",
+      "definition": "Auth MUST support password + optional WebAuthn passkey (FR-3); password-only auth without a documented passkey upgrade path fails review. [gate: G-USER-AUTH-PASSKEY-SUPPORT]",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 38,
       "cited_in": [
@@ -24258,12 +24370,16 @@
         {
           "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
           "line": 53
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 768
         }
       ]
     },
     {
       "id": "AT-USERMANAGEMENT-08",
-      "definition": "Passwords MUST be hashed with Argon2id (memory ≥ 64 MB, iterations ≥ 3, parallelism ≥ 1) — bcrypt/PBKDF2/SHA-256 are forbidden as they're below the 2026 baseline.",
+      "definition": "Passwords MUST be hashed with Argon2id (memory ≥ 64 MB, iterations ≥ 3, parallelism ≥ 1) — bcrypt/PBKDF2/SHA-256 are forbidden as they're below the 2026 baseline. [gate: G-USER-PWHASH-ARGON2ID]",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 39,
       "cited_in": [
@@ -24274,12 +24390,16 @@
         {
           "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
           "line": 62
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 769
         }
       ]
     },
     {
       "id": "AT-USERMANAGEMENT-09",
-      "definition": "Session tokens MUST live in `httpOnly` + `Secure` + `SameSite=Lax` cookies when sync is enabled (FR-4); `localStorage` fallback is allowed ONLY in solo (no-sync) mode.",
+      "definition": "Session tokens MUST live in `httpOnly` + `Secure` + `SameSite=Lax` cookies when sync is enabled (FR-4); `localStorage` fallback is allowed ONLY in solo (no-sync) mode. [gate: G-USER-SESSION-COOKIE-FLAGS]",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 40,
       "cited_in": [
@@ -24290,12 +24410,16 @@
         {
           "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
           "line": 70
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 770
         }
       ]
     },
     {
       "id": "AT-USERMANAGEMENT-10",
-      "definition": "JWTs (if used) MUST carry only the `userId` reference (NOT user data); embedding role/permissions in JWT claims is a Code-Red privilege-escalation bug.",
+      "definition": "JWTs (if used) MUST carry only the `userId` reference (NOT user data); embedding role/permissions in JWT claims is a Code-Red privilege-escalation bug. [gate: G-USER-JWT-USERID-ONLY]",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 41,
       "cited_in": [
@@ -24306,12 +24430,16 @@
         {
           "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
           "line": 77
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 771
         }
       ]
     },
     {
       "id": "AT-USERMANAGEMENT-11",
-      "definition": "Solo mode MUST work with NO server login required; forcing login for offline use is a Code-Red product-promise violation.",
+      "definition": "Solo mode MUST work with NO server login required; forcing login for offline use is a Code-Red product-promise violation. [gate: G-USER-SOLO-NO-LOGIN]",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 47,
       "cited_in": [
@@ -24322,12 +24450,16 @@
         {
           "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
           "line": 85
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 772
         }
       ]
     },
     {
       "id": "AT-USERMANAGEMENT-12",
-      "definition": "Switching from solo → sync mode MUST migrate the local user data into the synced account WITHOUT data loss; partial migration is a Code-Red data-loss bug.",
+      "definition": "Switching from solo → sync mode MUST migrate the local user data into the synced account WITHOUT data loss; partial migration is a Code-Red data-loss bug. [gate: G-USER-SOLO-TO-SYNC-LOSSLESS]",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 48,
       "cited_in": [
@@ -24338,12 +24470,16 @@
         {
           "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
           "line": 92
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 773
         }
       ]
     },
     {
       "id": "AT-USERMANAGEMENT-13",
-      "definition": "Admin UI MUST support invite, deactivate, role-change (FR-5); deletion MUST be a separate flow gated by an additional confirmation (NOT folded into deactivate).",
+      "definition": "Admin UI MUST support invite, deactivate, role-change (FR-5); deletion MUST be a separate flow gated by an additional confirmation (NOT folded into deactivate). [gate: G-USER-ADMIN-DELETE-SEPARATE]",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 54,
       "cited_in": [
@@ -24354,12 +24490,16 @@
         {
           "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
           "line": 100
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 774
         }
       ]
     },
     {
       "id": "AT-USERMANAGEMENT-14",
-      "definition": "Every admin action MUST emit an entry to the activity feed (audit-of-the-audit); silent admin actions are a Code-Red audit-integrity bug.",
+      "definition": "Every admin action MUST emit an entry to the activity feed (audit-of-the-audit); silent admin actions are a Code-Red audit-integrity bug. [gate: G-USER-ADMIN-ACTION-AUDITED]",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 55,
       "cited_in": [
@@ -24370,12 +24510,16 @@
         {
           "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
           "line": 106
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 775
         }
       ]
     },
     {
       "id": "AT-USERMANAGEMENT-15",
-      "definition": "Per-item sharing permissions MUST follow the sharing-model memory; admin override of share permissions MUST be logged AND user-notified — silent override is a Code-Red trust bug.",
+      "definition": "Per-item sharing permissions MUST follow the sharing-model memory; admin override of share permissions MUST be logged AND user-notified — silent override is a Code-Red trust bug. [gate: G-USER-ADMIN-OVERRIDE-NOTIFIED]",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 61,
       "cited_in": [
@@ -24386,12 +24530,16 @@
         {
           "file": "spec/36-user-management/97a-acceptance-criteria-fixtures.md",
           "line": 113
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 776
         }
       ]
     },
     {
       "id": "AT-USERMANAGEMENT-16",
-      "definition": "A user MUST be able to: (a) export all their data as a single archive, (b) delete their account in one operation that purges per-user DB + sessions + feedback + activity events. Piecemeal deletion fails GDPR.",
+      "definition": "A user MUST be able to: (a) export all their data as a single archive, (b) delete their account in one operation that purges per-user DB + sessions + feedback + activity events. Piecemeal deletion fails GDPR. [gate: G-USER-GDPR-EXPORT-DELETE]",
       "defined_in": "spec/36-user-management/97-acceptance-criteria.md",
       "defined_line": 62,
       "cited_in": [
@@ -24410,6 +24558,10 @@
         {
           "file": "spec/97a-acceptance-criteria-fixtures.md",
           "line": 82
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 777
         }
       ]
     },
@@ -24539,6 +24691,14 @@
         {
           "file": "spec/36-user-management/01-account-and-settings.md",
           "line": 105
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 758
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 778
         }
       ]
     },
@@ -24555,6 +24715,10 @@
         {
           "file": "spec/36-user-management/01-account-and-settings.md",
           "line": 106
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 779
         }
       ]
     },
@@ -24571,6 +24735,10 @@
         {
           "file": "spec/36-user-management/01-account-and-settings.md",
           "line": 107
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 780
         }
       ]
     },
@@ -24587,6 +24755,10 @@
         {
           "file": "spec/36-user-management/01-account-and-settings.md",
           "line": 108
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 781
         }
       ]
     },
@@ -24603,6 +24775,14 @@
         {
           "file": "spec/36-user-management/01-account-and-settings.md",
           "line": 109
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 782
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 783
         }
       ]
     },
@@ -26081,14 +26261,28 @@
       "definition": "Single top-level folder",
       "defined_in": "spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md",
       "defined_line": 73,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 750
+        }
+      ]
     },
     {
       "id": "AT-WPPLUGINDEPLOY-05",
       "definition": "Vite bundle present at `assets/dist/`",
       "defined_in": "spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md",
       "defined_line": 81,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/AUDIT-FINDINGS-LEDGER.md",
+          "line": 112
+        },
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 749
+        }
+      ]
     },
     {
       "id": "AT-WPPLUGINDEPLOY-06",
@@ -26116,7 +26310,12 @@
       "definition": "SHA-256 sidecar",
       "defined_in": "spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md",
       "defined_line": 113,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 752
+        }
+      ]
     },
     {
       "id": "AT-WPPLUGINDEPLOY-10",
@@ -26130,7 +26329,12 @@
       "definition": "CI gates block package",
       "defined_in": "spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md",
       "defined_line": 129,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 753
+        }
+      ]
     },
     {
       "id": "AT-WPPLUGINDEPLOY-12",
@@ -26144,7 +26348,12 @@
       "definition": "Manifest checksum verifies download",
       "defined_in": "spec/13-cicd-pipeline-workflows/18-wp-plugin-deploy/97-acceptance-criteria.md",
       "defined_line": 145,
-      "cited_in": []
+      "cited_in": [
+        {
+          "file": "spec/_GATE-REGISTRY.md",
+          "line": 751
+        }
+      ]
     },
     {
       "id": "AT-WPPLUGINDEPLOY-14",
