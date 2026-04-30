@@ -88,7 +88,7 @@ sudo wp --path=/var/www/wordpress workflowy workspace freeze \
   --reason="restore $TICKET_ID"
 ```
 
-**Verify:** subsequent `POST /wp-json/workflowy/v1/items/...` requests for the workspace MUST return `423 Locked` with envelope `{"Status":"error","Errors":[{"Code":"ERR_WORKSPACE_FROZEN"}]}`.
+**Verify:** subsequent `POST /wp-json/workflowy/v1/items/...` requests for the workspace MUST return `423 Locked` with envelope `{"Status":"error","Errors":[{"Code":"ERR_WORKSPACE_FROZEN"}]}` `[gate: G-BACKUP-RESTORE-FREEZE-423]`.
 
 ### Forbidden during restore (per A-44 §7)
 
