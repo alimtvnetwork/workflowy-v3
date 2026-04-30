@@ -2,7 +2,7 @@
 
 > **Version:** 1.0.0
 > **Updated:** 2026-04-30 (UTC+8) — created per F-AUD42-12 to provide a single citable anchor for split-DB scope.
-> **Status:** ✅ Normative SSOT — every per-user-data feature/endpoint MUST cite this file.
+> **Status:** ✅ Normative SSOT — every per-user-data feature/endpoint MUST cite this file (gate **G-23-DATA-ROUTER-API**, db-scope citation enforcement).
 > **Parent:** [`./00-overview.md`](./00-overview.md)
 > **Resolves:** F-AUD42-12 (Split-DB under-cited in `01-features/` and `06-endpoints/`)
 
@@ -19,11 +19,11 @@
 
 ## 2. Scope Tags (use in feature/endpoint files)
 
-Every feature/endpoint that touches data MUST declare its DB scope using one of:
+(gate **G-24-DDL-SINGULAR-LOCKED**) Every feature/endpoint that touches data MUST declare its DB scope using one of:
 
 - `[db-scope: root]` — touches only `root.db` (e.g., login, workspace switch)
 - `[db-scope: app]` — touches only the active workspace's `app-{id}.db` (default for item operations)
-- `[db-scope: cross-db]` — orchestrates both; MUST cite the cross-DB contract section
+- `[db-scope: cross-db]` — orchestrates both; MUST cite the cross-DB contract section (gate **G-24-DDL-SINGULAR-LOCKED**)
 
 ## 3. Citation Stanza (canonical, copy-paste)
 

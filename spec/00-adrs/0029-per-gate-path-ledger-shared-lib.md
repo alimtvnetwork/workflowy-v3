@@ -1,4 +1,5 @@
-# ADR-0029 — Per-(Gate, Path) Ledger Consumers MUST Use the Shared Library
+# ADR-0029 — Per-(Gate, Path) Ledger Consumers MUST Use the Shared Library 
+<!-- gate **G-13-LEDGER-PER-GATE-PATH** -->
 
 > **Status:** Accepted
 > **Date:** 2026-04-29
@@ -44,7 +45,7 @@ glob semantics across runners.
 ### D1 — Single canonical implementation
 
 All hygiene runners that consume a per-(gate, path) markdown ledger
-**MUST** import their parsing, glob compilation, and per-key
+(gate **G-13-LEDGER-PER-GATE-PATH**) **MUST** import their parsing, glob compilation, and per-key
 exemption check from
 `scripts/spec-hygiene/_lib/per-gate-path-ledger.mjs`.
 
@@ -67,7 +68,7 @@ The runner then calls `walkLedger()` → `buildGlobMap(rows, parseGateCell)`
 
 ### D3 — Canonical ledger schema (frozen)
 
-Every ledger file MUST conform to:
+(gate **G-13-LEDGER-FIVE-COLUMN-SCHEMA**) Every ledger file MUST conform to:
 
 - Filename: `spec/<area>/_LEDGER-<GATE-NAME>-EXEMPTIONS.md`
 - Required H2: `## Entries` (not `## Exemption rows`, not `## Allow-list`)

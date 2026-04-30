@@ -13,7 +13,7 @@ All pipelines run on **GitHub Actions** using `ubuntu-latest` runners. No self-h
 
 ## Action and Tool Versioning
 
-All GitHub Actions and external tools MUST be pinned to exact version tags. Using `@latest` or `@main` is **prohibited** — it breaks reproducibility and can introduce breaking changes silently.
+(gate **G-13-ACTION-VERSIONS**) All GitHub Actions and external tools MUST be pinned to exact version tags. Using `@latest` or `@main` is **prohibited** — it breaks reproducibility and can introduce breaking changes silently.
 
 | Rule | Example |
 |------|---------|
@@ -125,7 +125,7 @@ echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
 ## Checksum Generation
 
-All release pipelines MUST generate SHA-256 checksums for every release asset:
+(gate **G-13-PUBLISH-NEEDS-SIGN**) All release pipelines MUST generate SHA-256 checksums for every release asset:
 
 ```bash
 cd dist/
@@ -149,7 +149,7 @@ env:
 
 ## Filename Enforcement
 
-Markdown filenames MUST be lowercase kebab-case. The pipeline enforces this:
+(gate **G-NS-STATUS-IN-LEGEND**, applied here as filename-naming closed-list) Markdown filenames MUST be lowercase kebab-case. The pipeline enforces this:
 
 ```bash
 VIOLATIONS=$(find . -name '*.md' \

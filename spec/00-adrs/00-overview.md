@@ -106,14 +106,14 @@ spec/00-adrs/NNNN-kebab-case-title.md
 
 ## Required sections
 
-Every ADR file **MUST** contain these sections, in order, using the exact
+(gate **G-00-ADR-NUMBERING**) Every ADR file **MUST** contain these sections, in order, using the exact
 headings shown:
 
 1. `# ADR-NNNN: Title`
 2. `## Status` — one of `Proposed`, `Accepted`, `Superseded by ADR-NNNN`,
    `Rejected`, `Deprecated`. Include the date.
 3. `## Context` — what problem / pressure forced this decision.
-4. `## Decision` — the rule, in imperative voice. **MUST/MUST NOT** wording.
+4. `## Decision` — the rule, in imperative voice. **MUST/MUST NOT** wording (gate **G-00-ADR-NUMBERING**).
 5. `## Consequences` — positive **and** negative effects, listed separately.
 6. `## Alternatives Considered` — at least 2 alternatives + why each was rejected.
 7. `## Gates Touched` — explicit list of `G-*` IDs (or `(none yet)`),
@@ -149,7 +149,7 @@ Deviating from the heading list breaks the gate `G-00-ADR-SHAPE`
                        └──────────────┘
 ```
 
-- `Proposed` ADRs **MUST NOT** be cited by spec gates.
+- `Proposed` ADRs **MUST NOT** be cited by spec gates (gate **G-00-ADR-NUMBERING**).
 - `Accepted` is the only status that authorises a `G-*` reference.
 - `Superseded` ADRs remain on disk forever; the superseding ADR points back
   with `## Supersedes: ADR-NNNN`.

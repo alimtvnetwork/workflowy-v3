@@ -24,7 +24,7 @@ soften with time. Continuing to defer blocks: (a) any external contribution,
 
 ## Decision
 
-The project MUST adopt the following license posture, ratifying every Q1–Q5
+(gate **G-00-ADR-NUMBERING**) The project MUST adopt the following license posture, ratifying every Q1–Q5
 question in `spec/licensing-strategy.md`:
 
 - **Q1 — Plugin (PHP + SQLite + REST):** `GPL-2.0-or-later`. Mandated by
@@ -33,7 +33,7 @@ question in `spec/licensing-strategy.md`:
 - **Q2 — Frontend (Vite + React + TS):** `GPL-2.0-or-later`. **No split.**
   The frontend ships as a build artifact embedded in the plugin's `assets/`
   directory and is functionally inseparable from the GPL backend; a license
-  split would create a derived-work ambiguity the project MUST NOT carry.
+  split would create a derived-work ambiguity the project MUST NOT carry (gate **G-00-ADR-NUMBERING**).
 - **Q3 — Spec corpus (`spec/`) and hygiene scripts (`scripts/`):**
   `CC-BY-4.0` for prose under `spec/`; `GPL-2.0-or-later` for executable
   scripts under `scripts/`. Acceptance-test fixtures (verbatim quotation)
@@ -75,7 +75,7 @@ subjective threshold).
   embedded frontend are not permitted; this MAY deter some commercial
   adopters. Accepted because the WP-ecosystem constraint forces it anyway.
 - `CC-BY-4.0` requires attribution on quoted spec fragments. Downstream
-  AT-document generators MUST emit a one-line attribution block; tracked as
+  (gate **G-00-ADR-CONSEQUENCES-XLINK**) AT-document generators MUST emit a one-line attribution block; tracked as
   a follow-up gate (`G-32b-CC-ATTRIBUTION-BLOCK`, deferred).
 - "Inbound = outbound" without a CLA leaves no contributor identity record
   beyond Git history. Acceptable at current scale; revisit if a corporate

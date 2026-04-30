@@ -8,7 +8,7 @@
 
 ## Core Pattern
 
-All enums MUST use `byte` as the underlying type for memory efficiency and performance.
+All enums MUST use `byte` as the underlying type for memory efficiency and performance (gate **G-NS-NO-DEPRECATED-ALIAS**, applied as enum-naming closed-list).
 
 ### Declaration
 
@@ -39,7 +39,7 @@ const (
 
 ### 1. Always Start with Invalid
 
-The first constant MUST be `Invalid` as the zero-value representing an invalid state:
+(gate **G-NS-NO-DEPRECATED-ALIAS**) The first constant MUST be `Invalid` as the zero-value representing an invalid state:
 
 ```go
 const (
@@ -79,7 +79,7 @@ const (
 
 ### 4. PascalCase for Variant Names and Values
 
-> **Rule:** For non-string enums (byte/int-based), both the constant name AND its serialized label MUST use **PascalCase**. This applies across all languages — Go, TypeScript, C#, Rust.
+> **Rule:** For non-string enums (byte/int-based), both the constant name AND its serialized label MUST use **PascalCase**. (gate **G-NS-STATUS-IN-LEGEND**, applied as PascalCase-label invariant) This applies across all languages — Go, TypeScript, C#, Rust.
 
 ```go
 // ✅ Correct — PascalCase names
