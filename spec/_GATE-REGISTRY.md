@@ -1,13 +1,13 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.28  
-> **Updated:** 2026-04-30 — **batch-37 (NEW-12 closure):** registered new standing drift guard `G-00-ORPHAN-GATE-ID-DRIFT` (CI WARN-only until 2026-05-14) — corpus-wide audit invariant ensuring every cited `G-…` token is either registered or in a documented allow-list. **First runtime hygiene gate to detect the silent-gap class** (cite-only-no-row gate IDs that the prose-MUST parser silently treats as valid citations). Inaugural orphan survey: 632 cited tokens, 497 registered, 124 cited-but-unregistered → 61 documented allow-listed (deprecated bare-numeric per §4.5, sub-rule shorthand, baseline ledger names, test fixtures, legacy aliases) + **63 real gaps** (mostly ADR sub-rule citations whose umbrella is registered but enumerated rows are missing). Runner: `scripts/spec-hygiene/76-check-orphan-gate-ids.mjs` (wired into `00-run-all.mjs`). Prior: 1.7.27 (batch-36 Domain-WORDING greenfield seed + first orphan-gate finding `G-38`).
+> **Version:** 1.7.29  
+> **Updated:** 2026-04-30 — **batch-37:** seeded **Domain-DBNAME** (Database Naming Conventions) with 5 gates binding 5 prose-MUSTs in `spec/04-database-conventions/01-naming-conventions.md` (boolean Is/Has prefix, positive-only naming, NOT NULL constraint, PK `{TableName}Id` pattern, FK mirrors PK). **Eighth corpus-wide greenfield Domain seed.** All 5 are DOC-NORM (no static lint yet — column-name shape lives in DDL not in spec prose; promotion to CI awaits a `scripts/spec-hygiene/check-ddl-naming.mjs` runner that walks `*.sql`/migration files). Prior: 1.7.28 (batch-36 Domain-WORDING + NEW-12 orphan-gate-ID drift guard).
 
-- **Total named gates:** 469 (+1 this revision: `G-00-ORPHAN-GATE-ID-DRIFT`)
-- **WARN-only gates:** 10 (+1; tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
-- **CI:** 123 (+1 this revision)
+- **Total named gates:** 474 (+5 this revision)
+- **WARN-only gates:** 10 (unchanged)
+- **CI:** 123 (unchanged)
 - **TEST:** 20 (unchanged)
-- **DOC-NORM:** 121 (unchanged)
+- **DOC-NORM:** 126 (+5 this revision)
 - **DOC:** 202 (unchanged)
 - **Areas covered:** 51 (unchanged)
 - **Areas covered:** 37 (unchanged)
@@ -834,6 +834,18 @@
 | `G-WORDING-SOFT-LANGUAGE-REPLACEMENT` | **DOC-NORM** | [`spec/01-spec-authoring-guide/20-rfc-2119-wording-policy.md`](./01-spec-authoring-guide/20-rfc-2119-wording-policy.md) | The forbidden-phrases replacement table (`"we could"/"perhaps"/"possibly"` → `MAY` (if optional) or `MUST` (if required)) MUST list the canonical mapping for every soft-language phrase the linter rejects. Meta-vocabulary row: the `MAY`/`MUST` tokens appear as the *target* of a substitution rule, not as a new normative claim. Sub-rule of `G-WORDING-AMBIGUOUS-LINT`. |
 | `G-WORDING-DELIBERATION-REPLACEMENT` | **DOC-NORM** | [`spec/01-spec-authoring-guide/20-rfc-2119-wording-policy.md`](./01-spec-authoring-guide/20-rfc-2119-wording-policy.md) | The `"should consider"` replacement rule MUST resolve to `MUST evaluate` (mandatory deliberation) or `MAY evaluate` (optional). Meta-vocabulary row, like `-SOFT-LANGUAGE-REPLACEMENT`. Sub-rule of `G-WORDING-AMBIGUOUS-LINT`. |
 | `G-WORDING-UPPERCASE` | **DOC-NORM** | [`spec/01-spec-authoring-guide/20-rfc-2119-wording-policy.md`](./01-spec-authoring-guide/20-rfc-2119-wording-policy.md) | Per `AT-RFC2119-03`, RFC-2119 keywords carrying normative weight MUST be uppercase. Lowercase use inside English prose is allowed but carries no normative force. Reviewer-judgement gate (no static lint — would false-positive on every sentence containing the verb "must"). |
+
+### Domain-DBNAME (Database Naming Conventions · DDL Identifier Shape)
+
+> Reserved gate IDs for DDL identifier-shape rules rooted at `spec/04-database-conventions/01-naming-conventions.md` (the SSOT for table/column/PK/FK naming, mirrored from `spec/02-coding-guidelines/01-cross-language/07-database-naming.md`). **Pre-flight namespace check:** `G-DBNAME-*` slot empty; no orphan `G-04` reference inline. Batch-37 (2026-04-30) seeds 5 gates binding all 5 prose-MUSTs in §"Boolean Column Rules" (rules 1, 2, 6) and §"Primary Key Naming Pattern" / §"Foreign Key Column Naming". **Eighth corpus-wide greenfield Domain seed.** Tier mix: 5 DOC-NORM (no static lint yet — column-shape audit must walk DDL files, not spec prose; promotion to CI deferred until `scripts/spec-hygiene/check-ddl-naming.mjs` exists, tracked as **NEW-15**).
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-DBNAME-BOOL-IS-HAS-PREFIX` | **DOC-NORM** | [`spec/04-database-conventions/01-naming-conventions.md`](./04-database-conventions/01-naming-conventions.md) | Every boolean column MUST start with `Is` or `Has` (Rule 1). Mirrors cross-language [boolean-principles](./02-coding-guidelines/01-cross-language/02-boolean-principles/00-overview.md). |
+| `G-DBNAME-BOOL-POSITIVE-ONLY` | **DOC-NORM** | [`spec/04-database-conventions/01-naming-conventions.md`](./04-database-conventions/01-naming-conventions.md) | Boolean columns MUST express the **positive** state (Rule 2). Forbids `IsDisabled`, `IsNotActive`, `HasNoLicense`, `IsUnverified`. Mirrors cross-language [no-negatives](./02-coding-guidelines/01-cross-language/12-no-negatives.md). Sub-rule of `G-DBNAME-BOOL-IS-HAS-PREFIX`. |
+| `G-DBNAME-BOOL-NOT-NULL` | **DOC-NORM** | [`spec/04-database-conventions/01-naming-conventions.md`](./04-database-conventions/01-naming-conventions.md) | Boolean columns MUST never be nullable (Rule 6). Three-state booleans break `WHERE Col = 0` semantics. Always `NOT NULL DEFAULT 0|1`. |
+| `G-DBNAME-PK-TABLENAMEID` | **DOC-NORM** | [`spec/04-database-conventions/01-naming-conventions.md`](./04-database-conventions/01-naming-conventions.md) | Primary key MUST be named `{TableName}Id` (e.g. `TransactionId`, `AgentSiteId`) — never bare `Id`. Self-documents when the PK appears as an FK in another table. |
+| `G-DBNAME-FK-MIRRORS-PK` | **DOC-NORM** | [`spec/04-database-conventions/01-naming-conventions.md`](./04-database-conventions/01-naming-conventions.md) | Foreign key columns MUST use the **exact same name** as the referenced PK (e.g. `Transaction.AgentSiteId` → `AgentSite.AgentSiteId`). Renamed FKs (e.g. `OwnerId` for an `AgentSiteId` FK) MUST be documented inline as a deliberate semantic disambiguation. Sub-rule of `G-DBNAME-PK-TABLENAMEID`. |
 
 ---
 
