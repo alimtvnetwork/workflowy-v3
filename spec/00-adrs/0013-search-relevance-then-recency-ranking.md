@@ -12,7 +12,7 @@ experience and gate every implementation choice:
 
 1. **Hybrid relevance-then-recency** — results are first bucketed by
    a relevance score, and recency only orders **within** a bucket. A
-   relevance-100 item from last year MUST rank above a relevance-20
+   relevance-100 item from last year MUST rank above a relevance-20 (gate G-16-RANKING-HYBRID-BUCKETED)
    item edited 5 seconds ago.
 2. **Sub-300 ms response time** for datasets of ≥ 5 000 items, both
    online (server) and offline (local mirror per ADR-0010).
@@ -48,7 +48,7 @@ P60 closes this gap.
 
 ### D1 — Hybrid strategy: relevance bucket first, recency within
 
-Search ranking MUST follow a **two-stage** ordering:
+Search ranking MUST follow a **two-stage** ordering (gate G-16-RANKING-HYBRID-BUCKETED):
 
 1. Compute a **relevance score** per candidate item (D2–D4).
 2. Group candidates into **5 buckets** of `floor(Score / 20)`
@@ -58,7 +58,7 @@ Search ranking MUST follow a **two-stage** ordering:
 4. Within a bucket, sort by `Item.UpdatedAt` **descending**, then
    by `OwnerId` **ascending** as the deterministic tiebreak.
 
-**Invariant I-SR-02 (load-bearing):** Recency MUST NEVER beat
+**Invariant I-SR-02 (load-bearing):** Recency MUST NEVER beat (gate G-16-RANKING-HYBRID-BUCKETED)
 relevance across buckets. A bucket-4 item from one year ago ranks
 above a bucket-1 item edited five seconds ago. Implementations that
 add a "freshness boost" capable of crossing bucket boundaries are a
@@ -66,7 +66,7 @@ hard violation of this ADR.
 
 ### D2 — Match-kind tier table (5 tiers)
 
-The relevance score for a single field MUST be computed from this
+The relevance score for a single field MUST be computed from this (gate G-16-RANKING-HYBRID-BUCKETED)
 exact tier table:
 
 | Match kind | Score |
@@ -86,12 +86,12 @@ the 20-point spacing).
 
 The candidate fields searched are **Content** (the item's primary
 text) and **Note** (the secondary long-form annotation). The field
-weights MUST be:
+weights MUST be (gate G-16-RANKING-HYBRID-BUCKETED):
 
 - `Content` × **1.5**
 - `Note` × **1.0**
 
-The per-item relevance score MUST be:
+The per-item relevance score MUST be (gate G-16-RANKING-HYBRID-BUCKETED):
 
 ```
 Score = max(
@@ -105,17 +105,17 @@ tier-100 Note match scores 150, not 250. This keeps Content-exact
 matches (the dominant case) deterministically at the top of bucket 4.
 
 Other text fields on `Item` (e.g. workspace path, breadcrumb labels)
-MUST NOT contribute to the relevance score.
+MUST NOT contribute to the relevance score (gate G-16-RANKING-HYBRID-BUCKETED).
 
 ### D4 — Operator filters are hard predicates, applied **first**
 
 Query operators (`#tag`, `date:<expr>`, `is:complete`,
-`is:collapsed`, `is:trashed`, `type:todo|board|...`) MUST be applied
+`is:collapsed`, `is:trashed`, `type:todo|board|...`) MUST be applied (gate G-16-RANKING-HYBRID-BUCKETED)
 as a **hard predicate** that narrows the candidate set **before**
-relevance scoring. Operators MUST NOT modify tier values, field
+relevance scoring. Operators MUST NOT modify tier values, field (gate G-16-RANKING-HYBRID-BUCKETED)
 weights, or bucket assignments.
 
-A filter-only query with no free-text terms (e.g. `is:todo`) MUST
+A filter-only query with no free-text terms (e.g. `is:todo`) MUST (gate G-16-RANKING-HYBRID-BUCKETED)
 score every matching candidate at **bucket 3** (score 60 per
 "all-terms-present" semantics on the empty term set) and order them
 by recency.
@@ -123,7 +123,7 @@ by recency.
 ### D5 — Sub-300 ms SLA for ≥ 5 000-item datasets
 
 The end-to-end query latency (from the debounced request firing to
-the first paint of results, excluding network) MUST be **< 300 ms**
+the first paint of results, excluding network) MUST be **< 300 ms** (gate G-16-RANKING-HYBRID-BUCKETED)
 on a dataset of ≥ 5 000 items. The SLA applies in **both** modes:
 
 - **Online** — query against the WP-plugin REST endpoint (per
@@ -140,8 +140,8 @@ defer lower buckets until the user pages.
 
 ### D6 — Empty query returns no results (no recency fallback)
 
-An empty query (whitespace-only after operator stripping) MUST
-return **zero results**. Implementations MUST NOT fall back to "all
+An empty query (whitespace-only after operator stripping) MUST (gate G-16-RANKING-HYBRID-BUCKETED)
+return **zero results**. Implementations MUST NOT fall back to "all (gate G-16-RANKING-HYBRID-BUCKETED)
 items by recency" or "recently visited". Rationale: an accidental
 empty query in a 50 000-item account would otherwise dump the entire
 mirror through the result list and blow the 300 ms SLA.
@@ -160,12 +160,12 @@ Deferred (require a superseding ADR before introduction):
 
 Per ADR-0005 (mirror peer-group model): each peer of a mirror
 peer-group is an independent `Item` with its own `id`, `parentId`,
-and breadcrumb path. Search MUST rank each peer **independently**
+and breadcrumb path. Search MUST rank each peer **independently** (gate G-16-RANKING-HYBRID-BUCKETED)
 (they may appear at different ranks in the same result list with
 distinct breadcrumbs). Deduplication of peers is **forbidden** — the
 breadcrumb is what disambiguates them in the UI.
 
-Trash and completed items MUST be excluded from results unless the
+Trash and completed items MUST be excluded from results unless the (gate G-16-RANKING-HYBRID-BUCKETED)
 query opts in via `is:trashed` or `is:complete`.
 
 ## Consequences

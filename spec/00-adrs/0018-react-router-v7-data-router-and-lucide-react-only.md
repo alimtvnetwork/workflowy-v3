@@ -38,13 +38,13 @@ duplicated stroke styles), and the design-token contract in ADR-0012
 **D1 — Router: react-router-dom v7 data-router API only.**
 - Pinned version: `react-router-dom@^7.13.2` (per pinned-deps matrix).
 - v6 (`^6.x`) is **forbidden**, including via transitive resolution.
-- The app MUST use the **data-router API**:
+- The app MUST use the **data-router API** (gate G-23-ROUTER-V7-ONLY):
   `createBrowserRouter(routes)` + `<RouterProvider router={...} />`.
 - Legacy declarative routing (`<BrowserRouter><Routes><Route/></Routes></BrowserRouter>`)
   is forbidden even though v7 still exports it for migration.
-- Route loaders MUST return PascalCase-shaped data compatible with the
+- Route loaders MUST return PascalCase-shaped data compatible with the (gate G-23-ROUTER-V7-ONLY)
   ADR-0004 envelope when the loader fetches from the backend.
-- The `RouterErrorBoundary` named in ADR-0017 D1 #2 MUST be implemented
+- The `RouterErrorBoundary` named in ADR-0017 D1 #2 MUST be implemented (gate G-23-ROUTER-V7-ONLY)
   via v7's `errorElement` prop on the root route, not as a wrapping
   React error-boundary class.
 
@@ -52,8 +52,8 @@ duplicated stroke styles), and the design-token contract in ADR-0012
 - `useNavigate`, `useLoaderData`, `useRouteError`, `useNavigation`,
   `useFetcher` — all v7 hooks are permitted.
 - v6-shaped hook usage (e.g. `useNavigate()(path, { replace })` with
-  v6's options object shape) MUST be migrated to v7 signatures; CI
-  MUST flag any import that originates from a `react-router-dom@6`
+  v6's options object shape) MUST be migrated to v7 signatures; CI (gate G-23-ROUTER-V7-ONLY)
+  MUST flag any import that originates from a `react-router-dom@6` (gate G-23-ROUTER-V7-ONLY)
   shape via type-check failure.
 
 **D3 — Icons: `lucide-react` only.**
@@ -63,16 +63,16 @@ duplicated stroke styles), and the design-token contract in ADR-0012
   `@fortawesome/*`, `material-icons`, hand-rolled `<svg>` icons in
   components, and emoji characters used as icons in JSX.
 - Decorative inline SVGs that are NOT icons (logos, illustrations,
-  empty-state art) are permitted but MUST live under `src/assets/`,
+  empty-state art) are permitted but MUST live under `src/assets/`, (gate G-23-ROUTER-V7-ONLY)
   not be co-located in component files.
 
 **D4 — Icon usage contract.**
-- Every Lucide icon MUST be imported by named export
+- Every Lucide icon MUST be imported by named export (gate G-23-ROUTER-V7-ONLY)
   (`import { Search } from 'lucide-react'`), never as
   `import * as Icons from 'lucide-react'` (defeats tree-shaking).
-- Icons MUST size via Tailwind utilities (`h-4 w-4`, `h-5 w-5`),
+- Icons MUST size via Tailwind utilities (`h-4 w-4`, `h-5 w-5`), (gate G-23-ROUTER-V7-ONLY)
   never via inline `style={{ width: ... }}`.
-- Icon colour MUST come from semantic design tokens via Tailwind
+- Icon colour MUST come from semantic design tokens via Tailwind (gate G-23-ROUTER-V7-ONLY)
   text utilities (`text-muted-foreground`, `text-primary`) so
   ADR-0012's HSL-token contract flows through `currentColor`.
   Hard-coded `color="#..."` props are forbidden.
@@ -81,22 +81,22 @@ duplicated stroke styles), and the design-token contract in ADR-0012
   a spec PR, not a component-level override.
 
 **D5 — Emoji-as-icon ban.**
-- Emoji characters (`🔍`, `📋`, `⚙️`, etc.) MUST NOT be used as
+- Emoji characters (`🔍`, `📋`, `⚙️`, etc.) MUST NOT be used as (gate G-23-ROUTER-V7-ONLY)
   functional icons in JSX. Existing spec lines that show emojis
   alongside Lucide names (e.g.
   `spec/32-ui-design/06-workflowy-ui/01-navbar/01-layout.md` line 45
   `🔍 (Lucide Search)`) are documentation aids only — the rendered
-  UI MUST use the Lucide component, never the emoji.
+  UI MUST use the Lucide component, never the emoji (gate G-23-ROUTER-V7-ONLY).
 - Emojis remain permitted in **user content** (item Content,
   comments) and in **non-functional documentation**.
 
 **D6 — Migration & detection.**
-- A CI step MUST scan `package.json` and `package-lock.json` /
+- A CI step MUST scan `package.json` and `package-lock.json` / (gate G-23-ROUTER-V7-ONLY)
   `bun.lockb` for `react-router-dom@^6` and any forbidden icon
   package; presence is a build break.
-- A CI step MUST scan `src/**/*.{ts,tsx}` for forbidden imports
+- A CI step MUST scan `src/**/*.{ts,tsx}` for forbidden imports (gate G-23-ROUTER-V7-ONLY)
   (`react-icons/*`, `@heroicons/react/*`, etc.).
-- A CI step MUST verify the app's root component uses
+- A CI step MUST verify the app's root component uses (gate G-23-ROUTER-V7-ONLY)
   `<RouterProvider>`, not `<BrowserRouter>`.
 
 ## Consequences
