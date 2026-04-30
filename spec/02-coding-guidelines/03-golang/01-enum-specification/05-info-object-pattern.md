@@ -176,7 +176,7 @@ var variantInfoMap = map[Variant]VariantInfo{
 
 | Concern | Source |
 |---------|--------|
-| `String()` / `Parse()` | `variantLabels` array (fast, index-based) |
+| `String()` / `Parse()` | `variantLabels` array (O(1) index lookup) |
 | Rich metadata (icon, CSS, description) | `variantInfoMap` map |
 | `Label()` | Delegates to `Info().Label` (same value as `variantLabels` entry) |
 
