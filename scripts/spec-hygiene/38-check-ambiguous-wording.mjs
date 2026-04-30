@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * G-38 — Ambiguous-wording gate (P4 sweep enforcement)
+ * G-WORDING-AMBIGUOUS-LINT (legacy alias: G-38) — Ambiguous-wording gate (P4 sweep enforcement)
  *
  * Bans new occurrences of TBD / FIXME / XXX placeholders and soft-language
  * phrases ("we could", "may want to", "perhaps", "possibly", "ideally",
