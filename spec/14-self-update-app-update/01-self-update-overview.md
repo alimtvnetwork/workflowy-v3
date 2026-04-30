@@ -161,7 +161,7 @@ Always normalize versions before comparing (strip `v` prefix, trim whitespace).
 - Never leave the system in a state without a working binary.
 - Always attempt rollback on deploy failure.
 - The update must work from any working directory (not just the repo).
-- No interactive prompts during the build/deploy phase (only during initial repo resolution if needed).
+- No interactive prompts during the build/deploy phase (only during initial repo resolution when `git remote get-url origin` returns a non-zero exit code).
 
 ---
 

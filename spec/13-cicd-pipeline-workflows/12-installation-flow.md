@@ -273,5 +273,5 @@ Or the CLI itself:
 - Checksum verification is mandatory — never skip
 - Rename-first upgrade strategy — never delete-then-write (avoids Windows file locks)
 - PATH registration must be idempotent (use marker comments, check before adding)
-- Install scripts must work on PowerShell 5.1+ (no modern syntax like `??` or `Join-Path` with 3+ args)
+- Install scripts must work on PowerShell 5.1+ (no PowerShell 7+ syntax like `??` or `Join-Path` with 3+ args)
 - Bash scripts must work on bash 3.2+ (macOS ships old bash)

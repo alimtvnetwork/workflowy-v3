@@ -62,7 +62,7 @@ The HTML is rendered via **dangerouslySetInnerHTML**. All interactivity is handl
 
 ### Event Delegation Pattern
 
-Instead of attaching listeners to each button or line, a single set of listeners (delegated event pattern, O(1) listener count regardless of child count) is attached to the container element. Each handler checks the event target against a selector to determine if it should act. This is efficient because:
+Instead of attaching listeners to each button or line, a single set of listeners (delegated event pattern, O(1) listener count regardless of child count) is attached to the container element. Each handler checks the event target against a selector to determine if it should act. This is O(1) because:
 
 - Code blocks are generated as raw HTML strings (not React components)
 - The number of code blocks and lines can be very large

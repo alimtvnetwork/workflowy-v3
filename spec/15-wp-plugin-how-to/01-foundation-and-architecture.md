@@ -60,7 +60,7 @@ The bootstrap file sits at the plugin root. It performs exactly three tasks:
 
 1. Declare the WordPress plugin header comment
 2. Require the autoloader
-3. Instantiate the Plugin singleton on the appropriate hook
+3. Instantiate the Plugin singleton on the `plugins_loaded` hook (priority 10, the WordPress-recommended bootstrap point)
 
 The bootstrap file is **non-namespaced** because WordPress loads it directly. It must not contain any business logic, helper functions, or class definitions.
 

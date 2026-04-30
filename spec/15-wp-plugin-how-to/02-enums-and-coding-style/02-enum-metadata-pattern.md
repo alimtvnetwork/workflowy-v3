@@ -223,4 +223,4 @@ PHP uses `match` because it is idiomatic, compile-time optimized, and requires n
 
 ---
 
-*PHP enum metadata via `match` expressions — simple, performant, idiomatic.*
+*PHP enum metadata via `match` expressions — O(1) dispatch, native PHP 8.1+ syntax, no reflection overhead.*
