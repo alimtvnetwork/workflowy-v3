@@ -187,10 +187,10 @@ if (drift.length === 0) {
   console.log("OK: no orphan gate-ID drift (ADR-0033 umbrella coverage active).");
   process.exit(0);
 }
-// ADR-0033 graduation: runner now honors umbrella coverage. Mode flips to
-// HARD-FAIL once drift = 0 sustained for 7 days; current mode follows
-// _GATE-GRADUATION-LEDGER.md row for G-00-ORPHAN-GATE-ID-DRIFT.
-const HARD_FAIL = process.env.ORPHAN_GATE_HARD_FAIL === "1";
+// ADR-0033 graduation 2026-04-30: runner promoted WARN → HARD-FAIL after both
+// flip-criterion conditions met (drift=0 AND ADR-0033 umbrella-coverage active).
+// Escape hatch: ORPHAN_GATE_SOFT=1 reverts to WARN for emergency rollback only.
+const HARD_FAIL = process.env.ORPHAN_GATE_SOFT !== "1";
 console.log(`${HARD_FAIL ? "FAIL" : "WARN"}: ${drift.length} cite-only-no-row gate ID(s) detected after ADR-0033 umbrella coverage applied.`);
 console.log("Either:");
 console.log("  (a) register the gate in spec/_GATE-REGISTRY.md, OR");
