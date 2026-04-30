@@ -113,14 +113,16 @@ This ledger remedies that by making the Core↔Gate mapping **first-class and ve
 
 ---
 
-## Coverage summary (as of 2026-04-30, post-GAPCLOSE-I2/J1/C3-RETRACTION)
+## Coverage summary (as of 2026-04-30, post-GAPCLOSE-I2/J1/C3-RETRACTION + NEW-27 hygiene gate)
 
 | Status | Count | % |
 |---|---|---|
-| ✅ Registered gate(s) | 19 | 83% |
+| ✅ Registered gate(s) | 19 | 73% |
 | 📋 RESERVED slot (ADR-0031 pattern) | 1 | 4% |
-| 📝 Memory-only-by-design (procedural) | 3 | 13% |
-| **Total Core lines mapped** | **23** | **100%** |
+| 📝 Memory-only-by-design (procedural) + script-enforced | 6 | 23% |
+| **Total Core sub-rules mapped** | **26** | **100%** |
+
+> Counts re-derived 2026-04-30 by `scripts/spec-hygiene/78-check-core-memory-coverage-ledger.mjs` (NEW-27). Earlier "23 lines" figure conflated mem-index Core lines (≈14) with mapped sub-rules (26).
 
 **Open gaps remaining (1 RESERVED slot + 4 partial-coverage notes):**
 
