@@ -312,6 +312,11 @@ Authored `spec/34-activity-feed/03-feed-ui.md` (2 routes both under `<ActivityBo
 
 ---
 
+### Progress note 2026-04-30 — GAP-A3 (batch 4/4) closed — **CLUSTER COMPLETE**
+
+Authored `spec/34-activity-feed/04-retention-and-purge.md` — closes the entire `34-activity-feed/` 4-sub-spec cluster. Defines the 30-day retention policy as build-time constant (`RETENTION_DAYS = 30`), daily WP-Cron purge (`workflowy_activity_purge_daily` at 00:15 UTC) with 5,000-row batches under `PRAGMA locking_mode = EXCLUSIVE`, and a piggy-backed IDB-mirror compactor that **clamps the cutoff to the oldest open feed cursor** (the cursor-pin invariant — preserves pagination stability per `./03-feed-ui.md`). Mandates use of the pre-computed `PurgeAfter` column from `./01-event-schema.md` so the retention index `IX_ActivityEvent_PurgeAfter` stays covering. Forbids ad-hoc `DELETE FROM ActivityEvent` outside `PurgeJob`, forbids the mirror enqueueing FIFO entries (server purge is authoritative), forbids `error_log()`. Bound 10 load-bearing MUSTs to gates `G-34-RP-RETENTION-30D`, `-PURGE-DAILY`, `-BATCH-CAP`, `-MIRROR-PIGGYBACK`, `-NO-AD-HOC-DELETE`, `-CLI-DRY-RUN`, `-USE-PURGE-AFTER-COL`, `-EXCLUSIVE-LOCK`, `-NO-PARTIAL-COMMIT`, `-CURSOR-PIN` (full 14-gate family in `_GATE-REGISTRY.md`). Linked 3 ATs (`AT-ACTIVITYFEED-14..16`) covering the 30-day boundary, idempotent re-run, and cursor-pin invariant. 6 anti-patterns documented. Parent overview row 04 now ✅. **GAP-A3 fully closed: 4/4 sub-specs authored, 0 pending.**
+
+---
 
 ## Retraction case studies
 
