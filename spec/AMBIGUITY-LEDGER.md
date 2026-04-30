@@ -111,3 +111,29 @@ At the user-set bar ('mediocre AI, zero follow-up, 100% intent match'), every ac
 **Files modified (22):** `01-information-model.md`, `04-page-content-area.md`, `05-interactions.md`, `06-item-context-menu.md`, `07-board-view.md`, `07b-dashboard-view.md`, `08-share-dialog.md`, `08b-sharing-mirror-interaction.md`, `09-mirrors.md`, `09a-mirror-cycle-detection.md`, `09b-mirror-peer-group-model.md`, `10-today-view.md`, `11-trash-view.md`, `11b-trash-reaper.md`, `12-multi-select.md`, `12b-multi-select-zoom.md`, `13-templates.md`, `13b-templates-snapshot-semantics.md`, `14-concurrency-and-sync.md`, `14b-offline-queue.md`, `15-roles-and-permissions.md`, `16-search-ranking.md`.
 
 **Result:** Unbacked clauses **471 → 432** (-39, -8.3%). Backed coverage **84.0% → 85.3%**.
+
+
+---
+
+## GAP-AMB-01-46..60 — Cross-domain individual-file bind (2026-04-30)
+
+**Action:** Bound **15 individual files** spanning 7 domains (features, ADRs, authoring guide, coding guidelines, DB conventions, CI/CD, self-update). Citations reuse pre-existing gates only — zero new gate declarations needed.
+
+**Files modified (15):**
+- `31-app/01-features/05a-hotkey-table.md` (+2 → G-22-BOUNDARY-NAMES-CLOSED)
+- `31-app/00b-numbering-policy.md` (+3 → G-NS-STATUS-COMPANION-CITES-PARENT, G-00-ADR-NUMBERING)
+- `31-app/07-db-diagram/00b-split-db-anchor.md` (+3 → G-23-DATA-ROUTER-API, G-24-DDL-SINGULAR-LOCKED)
+- `13-cicd-pipeline-workflows/18-wp-plugin-deploy/01-distignore-and-zip-layout.md` (+3 → G-10-BOUNDARY-DISTIGNORE-EXCLUDED)
+- `02-coding-guidelines/03-golang/01-enum-specification/01-enum-pattern.md` (+3 → G-NS-NO-DEPRECATED-ALIAS, G-NS-STATUS-IN-LEGEND)
+- `00-adrs/00-overview.md` (+3 → G-00-ADR-NUMBERING)
+- `00-adrs/0029-per-gate-path-ledger-shared-lib.md` (+3 → G-13-LEDGER-PER-GATE-PATH, G-13-LEDGER-FIVE-COLUMN-SCHEMA)
+- `00-adrs/0032-license-decision.md` (+3 → G-00-ADR-NUMBERING, G-00-ADR-CONSEQUENCES-XLINK)
+- `01-spec-authoring-guide/02-naming-conventions.md` (+3 → G-NS-STATUS-FRONTMATTER-EXACTLY-ONE)
+- `01-spec-authoring-guide/17-quick-start-and-enforcement.md` (+3 → G-NS-STATUS-IN-LEGEND)
+- `02-coding-guidelines/00-overview-condensed.md` (+3 → G-13-LEDGER-RUNNER-CLEAN-OUTPUT)
+- `02-coding-guidelines/97a-acceptance-criteria-fixtures.md` (+3 → G-13-LEDGER-RUNNER-CLEAN-OUTPUT)
+- `04-database-conventions/02-schema-design.md` (+3 → G-DBNAME-BOOL-IS-HAS-PREFIX, G-24-DDL-SINGULAR-LOCKED)
+- `13-cicd-pipeline-workflows/16-shared-conventions.md` (+3 → G-13-ACTION-VERSIONS, G-13-PUBLISH-NEEDS-SIGN, G-NS-STATUS-IN-LEGEND)
+- `14-self-update-app-update/14-network-requirements.md` (+3 → G-17-NO-SWALLOW)
+
+**Result:** Unbacked clauses **432 → 387** (-45, -10.4%). Backed coverage **85.3% → 86.8%**.
