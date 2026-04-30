@@ -42,12 +42,12 @@ Before writing anything, take inventory:
 
 ## Phase 2 — Update Memory Files
 
-Target: `.lovable/memory/`
+Target: `mem://` (virtual memory namespace; the on-disk `.lovable/memory/` folder is legacy/orphan content pending Task T sweep).
 
-1. Read `.lovable/memory/index.md` first — never duplicate.
+1. Read `mem://index.md` first — never duplicate.
 2. Update existing memory files in place — preserve all existing content; never truncate unrelated entries.
-3. Create new memory files only if knowledge doesn't fit any existing file. Naming: `xx-descriptive-name.md` (lowercase, hyphenated).
-4. **Immediately** update `.lovable/memory/index.md` when adding/removing a file.
+3. Create new memory files only if knowledge doesn't fit any existing file. Naming: `mem://{type}/{descriptive-name}` (lowercase, hyphenated; type ∈ design|constraint|preference|feature|reference|architecture|features|docs|preferences).
+4. **Immediately** update `mem://index.md` when adding/removing a file.
 
 ### Workflow state
 

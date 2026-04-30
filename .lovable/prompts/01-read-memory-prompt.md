@@ -33,11 +33,11 @@
 | 1 | `.lovable/overview.md` | Project summary, tech stack, navigation map |
 | 2 | `.lovable/strictly-avoid.md` | **Hard prohibitions** — violating ANY of these is a critical failure |
 | 3 | `.lovable/user-preferences` | How the human expects you to communicate and behave |
-| 4 | `.lovable/memory/index.md` | Index of all institutional knowledge files |
+| 4 | `mem://index.md` | Index of all institutional knowledge files (virtual registry; the on-disk `.lovable/memory/index.md` was eliminated as parallel-SSOT — Tasks M/O) |
 | 5 | `.lovable/plan.md` | Current active roadmap and priorities |
 | 6 | `.lovable/suggestions.md` | Pending improvement ideas (not yet approved) |
 
-### Step 1.2 — Read EVERY file referenced in `.lovable/memory/index.md`
+### Step 1.2 — Read EVERY file referenced in `mem://index.md`
 
 - If the index lists 12 files, you read 12 files. No exceptions.
 - If there are subfolders, traverse them recursively.
@@ -167,7 +167,7 @@ Never append boilerplate like "Let me know if you have questions!" Just deliver 
 New information discovered
 │
 ├─ Institutional knowledge (pattern, convention, decision)?
-│  └─ YES → Write to `.lovable/memory/` and update `.lovable/memory/index.md`
+│  └─ YES → Write to `mem://{type}/{name}` (virtual memory) and update `mem://index.md`
 │
 ├─ Something that must NEVER be done?
 │  └─ YES → Add to `.lovable/strictly-avoid.md` (and optionally a file in `.lovable/strictly-avoid/`)
@@ -179,8 +179,8 @@ New information discovered
 ```
 
 ### Critical Rules
-- The memory folder is `.lovable/memory/` — **never** `.lovable/memories/` (no trailing `s`).
-- When adding a new memory file, **always** update the index at `.lovable/memory/index.md`.
+- The canonical memory namespace is `mem://` (virtual). The on-disk folder `.lovable/memory/` is **legacy/orphan** content pending Task T sweep — do not write new memories there.
+- When adding a new memory file, **always** update the index at `mem://index.md`.
 - When modifying an existing memory, preserve all other content — do not truncate or overwrite unrelated entries.
 
 ---
