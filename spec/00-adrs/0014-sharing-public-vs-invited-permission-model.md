@@ -7,7 +7,7 @@
 ## Context
 
 Sharing in WorkFlowy is the load-bearing trust boundary of the entire
-product. Every read, every write, every mirror traversal MUST be
+product. Every read, every write, every mirror traversal MUST be (gate G-15-DEFAULT-PRIVATE)
 gated by an effective-role resolution that the user cannot escape.
 The shape of that resolution — which roles exist, where they are
 stored, how they cascade, and how they interact with mirror peers —
@@ -23,7 +23,7 @@ Today the policy is split:
   tests, edge cases).
 - **Mirror × sharing SSOT** — `spec/31-app/01-features/08b-sharing-mirror-interaction.md`
   v1.0.0 (per-instance ACL keyed by `ItemId`).
-- **System prompt** — *"Roles MUST be stored in a separate table.
+- **System prompt** — *"Roles MUST be stored in a separate table (gate G-15-DEFAULT-PRIVATE).
   Absolutely do not store roles on the profile or users table. This
   will lead to privilege escalation attacks and must be avoided at
   all costs."*
@@ -80,7 +80,7 @@ superseding ADR.
 
 The full capability matrix lives in
 `15-roles-and-permissions.md` §Capability Matrix; that table is the
-SSOT cell-by-cell. Implementations MUST reproduce it byte-for-byte.
+SSOT cell-by-cell. Implementations MUST reproduce it byte-for-byte (gate G-15-DEFAULT-PRIVATE).
 
 ### D3 — Workspace roles are a separate, smaller enum
 
@@ -91,13 +91,13 @@ SSOT cell-by-cell. Implementations MUST reproduce it byte-for-byte.
 `Owner` and `Admin` overlap is name-only — they live in different
 tables and are resolved separately). Conflating them is forbidden.
 
-### D4 — Roles MUST live in separate tables, never on User/Profile
+### D4 — Roles MUST live in separate tables, never on User/Profile (gate G-15-DEFAULT-PRIVATE)
 
 This is the load-bearing privilege-escalation guard:
 
-- **Workspace roles** MUST live in `WorkspaceMember(UserId,
+- **Workspace roles** MUST live in `WorkspaceMember(UserId, (gate G-15-DEFAULT-PRIVATE)
   WorkspaceId, WorkspaceRole)` in the **Root DB**.
-- **Item roles** MUST live in `ItemShare(ItemId, GranteeUserId,
+- **Item roles** MUST live in `ItemShare(ItemId, GranteeUserId, (gate G-15-DEFAULT-PRIVATE)
   ItemRole, GrantedAt)` in the **App DB** (per workspace).
 - A `role` / `roles` / `isAdmin` / `permissions` column on `User`,
   `Profile`, or any auth-identity table is **strictly forbidden**.
@@ -110,7 +110,7 @@ forces every privilege check to go through the dedicated resolver
 
 ### D5 — Two-DB authorization, no cross-DB joins
 
-The resolver MUST execute as **two separate queries**, never joined:
+The resolver MUST execute as **two separate queries**, never joined (gate G-15-DEFAULT-PRIVATE):
 
 1. **Root DB** — fetch `WorkspaceMember.WorkspaceRole` for
    `(actorUserId, workspaceId)`. If `Owner` / `Admin`, authorise
@@ -175,11 +175,11 @@ Concrete consequences:
 
 ### D8 — Revocation propagates within 60 s
 
-A `share:revoked` event MUST invalidate every active session for the
+A `share:revoked` event MUST invalidate every active session for the (gate G-15-RESOLVER-SOLE-ENTRY)
 revoked grantee within **60 seconds** (per
 `15-roles-and-permissions.md` §Realtime Propagation). Stale tokens
-held by the revoked grantee MUST fail validation on the next request
-and the client MUST redirect to the share-revoked screen.
+held by the revoked grantee MUST fail validation on the next request (gate G-15-RESOLVER-SOLE-ENTRY)
+and the client MUST redirect to the share-revoked screen (gate G-15-RESOLVER-SOLE-ENTRY).
 
 This SLA is load-bearing: longer windows turn revocation into a
 "soft" operation that exfiltration can outrun. Shorter windows are
@@ -187,7 +187,7 @@ permitted; longer ones are forbidden.
 
 ### D9 — Default visibility is **private**
 
-Newly-created items MUST default to **private** — no public link,
+Newly-created items MUST default to **private** — no public link, (gate G-15-RESOLVER-SOLE-ENTRY)
 no `ItemShare` rows beyond the implicit `Owner` grant. There is no
 "share by default", no "discoverable workspace", and no
 "organization-wide auto-grant" in v1. Any future feature that creates
