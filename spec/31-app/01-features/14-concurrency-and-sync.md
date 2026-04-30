@@ -146,7 +146,7 @@ Every SSE message has an `event:` line drawn from this list. Unknown events MUST
 
 ### 14.5.3 `id:` Field — Resume Cursor
 
-Every event line MUST include `id: {ServerTs}` where `ServerTs` is the integer UTC millisecond stamp from §14.2. The browser auto-sends the last received id as `Last-Event-Id` on reconnect; the server uses it for replay (§14.5.1). The client MUST NOT compare `id` values across workspaces — the cursor is scoped per `(UserId, WorkspaceId)` and stored in the Root DB `SyncCursor` table (per §Storage).
+Every event line MUST include `id: {ServerTs}` `[gate: G-25-SSE-LAST-EVENT-ID]` where `ServerTs` is the integer UTC millisecond stamp from §14.2. The browser auto-sends the last received id as `Last-Event-Id` on reconnect; the server uses it for replay (§14.5.1). The client MUST NOT compare `id` values across workspaces `[gate: G-25-SSE-CURSOR-WORKSPACE-SCOPED]` — the cursor is scoped per `(UserId, WorkspaceId)` and stored in the Root DB `SyncCursor` table (per §Storage).
 
 ### 14.5.4 Poll Fallback Endpoint
 
