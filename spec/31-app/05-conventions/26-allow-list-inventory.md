@@ -9,6 +9,9 @@ generator: scripts/spec-hygiene/35-allow-list-inventory.mjs
 
 # Allow-List Inventory
 
+
+> **Parent:** [`./00-overview.md`](./00-overview.md) — added 2026-04-30 (AUD-REMEDIATE-CRIT-7, F-AUD42-08 closure).
+
 > **Generated.** Do not hand-edit. Run
 > `node scripts/spec-hygiene/35-allow-list-inventory.mjs` to regenerate.
 > CI verifies freshness with `--check`.

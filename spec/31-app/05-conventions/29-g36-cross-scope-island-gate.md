@@ -1,5 +1,8 @@
 # G-36 — Cross-Scope Island Detector (Algorithm SSOT)
 
+
+> **Parent:** [`./00-overview.md`](./00-overview.md) — added 2026-04-30 (AUD-REMEDIATE-CRIT-7, F-AUD42-08 closure).
+
 > **Version:** 1.0.0
 > **Updated:** 2026-04-27 (UTC+8)
 > **Parent:** [02-ci-quality-gates.md](./02-ci-quality-gates.md)

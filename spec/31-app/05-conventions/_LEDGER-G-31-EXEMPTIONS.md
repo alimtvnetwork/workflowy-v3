@@ -1,5 +1,8 @@
 # Ledger: G-31 Workflow / Feature / Endpoint Cross-Reference Exemptions
 
+
+> **Parent:** [`./00-overview.md`](./00-overview.md) — added 2026-04-30 (AUD-REMEDIATE-CRIT-7, F-AUD42-08 closure).
+
 > **Scope:** This ledger holds per-(gate, scope, category) exemptions consumed
 > by `scripts/spec-hygiene/31-check-workflow-xref-reciprocity.mjs` (G-31).
 > It is the **per-(gate, path) Phase-2 sibling** of `_LEDGER-G-30-EXEMPTIONS.md`,
