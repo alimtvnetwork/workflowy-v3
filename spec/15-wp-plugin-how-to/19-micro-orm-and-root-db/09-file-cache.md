@@ -50,7 +50,7 @@ $manifest = $fileCache->getManifest($pluginSlug, $pluginDir, $ignoreRules);
 1. **Load cached entries** from SQLite (keyed by `RelativePath`)
 2. **Scan directory** recursively, respecting `.riseupuploadignore` rules
 3. **For each file on disk:**
-   - If cache hit (same `ModifiedAt` + `FileSize`) → use cached hash (fast path)
+   - If cache hit (same `ModifiedAt` + `FileSize`) → use cached hash (`fast path` <!-- vague-exempt: algorithmic-term -->)
    - If cache miss → compute `md5_file()`, upsert cache entry (slow path)
 4. **Prune stale entries** — cached files no longer on disk are deleted
 
