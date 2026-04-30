@@ -66,7 +66,7 @@ When a note exists and is expanded:
 
 ### 3.4 Text Formatting Toolbar
 
-MUST appear as a floating toolbar above selected text. Centered above the selection with a small arrow/caret pointing down.
+(gate **G-22-BOUNDARY-NAMES-CLOSED**) MUST appear as a floating toolbar above selected text. Centered above the selection with a small arrow/caret pointing down.
 
 | Button | Label | Behavior | Active State |
 |--------|-------|----------|-------------|
@@ -274,7 +274,7 @@ Each swatch: small circle. Currently selected color has a ring border. Hover: sl
 
 ### SSE Frames Emitted (read-signal only, ADR-0025)
 
-`NodeViewStateUpdated`, `ItemUpdated (re-render)` on `/stream/page/{id}` and/or `/stream/user/{id}`. SSE MUST NOT enqueue to the FIFO (read-signal only).
+(gate **G-25-SSE-ENDPOINT-CLOSED**) `NodeViewStateUpdated`, `ItemUpdated (re-render)` on `/stream/page/{id}` and/or `/stream/user/{id}`. SSE MUST NOT enqueue to the FIFO (read-signal only).
 
 ### Storage
 

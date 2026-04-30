@@ -105,7 +105,7 @@ jQuery(document).ready(function($) {
 | No hardcoded strings | ALL user-facing text comes from `i18n` — never inline English strings in JS |
 | No hardcoded URLs | API base and endpoints come from localized object — never construct URLs manually |
 | No hardcoded keys | Response field names come from `responseKeys` — never hardcode `'Status'` or `'Agents'` |
-| Enum-driven | Every localized value that maps to a PHP enum MUST use `EnumCase->value` in PHP |
+| Enum-driven | Every localized value that maps to a PHP enum MUST use `EnumCase->value` in PHP | <!-- (gate **G-NS-NO-DEPRECATED-ALIAS**) -->
 
 ---
 
@@ -204,7 +204,7 @@ function showStatus(message, isError) {
 
 ## 18.5 Button State Management
 
-Buttons MUST be disabled during AJAX operations to prevent double-submission:
+(gate **G-22-BOUNDARY-NAMES-CLOSED**) Buttons MUST be disabled during AJAX operations to prevent double-submission:
 
 ```javascript
 $('#btn_test_connection').on('click', function() {

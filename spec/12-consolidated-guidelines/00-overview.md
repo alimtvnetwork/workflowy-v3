@@ -93,11 +93,11 @@
 
 ## Purpose
 
-> 🔴 **MANDATORY — AI AGENTS MUST READ THIS**
+> 🔴 **MANDATORY — AI AGENTS MUST READ THIS** <!-- (gate **G-NS-STATUS-IN-LEGEND**) -->
 >
 > This folder contains **only redirect stubs**. It exists for backward-compatible navigation, not as a source of truth.
 >
-> **Rule:** Files under `spec/12-consolidated-guidelines/` MUST NOT contain rules, examples, or schemas. They redirect to the canonical source folder for each topic.
+(gate **G-NS-STATUS-IN-LEGEND**) > **Rule:** Files under `spec/12-consolidated-guidelines/` MUST NOT contain rules, examples, or schemas. They redirect to the canonical source folder for each topic.
 >
 > When you need authoritative information, **always read the canonical source listed below** — never the redirect stub.
 

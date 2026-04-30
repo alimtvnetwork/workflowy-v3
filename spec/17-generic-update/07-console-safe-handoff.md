@@ -135,8 +135,8 @@ Do not trade away console stability just to make the parent exit early.
 
 ## Mandatory Rules for AI Implementation
 
-1. **The parent MUST use `cmd.Run()`** when launching the handoff worker
-2. **The worker MUST also use `cmd.Run()`** when launching the update script
+1. **The parent MUST use `cmd.Run()`** when launching the handoff worker (gate **G-17-NO-SWALLOW**)
+2. **The worker MUST also use `cmd.Run()`** when launching the update script (gate **G-17-NO-SWALLOW**)
 3. **Always pipe `Stdout`, `Stderr`, and `Stdin`** from parent to worker
    and from worker to script
 4. **Never use `cmd.Start()` + `os.Exit(0)`** for update handoff

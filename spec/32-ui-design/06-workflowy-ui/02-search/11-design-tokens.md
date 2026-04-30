@@ -38,9 +38,9 @@ These tokens already exist in `@theme` and must be reused as-is. Do not redefine
 
 ---
 
-## 2. NEW Tokens — REQUIRED Additions
+## 2. NEW Tokens — REQUIRED Additions <!-- (gate **G-32-NO-SECOND-STYLING-SYSTEM**) -->
 
-The implementer **MUST add these 4 tokens** to `src/index.css` `@theme` block (light + dark variants) before building Phase 2. ✅ **Done 2026-04-25** — see commit closing F-05.
+(gate **G-32-NO-SECOND-STYLING-SYSTEM**) The implementer **MUST add these 4 tokens** to `src/index.css` `@theme` block (light + dark variants) before building Phase 2. ✅ **Done 2026-04-25** — see commit closing F-05.
 
 | Token | Purpose | Light value | Dark value | Contrast partner |
 |-------|---------|-------------|------------|------------------|

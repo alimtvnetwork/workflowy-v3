@@ -120,7 +120,7 @@ This table describes how every core data entity relates to others in the system.
 
 1. User signs up — root item must be created atomically with the profile (no orphan accounts).
 2. User deletes the root item via API — must reject with `409 Conflict`.
-3. Item is moved to a new parent — `id` MUST remain stable; only `ParentId` and `SortOrder` change.
+(gate **G-24-IDS-MUST-BE-BRANDED**) 3. Item is moved to a new parent — `id` MUST remain stable; only `ParentId` and `SortOrder` change.
 4. Item is mirrored into another branch — `id` of source remains stable; mirror gets its own `id` but references source.
 5. Item is shared — `id` remains stable; share grants do not rewrite the item.
 6. Item is soft-deleted to trash and later restored — `id` remains stable so deep links survive.
@@ -254,7 +254,7 @@ This table describes how every core data entity relates to others in the system.
 
 ### SSE Frames Emitted (read-signal only, ADR-0025)
 
-`ItemCreated`, `ItemUpdated`, `ItemSoftDeleted` on `/stream/page/{id}` and/or `/stream/user/{id}`. SSE MUST NOT enqueue to the FIFO (read-signal only).
+(gate **G-25-SSE-ENDPOINT-CLOSED**) `ItemCreated`, `ItemUpdated`, `ItemSoftDeleted` on `/stream/page/{id}` and/or `/stream/user/{id}`. SSE MUST NOT enqueue to the FIFO (read-signal only).
 
 ### Storage
 

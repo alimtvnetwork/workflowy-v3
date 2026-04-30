@@ -9,7 +9,7 @@
 
 ## AI Contract
 
-**Purpose** — Holds in-progress research notes that have not yet been promoted to a normative spec section. Files here are advisory and MUST NOT be cited as a source of truth.
+(gate **G-NS-STATUS-IN-LEGEND**) **Purpose** — Holds in-progress research notes that have not yet been promoted to a normative spec section. Files here are advisory and MUST NOT be cited as a source of truth.
 
 **Audience** — Spec authors evaluating new ideas; reviewers checking provenance of design decisions.
 
@@ -67,7 +67,7 @@ Dedicated folder for all exploratory and evaluative work that supports the spec 
 
 ## Placement Rule
 
-All root-level research content MUST be placed in this folder (`spec/10-research/`) unless explicitly categorized elsewhere. Language-specific research within coding guidelines belongs in `spec/02-coding-guidelines/10-research/`.
+(gate **G-NS-STATUS-IN-LEGEND**) All root-level research content MUST be placed in this folder (`spec/10-research/`) unless explicitly categorized elsewhere. Language-specific research within coding guidelines belongs in `spec/02-coding-guidelines/10-research/`.
 
 ---
 

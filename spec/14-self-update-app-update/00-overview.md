@@ -86,7 +86,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## Update-Phase State Machine
 
-Every self-update run MUST traverse exactly these phases in order. Skipping a phase is a spec violation.
+(gate **G-17-SINGLE-CONCERN**) Every self-update run MUST traverse exactly these phases in order. Skipping a phase is a spec violation.
 
 | # | Phase | Entry condition | Exit (success) | Exit (failure → next action) |
 |---|---|---|---|---|
@@ -186,7 +186,7 @@ final class UpdateApplier {
 | `UPD-14-06` | RunMigrations | Restore backup, revert staging, log failing updater id. |
 | `UPD-14-07` | Activate | Restore backup, revert staging, mark plugin `Quarantined`. |
 
-*All values are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings.*
+(gate **G-13-FIXTURE-STRING-PARITY**) *All values are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings.*
 
 <!-- AUTO-TOC:START -->
 
