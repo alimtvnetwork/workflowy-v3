@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.42  
-> **Updated:** 2026-04-30 — **batch-49 (Domain-MCREATE seed — fifth consecutive 4-MUST density-tier bind, FIRST workflow-page batch demonstrating ADR-anchor → workflow cascade reuse, sixth consecutive umbrella-composes-leaves chain):** registered 4 new DOC-NORM gates binding all 4 prose-MUSTs in `spec/31-app/02-workflows/09-mirror-create-flow.md` (L127 idempotent-replay, L130 debounce-submit, L141 source-PeerGroupId-in-tx, L144 cycle-check-per-peer). Gates: `G-MCREATE-IDEMPOTENT-REPLAY`, `G-MCREATE-DEBOUNCE-SUBMIT`, `G-MCREATE-SOURCE-PEERGROUP-IN-TX` (3-tier sub-rule under `G-ADR-0005-DISSOLVE-IN-TX` — reuses the gate seeded yesterday in batch-48), `G-MCREATE-CYCLE-CHECK-PER-PEER` (3-tier sub-rule under `G-ADR-0005-CYCLE-PRECHECK` — same reuse). **Bare-MUST count 308 → 304 (Δ −4 exact).** Closes 43rd consecutive zero-drift batch. Streak counter: 6 consecutive content batches. **Pivot rationale:** ADR-anchor runway exhausted earlier than expected — ADRs 0026/0027/0029 were all pre-bound (gates declared inline in §Decision tables). Pivoted to highest-leverage 4-MUST workflow file: mirror-create cascades directly off batch-48's ADR-0005 anchors, providing the canonical demo of the ADR-anchor → workflow-bind reuse pattern. Prior: 1.7.41 (Domain-ADR-0005 anchor).
+> **Version:** 1.7.43  
+> **Updated:** 2026-04-30 — **batch-50 (Domain-EDGE seed — sixth consecutive 4-MUST density-tier bind, seventh consecutive umbrella-composes-leaves chain, second batch in the ADR-anchor → workflow-bind cascade-reuse pattern):** registered 4 new DOC-NORM gates binding 4 prose-MUSTs in `spec/31-app/03-edge-cases/01-edge-cases.md` (L34 U5 cycle-block, L35 U6 quota-block, L36 U7 depth-virtualize, L65 X1 mirror-delete-warn). Gates: `G-EDGE-U5-CYCLE-BLOCK`, `G-EDGE-U6-QUOTA-BLOCK`, `G-EDGE-U7-DEPTH-VIRTUALIZE` (3-tier sub-rule under `G-17-VIRTUALIZE-1000` per ADR-0017), `G-EDGE-X1-MIRROR-DELETE-WARN` (3-tier sub-rule under `G-ADR-0005-PEER-GROUP-MODEL` — third reuse of an ADR-0005 anchor across batches 48/49/50). **Bare-MUST count 304 → 300 (Δ −4 exact).** Closes 44th consecutive zero-drift batch. **Crosses the psychological 300-bare-MUST corpus floor for the first time.** Streak counter: 7 consecutive content batches. **Pivot rationale:** planned `08-mirror-detach-flow.md` was already at 0 bare-MUSTs (well-bound at authoring time, parallel to mirror-create's prose density). Pivoted to highest-leverage 4-MUST file with multi-feature spread; edge-cases file uses table-row-IDs as gate-name suffixes (U5/U6/U7/X1) for trivial back-traceability. Prior: 1.7.42 (Domain-MCREATE seed).
 
-- **Total named gates:** 532 (+4 this revision)
+- **Total named gates:** 536 (+4 this revision)
 - **WARN-only gates:** 11 (unchanged)
 - **CI:** 139 (unchanged)
 - **TEST:** 20 (unchanged)
-- **DOC-NORM:** 168 (+4 this revision)
+- **DOC-NORM:** 172 (+4 this revision)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 55 (+1 this revision — new Domain-MCREATE)
+- **Areas covered:** 56 (+1 this revision — new Domain-EDGE)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
