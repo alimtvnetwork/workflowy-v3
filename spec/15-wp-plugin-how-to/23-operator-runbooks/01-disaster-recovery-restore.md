@@ -43,7 +43,7 @@ export KEK_VAULT_PATH="/etc/workflowy/kek-vault.gpg"
 export AUDIT_TOOL="/usr/local/bin/wf-audit"   # CLI shipped with plugin
 ```
 
-### Pre-flight checks (all MUST pass before step 2)
+### Pre-flight checks (all MUST pass before step 2) `[gate: G-BACKUP]`
 
 ```bash
 test -d "$STAGING_DIR" || { echo "FATAL: staging dir missing"; exit 1; }
