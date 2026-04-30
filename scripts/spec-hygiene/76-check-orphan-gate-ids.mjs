@@ -17,7 +17,7 @@ import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 
 const REG_PATH = "spec/_GATE-REGISTRY.md";
-const PLACEHOLDERS = new Set(["G-NN", "G-NN-NAME", "G-DOMAIN-NN"]);
+const PLACEHOLDERS = new Set(["G-NN", "G-NN-NAME", "G-DOMAIN-NN", "G-ADR-NNNN", "G-00-UMBRELLA-LEAVES-DESCRIBED"]);
 const GATE_RE = /\bG-[A-Z0-9][A-Z0-9-]*\b/g;
 
 // Documented allow-list (do NOT shrink without a new ADR / registry §4.5 amendment).
