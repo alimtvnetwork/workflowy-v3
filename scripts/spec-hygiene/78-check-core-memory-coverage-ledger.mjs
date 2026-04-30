@@ -18,6 +18,15 @@
  *   4. the §"Coverage summary" counts (✅ / 📋 RESERVED / 📝 procedural)
  *      match the actual row classifications
  *
+ * `--strict-mode` (advisory, exit 0): emits a namespace-overlap report —
+ *   any `G-{NN}-` prefix whose gate rows span ≥2 distinct anchor paths is
+ *   flagged. Documented overloads (registry NOTE: "prefix is overloaded") are
+ *   marked as such; undocumented overlaps print "⚠ UNDOCUMENTED" so authors
+ *   add a NOTE before the next GAPCLOSE-* cross-walk. Closes the F-AUDIT-34..38
+ *   methodology hardening loop: the seven-instance cascade was caused by
+ *   per-namespace greps missing cross-cutting families (`G-32-*`, `G-CG-*`,
+ *   `G-ADR-NNNN-*`); strict-mode surfaces those at PR-time, not post-hoc.
+ *
  * Pure positive guard clauses, no nested ifs, max 15-line bodies.
  */
 import { readFileSync, existsSync } from "node:fs";
@@ -30,6 +39,8 @@ const RESERVED_RE = /`RESERVED:\s*(G-[A-Z0-9-]+)`/;
 const PROCEDURAL_RE = /memory-only-by-design/;
 const SCRIPT_RE = /`scripts\/spec-hygiene\/[\w.-]+\.mjs`/;
 const REGISTRY_GATE_RE = /^\|\s*`(G-[A-Z0-9-]+)`\s*\|/gm;
+const REGISTRY_ROW_RE = /^\|\s*`(G-[A-Z0-9-]+)`\s*\|[^|]*\|\s*\[`([^`]+)`\]/gm;
+const STRICT = process.argv.includes("--strict-mode");
 
 function fail(msg) {
   console.error(`FAIL: ${msg}`);
@@ -42,7 +53,35 @@ function loadRegistry() {
   const ids = new Set();
   for (const m of text.matchAll(REGISTRY_GATE_RE)) ids.add(m[1]);
   if (ids.size < 100) fail(`registry parsed too few gates: ${ids.size}`);
-  return ids;
+  return { ids, text };
+}
+
+function prefixOf(gateId) {
+  const m = gateId.match(/^G-([A-Z0-9]+)-/);
+  return m ? `G-${m[1]}-` : null;
+}
+
+function buildPrefixAnchorMap(text) {
+  const map = new Map();
+  for (const m of text.matchAll(REGISTRY_ROW_RE)) {
+    const pfx = prefixOf(m[1]);
+    if (!pfx) continue;
+    if (!map.has(pfx)) map.set(pfx, new Set());
+    map.get(pfx).add(m[2]);
+  }
+  return map;
+}
+
+function reportStrict(prefixMap, registryText) {
+  const overlaps = [];
+  for (const [pfx, anchors] of prefixMap) {
+    if (anchors.size < 2) continue;
+    const documented = registryText.includes(`${pfx}*\` prefix is overloaded`);
+    overlaps.push({ pfx, count: anchors.size, documented });
+  }
+  if (overlaps.length === 0) return console.log("STRICT: no namespace overlaps detected");
+  console.log(`STRICT: ${overlaps.length} prefixes span ≥2 anchor sources (advisory — F-AUDIT-34..38 anti-recurrence):`);
+  for (const o of overlaps) console.log(`  ${o.pfx} → ${o.count} anchors${o.documented ? " (documented)" : " ⚠ UNDOCUMENTED — add registry NOTE"}`);
 }
 
 function classifyRow(coverageCell) {
@@ -100,7 +139,7 @@ function checkSummary(text, counts) {
 function main() {
   if (!existsSync(LEDGER)) fail(`ledger missing: ${LEDGER}`);
   const text = readFileSync(LEDGER, "utf8");
-  const registryGates = loadRegistry();
+  const { ids: registryGates, text: registryText } = loadRegistry();
   const rows = parseRows(text);
   if (rows.length < 20) fail(`parsed too few rows: ${rows.length} (expected ≥20 Core lines)`);
   const counts = { registered: 0, reserved: 0, procedural: 0, script: 0 };
@@ -108,6 +147,7 @@ function main() {
   const procTotal = counts.procedural + counts.script;
   checkSummary(text, { registered: counts.registered, reserved: counts.reserved, procedural: procTotal });
   console.log(`OK: ${rows.length} Core rules cross-walked; ${counts.registered} registered, ${counts.reserved} RESERVED, ${counts.procedural} procedural, ${counts.script} script-enforced; ${registryGates.size} registry gates loaded`);
+  if (STRICT) reportStrict(buildPrefixAnchorMap(registryText), registryText);
 }
 
 main();
