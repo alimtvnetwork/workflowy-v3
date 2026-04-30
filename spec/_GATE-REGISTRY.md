@@ -849,6 +849,15 @@
 | `G-ERRCODE-UNKNOWN-FUNNEL` | **CI** | [`spec/03-error-manage/02-error-architecture/05-response-envelope/05-error-code-catalogue.md`](./03-error-manage/02-error-architecture/05-response-envelope/05-error-code-catalogue.md) | Unknown codes (not in §5) MUST be funnelled through `ERR_UNKNOWN` in the UI layer without silent remapping to any sibling code, AND simultaneously logged to the analytics channel for catalogue back-fill. Silent remap is a P1 finding. |
 | `G-ERRCODE-I18N-MESSAGEKEY-LOOKUP` | **CI** | [`spec/03-error-manage/02-error-architecture/05-response-envelope/05-error-code-catalogue.md`](./03-error-manage/02-error-architecture/05-response-envelope/05-error-code-catalogue.md) | i18n lookups MUST use the catalogue's `MessageKey` column. Raw English strings from the backend's `Status.Message` are debug-only and MUST NOT be rendered to end users. |
 
+### Domain-LOGGING (Logging & Diagnostics · Functional-Requirement Tables)
+
+> Reserved gate IDs binding the F1..Fn functional-requirement tables in `spec/03-error-manage/02-error-architecture/07-logging-and-diagnostics/`. Both gates are umbrellas of `family=logging-coverage` — each table-row is a leaf assertion. Registered by GAP-AMB-01-16a (2026-04-30) to bind 20 previously-unbacked MUST clauses (10 per file). Pairs with the existing `G-ERR-*` envelope-shape family and `G-ERRCODE-*` SSOT family.
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-LOG-EXEC-FNREQS` | **CI** | [`spec/03-error-manage/02-error-architecture/07-logging-and-diagnostics/01-react-execution-logger.md`](./03-error-manage/02-error-architecture/07-logging-and-diagnostics/01-react-execution-logger.md) | Umbrella binding §3.1 F1..F10 of the React Execution Logger spec. Covers function-execution tracking, render tracking, useEffect/event-handler/API-call tracking, parent-child call relationships, human-readable chain formatting, debug-mode toggle (with zero-overhead-when-disabled), and error-capture integration. Each `MUST` row is a leaf assertion under this umbrella. |
+| `G-LOG-SESSION-FNREQS` | **CI** | [`spec/03-error-manage/02-error-architecture/07-logging-and-diagnostics/02-session-based-logging/01-requirements.md`](./03-error-manage/02-error-architecture/07-logging-and-diagnostics/02-session-based-logging/01-requirements.md) | Umbrella binding §1.1 F1..F13 of the Session-Based Logging requirements. Covers per-request session-ID assignment, header/body/metadata capture (with sensitive-header redaction), retrievability, error-session identifiability, config-toggleability, health-check exclusion, delegated-request capture, and `Attributes.SessionId` linkability to the error envelope. `SHOULD`-priority rows (F6/F8/F13) are advisory leaves under the same umbrella. |
+
 ### Meta-00
 
 | Gate | Tier | Primary File | Brief |
