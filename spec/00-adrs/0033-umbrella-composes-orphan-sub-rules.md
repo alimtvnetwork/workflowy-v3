@@ -31,6 +31,7 @@ Authors MUST NOT use this rule to silence genuine missing gates: a leaf token wh
 - Preserves single source of truth — leaves remain documented inline in the umbrella's anchor source rather than fragmented across registry rows.
 - Unblocks `G-00-ORPHAN-GATE-ID-DRIFT` graduation from WARN-only → CI enforcement.
 - Aligns with F-AUDIT-34 anti-recurrence methodology: per-umbrella grep already covers leaf citations.
+- Affects [`spec/_GATE-REGISTRY.md`](../_GATE-REGISTRY.md) authoring conventions and [`spec/_GATE-GRADUATION-LEDGER.md`](../_GATE-GRADUATION-LEDGER.md) row 9 (`G-00-ORPHAN-GATE-ID-DRIFT`).
 
 **Negative**
 
