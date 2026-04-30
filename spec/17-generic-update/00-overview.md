@@ -42,7 +42,7 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 **Audience** — Backend developers adding any update flow.
 
 **Expected AI Output** —
-- `wp-plugin/includes/Update/UpdateContract.php` — interface every update implementation MUST satisfy
+- `wp-plugin/includes/Update/UpdateContract.php` — interface every update implementation MUST satisfy (gate `G-UPD-CONTRACT-IMPLEMENTS`)
 - Per-domain implementations under `wp-plugin/includes/<Domain>/<Domain>Updater.php`
 
 **Out of Scope** —
@@ -83,17 +83,17 @@ This overview explicitly addresses each of the 6 AI-readiness audit dimensions; 
 
 ## Rollback-Strategy Decision Matrix
 
-The AI MUST pick exactly **one** strategy per updater using this table. No other values are legal.
+The AI MUST pick exactly **one** strategy per updater using this table (gate `G-UPD-STRATEGY-EXACTLY-ONE`). No other values are legal.
 
 | Strategy enum | When to choose | Required `rollback()` body | Forbidden if |
 |---|---|---|---|
 | `HotRollback` | Pure additive schema (new column / new table / new index). | Drop the added object inside a single `BEGIN…COMMIT`. | The change copies, deletes, or rewrites existing rows. |
 | `DataRollback` | Data migration that mutates existing rows (backfill, normalize). | Restore from the `Backup_<version>_<table>` snapshot table created in `apply()`. | No snapshot table was written before mutation. |
-| `NoRollback` | Irreversible destructive cleanup (drop legacy column/table after grace period). | MUST `throw new RollbackUnsupportedException()` — never silently no-op. | A previous version still reads the dropped object. |
+| `NoRollback` | Irreversible destructive cleanup (drop legacy column/table after grace period). | MUST `throw new RollbackUnsupportedException()` — never silently no-op (gate `G-UPD-NOROLLBACK-THROWS`). | A previous version still reads the dropped object. |
 
 ## Anti-Patterns
 
-The AI MUST NOT:
+The AI MUST NOT (umbrella gate `G-UPD-ANTIPATTERNS-FORBIDDEN`):
 
 | # | Anti-pattern | Why it fails | Gate that catches it |
 |---|---|---|---|
@@ -194,7 +194,7 @@ Failure response (HTTP 500, rollback already executed):
 | `UPD-17-04` | DDL/DML threw inside `apply()` | Auto-rollback, surface original message. |
 | `UPD-17-05` | Rollback itself threw | Mark DB as `Quarantined`, page on-call. |
 
-*All values above are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings.*
+*All values above are load-bearing — fixtures in `97a-acceptance-criteria-fixtures.md` MUST cite these exact strings (gate `G-UPD-FIXTURES-EXACT-STRINGS`).*
 
 <!-- AUTO-TOC:START -->
 
