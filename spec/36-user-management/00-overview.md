@@ -157,7 +157,7 @@ Specification for WorkFlowy's user management system: accounts, roles, permissio
 | 01 | `01-data-model.md` | `User`, `UserRole` tables + `Role` enum | DDL anchor lives in [`../04-database-conventions/`](../04-database-conventions/00-overview.md); shape covered by `AT-USERMANAGEMENT-01..03` |
 | 02 | [`02-auth-flow.md`](./02-auth-flow.md) | Login, registration, passkey, session lifecycle | ✅ **Authored 2026-04-30** |
 | 03 | [`03-rbac-helpers.md`](./03-rbac-helpers.md) | `hasRole`/`requireRole` helper API | ✅ **Authored 2026-04-30** |
-| 04 | `04-admin-ui.md` | Invitee/role-management screens | Pending |
+| 04 | [`04-admin-ui.md`](./04-admin-ui.md) | Invitee/role-management screens | ✅ **Authored 2026-04-30** |
 
 ---
 
