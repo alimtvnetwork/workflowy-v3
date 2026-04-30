@@ -31,14 +31,14 @@
 ## EP-REAPER-RUN — POST `admin/trash/reaper/run`
 
 - **Auth**: `admin` (capability `manage_options`).
-- **Request body**: `{ DryRun?: boolean, BatchSize?: number }` — `DryRun` defaults `false`; `BatchSize` defaults `500` (max `5000`).
-- **Success (200)** `Results`: `{ RanAt: string, RowsDeleted: number, BatchCount: number, DurationMs: number, DryRun: boolean }`.
+- **Request body**: `{ IsDryRun?: boolean, BatchSize?: number }` — `IsDryRun` defaults `false`; `BatchSize` defaults `500` (max `5000`). Boolean field carries `Is` prefix per coding-guidelines boolean naming convention; legacy `DryRun` shape rejected by gate `[gate: G-EP-BOOL-PREFIX]`.
+- **Success (200)** `Results`: `{ RanAt: string, RowsDeleted: number, BatchCount: number, DurationMs: number, IsDryRun: boolean }`.
 - **Errors**: `ERR_FORBIDDEN`, `ERR_REAPER_LOCKED` (another sweep is already running — single-flight via DB advisory lock).
 - **Side effects**:
   - Hard-deletes every `Item` with `DeletedAt < (now() − 30 days)` and its subtree.
   - Mirrors of purged items receive `Mirrors.BrokenAt = now()` per §14.4 and emit SSE `mirror-broken`.
   - Inserts one row into `ReaperRuns` (per `02-app-schema.sql` v2.1.0).
-  - When `DryRun = true`: counts only, no deletes, no `ReaperRuns` row, no SSE.
+  - When `IsDryRun = true`: counts only, no deletes, no `ReaperRuns` row, no SSE.
 - **AC refs**: `AT-APP-81`, `AT-APP-82`, `AT-APP-83`, `AT-APP-84`.
 
 ---
