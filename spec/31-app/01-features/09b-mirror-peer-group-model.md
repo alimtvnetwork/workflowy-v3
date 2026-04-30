@@ -9,6 +9,17 @@
 > **Parent:** [09-mirrors.md](./09-mirrors.md)
 > **Status:** ✅ FINAL — supersedes the source/target language in `09-mirrors.md` §8.2 wherever the two conflict. `09-mirrors.md` will be folded into this model in v3.0.0.
 
+
+## Database Routing
+
+| Database | Tables read/written | Notes |
+|---|---|---|
+| **Root DB** | — | Peer-group state is workspace-local. |
+| **App DB** (per workspace) | `MirrorGroup`, `MirrorMember` | Atomic peer-group mutations; auto-dissolve singleton via trigger `04-app-triggers.sql`. |
+| **Cross-DB joins** | **Forbidden.** | — |
+
+> **Audit cite:** Section added 2026-04-30 to close **F-AUD42-02** (App-folder audit Phase 4). Mirrors the Root-DB / App-DB split per ADR-0019.
+
 ---
 
 ## Keywords

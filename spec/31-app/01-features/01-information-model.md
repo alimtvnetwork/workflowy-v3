@@ -8,6 +8,17 @@
 > **Parent:** [00-overview.md](./00-overview.md)
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 
+
+## Database Routing
+
+| Database | Tables read/written | Notes |
+|---|---|---|
+| **Root DB** | `Workspace`, `User`, `WorkspaceMember`, `RoleType`, `Share`, `PendingInvites`, `Template` (catalog) | Membership + workspace-level metadata. |
+| **App DB** (per workspace) | `Items`, `MirrorGroup`, `MirrorMember`, `Comment`, `ItemTags`, `Favorite` | All item-tree content lives here. |
+| **Cross-DB joins** | **Forbidden.** | Item ID copies (no FKs across DBs); see [`spec/31-app/07-db-diagram/`](../07-db-diagram/) for full ERD. |
+
+> **Audit cite:** Section added 2026-04-30 to close **F-AUD42-02** (App-folder audit Phase 4). Mirrors the Root-DB / App-DB split per ADR-0019.
+
 ---
 
 ## Overview

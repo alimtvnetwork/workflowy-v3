@@ -10,6 +10,17 @@
 > **Owner:** Product
 > **Decision context:** Batch 4 clarifications, AI-readiness round 4
 
+
+## Database Routing
+
+| Database | Tables read/written | Notes |
+|---|---|---|
+| **Root DB** | — | Zoom is a UI-state operation. |
+| **App DB** (per workspace) | `Items` (read subtree for zoomed view) | Read-only. |
+| **Cross-DB joins** | **Forbidden.** | — |
+
+> **Audit cite:** Section added 2026-04-30 to close **F-AUD42-02** (App-folder audit Phase 4). Mirrors the Root-DB / App-DB split per ADR-0019.
+
 ---
 
 ## 1. Decision

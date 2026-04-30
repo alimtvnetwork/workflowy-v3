@@ -9,6 +9,17 @@
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 > **Addendum:** [`12b-multi-select-zoom.md`](./12b-multi-select-zoom.md) — Multi-select zoom virtual-scope behaviour, AT-MZ-01..06.
 
+
+## Database Routing
+
+| Database | Tables read/written | Notes |
+|---|---|---|
+| **Root DB** | (read) `WorkspaceMember` for capability check | Selection scope cannot cross workspace. |
+| **App DB** (per workspace) | `Items` (bulk move/delete/tag writes), `ItemTags`, `MirrorGroup` (when bulk affects sources) | All bulk operations batched into a single App-DB transaction. |
+| **Cross-DB joins** | **Forbidden.** | Cross-workspace selection is not supported. |
+
+> **Audit cite:** Section added 2026-04-30 to close **F-AUD42-02** (App-folder audit Phase 4). Mirrors the Root-DB / App-DB split per ADR-0019.
+
 ---
 
 ## Overview

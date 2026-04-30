@@ -9,6 +9,17 @@
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 > **Addendum:** [`08b-sharing-mirror-interaction.md`](./08b-sharing-mirror-interaction.md) — Sharing × Mirror interaction (Permissions keyed by `ItemId`, not `PeerGroupId`; per-peer ACL).
 
+
+## Database Routing
+
+| Database | Tables read/written | Notes |
+|---|---|---|
+| **Root DB** | `Share` (grants), `PendingInvites` (email invites), `WorkspaceMember` (capability check) | Sharing surfaces are workspace-membership concerns. |
+| **App DB** (per workspace) | `Items` (validate target item exists; read content for share-preview) | Item ID validation only — no writes from share dialog. |
+| **Cross-DB joins** | **Forbidden.** | Item validation reads App DB; grant write lands in Root DB in a separate transaction. |
+
+> **Audit cite:** Section added 2026-04-30 to close **F-AUD42-02** (App-folder audit Phase 4). Mirrors the Root-DB / App-DB split per ADR-0019.
+
 ---
 
 ## Overview

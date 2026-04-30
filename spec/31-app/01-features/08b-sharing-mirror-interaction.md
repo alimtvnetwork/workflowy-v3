@@ -10,6 +10,17 @@
 > **Owner:** Product
 > **Decision context:** Batch 4 clarifications, AI-readiness round 4
 
+
+## Database Routing
+
+| Database | Tables read/written | Notes |
+|---|---|---|
+| **Root DB** | `Share` | Read share grants to determine if a mirrored item's source is share-visible. |
+| **App DB** (per workspace) | `Items`, `MirrorGroup`, `MirrorMember` | Mirror peer-group reads to find all members of a shared item's group. |
+| **Cross-DB joins** | **Forbidden.** | Two-pass resolution: read `Share` from Root → read `MirrorMember` from App. |
+
+> **Audit cite:** Section added 2026-04-30 to close **F-AUD42-02** (App-folder audit Phase 4). Mirrors the Root-DB / App-DB split per ADR-0019.
+
 ---
 
 ## 1. Decision

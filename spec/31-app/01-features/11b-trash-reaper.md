@@ -10,6 +10,17 @@
 > **Owner:** Backend
 > **Decision context:** Batch 4 clarifications, AI-readiness round 4
 
+
+## Database Routing
+
+| Database | Tables read/written | Notes |
+|---|---|---|
+| **Root DB** | `Workspace` (iterate list of workspaces to reap) | Reaper enumerates all workspaces from Root DB. |
+| **App DB** (per workspace) | `Items WHERE DeletedAt < now() - retention`; reads `OptionNameType::TRASH_RETENTION_DAYS` | Hard-delete cascades `Mirror`, `Comment` per FKs. |
+| **Fan-out** | Sequential per workspace. | See F-AUD42-17 / F-AUD42-SC-04 for unbounded-fan-out concern. |
+
+> **Audit cite:** Section added 2026-04-30 to close **F-AUD42-02** (App-folder audit Phase 4). Mirrors the Root-DB / App-DB split per ADR-0019.
+
 ---
 
 ## 1. Decision
