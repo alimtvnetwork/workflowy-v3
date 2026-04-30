@@ -31,10 +31,7 @@ anchor.
 
 ## Decision
 
-The WorkFlowy frontend **MUST** be implemented as a single Vite 5.4
-project, written in TypeScript 5.6 with `strict: true`, rendered by
-React 19, and styled with Tailwind CSS v4 consumed via the
-`@tailwindcss/vite` plugin from a single `src/index.css` `@theme` block.
+The WorkFlowy frontend **MUST** be implemented as a single Vite 5.4 project, written in TypeScript 5.6 with `strict: true`, rendered by React 19, and styled with Tailwind CSS v4 consumed via the `@tailwindcss/vite` plugin from a single `src/index.css` `@theme` block — enforced by `G-ADR-0003-FRONTEND-STACK-LOCK` (umbrella) which composes `G-ADR-0003-VITE-5_4-PINNED`, `G-ADR-0003-REACT-19-PINNED`, `G-ADR-0003-TS-5_6-STRICT`, `G-ADR-0003-TAILWIND-V4-THEME-BLOCK`.
 
 **Allowed (load-bearing):**
 
