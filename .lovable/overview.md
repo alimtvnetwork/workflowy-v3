@@ -19,6 +19,22 @@
 > eliminated for `.lovable/memory/index.md`. Redirect chosen to preserve
 > backward-compat with any onboarding script that paths to this file.
 
+> **Amendment 2026-04-30 (Task T refusal — scope correction):**
+> Tasks M/O eliminated **only** `.lovable/memory/index.md` (which was a true
+> parallel-SSOT to `mem://index.md`). The remaining subdirectories under
+> `.lovable/memory/` — `audit/`, `docs/`, `issues/`, `suggestions/`,
+> `workflow/` — are **NOT orphan content**. They host the canonical
+> G-NS gate-audit ledgers, per-gate path ledger evidence, suggestion-tracker
+> SSOT (S04 → hygiene gate `12-check-required-files.mjs`), and prose-sweep
+> audit scripts. 6+ live spec files (e.g. `spec/_LEDGER-G-NS-ADR-COVERAGE.md`,
+> `spec/_LEDGER-G-NS-LEGACY-EXEMPT.md`) and 5+ hygiene scripts
+> (`scripts/spec-hygiene/_lib/per-gate-path-ledger.mjs`, `12-…`, `18-…`,
+> `20-…`, `54-…`) actively cite these paths. **Do not delete or migrate**
+> without first relocating the audit-evidence SSOT and updating every
+> inbound reference. The `mem://` namespace is for **memory rules**; the
+> `.lovable/memory/{audit,suggestions,workflow,issues,docs}/` tree is for
+> **gate-audit evidence** — distinct purposes, not parallel-SSOT.
+
 ## For all project overview information
 
 **Read `mem://index.md`** — the Core block is the project overview, and the
