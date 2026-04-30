@@ -9,6 +9,17 @@
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 > **Companion:** `mem://features/search-functionality` (syntax + perf)
 
+
+## Database Routing
+
+| Database | Tables read/written | Notes |
+|---|---|---|
+| **Root DB** | `WorkspaceMember` | Determine accessible workspaces for search fan-out. |
+| **App DB** (per workspace) | FTS index over `Items.Content` + `ItemTags`; ranking inputs (`UpdatedAt`, `Favorite`) | Search executes against each accessible App DB sequentially. |
+| **Cross-DB joins** | **Forbidden.** | Result merging happens application-side; see F-AUD42-16. |
+
+> **Audit cite:** Section added 2026-04-30 to close **F-AUD42-02** (App-folder audit Phase 4). Mirrors the Root-DB / App-DB split per ADR-0019.
+
 ---
 
 ## Overview

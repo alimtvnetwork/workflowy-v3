@@ -9,6 +9,17 @@
 > **Template:** [13-feature-file-template.md](../../01-spec-authoring-guide/13-feature-file-template.md)
 > **Closes:** A-38 (cycle-detection algorithmic SSOT — gap identified during A-28 mirror-drift sweep)
 
+
+## Database Routing
+
+| Database | Tables read/written | Notes |
+|---|---|---|
+| **Root DB** | — | Cycle detection is workspace-local. |
+| **App DB** (per workspace) | `MirrorGroup`, `MirrorMember`, `Items.ParentId` graph | Algorithm is a recursive CTE on App DB only. See `07-db-diagram/sql/` for the cycle-check SQL. |
+| **Cross-DB joins** | **Forbidden.** | — |
+
+> **Audit cite:** Section added 2026-04-30 to close **F-AUD42-02** (App-folder audit Phase 4). Mirrors the Root-DB / App-DB split per ADR-0019.
+
 ---
 
 ## Overview

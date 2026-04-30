@@ -10,6 +10,17 @@
 > **Authoritative model (overrides on conflict):** [`09b-mirror-peer-group-model.md`](./09b-mirror-peer-group-model.md) — peer-group identity, detach dissolves singletons, per-peer position.
 > **Algorithm spec:** [`09a-mirror-cycle-detection.md`](./09a-mirror-cycle-detection.md) — DFS cycle prevention.
 
+
+## Database Routing
+
+| Database | Tables read/written | Notes |
+|---|---|---|
+| **Root DB** | — | Mirrors are workspace-local; no Root DB touch. |
+| **App DB** (per workspace) | `MirrorGroup`, `MirrorMember`, `Items` (members reference items) | All mirror state lives here. |
+| **Cross-DB joins** | **Forbidden.** | Cross-workspace mirroring is not supported. |
+
+> **Audit cite:** Section added 2026-04-30 to close **F-AUD42-02** (App-folder audit Phase 4). Mirrors the Root-DB / App-DB split per ADR-0019.
+
 ---
 
 ## Overview
