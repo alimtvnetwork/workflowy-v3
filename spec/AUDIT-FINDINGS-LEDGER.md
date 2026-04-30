@@ -1063,3 +1063,21 @@ This is the **third** scope-correction in 3 turns (F-SCOPE-01 → 02 → 03), ea
 **Score impact:** −0.05pp (one finding opened); +0.1pp (G-24 umbrella promotion is real content work — first row to use ADR-0033's `family=` syntax in production registry). Net **+0.05pp**.
 
 **Files:** `spec/_GATE-REGISTRY.md` L816 (G-24 row promoted to `(Umbrella, family=convention-drift)`), `scripts/spec-hygiene/76-check-orphan-gate-ids.mjs` L76–84 (cross-cutting exclusion comment), this entry.
+
+---
+
+### F-AUDIT-49 — RESOLVED 2026-04-30 (batch ~55)
+
+**Status:** ✅ CLOSED via ADR-0033 §A1 amendment (multi-family parallel umbrellas).
+
+**Resolution:** Authored ADR-0033 §A1 amendment `**Multi-family parallel umbrellas**` permitting a double-reserved `G-{NN}` prefix to register multiple parallel `(Umbrella, family=X)` rows — one per anchor-family hosting ≥1 composing leaf — instead of forcing all leaves into a single family's anchor folder. The amendment formalizes 3 disposal options for cross-cutting leaves (anchor files in unmapped families): (a) hoist to a registered family, (b) standalone registry row, (c) ALLOWED-set with `// cross-cutting cite` comment citing §A1.
+
+**Worked example included** in §A1 documenting the `G-24` case: current `(Umbrella, family=convention-drift)` row covers the 4 `G-24-DC-*` dual-control leaves; future second parallel row may register `(Umbrella, family=adr-ratification)` for `G-24-AUDIT-SCORE-FROZEN` (already a standalone row, would be ceremonial); 5 cross-cutting leaves remain in ALLOWED per option (c).
+
+**Parser regression caught + fixed same-batch:** authoring the §A1 worked example introduced a new prose token `G-24-DC` (the `\b` regex captures it from `G-24-DC-{REQUESTER…}` curly-brace shorthand). Drift jumped 0 → 1; resolved by adding `G-24-DC` to `PLACEHOLDERS` set in `76-check-orphan-gate-ids.mjs` with explanatory comment. Drift back to 0.
+
+**Verification:** `node scripts/spec-hygiene/76-check-orphan-gate-ids.mjs` → `registered=628 cited=1004 allow-listed=130 umbrellas=26 umbrella-covered=181 drift=0` exit 0.
+
+**Score impact:** +0.05pp (one finding closed; ADR amendment unblocks future cross-cutting umbrella patterns; parser-fix counts as content per memory rule because it eliminates a false-positive content finding — the `G-24-DC` family-prefix capture). 
+
+**Files:** `spec/00-adrs/0033-umbrella-composes-orphan-sub-rules.md` (§A1 amendment + worked example, +12 lines), `scripts/spec-hygiene/76-check-orphan-gate-ids.mjs` (PLACEHOLDERS += "G-24-DC" with comment), this entry.

@@ -29,6 +29,10 @@ const PLACEHOLDERS = new Set([
   "G-09", "G-2X", "G-3X", "G-26-", "G-41",
   // Bare ADR-namespace mention in §0033 examples
   "G-00-ADR", "G-28-NO",
+  // Family-prefix mentioned in ADR-0033 §A1 worked example as `G-24-DC-{REQUESTER…}`
+  // (curly-brace expansion shorthand for the 4 dual-control leaves; the `\b` boundary
+  // captures `G-24-DC` as a token even though the prose intent is the family prefix).
+  "G-24-DC",
 ]);
 // L-09 (parser robustness): trim trailing dash from token captures
 // (e.g. "G-26-style" tokenises as "G-26-" — must normalise before lookup).
