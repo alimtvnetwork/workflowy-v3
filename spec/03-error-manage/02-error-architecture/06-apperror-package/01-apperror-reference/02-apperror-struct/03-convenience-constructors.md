@@ -8,7 +8,7 @@
 
 ## 2.2.1 Path Convenience Constructors
 
-Shorthand constructors for file system errors — automatically set the `path` diagnostic and use the appropriate `Variation`:
+Shorthand constructors for file system errors — automatically set the `path` diagnostic and accept the caller-supplied `Variation` (typically one of `VariationFsNotFound`, `VariationFsPermDenied`, `VariationFsIoError`):
 
 ```go
 // PathError creates a path-related AppError with the given Variation.
