@@ -153,3 +153,11 @@ The 5 acceptance tests **AT-SM-01 … AT-SM-05** are defined in §4 above. This 
 - **Persisted booleans introduced by this feature:** None.
 - **N/A justification:** Pure interaction contract between two existing features — introduces no new persisted booleans.
 - **Compliance:** Satisfies the MUST in [`00-overview.md:140`](./00-overview.md) by explicit declaration. Any future boolean added here MUST route through `Sanitizer::bool()` and be enumerated in an `OptionNameType` case (see APP-FIX-05).
+
+---
+
+## Backend Write Surface
+
+- **Routes introduced by this feature:** None.
+- **N/A justification:** Composition contract — no new routes; reuses `08-share-dialog` and `09-mirrors` write surfaces.
+- **Compliance:** Satisfies F-AUD42-25 (API axis) by explicit declaration. Any future write route added here MUST follow the PascalCase envelope (ADR-0004/0019), egress via queue worker (ADR-0023), and bind to a named error boundary (ADR-0017).

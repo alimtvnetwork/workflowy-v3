@@ -198,3 +198,29 @@ The 5 acceptance tests **AT-TR-01 … AT-TR-05** are defined in §5 above. This 
 - **Persisted booleans introduced by this feature:** None.
 - **N/A justification:** 30-day retention is a normative invariant (mem://features/trash-logic), not user-configurable.
 - **Compliance:** Satisfies the MUST in [`00-overview.md:140`](./00-overview.md) by explicit declaration. Any future boolean added here MUST route through `Sanitizer::bool()` and be enumerated in an `OptionNameType` case (see APP-FIX-05).
+
+---
+
+## Backend Write Surface
+
+> Enumerated per F-AUD42-25 (API axis closure). Routes follow the **PascalCase API envelope** (ADR-0004/0019). Mutations egress via the **queue worker** (ADR-0023) — never direct fetch.
+
+### REST Routes (write)
+
+| Method | Path | Operation | Idempotency / Concurrency |
+|--------|------|-----------|---------------------------|
+| `POST` | `/wp-json/workflowy/v1/_internal/trash-reaper/run` | `ReapTrash (>30d, server-scheduled)` | IdempotencyKey (per run) |
+
+### SSE Frames Emitted (read-signal only, ADR-0025)
+
+`TrashReaped (count, workspace)` on `/stream/page/{id}` and/or `/stream/user/{id}`. SSE MUST NOT enqueue to the FIFO.
+
+### Storage
+
+- **Tables touched:** trash (>30d purge)
+- **Error boundary on failure:** `RouteErrorBoundary`
+- **Cross-DB JOINs:** forbidden (see Database Scope stanza above).
+
+### Endpoint SSOTs
+
+Detailed request/response fixtures live under [`spec/31-app/06-endpoints/`](../06-endpoints/) and [`97b-endpoint-envelope-fixtures.md`](../06-endpoints/97b-endpoint-envelope-fixtures.md).

@@ -393,3 +393,11 @@ stateDiagram-v2
 - **Persisted booleans introduced by this feature:** None.
 - **N/A justification:** Pure data-model spec — no settings.
 - **Compliance:** Satisfies the MUST in [`00-overview.md:140`](./00-overview.md) by explicit declaration. Any future boolean added here MUST route through `Sanitizer::bool()` and be enumerated in an `OptionNameType` case (see APP-FIX-05).
+
+---
+
+## Backend Write Surface
+
+- **Routes introduced by this feature:** None.
+- **N/A justification:** Data-model spec — write surface lives in `09-mirrors`.
+- **Compliance:** Satisfies F-AUD42-25 (API axis) by explicit declaration. Any future write route added here MUST follow the PascalCase envelope (ADR-0004/0019), egress via queue worker (ADR-0023), and bind to a named error boundary (ADR-0017).

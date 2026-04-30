@@ -155,3 +155,30 @@ As a daily planner, I want a single screen that shows everything due today plus 
 - **ADR-0023 — Loader↔Queue Contract:** Loaders MUST read the local IndexedDB mirror first (≤16 ms p95, never fetch). Mutations MUST write `{mirror, queue_ledger}` in a **single IDB transaction**; the queue worker is the **sole egress** to the WordPress REST surface. SSE frames are read-signals only and MUST NOT enqueue to the FIFO. See `spec/30-architecture/adr/0023-loader-queue-contract.md`.
 - **ADR-0017 — Named Error Boundaries:** This feature renders inside **`RouteErrorBoundary`**. A single top-level boundary is **forbidden**. Loader/action errors surface via the matching named boundary; uncaught render errors escalate to `AppErrorBoundary`. See `spec/30-architecture/adr/0017-error-boundaries.md`.
 - **ADR-0025 — Realtime is SSE-only:** Cross-tab/cross-client signals arrive via `/stream/page/{id}` and `/stream/user/{id}` (PascalCase frames, `Last-Event-ID` replay). WebSocket / long-poll / 3rd-party push are **forbidden**.
+
+---
+
+## Backend Write Surface
+
+> Enumerated per F-AUD42-25 (API axis closure). Routes follow the **PascalCase API envelope** (ADR-0004/0019). Mutations egress via the **queue worker** (ADR-0023) — never direct fetch.
+
+### REST Routes (write)
+
+| Method | Path | Operation | Idempotency / Concurrency |
+|--------|------|-----------|---------------------------|
+| `PATCH` | `/wp-json/workflowy/v1/items/{ItemId}/due-date` | `SetDueDate` | IdempotencyKey |
+| `PATCH` | `/wp-json/workflowy/v1/items/{ItemId}/complete` | `ToggleComplete (today scope)` | IdempotencyKey |
+
+### SSE Frames Emitted (read-signal only, ADR-0025)
+
+`ItemUpdated`, `TodayBucketChanged` on `/stream/page/{id}` and/or `/stream/user/{id}`. SSE MUST NOT enqueue to the FIFO.
+
+### Storage
+
+- **Tables touched:** nodes (date-filtered)
+- **Error boundary on failure:** `RouteErrorBoundary`
+- **Cross-DB JOINs:** forbidden (see Database Scope stanza above).
+
+### Endpoint SSOTs
+
+Detailed request/response fixtures live under [`spec/31-app/06-endpoints/`](../06-endpoints/) and [`97b-endpoint-envelope-fixtures.md`](../06-endpoints/97b-endpoint-envelope-fixtures.md).

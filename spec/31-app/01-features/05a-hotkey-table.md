@@ -192,3 +192,11 @@ The Action ID is the registry key in the planned `src/lib/hotkeys.ts` map; multi
 **See also:**
 
 - [`../00-overview.md`](../00-overview.md) — Features overview
+
+---
+
+## Backend Write Surface
+
+- **Routes introduced by this feature:** None.
+- **N/A justification:** Closed enum table — no write surface; hotkeys dispatch to other features' routes.
+- **Compliance:** Satisfies F-AUD42-25 (API axis) by explicit declaration. Any future write route added here MUST follow the PascalCase envelope (ADR-0004/0019), egress via queue worker (ADR-0023), and bind to a named error boundary (ADR-0017).

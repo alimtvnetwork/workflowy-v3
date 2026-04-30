@@ -257,3 +257,30 @@ No special admin logic required — the tree model handles everything naturally.
 - **Persisted booleans introduced by this feature:** None.
 - **N/A justification:** View-state only (column widths, collapse state) lives in `node_view_state`; no global boolean settings.
 - **Compliance:** Satisfies the MUST in [`00-overview.md:140`](./00-overview.md) by explicit declaration. Any future boolean added here MUST route through `Sanitizer::bool()` and be enumerated in an `OptionNameType` case (see APP-FIX-05).
+
+---
+
+## Backend Write Surface
+
+> Enumerated per F-AUD42-25 (API axis closure). Routes follow the **PascalCase API envelope** (ADR-0004/0019). Mutations egress via the **queue worker** (ADR-0023) — never direct fetch.
+
+### REST Routes (write)
+
+| Method | Path | Operation | Idempotency / Concurrency |
+|--------|------|-----------|---------------------------|
+| `POST` | `/wp-json/workflowy/v1/items/{ItemId}/board-column` | `MoveBetweenColumns (parent + sortOrder)` | IdempotencyKey |
+| `PATCH` | `/wp-json/workflowy/v1/items/{ItemId}/view-state` | `UpdateBoardViewState (column widths/collapse)` | IdempotencyKey |
+
+### SSE Frames Emitted (read-signal only, ADR-0025)
+
+`ItemMoved`, `NodeViewStateUpdated` on `/stream/page/{id}` and/or `/stream/user/{id}`. SSE MUST NOT enqueue to the FIFO.
+
+### Storage
+
+- **Tables touched:** nodes (board children), node_view_state
+- **Error boundary on failure:** `RouteErrorBoundary`
+- **Cross-DB JOINs:** forbidden (see Database Scope stanza above).
+
+### Endpoint SSOTs
+
+Detailed request/response fixtures live under [`spec/31-app/06-endpoints/`](../06-endpoints/) and [`97b-endpoint-envelope-fixtures.md`](../06-endpoints/97b-endpoint-envelope-fixtures.md).
