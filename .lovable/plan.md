@@ -1,9 +1,10 @@
 # Plan — Drive the Spec to 100% AI-Readability
 
 > **Updated:** 2026-04-30 (UTC+8) · **Owner:** Lovable AI
-> **Audit baseline:** **v7 95/100 EXCELLENT** (Gemini-2.5-Pro, 2026-04-29) — `spec/21-ai-readiness-audit-round-2.md`
-> **Working score (post-deltas):** **99.6/100** — pending GAP-REBASE-01 to lock in
+> **Audit baseline:** **v8 96.7/100 EXCELLENT** (Gemini-2.5-Pro, 2026-04-30) — supersedes v7 95/100. See `mem://index.md` Core "Current baseline" line.
+> **Working score (post-deltas):** **100.28/100** self-attested cumulative (96.7 + 3.58pp delta from F-AUDIT-43/44/45/47/48/49/52 + ADR-0034 + NEW-13-FOLLOWUP Tasks C/D/L/M/O/Q). Pending v9 independent re-audit (Task N) to lock in.
 > **Mode:** SPEC-ONLY (since 2026-04-28; trigger phrase `exit spec-only` or `go for implementation` required to touch `src/`, `index.html`, `package.json`, etc.)
+> **Last drift sweep:** 2026-04-30 by NEW-13-FOLLOWUP Task P.
 
 ## Goal
 Make `spec/**` so unambiguous that a fresh AI session, reading only the spec + `mem://`, can rebuild the product with **<1% blind-handoff failure** and **zero clarifying questions** on any single feature file.
