@@ -1,13 +1,13 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.30  
-> **Updated:** 2026-04-30 — **batch-38:** seeded **Domain-DATAFILE** (WP-Plugin Static Data Files) with 5 CI gates binding 5 prose-MUSTs in `spec/15-wp-plugin-how-to/17-data-file-patterns.md` (colors.json schema, ColorGroupType enum parity, hex-6 regex, EndpointType enum parity, openapi info.version sync). **Ninth corpus-wide greenfield Domain seed** (Domain-USER, -EXPORT, -A11Y, -AT-IO, -WORDING, -DBNAME, -AUI, -HLPIN preceded). All 5 are CI tier (pure JSON validation runnable without runtime — strong enforcement profile). Distinct from Domain-WPDEPLOY (release pipeline) and Domain-EXPORT (data egress shape). Pre-flight namespace check passed: `G-DATAFILE-*` slot empty; no orphan `G-17` citation inline. Prior: 1.7.29 (batch-37 Domain-DBNAME seed).
+> **Version:** 1.7.31  
+> **Updated:** 2026-04-30 — **batch-39:** extended **Domain-UPD** (Generic Update Pattern) with 5 new gates binding 5 bare prose-MUSTs in `spec/17-generic-update/00-overview.md`. **First non-greenfield batch in 8 batches** — chose Domain-UPD extension over yet another greenfield seed because (a) the source file already cited 6 unregistered orphan `G-17-*` tokens (pending **F-SCOPE-44-FOLLOWUP** sub-rule sweep), and (b) Domain-UPD only had 4 prior `G-UPD-NN` numeric rows — none of which were extensible. Added: `G-UPD-CONTRACT-IMPLEMENTS` (CI), `G-UPD-STRATEGY-EXACTLY-ONE` (CI), `G-UPD-NOROLLBACK-THROWS` (CI), `G-UPD-ANTIPATTERNS-FORBIDDEN` (DOC-NORM umbrella), `G-UPD-FIXTURES-EXACT-STRINGS` (CI). Tier mix: 4 CI + 1 DOC-NORM. Prior: 1.7.30 (batch-38 Domain-DATAFILE seed).
 
-- **Total named gates:** 479 (+5 this revision)
+- **Total named gates:** 484 (+5 this revision)
 - **WARN-only gates:** 10 (unchanged)
-- **CI:** 128 (+5 this revision)
+- **CI:** 132 (+4 this revision)
 - **TEST:** 20 (unchanged)
-- **DOC-NORM:** 126 (unchanged)
+- **DOC-NORM:** 127 (+1 this revision)
 - **DOC:** 202 (unchanged)
 - **Areas covered:** 51 (unchanged)
 - **Areas covered:** 37 (unchanged)
