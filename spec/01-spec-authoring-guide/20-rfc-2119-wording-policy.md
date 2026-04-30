@@ -19,7 +19,7 @@ Every spec sentence that defines behavior MUST be unambiguous to both AI agents 
 
 | Keyword | Meaning | Use when |
 |---------|---------|----------|
-| **MUST** / **MUST NOT** | Absolute requirement / prohibition | Behavior is mandatory; violation is a CI failure |
+| **MUST** / **MUST NOT** | Absolute requirement / prohibition | Behavior is mandatory; violation is a CI failure (gate `G-WORDING-KEYWORD-DEFINITIONS`) |
 | **SHOULD** / **SHOULD NOT** | Strong recommendation; deviation requires written justification | Default behavior with a documented escape hatch |
 | **MAY** / **MAY NOT** | Truly optional behavior | Implementer's choice with no compliance impact |
 
