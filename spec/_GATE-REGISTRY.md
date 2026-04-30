@@ -300,6 +300,7 @@
 | `G-21-REBALANCE-TRIGGER-64B` | **DOC** | [`spec/00-adrs/0016-fractional-index-sortorder.md`](./00-adrs/0016-fractional-index-sortorder.md) | - G-21-REBALANCE-TRIGGER-64B — enforces D5 trigger (64-byte key |
 | `G-21-SORTORDER-BASE62-ALPHABET` | **DOC** | [`spec/00-adrs/0016-fractional-index-sortorder.md`](./00-adrs/0016-fractional-index-sortorder.md) | - G-21-SORTORDER-BASE62-ALPHABET — enforces D2 (0-9A-Za-z |
 | `G-21-SORTORDER-STRING-ONLY` | **DOC** | [`spec/00-adrs/0016-fractional-index-sortorder.md`](./00-adrs/0016-fractional-index-sortorder.md) | - G-21-SORTORDER-STRING-ONLY — enforces D1 (Item.SortOrder is |
+| `G-21-UNDO-CAP-100` | **DOC-NORM** | [`spec/00-adrs/0021-undo-100-offline-queue-unbounded.md`](./00-adrs/0021-undo-100-offline-queue-unbounded.md) | Enforces ADR-0021 §Decision D1: undo and redo stacks each capped at exactly 100 actions, in-memory only, scoped per-tab. Cross-tab undo is forbidden (D1 §"avoids cross-tab undo of edits the user…"). Reload clears both stacks (D4 — intentional, per "persisting undo across reloads opens"). Sub-rule note: this gate is the per-tab in-memory counterpart to `G-25-QUEUE-UNBOUNDED` (offline queue is the persisted, unbounded sibling). Promotion to CI deferred — requires runtime tab-scope enforcement harness. Anchors `mem://index.md` Core line and closes I2 in [`_LEDGER-G-NS-CORE-MEMORY-COVERAGE.md`](./_LEDGER-G-NS-CORE-MEMORY-COVERAGE.md). |
 
 ### ADR-0022
 
