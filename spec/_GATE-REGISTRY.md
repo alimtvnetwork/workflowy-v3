@@ -1,11 +1,11 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.49  
-> **Updated:** 2026-04-30 — **6-batch-52-FOLLOWUP LANDED:** bound 4 bare MUSTs in `spec/31-app/05-conventions/17-g24-role-escalation-coverage-gate.md` (lines 15–18, the four-axis algorithm contract) under new umbrella `G-24-DRIFT-COVERAGE` (CI, `family=convention-drift`) plus 4 sub-rule leaves: `G-24-GATING-APPROVAL-PRECEDENCE`, `G-24-BREAKGLASS-CONTAINMENT`, `G-24-EXPIRY-24H-CEILING`, `G-24-TEST-PARITY` (all CI). First production application of ADR-0033 §Decision NEW-29 same-number-disambiguation marker (`(Umbrella, family=convention-drift)`) — coexists cleanly with line-773 `G-24` umbrella (policy-axis, `family=convention-policy` implicit) and ADR-0020/ADR-0024 `G-24-*` ADR-family leaves. Pre-flight F-AUDIT-34 5-step cross-walk confirmed zero leaf-name collisions (`rg 'G-24-(GATING|BREAKGLASS|EXPIRY-24H|TEST-PARITY|DRIFT-COVERAGE)'` → empty). Corpus impact: bare-MUST count 316 → 312 (−4). Net effect: gate count 544 (+5 vs v1.7.48), CI 144 (+5). Prior: 1.7.48 (NEW-29 LANDED).
+> **Version:** 1.7.50  
+> **Updated:** 2026-04-30 — **6-batch-53 LANDED:** bound 5 bare MUSTs (4 detected by rg + axis-1 "may not contain" semantic-MUST) in `spec/31-app/05-conventions/19-g26-mfa-coverage-gate.md` (lines 15–19, the five-axis MFA-policy algorithm contract) under new umbrella `G-26-MFA-DRIFT-COVERAGE` (CI, `family=convention-drift`) plus 5 sub-rule leaves: `G-26-FORBIDDEN-LITERAL`, `G-26-MUTATION-FRESHNESS`, `G-26-STEPUP-MAP-PARITY`, `G-26-FACTOR-KIND-CLOSED`, `G-26-RECOVERY-ARGON2ID` (all CI). Second production application of ADR-0033 §Decision NEW-29 same-number-disambiguation marker (`(Umbrella, family=convention-drift)`) — coexists cleanly with ADR-0022 component-base `G-26-*` (`family=adr-component-base`) and ADR-0026 LWW `G-26-*` (`family=adr-lww`) leaves; **triple-reserved numeric prefix** (heaviest `family=` carriage proven). Pre-flight F-AUDIT-34 5-step cross-walk confirmed zero leaf-name collisions. Corpus impact: bare-MUST count 312 → 308 (−4 by detector; semantic count −5). Net effect: gate count 550 (+6 vs v1.7.49), CI 150 (+6). Prior: 1.7.49 (6-batch-52-FOLLOWUP LANDED).
 
-- **Total named gates:** 544 (+5 vs v1.7.48)
+- **Total named gates:** 550 (+6 vs v1.7.49)
 - **WARN-only gates:** 11 (unchanged)
-- **CI:** 144 (+5 vs v1.7.48)
+- **CI:** 150 (+6 vs v1.7.49)
 - **TEST:** 20 (unchanged)
 - **DOC-NORM:** 175 (unchanged)
 - **DOC:** 202 (unchanged)
