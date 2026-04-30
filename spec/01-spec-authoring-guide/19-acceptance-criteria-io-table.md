@@ -160,6 +160,6 @@ Until P2g lands, the check runs in **report-only** mode and tallies coverage in 
 
 ## Related
 
-- `spec/04-database-conventions/06-rest-api-format/` — envelope spec the JSON rows MUST conform to.
+- `spec/04-database-conventions/06-rest-api-format/` — envelope spec the JSON rows MUST conform to (gate `G-AT-IO-RELATED-ENVELOPE-XLINK` enforces this backlink's presence).
 - `spec/01-spec-authoring-guide/14-scoring-metrics.md` — testability + determinism dimensions that this format unblocks (audit projects testability 21 → 55, determinism 21 → 50).
 - `.lovable/plans/00-active.md` § P2, P3, P9 — plan steps that depend on this format.
