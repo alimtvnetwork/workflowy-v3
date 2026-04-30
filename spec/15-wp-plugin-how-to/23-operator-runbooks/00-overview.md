@@ -51,7 +51,7 @@ A runbook MUST cite the policy SSOT it implements (forward link). The policy SSO
 3. **Every branch is explicit.** "If X, go to step N. Else continue."
 4. **Every failure mode lists its rollback.** No silent abort.
 5. **Every runbook ends with a post-mortem template link.**
-6. **Every runbook MUST be drilled** at the cadence its policy SSOT requires.
+6. **Every runbook MUST be drilled** at the cadence its policy SSOT requires. [gate: `G-RUNBOOK-DRILLED` · AT: `AT-RUNBOOK-02`]
 7. **No filler prose.** Steps only.
 
 ## Hygiene gate
