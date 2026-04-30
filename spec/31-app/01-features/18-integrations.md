@@ -78,7 +78,7 @@ Both integrations below authenticate via a **Personal Access Token (PAT)** issue
 |---|---|
 | **Add to WorkFlowy** | iOS share-sheet target; appends the shared text/URL/photo as a new child of a user-chosen parent item. |
 | **Quick Capture** | Voice / text quick-capture; creates a new bullet under a configured "Inbox" parent item. |
-| **Today's WorkFlowy To-Dos** | Returns the list of today-dated `todo` items as a Shortcuts result, suitable for Siri / lock-screen widgets. |
+| **Today's WorkFlowy To-Dos** | Returns the list of today-dated `todo` items as a Shortcuts result, formatted for Siri voice playback and lock-screen widget rendering (≤10 items, title only, no body). |
 | **Complete Last Captured** | Marks the most recently created item as complete. |
 | **Append to "Daily Log"** | Appends a timestamped child to a user-configured daily-log item. |
 

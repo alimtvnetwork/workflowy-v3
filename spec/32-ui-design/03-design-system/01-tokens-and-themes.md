@@ -40,7 +40,7 @@
 
 Default (removes color), Red, Orange, Yellow, Green, Blue, Purple, Gray — each defined as an HSL token.
 
-**Dark Mode** — all tokens have dark mode equivalents with inverted/adjusted values for proper contrast.
+**Dark Mode** — all tokens have dark mode equivalents with inverted/adjusted values to maintain WCAG 2.2 AA contrast ratios (≥4.5:1 body text, ≥3:1 UI components).
 
 ### 6.2 Typography Scale
 

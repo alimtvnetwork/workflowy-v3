@@ -19,7 +19,7 @@ The gate parses each YAML workflow file and compares specific fields against a s
 
 ## User Story
 
-As a maintainer, I want CI itself to fail fast when someone edits a workflow file in a way that diverges from the agreed contract, so that the contract document and the actual `.github/workflows/*.yml` files can never silently drift apart.
+As a maintainer, I want CI itself to fail-fast (exit ≠0 within the first 30 s of the workflow run) when someone edits a workflow file in a way that diverges from the agreed contract, so that the contract document and the actual `.github/workflows/*.yml` files can never silently drift apart.
 
 ---
 

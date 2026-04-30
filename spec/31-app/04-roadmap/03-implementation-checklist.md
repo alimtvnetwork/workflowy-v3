@@ -74,7 +74,7 @@ Source feature list: [`01-implementation-phases.md`](./01-implementation-phases.
 |---|-------|-----|
 | P1.4.1 | Auth runtime is the chosen backend (WordPress plugin) — **never** Supabase, Lovable Cloud, IndexedDB, or sql.js | `mem://constraints/backend-runtime-deferred` |
 | P1.4.2 | Roles stored in a separate `user_roles` table; `Auth::hasRole()` PHP helper is the only role-check entry point | `mem://constraints/backend-runtime-deferred` + Plan 08 (AUDIT-01) |
-| P1.4.3 | Sessions are server-side; cookies are HttpOnly + Secure + SameSite=Lax | `AT-USERSCOPEDISOLATION-12/13` precedent |
+| P1.4.3 | Sessions are server-side; cookies are `HttpOnly` + `Secure` + `SameSite=Lax` | `AT-USERSCOPEDISOLATION-12/13` precedent |
 | P1.4.4 | No JWT-in-localStorage; no client-side admin checks | Critical security warning in role spec |
 
 ### P1.5 Recursive bullet list + CRUD + Indent/Outdent + Zoom + Autosave

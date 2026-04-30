@@ -92,7 +92,7 @@ The runner executes these in order. Each gate is independent: a failure in one d
 | **Hard** | Detects drift / violation | Exit 1 ⇒ runner fails | ❌ No |
 | **Generator** | Brings derived artifacts up to date | Exit 0 unless write fails | ✅ Yes — must be idempotent |
 
-A generator that produces a diff is still **exit 0**; CI catches the drift via the *next* commit's pre-commit hook (which detects "uncommitted generator output") rather than via the gate itself. This keeps CI fast (no two-pass diff check) while still preventing stale derived files.
+A generator that produces a diff is still **exit 0**; CI catches the drift via the *next* commit's pre-commit hook (which detects "uncommitted generator output") rather than via the gate itself. This keeps CI single-pass (no two-pass diff check, ≤30 s overhead per gate) while still preventing stale derived files.
 
 ---
 
