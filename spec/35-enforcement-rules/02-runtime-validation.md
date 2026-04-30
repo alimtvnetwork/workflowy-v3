@@ -56,7 +56,7 @@ src/
 
 ### R2 — Envelope schema is load-bearing
 
-Every B1 response MUST be parsed through `EnvelopeSchema(rowSchema)` — never row-by-row directly. The envelope enforces ADR-0004/0019 PascalCase keys (`Status`, `Attributes`, `Results`).
+Every B1 response MUST be parsed through `EnvelopeSchema(rowSchema)` — never row-by-row directly. The envelope enforces ADR-0004/0019 PascalCase keys (`Status`, `Attributes`, `Results`). `[gate: G-35-RV-USE-ENVELOPE · AT: AT-RV-02]`
 
 ```ts
 // src/lib/schemas/envelope.schema.ts
@@ -81,7 +81,7 @@ export const EnvelopeSchema = <TRow extends z.ZodTypeAny>(rowSchema: TRow) =>
 
 ### R3 — Branded IDs are Zod-branded
 
-The Zod schema MUST mint the brand at the parse boundary, so downstream code receives an already-branded value.
+The Zod schema MUST mint the brand at the parse boundary, so downstream code receives an already-branded value. `[gate: G-35-RV-BRAND-IDS · AT: AT-RV-03]`
 
 ```ts
 // src/lib/schemas/branded.schema.ts
@@ -93,7 +93,7 @@ export const OwnerIdSchema = z.string().min(1).brand<'OwnerId'>();
 
 ### R4 — `passthrough()` only on `Attributes` and `Detail`
 
-Most schemas MUST be `.strict()` so unknown keys raise — this catches API drift early. Only `Attributes` (envelope-level metadata) and `Detail` (audit-row JSON) may use `.passthrough()`.
+Most schemas MUST be `.strict()` so unknown keys raise — this catches API drift early. Only `Attributes` (envelope-level metadata) and `Detail` (audit-row JSON) may use `.passthrough()`. `[gate: G-35-RV-STRICT-DEFAULT · AT: AT-RV-04]`
 
 ```ts
 // ❌ Forbidden — silent drift
@@ -107,7 +107,7 @@ const NodeSchema = z.object({ Id: ItemIdSchema, Content: z.string() }).strict();
 
 ### R5 — Failure handling is enum-typed
 
-A parse failure at a boundary MUST throw a `BoundaryParseError` that maps to one of the canonical error codes (`USR-35-PARSE`, `USR-35-ENVELOPE`, `USR-35-BRAND`). Silent recovery (try/catch returning `null`) is forbidden.
+A parse failure at a boundary MUST throw a `BoundaryParseError` that maps to one of the canonical error codes (`USR-35-PARSE`, `USR-35-ENVELOPE`, `USR-35-BRAND`). Silent recovery (try/catch returning `null`) is forbidden. `[gate: G-35-RV-NO-SILENT-CATCH · AT: AT-RV-05]`
 
 ```ts
 import { BoundaryParseError, ErrorCode } from '@/lib/errors';
