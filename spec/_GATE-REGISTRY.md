@@ -1,13 +1,13 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.48  
-> **Updated:** 2026-04-30 — **NEW-29 LANDED:** authored `G-00-UMBRELLA-NUMBER-NAMESPACE-PER-FAMILY` (DOC-NORM) anchoring ADR-0033 §Decision same-number-disambiguation clause (added 2026-04-30 per F-AUDIT-39). Closes the 8th F-AUDIT-34 instance class structurally — `G-{NN}` numeric prefixes reserved by ≥2 distinct registries (e.g. `G-24` shared by ADR-0024 + `02-ci-quality-gates.md` catalogue) now require `(Umbrella, family=…)` disambiguation marker + family-suffix leaf-name collision resolution. Unblocks **6-batch-52-FOLLOWUP** (4 MUSTs in `17-g24-role-escalation-coverage-gate.md`) and **6-batch-53** (4 MUSTs in `19-g26-mfa-coverage-gate.md`) which were both blocked by the namespace collision. **F-AUDIT-34 cross-walk applied:** grepped `family=`, `disambigu`, `same-number`, `G-NN-` registry — zero existing gate covers the rule. Net effect: gate count 539 (+1 vs v1.7.47), DOC-NORM 175 (+1). Prior: 1.7.47 (NEW-13 LANDED).
+> **Version:** 1.7.49  
+> **Updated:** 2026-04-30 — **6-batch-52-FOLLOWUP LANDED:** bound 4 bare MUSTs in `spec/31-app/05-conventions/17-g24-role-escalation-coverage-gate.md` (lines 15–18, the four-axis algorithm contract) under new umbrella `G-24-DRIFT-COVERAGE` (CI, `family=convention-drift`) plus 4 sub-rule leaves: `G-24-GATING-APPROVAL-PRECEDENCE`, `G-24-BREAKGLASS-CONTAINMENT`, `G-24-EXPIRY-24H-CEILING`, `G-24-TEST-PARITY` (all CI). First production application of ADR-0033 §Decision NEW-29 same-number-disambiguation marker (`(Umbrella, family=convention-drift)`) — coexists cleanly with line-773 `G-24` umbrella (policy-axis, `family=convention-policy` implicit) and ADR-0020/ADR-0024 `G-24-*` ADR-family leaves. Pre-flight F-AUDIT-34 5-step cross-walk confirmed zero leaf-name collisions (`rg 'G-24-(GATING|BREAKGLASS|EXPIRY-24H|TEST-PARITY|DRIFT-COVERAGE)'` → empty). Corpus impact: bare-MUST count 316 → 312 (−4). Net effect: gate count 544 (+5 vs v1.7.48), CI 144 (+5). Prior: 1.7.48 (NEW-29 LANDED).
 
-- **Total named gates:** 539 (+1 vs v1.7.47)
+- **Total named gates:** 544 (+5 vs v1.7.48)
 - **WARN-only gates:** 11 (unchanged)
-- **CI:** 139 (unchanged)
+- **CI:** 144 (+5 vs v1.7.48)
 - **TEST:** 20 (unchanged)
-- **DOC-NORM:** 175 (+1 vs v1.7.47)
+- **DOC-NORM:** 175 (unchanged)
 - **DOC:** 202 (unchanged)
 - **Areas covered:** 56 (unchanged)
 - **Areas covered:** 37 (unchanged)
