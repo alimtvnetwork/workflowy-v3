@@ -30,12 +30,13 @@ CODE_FENCE = re.compile(r'^```')
 
 # Per-ADR fallback umbrella gate — verified to exist in the ADR file itself
 UMBRELLA = {
-    'spec/31-app/06-endpoints/97b-endpoint-envelope-fixtures.md': 'G-26-WIRE-OWNERID-ONLY',
-    'spec/00-adrs/0014-sharing-public-vs-invited-permission-model.md': 'G-15-DEFAULT-PRIVATE',
-    'spec/00-adrs/0020-branded-itemid-ownerid.md': 'G-24-IDS-MUST-BE-BRANDED',
-    'spec/00-adrs/0008-unified-item-node-interface.md': 'G-31-NODE-INTERFACE-CANONICAL',
-    'spec/00-adrs/0021-undo-100-offline-queue-unbounded.md': 'G-25-UNDO-CAP-100',
-    'spec/00-adrs/0007-strict-typescript-rules.md': 'G-02-NO-ANY',
+    'spec/00-adrs/0024-ratify-soft-confirm-triage-rulings.md': 'G-24-AUDIT-SCORE-FROZEN',
+    'spec/00-adrs/0015-twelve-itemtypes-enum.md': 'G-20-ITEMTYPE-CLOSED-12',
+    'spec/00-adrs/0016-fractional-index-sortorder.md': 'G-21-NO-NUMERIC-MIDPOINT',
+    'spec/00-adrs/0017-eight-error-boundaries-ui-virtualization.md': 'G-22-ERROR-BOUNDARIES-EXACTLY-8',
+    'spec/00-adrs/0030-audit-exemption-manifest.md': 'G-00-AUDIT-EXEMPTION-REVIEW',
+    'spec/00-adrs/0004-rest-envelope-pascalcase.md': 'G-04-ENVELOPE-SHAPE',
+    'spec/00-adrs/0022-shadcn-radix-component-base.md': 'G-26-COMPONENT-BASE-SHADCN-RADIX',
 }
 
 def nearest_gate_above(lines, idx, fallback):

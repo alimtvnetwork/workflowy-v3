@@ -37,7 +37,7 @@ implementer cannot resolve from spec alone:
 ## Decision
 
 **D1 — shadcn/ui is the sole component base; Radix is its sole
-underlying primitive layer.** Components MUST come from one of:
+underlying primitive layer.** Components MUST come from one of (gate G-26-COMPONENT-BASE-SHADCN-RADIX):
 
 - The shadcn/ui CLI vendored sources under `src/components/ui/`
   (Button, Dialog, DropdownMenu, Popover, Tooltip, Sheet,
@@ -48,7 +48,7 @@ underlying primitive layer.** Components MUST come from one of:
   pinned in the deps matrix.
 - Headless behaviour libraries explicitly named in this ADR's D2.
 
-**D2 — Forbidden component libraries.** The following MUST NOT
+**D2 — Forbidden component libraries.** The following MUST NOT (gate G-26-COMPONENT-BASE-SHADCN-RADIX)
 appear in `package.json`, `node_modules`, or any import:
 
 - `@mui/material`, `@mui/*` (Material UI / Joy UI / Base UI).
@@ -80,7 +80,7 @@ not installed as a project dep.
   variants and the `className` prop — never by editing the
   shadcn-vendored source unless the change is tracked as a
   "shadcn-patch" in `src/components/ui/_patches/<component>.md`.
-- All component visuals MUST consume semantic design tokens per
+- All component visuals MUST consume semantic design tokens per (gate G-26-COMPONENT-BASE-SHADCN-RADIX)
   ADR-0012 (no raw colours, no hex literals).
 - Composition is preferred over modification: build feature
   components in `src/components/<feature>/` that wrap the
@@ -88,12 +88,12 @@ not installed as a project dep.
 
 **D5 — Radix transitives are not free.** Even though shadcn brings
 Radix in, each Radix primitive used directly (without a shadcn
-wrapper) MUST be added to the pinned-deps matrix. This prevents
+wrapper) MUST be added to the pinned-deps matrix. This prevents (gate G-26-COMPONENT-BASE-SHADCN-RADIX)
 silent expansion of the Radix surface area outside spec review.
 
 **D6 — Migration prohibition.** Migrating individual components
 to a different library "for one feature" is forbidden. All
-components MUST share one base; mixing shadcn with MUI even for
+components MUST share one base; mixing shadcn with MUI even for (gate G-26-COMPONENT-BASE-SHADCN-RADIX)
 a single dialog reintroduces the visual-style fork this ADR
 exists to prevent.
 

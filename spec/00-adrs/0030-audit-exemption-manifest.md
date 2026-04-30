@@ -41,13 +41,13 @@ of the per-(gate, path) ledger pattern for runner exemptions.
 ### D1 — Single canonical location for audit exemptions
 
 All audit-heuristic exemptions (any rule that tells an audit script "ignore
-this match") **MUST** live in exactly one file:
+this match") **MUST** live in exactly one file (gate G-00-AUDIT-EXEMPTION-REVIEW):
 `spec/_AUDIT-EXEMPTIONS.md`. Inline exemption arrays in audit/metrics scripts
 are forbidden. Per-scope `_AUDIT-EXEMPT-*.md` files are forbidden.
 
 ### D2 — Frozen manifest schema
 
-The manifest MUST contain:
+The manifest MUST contain (gate G-00-AUDIT-EXEMPTION-REVIEW):
 
 - A single H2 `## Exemption rows` (case-sensitive, exactly one occurrence).
 - A 5-column table whose header row is, in order:
@@ -58,13 +58,13 @@ The manifest MUST contain:
 
 - **I4 (path safety):** `pathGlob` MUST start with `spec/`. No repo-root
   escapes (`../`, `/etc/...`).
-- **I5 (no blank cheques):** `pathGlob` MUST NOT be a corpus-wide pattern
+- **I5 (no blank cheques):** `pathGlob` MUST NOT be a corpus-wide pattern (gate G-00-AUDIT-EXEMPTION-REVIEW)
   (`spec/**`, `spec/**/*`, `spec/**/*.md`, `spec/*`, `**/*`).
-- **I6 (citation):** `closes` MUST cite at least one of: `AUD-*`,
+- **I6 (citation):** `closes` MUST cite at least one of: `AUD-*`, (gate G-00-AUDIT-EXEMPTION-REVIEW)
   `F-AUDIT-NN`, `F-AUDxx-NN`, `ADR-NNNN`, or the literal `n/a` (explicit
   acknowledgement that no audit ratifies the row).
-- **I7 (date format):** `addedOn` MUST be ISO `YYYY-MM-DD`.
-- **I8 (visibility):** Every CI run MUST print the total file count matched
+- **I7 (date format):** `addedOn` MUST be ISO `YYYY-MM-DD` (gate G-00-AUDIT-EXEMPTION-REVIEW).
+- **I8 (visibility):** Every CI run MUST print the total file count matched (gate G-00-AUDIT-EXEMPTION-REVIEW)
   by the union of all globs, so reviewers see drift on every PR.
 
 ### D4 — Reviewer attention threshold

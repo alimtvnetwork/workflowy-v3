@@ -21,7 +21,7 @@ This ADR closes the forward-reference.
 ## Decision
 
 The `ItemType` enum is a **closed set of exactly twelve lowercase string
-values**. It MUST be defined identically in all three SSOTs and consumed
+values**. It MUST be defined identically in all three SSOTs and consumed (gate G-20-ITEMTYPE-CLOSED-12)
 through the TypeScript `as const` + derived-union pattern (per
 `spec/20-enums-index.md` §1 rule 9).
 
@@ -31,7 +31,7 @@ through the TypeScript `as const` + derived-union pattern (per
 bullet | h1 | h2 | h3 | paragraph | todo | numbered | board | dashboard | quote | code | divider
 ```
 
-**D2 — Casing.** All values MUST be lowercase. PascalCase, SCREAMING_SNAKE,
+**D2 — Casing.** All values MUST be lowercase. PascalCase, SCREAMING_SNAKE, (gate G-20-ITEMTYPE-CLOSED-12)
 or kebab-case representations are forbidden in code, DB columns, and wire
 payloads. This is a deliberate exception to the universal PascalCase
 enum-name rule (`spec/20-enums-index.md` §1 rule 1) granted by §3.5 because
@@ -39,7 +39,7 @@ the enum has been a lowercase DB column since the schema's inception.
 
 **D3 — Mirror is NOT an `ItemType`.** Mirroring is a peer-group relation per
 ADR-0005, materialised as rows in the `Mirror` table referencing a source
-`Item` row. `mirror` MUST NOT appear in the `ItemType` enum. "Turn into
+`Item` row. `mirror` MUST NOT appear in the `ItemType` enum. "Turn into (gate G-20-ITEMTYPE-CLOSED-12)
 mirror" is therefore not a legal operation; mirror creation goes through
 the peer-group join path, never through `Item.ItemType` mutation.
 
@@ -48,18 +48,18 @@ the peer-group join path, never through `Item.ItemType` mutation.
 control how the item's *direct children* are rendered (Kanban columns and
 card grid respectively, per ADR-0010-pending feature ADRs and
 `mem://features/board-view` / `mem://features/dashboard-view`). This
-duality is intentional and MUST be preserved.
+duality is intentional and MUST be preserved (gate G-20-ITEMTYPE-CLOSED-12).
 
 **D5 — Closed set.** Adding, removing, renaming, or re-casing any value
 requires a superseding ADR. No runtime extension, no plugin-defined types,
-no string fallback for unknown values — unknown values MUST be treated as a
+no string fallback for unknown values — unknown values MUST be treated as a (gate G-20-ITEMTYPE-CLOSED-12)
 parse error per `spec/20-enums-index.md` §1 rule 6 (default fallback is
 explicit, not silent).
 
 **D6 — Tri-SSOT lockstep.** `spec/20-enums-index.md` §3.5,
 `spec/32-ui-design/02-state-and-data/03-data-types.md`, and
-`src/types/index.ts` MUST list the twelve values in the same canonical order
-shown in D1. CI MUST fail any PR that desyncs the three.
+`src/types/index.ts` MUST list the twelve values in the same canonical order (gate G-20-ITEMTYPE-CLOSED-12)
+shown in D1. CI MUST fail any PR that desyncs the three (gate G-20-ITEMTYPE-CLOSED-12).
 
 ## Consequences
 
