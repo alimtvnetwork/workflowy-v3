@@ -30,6 +30,8 @@ const RESERVED_RE = /`RESERVED:\s*(G-[A-Z0-9-]+)`/;
 const PROCEDURAL_RE = /memory-only-by-design/;
 const SCRIPT_RE = /`scripts\/spec-hygiene\/[\w.-]+\.mjs`/;
 const REGISTRY_GATE_RE = /^\|\s*`(G-[A-Z0-9-]+)`\s*\|/gm;
+const REGISTRY_ROW_RE = /^\|\s*`(G-[A-Z0-9-]+)`\s*\|[^|]*\|\s*\[`([^`]+)`\]/gm;
+const STRICT = process.argv.includes("--strict-mode");
 
 function fail(msg) {
   console.error(`FAIL: ${msg}`);
