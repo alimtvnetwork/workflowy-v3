@@ -46,11 +46,7 @@ The WorkFlowy frontend **MUST** be implemented as a single Vite 5.4 project, wri
   pure positive guard clauses, max 2 boolean operands, multi-line
   method chains) are formally ratified by **ADR-0007** (R1–R7) — see
   `spec/02-coding-guidelines/00-overview.md` for worked examples.
-- **Styling:** Tailwind CSS **v4** via `@tailwindcss/vite`. All design
-  tokens MUST live inside the `@theme { … }` block in
-  `src/index.css`. No second styling system (no SCSS modules,
-  styled-components, Emotion, vanilla-extract, plain CSS modules) may
-  be introduced.
+- **Styling:** Tailwind CSS **v4** via `@tailwindcss/vite`. All design tokens MUST live inside the `@theme { … }` block in `src/index.css` — enforced by `G-ADR-0003-TAILWIND-V4-THEME-BLOCK` (sub-rule of stack umbrella, layered under existing `G-12-LOGICAL-MARGINS-PADDING` token-system family). No second styling system (no SCSS modules, styled-components, Emotion, vanilla-extract, plain CSS modules) may be introduced.
 - **HTTP client:** Axios — version pinned per
   `spec/31-app/05-conventions/01-axios-version-control.md`. Any
   additional client (fetch wrapper, ky, ofetch, …) is forbidden in
