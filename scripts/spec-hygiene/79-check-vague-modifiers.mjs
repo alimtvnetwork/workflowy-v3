@@ -8,18 +8,22 @@
 //
 // Mode:
 //   • Default          → REPORT (exit 0; print per-file inventory)
-//   • --block-new      → fail if any file modified after BLOCK_NEW_DATE has hits
-//   • --block-all      → fail on any hit (graduation target)
+//   • --block-new      → fail if any HIT LINE was authored on/after BLOCK_NEW_DATE
+//                        (per-line `git blame --porcelain` commit-time check; falls
+//                        back to file mtime when blame is unavailable, e.g. untracked
+//                        files or shallow clones — fallback emits a WARN to stderr).
+//   • --block-all      → fail on any hit (graduation target).
 //
-// Exemptions honored:
-//   1. Backtick-wrapped term on the same line
-//   2. `<!-- vague-exempt: <reason> -->` on the same line
-//   3. Standing cohort patterns from glossary §Forbidden Vague Modifiers
-//   4. Files under spec/18-spec-issues/, spec/AUDIT-FINDINGS-LEDGER.md,
-//      spec/AMBIGUITY-LEDGER.md, spec/_GATE-REGISTRY.md, spec/19-glossary.md
-//      (these *define* or *quote* the forbidden tokens by purpose)
+// Rationale (2026-04-30 enhancement, NEW-13-FOLLOWUP-tail):
+//   The previous --block-new used file mtime, which mis-flagged files where a
+//   legacy hit survived but an unrelated edit (typo fix, format) bumped mtime
+//   above BLOCK_NEW_DATE. Per-line git-blame anchors the cut-off to the actual
+//   line-of-introduction, so legacy hits remain warn-existing while NEW
+//   accretion (post-cutoff commits) hard-fails. Drift = 0 today; this guard
+//   prevents future regression at the smallest meaningful granularity.
 
 import { readFileSync, readdirSync, statSync } from "node:fs";
+import { execFileSync } from "node:child_process";
 import { join, relative } from "node:path";
 
 const ROOT = "spec";
