@@ -1,0 +1,414 @@
+openapi: 3.1.0
+info:
+  title: WorkFlowy Universal Response Envelope
+  description: |
+    **Normative OpenAPI 3.1 contract for the WorkFlowy REST envelope.**
+
+    This document is the machine-readable peer of `envelope.schema.json` (JSON Schema 2020-12).
+    Both files MUST stay byte-equivalent in shape; gate `G-CON-01-OPENAPI-PARITY` enforces this.
+
+    All response bodies — success, error, paginated, debug — conform to this envelope.
+    Keys are PascalCase per ADR-0004 and ADR-0019.
+
+    Conformance:
+      - Go backend (chi/echo handlers) MUST emit responses validating against `#/components/schemas/Envelope`.
+      - PHP WordPress plugin (`riseup-asia-uploader/v1/*`) MUST emit the same envelope when proxied or standalone.
+      - TypeScript frontend MUST type all `fetch()` results as `Envelope<T>` (see `envelope.types.ts`, GAP-CON-02).
+
+    Pointer fields (`Navigation`, `Errors`, `MethodsStack`) are **omit-never-null**: absent when not applicable,
+    never serialized as `null`. JSON Schema permits `null` for legacy compatibility; OpenAPI consumers SHOULD
+    treat `null` as a producer bug.
+  version: 3.1.0
+  contact:
+    name: WorkFlowy Spec Authority
+  license:
+    name: Proprietary
+
+servers:
+  - url: http://localhost:8080/api/v1
+    description: Go backend (local dev)
+  - url: https://example.com/wp-json/riseup-asia-uploader/v1
+    description: PHP WordPress plugin (delegated downstream)
+
+tags:
+  - name: items
+    description: Unified Node CRUD (representative; full path inventory in 31-app/)
+  - name: sync
+    description: Offline replay queue ingress (ADR-0010)
+  - name: meta
+    description: Health, version, capability discovery
+
+paths:
+  /healthz:
+    get:
+      tags: [meta]
+      summary: Liveness probe (envelope-shaped)
+      operationId: getHealth
+      responses:
+        "200":
+          description: Service alive — single-record envelope
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Envelope"
+              examples:
+                ok:
+                  $ref: "#/components/examples/SingleHealth"
+
+  /items/{id}:
+    get:
+      tags: [items]
+      summary: Fetch one Node by ItemId (representative single-record path)
+      operationId: getItem
+      parameters:
+        - $ref: "#/components/parameters/ItemIdPath"
+      responses:
+        "200":
+          description: Item found — `IsSingle=true`
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Envelope" }
+              examples:
+                single: { $ref: "#/components/examples/SingleItem" }
+        "404":
+          description: Item not found — `IsFailed=true`, `Errors` populated
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Envelope" }
+              examples:
+                notFound: { $ref: "#/components/examples/ErrorNotFound" }
+
+  /items:
+    get:
+      tags: [items]
+      summary: List items (representative paginated path)
+      operationId: listItems
+      parameters:
+        - in: query
+          name: page
+          schema: { type: integer, minimum: 1, default: 1 }
+        - in: query
+          name: perPage
+          schema: { type: integer, minimum: 1, maximum: 250, default: 50 }
+      responses:
+        "200":
+          description: Paginated list — `IsMultiple=true`, `Navigation` present
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Envelope" }
+              examples:
+                page2: { $ref: "#/components/examples/MultipleItems" }
+
+  /sync/replay:
+    post:
+      tags: [sync]
+      summary: Offline FIFO replay ingress (ADR-0010 §C3)
+      operationId: replayMutations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [Mutations]
+              additionalProperties: false
+              properties:
+                Mutations:
+                  type: array
+                  description: Strictly FIFO; server enforces causal order per clientId.
+                  items:
+                    type: object
+                    required: [MutationId, ClientId, ClientTs, Op, Payload]
+                    properties:
+                      MutationId: { type: string, format: uuid }
+                      ClientId:   { type: string }
+                      ClientTs:   { type: string, format: date-time }
+                      Op:         { type: string, enum: [create, update, delete, move, mirror, detach] }
+                      Payload:    { type: object, additionalProperties: true }
+      responses:
+        "200":
+          description: Replay accepted (idempotent — duplicates silently skipped)
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Envelope" }
+
+components:
+  parameters:
+    ItemIdPath:
+      in: path
+      name: id
+      required: true
+      schema: { $ref: "#/components/schemas/ItemId" }
+      description: Branded ItemId (ULID per ADR-0020). Raw string IDs forbidden in TS.
+
+  schemas:
+    # Branded primitive (ADR-0020). OpenAPI cannot express TS branding; documented in `description`.
+    ItemId:
+      type: string
+      pattern: "^[0-9A-HJKMNP-TV-Z]{26}$"
+      description: |
+        ULID-shaped ItemId. In TypeScript this is a branded type (`ItemId & { __brand: 'ItemId' }`)
+        per ADR-0020. Raw `string` IDs are a compile error in the frontend.
+
+    OwnerId:
+      type: string
+      pattern: "^[0-9A-HJKMNP-TV-Z]{26}$"
+      description: Branded OwnerId (ADR-0020). Same encoding as ItemId.
+
+    SortOrder:
+      type: string
+      pattern: "^[0-9A-Za-z]+$"
+      description: |
+        Fractional-index base-62 string per ADR-0016. Lexicographic sort = visual sort.
+        **Never a number.** Casting to number is a spec violation (gate `G-ADR-0016-FRACTIONAL-INDEX`).
+
+    # Envelope — mirrors envelope.schema.json. Parity enforced by G-CON-01-OPENAPI-PARITY.
+    Envelope:
+      type: object
+      required: [Status, Attributes, Results]
+      additionalProperties: false
+      properties:
+        Status:        { $ref: "#/components/schemas/Status" }
+        Attributes:    { $ref: "#/components/schemas/Attributes" }
+        Results:
+          type: array
+          description: Payload — always an array, even for single items or empty responses.
+          items: {}
+        Navigation:    { $ref: "#/components/schemas/Navigation" }
+        Errors:        { $ref: "#/components/schemas/Errors" }
+        MethodsStack:  { $ref: "#/components/schemas/MethodsStack" }
+
+    Status:
+      type: object
+      required: [IsSuccess, IsFailed, Code, Message, Timestamp]
+      additionalProperties: false
+      properties:
+        IsSuccess: { type: boolean, description: "true if the request succeeded." }
+        IsFailed:  { type: boolean, description: "true if the request failed (inverse of IsSuccess)." }
+        Code:      { type: integer, description: "HTTP status code." }
+        Message:   { type: string,  description: "Human-readable status message." }
+        Timestamp: { type: string, format: date-time, description: "ISO 8601 timestamp." }
+
+    Attributes:
+      type: object
+      required: [HasAnyErrors, IsSingle, IsMultiple]
+      additionalProperties: false
+      properties:
+        RequestedAt:          { type: string, description: "Go backend endpoint that handled the request." }
+        RequestDelegatedAt:   { type: string, description: "Downstream URL when delegated; empty string when not." }
+        SessionId:            { type: string, description: "Session id for diagnostics linking." }
+        HasAnyErrors:         { type: boolean }
+        IsSingle:             { type: boolean }
+        IsMultiple:           { type: boolean }
+        IsEmpty:              { type: boolean }
+        TotalRecords:         { type: integer }
+        PerPage:              { type: integer }
+        TotalPages:           { type: integer }
+        CurrentPage:          { type: integer }
+
+    Navigation:
+      type: object
+      required: [NextPage, PrevPage, CloserLinks]
+      additionalProperties: false
+      properties:
+        NextPage:    { type: [string, "null"], description: "URL of next page; null on last page." }
+        PrevPage:    { type: [string, "null"], description: "URL of previous page; null on first page." }
+        CloserLinks:
+          type: array
+          items: { type: string }
+          description: "Sliding window of nearby page URLs."
+
+    Errors:
+      type: object
+      required: [BackendMessage]
+      additionalProperties: false
+      properties:
+        BackendMessage:
+          type: string
+          description: Primary error message from the Go backend.
+        DelegatedServiceErrorStack:
+          type: array
+          items: { type: string }
+          description: "Legacy stack lines — prefer DelegatedRequestServer."
+        Backend:
+          type: array
+          items: { type: string }
+        Frontend:
+          type: array
+          items: { type: string }
+        DelegatedRequestServer:
+          $ref: "#/components/schemas/DelegatedRequestServer"
+
+    DelegatedRequestServer:
+      type: object
+      required: [DelegatedEndpoint, Method, StatusCode]
+      additionalProperties: false
+      description: |
+        Structured error details from a downstream delegated server.
+        REQUIRED when `Status.IsFailed=true` AND `Attributes.RequestDelegatedAt` is non-empty.
+      properties:
+        DelegatedEndpoint: { type: string }
+        Method:            { type: string, enum: [GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS] }
+        StatusCode:        { type: integer }
+        RequestBody:
+          oneOf:
+            - { type: object }
+            - { type: "null" }
+        Response:
+          oneOf:
+            - { type: object }
+            - { type: "null" }
+        StackTrace:
+          type: array
+          items: { type: string }
+        AdditionalMessages:
+          type: string
+
+    MethodsStack:
+      type: object
+      required: [Backend, Frontend]
+      additionalProperties: false
+      properties:
+        Backend:
+          type: array
+          items: { $ref: "#/components/schemas/StackFrame" }
+        Frontend:
+          type: array
+          items: { $ref: "#/components/schemas/StackFrame" }
+
+    StackFrame:
+      type: object
+      required: [Method, File, LineNumber]
+      additionalProperties: false
+      properties:
+        Method:     { type: string }
+        File:       { type: string }
+        LineNumber: { type: integer }
+
+    # Reference Node shape (subset — full schema lives in spec/31-app/data-model)
+    Node:
+      type: object
+      required: [Id, ParentId, Content, ItemType, SortOrder, OwnerId]
+      additionalProperties: true
+      properties:
+        Id:        { $ref: "#/components/schemas/ItemId" }
+        ParentId:
+          oneOf:
+            - { $ref: "#/components/schemas/ItemId" }
+            - { type: "null" }
+          description: "null only for root nodes."
+        Content:   { type: string }
+        ItemType:
+          type: string
+          enum: [bullet, todo, note, board, column, card, dashboard, mirror, template, search, embed, separator]
+          description: "Closed enum of 12 ItemTypes per ADR-0015."
+        SortOrder: { $ref: "#/components/schemas/SortOrder" }
+        OwnerId:   { $ref: "#/components/schemas/OwnerId" }
+        CreatedAt: { type: string, format: date-time }
+        UpdatedAt: { type: string, format: date-time }
+
+  examples:
+    SingleHealth:
+      summary: Healthy service
+      value:
+        Status:
+          IsSuccess: true
+          IsFailed: false
+          Code: 200
+          Message: OK
+          Timestamp: "2026-04-30T12:00:00Z"
+        Attributes:
+          RequestedAt: "http://localhost:8080/api/v1/healthz"
+          RequestDelegatedAt: ""
+          HasAnyErrors: false
+          IsSingle: true
+          IsMultiple: false
+          IsEmpty: false
+        Results:
+          - { Service: "workflowy-api", Status: "alive" }
+
+    SingleItem:
+      summary: One Node returned
+      value:
+        Status:
+          IsSuccess: true
+          IsFailed: false
+          Code: 200
+          Message: OK
+          Timestamp: "2026-04-30T12:00:00Z"
+        Attributes:
+          RequestedAt: "http://localhost:8080/api/v1/items/01HX5Z4M9C7V8K3R2N1P0QABCD"
+          RequestDelegatedAt: ""
+          HasAnyErrors: false
+          IsSingle: true
+          IsMultiple: false
+          IsEmpty: false
+        Results:
+          - Id: "01HX5Z4M9C7V8K3R2N1P0QABCD"
+            ParentId: "01HX5Z4M9C7V8K3R2N1P0QPARENT"
+            Content: "Buy milk"
+            ItemType: "todo"
+            SortOrder: "a0"
+            OwnerId: "01HX5Z4M9C7V8K3R2N1P0QOWNER0"
+
+    MultipleItems:
+      summary: Page 2 of paginated list
+      value:
+        Status:
+          IsSuccess: true
+          IsFailed: false
+          Code: 200
+          Message: OK
+          Timestamp: "2026-04-30T12:00:00Z"
+        Attributes:
+          RequestedAt: "http://localhost:8080/api/v1/items?page=2&perPage=10"
+          RequestDelegatedAt: ""
+          HasAnyErrors: false
+          IsSingle: false
+          IsMultiple: true
+          IsEmpty: false
+          TotalRecords: 47
+          PerPage: 10
+          TotalPages: 5
+          CurrentPage: 2
+        Results: []
+        Navigation:
+          NextPage: "http://localhost:8080/api/v1/items?page=3&perPage=10"
+          PrevPage: "http://localhost:8080/api/v1/items?page=1&perPage=10"
+          CloserLinks:
+            - "http://localhost:8080/api/v1/items?page=3&perPage=10"
+            - "http://localhost:8080/api/v1/items?page=4&perPage=10"
+            - "http://localhost:8080/api/v1/items?page=5&perPage=10"
+
+    ErrorNotFound:
+      summary: Item missing — delegated PHP failure
+      value:
+        Status:
+          IsSuccess: false
+          IsFailed: true
+          Code: 404
+          Message: "Item not found"
+          Timestamp: "2026-04-30T12:00:00Z"
+        Attributes:
+          RequestedAt: "http://localhost:8080/api/v1/items/01HX5Z4M9C7V8K3R2N1P0QMISSING"
+          RequestDelegatedAt: "https://example.com/wp-json/riseup-asia-uploader/v1/items/01HX5Z4M9C7V8K3R2N1P0QMISSING"
+          HasAnyErrors: true
+          IsSingle: false
+          IsMultiple: false
+          IsEmpty: true
+        Results: []
+        Errors:
+          BackendMessage: "Item not found"
+          Backend:
+            - "handlers/items.go:142 GetItem"
+          DelegatedRequestServer:
+            DelegatedEndpoint: "https://example.com/wp-json/riseup-asia-uploader/v1/items/01HX5Z4M9C7V8K3R2N1P0QMISSING"
+            Method: GET
+            StatusCode: 404
+            RequestBody: null
+            Response:
+              code: "rest_item_not_found"
+              message: "Item not found"
+            StackTrace:
+              - "Items_Controller->get_item() rest-api.php:312"
+            AdditionalMessages: "Lookup miss in wp_workflowy_items"
