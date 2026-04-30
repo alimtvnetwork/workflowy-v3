@@ -93,7 +93,7 @@ relation** over the singular `Item` table — gate `G-ADR-0005-PEER-GROUP-MODEL`
 
 **Migration constraint:** any change to the model above MUST be
 ratified by a new ADR that supersedes this one and that enumerates
-every gate, workflow page, AT, and migration that needs re-anchoring.
+every gate, workflow page, AT, and migration that needs re-anchoring — gate `G-ADR-0005-SUPERSEDE-REQUIRED` (sub-rule of `G-ADR-0001-AMENDMENT-REQUIRED`).
 
 ## Consequences
 
