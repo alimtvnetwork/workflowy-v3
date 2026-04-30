@@ -355,7 +355,7 @@ flowchart LR
 
 ## 4.12 — Favorites (mirrors `01-features/03-layout-structure.md` §⭐ Favorite Button)
 
-> **Per-user, per-item bookmark slice.** The `Favorite` table is allocated in `02-app-schema.sql` v1.0.0 + indexed by `IdxFavorite_UserId_FractionalIndex` (`06-indexes.md`). Endpoint family is **deferred to a future endpoint slot** — current MVP toggles favorites via `EP-ITEMS-UPDATE` carrying an `isFavorited: bool` field per `01-features/03-layout-structure.md` §"Field Reference" + AT-LAYOUT-12.
+> **Per-user, per-item bookmark slice.** The `Favorite` table is allocated in `02-app-schema.sql` v1.0.0 + indexed by `IdxFavorite_UserId_FractionalIndex` (`06-indexes.md`). Endpoint family is **deferred to a future endpoint slot** — current MVP toggles favorites via `EP-ITEMS-UPDATE` carrying an `IsFavorited: boolean` field (PascalCase per ADR-0019; `boolean` keyword per strict TS — never PHP-style `bool`) per `01-features/03-layout-structure.md` §"Field Reference" + AT-LAYOUT-12.
 
 ```mermaid
 erDiagram
@@ -379,7 +379,7 @@ erDiagram
 ```mermaid
 flowchart LR
     Click["⭐ click<br/>(toggle)"]
-    Update["EP-ITEMS-UPDATE<br/>{isFavorited: bool}"]
+    Update["EP-ITEMS-UPDATE<br/>{IsFavorited: boolean}"]
     Insert["INSERT INTO Favorite<br/>(or DELETE on untoggle)"]
     Sidebar["Sidebar render<br/>via IdxFavorite_UserId_FractionalIndex"]
 

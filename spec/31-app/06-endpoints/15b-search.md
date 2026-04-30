@@ -31,7 +31,7 @@
   - `Q` (string, required, 1–256 chars) — query text. Tokenised on whitespace + punctuation.
   - `Scope` (string, optional) — Item ID to constrain to a subtree. Default = entire workspace.
   - `Types` (csv, optional) — filter by `ItemType` (`bullet`, `board`, `dashboard`, `mirror`).
-  - `IncludeTrashed` (bool, optional, default `false`).
+  - `IncludeTrashed` (boolean, optional, default `false`).
   - `Limit` (≤ 50, default 25), `Cursor`.
 - **Success (200)** `Results`:
   ```json

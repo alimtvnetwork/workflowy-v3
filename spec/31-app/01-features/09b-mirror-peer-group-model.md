@@ -163,7 +163,7 @@ STEPS:
      -- Trigger trg_mirrorgroup_dissolve_on_singleton fires automatically if size now = 1.
   4. If detached itemId WAS the canonical → promote next-lowest ItemId in group as canonical
      (UPDATE MirrorGroup SET CanonicalItemId = ...).
-  5. Emit SSE event `mirror.member.removed` with { groupId, removedItemId, dissolved: bool }.
+  5. Emit SSE event `mirror.member.removed` with PascalCase frame `{ GroupId, RemovedItemId, Dissolved: boolean }` (PascalCase per ADR-0025 §SSE wire format; `boolean` keyword per strict TS — never PHP-style `bool`).
   6. Toast: "Mirror detached" (or "Mirror group dissolved" if size dropped to 1).
 ```
 
