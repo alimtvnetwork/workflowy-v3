@@ -178,8 +178,8 @@ On client startup OR SSE drop:
 
 ### 14.5.6 Server Emission Rules (normative)
 
-- A successful §14.2 LWW write MUST emit exactly **one** SSE event in the same transaction commit phase (no separate publish step that can drift).
-- Failed (rejected) writes MUST NOT emit any event.
+- A successful §14.2 LWW write MUST emit exactly **one** SSE event in the same transaction commit phase (no separate publish step that can drift) `[gate: G-25-SSE-TX-ATOMIC-EMIT]`.
+- Failed (rejected) writes MUST NOT emit any event `[gate: G-25-SSE-REJECTED-NO-EMIT]`.
 - The `ChangedFields` array in `item-updated` lists **only** the fields whose `<Field>UpdatedAt` advanced; unchanged fields (e.g. tie-break loser fields) are excluded.
 - `ActorUserId = 'system'` for reaper / cascade writes (consistent with §14.4 `BrokenAtUpdatedBy`).
 - Cross-workspace events are **never** emitted on a workspace stream; the SSE channel is keyed by `(UserId, WorkspaceId)`.
