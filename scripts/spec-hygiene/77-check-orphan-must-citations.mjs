@@ -52,9 +52,9 @@ const SKIP_DIRS = new Set(["00-adrs"]);
 // SKIP_FILE: historical/index/diagram files where MUSTs are quotes/examples,
 // not normative bindings (counter exempts these too). Plus test-corpus FAIL fixtures.
 // F-SCOPE-49 burndown 2026-04-30: added AMBIGUITY-LEDGER, spec-index, sequence-diagrams,
-// glossary, _TEST-CORPUS PHASE-* fixtures (37 false-positives eliminated).
+// glossary, _TEST-CORPUS PHASE-* fixtures, 00-ai-onboarding-ssot (checklist quoting MUSTs).
 const SKIP_FILE = (f) =>
-  /97-acceptance-criteria\.md$|97[a-z]?-acceptance-criteria-fixtures\.md$|^_GATE-|^_LEDGER-|^AUDIT-|^AMBIGUITY-LEDGER\.md$|^spec-index\.md$|^24-sequence-diagrams\.md$|^19-glossary\.md$|^PHASE-\d+-FAIL-|^README\.md$/.test(f);
+  /97-acceptance-criteria\.md$|97[a-z]?-acceptance-criteria-fixtures\.md$|^_GATE-|^_LEDGER-|^AUDIT-|^AMBIGUITY-LEDGER\.md$|^spec-index\.md$|^24-sequence-diagrams\.md$|^19-glossary\.md$|^00-ai-onboarding-ssot\.md$|^PHASE-\d+-FAIL-|^README\.md$/.test(f);
 
 const FIXTURE_SLOT_RE = /^\|\s*\*\*(Negative assertion|Then|Side effects|Given|When|Expected [^*]+|Linter command|Response envelope|Expected stderr regex)\*\*\s*\|/;
 const RFC2119_CELL_RE = /^\|\s*[A-Z]+[0-9]+\s*\|.*\|\s*(MUST|SHALL|SHOULD|MAY)\s*\|/;
