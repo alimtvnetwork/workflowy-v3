@@ -1035,3 +1035,31 @@ This is the **third** scope-correction in 3 turns (F-SCOPE-01 → 02 → 03), ea
 **Gate impact:** `G-LINT-VAGUE-MODIFIERS` already at `block-all` (graduated 2026-04-30). `--block-new` becomes the **complementary forward-looking guard** for branches/forks where the corpus might temporarily drift above 0 — useful in long-lived feature branches before merge.
 
 **Files:** `scripts/spec-hygiene/79-check-vague-modifiers.mjs` (rewrote `--block-new` branch + added 2 helper functions ~50 LOC); this entry.
+
+---
+
+### F-AUDIT-49 — ADR-0033 same-number umbrellas don't cover cross-cutting leaves
+
+**Status:** OPEN (low). Surfaced 2026-04-30 by NEW-13-FOLLOWUP-tail-2 verification.
+
+**Context:** Promoted `G-24` to `(Umbrella, family=convention-drift)` per ADR-0033 §Decision. Runner picked up the marker (umbrellas: 25 → 26) but pruning the 5 `G-24-*` ALLOWED entries surfaced **5 cross-cutting leaf citations** that can't be covered:
+- `G-24-PRIVILEGE-MUTATION-GATED` cited from `spec/00-adrs/0033-…` and `spec/31-app/06-endpoints/00-overview.md` (families `adr-ratification`, none)
+- `G-24-PRIVILEGE-MUTATION-GATED-DRIFT` cited from `spec/00-adrs/0033-…` (family `adr-ratification`)
+- `G-24-ALIAS-BRIDGE-AUTHORITY` cited from `spec/00-adrs/97-acceptance-criteria.md` (family `adr-ratification`)
+- `G-24-TRIAGE-BANNER-PRESENT` cited from `spec/00-adrs/97-acceptance-criteria.md` (family `adr-ratification`)
+- `G-24-NO-SINGLETON-GROUPS` cited from `spec/19-glossary.md` (family `null`)
+
+**Root cause:** ADR-0033 §Decision requires `family=` qualifier for any double-reserved `G-{NN}` prefix. `G-24` is double-reserved (ADR-0024 introduces `G-24-AUDIT-SCORE-FROZEN`; convention-drift uses `G-24-DC-*`). The qualifier scopes coverage strictly to leaves anchored under the family's path-prefix, leaving cross-cutting cites uncovered.
+
+**Mitigation applied this turn:** Reverted `G-24-*` ALLOWED prune; documented exclusion rationale inline in the runner (lines 76–84). Drift back to 0.
+
+**Resolution options (deferred):**
+- **(a)** Amend ADR-0033 to permit a second `(Umbrella, family=adr-ratification)` row for the same `G-{NN}` prefix when leaves are anchored across multiple families. Low-cost; requires authoring discipline.
+- **(b)** Amend ADR-0033 to permit `(Umbrella, family=*)` family-wildcard for cross-cutting umbrellas. Higher silent-coverage risk; needs `G-00-UMBRELLA-LEAVES-DESCRIBED` lint as gate.
+- **(c)** Status quo: leaves remain in ALLOWED with category comments. No spec change needed; preserves explicit-coverage invariant.
+
+**Recommendation:** **(a)** — minimal ADR change, preserves all ADR-0033 invariants, scales to the ~5 cross-cutting `G-24-*` leaves and any future similar pattern (`G-15`, `G-17`, `G-20`, `G-23` if they ever get registered as bare-numeric rows).
+
+**Score impact:** −0.05pp (one finding opened); +0.1pp (G-24 umbrella promotion is real content work — first row to use ADR-0033's `family=` syntax in production registry). Net **+0.05pp**.
+
+**Files:** `spec/_GATE-REGISTRY.md` L816 (G-24 row promoted to `(Umbrella, family=convention-drift)`), `scripts/spec-hygiene/76-check-orphan-gate-ids.mjs` L76–84 (cross-cutting exclusion comment), this entry.
