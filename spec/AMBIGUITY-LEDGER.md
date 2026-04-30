@@ -545,3 +545,25 @@ Each fixture includes deterministic seeds, numeric assertions, parameterized row
 **Files:** `spec/31-app/05-conventions/97-acceptance-criteria.md` (v1.0.0 → v1.1.0; §7 added, change-log row), `spec/AMBIGUITY-LEDGER.md` (this entry).
 
 **Score impact:** +0.05pp (closes the last named structural backlog item; remaining work is now exclusively long-tail F-SPEC-14 chip-down + the user-blocked re-baseline).
+
+---
+
+## 2026-04-30 — GAP-AC-AUTHOR-04: AC-AUTHOR-RULE-04 + G-GLOSSARY-ADR-PARITY
+
+**Trigger:** Two methodology lessons logged in prior turns awaiting formalization:
+1. (2026-04-29) "When authoring AT fixtures from an ADR, copy the ADR text verbatim into the `Given` clause; do NOT paraphrase from memory of similar libraries." — flagged for `AC-AUTHOR-RULE-04`.
+2. (2026-04-29) Glossary↔ADR drift surfaced as candidate gate `G-GLOSSARY-ADR-PARITY` — every term naming an ADR MUST stay in sync if the ADR's normative wording changes.
+
+**Action — three artifacts shipped:**
+
+1. **`spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md`** — added §"Author Checklist (AC-AUTHOR-RULE-01..04)" formalising the 4 numbered authoring rules in a single table, plus a full §"AC-AUTHOR-RULE-04 — Verbatim-from-ADR" section with: trigger, 5-step procedure, required `<!-- verbatim-from: … -->` HTML-comment anchor, paired ❌FORBIDDEN/✅REQUIRED example, and rationale tying it to the ADR-0027/0028 fixture-drift retro.
+2. **`spec/_GATE-REGISTRY.md`** §4a — registered `G-GLOSSARY-ADR-PARITY` (DOC-NORM tier; graduates to LINT after 3 clean runs). Audit invariant: every glossary entry citing `ADR-NNNN` (24 rows in v1.4.0) MUST be updated in the same commit as the cited ADR's normative section.
+3. **`scripts/spec-hygiene/78-check-glossary-adr-parity.mjs`** — runnable detector. Strategy: parse glossary `ADR-NNNN` citations → SHA-256-hash each cited ADR's `## Decision` + `## Consequences` sections → compare to baseline manifest at `spec/_LEDGER-G-GLOSSARY-ADR-PARITY.json`. First run writes baseline; subsequent runs fail with `GLOSSARY_DRIFT: <ADR> (terms: <list>)` on hash mismatch unless the operator re-baselines after intentional ADR rewrites. Pure positive guard clauses, max 15-line bodies, no nested ifs (per `mem://constraints/coding-guidelines`).
+
+**Why DOC-NORM not LINT yet:** First run is a baseline write — the gate cannot fail until run 2. Graduation criterion documented in registry row: ≤0 drift across 3 consecutive runs.
+
+**Coverage:** The gate covers all 24 ADR-cited glossary entries currently in §"ADR-0023..0028 Runtime Vocabulary" (Loader↔queue contract, Local mirror, Queue worker, ClientMutationId, Undo cap, Offline queue, LWW tiebreak, Peer group, Singleton dissolution, SSE read-signal, Last-Event-ID replay, Cold gap, Ring buffer, ServerSeq, TTL reaper, Producer completeness, Detection chain, Regional→language fold, Fallback chain, RTL locale, Logical CSS properties, Typed i18n keys, Branded ID, SortOrder).
+
+**Files:** `spec/01-spec-authoring-guide/19-acceptance-criteria-io-table.md` (v1.1.0 → v1.2.0), `spec/_GATE-REGISTRY.md` (§4a +1 row), `scripts/spec-hygiene/78-check-glossary-adr-parity.mjs` (new), `spec/AMBIGUITY-LEDGER.md` (this entry).
+
+**Score impact:** +0.05pp (structural — closes a queued lesson into an executable gate; ratifies the verbatim-from-ADR rule corpus-wide).
