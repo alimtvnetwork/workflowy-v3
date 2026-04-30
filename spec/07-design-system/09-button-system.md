@@ -7,7 +7,7 @@
 
 ## Overview
 
-The button system defines default, hover, active, focus, and disabled states for all interactive buttons. All buttons use CSS3 transitions (≤150 ms ease-out). The preferred CTA hover pattern is a **slide text animation**, not a simple color change.
+The button system defines default, hover, active, focus, and disabled states for interactive buttons across the eight Tier-3 component shells (Navbar, Sidebar, Editor, Modal, Toast, ContextMenu, Form, ContentArea). All buttons use CSS3 transitions (≤150 ms ease-out). The preferred CTA hover pattern is a **slide text animation**, not a simple color change.
 
 ---
 

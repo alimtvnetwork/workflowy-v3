@@ -166,7 +166,7 @@ Duration: `0.2s ease-out`. Used for: sidebar expand/collapse.
 
 ## Button Slide Text Animation (CSS3)
 
-For CTA buttons like "Join Us", use a **CSS3 text slide** instead of simple color hover:
+For CTA buttons like "Join Us", use a **CSS3 text slide** instead of single-property `color` hover transition:
 
 ```css
 .slide-btn {

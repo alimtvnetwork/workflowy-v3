@@ -33,7 +33,7 @@ This file is the single source of truth for those decisions.
 | Resolved version (lockfile) | Pinned in `bun.lock` | Runtime regeneration MUST NOT cross majors (gate `G-HLPIN-LOCKFILE-MAJOR`) |
 | Import strategy | **Core + per-language** registration | Full bundle is ~500KB; core + 11 langs ≈ ~80KB |
 | Theme | **Project HSL tokens only** (NO vendor `.css` import) | Vendor themes ship hex colors and break the `--primary`/`--accent` token system |
-| SSR | Not required (Vite SPA) | But the library is SSR-safe if needed later |
+| SSR | Not required (Vite SPA) | But the library is SSR-safe when a future ADR mandates server rendering |
 | Auto-detect | Permitted as fallback only (`hljs.highlightAuto`) | Per the resolution flow in [`03-syntax-highlighting.md`](./03-syntax-highlighting.md) |
 | Web Worker | Not used | Code blocks are short; worker overhead exceeds savings |
 

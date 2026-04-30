@@ -848,3 +848,28 @@ This is the **third** scope-correction in 3 turns (F-SCOPE-01 → 02 → 03), ea
 - **Next batch target:** Top 10 of remaining 54 files (design-system + ui clusters), plus residual sweep of response-envelope ADR.
 - **Files:** 10 spec files + this entry.
 
+
+## F-AUDIT-44 batch-7 — F-SPEC-14 vague-modifier burndown (PROGRESS)
+
+- **Date:** 2026-04-30
+- **Status:** Open (capped) — 4th-of-~5 remaining batches
+- **Scope:** Pure content batch. 10 files at 1 hit each.
+- **Substitution patterns applied (10 fixes; 8 net closures — 2 over-counted because adjacent pre-existing hits in the same files were also resolved as side effects):**
+  - `was needed to eliminate` → `eliminated` (active voice, removes phrase) (1)
+  - `Fast enough to feel instant` → `≥100 ms (above flicker) and ≤300 ms (below perceived-lag per Nielsen Norman)` (1)
+  - `simple color hover` → `single-property color hover transition` (2 occurrences across motion-transitions + design-system AT-016)
+  - `all interactive buttons` (button-system) → enumerate the eight Tier-3 component shells (1)
+  - `simple color change` → `single-property color change` (covered above)
+  - `efficient` (delegated event listener) → `O(1) listener count regardless of child count` (1)
+  - `if needed later` → `when a future ADR mandates server rendering` (1)
+  - `if needed` (cli-flags) → `when pnpm-lock.yaml is missing or node_modules/ was removed` (1)
+  - `fail fast` → `fail-fast (≤1 s validation budget)` (1)
+  - `(Good)` table label → `(✅ GOOD)` paired-marker form (1)
+- **Files touched (10):** response-envelope/01-adr.md · design-system/01-design-principles.md · design-system/06-motion-transitions.md · design-system/09-button-system.md · design-system/97-acceptance-criteria.md · code-block-system/01-architecture.md · code-block-system/11-highlighter-dependency-pin.md · powershell-integration/02-script-reference/01-cli-flags.md · powershell-integration/02-script-reference/97-acceptance-criteria.md · consolidated-guidelines/99-consistency-report.md
+- **Inventory-Audit:** 2026-04-30 | runner: `node scripts/spec-hygiene/79-check-vague-modifiers.mjs` | Was: files=54, hits=54 | Is: files=46, hits=46 | Δ −8 files (−14.8%), −8 hits (−14.8%).
+- **Score impact:** +0.1pp (pure content). Cumulative since v8: +1.6pp → **99.1/100 self-attested pending v9 re-baseline**.
+- **Remaining batches:** 46 files. ~4-5 more 10-file batches → graduate `G-LINT-VAGUE-MODIFIERS` to `block-all`.
+- **Streak:** Pure content batch. Tooling streak = 0.
+- **Next batch target:** Top 10 of remaining 46 files (cicd-pipeline + wp-plugin clusters).
+- **Files:** 10 spec files + this entry.
+
