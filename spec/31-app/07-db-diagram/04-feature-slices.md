@@ -391,7 +391,7 @@ flowchart LR
 **Touched tables (read+write)**: `Item` (writes the `IsFavorite` and `FavoriteFractionalIndex` columns; **no separate `Favorite` table** — see [ADR-0001](../../00-adrs/0001-singular-ddl-vs-plural-prose.md), `Accepted` 2026-04-28).
 
 **Endpoints (current MVP)**: `EP-ITEMS-UPDATE` (carries `IsFavorite` boolean per AT-LAYOUT-12; reorder writes `FavoriteFractionalIndex` via the same endpoint).
-**Endpoints (forbidden without superseding ADR-0001)**: an `EP-FAVORITES-*` family is **not** deferred — it is **forbidden** because Favorites is a column on `Item`, not a table. Any future allocation **MUST** first supersede [ADR-0001](../../00-adrs/0001-singular-ddl-vs-plural-prose.md) with a new ADR that promotes the column to a table.
+**Endpoints (forbidden without superseding ADR-0001)**: an `EP-FAVORITES-*` family is **not** deferred — it is **forbidden** because Favorites is a column on `Item`, not a table. Any future allocation **MUST** (per ADR-0001) first supersede [ADR-0001](../../00-adrs/0001-singular-ddl-vs-plural-prose.md) with a new ADR that promotes the column to a table.
 
 **Sidebar reorder**: Drag-and-drop in the sidebar mutates `Item.FavoriteFractionalIndex` (still inside the `Item` row, no separate-table write). The mutation flows through `EP-ITEMS-UPDATE` like every other `Item` field change.
 

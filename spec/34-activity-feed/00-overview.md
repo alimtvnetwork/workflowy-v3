@@ -186,8 +186,7 @@ emit a single, idempotent activity-feed entry visible to all peers.
    `{ Verb: "mirror.attach", ActorUserId, MirrorGroupId, ItemId,
      OccurredAtUtc, IdempotencyKey }`.
 2. `IdempotencyKey = sha256(Verb|ActorUserId|MirrorGroupId|ItemId|Minute)` —
-   replaying the same request inside the same minute MUST collapse to one
-   event (gate `G-34-IDEMPOTENT`).
+   replaying the same request inside the same minute MUST collapse to one event (gate `G-34-IDEMPOTENT`).
 3. Fan-out: every `User` with read access to **any** member of the group
    receives the event in their feed query (gate `G-34-FANOUT-RESPECTS-ACL`).
 4. Feed render uses verb dictionary in `34-activity-feed/02-verb-table.md`

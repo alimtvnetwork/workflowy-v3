@@ -222,7 +222,7 @@ The 5 acceptance tests **AT-SR-01 … AT-SR-05** are defined under the existing 
 | Empty / loading / error states | `<SearchEmpty/>`, `<SearchSkeleton/>` (shadcn `Skeleton`), `<SearchError/>` (renders `Errors[0].Code` + retry button). |
 | Highlight rendering | `Snippet` HTML uses `<mark>` tags only; sanitised by DOMPurify before insertion. |
 | Keyboard nav | `↑/↓` cycles `search-results` rows; `Enter` opens; `Esc` closes overlay (per AT-INTERACT-10..13). |
-| No client-side re-rank | The FE MUST render the order returned by the server verbatim. Re-sorting client-side is **forbidden** (preserves I-SR-01 determinism contract). |
+| No client-side re-rank | The FE MUST render the order returned by the server verbatim (per AT-INTERACT-10..13 + I-SR-01). Re-sorting client-side is **forbidden** (preserves I-SR-01 determinism contract). |
 
 ## Database Contract (DB) — extended
 
