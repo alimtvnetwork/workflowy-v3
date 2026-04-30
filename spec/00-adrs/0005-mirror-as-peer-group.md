@@ -95,6 +95,154 @@ relation** over the singular `Item` table — gate `G-ADR-0005-PEER-GROUP-MODEL`
 ratified by a new ADR that supersedes this one and that enumerates
 every gate, workflow page, AT, and migration that needs re-anchoring — gate `G-ADR-0005-SUPERSEDE-REQUIRED` (sub-rule of `G-ADR-0001-AMENDMENT-REQUIRED`).
 
+## Algorithms (Normative Pseudocode)
+
+> Gate `G-ADR-0005-PEER-GROUP-PSEUDOCODE-PARITY` — every backend (PHP
+> storage layer, TS local-mirror layer) MUST produce byte-identical
+> observable behaviour for the canonical fixture vectors below. Tested
+> against `spec/31-app/97a-acceptance-criteria-fixtures.md` §Mirror.
+
+**Type contract.**
+- `Item = { ItemId, ParentItemId, PeerGroupId: string|null, Title, Content, ... }`
+- `PeerGroupId` is an opaque random string (UUIDv7) when non-null; `null` means "no mirrors".
+- `Outcome = { Action: 'attach'|'detach-shrink'|'detach-dissolve'|'create-pair', AffectedRows: int, GroupAfter: string|null }`
+- All operations execute inside a single SQLite transaction (D5 invariant).
+
+### M1 — `createMirrorPair(itemA: ItemId, itemB: ItemId) -> Outcome`
+
+```
+# Brand-new mirror pair from two previously-unmirrored items.
+# Precondition: both items exist; neither already in a peer group.
+assert getPeerGroupId(itemA) is None
+assert getPeerGroupId(itemB) is None
+assertNoCycle(itemA, itemB)                   # gate G-MIRROR-CYCLE-PRECHECK
+
+freshGroupId = uuidv7()
+BEGIN TRANSACTION
+    UPDATE Item SET PeerGroupId = freshGroupId WHERE ItemId IN (itemA, itemB)
+    # Verify the count is exactly 2 — D2 invariant ("group of one is forbidden").
+    n = SELECT COUNT(*) FROM Item WHERE PeerGroupId = freshGroupId
+    assert n == 2
+COMMIT
+return { Action: 'create-pair', AffectedRows: 2, GroupAfter: freshGroupId }
+```
+
+### M2 — `attach(newMember: ItemId, existingGroupId: string) -> Outcome`
+
+```
+# Add a third+ member to an existing peer group.
+# Precondition: existingGroupId currently has >= 2 members; newMember is unmirrored.
+assert getPeerGroupId(newMember) is None
+assertNoCycle(newMember, existingGroupId)     # gate G-MIRROR-CYCLE-PRECHECK
+existing = SELECT COUNT(*) FROM Item WHERE PeerGroupId = existingGroupId
+assert existing >= 2
+
+BEGIN TRANSACTION
+    UPDATE Item SET PeerGroupId = existingGroupId WHERE ItemId = newMember
+COMMIT
+return { Action: 'attach', AffectedRows: 1, GroupAfter: existingGroupId }
+```
+
+### M3 — `detach(detachee: ItemId) -> Outcome`  (CORE — dissolve invariant)
+
+```
+# Remove detachee from its peer group; dissolve residual singleton if size shrinks to 1.
+groupId = SELECT PeerGroupId FROM Item WHERE ItemId = :detachee
+assert groupId is not None                    # detach of unmirrored item is a no-op error
+
+BEGIN TRANSACTION
+    # Step 1: remove the detachee.
+    UPDATE Item SET PeerGroupId = NULL WHERE ItemId = :detachee
+
+    # Step 2: count residual peers (excludes the just-removed detachee).
+    residual = SELECT COUNT(*) FROM Item WHERE PeerGroupId = :groupId
+
+    if residual == 1:
+        # D2 invariant: "group of one is not a peer group" → dissolve.
+        # gate G-ADR-0005-DISSOLVE-IN-TX (sub-rule of G-MIRROR-DISSOLVE-SINGLETON)
+        UPDATE Item SET PeerGroupId = NULL WHERE PeerGroupId = :groupId
+        outcome = { Action: 'detach-dissolve', AffectedRows: 2, GroupAfter: NULL }
+    elif residual >= 2:
+        outcome = { Action: 'detach-shrink', AffectedRows: 1, GroupAfter: :groupId }
+    else:
+        # residual == 0: impossible if precondition held (group had >= 2 before detach).
+        raise PeerGroupInvariantViolation(:groupId)
+COMMIT
+return outcome
+```
+
+### M4 — `assertNoCycle(item: ItemId, target: ItemId | GroupId)` (gate G-MIRROR-CYCLE-PRECHECK)
+
+```
+# Walk ancestors of `item`; if any ancestor belongs to `target`'s peer group
+# (or IS the target item), fail. Per spec/31-app/01-features/09a-mirror-cycle-detection.md.
+targetGroup = (target if isItemId(target) else target)   # accept either form
+forbiddenGroups = set([targetGroup]) if isGroupId(target) else expandToGroup(target)
+
+cursor = item
+visited = set()
+while cursor is not None:
+    if cursor in visited:
+        raise MirrorTreeCorruption(item)      # parent-chain cycle (data integrity)
+    visited.add(cursor)
+    cursorGroup = SELECT PeerGroupId FROM Item WHERE ItemId = :cursor
+    if cursorGroup is not None and cursorGroup in forbiddenGroups:
+        raise EnfMirrorCycle(item, target)    # ENF-MIRROR-CYCLE — D2 enforcement
+    cursor = SELECT ParentItemId FROM Item WHERE ItemId = :cursor
+```
+
+### M5 — Bidirectional propagation contract (D2 symmetry)
+
+```
+# Any UPDATE to Title / Content / structural-children of one peer
+# MUST fan out to ALL peers in the same group, in the same TX.
+# (Implementation: storage layer wraps every Item-mutating handler.)
+def updatePeerField(itemId, field, value):
+    groupId = SELECT PeerGroupId FROM Item WHERE ItemId = :itemId
+    BEGIN TRANSACTION
+        if groupId is None:
+            UPDATE Item SET <field> = :value, <field>UpdatedAt = serverNow
+                          WHERE ItemId = :itemId
+        else:
+            # Symmetry: write to EVERY peer, not just the originating row.
+            UPDATE Item SET <field> = :value, <field>UpdatedAt = serverNow
+                          WHERE PeerGroupId = :groupId
+              AND <field>UpdatedAt < :serverNow      -- ADR-0010 D3 LWW guard
+    COMMIT
+```
+
+### M6 — LWW tiebreak (delegated to ADR-0026)
+
+```
+# Mirror peer-group conflicts use the canonical 3-tier comparator.
+# This ADR does NOT define its own resolver; it cites ADR-0026 §Algorithms B2.
+return resolveLWW(candidateA, candidateB)     # gate G-26-LWW-CANONICAL-COMPARATOR
+```
+
+### Canonical fixture vectors (parity test)
+
+| # | Scenario | Input state | Operation | Expected Outcome |
+|---|---|---|---|---|
+| 1 | Create fresh pair | A, B unmirrored | `createMirrorPair(A, B)` | `{Action:'create-pair', AffectedRows:2, GroupAfter:G1}`; both rows now `PeerGroupId=G1`. |
+| 2 | Attach 3rd peer | Group G1 = {A,B}; C unmirrored | `attach(C, G1)` | `{Action:'attach', AffectedRows:1, GroupAfter:G1}`; group size now 3. |
+| 3 | Detach shrink | Group G1 = {A,B,C} | `detach(C)` | `{Action:'detach-shrink', AffectedRows:1, GroupAfter:G1}`; G1 now {A,B}. |
+| 4 | Detach DISSOLVE | Group G1 = {A,B} | `detach(B)` | `{Action:'detach-dissolve', AffectedRows:2, GroupAfter:NULL}`; **A's PeerGroupId also cleared** (singleton dissolution); G1 ceases to exist. |
+| 5 | Forbidden self-cycle | A is descendant of B; G1 = {B,…} | `attach(A, G1)` | Raises `EnfMirrorCycle`; transaction rolled back; no rows changed. |
+| 6 | Bidirectional propagation | Group G1 = {A,B}; user edits `A.Title = "X"` | `updatePeerField(A, 'Title', 'X')` | BOTH `A.Title` and `B.Title` = "X" after commit; `Title.UpdatedAt` equal on both rows. |
+| 7 | Forbidden group-of-one persistence | Storage layer attempts `UPDATE Item SET PeerGroupId=G1 WHERE ItemId=A` (only row) | Direct write outside `createMirrorPair`/`attach` | `G-MIRROR-PEER-COLUMN` invariant audit fails post-commit; CI hygiene check raises. |
+| 8 | LWW tiebreak | Two offline peers edit `Title` simultaneously | `resolveLWW(a,b)` | Result matches ADR-0026 fixture vectors byte-for-byte (delegated). |
+
+**Negative-test obligations (gate `G-ADR-0005-NEGATIVE-TESTS`).**
+Implementations MUST also assert: (a) **no `Mirror` value** in any
+`ItemType` enum file (regex CI fail per `G-MIRROR-NO-ITEMTYPE`);
+(b) **no `MirrorOf*` / `OriginalItemId` / `PrimaryPeerId` column** in
+any DDL or fixture (per `G-MIRROR-PEER-COLUMN`); (c) any post-detach
+state where `SELECT COUNT(*) FROM Item WHERE PeerGroupId = :gid GROUP
+BY PeerGroupId HAVING COUNT(*) = 1` returns ≥1 row → invariant
+violation (per `G-MIRROR-DISSOLVE-SINGLETON`); (d) detach + dissolve
+MUST commit atomically — splitting them across two transactions fails
+the parity test (per `G-ADR-0005-DISSOLVE-IN-TX`).
+
 ## Consequences
 
 **Positive**

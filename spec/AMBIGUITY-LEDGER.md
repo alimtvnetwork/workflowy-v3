@@ -220,3 +220,16 @@ At the user-set bar ('mediocre AI, zero follow-up, 100% intent match'), every ac
 **Result:** Third-largest content-gap closed. The offline-queue heart — drained by every reconnect — was previously fully prose; an AI implementer could legitimately drain in parallel, swap LIFO, or skip the LWW guard. Now byte-parity is testable across client TS + server PHP + SQL.
 
 **Remaining ALG queue:** GAP-ALG-04 peer-group dissolve (ADR-0005), GAP-ALG-05 undo cap eviction (ADR-0021).
+
+
+---
+
+## GAP-ALG-04 — Peer-group dissolve pseudocode promotion (2026-04-30)
+
+**Action:** ADR-0005 promoted from prose-only Decision section to normative §Algorithms with 6 procedures (M1 createMirrorPair, M2 attach, M3 detach with the load-bearing dissolve-singleton invariant, M4 assertNoCycle ancestor walk, M5 bidirectional propagation under LWW guard, M6 LWW resolver delegated to ADR-0026 §B2) + 8-row canonical fixture table covering create/attach/detach-shrink/detach-dissolve/cycle-rejection/bidirectional-propagation/group-of-one-CI-violation/LWW-delegation. Two new DOC-NORM gates: `G-ADR-0005-PEER-GROUP-PSEUDOCODE-PARITY` (umbrella) + `G-ADR-0005-NEGATIVE-TESTS` (sub-rule for forbidden ItemType / forbidden columns / dissolve atomicity).
+
+**Files:** spec/00-adrs/0005-mirror-as-peer-group.md (+~140 lines), spec/_GATE-REGISTRY.md (+2 rows in ADR-0005 family).
+
+**Result:** Highest-risk hallucination surface in the system (per ADR-0005 §Consequences "closes the highest-risk hallucination surface") is now executable. The detach-dissolves-singleton rule, previously prose-only, is now expressed as transactional pseudocode that splits into 3 outcomes (`detach-shrink`, `detach-dissolve`, invariant-violation raise) and is testable byte-for-byte across PHP+TS.
+
+**Remaining ALG queue:** GAP-ALG-05 undo cap eviction (ADR-0021).
