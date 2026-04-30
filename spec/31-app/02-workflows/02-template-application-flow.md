@@ -152,6 +152,11 @@ CREATE INDEX IdxIdempotencyKey_Status_StartedAt ON IdempotencyKey(Status, Starte
 - ❌ Hard-coding the cap from `OptionNameType::TEMPLATE_MAX_PER_WORKSPACE`.
 - ❌ Skipping `Auth::hasRole()` — the client cannot be trusted to pre-filter.
 - ❌ Emitting SSE before the COMMIT succeeds (could broadcast a phantom row).
+- ❌ Beginning A1 (App DB Items insert transaction) before W0 (idempotency-key write-ahead) commits — violates `G-WF-TEMPLATE-IDEMPOTENCY-WAL` and breaks C3 crash recovery.
+- ❌ Stamping materialized rows with `CreatedBy='system'` or omitting `CreatedAt` — the C3 fingerprint depends on `(WorkspaceId, ParentItemId, CreatedBy=UserId, CreatedAt ∈ window)` (`G-WF-TEMPLATE-CREATEDBY-STAMP`).
+- ❌ Emitting SSE (S1) while the idempotency-key row is still `Status='in_flight'` — violates `G-WF-TEMPLATE-NO-SSE-BEFORE-WAL-COMMITTED`.
+- ❌ Polling `/api/sync` as a fallback when SSE drops — ADR-0025 mandates SSE-only with `Last-Event-Id` resume; polling is forbidden by `G-25-SSE-ONLY-NO-POLL`.
+- ❌ Accepting non-UUIDv7 `ApplyToken` values — breaks the 24 h GC range-delete optimization (`G-WF-TEMPLATE-IDEMPOTENCY-V7`).
 
 ---
 
@@ -161,10 +166,14 @@ CREATE INDEX IdxIdempotencyKey_Status_StartedAt ON IdempotencyKey(Status, Starte
 |----|-----------|--------|----------|----------|
 | `AT-WF-TEMPLATE-01` | `AT-APP-43` | This flow | User with `View` only on parent applies template | 403; no Items inserted |
 | `AT-WF-TEMPLATE-02` | `AT-APP-44` | This flow | Successful apply | New tree visible locally; SSE event reaches peers within 1 s on healthy SSE |
-| `AT-WF-TEMPLATE-03` | `AT-APP-45` | This flow | Apply replayed with same `X-WorkFlowy-Idempotency-Key` within 24 h | 200 with original ItemId set; no duplicate rows |
-| `AT-WF-TEMPLATE-04` | `AT-APP-46` | This flow | App-DB INSERT fails mid-batch | ROLLBACK; client receives 500; SSE NOT emitted |
+| `AT-WF-TEMPLATE-03` | `AT-APP-45` | This flow | Apply replayed with same `X-WorkFlowy-Idempotency-Key` within 24 h | 200 with original ItemId set; no duplicate rows; response body byte-identical to original |
+| `AT-WF-TEMPLATE-04` | `AT-APP-46` | This flow | App-DB INSERT (A1) fails mid-batch | ROLLBACK; client receives 500; SSE NOT emitted; `IdempotencyKey.Status='in_flight'` row remains as crash tombstone |
+| `AT-WF-TEMPLATE-05` | `AT-APP-47` | This flow §Crash C2 | Process killed between W0 commit and A1 begin | Retry with same token: server detects `Status='in_flight'` + zero matching `Items` rows + `StartedAt > 60 s ago` → marks `failed_recoverable`, re-runs A1..W1..S1; client receives 200 |
+| `AT-WF-TEMPLATE-06` | `AT-APP-48` | This flow §Crash C3 | Process killed between A1 commit and W1 commit (load-bearing case) | Retry with same token: server detects `Status='in_flight'` + finds N matching `Items` rows by deterministic fingerprint `(WorkspaceId, ParentItemId, CreatedBy=UserId, CreatedAt window)` where N == `len(InsertRows)` → adopts orphan rows by updating `IdempotencyKey` to `Status='committed'` + `ItemIds=<found IDs>` then runs S1; client receives 200; **zero duplicate rows** |
+| `AT-WF-TEMPLATE-07` | `AT-APP-49` | This flow §Crash C3 | Same as -06 but fingerprint is ambiguous (e.g. another concurrent operation also wrote rows in the same window with the same `CreatedBy`) | Server returns `ERR_APPLY_AMBIGUOUS_RECOVERY` (HTTP 409) and emits an admin alert; manual reconciliation required; **no auto-adoption** |
+| `AT-WF-TEMPLATE-08` | `AT-APP-50` | This flow §Crash C4 | Process killed between W1 commit and S1 emission | Retry with same token: server returns cached 200 immediately; peers receive the missed `items.bulkInserted` via SSE `Last-Event-Id` replay on their next reconnect (no separate redelivery hook needed) |
 
-> ✅ **Backfilled into canonical** (2026-04-26, polish #2): each `AT-WF-TEMPLATE-NN` now maps 1:1 to an `AT-APP-NN` row in [`spec/31-app/97-acceptance-criteria.md`](../97-acceptance-criteria.md). The `AT-WF-*` IDs remain as a flow-scoped alias for traceability inside this file; the canonical column is authoritative.
+> ✅ **Backfilled into canonical** (2026-04-26, polish #2; extended 2026-04-30 with -05..-08): each `AT-WF-TEMPLATE-NN` now maps 1:1 to an `AT-APP-NN` row in [`spec/31-app/97-acceptance-criteria.md`](../97-acceptance-criteria.md). The `AT-WF-*` IDs remain as a flow-scoped alias for traceability inside this file; the canonical column is authoritative.
 
 ---
 
