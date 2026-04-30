@@ -1,13 +1,13 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.29  
-> **Updated:** 2026-04-30 — **batch-37:** seeded **Domain-DBNAME** (Database Naming Conventions) with 5 gates binding 5 prose-MUSTs in `spec/04-database-conventions/01-naming-conventions.md` (boolean Is/Has prefix, positive-only naming, NOT NULL constraint, PK `{TableName}Id` pattern, FK mirrors PK). **Eighth corpus-wide greenfield Domain seed.** All 5 are DOC-NORM (no static lint yet — column-name shape lives in DDL not in spec prose; promotion to CI awaits a `scripts/spec-hygiene/check-ddl-naming.mjs` runner that walks `*.sql`/migration files). Prior: 1.7.28 (batch-36 Domain-WORDING + NEW-12 orphan-gate-ID drift guard).
+> **Version:** 1.7.30  
+> **Updated:** 2026-04-30 — **batch-38:** seeded **Domain-DATAFILE** (WP-Plugin Static Data Files) with 5 CI gates binding 5 prose-MUSTs in `spec/15-wp-plugin-how-to/17-data-file-patterns.md` (colors.json schema, ColorGroupType enum parity, hex-6 regex, EndpointType enum parity, openapi info.version sync). **Ninth corpus-wide greenfield Domain seed** (Domain-USER, -EXPORT, -A11Y, -AT-IO, -WORDING, -DBNAME, -AUI, -HLPIN preceded). All 5 are CI tier (pure JSON validation runnable without runtime — strong enforcement profile). Distinct from Domain-WPDEPLOY (release pipeline) and Domain-EXPORT (data egress shape). Pre-flight namespace check passed: `G-DATAFILE-*` slot empty; no orphan `G-17` citation inline. Prior: 1.7.29 (batch-37 Domain-DBNAME seed).
 
-- **Total named gates:** 474 (+5 this revision)
+- **Total named gates:** 479 (+5 this revision)
 - **WARN-only gates:** 10 (unchanged)
-- **CI:** 123 (unchanged)
+- **CI:** 128 (+5 this revision)
 - **TEST:** 20 (unchanged)
-- **DOC-NORM:** 126 (+5 this revision)
+- **DOC-NORM:** 126 (unchanged)
 - **DOC:** 202 (unchanged)
 - **Areas covered:** 51 (unchanged)
 - **Areas covered:** 37 (unchanged)
@@ -846,6 +846,18 @@
 | `G-DBNAME-BOOL-NOT-NULL` | **DOC-NORM** | [`spec/04-database-conventions/01-naming-conventions.md`](./04-database-conventions/01-naming-conventions.md) | Boolean columns MUST never be nullable (Rule 6). Three-state booleans break `WHERE Col = 0` semantics. Always `NOT NULL DEFAULT 0|1`. |
 | `G-DBNAME-PK-TABLENAMEID` | **DOC-NORM** | [`spec/04-database-conventions/01-naming-conventions.md`](./04-database-conventions/01-naming-conventions.md) | Primary key MUST be named `{TableName}Id` (e.g. `TransactionId`, `AgentSiteId`) — never bare `Id`. Self-documents when the PK appears as an FK in another table. |
 | `G-DBNAME-FK-MIRRORS-PK` | **DOC-NORM** | [`spec/04-database-conventions/01-naming-conventions.md`](./04-database-conventions/01-naming-conventions.md) | Foreign key columns MUST use the **exact same name** as the referenced PK (e.g. `Transaction.AgentSiteId` → `AgentSite.AgentSiteId`). Renamed FKs (e.g. `OwnerId` for an `AgentSiteId` FK) MUST be documented inline as a deliberate semantic disambiguation. Sub-rule of `G-DBNAME-PK-TABLENAMEID`. |
+
+### Domain-DATAFILE (WP-Plugin Static Data Files · JSON Schema & Enum Parity)
+
+> Reserved gate IDs for static JSON data files shipped under `plugin-slug/data/` rooted at `spec/15-wp-plugin-how-to/17-data-file-patterns.md`. Distinct from **Domain-WPDEPLOY** (release pipeline & artifact invariants) and **Domain-EXPORT** (data egress shape). All 5 gates target build-time / CI validation of read-only configuration files (`colors.json`, `endpoints.json`, `openapi.json`) — none touch runtime SQLite or REST. Pre-flight namespace check: `G-DATAFILE-*` slot empty; no orphan `G-17` citation inline. Batch-38 (2026-04-30) seeds 5 CI gates binding all 5 prose-MUSTs (schema conformance, dual enum-parity invariants, hex-6 regex, openapi version sync). **Ninth corpus-wide greenfield Domain seed.** Tier mix: 5 CI (all runnable as `node scripts/spec-hygiene/check-data-files.mjs` once authored — tracked as **NEW-19**). The two enum-parity gates require parsing the canonical TypeScript enum source files (`ColorGroupType`, `EndpointType`) and asserting bidirectional set equality with the JSON keys.
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-DATAFILE-COLORS-SCHEMA-CONFORM` | **CI** | [`spec/15-wp-plugin-how-to/17-data-file-patterns.md`](./15-wp-plugin-how-to/17-data-file-patterns.md) | `plugin-slug/data/colors.json` MUST conform to the JSON-schema documented at L72 (object whose top-level keys are color-group names, whose values are objects mapping token-name → hex string). Validation MUST run in CI on every PR touching `data/colors.json` or the schema doc. |
+| `G-DATAFILE-COLORS-ENUM-PARITY` | **CI** | [`spec/15-wp-plugin-how-to/17-data-file-patterns.md`](./15-wp-plugin-how-to/17-data-file-patterns.md) | Every top-level key in `colors.json` MUST have a matching `ColorGroupType` enum case in the canonical TS enum source, AND every `ColorGroupType` enum case MUST have a matching key in `colors.json`. Bidirectional set equality. Sub-rule of `G-DATAFILE-COLORS-SCHEMA-CONFORM`. Catches the class of bug where adding a color group to JSON without updating the enum (or vice versa) produces silent runtime fallbacks. |
+| `G-DATAFILE-COLORS-HEX6-REGEX` | **CI** | [`spec/15-wp-plugin-how-to/17-data-file-patterns.md`](./15-wp-plugin-how-to/17-data-file-patterns.md) | Every leaf string value in `colors.json` MUST match `^#[0-9a-fA-F]{6}$`. Forbids `#abc` (3-digit shorthand), `#abcdef00` (8-digit alpha), `rgb(…)`, `hsl(…)`, named colors. Sub-rule of `G-DATAFILE-COLORS-SCHEMA-CONFORM`. **Note:** distinct from the `--theme`-block HSL-only invariant (ADR-0012) — `colors.json` is the **source-of-truth seed** that gets compiled to HSL tokens at build time; the hex-6 form is the canonical input shape. |
+| `G-DATAFILE-ENDPOINTS-ENUM-PARITY` | **CI** | [`spec/15-wp-plugin-how-to/17-data-file-patterns.md`](./15-wp-plugin-how-to/17-data-file-patterns.md) | Every entry in `endpoints.json` MUST have a corresponding `EndpointType` enum case, AND every `EndpointType` enum case MUST have a corresponding entry in `endpoints.json`. Bidirectional. Same enforcement model as `G-DATAFILE-COLORS-ENUM-PARITY`. Catches the class of bug where REST endpoint registration drifts from the typed router. |
+| `G-DATAFILE-OPENAPI-VERSION-SYNC` | **CI** | [`spec/15-wp-plugin-how-to/17-data-file-patterns.md`](./15-wp-plugin-how-to/17-data-file-patterns.md) | `openapi.json#info.version` MUST equal the version field in `endpoints.json`. Single-string equality check. Catches the class of bug where openapi spec is regenerated but the registry version isn't bumped (or vice versa), causing client SDKs to declare incorrect compatibility. |
 
 ---
 

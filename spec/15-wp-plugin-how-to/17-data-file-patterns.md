@@ -69,7 +69,7 @@ plugin-slug/
 
 ### Formal JSON Schema
 
-The `colors.json` file MUST conform to this schema. Use it for CI validation and AI code generation:
+The `colors.json` file MUST conform to this schema (gate `G-DATAFILE-COLORS-SCHEMA-CONFORM`). Use it for CI validation and AI code generation:
 
 ```json
 {
@@ -101,8 +101,8 @@ The `colors.json` file MUST conform to this schema. Use it for CI validation and
 
 | Rule | Detail |
 |------|--------|
-| Every top-level key | MUST have a matching `ColorGroupType` enum case |
-| Every value | MUST be a 6-digit hex string matching `^#[0-9a-fA-F]{6}$` |
+| Every top-level key | MUST have a matching `ColorGroupType` enum case (gate `G-DATAFILE-COLORS-ENUM-PARITY`) |
+| Every value | MUST be a 6-digit hex string matching `^#[0-9a-fA-F]{6}$` (gate `G-DATAFILE-COLORS-HEX6-REGEX`) |
 | No empty groups | Each group must contain at least one color token |
 | No duplicate keys | JSON parsing naturally prevents this, but CI should verify |
 
@@ -297,7 +297,7 @@ foreach ($logColors as $level => $hex) {
 
 ### Synchronization Rule
 
-**CRITICAL:** Every entry in `endpoints.json` MUST have a corresponding `EndpointType` enum case, and vice versa. They must stay synchronized. When adding a new endpoint:
+**CRITICAL:** Every entry in `endpoints.json` MUST have a corresponding `EndpointType` enum case, and vice versa (gate `G-DATAFILE-ENDPOINTS-ENUM-PARITY`). They must stay synchronized. When adding a new endpoint:
 
 1. Add the enum case to `EndpointType`
 2. Add the entry to `endpoints.json`
@@ -338,7 +338,7 @@ Provides machine-readable API documentation for Swagger UI integration and exter
 
 | Rule | Detail |
 |------|--------|
-| Version sync | `info.version` MUST match `endpoints.json` version |
+| Version sync | `info.version` MUST match `endpoints.json` version (gate `G-DATAFILE-OPENAPI-VERSION-SYNC`) |
 | Server URL | Use template variable `{baseUrl}` for portability |
 | Auth | Default security scheme is `basicAuth` |
 | Paths | Must cover all endpoints listed in `endpoints.json` |
