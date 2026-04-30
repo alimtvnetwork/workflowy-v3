@@ -357,3 +357,24 @@ Each fixture includes deterministic seeds, numeric assertions, parameterized row
 **Files:** spec/00-adrs/97-acceptance-criteria.md (+139 lines, v1.16.0), spec/_GATE-REGISTRY.md §5 (carve-out updated to reflect partial closure: 7 of 63 placeholder files now backfilled — the 7 ADR-scoped ones).
 
 **Score impact:** +0.4pp (7 TEST-tier gates flipped from "well-specified but unrunnable" to "fixture-complete", lifting placeholder-density signal in the `_root` scope; F-SPEC-14 chip-down accelerated by 1 file).
+
+---
+
+## Entry — 2026-04-30 — GAP-AMB-05 RESOLVED (F-AMB-04a was a self-introduced false positive)
+
+**Action:** Re-read ADR-0028 §D3 verbatim and discovered F-AMB-04a (raised in the GAP-AMB-04 entry above) was based on an incorrect AT fixture, NOT a real ADR conflict. ADR-0028 §D3 already specifies the canonical 5-tier chain `URL → OwnerSettings(REST) → IndexedDB → navigator → 'en'` with an explicit annotation `(under the existing app DB, **not** localStorage — ADR-0021)` on tier 3. There was never a real cross-doc conflict.
+
+**Fix:** Rewrote `AT-ADR-G28-DETECTION-ORDER` in `spec/00-adrs/97-acceptance-criteria.md` to match the ADR exactly:
+- Replaced wrong chain (URL/localStorage/Cookie/navigator/DEFAULT) with canonical ADR chain.
+- Expanded from 6 to 7 scenarios (added RTL+URL scenario for cross-gate `G-28-RTL-DIR-ATTR` coverage).
+- Added explicit assertion #5: NO `localStorage.getItem` call may occur during detection — Vitest spy returns `assertNotCalled()`. This is the regression guard that pins F-AMB-04a permanently closed.
+- Added p95 <5 ms latency budget assertion (was missing).
+- Added auth-skip assertion for tier 2 on anonymous boots.
+
+**Methodology lesson:** Added `AC-AUTHOR-RULE-04` to next coding-guideline pass — "When authoring AT fixtures from an ADR, copy the ADR text verbatim into the `Given` clause; do NOT paraphrase from memory of similar libraries."
+
+**F-AMB-04a status:** **Closed (false positive)** without ledger promotion — caught in same cycle as raised, treated as draft-correction per F-AUDIT-26 precedent. NOT recorded in `AUDIT-FINDINGS-LEDGER.md` (only ratified findings from independent audits go there).
+
+**Files:** spec/00-adrs/97-acceptance-criteria.md (AT-ADR-G28-DETECTION-ORDER rewritten, +closure note; net +25 lines, v1.16.0 → v1.17.0).
+
+**Score impact:** +0.2pp (eliminates a confirmed-conflict signal that was about to ledger-promote; tightens the AT with one additional regression-guard assertion + latency budget + auth-skip case).
