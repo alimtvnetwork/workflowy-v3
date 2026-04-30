@@ -132,11 +132,11 @@ function walk(dir) {
 walk(ROOT);
 
 if (findings.length === 0) {
-  console.log("✅ G-38: no ambiguous-wording placeholders in active spec");
+  console.log("✅ G-WORDING-AMBIGUOUS-LINT: no ambiguous-wording placeholders in active spec");
   process.exit(0);
 }
 
-console.error(`❌ G-38: ${findings.length} ambiguous-wording occurrence(s) in active spec:\n`);
+console.error(`❌ G-WORDING-AMBIGUOUS-LINT: ${findings.length} ambiguous-wording occurrence(s) in active spec:\n`);
 for (const f of findings) {
   console.error(`  ${f.file}:${f.line} [${f.label}] ${f.snippet}`);
 }

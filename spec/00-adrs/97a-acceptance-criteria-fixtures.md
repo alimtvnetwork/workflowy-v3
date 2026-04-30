@@ -182,7 +182,7 @@ This file pairs every AT row added in `97-acceptance-criteria.md` v1.1.0 (AT-ADR
 | **When** | `node scripts/spec-hygiene/38-check-ambiguous-wording.mjs` runs (vague-token leg). |
 | **Expected exit** | `0` when no cell contains `eventually`, `to-be-determined`, the bare three-letter unspecified-marker, `next pass`, `event-driven`, or `someday`. |
 | **Then (positive)** | All 8 current ledger rows pass — verified 2026-04-29 ledger v1.1.0 (3 vague-criterion offenders eliminated per F-AUDIT-26 closure cycle). |
-| **Negative fixture** | Editing a `flipCriterion` cell back to `eventually` → gate #38 exits `1` with stderr matching `/G-38: \d+ ambiguous-wording occurrence\(s\).*flipCriterion/`; restoring → exit `0`. (Already exercised in this cycle when ADR-0031 itself initially tripped #38 — fix was a narrow path-exemption per ADR-0030 manifest, not weakening the gate.) |
+| **Negative fixture** | Editing a `flipCriterion` cell back to `eventually` → gate exits `1` with stderr matching `/G-WORDING-AMBIGUOUS-LINT: \d+ ambiguous-wording occurrence\(s\).*flipCriterion/`; restoring → exit `0`. (Already exercised in this cycle when ADR-0031 itself initially tripped the gate — fix was a narrow path-exemption per ADR-0030 manifest, not weakening the gate.) Stderr label changed from legacy `G-38:` to canonical `G-WORDING-AMBIGUOUS-LINT:` on 2026-04-30 by F-SCOPE-40-FOLLOWUP batch-2 (atomic rename: runner output + this regex + registry alias-note). |
 
 ### §3.4 AT-31-D4-FLIP-MECHANISM-CITES-RUNNER
 
