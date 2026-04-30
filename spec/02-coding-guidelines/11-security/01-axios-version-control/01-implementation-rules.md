@@ -97,7 +97,7 @@ updates:
 
 ## 3. Code Review Enforcement
 
-### 3.1 Pull Request Checklist
+### 3.1 Pull Request Checklist — gate `G-32-AXIOS-NO-AUTO-BUMP` · AT `AT-AXIOS-04`
 
 Every PR that touches `package.json`, `package-lock.json`, or `bun.lock` MUST be checked for:
 
