@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.24  
-> **Updated:** 2026-04-30 — **batch-33 prose→AT migration:** seeded **Domain-EXPORT** with **7 new CI gates** binding all 8 prose-MUSTs (6 axes + 2 escape-routes; one axis binds twice) in `spec/31-app/05-conventions/20-g27-export-coverage-gate.md`. **Fourth namespace-collision recurrence** caught by F-SCOPE-15/20/28 pattern: source title "G-27" but `G-27-*` namespace owned by ADR-0027 (SSE shared ring). New namespace `Domain-EXPORT` adopted; source-callout rename tracked as F-SCOPE-37-FOLLOWUP. Tier mix: 7 CI (every axis has a runnable ripgrep pattern). Prior: 1.7.23 (batch-32 G-USER-ROLE-RANK-INTEGER cross-file reuse).
+> **Version:** 1.7.25  
+> **Updated:** 2026-04-30 — **batch-34 prose→AT migration:** seeded **Domain-A11Y** (App-Level Accessibility) with **5 new gates** binding all 5 prose-MUSTs in `spec/32-ui-design/05-quality/01-accessibility.md` (Labels, Tree-semantics, Color-contrast, Reduced-motion, Tooltips). Greenfield namespace; pre-flight collision check confirmed `G-A11Y-*` slot empty (distinct from `G-AUI-A11Y-*` which is admin-UI / WP-template-partials scope). Tier mix: 4 CI (axe-core / AST runnable) + 1 DOC-NORM (`G-A11Y-TREE-ROLES` = ARIA semantic-shape, validated by component review). Prior: 1.7.24 (batch-33 Domain-EXPORT seed + namespace-collision recurrence #4).
 
-- **Total named gates:** 453 (+7 this revision: seven `G-EXPORT-*`)
+- **Total named gates:** 458 (+5 this revision: five `G-A11Y-*`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
-- **CI:** 113 (+7 this revision)
+- **CI:** 117 (+4 this revision)
 - **TEST:** 20 (unchanged)
-- **DOC-NORM:** 115 (unchanged)
+- **DOC-NORM:** 116 (+1 this revision)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 48 (+1 this revision: Domain-EXPORT)
+- **Areas covered:** 49 (+1 this revision: Domain-A11Y)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
