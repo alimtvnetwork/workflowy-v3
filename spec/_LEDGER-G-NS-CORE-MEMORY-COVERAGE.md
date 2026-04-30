@@ -87,7 +87,7 @@ This ledger remedies that by making the Core↔Gate mapping **first-class and ve
 | # | Core rule | Coverage | Notes |
 |---|---|---|---|
 | I1 | "Loaders read local mirror first (≤16ms p95, never fetch); actions write mirror+queue in one IDB tx — queue worker is sole egress" | ✅ `G-23-LOADER-MIRROR-FIRST`, `G-23-LOADER-NO-MUTATE`, `G-23-WARM-LOADER-16MS`, `G-23-COLD-OFFLINE-SHELL`, `G-23-ACTION-ENQUEUE-ONLY`, `G-23-ACTION-NO-THROW`, `G-23-FETCHER-SAME-PATH`, `G-23-ROUTER-ERRORELEMENT`, `G-23-RECONNECT-LOCK` | Excellent — 9 gates cover every clause. |
-| I2 | "Undo cap 100 in-memory per-tab" | 📋 `RESERVED: G-21-UNDO-CAP-100` | No gate today. ADR-0021 anchors the rule. **Gap candidate.** |
+| I2 | "Undo cap 100 in-memory per-tab" | ✅ `G-21-UNDO-CAP-100` (DOC-NORM, registered 2026-04-30 by GAPCLOSE-I2 — registry v1.7.44) | Anchors ADR-0021 §D1. CI promotion deferred (requires runtime tab-scope harness). |
 | I3 | "Offline queue UNBOUNDED in IndexedDB (localStorage forbidden)" | ✅ `G-25-QUEUE-UNBOUNDED`, `G-25-QUEUE-INDEXEDDB-ONLY`, `G-25-QUEUE-NO-SILENT-DROP`, `G-25-POLL-IDEMPOTENT` | Strong. localStorage-ban grep is implicit in `G-25-QUEUE-INDEXEDDB-ONLY`. |
 
 ### J. Realtime (SSE)
