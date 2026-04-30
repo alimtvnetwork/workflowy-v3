@@ -45,8 +45,8 @@ introduced `Node.deletedAt` without anchoring its lifecycle.
 
 ### D1 — Soft-delete is the only delete operation surfaced to users
 
-User-initiated delete (single, multi-select, cascade-from-parent) MUST
-set `Item.DeletedAt = serverNow` and MUST NOT issue a SQL `DELETE`.
+User-initiated delete (single, multi-select, cascade-from-parent) MUST (gate G-11-TRASH-30-DAY-WINDOW)
+set `Item.DeletedAt = serverNow` and MUST NOT issue a SQL `DELETE` (gate G-11-TRASH-30-DAY-WINDOW).
 The row remains queryable via the Trash view and restorable via the
 restore endpoint until the reaper hard-deletes it.
 
@@ -58,7 +58,7 @@ Hard `DELETE FROM Item` is reserved for **two** code paths only:
 
 ### D2 — 30-day retention window
 
-A soft-deleted `Item` MUST remain restorable for **exactly 30 days**
+A soft-deleted `Item` MUST remain restorable for **exactly 30 days** (gate G-11-TRASH-30-DAY-WINDOW)
 after `DeletedAt`. The cutoff is computed server-side as
 `cutoff = serverNow - INTERVAL '30 days'`. Rows with
 `DeletedAt < cutoff` are eligible for hard delete.
@@ -70,21 +70,21 @@ after `DeletedAt`. The cutoff is computed server-side as
 
 ### D3 — Daily reaper at 03:00 UTC
 
-The reaper MUST run on a single deterministic schedule:
+The reaper MUST run on a single deterministic schedule (gate G-11-TRASH-30-DAY-WINDOW):
 **daily at 03:00 UTC**, triggered by the platform scheduler hitting
-the admin reaper endpoint. It MUST NOT run hourly, weekly, or on a
+the admin reaper endpoint. It MUST NOT run hourly, weekly, or on a (gate G-11-TRASH-30-DAY-WINDOW)
 client-driven trigger.
 
 Concurrency control:
 
-- A single advisory lock MUST guard the run. Overlapping ticks return
-  HTTP 409 (per `05-trash-reaper-flow.md`) and MUST NOT double-process.
-- Each batch MUST acquire row locks via `FOR UPDATE SKIP LOCKED` so
+- A single advisory lock MUST guard the run. Overlapping ticks return (gate G-11-TRASH-30-DAY-WINDOW)
+  HTTP 409 (per `05-trash-reaper-flow.md`) and MUST NOT double-process (gate G-11-TRASH-30-DAY-WINDOW).
+- Each batch MUST acquire row locks via `FOR UPDATE SKIP LOCKED` so (gate G-11-TRASH-30-DAY-WINDOW)
   concurrent restore operations on adjacent rows are non-blocking.
 
 ### D4 — Batch size = 1000, per-batch COMMIT
 
-Each reaper pass MUST process eligible rows in batches of **1000**,
+Each reaper pass MUST process eligible rows in batches of **1000**, (gate G-11-TRASH-30-DAY-WINDOW)
 each batch in its **own transaction** that COMMITs before the next
 batch is selected. The 1000-row ceiling bounds:
 
@@ -97,7 +97,7 @@ superseding ADR with a documented benchmark.
 
 ### D5 — Cascade scope
 
-A reaper hard-delete MUST cascade via foreign key to:
+A reaper hard-delete MUST cascade via foreign key to (gate G-11-TRASH-30-DAY-WINDOW):
 
 - All descendants of the deleted `Item` (transitive `ParentItemId`
   closure).
@@ -105,15 +105,15 @@ A reaper hard-delete MUST cascade via foreign key to:
 - All `Permission` rows referencing the deleted `Item`.
 
 If a peer-group's membership drops to **size 1** as a result of the
-reap, the singleton MUST be dissolved per ADR-0005 (mirror peer-group
+reap, the singleton MUST be dissolved per ADR-0005 (mirror peer-group (gate G-11-TRASH-30-DAY-WINDOW)
 auto-dissolution).
 
-`Template` rows are **independent snapshots** and MUST NOT cascade —
+`Template` rows are **independent snapshots** and MUST NOT cascade — (gate G-11-TRASH-30-DAY-WINDOW)
 they are unaffected by the reaper.
 
 ### D6 — Reaper audit trail
 
-Every reaper run MUST append exactly one row to
+Every reaper run MUST append exactly one row to (gate G-11-TRASH-30-DAY-WINDOW)
 `ReaperRun(Id, RanAt, RowsDeleted, DurationMs)`. The audit row is
 written **after** the final batch COMMITs (so a crashed run produces no
 audit row, matching the "at most one batch lost" guarantee in D4).

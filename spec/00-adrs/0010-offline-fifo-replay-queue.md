@@ -53,24 +53,24 @@ P57 closes this gap and discharges the forward-reference from ADR-0005.
 
 ### D1 — Single client-side FIFO queue keyed by `LocalSeq`
 
-There MUST be exactly **one** offline mutation queue per client
+There MUST be exactly **one** offline mutation queue per client (gate G-14-QUEUE-FIFO-LOCALSEQ)
 session. Every mutation produced while offline (or while online but
-before the previous mutation has been acknowledged) MUST be appended
+before the previous mutation has been acknowledged) MUST be appended (gate G-14-QUEUE-FIFO-LOCALSEQ)
 with a monotonically increasing `LocalSeq` integer assigned client-side.
 
-Replay MUST drain the queue **strictly in `LocalSeq` order**. Parallel
+Replay MUST drain the queue **strictly in `LocalSeq` order**. Parallel (gate G-14-QUEUE-FIFO-LOCALSEQ)
 drain (concurrent `POST /sync/replay` requests from the same client)
-is **forbidden** — a client-side mutex MUST serialise drains.
+is **forbidden** — a client-side mutex MUST serialise drains (gate G-14-QUEUE-FIFO-LOCALSEQ).
 
 ### D2 — IndexedDB durability, never `localStorage`
 
-The queue MUST be persisted in **IndexedDB**. `localStorage`,
+The queue MUST be persisted in **IndexedDB**. `localStorage`, (gate G-14-QUEUE-FIFO-LOCALSEQ)
 `sessionStorage`, in-memory state, and cookies are forbidden as the
 queue's primary store. Rationale: `localStorage` is synchronous and
 capped at ~5 MB; a long offline window or a bulk paste will overflow
 silently and lose mutations.
 
-The queue MUST survive:
+The queue MUST survive (gate G-14-QUEUE-FIFO-LOCALSEQ):
 
 - Tab close and reopen.
 - Browser process crash and OS reboot.
@@ -78,7 +78,7 @@ The queue MUST survive:
 
 ### D3 — Server-stamped `ServerTs` is the only LWW clock
 
-Field-level LWW comparisons MUST use **`ServerTs`** (the server's
+Field-level LWW comparisons MUST use **`ServerTs`** (the server's (gate G-14-QUEUE-FIFO-LOCALSEQ)
 clock at the moment the mutation is applied), never the client's
 wall-clock `clientTs`. The server applies the LWW guard:
 
@@ -103,14 +103,14 @@ telemetry only; it MUST NOT participate in any LWW decision.
 
 ### D4 — Idempotent replay via `ClientMutationId` + `ProcessedMutation`
 
-Every mutation MUST carry a client-generated `ClientMutationId`
-(globally unique within the client session). The server MUST persist
+Every mutation MUST carry a client-generated `ClientMutationId` (gate G-26-LWW-CANONICAL-COMPARATOR)
+(globally unique within the client session). The server MUST persist (gate G-26-LWW-CANONICAL-COMPARATOR)
 the original response in `ProcessedMutation(ClientMutationId, Response,
 ProcessedAt)`. On replay of the same `ClientMutationId`, the server
-MUST return the cached `Response` **without re-executing** the
+MUST return the cached `Response` **without re-executing** the (gate G-26-LWW-CANONICAL-COMPARATOR)
 mutation.
 
-`ProcessedMutation` rows MUST be pruned by a separate sweeper at
+`ProcessedMutation` rows MUST be pruned by a separate sweeper at (gate G-26-LWW-CANONICAL-COMPARATOR)
 `INTERVAL '7 days'` (well past any realistic offline window).
 
 Rationale: network drops during the request/response cycle make
@@ -119,7 +119,7 @@ flaky-network mutation risks duplicate side effects.
 
 ### D5 — Conflict UX is silent; no rejection of stale ops
 
-The user MUST NOT be prompted to resolve conflicts. A mutation that
+The user MUST NOT be prompted to resolve conflicts. A mutation that (gate G-26-LWW-CANONICAL-COMPARATOR)
 loses LWW triggers the standard *"Restored remote change"* banner
 (per `14-concurrency-and-sync.md` §14.2) and the local mirror reverts
 to the server payload. Stale ops are NEVER rejected outright at the
@@ -129,7 +129,7 @@ silently lose if a newer write exists.
 ### D6 — Queue is decoupled from the 250-item view cap
 
 The 250-item view cap from ADR-0008 D4 is a **render-time** budget. It
-MUST NOT constrain the local mirror's size, the queue's depth, or any
+MUST NOT constrain the local mirror's size, the queue's depth, or any (gate G-26-LWW-CANONICAL-COMPARATOR)
 offline operation. The local mirror holds the user's entire account;
 the queue holds every pending mutation regardless of which view it
 targets.

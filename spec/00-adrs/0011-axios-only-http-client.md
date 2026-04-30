@@ -41,7 +41,7 @@ P58 closes this gap.
 
 ### D1 — Axios is the sole HTTP client in `src/`
 
-Every outbound HTTP request from frontend code MUST go through Axios.
+Every outbound HTTP request from frontend code MUST go through Axios (gate G-32-AXIOS-ONLY).
 The following are **forbidden** in `src/` (excluding generated
 `src/components/ui/*` shadcn files and third-party `node_modules`):
 
@@ -51,7 +51,7 @@ The following are **forbidden** in `src/` (excluding generated
   `got`, `node-fetch`.
 - HTTP transport baked into other libraries (e.g. `@tanstack/query`'s
   built-in adapter when used **as** a fetcher rather than as a cache).
-  TanStack Query MAY be used as a cache layer, but its `queryFn` MUST
+  TanStack Query MAY be used as a cache layer, but its `queryFn` MUST (gate G-32-AXIOS-ONLY)
   call into the project's Axios singleton.
 
 **Out of scope** of D1: WebSocket, EventSource (SSE), and WebRTC
@@ -60,9 +60,9 @@ clients. SSE per ADR-0003's "WP-native SSE" anchor uses the native
 
 ### D2 — Single Axios singleton with project-wide interceptors
 
-There MUST be exactly **one** Axios instance per page load, exported
+There MUST be exactly **one** Axios instance per page load, exported (gate G-32-AXIOS-ONLY)
 from a single module (`src/lib/http.ts` is the canonical path; renames
-require an ADR amendment). The singleton MUST register, in this order:
+require an ADR amendment). The singleton MUST register, in this order (gate G-32-AXIOS-ONLY):
 
 1. **Request interceptor** — auth header injection, CSRF token,
    `X-WorkFlowy-Idempotency-Key` (when supplied), `ClientMutationId`
@@ -79,7 +79,7 @@ is **forbidden**.
 
 ### D3 — Version pin: exactly `1.14.0` OR exactly `0.30.3`
 
-The `package.json` entry for `axios` MUST be one of the two exact
+The `package.json` entry for `axios` MUST be one of the two exact (gate G-32-AXIOS-ONLY)
 strings:
 
 ```json
@@ -93,8 +93,8 @@ or
 ```
 
 No caret (`^`), tilde (`~`), or range syntax. No other Axios version is
-permitted. `scripts/validate-axios-version.ts` MUST run as part of the
-pre-commit hook (per `spec/13-cicd-pipeline-workflows/`) and MUST fail
+permitted. `scripts/validate-axios-version.ts` MUST run as part of the (gate G-32-AXIOS-ONLY)
+pre-commit hook (per `spec/13-cicd-pipeline-workflows/`) and MUST fail (gate G-32-AXIOS-ONLY)
 the commit on any other value.
 
 **Rationale for two exact versions** (not one):
@@ -108,12 +108,12 @@ the commit on any other value.
 The two are API-compatible for the surface this project uses (`get`,
 `post`, `put`, `delete`, `patch`, `interceptors.request.use`,
 `interceptors.response.use`, `AxiosError`, `AxiosResponse`, `create`).
-Code MUST NOT use `1.x`-only features (e.g. `formSerializer`,
+Code MUST NOT use `1.x`-only features (e.g. `formSerializer`, (gate G-32-AXIOS-ONLY)
 `paramsSerializer.encode` advanced opts) in the shared code path.
 
 ### D4 — CVE-pinned validator runs in CI and pre-commit
 
-`scripts/validate-axios-version.ts` MUST:
+`scripts/validate-axios-version.ts` MUST (gate G-32-AXIOS-ONLY):
 
 - Read `package.json` and assert `dependencies.axios ∈ {"1.14.0",
   "0.30.3"}`.
@@ -131,8 +131,8 @@ Bumping the allowed set requires a superseding ADR.
 ### D5 — No HTTP client wrapping that hides Axios
 
 Project-internal helpers (e.g. `apiClient.fetchItems(...)`) are
-allowed and encouraged, but they MUST be thin wrappers over the D2
-singleton. Wrappers MUST NOT:
+allowed and encouraged, but they MUST be thin wrappers over the D2 (gate G-20-PRECOMMIT-CONTRACT)
+singleton. Wrappers MUST NOT (gate G-20-PRECOMMIT-CONTRACT):
 
 - Re-export a fake `fetch`-shaped facade that an AI could mistake
   for Web Fetch.
