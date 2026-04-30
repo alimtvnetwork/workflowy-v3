@@ -34,7 +34,7 @@ This ADR closes that gap.
 
 ## Decision
 
-Every REST response served by the WordPress plugin **MUST** be a
+Every REST response served by the WordPress plugin **MUST** be a (gate G-04-ENVELOPE-SHAPE)
 single JSON object with **PascalCase top-level keys** in the shape
 below — and **only** that shape.
 
@@ -60,7 +60,7 @@ below — and **only** that shape.
   member requires a new ADR superseding this one.
 - **`Attributes`** — object. Echoes load-bearing request inputs (e.g.
   `{ "RequestId": "…", "ItemId": "…", "Cursor": "…" }`) plus
-  scalar metadata (`"ServerTimeUtc"`, `"BuildSha"`). **MUST NOT**
+  scalar metadata (`"ServerTimeUtc"`, `"BuildSha"`). **MUST NOT** (gate G-04-ENVELOPE-SHAPE)
   contain domain payload — that goes under `Results`.
 - **`Results`** — object **or** `null`. Carries the domain payload.
   `null` only when the operation has no return value (e.g.
@@ -77,13 +77,13 @@ just to satisfy the schema):**
   may exceed the 250-item view limit.
 - **`Errors`** — array of error objects, each shaped
   `{ "Code": "ENF-VIEW-LIMIT-EXCEEDED", "Detail": { … },
-  "Hint": "…", "Field": "ItemId" }`. **MUST** be present iff
+  "Hint": "…", "Field": "ItemId" }`. **MUST** be present iff (gate G-04-ENVELOPE-SHAPE)
   `Status` indicates a failure (`BadRequest` and below). Codes are
   drawn from the registry under
   `spec/03-error-manage/` and `spec/35-enforcement-rules/`.
 - **`MethodsStack`** — array of strings, debug-only. Lists the
   middleware/handler chain that produced the response. Emitted
-  **only** when `WP_DEBUG === true`; **MUST NOT** appear in
+  **only** when `WP_DEBUG === true`; **MUST NOT** appear in (gate G-04-ENVELOPE-SHAPE)
   production responses.
 
 **Forbidden without superseding ADR:**
@@ -187,7 +187,7 @@ governed by this ADR, only keys.
   `spec/31-app/06-endpoints/` returns this envelope. New endpoint
   pages that omit the envelope shape fail spec hygiene.
 - **AT fixtures locked:** every JSON fixture under
-  `spec/31-app/97a-` … `97e-` MUST conform to the envelope shape
+  `spec/31-app/97a-` … `97e-` MUST conform to the envelope shape (gate G-04-ENVELOPE-DEBUG-FLAG)
   (or be marked as "wire-bytes-illustrative" with a leading
   comment).
 - **Convention pages anchored:**

@@ -29,27 +29,27 @@ overridden" status.
 
 ## Decision
 
-**D1 — Ratify [#01](../../.lovable/question-and-ambiguity/00-triage-summary.md#01--audit-100100-score-should-b1b4-addendums-add-a-new-dimension) (audit dimension scope) (MUST).** The 100/100 audit
-score MUST NOT be recomputed to absorb post-100 addendums (B1–B4 or any
-future Bn). Post-100 work MUST be recorded as a "Related spec-completeness
+**D1 — Ratify [#01](../../.lovable/question-and-ambiguity/00-triage-summary.md#01--audit-100100-score-should-b1b4-addendums-add-a-new-dimension) (audit dimension scope) (MUST).** The 100/100 audit (gate G-24-AUDIT-SCORE-FROZEN)
+score MUST NOT be recomputed to absorb post-100 addendums (B1–B4 or any (gate G-24-AUDIT-SCORE-FROZEN)
+future Bn). Post-100 work MUST be recorded as a "Related spec-completeness (gate G-24-AUDIT-SCORE-FROZEN)
 work" footnote to the audit, never as a new dimension. Reopening requires
 a superseding ADR.
 
-**D2 — Ratify [#03](../../.lovable/question-and-ambiguity/00-triage-summary.md#03--ddl-singular-itemtitle-vs-spec-plural-itemscontent) (DDL singular vs spec plural) (MUST).** DDL identifiers
-MUST remain **singular** (`Item`, `Title`, `Owner`, etc.) per ADR-0001
+**D2 — Ratify [#03](../../.lovable/question-and-ambiguity/00-triage-summary.md#03--ddl-singular-itemtitle-vs-spec-plural-itemscontent) (DDL singular vs spec plural) (MUST).** DDL identifiers (gate G-24-AUDIT-SCORE-FROZEN)
+MUST remain **singular** (`Item`, `Title`, `Owner`, etc.) per ADR-0001 (gate G-24-AUDIT-SCORE-FROZEN)
 and ADR-0006. Spec prose MAY use plural natural-language terms (`Items`,
 `Content`). The Spec↔DDL Alias Bridge in
 `spec/04-database-conventions/00-overview.md` is the **sole** translation
 authority. Renaming DDL to plural is **forbidden** without superseding
 ADR-0001, ADR-0006, **and** this ADR.
 
-**D3 — Ratify [#17](../../.lovable/question-and-ambiguity/00-triage-summary.md#17--favorites-endpoint-vs-table-contradiction) (Favorites placement) (MUST).** Favorites MUST be a
+**D3 — Ratify [#17](../../.lovable/question-and-ambiguity/00-triage-summary.md#17--favorites-endpoint-vs-table-contradiction) (Favorites placement) (MUST).** Favorites MUST be a (gate G-24-AUDIT-SCORE-FROZEN)
 **table-level** concern (column/flag on the canonical item table). No
 shell endpoint (`EP-FAVORITES-*`) may own it. Any future request to
-introduce `EP-FAVORITES-LIST` or a dedicated `Favorite` table MUST first
+introduce `EP-FAVORITES-LIST` or a dedicated `Favorite` table MUST first (gate G-24-AUDIT-SCORE-FROZEN)
 supersede ADR-0001 (per its Worked Example) **and** this ADR.
 
-**D4 — Triage classification update (MUST).** The three items MUST be
+**D4 — Triage classification update (MUST).** The three items MUST be (gate G-24-AUDIT-SCORE-FROZEN)
 re-labelled in `.lovable/question-and-ambiguity/00-triage-summary.md`
 (see §D1) from 🟡 **Soft-confirm** to ✅ **Ratified by ADR-0024**. The
 triage file remains an audit trail; the ADR is now the load-bearing

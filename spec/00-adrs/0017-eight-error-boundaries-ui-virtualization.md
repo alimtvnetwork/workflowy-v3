@@ -27,7 +27,7 @@ is independent of the 250-item view cap.
 ## Decision
 
 **D1 — Eight error boundary regions (closed enumeration).** The app
-MUST mount exactly eight independent React error boundaries, each
+MUST mount exactly eight independent React error boundaries, each (gate G-22-ERROR-BOUNDARIES-EXACTLY-8)
 with a region-specific fallback. A single root boundary is forbidden;
 nested boundaries beyond these eight are forbidden unless added by a
 superseding ADR. The eight boundaries:
@@ -48,11 +48,11 @@ that AT MUST be rewritten to assert eight boundaries.
 
 **D2 — Boundary independence.** Each boundary MUST catch errors
 isolated to its subtree without unmounting siblings. `componentDidCatch`
-in any boundary MUST NOT call `window.location.reload()` or otherwise
+in any boundary MUST NOT call `window.location.reload()` or otherwise (gate G-22-ERROR-BOUNDARIES-EXACTLY-8)
 take down peer regions. Only `AppErrorBoundary` (#1) may offer a
 full reload action.
 
-**D3 — Fallback contract.** Every fallback MUST:
+**D3 — Fallback contract.** Every fallback MUST (gate G-22-ERROR-BOUNDARIES-EXACTLY-8):
 - render a region-appropriate message (no generic "Something went wrong"
   in regions #2–#8);
 - expose the error code (per `spec/03-error-manage/02-error-architecture`)
@@ -63,7 +63,7 @@ full reload action.
 
 **D4 — Virtualization threshold.** Any rendered list, tree level, or
 grid that *can* exceed **1,000 visible items** in a single scrollable
-container MUST be virtualized. Concretely:
+container MUST be virtualized. Concretely (gate G-22-ERROR-BOUNDARIES-EXACTLY-8):
 - Sidebar outline tree (when expanded subtree > 1000 nodes).
 - Search results.
 - Trash view (`mem://features/trash-logic`, up to 30 days of
@@ -76,10 +76,10 @@ the 1000-item rule is the **virtualization-required cap** for views
 where the 250 cap does not apply (search, trash, mirrors, dashboard
 children of unbounded parents).
 
-**D5 — Virtualization library and behaviour.** Virtualization MUST
+**D5 — Virtualization library and behaviour.** Virtualization MUST (gate G-22-ERROR-BOUNDARIES-EXACTLY-8)
 use `@tanstack/react-virtual` (sole permitted virtualizer; pin
 version in `package.json` per the same convention as ADR-0011's
-Axios pin). Virtualized containers MUST:
+Axios pin). Virtualized containers MUST (gate G-22-ERROR-BOUNDARIES-EXACTLY-8):
 - preserve keyboard focus through scroll (item focus survives
   virtualization recycling);
 - maintain stable scroll position on item insert/delete (no jump);
