@@ -6,9 +6,11 @@
 
 **Generics are the ONLY acceptable approach for parameterized types.** Never use `any`, `unknown`, `Record<string, unknown>`, or loose interfaces where a generic can express the constraint.
 
+> **Gate umbrella:** `G-CG-TS-GENERICS-FIRST` (DOC-NORM) — composed of `G-CG-TS-GEN-REUSABLE-FN` (R1.1), `G-CG-TS-GEN-API-ENVELOPE` (R1.2), `G-CG-TS-GEN-COLLECTION-UTIL` (R1.3), `G-CG-TS-GEN-HOOK-FACTORY` (R1.4). Composes with `G-02-NO-ANY` (forbids the failure-mode escape hatch).
+
 ---
 
-## Rule 1.1: All reusable functions MUST be generic
+## Rule 1.1: All reusable functions MUST be generic — `G-CG-TS-GEN-REUSABLE-FN`
 
 ```typescript
 // ❌ FORBIDDEN — loose typing
@@ -22,7 +24,7 @@ function parseResponse<T extends object>(data: string): T { ... }
 
 ---
 
-## Rule 1.2: API response types MUST use generic envelope
+## Rule 1.2: API response types MUST use generic envelope — `G-CG-TS-GEN-API-ENVELOPE`
 
 ```typescript
 // ❌ FORBIDDEN
@@ -42,7 +44,7 @@ interface RawEnvelope<T = never> {
 
 ---
 
-## Rule 1.3: Collection utilities MUST be generic
+## Rule 1.3: Collection utilities MUST be generic — `G-CG-TS-GEN-COLLECTION-UTIL`
 
 ```typescript
 // ❌ FORBIDDEN
@@ -54,7 +56,7 @@ function buildQuery<T extends Record<string, string | number | undefined | null>
 
 ---
 
-## Rule 1.4: Hook factories MUST propagate generics
+## Rule 1.4: Hook factories MUST propagate generics — `G-CG-TS-GEN-HOOK-FACTORY`
 
 ```typescript
 // ❌ FORBIDDEN
