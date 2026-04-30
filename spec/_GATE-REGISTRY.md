@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.24  
-> **Updated:** 2026-04-30 — **batch-33 prose→AT migration:** seeded **Domain-EXPORT** with **7 new CI gates** binding all 8 prose-MUSTs (6 axes + 2 escape-routes; one axis binds twice) in `spec/31-app/05-conventions/20-g27-export-coverage-gate.md`. **Fourth namespace-collision recurrence** caught by F-SCOPE-15/20/28 pattern: source title "G-27" but `G-27-*` namespace owned by ADR-0027 (SSE shared ring). New namespace `Domain-EXPORT` adopted; source-callout rename tracked as F-SCOPE-37-FOLLOWUP. Tier mix: 7 CI (every axis has a runnable ripgrep pattern). Prior: 1.7.23 (batch-32 G-USER-ROLE-RANK-INTEGER cross-file reuse).
+> **Version:** 1.7.25  
+> **Updated:** 2026-04-30 — **batch-34 prose→AT migration:** seeded **Domain-A11Y** (App-Level Accessibility) with **5 new gates** binding all 5 prose-MUSTs in `spec/32-ui-design/05-quality/01-accessibility.md` (Labels, Tree-semantics, Color-contrast, Reduced-motion, Tooltips). Greenfield namespace; pre-flight collision check confirmed `G-A11Y-*` slot empty (distinct from `G-AUI-A11Y-*` which is admin-UI / WP-template-partials scope). Tier mix: 4 CI (axe-core / AST runnable) + 1 DOC-NORM (`G-A11Y-TREE-ROLES` = ARIA semantic-shape, validated by component review). Prior: 1.7.24 (batch-33 Domain-EXPORT seed + namespace-collision recurrence #4).
 
-- **Total named gates:** 453 (+7 this revision: seven `G-EXPORT-*`)
+- **Total named gates:** 458 (+5 this revision: five `G-A11Y-*`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
-- **CI:** 113 (+7 this revision)
+- **CI:** 117 (+4 this revision)
 - **TEST:** 20 (unchanged)
-- **DOC-NORM:** 115 (unchanged)
+- **DOC-NORM:** 116 (+1 this revision)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 48 (+1 this revision: Domain-EXPORT)
+- **Areas covered:** 49 (+1 this revision: Domain-A11Y)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
@@ -796,6 +796,18 @@
 | `G-EXPORT-FORMAT-REGISTRY-SEALED` | **CI** | [`spec/31-app/05-conventions/20-g27-export-coverage-gate.md`](./31-app/05-conventions/20-g27-export-coverage-gate.md) | (Axis 4) `Export\FormatRegistry::ALLOWED` mutations may only appear in `wp-plugin/Export/FormatRegistry.php`. No other file may write to that constant or `array_push` to that array. PHP reflection-based mutation is undetectable here but already banned by project conventions (Edge Case 4). |
 | `G-EXPORT-HTACCESS-INSTALL-DENY` | **CI** | [`spec/31-app/05-conventions/20-g27-export-coverage-gate.md`](./31-app/05-conventions/20-g27-export-coverage-gate.md) | (Axis 5) The plugin install/activation hook (canonical: `wp-plugin/Lifecycle/Install.php`) MUST contain a literal write of `.htaccess` under `wp-content/workflowy-exports/` containing `Deny from all` or `Require all denied`. Escape-route (Edge Case 5): if deny logic lives in a separate file, the canonical hook MUST `require_once` it — same gate fires both prose-MUSTs (L19 + L213). |
 | `G-EXPORT-SIGNED-URL-EMAIL-ONLY` | **CI** | [`spec/31-app/05-conventions/20-g27-export-coverage-gate.md`](./31-app/05-conventions/20-g27-export-coverage-gate.md) | (Axis 6) No `Logger::*()` / `error_log()` / `var_dump` / non-email REST response body may emit a string matching `/wp-json/workflowy/v1/exports/[a-f0-9]{32,}/download`. Only `Email::send*()` callers may handle the signed URL. Inline `// g27-allow: email-only logger` exemption documented for the Edge Case 7 closure-in-Email::send false-positive class. |
+
+### Domain-A11Y (App-Level Accessibility · WCAG 2.1 AA Baseline)
+
+> Reserved gate IDs for app-level accessibility requirements rooted at `spec/32-ui-design/05-quality/01-accessibility.md`. Distinct scope from `G-AUI-A11Y-*` (admin-UI / WP-template-partials accessibility under `spec/15-wp-plugin-how-to/13-admin-ui-patterns/11-misc-and-rules.md`). **Pre-flight namespace check (per F-SCOPE-37 follow-up):** `G-A11Y-*` slot empty across registry; no collision with `G-AUI-A11Y-*` because the latter is fully prefix-qualified. Batch-34 (2026-04-30) seeds 5 gates binding all 5 prose-MUSTs in the source table (Labels, Tree-semantics, Color-contrast, Reduced-motion, Tooltips). Tier mix: 4 CI (axe-core / static-AST runnable) + 1 DOC-NORM (tree-semantics is intent-shape, validated by component review). Non-MUST rows in the same table (Keyboard navigation, Focus indicators, Drag-and-drop alternative) remain prose — they describe capability surfaces already enforced by sibling gates (`G-USER-*`, editor-core gates) and have no parser-visible MUST tokens.
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-A11Y-INTERACTIVE-LABEL` | **CI** | [`spec/32-ui-design/05-quality/01-accessibility.md`](./32-ui-design/05-quality/01-accessibility.md) | Every interactive element (`<button>`, `<a href>`, `<input>`, `[role="button"]`, `[role="link"]`, `[role="menuitem"]`, `[role="tab"]`) MUST have an accessible name via visible text content OR `aria-label` OR `aria-labelledby`. Verified by axe-core rule `button-name` + `link-name` + `aria-input-field-name` in CI a11y suite; zero violations required. |
+| `G-A11Y-TREE-ROLES` | **DOC-NORM** | [`spec/32-ui-design/05-quality/01-accessibility.md`](./32-ui-design/05-quality/01-accessibility.md) | The item list MUST use proper ARIA tree semantics: container `role="tree"`, items `role="treeitem"` with `aria-expanded` (true/false) on parent items and `aria-level` reflecting nesting depth. State changes (expand/collapse) MUST be programmatically announced (live region or `aria-expanded` toggle). Verified by component review against `<ItemTree>` shadcn primitive contract. |
+| `G-A11Y-CONTRAST-WCAG-AA` | **CI** | [`spec/32-ui-design/05-quality/01-accessibility.md`](./32-ui-design/05-quality/01-accessibility.md) | All foreground/background pairings derived from `--*` HSL tokens MUST meet WCAG 2.1 AA contrast: ≥ 4.5:1 for normal text, ≥ 3:1 for large text (≥18pt or ≥14pt bold) and UI component boundaries. Verified by axe-core rule `color-contrast` (zero violations) AND a token-pair contrast matrix script that computes ratios from `index.css` `@theme` HSL definitions. |
+| `G-A11Y-REDUCED-MOTION` | **CI** | [`spec/32-ui-design/05-quality/01-accessibility.md`](./32-ui-design/05-quality/01-accessibility.md) | All animations / transitions / parallax / autoplay effects MUST be disabled (or reduced to instant fades ≤ 200ms with no transform) when the user's `prefers-reduced-motion: reduce` media query matches. Enforced via global `@media (prefers-reduced-motion: reduce)` block in `index.css` that zeroes `animation-duration` and `transition-duration`; per-component `framer-motion` usage MUST honor `useReducedMotion()`. Verified by ripgrep gate that every `framer-motion` import file references `useReducedMotion`. |
+| `G-A11Y-ICON-BUTTON-TOOLTIP` | **CI** | [`spec/32-ui-design/05-quality/01-accessibility.md`](./32-ui-design/05-quality/01-accessibility.md) | Every icon-only button (button containing only a `lucide-react` icon child, no visible text) MUST be wrapped in a shadcn `<Tooltip>` providing a descriptive label, AND carry an `aria-label` with the same text (Tooltip alone is keyboard/screen-reader insufficient on mobile/touch). Verified by AST gate scanning `.tsx` files for `<Button>` / `<button>` whose only child is a `lucide-react` component without sibling text node. |
 
 ---
 
