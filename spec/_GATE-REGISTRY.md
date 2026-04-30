@@ -1043,6 +1043,14 @@
 
 ---
 
+## 4a. Hygiene Gates — Lint Tier (added 2026-04-30)
+
+| Gate ID | Tier | Enforces | Source / Substitution Table |
+|---|---|---|---|
+| `G-LINT-VAGUE-MODIFIERS` | LINT | Forbids 15 listed vague modifiers (`appropriate`, `reasonable`, `fast`, `efficient`, `proper`, `suitable`, `good`, `better`, `nice`, `optimal`, `robust`, `scalable`, `secure`, `simple`, `modern`, `handle gracefully`, `as needed`) in spec prose. **Mode:** `block-new` for files modified after 2026-04-30; `warn-existing` for legacy occurrences (tracked under F-SPEC-14). Backtick-wrapped + `<!-- vague-exempt: <reason> -->` annotation skipped. | [`spec/19-glossary.md`](./19-glossary.md) §Forbidden Vague Modifiers |
+
+---
+
 ## 5. Known Gaps
 
 - 44 bare `G-NN` references in spec are section pointers, not real gates — excluded from this registry.

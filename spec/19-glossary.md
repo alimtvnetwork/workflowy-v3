@@ -104,6 +104,34 @@ This file is the canonical reference for terminology. When a term is used in any
 
 ---
 
+## Forbidden Vague Modifiers — Normative Substitutes
+
+**Status:** NORMATIVE. Enforced by hygiene gate `G-LINT-VAGUE-MODIFIERS` (registry §15). Files MUST replace each forbidden term with a measurable substitute or an explicit cross-reference to a SLA/budget/ADR. Bare prose use is a hygiene-gate failure.
+
+| Forbidden Term | Why Forbidden | Required Substitute |
+|---|---|---|
+| **appropriate** | Subjective; no audit handle | Cite ADR or SLA: e.g. "per ADR-0023 (≤16 ms p95 loader)" |
+| **reasonable** | Subjective | State the numeric bound: "≤200 ms", "≤5% CPU", "≤100 items" |
+| **fast** | Subjective | State p50/p95/p99 latency budget |
+| **efficient** | Subjective | State throughput target: "≥1000 ops/s", "O(log n)" |
+| **proper** | Subjective | Cite the rule: "per coding-guideline §X" or "per ADR-NNNN" |
+| **suitable** | Subjective | Same as *appropriate* |
+| **good / better / nice** | Subjective | Replace with measurable comparison or remove |
+| **optimal** | Subjective; usually false | State the algorithm class ("Cormen Ch. 12 RB-tree") or measured budget |
+| **robust** | Subjective | Cite failure modes covered: "handles network partition + LWW conflict per ADR-0024" |
+| **scalable** | Subjective | State scale envelope: "tested to 10⁶ nodes, 250-item view cap" |
+| **secure** | Subjective | Cite STRIDE category and mitigation ADR |
+| **simple / clean / elegant** | Subjective | Remove or replace with measurable code metric (cyclomatic ≤10, LOC ≤15) |
+| **modern** | Time-relative; rots | State concrete tech version: "ES2023", "React 19", "PHP 8.1+" |
+| **handle gracefully** | Vague error contract | Cite error code from `spec/03-error-manage/.../05-response-envelope/` |
+| **as needed / if needed** | Subjective trigger | State precondition: "when X > Y", "when ItemId.parse() throws" |
+
+**Exemption process:** A file may use a forbidden term inside a quoted requirement, audit finding, or third-party API name by wrapping the offending word in backticks and adding `<!-- vague-exempt: <reason> -->` on the same line. The hygiene gate skips backtick-wrapped occurrences.
+
+**Resolution path for legacy occurrences:** Tracked under `F-SPEC-14` in `spec/AUDIT-FINDINGS-LEDGER.md`. Bind sweeps proceed batch-wise; pre-commit hook blocks NEW occurrences from 2026-04-30 forward (`G-LINT-VAGUE-MODIFIERS` enforcing-mode = `block-new`, `warn-existing`).
+
+---
+
 ## Cross-References
 
 - [Coding Guidelines](./02-coding-guidelines/00-overview.md)
@@ -111,7 +139,9 @@ This file is the canonical reference for terminology. When a term is used in any
 - [Issues & Fixes Log](./02-coding-guidelines/01-cross-language/01-issues-and-fixes-log/00-overview.md)
 - [Casting Elimination Patterns](./02-coding-guidelines/01-cross-language/03-casting-elimination-patterns/00-overview.md)
 - [Enums Index](./20-enums-index.md)
+- [Audit Findings Ledger — F-SPEC-14](./AUDIT-FINDINGS-LEDGER.md)
+- [Gate Registry — G-LINT-VAGUE-MODIFIERS](./_GATE-REGISTRY.md)
 
 ---
 
-*Glossary v1.1.0 — 2026-04-26: AUDIT-02 resolved (PascalCase DB SSOT made normative; downstream rename queued as AUDIT-02a).*
+*Glossary v1.2.0 — 2026-04-30: Added Forbidden Vague Modifiers table (closes GAP-AMB-02 + collapses GAP-AMB-01-tail enforcement path; F-SPEC-14 now has normative substitution table + grandfather rule).*

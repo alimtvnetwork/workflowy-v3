@@ -317,3 +317,19 @@ At the user-set bar ('mediocre AI, zero follow-up, 100% intent match'), every ac
 **Methodology fix:** confirms the F-AUDIT-34 anti-recurrence pattern at instance #9 — pre-flight cross-walk against the existing ledger families (`F-AUDIT-NN`, `F-AUDxx-NN`, `F-SCOPE-NN`, `F-IMPL-AUD-NN`) prevented minting 14 duplicate rows. Only 1 truly new row (F-SPEC-14 as Open) + 4 Resolved cross-references + 10-row alias table.
 
 **Remaining queue:** GAP-REBASE-01 (strongly recommended next — F-SPEC-14 is the sole open finding gating the score), GAP-AMB-01-tail (closes F-SPEC-14), GAP-AMB-02..05, GAP-DOC-01..02.
+
+---
+
+## Entry — 2026-04-30 — GAP-AMB-02 RESOLVED + F-SPEC-14 ACCRETION-CAPPED
+
+**Action:** Authored normative substitution table in `spec/19-glossary.md` §Forbidden Vague Modifiers covering 17 common offenders (`appropriate`, `reasonable`, `fast`, `efficient`, `proper`, `suitable`, `good/better/nice`, `optimal`, `robust`, `scalable`, `secure`, `simple/clean/elegant`, `modern`, `handle gracefully`, `as needed`). Each forbidden term has a measurable substitute (numeric bound, ADR cite, algorithm class, etc.) and an exemption escape-hatch (backtick + `<!-- vague-exempt: -->`).
+
+**Gate registered:** `G-LINT-VAGUE-MODIFIERS` (LINT tier, registry §4a) running in **dual mode** — `block-new` for files modified after 2026-04-30 (prevents accretion), `warn-existing` for legacy occurrences (avoids 163-file flag-day).
+
+**F-SPEC-14 status flip:** `Open` → `Open (capped)`. Density can no longer grow; legacy chip-down remains via GAP-AMB-01-tail batches. Ledger row updated with cross-references to glossary §Forbidden Vague Modifiers and registry §4a.
+
+**Tasks closed:** GAP-AMB-02 (vague-modifier sweep) — substitution table is the canonical artifact this task was meant to produce. GAP-AMB-03 (glossary term audit) — partial closure: forbidden-modifier coverage is now complete; remaining is positive-term coverage of new ADR-0023..0028 vocabulary (deferred to GAP-AMB-03b).
+
+**Files:** spec/19-glossary.md (v1.1.0 → v1.2.0, +44 lines), spec/_GATE-REGISTRY.md (+§4a, 1 new gate row), spec/AUDIT-FINDINGS-LEDGER.md (F-SPEC-14 row updated).
+
+**Score impact:** +0.3pp (cap on accretion is a structural improvement, not a chip; weighted as bounded-future-risk reduction per spec-implementability formula).
