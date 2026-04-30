@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.41  
-> **Updated:** 2026-04-30 — **batch-48 (Domain-ADR-0005 anchor — fourth consecutive 4-MUST density-tier bind, third ADR-anchor area, fifth consecutive umbrella-composes-leaves chain):** registered 4 new DOC-NORM gates binding all 4 prose-MUSTs in `spec/00-adrs/0005-mirror-as-peer-group.md` (L39 model headline, L65 cycle precheck, L86 dissolve-in-tx, L94 amendment). Gates: `G-ADR-0005-PEER-GROUP-MODEL` (umbrella, composes 3 sub-rules), `G-ADR-0005-CYCLE-PRECHECK` (3-tier sub-rule under `G-MIRROR-CYCLE-PRECHECK`), `G-ADR-0005-DISSOLVE-IN-TX` (3-tier sub-rule under `G-MIRROR-DISSOLVE-SINGLETON`), `G-ADR-0005-SUPERSEDE-REQUIRED` (sub-rule of `G-ADR-0001-AMENDMENT-REQUIRED`). **Bare-MUST count 312 → 308 (Δ −4 exact).** Closes 42nd consecutive zero-drift batch. Streak counter: 5 consecutive content batches. Prior: 1.7.40 (Domain-ADR-0003 anchor).
+> **Version:** 1.7.42  
+> **Updated:** 2026-04-30 — **batch-49 (Domain-MCREATE seed — fifth consecutive 4-MUST density-tier bind, FIRST workflow-page batch demonstrating ADR-anchor → workflow cascade reuse, sixth consecutive umbrella-composes-leaves chain):** registered 4 new DOC-NORM gates binding all 4 prose-MUSTs in `spec/31-app/02-workflows/09-mirror-create-flow.md` (L127 idempotent-replay, L130 debounce-submit, L141 source-PeerGroupId-in-tx, L144 cycle-check-per-peer). Gates: `G-MCREATE-IDEMPOTENT-REPLAY`, `G-MCREATE-DEBOUNCE-SUBMIT`, `G-MCREATE-SOURCE-PEERGROUP-IN-TX` (3-tier sub-rule under `G-ADR-0005-DISSOLVE-IN-TX` — reuses the gate seeded yesterday in batch-48), `G-MCREATE-CYCLE-CHECK-PER-PEER` (3-tier sub-rule under `G-ADR-0005-CYCLE-PRECHECK` — same reuse). **Bare-MUST count 308 → 304 (Δ −4 exact).** Closes 43rd consecutive zero-drift batch. Streak counter: 6 consecutive content batches. **Pivot rationale:** ADR-anchor runway exhausted earlier than expected — ADRs 0026/0027/0029 were all pre-bound (gates declared inline in §Decision tables). Pivoted to highest-leverage 4-MUST workflow file: mirror-create cascades directly off batch-48's ADR-0005 anchors, providing the canonical demo of the ADR-anchor → workflow-bind reuse pattern. Prior: 1.7.41 (Domain-ADR-0005 anchor).
 
-- **Total named gates:** 528 (+4 this revision)
+- **Total named gates:** 532 (+4 this revision)
 - **WARN-only gates:** 11 (unchanged)
 - **CI:** 139 (unchanged)
 - **TEST:** 20 (unchanged)
-- **DOC-NORM:** 164 (+4 this revision)
+- **DOC-NORM:** 168 (+4 this revision)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 54 (+1 this revision — new Domain-ADR-0005)
+- **Areas covered:** 55 (+1 this revision — new Domain-MCREATE)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
