@@ -58,11 +58,11 @@ No app-specific content may appear in the 01–20 range. No foundational princip
 
 ### Rules
 
-1. **Required folders are fixed** — Their numbering and naming MUST NOT change unless this file is explicitly updated and all cross-references are audited.
-2. **App content starts at 21** — App-specific folders MUST use numbers 21+. They MUST NOT be placed in the 01–20 range.
+1. **Required folders are fixed** — Their numbering and naming MUST NOT change unless this file is explicitly updated and all cross-references are audited. `[gate: G-SAG-FOLDER-NUMBERING-FIXED · AT: AT-SAG-01]`
+2. **App content starts at 21** — App-specific folders MUST use numbers 21+. They MUST NOT be placed in the 01–20 range. `[gate: G-SAG-APP-CONTENT-21-PLUS · AT: AT-SAG-02]`
 3. **Sequential numbering** — New folders use the next available number. Gaps are acceptable for historical reasons.
 4. **Lowercase kebab-case** — All folder names: `{NN}-{kebab-case-name}/` (zero-padded, lowercase, hyphens only).
-5. **Every folder needs `00-overview.md`** — Every root folder MUST contain a `00-overview.md` as its entry point.
+5. **Every folder needs `00-overview.md`** — Every root folder MUST contain a `00-overview.md` as its entry point. `[gate: G-SAG-OVERVIEW-PRESENT · AT: AT-SAG-03]`
 6. **Cross-references must be updated after restructuring** — Grep `spec/` for old paths, update all references, run link scanner.
 
 ### Validation Checklist
