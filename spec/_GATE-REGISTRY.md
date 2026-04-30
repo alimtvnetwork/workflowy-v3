@@ -1,15 +1,15 @@
 # Gate Registry — Master Index of `G-*` Compliance Gates
 
-> **Version:** 1.7.21  
-> **Updated:** 2026-04-29 — **batch-18 prose→AT migration:** registered 5 new `G-NS-STATUS-*` sub-gates (`-FRONTMATTER-EXACTLY-ONE`, `-COMPANION-CITES-PARENT`, `-DEPRECATED-CITES-SUCCESSOR`, `-REDIRECT-BODY-CAP`, `-SWEEP-ATOMIC`) covering 6 prose-MUSTs in `spec/01-spec-authoring-guide/22-status-legend.md`. 4 CI tier + 1 DOC-NORM (sweep-atomic is process-only). All sub-rules of existing umbrella `G-NS-STATUS-IN-LEGEND` (CI, WARN-only). Pre-flight namespace check: only 1 sibling `G-NS-STATUS-*` gate registered (the umbrella) — no collisions. Prior: 1.7.14 (batch-17 G-BACKUP-* sub-gates).
+> **Version:** 1.7.22  
+> **Updated:** 2026-04-30 — **batch-31 prose→AT migration:** seeded **Domain-USER** with **22 new gates** binding all 21 prose-MUSTs in `spec/36-user-management/97-acceptance-criteria.md` (16 curated AT-USERMANAGEMENT-* rows + 5 P13-backfilled AT-USR-* story flows). Tier mix: 16 CI + 3 TEST + 3 DOC-NORM. Pre-flight namespace check: zero prior `G-USER-*` rows — clean greenfield. Distinct from `Domain-RE` (role-escalation lifecycle) which governs *changes* to assignments under dual-control; `Domain-USER` governs *baseline schema, helpers, hashing, sessions, admin tooling, and GDPR* invariants. Prior: 1.7.21 (batch-30 G-BACKUP-* DR runbook coverage).
 
-- **Total named gates:** 423 (+5 this revision: five `G-NS-STATUS-*`)
+- **Total named gates:** 445 (+22 this revision: twenty-two `G-USER-*`)
 - **WARN-only gates:** 9 (tracked at [`_GATE-GRADUATION-LEDGER.md`](./_GATE-GRADUATION-LEDGER.md))
-- **CI:** 89 (+4 this revision)
-- **TEST:** 17 (unchanged)
-- **DOC-NORM:** 112 (+1 this revision)
+- **CI:** 105 (+16 this revision)
+- **TEST:** 20 (+3 this revision)
+- **DOC-NORM:** 115 (+3 this revision)
 - **DOC:** 202 (unchanged)
-- **Areas covered:** 46 (unchanged)
+- **Areas covered:** 47 (+1 this revision: Domain-USER)
 - **Areas covered:** 37 (unchanged)
 
 > ⚠️ **Classifications are heuristic.** Each row links to its primary spec file; promote DOC-NORM → CI/TEST as automation is added by editing this registry.
