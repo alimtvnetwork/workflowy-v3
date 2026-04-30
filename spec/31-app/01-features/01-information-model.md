@@ -237,3 +237,31 @@ This table describes how every core data entity relates to others in the system.
 - **Persisted booleans introduced by this feature:** None.
 - **N/A justification:** Pure data-model SSOT — no user-facing toggles; all enums are closed at compile time (ItemType, NodeKind), not user-configurable.
 - **Compliance:** Satisfies the MUST in [`00-overview.md:140`](./00-overview.md) by explicit declaration. Any future boolean added here MUST route through `Sanitizer::bool()` and be enumerated in an `OptionNameType` case (see APP-FIX-05).
+
+---
+
+## Backend Write Surface
+
+> Enumerated per F-AUD42-22 (BE:0 closure). All routes follow the **PascalCase API envelope** (ADR-0004/0019: `Status, Attributes, Results` mandatory). Mutations go through the **queue worker** (ADR-0023) — never direct fetch from React.
+
+### REST Routes (write)
+
+| Method | Path | Operation | Idempotency / Concurrency |
+|--------|------|-----------|---------------------------|
+| `POST` | `/wp-json/workflowy/v1/items` | `CreateItem` | IdempotencyKey |
+| `PATCH` | `/wp-json/workflowy/v1/items/{ItemId}` | `UpdateItem` | IdempotencyKey + IfMatch (LWW) |
+| `DELETE` | `/wp-json/workflowy/v1/items/{ItemId}` | `SoftDeleteItem` | IdempotencyKey |
+
+### SSE Frames Emitted (read-signal only, ADR-0025)
+
+`ItemCreated`, `ItemUpdated`, `ItemSoftDeleted` on `/stream/page/{id}` and/or `/stream/user/{id}`. SSE MUST NOT enqueue to the FIFO (read-signal only).
+
+### Storage
+
+- **Tables touched:** nodes, lww_meta
+- **Error boundary on failure:** `AppErrorBoundary`
+- **Cross-DB JOINs:** forbidden (see Database Scope stanza above).
+
+### Endpoint SSOTs
+
+Detailed request/response fixtures live under [`spec/31-app/06-endpoints/`](../06-endpoints/) and [`97b-endpoint-envelope-fixtures.md`](../06-endpoints/97b-endpoint-envelope-fixtures.md).
