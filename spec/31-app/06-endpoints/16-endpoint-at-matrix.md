@@ -110,7 +110,7 @@ These are not repeated per row but every endpoint must pass them:
 
 | Endpoint | AT count | Reason |
 |---|---:|---|
-| `EP-BOARD-GET` (24) | 2 | Read-only board projection — covered by AT-BOARD-01/02 (load + permissions). Promotion to ≥3 deferred to next pass (consider adding `AT-WIRE-EGRESS-01` reference). |
+| `EP-BOARD-GET` (24) | 2 | Read-only board projection — covered by AT-BOARD-01/02 (load + permissions). Promotion to ≥3 ATs is deferred until `EP-BOARD-GET` gains write semantics or a separate `AT-WIRE-EGRESS-01` reference is added by a future ADR. |
 | `EP-BULK-MOVE` (26), `EP-BULK-DELETE` (27), `EP-BULK-TAGS` (29) | 2 | Bulk operations are explicit fan-outs of single-item ATs; per-row AT inheritance documented in `12-multi-select.md`. Promotion deferred. |
 | `EP-TEMPLATES-LIST` (30), `EP-TEMPLATES-CREATE` (32), `EP-TEMPLATES-APPLY` (33) | 2 | Template CRUD covered by AT-TEMPLATES-01..07. Cross-DB apply contract (`AT-TEMPLATES-APPLY-CRASH`) tracked under F-AUD42-17 (HIGH, open). |
 | `EP-ROLES-ASSIGN` (40), `EP-ROLES-REVOKE` (41) | 2 | Mutation paths covered by AT-ROLES-07..10 + universal `AT-AUTH-01`. Promotion deferred. |
