@@ -971,3 +971,24 @@ This is the **third** scope-correction in 3 turns (F-SCOPE-01 → 02 → 03), ea
 - **Verification:** `38-check-ambiguous-wording.mjs` exit 0 with new canonical stderr label; `79-check-vague-modifiers.mjs --block-all` exit 0 (no regression). Self-test of new fixture regex: `/G-WORDING-AMBIGUOUS-LINT: \d+ ambiguous-wording occurrence\(s\).*flipCriterion/` matches the runner's actual stderr line shape.
 - **Remaining `G-38` references:** ~30 in audit-ledger historical rows + retrospective scripts (`47-drain`, `48-add-antipatterns`, `60-check`, `76-check`, `audits/README.md`, `_AUDIT-EXEMPTIONS.md`, `_GATE-GRADUATION-LEDGER.md`) — all are **historical attribution** (documenting past state at the time the row/script was authored), NOT canonical references. Per memory rule, historical citations don't require renaming.
 - **F-SCOPE-40-FOLLOWUP status: CLOSED.** Total: 2 batches, 9 files touched, gate stderr canonicalized, fixture regex synchronized.
+
+---
+
+### NEW-13-FOLLOWUP — Orphan Gate Runner Graduation (2026-04-30, batch ~52)
+
+**Status:** ✅ CLOSED.
+
+**Context:** ADR-0033 (umbrella-composes-leaves) authored in F-SCOPE-57 deferred runner extension to NEW-13-FOLLOWUP. Goal: (a) verify umbrella-coverage logic in `76-check-orphan-gate-ids.mjs` produces drift=0, then (b) graduate `G-00-ORPHAN-GATE-ID-DRIFT` from WARN → HARD-FAIL.
+
+**Findings:**
+- Runner already implements ADR-0033 umbrella coverage (lines 110–139): parses `(Umbrella)` / `(Umbrella, family=X)` markers from registry rows; matches cited tokens via `^{umbrella}-{leaf}$`; honors family→file-path mapping (`familyOfPath()`).
+- Current state: `registered=628 cited=1002 allow-listed=130 umbrellas=25 umbrella-covered=181 drift=0`.
+- Both flip-criterion conditions met: drift=0 (≤5 ✅) AND ADR-0033 active ✅.
+
+**Changes:**
+- `scripts/spec-hygiene/76-check-orphan-gate-ids.mjs` L190–193: flipped default mode WARN → HARD-FAIL. New env-var `ORPHAN_GATE_SOFT=1` provides emergency soft-rollback (replaces former `ORPHAN_GATE_HARD_FAIL=1` opt-in).
+- `spec/_GATE-GRADUATION-LEDGER.md` L50: row struck-through, marked **HARD (graduated 2026-04-30)**, criterion ✅ MET, mechanism ✅ flipped.
+
+**Verification:** Runner exit 0, drift count 0, no behavioral regression. 25 umbrellas now structurally cover 181 leaf-tokens that previously required allow-listing.
+
+**Remaining downstream:** The `ALLOWED` set in `76-check-orphan-gate-ids.mjs` still carries 130 entries, ~67 of which are now redundant (covered by umbrellas). Pruning is **non-blocking** (false-positives suppressed twice is harmless) and tracked as **F-AUDIT-48** (low-priority cleanup, future batch).
