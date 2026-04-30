@@ -95,7 +95,7 @@ This is the **third archetype** in this folder, alongside Browser Extension Depl
 └──────────────┘   └──────────────┘   └──────────────┘   └──────────────┘
 ```
 
-Each stage MUST be a separate GitHub Actions job step so failures are individually attributable. See [`./02-github-actions-workflow.md`](./02-github-actions-workflow.md) for the complete workflow YAML.
+Each stage MUST be a separate GitHub Actions job step so failures are individually attributable `[gate: G-WPDEPLOY-STAGE-PER-STEP]`. See [`./02-github-actions-workflow.md`](./02-github-actions-workflow.md) for the complete workflow YAML.
 
 ---
 
