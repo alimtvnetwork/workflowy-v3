@@ -35,7 +35,7 @@ A **policy SSOT** says *what* must happen ("integrity check MUST pass"). A **run
 | **Policy SSOT** | `spec/31-app/05-conventions/` | Implementers, auditors | Normative prose, MUST/MAY | "Integrity check MUST pass before mounting." |
 | **Runbook** | `spec/15-wp-plugin-how-to/16-operator-runbooks/` | On-call operators | Imperative steps with copy-paste commands | `sqlite3 /var/restore/staging.sqlite 'PRAGMA integrity_check;' \| grep -q '^ok$'` |
 
-A runbook MUST cite the policy SSOT it implements (forward link). The policy SSOT MAY cite the runbook (back link, optional).
+A runbook MUST cite the policy SSOT it implements (forward link). The policy SSOT MAY cite the runbook (back link, optional). [gate: `G-RUNBOOK-CITES-POLICY` · AT: `AT-RUNBOOK-01`]
 
 ## Files
 
