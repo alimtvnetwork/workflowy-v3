@@ -191,7 +191,7 @@ var variantInfoMap = map[Variant]VariantInfo{
 | Enum only needs `String()` / `Parse()` / `Is*()` | **Plain enum** — `variantLabels` only |
 | Enum has 2+ metadata fields (icon, CSS, description, sort) | **Info-object** — add `VariantInfo` + `variantInfoMap` |
 | Metadata is used in UI rendering or API responses | **Info-object** — always |
-| Enum is a simple internal discriminator | **Plain enum** — keep it simple |
+| Enum has only `String()`/`Parse()` and no per-variant metadata fields | **Plain enum** — no info-object overhead |
 
 ---
 
