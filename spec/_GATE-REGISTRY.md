@@ -592,6 +592,14 @@
 | `G-RUNBOOK-CITES-POLICY` | **DOC-NORM** | [`spec/15-wp-plugin-how-to/23-operator-runbooks/00-overview.md`](./15-wp-plugin-how-to/23-operator-runbooks/00-overview.md) | Every operator runbook MUST cite the policy SSOT it implements via a forward link in the runbook header (machine-checkable: `_(matches A-XX vYY.ZZ.W)_` annotation present and resolvable). Anchored §"Distinction from policy SSOTs"; back-link from policy SSOT is OPTIONAL. Runner: extension to `scripts/spec-hygiene/19-check-runbook-staleness.mjs` (already wired into `npm run spec:check`). |
 | `G-RUNBOOK-DRILLED` | **DOC** | [`spec/15-wp-plugin-how-to/23-operator-runbooks/00-overview.md`](./15-wp-plugin-how-to/23-operator-runbooks/00-overview.md) | Every runbook MUST be drilled at the cadence its referenced policy SSOT requires (e.g. A-44 DR drill = quarterly). Drill cadence MUST appear in the runbook footer; drill log MUST be referenced. PR-review gate; no executable runner (audit-trail enforced via runbook authoring template). Anchored §"Authoring rules" rule 6. |
 
+### Domain-SAG (Spec-Authoring Guide · Folder & Naming Conventions)
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-SAG-FOLDER-NUMBERING-FIXED` | **DOC-NORM** | [`spec/01-spec-authoring-guide/01-folder-structure.md`](./01-spec-authoring-guide/01-folder-structure.md) | Required root folders' numbering and naming MUST NOT change unless `01-folder-structure.md` is explicitly updated AND all cross-references are audited. Anchored §Rules rule 1; AT `AT-SAG-01`. PR-review gate; runner = extension to existing link-scanner step in `npm run spec:check`. |
+| `G-SAG-APP-CONTENT-21-PLUS` | **DOC-NORM** | [`spec/01-spec-authoring-guide/01-folder-structure.md`](./01-spec-authoring-guide/01-folder-structure.md) | App-specific folders MUST use numbers 21+; folders numbered 01–20 MUST NOT contain app-specific content. Anchored §Rules rule 2 + §Numbering Policy; AT `AT-SAG-02`. Runner: trivial CI lint over folder names + content classifier comment. |
+| `G-SAG-OVERVIEW-PRESENT` | **DOC-NORM** | [`spec/01-spec-authoring-guide/01-folder-structure.md`](./01-spec-authoring-guide/01-folder-structure.md) | Every root spec folder MUST contain a `00-overview.md` as its entry point. Anchored §Rules rule 5; AT `AT-SAG-03`. Runner: 1-line CI check `for d in spec/[0-9]*; do test -f "$d/00-overview.md"; done`. |
+
 ### Domain-SPLIT
 
 | Gate | Tier | Primary File | Brief |
