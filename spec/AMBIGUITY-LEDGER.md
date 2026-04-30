@@ -300,3 +300,20 @@ At the user-set bar ('mediocre AI, zero follow-up, 100% intent match'), every ac
 **Result:** **CON track complete.** Three contract surfaces (envelope, payload, realtime) are now fully machine-readable. Total contract artifacts authored across CON-01..03: OpenAPI 3.1 YAML (envelope, ~340 lines), TypeScript interface peer with branded IDs (envelope+Node, ~230 lines), JSON Schema for SSE frames (~190 lines), and 9 cross-peer parity gates (`G-CON-01-OPENAPI-PARITY`/`-PASCALCASE`, `G-CON-02-TYPES-PARITY`/`-PASCALCASE`/`-BRANDED-IDS`, `G-CON-03-SSE-FRAME-SCHEMA`/`-EVENT-LINE-PARITY`/`-PASCALCASE`/`-LWW-NO-CLIENT-TS`). Implementability impact: every wire-shape coin-flip in the system now has at least one machine-readable answer. The remaining unbacked clauses are concentrated in long-tail prose (164 files at 1 unbacked each) and meta-categories (vague modifiers, glossary, fixtures, conflicts) — none on load-bearing protocol surfaces.
 
 **Remaining queue (post-CON):** GAP-AMB-01-tail (long-tail bind sweep), GAP-AMB-02..05 (vague modifiers, glossary, fixtures, conflicts), GAP-DOC-01..02 (Mermaid + plan.md), GAP-LED-01 (24 Medium audit findings). **Strong recommendation: trigger GAP-REBASE-01 next** — the contract trifecta + SSE schema is a meaningful enough delta over the v7 95/100 baseline to justify a fresh Gemini-2.5-Pro rebase before any further long-tail work.
+
+
+---
+
+## GAP-LED-01 — Promote spec-vs-impl audit findings to AUDIT-FINDINGS-LEDGER (2026-04-30)
+
+**Action:** Cross-walked `/mnt/documents/spec-vs-impl-audit-2026-04-29.md` (15 findings: 10 `F-IMPL-NN`, 5 `F-SPEC-NN`) into `spec/AUDIT-FINDINGS-LEDGER.md`. Discovered the prior task-queue estimate of "24 dormant Medium findings" was inflated; actual unpromoted set was 15 findings, of which 10 IMPL findings were already subsumed by the existing `F-IMPL-AUD-07` (frontend skeleton) + `F-IMPL-AUD-08` (backend absent) CRITICAL umbrellas, and 5 SPEC findings split as 4 already-resolved (3 aliases of existing F-AUDIT-21/25 + ADR-0031, 1 closed in same v8 cycle) and 1 genuinely open (F-SPEC-14 = `_root` placeholder density, blocked on GAP-AMB-01-tail).
+
+**Two ledger additions:** (1) cross-walk note under §"Implementation-side findings" mapping every `F-IMPL-01..10` to its `F-IMPL-AUD-07/08` umbrella with explicit "no new IDs minted" rule (resolves at the same `exit spec-only` trigger); (2) new §"Findings — `F-SPEC-NN` family" section with all 5 rows (4 Resolved, 1 Open with GAP-AMB-01-tail evidence pointer).
+
+**Files:** spec/AUDIT-FINDINGS-LEDGER.md (+~30 lines: cross-walk table + new F-SPEC-NN section with 5 rows).
+
+**Result:** Net "open finding" count delta is +1 (F-SPEC-14 promoted from audit artifact to ledger as Open), not the +24 the task-queue estimate feared. Audit-discovery loop is now closed for the spec-vs-impl audit cycle: any future audit re-raising `F-IMPL-01..10` or `F-SPEC-11..15` will hit the existing rows and either ratify resolution or mint a `Stale` row per the F-AUDIT-26 precedent. Hygiene gate `74-check-audit-findings-ledger.mjs` will catch any orphan reference.
+
+**Methodology fix:** confirms the F-AUDIT-34 anti-recurrence pattern at instance #9 — pre-flight cross-walk against the existing ledger families (`F-AUDIT-NN`, `F-AUDxx-NN`, `F-SCOPE-NN`, `F-IMPL-AUD-NN`) prevented minting 14 duplicate rows. Only 1 truly new row (F-SPEC-14 as Open) + 4 Resolved cross-references + 10-row alias table.
+
+**Remaining queue:** GAP-REBASE-01 (strongly recommended next — F-SPEC-14 is the sole open finding gating the score), GAP-AMB-01-tail (closes F-SPEC-14), GAP-AMB-02..05, GAP-DOC-01..02.
