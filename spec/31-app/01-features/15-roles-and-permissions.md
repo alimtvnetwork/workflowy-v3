@@ -200,7 +200,7 @@ Defines the **runtime-agnostic** roles, permission grants, and authorization che
 
 ## Authorization Contract (runtime-agnostic)
 
-Every action that mutates state MUST pass the following check (pseudocode):
+Every action that mutates state MUST pass the following check (pseudocode) [gate: G-USER-HASROLE-CENTRAL]:
 
 ```
 function canPerform(action: Action, actor: User, target: Item): boolean {
@@ -223,7 +223,7 @@ function canPerform(action: Action, actor: User, target: Item): boolean {
 
 ### Storage contract
 
-The backend MUST provide a roles table that satisfies these constraints. **Roles MUST NOT be stored on the user/profile table** (privilege-escalation prevention).
+The backend MUST provide a roles table that satisfies these constraints. **Roles MUST NOT be stored on the user/profile table** (privilege-escalation prevention) [gate: G-USER-ROLES-SEPARATE-TABLE].
 
 | Field | Type | Constraint |
 |-------|------|------------|
@@ -239,7 +239,7 @@ Uniqueness: `(userId, scope, scopeId, role)` must be unique.
 
 ### Helper function contract
 
-The backend MUST expose a server-side function `hasRole(userId, scope, scopeId, role): boolean` that:
+The backend MUST expose a server-side function `hasRole(userId, scope, scopeId, role): boolean` that [gate: G-USER-HASROLE-SECURITY-DEFINER]:
 - Runs with elevated privileges (security-definer pattern).
 - Is the **only** path RLS / capability checks use.
 - Returns `false` on any error rather than throwing.
@@ -310,7 +310,7 @@ final class Auth
 ### Return contract
 
 - `true` — user holds the requested role **or higher** at the given scope. Action MAY proceed.
-- `false` — denied for any reason (no grant, unknown user, internal error). Caller MUST reject the action with HTTP 403 (or equivalent).
+- `false` — denied for any reason (no grant, unknown user, internal error). Caller MUST reject the action with HTTP 403 (or equivalent) [gate: G-USER-HASROLE-CENTRAL].
 
 > **Rule:** `Auth::hasRole()` is **fail-closed**. Treat `false` as "denied" without inspecting why. The audit trail (`Logger::error`) is the only place to learn the cause.
 
@@ -322,7 +322,7 @@ final class Auth
 Owner  >  Admin  >  Edit  >  View  >  PublicView
 ```
 
-Implementation MUST use the integer rank from the canonical enum file ([`spec/20-enums-index.md`](../../20-enums-index.md) §3) — never compare strings directly.
+Implementation MUST use the integer rank from the canonical enum file ([`spec/20-enums-index.md`](../../20-enums-index.md) §3) — never compare strings directly [gate: G-USER-ROLE-RANK-INTEGER].
 
 ### Required call sites (non-exhaustive)
 
@@ -367,7 +367,7 @@ public function handleMoveItem(\WP_REST_Request $req): \WP_REST_Response
 - [`spec/20-enums-index.md`](../../20-enums-index.md) §3.5 — `SharePermissionType` enum SSOT
 - [`spec/19-glossary.md`](../../19-glossary.md) — terminology
 - [`mem://constraints/backend-runtime-deferred`](mem://constraints/backend-runtime-deferred) — runtime-agnostic mandate
-- System-prompt mandate: roles MUST live in a separate table; never on user/profile
+- System-prompt mandate: roles MUST live in a separate table; never on user/profile [gate: G-USER-ROLES-SEPARATE-TABLE]
 
 ---
 
