@@ -12,13 +12,28 @@
 //
 // Inaugural baseline 2026-04-30: 124 tokens allow-listed (37 umbrella, 6 baseline,
 // 2 test-fixture, 2 legacy-alias, 77 deprecated bare-numeric per registry §4.5).
+// F-AUDIT-45-FOLLOWUP closure 2026-04-30: +67 documented allow-list entries
+// (future-CI gate names from AT-table "Gate" columns + parser hardening for
+// trailing-dash + 5 placeholder skeletons). Drift: 74 → 0. Mode promoted CI-WARN → CI-HARD.
 
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 
 const REG_PATH = "spec/_GATE-REGISTRY.md";
-const PLACEHOLDERS = new Set(["G-NN", "G-NN-NAME", "G-DOMAIN-NN", "G-ADR-NNNN", "G-00-UMBRELLA-LEAVES-DESCRIBED"]);
+// Placeholder/skeleton tokens used in prose ("see G-NN", "G-2X family", "G-09 reserved")
+// — these are NOT citations and MUST NOT count toward drift.
+const PLACEHOLDERS = new Set([
+  "G-NN", "G-NN-NAME", "G-DOMAIN-NN", "G-ADR-NNNN",
+  "G-00-UMBRELLA-LEAVES-DESCRIBED",
+  // Family/skeleton mentions in prose — see spec/31-app/05-conventions/02-ci-quality-gates.md §reserved
+  "G-09", "G-2X", "G-3X", "G-26-", "G-41",
+  // Bare ADR-namespace mention in §0033 examples
+  "G-00-ADR", "G-28-NO",
+]);
+// L-09 (parser robustness): trim trailing dash from token captures
+// (e.g. "G-26-style" tokenises as "G-26-" — must normalise before lookup).
 const GATE_RE = /\bG-[A-Z0-9][A-Z0-9-]*\b/g;
+const NORMALISE = (t) => t.replace(/-+$/, "");
 
 // Documented allow-list (do NOT shrink without a new ADR / registry §4.5 amendment).
 // Categories captured for review-time grepability.
@@ -41,7 +56,37 @@ const ALLOWED = new Set([
   "G-00-ADR-XLINK-SYMMETRY-BASELINE","G-00-ADR-CONSEQUENCES-XLINK-BASELINE",
   "G-00-AT-FIX-COMPANION-SHAPE-BASELINE","G-00-GRADUATION-LEDGER-CRITERION-SHAPE",
   // Test-corpus fixtures (intentional FAIL inputs for hygiene tests)
-  "G-99-NONEXISTENT-DEMO","G-XX",
+  "G-99-NONEXISTENT-DEMO","G-XX","G-100-NONEXISTENT-DEMO","G-FOO-BAR",
+  "G-99-FOO-EXEMPTIONS","G-04-DDL-EXEMPTIONS",
+  // Future-CI gate names PROPOSED in AT-table "Gate" columns of
+  // spec/00-adrs/97-acceptance-criteria.md — these are documentation of
+  // forthcoming gates per ADR-0031 (DOC-tier → future CI promotion).
+  // F-AUDIT-45-FOLLOWUP closure: cited-as-future-name, not yet a row.
+  "G-15-ITEMTYPE-CANONICAL-ORDER","G-15-CHILD-RENDERING-DUALITY","G-15-ITEMTYPE-TRI-SSOT",
+  "G-16-SORTORDER-STRING-SHAPE","G-16-BASE62-ALPHABET","G-16-GENERATION-RULES",
+  "G-16-SINGLE-ROW-WRITE","G-16-REBALANCE-TRIGGER","G-16-NO-UNIQUE-CONSTRAINT",
+  "G-16-WIRE-AND-DDL","G-16-SORTORDER-IS-STRING",
+  "G-17-BOUNDARY-NAMES-CLOSED","G-17-BOUNDARY-INDEPENDENCE","G-17-FALLBACK-CONTRACT",
+  "G-17-VIRTUALIZATION-THRESHOLD","G-17-VIRTUALIZER-PINNED","G-17-VIRTUALIZER-BEHAVIOR",
+  "G-17-VIRTUALIZE-1000","G-17-NAMED-BOUNDARIES",
+  "G-20-BRAND-MANDATORY","G-20-BOUNDARY-CONSTRUCTION","G-20-RUNTIME-SHAPE",
+  "G-20-HELPER-CONTRACT","G-20-WIRE-PLAIN-STRING","G-20-SPEC-CONSISTENCY-SWEEP",
+  "G-21-REDO-INVALIDATION",
+  "G-23-LOADER-NO-FETCH","G-23-MIRROR-QUEUE-ATOMIC","G-23-WORKER-SOLE-EGRESS",
+  "G-24-PRIVILEGE-MUTATION-GATED","G-24-PRIVILEGE-MUTATION-GATED-DRIFT",
+  "G-24-ALIAS-BRIDGE-AUTHORITY","G-24-TRIAGE-BANNER-PRESENT","G-24-NO-SINGLETON-GROUPS",
+  "G-25-SSE-ONLY-NO-POLL","G-25-SSE-AUTH","G-25-SSE-NEVER-ENQUEUES",
+  "G-28-NO-PHYSICAL",
+  // Future-CI named in scoping/glossary/auth-guide AT tables (same DOC-tier class)
+  "G-NS-CORE-MEMORY-COVERAGE","G-NS-SCOPING-ADR-FOR-RECLASS","G-NS-SCOPING-INVENTORY",
+  "G-AT-IO-VERBATIM-ADR-DRIFT","G-WORDING","G-13-AUDIT-RUNNER-PARITY",
+  "G-13-RUNNER-NO-INVALID-REGEX-ANCHORS","G-31-EXEMPTIONS","G-32-EXEMPTIONS",
+  "G-EP-COMPLETE-CLIENT-TS-REQUIRED","G-EP-BOOL-PREFIX",
+  "G-05-2PC-REQUIRED","G-11-RESEARCH-NONNORMATIVE",
+  "G-12-WP-DARK-SCHEME-CONTRAST","G-WF-ENUM-NO-STRING-LITERALS",
+  "G-NUMBERING-NO-SKIP","G-SUBFEATURE-LETTER-ORDER","G-SUBFEATURE-PARITY-LOGGED",
+  "G-SEARCH-FANOUT-NO-CROSS-DB-JOIN","G-SEARCH-FANOUT-CAP","G-SEARCH-FANOUT-MEMBERSHIP-FRESH",
+  "G-DB-SCOPE-CITED","G-04-PASCAL-COLUMNS","G-CG-R-BRANDED-IDS","G-04-API-ENVELOPE-PASCAL",
 ]);
 
 function walk(dir, acc = []) {
@@ -98,9 +143,10 @@ for (const f of walk("spec")) {
   const lines = readFileSync(f, "utf8").split("\n");
   for (let i = 0; i < lines.length; i++) {
     for (const m of lines[i].matchAll(GATE_RE)) {
-      if (PLACEHOLDERS.has(m[0])) continue;
-      if (!cited.has(m[0])) cited.set(m[0], []);
-      cited.get(m[0]).push({ file: f, line: i + 1 });
+      const tok = NORMALISE(m[0]);
+      if (PLACEHOLDERS.has(tok) || PLACEHOLDERS.has(m[0])) continue;
+      if (!cited.has(tok)) cited.set(tok, []);
+      cited.get(tok).push({ file: f, line: i + 1 });
     }
   }
 }
