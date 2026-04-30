@@ -68,7 +68,7 @@ This MUST happen **before** any file is touched `[gate: G-BACKUP-RESTORE-DECLARE
   --metadata='{"Tier":"'"$RESTORE_TIER"'","WorkspaceId":"'"$RESTORE_WORKSPACE_ID"'","TargetRpoTs":"'"$TARGET_RPO_TS"'","Ticket":"'"$TICKET_ID"'","Operator":"'"$OPERATOR_EMAIL"'"}'
 ```
 
-**Verify:** the command MUST print `audit_id=...`. If it does not, the audit DB itself is unreachable — escalate immediately; you cannot restore safely without an audit trail.
+**Verify:** the command MUST print `audit_id=...` `[gate: G-BACKUP-AUDIT-CHAIN-PRESERVE]`. If it does not, the audit DB itself is unreachable — escalate immediately; you cannot restore safely without an audit trail.
 
 ---
 
