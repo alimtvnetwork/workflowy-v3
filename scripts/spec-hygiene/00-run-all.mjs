@@ -59,6 +59,7 @@ const checks = [
   "scripts/spec-hygiene/74-check-audit-findings-ledger.mjs",
   "scripts/spec-hygiene/75-check-license-files-present.mjs",
   "scripts/spec-hygiene/76-check-orphan-gate-ids.mjs",
+  "scripts/spec-hygiene/77-check-orphan-must-citations.mjs",
   "scripts/spec-hygiene/04-generate-index.mjs",
 ];
 
