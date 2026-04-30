@@ -3,14 +3,14 @@
 ## Database Routing
 
 **Read:** App DB (per-workspace; one SQLite file per workspace) — workspace-scoped FTS over `Items.Content` + `ItemTags`.
-**Cross-workspace search:** fan-out across user's accessible App DBs (`WorkspaceMember` from Root DB → iterate App DBs sequentially). See F-AUD42-16 (open) for fan-out contract.
+**Cross-workspace search:** opt-in via `Scope=*`; sequential fan-out across user's accessible App DBs (`workspace_members` from Root DB → iterate App DBs sequentially, no cross-DB JOIN). See **§Cross-Workspace Fan-Out Contract** below for normative algorithm, cap, errors, and gates.
 **Write:** none.
 
-> **Audit cite:** Section added 2026-04-30 to close **F-AUD42-01** (App-folder audit Phase 4). Per ADR-0019 split-DB rules.
+> **Audit cite:** Section added 2026-04-30 to close **F-AUD42-01** (App-folder audit Phase 4). Fan-out contract added 2026-04-30 to close **F-AUD42-16**. Per ADR-0019 split-DB rules.
 
 
-> **Version:** 1.0.0
-> **Updated:** 2026-04-27 (UTC+8)
+> **Version:** 1.1.0
+> **Updated:** 2026-04-30 (UTC+8) — v1.1.0 added Cross-Workspace Fan-Out Contract (F-AUD42-16).
 > **Parent:** [`./00-overview.md`](./00-overview.md)
 > **Mirrors feature:** `mem://features/search-functionality`
 
