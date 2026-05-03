@@ -149,3 +149,20 @@ Functions and cmdlets inside `.ps1` files follow the standard PowerShell **Verb-
 | **File names** (`.ps1`, `.psm1`, `.psd1`) | `lowercase-kebab-case` |
 | **Function names** (inside scripts) | `PascalCase Verb-Noun` |
 | **Folders** | `lowercase` (universal rule) |
+
+---
+
+### 11. Empty-Folder Sentinels (`.gitkeep`)
+
+When a directory must exist in version control before it has real content, use an **extensionless** `.gitkeep` file — zero bytes, no content.
+
+```
+✅ src/components/auth/.gitkeep          (extensionless, 0 bytes)
+❌ src/components/auth/.gitkeep.ts       (leaks into tsc, import graphs, file-count metrics)
+❌ src/components/auth/.gitkeep.js
+❌ src/components/auth/placeholder.ts
+```
+
+**Rationale:** A `.gitkeep.ts` file is walked by `tsc --noEmit`, pollutes import-graph analysis, inflates source-file counts in audit metrics, and tempts future contributors to copy the anti-pattern. An extensionless `.gitkeep` is invisible to every language toolchain.
+
+> **Gate:** `G-CG-GITKEEP-EXTENSIONLESS` · **Tier:** DOC-NORM (CI promotion deferred to first F-IMPL cycle — rename of existing `.gitkeep.ts` files requires `exit spec-only`).
