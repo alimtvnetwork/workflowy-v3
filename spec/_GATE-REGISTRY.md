@@ -1153,3 +1153,8 @@ The following umbrellas auto-cover any cited `G-ADR-{NNNN}-*` leaf token (used p
 | `G-WF` | **DOC-NORM** | [`spec/31-app/02-workflows/00-overview.md`](./31-app/02-workflows/00-overview.md) | (Umbrella, family=workflow) Composes any cited `G-WF-*` leaf (e.g. `G-WF-TEMPLATE-IDEMPOTENCY-WAL`) documented inline in the per-workflow file under `spec/31-app/02-workflows/`. **Burndown 2026-04-30 (NEW-13-FOLLOWUP Task L) — additional composed leaves:** `G-WF-TEMPLATE-CREATEDBY-STAMP`, `G-WF-TEMPLATE-IDEMPOTENCY-GC`, `G-WF-TEMPLATE-IDEMPOTENCY-V7`, `G-WF-TEMPLATE-NO-SSE-BEFORE-WAL-COMMITTED`. |
 | `G-25-SSE-ONLY` | **DOC-NORM** | [`spec/00-adrs/0025-sse-realtime-transport.md`](./00-adrs/0025-sse-realtime-transport.md) | (Umbrella, family=adr-realtime) SSE-only realtime transport composite. Composes `G-25-SSE-ONLY-NO-POLL` and any future `G-25-SSE-ONLY-*` leaves enumerated in ADR-0025. |
 
+### File-convention gates
+
+| Gate | Tier | Primary File | Brief |
+|------|------|--------------|-------|
+| `G-CG-GITKEEP-EXTENSIONLESS` | **DOC-NORM** | [`spec/02-coding-guidelines/08-file-folder-naming/01-cross-language.md`](./02-coding-guidelines/08-file-folder-naming/01-cross-language.md) | Empty-folder sentinels MUST be extensionless `.gitkeep` (0 bytes). `.gitkeep.ts`, `.gitkeep.js`, or any extension variant is forbidden — leaks into `tsc`, import graphs, and file-count metrics. CI promotion deferred to first F-IMPL cycle (F-AUDIT-51). |
