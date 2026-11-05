@@ -1,7 +1,7 @@
 {
   "name": "workflowy-clone",
   "private": true,
-  "version": "0.37.58",
+  "version": "0.37.59",
   "type": "module",
   "scripts": {
     "dev": "vite",
